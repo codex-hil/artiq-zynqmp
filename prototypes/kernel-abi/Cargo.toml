@@ -1,0 +1,8 @@
+[package]
+name = "genesys-kernel-abi-probe"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dyld = { path = "upstream-dyld" }
+libc = "=0.2.172"

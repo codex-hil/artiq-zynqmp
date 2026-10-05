@@ -1,0 +1,10 @@
+[package]
+name="dyld"
+version="0.1.0"
+edition="2018"
+[dependencies]
+log="=0.4.27"
+libc={ version="=0.2.172", optional=true }
+[features]
+default=["linux-cache"]
+linux-cache=["dep:libc"]

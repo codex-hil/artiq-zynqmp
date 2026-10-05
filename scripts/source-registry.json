@@ -48,7 +48,10 @@
     "url": "https://github.com/enjoy-digital/litex.git"
   },
   "nac3": {
-    "url": "https://git.m-labs.hk/M-Labs/nac3.git"
+    "url": "https://git.m-labs.hk/M-Labs/nac3.git",
+    "pins": [
+      "322b7bd2537e176d7997f816ae2fb6ab9e029939"
+    ]
   },
   "digilent-genesys-zu": {
     "url": "https://github.com/Digilent/Genesys-ZU.git"
