@@ -16,9 +16,13 @@ class CommKernel(Server):
     COREDEV_REPLY = b"e"
     SYNC_CHAR = b"\x5A"
     SYNC_LEN = 4
+    MAX_KERNEL_SIZE = 16 * 1024 * 1024
 
     def _handle_client(self, c_sock: socket) -> None:
-        c_io = c_sock.makefile("brw")
+        with c_sock.makefile("brw") as c_io:
+            self._handle_stream(c_io)
+
+    def _handle_stream(self, c_io: BufferedRWPair) -> None:
 
         hello = c_io.read(len(self.COREDEV_HELLO))
         _LOGGER.debug("hello = %r", hello)
@@ -43,7 +47,8 @@ class CommKernel(Server):
                 _LOGGER.warning("Invalid request")
                 return
 
-            req_handler(c_io)
+            if req_handler(c_io) is False:
+                return
 
     def _sync(self, c_io: BufferedRWPair) -> bytes:
         sync = 0
@@ -59,24 +64,37 @@ class CommKernel(Server):
             else:
                 return by
 
-    def _req_system_info(self, c_io: BufferedRWPair) -> bytes:
-        ident = "9.0+unknown.beta;ZynqUS".encode("utf-8")
+    def _req_system_info(self, c_io: BufferedRWPair) -> None:
+        ident = b"bringup-not-a-core-device;Genesys-ZU"
         c_io.write(self.SYNC_LEN * self.SYNC_CHAR)
         c_io.write(b"\x02")
         c_io.write(b"AROR")
         c_io.write(pack("<I", len(ident)))
         c_io.write(ident)
-        c_io.write(b"\x01")
+        c_io.write(b"\x00")
         c_io.flush()
 
-    def _req_load_kernel(self, c_io: BufferedRWPair) -> bytes:
-        elf_len, = unpack("<I", c_io.read(4))
-        elf_bin = c_io.read(elf_len)
+    def _req_load_kernel(self, c_io: BufferedRWPair) -> bool:
+        length = c_io.read(4)
+        if len(length) != 4:
+            return False
+        elf_len, = unpack("<I", length)
+        if elf_len > self.MAX_KERNEL_SIZE:
+            self._load_failed(c_io, b"Kernel exceeds bring-up server size limit")
+            return False
+        if len(c_io.read(elf_len)) != elf_len:
+            return False
+        self._load_failed(c_io, b"Kernel execution backend is not implemented")
+        return True
+
+    def _load_failed(self, c_io: BufferedRWPair, reason: bytes) -> None:
         c_io.write(self.SYNC_LEN * self.SYNC_CHAR)
-        c_io.write(b"\x05")
+        c_io.write(b"\x06")  # ARTIQ Reply.LoadFailed
+        c_io.write(pack("<I", len(reason)))
+        c_io.write(reason)
         c_io.flush()
 
-    def _req_run_kernel(self, c_io: BufferedRWPair) -> bytes:
+    def _req_run_kernel(self, c_io: BufferedRWPair) -> None:
         c_io.write(self.SYNC_LEN * self.SYNC_CHAR)
-        c_io.write(b"\x07\x00")
+        c_io.write(b"\x08")  # ARTIQ Reply.KernelStartupFailed
         c_io.flush()

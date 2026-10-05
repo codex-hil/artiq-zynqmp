@@ -29,6 +29,7 @@ class Server(ABC):
                 c_sock.shutdown(SHUT_RDWR)
             except OSError:
                 pass
+            c_sock.close()
             _LOGGER.info("Session ended")
 
     @abstractmethod
@@ -53,6 +54,7 @@ class _SocketThread:
                     self._sock.shutdown(SHUT_RDWR)
                 except OSError:
                     pass
+                self._sock.close()
                 self._sock = None
         self._thread.join()
 
