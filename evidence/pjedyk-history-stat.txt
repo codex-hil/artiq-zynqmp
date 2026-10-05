@@ -1,0 +1,968 @@
+commit b25e75b0a6c9dccc9d72d9588110dd5b6dcad78b
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Wed Feb 25 18:53:47 2026 +0100
+
+    work-in-progress: artiq-cored => artiq_run
+
+ .../artiq-cored/artiq_cored/__init__.py            |   1 +
+ .../artiq-cored/artiq-cored/artiq_cored/cli.py     |  15 ++-
+ .../artiq-cored/artiq-cored/artiq_cored/comm.py    | 141 ---------------------
+ .../artiq-cored/artiq_cored/comm/__init__.py       |   4 +
+ .../artiq-cored/artiq_cored/comm/analyzer.py       |  11 ++
+ .../artiq-cored/artiq_cored/comm/kernel.py         |  82 ++++++++++++
+ .../artiq-cored/artiq_cored/comm/mgmt.py           |  11 ++
+ .../artiq-cored/artiq_cored/comm/moninj.py         |  11 ++
+ .../artiq-cored/artiq-cored/artiq_cored/server.py  | 113 +++++++++++++++++
+ 9 files changed, 241 insertions(+), 148 deletions(-)
+
+commit 1ccdf7ed4e4b2ae9db140204d80525d02f9a9134
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sat Feb 21 11:56:29 2026 +0100
+
+    work-in-progress
+
+ .envrc                                             |  1 +
+ .shellcheckrc                                      |  4 +-
+ .../1_gateware/vivado_integration.py               |  4 +-
+ boards/genesys_zu-5ev/2_firmware/build.mk          |  3 +-
+ boards/genesys_zu-5ev/3_bootable/build.mk          | 10 ++--
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py   |  5 +-
+ boards/genesys_zu-5ev/4_linux/build.mk             | 23 +++++----
+ boards/genesys_zu-5ev/4_linux/yoctoshell.bash      | 10 ++++
+ .../conf/templates/default/local.conf.sample       |  6 ---
+ .../artiq-cored/artiq-cored/artiq_cored/comm.py    |  6 ++-
+ .../recipes-artiq/artiq-cored/artiq-cored/setup.py |  5 +-
+ envsetup.bash                                      | 23 +++++++++
+ envsetup.sh                                        | 18 -------
+ flake.lock                                         | 12 ++---
+ flake.nix                                          |  7 +--
+ pyproject.toml                                     |  4 +-
+ support/lint.bash                                  | 60 ++++++++++++++++++++++
+ 17 files changed, 140 insertions(+), 61 deletions(-)
+
+commit 621792e0bdeca610c46129ae9474a730553b62c6
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Feb 19 14:36:44 2026 +0100
+
+    local.conf.sample uninative fix
+
+ .../meta-petalinux-artiq/conf/templates/default/local.conf.sample  | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit 8886c6a7bda437012558058dc3be5bf0463152c9
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Feb 19 14:27:21 2026 +0100
+
+    artiq, migen update
+
+ .gitmodules  |   4 +--
+ common/artiq |   2 +-
+ common/migen |   2 +-
+ flake.lock   | 109 ++++++++++++++++++++++++++++++-----------------------------
+ flake.nix    |   4 +--
+ 5 files changed, 61 insertions(+), 60 deletions(-)
+
+commit c211a45fe71ce5f1a0450a710fac1b7905aa7b61
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sun Feb 15 10:28:37 2026 +0100
+
+    petalinux v2025.2
+
+ .gitmodules                                        | 134 +++++++++++----------
+ boards/genesys_zu-5ev/4_linux/build.mk             |   2 +-
+ .../conf/templates/default/local.conf.sample       |   4 +-
+ common/petalinux/rel-v2025.1/sources/manifest      |   1 -
+ .../rel-v2025.1/sources/meta-amd-adaptive-socs     |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-arm      |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-aws      |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-jupyter  |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-kria     |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-openamp  |   1 -
+ .../rel-v2025.1/sources/meta-openembedded          |   1 -
+ .../petalinux/rel-v2025.1/sources/meta-petalinux   |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-qt5      |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-rauc     |   1 -
+ .../rel-v2025.1/sources/meta-virtualization        |   1 -
+ common/petalinux/rel-v2025.1/sources/meta-xilinx   |   1 -
+ .../rel-v2025.1/sources/meta-xilinx-tools          |   1 -
+ .../petalinux/rel-v2025.1/sources/meta-xilinx-tsn  |   1 -
+ common/petalinux/rel-v2025.1/sources/poky          |   1 -
+ common/petalinux/rel-v2025.1/sources/yocto-scripts |   1 -
+ .../{rel-v2025.1 => rel-v2025.2}/setupsdk          |   0
+ common/petalinux/rel-v2025.2/sources/manifest      |   1 +
+ .../rel-v2025.2/sources/meta-amd-adaptive-socs     |   1 +
+ common/petalinux/rel-v2025.2/sources/meta-arm      |   1 +
+ common/petalinux/rel-v2025.2/sources/meta-aws      |   1 +
+ .../rel-v2025.2/sources/meta-embedded-plus         |   1 +
+ common/petalinux/rel-v2025.2/sources/meta-jupyter  |   1 +
+ common/petalinux/rel-v2025.2/sources/meta-kria     |   1 +
+ .../sources/meta-mingw                             |   0
+ common/petalinux/rel-v2025.2/sources/meta-openamp  |   1 +
+ .../rel-v2025.2/sources/meta-openembedded          |   1 +
+ .../petalinux/rel-v2025.2/sources/meta-petalinux   |   1 +
+ common/petalinux/rel-v2025.2/sources/meta-qt5      |   1 +
+ common/petalinux/rel-v2025.2/sources/meta-rauc     |   1 +
+ .../{rel-v2025.1 => rel-v2025.2}/sources/meta-ros  |   0
+ .../sources/meta-security                          |   0
+ .../rel-v2025.2/sources/meta-system-controller     |   1 +
+ .../rel-v2025.2/sources/meta-virtualization        |   1 +
+ .../sources/meta-vitis                             |   0
+ common/petalinux/rel-v2025.2/sources/meta-xilinx   |   1 +
+ .../rel-v2025.2/sources/meta-xilinx-tools          |   1 +
+ .../petalinux/rel-v2025.2/sources/meta-xilinx-tsn  |   1 +
+ common/petalinux/rel-v2025.2/sources/poky          |   1 +
+ common/petalinux/rel-v2025.2/sources/yocto-scripts |   1 +
+ envsetup.sh                                        |   4 +-
+ 45 files changed, 95 insertions(+), 85 deletions(-)
+
+commit 5689ebfedb1f5a64234010c82f3e4be686ecd012
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Tue Aug 26 18:50:52 2025 +0200
+
+    artiq_cored
+
+ .../artiq-cored/artiq-cored/artiq_cored.service    |   9 ++
+ .../artiq-cored/artiq_cored/__init__.py            |   2 +
+ .../artiq-cored/artiq_cored/__main__.py            |   4 +
+ .../artiq-cored/artiq-cored/artiq_cored/cli.py     |  52 ++++++++
+ .../artiq-cored/artiq-cored/artiq_cored/comm.py    | 137 +++++++++++++++++++++
+ .../recipes-artiq/artiq-cored/artiq-cored/setup.py |   3 +
+ .../recipes-artiq/artiq-cored/artiq-cored_1.bb     |  24 ++++
+ .../packagegroups/packagegroup-artiq.bb            |   5 +
+ .../recipes-core/images/petalinux-image-artiq.bb   |   3 +-
+ 9 files changed, 238 insertions(+), 1 deletion(-)
+
+commit 24ef0ceeff65b5cadf345d1b1067099916d30b2f
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Tue Aug 26 18:50:40 2025 +0200
+
+    wip, artiq add
+
+ .envrc                                             |   1 -
+ .gitattributes                                     |   4 +-
+ .gitignore                                         |   2 +-
+ .gitmodules                                        |   7 +-
+ .shellcheckrc                                      |   6 +
+ boards/genesys_zu-5ev/1_gateware/gateware.py       |   1 -
+ boards/genesys_zu-5ev/3_bootable/pyproject.toml    |  40 ----
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py   |   2 +-
+ common/artiq                                       |   1 +
+ common/migen                                       |   2 +-
+ envsetup.bash                                      |  25 ---
+ envsetup.sh                                        |  18 ++
+ flake.lock                                         | 240 ++++++++++++++++++++-
+ flake.nix                                          |  41 +++-
+ .../1_gateware/pyproject.toml => pyproject.toml    |   5 -
+ 15 files changed, 304 insertions(+), 91 deletions(-)
+
+commit a4e66f90ae126952512b0eee311f37124aedbf45
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Wed Jun 25 14:44:33 2025 +0200
+
+    wip, openamp echo_test
+
+ boards/genesys_zu-5ev/3_bootable/src/helper.c      | 127 +++++++++
+ boards/genesys_zu-5ev/3_bootable/src/main.c        |  95 -------
+ .../genesys_zu-5ev/3_bootable/src/platform_info.c  | 294 +++++++++++++++++++++
+ .../genesys_zu-5ev/3_bootable/src/platform_info.h  |  82 ++++++
+ .../3_bootable/src/platform_info_common.h          |  79 ++++++
+ .../genesys_zu-5ev/3_bootable/src/resource_table.c |  42 ---
+ .../genesys_zu-5ev/3_bootable/src/resource_table.h |  15 --
+ boards/genesys_zu-5ev/3_bootable/src/rpmsg-echo.c  | 138 ++++++++++
+ boards/genesys_zu-5ev/3_bootable/src/rpmsg-echo.h  |  10 +
+ boards/genesys_zu-5ev/3_bootable/src/rsc_table.c   |  68 +++++
+ boards/genesys_zu-5ev/3_bootable/src/rsc_table.h   |  45 ++++
+ .../3_bootable/src/zynqmp_r5_a53_rproc.c           | 192 ++++++++++++++
+ boards/genesys_zu-5ev/3_bootable/system-user.dtsi  | 112 --------
+ .../conf/templates/default/local.conf.sample       |   2 +-
+ .../recipes-bsp/device-tree/device-tree.bbappend   |   1 +
+ .../device-tree/files/zynqmp-openamp.dtsi          | 143 ++++++++++
+ .../device-tree/open-amp-device-tree.bbappend      |   1 +
+ 17 files changed, 1181 insertions(+), 265 deletions(-)
+
+commit e3f04c84e588b59c13553cc6932b3deafa31b1ca
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Wed Jun 25 11:16:11 2025 +0200
+
+    wip
+
+ boards/genesys_zu-5ev/3_bootable/src/main.c        | 44 +++++++++++++++++++---
+ .../genesys_zu-5ev/3_bootable/src/resource_table.c | 13 +------
+ .../genesys_zu-5ev/3_bootable/src/resource_table.h |  3 +-
+ boards/genesys_zu-5ev/3_bootable/system-user.dtsi  | 18 +++++----
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py   |  4 ++
+ flake.lock                                         |  6 +--
+ 6 files changed, 58 insertions(+), 30 deletions(-)
+
+commit bdd11c4775174247c11c72326c2b9b38908c5341
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Tue Jun 24 20:19:33 2025 +0200
+
+    wip
+
+ boards/genesys_zu-5ev/3_bootable/.clang-format     | 16 ++++++
+ boards/genesys_zu-5ev/3_bootable/build.mk          |  6 +-
+ boards/genesys_zu-5ev/3_bootable/src/main.c        | 55 +++++++++++++++++-
+ .../genesys_zu-5ev/3_bootable/src/resource_table.c | 53 +++++++++++++++++
+ .../genesys_zu-5ev/3_bootable/src/resource_table.h | 16 ++++++
+ .../3_bootable/{user.dtsi => system-user.dtsi}     | 67 ++++++++--------------
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py   | 53 ++++++++++-------
+ boards/genesys_zu-5ev/4_linux/build.mk             |  4 +-
+ flake.lock                                         |  8 +--
+ flake.nix                                          |  5 +-
+ 10 files changed, 207 insertions(+), 76 deletions(-)
+
+commit 0b5de65190b6742e0539e47fbb44214941b8bc6c
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Tue Jun 24 11:01:45 2025 +0200
+
+    wip
+
+ .gitmodules                                        |  42 +++----
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl    |   3 +
+ boards/genesys_zu-5ev/1_gateware/pyproject.toml    |   4 +
+ boards/genesys_zu-5ev/3_bootable/pyproject.toml    |   4 +
+ boards/genesys_zu-5ev/3_bootable/user.dtsi         | 131 ++++++++++++++++++++-
+ .../genesys_zu-5ev/3_bootable/vitis/__init__.pyi   |   7 --
+ .../genesys_zu-5ev/3_bootable/vitis/cli_client.pyi |  46 --------
+ .../genesys_zu-5ev/3_bootable/vitis/component.pyi  |  12 --
+ .../3_bootable/vitis/platform_component.pyi        |   2 -
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py   |  29 ++++-
+ boards/genesys_zu-5ev/4_linux/build.mk             |  10 +-
+ .../conf/distro/petalinux-artiq.conf               |  19 +++
+ .../petalinux/meta-petalinux-artiq/conf/layer.conf |  11 ++
+ .../conf/machine/zynqmp-artiq.conf                 |   5 +-
+ .../conf/templates/default/bblayers.conf.sample    |   2 +-
+ .../conf/templates/default/local.conf.sample       |   6 +-
+ .../recipes-core/images/petalinux-image-artiq.bb   |  23 ++++
+ .../images/petalinux-initramfs-image-artiq.bb      |   8 ++
+ .../petalinux-initramfs-framework-artiq}/init      |   4 +-
+ .../petalinux-initramfs-framework-artiq_1.0.bb}    |   2 +-
+ .../linux-xlnx/linux-xlnx_%.bbappend               |   3 +
+ .../petalinux-artiq-kmeta/cfg/debug-kernel.cfg     |   3 +
+ .../meta-petalinux-artiq}/scripts/setupsdk         |   2 +-
+ .../wic/petalinux-artiq-sd.wks                     |   3 +
+ common/petalinux/rel-v2025.1/setupsdk              |   1 +
+ .../rel-v2025.1}/sources/manifest                  |   0
+ .../rel-v2025.1}/sources/meta-amd-adaptive-socs    |   0
+ .../rel-v2025.1}/sources/meta-arm                  |   0
+ .../rel-v2025.1}/sources/meta-aws                  |   0
+ .../rel-v2025.1}/sources/meta-jupyter              |   0
+ .../rel-v2025.1}/sources/meta-kria                 |   0
+ .../rel-v2025.1}/sources/meta-mingw                |   0
+ .../rel-v2025.1}/sources/meta-openamp              |   0
+ .../rel-v2025.1}/sources/meta-openembedded         |   0
+ .../rel-v2025.1}/sources/meta-petalinux            |   0
+ .../rel-v2025.1}/sources/meta-qt5                  |   0
+ .../rel-v2025.1}/sources/meta-rauc                 |   0
+ .../rel-v2025.1}/sources/meta-ros                  |   0
+ .../rel-v2025.1}/sources/meta-security             |   0
+ .../rel-v2025.1}/sources/meta-virtualization       |   0
+ .../rel-v2025.1}/sources/meta-vitis                |   0
+ .../rel-v2025.1}/sources/meta-xilinx               |   0
+ .../rel-v2025.1}/sources/meta-xilinx-tools         |   0
+ .../rel-v2025.1}/sources/meta-xilinx-tsn           |   0
+ .../rel-v2025.1}/sources/poky                      |   0
+ .../rel-v2025.1}/sources/yocto-scripts             |   0
+ common/yocto/meta-artiq-xilinx/conf/layer.conf     |  11 --
+ .../images/artiqlinux-image-default.bb             |   1 -
+ .../images/artiqlinux-initramfs-image.bb           |   6 -
+ common/yocto/xilinx_rel-v2025.1/setupsdk           |   1 -
+ 50 files changed, 278 insertions(+), 123 deletions(-)
+
+commit 8e775b12ad227169faf00083970b29a7c96bd39f
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Jun 20 10:33:19 2025 +0200
+
+    yocto rel 2025 xilinx
+
+ boards/genesys_zu-5ev/4_linux/bblayers.conf.in     | 48 ----------------------
+ boards/genesys_zu-5ev/4_linux/build.mk             | 32 ++++-----------
+ common/yocto/meta-artiq-xilinx/conf/layer.conf     | 10 ++---
+ .../conf/machine/zynqmp-artiq.conf                 |  3 --
+ .../conf/templates/default/bblayers.conf.sample    | 48 ++++++++++++++++++++++
+ .../conf/templates/default/local.conf.sample       | 10 +++--
+ common/yocto/meta-artiq-xilinx/scripts/setupsdk    | 12 ++++++
+ common/yocto/xilinx_rel-v2025.1/setupsdk           |  2 +-
+ 8 files changed, 79 insertions(+), 86 deletions(-)
+
+commit 275d302ac4446a3b926735ae0cd37c1a424f0d57
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Jun 20 07:03:27 2025 +0200
+
+    yocto rel 2025 xilinx
+
+ .gitmodules                                        | 134 ++++-----------------
+ boards/genesys_zu-5ev/4_linux/bblayers.conf.in     |   4 +-
+ boards/genesys_zu-5ev/4_linux/build.mk             |   4 +-
+ boards/genesys_zu-5ev/4_linux/local.conf.in        |   2 +-
+ .../4_linux/meta-artiq/conf/layer.conf             |  11 --
+ common/yocto/meta-artiq-xilinx/conf/layer.conf     |  11 ++
+ .../images/artiqlinux-image-default.bb             |   0
+ .../images/artiqlinux-initramfs-image.bb           |   0
+ .../artiqlinux-initramfs-framework/init            |   0
+ .../artiqlinux-initramfs-framework_1.0.bb          |   0
+ .../rel-v2024.2/sources/meta-amd-adaptive-socs     |   1 -
+ common/yocto/rel-v2024.2/sources/meta-arm          |   1 -
+ common/yocto/rel-v2024.2/sources/meta-aws          |   1 -
+ .../yocto/rel-v2024.2/sources/meta-embedded-plus   |   1 -
+ common/yocto/rel-v2024.2/sources/meta-kria         |   1 -
+ common/yocto/rel-v2024.2/sources/meta-mingw        |   1 -
+ common/yocto/rel-v2024.2/sources/meta-openamp      |   1 -
+ common/yocto/rel-v2024.2/sources/meta-openembedded |   1 -
+ common/yocto/rel-v2024.2/sources/meta-petalinux    |   1 -
+ common/yocto/rel-v2024.2/sources/meta-rauc         |   1 -
+ common/yocto/rel-v2024.2/sources/meta-security     |   1 -
+ .../rel-v2024.2/sources/meta-system-controller     |   1 -
+ .../yocto/rel-v2024.2/sources/meta-virtualization  |   1 -
+ common/yocto/rel-v2024.2/sources/meta-vitis        |   1 -
+ common/yocto/rel-v2024.2/sources/meta-xilinx       |   1 -
+ common/yocto/rel-v2024.2/sources/meta-xilinx-tools |   1 -
+ common/yocto/rel-v2024.2/sources/meta-xilinx-tsn   |   1 -
+ common/yocto/rel-v2024.2/sources/poky              |   1 -
+ common/yocto/rel-v2025.1/edf-init-build-env        |   1 -
+ common/yocto/rel-v2025.1/setupsdk                  |   1 -
+ common/yocto/rel-v2025.1/sources/meta-amd-edf      |   1 -
+ common/yocto/rel-v2025.1/sources/meta-jupyter      |   1 -
+ common/yocto/rel-v2025.1/sources/meta-qt5          |   1 -
+ common/yocto/rel-v2025.1/sources/meta-ros          |   1 -
+ common/yocto/rel-v2025.1/sources/yocto-scripts     |   1 -
+ .../{rel-v2024.2 => xilinx_rel-v2025.1}/setupsdk   |   0
+ .../sources/manifest                               |   0
+ .../sources/meta-amd-adaptive-socs                 |   0
+ .../sources/meta-arm                               |   0
+ .../sources/meta-aws                               |   0
+ .../sources/meta-jupyter                           |   0
+ .../sources/meta-kria                              |   0
+ .../sources/meta-mingw                             |   0
+ .../sources/meta-openamp                           |   0
+ .../sources/meta-openembedded                      |   0
+ .../sources/meta-petalinux                         |   0
+ .../sources/meta-qt5                               |   0
+ .../sources/meta-rauc                              |   0
+ .../sources/meta-ros                               |   0
+ .../sources/meta-security                          |   0
+ .../sources/meta-virtualization                    |   0
+ .../sources/meta-vitis                             |   0
+ .../sources/meta-xilinx                            |   0
+ .../sources/meta-xilinx-tools                      |   0
+ .../sources/meta-xilinx-tsn                        |   0
+ .../sources/poky                                   |   0
+ .../sources/yocto-scripts                          |   0
+ 57 files changed, 36 insertions(+), 155 deletions(-)
+
+commit 6b2b7eefbaf1d01aa820187e8c9bf9e59c95bd96
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Jun 19 14:33:12 2025 +0200
+
+    platform.gen fix
+
+ boards/genesys_zu-5ev/0_platform/migen_integration.tcl        |  3 ++-
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl               |  4 ++--
+ boards/genesys_zu-5ev/1_gateware/vivado_integration.py        | 11 ++++++-----
+ boards/genesys_zu-5ev/Makefile                                |  1 -
+ 4 files changed, 10 insertions(+), 9 deletions(-)
+
+commit 05b43858a875903ecd85be0bcc41e8e9684b487f
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sat Jun 14 14:23:58 2025 +0200
+
+    rel-v2025.1
+
+ .gitignore                                         |  9 ++-
+ .gitmodules                                        | 88 ++++++++++++++++++++++
+ common/yocto/rel-v2025.1/edf-init-build-env        |  1 +
+ common/yocto/rel-v2025.1/setupsdk                  |  1 +
+ common/yocto/rel-v2025.1/sources/manifest          |  1 +
+ .../rel-v2025.1/sources/meta-amd-adaptive-socs     |  1 +
+ common/yocto/rel-v2025.1/sources/meta-amd-edf      |  1 +
+ common/yocto/rel-v2025.1/sources/meta-arm          |  1 +
+ common/yocto/rel-v2025.1/sources/meta-aws          |  1 +
+ common/yocto/rel-v2025.1/sources/meta-jupyter      |  1 +
+ common/yocto/rel-v2025.1/sources/meta-kria         |  1 +
+ common/yocto/rel-v2025.1/sources/meta-mingw        |  1 +
+ common/yocto/rel-v2025.1/sources/meta-openamp      |  1 +
+ common/yocto/rel-v2025.1/sources/meta-openembedded |  1 +
+ common/yocto/rel-v2025.1/sources/meta-petalinux    |  1 +
+ common/yocto/rel-v2025.1/sources/meta-qt5          |  1 +
+ common/yocto/rel-v2025.1/sources/meta-rauc         |  1 +
+ common/yocto/rel-v2025.1/sources/meta-ros          |  1 +
+ common/yocto/rel-v2025.1/sources/meta-security     |  1 +
+ .../yocto/rel-v2025.1/sources/meta-virtualization  |  1 +
+ common/yocto/rel-v2025.1/sources/meta-vitis        |  1 +
+ common/yocto/rel-v2025.1/sources/meta-xilinx       |  1 +
+ common/yocto/rel-v2025.1/sources/meta-xilinx-tools |  1 +
+ common/yocto/rel-v2025.1/sources/meta-xilinx-tsn   |  1 +
+ common/yocto/rel-v2025.1/sources/poky              |  1 +
+ common/yocto/rel-v2025.1/sources/yocto-scripts     |  1 +
+ envsetup.bash                                      |  7 +-
+ 27 files changed, 122 insertions(+), 6 deletions(-)
+
+commit 376d18f1afa127f82c92cd7881b3e4b1eab24ec3
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sat Apr 26 11:03:18 2025 +0200
+
+    4_linux
+
+ boards/genesys_zu-5ev/4_linux/build.mk      | 28 ++++++++++++++++++----------
+ boards/genesys_zu-5ev/4_linux/local.conf.in | 20 +++++++++++---------
+ 2 files changed, 29 insertions(+), 19 deletions(-)
+
+commit bad204daa7f404ff73021a9c854e481f3618b968
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Apr 24 18:18:24 2025 +0200
+
+    custom initramfs
+
+ .../images/artiqlinux-initramfs-image.bb           |   3 +-
+ .../artiqlinux-initramfs-framework/init            | 115 +++++++++++++++++++++
+ .../artiqlinux-initramfs-framework_1.0.bb          |  16 +++
+ boards/genesys_zu-5ev/4_linux/zynqmp-artiq.conf.in |   5 +-
+ 4 files changed, 136 insertions(+), 3 deletions(-)
+
+commit 86536d602aeab0c810f18b39c33cf33cf830a73b
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Apr 24 18:17:12 2025 +0200
+
+    4_linux
+
+ boards/genesys_zu-5ev/4_linux/bblayers.conf.in                |  1 +
+ boards/genesys_zu-5ev/4_linux/build.mk                        |  8 +++++---
+ boards/genesys_zu-5ev/4_linux/meta-artiq/conf/layer.conf      | 11 +++++++++++
+ .../recipes-core/images/artiqlinux-image-default.bb           |  1 +
+ .../recipes-core/images/artiqlinux-initramfs-image.bb         |  7 +++++++
+ boards/genesys_zu-5ev/4_linux/zynqmp-artiq.conf.in            |  6 +++++-
+ 6 files changed, 30 insertions(+), 4 deletions(-)
+
+commit 2a0bb0b2bde078513fcdcea7d09545ae128d3050
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Apr 18 12:16:40 2025 +0200
+
+    yocto/sources
+
+ .gitmodules                                        | 44 +++++------
+ boards/genesys_zu-5ev/4_linux/bblayers.conf.in     | 88 +++++++++++-----------
+ boards/genesys_zu-5ev/4_linux/build.mk             |  2 +-
+ common/yocto/rel-v2024.2/setupsdk                  |  1 +
+ .../{ => sources}/meta-amd-adaptive-socs           |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-arm    |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-aws    |  0
+ .../rel-v2024.2/{ => sources}/meta-embedded-plus   |  0
+ .../yocto/rel-v2024.2/{ => sources}/meta-jupyter   |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-kria   |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-mingw  |  0
+ .../yocto/rel-v2024.2/{ => sources}/meta-openamp   |  0
+ .../rel-v2024.2/{ => sources}/meta-openembedded    |  0
+ .../yocto/rel-v2024.2/{ => sources}/meta-petalinux |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-qt5    |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-rauc   |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-ros    |  0
+ .../yocto/rel-v2024.2/{ => sources}/meta-security  |  0
+ .../{ => sources}/meta-system-controller           |  0
+ .../rel-v2024.2/{ => sources}/meta-virtualization  |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-vitis  |  0
+ common/yocto/rel-v2024.2/{ => sources}/meta-xilinx |  0
+ .../rel-v2024.2/{ => sources}/meta-xilinx-tools    |  0
+ .../rel-v2024.2/{ => sources}/meta-xilinx-tsn      |  0
+ common/yocto/rel-v2024.2/{ => sources}/poky        |  0
+ .../yocto/rel-v2024.2/{ => sources}/yocto-scripts  |  0
+ 26 files changed, 68 insertions(+), 67 deletions(-)
+
+commit 8efa07fd17f96b8d450ef6d4742db75b0f87b72c
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Apr 18 12:02:15 2025 +0200
+
+    4_linux
+
+ boards/genesys_zu-5ev/4_linux/bblayers.conf.in     | 49 +++++++++++++++++++++
+ boards/genesys_zu-5ev/4_linux/build.mk             | 51 ++++++++++++++++++++++
+ boards/genesys_zu-5ev/4_linux/local.conf.in        | 26 +++++++++++
+ boards/genesys_zu-5ev/4_linux/zynqmp-artiq.conf.in |  5 +++
+ 4 files changed, 131 insertions(+)
+
+commit 07a232bf1c5b6b087f08929282755bb9f4ef2840
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Apr 18 12:01:50 2025 +0200
+
+    build.mk
+
+ boards/genesys_zu-5ev/0_platform/build.mk | 14 ++++++
+ boards/genesys_zu-5ev/1_gateware/build.mk | 15 ++++++
+ boards/genesys_zu-5ev/2_firmware/build.mk | 18 ++++++++
+ boards/genesys_zu-5ev/3_bootable/build.mk | 21 +++++++++
+ boards/genesys_zu-5ev/Makefile            | 76 ++-----------------------------
+ 5 files changed, 73 insertions(+), 71 deletions(-)
+
+commit ec9413e67737b59b365a10f7e74fa010435ecca5
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Apr 18 12:01:34 2025 +0200
+
+    platform sd + eth
+
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl        | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+commit dc841c3200116ebc9413096a966c83a0a3cb8ec4
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Apr 18 12:00:43 2025 +0200
+
+    3_bootable - armv7 + user.dtsi
+
+ boards/genesys_zu-5ev/3_bootable/user.dtsi            |  3 +++
+ boards/genesys_zu-5ev/3_bootable/vitis/cli_client.pyi | 10 +++++++++-
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py      | 12 ++++++++++--
+ 3 files changed, 22 insertions(+), 3 deletions(-)
+
+commit 60ffa8652844384be7c95d7616e954a52fc51e19
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Apr 18 11:55:25 2025 +0200
+
+    moved submodules + envsetup + armv7
+
+ .envrc                                             |  2 +-
+ .gitmodules                                        | 46 +++++++++++-----------
+ .../genesys_zu-5ev/2_firmware/.cargo/config.toml   |  2 +-
+ boards/genesys_zu-5ev/2_firmware/src/lib.rs        |  2 +-
+ migen => common/migen                              |  0
+ .../{sources => }/meta-amd-adaptive-socs           |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-arm    |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-aws    |  0
+ .../rel-v2024.2/{sources => }/meta-embedded-plus   |  0
+ .../yocto/rel-v2024.2/{sources => }/meta-jupyter   |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-kria   |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-mingw  |  0
+ .../yocto/rel-v2024.2/{sources => }/meta-openamp   |  0
+ .../rel-v2024.2/{sources => }/meta-openembedded    |  0
+ .../yocto/rel-v2024.2/{sources => }/meta-petalinux |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-qt5    |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-rauc   |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-ros    |  0
+ .../yocto/rel-v2024.2/{sources => }/meta-security  |  0
+ .../{sources => }/meta-system-controller           |  0
+ .../rel-v2024.2/{sources => }/meta-virtualization  |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-vitis  |  0
+ common/yocto/rel-v2024.2/{sources => }/meta-xilinx |  0
+ .../rel-v2024.2/{sources => }/meta-xilinx-tools    |  0
+ .../rel-v2024.2/{sources => }/meta-xilinx-tsn      |  0
+ common/yocto/rel-v2024.2/{sources => }/poky        |  0
+ common/yocto/rel-v2024.2/setupsdk                  |  1 -
+ .../yocto/rel-v2024.2/{sources => }/yocto-scripts  |  0
+ envsetup.bash                                      |  9 ++++-
+ flake.nix                                          |  7 +++-
+ 30 files changed, 40 insertions(+), 29 deletions(-)
+
+commit b226da3958c14bc153827ca1f68533bc6f15b7f9
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sun Apr 13 21:51:19 2025 +0200
+
+    common/yocto/rel-v2024.2
+
+ .gitmodules                                        | 88 ++++++++++++++++++++++
+ common/yocto/rel-v2024.2/setupsdk                  |  1 +
+ .../rel-v2024.2/sources/meta-amd-adaptive-socs     |  1 +
+ common/yocto/rel-v2024.2/sources/meta-arm          |  1 +
+ common/yocto/rel-v2024.2/sources/meta-aws          |  1 +
+ .../yocto/rel-v2024.2/sources/meta-embedded-plus   |  1 +
+ common/yocto/rel-v2024.2/sources/meta-jupyter      |  1 +
+ common/yocto/rel-v2024.2/sources/meta-kria         |  1 +
+ common/yocto/rel-v2024.2/sources/meta-mingw        |  1 +
+ common/yocto/rel-v2024.2/sources/meta-openamp      |  1 +
+ common/yocto/rel-v2024.2/sources/meta-openembedded |  1 +
+ common/yocto/rel-v2024.2/sources/meta-petalinux    |  1 +
+ common/yocto/rel-v2024.2/sources/meta-qt5          |  1 +
+ common/yocto/rel-v2024.2/sources/meta-rauc         |  1 +
+ common/yocto/rel-v2024.2/sources/meta-ros          |  1 +
+ common/yocto/rel-v2024.2/sources/meta-security     |  1 +
+ .../rel-v2024.2/sources/meta-system-controller     |  1 +
+ .../yocto/rel-v2024.2/sources/meta-virtualization  |  1 +
+ common/yocto/rel-v2024.2/sources/meta-vitis        |  1 +
+ common/yocto/rel-v2024.2/sources/meta-xilinx       |  1 +
+ common/yocto/rel-v2024.2/sources/meta-xilinx-tools |  1 +
+ common/yocto/rel-v2024.2/sources/meta-xilinx-tsn   |  1 +
+ common/yocto/rel-v2024.2/sources/poky              |  1 +
+ common/yocto/rel-v2024.2/sources/yocto-scripts     |  1 +
+ 24 files changed, 111 insertions(+)
+
+commit 00c2e99673140887d54234f6e1c6a7e3c170fe60
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:28:18 2025 +0100
+
+    README.md
+
+ boards/genesys_zu-5ev/README.md | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit 987f8c8d634148265e6b4d205047f671cb8ebe5f
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:16:24 2025 +0100
+
+    README.md
+
+ boards/genesys_zu-5ev/README.md | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit cdeef64a62d6916b2206f24193148b859650a219
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:11:53 2025 +0100
+
+    README.md
+
+ boards/genesys_zu-5ev/README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1eb4dce1535b04987aa673c7a811ae54a3320d8e
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:09:42 2025 +0100
+
+    README.md
+
+ boards/genesys_zu-5ev/README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit e0dfc93c1e182f0319b9c49a0ad9f67800004717
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:05:15 2025 +0100
+
+    no axi in lib.rs
+
+ boards/genesys_zu-5ev/2_firmware/src/lib.rs | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+commit c3078fdcd3e368920b035ed2f6ac5f1b012bd26e
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:04:13 2025 +0100
+
+    remove old
+
+ .gitmodules                                        |   6 --
+ boards/genesys_zu-5ev/build.bash                   |  41 ----------
+ boards/genesys_zu-5ev/embeddedsw                   |   1 -
+ boards/genesys_zu-5ev/firmware/.cargo/config.toml  |   2 -
+ boards/genesys_zu-5ev/firmware/.gitignore          |   1 -
+ boards/genesys_zu-5ev/firmware/Cargo.lock          |   7 --
+ boards/genesys_zu-5ev/firmware/Cargo.toml          |   6 --
+ boards/genesys_zu-5ev/firmware/src/boot.c          |  31 --------
+ boards/genesys_zu-5ev/firmware/src/lib.rs          |  22 ------
+ boards/genesys_zu-5ev/support/boot.bif             |   7 --
+ boards/genesys_zu-5ev/support/gateware.py          |  84 ---------------------
+ boards/genesys_zu-5ev/support/system_wrapper.xsa   | Bin 813756 -> 0 bytes
+ boards/genesys_zu-5ev/support/vitis.tcl            |  16 ----
+ boards/genesys_zu-5ev/support/vivado.tcl           |  20 -----
+ .../support/zynq_ultra_ps_e_0.properties.tcl       |   3 -
+ boards/genesys_zu-5ev/vivado-boards                |   1 -
+ 16 files changed, 248 deletions(-)
+
+commit b3ac6ec7cebd2b4be1fbf2681503d820b2537000
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:01:47 2025 +0100
+
+    README.md
+
+ boards/genesys_zu-5ev/README.md | 163 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 163 insertions(+)
+
+commit 0e53dd9fba4e054c5968c769cf7cd6fb9692e7d6
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 18:01:40 2025 +0100
+
+    migen-vivado integration
+
+ boards/genesys_zu-5ev/Makefile | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit 72c99d84f6b023a48edcaba9ac96878a923ac4a6
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 17:00:51 2025 +0100
+
+    migen-vivado integration
+
+ .../0_platform/migen_integration.tcl               |  55 +++++++++++
+ boards/genesys_zu-5ev/0_platform/vivado_script.tcl |  43 ++------
+ boards/genesys_zu-5ev/1_gateware/gateware.py       |  27 +++--
+ boards/genesys_zu-5ev/1_gateware/pyproject.toml    |  10 +-
+ ...{zynq_ultra_ps_e_0.py => vivado_integration.py} | 110 ++++++++++++++-------
+ boards/genesys_zu-5ev/3_bootable/pyproject.toml    |  10 +-
+ .../{2_firmware => 3_bootable}/src/main.c          |   0
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py   |  15 +--
+ boards/genesys_zu-5ev/Makefile                     |  23 ++---
+ 9 files changed, 181 insertions(+), 112 deletions(-)
+
+commit bc2048567e1ab4a1f3cfb2d9081673dddf67fba5
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 16:59:20 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ boards/genesys_zu-5ev/0_platform/zynq_ultra_ps_e_0.properties.tcl | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 95e42cba1768c38884f3ad9eab7c4590a5d95f75
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 11:45:00 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl    | 63 +++++++++++++---------
+ 1 file changed, 37 insertions(+), 26 deletions(-)
+
+commit fb51bf14173bd9659ec1d53781a77c8e2e67a0e4
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 11:34:43 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ boards/genesys_zu-5ev/0_platform/zynq_ultra_ps_e_0.properties.tcl | 7 -------
+ 1 file changed, 7 deletions(-)
+
+commit ebb74a25a0ecf7086d1e722e0ed3be231fd46a58
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 11:25:58 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl    | 70 +++++++++++-----------
+ 1 file changed, 35 insertions(+), 35 deletions(-)
+
+commit e4ab8ce9adbad23cc300d57302c0de4670c400d5
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 11:04:41 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ boards/genesys_zu-5ev/0_platform/zynq_ultra_ps_e_0.properties.tcl | 5 -----
+ 1 file changed, 5 deletions(-)
+
+commit edd437cd9fe75213032ef693ed10b4d8a506d4da
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 10:38:57 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl    | 33 ++--------------------
+ 1 file changed, 2 insertions(+), 31 deletions(-)
+
+commit 1afef72cc44586f6c901eb509150fbaabbd42e65
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 10:29:29 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl      | 20 --------------------
+ 1 file changed, 20 deletions(-)
+
+commit 14e14c3a9409f92294acd099978ccf4565807720
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 09:35:52 2025 +0100
+
+    zynq_ultra_ps_e_0.py intr
+
+ boards/genesys_zu-5ev/1_gateware/zynq_ultra_ps_e_0.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 9c84df92c7be559f2a171bb6fb0316685d77fdb5
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 14 09:35:37 2025 +0100
+
+    zynq_ultra_ps_e_0.properties.tcl wip
+
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl    | 107 ++++++++++++++++++++-
+ 1 file changed, 104 insertions(+), 3 deletions(-)
+
+commit e3f17cb5cdaf0f698e24071d89dfc51813deca2a
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Mar 13 15:34:18 2025 +0100
+
+    I_PLATFORM_wildcard_TCL
+
+ boards/genesys_zu-5ev/Makefile | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit 504906c1ec5ef3210ce680716c8acdb1c6f3fb9d
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Mar 13 15:17:48 2025 +0100
+
+    zynq ultra ps e in migen
+
+ boards/genesys_zu-5ev/0_platform/vivado_script.tcl |   34 +-
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl    |    4 +-
+ boards/genesys_zu-5ev/1_gateware/gateware.py       |   30 +-
+ .../genesys_zu-5ev/1_gateware/zynq_ultra_ps_e_0.py |  120 +
+ boards/genesys_zu-5ev/3_bootable/xfsbl_ddr_init.c  | 2540 +++++---------------
+ boards/genesys_zu-5ev/Makefile                     |   30 +-
+ 6 files changed, 786 insertions(+), 1972 deletions(-)
+
+commit 0b03a18eaa323590ea0d53c137977a4e2b45f44f
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Tue Mar 11 12:00:34 2025 +0100
+
+    makefile with stages 0,1,2,3
+
+ .gitignore                                         |    4 +
+ boards/genesys_zu-5ev/0_platform/vivado_script.tcl |   19 +
+ .../0_platform/zynq_ultra_ps_e_0.properties.tcl    |    3 +
+ boards/genesys_zu-5ev/1_gateware/gateware.py       |   69 +
+ boards/genesys_zu-5ev/1_gateware/pyproject.toml    |   32 +
+ .../genesys_zu-5ev/2_firmware/.cargo/config.toml   |    2 +
+ boards/genesys_zu-5ev/2_firmware/Cargo.lock        |    7 +
+ boards/genesys_zu-5ev/2_firmware/Cargo.toml        |    6 +
+ boards/genesys_zu-5ev/2_firmware/src/lib.rs        |   22 +
+ boards/genesys_zu-5ev/2_firmware/src/main.c        |    8 +
+ boards/genesys_zu-5ev/3_bootable/pyproject.toml    |   32 +
+ .../genesys_zu-5ev/3_bootable/vitis/__init__.pyi   |    7 +
+ .../genesys_zu-5ev/3_bootable/vitis/cli_client.pyi |   38 +
+ .../genesys_zu-5ev/3_bootable/vitis/component.pyi  |   12 +
+ .../3_bootable/vitis/platform_component.pyi        |    2 +
+ boards/genesys_zu-5ev/3_bootable/vitis_script.py   |   56 +
+ boards/genesys_zu-5ev/3_bootable/xfsbl_ddr_init.c  | 6984 ++++++++++++++++++++
+ boards/genesys_zu-5ev/Makefile                     |   78 +
+ 18 files changed, 7381 insertions(+)
+
+commit 5250db159bae5ebc9cb708e75e312d441c59fab1
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sun Mar 9 15:17:21 2025 +0100
+
+    block design xsa
+
+ boards/genesys_zu-5ev/build.bash                   |  6 +++
+ boards/genesys_zu-5ev/support/boot.bif             |  2 +-
+ boards/genesys_zu-5ev/support/gateware.py          | 45 ++++++++++++++--------
+ boards/genesys_zu-5ev/support/vitis.tcl            | 15 ++++----
+ boards/genesys_zu-5ev/support/vivado.tcl           | 20 ++++++++++
+ .../support/zynq_ultra_ps_e_0.properties.tcl       |  3 ++
+ 6 files changed, 67 insertions(+), 24 deletions(-)
+
+commit e15b8a2f588863f7845f90b172c3f9989778df7e
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Fri Mar 7 20:13:05 2025 +0100
+
+    Do not use Block Design
+
+ boards/genesys_zu-5ev/support/boot.bif    |  2 +-
+ boards/genesys_zu-5ev/support/gateware.py | 34 +++++++++++++++----------------
+ 2 files changed, 17 insertions(+), 19 deletions(-)
+
+commit 08594bef60ae0630db3fef027d90625869a41c6e
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Wed Feb 26 16:43:42 2025 +0100
+
+    Replace example with migen-generated led blinker
+
+ boards/genesys_zu-5ev/build.bash                   |    9 +-
+ boards/genesys_zu-5ev/support/Genesys_ZU_revC.xdc  |  451 ---------
+ boards/genesys_zu-5ev/support/boot.bif             |    2 +-
+ boards/genesys_zu-5ev/support/gateware.py          |   71 ++
+ boards/genesys_zu-5ev/support/led_blinker.v        |   29 -
+ boards/genesys_zu-5ev/support/simple_axi_slave.v   |   61 --
+ boards/genesys_zu-5ev/support/vivado.tcl           |   75 --
+ .../support/zynq_ultra_ps_e_0_properties.tcl       | 1024 --------------------
+ 8 files changed, 74 insertions(+), 1648 deletions(-)
+
+commit f3708c1ef4f157b4e249a2b78cc786256d7fbd8d
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Tue Feb 25 20:31:51 2025 +0100
+
+    Add python to flake.nix and use direnv
+
+ .envrc        |  2 ++
+ .gitignore    |  2 ++
+ envsetup.bash | 15 +++++++++++++++
+ flake.nix     |  8 ++++++++
+ 4 files changed, 27 insertions(+)
+
+commit 37d9c14da8d7e18e37803a123f9501d249d771c5
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Wed Feb 26 17:55:16 2025 +0100
+
+    Add migen as a submodule
+
+ .gitmodules | 3 +++
+ migen       | 1 +
+ 2 files changed, 4 insertions(+)
+
+commit 4d3eb3c18fba637f4631a9e534e437c2356c486f
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Tue Feb 25 20:29:49 2025 +0100
+
+    Add Led blinker (Verilog) to example
+
+ boards/genesys_zu-5ev/build.bash                  |  1 +
+ boards/genesys_zu-5ev/support/Genesys_ZU_revC.xdc | 24 ++++-----
+ boards/genesys_zu-5ev/support/led_blinker.v       | 29 ++++++++++
+ boards/genesys_zu-5ev/support/vivado.tcl          | 65 +++++++++--------------
+ 4 files changed, 68 insertions(+), 51 deletions(-)
+
+commit ec8c4a9bbed5a24e74088d4f2d4fdaa2933b318d
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sat Feb 22 09:00:13 2025 +0100
+
+    Example with Rust and Simple AXI slave
+
+ .gitattributes                                     |    3 +
+ boards/genesys_zu-5ev/.gitignore                   |    1 +
+ boards/genesys_zu-5ev/build.bash                   |   39 +
+ boards/genesys_zu-5ev/firmware/.cargo/config.toml  |    2 +
+ boards/genesys_zu-5ev/firmware/.gitignore          |    1 +
+ boards/genesys_zu-5ev/firmware/Cargo.lock          |    7 +
+ boards/genesys_zu-5ev/firmware/Cargo.toml          |    6 +
+ boards/genesys_zu-5ev/firmware/src/boot.c          |   31 +
+ boards/genesys_zu-5ev/firmware/src/lib.rs          |   22 +
+ boards/genesys_zu-5ev/support/Genesys_ZU_revC.xdc  |  451 +++++++++
+ boards/genesys_zu-5ev/support/boot.bif             |    7 +
+ boards/genesys_zu-5ev/support/simple_axi_slave.v   |   61 ++
+ boards/genesys_zu-5ev/support/system_wrapper.xsa   |  Bin 0 -> 813756 bytes
+ boards/genesys_zu-5ev/support/vitis.tcl            |   17 +
+ boards/genesys_zu-5ev/support/vivado.tcl           |   88 ++
+ .../support/zynq_ultra_ps_e_0_properties.tcl       | 1024 ++++++++++++++++++++
+ 16 files changed, 1760 insertions(+)
+
+commit ea96e088e084a7b17c562d71bf4be62af0603f6d
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Sat Feb 22 07:52:55 2025 +0100
+
+    Add flake.nix with Rust and Alejandra
+
+ flake.lock | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ flake.nix  | 32 ++++++++++++++++++++++++++++++++
+ 2 files changed, 79 insertions(+)
+
+commit c7673dc27d2a35a41ad753fde272c69dce6f7a9b
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Feb 20 16:54:19 2025 +0100
+
+    Add .gitignore
+
+ .gitignore | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit 2e6c062e29aa9e8f0d0dc55f9af96c8bc4333cde
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Feb 20 16:42:51 2025 +0100
+
+    Add submodule github.com:Digilent/vivado-boards.git
+    
+    Submodule path: boards/genesys_zu-5ev/vivado-boards
+
+ .gitmodules                         | 3 +++
+ boards/genesys_zu-5ev/vivado-boards | 1 +
+ 2 files changed, 4 insertions(+)
+
+commit a6fd1b6062e2c152c3694a4da3a98198b220c985
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Feb 20 12:50:03 2025 +0100
+
+    Add submodule github.com:Digilent/embeddedsw.git
+    
+    Submodule path: boards/genesys_zu-5ev/embeddedsw
+
+ .gitmodules                      | 3 +++
+ boards/genesys_zu-5ev/embeddedsw | 1 +
+ 2 files changed, 4 insertions(+)
+
+commit 6bea584cef159e7ffe1d9dcee56a243606d051e0
+Author: Piotr Jedyk <jedykp@gmail.com>
+Date:   Thu Feb 20 12:45:05 2025 +0100
+
+    Init
+
+ README.md | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)

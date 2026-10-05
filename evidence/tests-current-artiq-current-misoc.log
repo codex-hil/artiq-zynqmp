@@ -1,0 +1,21 @@
+/srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s tests -v
+test_load_fails_explicitly (test_kernel_protocol.KernelProtocol.test_load_fails_explicitly) ... ok
+test_oversized_elf (test_kernel_protocol.KernelProtocol.test_oversized_elf) ... ok
+test_reject_invalid_hello (test_kernel_protocol.KernelProtocol.test_reject_invalid_hello) ... Incorrect hello
+ok
+test_run_never_reports_execution (test_kernel_protocol.KernelProtocol.test_run_never_reports_execution) ... ok
+test_truncated_elf (test_kernel_protocol.KernelProtocol.test_truncated_elf) ... ok
+test_truncated_length (test_kernel_protocol.KernelProtocol.test_truncated_length) ... ok
+test_axi_csr_counter_and_scheduled_ttl (test_local_rtio.LocalRTIOTest.test_axi_csr_counter_and_scheduled_ttl) ... ok
+test_input_bus (test_vivado_integration.PinWiring.test_input_bus) ... ok
+test_input_offset (test_vivado_integration.PinWiring.test_input_offset) ... ok
+test_input_scalar (test_vivado_integration.PinWiring.test_input_scalar) ... ok
+test_output_bus (test_vivado_integration.PinWiring.test_output_bus) ... ok
+test_output_offset (test_vivado_integration.PinWiring.test_output_offset) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 4.084s
+
+OK
+/srv/codex-hil-data/artiq-zynqmp/venv/bin/python scripts/generate_rtio_hdl.py --output=/srv/codex-hil-data/artiq-zynqmp/build/current-upstream/local-rtio-hdl
+Generated subsystem HDL and CSR map; FPGA synthesis not run

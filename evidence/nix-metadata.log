@@ -1,0 +1,19 @@
+fatal: '/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/common/petalinux/rel-v2025.2/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+warning: could not read HEAD ref from repo at 'file:///home/codex-hil/artiq-zynqmp/work/artiq-new-wip/common/petalinux/rel-v2025.2/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf', using 'master'
+fatal: '/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/common/petalinux/rel-v2025.2/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+error:
+       … while fetching the input 'git+file:///home/codex-hil/artiq-zynqmp/work/artiq-new-wip?submodules=1'
+
+       … while fetching the input 'git+file:///home/codex-hil/artiq-zynqmp/work/artiq-new-wip/common/petalinux/rel-v2025.2/sources/meta-xilinx?submodules=1'
+
+       … while fetching the input 'git+file:///home/codex-hil/artiq-zynqmp/work/artiq-new-wip/common/petalinux/rel-v2025.2/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf?submodules=1'
+
+       error: Failed to fetch git repository 'file:///home/codex-hil/artiq-zynqmp/work/artiq-new-wip/common/petalinux/rel-v2025.2/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf'

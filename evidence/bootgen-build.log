@@ -1,0 +1,845 @@
+make: Entering directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen'
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv bisonflex/bif.tab.cpp -o build/obj/bif.tab.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv bisonflex/bif.yy.cpp -o build/obj/bif.yy.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv bisonflex/reginit.tab.cpp -o build/obj/reginit.tab.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv bisonflex/reginit.yy.cpp -o build/obj/reginit.yy.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv bisonflex/cmdoptions.tab.cpp -o build/obj/cmdoptions.tab.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv bisonflex/cmdoptions.yy.cpp -o build/obj/cmdoptions.yy.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/bitutils.cpp -o build/obj/bitutils.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/bifoptions.cpp -o build/obj/bifoptions.o
+common/src/bifoptions.cpp: In member function ‘void PartitionBifOptions::AutoDetectAndPopulateKeys()’:
+common/src/bifoptions.cpp:3911:14: warning: variable ‘secondaryKmdParsed’ set but not used [-Wunused-but-set-variable]
+ 3911 |         bool secondaryKmdParsed = false;
+      |              ^~~~~~~~~~~~~~~~~~
+common/src/bifoptions.cpp:3913:14: warning: variable ‘secondary1KmdParsed’ set but not used [-Wunused-but-set-variable]
+ 3913 |         bool secondary1KmdParsed = false;
+      |              ^~~~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/outputfile.cpp -o build/obj/outputfile.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/reginit.cpp -o build/obj/reginit.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/authkeys.cpp -o build/obj/authkeys.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/encryption.cpp -o build/obj/encryption.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/partitionheadertable.cpp -o build/obj/partitionheadertable.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/readimage.cpp -o build/obj/readimage.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/postprocess.cpp -o build/obj/postprocess.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/binary.cpp -o build/obj/binary.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/bootimage.cpp -o build/obj/bootimage.o
+In file included from versal_2vp/include/bootimage-versal_2vp.h:29,
+                 from common/src/bootimage.cpp:33:
+versal_2vp/include/bootheader-versal_2vp.h:47: warning: "PLM_BH_RESERVED" redefined
+   47 | #define PLM_BH_RESERVED                         23 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   23*/
+      | 
+In file included from versal_2ve_2vm/include/bootimage-versal_2ve_2vm.h:29,
+                 from common/src/bootimage.cpp:31:
+versal_2ve_2vm/include/bootheader-versal_2ve_2vm.h:47: note: this is the location of the previous definition
+   47 | #define PLM_BH_RESERVED                         24 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   24*/
+      | 
+In file included from spartanup/include/bootimage-spartanup.h:29,
+                 from common/src/bootimage.cpp:36:
+spartanup/include/bootheader-spartanup.h:48: warning: "PLM_BH_RESERVED" redefined
+   48 | #define PLM_BH_RESERVED                         24 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   24*/
+      | 
+versal_2vp/include/bootheader-versal_2vp.h:47: note: this is the location of the previous definition
+   47 | #define PLM_BH_RESERVED                         23 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   23*/
+      | 
+In file included from /usr/include/string.h:548,
+                 from common/src/binary.cpp:25:
+In function ‘void* memset(void*, int, size_t)’,
+    inlined from ‘void Section::IncreaseLengthAndPadSHA3(Binary::Length_t)’ at common/src/binary.cpp:215:11:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:59:33: warning: ‘void* __builtin_memset(void*, int, long unsigned int)’ specified size between 9223372036854775809 and 18446744073709551615 exceeds maximum object size 9223372036854775807 [-Wstringop-overflow=]
+   59 |   return __builtin___memset_chk (__dest, __ch, __len,
+      |          ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+   60 |                                  __glibc_objsize0 (__dest));
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/main.cpp -o build/obj/main.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/partition.cpp -o build/obj/partition.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/hash.cpp -o build/obj/hash.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/mcsfile.cpp -o build/obj/mcsfile.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/bootheader.cpp -o build/obj/bootheader.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/imageheadertable.cpp -o build/obj/imageheadertable.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/options.cpp -o build/obj/options.o
+In file included from versal_2vp/include/readimage-versal_2vp.h:33,
+                 from common/src/options.cpp:34:
+versal_2vp/include/bootheader-versal_2vp.h:47: warning: "PLM_BH_RESERVED" redefined
+   47 | #define PLM_BH_RESERVED                         23 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   23*/
+      | 
+In file included from versal_2ve_2vm/include/readimage-versal_2ve_2vm.h:33,
+                 from common/src/options.cpp:32:
+versal_2ve_2vm/include/bootheader-versal_2ve_2vm.h:47: note: this is the location of the previous definition
+   47 | #define PLM_BH_RESERVED                         24 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   24*/
+      | 
+In file included from versal_2vp/include/readimage-versal_2vp.h:36:
+versal_2vp/include/authentication-versal_2vp.h:74: warning: "AUTH_HDR_TELLURIDE_NONSECURE" redefined
+   74 | #define AUTH_HDR_TELLURIDE_NONSECURE     0x00
+      | 
+In file included from versal_2ve_2vm/include/readimage-versal_2ve_2vm.h:36:
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:74: note: this is the location of the previous definition
+   74 | #define AUTH_HDR_TELLURIDE_NONSECURE     0x110       //0001 0001 0000
+      | 
+versal_2vp/include/authentication-versal_2vp.h:75: warning: "AUTH_HDR_TELLURIDE_RSA_4096" redefined
+   75 | #define AUTH_HDR_TELLURIDE_RSA_4096      0x01
+      | 
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:75: note: this is the location of the previous definition
+   75 | #define AUTH_HDR_TELLURIDE_RSA_4096      0x111       //0001 0001 0001
+      | 
+versal_2vp/include/authentication-versal_2vp.h:76: warning: "AUTH_HDR_TELLURIDE_ECDSA_P384" redefined
+   76 | #define AUTH_HDR_TELLURIDE_ECDSA_P384    0x02
+      | 
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:76: note: this is the location of the previous definition
+   76 | #define AUTH_HDR_TELLURIDE_ECDSA_P384    0x112       //0001 0001 0010
+      | 
+versal_2vp/include/authentication-versal_2vp.h:77: warning: "AUTH_HDR_TELLURIDE_ECDSA_P521" redefined
+   77 | #define AUTH_HDR_TELLURIDE_ECDSA_P521    0x04
+      | 
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:77: note: this is the location of the previous definition
+   77 | #define AUTH_HDR_TELLURIDE_ECDSA_P521    0x113       //0001 0001 0011
+      | 
+versal_2vp/include/authentication-versal_2vp.h:78: warning: "AUTH_HDR_TELLURIDE_HSS_LMS" redefined
+   78 | #define AUTH_HDR_TELLURIDE_HSS_LMS       0x08
+      | 
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:78: note: this is the location of the previous definition
+   78 | #define AUTH_HDR_TELLURIDE_HSS_LMS       0x114       //0001 0001 0100
+      | 
+versal_2vp/include/authentication-versal_2vp.h:79: warning: "AUTH_HDR_TELLURIDE_LMS" redefined
+   79 | #define AUTH_HDR_TELLURIDE_LMS           0x10
+      | 
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:79: note: this is the location of the previous definition
+   79 | #define AUTH_HDR_TELLURIDE_LMS           0x115       //0001 0001 0101
+      | 
+In file included from spartanup/include/readimage-spartanup.h:34,
+                 from common/src/options.cpp:36:
+spartanup/include/bootheader-spartanup.h:48: warning: "PLM_BH_RESERVED" redefined
+   48 | #define PLM_BH_RESERVED                         24 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   24*/
+      | 
+versal_2vp/include/bootheader-versal_2vp.h:47: note: this is the location of the previous definition
+   47 | #define PLM_BH_RESERVED                         23 /* #define PLM_BH_RESERVED_VERSAL_VERSALNET_TELLURIDE_LASSEN   23*/
+      | 
+In file included from spartanup/include/readimage-spartanup.h:37:
+spartanup/include/authentication-spartanup.h:73: warning: "AUTH_HDR_TELLURIDE_NONSECURE" redefined
+   73 | #define AUTH_HDR_TELLURIDE_NONSECURE     0x110       //0001 0001 0000
+      | 
+versal_2vp/include/authentication-versal_2vp.h:74: note: this is the location of the previous definition
+   74 | #define AUTH_HDR_TELLURIDE_NONSECURE     0x00
+      | 
+spartanup/include/authentication-spartanup.h:74: warning: "AUTH_HDR_TELLURIDE_RSA_4096" redefined
+   74 | #define AUTH_HDR_TELLURIDE_RSA_4096      0x111       //0001 0001 0001
+      | 
+versal_2vp/include/authentication-versal_2vp.h:75: note: this is the location of the previous definition
+   75 | #define AUTH_HDR_TELLURIDE_RSA_4096      0x01
+      | 
+spartanup/include/authentication-spartanup.h:75: warning: "AUTH_HDR_TELLURIDE_ECDSA_P384" redefined
+   75 | #define AUTH_HDR_TELLURIDE_ECDSA_P384    0x112       //0001 0001 0010
+      | 
+versal_2vp/include/authentication-versal_2vp.h:76: note: this is the location of the previous definition
+   76 | #define AUTH_HDR_TELLURIDE_ECDSA_P384    0x02
+      | 
+spartanup/include/authentication-spartanup.h:76: warning: "AUTH_HDR_TELLURIDE_ECDSA_P521" redefined
+   76 | #define AUTH_HDR_TELLURIDE_ECDSA_P521    0x113       //0001 0001 0011
+      | 
+versal_2vp/include/authentication-versal_2vp.h:77: note: this is the location of the previous definition
+   77 | #define AUTH_HDR_TELLURIDE_ECDSA_P521    0x04
+      | 
+spartanup/include/authentication-spartanup.h:77: warning: "AUTH_HDR_TELLURIDE_HSS_LMS" redefined
+   77 | #define AUTH_HDR_TELLURIDE_HSS_LMS       0x114       //0001 0001 0100
+      | 
+versal_2vp/include/authentication-versal_2vp.h:78: note: this is the location of the previous definition
+   78 | #define AUTH_HDR_TELLURIDE_HSS_LMS       0x08
+      | 
+spartanup/include/authentication-spartanup.h:78: warning: "AUTH_HDR_TELLURIDE_LMS" redefined
+   78 | #define AUTH_HDR_TELLURIDE_LMS           0x115       //0001 0001 0101
+      | 
+versal_2vp/include/authentication-versal_2vp.h:79: note: this is the location of the previous definition
+   79 | #define AUTH_HDR_TELLURIDE_LMS           0x10
+      | 
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/parsing.cpp -o build/obj/parsing.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/authentication.cpp -o build/obj/authentication.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/checksum.cpp -o build/obj/checksum.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/logger.cpp -o build/obj/logger.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/Keccak-compact.cpp -o build/obj/Keccak-compact.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/binfile.cpp -o build/obj/binfile.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv common/src/kdf.cpp -o build/obj/kdf.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/authentication-spartanup.cpp -o build/obj/authentication-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/verifyimage-spartanup.cpp -o build/obj/verifyimage-spartanup.o
+spartanup/src/verifyimage-spartanup.cpp: In member function ‘bool SpartanupReadImage::VerifySignature(bool, uint8_t*, size_t, ACKey4096Sha3Padding*, uint8_t*)’:
+spartanup/src/verifyimage-spartanup.cpp:218:34: warning: ‘this’ pointer is null [-Wnonnull]
+  218 |     if (s->MaskGenerationFunction(masK, maskedDBLen, Buffer.get(), 48, EVP_sha384()) == -1)
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from spartanup/src/verifyimage-spartanup.cpp:30:
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:200:9: note: in a call to non-static member function ‘int RSA4096Sha3PaddingHBAuthenticationAlgorithm::MaskGenerationFunction(unsigned char*, long int, const unsigned char*, long int, const EVP_MD*)’
+  200 |     int MaskGenerationFunction(unsigned char *mask, long len, const unsigned char *seed, long seedlen, const EVP_MD *dgst);
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+spartanup/src/verifyimage-spartanup.cpp:246:32: warning: ‘this’ pointer is null [-Wnonnull]
+  246 |     m1 = s -> AttachSHA3Padding(mPad, 104);
+      |          ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:199:14: note: in a call to non-static member function ‘uint8_t* RSA4096Sha3PaddingHBAuthenticationAlgorithm::AttachSHA3Padding(uint8_t*, Binary::Length_t)’
+  199 |     uint8_t* AttachSHA3Padding(uint8_t * data, const Binary::Length_t datalength);
+      |              ^~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/imageheadertable-spartanup.cpp -o build/obj/imageheadertable-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/binary-spartanup.cpp -o build/obj/binary-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/partition-spartanup.cpp -o build/obj/partition-spartanup.o
+spartanup/src/imageheadertable-spartanup.cpp: In constructor ‘SpartanupImageHeader::SpartanupImageHeader(std::ifstream&, SpartanupImageHeaderStructure*, bool, uint32_t)’:
+spartanup/src/imageheadertable-spartanup.cpp:977:63: warning: ‘this’ pointer is null [-Wnonnull]
+  977 |         destCpu = (DestinationCPU::Type)hdr->GetDestinationCpu();
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:978:70: warning: ‘this’ pointer is null [-Wnonnull]
+  978 |         exceptionLevel = (ExceptionLevel::Type)hdr->GetExceptionLevel();
+      |                                                ~~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:979:55: warning: ‘this’ pointer is null [-Wnonnull]
+  979 |         trustzone = (TrustZone::Type)hdr->GetTrustZone();
+      |                                      ~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:980:45: warning: ‘this’ pointer is null [-Wnonnull]
+  980 |         early_handoff = hdr->GetEarlyHandoff();
+      |                         ~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:981:30: warning: ‘this’ pointer is null [-Wnonnull]
+  981 |         hivec = hdr->GetHivec();
+      |                 ~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:982:46: warning: ‘this’ pointer is null [-Wnonnull]
+  982 |         partitionType = hdr->GetPartitionType();
+      |                         ~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:983:60: warning: ‘this’ pointer is null [-Wnonnull]
+  983 |         PartOwner = (PartitionOwner::Type)hdr->GetOwnerType();
+      |                                           ~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:984:34: warning: ‘this’ pointer is null [-Wnonnull]
+  984 |         dpacm = hdr->GetDpaCMFlag();
+      |                 ~~~~~~~~~~~~~~~~~^~
+In file included from spartanup/src/imageheadertable-spartanup.cpp:35:
+spartanup/include/partitionheadertable-spartanup.h:227:17: note: in a call to non-static member function ‘DpaCM::Type SpartanupPartitionHeader::GetDpaCMFlag()’
+  227 |     DpaCM::Type GetDpaCMFlag(void);
+      |                 ^~~~~~~~~~~~
+spartanup/src/imageheadertable-spartanup.cpp:985:41: warning: ‘this’ pointer is null [-Wnonnull]
+  985 |         pufHdLoc = hdr->GetPufHdLocation();
+      |                    ~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/include/partitionheadertable-spartanup.h:228:20: note: in a call to non-static member function ‘PufHdLoc::Type SpartanupPartitionHeader::GetPufHdLocation()’
+  228 |     PufHdLoc::Type GetPufHdLocation(void);
+      |                    ^~~~~~~~~~~~~~~~
+spartanup/src/imageheadertable-spartanup.cpp:986:46: warning: ‘this’ pointer is null [-Wnonnull]
+  986 |         offset += hdr->GetPartitionHeaderSize();
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:987:45: warning: ‘this’ pointer is null [-Wnonnull]
+  987 |         cluster = hdr->GetDestinationCluster();
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/include/partitionheadertable-spartanup.h:210:13: note: in a call to non-static member function ‘uint8_t SpartanupPartitionHeader::GetDestinationCluster()’
+  210 |     uint8_t GetDestinationCluster(void);
+      |             ^~~~~~~~~~~~~~~~~~~~~
+spartanup/src/imageheadertable-spartanup.cpp:988:40: warning: ‘this’ pointer is null [-Wnonnull]
+  988 |         lockstep = hdr->GetLockStepFlag();
+      |                    ~~~~~~~~~~~~~~~~~~~~^~
+spartanup/include/partitionheadertable-spartanup.h:229:20: note: in a call to non-static member function ‘Lockstep::Type SpartanupPartitionHeader::GetLockStepFlag()’
+  229 |     Lockstep::Type GetLockStepFlag(void);
+      |                    ^~~~~~~~~~~~~~~
+spartanup/src/imageheadertable-spartanup.cpp: In constructor ‘SpartanupImageHeader::SpartanupImageHeader(std::ifstream&, bool)’:
+spartanup/src/imageheadertable-spartanup.cpp:908:63: warning: ‘this’ pointer is null [-Wnonnull]
+  908 |         destCpu = (DestinationCPU::Type)hdr->GetDestinationCpu();
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:909:70: warning: ‘this’ pointer is null [-Wnonnull]
+  909 |         exceptionLevel = (ExceptionLevel::Type)hdr->GetExceptionLevel();
+      |                                                ~~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:910:55: warning: ‘this’ pointer is null [-Wnonnull]
+  910 |         trustzone = (TrustZone::Type)hdr->GetTrustZone();
+      |                                      ~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:911:45: warning: ‘this’ pointer is null [-Wnonnull]
+  911 |         early_handoff = hdr->GetEarlyHandoff();
+      |                         ~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:912:30: warning: ‘this’ pointer is null [-Wnonnull]
+  912 |         hivec = hdr->GetHivec();
+      |                 ~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:913:46: warning: ‘this’ pointer is null [-Wnonnull]
+  913 |         partitionType = hdr->GetPartitionType();
+      |                         ~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:914:60: warning: ‘this’ pointer is null [-Wnonnull]
+  914 |         PartOwner = (PartitionOwner::Type)hdr->GetOwnerType();
+      |                                           ~~~~~~~~~~~~~~~~~^~
+spartanup/src/imageheadertable-spartanup.cpp:915:34: warning: ‘this’ pointer is null [-Wnonnull]
+  915 |         dpacm = hdr->GetDpaCMFlag();
+      |                 ~~~~~~~~~~~~~~~~~^~
+spartanup/include/partitionheadertable-spartanup.h:227:17: note: in a call to non-static member function ‘DpaCM::Type SpartanupPartitionHeader::GetDpaCMFlag()’
+  227 |     DpaCM::Type GetDpaCMFlag(void);
+      |                 ^~~~~~~~~~~~
+spartanup/src/imageheadertable-spartanup.cpp:916:41: warning: ‘this’ pointer is null [-Wnonnull]
+  916 |         pufHdLoc = hdr->GetPufHdLocation();
+      |                    ~~~~~~~~~~~~~~~~~~~~~^~
+spartanup/include/partitionheadertable-spartanup.h:228:20: note: in a call to non-static member function ‘PufHdLoc::Type SpartanupPartitionHeader::GetPufHdLocation()’
+  228 |     PufHdLoc::Type GetPufHdLocation(void);
+      |                    ^~~~~~~~~~~~~~~~
+spartanup/src/imageheadertable-spartanup.cpp:917:46: warning: ‘this’ pointer is null [-Wnonnull]
+  917 |         offset += hdr->GetPartitionHeaderSize();
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/partitionheadertable-spartanup.cpp -o build/obj/partitionheadertable-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/outputfile-spartanup.cpp -o build/obj/outputfile-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/encryption-spartanup.cpp -o build/obj/encryption-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/readimage-spartanup.cpp -o build/obj/readimage-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/bitutils-spartanup.cpp -o build/obj/bitutils-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/bootheader-spartanup.cpp -o build/obj/bootheader-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/bootimage-spartanup.cpp -o build/obj/bootimage-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/checksum-spartanup.cpp -o build/obj/checksum-spartanup.o
+spartanup/src/bootimage-spartanup.cpp: In member function ‘virtual void SpartanBootImage::ParseBootImage(PartitionBifOptions*)’:
+spartanup/src/bootimage-spartanup.cpp:370:10: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  370 |     fread(bH.get(), 1, sizeof(SpartanupBootHeaderStructure), binFile);
+      |     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/Keccak-compact-spartanup.cpp -o build/obj/Keccak-compact-spartanup.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv spartanup/src/authkeys-spartanup.cpp -o build/obj/authkeys-spartanup.o
+spartanup/src/bootimage-spartanup.cpp:675:44: warning: ‘this’ pointer is null [-Wnonnull]
+  675 |                     image->SetPmcDataSizeIh(options.bifOptions->pmcdataSize);
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from common/include/bifoptions.h:30,
+                 from common/include/authentication.h:44,
+                 from common/include/partitionheadertable.h:29,
+                 from common/include/bootimage.h:38,
+                 from spartanup/include/bootimage-spartanup.h:28,
+                 from spartanup/src/bootimage-spartanup.cpp:23:
+common/include/imageheadertable.h:258:10: note: in a call to non-static member function ‘void ImageHeader::SetPmcDataSizeIh(uint32_t)’
+  258 |     void SetPmcDataSizeIh(uint32_t size);
+      |          ^~~~~~~~~~~~~~~~
+spartanup/src/bootimage-spartanup.cpp:676:49: warning: ‘this’ pointer is null [-Wnonnull]
+  676 |                     image->SetTotalPmcDataSizeIh(options.bifOptions->GetTotalpmcdataSize());
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/include/imageheadertable.h:257:10: note: in a call to non-static member function ‘void ImageHeader::SetTotalPmcDataSizeIh(uint32_t)’
+  257 |     void SetTotalPmcDataSizeIh(uint32_t size);
+      |          ^~~~~~~~~~~~~~~~~~~~~
+spartanup/src/authkeys-spartanup.cpp: In member function ‘uint8_t SpartanupKey::ParseECDSAOpenSSLKey(const std::string&)’:
+spartanup/src/authkeys-spartanup.cpp:343:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  343 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+spartanup/src/authkeys-spartanup.cpp:348:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  348 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+spartanup/src/authkeys-spartanup.cpp:431:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  431 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+spartanup/src/authkeys-spartanup.cpp:436:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  436 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/encryption-versalnet.cpp -o build/obj/encryption-versalnet.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/outputfile-versal.cpp -o build/obj/outputfile-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/bitutils-versal.cpp -o build/obj/bitutils-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/imageheadertable-versal.cpp -o build/obj/imageheadertable-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/verifyimage-versal.cpp -o build/obj/verifyimage-versal.o
+versal/src/verifyimage-versal.cpp: In member function ‘bool VersalReadImage::VerifySignature(bool, uint8_t*, size_t, ACKey4096Sha3Padding*, uint8_t*)’:
+versal/src/verifyimage-versal.cpp:221:34: warning: ‘this’ pointer is null [-Wnonnull]
+  221 |     if (s->MaskGenerationFunction(masK, maskedDBLen, Buffer.get(), 48, EVP_sha384()) == -1)
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from versal/include/readimage-versal.h:36,
+                 from versal/src/verifyimage-versal.cpp:26:
+versal/include/authentication-versal.h:245:9: note: in a call to non-static member function ‘int RSA4096Sha3PaddingAuthenticationAlgorithm::MaskGenerationFunction(unsigned char*, long int, const unsigned char*, long int, const EVP_MD*)’
+  245 |     int MaskGenerationFunction(unsigned char *mask, long len, const unsigned char *seed, long seedlen, const EVP_MD *dgst);
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+versal/src/verifyimage-versal.cpp:249:32: warning: ‘this’ pointer is null [-Wnonnull]
+  249 |     m1 = s -> AttachSHA3Padding(mPad, 104);
+      |          ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+versal/include/authentication-versal.h:244:14: note: in a call to non-static member function ‘uint8_t* RSA4096Sha3PaddingAuthenticationAlgorithm::AttachSHA3Padding(uint8_t*, Binary::Length_t)’
+  244 |     uint8_t* AttachSHA3Padding(uint8_t * data, const Binary::Length_t datalength);
+      |              ^~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/bootimage-versal.cpp -o build/obj/bootimage-versal.o
+versal/src/bootimage-versal.cpp: In member function ‘virtual void VersalBootImage::ParseBootImage(PartitionBifOptions*)’:
+versal/src/bootimage-versal.cpp:304:10: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  304 |     fread(bH.get(), 1, sizeof(VersalBootHeaderStructure), binFile);
+      |     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/Keccak-compact-versal.cpp -o build/obj/Keccak-compact-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/checksum-versal.cpp -o build/obj/checksum-versal.o
+versal/src/bootimage-versal.cpp: In member function ‘virtual void VersalBootImage::OutputOptionalEfuseHash()’:
+versal/src/bootimage-versal.cpp:1775:41: warning: ‘this’ pointer is null [-Wnonnull]
+ 1775 |                 authCtx->GeneratePPKHash(hashFile);
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/authkeys-versal.cpp -o build/obj/authkeys-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/binary-versal.cpp -o build/obj/binary-versal.o
+versal/src/authkeys-versal.cpp: In member function ‘uint8_t VersalKey::ParseECDSAOpenSSLKey(const std::string&)’:
+versal/src/authkeys-versal.cpp:284:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  284 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal/src/authkeys-versal.cpp:289:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  289 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal/src/authkeys-versal.cpp:359:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  359 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal/src/authkeys-versal.cpp:364:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  364 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/bootheader-versal.cpp -o build/obj/bootheader-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/encryption-versal.cpp -o build/obj/encryption-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/partitionheadertable-versal.cpp -o build/obj/partitionheadertable-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/readimage-versal.cpp -o build/obj/readimage-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/authentication-versal.cpp -o build/obj/authentication-versal.o
+versal/src/authentication-versal.cpp: In member function ‘virtual void RSA4096Sha3PaddingAuthenticationAlgorithm::CreatePadding(uint8_t*, uint8_t*, uint8_t)’:
+versal/src/authentication-versal.cpp:913:11: warning: unused variable ‘rsaLocalENV’ [-Wunused-variable]
+  913 |     char* rsaLocalENV = getenv("TEST_RSA_LOCAL");
+      |           ^~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal/src/partition-versal.cpp -o build/obj/partition-versal.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/postprocess_versal_2ve_2vm.cpp -o build/obj/postprocess_versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/outputfile-versal_2ve_2vm.cpp -o build/obj/outputfile-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/Keccak-compact-versal_2ve_2vm.cpp -o build/obj/Keccak-compact-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/verifyimage-versal_2ve_2vm.cpp -o build/obj/verifyimage-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/readimage-versal_2ve_2vm.cpp -o build/obj/readimage-versal_2ve_2vm.o
+versal_2ve_2vm/src/verifyimage-versal_2ve_2vm.cpp: In member function ‘bool Versal_2ve_2vmReadImage::VerifySignature(bool, uint8_t*, size_t, ACKey4096Sha3Padding*, uint8_t*)’:
+versal_2ve_2vm/src/verifyimage-versal_2ve_2vm.cpp:220:34: warning: ‘this’ pointer is null [-Wnonnull]
+  220 |     if (s->MaskGenerationFunction(masK, maskedDBLen, Buffer.get(), 48, EVP_sha384()) == -1)
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from versal_2ve_2vm/include/readimage-versal_2ve_2vm.h:36,
+                 from versal_2ve_2vm/src/verifyimage-versal_2ve_2vm.cpp:25:
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:200:9: note: in a call to non-static member function ‘int RSA4096Sha3PaddingHBAuthenticationAlgorithm::MaskGenerationFunction(unsigned char*, long int, const unsigned char*, long int, const EVP_MD*)’
+  200 |     int MaskGenerationFunction(unsigned char *mask, long len, const unsigned char *seed, long seedlen, const EVP_MD *dgst);
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+versal_2ve_2vm/src/verifyimage-versal_2ve_2vm.cpp:248:32: warning: ‘this’ pointer is null [-Wnonnull]
+  248 |     m1 = s -> AttachSHA3Padding(mPad, 104);
+      |          ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+versal_2ve_2vm/include/authentication-versal_2ve_2vm.h:199:14: note: in a call to non-static member function ‘uint8_t* RSA4096Sha3PaddingHBAuthenticationAlgorithm::AttachSHA3Padding(uint8_t*, Binary::Length_t)’
+  199 |     uint8_t* AttachSHA3Padding(uint8_t * data, const Binary::Length_t datalength);
+      |              ^~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/checksum-versal_2ve_2vm.cpp -o build/obj/checksum-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/partition-versal_2ve_2vm.cpp -o build/obj/partition-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/bootheader-versal_2ve_2vm.cpp -o build/obj/bootheader-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/bootimage-versal_2ve_2vm.cpp -o build/obj/bootimage-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp -o build/obj/imageheadertable-versal_2ve_2vm.o
+versal_2ve_2vm/src/bootimage-versal_2ve_2vm.cpp: In member function ‘void Versal_2ve_2vmBootImage::GenerateTlBin(BifOptions*)’:
+versal_2ve_2vm/src/bootimage-versal_2ve_2vm.cpp:2274:21: warning: deleting object of abstract class type ‘ElfFormat’ which has non-virtual destructor will cause undefined behavior [-Wdelete-non-virtual-dtor]
+ 2274 |                     delete elf;
+      |                     ^~~~~~~~~~
+versal_2ve_2vm/src/bootimage-versal_2ve_2vm.cpp: In member function ‘virtual void Versal_2ve_2vmBootImage::ParseBootImage(PartitionBifOptions*)’:
+versal_2ve_2vm/src/bootimage-versal_2ve_2vm.cpp:369:10: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  369 |     fread(bH.get(), 1, sizeof(Versal_2ve_2vmBootHeaderStructure), binFile);
+      |     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp: In constructor ‘Versal_2ve_2vmImageHeader::Versal_2ve_2vmImageHeader(std::ifstream&, bool)’:
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:925:63: warning: ‘this’ pointer is null [-Wnonnull]
+  925 |         destCpu = (DestinationCPU::Type)hdr->GetDestinationCpu();
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~^~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:926:70: warning: ‘this’ pointer is null [-Wnonnull]
+  926 |         exceptionLevel = (ExceptionLevel::Type)hdr->GetExceptionLevel();
+      |                                                ~~~~~~~~~~~~~~~~~~~~~~^~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:927:55: warning: ‘this’ pointer is null [-Wnonnull]
+  927 |         trustzone = (TrustZone::Type)hdr->GetTrustZone();
+      |                                      ~~~~~~~~~~~~~~~~~^~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:928:45: warning: ‘this’ pointer is null [-Wnonnull]
+  928 |         early_handoff = hdr->GetEarlyHandoff();
+      |                         ~~~~~~~~~~~~~~~~~~~~^~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:929:30: warning: ‘this’ pointer is null [-Wnonnull]
+  929 |         hivec = hdr->GetHivec();
+      |                 ~~~~~~~~~~~~~^~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:930:46: warning: ‘this’ pointer is null [-Wnonnull]
+  930 |         partitionType = hdr->GetPartitionType();
+      |                         ~~~~~~~~~~~~~~~~~~~~~^~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:931:60: warning: ‘this’ pointer is null [-Wnonnull]
+  931 |         PartOwner = (PartitionOwner::Type)hdr->GetOwnerType();
+      |                                           ~~~~~~~~~~~~~~~~~^~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:932:34: warning: ‘this’ pointer is null [-Wnonnull]
+  932 |         dpacm = hdr->GetDpaCMFlag();
+      |                 ~~~~~~~~~~~~~~~~~^~
+In file included from versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:34:
+versal_2ve_2vm/include/partitionheadertable-versal_2ve_2vm.h:232:17: note: in a call to non-static member function ‘DpaCM::Type Versal_2ve_2vmPartitionHeader::GetDpaCMFlag()’
+  232 |     DpaCM::Type GetDpaCMFlag(void);
+      |                 ^~~~~~~~~~~~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:933:41: warning: ‘this’ pointer is null [-Wnonnull]
+  933 |         pufHdLoc = hdr->GetPufHdLocation();
+      |                    ~~~~~~~~~~~~~~~~~~~~~^~
+versal_2ve_2vm/include/partitionheadertable-versal_2ve_2vm.h:233:20: note: in a call to non-static member function ‘PufHdLoc::Type Versal_2ve_2vmPartitionHeader::GetPufHdLocation()’
+  233 |     PufHdLoc::Type GetPufHdLocation(void);
+      |                    ^~~~~~~~~~~~~~~~
+versal_2ve_2vm/src/imageheadertable-versal_2ve_2vm.cpp:934:46: warning: ‘this’ pointer is null [-Wnonnull]
+  934 |         offset += hdr->GetPartitionHeaderSize();
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/partitionheadertable-versal_2ve_2vm.cpp -o build/obj/partitionheadertable-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/bitutils-versal_2ve_2vm.cpp -o build/obj/bitutils-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/authkeys-versal_2ve_2vm.cpp -o build/obj/authkeys-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/binary-versal_2ve_2vm.cpp -o build/obj/binary-versal_2ve_2vm.o
+versal_2ve_2vm/src/authkeys-versal_2ve_2vm.cpp: In member function ‘uint8_t Versal_2ve_2vmKey::ParseECDSAOpenSSLKey(const std::string&)’:
+versal_2ve_2vm/src/authkeys-versal_2ve_2vm.cpp:318:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  318 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal_2ve_2vm/src/authkeys-versal_2ve_2vm.cpp:323:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  323 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal_2ve_2vm/src/authkeys-versal_2ve_2vm.cpp:393:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  393 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal_2ve_2vm/src/authkeys-versal_2ve_2vm.cpp:398:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  398 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/authentication-versal_2ve_2vm.cpp -o build/obj/authentication-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/tlbingeneration.cpp -o build/obj/tlbingeneration.o
+versal_2ve_2vm/src/authentication-versal_2ve_2vm.cpp: In member function ‘virtual void RSA4096Sha3PaddingHBAuthenticationAlgorithm::CreatePadding(uint8_t*, uint8_t*, uint8_t)’:
+versal_2ve_2vm/src/authentication-versal_2ve_2vm.cpp:1534:11: warning: unused variable ‘rsaLocalENV’ [-Wunused-variable]
+ 1534 |     char* rsaLocalENV = getenv("TEST_RSA_LOCAL");
+      |           ^~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2ve_2vm/src/encryption-versal_2ve_2vm.cpp -o build/obj/encryption-versal_2ve_2vm.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/readimage-versal_2vp.cpp -o build/obj/readimage-versal_2vp.o
+versal_2vp/src/readimage-versal_2vp.cpp: In member function ‘virtual void Versal_2vpReadImage::ReadPartitions()’:
+versal_2vp/src/readimage-versal_2vp.cpp:128:22: warning: unused variable ‘id’ [-Wunused-variable]
+  128 |             uint32_t id = (*pHT)->puid & 0xFFFF;
+      |                      ^~
+versal_2vp/src/readimage-versal_2vp.cpp: In member function ‘uint32_t Versal_2vpReadImage::ChunkSizeforParitition(std::string, bool)’:
+versal_2vp/src/readimage-versal_2vp.cpp:241:16: warning: unused variable ‘env_SECURE_4K_CHUNK’ [-Wunused-variable]
+  241 |         char * env_SECURE_4K_CHUNK = getenv("SECURE_4K_CHUNK");
+      |                ^~~~~~~~~~~~~~~~~~~
+versal_2vp/src/readimage-versal_2vp.cpp: In member function ‘uint32_t Versal_2vpReadImage::GetACLength(uint32_t, uint32_t)’:
+versal_2vp/src/readimage-versal_2vp.cpp:379:22: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  379 |                 fread(&pqcAlgorithm, 1, sizeof(uint32_t), binFile);
+      |                 ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/bifoptions-versal_2vp.cpp -o build/obj/bifoptions-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/authkeys-versal_2vp.cpp -o build/obj/authkeys-versal_2vp.o
+versal_2vp/src/authkeys-versal_2vp.cpp: In member function ‘uint8_t Versal_2vpKey::ParseECDSAOpenSSLKey(const std::string&)’:
+versal_2vp/src/authkeys-versal_2vp.cpp:463:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  463 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal_2vp/src/authkeys-versal_2vp.cpp:468:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  468 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal_2vp/src/authkeys-versal_2vp.cpp:539:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  539 |                     if (keySzRdX > keySize || keySzRdX < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+versal_2vp/src/authkeys-versal_2vp.cpp:544:56: warning: comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+  544 |                     if (keySzRdY > keySize || keySzRdY < keySize - 4)
+      |                                               ~~~~~~~~~^~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/partitionheadertable-versal_2vp.cpp -o build/obj/partitionheadertable-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/postprocess_versal_2vp.cpp -o build/obj/postprocess_versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/partition-versal_2vp.cpp -o build/obj/partition-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/Keccak-compact-versal_2vp.cpp -o build/obj/Keccak-compact-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/checksum-versal_2vp.cpp -o build/obj/checksum-versal_2vp.o
+versal_2vp/src/partition-versal_2vp.cpp: In member function ‘void Versal_2vpPartition::DumpPCRHashes(BootImage&)’:
+versal_2vp/src/partition-versal_2vp.cpp:98:16: warning: ‘void operator delete(void*, std::size_t)’ called on pointer returned from a mismatched allocation function [-Wmismatched-new-delete]
+   98 |         delete sha_hash;
+      |                ^~~~~~~~
+versal_2vp/src/partition-versal_2vp.cpp:75:65: note: returned from ‘void* operator new [](std::size_t)’
+   75 |         uint8_t* sha_hash = new uint8_t[chunkificationHashLength];
+      |                                                                 ^
+versal_2vp/src/partition-versal_2vp.cpp: In member function ‘size_t Versal_2vpPartition::GetBootloaderTotalDataChunks(Binary::Length_t, std::vector<unsigned int>&, bool)’:
+versal_2vp/src/partition-versal_2vp.cpp:407:22: warning: ‘newSectionLength’ may be used uninitialized [-Wmaybe-uninitialized]
+  407 |     newSectionLength += hashBlockLength;
+      |     ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+versal_2vp/src/partition-versal_2vp.cpp:210:12: note: ‘newSectionLength’ was declared here
+  210 |     size_t newSectionLength;
+      |            ^~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/imageheadertable-versal_2vp.cpp -o build/obj/imageheadertable-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/encryption-versal_2vp.cpp -o build/obj/encryption-versal_2vp.o
+versal_2vp/src/imageheadertable-versal_2vp.cpp: In member function ‘uint64_t Versal_2vpImageHeader::ImportAieEngineElfCdo(std::string)’:
+versal_2vp/src/imageheadertable-versal_2vp.cpp:2342:14: warning: ‘void operator delete [](void*)’ called on pointer ‘newData’ passed to mismatched allocation function ‘void* realloc(void*, size_t)’ [-Wmismatched-dealloc]
+ 2342 |     delete[] newData;
+      |              ^~~~~~~
+versal_2vp/src/imageheadertable-versal_2vp.cpp:2327:44: note: call to ‘void* realloc(void*, size_t)’
+ 2327 |                 newData = (uint8_t*)realloc(newData, totalSize);
+      |                                     ~~~~~~~^~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/imageheadertable-versal_2vp.cpp: In member function ‘void Versal_2vpImageHeader::CreateWriteImageStorePartition()’:
+versal_2vp/src/imageheadertable-versal_2vp.cpp:3219:33: warning: ‘void* realloc(void*, size_t)’ called on pointer returned from a mismatched allocation function [-Wmismatched-new-delete]
+ 3219 |     p_buffer = (uint8_t*)realloc(p_buffer, size);
+      |                          ~~~~~~~^~~~~~~~~~~~~~~~
+versal_2vp/src/imageheadertable-versal_2vp.cpp:3206:41: note: returned from ‘void* operator new [](std::size_t)’
+ 3206 |     uint8_t* p_buffer = new uint8_t[size];
+      |                                         ^
+versal_2vp/src/imageheadertable-versal_2vp.cpp: In member function ‘uint64_t Versal_2vpImageHeader::ImportAieEngineElfCdo(std::string)’:
+versal_2vp/src/imageheadertable-versal_2vp.cpp:2342:14: warning: ‘void operator delete [](void*)’ called on pointer ‘newData’ passed to mismatched allocation function ‘void* realloc(void*, size_t)’ [-Wmismatched-dealloc]
+ 2342 |     delete[] newData;
+      |              ^~~~~~~
+versal_2vp/src/imageheadertable-versal_2vp.cpp:2327:44: note: call to ‘void* realloc(void*, size_t)’
+ 2327 |                 newData = (uint8_t*)realloc(newData, totalSize);
+      |                                     ~~~~~~~^~~~~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/bootimage-versal_2vp.cpp -o build/obj/bootimage-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/binary-versal_2vp.cpp -o build/obj/binary-versal_2vp.o
+versal_2vp/src/binary-versal_2vp.cpp: In member function ‘virtual void Versal_2vpBinary::StackAndAlign(Options&)’:
+versal_2vp/src/binary-versal_2vp.cpp:50:23: warning: unused variable ‘unalignedRunningAddress’ [-Wunused-variable]
+   50 |     Binary::Address_t unalignedRunningAddress = 0;
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/bootimage-versal_2vp.cpp: In member function ‘virtual void Versal_2vpBootImage::ParseBootImage(PartitionBifOptions*)’:
+versal_2vp/src/bootimage-versal_2vp.cpp:419:10: warning: ignoring return value of ‘size_t fread(void*, size_t, size_t, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  419 |     fread(bH, 1, sizeof(Versal_2vpBootHeaderStructure), binFile);
+      |     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/verifyimage-versal_2vp.cpp -o build/obj/verifyimage-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/bitutils-versal_2vp.cpp -o build/obj/bitutils-versal_2vp.o
+versal_2vp/src/verifyimage-versal_2vp.cpp: In member function ‘bool Versal_2vpReadImage::VerifySignature(bool, uint8_t*, size_t, ACKey4096Sha3Padding*, uint8_t*)’:
+versal_2vp/src/verifyimage-versal_2vp.cpp:199:34: warning: ‘this’ pointer is null [-Wnonnull]
+  199 |     if (s->MaskGenerationFunction(masK, maskedDBLen, Buffer, 48, EVP_sha384()) == -1)
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from versal_2vp/include/readimage-versal_2vp.h:36,
+                 from versal_2vp/src/verifyimage-versal_2vp.cpp:25:
+versal_2vp/include/authentication-versal_2vp.h:374:9: note: in a call to non-static member function ‘int RSA4096Sha3PaddingHBAuthenticationAlgorithm_versal_2vp::MaskGenerationFunction(unsigned char*, long int, const unsigned char*, long int, const EVP_MD*)’
+  374 |     int MaskGenerationFunction(unsigned char *mask, long len, const unsigned char *seed, long seedlen, const EVP_MD *dgst);
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/verifyimage-versal_2vp.cpp:228:32: warning: ‘this’ pointer is null [-Wnonnull]
+  228 |     m1 = s -> AttachSHA3Padding(mPad, 104);
+      |          ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+versal_2vp/include/authentication-versal_2vp.h:373:14: note: in a call to non-static member function ‘uint8_t* RSA4096Sha3PaddingHBAuthenticationAlgorithm_versal_2vp::AttachSHA3Padding(uint8_t*, Binary::Length_t)’
+  373 |     uint8_t* AttachSHA3Padding(uint8_t * data, const Binary::Length_t datalength);
+      |              ^~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/outputfile-versal_2vp.cpp -o build/obj/outputfile-versal_2vp.o
+versal_2vp/src/outputfile-versal_2vp.cpp: In member function ‘void OutputFile::OutputVersal_2vp(Options&, Binary&)’:
+versal_2vp/src/outputfile-versal_2vp.cpp:98:10: warning: unused variable ‘isVersal2vpNative’ [-Wunused-variable]
+   98 |     bool isVersal2vpNative = (options.GetArchType() == Arch::VERSAL_2VP);
+      |          ^~~~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/authentication-versal_2vp.cpp -o build/obj/authentication-versal_2vp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/bootheader-versal_2vp.cpp -o build/obj/bootheader-versal_2vp.o
+versal_2vp/src/authentication-versal_2vp.cpp: In member function ‘virtual Section* Versal_2vpAuthenticationContext::CreateCertificate(BootImage&, Binary&, Section*, bool)’:
+versal_2vp/src/authentication-versal_2vp.cpp:1050:14: warning: unused variable ‘acHdr’ [-Wunused-variable]
+ 1050 |     uint32_t acHdr = authAlgorithm->GetAuthHeader();
+      |              ^~~~~
+versal_2vp/src/authentication-versal_2vp.cpp: In member function ‘virtual void MLDSAAuthenticationAlgorithm_versal_2vp::VerifySignature(const uint8_t*, uint8_t*, uint8_t*, bool)’:
+versal_2vp/src/authentication-versal_2vp.cpp:2202:19: warning: comparison of integer expressions of different signedness: ‘int’ and ‘const size_t’ {aka ‘const long unsigned int’} [-Wsign-compare]
+ 2202 |     for(int i=0; i<ml_dsa_87::PubKeyByteLen; i++)
+      |                  ~^~~~~~~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp:2206:19: warning: comparison of integer expressions of different signedness: ‘int’ and ‘const size_t’ {aka ‘const long unsigned int’} [-Wsign-compare]
+ 2206 |     for(int i=0; i<ml_dsa_87::SigByteLen; i++)
+      |                  ~^~~~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp:2212:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+ 2212 |         for(int i=0; i<MLDSA_PUB_KEY_LENGTH + TELLURIDE_AC_SPK_HDR_LENGTH; i++)
+versal_2vp/src/authentication-versal_2vp.cpp: In member function ‘virtual void MLDSAAuthenticationAlgorithm_versal_2vp::CreateSignature(const uint8_t*, uint8_t*, uint8_t*, bool)’:
+versal_2vp/src/authentication-versal_2vp.cpp:2253:19: warning: comparison of integer expressions of different signedness: ‘int’ and ‘const size_t’ {aka ‘const long unsigned int’} [-Wsign-compare]
+ 2253 |     for(int i=0; i<ml_dsa_87::SigningSeedByteLen; i++)
+      |                  ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp:2257:19: warning: comparison of integer expressions of different signedness: ‘int’ and ‘const size_t’ {aka ‘const long unsigned int’} [-Wsign-compare]
+ 2257 |     for(int i=0; i<ml_dsa_87::SecKeyByteLen; i++)
+      |                  ~^~~~~~~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp:2265:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+ 2265 |         for(int i=0; i< MLDSA_PUB_KEY_LENGTH + TELLURIDE_AC_SPK_HDR_LENGTH; i++)
+versal_2vp/src/authentication-versal_2vp.cpp:2277:19: warning: comparison of integer expressions of different signedness: ‘int’ and ‘const size_t’ {aka ‘const long unsigned int’} [-Wsign-compare]
+ 2277 |     for(int i=0; i<ml_dsa_87::SigByteLen; i++)
+      |                  ~^~~~~~~~~~~~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp: In member function ‘virtual void Versal_2vpAuthenticationContext::GenerateSPKHash(uint8_t*)’:
+versal_2vp/src/authentication-versal_2vp.cpp:2675:12: warning: variable ‘totalKeySize’ set but not used [-Wunused-but-set-variable]
+ 2675 |     size_t totalKeySize = 0;
+      |            ^~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp: In member function ‘virtual void RSA4096Sha3PaddingHBAuthenticationAlgorithm_versal_2vp::CreatePadding(uint8_t*, uint8_t*, uint8_t)’:
+versal_2vp/src/authentication-versal_2vp.cpp:3136:11: warning: unused variable ‘rsaLocalENV’ [-Wunused-variable]
+ 3136 |     char* rsaLocalENV = getenv("TEST_RSA_LOCAL");
+      |           ^~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp: In member function ‘void Versal_2vpAuthenticationContext::CreateSPKSignature(BootImage&, uint32_t)’:
+versal_2vp/src/authentication-versal_2vp.cpp:4026:20: warning: unused variable ‘totalKeySize’ [-Wunused-variable]
+ 4026 |             size_t totalKeySize = actualKeySize + PADDING_16B(actualKeySize); // 16-byte alignment
+      |                    ^~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp:4163:20: warning: variable ‘totalKeySize’ set but not used [-Wunused-but-set-variable]
+ 4163 |             size_t totalKeySize = 0;
+      |                    ^~~~~~~~~~~~
+versal_2vp/src/authentication-versal_2vp.cpp: At global scope:
+versal_2vp/src/authentication-versal_2vp.cpp:789:13: warning: ‘void FillSha3Padding(uint8_t*, uint32_t)’ defined but not used [-Wunused-function]
+  789 | static void FillSha3Padding(uint8_t* pad, uint32_t sha3PadLength)
+      |             ^~~~~~~~~~~~~~~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv versal_2vp/src/authentication-versal_2vp-hybrid.cpp -o build/obj/authentication-versal_2vp-hybrid.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynq/src/readimage-zynq.cpp -o build/obj/readimage-zynq.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynq/src/authentication-zynq.cpp -o build/obj/authentication-zynq.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynq/src/partitionheadertable-zynq.cpp -o build/obj/partitionheadertable-zynq.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynq/src/bootheader-zynq.cpp -o build/obj/bootheader-zynq.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynq/src/imageheadertable-zynq.cpp -o build/obj/imageheadertable-zynq.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynq/src/encryption-zynq.cpp -o build/obj/encryption-zynq.o
+zynq/src/imageheadertable-zynq.cpp: In constructor ‘ZynqImageHeader::ZynqImageHeader(std::ifstream&)’:
+zynq/src/imageheadertable-zynq.cpp:124:63: warning: ‘this’ pointer is null [-Wnonnull]
+  124 |         destCpu = (DestinationCPU::Type)hdr->GetDestinationCpu();
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~^~
+zynq/src/imageheadertable-zynq.cpp:125:70: warning: ‘this’ pointer is null [-Wnonnull]
+  125 |         exceptionLevel = (ExceptionLevel::Type)hdr->GetExceptionLevel();
+      |                                                ~~~~~~~~~~~~~~~~~~~~~~^~
+zynq/src/imageheadertable-zynq.cpp:126:55: warning: ‘this’ pointer is null [-Wnonnull]
+  126 |         trustzone = (TrustZone::Type)hdr->GetTrustZone();
+      |                                      ~~~~~~~~~~~~~~~~~^~
+zynq/src/imageheadertable-zynq.cpp:127:45: warning: ‘this’ pointer is null [-Wnonnull]
+  127 |         early_handoff = hdr->GetEarlyHandoff();
+      |                         ~~~~~~~~~~~~~~~~~~~~^~
+zynq/src/imageheadertable-zynq.cpp:128:30: warning: ‘this’ pointer is null [-Wnonnull]
+  128 |         hivec = hdr->GetHivec();
+      |                 ~~~~~~~~~~~~~^~
+zynq/src/imageheadertable-zynq.cpp:129:38: warning: ‘this’ pointer is null [-Wnonnull]
+  129 |         authBlock = hdr->GetAuthblock();
+      |                     ~~~~~~~~~~~~~~~~~^~
+zynq/src/imageheadertable-zynq.cpp:131:42: warning: ‘this’ pointer is null [-Wnonnull]
+  131 |         switch (hdr->GetDestinationDevice())
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~^~
+zynq/src/imageheadertable-zynq.cpp:148:46: warning: ‘this’ pointer is null [-Wnonnull]
+  148 |         offset += hdr->GetPartitionHeaderSize();
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynq/src/bootimage-zynq.cpp -o build/obj/bootimage-zynq.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/verifyimage-zynqmp.cpp -o build/obj/verifyimage-zynqmp.o
+zynq/src/bootimage-zynq.cpp: In member function ‘virtual void ZynqBootImage::ParseBootImage(PartitionBifOptions*)’:
+zynq/src/bootimage-zynq.cpp:388:56: warning: ‘this’ pointer is null [-Wnonnull]
+  388 |             size_t imageAuthBlock = image->GetAuthBlock();
+      |                                     ~~~~~~~~~~~~~~~~~~~^~
+In file included from common/include/bifoptions.h:30,
+                 from common/include/authentication.h:44,
+                 from common/include/partitionheadertable.h:29,
+                 from common/include/bootimage.h:38,
+                 from zynq/include/bootimage-zynq.h:29,
+                 from zynq/src/bootimage-zynq.cpp:23:
+common/include/imageheadertable.h:214:12: note: in a call to non-static member function ‘size_t ImageHeader::GetAuthBlock()’
+  214 |     size_t GetAuthBlock(void);
+      |            ^~~~~~~~~~~~
+zynq/src/bootimage-zynq.cpp:419:49: warning: ‘this’ pointer is null [-Wnonnull]
+  419 |         offset = image->GetNextImageHeaderOffset();
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/imageheadertable-zynqmp.cpp -o build/obj/imageheadertable-zynqmp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/partitionheadertable-zynqmp.cpp -o build/obj/partitionheadertable-zynqmp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/bootimage-zynqmp.cpp -o build/obj/bootimage-zynqmp.o
+zynqmp/src/imageheadertable-zynqmp.cpp: In constructor ‘ZynqMpImageHeader::ZynqMpImageHeader(std::ifstream&)’:
+zynqmp/src/imageheadertable-zynqmp.cpp:123:63: warning: ‘this’ pointer is null [-Wnonnull]
+  123 |         destCpu = (DestinationCPU::Type)hdr->GetDestinationCpu();
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~^~
+zynqmp/src/imageheadertable-zynqmp.cpp:124:70: warning: ‘this’ pointer is null [-Wnonnull]
+  124 |         exceptionLevel = (ExceptionLevel::Type)hdr->GetExceptionLevel();
+      |                                                ~~~~~~~~~~~~~~~~~~~~~~^~
+zynqmp/src/imageheadertable-zynqmp.cpp:125:55: warning: ‘this’ pointer is null [-Wnonnull]
+  125 |         trustzone = (TrustZone::Type)hdr->GetTrustZone();
+      |                                      ~~~~~~~~~~~~~~~~~^~
+zynqmp/src/imageheadertable-zynqmp.cpp:126:45: warning: ‘this’ pointer is null [-Wnonnull]
+  126 |         early_handoff = hdr->GetEarlyHandoff();
+      |                         ~~~~~~~~~~~~~~~~~~~~^~
+zynqmp/src/imageheadertable-zynqmp.cpp:127:30: warning: ‘this’ pointer is null [-Wnonnull]
+  127 |         hivec = hdr->GetHivec();
+      |                 ~~~~~~~~~~~~~^~
+zynqmp/src/imageheadertable-zynqmp.cpp:128:38: warning: ‘this’ pointer is null [-Wnonnull]
+  128 |         authBlock = hdr->GetAuthblock();
+      |                     ~~~~~~~~~~~~~~~~~^~
+zynqmp/src/imageheadertable-zynqmp.cpp:130:42: warning: ‘this’ pointer is null [-Wnonnull]
+  130 |         switch (hdr->GetDestinationDevice())
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~^~
+zynqmp/src/imageheadertable-zynqmp.cpp:151:46: warning: ‘this’ pointer is null [-Wnonnull]
+  151 |         offset += hdr->GetPartitionHeaderSize();
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/readimage-zynqmp.cpp -o build/obj/readimage-zynqmp.o
+zynqmp/src/bootimage-zynqmp.cpp: In member function ‘virtual void ZynqMpBootImage::ParseBootImage(PartitionBifOptions*)’:
+zynqmp/src/bootimage-zynqmp.cpp:332:56: warning: ‘this’ pointer is null [-Wnonnull]
+  332 |             size_t imageAuthBlock = image->GetAuthBlock();
+      |                                     ~~~~~~~~~~~~~~~~~~~^~
+In file included from common/include/bifoptions.h:30,
+                 from common/include/authentication.h:44,
+                 from common/include/partitionheadertable.h:29,
+                 from common/include/bootimage.h:38,
+                 from zynqmp/include/bootimage-zynqmp.h:29,
+                 from zynqmp/src/bootimage-zynqmp.cpp:23:
+common/include/imageheadertable.h:214:12: note: in a call to non-static member function ‘size_t ImageHeader::GetAuthBlock()’
+  214 |     size_t GetAuthBlock(void);
+      |            ^~~~~~~~~~~~
+zynqmp/src/bootimage-zynqmp.cpp:363:49: warning: ‘this’ pointer is null [-Wnonnull]
+  363 |         offset = image->GetNextImageHeaderOffset();
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/bootheader-zynqmp.cpp -o build/obj/bootheader-zynqmp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/authentication-zynqmp.cpp -o build/obj/authentication-zynqmp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv zynqmp/src/encryption-zynqmp.cpp -o build/obj/encryption-zynqmp.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/encryptutils.cpp -o build/obj/encryptutils.o
+g++ -c -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/elftools.cpp -o build/obj/elftools.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/fips202.c -o build/obj/fips202.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-load.c -o build/obj/cdo-load.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-alloc.c -o build/obj/cdo-alloc.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-npi.c -o build/obj/cdo-npi.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-binary.c -o build/obj/cdo-binary.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-overlay.c -o build/obj/cdo-overlay.o
+utils/src/cdo-binary.c:103:17: warning: ‘find_binary_device’ defined but not used [-Wunused-function]
+  103 | static uint32_t find_binary_device(char * name) {
+      |                 ^~~~~~~~~~~~~~~~~~
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-source.c -o build/obj/cdo-source.o
+utils/src/cdo-source.c:93:17: warning: ‘find_device’ defined but not used [-Wunused-function]
+   93 | static uint32_t find_device(char * name) {
+      |                 ^~~~~~~~~~~
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-raw.c -o build/obj/cdo-raw.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-metadata.c -o build/obj/cdo-metadata.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cJSON.c -o build/obj/cJSON.o
+gcc -c -O -Wall  -lpthread   -I wrapper/ml-dsa-lib/compat -I wrapper/ml-dsa-lib -I bisonflex -I common/include -I spartanup/include -I versal/include -I versal_2ve_2vm/include -I versal_2vp/include -I zynq/include -I zynqmp/include -I utils/include -I lms-hash-sigs -I win_include -I slh -I slh/drv utils/src/cdo-command.c -o build/obj/cdo-command.o
+echo Building executable file: build/bin/bootgen...
+Building executable file: build/bin/bootgen...
+cd lms-hash-sigs && make CC="gcc" CFLAGS="-Wall -O0" hss_lib_thread.a
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen/lms-hash-sigs'
+gcc -Wall -O0   -c -o lms_sign.o lms_sign.c
+gcc -Wall -O0   -c -o lms_keys.o lms_keys.c
+gcc -Wall -O0 -c hss.c -o hss.o
+gcc -Wall -O0 -c hss_alloc.c -o hss_alloc.o
+gcc -Wall -O0 -c hss_aux.c -o hss_aux.o
+gcc -Wall -O0 -c hss_common.c -o hss_common.o
+gcc -Wall -O0 -c hss_compute.c -o hss_compute.o
+gcc -Wall -O0 -c hss_generate.c -o hss_generate.o
+gcc -Wall -O0 -c hss_keygen.c -o hss_keygen.o
+gcc -Wall -O0 -c hss_param.c -o hss_param.o
+gcc -Wall -O0 -c hss_reserve.c -o hss_reserve.o
+gcc -Wall -O0 -c hss_sign.c -o hss_sign.o
+gcc -Wall -O0 -c hss_sign_inc.c -o hss_sign_inc.o
+gcc -Wall -O0 -c hss_thread_pthread.c -o hss_thread_pthread.o
+gcc -Wall -O0 -c hss_verify.c -o hss_verify.o
+gcc -Wall -O0 -c hss_verify_inc.c -o hss_verify_inc.o
+gcc -Wall -O0 -c hss_derive.c -o hss_derive.o
+gcc -Wall -O0 -c hss_zeroize.c -o hss_zeroize.o
+gcc -Wall -O0 -c lm_common.c -o lm_common.o
+gcc -Wall -O0 -c lm_ots_common.c -o lm_ots_common.o
+gcc -Wall -O0 -c lm_ots_sign.c -o lm_ots_sign.o
+gcc -Wall -O0 -c lm_ots_verify.c -o lm_ots_verify.o
+gcc -Wall -O0 -c lm_verify.c -o lm_verify.o
+gcc -Wall -O0 -c endian.c -o endian.o
+gcc -Wall -O0 -c lms_hash.c -o lms_hash.o
+gcc -Wall -O0 -c sha256.c -o sha256.o
+lms_hash.c: In function ‘hss_hash_ctx’:
+lms_hash.c:44:9: warning: ‘SHA256_Init’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   44 |         SHA256_Init(&ctx->sha256);
+      |         ^~~~~~~~~~~
+In file included from sha256.h:13,
+                 from lms_hash.h:3,
+                 from lms_hash.c:2:
+/usr/include/openssl/sha.h:73:27: note: declared here
+   73 | OSSL_DEPRECATEDIN_3_0 int SHA256_Init(SHA256_CTX *c);
+      |                           ^~~~~~~~~~~
+lms_hash.c:45:9: warning: ‘SHA256_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   45 |         SHA256_Update(&ctx->sha256, message, message_len);
+      |         ^~~~~~~~~~~~~
+/usr/include/openssl/sha.h:74:27: note: declared here
+   74 | OSSL_DEPRECATEDIN_3_0 int SHA256_Update(SHA256_CTX *c,
+      |                           ^~~~~~~~~~~~~
+lms_hash.c:46:9: warning: ‘SHA256_Final’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   46 |         SHA256_Final(result, &ctx->sha256);
+      |         ^~~~~~~~~~~~
+/usr/include/openssl/sha.h:76:27: note: declared here
+   76 | OSSL_DEPRECATEDIN_3_0 int SHA256_Final(unsigned char *md, SHA256_CTX *c);
+      |                           ^~~~~~~~~~~~
+lms_hash.c:52:9: warning: ‘SHA256_Init’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   52 |         SHA256_Init(&ctx->sha256);
+      |         ^~~~~~~~~~~
+/usr/include/openssl/sha.h:73:27: note: declared here
+   73 | OSSL_DEPRECATEDIN_3_0 int SHA256_Init(SHA256_CTX *c);
+      |                           ^~~~~~~~~~~
+lms_hash.c:53:9: warning: ‘SHA256_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   53 |         SHA256_Update(&ctx->sha256, message, message_len);
+      |         ^~~~~~~~~~~~~
+/usr/include/openssl/sha.h:74:27: note: declared here
+   74 | OSSL_DEPRECATEDIN_3_0 int SHA256_Update(SHA256_CTX *c,
+      |                           ^~~~~~~~~~~~~
+lms_hash.c:54:9: warning: ‘SHA256_Final’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   54 |         SHA256_Final(temp, &ctx->sha256);
+      |         ^~~~~~~~~~~~
+/usr/include/openssl/sha.h:76:27: note: declared here
+   76 | OSSL_DEPRECATEDIN_3_0 int SHA256_Final(unsigned char *md, SHA256_CTX *c);
+      |                           ^~~~~~~~~~~~
+lms_hash.c: In function ‘hss_init_hash_context’:
+lms_hash.c:92:9: warning: ‘SHA256_Init’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   92 |         SHA256_Init( &ctx->sha256 );
+      |         ^~~~~~~~~~~
+/usr/include/openssl/sha.h:73:27: note: declared here
+   73 | OSSL_DEPRECATEDIN_3_0 int SHA256_Init(SHA256_CTX *c);
+      |                           ^~~~~~~~~~~
+lms_hash.c: In function ‘hss_update_hash_context’:
+lms_hash.c:109:9: warning: ‘SHA256_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  109 |         SHA256_Update(&ctx->sha256, msg, len_msg);
+      |         ^~~~~~~~~~~~~
+/usr/include/openssl/sha.h:74:27: note: declared here
+   74 | OSSL_DEPRECATEDIN_3_0 int SHA256_Update(SHA256_CTX *c,
+      |                           ^~~~~~~~~~~~~
+lms_hash.c: In function ‘hss_finalize_hash_context’:
+lms_hash.c:121:9: warning: ‘SHA256_Final’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  121 |         SHA256_Final(buffer, &ctx->sha256);
+      |         ^~~~~~~~~~~~
+/usr/include/openssl/sha.h:76:27: note: declared here
+   76 | OSSL_DEPRECATEDIN_3_0 int SHA256_Final(unsigned char *md, SHA256_CTX *c);
+      |                           ^~~~~~~~~~~~
+lms_hash.c:126:9: warning: ‘SHA256_Final’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  126 |         SHA256_Final(temp, &ctx->sha256);
+      |         ^~~~~~~~~~~~
+/usr/include/openssl/sha.h:76:27: note: declared here
+   76 | OSSL_DEPRECATEDIN_3_0 int SHA256_Final(unsigned char *md, SHA256_CTX *c);
+      |                           ^~~~~~~~~~~~
+gcc -Wall -O0 -c fips202.c -o fips202.o
+ar rcs hss_lib_thread.a lms_sign.o lms_keys.o hss.o hss_alloc.o hss_aux.o hss_common.o hss_compute.o hss_generate.o hss_keygen.o hss_param.o hss_reserve.o hss_sign.o hss_sign_inc.o hss_thread_pthread.o hss_verify.o hss_verify_inc.o hss_derive.o hss_zeroize.o lm_common.o lm_ots_common.o lm_ots_sign.o lm_ots_verify.o lm_verify.o endian.o lms_hash.o sha256.o fips202.o
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen/lms-hash-sigs'
+cd slh && make CC="gcc" libslhdsa.a
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen/slh'
+gcc -O2 -Wall -fPIC -I. -Idrv -c bootgen.c -o bootgen.o
+gcc -O2 -Wall -fPIC -I. -Idrv -c sha2_256.c -o sha2_256.o
+gcc -O2 -Wall -fPIC -I. -Idrv -c sha2_512.c -o sha2_512.o
+gcc -O2 -Wall -fPIC -I. -Idrv -c sha3_api.c -o sha3_api.o
+gcc -O2 -Wall -fPIC -I. -Idrv -c sha3_f1600.c -o sha3_f1600.o
+gcc -O2 -Wall -fPIC -I. -Idrv -c slh_dsa.c -o slh_dsa.o
+gcc -O2 -Wall -fPIC -I. -Idrv -c slh_sha2.c -o slh_sha2.o
+gcc -O2 -Wall -fPIC -I. -Idrv -c slh_shake.c -o slh_shake.o
+ar rcs libslhdsa.a bootgen.o sha2_256.o sha2_512.o sha3_api.o sha3_f1600.o slh_dsa.o slh_sha2.o slh_shake.o
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen/slh'
+cd wrapper/ml-dsa-lib && make CXX="g++" libmldsa.a
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen/wrapper/ml-dsa-lib'
+g++ -std=c++20 -O2 -Wall -fPIC -I../../ml-dsa/include -I../../ml-dsa/sha3/include -I../../ml-dsa/RandomShake/include -I. -c ml_dsa_api.cpp -o ml_dsa_api.o
+ar rcs libmldsa.a ml_dsa_api.o
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen/wrapper/ml-dsa-lib'
+g++ -std=c++14 -O -Wall -Wno-reorder -Wno-deprecated-declarations -Wno-aligned-new -Wno-misleading-indentation -Wno-class-memaccess -L/usr/lib/gcc/x86_64-linux-gnu/13 -Wl,-rpath,/usr/lib/gcc/x86_64-linux-gnu/13  -o build/bin/bootgen build/obj/bif.tab.o build/obj/bif.yy.o build/obj/reginit.tab.o build/obj/reginit.yy.o build/obj/cmdoptions.tab.o build/obj/cmdoptions.yy.o build/obj/bitutils.o build/obj/bifoptions.o build/obj/outputfile.o build/obj/reginit.o build/obj/authkeys.o build/obj/encryption.o build/obj/partitionheadertable.o build/obj/readimage.o build/obj/postprocess.o build/obj/binary.o build/obj/bootimage.o build/obj/main.o build/obj/partition.o build/obj/hash.o build/obj/mcsfile.o build/obj/bootheader.o build/obj/imageheadertable.o build/obj/options.o build/obj/parsing.o build/obj/authentication.o build/obj/checksum.o build/obj/logger.o build/obj/Keccak-compact.o build/obj/binfile.o build/obj/kdf.o build/obj/authentication-spartanup.o build/obj/verifyimage-spartanup.o build/obj/imageheadertable-spartanup.o build/obj/binary-spartanup.o build/obj/partition-spartanup.o build/obj/partitionheadertable-spartanup.o build/obj/outputfile-spartanup.o build/obj/encryption-spartanup.o build/obj/readimage-spartanup.o build/obj/bitutils-spartanup.o build/obj/bootheader-spartanup.o build/obj/bootimage-spartanup.o build/obj/checksum-spartanup.o build/obj/Keccak-compact-spartanup.o build/obj/authkeys-spartanup.o build/obj/encryption-versalnet.o build/obj/outputfile-versal.o build/obj/bitutils-versal.o build/obj/imageheadertable-versal.o build/obj/verifyimage-versal.o build/obj/bootimage-versal.o build/obj/Keccak-compact-versal.o build/obj/checksum-versal.o build/obj/authkeys-versal.o build/obj/binary-versal.o build/obj/bootheader-versal.o build/obj/encryption-versal.o build/obj/partitionheadertable-versal.o build/obj/readimage-versal.o build/obj/authentication-versal.o build/obj/partition-versal.o build/obj/postprocess_versal_2ve_2vm.o build/obj/outputfile-versal_2ve_2vm.o build/obj/Keccak-compact-versal_2ve_2vm.o build/obj/verifyimage-versal_2ve_2vm.o build/obj/readimage-versal_2ve_2vm.o build/obj/checksum-versal_2ve_2vm.o build/obj/partition-versal_2ve_2vm.o build/obj/bootheader-versal_2ve_2vm.o build/obj/bootimage-versal_2ve_2vm.o build/obj/imageheadertable-versal_2ve_2vm.o build/obj/partitionheadertable-versal_2ve_2vm.o build/obj/bitutils-versal_2ve_2vm.o build/obj/authkeys-versal_2ve_2vm.o build/obj/binary-versal_2ve_2vm.o build/obj/authentication-versal_2ve_2vm.o build/obj/tlbingeneration.o build/obj/encryption-versal_2ve_2vm.o build/obj/readimage-versal_2vp.o build/obj/bifoptions-versal_2vp.o build/obj/authkeys-versal_2vp.o build/obj/partitionheadertable-versal_2vp.o build/obj/postprocess_versal_2vp.o build/obj/partition-versal_2vp.o build/obj/Keccak-compact-versal_2vp.o build/obj/checksum-versal_2vp.o build/obj/imageheadertable-versal_2vp.o build/obj/encryption-versal_2vp.o build/obj/bootimage-versal_2vp.o build/obj/binary-versal_2vp.o build/obj/verifyimage-versal_2vp.o build/obj/bitutils-versal_2vp.o build/obj/outputfile-versal_2vp.o build/obj/authentication-versal_2vp.o build/obj/bootheader-versal_2vp.o build/obj/authentication-versal_2vp-hybrid.o build/obj/readimage-zynq.o build/obj/authentication-zynq.o build/obj/partitionheadertable-zynq.o build/obj/bootheader-zynq.o build/obj/imageheadertable-zynq.o build/obj/encryption-zynq.o build/obj/bootimage-zynq.o build/obj/verifyimage-zynqmp.o build/obj/imageheadertable-zynqmp.o build/obj/partitionheadertable-zynqmp.o build/obj/bootimage-zynqmp.o build/obj/readimage-zynqmp.o build/obj/bootheader-zynqmp.o build/obj/authentication-zynqmp.o build/obj/encryption-zynqmp.o build/obj/encryptutils.o build/obj/elftools.o build/obj/fips202.o build/obj/cdo-load.o build/obj/cdo-alloc.o build/obj/cdo-npi.o build/obj/cdo-binary.o build/obj/cdo-overlay.o build/obj/cdo-source.o build/obj/cdo-raw.o build/obj/cdo-metadata.o build/obj/cJSON.o build/obj/cdo-command.o lms-hash-sigs/hss_lib_thread.a slh/libslhdsa.a wrapper/ml-dsa-lib/libmldsa.a  -lpthread -lssl -lcrypto
+make: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/work/bootgen'

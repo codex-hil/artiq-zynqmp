@@ -1,0 +1,803 @@
+486e8f897 RELEASE: Experiments not in repository dialog and message
+472188154 dashboard: experiments not in repo dialog
+ba18a5729 dashboard: experiment arguments to delete message
+334dd3b97 flake: update dependencies
+7a046dc52 Revert "add patch to qasync to fix Python 3.14 running loop incompatibility"
+40a150411 manual: add backup command to flashing instructions
+3db9ea732 flake: add backup command to kc705-hitl tests
+a8fe857cd doc: list WebSocket proxy default ports
+9f1bb6583 ad9910: break_realtime after sync data init
+bd977fd4a rpc: limit composite type format to tuples
+569cf998c flashing: make firmware filename discoverable
+1cede6c67 RELEASE NOTES: add flash backup command entry
+80d019fe1 artiq_flash: add backup flash command
+4c4295ece man: add note on avoiding mintty in MSYS2 shell
+b47d464d6 flake: update dependencies
+a4c00c07b ksupport/api.rs: export __fixunsdfdi
+56fd32c18 man: add core cache to getting started
+083ab753c browser: handle ExperimentsArea async tasks on close
+e8d0283d2 flake: update nac3
+087bdf58d revert accidentally committed part of c2ce95b789
+c2ce95b78 update dependencies
+eba4e748b adf5356: mod2 <= 268435455
+70a17a8e7 adf5356: mod2 >= 2
+61c46453f remoting: preserve local download path over SSH
+929a5d7be flake: update migen
+1db2d528c RELEASE_NOTES: MSYS2 offline installer no longer uses mintty
+e8f332932 rpc_proto: fix list size
+914fb18d2 flake: update dependencies
+b3f5cbbe1 master: handle scan_task on terminating artiq_master
+a5c45abab browser: fix_recompute_arguments table bug
+ec52fbd1b flake: update dependencies
+ccb54b946 applets: add copy plot option to menus
+7d8bc8349 flake: update migen and misoc
+ee22d5d44 gateware/targets: add .bin file generation as default argument
+724825395 artiq_coremgmt.py: remove bit2bin function import
+f41081723 artiq_flash.py: .bit to .bin for gateware build
+118a99c73 flashing.py: remove .bit to .bin file generation
+e7bf34d7e flake.nix: .bit to .bin for gateware build
+17118fff5 RELEASE: add TableValue argument
+7c79a7160 dashboard: fix _recompute_arguments_task table bug
+8634192a5 examples: add table example to arguments_demo
+13d0ce239 gui: add TableEntry
+a9205e8de language: add TableValue
+76b178508 efc: connect rtio.cri to enable subkernel support
+3bd9f7a1c update dependencies
+ca13cb0c2 sinara-tester: limit Shuttler/Zotino/Fastino test output to ±10V
+6e1bb16d3 eem_serdes: remove 2^n limit on transceiver sel
+2ada67e04 drtio_eem: switch to ASCII-based config value
+a98027dda core: add *_log to nac3_builtins
+23dc61d1f dashboard: fix load hdf5 behavior
+1f58cedc2 flake: update dependencies
+47be23f5a flake: update dependencies
+1092b5a68 RELEASE: removed deprecated compile-time options
+ba15758a5 firmware: removed si5324_ext_ref and ext_ref_frequency compile-time options
+57b6d48e1 schema: phaser_drtio: make gw/hw variants required
+9ad3fc4d2 artiq_flash: add efc1v2 target to help msg
+1a5e37376 coredevice/edge_counter: clarify overflow
+e5c711233 coredevice/dac34h84: port to NAC3
+002f521a1 flake: update dependencies
+6664f816f flake: skip qasync tests
+6d3eeed4c flake: update dependencies
+e27d94d00 coredevice: add enums to nac3_builtins
+f04ad46d6 fix moving items in DictSyncModel
+459a1be5c coredevice/cxp_grabber: import order
+e0759841a coredevice/almazny,adf5356: use Python modules (#1802)
+33a7f8061 coredevice/ad9912: use Python modules (#1802)
+e6b9d5e00 Revert "test_rtio: relax ClockGeneratorLoopback performance requirements"
+784a1d161 add patch to qasync to fix Python 3.14 running loop incompatibility
+77ccf3c4a frontend: add metadata to artiq_run hdf5 files
+3d162ddb5 frontend: add artiq_run hdf5 writing into finally block
+5baaad6a0 flake: update dependencies
+6ffb2d3ca dashboard/shortcuts: fixed shortcut slots spacing
+8c65c7f18 master: implement parameter entries in the device database
+60a922fd4 artiq_run: fix indentation
+68198e770 flake: update dependencies
+914f63dbc firmware/libboard_misoc: Unbreak previous commit for Kasli v2.0
+7d4ccde9e LED mapping issue fixed and tested on both v2.1 and v2.1rc1
+d3ad2e670 flake: texlive-combined is deprecated
+be80ca483 test_roipacker: fix pool worker arguments passing with forkserver
+9f773a30e fix use of try/finally in PR #1857
+df586054c comm_mgmt: print actions taken during flash
+27e5c0732 comm_mgmt: factor out self.open from _write_header
+987cdf3a3 core: add critical context manager
+f7a399a53 test_ad9910: fix import
+3a22387be flake: update dependencies
+cca93aff7 flake: update dependencies
+169cad6e0 coredevice/ad9910: use Python modules (#1802)
+cd13aec15 coredevice/ad53xx: use Python modules (#1802)
+d24d0b35b ksupport: fix malloc oversized error message
+eb6a77fa1 examples/nac3devices: use Python modules
+9510a6b68 flake: fix kc705-hitl paramiko
+25fc767b8 test_exceptions: cleanup imports
+382b94252 exception: update nac3 counterpart location
+a1ef5049a exception: import from nac3artiq
+211ed1498 update dependencies
+bb2a0e4dd coremgmt: demote bitstream header decoding to debug log
+22d08d03e exception: relocate KeyError patch to sipyco
+01096b02c flake: update dependencies
+14634b81a exception: use KeyError arg directly for error message
+1c27c9c1c adf5356: fix negative bleed condition
+42907103b flake: update dependencies
+862fc479b ad9910: use uint32 for RAM and machine-unit data
+ce995fb2c Revert "adf5356: fix negative bleed condition"
+5cb4f19dc comm_analyzer: add enddefinitions command to VCDManager
+1ee241c7f adf5356: fix negative bleed condition
+0f3fa0d39 aqctl_moninj_proxy: switch to ExitStack
+20ec2a247 aqctl_browser: switch to ExitStack
+d835f9330 aqctl_coreanalyzer_proxy: switch to ExitStack
+946a52c9e artiq_coremgmt: remove unneeded import
+cb82daea3 artiq_dashboard: switch to ExitStack
+afa3d5eaf artiq_master: switch to ExitStack
+435b9d30d flake: update dependencies
+74bbb23dd dashboard/moninj: add option to set DAC voltages (#1845)
+4d1a66510 rpc: add uint32/uint64 tags
+7f88268c8 flake: update nac3
+8b7571520 flake: update dependencies
+a2335f889 update dependencies
+b1eeadb76 tests: do not rely on first nonempty traceback line
+e58afecc4 dashboard/moninj.py: add nac3 imports and annotations
+13d0133e0 artiq_flash: add v1.2 efc support
+c009ee321 efc: add support for v1.2
+74307e13c flake: update dependencies
+a3e4fba1c cxp: replace cslice with refcnt list
+5f5d06c48 rtio: replace cslice with refcnt list
+b43c20d71 ksupportlib: expose refcnt lib & use refcnt list
+cf6f376a6 refcnt: add refcnt struct and list -> slice API
+7755cd5bd doc: artiq must be in path first
+2f048d319 doc: manual versioneering
+1001a35d4 man: explicitly mark as beta
+91e694511 man: upgrading minor/major/channel
+633e8447d ad9910 test: use generic sync class
+4945ce866 ad9910: update sync type for tests
+717796c98 IOUpdate: amend docs
+a8c469a9d IOUpdate: support IOUpdate-less MASK_NU operation
+e856e7454 IOUpdate: use mask_nu to avoid unneeded write
+fb6050a32 urukuls: add generic sync type
+f8441d606 flake: update dependencies
+bb0a9dcd3 master: do not update git index in the working copy when non-HEAD revisions is checked out from non-bare repos
+e9dca5aa5 worker: pool and pipeline repo scanning
+771a6b6ef man: update+clarify core device networking
+78be4bee9 man: clarify phrasing for eem_drtio_delay reset
+9966d47d7 doc: add phaser/efc flashing instructions
+5e1e88112 doc: clarifications on drtio-over-eem
+e092b81fe flake: update dependencies
+09724e5cf RELEASE: fix typo
+07bc32ea4 RELEASE: Zynq cfg supports default route & prefix
+9cf4fae6e kernel_proto: reorder Message variants
+8109478ec ad9910: add shared param docs
+39a38e589 urukul tests: remove unused imports
+f733fe1c7 urukul tests: revert most of #1749
+b25f7ffc8 ad9910: compensate for option indirection
+5e117da9b ad9910/2 tests: fix typing
+cb46bb2b5 urukul pld: unify IO update
+c61662798 flake: update dependencies
+157dffdab phaser driver: fix get_rtio_channels arg name
+860e710c9 flake: fix KC705 IP address flashing
+f87bc6972 gui/scanwidget.py: update for Qt6 compatibility
+1cd848a92 release note: rename default route cfg
+3f2e36dd7 docs: update ipvX_default_route cfg name
+a20d852c1 net: rename inconsistent default route cfg name
+5e370d03b net: display ipv4 and ipv6 default route
+462a0d31a net: remove uncessory fmt module from Display fn
+67e65902e net: fix get_adresses typo
+7eb317257 flake: update dependencies
+7985badb9 use FQDNs in tests
+d0ac1065d manual/flashing: coremgmt flash already reboots
+d31a32a8f suservo: fix type and import issues
+66b81e286 suservo: add missing types
+ea774171e suservo: fix CPLD type annotation
+fc4db02ce doc: update helpdesk details
+00a2dc5e6 doc: link to openbsd-ports
+9fdc5b8ca doc: fix msys2 URL
+3ef26fb7d flake: artiq does not depend on pyserial
+fe1e29f8f flake: update dependencies
+f8eda69db artiq/tools: fix indentation
+fa01a8fb7 artiq/browser/files.py: fix blank values for string datasets
+89c8a0b27 fix license warning
+1e71abb5f flake: update dependencies
+2807a48eb flake: update dependencies
+22a177953 firmware: define kernel CPU heap and stack in linker script
+27b0f1d0f flake: update dependencies
+6329cbd8b release note: add new cxp grabber features
+360b25358 cxp roiviewer driver: remove 1024 height limit
+febd832c1 jsonschema: support multichannel cxp & speed cfg
+662e62a42 cxp grabber rt core: support multi coaxpress channel
+7492d60d8 cxp grabber core: update testbench
+a53552819 cxp grabber core: support multichannel cxp ROI
+c58c02fc9 flake: update dependencies
+6f992502e firmware: raise MemoryError on kernel heap exhaustion
+55bf8d67c test_rtio: consume less slack for sequence error
+6f60e1db4 test_rtio: relax tests for unopt NAC3
+8e3a71b90 flake: revert incorrectly committed part of 69fc2fc1d36
+55cf66336 rpc_proto: use composite type format for tuple
+69fc2fc1d flake: update dependencies
+1afb6ea4a flake: update dependencies
+b2a35ce83 runtime: fix import errors and clean up warns
+392e1dd63 release notes: add proto_rev to breaking changes
+255db8b97 firmware: increase kernel CPU heap to 64MB
+b4f85af3e firmware: implement malloc/free for compiled kernels
+a65d5a2a1 flake: update dependencies
+b73cf556d flake: update dependencies
+485131a05 flake: update dependencies
+f3cd8e57b Revert "Update Rust toolchain."
+e1066e41e flake: update dependencies
+c8842577e Update Rust toolchain.
+4ebbf88dc phaser: add missing default value for reserved bit. (#1791)
+03405bae5 docstrings: rst syntax errors
+5c9a2cfab man: add compiler deprecation note
+7aeec63c0 doc: fix RST errors
+e4c063611 firmware: Fix unsound exception string handling. (#1786)
+557c1a551 flake: update dependencies
+b33a383de flake: update dependencies
+6ebff44e3 moninj: urukul does not take pll_n anymore, default 1e9 sysclk
+451dc2e48 tests: adjust batching test count
+50979fec7 test: add nac3 port of acpki HITL tests
+07b30fc15 ddb: fix acpki batcher entry formatting
+1ade0e9e5 coredevice test: use generic type for TTL output
+9d8598e7c adf5356: migrate test to NAC3
+8a2028c93 adf5356: fix types in calculation
+e968cb87c dma test: add back missing target check update
+95f850d86 jsondesc: require drtio_role instead of base
+4f0504450 flake: update dependencies
+e3afea292 Remove NAC3TODOs that are fixed
+9d5c5751e flake: remove qasync qt6 hack
+9021cb4f5 flake: update dependencies
+14bb536a6 jsondesc: remove base field
+2f01a6d1e artiq_run: add missing check_termination to DummyScheduler
+9d2e7d8e9 core: fix import
+f07d692d0 Fix typo that causes occasional decoding issues
+cc935e077 rj45_lvds: add dio_spi peripheral rj45_lvds board support
+68b17bf71 rj45_lvds: add dio peripheral rj45_lvds board support
+1899ae5e0 README: update
+af08dfb49 RELEASE_NOTES: fix CoaXPress capitalization
+1a865c04b doc: remove last references to conda
+b601bd279 drtio_routing: calculate and cache master's destination
+32996d6a2 drtio_routing: encapsulate routing_table
+9a9b8cb6d drtio: figure out the master's destination from the routing table
+a801d4923 ddb_template: allow overriding master destination
+11144e62a replace destination eq 0 as master checks
+faee10b17 fix typos
+7faec2187 grabber: skip destination check on standalone
+68f455924 update version in logo
+0ce74483c remove msys2 packaging (moving to extrapkg)
+d3682e1a7 flake: replace deprecated xorg.* packages
+4a652a327 flake: export artiq-build
+99c1aa507 coredevice/core: lazy-import scipy and nac3artiq
+7cc9fabeb flake: update dependencies
+7c7e1ffd2 RELEASE_NOTES: update
+28a1dbc46 Merge branch 'nac3'
+8029a11aa RELEASE_NOTES: ARTIQ-9 released
+c73076bc1 RELEASE_NOTES: fix typo
+f8e10765f artiq_sinara_tester: Fix Shuttler voltage test
+976e94a55 satman: clean up feature flags
+d03605c91 RELEASE_NOTES: grabber serial support
+0018d9df0 artiq_ddb_template: add grabber index for serial
+096db4d43 artiq_sinara_tester: add grabber serial programming
+c769f9fad satman: grabber serial support
+f0ea6d00b firmware: add grabber serial support
+cd3764c1b gateware: add grabber serial support
+c0bf1714c flake: update dependencies
+9f5c901ca flake: force qasync to use qt6
+3c152876a flake: force qasync to use qt6
+fbcff57e2 flake: update dependencies
+0a5b26d74 flake: use nixpkgs qasync
+31b7093fd flake: use nixpkgs qasync
+15959a2ad flake: update dependencies
+2ee04379f songbird: minor typo fixes
+b523a7027 adf5356: add write() docs
+aa72b7dc3 adf5356: update register values according to PFD frequency
+135a335b2 adf5356: fix off-by-1-digit errors
+79e797bd3 adf5356: add missing register value migration
+c9f61ea21 adf5356: remove unwanted sync calls
+175f0be92 test_rtio: adjust batch tests for L2 page use adjust timing and add missing core.reset
+f26346231 mirny: prepare SPI init
+775eaf9a8 tests: relax timing on zynq dma record overhead
+5d97efbc0 flake: update dependencies
+070dd5fb5 release_notes: mention breaking change with pll_n calculation
+8330e4b55 ad9910/12: calculate pll_n instead of relying on user's provision
+7dab87366 flake: update dependencies
+7bfcd503b flake: add llvm20 for building firmware
+46b7141f1 flake: nixpkgs renames
+096d843b8 flake: remove lit
+431a20ab1 flake: fix rust overlay unpack
+af384555e flake: no more llvm
+5990c84dd flake: update dependencies
+d82ff10d6 flake: update dependencies
+486b6b6d3 flake: update dependencies
+eb4253e93 Use Auto type for generic CPLD and AD9910 parameters
+ae65e6415 flake: update dependencies
+0e69d9e68 language: add Auto
+cf436b670 Add ProtoRev8 stub methods
+a9f0561ed nac3: Fix generic type parameters for CPLD and AD9910 classes (#1749)
+ef34e1001 nac3: Enable SUServo support via Generic io_update types
+645793844 Enable Generic type support for Urukul CPLD driver
+7951cbbbf flake: update nac3
+ff24e5c5b flake: update dependencies
+0bed543c0 flake: update M-Labs repos URLs
+96969c5a5 default support for systems without IPv6
+2f1136510 flake: update nac3
+2b3006c6b llvm2addr -> nac3symbolizer (#1732)
+910fe20af flake: update nac3
+4b8c53786 flake: update nac3
+6cdf80bfc flake: update nac3
+281f612ef flake: update nac3
+ee9ccd39a flake: update nac3
+648d9277a add enumerate to builtins dict
+70d04244c compiler: use debug file from nac3ld
+cc4a8c51d flake: update nac3
+6bd38fc1a Revert "flake: update dependencies"
+240f94f17 flake: update dependencies
+58e381595 test_embedding: remove np_sqrt workaround
+27394946c flake: update dependencies
+4bbcd9fd4 coredevice: add min, max, and abs functions to nac3_builtins
+644bf51c5 coredevice: update nac3_builtins
+183b1680d test_embedding: np_array -> numpy.array
+120992d35 flake: update dependencies
+c83d95dde flake: update dependencies
+79ccd2bd7 coredevice: update nac3_builtins
+59b2ae819 coredevice: update nac3_builtins
+79e9996ef firmware/ksupport: provide errno
+cab18191e firmware: expose ldexp
+844eb5ae8 flake: update dependencies
+d79b8ab44 adf5356: Recast f_pfd to int64 in calculate_pll
+c65a2ebc2 adf5356: nac3ify calculate_pll() properly
+8e3dfae12 adf5356: Fix operation order in f_vco() for nac3
+772cfa11c artiq_sinara_tester: nac3ify songbird tests
+d8a3b863d songbird: update driver for nac3
+db46f8aa7 Merge branch 'master' into nac3
+469d5a76c Merge branch 'master' into nac3
+89154ff5b Merge branch 'master' into nac3
+ed151a626 flake: update dependencies
+62fc030a9 flake: update dependencies
+3b669c49e core: sync nac3_builtins with nac3
+0224ee24f exception: do not generate backtrace from other exceptions
+4bb7d8f6e exception: reverse backtrace entries in the same exn
+e34436f23 Merge branch 'master' into nac3
+601aa7539 flake: update dependencies
+65469e0be Merge branch 'master' into nac3
+f804c3571 flake: update nac3
+37f1fd617 update dependencies
+5f8e9e6e0 flake: update dependencies
+629cf08fb core exception: test traceback
+871bdb99f flake: update dependencies
+88d2e65d7 Merge branch 'master' into nac3
+3b434bb32 typo fixes
+468535dd6 test_rtio: relax tests for unoptimized
+339ef8bdc test_rtio: ignore more unoptimized underflow
+91ac83fce flake: update nac3
+4bdfd6838 fix dds tests
+4ff1bc636 dds: fix missing io_update
+1addd1b15 examples/nac3devices: add DIO
+1d8840d16 urukul: fix cfg reg access
+24ec7fe38 urukul: cpld cleanup
+885521f80 artiq_sinara_tester: cxp nac3 fixes
+5c8ce52e2 suservo: nac3 fixes, analyze in nac3devices
+f2d47f873 urukul: nac3 fixes
+c36f70051 Merge branch 'master' into nac3
+1e323e9ae flake: update dependencies
+a2ef0eb42 flake: update rpi host key for HITL tests
+f5eebd37e flake: update dependencies
+ad5358485 flake: add a test for compiling without optimizations
+bcf817505 test_rtio: ignore some timing tests when running unoptimized
+94209abba ksupport: expose libc/compiler-rt strlen and bcmp
+25f0b2f6d test_embedding: Remove skip from now passing `ListTupleTest`
+8924fc733 flake: add paramiko to devshells
+410204844 flake: add new required fields for buildPythonPackage
+2d4181e1c flake: update dependencies
+4bd69423d flake: update dependencies
+9b61fe3e3 language: add staticmethod support
+f2511d867 flake: update dependencies
+9e83f6515 Revert "compiler: add support for passing flags to extern decorators, mark cache_get as allow-external-alloc"
+c213440c7 flake: update dependencies
+3773c4db4 flake: update dependencies
+7f2d6fa17 Fix missing NAC3 error messages in management system
+f48700433 flake: update dependencies
+41c3c32f1 compiler: add support for passing flags to extern decorators, mark cache_get as allow-external-alloc
+2647df983 Register the module of `@rpc` decorated functions
+a11670c62 flake: update dependencies
+95cc4b78e remove special handling of content modules
+c640bbcff flake: update dependencies
+3c1345655 Merge branch 'master' into nac3
+44f429cad core: update NAC3 registration
+f3d358441 flake: update dependencies
+2ebf80299 coredevice: add decorators to builtins
+36c260c26 nac3: port cxp_grabber driver to nac3
+065d1711b flake: update nac3
+5749e15ab nac3: Update AD9910 and unit tests
+0e7094125 chore: tidy up urukul
+656ee9c46 nac3: update urukul driver and unit test (#2737)
+07002faea flake: update nac3
+e355f0a82 rename nac3 decorator to compile
+fe50416b8 urukul: add (dummy for now) CPLD.proto_rev argument
+e4e3f48e1 update nac3
+cdb9a0fbe flake: update sipyco
+6cbc86758 Merge branch 'master' into nac3
+5392ba381 flake: update dependencies
+611a4bcaa Merge branch 'master' into nac3
+fb08762a3 FFI: pass string directly
+d4f54f0b6 flake: update dependencies
+e0310caa2 test_embedding: _BoolListType nac3 fixes
+a4e262bec ad9834: remove
+14b62dc2f ksupport: invalidate I-cache after rebind
+e186a983d flake: update misoc
+ed24bcfb6 Merge branch 'master' into nac3
+49ed89890 ad9834: nac3 fixes
+a264fa3b7 flake: update dependencies
+adbe8c1ec Merge branch 'master' into nac3
+72095fa2f flake: update dependencies
+7f007b41c flake: update nac3
+466f8943a flake: update dependencies
+a0fff2085 flake: update nac3
+e7a8652ee flake: update nac3
+f38faef9c nac3: enable DMA unit tests
+a2584494e coredevice dma: fix the driver and example for nac3
+390c00254 flake: update dependencies
+d50674fa1 language: make print_rpc async (#2680)
+8c2e1741e flake: update nac3
+0d8260579 flake: update nac3
+554b0749c flake: update nac3
+d13f3f4a1 language: report special python IDs
+7c6d64417 flake: update dependencies
+963aeaeb9 flake: update dependencies
+704efd6fd flake: update dependencies
+a6e8020eb flake: update dependencies
+0f98453d9 flake: update nac3
+644925e11 flake: update dependencies
+b280ac535 flake: update dependencies
+a57cf3e1c remove lit tests
+8d5cfcbe4 Merge branch 'master' into nac3
+7c93a69e6 ad9834: port to nac3
+62faca81e flake: remove pythonparser
+0daa743af Merge branch 'master' into nac3
+977f2f366 test_rtio: add missing annotations
+3b2bc4b6b flake: update nac3
+4659b51bd flake: update nac3
+07170ff7c exceptions: relocate preallocations to NAC3
+45115d0a4 flake: update nac3
+398393315 flake: update nac3
+2d1a33ea1 flake: update nac3
+28c9de3e2 inject fake module for experiments submitted by content
+34d0ba956 coredevice: re-enable annotation test
+b84017e7e kernel core: pass return value
+5f9ddf1ef flake: update dependencies
+28a229a10 update dependencies
+347344053 test: enable async RPC tests
+5dcdeb6e0 flake: update qasync, sync with nixpkgs
+098e2399b flake: update dependencies
+75d925046 update dependencies
+618e2788d test: prevent NAC3 analysis failures of imported but unused methods
+770896a64 flake: run HITL tests
+2b3cfa9f8 firmware: remove the duplicate test_exception_id_sync
+99f76a759 test/coredevice: add tests for exception sync
+bd9648d96 language: sync exception ids and names
+f913e2740 firmware: sync exception ids and names
+8c6a41eb3 flake: update dependencies
+e0aa06157 merge fixes
+52196bb36 Merge branch 'master' into nac3
+9f664afb0 test/portability: port to NAC3
+c763b9b71 test: skip some broken ones
+cef423d54 language/core: make *64 functions return int64
+aec216897 coredevice: fix seconds_to_mu rounding
+016691cee test/performance: port to NAC3
+a7b045059 test/embedding: fix int boundary issues
+461db782b flake: update dependencies
+9e11e1078 test_client: make master termination easier to debug
+fb6609b8a master: migrate deprecated pygit2 commit.hex attr
+f56f0b83e flake: update dependencies
+1a80384fc test/embedding: partial port to NAC3
+ee6002263 test/analyzer: rtio_log now supported on NAC3
+854f4845f test/rtio: port to NAC3 (no DMA)
+735d28be7 coredevice/ad9914: adapt to new binary shift typing
+ff664666b test/stress: partial port to NAC3
+745935785 test/edge_counter: partial port to NAC3
+8183ed1eb test/spi: port to NAC3
+5ffa6e052 examples: fix precompile example for NAC3
+eb4e80e02 core: implement precompile
+2f76ac4de flake: fix rust installation
+e8544ca09 flake: update dependencies
+c04b0797e msys2: qt6
+f6800bdba Merge branch 'master' into nac3
+e93d4aa18 flake: update dependencies
+2d7bdce3b Revert "flake: update pyqt5"
+d59bded1d flake: update NAC3
+e7fa28e0a flake: update nac3
+e29223318 use short exception raise syntax in kernels
+205b08a34 flake: update nac3
+6501ee073 flake: update dependencies
+846d0f924 flake: update pyqt5
+536294433 update dependencies, Python 3.12
+0f6113db3 firmware/ksupport: add rint api
+5506b9a7c flake: update dependencies
+c8f95b142 flake: update dependencies
+1d71d8de9 test_embedding: integer typing fixes
+3db8612f1 artiq_sinara_tester: compilation fixes
+f38a3ab79 remove lit tests for legacy compiler
+567cd45ee Merge branch 'master' into nac3
+84217157d flake: update dependencies
+1a1aa0701 remove cargo-xbuild, fix nix build
+bfbdac0dc flake: update dependencies
+c1a86f91d bump major version number
+94d3e7460 flake: update dependencies
+923ca3377 cache: can't return list[int32] yet
+6cb49ac89 flake: update dependencies
+5503c62cd flake: update dependencies
+8b4572f9c core: pass artiq_builtins to NAC3
+089bc1f16 flake: update dependencies
+4c189f8c0 core: make _ConstGenericMarker available to NAC3
+c618d5daa core: add ConstGeneric
+985da815a flake: update dependencies
+bd61687e8 flake: fix ncurses on vivado
+8c520422f Revert "flake: fix vivado on recent nixpkgs (closes #2274)"
+9a9b3b785 flake: add new booktabs dependency for artiq-manual-pdf
+da510919f flake: update nac3
+e831cb47b windows: add jsonschema dependency
+9f368ee61 update NAC3, switch Windows to CLANG64 and Python 3.11
+931b3172c flake: fix vivado on recent nixpkgs (closes #2274)
+c3802108b update NAC3
+5bbac04be coredevice: use new nac3 binary shift typing rules
+42a9cc725 flake: update dependencies
+4fa0419c8 core: Add legacy_parallel
+f3655aa08 flake: update nac3
+c1574ef7f flake: update nixpkgs
+4784a4203 test_analyzer: Enable test_ttl_pulse test case
+c0d79a0ce embedding_map: Update exception list to match NAC3
+e60d5cab0 artiq_sinara_tester: Fix NAC3 compilation failures
+d0a3ba2bc artiq_sinara_tester: Refactor Almazny to AlmaznyLegacy
+92391c476 flake: fix and upgrade wavedrom (closes #2266)
+700a20ad0 flake: update dependencies
+fa5666fb0 docs: Add instructions to run with custom NAC3
+313449f2b Merge branch 'master' into nac3
+1fb5ecf7e flake: update dependencies
+d96dc11b2 shuttler: use scheduler
+24c3a2fd0 shuttler: port to NAC3
+fc082b62d Merge branch 'master' into nac3
+f89f775c9 flake: update dependencies
+602b680b9 firmware: deal with rust nonsense
+24d252065 flake: update dependencies
+7cffa3f8f Merge branch 'master' into nac3
+4efb86228 flake: update dependencies
+511f125c0 Merge branch 'master' into nac3
+caee570c4 Merge branch 'master' into nac3
+0edcd53c2 artiq_ddb_template: fix almazny
+250d7e8f0 examples/nac3devices: add almazny
+60aa64b79 Merge branch 'master' into nac3
+cc41b7085 msys2: add lmdb dependency
+42e42df43 Merge branch 'master' into nac3
+c13903802 flake: update dependencies
+730a00d21 flake: update dependencies
+5d2b3dafe remove lit from gitignore
+825c49a91 artiq_ddb_template: fix pll_en typing
+2b73ca862 Merge branch 'master' into nac3
+a43baa4cc Merge branch 'master' into nac3
+3bfd743c4 flake: update dependencies
+78daace19 ad9910: fix pll_en doc
+9e8167e1f artiq_ddb_template: fix mistake in 18524911
+287e55c08 sampler: fix mistake in c591e7e3
+7635b9ed9 Merge branch 'master' into nac3
+844193148 msys2: add qt5-svg dependency
+f930b86db flake: cleanup
+66daf3368 flake: remove libartiq-support leftover
+ece1269c2 flake: fix libcrypt.so.1 not found by vivado
+826281a52 Merge branch 'master' into nac3
+c8f76e389 flake: reenable tests
+e6067a218 versioneer: fix default
+0953a0758 Merge branch 'master' into nac3
+c1d865c10 phaser: avoid OverflowError (2)
+a2d0ebabf phaser: avoid OverflowError
+afd4f369d windows: fix python module installation paths
+5ebccc237 flake: disable failing sphinx-argparse tests
+d180af1de flake: bump major version
+cc3eda8e9 flake: update dependencies
+65300bcf9 flake: update dependencies
+6483361e6 Merge branch 'master' into nac3
+526137530 update dependencies
+8e206e92f test_pulse_rate: port to NAC3
+85693e45e fix coredevice comm serve
+d15d92223 test_compile: port to NAC3
+cc3d86ff1 test_cache: port to NAC3
+dc006b1a4 test_analyzer: port to NAC3
+ba30705fa core: allow re-creation of Core object, do not use _allow_registration global variable
+b77f6886b test_i2c: port to NAC3
+cb68ed9f1 test: remove lit tests
+060774366 flake: update NAC3, move to LLVM 14, remove LLD
+77fd47b1f flake: remove libartiq-support
+ce027d9c5 Merge branch 'master' into nac3
+d924bfc95 dyld: handle rebind on symbols relocated by CALL_PLT
+2cd43bf4f dyld: support additional RV32 reloc types
+5d7b01bd3 dyld: rename pltrel to jmprel
+7c3d9bb37 doc: remove unnecessary builtins.__in_sphinx__ hack
+2c7c2d0e3 windows: add pybase64 dependency
+6ac7aced3 windows: use upstream pyqtgraph and qasync
+c3ad77ec3 Merge branch 'master' into nac3
+c7b8dcac4 flake: update dependencies
+abe6b0119 flake: fix openocd build
+09e786ed3 msys2: add python-tqdm dependency
+32d4c520f flake: update dependencies
+45edb9e0f Merge branch 'master' into nac3
+1b348dc00 flake: update NAC3
+fb8c13b54 flake: update dependencies
+fc95dffd0 examples/no_hardware: port to NAC3
+5504177d4 sim: fix imports
+8e594d666 language/core: forward kernel return value
+49cb57029 examples/kasli_suservo: port to NAC3
+a1651d15f urukul: _RegIOUpdate fixes
+13eb6e89f Merge branch 'master' into nac3
+50767c036 examples/kc705_nist_clock: port to NAC3
+316037861 almazny: fix missing (but unused) core
+d6f1c5984 artiq_sinara_tester: fix urukul eeprom_word type
+614dfde33 flake: update dependencies
+72aec819f revert incorrectly committed part of dd57fdc530ba
+4c21d4a19 artiq_sinara_tester: fix almazny attenuation type
+8c825505f artiq_sinara_tester: fix mirny/almazny freq type
+86142db56 artiq_sinara_tester: fix urukul rf switch
+4e7b1c76c flake: nix2.5 metadata
+09f8f9f8b flake: update NAC3
+efea248b6 flake: use NAC3 PGO build
+dd57fdc53 flake: update NAC3
+89aa3a3d9 sim/devices: port to NAC3
+125572b55 language: reimplement sim
+83676927b examples/simple_simulation: fix
+c171deec5 sim: improve formatting
+0978cd0e3 Merge branch 'master' into nac3
+5041e5f6b flake: update dependencies
+dc00f811e flake: update dependencies
+9b910679f doc: MSYS2
+176490a08 windows: fix more setuptools problems
+f704f3daa update sipyco
+13e38913e windows: work around cretinous setuptools problems (3)
+d75f41f8d windows: work around cretinous setuptools problems (2)
+a700c2c4e windows: depend on artiq-comtools
+ae5c64619 windows: work around cretinous setuptools problems
+29c8e3958 windows: depend on qasync
+113a36a9c windows: package qasync
+64b56077c windows: package pyqtgraph
+dfb2908d0 windows: clean up easy-install pollution
+5bc2cf6cc windows: add NAC3 to MSYS2 repos
+0f09bfc3c flake: add msys2-repos to hydra
+73edc01fc windows: create msys2 repos
+546c0ed2c windows: set package dependencies
+a4bdc6c9c build MSYS2 packages
+724fc6292 setup.py: stop checking for dependencies
+34f386255 update NAC3
+b1cfd343e update NAC3
+69cda517f Merge branch 'master' into nac3
+1a3607564 urukul: support dds_reset and sync options
+9d26f887e update NAC3
+8ea6a46ee update NAC3
+ec8ee1e93 language: clean up EmbeddingMap
+0233e50d4 coredevice: fix execution of several kernels with attribute writeback
+0190604ba comm_kernel: remove forgotten json import in 6aec423838
+2bc770ec7 Revert "examples: work around NAC3 segfault"
+8e5fc599e update NAC3
+5c70b9785 runtime: fix EXCEPTION_ID_LOOKUP
+6aec42383 coredevice/comm_kernel: attributes writeback update
+bd3ab50a0 ad9910: cleanup import
+72a6ff6e9 urukul: make RF switch TTL optional
+317c25777 examples: work around NAC3 segfault
+d2add0a68 update NAC3, define option type
+a4c1f8a07 firmware: add UnwrapNoneError exception
+457f3c72c coredevice/comm_kernel: implement attributes writeback
+aa8dfaf0f update NAC3
+743b49e07 coredevice: remove exception workarounds
+1a71a4522 support builtin exceptions
+2f55f5780 update dependencies
+46fe507bd Merge branch 'master' into nac3
+1378cebe2 drivers: use print_rpc
+be3f05a4c artiq/language/core.py: define print_rpc
+87154ea01 update nac3
+25b1bbd10 Merge branch 'master' into nac3
+a7612b973 artiq_sinara_tester: fix type error
+d5806fc95 artiq_sinara_tester: add test_ttl_in NAC3TODO
+c9fbb7024 artiq_flash: fix bit2bin
+5e4ae4dfd ad9910: fix int64 operations
+af1b6d8d3 embedding_map: avoid key 0
+76132c95c update nac3
+9d82f968f artiq_sinara_tester: port to NAC3
+ba106de24 suservo: use bool for enable
+b7d35446e almazny: port to NAC3
+8fc0e5d3a suservo: port to NAC3
+be07481eb ad9910: port to NAC3
+0256c91d5 ad9912: add missing NAC3TODO
+a3b55b616 dma: tentative port to NAC3
+156cf42f7 nac3devices: compile KasliEEPROM
+fb0b806f6 kasli_i2c: port to NAC3
+01e55f573 i2c: port to NAC3
+e6f26b5c7 Merge branch 'master' into nac3
+5af22af5f examples/nac3devices: fix and reenable Phaser
+b66cce14f update NAC3
+ea55c2956 phaser: port to NAC3
+a407007e0 fastino: port to NAC3
+64a0c4b29 merge artiq.coredevice.runtime into comm_kernel
+2e4233274 grabber: port to NAC3
+bf8e18886 ad9914: port to NAC3
+0266d5249 flake: re-enable basic tests
+5572f223d hardware_testbench: port imports to NAC3
+158d65c82 test_spi: port imports to NAC3
+5acf008be test_rtio: port imports to NAC3
+a606afa3b test_phaser: port imports to NAC3
+0e20058da test_performance: port imports and type annotations to NAC3
+6eb1c4e13 sim: fix import for NAC3
+9a05907b7 test_embedding: port imports and type annotations to NAC3
+70531ae1e ad9910: port imports and type annotations to NAC3
+2720bfa39 i2c: port syscalls to NAC3
+645c4590b test: remove test_numpy (NAC3TODO)
+d7c915ff7 test_cache: partially port to NAC3
+b9a359a45 fix flake.lock
+d924d0cd2 flake: work around allowedUris problem
+bea7e952f edge_counter: restore keyword arguments
+7b02918a4 worker_impl: port to NAC3
+892b96892 update nac3
+2d5114f32 remove legacy compiler test
+6388b8245 coredevice/cache: port to nac3
+5db9bc9bd edge_counter: port to nac3
+41c597a70 remove parts that won't initially be supported by nac3
+404811cd5 Merge branch 'master' into nac3
+808f96861 examples/nac3devices: add sampler
+3d66a6be5 sampler: port to nac3
+464818da3 ad9912: exception with string is supported by nac3
+e3a2825ae update nac3
+f7b315d66 Merge branch 'master' into nac3
+9ab740d00 update nac3 and dependencies
+e76df491f coredevice/exceptions: nac3 no longer breaks because of docstrings
+7b56a72da Merge branch 'master' into nac3
+ec6c6dd98 add comments about preallocate_runtime_exception_names/EXCEPTION_ID_LOOKUP syncing
+9f620491a coredevice: fix exception return handling
+8e1ac8b84 Revert "core: remove legacy synthesized filename"
+8aa8647ba coredevice: use NAC3 exception support
+207ff918c coredevice: define ValueError locally
+e8e1ccd4f coredevice/exceptions: port to NAC3
+2616e1928 ttl: fix type error
+4cd47fa93 update NAC3
+92c1bc214 core: remove legacy synthesized filename
+f2f2e12b9 language: implemented embedding map and exception
+ceceabbaf Merge branch 'master' into nac3
+c8ec2b0d7 flake: update dependencies
+1c56b08a4 flake: update dependencies
+b452789f0 Merge branch 'master' into nac3
+02555e48a update NAC3, use power operator
+4ad8f5d6c flake: reexport and use mimalloc-enabled Python
+59af28d6f flake: use LLVM 13 for consistency with NAC3
+17d217d47 flake: update nac3
+c795cb40e flake: update nac3
+51cb8adba update NAC3
+97365de10 flake: update nac3
+243fe5ea8 flake: update nac3
+088c3b470 update NAC3, use new Kernel type annotation
+d85360438 flake: update dependencies
+dad23b698 coredevice/ad53xx: use len(list)
+60cbde082 flake: update dependencies
+31ac6881d update NAC3, restore original delays
+61d3e22ea flake: update nac3
+3f3186005 flake: get rid of TARGET_AR
+e34f4cc99 language: add floor64 and ceil64
+12c39aaaa coredevice/adf5356: use nac3 floor/ceil
+2059fd375 language: add virtual
+1bdf301e2 flake: update NAC3
+6a09b92fb examples/nac3devices: fix mirny clocking
+233c5f4bf update NAC3
+b2f7022e0 examples/nac3devices: demonstrate new capabilities
+e45c194c4 coredevice/adf5356: port to NAC3
+519e3d64d flake: update dependencies
+580049642 coredevice/adf5356_reg: port to NAC3
+29f42ccd8 coredevice/mirny: port to NAC3
+f5a5b7a22 examples: add nac3devices
+3a6fcd069 remove old examples
+d8e1a22bd coredevice/ad53xx: remove problematic default param
+cbc767119 flake: update dependencies
+34789767f firmware: fix compilation warning
+bd95d9cf3 coredevice/zotino: port to NAC3
+64877c058 fix Python 3.9 compatibility
+aa5f667ad ad9912: increase slack (no kernel invariants in NAC3 yet?)
+cc1080e05 ad9912: fix frequency_to_ftw
+f4acf0440 coredevice: fix run method
+01f21f754 flake: update dependencies
+222968d68 coredevice: reinstate AugAssign methods
+7a2428b6a flake: update nac3
+3f807ad19 flake: update nac3
+38e554fe9 artiq_run: fix ELF handling
+75dad8090 Merge branch 'master' into nac3
+f07c747fa flake: update nac3, use patched nixpkgs from nac3
+95eb21811 import_cache: read files only once
+1ea3cf48d fix core.run invokation
+5a3bf4894 reinstate import_cache hack (#416)
+64c180c9e update NAC3
+c7cca11ad update NAC3
+a8129093d artiq_run: port to NAC3 (WIP)
+df87cc88d coredevice/ad9912: port to NAC3
+93f24c9f9 coredevice/urukul: port to NAC3
+31955d0c7 coredevice/spi2: port to NAC3
+b7313ddc3 coredevice/rtio: fix tuple annotation
+262cd6254 examples/blink_forever: port to NAC3
+2f031285a coredevice/ttl: port to NAC3
+deb8a7746 coredevice/rtio: port to NAC3
+8f596ed04 coredevice: fix typing problems
+c8ebd80fe NAC3 integration WIP
+2f60a38a9 flake: update dependencies
+e5620a6b7 language: remove old type annotations
+a3543a552 bump ARTIQ version number
+9a1a8e0e8 update dependencies
+977543e05 Merge branch 'master' into nac3
+fbd5c7025 Revert "runtime: expose rint from libm"
+17c283d09 runtime: expose rint from libm
+97909d761 remove old compiler, add nac3 dependency (WIP)

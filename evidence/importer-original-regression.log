@@ -1,0 +1,68 @@
+test_input_bus (test_vivado_integration.PinWiring.test_input_bus) ... FAIL
+test_input_offset (test_vivado_integration.PinWiring.test_input_offset) ... FAIL
+test_input_scalar (test_vivado_integration.PinWiring.test_input_scalar) ... FAIL
+test_output_bus (test_vivado_integration.PinWiring.test_output_bus) ... ok
+test_output_offset (test_vivado_integration.PinWiring.test_output_offset) ... FAIL
+
+======================================================================
+FAIL: test_input_bus (test_vivado_integration.PinWiring.test_input_bus)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 43, in test_input_bus
+    self.check_direction("I", 31, 0, 0x12345678)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 37, in check_direction
+    run_simulation(dut, stimulus())
+  File "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py", line 513, in run_simulation
+    s.run()
+  File "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py", line 502, in run
+    self._process_generators(cd)
+  File "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py", line 456, in _process_generators
+    request = generator.send(reply)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 31, in stimulus
+    self.assertEqual((yield internal), value)
+AssertionError: 0 != 305419896
+
+======================================================================
+FAIL: test_input_offset (test_vivado_integration.PinWiring.test_input_offset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 46, in test_input_offset
+    self.check_direction("I", 15, 8, 0xA5)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 23, in check_direction
+    self.assertEqual(len(internal), left - right + 1)
+AssertionError: 16 != 8
+
+======================================================================
+FAIL: test_input_scalar (test_vivado_integration.PinWiring.test_input_scalar)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 40, in test_input_scalar
+    self.check_direction("I", 0, 0, 1)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 37, in check_direction
+    run_simulation(dut, stimulus())
+  File "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py", line 513, in run_simulation
+    s.run()
+  File "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py", line 502, in run
+    self._process_generators(cd)
+  File "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py", line 456, in _process_generators
+    request = generator.send(reply)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 31, in stimulus
+    self.assertEqual((yield internal), value)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_output_offset (test_vivado_integration.PinWiring.test_output_offset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 52, in test_output_offset
+    self.check_direction("O", 15, 8, 0xA5)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/test_vivado_integration.py", line 23, in check_direction
+    self.assertEqual(len(internal), left - right + 1)
+AssertionError: 16 != 8
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (failures=4)

@@ -1,0 +1,1415 @@
+--- /home/codex-hil/artiq-zynqmp/evidence/amd-current-ddr-init.c	2026-10-05 15:33:56.973607442 +0100
++++ boards/genesys_zu-5ev/3_bootable/xfsbl_ddr_init.c	2026-10-05 14:58:10.137218139 +0100
+@@ -751,44 +751,6 @@
+ 	return XFSBL_SUCCESS;
+ }
+ 
+-#if !(defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670))
+-/*****************************************************************************/
+-/**
+- * This function computes DIMM parameters based upon the SPD information.
+- *
+- * @param	DdrDataPtr is pointer to DDR Initialization Data Structure
+- * @param	SpdData is the array containing SPD data got from EEPROM
+- *
+- * @return	XFSBL_SUCCESS or XFSBL_FAILURE
+- *
+- *****************************************************************************/
+-static u32 XFsbl_DdrComputeDimmParameters(u8 *SpdData,
+-		struct DdrcInitData *DdrDataPtr)
+-{
+-	u32 Status = XFSBL_FAILURE;
+-
+-	switch (SpdData[2U]) {
+-	case SPD_MEMTYPE_DDR4:
+-		Status = XFsbl_ComputeDdr4Params(SpdData, DdrDataPtr);
+-		break;
+-	case SPD_MEMTYPE_DDR3:
+-		Status = XFsbl_ComputeDdr3Params(SpdData, DdrDataPtr);
+-		break;
+-	case SPD_MEMTYPE_LPDDR3:
+-	case SPD_MEMTYPE_LPDDR4:
+-		Status = XFsbl_ComputeLpDdrParams(SpdData, DdrDataPtr);
+-		break;
+-	default:
+-		/* Do nothing as Status is initialized to XFSBL_FAILURE */
+-		break;
+-	}
+-
+-	return Status;
+-}
+-#endif
+-
+ /*****************************************************************************/
+ /**
+  * This function calculates the HIF Addresses for Non-DDR4 mode
+@@ -1935,585 +1897,6 @@
+ 	return XFSBL_SUCCESS;
+ }
+ 
+-#if !(defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670))
+-/*****************************************************************************/
+-/**
+- * This function calculates the DDRC register values for DDR3
+- *
+- * @param	PDimmPtr is pointer to DIMM parameters Data Structure
+- * @param	DdrCfg is the array to store register field values
+- *
+- * @return	None
+- *
+- *****************************************************************************/
+-static u32 XFsbl_DdrcCalcDdr3RegVal(XFsbl_DimmParams *PDimmPtr, u32 *DdrCfg)
+-{
+-	u32 Val;
+-	u32 BurstLength;
+-	u32 CasLatency;
+-	u32 Twr;
+-	u32 Bit654;
+-	u32 POdt = 0U;
+-	float FVal;
+-
+-	DdrCfg[DDR_DDR3] = 1U;
+-
+-	Val = (u32)(((PDimmPtr->TRefi / 1000.0) / 2.0 / PDimmPtr->ClockPeriod) / 32.0);
+-	if ((PDimmPtr->RDimm || PDimmPtr->UDimm) && (PDimmPtr->NumRankAddr == 1U)) {
+-		DdrCfg[DDR_REFRESH_TIMER1_START_VALUE_X32] = Val / 2U;
+-	}
+-	if (PDimmPtr->TRefRange) {
+-		Val /= 2U;
+-	}
+-	DdrCfg[DDR_T_RFC_NOM_X32] = XFSBL_MAX(1U, XFSBL_MIN(Val, 0xFFEU));
+-
+-	DdrCfg[DDR_POST_CKE_X1024] = XFSBL_MAX(1U, (u32)XFsbl_Ceil(400.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2U) + 1U);
+-
+-	DdrCfg[DDR_PRE_CKE_X1024] = XFSBL_MAX(1U, (u32)XFsbl_Ceil(500000.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2U) + 1U);
+-
+-	DdrCfg[DDR_DRAM_RSTN_X1024] = XFSBL_MAX(((u32)XFsbl_Ceil(200000.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2.0) + 1U), 1U);
+-
+-	BurstLength = (PDimmPtr->BurstLength == 4U) ? 2U : 0U;
+-
+-	CasLatency = PDimmPtr->CasLatency;
+-
+-	Bit654 = (CasLatency < 12U) ? CasLatency - 4U : CasLatency - 12U;
+-
+-	Twr = (u32)XFsbl_Ceil(15.0 / PDimmPtr->ClockPeriod);
+-	Twr = XFSBL_MAX(5U, XFSBL_MIN(16U, Twr));
+-	DdrCfg[DDR_MR] = XFSBL_SETBITS(((Twr < 8U) ? (Twr - 4U) : (u32)XFsbl_Ceil(Twr / 2.0)), 9U, 3U) + (1U << 8U) +
+-			XFSBL_SETBITS(Bit654, 4U, 3U) + (((CasLatency < 12U) ? 0U : 1U) << 2U) +
+-			XFSBL_SETBITS(BurstLength, 0U, 2U);
+-
+-	if (PDimmPtr->DramOdt == 60U) {
+-		POdt = (1U << 2U);
+-	} else if (PDimmPtr->DramOdt == 120U) {
+-		POdt = (1U << 6U);
+-	} else if (PDimmPtr->DramOdt == 40U) {
+-		POdt = (1U << 6U) + (1U << 2U);
+-	} else if (PDimmPtr->DramOdt == 20U) {
+-		POdt = (1U << 9U);
+-	} else if (PDimmPtr->DramOdt == 30U) {
+-		POdt = (1U << 9U) + (1U << 2U);
+-	} else {
+-		if (PDimmPtr->NumRankAddr == 0U) {
+-			POdt = (1U << 2U);
+-		} else {
+-			POdt = (1U << 6U);
+-		}
+-	}
+-
+-	DdrCfg[DDR_EMR] = (PDimmPtr->AdditiveLatency << 3U) + POdt + ((PDimmPtr->DramDrv == 34U) ? 0x2U : 0U);
+-
+-	DdrCfg[DDR_EMR2] = (PDimmPtr->NumRankAddr << 9U) + XFSBL_SETBITS((PDimmPtr->CasWriteLatency - 5U), 3U, 3U);
+-
+-	DdrCfg[DDR_EMR2] += (PDimmPtr->TRefRange << 7U);
+-
+-	DdrCfg[DDR_EMR3] = 0U;
+-
+-	DdrCfg[DDR_DEV_ZQINIT_X32] = (512U / 32U) + 1U;
+-
+-	if ((PDimmPtr->RDimm || PDimmPtr->UDimm) && (PDimmPtr->NumRankAddr == 1U)) {
+-		DdrCfg[DDR_DIMM_STAGGER_CS_EN] = 1U;
+-	}
+-
+-	DdrCfg[DDR_DIFF_RANK_WR_GAP] = (u32)XFsbl_Ceil(DdrCfg[DDR_DIFF_RANK_WR_GAP] / 2.0) + 3U;
+-
+-	DdrCfg[DDR_DIFF_RANK_RD_GAP] = (u32)XFsbl_Ceil(DdrCfg[DDR_DIFF_RANK_RD_GAP] / 2.0) + 3U;
+-
+-	Twr = (u32)XFsbl_Ceil(15.0 / PDimmPtr->ClockPeriod);
+-	if ((PDimmPtr->MemType == SPD_MEMTYPE_DDR4) && PDimmPtr->Crc) {
+-		if ((PDimmPtr->SpeedBin >= 1866U) && (PDimmPtr->SpeedBin <= 2666U)) {
+-			Twr += (u32)XFSBL_MAX(XFsbl_Ceil(3.75 / PDimmPtr->ClockPeriod), 5U);
+-		} else if (PDimmPtr->SpeedBin == 1600U) {
+-			Twr += (u32)XFSBL_MAX(XFsbl_Ceil(3.75 / PDimmPtr->ClockPeriod), 4U);
+-		}
+-	}
+-
+-	if (PDimmPtr->WrPreamble && (PDimmPtr->MemType == SPD_MEMTYPE_DDR4)) {
+-		Twr += 1U;
+-	}
+-
+-	DdrCfg[DDR_WR2PRE] = (u32)(PDimmPtr->WriteLatency + PDimmPtr->BurstLength / 2.0 + Twr) / 2U;
+-
+-	if (PDimmPtr->En2tTimingMode && (PDimmPtr->MemType == SPD_MEMTYPE_DDR4)) {
+-		DdrCfg[DDR_WR2PRE] += 1U;
+-	}
+-
+-	DdrCfg[DDR_T_RAS_MAX] = (u32)XFSBL_MAX(1U, (((9.0 * (PDimmPtr->TRefi / 1000.0)) / PDimmPtr->ClockPeriod / 1024.0) - 1U) / 2.0);
+-
+-	if (PDimmPtr->En2tTimingMode) {
+-		DdrCfg[DDR_T_RAS_MIN] = (u32)XFsbl_Ceil(((PDimmPtr->TRasPs /
+-						1000.0) / PDimmPtr->ClockPeriod / 2.0));
+-	} else {
+-		DdrCfg[DDR_T_RAS_MIN] = XFsbl_Round(((PDimmPtr->TRasPs / 1000.0) /
+-					PDimmPtr->ClockPeriod / 2.0));
+-	}
+-
+-	PDimmPtr->TXp = XFSBL_MAX(10U, 24.0 / PDimmPtr->ClockPeriod);
+-
+-	DdrCfg[DDR_T_XP] = (u32)XFSBL_MIN(XFsbl_Ceil(PDimmPtr->TXp / 2.0), 31U);
+-
+-	if (PDimmPtr->En2tTimingMode) {
+-		DdrCfg[DDR_RD2PRE] = (u32)XFsbl_Ceil((PDimmPtr->AdditiveLatency + XFSBL_MAX((u32)XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod), 4U)) / 2.0);
+-	} else {
+-		DdrCfg[DDR_RD2PRE] = (u32)(PDimmPtr->AdditiveLatency + XFSBL_MAX((u32)XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod), 4U)) / 2U;
+-	}
+-
+-	DdrCfg[DDR_RD2WR] = (u32)XFsbl_Ceil((PDimmPtr->ReadLatency + (PDimmPtr->BurstLength/2U) + 2U - PDimmPtr->WriteLatency) / 2.0) + 2U;
+-
+-	PDimmPtr->TWtr = (u32)XFSBL_MAX(XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod), 4U);
+-
+-	DdrCfg[DDR_WR2RD] = (u32)XFsbl_Ceil((float)(PDimmPtr->WriteLatency + PDimmPtr->TWtr + PDimmPtr->BurstLength / 2U) / 2.0);
+-
+-	DdrCfg[DDR_T_MRD] = 0x2U;
+-
+-	PDimmPtr->TMod = XFSBL_MAX(12U, 15U / PDimmPtr->ClockPeriod) + PDimmPtr->RDimm;
+-
+-	DdrCfg[DDR_T_MOD] = (u32)XFsbl_Ceil(PDimmPtr->TMod / 2.0);
+-
+-	DdrCfg[DDR_T_RRD] = (u32)XFsbl_Ceil(XFSBL_MAX(XFsbl_Ceil((PDimmPtr->TRrdPs / 1000.0) / PDimmPtr->ClockPeriod), 4U) / 2.0);
+-
+-	DdrCfg[DDR_T_RP] = (u32)(XFsbl_Ceil((PDimmPtr->TRpPs / 1000.0) / 2.0) + 1U) + 1U;
+-
+-	DdrCfg[DDR_T_CKSRX] = (u32)XFsbl_Ceil(XFSBL_MAX(XFsbl_Ceil(10.0 / PDimmPtr->ClockPeriod), 5.0) / 2.0);
+-
+-	DdrCfg[DDR_T_CKSRE] = (u32)XFsbl_Ceil(XFSBL_MAX(XFsbl_Ceil(10.0 / PDimmPtr->ClockPeriod), 5.0) / 2.0);
+-
+-	DdrCfg[DDR_T_CKESR] = (u32)XFsbl_Ceil((XFSBL_MAX(XFsbl_Ceil((XFSBL_MAX(5.0, 45.0 / ((PDimmPtr->SpeedBin / 266U) + 3U))) / PDimmPtr->ClockPeriod), 3.0) + 1.0) / 2.0);
+-
+-	FVal = XFSBL_MAX(XFsbl_Ceil((XFSBL_MAX(5.0, 45.0 / ((PDimmPtr->SpeedBin / 266U) + 3U))) / PDimmPtr->ClockPeriod), 3.0);
+-
+-	DdrCfg[DDR_T_CKE] = (u32)XFsbl_Ceil(FVal / 2.0);
+-
+-	DdrCfg[DDR_T_CKCSX] = (u32)XFsbl_Ceil((FVal + 2.0) / 2.0);
+-
+-	DdrCfg[DDR_T_CKPDE] = DdrCfg[DDR_T_CKSRE];
+-
+-	DdrCfg[DDR_T_CKPDX] = DdrCfg[DDR_T_CKSRX];
+-
+-	DdrCfg[DDR_T_XS_DLL_X32] = (u32)XFsbl_Ceil(512.0 / 32.0 / 2.0) + 1U;
+-
+-	DdrCfg[DDR_T_XS_X32] = (u32)XFsbl_Ceil(512.0 / 32.0 / 2.0) + 1U;
+-
+-	DdrCfg[DDR_T_ZQ_LONG_NOP] = (u32)XFsbl_Ceil(XFSBL_MAX(256.0, 320.0 / PDimmPtr->ClockPeriod) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_SHORT_NOP] = (u32)XFsbl_Ceil(XFSBL_MAX(64.0, 80.0 / PDimmPtr->ClockPeriod) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_SHORT_INTERVAL_X1024] = (u32)((100000000.0 / PDimmPtr->ClockPeriod) / 1024.0);
+-
+-	DdrCfg[DDR_DFI_T_RDDATA_EN] = PDimmPtr->ReadLatency - 4U - PDimmPtr->RDimm;
+-
+-	DdrCfg[DDR_DFI_TPHY_WRLAT] = PDimmPtr->WriteLatency - 3U - PDimmPtr->RDimm;
+-
+-	DdrCfg[DDR_DFI_T_WRDATA_DELAY] = 2U;
+-
+-	DdrCfg[DDR_DFI_DATA_CS_POLARITY] = 0U;
+-
+-	DdrCfg[DDR_PHY_DBI_MODE] = PDimmPtr->PhyDbiMode;
+-
+-	DdrCfg[DDR_DM_EN] = 0U;
+-
+-	DdrCfg[DDR_WR_ODT_HOLD] = (PDimmPtr->BurstLength / 2U) + 3U;
+-
+-	DdrCfg[DDR_WR_ODT_DELAY] = 0U;
+-
+-	DdrCfg[DDR_RD_ODT_HOLD] = (PDimmPtr->BurstLength / 2U) + 2U;
+-
+-	DdrCfg[DDR_RD_ODT_DELAY] = PDimmPtr->CasLatency - PDimmPtr->CasWriteLatency;
+-
+-	DdrCfg[DDR_RANK1_WR_ODT] = 2U * PDimmPtr->NumRankAddr;
+-
+-	DdrCfg[DDR_RANK0_WR_ODT] = 0x1U;
+-
+-	return XFSBL_SUCCESS;
+-}
+-
+-/*****************************************************************************/
+-/**
+- * This function calculates the DDRC register values for LPDDR3
+- *
+- * @param	PDimmPtr is pointer to DIMM parameters Data Structure
+- * @param	DdrCfg is the array to store register field values
+- *
+- * @return	None
+- *
+- *****************************************************************************/
+-static u32 XFsbl_DdrcCalcLpddr3RegVal(XFsbl_DimmParams *PDimmPtr, u32 *DdrCfg)
+-{
+-
+-	u32 Val;
+-	u32 Twr;
+-	float FVal;
+-
+-	DdrCfg[DDR_EN_2T_TIMING_MODE] = PDimmPtr->En2tTimingMode;
+-
+-	DdrCfg[DDR_LPDDR3] = 1U;
+-
+-	DdrCfg[DDR_DERATE_VALUE] = ((PDimmPtr->ClockPeriod / 2U) > 1.875) ? 0U : 1U;
+-
+-	DdrCfg[DDR_MR4_READ_INTERVAL] = (u32)(PDimmPtr->DerateIntD * 1000U / PDimmPtr->ClockPeriod / 2.0);
+-
+-	DdrCfg[DDR_DEEPPOWERDOWN_EN] = PDimmPtr->DeepPwrDnEn;
+-
+-	DdrCfg[DDR_PER_BANK_REFRESH] = PDimmPtr->PerBankRefresh;
+-
+-	Val = (u32)(((PDimmPtr->TRefi / 1000.0) / 2.0 / PDimmPtr->ClockPeriod) / 32.0);
+-	if (PDimmPtr->PerBankRefresh == 0U) {
+-		if (PDimmPtr->Capacity != 1024U) Val /= 2U;
+-	} else {
+-		if (PDimmPtr->Capacity >= 2048U)
+-			Val = (u32)((487.5 / 2U / PDimmPtr->ClockPeriod) / 32.0);
+-
+-		else if (PDimmPtr->Capacity == 1024U)
+-			Val = (u32)((975.0 / 2U / PDimmPtr->ClockPeriod) / 32.0);
+-	}
+-	if (PDimmPtr->TRefRange) {
+-		Val /= 4U;
+-	}
+-
+-	DdrCfg[DDR_T_RFC_NOM_X32] = XFSBL_MIN(Val, 0xFFEU);
+-
+-	DdrCfg[DDR_T_RFC_NOM_X32] = XFSBL_MAX(1U, DdrCfg[DDR_T_RFC_NOM_X32]);
+-
+-	DdrCfg[DDR_POST_CKE_X1024] = XFSBL_MAX(1U, (u32)XFsbl_Ceil(200000.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2U) + 1U);
+-
+-	DdrCfg[DDR_PRE_CKE_X1024] = XFSBL_MAX(1U, (u32)XFsbl_Ceil(100.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2U) + 1U);
+-
+-	Twr = (u32)XFsbl_Ceil(XFSBL_MAX(15U, 4U * PDimmPtr->ClockPeriod) / PDimmPtr->ClockPeriod);
+-
+-	Twr = XFSBL_MAX(6U, XFSBL_MIN(12U, Twr));
+-
+-	DdrCfg[DDR_MR] =  XFSBL_SETBITS(((Twr < 10U) ? (Twr - 2U) : (Twr % 10U)), 5U, 3U) + XFSBL_SETBITS(3U, 0U, 3U);
+-
+-	Val = XFSBL_MAX(6U, XFSBL_MIN(10U, (PDimmPtr->FreqMhz / 66U) - 2U));
+-
+-	Twr = (u32)XFsbl_Ceil(XFSBL_MAX(15U, 4U * PDimmPtr->ClockPeriod) /
+-			PDimmPtr->ClockPeriod);
+-
+-	DdrCfg[DDR_EMR] = (1U << 6U) + (((Twr >= 10U) ? 1U : 0U) << 4U) +	XFSBL_SETBITS(Val, 0U, 4U);
+-
+-	if (PDimmPtr->DramDrv == 40U) {
+-		Val = 2U;
+-	} else if (PDimmPtr->DramDrv == 48U) {
+-		Val = 3U;
+-	} else if (PDimmPtr->DramDrv == 60U) {
+-		Val = 4U;
+-	} else if (PDimmPtr->DramDrv == 80U) {
+-		Val = 6U;
+-	} else {
+-		Val = 1U;
+-	}
+-	DdrCfg[DDR_EMR2] = Val;
+-
+-	DdrCfg[DDR_EMR3] = 0U;
+-
+-	DdrCfg[DDR_DEV_ZQINIT_X32] = XFSBL_MIN(1U + ((u32)XFsbl_Ceil(1000.0 / (32.0 * PDimmPtr->ClockPeriod))), 255U);
+-
+-	DdrCfg[DDR_MAX_AUTO_INIT_X1024] = XFSBL_MIN(1U + ((u32)XFsbl_Ceil(10000.0 / (1024U * PDimmPtr->ClockPeriod))), 1023U);
+-
+-	DdrCfg[DDR_DIFF_RANK_WR_GAP] = (u32)XFsbl_Ceil(DdrCfg[DDR_DIFF_RANK_WR_GAP] / 2.0) + 3U;
+-
+-	DdrCfg[DDR_DIFF_RANK_RD_GAP] = (u32)XFsbl_Ceil(DdrCfg[DDR_DIFF_RANK_RD_GAP] / 2.0) + 3U;
+-
+-	Twr = (u32)XFsbl_Ceil(XFSBL_MAX(15.0 /
+-				PDimmPtr->ClockPeriod, 4.0));
+-
+-	DdrCfg[DDR_WR2PRE] = (u32)(PDimmPtr->WriteLatency +
+-			PDimmPtr->BurstLength / 2.0 + Twr + 1.0) / 2U;
+-
+-	FVal = XFSBL_MIN(9.0 * (PDimmPtr->TRefi / 1000.0), 70200.0);
+-	FVal =  (FVal / PDimmPtr->ClockPeriod / 1024.0);
+-	FVal = (u32)(FVal - 1U) / 2.0;
+-	DdrCfg[DDR_T_RAS_MAX] = (u32)XFSBL_MAX(1U, FVal);
+-
+-	if (PDimmPtr->En2tTimingMode) {
+-		DdrCfg[DDR_T_RAS_MIN] = (u32)XFsbl_Ceil(((PDimmPtr->TRasPs /
+-						1000.0) / PDimmPtr->ClockPeriod / 2.0));
+-	} else {
+-		DdrCfg[DDR_T_RAS_MIN] = XFsbl_Round(((PDimmPtr->TRasPs / 1000.0) /
+-					PDimmPtr->ClockPeriod / 2.0));
+-	}
+-
+-	PDimmPtr->TXp =  XFSBL_MAX(7.5 / PDimmPtr->ClockPeriod, 3U);
+-
+-	DdrCfg[DDR_T_XP] = (u32)XFSBL_MIN(XFsbl_Ceil(PDimmPtr->TXp / 2.0), 31U);
+-
+-	Val = PDimmPtr->BurstLength / 2U + XFSBL_MAX(((u32)XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod)), 4U) - 4U;
+-
+-	if (PDimmPtr->En2tTimingMode) {
+-		DdrCfg[DDR_RD2PRE] = (u32)XFsbl_Ceil(Val / 2.0);
+-	} else {
+-		DdrCfg[DDR_RD2PRE] = (u32)Val / 2U;
+-	}
+-
+-	FVal = XFsbl_Ceil(5.5 / PDimmPtr->ClockPeriod);
+-	DdrCfg[DDR_RD2WR] = (u32)XFsbl_Ceil((PDimmPtr->ReadLatency + PDimmPtr->BurstLength / 2U +
+-			FVal + 1U - PDimmPtr->WriteLatency) / 2.0) + 2U;
+-
+-	PDimmPtr->TWtr = (u32)XFSBL_MAX(XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod), 4U);
+-
+-	DdrCfg[DDR_WR2RD] = (u32)XFsbl_Ceil((float)(PDimmPtr->WriteLatency + PDimmPtr->TWtr + (PDimmPtr->BurstLength / 2U) + 1U) / 2.0);
+-
+-	DdrCfg[DDR_T_MRW] = 10U;
+-
+-	DdrCfg[DDR_T_MRD] = (u32)XFsbl_Ceil(XFSBL_MAX(10U, 15U / PDimmPtr->ClockPeriod) / 2.0);
+-
+-	DdrCfg[DDR_T_RRD] = (u32)XFsbl_Ceil((XFSBL_MAX(XFsbl_Ceil(10.0 / PDimmPtr->ClockPeriod), 2U) + (1.875 * PDimmPtr->TRefRange)) / 2.0);
+-
+-	DdrCfg[DDR_T_RP] = (u32)(XFsbl_Ceil((PDimmPtr->TRpPs / 1000.0) / 2.0) + 1U) + 1U;
+-
+-	DdrCfg[DDR_T_CKSRX] = 1U;
+-
+-	DdrCfg[DDR_T_CKSRE] = 1U;
+-
+-	DdrCfg[DDR_T_CKESR] = (u32)XFsbl_Ceil((XFSBL_MAX(XFsbl_Ceil(15.0 / PDimmPtr->ClockPeriod), 3.0)) / 2.0);
+-
+-	DdrCfg[DDR_T_CKE] = (u32)XFsbl_Ceil((XFSBL_MAX(XFsbl_Ceil(15.0 / PDimmPtr->ClockPeriod), 3.0)) / 2.0);
+-
+-	DdrCfg[DDR_T_CKCSX] = (u32)XFsbl_Ceil((XFSBL_MAX(7.5 / PDimmPtr->ClockPeriod, 3.0) + 2.0) / 2.0) + 2U;
+-
+-	DdrCfg[DDR_T_CKPDE] = 1U;
+-
+-	DdrCfg[DDR_T_CKPDX] = 1U;
+-
+-	DdrCfg[DDR_T_XS_DLL_X32] = (u32)XFsbl_Ceil((((PDimmPtr->TRfcPs / 1000.0) + 10U) / PDimmPtr->ClockPeriod) / 32.0 / 2.0) + 1U;
+-
+-	DdrCfg[DDR_T_XS_X32] = (u32)XFsbl_Ceil((((PDimmPtr->TRfcPs / 1000.0) + 10U) / PDimmPtr->ClockPeriod) / 32.0 / 2.0) + 1U;
+-
+-	DdrCfg[DDR_ZQ_RESISTOR_SHARED] = (PDimmPtr->Ddp == 1U);
+-
+-	DdrCfg[DDR_T_ZQ_LONG_NOP] = (u32)XFsbl_Ceil(((360.0 / PDimmPtr->ClockPeriod)) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_SHORT_NOP] = (u32)XFsbl_Ceil((90.0 / PDimmPtr->ClockPeriod) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_RESET_NOP] = (u32)XFsbl_Ceil(XFSBL_MAX(3U, 50.0 / PDimmPtr->ClockPeriod) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_SHORT_INTERVAL_X1024] = (u32)((400000000.0 / PDimmPtr->ClockPeriod) / 1024.0);
+-
+-	DdrCfg[DDR_DFI_T_RDDATA_EN] = (PDimmPtr->ReadLatency + (u32)(1.5 / PDimmPtr->ClockPeriod)) - 4U - PDimmPtr->RDimm;
+-
+-	DdrCfg[DDR_DFI_TPHY_WRLAT] = (PDimmPtr->WriteLatency + 1U) - 3U - PDimmPtr->RDimm;
+-
+-	DdrCfg[DDR_DFI_T_WRDATA_DELAY] = 2U;
+-
+-	DdrCfg[DDR_DFI_DATA_CS_POLARITY] = 0U;
+-
+-	DdrCfg[DDR_DM_EN] = 0U;
+-
+-	DdrCfg[DDR_WR_ODT_HOLD] = PDimmPtr->WriteLatency + 2U + (PDimmPtr->BurstLength / 2U);
+-
+-	DdrCfg[DDR_WR_ODT_DELAY] = 0U;
+-
+-	DdrCfg[DDR_RD_ODT_HOLD] = (u32)XFsbl_Ceil(5.5 / PDimmPtr->ClockPeriod) + 5U;
+-
+-	DdrCfg[DDR_RD_ODT_DELAY] = PDimmPtr->ReadLatency - (u32)XFsbl_Ceil(3.5 / PDimmPtr->ClockPeriod);
+-
+-	if (PDimmPtr->NumRankAddr == 0U) {
+-		DdrCfg[DDR_RANK1_WR_ODT] = 0U;
+-	} else {
+-		if (PDimmPtr->Ddp == 1U)
+-			DdrCfg[DDR_RANK1_WR_ODT] = 1U;
+-		else
+-			DdrCfg[DDR_RANK1_WR_ODT] = 2U;
+-	}
+-
+-	DdrCfg[DDR_RANK0_WR_ODT] = 0x1U;
+-
+-	return XFSBL_SUCCESS;
+-}
+-
+-/*****************************************************************************/
+-/**
+- * This function calculates the DDRC register values for LPDDR4
+- *
+- * @param	PDimmPtr is pointer to DIMM parameters Data Structure
+- * @param	DdrCfg is the array to store register field values
+- *
+- * @return	None
+- *
+- *****************************************************************************/
+-static u32 XFsbl_DdrcCalcLpddr4RegVal(XFsbl_DimmParams *PDimmPtr, u32 *DdrCfg)
+-{
+-	u32 Val;
+-	u32 Val2 = 0U;
+-	u32 OdtLon = 0U;
+-	float FVal;
+-	float XVal;
+-
+-	DdrCfg[DDR_EN_2T_TIMING_MODE] = PDimmPtr->En2tTimingMode;
+-
+-	DdrCfg[DDR_LPDDR4] = 1U;
+-
+-	DdrCfg[DDR_DERATE_VALUE] = ((PDimmPtr->ClockPeriod / 2U) > 1.875) ? 0U : 1U;
+-
+-	DdrCfg[DDR_MR4_READ_INTERVAL] = (u32)(PDimmPtr->DerateIntD * 1000U / PDimmPtr->ClockPeriod / 2.0);
+-
+-	DdrCfg[DDR_PER_BANK_REFRESH] = PDimmPtr->PerBankRefresh;
+-
+-	Val = (u32)(((3904U / ((PDimmPtr->PerBankRefresh != 0U) ? 8U : 1U)) / 2U / PDimmPtr->ClockPeriod) / 32.0);
+-
+-	if (PDimmPtr->TRefRange) {
+-		Val /= 4U;
+-	}
+-
+-	DdrCfg[DDR_T_RFC_NOM_X32] = XFSBL_MIN(Val, 0xFFEU);
+-
+-	DdrCfg[DDR_T_RFC_NOM_X32] = XFSBL_MAX(1U, DdrCfg[DDR_T_RFC_NOM_X32]);
+-
+-	DdrCfg[DDR_POST_CKE_X1024] = XFSBL_MAX(1U, (u32)XFsbl_Ceil(2000.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2U) + 1U);
+-
+-	DdrCfg[DDR_PRE_CKE_X1024] = XFSBL_MAX(1U, (u32)XFsbl_Ceil(2000000.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2U) + 1U);
+-
+-	DdrCfg[DDR_DRAM_RSTN_X1024] = XFSBL_MAX(((u32)XFsbl_Ceil(200000.0 / (PDimmPtr->ClockPeriod * 1024.0) / 2.0) + 1U), 1U);
+-
+-	DdrCfg[DDR_MR] = XFSBL_SETBITS((u32)XFSBL_MAX(0U, ((PDimmPtr->FreqMhz / 266U) - 1U)), 4U, 3U) + XFSBL_SETBITS(1U, 2U, 1U) + (PDimmPtr->RdPostamble << 7U);
+-
+-	Val = XFSBL_MAX(0U, ((PDimmPtr->FreqMhz / 266U) - 1U));
+-
+-	DdrCfg[DDR_EMR] = (((PDimmPtr->UseSetB) ? 1U : 0U) << 6U) + XFSBL_SETBITS(Val, 3U, 3U) + XFSBL_SETBITS(Val, 0U, 3U);
+-
+-	if (PDimmPtr->DramDrv == 240U) {
+-		Val = 1U;
+-	} else if (PDimmPtr->DramDrv == 120U) {
+-		Val = 2U;
+-	} else if (PDimmPtr->DramDrv == 80U) {
+-		Val = 3U;
+-	} else if (PDimmPtr->DramDrv == 60U) {
+-		Val = 4U;
+-	} else if (PDimmPtr->DramDrv == 48U) {
+-		Val = 5U;
+-	} else {
+-		Val = 6U;
+-	}
+-	DdrCfg[DDR_EMR2] = (PDimmPtr->WrDbi << 7U) + (PDimmPtr->RdDbi << 6U)  + XFSBL_SETBITS(Val, 3U, 3U) + (PDimmPtr->WrPostamble << 1U) + 1U;
+-
+-	DdrCfg[DDR_EMR3] = (((PDimmPtr->DataMask) ? 0U : 1U) << 5U) + (1U << 3U);
+-
+-	DdrCfg[DDR_DEV_ZQINIT_X32] = (1024U / 32U) + 1U;
+-
+-	DdrCfg[DDR_DIFF_RANK_WR_GAP] += (1U + PDimmPtr->WrPostamble);
+-	DdrCfg[DDR_DIFF_RANK_WR_GAP] = (u32)XFsbl_Ceil(DdrCfg[DDR_DIFF_RANK_WR_GAP] / 2.0) + 3U;
+-
+-	DdrCfg[DDR_DIFF_RANK_RD_GAP] += (1U + PDimmPtr->RdPostamble);
+-	DdrCfg[DDR_DIFF_RANK_RD_GAP] = (u32)XFsbl_Ceil(DdrCfg[DDR_DIFF_RANK_RD_GAP] / 2.0) + 3U;
+-
+-	DdrCfg[DDR_WR2PRE] = (u32)XFsbl_Ceil((PDimmPtr->WriteLatency + (PDimmPtr->BurstLength / 2.0) + ((u32)XFsbl_Ceil(XFSBL_MAX(18.0 / PDimmPtr->ClockPeriod, 4.0))) + 1.0) / 2U);
+-
+-	DdrCfg[DDR_T_RAS_MAX] = (u32)XFSBL_MAX(1U, ((u32)(((XFSBL_MIN(9.0 * (PDimmPtr->TRefi / 1000.0), 70200.0)) / PDimmPtr->ClockPeriod / 1024.0) - 1U) / 2.0));
+-
+-	DdrCfg[DDR_T_RAS_MIN] = (u32)XFsbl_Ceil(((PDimmPtr->TRasPs / 1000.0) / PDimmPtr->ClockPeriod / 2.0));
+-
+-	PDimmPtr->TXp =  XFSBL_MAX(7.5 / PDimmPtr->ClockPeriod, 5U);
+-	DdrCfg[DDR_T_XP] = (u32)XFSBL_MIN(XFsbl_Ceil(PDimmPtr->TXp / 2.0), 31U);
+-
+-	DdrCfg[DDR_RD2PRE] = (u32)(PDimmPtr->BurstLength / 2U + XFSBL_MAX((u32)XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod), 8U) - 8U) / 2U;
+-
+-	DdrCfg[DDR_RD2PRE] = (u32)XFsbl_Ceil(Val / 2.0);
+-
+-	if (PDimmPtr->FreqMhz <= 800U) {
+-		OdtLon = PDimmPtr->UseSetB * 6U;
+-	} else {
+-		OdtLon = (PDimmPtr->FreqMhz / 533U) * 2U;
+-	}
+-
+-	FVal = XFsbl_Ceil(3.6 / PDimmPtr->ClockPeriod);
+-	if (PDimmPtr->Lpddr4Hynix == 1U) {
+-		XVal = PDimmPtr->ReadLatency + PDimmPtr->BurstLength / 2U +
+-			FVal + 2U - OdtLon - XFsbl_Ceil(1.5 /
+-					PDimmPtr->ClockPeriod) + (6U) +
+-			(PDimmPtr->WriteLatency - PDimmPtr->WdqsOn);
+-	} else {
+-		XVal = PDimmPtr->ReadLatency + PDimmPtr->BurstLength / 2U +
+-			FVal + 2U - OdtLon - XFsbl_Ceil(1.5 /
+-					PDimmPtr->ClockPeriod);
+-	}
+-
+-	if (PDimmPtr->RdPostamble == 0U) {
+-		XVal = XVal + 0.5;
+-	} else if (PDimmPtr->RdPostamble == 1U) {
+-		XVal = XVal + 1.5;
+-	}
+-	DdrCfg[DDR_RD2WR] = (u32)XFsbl_Ceil(XVal / 2.0) + 2U;
+-
+-	PDimmPtr->TWtr = (u32)XFSBL_MAX(XFsbl_Ceil(10.0 / PDimmPtr->ClockPeriod), 8U);
+-
+-	Val = PDimmPtr->WriteLatency + PDimmPtr->TWtr + PDimmPtr->BurstLength / 2U;
+-
+-	if ((PDimmPtr->Lpddr4Hynix == 1U) &&
+-			(PDimmPtr->NumRankAddr == 1U)) {
+-		Val2 = PDimmPtr->WdqsOff - PDimmPtr->WriteLatency -
+-			PDimmPtr->BurstLength / 2U - (2U);
+-		Val += Val2;
+-	}
+-
+-	DdrCfg[DDR_WR2RD] = (u32)XFsbl_Ceil((float)(Val + 1U) / 2U);
+-
+-	DdrCfg[DDR_T_MRW] = (u32)XFSBL_MAX(XFsbl_Ceil(14.0 / PDimmPtr->ClockPeriod), 10U);
+-
+-	DdrCfg[DDR_T_MRD] = (u32)XFsbl_Ceil((XFSBL_MAX(14.0 / PDimmPtr->ClockPeriod, 10U)) / 2.0);
+-
+-	DdrCfg[DDR_T_RRD] = (u32)XFsbl_Ceil((XFSBL_MAX(XFsbl_Ceil(10.0 / PDimmPtr->ClockPeriod), 4U) + (1.875 * PDimmPtr->TRefRange)) / 2.0);
+-
+-	DdrCfg[DDR_T_RP] = (u32)XFsbl_Ceil((PDimmPtr->TRpPs / 1000.0) /	2.0);
+-
+-	DdrCfg[DDR_T_CKSRX] = 1U;
+-
+-	DdrCfg[DDR_T_CKSRE] = (u32)XFsbl_Ceil(XFSBL_MAX(7.5 / PDimmPtr->ClockPeriod, 3U) / 2.0);
+-
+-	DdrCfg[DDR_T_CKESR] = (u32)XFsbl_Ceil(XFSBL_MAX(15U / PDimmPtr->ClockPeriod, 4U) / 2.0);
+-
+-	DdrCfg[DDR_T_CKE] = (u32)XFsbl_Ceil(XFSBL_MAX(15U / PDimmPtr->ClockPeriod, 4U) / 2.0);
+-
+-	DdrCfg[DDR_T_CKCSX] = (u32)XFsbl_Ceil((XFSBL_MAX(7.5 / PDimmPtr->ClockPeriod, 5.0) + 2.0) / 2.0);
+-
+-	DdrCfg[DDR_T_CKPDE] = (u32)XFsbl_Ceil(XFSBL_MAX(7.5 / PDimmPtr->ClockPeriod, 3.0) / 2.0);
+-
+-	DdrCfg[DDR_T_CKPDX] = 1U;
+-
+-	DdrCfg[DDR_T_XS_DLL_X32] = (u32)XFsbl_Ceil((((PDimmPtr->TRfcPs / 1000.0) + 7.5) / PDimmPtr->ClockPeriod) / 32.0 / 2.0) + 1U;
+-
+-	DdrCfg[DDR_T_XS_X32] = (u32)XFsbl_Ceil((((PDimmPtr->TRfcPs / 1000.0) + 7.5) / PDimmPtr->ClockPeriod) / 32.0 / 2.0) + 1U;
+-
+-	if (PDimmPtr->SpeedBin >= 3200U) {
+-		DdrCfg[DDR_T_CMDCKE] = 1U;
+-
+-		DdrCfg[DDR_T_CKEHCMD] = (u32)XFsbl_Ceil(XFSBL_MAX(7.5 / PDimmPtr->ClockPeriod, 3.0) / 2.0);
+-	}
+-
+-	DdrCfg[DDR_T_ZQ_LONG_NOP] = (u32)XFsbl_Ceil((1000.0 / PDimmPtr->ClockPeriod) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_SHORT_NOP] = (u32)XFsbl_Ceil(XFSBL_MAX(30.0 / PDimmPtr->ClockPeriod, 8U) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_RESET_NOP] = (u32)XFsbl_Ceil(XFSBL_MAX(3U, 50.0 / PDimmPtr->ClockPeriod) / 2.0);
+-
+-	DdrCfg[DDR_T_ZQ_SHORT_INTERVAL_X1024] = (u32)((400000000.0 / PDimmPtr->ClockPeriod) / 1024.0);
+-
+-	Val = (PDimmPtr->SpeedBin >= 1600U) ? ((u32)(1.5 / PDimmPtr->ClockPeriod)) : 1U;
+-	DdrCfg[DDR_DFI_T_RDDATA_EN] = (PDimmPtr->ReadLatency + Val) - 4U - PDimmPtr->RDimm;
+-
+-	DdrCfg[DDR_DFI_TPHY_WRLAT] = (PDimmPtr->WriteLatency + 1U) - 3U - PDimmPtr->RDimm;
+-
+-	DdrCfg[DDR_DFI_T_WRDATA_DELAY] = 3U;
+-
+-	DdrCfg[DDR_DFI_DATA_CS_POLARITY] = 1U;
+-
+-	DdrCfg[DDR_RD_DBI_EN] = PDimmPtr->RdDbi;
+-
+-	DdrCfg[DDR_WR_DBI_EN] = PDimmPtr->WrDbi;
+-
+-	DdrCfg[DDR_DM_EN] = PDimmPtr->DataMask;
+-
+-	DdrCfg[DDR_RANK1_WR_ODT] = 0U;
+-
+-	DdrCfg[DDR_RANK0_WR_ODT] = 0x0U;
+-
+-	return XFSBL_SUCCESS;
+-}
+-#endif
+-
+ /*****************************************************************************/
+ /**
+  * This function writes the DDRC registers with calculated values
+@@ -3007,85 +2390,6 @@
+ 	Xil_Out32(XFSBL_DDRC_BASE_ADDR + 0x2190U, Val);
+ }
+ 
+-#if !(defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670))
+-/*****************************************************************************/
+-/**
+- * This function calculates and writes DDR controller registers
+- *
+- * @param	DdrDataPtr is pointer to DDR Initialization Data Structure
+- *
+- * @return	None
+- *
+- *****************************************************************************/
+-static u32 XFsbl_DdrcRegsInit(struct DdrcInitData *DdrDataPtr)
+-{
+-	XFsbl_DimmParams *PDimmPtr = &DdrDataPtr->PDimm;
+-	u32 DdrCfg[300U] = XFSBL_DDRC_REG_DEFVAL;
+-	u32 Status;
+-
+-	Status = XFsbl_DdrcCalcCommonRegVal(DdrDataPtr, PDimmPtr, DdrCfg);
+-	if (Status != XFSBL_SUCCESS) {
+-		Status = XFSBL_FAILURE;
+-		goto END;
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_DDR3) {
+-		Status = XFsbl_DdrcCalcDdr3RegVal(PDimmPtr, DdrCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_DDR4) {
+-		Status = XFsbl_DdrcCalcDdr4RegVal(PDimmPtr, DdrCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_LPDDR3) {
+-		Status = XFsbl_DdrcCalcLpddr3RegVal(PDimmPtr, DdrCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_LPDDR4) {
+-		Status = XFsbl_DdrcCalcLpddr4RegVal(PDimmPtr, DdrCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	DdrCfg[DDR_DFI_TPHY_RDCSLAT] = DdrCfg[DDR_DFI_T_RDDATA_EN] - 2U;
+-
+-	if (!PDimmPtr->RDimm) {
+-		DdrCfg[DDR_DFI_TPHY_WRCSLAT] = DdrCfg[DDR_DFI_TPHY_WRLAT] - 2U;
+-	}
+-
+-	/* Store the MR values which will be used for PHY Registers */
+-	PDimmPtr->Mr = DdrCfg[DDR_MR];
+-	PDimmPtr->Emr = DdrCfg[DDR_EMR];
+-	PDimmPtr->Emr2 = DdrCfg[DDR_EMR2];
+-	PDimmPtr->Emr3 = DdrCfg[DDR_EMR3];
+-	PDimmPtr->Mr4 = DdrCfg[DDR_MR4];
+-	PDimmPtr->Mr5 = DdrCfg[DDR_MR5];
+-	PDimmPtr->Mr6 = DdrCfg[DDR_MR6];
+-
+-	XFsbl_DdrcRegsWrite(PDimmPtr, DdrCfg);
+-
+-
+-END:
+-	return Status;
+-}
+-#endif
+-
+ /*****************************************************************************/
+ /**
+  * This function calculates the PHY register values common to all DDR types
+@@ -3478,500 +2782,6 @@
+ 	return XFSBL_SUCCESS;
+ }
+ 
+-#if !(defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670))
+-/*****************************************************************************/
+-/**
+- * This function calculates the PHY register values for DDR3
+- *
+- * @param	PDimmPtr is pointer to DIMM parameters Data Structure
+- * @param	PhyCfg is the array to store register field values
+- *
+- * @return	XFSBL_SUCCESS or XFSBL_FAILURE
+- *
+- *****************************************************************************/
+-static u32 XFsbl_PhyCalcDdr3RegVal(XFsbl_DimmParams *PDimmPtr, u32 *PhyCfg)
+-{
+-	u32 Val;
+-	u32 BurstLength;
+-	u32 CasLatency;
+-	u32 Twr;
+-	u32 Bit2;
+-	u32 Bit654;
+-	u32 POdt = 0U;
+-
+-	float FVal = 0.0;
+-
+-	Val = (u32)(((PDimmPtr->TRefi / 1000.0) / PDimmPtr->ClockPeriod));
+-	if (PDimmPtr->TRefRange) {
+-		Val /= 2U;
+-	}
+-
+-	PhyCfg[PHY_TREFPRD] = (8U * Val) - 1000U;
+-
+-	PhyCfg[PHY_NOSRA] = 0x1U;
+-
+-	PhyCfg[PHY_DDRMD] = 0x3U;
+-
+-
+-	PhyCfg[PHY_TRRD] = (u32)XFSBL_MAX(XFsbl_Ceil((PDimmPtr->TRrdPs / 1000.0) /
+-			PDimmPtr->ClockPeriod), 4U);
+-
+-	PhyCfg[PHY_TRTP] = PDimmPtr->AdditiveLatency + XFSBL_MAX(((u32)XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod)), 4U);
+-
+-	if ((PDimmPtr->TMod >= 12U) || (PDimmPtr->TMod <= 17U)) {
+-		PhyCfg[PHY_TMOD] = (u32)XFsbl_Ceil(PDimmPtr->TMod - 12.0);
+-	} else {
+-		PhyCfg[PHY_TMOD] = 5U;
+-	}
+-
+-	PhyCfg[PHY_TMRD] = 4U;
+-
+-	FVal = ((PDimmPtr->TRfcPs / 1000.0) + 10.0) / PDimmPtr->ClockPeriod;
+-
+-	PhyCfg[PHY_TXS] = (u32)XFsbl_Ceil(XFSBL_MAX(512.0, FVal));
+-
+-	PhyCfg[PHY_TDQSCK] = 0U;
+-
+-	PhyCfg[PHY_TXP] = (u32)XFSBL_MIN(XFsbl_Ceil(PDimmPtr->TXp), 31U);
+-
+-	PhyCfg[PHY_TRCD] = (PDimmPtr->TRcdPs / 1000.0) - PDimmPtr->AdditiveLatency + 2U;
+-
+-	PhyCfg[PHY_RC10] = XFSBL_MAX(0U, (PDimmPtr->SpeedBin / 266U) - 3U);
+-
+-	BurstLength = (PDimmPtr->BurstLength == 4U) ? 2U : 0U;
+-
+-	CasLatency = PDimmPtr->CasLatency;
+-
+-	if (CasLatency < 12U) {
+-		Bit2 = 0U;
+-
+-		Bit654 = CasLatency - 4U;
+-
+-	} else {
+-		Bit2 = 1U;
+-
+-		Bit654 = CasLatency - 12U;
+-	}
+-
+-	Twr = (u32)XFsbl_Ceil(15.0 / PDimmPtr->ClockPeriod);
+-	Twr = XFSBL_MAX(5U, XFSBL_MIN(16U, Twr));
+-	PhyCfg[PHY_R060] = XFSBL_SETBITS(((Twr < 9U) ? (Twr - 4U) : ((Twr + 1U) / 2U)), 9U, 3U) + (1U << 8U) + XFSBL_SETBITS(Bit654, 4U, 3U)
+-		+ (Bit2 << 2U) + XFSBL_SETBITS(BurstLength, 0U, 2U);
+-
+-
+-	if (PDimmPtr->DramOdt == 60U) {
+-		POdt = (0U << 9U) + (0U << 6U) + (1U << 2U);
+-	} else if (PDimmPtr->DramOdt == 120U) {
+-		POdt = (0U << 9U) + (1U << 6U) + (0U << 2U);
+-	} else if (PDimmPtr->DramOdt == 40U) {
+-		POdt = (0U << 9U) + (1U << 6U) + (1U << 2U);
+-	} else if (PDimmPtr->DramOdt == 20U) {
+-		POdt = (1U << 9U) + (0U << 6U) + (0U << 2U);
+-	} else if (PDimmPtr->DramOdt == 30U) {
+-		POdt = (1U << 9U) + (0U << 6U) + (1U << 2U);
+-	} else {
+-		if (PDimmPtr->NumRankAddr == 0U) {
+-			POdt = (1U << 2U);
+-		} else {
+-			POdt = (1U << 6U);
+-		}
+-	}
+-
+-	PhyCfg[PHY_R061] = (PDimmPtr->AdditiveLatency << 3U) + POdt + ((PDimmPtr->DramDrv == 34U) ? 0x2U : 0x0U);
+-
+-	PhyCfg[PHY_R062] = (PDimmPtr->NumRankAddr << 9U)  + XFSBL_SETBITS((PDimmPtr->CasWriteLatency - 5U), 3U, 3U) + (PDimmPtr->TRefRange << 7U);
+-
+-	PhyCfg[PHY_R063] = 0x0U;
+-
+-	PhyCfg[PHY_DTWBDDM] = 0x0U;
+-
+-	if (PDimmPtr->En2ndClk) {
+-		PhyCfg[PHY_CKOEMODE] = 0x5U;
+-
+-		PhyCfg[PHY_CKNCLKGATE0] = 0x0U;
+-
+-		PhyCfg[PHY_CKCLKGATE0] = 0x0U;
+-
+-		PhyCfg[PHY_CKNCLKGATE1] = 0x0U;
+-
+-		PhyCfg[PHY_CKCLKGATE1] = 0x0U;
+-	} else {
+-		PhyCfg[PHY_CKOEMODE] = ((1U - PDimmPtr->NumRankAddr) * 4U) + 5U;
+-
+-		PhyCfg[PHY_CKNCLKGATE0] = (1U - PDimmPtr->NumRankAddr) * 0x2U;
+-
+-		PhyCfg[PHY_CKCLKGATE0] = PhyCfg[PHY_CKNCLKGATE0];
+-
+-		PhyCfg[PHY_CKNCLKGATE1] = PhyCfg[PHY_CKNCLKGATE0];
+-
+-		PhyCfg[PHY_CKCLKGATE1] = PhyCfg[PHY_CKNCLKGATE0];
+-	}
+-
+-	PhyCfg[PHY_ACREFSSEL] = 0x30U;
+-
+-	PhyCfg[PHY_ACVREFISEL] = 0x30U;
+-
+-	PhyCfg[PHY_PDAEN] = 0x0U;
+-
+-	if (PDimmPtr->Zc1656 || PDimmPtr->HasEccComp) {
+-		PhyCfg[PHY_DVINIT] = 0x2EU;
+-	} else {
+-		if (PDimmPtr->Lp4NoOdt) {
+-			PhyCfg[PHY_DVINIT] = 0x2FU;
+-		} else {
+-			PhyCfg[PHY_DVINIT] = 0x19U;
+-		}
+-	}
+-
+-	PhyCfg[PHY_A03BD] = 0x0U;
+-
+-	PhyCfg[PHY_A02BD] = 0x0U;
+-
+-	PhyCfg[PHY_A01BD] = 0x0U;
+-
+-	PhyCfg[PHY_A00BD] = 0x0U;
+-
+-	PhyCfg[PHY_A07BD] = 0x0U;
+-
+-	PhyCfg[PHY_A06BD] = 0x0U;
+-
+-	PhyCfg[PHY_A05BD] = 0x0U;
+-
+-	PhyCfg[PHY_A04BD] = 0x0U;
+-
+-	PhyCfg[PHY_A11BD] = 0x0U;
+-
+-	PhyCfg[PHY_A10BD] = 0x0U;
+-
+-	PhyCfg[PHY_A09BD] = 0x0U;
+-
+-	PhyCfg[PHY_A08BD] = 0x0U;
+-
+-	PhyCfg[PHY_ODT_MODE] = 0x0U;
+-
+-	PhyCfg[PHY_ZPROG_ASYM_DRV_PD] = 0xBU;
+-
+-	PhyCfg[PHY_ZPROG_ASYM_DRV_PU] = 0xBU;
+-
+-	PhyCfg[PHY_DXREFSSEL] = 0x30U;
+-
+-	PhyCfg[PHY_DXREFIEN] = 0x3U;
+-
+-	PhyCfg[PHY_DXREFISELR1] = 0x30U;
+-
+-	PhyCfg[PHY_DXREFISELR0] = 0x30U;
+-
+-	return XFSBL_SUCCESS;
+-}
+-
+-/*****************************************************************************/
+-/**
+- * This function calculates the PHY register values for LPDDR3
+- *
+- * @param	PDimmPtr is pointer to DIMM parameters Data Structure
+- * @param	PhyCfg is the array to store register field values
+- *
+- * @return	XFSBL_SUCCESS or XFSBL_FAILURE
+- *
+- *****************************************************************************/
+-static u32 XFsbl_PhyCalcLpddr3RegVal(XFsbl_DimmParams *PDimmPtr, u32 *PhyCfg)
+-{
+-	u32 Val;
+-
+-	Val = (u32)(((PDimmPtr->TRefi / 1000.0) / PDimmPtr->ClockPeriod));
+-	if (PDimmPtr->PerBankRefresh == 0U) {
+-		if (PDimmPtr->Capacity != 1024U) {
+-			Val /= 2U;
+-		}
+-	} else {
+-		if (PDimmPtr->Capacity >= 2048U) {
+-			Val = (u32)((487.5 / PDimmPtr->ClockPeriod));
+-		} else if (PDimmPtr->Capacity == 1024U) {
+-			Val = (u32)((975.0 / PDimmPtr->ClockPeriod));
+-		}
+-	}
+-	if (PDimmPtr->TRefRange) {
+-		Val /= 4U;
+-	}
+-	PhyCfg[PHY_TREFPRD] = (8U * Val) - 1000U;
+-
+-	PhyCfg[PHY_NOSRA] = 0x1U;
+-
+-	PhyCfg[PHY_DDRMD] = 0x1U;
+-
+-	PhyCfg[PHY_TRRD] = (u32)XFSBL_MAX(XFsbl_Ceil(10.0 / PDimmPtr->ClockPeriod), 2U) + (1.875 * PDimmPtr->TRefRange);
+-
+-	PhyCfg[PHY_TRTP] =  PDimmPtr->BurstLength / 2U + XFSBL_MAX((u32)XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod), 4U) - 4U;
+-
+-	PhyCfg[PHY_TMRD] = XFSBL_MIN(((u32)XFsbl_Ceil((XFSBL_MAX(10U, 15U / PDimmPtr->ClockPeriod)) / 2.0)) * 2U, 32U);
+-
+-	PhyCfg[PHY_TXS] = (u32)XFsbl_Ceil(XFSBL_MAX(2.0, ((PDimmPtr->TRfcPs / 1000.0) + 10U) / PDimmPtr->ClockPeriod));
+-
+-	PhyCfg[PHY_TDQSCKMAX] = 0x5U;
+-
+-	PhyCfg[PHY_TDQSCK] = (u32)(1.5 / PDimmPtr->ClockPeriod);
+-
+-	PhyCfg[PHY_TXP] = (u32)XFSBL_MIN(XFsbl_Ceil(PDimmPtr->TXp), 31U);
+-
+-	PhyCfg[PHY_TRCD] = (PDimmPtr->TRcdPs / 1000.0) - PDimmPtr->AdditiveLatency + 2U;
+-
+-	PhyCfg[PHY_R061] = PDimmPtr->Mr;
+-
+-	PhyCfg[PHY_R062] = PDimmPtr->Emr;
+-
+-	PhyCfg[PHY_R063] = PDimmPtr->Emr2;
+-
+-	PhyCfg[PHY_DQODT] = (PDimmPtr->DramOdt == 240U) ? 3U : 2U;
+-
+-	if ((PDimmPtr->AddrMirror == 1U) && (PDimmPtr->DramWidth == 16U)) {
+-		PhyCfg[PHY_CA1BYTE1] = 3U;
+-	}
+-
+-	if ((PDimmPtr->AddrMirror == 1U) && (PDimmPtr->DramWidth == 16U)) {
+-		PhyCfg[PHY_CA1BYTE0] = 2U;
+-	}
+-
+-	if (PDimmPtr->En2ndClk) {
+-		PhyCfg[PHY_CKOEMODE] = 0x5U;
+-
+-		PhyCfg[PHY_CKNCLKGATE0] = 0x0U;
+-
+-		PhyCfg[PHY_CKCLKGATE0] = 0x0U;
+-
+-		PhyCfg[PHY_CKNCLKGATE1] = 0x0U;
+-
+-		PhyCfg[PHY_CKCLKGATE1] = 0x0U;
+-	} else {
+-		PhyCfg[PHY_CKOEMODE] = ((1U - PDimmPtr->NumRankAddr) * 4U) + 5U;
+-
+-		PhyCfg[PHY_CKNCLKGATE0] = (1U - PDimmPtr->NumRankAddr) * 0x2U;
+-
+-		PhyCfg[PHY_CKCLKGATE0] = PhyCfg[PHY_CKNCLKGATE0];
+-
+-		PhyCfg[PHY_CKNCLKGATE1] = PhyCfg[PHY_CKNCLKGATE0];
+-
+-		PhyCfg[PHY_CKCLKGATE1] = PhyCfg[PHY_CKNCLKGATE0];
+-	}
+-
+-	PhyCfg[PHY_ACREFSSEL] = 0x30U;
+-
+-	PhyCfg[PHY_ACVREFISEL] = 0x30U;
+-
+-	PhyCfg[PHY_PDAEN] = 0x0U;
+-
+-	if (PDimmPtr->Zc1656 || PDimmPtr->HasEccComp) {
+-		PhyCfg[PHY_DVINIT] = 0x2EU;
+-	} else {
+-		if (PDimmPtr->Lp4NoOdt) {
+-			PhyCfg[PHY_DVINIT] = 0x2FU;
+-		} else {
+-			PhyCfg[PHY_DVINIT] = 0x19U;
+-		}
+-	}
+-
+-	PhyCfg[PHY_ACTBD] = 4U;
+-
+-	PhyCfg[PHY_BG1BD] = 4U;
+-
+-	PhyCfg[PHY_BG0BD] = 4U;
+-
+-	PhyCfg[PHY_BA1BD] = 4U;
+-
+-	PhyCfg[PHY_BA0BD] = 4U;
+-
+-	PhyCfg[PHY_A03BD] = 4U;
+-
+-	PhyCfg[PHY_A02BD] = 4U;
+-
+-	PhyCfg[PHY_A01BD] = 4U;
+-
+-	PhyCfg[PHY_A00BD] = 4U;
+-
+-	PhyCfg[PHY_A07BD] = 4U;
+-
+-	PhyCfg[PHY_A06BD] = 4U;
+-
+-	PhyCfg[PHY_A05BD] = 4U;
+-
+-	PhyCfg[PHY_A04BD] = 4U;
+-
+-	PhyCfg[PHY_A11BD] = 4U;
+-
+-	PhyCfg[PHY_A10BD] = 4U;
+-
+-	PhyCfg[PHY_A09BD] = 4U;
+-
+-	PhyCfg[PHY_A08BD] = 4U;
+-
+-	PhyCfg[PHY_A15BD] = 4U;
+-
+-	PhyCfg[PHY_A14BD] = 4U;
+-
+-	PhyCfg[PHY_A13BD] = 4U;
+-
+-	PhyCfg[PHY_A12BD] = 4U;
+-
+-	PhyCfg[PHY_ODT_MODE] = 0x1U;
+-
+-	PhyCfg[PHY_ZPROG_DRAM_ODT] = 0x7U;
+-
+-	PhyCfg[PHY_ZPROG_HOST_ODT] = 7U;
+-
+-	PhyCfg[PHY_ZPROG_ASYM_DRV_PD] = 0xBU;
+-
+-	PhyCfg[PHY_ZPROG_ASYM_DRV_PU] = 0xBU;
+-
+-	PhyCfg[PHY_DXREFSSEL] = 0x30U;
+-
+-	PhyCfg[PHY_DXREFIEN] = 0x3U;
+-
+-	PhyCfg[PHY_DXREFISELR1] = 0x3FU;
+-
+-	PhyCfg[PHY_DXREFISELR0] = 0x3FU;
+-
+-	return XFSBL_SUCCESS;
+-}
+-
+-/*****************************************************************************/
+-/**
+- * This function calculates the PHY register values for LPDDR4
+- *
+- * @param	PDimmPtr is pointer to DIMM parameters Data Structure
+- * @param	PhyCfg is the array to store register field values
+- *
+- * @return	XFSBL_SUCCESS or XFSBL_FAILURE
+- *
+- *****************************************************************************/
+-static u32 XFsbl_PhyCalcLpddr4RegVal(XFsbl_DimmParams *PDimmPtr, u32 *PhyCfg)
+-{
+-	u32 Val;
+-
+-	Val = (u32)(((3904U / ((PDimmPtr->PerBankRefresh != 0U) ? 8U : 1U)) / PDimmPtr->ClockPeriod));
+-	if (PDimmPtr->TRefRange) {
+-		Val /= 4U;
+-	}
+-
+-	PhyCfg[PHY_TREFPRD] = (8U * Val) - 1000U;
+-
+-	PhyCfg[PHY_NOSRA] = 0x0U;
+-
+-	PhyCfg[PHY_DDRMD] = 0x5U;
+-
+-	PhyCfg[PHY_TRRD] = (u32)XFSBL_MAX(XFsbl_Ceil(10.0 / PDimmPtr->ClockPeriod), 4U) + (1.875 * PDimmPtr->TRefRange);
+-
+-	PhyCfg[PHY_TRAS] = (u32)XFsbl_Ceil(((PDimmPtr->TRasPs / 1000.0) / PDimmPtr->ClockPeriod / 2.0)) * 2U;
+-
+-	PhyCfg[PHY_TRTP] = (PDimmPtr->BurstLength / 2U) + XFSBL_MAX((u32)XFsbl_Ceil(7.5 / PDimmPtr->ClockPeriod), 8U) - 8U;
+-
+-	PhyCfg[PHY_TMOD] = 5U;
+-
+-	PhyCfg[PHY_TMRD] = XFSBL_MIN(((u32)XFsbl_Ceil((XFSBL_MAX(14.0 / PDimmPtr->ClockPeriod, 10U)) / 2.0)) * 2U, 32U);
+-
+-	PhyCfg[PHY_TXS] = (u32)XFsbl_Ceil(XFSBL_MAX(2.0, ((PDimmPtr->TRfcPs / 1000.0) + 7.5) / PDimmPtr->ClockPeriod));
+-
+-	PhyCfg[PHY_TDQSCKMAX] = 0x5U;
+-
+-	PhyCfg[PHY_TDQSCK] = (PDimmPtr->SpeedBin >= 1600U) ? ((u32)(1.5 / PDimmPtr->ClockPeriod)) : 1U;
+-
+-	PhyCfg[PHY_TXP] = (u32)XFSBL_MIN(XFsbl_Ceil(PDimmPtr->TXp) + 3U, 31U);
+-
+-	PhyCfg[PHY_TRCD] = XFSBL_MAX(((PDimmPtr->TRcdPs / 1000.0) - PDimmPtr->AdditiveLatency), (PhyCfg[PHY_TRAS] - 8U));
+-
+-	PhyCfg[PHY_R061] = PDimmPtr->Mr;
+-
+-	PhyCfg[PHY_R062] = PDimmPtr->Emr;
+-
+-	PhyCfg[PHY_R063] = PDimmPtr->Emr2;
+-
+-	PhyCfg[PHY_R064] = PDimmPtr->Emr3;
+-
+-	if (PDimmPtr->DramCaOdt == 240U) {
+-		PhyCfg[PHY_CAODT] = 1U;
+-	} else if (PDimmPtr->DramCaOdt == 120U) {
+-		PhyCfg[PHY_CAODT] = 2U;
+-	} else if (PDimmPtr->DramCaOdt == 80U) {
+-		PhyCfg[PHY_CAODT] = 3U;
+-	} else if (PDimmPtr->DramCaOdt == 60U) {
+-		PhyCfg[PHY_CAODT] = 4U;
+-	} else if (PDimmPtr->DramCaOdt == 48U) {
+-		PhyCfg[PHY_CAODT] = 5U;
+-	} else if (PDimmPtr->DramCaOdt == 40U) {
+-		PhyCfg[PHY_CAODT] = 6U;
+-	} else {
+-		PhyCfg[PHY_CAODT] = 5U;
+-	}
+-
+-	PhyCfg[PHY_DQODT] = PDimmPtr->DramOdt ? PhyCfg[PHY_CAODT] : 6U;
+-
+-	PhyCfg[PHY_VREFCA_RANGE] = 0U;
+-
+-	PhyCfg[PHY_VREFCA] = 0x21U;
+-
+-	PhyCfg[PHY_VREFDQ_RANGE] = PDimmPtr->Lp4NoOdt;
+-
+-	if (PDimmPtr->Zc1656 || PDimmPtr->HasEccComp) {
+-		PhyCfg[PHY_VREFDQ] = 0x2EU;
+-	} else {
+-		if (PDimmPtr->Lp4NoOdt) {
+-			PhyCfg[PHY_VREFDQ] = 0x2FU;
+-		} else {
+-			PhyCfg[PHY_VREFDQ] = 0x19U;
+-		}
+-	}
+-
+-	PhyCfg[PHY_ODTD_CA] = 0U;
+-
+-	PhyCfg[PHY_ODTE_CS] = 1U;
+-
+-	PhyCfg[PHY_ODTE_CK] = 0U;
+-
+-	PhyCfg[PHY_CODT] = 6U;
+-
+-	if (PDimmPtr->RdDbi) {
+-		if (!PDimmPtr->RdbiWrkAround) {
+-			PhyCfg[PHY_DTRDBITR] = 0x3U;
+-		} else {
+-			PhyCfg[PHY_DTRDBITR] = 0x0U;
+-		}
+-	}
+-	if (!(PDimmPtr->DataMask || PDimmPtr->WrDbi)) {
+-		PhyCfg[PHY_DTWBDDM] = 0U;
+-	}
+-
+-	PhyCfg[PHY_ODTOEMODE] = 0xAU;
+-
+-	PhyCfg[PHY_CKNCLKGATE0] = 0x0U;
+-
+-	PhyCfg[PHY_CKCLKGATE0] = 0x0U;
+-
+-	PhyCfg[PHY_CKOEMODE] = 0x5U;
+-
+-	PhyCfg[PHY_CKNCLKGATE1] = 0x0U;
+-
+-	PhyCfg[PHY_CKCLKGATE1] = 0x0U;
+-
+-	PhyCfg[PHY_ACREFSSEL] = 0x3DU;
+-
+-	PhyCfg[PHY_ACVREFISEL]  = 0x19U;
+-
+-	PhyCfg[PHY_PDAEN] = 0x0U;
+-
+-	if (PDimmPtr->Zc1656 || PDimmPtr->HasEccComp) {
+-		PhyCfg[PHY_DVINIT] = 0x2EU;
+-	} else {
+-		if (PDimmPtr->Lp4NoOdt) {
+-			PhyCfg[PHY_DVINIT] = 0x2FU;
+-		} else {
+-			PhyCfg[PHY_DVINIT] = 0x19U;
+-		}
+-	}
+-
+-	return XFSBL_SUCCESS;
+-}
+-#endif
+-
+ /*****************************************************************************/
+ /**
+  * This function writes the PHY registers with calculated values
+@@ -5238,69 +4048,6 @@
+ 	Xil_Out32(XFSBL_DDRPHY_BASE_ADDR + 0xF18U, Val);
+ }
+ 
+-#if !(defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670))
+-/*****************************************************************************/
+-/**
+- * This function calculates and writes the DDR-PHY registers
+- *
+- * @param	DdrDataPtr is pointer to DDR Initialization Data Structure
+- *
+- * @return	None
+- *
+- *****************************************************************************/
+-static u32 XFsbl_PhyRegsInit(struct DdrcInitData *DdrDataPtr)
+-{
+-	XFsbl_DimmParams *PDimmPtr = &DdrDataPtr->PDimm;
+-	u32 PhyCfg[512U] = XFSBL_PHY_REG_DEFVAL;
+-	u32 Status;
+-
+-	Status = XFsbl_PhyCalcCommonRegVal(PDimmPtr, PhyCfg);
+-	if (Status != XFSBL_SUCCESS) {
+-		Status = XFSBL_FAILURE;
+-		goto END;
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_DDR3) {
+-		Status = XFsbl_PhyCalcDdr3RegVal(PDimmPtr, PhyCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_DDR4) {
+-		Status = XFsbl_PhyCalcDdr4RegVal(PDimmPtr, PhyCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_LPDDR3) {
+-		Status = XFsbl_PhyCalcLpddr3RegVal(PDimmPtr, PhyCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	if (PDimmPtr->MemType == SPD_MEMTYPE_LPDDR4) {
+-		Status = XFsbl_PhyCalcLpddr4RegVal(PDimmPtr, PhyCfg);
+-		if (Status != XFSBL_SUCCESS) {
+-			Status = XFSBL_FAILURE;
+-			goto END;
+-		}
+-	}
+-
+-	XFsbl_PhyRegsWrite(PDimmPtr, PhyCfg);
+-
+-END:
+-	return Status;
+-}
+-#endif
+-
+ /*****************************************************************************/
+ /**
+  * This function initializes the registers affected by enabling the Read DBI.
+@@ -6575,9 +5322,6 @@
+ 
+ }
+ 
+-#if defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670)
+ /*****************************************************************************/
+ /**
+  * This function calculates and writes DDR controller registers
+@@ -6657,7 +5401,6 @@
+ END:
+ 	return Status;
+ }
+-#endif
+ 
+ /*****************************************************************************/
+ /**
+@@ -6704,43 +5447,6 @@
+ 	}
+ 
+ 	/*
+-	 * Configure I2C Mux to select DDR4 SODIMM Slave
+-	 * 0x08U - Enable DDR4 SODIMM module
+-	 */
+-	TxArray = 0x08U;
+-	XIicPs_MasterSendPolled(&IicInstance, &TxArray, 1U, XFSBL_MUX_ADDR);
+-
+-	/*
+-	 * Wait until bus is idle to start another transfer.
+-	 */
+-	Status = Xil_WaitForEvent(IicInstance.Config.BaseAddress +
+-			XIICPS_SR_OFFSET, XIICPS_SR_BA_MASK, 0U, XFSBL_IIC_BUS_TIMEOUT);
+-	if (Status != XST_SUCCESS) {
+-		UStatus = XFSBL_FAILURE;
+-		goto END;
+-	}
+-
+-	/*
+-	 * Get Configuration to confirm the selection of the slave
+-	 * device.
+-	 */
+-	Status = XIicPs_MasterRecvPolled(&IicInstance, SpdData, 1U,
+-			XFSBL_MUX_ADDR);
+-	if (Status != XST_SUCCESS) {
+-		UStatus = XFSBL_FAILURE;
+-		goto END;
+-	}
+-	/*
+-	 * Wait until bus is idle to start another transfer.
+-	 */
+-	Status = Xil_WaitForEvent(IicInstance.Config.BaseAddress +
+-			XIICPS_SR_OFFSET, XIICPS_SR_BA_MASK, 0U, XFSBL_IIC_BUS_TIMEOUT);
+-	if (Status != XST_SUCCESS) {
+-		UStatus = XFSBL_FAILURE;
+-		goto END;
+-	}
+-
+-	/*
+ 	 * Set SODIMM control address to enable access to lower
+ 	 * EEPROM page (0U to 255U Bytes).
+ 	 * 0x00U - Enable Read of Lower Page from EEPROM
+@@ -6878,10 +5584,7 @@
+ {
+ 	u32 Status;
+ 	u8 SpdData[512U];
+-#if !(defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670)) \
+-	|| defined(XFSBL_ENABLE_DDR_SR)
++#if defined(XFSBL_ENABLE_DDR_SR)
+ 	u32 RegVal;
+ #endif
+ 
+@@ -6898,9 +5601,6 @@
+ 		goto END;
+ 	}
+ 
+-#if defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106) \
+-	|| defined(XPS_BOARD_ZCU111) || defined(XPS_BOARD_ZCU216) \
+-	|| defined(XPS_BOARD_ZCU208) || defined(XPS_BOARD_ZCU670)
+ 	/* ZCU102, ZCU106 and ZCU111, ZCU216, ZCU208 and ZCU670 Boards have
+ 	 * support only for DDR4 DIMMs. Skip checking for DDR type for these
+ 	 * boards.
+@@ -6910,40 +5610,6 @@
+ 		Status = XFSBL_FAILURE;
+ 		goto END;
+ 	}
+-#else
+-	/* Determine the DIMM parameters to be used for register writes */
+-	Status = XFsbl_DdrComputeDimmParameters(SpdData, &DdrData);
+-	if (Status != XFSBL_SUCCESS) {
+-		goto END;
+-	}
+-
+-	/* Initialize the Parameters with their default values */
+-	XFsbl_InitilizeDdrParams(&DdrData);
+-
+-	/* Assert Reset for DDR controller */
+-	RegVal = Xil_In32(CRF_APB_RST_DDR_SS_OFFSET);
+-	RegVal |= 0x00000008U;
+-	Xil_Out32(CRF_APB_RST_DDR_SS_OFFSET, RegVal);
+-
+-	/* Calculate and Write all the registers of DDR Controller */
+-	Status = XFsbl_DdrcRegsInit(&DdrData);
+-	if (Status != XFSBL_SUCCESS) {
+-		Status = XFSBL_FAILURE;
+-		goto END;
+-	}
+-
+-	/* De-assert Reset for DDR controller */
+-	RegVal = Xil_In32(CRF_APB_RST_DDR_SS_OFFSET);
+-	RegVal &= ~0x0000000CU;
+-	Xil_Out32(CRF_APB_RST_DDR_SS_OFFSET, RegVal);
+-
+-	/* Calculate and Write all the registers of DDR-PHY Controller */
+-	Status = XFsbl_PhyRegsInit(&DdrData);
+-	if (Status != XFSBL_SUCCESS) {
+-		Status = XFSBL_FAILURE;
+-		goto END;
+-	}
+-#endif
+ 
+ #ifdef XFSBL_ENABLE_DDR_SR
+ 	/* Check if DDR is in self refresh mode */

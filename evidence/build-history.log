@@ -1,0 +1,51 @@
+1ccdf7e work-in-progress
+8886c6a artiq, migen update
+c211a45 petalinux v2025.2
+24ef0ce wip, artiq add
+a4e66f9 wip, openamp echo_test
+e3f04c8 wip
+bdd11c4 wip
+0b5de65 wip
+8e775b1 yocto rel 2025 xilinx
+275d302 yocto rel 2025 xilinx
+6b2b7ee platform.gen fix
+05b4385 rel-v2025.1
+376d18f 4_linux
+bad204d custom initramfs
+86536d6 4_linux
+2a0bb0b yocto/sources
+8efa07f 4_linux
+07a232b build.mk
+ec9413e platform sd + eth
+dc841c3 3_bootable - armv7 + user.dtsi
+60ffa86 moved submodules + envsetup + armv7
+00c2e99 README.md
+987f8c8 README.md
+cdeef64 README.md
+1eb4dce README.md
+e0dfc93 no axi in lib.rs
+c3078fd remove old
+b3ac6ec README.md
+0e53dd9 migen-vivado integration
+72c99d8 migen-vivado integration
+bc20485 zynq_ultra_ps_e_0.properties.tcl wip
+95e42cb zynq_ultra_ps_e_0.properties.tcl wip
+fb51bf1 zynq_ultra_ps_e_0.properties.tcl wip
+ebb74a2 zynq_ultra_ps_e_0.properties.tcl wip
+e4ab8ce zynq_ultra_ps_e_0.properties.tcl wip
+edd437c zynq_ultra_ps_e_0.properties.tcl wip
+1afef72 zynq_ultra_ps_e_0.properties.tcl wip
+14e14c3 zynq_ultra_ps_e_0.py intr
+9c84df9 zynq_ultra_ps_e_0.properties.tcl wip
+e3f17cb I_PLATFORM_wildcard_TCL
+504906c zynq ultra ps e in migen
+0b03a18 makefile with stages 0,1,2,3
+5250db1 block design xsa
+e15b8a2 Do not use Block Design
+08594be Replace example with migen-generated led blinker
+f3708c1 Add python to flake.nix and use direnv
+4d3eb3c Add Led blinker (Verilog) to example
+ec8c4a9 Example with Rust and Simple AXI slave
+ea96e08 Add flake.nix with Rust and Alejandra
+2e6c062 Add submodule github.com:Digilent/vivado-boards.git
+a6fd1b6 Add submodule github.com:Digilent/embeddedsw.git

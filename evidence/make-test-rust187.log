@@ -1,0 +1,59 @@
+/srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s tests -v
+test_load_fails_explicitly (test_kernel_protocol.KernelProtocol.test_load_fails_explicitly) ... ok
+test_oversized_elf (test_kernel_protocol.KernelProtocol.test_oversized_elf) ... ok
+test_reject_invalid_hello (test_kernel_protocol.KernelProtocol.test_reject_invalid_hello) ... Incorrect hello
+ok
+test_run_never_reports_execution (test_kernel_protocol.KernelProtocol.test_run_never_reports_execution) ... ok
+test_truncated_elf (test_kernel_protocol.KernelProtocol.test_truncated_elf) ... ok
+test_truncated_length (test_kernel_protocol.KernelProtocol.test_truncated_length) ... ok
+test_axi_csr_counter_and_scheduled_ttl (test_local_rtio.LocalRTIOTest.test_axi_csr_counter_and_scheduled_ttl) ... ok
+test_input_bus (test_vivado_integration.PinWiring.test_input_bus) ... ok
+test_input_offset (test_vivado_integration.PinWiring.test_input_offset) ... ok
+test_input_scalar (test_vivado_integration.PinWiring.test_input_scalar) ... ok
+test_output_bus (test_vivado_integration.PinWiring.test_output_bus) ... ok
+test_output_offset (test_vivado_integration.PinWiring.test_output_offset) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 4.076s
+
+OK
+make -C boards/genesys_zu-5ev 2_firmware O=/srv/codex-hil-data/artiq-zynqmp/build/final/original-r5 CONFIG=release
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev'
+make[1]: Nothing to be done for '2_firmware'.
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev'
+cd diagnostics/a53 && cargo build --release --locked --target-dir=/srv/codex-hil-data/artiq-zynqmp/build/final/a53
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.09s
+/srv/codex-hil-data/artiq-zynqmp/venv/bin/python scripts/validate_a53_elf.py /srv/codex-hil-data/artiq-zynqmp/build/final/a53/aarch64-unknown-none/release/genesys-a53-bringup
+{
+  "kind": "software-validation",
+  "status": "PASS",
+  "entry": 1049480,
+  "segments": [
+    {
+      "address": 1048576,
+      "file_bytes": 19732,
+      "memory_bytes": 19732,
+      "flags": 5
+    },
+    {
+      "address": 1069056,
+      "file_bytes": 2712,
+      "memory_bytes": 2712,
+      "flags": 4
+    },
+    {
+      "address": 1073152,
+      "file_bytes": 8,
+      "memory_bytes": 8,
+      "flags": 6
+    },
+    {
+      "address": 1077248,
+      "file_bytes": 0,
+      "memory_bytes": 4632576,
+      "flags": 6
+    }
+  ]
+}
+/srv/codex-hil-data/artiq-zynqmp/venv/bin/python scripts/generate_rtio_hdl.py --output=/srv/codex-hil-data/artiq-zynqmp/build/final/local-rtio-hdl
+Generated subsystem HDL and CSR map; FPGA synthesis not run

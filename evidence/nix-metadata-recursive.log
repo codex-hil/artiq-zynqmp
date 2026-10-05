@@ -1,0 +1,30 @@
+[1mResolved URL:[0m  git+file:///home/codex-hil/artiq-zynqmp/work/artiq-new-wip?submodules=1
+[1mLocked URL:[0m    git+file:///home/codex-hil/artiq-zynqmp/work/artiq-new-wip?ref=refs/heads/bringup/genesys&rev=6bbe35ab98c7164cefe15edcca69d3a03a106d95&submodules=1
+[1mPath:[0m          /nix/store/77gpqkh1yzin4qymq7043i25zbv8166k-source
+[1mRevision:[0m      6bbe35ab98c7164cefe15edcca69d3a03a106d95
+[1mRevisions:[0m     64
+[1mLast modified:[0m 2026-10-05 15:32:02
+[1mFingerprint:[0m   1fc4af74dad337c3795b9520d4bee5d7c0ba897e25548dae192e5e6e8ee35984
+[1mInputs:[0m
+├───[1martiq[0m: path:common/artiq
+│   ├───[1martiq-comtools[0m: git+https://git.m-labs.hk/M-Labs/artiq-comtools.git?ref=refs/heads/master&rev=3da1f80d702b3a01c4b4fba9e5bc832b79097338 (2026-01-02 11:30:05)
+│   │   ├───[1mflake-utils[0m: github:numtide/flake-utils/11707dc2f618dd54ca8739b309ec4fc024de578b?narHash=sha256-l0KFg5HjrsfsO/JpG%2Br7fRrqm12kzFHyUHqHCVpMMbI%3D (2024-11-13 21:27:16)
+│   │   │   └───[1msystems[0m: github:nix-systems/default/da67096a3b9bf56a91d16901293e51ba5b49a27e?narHash=sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768%3D (2023-04-09 08:27:08)
+│   │   ├───[1mnixpkgs[0m follows input 'artiq/nixpkgs'
+│   │   └───[1msipyco[0m follows input 'artiq/sipyco'
+│   ├───[1mnaersk[0m: github:nix-community/naersk/8d97452673640eb7fabe428e8b6a425bc355008b?narHash=sha256-HIdLXEFaUVE8FiaCPJbCfBMsnF%2BmVtDub8Jwj2BD%2Bmk%3D (2026-01-20 11:28:52)
+│   │   ├───[1mfenix[0m: github:nix-community/fenix/bf0d6f70f4c9a9cf8845f992105652173f4b617f?narHash=sha256-z6QEu4ZFuHiqdOPbYss4/Q8B0BFhacR8ts6jO/F/aOU%3D (2025-07-14 06:44:19)
+│   │   │   ├───[1mnixpkgs[0m follows input 'artiq/naersk/nixpkgs'
+│   │   │   └───[1mrust-analyzer-src[0m: github:rust-lang/rust-analyzer/591e3b7624be97e4443ea7b5542c191311aa141d?narHash=sha256-EJcdxw3aXfP8Ex1Nm3s0awyH9egQvB2Gu%2BQEnJn2Sfg%3D (2025-07-13 17:45:06)
+│   │   └───[1mnixpkgs[0m follows input 'artiq/nixpkgs'
+│   ├───[1mnixpkgs[0m follows input 'nixpkgs'
+│   ├───[1mrust-overlay[0m: github:oxalica/rust-overlay/d1c527659cf076ecc4b96a91c702d080b213801e?narHash=sha256-MojqG0lyUINkEk0b3kM2drsU5vyaF8DFZe/FAlZVOGs%3D (2024-06-27 02:18:34)
+│   │   └───[1mnixpkgs[0m follows input 'artiq/nixpkgs'
+│   ├───[1msipyco[0m: git+https://git.m-labs.hk/M-Labs/sipyco.git?ref=refs/heads/master&rev=ce454bb64257b1bcef3703f258aaf7fa4ee0c275 (2026-01-02 02:27:52)
+│   │   └───[1mnixpkgs[0m follows input 'artiq/nixpkgs'
+│   ├───[1msrc-migen[0m: git+https://git.m-labs.hk/M-Labs/migen.git?ref=refs/heads/master&rev=44e5627d367c528b3ce5e686b6f305a9dfc56f2a (2026-01-21 12:17:37)
+│   ├───[1msrc-misoc[0m: git+https://git.m-labs.hk/M-Labs/misoc.git?ref=refs/heads/master&rev=7ab412de11f6533cd68cd818924da5c28a484ccd&submodules=1 (2025-12-16 06:43:24)
+│   └───[1msrc-pythonparser[0m: git+https://git.m-labs.hk/M-Labs/pythonparser.git?ref=refs/heads/master&rev=a2ace427c84ee5b1e9bd9dbc9b9337e50fc54077 (2026-01-03 07:56:56)
+├───[1mnixpkgs[0m: github:NixOS/nixpkgs/c217913993d6c6f6805c3b1a3bda5e639adfde6d?narHash=sha256-D1PA3xQv/s4W3lnR9yJFSld8UOLr0a/cBWMQMXS%2B1Qg%3D (2026-02-20 08:05:26)
+└───[1mrust-overlay[0m: github:oxalica/rust-overlay/85078369717bdbe1f266c9eaad5e66956fb6feea?narHash=sha256-4zOvSi0WkS2WAaoJtM28wECtS9S%2BL38CPYbhF%2BwINDA%3D (2026-02-21 03:01:26)
+    └───[1mnixpkgs[0m follows input 'nixpkgs'

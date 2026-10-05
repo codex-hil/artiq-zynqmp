@@ -1,0 +1,51 @@
+
+
+****** Bootgen v2026.2
+  **** Build date : Oct  5 2026-15:44:24
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+------------------------------------------------------------------------------+
+                       COMMAND LINE OPTIONS                                   |
+------------------------------------------------------------------------------+
+ arch              - Device Architecture                                      |
+ bif_help          - Print the BIF help summary                               |
+ dual_ospi_mode    - Generate 2 output files for Dual OSPI                    |
+ dual_qspi_mode    - Generate 2 output files for Dual QSPI                    |
+ dump              - Dumps components from PDI as bin files                   |
+ dump_dir          - Dumps components in specified directory                  |
+ efuseppkbits      - Generate PPK hash for e-fuse                             |
+ encrypt           - AES Key storage on device                                |
+ encryption_dump   - Generate encryption log file                             |
+ fill              - Fill byte for padding                                    |
+ generate_hashes   - Generate SHA hashes (PKCS#1v1.5)                         |
+ generate_keys     - Generate authentication keys                             |
+ help              - Print the help summary                                   |
+ image             - Input Boot Image File (.bif)                             |
+ log               - Generate log file                                        |
+ nonbooting        - Generate an intermediate boot image                      |
+ o                 - Output filename in MCS/BIN format                        |
+ overlay_cdo       - Overlay CDO files of Boot Image File                     |
+ p                 - Part name for generating nky file                        |
+ padimageheader    - Pad header tables                                        |
+ process_bitstream - Outputs bitstream in bin/mcs format                      |
+ read              - Dumps the header tables in human readable form           |
+ authenticatedjtag - Generate a Image to authenticate PSK and enable jtag     |
+ split             - Split partitions to diff files                           |
+ spksignature      - Generate SPK signature file                              |
+ verify            - Verify BootImage authentication                          |
+ verify_kdf        - Verify AES key generation                                |
+ w                 - Overwrite mode                                           |
+ zynqmpes1         - Generate boot image for ZynqMP ES1                       |
+------------------------------------------------------------------------------+
+ Note    : Some options are valid only for specific architectures.            |
+           Help for such options include a list of supported architectures.   |
+           If an option is supported for all architectures, this list is not  |
+           included in help                                                   |
+ Example : Supported architectures : zynqmp, versal, versal_2ve_2vm, spartanup|
+------------------------------------------------------------------------------+
+ For more information on bootgen options, use the command                     |
+           bootgen -help <option>                                             |
+ Example : bootgen -help efuseppkbits                                         |
+------------------------------------------------------------------------------+
+

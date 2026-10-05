@@ -1,0 +1,949 @@
+diff --git a/.readthedocs.yml b/.readthedocs.yml
+deleted file mode 100644
+index 5ea5b22..0000000
+--- a/.readthedocs.yml
++++ /dev/null
+@@ -1,4 +0,0 @@
+-requirements_file: doc/requirements.txt
+-python:
+-   version: 3.5
+-   setup_py_install: true
+diff --git a/LICENSE b/LICENSE
+index 31b3645..98d68b8 100644
+--- a/LICENSE
++++ b/LICENSE
+@@ -1,4 +1,4 @@
+-Copyright (C) 2011-2020 M-Labs Limited.
++Copyright (C) 2011-2026 M-Labs Limited.
+ 
+ Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+diff --git a/README.md b/README.md
+index 1bb4234..9e22906 100644
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,6 @@
+ ### Migen (Milkymist generator)
+ 
+-<img src="https://github.com/m-labs/migen/raw/master/doc/migen_logo.png" alt="migen logo" width="150"/>
++<img src="https://git.m-labs.hk/M-Labs/migen/raw/branch/master/doc/migen_logo.png" alt="migen logo" width="150"/>
+ 
+ #### A Python toolbox for building complex digital hardware
+ 
+@@ -35,10 +35,10 @@ Migen is designed for Python 3.5. Note that Migen is **not** spelled MiGen.
+ #### Quick Links
+ 
+ Code repository:
+-https://github.com/m-labs/migen
++https://git.m-labs.hk/M-Labs/migen
+ 
+ System-on-chip design based on Migen:
+-https://github.com/m-labs/misoc
++https://git.m-labs.hk/M-Labs/misoc
+ 
+ Online documentation:
+ https://m-labs.hk/migen/manual/
+@@ -73,9 +73,8 @@ do them if possible:
+ * send us the modifications and improvements you have done to Migen. The use
+    of "git format-patch" is recommended. If your submission is large and
+    complex and/or you are not sure how to proceed, feel free to discuss it on
+-   the mailing list or IRC (#m-labs on Freenode) beforehand.
++   the forum or IRC (#m-labs on OFTC) beforehand.
+ 
+-See LICENSE file for full copyright and license info. You can contact us on the
+-public mailing list devel [AT] lists.m-labs.hk.
++See LICENSE file for full copyright and license info.
+ 
+   "Electricity! It's like magic!"
+diff --git a/doc/conf.py b/doc/conf.py
+index d8a5ac0..14e530e 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -50,7 +50,7 @@ master_doc = 'index'
+ 
+ # General information about the project.
+ project = u'Migen'
+-copyright = u'2011-2015, M-Labs Limited'
++copyright = u'2011-2026, M-Labs Limited'
+ 
+ # The version info for the project you're documenting, acts as replacement for
+ # |version| and |release|, also used in various other places throughout the
+@@ -111,20 +111,9 @@ html_theme = 'sphinx_rtd_theme'
+ # further.  For a list of options available for each theme, see the
+ # documentation.
+ 
+-# Enable github links when not on readthedocs
+-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+-if not on_rtd:
+-    html_context = {
+-        "display_github": True, # Integrate GitHub
+-        "github_user": "m-labs", # Username
+-        "github_repo": "migen", # Repo name
+-        "github_version": "master", # Version
+-        "conf_py_path": "/doc/",
+-    }
+-else:
+-    html_theme_options = {
+-        "canonical_url": "https://m-labs.hk/migen/manual/",
+-    }
++html_theme_options = {
++    "canonical_url": "https://m-labs.hk/migen/manual/",
++}
+ 
+ 
+ # Add any paths that contain custom themes here, relative to this directory.
+@@ -312,8 +301,8 @@ def linkcode_resolve(domain, info):
+     fn = relpath(fn, start=dirname(migen.__file__))
+ 
+     if 'dev' in migen_version:
+-        return "http://github.com/m-labs/migen/blob/master/migen/%s%s" % (
++        return "https://git.m-labs.hk/M-Labs/migen/src/branch/master/migen/%s%s" % (
+            fn, linespec)
+     else:
+-        return "http://github.com/m-labs/migen/blob/%s/migen/%s%s" % (
++        return "https://git.m-labs.hk/M-Labs/migen/src/tag/%s/migen/%s%s" % (
+            migen_version, fn, linespec)
+diff --git a/doc/introduction.rst b/doc/introduction.rst
+index f7d58fe..d226ac2 100644
+--- a/doc/introduction.rst
++++ b/doc/introduction.rst
+@@ -58,7 +58,7 @@ Installing Migen
+ Either run ``python3 -m pip install .`` or simply set ``PYTHONPATH`` to the root of the source directory.
+ 
+ If you wish to contribute patches, the suggested way to install is;
+-   #. Clone from the git repository at https://github.com/m-labs/migen
++   #. Clone from the git repository at https://git.m-labs.hk/M-Labs/migen
+    #. Install using the ``-e`` pip option, or set ``PYTHONPATH`` to the root of the checked-out directory.
+    #. Edit the code in your git checkout.
+ 
+@@ -66,8 +66,8 @@ Alternative install methods
+ ===========================
+ 
+  * Migen is available for the Anaconda Python distribution. The package can be found at at https://anaconda.org/m-labs/migen
+- * Migen can be referenced in a requirements.txt file (used for ``pip install -r requirements.txt``) via ``-e git+https://github.com/m-labs/migen.git#egg=migen``. See the pip documentation for more information.
++ * Migen can be referenced in a requirements.txt file (used for ``pip install -r requirements.txt``) via ``-e git+https://git.m-labs.hk/M-Labs/migen.git#egg=migen``. See the pip documentation for more information.
+ 
+ Feedback
+ ********
+-Feedback concerning Migen or this manual should be sent to the M-Labs forum at https://forum.m-labs.hk or in GitHub issues.
++Feedback concerning Migen or this manual should be sent to the M-Labs forum at https://forum.m-labs.hk or in Gitea issues.
+diff --git a/migen/build/altera/platform.py b/migen/build/altera/platform.py
+index db7a30b..0b3a3d0 100644
+--- a/migen/build/altera/platform.py
++++ b/migen/build/altera/platform.py
+@@ -3,7 +3,6 @@ from migen.build.altera import common, quartus
+ 
+ 
+ class AlteraPlatform(GenericPlatform):
+-    bitstream_ext = ".sof"
+     create_rbf = True
+ 
+     def __init__(self, *args, toolchain="quartus", **kwargs):
+diff --git a/migen/build/lattice/platform.py b/migen/build/lattice/platform.py
+index fad69dd..8b0904f 100644
+--- a/migen/build/lattice/platform.py
++++ b/migen/build/lattice/platform.py
+@@ -3,8 +3,6 @@ from migen.build.lattice import common, diamond, icestorm, trellis
+ 
+ 
+ class LatticePlatform(GenericPlatform):
+-    bitstream_ext = ".bit"
+-
+     def __init__(self, *args, toolchain="diamond", **kwargs):
+         GenericPlatform.__init__(self, *args, **kwargs)
+         if toolchain == "diamond":
+@@ -12,7 +10,6 @@ class LatticePlatform(GenericPlatform):
+         elif toolchain == "trellis":
+             self.toolchain = trellis.LatticeTrellisToolchain()
+         elif toolchain == "icestorm":
+-            self.bitstream_ext = ".bin"
+             self.toolchain = icestorm.LatticeIceStormToolchain()
+         else:
+             raise ValueError("Unknown toolchain")
+diff --git a/migen/build/platforms/ebaz4205.py b/migen/build/platforms/ebaz4205.py
+index c0f65aa..05be998 100644
+--- a/migen/build/platforms/ebaz4205.py
++++ b/migen/build/platforms/ebaz4205.py
+@@ -139,7 +139,8 @@ _connectors = [
+ 
+ 
+ class Platform(XilinxPlatform):
+-    def __init__(self):
++    def __init__(self, gateware_bin_file=False):
+         XilinxPlatform.__init__(
+-            self, "xc7z010-clg400-1", _io, _connectors, toolchain="vivado"
++            self, "xc7z010-clg400-1", _io, _connectors, toolchain="vivado",
++            gateware_bin_file=gateware_bin_file
+         )
+diff --git a/migen/build/platforms/kc705.py b/migen/build/platforms/kc705.py
+index 66a8b45..a725a4e 100644
+--- a/migen/build/platforms/kc705.py
++++ b/migen/build/platforms/kc705.py
+@@ -476,14 +476,14 @@ class Platform(XilinxPlatform):
+     default_clk_name = "clk156"
+     default_clk_period = 6.4
+ 
+-    def __init__(self, toolchain="vivado", programmer="xc3sprog"):
++    def __init__(self, toolchain="vivado", programmer="xc3sprog",
++                 gateware_bin_file=False):
+         XilinxPlatform.__init__(self, "xc7k325t-ffg900-2", _io, _connectors,
+-            toolchain=toolchain)
++            toolchain=toolchain, gateware_bin_file=gateware_bin_file)
+         if toolchain == "ise":
+             self.toolchain.bitgen_opt = "-g LCK_cycle:6 -g Binary:Yes -w -g ConfigRate:12 -g SPI_buswidth:4"
+         elif toolchain == "vivado":
+             self.toolchain.bitstream_commands = ["set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]"]
+-            self.toolchain.additional_commands = ["write_cfgmem -force -format bin -interface spix4 -size 16 -loadbit \"up 0x0 {build_name}.bit\" -file {build_name}.bin"]
+         self.programmer = programmer
+ 
+     def create_programmer(self):
+diff --git a/migen/build/platforms/sinara/efc.py b/migen/build/platforms/sinara/efc.py
+index 2f8f129..e4b4c5a 100755
+--- a/migen/build/platforms/sinara/efc.py
++++ b/migen/build/platforms/sinara/efc.py
+@@ -67,9 +67,13 @@ _ios = [
+         IOStandard("LVCMOS25")
+     ),
+ 
+-    # FIXME: gtp3_sel IOStandard should depend on selected VADJ
++    # FIXME: gtpX_sel IOStandard should depend on selected VADJ
++    ("gtp2_sel", 0, Pins("T3"), IOStandard("LVCMOS25")),
+     ("gtp3_sel", 0, Pins("F4"), IOStandard("LVCMOS25")),
+ 
++    # FIXME: button IOStandard should depend on selected VADJ
++    ("button", 0, Pins("U13"), IOStandard("LVCMOS25")),
++
+     ("ddram", 0,
+         Subsignal("a", Pins(
+             "H14 G13 J22 H13 H17 G16 K21 G15 "
+@@ -381,15 +385,16 @@ _extensions = [
+ class Platform(XilinxPlatform):
+     userid = 0xffffffff
+ 
+-    def __init__(self, hw_rev="v1.1"):
++    def __init__(self, hw_rev="v1.1", gateware_bin_file=False):
+         if hw_rev == "v1.0":
+             fpga = "xc7a100t-fgg484-3"
+-        elif hw_rev == "v1.1":
++        elif hw_rev in ["v1.1", "v1.2"]:
+             fpga = "xc7a200t-fbg484-3"
+         else:
+             raise ValueError("Unknown hardware revision", hw_rev)
+         XilinxPlatform.__init__(
+-            self, fpga, _ios, _connectors, toolchain="vivado")
++            self, fpga, _ios, _connectors, toolchain="vivado",
++            gateware_bin_file=gateware_bin_file)
+         self.add_extension(_extensions)
+ 
+         # https://support.xilinx.com/s/article/42036?language=en_US
+diff --git a/migen/build/platforms/sinara/kasli.py b/migen/build/platforms/sinara/kasli.py
+index 9a732c9..e94361a 100644
+--- a/migen/build/platforms/sinara/kasli.py
++++ b/migen/build/platforms/sinara/kasli.py
+@@ -216,6 +216,13 @@ _io_v2_0 = [
+     ),
+ ]
+ 
++_io_v2_1 = _io_v2_0 + [
++    ("default_flash", 0, Pins("T20"), IOStandard("LVCMOS25")),
++
++    ("eem_power_en", 0, Pins("U21"), IOStandard("LVCMOS25")),
++    ("eem_fault_n", 0, Pins("V22"), IOStandard("LVCMOS25"), Misc("PULLUP True")),  # No external pullup
++]
++
+ _io_common = [
+     ("spiflash", 0,
+         Subsignal("cs_n", Pins("T19")),
+@@ -600,7 +607,7 @@ class Platform(XilinxPlatform):
+     default_clk_period = 20.0
+     userid = 0xffffffff
+ 
+-    def __init__(self, hw_rev="v1.0"):
++    def __init__(self, hw_rev="v1.0", gateware_bin_file=False):
+         if hw_rev == "v1.0":
+             io_rev = _io_v1_0
+             connectors_rev = _connectors_bp_adapter
+@@ -613,13 +620,17 @@ class Platform(XilinxPlatform):
+             io_rev = _io_v2_0
+             connectors_rev = _connectors_eem2
+             fpga = "xc7a100t-fgg484-3"
++        elif hw_rev in ("v2.1rc1", "v2.1"):
++            io_rev = _io_v2_1
++            connectors_rev = _connectors_eem2
++            fpga = "xc7a100t-fgg484-3"
+         else:
+             raise ValueError("Unknown hardware revision", hw_rev)
+         self.hw_rev = hw_rev
+ 
+         XilinxPlatform.__init__(
+                 self, fpga, _io_common + io_rev, _connectors_eem + connectors_rev,
+-                toolchain="vivado")
++                toolchain="vivado", gateware_bin_file=gateware_bin_file)
+         self.add_platform_command(
+                 "set_property INTERNAL_VREF 0.750 [get_iobanks 35]")
+         self.toolchain.bitstream_commands.extend([
+@@ -634,5 +645,5 @@ class Platform(XilinxPlatform):
+             "set_property CFGBVS VCCO [current_design]",
+             "set_property CONFIG_VOLTAGE 2.5 [current_design]",
+             ])
+-        if hw_rev == "v2.0":
++        if hw_rev in ("v2.0", "v2.1rc1", "v2.1"):
+             self.toolchain.explore_opt_design = True
+diff --git a/migen/build/platforms/sinara/kasli_soc.py b/migen/build/platforms/sinara/kasli_soc.py
+index 07d3bc5..81e63f8 100644
+--- a/migen/build/platforms/sinara/kasli_soc.py
++++ b/migen/build/platforms/sinara/kasli_soc.py
+@@ -303,6 +303,6 @@ _connectors_eem = [
+ ]
+ 
+ class Platform(XilinxPlatform):
+-    def __init__(self):
++    def __init__(self, gateware_bin_file=False):
+         XilinxPlatform.__init__(self, "xc7z030-ffg676-3", _io, _connectors_eem,
+-            toolchain="vivado")
++            toolchain="vivado", gateware_bin_file=gateware_bin_file)
+diff --git a/migen/build/platforms/sinara/phaser.py b/migen/build/platforms/sinara/phaser.py
+index 6f91055..db59ed0 100644
+--- a/migen/build/platforms/sinara/phaser.py
++++ b/migen/build/platforms/sinara/phaser.py
+@@ -13,8 +13,7 @@ _ios = [
+     ("test_point", 1, Pins("P15"), IOStandard("LVCMOS25")),  # TP1
+     ("test_point", 2, Pins("N13"), IOStandard("LVCMOS25")),  # TP2
+     ("test_point", 3, Pins("P16"), IOStandard("LVCMOS25")),  # TP3
+-    ("test_point", 4, Pins("N14"), IOStandard("LVCMOS25")),  # TP4
+-    ("test_point", 5, Pins("R16"), IOStandard("LVCMOS25")),  # TP5
++    # See Platform Class for TP4, TP5
+ 
+     ("clk_sel", 0, Pins("T20"), IOStandard("LVCMOS25")),  # SMA_CLK_SEL
+ 
+@@ -273,10 +272,30 @@ _extensions = [
+ 
+ class Platform(XilinxPlatform):
+     userid = 0xffffffff
+-    def __init__(self):
++    def __init__(self, speed_grade="-2", with_uart=False,
++                 gateware_bin_file=False):
++        global _ios
++        if speed_grade == "-2":
++            fpga = "xc7a100t-fgg484-2"
++        elif speed_grade == "-3":
++            fpga = "xc7a100t-fgg484-3"
++        if with_uart:
++            _ios += [
++                ("serial", 0,
++                    Subsignal("rx", Pins("N14")),  # FPGA input, schematics TP4
++                    Subsignal("tx", Pins("R16")),  # FPGA output, schematics TP5
++                    IOStandard("LVCMOS25")
++                )
++            ]
++        else:
++            _ios += [
++                ("test_point", 4, Pins("N14"), IOStandard("LVCMOS25")),  # TP4
++                ("test_point", 5, Pins("R16"), IOStandard("LVCMOS25")),  # TP5
++            ]
+         XilinxPlatform.__init__(
+-                self, "xc7a100t-fgg484-2", _ios, _connectors,
+-                toolchain="vivado")
++                self, fpga, _ios, _connectors,
++                toolchain="vivado",
++                gateware_bin_file=gateware_bin_file)
+         self.add_extension(_extensions)
+         self.add_platform_command(
+                 "set_property INTERNAL_VREF 0.750 [get_iobanks 35]")
+diff --git a/migen/build/platforms/zc706.py b/migen/build/platforms/zc706.py
+index fd380d2..b69f86f 100644
+--- a/migen/build/platforms/zc706.py
++++ b/migen/build/platforms/zc706.py
+@@ -293,6 +293,6 @@ class Platform(XilinxPlatform):
+     default_clk_name = "clk200"
+     default_clk_period = 5  # 200 MHz
+ 
+-    def __init__(self):
++    def __init__(self, gateware_bin_file=False):
+         XilinxPlatform.__init__(self, "xc7z045-ffg900-2", _io, _connectors,
+-            toolchain="vivado")
++            toolchain="vivado", gateware_bin_file=gateware_bin_file)
+diff --git a/migen/build/quicklogic/platform.py b/migen/build/quicklogic/platform.py
+index ea07772..aeec9d0 100644
+--- a/migen/build/quicklogic/platform.py
++++ b/migen/build/quicklogic/platform.py
+@@ -5,8 +5,6 @@ from migen.build.generic_platform import GenericPlatform
+ from migen.build.quicklogic import quicklogic
+ 
+ class QuicklogicPlatform(GenericPlatform):
+-    bitstream_ext = ".bit"
+-
+     def __init__(self, *args, toolchain="quicklogic", **kwargs):
+         GenericPlatform.__init__(self, *args, **kwargs)
+         self.edifs = set()
+diff --git a/migen/build/xilinx/platform.py b/migen/build/xilinx/platform.py
+index c999d12..367ec39 100644
+--- a/migen/build/xilinx/platform.py
++++ b/migen/build/xilinx/platform.py
+@@ -6,16 +6,17 @@ from migen.build.xilinx import common, vivado, ise, symbiflow
+ 
+ 
+ class XilinxPlatform(GenericPlatform):
+-    bitstream_ext = ".bit"
+-
+-    def __init__(self, *args, toolchain="ise", **kwargs):
++    def __init__(self, *args, toolchain="ise",
++                 gateware_bin_file=False, **kwargs):
+         GenericPlatform.__init__(self, *args, **kwargs)
+         self.edifs = set()
+         self.ips = set()
++        if gateware_bin_file and toolchain != "vivado":
++            raise NotImplementedError("'gateware_bin_file' is only supported for Vivado toolchain")
+         if toolchain == "ise":
+             self.toolchain = ise.XilinxISEToolchain()
+         elif toolchain == "vivado":
+-            self.toolchain = vivado.XilinxVivadoToolchain()
++            self.toolchain = vivado.XilinxVivadoToolchain(gateware_bin_file=gateware_bin_file)
+         elif toolchain == "symbiflow":
+             self.toolchain = symbiflow.SymbiflowToolchain()
+         else:
+diff --git a/migen/build/xilinx/vivado.py b/migen/build/xilinx/vivado.py
+index 709053c..e1d4f24 100644
+--- a/migen/build/xilinx/vivado.py
++++ b/migen/build/xilinx/vivado.py
+@@ -81,7 +81,7 @@ class XilinxVivadoToolchain:
+         "no_shreg_extract": None
+     }
+ 
+-    def __init__(self):
++    def __init__(self, gateware_bin_file=False):
+         self.bitstream_commands = []
+         self.additional_commands = []
+         self.pre_synthesis_commands = []
+@@ -90,6 +90,7 @@ class XilinxVivadoToolchain:
+         self.with_phys_opt = False
+         self.clocks = dict()
+         self.false_paths = set()
++        self.gateware_bin_file = gateware_bin_file
+ 
+     def _build_batch(self, platform, sources, edifs, ips, build_name, build_dir):
+         # script for step 1: place and route
+@@ -148,7 +149,13 @@ class XilinxVivadoToolchain:
+         tcl = []
+         for bitstream_command in self.bitstream_commands:
+             tcl.append(bitstream_command.format(build_name=build_name))
+-        tcl.append("write_bitstream -force {}.bit ".format(build_name))
++        if self.gateware_bin_file:
++            # write_bitstream command only accepts a .bit extension for the output file.
++            # -no_binary_bitfile flag skips .bit binary bitstream file generation.
++            # -bin_file flag generates a .bin file instead.
++            tcl.append("write_bitstream -no_binary_bitfile -bin_file -force {}.bit ".format(build_name))
++        else:
++            tcl.append("write_bitstream -force {}.bit ".format(build_name))
+         for additional_command in self.additional_commands:
+             tcl.append(additional_command.format(build_name=build_name))
+         tcl.append("quit")
+diff --git a/migen/fhdl/structure.py b/migen/fhdl/structure.py
+index 0865e76..193ce29 100644
+--- a/migen/fhdl/structure.py
++++ b/migen/fhdl/structure.py
+@@ -13,6 +13,10 @@ class DUID:
+     def __init__(self):
+         self.duid = DUID.__next_uid
+         DUID.__next_uid += 1
++    
++    @staticmethod
++    def get_max_duid():
++        return DUID.__next_uid
+ 
+ 
+ class _Value(DUID):
+@@ -27,7 +31,7 @@ class _Value(DUID):
+     represent the integer.
+     """
+     def __bool__(self):
+-        # Special case: Constants and Signals are part of a set or used as
++        # Special case: Constants, Signals and Slices are part of a set or used as
+         # dictionary keys, and Python needs to check for equality.
+         if isinstance(self, _Operator) and self.op == "==":
+             a, b = self.operands
+@@ -35,6 +39,18 @@ class _Value(DUID):
+                 return a.value == b.value
+             if isinstance(a, Signal) and isinstance(b, Signal):
+                 return a is b
++            if isinstance(a, _Slice) or isinstance(b, _Slice):
++                a_start = 0
++                b_start = 0
++                if len(a) != len(b):
++                    return False
++                while isinstance(a, _Slice):
++                    a_start += a.start
++                    a = a.value
++                while isinstance(b, _Slice):
++                    b_start += b.start
++                    b = b.value
++                return (bool(a == b) and (a_start == b_start))
+             if (isinstance(a, Constant) and isinstance(b, Signal)
+                     or isinstance(a, Signal) and isinstance(b, Constant)):
+                 return False
+diff --git a/migen/fhdl/tracer.py b/migen/fhdl/tracer.py
+index 03be97b..e3d6185 100644
+--- a/migen/fhdl/tracer.py
++++ b/migen/fhdl/tracer.py
+@@ -29,6 +29,7 @@ _load_build_opcodes = {
+     "LOAD_NAME" : _bytecode_length_version_guard(3),
+     "LOAD_ATTR" : _bytecode_length_version_guard(3),
+     "LOAD_FAST" : _bytecode_length_version_guard(3),
++    "LOAD_FAST_BORROW" : 2, # New in version 3.14
+     "LOAD_DEREF" : _bytecode_length_version_guard(3),
+     "DUP_TOP" : _bytecode_length_version_guard(1),
+     "BUILD_LIST" : _bytecode_length_version_guard(3),
+diff --git a/migen/sim/core.py b/migen/sim/core.py
+index a64b7f1..527eee4 100644
+--- a/migen/sim/core.py
++++ b/migen/sim/core.py
+@@ -82,9 +82,9 @@ str2op = {
+ 
+ 
+ def _truncate(value, nbits, signed):
+-    value = value & (2**nbits - 1)
+-    if signed and (value & 2**(nbits - 1)):
+-        value -= 2**nbits
++    value = value & ((1<<nbits) - 1)
++    if signed and (value & (1 << (nbits - 1))):
++        value -= (1 << nbits)
+     return value
+ 
+ 
+@@ -92,131 +92,194 @@ class Evaluator:
+     def __init__(self, clock_domains, replaced_memories):
+         self.clock_domains = clock_domains
+         self.replaced_memories = replaced_memories
+-        self.signal_values = dict()
+-        self.modifications = dict()
+-
+-    def commit(self):
++        self.signal_values = [None] * DUID.get_max_duid() # index by duid
++        self.modifications = dict() # duid -> int
++
++    def commit_changed(self):
++        changed = False
++        sv = self.signal_values
++        mods = self.modifications
++        for duid, v in mods.items():
++            old = sv[duid]
++            if old != v:
++                sv[duid] = v
++                changed = True
++        mods.clear()
++        return changed
++
++    def commit_set(self):
+         r = set()
+-        for k, v in self.modifications.items():
+-            if k not in self.signal_values or self.signal_values[k] != v:
+-                self.signal_values[k] = v
+-                r.add(k)
+-        self.modifications.clear()
++        sv = self.signal_values
++        mods = self.modifications
++        for duid, v in mods.items():
++            old = sv[duid]
++            if old != v:
++                sv[duid] = v
++                r.add(duid)
++        mods.clear()
+         return r
+ 
+     def eval(self, node, postcommit=False):
+-        if isinstance(node, Constant):
+-            return node.value
+-        elif isinstance(node, Signal):
+-            if postcommit:
+-                try:
+-                    return self.modifications[node]
+-                except KeyError:
+-                    pass
+-            try:
+-                return self.signal_values[node]
+-            except KeyError:
+-                return node.reset.value
+-        elif isinstance(node, _Operator):
+-            operands = [self.eval(o, postcommit) for o in node.operands]
+-            if node.op == "-":
+-                if len(operands) == 1:
+-                    return -operands[0]
++        t = type(node)
++        while True:
++            if t is Constant:
++                return node.value
++            elif t is Signal:
++                duid = node.duid
++                if postcommit:
++                    v = self.modifications.get(duid)
++                    if v is not None:
++                        return v
++                v = self.signal_values[duid]
++                return node.reset.value if v is None else v
++            elif t is _Operator:
++                op = node.op
++                ops = node.operands
++                a = self.eval(ops[0], postcommit)
++                # all ops with one param:
++                if op == "~": return ~a
++                if op == "-" and len(ops) == 1: return -a
++                if op == "m":
++                    return self.eval(ops[1], postcommit) if a else self.eval(ops[2], postcommit)
++                # all ops with two params:
++                b = self.eval(ops[1], postcommit)
++                if op == "+":    return a + b
++                if op == "-":    return a - b
++                if op == "*":    return a * b
++                if op == ">>>":  return a >> b
++                if op == "<<<":  return a << b
++                if op == "&":    return a & b
++                if op == "^":    return a ^ b
++                if op == "|":    return a | b
++                if op == "<":    return a < b
++                if op == "<=":   return a <= b
++                if op == "==":   return a == b
++                if op == "!=":   return a != b
++                if op == ">":    return a > b
++                if op == ">=":   return a >= b
++                raise NotImplementedError(op)
++            elif t is _Slice:
++                v = self.eval(node.value, postcommit)
++                w = node.stop - node.start
++                return (v >> node.start) & ((1 << w) - 1)
++            elif t is _Part:
++                v = self.eval(node.value, postcommit)
++                offset = self.eval(node.offset, postcommit)
++                return (v >> offset) & ((1 << node.width) - 1)
++            elif t is Cat:
++                shift = 0
++                r = 0
++                for element in node.l:
++                    nbits = len(element)
++                    # make value always positive
++                    r |= (self.eval(element, postcommit) & ((1<<nbits)-1)) << shift
++                    shift += nbits
++                return r
++            elif t is Replicate:
++                nbits = len(node.v)
++                v = self.eval(node.v, postcommit) & ((1<<nbits) - 1)
++                return sum(v << i*nbits for i in range(node.n))
++            elif t is _ArrayProxy:
++                idx = min(len(node.choices) - 1, self.eval(node.key, postcommit))
++                return self.eval(node.choices[idx], postcommit)
++            elif t is _MemoryLocation:
++                array = self.replaced_memories[node.memory]
++                return self.eval(array[self.eval(node.index, postcommit)], postcommit)
++            elif t is ClockSignal:
++                return self.eval(self.clock_domains[node.cd].clk, postcommit)
++            elif t is ResetSignal:
++                rst = self.clock_domains[node.cd].rst
++                if rst is None:
++                    if node.allow_reset_less:
++                        return 0
++                    else:
++                        raise ValueError("Attempted to get reset signal of resetless"
++                                        " domain '{}'".format(node.cd))
+                 else:
+-                    return operands[0] - operands[1]
+-            elif node.op == "m":
+-                return operands[1] if operands[0] else operands[2]
++                    return self.eval(rst, postcommit)
+             else:
+-                return str2op[node.op](*operands)
+-        elif isinstance(node, _Slice):
+-            v = self.eval(node.value, postcommit)
+-            idx = range(node.start, node.stop)
+-            return sum(((v >> i) & 1) << j for j, i in enumerate(idx))
+-        elif isinstance(node, _Part):
+-            v = self.eval(node.value, postcommit)
+-            offset = self.eval(node.offset, postcommit)
+-            idx = range(offset, offset + node.width)
+-            return sum(((v >> i) & 1) << j for j, i in enumerate(idx))
+-        elif isinstance(node, Cat):
+-            shift = 0
+-            r = 0
+-            for element in node.l:
+-                nbits = len(element)
+-                # make value always positive
+-                r |= (self.eval(element, postcommit) & (2**nbits-1)) << shift
+-                shift += nbits
+-            return r
+-        elif isinstance(node, Replicate):
+-            nbits = len(node.v)
+-            v = self.eval(node.v, postcommit) & (2**nbits - 1)
+-            return sum(v << i*nbits for i in range(node.n))
+-        elif isinstance(node, _ArrayProxy):
+-            idx = min(len(node.choices) - 1, self.eval(node.key, postcommit))
+-            return self.eval(node.choices[idx], postcommit)
+-        elif isinstance(node, _MemoryLocation):
+-            array = self.replaced_memories[node.memory]
+-            return self.eval(array[self.eval(node.index, postcommit)], postcommit)
+-        elif isinstance(node, ClockSignal):
+-            return self.eval(self.clock_domains[node.cd].clk, postcommit)
+-        elif isinstance(node, ResetSignal):
+-            rst = self.clock_domains[node.cd].rst
+-            if rst is None:
+-                if node.allow_reset_less:
+-                    return 0
++                if isinstance(node, Constant): t = Constant
++                elif isinstance(node, Signal): t = Signal
++                elif isinstance(node, _Operator): t = _Operator
++                elif isinstance(node, _Slice): t = _Slice
++                elif isinstance(node, _Part): t = _Part
++                elif isinstance(node, Cat): t = Cat
++                elif isinstance(node, Replicate): t = Replicate
++                elif isinstance(node, _ArrayProxy): t = _ArrayProxy
++                elif isinstance(node, _MemoryLocation): t = _MemoryLocation
++                elif isinstance(node, ClockSignal): t = ClockSignal
++                elif isinstance(node, ResetSignal): t = ResetSignal
+                 else:
+-                    raise ValueError("Attempted to get reset signal of resetless"
+-                                     " domain '{}'".format(node.cd))
+-            else:
+-                return self.eval(rst, postcommit)
+-        else:
+-            raise NotImplementedError(node)
++                    raise NotImplementedError(node)
+ 
+     def assign(self, node, value):
+-        if isinstance(node, Signal):
+-            assert not node.variable
+-            self.modifications[node] = _truncate(value,
+-                                                 node.nbits, node.signed)
+-        elif isinstance(node, Cat):
+-            for element in node.l:
+-                nbits = len(element)
+-                self.assign(element, value & (2**nbits-1))
+-                value >>= nbits
+-        elif isinstance(node, _Slice):
+-            full_value = self.eval(node.value, True)
+-            # clear bits assigned to by the slice
+-            full_value &= ~((2**node.stop-1) - (2**node.start-1))
+-            # set them to the new value
+-            value &= 2**(node.stop - node.start)-1
+-            full_value |= value << node.start
+-            self.assign(node.value, full_value)
+-        elif isinstance(node, _Part):
+-            full_value = self.eval(node.value, True)
+-            offset = self.eval(node.offset, True)
+-            start = offset
+-            stop = offset + node.width
+-            full_value &= ~((2**stop-1) - (2**start-1))
+-            value &= 2**(stop - start)-1
+-            full_value |= value << start
+-            self.assign(node.value, full_value)
+-        elif isinstance(node, _ArrayProxy):
+-            idx = min(len(node.choices) - 1, self.eval(node.key))
+-            self.assign(node.choices[idx], value)
+-        elif isinstance(node, _MemoryLocation):
+-            array = self.replaced_memories[node.memory]
+-            self.assign(array[self.eval(node.index)], value)
+-        else:
+-            raise NotImplementedError(node)
++        t = type(node)
++        while True:
++            if t is Signal:
++                assert not node.variable
++                # hot path: _truncate inlined:
++                duid = node.duid
++                full = 1 << node.nbits
++                v = value & (full - 1)
++                if node.signed and (v & (full >> 1)):
++                    v -= full
++                self.modifications[duid] = v
++                return
++            elif t is Cat:
++                for element in node.l:
++                    nbits = len(element)
++                    self.assign(element, value & ((1<<nbits)-1))
++                    value >>= nbits
++                return
++            elif t is _Slice:
++                full_value = self.eval(node.value, True)
++                # clear bits assigned to by the slice
++                full_value &= ~(((1 << (node.stop - node.start)) - 1) << node.start)
++                # set them to the new value
++                value &= (1 << (node.stop - node.start)) - 1
++                full_value |= value << node.start
++                self.assign(node.value, full_value)
++                return
++            elif t is _Part:
++                full_value = self.eval(node.value, True)
++                offset = self.eval(node.offset, True)
++                start = offset
++                stop = offset + node.width
++                full_value &= ~((2**stop-1) - (2**start-1))
++                value &= 2**(stop - start)-1
++                full_value |= value << start
++                self.assign(node.value, full_value)
++                return
++            elif t is _ArrayProxy:
++                idx = min(len(node.choices) - 1, self.eval(node.key))
++                self.assign(node.choices[idx], value)
++                return
++            elif t is _MemoryLocation:
++                array = self.replaced_memories[node.memory]
++                self.assign(array[self.eval(node.index)], value)
++                return
++            else: # slow path for subclasses:
++                if isinstance(node, Signal): t = Signal
++                elif isinstance(node, Cat): t = Cat
++                elif isinstance(node, _Slice): t = _Slice
++                elif isinstance(node, _Part): t = _Part
++                elif isinstance(node, _ArrayProxy): t = _ArrayProxy
++                elif isinstance(node, _MemoryLocation): t = _MemoryLocation
++                else:
++                    raise NotImplementedError(node)
++
+ 
+     def execute(self, statements):
+         for s in statements:
+-            if isinstance(s, _Assign):
++            t = type(s)
++            if t is _Assign:
+                 self.assign(s.l, self.eval(s.r))
+-            elif isinstance(s, If):
+-                if self.eval(s.cond) & (2**len(s.cond) - 1):
++            elif t is If:
++                if self.eval(s.cond) & ((1 << len(s.cond)) - 1):
+                     self.execute(s.t)
+                 else:
+                     self.execute(s.f)
+-            elif isinstance(s, Case):
++            elif t is Case:
+                 nbits, signed = value_bits_sign(s.test)
+                 test = _truncate(self.eval(s.test), nbits, signed)
+                 found = False
+@@ -227,17 +290,36 @@ class Evaluator:
+                         break
+                 if not found and "default" in s.cases:
+                     self.execute(s.cases["default"])
+-            elif isinstance(s, collections.abc.Iterable):
++            elif t is tuple:
+                 self.execute(s)
+             elif isinstance(s, Display):
+                 args = []
+                 for arg in s.args:
+                     assert isinstance(arg, _Value)
+-                    try:
+-                        args.append(self.signal_values[arg])
+-                    except: # not yet evaluated
+-                        args.append(arg.reset.value)
++                    v = self.signal_values[arg.duid]
++                    args.append(arg.reset.value if v is None else v)
+                 print(s.s %(*args,))
++            # slow path for subclasses of _Assign, If, Case
++            elif isinstance(s, _Assign):
++                self.assign(s.l, self.eval(s.r))
++            elif isinstance(s, If):
++                if self.eval(s.cond) & ((1 << len(s.cond)) - 1):
++                    self.execute(s.t)
++                else:
++                    self.execute(s.f)
++            elif isinstance(s, Case):
++                nbits, signed = value_bits_sign(s.test)
++                test = _truncate(self.eval(s.test), nbits, signed)
++                found = False
++                for k, v in s.cases.items():
++                    if isinstance(k, Constant) and k.value == test:
++                        self.execute(v)
++                        found = True
++                        break
++                if not found and "default" in s.cases:
++                    self.execute(s.cases["default"])
++            elif isinstance(s, collections.abc.Iterable):
++                self.execute(s)
+             else:
+                 raise NotImplementedError
+ 
+@@ -303,6 +385,7 @@ class Simulator:
+ 
+         if vcd_name is None:
+             self.vcd = DummyVCDWriter()
++            self._duid2sig = None
+         else:
+             self.vcd = VCDWriter(vcd_name, module_name=type(fragment_or_module).__name__)
+ 
+@@ -313,9 +396,11 @@ class Simulator:
+                     signals.add(cd.rst)
+             for memory_array in mta.replacements.values():
+                 signals |= set(memory_array)
++            duid2sig = [None] * DUID.get_max_duid()
+             for signal in sorted(signals, key=lambda x: x.duid):
+                 self.vcd.set(signal, signal.reset.value)
+-
++                duid2sig[signal.duid] = signal
++            self._duid2sig = duid2sig
+     def __enter__(self):
+         return self
+ 
+@@ -327,15 +412,23 @@ class Simulator:
+ 
+     def _commit_and_comb_propagate(self):
+         # TODO: optimize
+-        all_modified = set()
+-        modified = self.evaluator.commit()
++        if type(self.vcd) is DummyVCDWriter:
++            # no-trace fast path
++            modified = self.evaluator.commit_changed()
++            while modified:
++                self.evaluator.execute(self.fragment.comb)
++                modified = self.evaluator.commit_changed()
++            return
++        all_modified = set() # duid
++        modified = self.evaluator.commit_set()
+         all_modified |= modified
+         while modified:
+             self.evaluator.execute(self.fragment.comb)
+-            modified = self.evaluator.commit()
++            modified = self.evaluator.commit_set()
+             all_modified |= modified
+-        for signal in all_modified:
+-            self.vcd.set(signal, self.evaluator.signal_values[signal])
++        for duid in all_modified:
++            signal = self._duid2sig[duid]
++            self.vcd.set(signal, self.evaluator.signal_values[duid])
+ 
+     def _evalexec_nested_lists(self, x):
+         if isinstance(x, list):
+@@ -343,6 +436,12 @@ class Simulator:
+         elif isinstance(x, _Value):
+             return self.evaluator.eval(x)
+         elif isinstance(x, _Statement):
++            # need to update signal list if vcd is on because
++            # generators might create new signals
++            if self._duid2sig is not None:
++                for s in list_signals(x):
++                    if self._duid2sig[s.duid] is None:
++                        self._duid2sig[s.duid] = s
+             self.evaluator.execute([x])
+             return None
+         else:
+diff --git a/pyproject.toml b/pyproject.toml
+index 9c31edc..31781ee 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -5,11 +5,10 @@ description = "Python toolbox for building complex digital hardware"
+ readme = "README.md"
+ keywords = ["HDL", "ASIC", "FPGA", "hardware design"]
+ authors = [{name = "Sebastien Bourdeauducq", email = "sb@m-labs.hk"}]
+-license = {text = "BSD-2-Clause"}
++license = "BSD-2-Clause"
+ classifiers = [
+     "Development Status :: 4 - Beta",
+     "Intended Audience :: Developers",
+-    "License :: OSI Approved :: BSD License",
+     "Operating System :: OS Independent",
+     "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
+     "Environment :: Console",
+@@ -33,8 +32,8 @@ dependencies = [
+ 
+ [project.urls]
+ Documentation = "https://m-labs.hk/migen/manual"
+-"Source code" = "https://github.com/m-labs/migen"
+-"Issue tracker" = "https://github.com/m-labs/migen/issues"
++"Source code" = "https://git.m-labs.hk/M-Labs/migen"
++"Issue tracker" = "https://git.m-labs.hk/M-Labs/migen/issues"
+ 
+ [build-system]
+ requires = ["setuptools>=65.5"]

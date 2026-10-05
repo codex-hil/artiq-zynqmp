@@ -1,0 +1,37 @@
+
+
+****** Bootgen v2026.2
+  **** Build date : Oct  5 2026-15:44:24
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+-------------+----------------------------------------------------------------+
+ ATTRIBUTE   | pmufw_image                                                    |
+-------------+----------------------------------------------------------------+
+ SUPPORTED   | zynqmp                                                         |
+-------------+----------------------------------------------------------------+
+ DESCRIPTION | PMU Firmware image to be loaded by BootROM, before loading the |
+             | FSBL.                                                          |
+-------------+----------------------------------------------------------------+
+ USAGE       | [pmufw_image] <PMU elf file>                                   |
+-------------+----------------------------------------------------------------+
+ EXPLANATION | Sample BIF - test.bif                                          |
+             | all:                                                           |
+             | {                                                              |
+             |     [pmufw_image] pfw.elf                                      |
+             |     [bootloader, destination_cpu=a53-0] fsbl.elf               |
+             |     [destination_cpu=r5-1] app.elf                             |
+             | }                                                              |
+             |----------------------------------------------------------------|
+             | Note:                                                          |
+             |----------------------------------------------------------------|
+             | PMU loaded by BootROM: [pmufw_image] pmu.elf                   |
+             | In this flow, BootROM loads PMU first and then the FSBL        |
+             | So PMU does the power management tasks, before the FSBL comes  |
+             | up.                                                            |
+             |----------------------------------------------------------------|
+             | PMU loaded by FSBL: [destination_cpu=pmu] pmu.elf              |
+             | In this flow, BootROM loads FSBL first, and then FSBL loads the|
+             | PMU fw.                                                        |
+-------------+----------------------------------------------------------------+
+
