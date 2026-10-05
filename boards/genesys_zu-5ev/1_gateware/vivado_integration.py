@@ -107,7 +107,13 @@ class BdCell(Module):
         signal_shifted = Signal(
             bits_sign=(width, False), name=f"{pin_name}__SHIFTED", reset_less=True
         )
-        self.comb += signal_shifted.eq(signal[right : left + 1])
+        # The instance owns outputs, while the surrounding gateware owns inputs.
+        # Driving both directions from the instance-side signal leaves inputs
+        # disconnected (and can create multiple drivers on the public signal).
+        if pin_props["DIR"] == "I":
+            self.comb += signal.eq(signal_shifted << right)
+        else:
+            self.comb += signal_shifted.eq(signal[right : left + 1])
 
         self._glue[pin_name] = signal
 

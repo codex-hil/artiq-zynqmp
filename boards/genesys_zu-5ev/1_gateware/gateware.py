@@ -8,6 +8,7 @@ from typing import Never, Optional, Sequence
 from migen.build.generic_platform import IOStandard, Pins
 from migen.fhdl.module import Module
 from migen.fhdl.structure import ClockDomain, Signal
+from migen.genlib.resetsync import AsyncResetSynchronizer
 from vivado_integration import XilinxPlatformAuto
 
 
@@ -35,7 +36,9 @@ class Top(Module):
         platform.import_submodules_to(self)
         self.clock_domains.cd_sys = ClockDomain()
         self.comb += self.cd_sys.clk.eq(self.zynq_ultra_ps_e_0.outputs["pl_clk0"])
-        self.comb += self.cd_sys.rst.eq(~self.zynq_ultra_ps_e_0.outputs["pl_resetn0"])
+        self.specials += AsyncResetSynchronizer(
+            self.cd_sys, ~self.zynq_ultra_ps_e_0.outputs["pl_resetn0"]
+        )
 
         counter = Signal(30)
         self.sync.sys += counter.eq(counter + 1)
