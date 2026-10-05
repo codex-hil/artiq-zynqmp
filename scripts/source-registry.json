@@ -1,0 +1,287 @@
+{
+  "migen": {
+    "url": "https://github.com/m-labs/migen.git",
+    "extra_urls": [
+      "https://git.m-labs.hk/M-Labs/migen.git"
+    ],
+    "pins": [
+      "44e5627d367c528b3ce5e686b6f305a9dfc56f2a"
+    ]
+  },
+  "sipyco": {
+    "url": "https://github.com/m-labs/sipyco.git"
+  },
+  "zynq-rs": {
+    "url": "https://git.m-labs.hk/M-Labs/zynq-rs.git"
+  },
+  "zynq-ultrascale-plus-rs": {
+    "url": "https://github.com/ccbrown/zynq-ultrascale-plus-rs.git"
+  },
+  "misoc-canonical": {
+    "url": "https://git.m-labs.hk/M-Labs/misoc.git"
+  },
+  "adacore-zynqmp": {
+    "url": "https://github.com/AdaCore/rust-zynqmp.git"
+  },
+  "pjedyk-artiq-new": {
+    "url": "https://github.com/pjedyk/artiq-new.git"
+  },
+  "digilent-boards": {
+    "url": "https://github.com/Digilent/vivado-boards.git",
+    "pins": [
+      "d1898bd01f25d4965f9e50659bbdf70365745a06"
+    ]
+  },
+  "duke-zynqmp-rs": {
+    "url": "https://gitlab.com/duke-artiq/zynqmp-rs.git"
+  },
+  "elhep-migen": {
+    "url": "https://github.com/elhep/migen.git",
+    "pins": [
+      "2828df54594673653a641ab551caf6c6b1bfeee5"
+    ]
+  },
+  "amd-embeddedsw": {
+    "url": "https://github.com/Xilinx/embeddedsw.git"
+  },
+  "litex": {
+    "url": "https://github.com/enjoy-digital/litex.git"
+  },
+  "nac3": {
+    "url": "https://git.m-labs.hk/M-Labs/nac3.git"
+  },
+  "digilent-genesys-zu": {
+    "url": "https://github.com/Digilent/Genesys-ZU.git"
+  },
+  "artiq": {
+    "url": "https://github.com/m-labs/artiq.git",
+    "extra_urls": [
+      "https://git.m-labs.hk/M-Labs/artiq.git"
+    ],
+    "pins": [
+      "1461cf90953ed9972c040b263e5a11c9ebc9e41a"
+    ]
+  },
+  "sipyco-canonical": {
+    "url": "https://git.m-labs.hk/M-Labs/sipyco.git"
+  },
+  "digilent-embeddedsw": {
+    "url": "https://github.com/Digilent/embeddedsw.git",
+    "pins": [
+      "f3587c0c8a15e5c6daee84e37b6ee11294ed2476"
+    ]
+  },
+  "litex-boards": {
+    "url": "https://github.com/litex-hub/litex-boards.git"
+  },
+  "artiq-zynq": {
+    "url": "https://git.m-labs.hk/M-Labs/artiq-zynq.git"
+  },
+  "aarch64-cpu": {
+    "url": "https://github.com/rust-embedded/aarch64-cpu.git"
+  },
+  "cortex-ar": {
+    "url": "https://github.com/rust-embedded/cortex-ar.git"
+  },
+  "misoc": {
+    "url": "https://github.com/m-labs/misoc.git"
+  },
+  "migen-axi": {
+    "url": "https://github.com/peteut/migen-axi.git",
+    "pins": [
+      "98649a92ed7d4e43f75231e6ef9753e1212fab41"
+    ]
+  },
+  "yocto-yocto-scripts": {
+    "url": "https://github.com/Xilinx/yocto-scripts.git",
+    "pins": [
+      "27644974099014f27a84549a4610a6b908271155"
+    ],
+    "group": "yocto"
+  },
+  "yocto-manifest": {
+    "url": "https://github.com/Xilinx/yocto-manifests.git",
+    "pins": [
+      "171a401ec50c20353361061fc53d2853a141ba2c"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-xilinx": {
+    "url": "https://github.com/Xilinx/meta-xilinx.git",
+    "pins": [
+      "5391a52df6e72fdb5453491af8829c27eec64a60"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-xilinx-tools": {
+    "url": "https://github.com/Xilinx/meta-xilinx-tools.git",
+    "pins": [
+      "5bc80078fa08c7c6dbe17962860f5d3354c5833e"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-arm": {
+    "url": "https://github.com/Xilinx/meta-arm.git",
+    "pins": [
+      "0f1e7bf92c89759f0ab74cfa5be4ee47b092ad46"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-petalinux": {
+    "url": "https://github.com/Xilinx/meta-petalinux.git",
+    "pins": [
+      "a59a0c815a0ffc2747ab4289284f2c3aee3bc7fd"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-xilinx-tsn": {
+    "url": "https://github.com/Xilinx/meta-xilinx-tsn.git",
+    "pins": [
+      "c38ac51e99ee47f384b66da3d6780929a96d20a9"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-kria": {
+    "url": "https://github.com/Xilinx/meta-kria.git",
+    "pins": [
+      "660eb84415794ddd5cfca0b4a909ede40acab08e"
+    ],
+    "group": "yocto"
+  },
+  "yocto-poky": {
+    "url": "https://github.com/Xilinx/poky.git",
+    "pins": [
+      "e3ce89324da1e33c17c9180ef846f41d92616254"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-mingw": {
+    "url": "https://github.com/Xilinx/meta-mingw.git",
+    "pins": [
+      "bd9fef71ec005be3c3a6d7f8b99d8116daf70c4f"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-virtualization": {
+    "url": "https://github.com/Xilinx/meta-virtualization.git",
+    "pins": [
+      "196b64c06935089b445bf90502dc0a675fb1024f"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-security": {
+    "url": "https://github.com/Xilinx/meta-security.git",
+    "pins": [
+      "bc865c5276c2ab4031229916e8d7c20148dfbac3"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-openembedded": {
+    "url": "https://github.com/Xilinx/meta-openembedded.git",
+    "pins": [
+      "b9fb6556a3c8a3e477dce334205b658cb79ad501"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-openamp": {
+    "url": "https://github.com/Xilinx/meta-openamp.git",
+    "pins": [
+      "cc7a54969c887823a934c705edd9825f3fad672e"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-qt5": {
+    "url": "https://github.com/Xilinx/meta-qt5.git",
+    "pins": [
+      "e197839013fa2cfd59339508303bce91fef48928"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-aws": {
+    "url": "https://github.com/Xilinx/meta-aws.git",
+    "pins": [
+      "3990a0254b1633ab77212732e1f3e623d8cc3ff1"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-ros": {
+    "url": "https://github.com/Xilinx/meta-ros.git",
+    "pins": [
+      "ff76fa90fb66d0b83238d99f882c60f2373eb875"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-rauc": {
+    "url": "https://github.com/Xilinx/meta-rauc.git",
+    "pins": [
+      "a0f4a8b9986954239850b9d4256c003c91e6b931"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-jupyter": {
+    "url": "https://github.com/Xilinx/meta-jupyter.git",
+    "pins": [
+      "5e47ac5efa4c9f7a36912253acbca0cdb2a812e6"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-vitis": {
+    "url": "https://github.com/Xilinx/meta-vitis.git",
+    "pins": [
+      "562adefd277483afb2eb4a9402f6a6ebbd653bba"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-amd-adaptive-socs": {
+    "url": "https://github.com/Xilinx/meta-amd-adaptive-socs.git",
+    "pins": [
+      "6567b8fa288ab24018d3536487b5c667d05e253c"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-system-controller": {
+    "url": "https://github.com/Xilinx/meta-system-controller.git",
+    "pins": [
+      "e0ccbf43df545d52f79852f28ffce502b20478bc"
+    ],
+    "group": "yocto"
+  },
+  "yocto-meta-embedded-plus": {
+    "url": "https://github.com/Xilinx/meta-embedded-plus.git",
+    "pins": [
+      "2145875610bb794efa2134c30b411fa192e12396"
+    ],
+    "group": "yocto"
+  },
+  "yocto-gen-machine-conf": {
+    "url": "https://github.com/Xilinx/gen-machine-conf.git",
+    "pins": [
+      "e1bc2ac323a92fe3c2b87f11044010351cd79b25"
+    ],
+    "group": "yocto"
+  },
+  "digilent-genesys-zu-hw": {
+    "url": "https://github.com/Digilent/genesys-zu-hw.git",
+    "pins": [
+      "1392e4f249ed2afc16d1bb4443a847f1803eaf51"
+    ]
+  },
+  "digilent-genesys-zu-os": {
+    "url": "https://github.com/Digilent/genesys-zu-os.git",
+    "pins": [
+      "db19a8786eae8326a6698c4ccbdd15376c1ea19b"
+    ]
+  },
+  "digilent-genesys-zu-sw": {
+    "url": "https://github.com/Digilent/genesys-zu-sw.git",
+    "pins": [
+      "dfb43ab79b1d163e01245e18ff42c4cec326a849"
+    ]
+  },
+  "amd-bootgen": {
+    "url": "https://github.com/Xilinx/bootgen.git",
+    "pins": [
+      "d93c3fa6e6ef8aa1d4fb4532c58ed4a5efa8804e"
+    ]
+  }
+}

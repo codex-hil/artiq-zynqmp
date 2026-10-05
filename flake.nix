@@ -38,7 +38,7 @@
         # Rust toolchain
         (pkgs.rust-bin.stable."1.87.0".default.override {
           extensions = ["rust-src"];
-          targets = ["armv7r-none-eabihf"];
+          targets = ["armv7r-none-eabihf" "aarch64-unknown-none"];
         })
 
         # ARTIQ and Migen dependencies
