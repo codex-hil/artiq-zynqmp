@@ -28,9 +28,11 @@ class LocalRTIO(Module):
         self.comb += self.rtio.cri.connect(self.rtio_core.cri)
         self.submodules.rtio_moninj = rtio.MonInj(channels)
 
-        self.axi = AXIInterface(data_width=32, address_width=32, id_width=16)
+        # ZynqMP MAXIGP exports a 40-bit physical address, even with a
+        # 32-bit data bus. Confirmed against Piotr's archived XSA/HWH.
+        self.axi = AXIInterface(data_width=32, address_width=40, id_width=16)
         self.submodules.wb2csr = wishbone2csr.WB2CSR(
-            bus_wishbone=wishbone.Interface(data_width=32, address_width=32, addressing="word"),
+            bus_wishbone=wishbone.Interface(data_width=32, address_width=40, addressing="word"),
             bus_csr=csr_bus.Interface(data_width=32, address_width=14)
         )
         self.submodules.axi2wb = AXI2Wishbone(
