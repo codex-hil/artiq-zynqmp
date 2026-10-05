@@ -1,0 +1,16 @@
+[package]
+name = "genesys-a53-bringup"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+adacore-zynqmp = { git = "https://github.com/AdaCore/rust-zynqmp", rev = "c326ece7eb0a6dda54fa634c52c1cbd0d36a1db8" }
+aarch64-cpu = "=10.0.0"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+debug = true
+
