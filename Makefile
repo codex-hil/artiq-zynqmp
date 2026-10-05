@@ -4,7 +4,7 @@ O ?= build-host
 ARTIQ_SOURCE ?= $(CURDIR)/common/artiq
 export PYTHONPATH := $(ARTIQ_SOURCE):$(CURDIR)/common/migen$(if $(PYTHONPATH),:$(PYTHONPATH))
 
-.PHONY: test test-sim firmware diagnostics test-hw test-hw-uart hdl
+.PHONY: test test-sim firmware diagnostics test-hw test-hw-uart hdl test-kernel-abi
 test: test-sim firmware diagnostics
 
 test-sim:
@@ -26,3 +26,8 @@ test-hw:
 test-hw-uart:
 	$(if $(SERIAL),,$(error Specify SERIAL= for the identified Genesys UART))
 	$(PYTHON) scripts/capture_a53_uart.py --port=$(SERIAL) --output=$(abspath $(O))/a53-hardware-results.json
+
+test-kernel-abi:
+	$(if $(NAC3_SOURCE),,$(error Specify NAC3_SOURCE= checkout at the documented prototype revision))
+	$(if $(ABI_TOOLS),,$(error Specify ABI_TOOLS= directory prepared by setup_abi_tools.py))
+	$(PYTHON) scripts/test_kernel_abi.py --nac3-source=$(NAC3_SOURCE) --tools=$(ABI_TOOLS) --output=$(abspath $(O))/kernel-abi $(if $(ABI_ARTIQ_SOURCE),--artiq-source=$(ABI_ARTIQ_SOURCE) --sipyco-source=$(ABI_SIPYCO_SOURCE))
