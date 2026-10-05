@@ -20,6 +20,7 @@ class PinWiring(unittest.TestCase):
             "RIGHT": str(right), "DEFAULT_DRIVER": "",
         })
         internal = cell._glue["bus"]
+        self.assertEqual(len(internal), left - right + 1)
         dut = Module()
         dut.submodules.cell = cell
 
@@ -27,9 +28,9 @@ class PinWiring(unittest.TestCase):
             if direction == "I":
                 yield public.eq(value)
                 yield
-                self.assertEqual((yield internal), value << right)
+                self.assertEqual((yield internal), value)
             else:
-                yield internal.eq(value << right)
+                yield internal.eq(value)
                 yield
                 self.assertEqual((yield public), value)
 

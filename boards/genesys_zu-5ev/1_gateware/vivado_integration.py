@@ -101,19 +101,21 @@ class BdCell(Module):
 
         default = pin_props["DEFAULT_DRIVER"]
         if default == "":
-            signal = Signal(bits_sign=(left + 1, False), name=pin_name, reset_less=True)
+            signal = Signal(bits_sign=(width, False), name=pin_name, reset_less=True)
         else:
-            signal = Signal(bits_sign=(left + 1, False), name=pin_name, reset=int(default, 2))
+            signal = Signal(bits_sign=(width, False), name=pin_name, reset=int(default, 2))
         signal_shifted = Signal(
             bits_sign=(width, False), name=f"{pin_name}__SHIFTED", reset_less=True
         )
+        # Port indices in Vivado metadata do not change the packed connection
+        # width: a vendor port [15:8] connects to an eight-bit Migen signal.
         # The instance owns outputs, while the surrounding gateware owns inputs.
         # Driving both directions from the instance-side signal leaves inputs
         # disconnected (and can create multiple drivers on the public signal).
         if pin_props["DIR"] == "I":
-            self.comb += signal.eq(signal_shifted << right)
+            self.comb += signal.eq(signal_shifted)
         else:
-            self.comb += signal_shifted.eq(signal[right : left + 1])
+            self.comb += signal_shifted.eq(signal)
 
         self._glue[pin_name] = signal
 
