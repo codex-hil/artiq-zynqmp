@@ -1,6 +1,16 @@
 # SEE: https://docs.amd.com/r/en-US/pg201-zynq-ultrascale-plus-processing-system/User-Parameters
 # SEE: build/zynq_ultra_ps_e_0/properties.txt
 
+if {$artiq_variant eq "local-rtio"} {
+    set_property -dict [list \
+        CONFIG.PSU__USE__M_AXI_GP0 {1} \
+        CONFIG.PSU__USE__M_AXI_GP1 {0} \
+        CONFIG.PSU__USE__M_AXI_GP2 {0} \
+        CONFIG.PSU__MAXIGP0__DATA_WIDTH {32} \
+        CONFIG.PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ {125} \
+    ] [get_bd_cells zynq_ultra_ps_e_0]
+}
+
 # System Configuration
 set_property -dict [list \
     CONFIG.PSU__USE__IRQ0 {1} \

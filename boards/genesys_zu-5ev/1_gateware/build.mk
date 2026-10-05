@@ -11,5 +11,5 @@ O_TOP_BIT := $(O_MIGEN_BUILD)/top.bit
 all: $(GATEWARE)
 $(GATEWARE): $(O_TOP_BIT)
 
-$(O_TOP_BIT): $(O_PLATFORM_XSA) $(I_GATEWARE_wildcard_PY) $(I_GATEWARE_PY)
-	env -C "$(O)" -- "$(I_GATEWARE_PY)" -B "$(O)" -M "$(O_MIGEN_BUILD)"
+$(O_TOP_BIT): $(O_PLATFORM_XSA) $(I_GATEWARE_wildcard_PY) $(I_GATEWARE_PY) | check-variant
+	env -C "$(O)" -- "$(I_GATEWARE_PY)" -B "$(O)" -M "$(O_MIGEN_BUILD)" --variant "$(VARIANT)"

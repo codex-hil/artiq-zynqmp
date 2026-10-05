@@ -10,5 +10,5 @@ O_PLATFORM_XSA := $(O)/platform.xsa
 all: $(PLATFORM)
 $(PLATFORM): $(O_PLATFORM_XSA)
 
-$(O_PLATFORM_XSA): $(I_PLATFORM_wildcard_TCL) $(I_VIVADO_SCRIPT_TCL) | $(O)
-	env -C "$(O)" -- vivado -mode batch -script "$(I_VIVADO_SCRIPT_TCL)"
+$(O_PLATFORM_XSA): $(I_PLATFORM_wildcard_TCL) $(I_VIVADO_SCRIPT_TCL) | $(O) check-variant
+	env -C "$(O)" -- vivado -mode batch -script "$(I_VIVADO_SCRIPT_TCL)" -tclargs "$(VARIANT)"
