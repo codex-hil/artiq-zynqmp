@@ -211,3 +211,17 @@ ARTIQ trzeba sprawdzić właściwy GTH/GT clocking Genesys, ref clocks,
 recovered clock, deterministic latency, training i reset sequence. Nie
 przeniesiono prymitywów GTX7series do UltraScale+ bez adaptera. AFCZ nie
 został dodany jako target przed zweryfikowaniem platformy laboratoryjnej.
+
+## Decyzja po wykonaniu prototypu ABI
+
+Wykonany w QEMU test potwierdził podstawowy wariant A53/AArch32: kernel
+NAC3 z targetem cortexa9, loader aktualnego artiq-zynq i wywołania runtime
+w A-profile hard-float. Przeszedł również kernel kompilowany przez aktualny
+ARTIQ Core dla EnvExperiment i TTLOut. Nie trzeba tworzyć backendu AArch64
+tylko po to, by wykonać ten zakres kernela na A53.
+
+To warunkowy wybór dalszej ścieżki, wymagający jeszcze produkcyjnego targetu
+Rust, wyjątków/unwind, MMU/cache i bootowania przez zachowany FSBL Piotra.
+Prototyp QEMU ma własne adresy virt/PL011; nie zastępuje platformy Genesys.
+AArch64 diagnostyka pozostaje oddzielnym ELF-em. Szczegóły i revisions są
+w prototypes/kernel-abi/README.md, a dowody w evidence/kernel-abi/.

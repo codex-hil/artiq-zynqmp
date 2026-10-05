@@ -1,0 +1,3 @@
+/srv/codex-hil-data/artiq-zynqmp/venv/bin/python scripts/test_kernel_abi.py --nac3-source=/srv/codex-hil-data/artiq-zynqmp/work/nac3-abi --tools=/srv/codex-hil-data/artiq-zynqmp/toolchains/abi-verified --output=/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi --artiq-source=/srv/codex-hil-data/artiq-zynqmp/reference/artiq --sipyco-source=/srv/codex-hil-data/artiq-zynqmp/work/sipyco-abi
+PASS: kernel ABI emulation including A53 bare metal and negative control
+Evidence: /srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/results.json; hardware NOT_RUN

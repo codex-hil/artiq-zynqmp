@@ -47,3 +47,19 @@ Test128 KiB nie jest testem całej pojemności DDR ani długiej stabilności.
 Wszystkie niepowodzenia i granice artefaktów są zachowane zamiast zamieniane
 na puste pliki platform.xsa/top.bit/boot.bin. Stary bitstream w XSA Piotra
 pozostaje historycznym artifactem, a nie rezultatem nowego buildu.
+
+## Prototyp kernel ABI
+
+- Aktualny NAC3 wymaga LLVM 23; wybrano osobny pin z maja 2026 z LLVM 19,
+  pozostawiając HEAD bez edycji. Build z systemowo wyciągniętym LLVM 19 przeszedł.
+- Rust armv7r core/alloc nie można linkować do A-profile: rzeczywisty linker
+  odrzucił profile R/A. Test bare-metal korzysta z armv7-unknown-linux-gnueabihf
+  core/alloc i nostdlib, bez Linux runtime. Produkcyjny target pozostaje do integracji.
+- Relokacyjny loader M-Labs używa privileged Cortex-A9 cache operations;
+  adapter testowy rozdziela userspace cacheflush i bare-metal z wyłączonymi cache.
+- QEMU virt umieszcza DTB przy 0x40000000: bootstrap przeniesiono na 0x40100000,
+  payload ARM32 na 0x40200000. Adresy te nie są adresami Genesys.
+- Nowy ARTIQ wymaga aktualnego sipyco get_exc_message; użyto osobnego checkoutu
+  sipyco-canonical, bez wymiany zależności istniejącego projektu.
+- Nawet pusty kernel emituje automatyczny rpc_send_async writeback. Test
+  sprawdza service=0 i tag :n; pozostałe RPC i unwind jawnie kończą go błędem.

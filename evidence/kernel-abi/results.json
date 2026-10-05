@@ -1,0 +1,375 @@
+{
+  "status": "PASS",
+  "mode": "EMULATED",
+  "hardware": "NOT_RUN",
+  "source_revisions": {
+    "nac3": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+    "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "sipyco": "75f055c2ee29c09a49912e63ed49c7b7cae953c4"
+  },
+  "versions": {
+    "compiler_rust": "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "runtime_rust": "rustc 1.87.0 (17067e9ac 2025-05-09)",
+    "llvm": "19.1.1",
+    "qemu": "QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)\nCopyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers"
+  },
+  "artifacts_sha256": {
+    "positive/module.elf": "7d94dc6cb0fcbdcaccb29eca4839b5f3745dfc8d7fdfbf812f39371679dc0c8d",
+    "positive/probe32.elf": "109233584f7b41e1233cd5b8c26f6cc37d337ff62e47f4bf36a4e46e475a4640",
+    "baremetal/start64.elf": "77060386227a33f7c1bbe7fc7a203812c6d362eb10bf532b1fe90daa4f634a47",
+    "artiq/module.elf": "a3f2deac088e533f91e8de3fec1a85a5584ed86f5e2d1716241d57bc53db866b",
+    "artiq/probe32.elf": "ec7dda58312dc0c63602bad4c7faa31c07dea20255a9eebd13048635e67b9404"
+  },
+  "checks": [
+    "ARM32 upstream loader",
+    "A53 EL3/AArch64 to EL1/AArch32",
+    "i64 ABI",
+    "hard-float argument/return",
+    "timeline",
+    "empty automatic writeback",
+    "negative wrong i64 rejected"
+  ],
+  "commands": [
+    {
+      "name": "compiler-build",
+      "command": [
+        "cargo",
+        "+stable",
+        "build",
+        "--release",
+        "--locked",
+        "-p",
+        "nac3artiq",
+        "--target-dir",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/compiler"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "runtime-build",
+      "command": [
+        "cargo",
+        "+1.87.0",
+        "build",
+        "--release",
+        "--locked",
+        "--target",
+        "armv7-unknown-linux-gnueabihf",
+        "--target-dir",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/runtime"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "startup64-build",
+      "command": [
+        "clang",
+        "--target=aarch64-none-elf",
+        "-fuse-ld=lld",
+        "-nostdlib",
+        "-Wl,-T,link64.ld",
+        "start64.S",
+        "-o",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal/start64.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "positive-compile",
+      "command": [
+        "/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+        "probe.py"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "positive-userspace-qemu",
+      "command": [
+        "qemu-arm",
+        "-cpu",
+        "cortex-a15",
+        "-L",
+        "/srv/codex-hil-data/artiq-zynqmp/toolchains/abi-verified/root/usr/arm-linux-gnueabihf",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/runtime/armv7-unknown-linux-gnueabihf/release/genesys-kernel-abi-probe",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/positive/module.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "positive-baremetal-build",
+      "command": [
+        "cargo",
+        "+1.87.0",
+        "build",
+        "--release",
+        "--locked",
+        "--target",
+        "armv7-unknown-linux-gnueabihf",
+        "--target-dir",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "positive-baremetal-link",
+      "command": [
+        "arm-linux-gnueabihf-gcc",
+        "-nostdlib",
+        "-static",
+        "-no-pie",
+        "-mcpu=cortex-a9",
+        "-marm",
+        "-mfpu=neon",
+        "-mfloat-abi=hard",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-O2",
+        "-Wl,--gc-sections",
+        "-Wl,-T,link32.ld",
+        "start32.S",
+        "probe.c",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal/armv7-unknown-linux-gnueabihf/release/libgenesys_aarch32_loader_probe.a",
+        "-lgcc",
+        "-o",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/positive/probe32.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "positive-a53-qemu",
+      "command": [
+        "qemu-system-aarch64",
+        "-M",
+        "virt,secure=on,virtualization=on",
+        "-cpu",
+        "cortex-a53",
+        "-m",
+        "128M",
+        "-nographic",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-semihosting-config",
+        "enable=on,target=native",
+        "-device",
+        "loader,file=/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal/start64.elf,cpu-num=0",
+        "-device",
+        "loader,file=/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/positive/probe32.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "negative-compile",
+      "command": [
+        "/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+        "probe.py"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "negative-baremetal-build",
+      "command": [
+        "cargo",
+        "+1.87.0",
+        "build",
+        "--release",
+        "--locked",
+        "--target",
+        "armv7-unknown-linux-gnueabihf",
+        "--target-dir",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "negative-baremetal-link",
+      "command": [
+        "arm-linux-gnueabihf-gcc",
+        "-nostdlib",
+        "-static",
+        "-no-pie",
+        "-mcpu=cortex-a9",
+        "-marm",
+        "-mfpu=neon",
+        "-mfloat-abi=hard",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-O2",
+        "-Wl,--gc-sections",
+        "-Wl,-T,link32.ld",
+        "start32.S",
+        "probe.c",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal/armv7-unknown-linux-gnueabihf/release/libgenesys_aarch32_loader_probe.a",
+        "-lgcc",
+        "-o",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/negative/probe32.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "negative-a53-qemu",
+      "command": [
+        "qemu-system-aarch64",
+        "-M",
+        "virt,secure=on,virtualization=on",
+        "-cpu",
+        "cortex-a53",
+        "-m",
+        "128M",
+        "-nographic",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-semihosting-config",
+        "enable=on,target=native",
+        "-device",
+        "loader,file=/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal/start64.elf,cpu-num=0",
+        "-device",
+        "loader,file=/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/negative/probe32.elf"
+      ],
+      "returncode": 3,
+      "expected": 3
+    },
+    {
+      "name": "artiq-compile",
+      "command": [
+        "/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+        "probe.py"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "artiq-userspace-qemu",
+      "command": [
+        "qemu-arm",
+        "-cpu",
+        "cortex-a15",
+        "-L",
+        "/srv/codex-hil-data/artiq-zynqmp/toolchains/abi-verified/root/usr/arm-linux-gnueabihf",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/runtime/armv7-unknown-linux-gnueabihf/release/genesys-kernel-abi-probe",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/artiq/module.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "artiq-baremetal-build",
+      "command": [
+        "cargo",
+        "+1.87.0",
+        "build",
+        "--release",
+        "--locked",
+        "--target",
+        "armv7-unknown-linux-gnueabihf",
+        "--target-dir",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "artiq-baremetal-link",
+      "command": [
+        "arm-linux-gnueabihf-gcc",
+        "-nostdlib",
+        "-static",
+        "-no-pie",
+        "-mcpu=cortex-a9",
+        "-marm",
+        "-mfpu=neon",
+        "-mfloat-abi=hard",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-O2",
+        "-Wl,--gc-sections",
+        "-Wl,-T,link32.ld",
+        "start32.S",
+        "probe.c",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal/armv7-unknown-linux-gnueabihf/release/libgenesys_aarch32_loader_probe.a",
+        "-lgcc",
+        "-o",
+        "/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/artiq/probe32.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "artiq-a53-qemu",
+      "command": [
+        "qemu-system-aarch64",
+        "-M",
+        "virt,secure=on,virtualization=on",
+        "-cpu",
+        "cortex-a53",
+        "-m",
+        "128M",
+        "-nographic",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-semihosting-config",
+        "enable=on,target=native",
+        "-device",
+        "loader,file=/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/baremetal/start64.elf,cpu-num=0",
+        "-device",
+        "loader,file=/srv/codex-hil-data/artiq-zynqmp/build/abi-acceptance/kernel-abi/artiq/probe32.elf"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "version-compiler_rust",
+      "command": [
+        "rustc",
+        "+stable",
+        "--version"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "version-runtime_rust",
+      "command": [
+        "rustc",
+        "+1.87.0",
+        "--version"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "version-llvm",
+      "command": [
+        "llvm-config",
+        "--version"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "version-qemu",
+      "command": [
+        "qemu-system-aarch64",
+        "--version"
+      ],
+      "returncode": 0,
+      "expected": 0
+    }
+  ]
+}

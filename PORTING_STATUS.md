@@ -1,7 +1,8 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 Stan: 2026-10-05. **Definition of Done nie została osiągnięta.** Powstał
-kompilowalny firmware diagnostyczny A53 i symulowany local RTIO, ale nie ma
+kompilowalny firmware diagnostyczny A53, symulowany local RTIO i wykonywany
+pod QEMU kernel NAC3 na A53/AArch32, ale nie ma
 jeszcze działającego runtime ARTIQ, pomiarów hardware ani nowego bitstreamu.
 
 Punktem bazowym jest praca Piotra: `main@e15b8a2` i `wip@b25e75b`.
@@ -34,7 +35,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | CSR do fizycznego testu; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | MISSING: artiq_coremgmt nie obsłużony | Wymagany test prawdziwym artiq_coremgmt |
-| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | MISSING; stub teraz zwraca jawne błędy | 6 testów framing/rejection PASS |
+| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL prototypu ABI: rzeczywisty kernel NAC3 na emulowanym A53/AArch32; MISSING runtime/RPC produkcyjne; stub zwraca błędy | 6 testów framing/rejection; ABI QEMU PASS z aktualnym ARTIQ i negatywną kontrolą |
 | DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: kod/konfiguracja bez odtworzonego boot.bin | NOT_RUN |
 
@@ -55,6 +56,22 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
   Nie wykonano pełnego `nix develop` ani budowania całej closure.
 - `make test-hw` bez wskazanego urządzenia zapisuje NOT_RUN i zwraca błąd.
   Nie używa symulacji jako zastępczego sukcesu hardware.
+
+## Nowy wynik: kernel A53/AArch32 bez Vivado
+
+`make test-kernel-abi` ma odtwarzalny runner i lokalny toolchain `.deb`
+z przypiętymi wersjami/SHA-256. Wykonano test prawdziwego NAC3 kernela
+na Cortex-A53 w QEMU: EL3/AArch64 → EL1/AArch32, loader M-Labs, i64,
+hard-float, timeline i pusty automatyczny writeback. Przeszedł również
+wariant aktualnego ARTIQ `EnvExperiment` + `TTLOut.pulse_mu()`. Celowo
+błędny argument kończy test kodem 3; nie może zgłosić PASS.
+
+Nie jest to fizyczny TTL: wywołania output są rejestrowane w modelu.
+Brak obsługi aplikacyjnego RPC i unwind; cache/MMU w bare-metal probe
+są wyłączone i test ten nie obejmuje ZynqMP peripherals. Przypięty
+NAC3 pochodzi z 2026-05-12 i używa LLVM 19; HEAD z LLVM 23 nie był
+budowany. Źródła obecnego ARTIQ pozostają bez zmian. Szczegóły:
+[prototypes/kernel-abi/README.md](prototypes/kernel-abi/README.md).
 
 ## Co blokuje Definition of Done
 

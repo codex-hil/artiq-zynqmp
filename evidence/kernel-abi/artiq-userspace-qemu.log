@@ -1,0 +1,3 @@
+writeback service=0 tags=[58, 110]
+PASS: actual NAC3 kernel loaded and executed; i64/hard-float/timeline/output ABI
+SIMULATION ONLY: no physical RTIO, DDR, Ethernet, RPC or exception-unwind validation

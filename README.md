@@ -233,3 +233,11 @@ Core target/ABI; NAC3 master wymaga osobnej zgodności. Obecny daemon
 
 DMA/analyzer/moninj network są kolejną warstwą. DRTIO, GT/recovered clock,
 master/satellite i AFCZ pozostają po fizycznym potwierdzeniu local RTIO.
+
+## Kernel ABI bez Vivado
+
+Dostępny jest wykonywany pod QEMU prototyp A53/AArch32 z prawdziwym
+kernellem NAC3 oraz aktualnymi klasami ARTIQ `EnvExperiment`, `Core`,
+`TTLOut.pulse_mu()`. Instrukcje: [prototypes/kernel-abi/README.md](prototypes/kernel-abi/README.md).
+`make test-kernel-abi` uruchamia kompilację, loader M-Labs, A53 bare-metal
+i test negatywny. To nadal nie jest uruchomiony core device na Genesys.
