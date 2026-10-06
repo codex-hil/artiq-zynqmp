@@ -1,9 +1,10 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
-Stan: 2026-10-05. **Definition of Done nie została osiągnięta.** Powstał
+Stan: 2026-10-06. **Definition of Done nie została osiągnięta.** Powstał
 kompilowalny firmware diagnostyczny A53, symulowany local RTIO i wykonywany
 pod QEMU kernel NAC3 na A53/AArch32, ale nie ma
-jeszcze działającego runtime ARTIQ, pomiarów hardware ani nowego bitstreamu.
+jeszcze działającego runtime ARTIQ ani pomiarów hardware. Nowy bitstream
+migacza Piotra zbudowano; local RTIO również zbudowano (125 MHz, timing/bitgen PASS).
 
 Punktem bazowym jest praca Piotra: `main@e15b8a2` i `wip@b25e75b`.
 Rozwój odbywa się na `bringup/genesys` wyprowadzonym z `wip`. Oryginalne
@@ -17,8 +18,8 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 
 | Subsystem | Piotr | Duke | upstream / inne | Obecny status Genesys | Test / dowód |
 |---|---|---|---|---|---|
-| build | PARTIAL: Rust, Vivado, Vitis, Yocto | Nix/nightly 2023; własny target JSON | Cargo stable, Migen/Vivado, AMD CMake/SDT | PARTIAL: R5 i A53 build; HDL; pełny FPGA/boot nie wykonany | `make test hdl`; logi w evidence |
-| PS | Własne TCL, eksport pinów/XCI | ZCU111 HAL i SLCR | AMD PS IP; LiteX ZynqMP | PARTIAL: zachowano TCL Piotra; wariant HPM0/125 MHz | Brak Vivado i hardware |
+| build | PARTIAL: Rust, Vivado, Vitis, Yocto | Nix/nightly 2023; własny target JSON | Cargo stable, Migen/Vivado, AMD CMake/SDT | PARTIAL: R5/A53, HDL, FPGA blinker PASS; pełny boot/RTIO hardware nie wykonany | `make test hdl`; logi w evidence |
+| PS | Własne TCL, eksport pinów/XCI | ZCU111 HAL i SLCR | AMD PS IP; LiteX ZynqMP | PARTIAL: zachowano TCL Piotra; wariant HPM0/125 MHz | Vivado 2025.2 blinker PASS; hardware NOT_RUN |
 | AArch64 | main: biblioteka C ABI; startup delegowany BSP | Własny startup, wyjątki, multicore | AdaCore 0.2.0, aarch64-cpu | PARTIAL: osobny ELF diagnostyczny ze startupem/MMU | Build + walidacja entry/segmentów; boot NOT_RUN |
 | R5/OpenAMP | wip: BSP C i przykład echo; Rust pusty loop | Brak równoważnej ścieżki | AMD/OpenAMP/libmetal | PARTIAL: oryginalna biblioteka kompiluje; brak wykonania kernelów | Cargo R5; OpenAMP hardware NOT_RUN |
 | DDR | Dynamiczne SPD/FSBL, lokalne xfsbl_ddr_init.c | Własny SPD/PHY dla ZCU111 | AMD FSBL + Digilent BSP | PARTIAL: zachowany FSBL; przygotowany test 128 KiB z clean/invalidate cache | A53 test do uruchomienia; brak stabilności pełnego DDR |
@@ -125,3 +126,13 @@ Naprawa środowiska: `lsb-release` oraz wcześniejsze ładowanie Ubuntu
 się poprawnie, lecz WebTalk powodował crash realloc/libudev. Historyczne
 `config_webtalk` nie istnieje w zainstalowanym 2025.2, więc nie zastosowano go.
 To PASS buildu, nie hardware. Wariant local-rtio uruchomiony osobno.
+
+### Local RTIO board bitstream — PASS
+
+Wariant local-rtio (HPM0_FPD/CSR, dwa kanały TTL, PL0 125 MHz) przeszedł
+pełny build Vivado 2025.2: XSA, synteza, routing, DRC, bitgen, csr-map.json.
+WNS +2.893 ns, WHS +0.014 ns, zadane ograniczenia spełnione. DRC: zero
+błędów, jedno ostrzeżenie RTSTAT-10 (net synchronizatora bez routable loads).
+Zachowano raporty i ostrzeżenia vendor PS IP; PASS buildu nie zalicza
+CDC/TTL/AXI hardware. Hashe: `evidence/vivado-local-rtio-2026-10-06.json`.
+Fizyczne uruchomienie i runtime ARTIQ pozostają niewykonane.

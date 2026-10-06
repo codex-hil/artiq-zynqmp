@@ -144,7 +144,8 @@ python boards/genesys_zu-5ev/1_gateware/gateware.py \
 Migacz Piotra zbudowano Vivado 2025.2 (synteza/routing/bitgen PASS);
 dowody: `evidence/vivado-blinker-2026-10-06.json`. Wspólne `vivado`
 działa przez kontener; patrz `/home/codex-hil/docs/toolchains/vivado.md`.
-Wariant local-rtio jest budowany osobno; hardware pozostaje NOT_RUN. W historycznym main XSA jest stary bitstream, który nie
+Wariant local-rtio również przeszedł pełny build (125 MHz, timing PASS);
+dowody: `evidence/vivado-local-rtio-2026-10-06.json`. Hardware NOT_RUN. W historycznym main XSA jest stary bitstream, który nie
 zawiera dodanego local RTIO.
 
 ## Boot i minimalne testy hardware

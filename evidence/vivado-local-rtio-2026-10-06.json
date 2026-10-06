@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-06",
+  "variant": "local-rtio",
+  "vivado": "2025.2",
+  "build_exit_code": 0,
+  "hardware_validation": "NOT_RUN",
+  "wns_ns": 2.893,
+  "whs_ns": 0.014,
+  "drc_errors": 0,
+  "drc_warnings": [
+    "RTSTAT-10: one synchronizer net has no routable loads"
+  ],
+  "artifacts": {
+    "platform.xsa": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/platform.xsa",
+      "bytes": 567666,
+      "sha256": "56413083540af6e0a09ff7d0493a2a61b92c2e465bd334f142b706ecea3bbbd3"
+    },
+    "migen-build/top.bit": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top.bit",
+      "bytes": 2624445,
+      "sha256": "de421e03b788a487d8b2f05bffb1e9ae988a479f694b4bca35a93170e55f270f"
+    },
+    "migen-build/top_route.dcp": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top_route.dcp",
+      "bytes": 2912731,
+      "sha256": "c59c268aa3eb1baf96613e2e467ea27d4bf15d53fbd690461b073528ab63f8a4"
+    },
+    "migen-build/top_timing.rpt": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top_timing.rpt",
+      "bytes": 114132,
+      "sha256": "e19333cdbacbb9b008c2ec98c6d870fef8475814e6dd1a669e1a9a73d78fdf15"
+    },
+    "migen-build/top_drc.rpt": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top_drc.rpt",
+      "bytes": 1541,
+      "sha256": "6bd7d62946f05b3edfdef037fd0b185d4d464cdc981885d383da0d7a38920d1a"
+    },
+    "migen-build/csr-map.json": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/csr-map.json",
+      "bytes": 3793,
+      "sha256": "ba8c40cecba19bafbd4dbbc6012d242710812d5f7c0a954d0b4cd8e02c447306"
+    }
+  }
+}
