@@ -98,3 +98,18 @@ Ani biblioteka Rust Piotra, ani port Duke nie są już gotowym ARTIQ core device
    analyzer i moninj TCP. DRTIO i AFCZ pozostają następne.
 
 Każdy etap ma osobny commit i osobny rodzaj dowodu: build, symulacja albo hardware.
+
+## Vivado i pierwsza próba JTAG — 2026-10-06
+
+Wspólne Vivado 2025.2 zainstalowane offline; synteza kontrolna ZU-5EV PASS.
+Pierwszy rzeczywisty build platformy ujawnił błąd zakresu zmiennej TCL
+`artiq_variant` (plik properties jest source wewnątrz procedury); poprawiono
+odwołanie na jawne globalne. Kontener wymaga `lsb-release`: bez niego
+Vivado generuje wielowierszowy nagłówek hosta i niepoprawny Verilog.
+Po obu poprawkach build blinker ponowiony w
+`/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker`.
+
+Połączenie hw_server/JTAG działa, lecz wykryta płytka ma `xc7a50t`,
+nie Genesys ZU-5EV. Niczego nie zaprogramowano. Dowód:
+`evidence/jtag-probe-2026-10-06.json`. Testy fizycznego Genesys pozostają
+NOT_RUN; oczekiwanie na USB-JTAG właściwej płytki.
