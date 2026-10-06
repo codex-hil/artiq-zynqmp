@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-06",
+  "variant": "blinker",
+  "vivado": "2025.2",
+  "build_exit_code": 0,
+  "hardware_validation": "NOT_RUN",
+  "wns_ns": 2.426,
+  "whs_ns": 0.055,
+  "artifacts": {
+    "platform.xsa": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker/platform.xsa",
+      "bytes": 567603,
+      "sha256": "888635bbe14785ff6eed33a9867432317de6830c844bbe375113d2f714ece404"
+    },
+    "migen-build/top.bit": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker/migen-build/top.bit",
+      "bytes": 1885845,
+      "sha256": "b76bd17d57a7f1b2f6e96c37dfee4c6d1fe0849104dda5c2b74dc58c86666ea9"
+    },
+    "migen-build/top_route.dcp": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker/migen-build/top_route.dcp",
+      "bytes": 898159,
+      "sha256": "f64de664cc48360d898cff2a6ae2aa262b914ccba21296fa1b9861eef918b0f2"
+    },
+    "migen-build/top_timing.rpt": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker/migen-build/top_timing.rpt",
+      "bytes": 114472,
+      "sha256": "7efaada402aca475479fadb5f7f9e888e223f12ada1d26c17d5595a4a35752a6"
+    },
+    "migen-build/top_drc.rpt": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker/migen-build/top_drc.rpt",
+      "bytes": 1282,
+      "sha256": "7d84b6e67ffd30c62cd83771477215cb6c3a8dc7b32b42824074910e624ac65c"
+    }
+  }
+}

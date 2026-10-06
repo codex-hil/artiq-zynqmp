@@ -113,3 +113,15 @@ Połączenie hw_server/JTAG działa, lecz wykryta płytka ma `xc7a50t`,
 nie Genesys ZU-5EV. Niczego nie zaprogramowano. Dowód:
 `evidence/jtag-probe-2026-10-06.json`. Testy fizycznego Genesys pozostają
 NOT_RUN; oczekiwanie na USB-JTAG właściwej płytki.
+
+### Pierwszy odtworzony board bitstream — PASS
+
+Migacz Piotra z prawdziwym PS IP/XSA zbudowano Vivado 2025.2.
+Routing i bitgen PASS, WNS +2.426 ns, WHS +0.055 ns; zadane ograniczenia
+czasowe spełnione. Dowody/hashe: `evidence/vivado-blinker-2026-10-06.json`.
+Naprawa środowiska: `lsb-release` oraz wcześniejsze ładowanie Ubuntu
+`libudev.so.1`, zgodnie z obejściem Dockera w vendorowym `bin/loader`
+(który sprawdza tylko ścieżkę RHEL /lib64). Bez preloading routing kończył
+się poprawnie, lecz WebTalk powodował crash realloc/libudev. Historyczne
+`config_webtalk` nie istnieje w zainstalowanym 2025.2, więc nie zastosowano go.
+To PASS buildu, nie hardware. Wariant local-rtio uruchomiony osobno.

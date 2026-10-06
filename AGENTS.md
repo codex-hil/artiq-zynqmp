@@ -26,4 +26,6 @@ Reuse existing tools instead of reinstalling them.
 checks actual NAC3/ARTIQ kernel execution under A53 emulation, including a
 negative control. Instructions are in prototypes/kernel-abi/README.md.
 Original daemon still rejects kernel execution; the prototype is separate.
-No Vivado installation or physical Genesys validation has been established.
+Shared Vivado 2025.2 is installed and Piotr blinker bitstream built successfully.
+Read /home/codex-hil/docs/toolchains/vivado.md. Physical Genesys validation
+remains NOT_RUN: JTAG currently detects xc7a50t, not ZU-5EV.

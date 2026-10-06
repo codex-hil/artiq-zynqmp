@@ -141,8 +141,10 @@ python boards/genesys_zu-5ev/1_gateware/gateware.py \
   --variant local-rtio --no-run
 ```
 
-Nowy board bitstream nie został zbudowany: na obecnym hoście `vivado`
-nie jest dostępne. W historycznym main XSA jest stary bitstream, który nie
+Migacz Piotra zbudowano Vivado 2025.2 (synteza/routing/bitgen PASS);
+dowody: `evidence/vivado-blinker-2026-10-06.json`. Wspólne `vivado`
+działa przez kontener; patrz `/home/codex-hil/docs/toolchains/vivado.md`.
+Wariant local-rtio jest budowany osobno; hardware pozostaje NOT_RUN. W historycznym main XSA jest stary bitstream, który nie
 zawiera dodanego local RTIO.
 
 ## Boot i minimalne testy hardware
