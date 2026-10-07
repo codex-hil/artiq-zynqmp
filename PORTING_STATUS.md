@@ -29,7 +29,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic około 125 MHz PASS (5% tolerancji); nie precyzyjna kalibracja |
 | Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; Rust management i kernel load/run/scalar RPC fizycznie PASS | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; rzeczywisty scalar RPC PASS |
 | AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 MMIO counter via TCP PASS |
-| RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Counter i wewnętrzny scheduled TTL probe hardware PASS; fizyczny loopback NOT_RUN |
+| RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Kernel→CSR timeline/input/sample i TTL ELF load hardware PASS; fizyczny loopback NOT_RUN |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
 | TTL input | MISSING | MISSING | ttl_simple.Input | PARTIAL: JB2/AG14, synchronizacja i timestamp FIFO | Symulowany loopback PASS; fizyczny loopback NOT_RUN |
 | DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | MISSING: brak transportu DDR->CRI ZynqMP | NOT_RUN; suite nie zgłasza sukcesu DMA |
@@ -360,3 +360,35 @@ Dowody: evidence/network-kernel-{build,hardware,management,ethernet}-2026-10-07.
 TTL exports jeszcze nie włączone; fizycznych impulsów/loopback nie uruchamiano.
 RTIO DMA/analyzer/moninj/DRTIO nadal pending. Następny etap: rzeczywiste
 rtio_output i TTL input, zgodnie z prośbą użytkownika eksperymenty jutro.
+
+## Kernel → rzeczywisty local RTIO — 2026-10-07
+
+Eksporty rtio_output, rtio_input_timestamp i rtio_input_data wiążą teraz kernel
+CPU1 z istniejącym RTIO/CSR przez PS HPM0. now_mu/at_mu/delay_mu używają
+64-bitowego rtio_now w PL, zamiast software NOW. Kolejność zapisów oparta na
+M-Labs rtio_csr.rs: target, dane LSW (commit), status; 64-bit MSW→LSW.
+Adresy oraz liczby słów generowane z mapy faktycznego bitstreamu. Własna
+warstwa nie zastępuje RTIO/SED ani protokołu ARTIQ. Async errors przy Finished
+pochodzą z rzeczywistego CSR i są write-one-to-clear, zamiast stałej zero.
+
+Hardware PASS: wartość timeline 0x1234567887654321 i delay125, pusty input
+FIFO zwraca -1, zaplanowany sample wejścia channel1/address3, timestamp
++10 taktów i odczyt danych 0/1, TTL ELF relocation bez uruchomienia. Zapis
+sample jest rzeczywistym zdarzeniem RTIO, ale nie przełącza pinu wyjściowego
+JB1. Pięć ponownych kerneli/RPC i management guard PASS. Kontrola negatywna
+sample w przeszłości: PL o_status=2, mailbox RTIOUnderflow, startup-failed
+bez fałszywego Finished; CPU0 management pozostaje dostępny. Worker wymaga
+restartu po błędzie, nie obsługuje jeszcze catchable exceptions/unwind.
+
+Build/simulation nie zastępują fizycznego pomiaru TTL. Physical JB1 output,
+JB1→JB2 edge loopback, pulse-width/deterministic latency nadal NOT_RUN,
+zgodnie z wcześniejszym odłożeniem eksperymentów. Wide output, tuple input,
+DMA/analyzer/moninj/DRTIO nadal pending. Test bez zworki:
+make test-hw-rtio-kernel; dokumentacja boards/genesys_zu-5ev/3_kernel/README.md.
+Poprzednie wpisy „TTL exports pending” opisują historyczne obrazy.
+
+Final physical runtime restored after the negative control:
+CPU0 build-vivado/rtio-kernel-services, CPU1 build/kernel-worker-rtio-final.
+Evidence: evidence/rtio-kernel-{build,hardware,negative,ethernet,management}-2026-10-07.json.
+Prepared normal ARTIQ GenesysLoopback (100 us pulse): offline compilation and
+on-board relocation PASS, execution NOT_RUN until physical jumper testing.

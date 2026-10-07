@@ -5,8 +5,9 @@ na `wip@b25e75b`. **Runtime wykonuje już kernela przez Ethernet i obsługuje
 podstawowy RPC na fizycznej Genesys ZU. Pełny core device z TTL pozostaje celem.**
 Host `artiq_run` → AMD/lwIP na CPU0 AArch64 → loader M-Labs na CPU1 AArch32
 → rzeczywiste wykonanie i RPC działa. Pięć uruchomień oraz testy negatywne PASS.
-Management, DDR/UART/IRQ/Ethernet i odczyt prawdziwego licznika RTIO sprawdzone.
-Fizyczny TTL input/output, RTIO DMA, analyzer/moninj i wyjątki pozostają do integracji.
+Management, DDR/UART/IRQ/Ethernet oraz kernel→RTIO timeline/input/sample sprawdzone.
+Eksporty TTL są powiązane z PL; fizyczny output/loopback, RTIO DMA, analyzer/moninj
+i wyjątki pozostają do walidacji lub integracji.
 
 Instrukcja buildu/startu/runtime i test bez TTL:
 [boards/genesys_zu-5ev/3_kernel/README.md](boards/genesys_zu-5ev/3_kernel/README.md).

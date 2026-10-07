@@ -236,15 +236,15 @@ flowchart LR
     CPU1 -->|wykonanie| KERNEL[rzeczywisty kernel ARTIQ]
     KERNEL -->|RPC upstream codec| CPU0
     CPU0 -->|RPC / wynik| HOST
-    KERNEL -->|odczyt licznika| RTIO[upstream local RTIO w PL]
-    KERNEL -. TTL exports pending .-> RTIO
+    KERNEL -->|timeline / output / input CSR| RTIO[upstream local RTIO w PL]
 ```
 
 To kontynuacja C BSP → Rust staticlib Piotra. PS/DDR/boot oraz PS importer
 zachowują odzyskaną pracę. Utrzymywane AMD GEM/lwIP zastępuje potrzebę
 pisania kolejnego Rust GEM drivera. Loader i serializer RPC odzyskano
 z M-Labs; LLVM backend Cortex-A9 wykonuje się na A53 w jawnie przełączonym
-AArch32. Testy dowodzą sieciowego kernela/RPC i fizycznego counter, nie TTL.
+AArch32. Testy dowodzą sieciowego kernela/RPC, CSR timeline, zaplanowanego input sample
+i odczytu FIFO. Fizyczny TTL output/loopback pozostaje NOT_RUN.
 Kanał ma osobne linie cache producentów, CPU0 stosuje cache maintenance
 AMD, CPU1 utrzymuje cache/MMU-off policy początkowego bring-upu.
 Mapa, ograniczenia i reproducer: boards/genesys_zu-5ev/3_kernel/README.md.

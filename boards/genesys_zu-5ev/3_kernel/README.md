@@ -5,7 +5,7 @@ staticlib design. CPU0 runs the maintained AMD/lwIP network stack plus Rust
 management; CPU1 enters EL1/AArch32 through the previously validated AArch64
 stub and loads ARM32 ET_DYN modules with the preserved M-Labs loader.
 RPC value serialization is copied unmodified from M-Labs (see ORIGIN.md).
-It is **not full ARTIQ support yet**: TTL output/input exports, RTIO DMA,
+It is **not full ARTIQ support yet**: physical TTL loopback validation, RTIO DMA,
 analyzer, moninj, exception unwinding and complex RPC returns are pending.
 
 ## Verified behavior
@@ -17,14 +17,22 @@ returns 3.75, which the kernel sends back in another RPC for validation.
 Empty automatic asynchronous writeback is served using the upstream wire ABI.
 `examples/genesys_network_probe.py` never calls TTL output functions.
 
-Enabled exports: RPC send/receive, malloc/free, Core.reset/RTIO counter and
-software timeline functions. No fake output function is supplied: loading
-`examples/genesys_ttl.py` fails explicitly on unresolved `rtio_output`.
+Enabled exports: RPC send/receive, malloc/free, Core.reset/RTIO counter,
+hardware CSR timeline and local rtio_output/input_timestamp/input_data.
+Output targets are restricted to channel 0/address 0 and channel 1/address
+2/3 (input sensitivity/sample). Wide output and timestamped-data tuple API
+are not exported. Loading the TTL example now succeeds; executing physical
+pulses/loopback remains NOT_RUN. `genesys_rtio_probe.py` schedules input PHY
+samples without driving JB1, checks 64-bit timeline values, an empty FIFO
+(timeout -1), timestamp and sampled input bit. Hardware sample timestamp is
+scheduled time +10 ticks (80 ns); this is not physical TTL latency validation.
+Finished carries the actual RTIO async error bits, read and cleared from PL.
+
 Scalar RPC returns n/b/i/I/u/U/f are accepted. Argument serialization is
 upstream, but only scalar arguments and empty writeback are hardware-validated.
 
 Negative tests: malformed/out-of-bounds ELF and upload larger than 1 MiB are
-rejected; an unsupported TTL kernel cannot report LoadCompleted. Fragmented
+rejected; TTL ELF relocation is tested without executing it. Fragmented
 upload, exclusive kernel ownership and management while CPU1 waits for RPC
 are checked. Multiple uploads/runs reclaim library memory and reset the
 separate kernel heap, rather than consuming a single test bump allocator.
@@ -64,7 +72,7 @@ python scripts/test_ethernet_bringup.py \
   --bitstream "$GATEWARE/migen-build/top.bit" --psu-init "$BOOT/sdt/psu_init.tcl" \
   --worker32 "$WORKER/worker32.elf" --worker64 "$WORKER/start64.elf" \
   --output "$RESULTS/boot-network"
-artiq-host python scripts/test_network_kernel_hw.py \
+artiq-host python scripts/test_network_kernel_hw.py --rtio \
   --ip "$BOARD_IP" --output "$RESULTS/kernel"
 artiq-host python scripts/test_a53_services_hw.py \
   --ip "$BOARD_IP" --artiq-source "$CURRENT_ARTIQ" --sipyco-source "$SIPYCO" \
@@ -118,3 +126,32 @@ ELF parsing, cancellation, idle-owner eviction, application exceptions and
 complex return allocation are not production-ready. Only trusted local
 compiler artifacts were used. Tests do not claim physical TTL, RTIO DMA,
 analyzer, moninj or DRTIO success.
+
+## RTIO diagnostics and physical test preparation
+
+```sh
+make test-hw-rtio-kernel BOARD_IP=192.168.2.16 O=/large-disk/results
+artiq_run --device-db examples/device_db_genesys.py \
+  --dataset-db /large-disk/datasets.mdb examples/genesys_rtio_probe.py
+```
+
+No JB1 pulses are sent by these commands. The output API is exercised by
+scheduling channel 1 input-sample events, which return real FIFO data.
+`examples/genesys_ttl.py` is ready for the next physical output test.
+`examples/genesys_loopback.py` compiles and is prepared for JB1→JB2: 20 ms
+lead, rising-edge gate, 100 us pulse, timestamp check. It has not been
+executed physically. The fixed input PHY uses TTLInOut gating/timestamp
+methods; calling direction-changing input()/output() is unsupported.
+JB1→JB2 loopback and oscilloscope/deterministic pulse measurements remain
+pending; neither sample diagnostics nor RTL simulation replaces them.
+
+Optional negative control: append `--underflow` to the test script. It sends
+an input-sample event at timestamp zero, expects KernelStartupFailed rather
+than Finished, and confirms management remains available. It intentionally
+parks CPU1; reboot the two-core runtime afterward. Inspect the actual cause
+with `probe_rtio_failure.tcl SERVER CABLE`: the mailbox must say
+RTIOUnderflow and PL o_status must contain bit 1. This is fail-stop handling,
+not a catchable ARTIQ exception. Output WAIT is polled with a one-second
+bring-up bound; input status polls have at least a one-second bound (extended
+to a finite future timeout). CPU0's existing 30-second watchdog still applies.
+Use no infinite/blocking input waits for production experiments yet.

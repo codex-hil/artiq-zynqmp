@@ -83,3 +83,17 @@ CPU0 and checks its READY mailbox event. Added separate cacheline producers
 and AMD CPU0 cache flush/invalidate; CPU1 remains cache/MMU-off for this
 bring-up. Management counter reads are guarded while CPU1 uses the shared
 hardware latch. See boards/genesys_zu-5ev/3_kernel/README.md for limits.
+
+## Local RTIO kernel bindings — 2026-10-07
+
+The 512-bit o_data CSR is 16 big-order 32-bit words, not a single u32:
+writing its LSW at base+60 triggers the event. Generated word counts now
+accompany addresses. 64-bit now/i_timeout/counter/timestamps use MSW first.
+Kernel timeline was software-only; it now uses rtio_now in PL. Output WAIT
+is backpressure (poll, never duplicate-submit); underflow/overflow are
+explicit fail-stop until exception/unwind integration. Finished reads actual
+async_error and W1C-clears it, instead of the old no-output constant zero.
+Fresh CPU0 and CPU1 builds passed; CPU0 UART banners no longer incorrectly
+claim kernels/RTIO exports are unavailable for every worker image.
+Direct unittest initially lacked ARTIQ on PYTHONPATH; rerun with the pinned
+reference/artiq passed actual AXI/RTIO scheduled TTL simulation.

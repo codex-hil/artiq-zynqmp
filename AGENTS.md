@@ -58,3 +58,10 @@ Boot CPU1 before CPU0; run_a53_runtime.tcl preserves it. Old run_ethernet.tcl
 halts all cores. Management rtio_counter returns Error while a kernel runs
 (to avoid contending with CPU1 for the shared latch). Reserve 0x21000000
 for 1 MiB upload, in addition to the earlier CPU1 image/mailbox range.
+
+Latest runtime: rtio-kernel-services + kernel-worker-rtio-final (2026-10-07).
+Kernel CSR timeline, scheduled channel1 input sample and data/timeout have
+hardware PASS; rtio_output/input exports enabled. TTL and loopback ELF load
+without execution are checked. Physical JB1 pulses/JB1→JB2 still NOT_RUN.
+make test-hw-rtio-kernel runs without a jumper or output pin transitions.
+Optional --underflow parks CPU1; full runtime reboot required afterward.
