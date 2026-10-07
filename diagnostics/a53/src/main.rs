@@ -8,15 +8,30 @@ use aarch64_cpu::registers::{
 use adacore_zynqmp::uart::{Read, Write};
 use arm_gic::{IntId, Trigger, gicv2::GicV2};
 use core::arch::asm;
-use core::ptr::{addr_of_mut, read_volatile, write_volatile};
+#[cfg(not(feature = "ocm"))]
+use core::ptr::addr_of_mut;
+use core::ptr::{read_volatile, write_volatile};
 use core::sync::atomic::{AtomicU64, Ordering};
+use embedded_io::ReadReady;
 
+#[cfg(not(feature = "ocm"))]
 adacore_zynqmp::entry!(bringup);
+#[cfg(feature = "ocm")]
+core::arch::global_asm!(include_str!("start-ocm.S"));
+#[cfg(feature = "ocm")]
+#[unsafe(no_mangle)]
+extern "C" fn __ocm_start_rust() -> ! {
+    bringup();
+    halt()
+}
 
+#[cfg(not(feature = "ocm"))]
 #[repr(align(64))]
 struct Scratch([u64; 16384]);
+#[cfg(not(feature = "ocm"))]
 static mut SCRATCH: Scratch = Scratch([0; 16384]);
 static IRQ_COUNT: AtomicU64 = AtomicU64::new(0);
+static OTHER_IRQ_COUNT: AtomicU64 = AtomicU64::new(0);
 static IRQ_LAST: AtomicU64 = AtomicU64::new(u64::MAX);
 
 fn gic() -> GicV2<'static> {
@@ -31,7 +46,18 @@ fn timer_interrupt_test() -> bool {
     {
         let mut controller = gic();
         controller.setup();
+        // AdaCore enters non-secure EL1. GICv2 NS distributor view uses
+        // bit 0 for Group 1; arm-gic 0.6.1 setup writes secure-view bit 1.
+        unsafe {
+            write_volatile(0xF9010000 as *mut u32, 1);
+        }
         controller.enable_all_interrupts(false);
+        // SGIs remain enabled: clear pending bits left by BootROM/debug boot.
+        unsafe {
+            for offset in (0..16).step_by(4) {
+                write_volatile((0xF9010F10usize + offset) as *mut u32, u32::MAX);
+            }
+        }
         controller.set_interrupt_priority(IntId::ppi(14), 0x80);
         controller.set_trigger(IntId::ppi(14), Trigger::Level);
         if controller.enable_interrupt(IntId::ppi(14), true).is_err() {
@@ -58,12 +84,20 @@ fn timer_interrupt_test() -> bool {
 
 #[unsafe(no_mangle)]
 extern "C" fn _irq_handler() {
-    let mut controller = gic();
-    if let Some(id) = controller.get_and_acknowledge_interrupt() {
-        CNTP_CTL_EL0.set(0);
-        IRQ_LAST.store(u32::from(id) as u64, Ordering::Release);
-        IRQ_COUNT.fetch_add(1, Ordering::Release);
-        controller.end_interrupt(id);
+    // In non-secure EL1 use IAR/EOIR, not secure AIAR/AEOIR aliases.
+    let acknowledge = unsafe { read_volatile(0xF902000C as *const u32) };
+    let id = acknowledge & 0x3ff;
+    if id < 1020 {
+        if id == 30 {
+            CNTP_CTL_EL0.set(0);
+            IRQ_LAST.store(id as u64, Ordering::Release);
+            IRQ_COUNT.fetch_add(1, Ordering::Release);
+        } else {
+            OTHER_IRQ_COUNT.fetch_add(1, Ordering::Release);
+        }
+        unsafe {
+            write_volatile(0xF9020010 as *mut u32, acknowledge);
+        }
     }
 }
 
@@ -100,51 +134,57 @@ fn bringup() {
     )
     .unwrap();
 
-    // Test only application-owned DDR. Flush dirty cache lines to DDR, then
-    // invalidate them, so reading back cannot just validate the CPU cache.
-    let base = unsafe { addr_of_mut!(SCRATCH.0).cast::<u64>() };
-    for pattern in [0u64, u64::MAX, 0xAAAAAAAAAAAAAAAA, 0x5555555555555555] {
-        unsafe {
-            for i in 0..16384 {
-                write_volatile(base.add(i), pattern ^ (i as u64));
-            }
-            for i in (0..16384).step_by(8) {
-                asm!("dc cvac, {0}", in(reg) base.add(i));
-            }
-            asm!("dsb sy");
-            for i in (0..16384).step_by(8) {
-                asm!("dc ivac, {0}", in(reg) base.add(i));
-            }
-            asm!("dsb sy", "isb");
-            for i in 0..16384 {
-                let expected = pattern ^ (i as u64);
-                let actual = read_volatile(base.add(i));
-                if actual != expected {
-                    writeln!(
-                        uart,
-                        "TEST ddr FAIL address={:#x} expected={:#x} actual={:#x}\r",
-                        base.add(i) as usize,
-                        expected,
-                        actual
-                    )
-                    .unwrap();
-                    halt();
+    #[cfg(not(feature = "ocm"))]
+    {
+        // Test only application-owned DDR. Flush dirty cache lines to DDR, then
+        // invalidate them, so reading back cannot just validate the CPU cache.
+        let base = unsafe { addr_of_mut!(SCRATCH.0).cast::<u64>() };
+        for pattern in [0u64, u64::MAX, 0xAAAAAAAAAAAAAAAA, 0x5555555555555555] {
+            unsafe {
+                for i in 0..16384 {
+                    write_volatile(base.add(i), pattern ^ (i as u64));
+                }
+                for i in (0..16384).step_by(8) {
+                    asm!("dc cvac, {0}", in(reg) base.add(i));
+                }
+                asm!("dsb sy");
+                for i in (0..16384).step_by(8) {
+                    asm!("dc ivac, {0}", in(reg) base.add(i));
+                }
+                asm!("dsb sy", "isb");
+                for i in 0..16384 {
+                    let expected = pattern ^ (i as u64);
+                    let actual = read_volatile(base.add(i));
+                    if actual != expected {
+                        writeln!(
+                            uart,
+                            "TEST ddr FAIL address={:#x} expected={:#x} actual={:#x}\r",
+                            base.add(i) as usize,
+                            expected,
+                            actual
+                        )
+                        .unwrap();
+                        halt();
+                    }
                 }
             }
         }
+        writeln!(
+            uart,
+            "TEST ddr PASS bytes=131072 patterns=4 cache-flushed\r"
+        )
+        .unwrap();
     }
-    writeln!(
-        uart,
-        "TEST ddr PASS bytes=131072 patterns=4 cache-flushed\r"
-    )
-    .unwrap();
+    #[cfg(feature = "ocm")]
+    writeln!(uart, "TEST ddr NOT_RUN OCM-only diagnostic\r").unwrap();
     let irq = timer_interrupt_test();
     writeln!(
         uart,
-        "TEST interrupts {} count={} id={}\r",
+        "TEST interrupts {} count={} id={} other={}\r",
         if irq { "PASS" } else { "FAIL" },
         IRQ_COUNT.load(Ordering::Acquire),
-        IRQ_LAST.load(Ordering::Acquire)
+        IRQ_LAST.load(Ordering::Acquire),
+        OTHER_IRQ_COUNT.load(Ordering::Acquire)
     )
     .unwrap();
     writeln!(uart, "UART ECHO READY\r").unwrap();
@@ -152,7 +192,9 @@ fn bringup() {
     let mut received = 0;
     let deadline = CNTPCT_EL0.get() + 5 * CNTFRQ_EL0.get();
     while received < ping.len() && CNTPCT_EL0.get() < deadline {
-        received += uart.read(&mut ping[received..]).unwrap();
+        if uart.read_ready().unwrap() {
+            received += uart.read(&mut ping[received..received + 1]).unwrap();
+        }
     }
     if &ping == b"PING" {
         writeln!(uart, "PONG\r").unwrap();

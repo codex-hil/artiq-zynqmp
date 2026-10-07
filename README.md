@@ -244,3 +244,28 @@ kernellem NAC3 oraz aktualnymi klasami ARTIQ `EnvExperiment`, `Core`,
 `TTLOut.pulse_mu()`. Instrukcje: [prototypes/kernel-abi/README.md](prototypes/kernel-abi/README.md).
 `make test-kernel-abi` uruchamia kompilację, loader M-Labs, A53 bare-metal
 i test negatywny. To nadal nie jest uruchomiony core device na Genesys.
+
+## Zweryfikowana diagnostyka OCM przez JTAG
+
+Ta ścieżka uruchamia UART/timer/GIC bez DDR, nie pełny ARTIQ. Zatrzymuje
+wszystkie A53 wyłącznie na kablu o podanym serialu i resetuje A53#0.
+Startup: adaptacja AdaCore/rust-zynqmp c326ece7eb0a6dda54fa634c52c1cbd0d36a1db8
+(Apache-2.0), z osobnym linkerem i pominięciem MMU wymagającego DDR.
+
+```sh
+cd diagnostics/a53
+TMPDIR=/srv/codex-hil-data/toolchains/amd/shared/tmp \
+RUSTUP_HOME=/srv/codex-hil-data/artiq-zynqmp/rustup \
+cargo build --release --locked --features ocm --target-dir /large-disk/a53-ocm
+cd ../..
+python scripts/validate_a53_elf.py --memory ocm /large-disk/a53-ocm/aarch64-unknown-none/release/genesys-a53-bringup
+python scripts/capture_a53_uart.py --ocm --port /dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0 --output /large-disk/ocm-hardware.json
+# W drugim terminalu, zanim capture upłynie:
+xsdb scripts/run_a53_ocm.tcl tcp:HW_SERVER_IP:3121 /large-disk/a53-ocm/aarch64-unknown-none/release/genesys-a53-bringup /large-disk/genesys-blinker/migen-build/ip/psu_init.tcl 210383B7F02DA
+```
+
+XSDB jest dostarczone razem z zainstalowanym Vivado; można je uruchomić
+przez `vivado-container shell -c 'exec /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb ...'`.
+Adres hw_server to IP jego kontenera w osobnym Dockerze (docker inspect).
+Capture z `--ocm` wymaga PASS UART/RX/timer/IRQ oraz DDR NOT_RUN.
+Oryginalny test DDR uruchamia się bez `--ocm` po poprawnym FSBL.

@@ -13,6 +13,7 @@ def main():
     parser.add_argument("--port", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--timeout", type=float, default=30)
+    parser.add_argument("--ocm", action="store_true", help="Expect DDR NOT_RUN for OCM diagnostic")
     options = parser.parse_args()
     tests = {name: "NOT_RUN" for name in ["uart", "uart_rx", "ddr", "timer", "interrupts"]}
     lines = []
@@ -38,7 +39,8 @@ def main():
               "time": time.time(), "tests": tests, "uart_log": lines}
     options.output.parent.mkdir(parents=True, exist_ok=True)
     options.output.write_text(json.dumps(result, indent=2) + "\n")
-    return 0 if all(status == "PASS" for status in tests.values()) else 1
+    return 0 if all(status == ("NOT_RUN" if options.ocm and name == "ddr" else "PASS")
+                    for name, status in tests.items()) else 1
 
 
 if __name__ == "__main__":

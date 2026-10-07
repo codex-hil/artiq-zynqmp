@@ -1,0 +1,31 @@
+{
+  "kind": "hardware",
+  "port": "/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0",
+  "baud": 115200,
+  "time": 1791385523.3942084,
+  "tests": {
+    "uart": "PASS",
+    "uart_rx": "PASS",
+    "ddr": "NOT_RUN",
+    "timer": "PASS",
+    "interrupts": "PASS"
+  },
+  "uart_log": [
+    "GENESYS-ZU A53 bringup; diagnostic, not ARTIQ",
+    "TEST uart PASS (TX only; host must verify RX)",
+    "REG CurrentEL=0x4 CNTFRQ=99999000",
+    "TEST timer PASS delta=440332 (polling only)",
+    "TEST ddr NOT_RUN OCM-only diagnostic",
+    "TEST interrupts PASS count=1 id=30 other=0",
+    "UART ECHO READY",
+    "PONG",
+    "TEST uart_rx PASS",
+    "BRINGUP COMPLETE: Ethernet/ARTIQ pending"
+  ],
+  "elf_sha256": "a3697defca242c8827139209913ac7c5e65fc31c4ba72296e117f3e2aa9e8be4",
+  "memory": "OCM only; MMU disabled",
+  "cable_serial": "210383B7F02DA",
+  "irq_expected": 30,
+  "led_observation": "USER_CONFIRMED_BLINKING",
+  "timer_frequency_validation": "NOT_RUN; CNTFRQ=99999000 inherited from AdaCore startup is not a physical frequency measurement"
+}

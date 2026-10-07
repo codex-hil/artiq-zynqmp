@@ -9,7 +9,9 @@ import struct
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("elf", type=Path)
+    parser.add_argument("--memory", choices=["ddr", "ocm"], default="ddr")
     options = parser.parse_args()
+    lower, upper = (0xFFFC0000, 0x100000000) if options.memory == "ocm" else (0x100000, 0x1100000)
     data = options.elf.read_bytes()
     if data[:6] != b"\x7fELF\x02\x01":
         raise ValueError("Expected little-endian ELF64")
@@ -24,8 +26,8 @@ def main():
             "<IIQQQQQQ", data, phoff + index * phsize)
         if ptype != 1:
             continue
-        if not (0x100000 <= paddr and paddr + memsz <= 0x1100000):
-            raise ValueError("Segment outside exclusively reserved diagnostic DDR range")
+        if not (lower <= paddr and paddr + memsz <= upper):
+            raise ValueError("Segment outside exclusively reserved diagnostic memory range")
         if filesz > memsz or offset + filesz > len(data):
             raise ValueError("Invalid load segment")
         executable_entry |= bool(flags & 1 and vaddr <= entry < vaddr + filesz)

@@ -149,3 +149,21 @@ Pasywny UART 115200 na kanałach 2/3: zero danych w 5 s; funkcjonalny test
 UART, boot firmware, DDR, AXI i local RTIO hardware nadal NOT_RUN.
 Dowód: `evidence/genesys-hardware-2026-10-07.json`. Uprawnienia USB
 nadane ręcznie przez użytkownika są tymczasowe (mogą zniknąć po reconnect).
+
+## A53 / UART / timer / GIC — fizyczne PASS 2026-10-07
+
+Użytkownik potwierdził miganie LED. Diagnostyka OCM na A53#0 uruchomiona
+przez XSDB: UART TX PASS, PING/PONG/RX PASS, CNTPCT monotonic PASS,
+przerwanie fizycznego timera PPI30 PASS (count=1 id=30 other=0). Powtórzono
+po poprawkach przez zapisany runner i capture; wynik JSON i log UART:
+`evidence/a53-ocm-hardware-2026-10-07.json`. Właściwy UART PS: FTDI kanał B
+(by-id kończy się if01-port0), nie C/D. DDR = NOT_RUN.
+
+Startup OCM adaptuje przypięte AdaCore start.S, pomijając DDR-zależne MMU;
+oryginalny DDR build nadal się kompiluje. Naprawiono widok non-secure GICv2:
+arm-gic 0.6.1 setup/ack korzystają z bitu/aliasów secure; EL1 NS potrzebuje
+GICD_CTLR bit0 i zwykłych IAR/EOIR. Wyczyszczono pending SGI z boot/debug
+i odróżniono je od PPI30. RX polling ma limit czasu, nie blokujące read(4).
+CNTFRQ 99999000 jest stałą startupu AdaCore, nie pomiarem fizycznej
+częstotliwości zegara — dokładność/częstotliwość pozostaje do walidacji.
+Autonomiczny boot SD/QSPI i inicjalizacja DDR przez FSBL nadal NOT_RUN.
