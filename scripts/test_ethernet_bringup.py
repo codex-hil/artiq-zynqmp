@@ -15,6 +15,8 @@ def main():
         p.add_argument('--' + name, required=True)
     p.add_argument('--bitstream', type=Path, help='For integrated RTIO firmware: configure PL after PS reset/FSBL')
     p.add_argument('--psu-init', type=Path)
+    p.add_argument('--worker32', type=Path)
+    p.add_argument('--worker64', type=Path)
     p.add_argument('--interface', default='enp1s0')
     o = p.parse_args()
     scripts = Path(__file__).resolve().parent
@@ -34,6 +36,8 @@ def main():
             raise RuntimeError(f'{script} failed with {proc.returncode}')
 
     try:
+        if bool(o.worker32) != bool(o.worker64): raise ValueError('Supply both worker images')
+        if o.worker32 and not o.bitstream: raise ValueError('CPU1 worker requires local-RTIO bitstream and PSU setup')
         xsdb('reset_genesys_ps.tcl')
         with serial.Serial(o.serial, 115200, timeout=.25) as uart:
             xsdb('run_boot_firmware.tcl', o.pmu, o.fsbl)
@@ -59,11 +63,14 @@ def main():
             if proc.returncode: raise RuntimeError('Local RTIO bitstream configuration failed')
             xsdb('prepare_local_rtio.tcl', str(o.psu_init.resolve()))
             result['scope'] = 'AMD Ethernet and integrated Rust management transport; kernel/RPC unavailable'
+        if o.worker32:
+            xsdb('run_kernel_worker.tcl', str(o.worker32.resolve()), str(o.worker64.resolve()))
+            result['scope'] = 'CPU0 AMD/lwIP networking with CPU1 ARM32 kernel loader/RPC; TTL exports disabled'
         with (output / 'ethernet-uart.log').open('w') as log:
             capture = subprocess.Popen([sys.executable, str(scripts / 'capture_ethernet_uart.py'),
                        '--port', o.serial, '--output', str(output / 'uart.json')],
                        stdout=log, stderr=subprocess.STDOUT)
-            xsdb('run_ethernet.tcl', o.elf)
+            xsdb('run_a53_runtime.tcl' if o.worker32 else 'run_ethernet.tcl', o.elf)
             if capture.wait(timeout=95):
                 raise RuntimeError('Ethernet firmware did not obtain DHCP lease and start echo')
         result['startup'] = json.loads((output / 'uart.json').read_text())

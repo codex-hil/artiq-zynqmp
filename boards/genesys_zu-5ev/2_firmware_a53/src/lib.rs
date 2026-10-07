@@ -14,10 +14,11 @@ struct Runtime {
     log_len: usize,
     ip: [u8; 16],
     ip_len: usize,
+    kernel_ready: bool,
 }
 impl Runtime {
     const fn new() -> Self {
-        Self { log: [0; LOG_SIZE], log_len: 0, ip: [0; 16], ip_len: 0 }
+        Self { log: [0; LOG_SIZE], log_len: 0, ip: [0; 16], ip_len: 0, kernel_ready: false }
     }
     fn append(&mut self, bytes: &[u8]) {
         let bytes = &bytes[bytes.len().saturating_sub(LOG_SIZE)..];
@@ -30,6 +31,7 @@ impl Runtime {
         self.log_len += bytes.len();
     }
     fn ready(&mut self, ip: &[u8]) {
+        self.kernel_ready = false;
         self.ip_len = ip.len().min(self.ip.len());
         self.ip[..self.ip_len].copy_from_slice(&ip[..self.ip_len]);
         self.append(b"Genesys ZU-5EV: Rust management service started over AMD GEM/lwIP.\n");
@@ -98,8 +100,9 @@ impl Session {
                     b"ip" => &runtime.ip[..runtime.ip_len],
                     b"mac" => b"02:38:3b:7f:02:0d",
                     b"board" => b"genesys_zu-5ev",
-                    b"runtime_mode" => b"management-only",
+                    b"runtime_mode" => if runtime.kernel_ready { b"kernel-bringup" } else { b"management-only" },
                     b"rtio_counter" => {
+                        if !rtio_available() { out[0] = 6; return Ok(1); }
                         let mut digits = [0u8; 20];
                         let mut value = rtio_counter();
                         let mut start = digits.len();
@@ -127,6 +130,13 @@ fn data_reply(kind: u8, data: &[u8], out: &mut [u8]) -> usize {
 }
 
 #[cfg(not(test))]
+fn rtio_available() -> bool {
+    extern "C" { fn genesys_kernel_running() -> i32; }
+    unsafe { genesys_kernel_running() == 0 }
+}
+#[cfg(test)] fn rtio_available() -> bool { true }
+
+#[cfg(not(test))]
 fn rtio_counter() -> u64 {
     extern "C" { fn genesys_rtio_counter() -> u64; }
     unsafe { genesys_rtio_counter() }
@@ -152,6 +162,20 @@ pub unsafe extern "C" fn artiq_session_init(session: *mut u8) {
     (&mut *RUNTIME.0.get()).append(b"Management TCP connection accepted.\n");
 }
 /// Safety: exclusive foreground context, valid input bytes and initialized session.
+/// Safety: valid event bytes, single-core foreground context.
+#[no_mangle]
+pub unsafe extern "C" fn artiq_runtime_kernel_event(event: *const u8, len: usize) {
+    (&mut *RUNTIME.0.get()).append(slice::from_raw_parts(event,len));
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn artiq_runtime_kernel_ready() {
+    let runtime = &mut *RUNTIME.0.get();
+    runtime.kernel_ready = true;
+    runtime.log_len = 0;
+    runtime.append(b"Genesys ZU-5EV: kernel-bringup; real CPU1 load/run and scalar RPC.\nTTL exports disabled; exceptions/unwind and complex RPC returns pending.\n");
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn artiq_runtime_ready(ip: *const u8, len: usize) {
     (&mut *RUNTIME.0.get()).ready(slice::from_raw_parts(ip, len));

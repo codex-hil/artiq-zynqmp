@@ -11,6 +11,7 @@ def main():
     p.add_argument('--app', required=True, type=Path)
     p.add_argument('--staticlib', required=True, type=Path)
     p.add_argument('--csr-map', required=True, type=Path)
+    p.add_argument('--kernel', action='store_true')
     o = p.parse_args()
     repo = Path(__file__).resolve().parent.parent
     mapping = json.loads(o.csr_map.read_text())
@@ -36,9 +37,20 @@ def main():
         return 1;
     }
 ''')
+    if o.kernel:
+        shutil.copyfile(repo / 'boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c', source / 'kernel_lwip.c')
+        text = text.replace('extern int genesys_management_start(const unsigned char *, size_t);',
+            'extern int genesys_management_start(const unsigned char *, size_t);\nextern int genesys_kernel_start(void);\nextern void genesys_kernel_poll(void);')
+        anchor = '\t/* start the application (web server, rxtest, txtest, etc..) */'
+        if text.count(anchor) != 1: raise ValueError('Unexpected AMD startup anchor')
+        text = text.replace(anchor, '    if (genesys_kernel_start()) { xil_printf("Kernel worker unavailable\\r\\n"); return 1; }\n' + anchor)
+        if text.count('\t\ttransfer_data();') != 1: raise ValueError('Unexpected AMD poll loop')
+        text = text.replace('\t\ttransfer_data();', '\t\ttransfer_data();\n        genesys_kernel_poll();')
     main.write_text(text)
     cmake = source / 'CMakeLists.txt'
     text = cmake.read_text().replace('collect (PROJECT_LIB_SOURCES echo.c)', 'collect (PROJECT_LIB_SOURCES echo.c)\ncollect (PROJECT_LIB_SOURCES management_lwip.c)')
+    if o.kernel:
+        text = text.replace('collect (PROJECT_LIB_SOURCES management_lwip.c)', 'collect (PROJECT_LIB_SOURCES management_lwip.c)\ncollect (PROJECT_LIB_SOURCES kernel_lwip.c)')
     text += '\ntarget_link_libraries(${APP_NAME}.elf "' + str(o.staticlib.resolve()) + '")\n'
     cmake.write_text(text)
 
