@@ -35,6 +35,12 @@ vectors:
     b trapped
     b trapped
 trapped:
+#ifdef GENESYS_HARDWARE
+    ldr r0, =0x200ff004
+    str lr, [r0]
+    mrs r1, spsr
+    str r1, [r0, #4]
+#endif
     ldr sp, =_stack_top
     b probe_fail
 .section .note.GNU-stack,"",%progbits

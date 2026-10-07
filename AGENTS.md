@@ -35,3 +35,9 @@ See diagnostics/services/README.md for the management-only integration.
 Kernel loader/RPC, physical TTL loopback, RTIO DMA, analyzer/moninj remain pending.
 Use PS system reset → PMU/FSBL → local-RTIO bitstream → PS/PL setup and
 CSR preflight → application. PL before PS reset led to AXI timeout/core hang.
+
+Physical CPU1 EL3/AArch64 → EL1/AArch32 trusted-kernel ABI/loader diagnostic
+passed 2026-10-07, including negative assertion and real PL counter read.
+See diagnostics/kernel-a53/README.md; outputs remain a memory model.
+It reserves 0x20000000/0x200FF000/0x20200000–0x20400000; CPU0 management
+remains active. Network kernel upload/run and real RTIO exports still pending.

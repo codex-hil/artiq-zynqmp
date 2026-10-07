@@ -26,7 +26,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | UART | MIO18–19 / 115200, BSP C | UART + generator baud | AdaCore UART/embedded-io | DONE UART diagnostic: TX i PING/PONG fizycznie PASS | `evidence/a53-ocm-hardware-2026-10-07.json` |
 | GIC | R5 helper używa XScuGic/IPI | Własny GIC400 | arm-gic 0.6.1 | DONE diagnostic PPI30: fizycznie PASS, poprawiony widok EL1 NS | `evidence/a53-ocm-hardware-2026-10-07.json` |
 | timer | PS TTC0 skonfigurowany; brak testu ARTIQ | Global timer/time/async delay | Generic A53 timer | PARTIAL: polling i PPI30 fizycznie PASS | Częstotliwość fizyczna niezmierzona; evidence OCM |
-| clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic w teście sprzętowym; NOT_RUN |
+| clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic około 125 MHz PASS (5% tolerancji); nie precyzyjna kalibracja |
 | Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; Rust management transport PASS; kernel/RPC MISSING | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; RPC NOT_RUN |
 | AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 MMIO counter via TCP PASS |
 | RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Counter i wewnętrzny scheduled TTL probe hardware PASS; fizyczny loopback NOT_RUN |
@@ -36,7 +36,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
-| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL prototypu ABI: rzeczywisty kernel NAC3 na emulowanym A53/AArch32; MISSING runtime/RPC produkcyjne; stub zwraca błędy | 6 testów framing/rejection; ABI QEMU PASS z aktualnym ARTIQ i negatywną kontrolą |
+| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL prototypu ABI: rzeczywisty kernel NAC3 na fizycznym CPU1 A53/AArch32 (model RTIO); MISSING runtime/RPC produkcyjne; stub zwraca błędy | 6 testów framing/rejection; ABI QEMU i hardware CPU1 PASS z aktualnym ARTIQ i negatywną kontrolą |
 | DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: kod/konfiguracja bez odtworzonego boot.bin | NOT_RUN |
 
@@ -273,3 +273,34 @@ Port kernel1381 nie działa; loader/wykonanie kerneli, RPC, analyzer, moninj,
 RTIO DMA i eksperyment fizyczny pozostają MISSING/NOT_RUN. Unsupported write,
 flash, reboot i streaming PullLog zwracają błąd; brak fikcyjnego sukcesu.
 Physical TTL input/output wymaga osobnego testu; zworka JB1-JB2 odłożona.
+
+## Kernel ABI i loader na fizycznym A53 CPU1 — 2026-10-07
+
+Nie zaczęto nowego loadera: wykorzystano zachowany upstream M-Labs ARM ELF
+loader oraz działający NAC3/Cortex-A9 prototyp. CPU0 pozostaje AArch64
+management/Ethernet, CPU1 wykonuje diagnostykę w EL1/AArch32 po stubie EL3.
+Prawdziwy kernel aktualnego ARTIQ Core/EnvExperiment/TTLOut wykonany na
+fizycznym CPU1: i64/hard-float/NEON/timeline/empty writeback PASS. Wywołania
+RTIO output celowo trafiają do modelu; fizyczny eksperyment NOT_RUN.
+Osobny realny odczyt PL RTIO counter z CPU1 AArch32 PASS. Umyślnie błędny
+argument i64 został odrzucony, bez hardware exception; kontrola negatywna
+PASS. CPU0 management przed i po obu wariantach PASS.
+
+Rzeczywisty sprzęt ujawnił alignment fault: include_bytes! dawało ELF o
+wyrównaniu 1, upstream loader wykonywał word load. Dodano aligned wrapper
+własnego prototypu; nie modyfikowano formatu kernela ani kodu loadera.
+Wysokie wektory resetowe SCTLR.V wyłączono w diagnostycznym stubie; fault
+LR/SPSR zapisuje mailbox. XSDB cache-sync nie obsłużył przełączenia privilege
+AArch32; dedykowany uncached mailbox odczytywany przez DAP AP0. To nie
+polityka produkcyjnego cache/MMU. Pełna regresja QEMU pozytywna/negatywna/
+aktualny ARTIQ również PASS po zmianie wyrównania.
+
+Reproducer i mapa zarezerwowanej pamięci:
+`diagnostics/kernel-a53/README.md`; `make test-hw-kernel-cpu1`.
+Dowody: `evidence/kernel-cpu1-hardware-2026-10-07.json` oraz
+`evidence/kernel-abi-regression-2026-10-07.json`.
+Loader jako biblioteka i ABI mają fizyczny proof; sieciowe upload/load/run,
+inter-core channel, allocator/cache produkcyjne, prawdziwe RTIO exports,
+aplikacyjny RPC i exception/unwind nadal nie są zintegrowane. TCP1381 nadal
+nie jest wystawiony jako działający runtime. Eksperymenty TTL odłożone
+zgodnie z prośbą użytkownika do jutra.

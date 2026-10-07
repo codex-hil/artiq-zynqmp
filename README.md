@@ -5,7 +5,9 @@ na `wip@b25e75b`. **To jeszcze nie działający ARTIQ core device.** Obecnie
 działają buildy Vivado i fizyczne testy PS/DDR/UART/IRQ/Ethernet/local RTIO.
 Nowy Rust A53 management przez AMD/lwIP odpowiada aktualnemu
 `artiq_coremgmt`: log/config oraz odczyt rzeczywistego licznika RTIO PASS.
-Kernel loader, RPC i prosty eksperyment pozostają do wykonania.
+Loader i ABI kernela przeszły osobną diagnostykę na fizycznym A53 CPU1.
+Sieciowe ładowanie/wykonanie, RPC i prosty eksperyment pozostają do integracji.
+Diagnostyka: [diagnostics/kernel-a53/README.md](diagnostics/kernel-a53/README.md).
 Instrukcja integracji: [diagnostics/services/README.md](diagnostics/services/README.md).
 
 Dokładny stan: [PORTING_STATUS.md](PORTING_STATUS.md). Architektura i decyzje:

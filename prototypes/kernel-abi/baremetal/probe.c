@@ -1,6 +1,20 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#ifdef GENESYS_HARDWARE
+#include "rtio_csr.h"
+/* Diagnostic reuses FSBL-configured PS UART0; no controller reinitialization. */
+static void puts_uart(const char *s) {
+    volatile uint32_t *uart = (void *)0xFF000000;
+    while (*s) { while (uart[0x2c / 4] & (1u << 4)) {} uart[0x30 / 4] = *s++; }
+}
+static void quit(int code) {
+    /* Dedicated diagnostic status mailbox, outside CPU0 application memory. */
+    *(volatile uint32_t *)0x200ff000 = code ? 0x4641494c : 0x50415353;
+    asm volatile("dsb sy" ::: "memory");
+    for (;;) { asm volatile("wfe"); }
+}
+#else
 /* QEMU virt PL011; deliberately not a Genesys UART driver. */
 static void puts_uart(const char *s) {
     volatile uint32_t *uart = (void *)0x09000000;
@@ -13,6 +27,7 @@ static void quit(int code) {
     asm volatile("svc 0x123456" : "+r"(r0) : "r"(r1) : "memory");
     for (;;) {}
 }
+#endif
 void probe_fail(void) { puts_uart("FAIL: bare-metal kernel ABI probe\n"); quit(3); }
 static int64_t now;
 static unsigned init_calls, integer_calls, float_calls, output_calls, writebacks;
@@ -83,6 +98,19 @@ void probe_main(void) {
     if (sctlr & ((1u << 12) | (1u << 2) | 1u)) probe_fail(); // caches/MMU disabled
     asm volatile("veor q8, q8, q8" ::: "d16", "d17"); // actual NEON instruction
     puts_uart("A53 EL1/AArch32: startup and VFP enabled\n");
+#ifdef GENESYS_HARDWARE
+    /* Read the real PL counter only; kernel output calls remain a model. */
+    volatile uint32_t *latch = (void *)(uintptr_t)RTIO_COUNTER_UPDATE;
+    volatile uint32_t *counter = (void *)(uintptr_t)RTIO_COUNTER;
+    *latch = 1;
+    asm volatile("dsb sy" ::: "memory");
+    uint64_t before = ((uint64_t)counter[0] << 32) | counter[1];
+    *latch = 1;
+    asm volatile("dsb sy" ::: "memory");
+    uint64_t after = ((uint64_t)counter[0] << 32) | counter[1];
+    if (after <= before) probe_fail();
+    puts_uart("PASS: AArch32 CPU1 reads real PL RTIO counter\n");
+#endif
     execute_kernel();
     if (init_calls != 1 || integer_calls != 2 || float_calls != 2 || output_calls != 2 || writebacks != 1) probe_fail();
     puts_uart("PASS: A53 bare-metal NAC3 kernel; upstream loader; i64/hard-float/timeline ABI\n");

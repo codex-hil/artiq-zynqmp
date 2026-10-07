@@ -64,3 +64,13 @@ test-hw-services:
 	$(if $(ABI_ARTIQ_SOURCE),,$(error Specify ABI_ARTIQ_SOURCE= current upstream ARTIQ checkout))
 	$(if $(ABI_SIPYCO_SOURCE),,$(error Specify ABI_SIPYCO_SOURCE= compatible sipyco checkout))
 	$(PYTHON) scripts/test_a53_services_hw.py --ip="$(BOARD_IP)" --artiq-source="$(ABI_ARTIQ_SOURCE)" --sipyco-source="$(ABI_SIPYCO_SOURCE)" --output="$(abspath $(O))/services-hardware.json"
+
+.PHONY: test-hw-kernel-cpu1
+test-hw-kernel-cpu1:
+	$(if $(JTAG_SERVER),,$(error Specify JTAG_SERVER= current hw_server URL))
+	$(if $(JTAG_CABLE),,$(error Specify JTAG_CABLE= identified Genesys cable serial))
+	$(if $(SERIAL),,$(error Specify SERIAL= identified Genesys UART))
+	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
+	$(if $(KERNEL_POSITIVE),,$(error Specify KERNEL_POSITIVE= hardware diagnostic directory))
+	$(if $(KERNEL_NEGATIVE),,$(error Specify KERNEL_NEGATIVE= hardware negative-control directory))
+	$(PYTHON) scripts/test_kernel_cpu1_hw.py --server="$(JTAG_SERVER)" --cable="$(JTAG_CABLE)" --serial="$(SERIAL)" --positive="$(KERNEL_POSITIVE)" --negative="$(KERNEL_NEGATIVE)" --ip="$(BOARD_IP)" --output="$(abspath $(O))/kernel-cpu1-hardware"

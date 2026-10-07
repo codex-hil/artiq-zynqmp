@@ -1,0 +1,39 @@
+{
+  "kind": "hardware",
+  "scope": "A53 CPU1 loader and kernel ABI diagnostic; RTIO is a memory model, no physical experiment",
+  "time": 1791392592.7437952,
+  "cable": "210383B7F02DA",
+  "tests": {
+    "positive": "PASS",
+    "negative": "PASS",
+    "cpu0_management_continues": "PASS",
+    "aarch32_cpu1_ps_pl_counter": "PASS",
+    "ttl_physical": "NOT_RUN"
+  },
+  "artifacts_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-hardware-artiq/probe32.elf": "7297c09e19966e5c9f1539268d5e6656d13c25de40836eafde8d4d9dc903fe66",
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-hardware-artiq/start64.elf": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d",
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-hardware-negative/probe32.elf": "10d32dbda1c2c5ac8a7cb5d7fa0a0d7fdbfb7c509997e6df02a9e5840ccef7a6",
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-hardware-negative/start64.elf": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+  },
+  "management_before": "genesys_zu-5ev",
+  "management_after_positive": "genesys_zu-5ev",
+  "management_after_negative": "genesys_zu-5ev",
+  "status": "PASS",
+  "source_revisions": {
+    "nac3": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+    "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "sipyco": "75f055c2ee29c09a49912e63ed49c7b7cae953c4"
+  },
+  "loader_revision": "15c856f315969b5c1d01d2917ed52f1b0f199677",
+  "logs": {
+    "positive-uart.log": "A53 EL1/AArch32: startup and VFP enabled\nPASS: AArch32 CPU1 reads real PL RTIO counter\nPASS: A53 bare-metal NAC3 kernel; upstream loader; i64/hard-float/timeline ABI\n",
+    "positive-jtag.log": "KERNEL_STATUS=1346458451\nTRAP_LR=0\nTEST a53_kernel_loader PASS\nTEST ttl_physical NOT_RUN; RTIO calls use memory-only model\n",
+    "negative-uart.log": "A53 EL1/AArch32: startup and VFP enabled\nPASS: AArch32 CPU1 reads real PL RTIO counter\nFAIL: bare-metal kernel ABI probe\n",
+    "negative-jtag.log": "KERNEL_STATUS=1178683724\nTRAP_LR=0\nTEST a53_kernel_loader FAIL\nTEST negative_control PASS\nTEST ttl_physical NOT_RUN; RTIO calls use memory-only model\n"
+  },
+  "modules_sha256": {
+    "artiq": "ab811012faa5607266e5a03d4ce15623297a71ba74d6f68e852049381fde7797",
+    "negative": "6f7872eb0176cce4b70b7ee53f03987f78fc8b670363288d13b96d08e04b1bfa"
+  }
+}

@@ -1,6 +1,11 @@
 # Prototyp ABI kerneli ARTIQ na A53/AArch32
 
-**Wykonanie pod QEMU przeszło. To nie jest działający core device na Genesys.**
+**QEMU i osobna diagnostyka fizyczna CPU1 przeszły. To nie jest działający core device.**
+
+2026-10-07: loader i kernel ABI uruchomiono fizycznie na A53 CPU1 Genesys,
+równolegle z management na CPU0. Wyrównanie ELF naprawiono po rzeczywistym
+alignment fault. Test negatywny także PASS; RTIO output nadal modelem.
+Odtwarzanie: [diagnostics/kernel-a53/README.md](../../diagnostics/kernel-a53/README.md).
 Test kompiluje prawdziwy kernel NAC3, ładuje go loaderem M-Labs i wykonuje
 na emulowanym Cortex-A53 w EL1/AArch32. Wariant z aktualnym ARTIQ używa
 `EnvExperiment`, `Core.reset()` i `TTLOut.pulse_mu()`.
