@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-07",
+  "kind": "hardware",
+  "target_serial": "210383B7F02DA",
+  "jtag_devices": [
+    "xczu5_0",
+    "arm_dap_1"
+  ],
+  "fpga_configuration": "PASS",
+  "startup_status": "HIGH",
+  "bitstream_evidence": "vivado-blinker-2026-10-06.json",
+  "led_observation": "PENDING_USER",
+  "ps_register_access": "PASS",
+  "registers": {
+    "UART0_REF_CTRL": "0x01010F00",
+    "PL0_REF_CTRL": "0x01010F00"
+  },
+  "uart_passive_capture_bytes": {
+    "ttyUSB8": 0,
+    "ttyUSB9": 0
+  },
+  "uart_functional_test": "NOT_RUN",
+  "ddr": "NOT_RUN",
+  "logs_directory": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/jtag-2026-10-07",
+  "limitation": "program_hw_devices succeeded; subsequent optional property query failed because Vivado exposes neither report_property fields nor IS_PROGRAMMED for this device; raw log retains the error"
+}

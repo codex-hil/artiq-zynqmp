@@ -136,3 +136,16 @@ błędów, jedno ostrzeżenie RTSTAT-10 (net synchronizatora bez routable loads)
 Zachowano raporty i ostrzeżenia vendor PS IP; PASS buildu nie zalicza
 CDC/TTL/AXI hardware. Hashe: `evidence/vivado-local-rtio-2026-10-06.json`.
 Fizyczne uruchomienie i runtime ARTIQ pozostają niewykonane.
+
+## Pierwszy kontakt z fizycznym Genesys — 2026-10-07
+
+Digilent 210383B7F02DA: JTAG wykrywa xczu5_0 i ARM DAP; debugger widzi
+cztery A53. Migacz zaprogramowany do ulotnego PL przez JTAG, startup HIGH.
+Odczyt PS przez XSDB PASS (PL0_REF_CTRL i UART0_REF_CTRL = 0x01010F00).
+Dodatkowe raportowanie właściwości urządzenia przez Vivado zawiodło po
+udanym programowaniu; zachowano surowy log i nie utożsamiamy końcowego
+kodu tej sesji z sukcesem całego skryptu. Obserwacja LED oczekuje na użytkownika.
+Pasywny UART 115200 na kanałach 2/3: zero danych w 5 s; funkcjonalny test
+UART, boot firmware, DDR, AXI i local RTIO hardware nadal NOT_RUN.
+Dowód: `evidence/genesys-hardware-2026-10-07.json`. Uprawnienia USB
+nadane ręcznie przez użytkownika są tymczasowe (mogą zniknąć po reconnect).
