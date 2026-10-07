@@ -1,0 +1,25 @@
+{
+  "kind": "hardware",
+  "port": "/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0",
+  "baud": 115200,
+  "time": 1791386618.9094584,
+  "tests": {
+    "uart": "PASS",
+    "uart_rx": "PASS",
+    "ddr": "PASS",
+    "timer": "PASS",
+    "interrupts": "PASS"
+  },
+  "uart_log": [
+    "GENESYS-ZU A53 bringup; diagnostic, not ARTIQ",
+    "TEST uart PASS (TX only; host must verify RX)",
+    "REG CurrentEL=0x4 CNTFRQ=99999000",
+    "TEST timer PASS delta=22663 (polling only)",
+    "TEST ddr PASS bytes=131072 patterns=4 cache-flushed",
+    "TEST interrupts PASS count=1 id=30 other=0",
+    "UART ECHO READY",
+    "PONG",
+    "TEST uart_rx PASS",
+    "BRINGUP COMPLETE: Ethernet/ARTIQ pending"
+  ]
+}
