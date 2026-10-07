@@ -43,8 +43,11 @@ The experiment compiles to ARM32 ELF using Cortex-A9 target, matching the
 A53 AArch32 execution proof. Its 125 mu pulse corresponds to 1 us at the
 local-RTIO 8 ns reference period. The compiled artifact is 2620 bytes.
 Compilation does not run the experiment or switch physical TTL.
-`artiq_run` will not run it on the current management-only firmware: network
-kernel upload/load/run, RPC and real kernel RTIO exports remain pending.
+The new two-core kernel-bringup firmware executes the separate no-output
+`examples/genesys_network_probe.py` through normal artiq_run and scalar RPC.
+Build/start instructions: boards/genesys_zu-5ev/3_kernel/README.md.
+The TTL experiment still cannot load (rtio_output is intentionally unresolved);
+physical TTL, DMA and complete exception/RPC support remain pending.
 No physical experiment was attempted during this installation.
 
 ## Recreate on this host or another host

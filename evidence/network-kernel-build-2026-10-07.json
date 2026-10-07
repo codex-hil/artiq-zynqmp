@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "scope": "two-core runtime build and physically tested artifacts; not full ARTIQ/TTL support",
+  "rust": "1.87.0",
+  "gnu_arm": "13.2.Rel1 (CPU0), ARM cross GCC13.3 (CPU1)",
+  "amd": "2025.2",
+  "unit_tests": 6,
+  "artifacts_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker/worker32.elf": "563fab3ab9f58e38755833db45d64d6ae3830172d40c752d02897ec77662b718",
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker/start64.elf": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/network-kernel-services-final/amd/app/build/lwip_echo_server.elf": "0d5a8ece0e83558e288899a87f85734861431baadbc520f7cdc78ec78bf893ba",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top.bit": "de421e03b788a487d8b2f05bffb1e9ae988a479f694b4bca35a93170e55f270f",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-ps-2025.2/app/build/zynqmp_fsbl.elf": "33b14afe88e4bb47463fb1c0bbaf15d5e7741bea3f0a45d8ab8135cdb3fcec99",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf": "c790106f2f9f258416869bce102518581f8e1a96415c7f7c7fca898acf5e5ba4"
+  },
+  "reproducers": [
+    "scripts/build_kernel_worker.sh",
+    "scripts/build_a53_services.sh --kernel"
+  ],
+  "logs": [
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker.log",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/network-kernel-services-final.log",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/network-kernel-services-guard.log"
+  ],
+  "note": "CPU0 generated application built from scratch, then counter-guard sources relinked; patches affect generated copies only."
+}

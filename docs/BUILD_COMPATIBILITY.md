@@ -63,3 +63,23 @@ pozostaje historycznym artifactem, a nie rezultatem nowego buildu.
   sipyco-canonical, bez wymiany zależności istniejącego projektu.
 - Nawet pusty kernel emituje automatyczny rpc_send_async writeback. Test
   sprawdza service=0 i tag :n; pozostałe RPC i unwind jawnie kończą go błędem.
+
+## Network kernel integration (2026-10-07)
+
+The offline embedded ABI probe did not require application RPC return
+allocation. Real Core.run/RPC emitted an undefined `malloc` reference, and
+CPU1 correctly returned LoadFailed. Added malloc/free bindings backed by
+linked_list_allocator 0.10.5, with separate runtime/kernel heaps and reset on
+new upload. Real artiq_run now passes i64/float/counter RPC and return tests.
+
+Current upstream embedded-io 0.7.1 requires core::error::Error in addition to
+kind(); the bounded writer supplies Display/Error. Formatting loader errors
+pulled alloc's _Unwind_Resume into the ARM staticlib; unsupported unwinding
+is explicitly routed to worker failure, not silently swallowed.
+
+Old run_ethernet.tcl halted every A53, which would stop the new CPU1 worker.
+Added run_a53_runtime.tcl preserving CPU1; boot runner starts worker before
+CPU0 and checks its READY mailbox event. Added separate cacheline producers
+and AMD CPU0 cache flush/invalidate; CPU1 remains cache/MMU-off for this
+bring-up. Management counter reads are guarded while CPU1 uses the shared
+hardware latch. See boards/genesys_zu-5ev/3_kernel/README.md for limits.

@@ -17,11 +17,13 @@ def main():
     p.add_argument('--artiq-source', required=True, type=Path)
     p.add_argument('--sipyco-source', required=True, type=Path)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--kernel', action='store_true', help='Expect integrated bring-up kernel service')
     o = p.parse_args()
+    expected_mode = 'kernel-bringup' if o.kernel else 'management-only'
     sys.path[:0] = [str(o.artiq_source), str(o.sipyco_source)]
     from artiq.coredevice.comm_mgmt import CommMgmt
     result = {'kind': 'hardware', 'time': time.time(), 'ip': o.ip,
-              'scope': 'management-only Rust firmware over maintained AMD Ethernet, not full ARTIQ runtime',
+              'scope': ('Rust management integrated with CPU1 kernel-bringup; full ARTIQ support pending' if o.kernel else 'management-only Rust firmware over maintained AMD Ethernet, not full ARTIQ runtime'),
               'tests': {}, 'client_revision': subprocess.check_output(['git', '-C', str(o.artiq_source), 'rev-parse', 'HEAD'], text=True).strip()}
     socket.setdefaulttimeout(5)
     clients = []
@@ -38,10 +40,10 @@ def main():
     try:
         c = connect()
         result['runtime_log'] = c.get_log()
-        if 'kernel execution/RPC unavailable' not in result['runtime_log']:
+        if not o.kernel and 'kernel execution/RPC unavailable' not in result['runtime_log']:
             raise RuntimeError('Unexpected runtime capabilities')
         metadata = {key: c.config_read(key).decode('ascii') for key in ['ip', 'mac', 'board', 'runtime_mode']}
-        if metadata != {'ip': o.ip, 'mac': '02:38:3b:7f:02:0d', 'board': 'genesys_zu-5ev', 'runtime_mode': 'management-only'}:
+        if metadata != {'ip': o.ip, 'mac': '02:38:3b:7f:02:0d', 'board': 'genesys_zu-5ev', 'runtime_mode': expected_mode}:
             raise RuntimeError('Unexpected target metadata')
         result['metadata'] = metadata
         result['tests']['upstream_commmgmt'] = 'PASS'
@@ -103,16 +105,22 @@ def main():
         result['tests']['real_artiq_coremgmt_cli'] = 'PASS'
         cli = subprocess.run([sys.executable, '-m', 'artiq.frontend.artiq_coremgmt', '-D', o.ip, 'config', 'read', '-s', 'board', '-s', 'runtime_mode', '-s', 'rtio_counter'], env=env, capture_output=True, text=True, timeout=10)
         values = cli.stdout.splitlines()
-        if cli.returncode or len(values) != 3 or values[:2] != ['genesys_zu-5ev', 'management-only'] or not values[2].isdigit():
+        if cli.returncode or len(values) != 3 or values[:2] != ['genesys_zu-5ev', expected_mode] or not values[2].isdigit():
             raise RuntimeError('Real CLI config read failed: ' + cli.stderr)
         result['cli_config'] = values
         result['tests']['real_cli_config_read'] = 'PASS'
-        # Kernel service is deliberately absent until a real loader/RPC executor exists.
-        try:
-            with socket.create_connection((o.ip, 1381), timeout=2):
-                raise RuntimeError('Unexpected unvalidated kernel listener')
-        except ConnectionRefusedError:
-            result['tests']['no_fake_kernel_service'] = 'PASS'
+        if o.kernel:
+            from artiq.coredevice.comm_kernel import CommKernel
+            worker = CommKernel(o.ip)
+            worker.check_system_info()
+            worker.close()
+            result['tests']['kernel_system_info'] = 'PASS'
+        else:
+            try:
+                with socket.create_connection((o.ip, 1381), timeout=2):
+                    raise RuntimeError('Unexpected unvalidated kernel listener')
+            except ConnectionRefusedError:
+                result['tests']['no_fake_kernel_service'] = 'PASS'
         result['status'] = 'PASS'
     except Exception as error:
         result['failure'] = str(error)

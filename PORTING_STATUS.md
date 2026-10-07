@@ -18,7 +18,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 
 | Subsystem | Piotr | Duke | upstream / inne | Obecny status Genesys | Test / dowód |
 |---|---|---|---|---|---|
-| build | PARTIAL: Rust, Vivado, Vitis, Yocto | Nix/nightly 2023; własny target JSON | Cargo stable, Migen/Vivado, AMD CMake/SDT | PARTIAL: R5/A53, oba bitstreamy, PMU/FSBL PASS; runtime ARTIQ MISSING | `make test hdl`; logi w evidence |
+| build | PARTIAL: Rust, Vivado, Vitis, Yocto | Nix/nightly 2023; własny target JSON | Cargo stable, Migen/Vivado, AMD CMake/SDT | PARTIAL: R5/A53, oba bitstreamy, PMU/FSBL i dwurdzeniowy runtime load/run/RPC PASS; pełny runtime PARTIAL | `make test hdl`; logi w evidence |
 | PS | Własne TCL, eksport pinów/XCI | ZCU111 HAL i SLCR | AMD PS IP; LiteX ZynqMP | PARTIAL: zachowano TCL Piotra; wariant HPM0/125 MHz | Vivado 2025.2 blinker/local RTIO PASS; JTAG/PS/CSR hardware PASS |
 | AArch64 | main: biblioteka C ABI; startup delegowany BSP | Własny startup, wyjątki, multicore | AdaCore 0.2.0, aarch64-cpu | PARTIAL: fizyczny A53/EL1 OCM PASS; DDR startup/MMU diagnostyki PASS | JTAG + UART evidence; autonomiczny boot NOT_RUN |
 | R5/OpenAMP | wip: BSP C i przykład echo; Rust pusty loop | Brak równoważnej ścieżki | AMD/OpenAMP/libmetal | PARTIAL: oryginalna biblioteka kompiluje; brak wykonania kernelów | Cargo R5; OpenAMP hardware NOT_RUN |
@@ -27,7 +27,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | GIC | R5 helper używa XScuGic/IPI | Własny GIC400 | arm-gic 0.6.1 | DONE diagnostic PPI30: fizycznie PASS, poprawiony widok EL1 NS | `evidence/a53-ocm-hardware-2026-10-07.json` |
 | timer | PS TTC0 skonfigurowany; brak testu ARTIQ | Global timer/time/async delay | Generic A53 timer | PARTIAL: polling i PPI30 fizycznie PASS | Częstotliwość fizyczna niezmierzona; evidence OCM |
 | clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic około 125 MHz PASS (5% tolerancji); nie precyzyjna kalibracja |
-| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; Rust management transport PASS; kernel/RPC MISSING | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; RPC NOT_RUN |
+| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; Rust management i kernel load/run/scalar RPC fizycznie PASS | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; rzeczywisty scalar RPC PASS |
 | AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 MMIO counter via TCP PASS |
 | RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Counter i wewnętrzny scheduled TTL probe hardware PASS; fizyczny loopback NOT_RUN |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
@@ -36,7 +36,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
-| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL prototypu ABI: rzeczywisty kernel NAC3 na fizycznym CPU1 A53/AArch32 (model RTIO); MISSING runtime/RPC produkcyjne; stub zwraca błędy | 6 testów framing/rejection; ABI QEMU i hardware CPU1 PASS z aktualnym ARTIQ i negatywną kontrolą |
+| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL runtime: TCP1381 → rzeczywisty loader i wykonanie CPU1 → scalar RPC PASS; TTL exports i exceptions/unwind pending | artiq_run 5/5; błędne/oversized/unsupported ELF odrzucone; ABI QEMU/hardware PASS |
 | DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: kod/konfiguracja bez odtworzonego boot.bin | NOT_RUN |
 
@@ -316,3 +316,47 @@ i rzeczywisty odczyt management log z płyty PASS. duration pulse_mu wymaga
 jawnego numpy.int64, poprawiono przykład. Fizycznego eksperymentu nie
 uruchamiano; firmware nadal management-only. Instrukcja: docs/ARTIQ_HOST.md;
 dowód: evidence/artiq-host-install-2026-10-07.json.
+
+## Sieciowy kernel runtime i rzeczywisty RPC — 2026-10-07
+
+Połączono dotychczasowe etapy: C AMD/lwIP + Rust management na CPU0/AArch64
+oraz Rust worker na CPU1/EL1 AArch32. Użyto zachowanego upstream ELF loadera;
+serializer RPC i libio są niemodyfikowanymi kopiami M-Labs z przypiętego
+commita. Nowa warstwa ZynqMP obejmuje startup, kanał shared DDR/cache,
+transport TCP i wiązania API, nie nowy loader/protokół/driver GEM.
+Alokacja przez istniejący linked_list_allocator 0.10.5: runtime i kernel
+mają osobne sterty po 512 KiB. Pierwszy prawdziwy upload ujawnił brak eksportu
+malloc; dodano malloc/free i realny alokator zamiast potwierdzać nieudany load.
+
+Prawdziwy upstream artiq_run wykonał pięć świeżo kompilowanych kerneli
+bez wyjść TTL. Token i64, rzeczywisty counter RTIO i float dotarły przez RPC
+do hosta; float 3.75 wrócił na CPU1 i został potwierdzony drugim RPC.
+Automatic empty asynchronous writeback obsługiwany upstream codecem.
+LoadCompleted jest wysyłany po udanym dyld::load/relokacjach i sprawdzeniu
+__modinit__; KernelFinished po rzeczywistym powrocie entry point.
+Runtime mode: kernel-bringup. To nadal częściowy, nie produkcyjnie kompletny
+ARTIQ core device.
+
+Fizyczne PASS: błędny/out-of-bounds ELF, oversized upload (1 MiB limit),
+nieobsługiwany TTL ELF (LoadFailed: unresolved rtio_output), fragmentowany
+upload, jeden właściciel kernela, metadata management równolegle z RPC,
+shared-counter-latch guard, repeated artiq_run oraz wszystkie dziewięć
+management testów. GEM nadal 20/20 ICMP, 1080 TCP echo / 1,129,210 B,
+liczniki błędów zero. Guard odrzuca CPU0 management odczyt counter podczas
+pracy CPU1; hardware latch jest wspólny i nie powinien mieć dwóch czytelników.
+
+Boot: reset PS → PMU/FSBL → PL/preflight → CPU1 worker → CPU0 networking.
+Nowy runner CPU0 zachowuje pracę CPU1; stary halting-all-cores runner
+pozostaje tylko diagnostyczny. Cache-maintenance CPU0 pochodzi z AMD;
+CPU1 MMU/cache wyłączone zgodnie z wcześniej sprawdzonym proofem. Docelowa
+polityka MMU/izolacji i cancellation/watchdog nadal PARTIAL. Initial timeout
+postępu 30 s; RPC event max4096 B; scalar returns tylko n/b/i/I/u/U/f.
+Wyjątki/unwind/host RPCException i complex returns wymagają dalszej integracji;
+fail-stop wymaga restartu workera i nie raportuje fałszywego KernelFinished.
+
+Instrukcja: boards/genesys_zu-5ev/3_kernel/README.md.
+Test: make test-hw-network-kernel lub scripts/test_network_kernel_hw.py.
+Dowody: evidence/network-kernel-{build,hardware,management,ethernet}-2026-10-07.json.
+TTL exports jeszcze nie włączone; fizycznych impulsów/loopback nie uruchamiano.
+RTIO DMA/analyzer/moninj/DRTIO nadal pending. Następny etap: rzeczywiste
+rtio_output i TTL input, zgodnie z prośbą użytkownika eksperymenty jutro.

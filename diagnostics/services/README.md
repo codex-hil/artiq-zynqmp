@@ -1,3 +1,7 @@
+> Update 2026-10-07: optional `--kernel` build integrates real TCP1381
+> load/run and scalar RPC on CPU1. See boards/genesys_zu-5ev/3_kernel/README.md.
+> This document describes the earlier management-only build, which remains available.
+
 # A53 Rust management integration (management-only)
 
 This extends Piotr's C BSP → Rust staticlib architecture. Maintained AMD

@@ -225,3 +225,26 @@ Rust, wyjątków/unwind, MMU/cache i bootowania przez zachowany FSBL Piotra.
 Prototyp QEMU ma własne adresy virt/PL011; nie zastępuje platformy Genesys.
 AArch64 diagnostyka pozostaje oddzielnym ELF-em. Szczegóły i revisions są
 w prototypes/kernel-abi/README.md, a dowody w evidence/kernel-abi/.
+
+## Stan uruchomionej integracji — 2026-10-07
+
+```mermaid
+flowchart LR
+    HOST[ARTIQ host / NAC3] -->|ELF TCP1381| CPU0[CPU0 AArch64: AMD GEM/lwIP]
+    CPU0 --> MGMT[Rust management TCP1380]
+    CPU0 -->|DDR upload + flush/SEV| CPU1[CPU1 EL1 AArch32: upstream dyld]
+    CPU1 -->|wykonanie| KERNEL[rzeczywisty kernel ARTIQ]
+    KERNEL -->|RPC upstream codec| CPU0
+    CPU0 -->|RPC / wynik| HOST
+    KERNEL -->|odczyt licznika| RTIO[upstream local RTIO w PL]
+    KERNEL -. TTL exports pending .-> RTIO
+```
+
+To kontynuacja C BSP → Rust staticlib Piotra. PS/DDR/boot oraz PS importer
+zachowują odzyskaną pracę. Utrzymywane AMD GEM/lwIP zastępuje potrzebę
+pisania kolejnego Rust GEM drivera. Loader i serializer RPC odzyskano
+z M-Labs; LLVM backend Cortex-A9 wykonuje się na A53 w jawnie przełączonym
+AArch32. Testy dowodzą sieciowego kernela/RPC i fizycznego counter, nie TTL.
+Kanał ma osobne linie cache producentów, CPU0 stosuje cache maintenance
+AMD, CPU1 utrzymuje cache/MMU-off policy początkowego bring-upu.
+Mapa, ograniczenia i reproducer: boards/genesys_zu-5ev/3_kernel/README.md.

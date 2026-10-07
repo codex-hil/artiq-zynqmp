@@ -1,14 +1,17 @@
 # ARTIQ / Genesys ZU-5EV — odzyskanie portu Piotra Jedyka
 
 Rozwój kontynuuje `pjedyk/artiq-new`, na gałęzi `bringup/genesys` bazującej
-na `wip@b25e75b`. **To jeszcze nie działający ARTIQ core device.** Obecnie
-działają buildy Vivado i fizyczne testy PS/DDR/UART/IRQ/Ethernet/local RTIO.
-Nowy Rust A53 management przez AMD/lwIP odpowiada aktualnemu
-`artiq_coremgmt`: log/config oraz odczyt rzeczywistego licznika RTIO PASS.
-Loader i ABI kernela przeszły osobną diagnostykę na fizycznym A53 CPU1.
-Sieciowe ładowanie/wykonanie, RPC i prosty eksperyment pozostają do integracji.
-Diagnostyka: [diagnostics/kernel-a53/README.md](diagnostics/kernel-a53/README.md).
-Instrukcja integracji: [diagnostics/services/README.md](diagnostics/services/README.md).
+na `wip@b25e75b`. **Runtime wykonuje już kernela przez Ethernet i obsługuje
+podstawowy RPC na fizycznej Genesys ZU. Pełny core device z TTL pozostaje celem.**
+Host `artiq_run` → AMD/lwIP na CPU0 AArch64 → loader M-Labs na CPU1 AArch32
+→ rzeczywiste wykonanie i RPC działa. Pięć uruchomień oraz testy negatywne PASS.
+Management, DDR/UART/IRQ/Ethernet i odczyt prawdziwego licznika RTIO sprawdzone.
+Fizyczny TTL input/output, RTIO DMA, analyzer/moninj i wyjątki pozostają do integracji.
+
+Instrukcja buildu/startu/runtime i test bez TTL:
+[boards/genesys_zu-5ev/3_kernel/README.md](boards/genesys_zu-5ev/3_kernel/README.md).
+Poprzednie etapy: [diagnostics/kernel-a53/README.md](diagnostics/kernel-a53/README.md),
+[diagnostics/services/README.md](diagnostics/services/README.md).
 
 Narzędzia hosta są zainstalowane: `artiq_compile`, `artiq_run`, `artiq_coremgmt`.
 Instrukcja: [docs/ARTIQ_HOST.md](docs/ARTIQ_HOST.md).

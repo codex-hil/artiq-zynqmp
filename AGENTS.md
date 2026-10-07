@@ -47,3 +47,14 @@ Launchers ~/.local/bin/artiq_{compile,run,coremgmt} and artiq-host.
 See docs/ARTIQ_HOST.md for pinned compiler/source revisions and dependencies.
 Offline examples/genesys_ttl.py compilation passed; do not run physical
 experiments until kernel network runtime/real RTIO exports are integrated.
+
+Current physical runtime: network-kernel-services-final + kernel-worker.
+Normal artiq_run examples/genesys_network_probe.py now performs genuine
+Ethernet load/execute/scalar RPC on CPU1, preserving CPU0 management.
+See boards/genesys_zu-5ev/3_kernel/README.md and evidence/network-kernel-*.
+Runtime mode kernel-bringup; TTL exports, exceptions/unwind, complex returns,
+DMA/analyzer/moninj remain pending. Do not run physical TTL experiments yet.
+Boot CPU1 before CPU0; run_a53_runtime.tcl preserves it. Old run_ethernet.tcl
+halts all cores. Management rtio_counter returns Error while a kernel runs
+(to avoid contending with CPU1 for the shared latch). Reserve 0x21000000
+for 1 MiB upload, in addition to the earlier CPU1 image/mailbox range.

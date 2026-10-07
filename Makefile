@@ -74,3 +74,8 @@ test-hw-kernel-cpu1:
 	$(if $(KERNEL_POSITIVE),,$(error Specify KERNEL_POSITIVE= hardware diagnostic directory))
 	$(if $(KERNEL_NEGATIVE),,$(error Specify KERNEL_NEGATIVE= hardware negative-control directory))
 	$(PYTHON) scripts/test_kernel_cpu1_hw.py --server="$(JTAG_SERVER)" --cable="$(JTAG_CABLE)" --serial="$(SERIAL)" --positive="$(KERNEL_POSITIVE)" --negative="$(KERNEL_NEGATIVE)" --ip="$(BOARD_IP)" --output="$(abspath $(O))/kernel-cpu1-hardware"
+
+.PHONY: test-hw-network-kernel
+test-hw-network-kernel:
+	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
+	artiq-host python scripts/test_network_kernel_hw.py --ip="$(BOARD_IP)" --output="$(abspath $(O))/network-kernel"
