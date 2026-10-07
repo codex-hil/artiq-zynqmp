@@ -1,0 +1,49 @@
+{
+  "kind": "build",
+  "status": "PASS",
+  "date": "2026-10-07",
+  "amd_release": "2025.2",
+  "emacps": "3.23",
+  "lwip": "2.2.0 / lwip220_v1_3",
+  "xiltimer": "2.3",
+  "arm_gnu": "13.2.Rel1",
+  "script": "scripts/build_ethernet_firmware.sh",
+  "artifacts_sha256": "09ab201942f3f2281cf90bf78ea3ca71bd436b39817695a1e02b33d827f3da15  /srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-reproduced/sdt/system-top.dts\nd04a320ee82740ecb97c5fd0aad346d4aceceb188990c461e625b361306c8132  /srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced/app/build/lwip_echo_server.elf\n",
+  "elf": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced/app/build/lwip_echo_server.elf",
+  "elf_sha256": "d04a320ee82740ecb97c5fd0aad346d4aceceb188990c461e625b361306c8132",
+  "sources": [
+    {
+      "file": "main.c",
+      "vendor_path": "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/embeddedsw/lib/sw_apps/lwip_echo_server/src/main.c",
+      "vendor_sha256": "1d6f0c8b05995ae3d934f72fceabb90fb9790f963ecd2bc8c06014883da2e182",
+      "generated_path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced/app/src/main.c",
+      "generated_sha256": "cc91557fe0b5b1bc4e05936a7d20bd5facaa0cd37a16945873a6e307cf369ff7"
+    },
+    {
+      "file": "echo.c",
+      "vendor_path": "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/embeddedsw/lib/sw_apps/lwip_echo_server/src/echo.c",
+      "vendor_sha256": "8834069bd9b60913d299b979b276372b17cb8f7a2ed5dfe13873832278cde9cc",
+      "generated_path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced/app/src/echo.c",
+      "generated_sha256": "206682fb1a24cf251ab341cb41b42a3becb0a11535aa7d4f05b3557347a25f63"
+    },
+    {
+      "file": "xemacpsif_physpeed.c",
+      "vendor_path": "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/embeddedsw/ThirdParty/sw_services/lwip220_v1_3/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_physpeed.c",
+      "vendor_sha256": "75d67be50c00d046ffa5e713ae3f1306de3595248569d0449ba3de757ce55198",
+      "generated_path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_physpeed.c",
+      "generated_sha256": "d9597192e87d0c0dd75ba52c7681120f1bb112beaf52c8278990ac7385265300"
+    }
+  ],
+  "build_log": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced.log",
+  "changes": [
+    "locally administered MAC for this physical Genesys",
+    "DHCP errors explicit, no unvalidated static-IP fallback",
+    "correct TCP header port7",
+    "TI RGMII autonegotiation timeout20s instead of5s; preserve driver protocol and clock logic"
+  ],
+  "limitations": [
+    "golden C/AMD diagnostic, production Rust/ARTIQ integration remains pending",
+    "secure EL3 standalone BSP; reset PS before switching from EL1 diagnostics",
+    "link1000Mbps tested; 10/100Mbps not tested"
+  ]
+}
