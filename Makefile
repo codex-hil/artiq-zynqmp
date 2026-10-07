@@ -78,4 +78,9 @@ test-hw-kernel-cpu1:
 .PHONY: test-hw-network-kernel
 test-hw-network-kernel:
 	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
-	artiq-host python scripts/test_network_kernel_hw.py --ip="$(BOARD_IP)" --output="$(abspath $(O))/network-kernel"
+	artiq-host python scripts/test_network_kernel_hw.py --rtio --ip="$(BOARD_IP)" --output="$(abspath $(O))/network-kernel"
+
+.PHONY: test-hw-rtio-kernel
+test-hw-rtio-kernel:
+	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
+	artiq-host python scripts/test_network_kernel_hw.py --rtio --ip="$(BOARD_IP)" --output="$(abspath $(O))/rtio-kernel"

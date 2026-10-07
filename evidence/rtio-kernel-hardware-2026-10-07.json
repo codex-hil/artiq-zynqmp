@@ -1,0 +1,68 @@
+{
+  "kind": "hardware",
+  "time": 1791399382.1158285,
+  "ip": "192.168.2.16",
+  "scope": "actual network ARM32 kernel load/run and scalar RPC; no physical TTL output",
+  "tests": {
+    "management_before": "PASS",
+    "rtio_timeline_64bit_input_timeout": "PASS",
+    "rtio_scheduled_input_sample": "PASS",
+    "ttl_elf_relocated_not_executed": "PASS",
+    "loopback_elf_relocated_not_executed": "PASS",
+    "invalid_rejected": "PASS",
+    "out_of_bounds_rejected": "PASS",
+    "oversized_upload_rejected": "PASS",
+    "fragmented_real_elf_load": "PASS",
+    "exclusive_kernel_owner": "PASS",
+    "management_during_kernel_ownership": "PASS",
+    "shared_counter_latch_guard": "PASS",
+    "management_while_cpu1_waits_rpc": "PASS",
+    "real_artiq_run_repeated_load_execute": "PASS",
+    "i64_counter_float_rpc_and_sync_return": "PASS",
+    "management_after": "PASS",
+    "ttl_physical": "NOT_RUN"
+  },
+  "runs": [
+    {
+      "index": 0,
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 7744377408 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n"
+    },
+    {
+      "index": 1,
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 7925511716 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n"
+    },
+    {
+      "index": 2,
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 7982145943 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n"
+    },
+    {
+      "index": 3,
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 8035471109 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n"
+    },
+    {
+      "index": 4,
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 8088289281 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n"
+    }
+  ],
+  "rtio_probe_stdout": "RTIO_SAMPLE_PASS 7609270159 7609270169 0\nRTIO_CSR_PASS 0x1234567887654321 0x123456788765439e 7608020159 -1\n",
+  "rtio_probe_stderr": "",
+  "network_elf_sha256": "e0a454429633d81a0b81dd6c78fc186e116556eca1c3d12c40e1bf155d333d03",
+  "load_errors": {
+    "invalid": "invalid or oversized ARM32 shared ELF",
+    "out_of_bounds": "invalid or oversized ARM32 shared ELF"
+  },
+  "oversize_error": "kernel upload exceeds 1 MiB or is empty",
+  "runtime_log": "ent configuration read.\nManagement configuration read.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement configuration read.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement configuration read.\nManagement TCP connection accepted.\n",
+  "status": "PASS",
+  "source_revisions": {
+    "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "artiq_zynq": "15c856f315969b5c1d01d2917ed52f1b0f199677",
+    "nac3": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+    "runtime_implementation_commit": "b353988"
+  }
+}

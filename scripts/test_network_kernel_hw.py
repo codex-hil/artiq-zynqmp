@@ -19,8 +19,11 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--ip', required=True)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--underflow', action='store_true', help='Negative RTIO control last; requires worker restart')
+    p.add_argument('--rtio', action='store_true', help='Real RTIO worker: load TTL ELF without running it')
     p.add_argument('--runs', type=int, default=5)
     o = p.parse_args()
+    if o.underflow and not o.rtio: p.error('--underflow requires --rtio')
     if o.runs < 1: p.error('--runs must be positive')
     repo = Path(__file__).resolve().parent.parent
     out = o.output.resolve();out.mkdir(parents=True, exist_ok=True)
@@ -50,19 +53,40 @@ def main():
 
     try:
         management();result['tests']['management_before']='PASS'
-        for name, source in [('network', 'genesys_network_probe.py'), ('ttl', 'genesys_ttl.py')]:
+        for name, source in [('network', 'genesys_network_probe.py'), ('ttl', 'genesys_ttl.py')] + ([('loopback','genesys_loopback.py')] if o.rtio else []):
             proc=subprocess.run([str(Path(sys.executable).with_name('artiq_compile')), '--device-db',str(db),
                 '--dataset-db',str(out/'datasets.mdb'),'-o',str(out/(name+'.elf')),'-d',str(out/(name+'-debug.elf')),
                 str(repo/'examples'/source)],capture_output=True,text=True,timeout=30)
             (out/(name+'-compile.log')).write_text(proc.stdout+proc.stderr)
             if proc.returncode: raise RuntimeError('Compilation failed: '+name)
+        if o.rtio:
+            proc=subprocess.run([str(Path(sys.executable).with_name('artiq_run')), '--device-db',str(db),
+                '--dataset-db',str(out/'datasets.mdb'),str(repo/'examples/genesys_rtio_probe.py')],
+                capture_output=True,text=True,timeout=30)
+            (out/'rtio-probe.log').write_text(proc.stdout+proc.stderr)
+            if proc.returncode or 'RTIO_CSR_PASS' not in proc.stdout: raise RuntimeError('Real RTIO CSR probe failed')
+            result['tests']['rtio_timeline_64bit_input_timeout']='PASS'
+            if 'RTIO_SAMPLE_PASS' not in proc.stdout: raise RuntimeError('Scheduled RTIO sample missing')
+            result['tests']['rtio_scheduled_input_sample']='PASS'
+            result['rtio_probe_stdout']=proc.stdout
+            result['rtio_probe_stderr']=proc.stderr
         elf=(out/'network.elf').read_bytes()
         result['network_elf_sha256']=hashlib.sha256(elf).hexdigest()
         client=CommKernel(o.ip);client.check_system_info()
-        for name,bad in [('invalid',b'not an ELF'),('out_of_bounds',elf[:28]+b'\xfc\xff\xff\xff'+elf[32:]),('unsupported_ttl',(out/'ttl.elf').read_bytes())]:
+        if o.rtio:
+            client.load((out/'ttl.elf').read_bytes())
+            result['tests']['ttl_elf_relocated_not_executed']='PASS'
+            client.load((out/'loopback.elf').read_bytes())
+            result['tests']['loopback_elf_relocated_not_executed']='PASS'
+        else:
+            try: client.load((out/'ttl.elf').read_bytes())
+            except LoadError as e:
+                if 'rtio_output' not in str(e): raise
+                result['tests']['unsupported_ttl']='PASS'
+            else: raise RuntimeError('TTL unexpectedly accepted by old worker')
+        for name,bad in [('invalid',b'not an ELF'),('out_of_bounds',elf[:28]+b'\xfc\xff\xff\xff'+elf[32:])]:
             try: client.load(bad)
             except LoadError as e:
-                if name=='unsupported_ttl' and 'rtio_output' not in str(e): raise
                 result['tests'][name+'_rejected']='PASS'
                 result.setdefault('load_errors',{})[name]=str(e)
             else: raise RuntimeError('Invalid/unsupported kernel falsely loaded: '+name)
@@ -122,6 +146,18 @@ def main():
         finally:mgmt.close()
         if 'CPU1 kernel finished.' not in result['runtime_log']:raise RuntimeError('No actual kernel completion log')
         result['tests']['ttl_physical']='NOT_RUN'
+        if o.underflow:
+            proc=subprocess.run([str(Path(sys.executable).with_name('artiq_compile')), '--device-db',str(db),
+                '--dataset-db',str(out/'datasets.mdb'),'-o',str(out/'underflow.elf'),'-d',str(out/'underflow-debug.elf'),
+                str(repo/'examples/genesys_rtio_underflow.py')],capture_output=True,text=True,timeout=30)
+            (out/'underflow-compile.log').write_text(proc.stdout+proc.stderr)
+            if proc.returncode: raise RuntimeError('Underflow fixture failed compilation')
+            client=CommKernel(o.ip);client.load((out/'underflow.elf').read_bytes());client.run()
+            client._read_header();client._read_expect(Reply.KernelStartupFailed)
+            client.close();client=None
+            management(check_busy=True)
+            result['tests']['past_sample_rejected_without_kernel_finished']='PASS'
+            result['worker_requires_restart']=True
         result['status']='PASS'
     except Exception as e:
         result['status']='FAIL';result['failure']=str(e)

@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "fresh two-core runtime builds; same final ELF artifacts physically tested",
+  "rust": "1.87.0",
+  "amd": "2025.2",
+  "cpu0_unit_tests_passed": 6,
+  "simulation_tests_passed": 1,
+  "artifacts_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-rtio-final/worker32.elf": "626b0c54f014b7a1076c6112ffd9d84b28e01e342847eae1804eea03a57655ec",
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-rtio-final/start64.elf": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-kernel-services/amd/app/build/lwip_echo_server.elf": "ad9993683cbe850094642de12026bcbce407caffdb81303630f3a2df51cb0933",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/csr-map.json": "ba8c40cecba19bafbd4dbbc6012d242710812d5f7c0a954d0b4cd8e02c447306",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top.bit": "de421e03b788a487d8b2f05bffb1e9ae988a479f694b4bca35a93170e55f270f",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-ps-2025.2/app/build/zynqmp_fsbl.elf": "33b14afe88e4bb47463fb1c0bbaf15d5e7741bea3f0a45d8ab8135cdb3fcec99",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf": "c790106f2f9f258416869bce102518581f8e1a96415c7f7c7fca898acf5e5ba4"
+  },
+  "build_log": "/srv/codex-hil-data/artiq-zynqmp/build/rtio-cpu0-build.log",
+  "limitations": [
+    "physical JB1 output and JB1-JB2 loopback NOT_RUN",
+    "fail-stop errors; catchable exception/unwind unsupported",
+    "DMA/analyzer/moninj/DRTIO not enabled"
+  ],
+  "source_revisions": {
+    "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "artiq_zynq": "15c856f315969b5c1d01d2917ed52f1b0f199677",
+    "nac3": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+    "runtime_implementation_commit": "b353988"
+  }
+}
