@@ -41,3 +41,9 @@ passed 2026-10-07, including negative assertion and real PL counter read.
 See diagnostics/kernel-a53/README.md; outputs remain a memory model.
 It reserves 0x20000000/0x200FF000/0x20200000–0x20400000; CPU0 management
 remains active. Network kernel upload/run and real RTIO exports still pending.
+
+Shared host ARTIQ CLI venv: /srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host.
+Launchers ~/.local/bin/artiq_{compile,run,coremgmt} and artiq-host.
+See docs/ARTIQ_HOST.md for pinned compiler/source revisions and dependencies.
+Offline examples/genesys_ttl.py compilation passed; do not run physical
+experiments until kernel network runtime/real RTIO exports are integrated.

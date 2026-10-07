@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "scope": "host CLI installation and offline compilation; not physical TTL experiment execution",
+  "venv": "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host",
+  "python": "Python 3.12.3",
+  "artiq_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "sipyco_revision": "75f055c2ee29c09a49912e63ed49c7b7cae953c4",
+  "nac3_revision": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+  "nac3_module_sha256": "1200e27173ac071cd01398332f3bfaa329abaf9d5ab4d504fe1639913aa11c8c",
+  "compiled_elf_sha256": "358551c710e05604f73adc44114b9ae5aa951a1e78b8db9c2423dd50c465df59",
+  "compiled_elf_bytes": 2620,
+  "tests": {
+    "artiq_compile_help": "PASS",
+    "artiq_run_help": "PASS",
+    "artiq_coremgmt_help": "PASS",
+    "nac3_import": "PASS",
+    "pip_check": "PASS",
+    "offline_genesys_ttl_compile": "PASS",
+    "physical_coremgmt_log": "PASS",
+    "physical_experiment": "NOT_RUN"
+  },
+  "management_log": "Management TCP connection accepted.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement TCP connection accepted.\nManagement TCP connection accepted.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement TCP connection accepted.\n"
+}

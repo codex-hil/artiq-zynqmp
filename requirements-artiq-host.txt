@@ -1,0 +1,23 @@
+# CLI host dependencies; ARTIQ/sipyco/NAC3 pinned separately in docs/ARTIQ_HOST.md.
+attrs==26.1.0
+cffi==2.1.1
+h5py==3.16.0
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+lmdb==3.0.0
+numpy==2.5.3
+packaging==26.3
+platformdirs==4.12.3
+prettytable==3.18.0
+pycparser==3.0
+pygit2==1.20.1
+python-dateutil==2.9.0.post0
+referencing==0.37.0
+rpds-py==2026.9.1
+scipy==1.18.1
+setuptools==84.0.0
+six==1.17.0
+tqdm==4.70.1
+typing_extensions==4.16.0
+wcwidth==0.9.2
+wheel==0.48.0

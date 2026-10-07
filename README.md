@@ -10,6 +10,9 @@ Sieciowe ładowanie/wykonanie, RPC i prosty eksperyment pozostają do integracji
 Diagnostyka: [diagnostics/kernel-a53/README.md](diagnostics/kernel-a53/README.md).
 Instrukcja integracji: [diagnostics/services/README.md](diagnostics/services/README.md).
 
+Narzędzia hosta są zainstalowane: `artiq_compile`, `artiq_run`, `artiq_coremgmt`.
+Instrukcja: [docs/ARTIQ_HOST.md](docs/ARTIQ_HOST.md).
+
 Dokładny stan: [PORTING_STATUS.md](PORTING_STATUS.md). Architektura i decyzje:
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Źródła i revisions:
 [docs/SOURCES.md](docs/SOURCES.md). Problemy buildu:

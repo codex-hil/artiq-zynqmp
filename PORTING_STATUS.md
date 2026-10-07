@@ -304,3 +304,15 @@ inter-core channel, allocator/cache produkcyjne, prawdziwe RTIO exports,
 aplikacyjny RPC i exception/unwind nadal nie są zintegrowane. TCP1381 nadal
 nie jest wystawiony jako działający runtime. Eksperymenty TTL odłożone
 zgodnie z prośbą użytkownika do jutra.
+
+## Host ARTIQ CLI — 2026-10-07
+
+Osobny venv `venvs/artiq-host` na dysku danych, wspólne launchery
+artiq_run/artiq_compile/artiq_coremgmt/artiq-host w ~/.local/bin.
+Aktualny przypięty ARTIQ + kompatybilny sipyco + wcześniej przetestowany
+NAC3/LLVM19, bez zmiany oryginalnych reference checkoutów. CLI help,
+pip check, import NAC3, offline kompilacja GenesysTTL (ARM32 ELF 2620 B)
+i rzeczywisty odczyt management log z płyty PASS. duration pulse_mu wymaga
+jawnego numpy.int64, poprawiono przykład. Fizycznego eksperymentu nie
+uruchamiano; firmware nadal management-only. Instrukcja: docs/ARTIQ_HOST.md;
+dowód: evidence/artiq-host-install-2026-10-07.json.
