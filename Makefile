@@ -31,3 +31,12 @@ test-kernel-abi:
 	$(if $(NAC3_SOURCE),,$(error Specify NAC3_SOURCE= checkout at the documented prototype revision))
 	$(if $(ABI_TOOLS),,$(error Specify ABI_TOOLS= directory prepared by setup_abi_tools.py))
 	$(PYTHON) scripts/test_kernel_abi.py --nac3-source=$(NAC3_SOURCE) --tools=$(ABI_TOOLS) --output=$(abspath $(O))/kernel-abi $(if $(ABI_ARTIQ_SOURCE),--artiq-source=$(ABI_ARTIQ_SOURCE) --sipyco-source=$(ABI_SIPYCO_SOURCE))
+
+.PHONY: test-hw-jtag
+test-hw-jtag:
+	$(if $(JTAG_SERVER),,$(error Specify JTAG_SERVER= current hw_server URL))
+	$(if $(JTAG_CABLE),,$(error Specify JTAG_CABLE= identified Genesys cable serial))
+	$(if $(SERIAL),,$(error Specify SERIAL= identified Genesys UART))
+	$(if $(A53_ELF),,$(error Specify A53_ELF= DDR diagnostic ELF))
+	$(if $(PSU_INIT),,$(error Specify PSU_INIT= local-rtio generated psu_init.tcl))
+	$(PYTHON) scripts/test_jtag_hw.py --server="$(JTAG_SERVER)" --cable="$(JTAG_CABLE)" --serial="$(SERIAL)" --elf="$(A53_ELF)" --psu-init="$(PSU_INIT)" --output="$(abspath $(O))/jtag-hardware"

@@ -1,0 +1,50 @@
+{
+  "kind": "hardware",
+  "date": "2026-10-07",
+  "board": "Genesys ZU-5EV",
+  "cable_serial": "210383B7F02DA",
+  "method": "XSDB guarded cable selection; volatile JTAG session; no flash writes",
+  "tests": {
+    "fsbl": "PASS",
+    "pmu": "PASS",
+    "ddr_initialization": "PASS",
+    "ddr_scratch": "PASS 128 KiB four patterns cache flushed; full-range stress NOT_RUN",
+    "ps_pl_csr": "PASS via PS DAP, A53 firmware access NOT_RUN",
+    "rtio_counter": "PASS monotonic; precise frequency measurement NOT_RUN",
+    "ttl_internal_probe": "PASS scheduled high then low; physical pin NOT_RUN",
+    "rtio_async_errors": "PASS zero",
+    "ethernet_mdio": "PASS PHY15 ID 2000A231",
+    "ethernet_link": "PASS PHY BMSR796D link and autoneg complete",
+    "ethernet_packets": "NOT_RUN",
+    "ttl_input": "NOT_RUN no jumper",
+    "artiq_runtime": "MISSING"
+  },
+  "artifacts": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "ab2f03127cf6e6c10f0ad78a78b7de4d52c8ec53408d464d23ce3b9e48a408e0"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "e3c1c910e7e7c87b90f839c5605d9591e13d2d22beefa791b8e0f1046e79a144"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top.bit",
+      "sha256": "de421e03b788a487d8b2f05bffb1e9ae988a479f694b4bca35a93170e55f270f"
+    }
+  ],
+  "logs": {
+    "pmu-fsbl-uart.log": "PMU Firmware 2025.2\tOct  7 2026   15:18:10\nPMU_ROM Version: xpbr-v8.1.0-0\nZynq MP First Stage Boot Loader \n\nRelease 2025.2   Oct  7 2026  -  15:15:09\nMultiBootOffset: 0x0\nReset Mode\t:\tSystem Reset\nPlatform: Silicon (4.0), Cluster ID 0x80000000\n\nRunning on A53-0 (64-bit) Processor, Device Name: XCZU5EV\n\nProcessor Initialization Done \n\n================= In Stage 2 ============ \n\nIn JTAG Boot Mode \n\n================= In Stage 4 ============ \n\nProtection configuration applied\nPL Configuration done successfully \nExit from FSBL \n\n",
+    "rtio-final-probe.log": "TEST ps_pl PASS target=258\nTEST rtio_counter PASS before=4924168 after=132264067 delta=127339899\nPL_CLOCK_CTRL=FF5E00C0:   01010C00\n\nTEST ttl_internal_probe PASS high=1 low=0\nTEST rtio_async_errors PASS value=0\nTEST ttl_physical NOT_RUN requires JB1-JB2 jumper or external instrument\n",
+    "ethernet-probe.log": "PHY addr=15 id=2000A231 BMSR=796D link=1 autoneg_done=1\nTEST ethernet_mdio PASS found=1; packet TX/RX NOT_RUN\n"
+  },
+  "arm_gnu_archive_sha256": "7fe7b8548258f079d6ce9be9144d2a10bd2bf93b551dafbf20fe7f2e44e014b8",
+  "boot_mode": "Physical SD1LS was 0xE; alternate JTAG selected via BOOT_MODE_USER, now 0x100 until reset/reconfiguration.",
+  "reproduced_build": {
+    "status": "PASS",
+    "script": "scripts/build_boot_firmware.sh",
+    "log": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-reproduced.log",
+    "boot_uart": "PMU Firmware 2025.2\tOct  7 2026   15:27:54\nPMU_ROM Version: xpbr-v8.1.0-0\nZynq MP First Stage Boot Loader \n\nRelease 2025.2   Oct  7 2026  -  15:27:15\nMultiBootOffset: 0x0\nReset Mode\t:\tSystem Reset\nPlatform: Silicon (4.0), Cluster ID 0x80000000\n\nRunning on A53-0 (64-bit) Processor, Device Name: XCZU5EV\n\nProcessor Initialization Done \n\n================= In Stage 2 ============ \n\nIn JTAG Boot Mode \n\n================= In Stage 4 ============ \n\nProtection configuration applied\nPL Configuration done successfully \nExit from FSBL \n",
+    "artifacts_sha256": "888635bbe14785ff6eed33a9867432317de6830c844bbe375113d2f714ece404  /srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker/platform.xsa\ndceef724a4a48e6ed381dbedf4cffdfc4dbeaecf94222b59c359e0ad9b004709  /srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-reproduced/app/build/zynqmp_fsbl.elf\n1580dea54c1e7164ef03a566799a03c2bc1700c4f143170121d4405701658cd0  /srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-reproduced/pmu-app/build/zynqmp_pmufw.elf\n"
+  }
+}

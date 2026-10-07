@@ -18,23 +18,23 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 
 | Subsystem | Piotr | Duke | upstream / inne | Obecny status Genesys | Test / dowód |
 |---|---|---|---|---|---|
-| build | PARTIAL: Rust, Vivado, Vitis, Yocto | Nix/nightly 2023; własny target JSON | Cargo stable, Migen/Vivado, AMD CMake/SDT | PARTIAL: R5/A53, HDL, FPGA blinker PASS; pełny boot/RTIO hardware nie wykonany | `make test hdl`; logi w evidence |
-| PS | Własne TCL, eksport pinów/XCI | ZCU111 HAL i SLCR | AMD PS IP; LiteX ZynqMP | PARTIAL: zachowano TCL Piotra; wariant HPM0/125 MHz | Vivado 2025.2 blinker PASS; hardware NOT_RUN |
-| AArch64 | main: biblioteka C ABI; startup delegowany BSP | Własny startup, wyjątki, multicore | AdaCore 0.2.0, aarch64-cpu | PARTIAL: osobny ELF diagnostyczny ze startupem/MMU | Build + walidacja entry/segmentów; boot NOT_RUN |
+| build | PARTIAL: Rust, Vivado, Vitis, Yocto | Nix/nightly 2023; własny target JSON | Cargo stable, Migen/Vivado, AMD CMake/SDT | PARTIAL: R5/A53, oba bitstreamy, PMU/FSBL PASS; runtime ARTIQ MISSING | `make test hdl`; logi w evidence |
+| PS | Własne TCL, eksport pinów/XCI | ZCU111 HAL i SLCR | AMD PS IP; LiteX ZynqMP | PARTIAL: zachowano TCL Piotra; wariant HPM0/125 MHz | Vivado 2025.2 blinker/local RTIO PASS; JTAG/PS/CSR hardware PASS |
+| AArch64 | main: biblioteka C ABI; startup delegowany BSP | Własny startup, wyjątki, multicore | AdaCore 0.2.0, aarch64-cpu | PARTIAL: fizyczny A53/EL1 OCM PASS; DDR startup/MMU diagnostyki PASS | JTAG + UART evidence; autonomiczny boot NOT_RUN |
 | R5/OpenAMP | wip: BSP C i przykład echo; Rust pusty loop | Brak równoważnej ścieżki | AMD/OpenAMP/libmetal | PARTIAL: oryginalna biblioteka kompiluje; brak wykonania kernelów | Cargo R5; OpenAMP hardware NOT_RUN |
-| DDR | Dynamiczne SPD/FSBL, lokalne xfsbl_ddr_init.c | Własny SPD/PHY dla ZCU111 | AMD FSBL + Digilent BSP | PARTIAL: zachowany FSBL; przygotowany test 128 KiB z clean/invalidate cache | A53 test do uruchomienia; brak stabilności pełnego DDR |
-| UART | MIO18–19 / 115200, BSP C | UART + generator baud | AdaCore UART/embedded-io | PARTIAL: TX oraz PING/PONG w ELF | `capture_a53_uart.py`; hardware NOT_RUN |
-| GIC | R5 helper używa XScuGic/IPI | Własny GIC400 | arm-gic 0.6.1 | PARTIAL: przygotowany test PPI30 przez utrzymywany GicV2 | A53 ELF; IRQ hardware NOT_RUN |
-| timer | PS TTC0 skonfigurowany; brak testu ARTIQ | Global timer/time/async delay | Generic A53 timer | PARTIAL: polling CNTPCT oraz jednorazowy timer IRQ | A53 ELF; niezmierzona częstotliwość fizyczna |
+| DDR | Dynamiczne SPD/FSBL, lokalne xfsbl_ddr_init.c | Własny SPD/PHY dla ZCU111 | AMD FSBL + Digilent BSP | PARTIAL: FSBL Piotra + AMD 2025.2 uruchomiony; DDR test 128 KiB PASS | evidence/a53-ddr-hardware-2026-10-07.json; pełny zakres/stress NOT_RUN |
+| UART | MIO18–19 / 115200, BSP C | UART + generator baud | AdaCore UART/embedded-io | DONE UART diagnostic: TX i PING/PONG fizycznie PASS | `evidence/a53-ocm-hardware-2026-10-07.json` |
+| GIC | R5 helper używa XScuGic/IPI | Własny GIC400 | arm-gic 0.6.1 | DONE diagnostic PPI30: fizycznie PASS, poprawiony widok EL1 NS | `evidence/a53-ocm-hardware-2026-10-07.json` |
+| timer | PS TTC0 skonfigurowany; brak testu ARTIQ | Global timer/time/async delay | Generic A53 timer | PARTIAL: polling i PPI30 fizycznie PASS | Częstotliwość fizyczna niezmierzona; evidence OCM |
 | clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic w teście sprzętowym; NOT_RUN |
-| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL konfiguracji; MISSING bare-metal runtime integration | Brak link/ping/RPC hardware |
-| AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny PS-PL NOT_RUN |
-| RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Symulacja counter i TTL PASS; hardware NOT_RUN |
+| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL konfiguracji; MISSING bare-metal runtime integration | MDIO PHY15 i link/autoneg PASS; pakiety/ping/RPC NOT_RUN |
+| AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 access NOT_RUN |
+| RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Counter i wewnętrzny scheduled TTL probe hardware PASS; fizyczny loopback NOT_RUN |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
 | TTL input | MISSING | MISSING | ttl_simple.Input | PARTIAL: JB2/AG14, synchronizacja i timestamp FIFO | Symulowany loopback PASS; fizyczny loopback NOT_RUN |
 | DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | MISSING: brak transportu DDR->CRI ZynqMP | NOT_RUN; suite nie zgłasza sukcesu DMA |
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
-| moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | CSR do fizycznego testu; pełny protocol NOT_RUN |
+| moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | MISSING: artiq_coremgmt nie obsłużony | Wymagany test prawdziwym artiq_coremgmt |
 | RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL prototypu ABI: rzeczywisty kernel NAC3 na emulowanym A53/AArch32; MISSING runtime/RPC produkcyjne; stub zwraca błędy | 6 testów framing/rejection; ABI QEMU PASS z aktualnym ARTIQ i negatywną kontrolą |
 | DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
@@ -167,3 +167,39 @@ i odróżniono je od PPI30. RX polling ma limit czasu, nie blokujące read(4).
 CNTFRQ 99999000 jest stałą startupu AdaCore, nie pomiarem fizycznej
 częstotliwości zegara — dokładność/częstotliwość pozostaje do walidacji.
 Autonomiczny boot SD/QSPI i inicjalizacja DDR przez FSBL nadal NOT_RUN.
+
+## PMU + FSBL + DDR + PS/PL + RTIO — 2026-10-07
+
+Odtworzono FSBL i PMU firmware AMD 2025.2 przez SDT/empyro/CMake,
+bez Vitis IDE i PetaLinux. Zachowano i skompilowano oryginalne
+`xfsbl_ddr_init.c` Piotra (dynamiczne SPD), zamiast zastępować DDR
+statycznymi parametrami. GNU Arm 13.2.Rel1 pobrany z oficjalnego repo Arm,
+SHA archiwum zapisany w evidence; PMU używa dostarczonego GCC MicroBlaze.
+
+Pierwsza próba FSBL bez PMU: DDR inicjalizował się, lecz handoff kończył
+się ERROR_PM_INIT 0x6050. Naprawa: PMU przed FSBL, zgodnie z
+[AMD UG1137](https://docs.amd.com/r/2021.2-English/ug1137-zynq-ultrascale-mpsoc-swdev/Loading-PMU-Firmware-in-JTAG-Boot-Mode).
+Pełna ścieżka PASS (Exit from FSBL), DDRC STAT=1. Powtórzony A53 DDR
+startup i test 128 KiB czterema wzorcami z cache maintenance PASS;
+UART PING/PONG i PPI30 nadal PASS. Autonomiczny boot oraz długi stress
+całej pamięci nadal NOT_RUN.
+
+Local-rtio bitstream zaprogramowany do PL, PL0 divisor ustawiony z jego
+TCL (125 MHz nominalnie), AFI i reset/isolation z wygenerowanego PS IP.
+PS DAP zapis/odczyt CSR 0xA0000000 PASS, RTIO counter monotonic PASS,
+zaplanowany impuls sprawdzony wewnętrzną sondą TTL PHY high/low PASS,
+async errors=0. To nie potwierdza fizycznego TTL ani deterministycznej
+latencji na pinie; użytkownik odłożył zworkę JB1→JB2.
+GEM0 MDIO: PHY15 ID 2000A231, BMSR796D: link=1, autoneg_done=1.
+Pakiety Ethernet i produkcyjny ARTIQ runtime nadal NOT_RUN/MISSING.
+Dowód: `evidence/genesys-fsbl-rtio-hardware-2026-10-07.json`.
+
+XSDB odrzucał PL CSR spoza swojej mapy: `force-mem-accesses 1`
+użyte tylko w runnerze wyraźnie przeznaczonym dla local-rtio. Stary cache
+`.Xil` powodował błąd XML open_hw_manager; izolowany katalog pracy pomógł.
+
+`make test-hw-jtag` dodane: host uruchamia UART capture, diagnostykę A53
+DDR/timer/IRQ, probe PS↔PL/RTIO oraz GEM0 MDIO. Seria powtórzona fizycznie:
+10 diagnostyk PASS, Ethernet packets / physical TTL / DMA NOT_RUN.
+Runner świadomie zwraca kod 2 (suite niekompletna), nigdy pełny PASS.
+Dowód: `evidence/jtag-hardware-suite-2026-10-07.json`.

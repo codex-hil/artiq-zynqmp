@@ -1,0 +1,54 @@
+{
+  "kind": "hardware",
+  "time": 1791387067.6620862,
+  "cable": "210383B7F02DA",
+  "prerequisites": "PMU/FSBL started; local-rtio configured; DDR initialized",
+  "tests": {
+    "uart": "PASS",
+    "uart_rx": "PASS",
+    "ddr": "PASS",
+    "timer": "PASS",
+    "interrupts": "PASS",
+    "ps_pl": "PASS",
+    "rtio_counter": "PASS",
+    "ttl_internal_probe": "PASS",
+    "rtio_async_errors": "PASS",
+    "ethernet_mdio": "PASS",
+    "ethernet_packets": "NOT_RUN",
+    "ttl_physical": "NOT_RUN",
+    "dma": "NOT_RUN"
+  },
+  "logs": {
+    "run_a53_ddr.tcl": "BOOT_MODE_BEFORE=FF5E0200:   00000100\n\nDDR_CONTROLLER_NORMAL\nA53_DDR_DIAGNOSTIC_STARTED\n",
+    "probe_rtio_jtag.tcl": "TEST ps_pl PASS target=258\nTEST rtio_counter PASS before=4531302 after=131842057 delta=127310755\nPL_CLOCK_CTRL=FF5E00C0:   01010C00\n\nTEST ttl_internal_probe PASS high=1 low=0\nTEST rtio_async_errors PASS value=0\nTEST ttl_physical NOT_RUN requires JB1-JB2 jumper or external instrument\n",
+    "probe_ethernet_jtag.tcl": "PHY addr=15 id=2000A231 BMSR=796D link=1 autoneg_done=1\nTEST ethernet_mdio PASS found=1; packet TX/RX NOT_RUN\n"
+  },
+  "diagnostics": "PASS",
+  "complete_hardware_suite": "NOT_RUN",
+  "scope": "Physical Genesys diagnostics, not ARTIQ runtime acceptance",
+  "uart_evidence": {
+    "kind": "hardware",
+    "port": "/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0",
+    "baud": 115200,
+    "time": 1791387071.6139026,
+    "tests": {
+      "uart": "PASS",
+      "uart_rx": "PASS",
+      "ddr": "PASS",
+      "timer": "PASS",
+      "interrupts": "PASS"
+    },
+    "uart_log": [
+      "GENESYS-ZU A53 bringup; diagnostic, not ARTIQ",
+      "TEST uart PASS (TX only; host must verify RX)",
+      "REG CurrentEL=0x4 CNTFRQ=99999000",
+      "TEST timer PASS delta=22664 (polling only)",
+      "TEST ddr PASS bytes=131072 patterns=4 cache-flushed",
+      "TEST interrupts PASS count=1 id=30 other=0",
+      "UART ECHO READY",
+      "PONG",
+      "TEST uart_rx PASS",
+      "BRINGUP COMPLETE: Ethernet/ARTIQ pending"
+    ]
+  }
+}

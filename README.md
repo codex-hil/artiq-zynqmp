@@ -269,3 +269,84 @@ przez `vivado-container shell -c 'exec /srv/codex-hil-data/toolchains/amd/Xilinx
 Adres hw_server to IP jego kontenera w osobnym Dockerze (docker inspect).
 Capture z `--ocm` wymaga PASS UART/RX/timer/IRQ oraz DDR NOT_RUN.
 Oryginalny test DDR uruchamia się bez `--ocm` po poprawnym FSBL.
+
+## Physical Genesys milestones (2026-10-07)
+
+JTAG configuration, A53 EL1 startup, bidirectional UART, timer PPI30,
+AMD PMU/FSBL with Piotr's dynamic DDR/SPD patch, and a cache-flushed 128 KiB
+DDR test passed on the physical ZU-5EV. Local RTIO CSR readback and counter,
+a scheduled output's internal PHY probe, and GEM0 PHY link passed too.
+This does not yet provide a working ARTIQ core device. Physical TTL loopback,
+full DDR stress, Ethernet packets, management/RPC and DMA remain pending.
+See `PORTING_STATUS.md` and `evidence/genesys-fsbl-rtio-hardware-2026-10-07.json`.
+
+### Reproduce PMU and FSBL without Vitis IDE
+
+Run in the shared Ubuntu container. Use a fresh output directory; the script
+copies Piotr's DDR patch into generated application sources, leaving vendor
+sources intact. SDT/empyro are supplied with this Vivado installation.
+GNU Arm 13.2.Rel1 AArch64 bare-metal archive SHA-256:
+`7fe7b8548258f079d6ce9be9144d2a10bd2bf93b551dafbf20fe7f2e44e014b8`.
+Obtain it from the official [Arm release](https://gitlab.arm.com/tooling/gnu-toolchains-for-arm/-/releases/13.2.Rel1).
+
+```sh
+vivado-container shell
+scripts/build_boot_firmware.sh \
+  /srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-blinker/platform.xsa \
+  /srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-new \
+  /srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf
+```
+
+Output: `app/build/zynqmp_fsbl.elf`, `pmu-app/build/zynqmp_pmufw.elf`,
+`artifacts.sha256`. Generated SDT and BSP/build logs remain in the output.
+The complete script was exercised in `build-vivado/fsbl-reproduced` and both
+resulting ELFs were booted through JTAG.
+
+### Guarded JTAG diagnostic runners
+
+Inside `vivado-container shell`, invoke the installed `Vivado/bin/xsdb`.
+Each runner requires an explicit cable serial and rejects ambiguous/missing
+targets; other connected boards are left alone. Resolve the running hw_server
+container's current IP rather than assuming it remains `172.17.0.3`.
+Arguments (also in each script's first line):
+
+- `scripts/run_boot_firmware.tcl SERVER_URL PMU_ELF FSBL_ELF CABLE_SERIAL`
+- `scripts/run_a53_ddr.tcl SERVER_URL ELF CABLE_SERIAL`
+- `scripts/probe_rtio_jtag.tcl SERVER_URL PSU_INIT_TCL CABLE_SERIAL`
+- `scripts/probe_ethernet_jtag.tcl SERVER_URL CABLE_SERIAL`
+
+Genesys cable: `210383B7F02DA`; URL used during validation:
+`tcp:172.17.0.3:3121`. UART:
+`/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0`,
+115200 8N1. Start `scripts/capture_a53_uart.py` on the host before the DDR
+runner; it sends PING and requires all five diagnostics to pass.
+
+Run PMU/FSBL before DDR. The boot runner selects alternate JTAG boot in
+volatile BOOT_MODE_USER; power cycling restores boot-switch behavior.
+Program the **local-rtio** bitstream before the RTIO probe and pass its
+`migen-build/ip/psu_init.tcl`. The probe changes only PL clock/AFI/reset,
+preserving trained DDR, and enables XSDB forced accesses to the known CSR
+aperture. It checks internal output high/low, not the external pin.
+The Ethernet probe uses AMD GEM register definitions for read-only PHY MDIO
+queries and restores GEM management settings; it does not test packets.
+Physical TTL input/output requires JB1→JB2 and the separate loopback test.
+
+### Host-side repeatable hardware suite
+
+After loading local-rtio and starting PMU/FSBL, run on the host:
+
+```sh
+make test-hw-jtag \
+  PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python \
+  O=/srv/codex-hil-data/artiq-zynqmp/build-vivado/hw-suite \
+  JTAG_SERVER=tcp:172.17.0.3:3121 JTAG_CABLE=210383B7F02DA \
+  SERIAL=/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0 \
+  A53_ELF=/srv/codex-hil-data/artiq-zynqmp/build/a53-ddr-updated/aarch64-unknown-none/release/genesys-a53-bringup \
+  PSU_INIT=/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/ip/psu_init.tcl
+```
+
+Logs and `results.json` are saved under `O/jtag-hardware`. The Python runner
+returns 1 on diagnostic failure, 2 when these diagnostics pass but physical
+TTL, Ethernet packets and DMA remain NOT_RUN. Make reports that incomplete
+suite as an error; do not interpret diagnostic PASS as the full project's DoD.
+This command temporarily halts A53 cores and runs the bare-metal diagnostic.
