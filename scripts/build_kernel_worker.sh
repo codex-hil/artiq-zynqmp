@@ -15,7 +15,7 @@ import json,sys
 from pathlib import Path
 m=json.loads(Path(sys.argv[1]).read_text())
 if m['csr_base']!=0xa0000000 or m['csr_data_width']!=32:raise ValueError('Unexpected CSR ABI')
-Path(sys.argv[2]).write_text(''.join(f"#define {k.upper()} 0x{v['address']:X}UL\n" for k,v in m['registers'].items()))
+Path(sys.argv[2]).write_text(''.join(f"#define {k.upper()} 0x{v['address']:X}UL\n" for k,v in m['registers'].items()) + ''.join(f"#define {k.upper()}_WORDS {v['words']}UL\n" for k,v in m['registers'].items()))
 PY
 cargo +1.87.0 build --locked --release --target armv7-unknown-linux-gnueabihf --manifest-path "$repo/boards/genesys_zu-5ev/3_kernel/Cargo.toml" --target-dir "$out/rust"
 source_dir="$repo/boards/genesys_zu-5ev/3_kernel/c"

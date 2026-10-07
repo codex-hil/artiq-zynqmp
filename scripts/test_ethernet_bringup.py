@@ -65,7 +65,7 @@ def main():
             result['scope'] = 'AMD Ethernet and integrated Rust management transport; kernel/RPC unavailable'
         if o.worker32:
             xsdb('run_kernel_worker.tcl', str(o.worker32.resolve()), str(o.worker64.resolve()))
-            result['scope'] = 'CPU0 AMD/lwIP networking with CPU1 ARM32 kernel loader/RPC; TTL exports disabled'
+            result['scope'] = 'CPU0 AMD/lwIP networking with CPU1 ARM32 kernel loader/RPC; worker RTIO requires separate validation'
         with (output / 'ethernet-uart.log').open('w') as log:
             capture = subprocess.Popen([sys.executable, str(scripts / 'capture_ethernet_uart.py'),
                        '--port', o.serial, '--output', str(output / 'uart.json')],

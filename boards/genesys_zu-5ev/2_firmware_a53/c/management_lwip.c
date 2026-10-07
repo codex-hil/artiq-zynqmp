@@ -142,6 +142,6 @@ int genesys_management_start(const uint8_t *ip, size_t ip_len) {
     pcb = tcp_listen(pcb);
     if (!pcb) return -1;
     tcp_accept(pcb, accepted);
-    xil_printf("GENESYS ARTIQ management transport ready @ port 1380; kernel/RPC pending\r\n");
+    xil_printf("GENESYS ARTIQ management transport ready @ port 1380\r\n");
     return 0;
 }

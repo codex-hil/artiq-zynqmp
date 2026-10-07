@@ -149,5 +149,5 @@ int genesys_kernel_start(void) {
  if(tcp_bind(p,IP_ANY_TYPE,1381)!=ERR_OK){tcp_close(p);return -1;}
  p=tcp_listen(p);if(!p)return -1;tcp_accept(p,accepted);
  artiq_runtime_kernel_ready();
- xil_printf("GENESYS kernel transport @ port 1381; CPU1 loader/RPC, TTL exports disabled\r\n");return 0;
+ xil_printf("GENESYS kernel transport @ port 1381; CPU1 loader/RPC; RTIO capabilities depend on worker\r\n");return 0;
 }

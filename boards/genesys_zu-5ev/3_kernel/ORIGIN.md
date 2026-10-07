@@ -7,3 +7,10 @@ LGPL-3.0-or-later; license preserved here. upstream-io Cargo template adapted
 only to pin crates and remove unused Cortex-A9 board-support dependency.
 ELF loader is the previously preserved upstream-dyld; no new ELF loader or
 RPC value serializer was written. Board/cache/channel/startup adapters are new.
+
+Local RTIO CSR sequencing follows src/libksupport/src/kernel/rtio_csr.rs
+at the same preserved artiq-zynq revision: target clears data, LSW triggers
+output; WAIT/underflow/destination and input status bits retain upstream
+meaning. Board support uses generated 32-bit MiSoC CSR addresses/word counts,
+not copied Cortex-A9 memory maps. Exception behavior is explicitly fail-stop
+until upstream exception/unwind integration; it is not equivalent yet.

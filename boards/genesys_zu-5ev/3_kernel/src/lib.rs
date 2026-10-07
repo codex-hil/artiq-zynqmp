@@ -66,11 +66,18 @@ unsafe extern "C" fn free(p: *mut u8) {
 static mut COMMAND_SEQ: u32 = 0;
 static mut EVENT_SEQ: u32 = 0;
 static mut RETURN_TAG: u8 = b'n';
-static mut NOW: i64 = 0;
+
 extern "C" {
     fn worker_uart(s: *const u8, n: usize);
     fn worker_counter() -> i64;
     fn worker_rtio_init();
+    fn worker_now() -> i64;
+    fn worker_at(t: i64);
+    fn worker_output(target: i32, data: i32) -> u32;
+    fn worker_input(timeout: i64, channel: i32) -> u32;
+    fn worker_input_timestamp() -> i64;
+    fn worker_input_data() -> i32;
+    fn worker_async_errors() -> u32;
 }
 unsafe fn rd(off: usize) -> u32 {
     ptr::read_volatile((MB + off) as *const u32)
@@ -204,7 +211,7 @@ pub extern "C" fn worker_main() -> ! {
         COMMAND_SEQ = rd(0);
         EVENT_SEQ = 0;
     }
-    publish(1, b"A53 AArch32 worker ready; no TTL exports yet");
+    publish(1, b"A53 AArch32 worker ready; local RTIO CSR exports");
     loop {
         match command() {
             1 => {
@@ -236,7 +243,7 @@ pub extern "C" fn worker_main() -> ! {
                     let entry = lib.lookup(b"__modinit__").unwrap();
                     let run: extern "C" fn() = unsafe { core::mem::transmute(entry as usize) };
                     run();
-                    publish(4, &[0]); // No RTIO outputs enabled, hence no async output errors.
+                    publish(4, &[unsafe { worker_async_errors() } as u8]);
                 } else {
                     publish(7, b"no loaded kernel");
                 }
@@ -339,6 +346,7 @@ extern "C" fn rpc_recv(slot: *mut ()) -> usize {
 extern "C" fn rtio_init() {
     unsafe {
         worker_rtio_init();
+        worker_async_errors();
     }
 }
 extern "C" fn rtio_get_counter() -> i64 {
@@ -346,16 +354,56 @@ extern "C" fn rtio_get_counter() -> i64 {
 }
 extern "C" fn at_mu(t: i64) {
     unsafe {
-        NOW = t;
+        worker_at(t);
     }
 }
 extern "C" fn now_mu() -> i64 {
-    unsafe { NOW }
+    unsafe { worker_now() }
 }
 extern "C" fn delay_mu(t: i64) {
     unsafe {
-        NOW = NOW.wrapping_add(t);
+        worker_at(worker_now().wrapping_add(t));
     }
+}
+// Initial fail-stop policy until real ARTIQ exception/unwind integration.
+// Never report Finished after a rejected output or input error.
+extern "C" fn rtio_output(target: i32, data: i32) {
+    if target != 0 && target != 0x102 && target != 0x103 {
+        fail(b"RTIO unsupported local TTL target");
+    }
+    match unsafe { worker_output(target, data) } {
+        0 => (),
+        2 => fail(b"RTIOUnderflow; restart CPU1 required"),
+        4 | 6 => fail(b"RTIODestinationUnreachable; restart CPU1 required"),
+        _ => fail(b"RTIO output WAIT timeout; restart CPU1 required"),
+    }
+}
+fn input_status(timeout: i64, channel: i32) -> u32 {
+    if channel != 1 {
+        fail(b"RTIO unsupported input channel");
+    }
+    let status = unsafe { worker_input(timeout, channel) };
+    if status & 2 != 0 {
+        fail(b"RTIOOverflow; restart CPU1 required");
+    }
+    if status & 8 != 0 {
+        fail(b"RTIODestinationUnreachable input; restart CPU1 required");
+    }
+    if status & 16 != 0 {
+        fail(b"RTIO input status timeout; restart CPU1 required");
+    }
+    status
+}
+extern "C" fn rtio_input_timestamp(timeout: i64, channel: i32) -> i64 {
+    if input_status(timeout, channel) & 1 != 0 {
+        -1
+    } else {
+        unsafe { worker_input_timestamp() }
+    }
+}
+extern "C" fn rtio_input_data(channel: i32) -> i32 {
+    input_status(-1, channel);
+    unsafe { worker_input_data() }
 }
 extern "C" fn unsupported() {
     fail(b"kernel exception/unwind unsupported; restart CPU1 required");
@@ -368,6 +416,9 @@ fn resolve(name: &[u8]) -> Option<u32> {
         rpc_recv,
         rtio_init,
         rtio_get_counter,
+        rtio_output,
+        rtio_input_timestamp,
+        rtio_input_data,
         at_mu,
         now_mu,
         delay_mu,
