@@ -32,9 +32,16 @@ fn panic(_: &core::panic::PanicInfo) -> ! {
     unsafe { probe_fail() }
 }
 
+// ELF headers are read as words by the upstream ARM loader. Real A53 with
+// MMU disabled rejects unaligned device-memory loads (QEMU allowed them).
+#[repr(align(4))]
+struct KernelBytes<const N: usize>([u8; N]);
+static KERNEL: KernelBytes<{ include_bytes!(env!("KERNEL_ELF")).len() }> =
+    KernelBytes(*include_bytes!(env!("KERNEL_ELF")));
+
 #[no_mangle]
 pub extern "C" fn execute_kernel() {
-    let bytes = include_bytes!(env!("KERNEL_ELF"));
+    let bytes = &KERNEL.0;
     let library = dyld::load(bytes, &|name| {
         let address = unsafe { resolve_name(name.as_ptr(), name.len()) };
         if address == 0 {
