@@ -2,9 +2,11 @@
 
 Rozwój kontynuuje `pjedyk/artiq-new`, na gałęzi `bringup/genesys` bazującej
 na `wip@b25e75b`. **To jeszcze nie działający ARTIQ core device.** Obecnie
-działają buildy firmware, generacja HDL i testy symulacyjne AXI/local RTIO.
-Nie wykonano syntezy w Vivado ani testów na Genesys. Runtime/kernel backend,
-management i Ethernet ARTIQ pozostają do integracji.
+działają buildy Vivado i fizyczne testy PS/DDR/UART/IRQ/Ethernet/local RTIO.
+Nowy Rust A53 management przez AMD/lwIP odpowiada aktualnemu
+`artiq_coremgmt`: log/config oraz odczyt rzeczywistego licznika RTIO PASS.
+Kernel loader, RPC i prosty eksperyment pozostają do wykonania.
+Instrukcja integracji: [diagnostics/services/README.md](diagnostics/services/README.md).
 
 Dokładny stan: [PORTING_STATUS.md](PORTING_STATUS.md). Architektura i decyzje:
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Źródła i revisions:

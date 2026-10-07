@@ -27,5 +27,11 @@ checks actual NAC3/ARTIQ kernel execution under A53 emulation, including a
 negative control. Instructions are in prototypes/kernel-abi/README.md.
 Original daemon still rejects kernel execution; the prototype is separate.
 Shared Vivado 2025.2 is installed and Piotr blinker bitstream built successfully.
-Read /home/codex-hil/docs/toolchains/vivado.md. Physical Genesys validation
-remains NOT_RUN: JTAG currently detects xc7a50t, not ZU-5EV.
+Read /home/codex-hil/docs/toolchains/vivado.md. Physical Genesys cable is
+210383B7F02DA, UART FTDI channel B (if01). Other FPGA boards are attached:
+select exclusively the identified cable. PS/DDR/UART/IRQ/GEM/local-RTIO
+and Rust management TCP1380 have physical PASS evidence in PORTING_STATUS.md.
+See diagnostics/services/README.md for the management-only integration.
+Kernel loader/RPC, physical TTL loopback, RTIO DMA, analyzer/moninj remain pending.
+Use PS system reset → PMU/FSBL → local-RTIO bitstream → PS/PL setup and
+CSR preflight → application. PL before PS reset led to AXI timeout/core hang.

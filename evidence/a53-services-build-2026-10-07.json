@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "scope": "management-only firmware build, not kernel execution",
+  "rust": "1.87.0",
+  "arm_gnu": "13.2.Rel1",
+  "amd": "2025.2",
+  "unit_tests": 6,
+  "fresh_reproducer": "scripts/build_a53_services.sh",
+  "artifacts": {
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-services-2025.2/app/build/lwip_echo_server.elf": "472278141fb8745cc697f3987315fd86933f706a31230593fac04b8785e4e40d",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/services-reproduced/amd/app/build/lwip_echo_server.elf": "d72c12f990615c78f6a32a3b88e3f4caa2ebed319292d336759cd77a05141d12",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-ps-2025.2/app/build/zynqmp_fsbl.elf": "33b14afe88e4bb47463fb1c0bbaf15d5e7741bea3f0a45d8ab8135cdb3fcec99",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf": "c790106f2f9f258416869bce102518581f8e1a96415c7f7c7fca898acf5e5ba4",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top.bit": "de421e03b788a487d8b2f05bffb1e9ae988a479f694b4bca35a93170e55f270f"
+  },
+  "logs": [
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/services-reproduced.log",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/runtime-integrated.log"
+  ]
+}

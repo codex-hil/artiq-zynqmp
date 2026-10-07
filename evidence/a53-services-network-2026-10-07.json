@@ -1,0 +1,53 @@
+{
+  "kind": "hardware",
+  "time": 1791391849.4864893,
+  "cable": "210383B7F02DA",
+  "scope": "AMD Ethernet and integrated Rust management transport; kernel/RPC unavailable",
+  "status": "PASS",
+  "startup": {
+    "kind": "hardware",
+    "time": 1791391882.417469,
+    "port": "/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0",
+    "baud": 115200,
+    "uart_log": [
+      "GENESYS-ZU GEM0 DIAGNOSTIC AMD 2025.2, not ARTIQ",
+      "-----lwIP TCP echo server ------",
+      "TCP packets sent to port 7 will be echoed back",
+      "Start PHY autonegotiation addr=15",
+      "Waiting for PHY to complete autonegotiation.",
+      "autonegotiation complete",
+      "Using default Speed from design",
+      "link speed for phy address 15: 1000",
+      "TEST ethernet_dhcp PASS",
+      "Board IP: 192.168.2.16",
+      "Netmask : 255.255.255.0",
+      "Gateway : 192.168.2.1",
+      "GENESYS ARTIQ management transport ready @ port 1380; kernel/RPC pending",
+      "TCP echo server started @ port 7"
+    ],
+    "status": "PASS",
+    "ip": "192.168.2.16"
+  },
+  "packets": {
+    "kind": "hardware",
+    "time": 1791391902.8256474,
+    "ip": "192.168.2.16",
+    "mac": "02:38:3b:7f:02:0d",
+    "scope": "AMD lwIP/GEM diagnostic, not ARTIQ management/RPC",
+    "tests": {
+      "icmp": "PASS",
+      "identity": "PASS",
+      "tcp_echo": "PASS"
+    },
+    "ping_log": "PING 192.168.2.16 (192.168.2.16) from 192.168.2.107 enp1s0: 56(84) bytes of data.\n64 bytes from 192.168.2.16: icmp_seq=1 ttl=255 time=0.205 ms\n64 bytes from 192.168.2.16: icmp_seq=2 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.16: icmp_seq=3 ttl=255 time=0.082 ms\n64 bytes from 192.168.2.16: icmp_seq=4 ttl=255 time=0.114 ms\n64 bytes from 192.168.2.16: icmp_seq=5 ttl=255 time=0.073 ms\n64 bytes from 192.168.2.16: icmp_seq=6 ttl=255 time=0.079 ms\n64 bytes from 192.168.2.16: icmp_seq=7 ttl=255 time=0.080 ms\n64 bytes from 192.168.2.16: icmp_seq=8 ttl=255 time=0.077 ms\n64 bytes from 192.168.2.16: icmp_seq=9 ttl=255 time=0.130 ms\n64 bytes from 192.168.2.16: icmp_seq=10 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.16: icmp_seq=11 ttl=255 time=0.107 ms\n64 bytes from 192.168.2.16: icmp_seq=12 ttl=255 time=0.084 ms\n64 bytes from 192.168.2.16: icmp_seq=13 ttl=255 time=0.112 ms\n64 bytes from 192.168.2.16: icmp_seq=14 ttl=255 time=0.108 ms\n64 bytes from 192.168.2.16: icmp_seq=15 ttl=255 time=0.121 ms\n64 bytes from 192.168.2.16: icmp_seq=16 ttl=255 time=0.122 ms\n64 bytes from 192.168.2.16: icmp_seq=17 ttl=255 time=0.116 ms\n64 bytes from 192.168.2.16: icmp_seq=18 ttl=255 time=0.117 ms\n64 bytes from 192.168.2.16: icmp_seq=19 ttl=255 time=0.120 ms\n64 bytes from 192.168.2.16: icmp_seq=20 ttl=255 time=0.124 ms\n\n--- 192.168.2.16 ping statistics ---\n20 packets transmitted, 20 received, 0% packet loss, time 1980ms\nrtt min/avg/max/mdev = 0.073/0.107/0.205/0.029 ms\n",
+    "neighbor": "192.168.2.16 lladdr 02:38:3b:7f:02:0d DELAY \n",
+    "tcp": {
+      "connections": 5,
+      "exchanges": 1080,
+      "verified_bytes": 1129210,
+      "sha256": "d293a3986b7dad43c213d6e7377c612244986600e9084b393dc32fa0c67ee401",
+      "elapsed_s": 1.0583077820483595
+    }
+  },
+  "mac_counters": "GEM_FRAMES tx=1174 rx=1239\nGEM_ERROR tx_underrun=0\nGEM_ERROR rx_fcs=0\nGEM_ERROR rx_alignment=0\nGEM_ERROR rx_resource=0\nTEST ethernet_mac_counters PASS\n"
+}

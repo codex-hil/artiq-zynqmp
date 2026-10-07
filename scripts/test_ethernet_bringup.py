@@ -13,6 +13,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     for name in ['server', 'cable', 'serial', 'pmu', 'fsbl', 'elf', 'output']:
         p.add_argument('--' + name, required=True)
+    p.add_argument('--bitstream', type=Path, help='For integrated RTIO firmware: configure PL after PS reset/FSBL')
+    p.add_argument('--psu-init', type=Path)
     p.add_argument('--interface', default='enp1s0')
     o = p.parse_args()
     scripts = Path(__file__).resolve().parent
@@ -46,6 +48,17 @@ def main():
             (output / 'boot-uart.log').write_text('\n'.join(lines) + '\n')
             if not any('Exit from FSBL' in line for line in lines):
                 raise RuntimeError('No completed FSBL startup on identified UART')
+        if bool(o.bitstream) != bool(o.psu_init):
+            raise ValueError('--bitstream and --psu-init must be supplied together')
+        if o.bitstream:
+            proc = subprocess.run(['vivado', '-mode', 'batch', '-source', str(scripts / 'program_genesys_pl.tcl'),
+                '-log', str(output / 'program-pl.log'), '-journal', str(output / 'program-pl.jou'),
+                '-tclargs', o.server.removeprefix('tcp:'), o.cable, str(o.bitstream.resolve())],
+                text=True, capture_output=True, timeout=120, cwd=output)
+            (output / 'program-pl.stdout').write_text(proc.stdout + proc.stderr)
+            if proc.returncode: raise RuntimeError('Local RTIO bitstream configuration failed')
+            xsdb('prepare_local_rtio.tcl', str(o.psu_init.resolve()))
+            result['scope'] = 'AMD Ethernet and integrated Rust management transport; kernel/RPC unavailable'
         with (output / 'ethernet-uart.log').open('w') as log:
             capture = subprocess.Popen([sys.executable, str(scripts / 'capture_ethernet_uart.py'),
                        '--port', o.serial, '--output', str(output / 'uart.json')],

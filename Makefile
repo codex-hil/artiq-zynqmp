@@ -54,3 +54,13 @@ test-hw-ethernet-bringup:
 	$(if $(FSBL_ELF),,$(error Specify FSBL_ELF= Piotr-patched FSBL firmware))
 	$(if $(ETHERNET_ELF),,$(error Specify ETHERNET_ELF= AMD lwIP diagnostic))
 	$(PYTHON) scripts/test_ethernet_bringup.py --server="$(JTAG_SERVER)" --cable="$(JTAG_CABLE)" --serial="$(SERIAL)" --pmu="$(PMU_ELF)" --fsbl="$(FSBL_ELF)" --elf="$(ETHERNET_ELF)" --output="$(abspath $(O))/ethernet-hardware"
+
+.PHONY: test-services test-hw-services
+test-services:
+	cargo test --locked --lib --manifest-path boards/genesys_zu-5ev/2_firmware_a53/Cargo.toml --target-dir=$(abspath $(O))/services
+
+test-hw-services:
+	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
+	$(if $(ABI_ARTIQ_SOURCE),,$(error Specify ABI_ARTIQ_SOURCE= current upstream ARTIQ checkout))
+	$(if $(ABI_SIPYCO_SOURCE),,$(error Specify ABI_SIPYCO_SOURCE= compatible sipyco checkout))
+	$(PYTHON) scripts/test_a53_services_hw.py --ip="$(BOARD_IP)" --artiq-source="$(ABI_ARTIQ_SOURCE)" --sipyco-source="$(ABI_SIPYCO_SOURCE)" --output="$(abspath $(O))/services-hardware.json"

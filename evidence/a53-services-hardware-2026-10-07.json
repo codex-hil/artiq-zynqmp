@@ -1,0 +1,38 @@
+{
+  "kind": "hardware",
+  "time": 1791391920.9723768,
+  "ip": "192.168.2.16",
+  "scope": "management-only Rust firmware over maintained AMD Ethernet, not full ARTIQ runtime",
+  "tests": {
+    "upstream_commmgmt": "PASS",
+    "a53_ps_pl_rtio_counter": "PASS",
+    "clear_log": "PASS",
+    "fragmented_and_concurrent": "PASS",
+    "oversized_key_rejected": "PASS",
+    "unsupported_write_rejected": "PASS",
+    "real_artiq_coremgmt_cli": "PASS",
+    "real_cli_config_read": "PASS",
+    "no_fake_kernel_service": "PASS"
+  },
+  "client_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "runtime_log": "Genesys ZU-5EV: Rust management service started over AMD GEM/lwIP.\nRuntime mode: management-only; kernel execution/RPC unavailable.\nDHCP: 192.168.2.16\nLocal RTIO: A53 CSR counter access enabled.\nManagement TCP connection accepted.\n",
+  "metadata": {
+    "ip": "192.168.2.16",
+    "mac": "02:38:3b:7f:02:0d",
+    "board": "genesys_zu-5ev",
+    "runtime_mode": "management-only"
+  },
+  "rtio": {
+    "before": 5105617224,
+    "after": 5172608385,
+    "estimated_hz": 125014659.8710499,
+    "method": "physical A53 MMIO -> Rust -> management TCP vs host monotonic, tolerance5%; not precision clock calibration"
+  },
+  "cli_log": "Management TCP connection accepted.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement TCP connection accepted.\nManagement TCP connection accepted.\n",
+  "cli_config": [
+    "genesys_zu-5ev",
+    "management-only",
+    "5355609722"
+  ],
+  "status": "PASS"
+}

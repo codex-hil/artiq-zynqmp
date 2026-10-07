@@ -27,15 +27,15 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | GIC | R5 helper używa XScuGic/IPI | Własny GIC400 | arm-gic 0.6.1 | DONE diagnostic PPI30: fizycznie PASS, poprawiony widok EL1 NS | `evidence/a53-ocm-hardware-2026-10-07.json` |
 | timer | PS TTC0 skonfigurowany; brak testu ARTIQ | Global timer/time/async delay | Generic A53 timer | PARTIAL: polling i PPI30 fizycznie PASS | Częstotliwość fizyczna niezmierzona; evidence OCM |
 | clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic w teście sprzętowym; NOT_RUN |
-| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; MISSING ARTIQ runtime integration | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; RPC NOT_RUN |
-| AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 access NOT_RUN |
+| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; Rust management transport PASS; kernel/RPC MISSING | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; RPC NOT_RUN |
+| AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 MMIO counter via TCP PASS |
 | RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Counter i wewnętrzny scheduled TTL probe hardware PASS; fizyczny loopback NOT_RUN |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
 | TTL input | MISSING | MISSING | ttl_simple.Input | PARTIAL: JB2/AG14, synchronizacja i timestamp FIFO | Symulowany loopback PASS; fizyczny loopback NOT_RUN |
 | DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | MISSING: brak transportu DDR->CRI ZynqMP | NOT_RUN; suite nie zgłasza sukcesu DMA |
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
-| management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | MISSING: artiq_coremgmt nie obsłużony | Wymagany test prawdziwym artiq_coremgmt |
+| management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
 | RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL prototypu ABI: rzeczywisty kernel NAC3 na emulowanym A53/AArch32; MISSING runtime/RPC produkcyjne; stub zwraca błędy | 6 testów framing/rejection; ABI QEMU PASS z aktualnym ARTIQ i negatywną kontrolą |
 | DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: kod/konfiguracja bez odtworzonego boot.bin | NOT_RUN |
@@ -239,3 +239,37 @@ PASS dotyczy początkowego ruchu pakietowego, nie długiego stressu, link flap
 lub prędkości 10/100 Mb/s. GEM DMA działa w tym teście; RTIO DMA to osobny
 subsystem nadal MISSING. Networking/RPC/management produkcyjnego ARTIQ
 nadal MISSING; ten ELF uruchamia diagnostykę echo, nie ARTIQ core device.
+
+## Rust A53 + Ethernet + management — integracja fizyczna 2026-10-07
+
+Zachowano architekturę Piotra C BSP → Rust staticlib. Nowy mały no_std
+`boards/genesys_zu-5ev/2_firmware_a53` obsługuje aktualny protokół management
+ARTIQ; AMD GEM/lwIP pozostaje sterownikiem i transportem. Nie przepisano
+GEM do Rust ani nie przenoszono projektu do LiteX. Sześć testów protokołu
+host PASS; świeży build host Rust + kontener AMD SDT/CMake PASS.
+Reproducer: `scripts/build_a53_services.sh`; instrukcje i ograniczenia:
+`diagnostics/services/README.md`.
+
+Fizycznie PASS: aktualny CommMgmt, prawdziwy CLI artiq_coremgmt log i config,
+ClearLog, fragmentacja/coalescing, równoległe sesje, odrzucenie zbyt długiego
+klucza i nieobsługiwanego zapisu. Licznik local RTIO odczytany przez A53 MMIO
+→ Rust → management TCP; zmierzona nominalna częstotliwość około 125 MHz
+(tolerancja testu 5%, nie precyzyjna kalibracja). Ethernet po integracji nadal
+20/20 ICMP, 1080 TCP echo / 1,129,210 bajtów, GEM błędy=0.
+Dowody: `evidence/a53-services-hardware-2026-10-07.json`,
+`evidence/a53-services-network-2026-10-07.json`,
+`evidence/a53-services-build-2026-10-07.json`.
+
+Naprawiona sekwencja startu debug: PS system reset → PMU/FSBL → programowanie
+PL local-rtio → wygenerowany PS/PL setup i DAP CSR preflight → aplikacja A53.
+Programowanie PL przed resetem PS nie zapewniało działającej konfiguracji:
+A53 i DAP blokowały się na AXI. Zachowano nieudany test jako
+`evidence/a53-services-missing-pl-2026-10-07.json`. Runner teraz sprawdza
+rzeczywisty dostęp do CSR przed uruchomieniem CPU. To JTAG debug boot,
+nie jeszcze samodzielny SD/QSPI BOOT.BIN.
+
+Status runtime nadal **management-only**, nie pełny ARTIQ core device.
+Port kernel1381 nie działa; loader/wykonanie kerneli, RPC, analyzer, moninj,
+RTIO DMA i eksperyment fizyczny pozostają MISSING/NOT_RUN. Unsupported write,
+flash, reboot i streaming PullLog zwracają błąd; brak fikcyjnego sukcesu.
+Physical TTL input/output wymaga osobnego testu; zworka JB1-JB2 odłożona.

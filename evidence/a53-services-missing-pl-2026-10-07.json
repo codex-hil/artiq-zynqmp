@@ -1,0 +1,19 @@
+{
+  "kind": "hardware",
+  "time": 1791391364.4809911,
+  "ip": "192.168.2.16",
+  "scope": "management-only Rust firmware over maintained AMD Ethernet, not full ARTIQ runtime",
+  "tests": {
+    "upstream_commmgmt": "PASS"
+  },
+  "client_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "runtime_log": "Genesys ZU-5EV: Rust management service started over AMD GEM/lwIP.\nRuntime mode: management-only; kernel execution/RPC unavailable.\nDHCP: 192.168.2.16\nLocal RTIO: A53 CSR counter access enabled.\nManagement TCP connection accepted.\n",
+  "metadata": {
+    "ip": "192.168.2.16",
+    "mac": "02:38:3b:7f:02:0d",
+    "board": "genesys_zu-5ev",
+    "runtime_mode": "management-only"
+  },
+  "failure": "timed out",
+  "status": "FAIL"
+}
