@@ -1,0 +1,17 @@
+[package]
+name = "genesys-kernel-worker"
+version = "0.1.0"
+edition = "2021"
+[lib]
+crate-type = ["staticlib"]
+[dependencies]
+dyld = { path = "../../../prototypes/kernel-abi/upstream-dyld", default-features = false }
+io = { path = "upstream-io", features = ["alloc", "byteorder"] }
+cslice = "=0.3.0"
+byteorder = { version = "=1.5.0", default-features = false }
+embedded-io = { version = "=0.7.1", features = ["alloc"] }
+log = "=0.4.27"
+linked_list_allocator = { version = "=0.10.5", default-features = false }
+[profile.release]
+panic = "abort"
+debug = true
