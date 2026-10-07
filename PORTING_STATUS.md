@@ -27,7 +27,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | GIC | R5 helper używa XScuGic/IPI | Własny GIC400 | arm-gic 0.6.1 | DONE diagnostic PPI30: fizycznie PASS, poprawiony widok EL1 NS | `evidence/a53-ocm-hardware-2026-10-07.json` |
 | timer | PS TTC0 skonfigurowany; brak testu ARTIQ | Global timer/time/async delay | Generic A53 timer | PARTIAL: polling i PPI30 fizycznie PASS | Częstotliwość fizyczna niezmierzona; evidence OCM |
 | clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic w teście sprzętowym; NOT_RUN |
-| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL konfiguracji; MISSING bare-metal runtime integration | MDIO PHY15 i link/autoneg PASS; pakiety/ping/RPC NOT_RUN |
+| Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; MISSING ARTIQ runtime integration | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; RPC NOT_RUN |
 | AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 access NOT_RUN |
 | RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Counter i wewnętrzny scheduled TTL probe hardware PASS; fizyczny loopback NOT_RUN |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
@@ -203,3 +203,39 @@ DDR/timer/IRQ, probe PS↔PL/RTIO oraz GEM0 MDIO. Seria powtórzona fizycznie:
 10 diagnostyk PASS, Ethernet packets / physical TTL / DMA NOT_RUN.
 Runner świadomie zwraca kod 2 (suite niekompletna), nigdy pełny PASS.
 Dowód: `evidence/jtag-hardware-suite-2026-10-07.json`.
+
+## Ethernet GEM0 — fizyczne pakiety PASS 2026-10-07
+
+Odzyskany PS/FSBL Piotra wykorzystano do startu gotowego przykładu AMD
+`lwip_echo_server` (2025.2, emacps 3.23, lwIP 2.2.0, xiltimer 2.3),
+zbudowanego przez SDT/empyro/CMake i GNU Arm 13.2.Rel1. Nie przepisano
+sterownika GEM ani obsługi jego DMA do Rusta. Vendor checkout/instalacja
+pozostały bez zmian; patche dotyczą wygenerowanych kopii.
+
+Poprawki: własny lokalnie administrowany MAC dla tej płyty, poprawna informacja
+o porcie 7, jawne błędy DHCP bez niezweryfikowanego statycznego fallbacku,
+20 s zamiast 5 s timeoutu TI RGMII autonegotiation. Adres PHY15 był
+poprawnie wykrywany; timeout upływał przed odczytem kończącym piątą iterację.
+
+Warm JTAG/processor-only reset zachowywał stan GIC z poprzedniego EL1 NS
+programu. Zarejestrowano TTC0 pending/active, RPR=0xA0, brak tyknięć DHCP;
+zakończenie znanego outstanding IRQ wznowiło licznik. Docelowy runner
+wykonuje PS system reset, następnie PMU/FSBL i dopiero AMD EL3 aplikację.
+Końcowy firmware nie zawiera ręcznej poprawki GIC. Przejście z diagnostyki
+Rust EL1 do C EL3 wymaga tej ścieżki; reset procesora nie jest cold resetem PS.
+
+Końcowy firmware odtworzony od zera, następnie pełny automatyczny runner
+uruchomiony fizycznie: PHY15 1 Gb/s, DHCP 192.168.2.16, MAC
+02:38:3b:7f:02:0d, 20/20 ICMP (0% loss), 1080 byte-exact TCP echo
+przez 5 połączeń, 1,129,210 bajtów. GEM liczniki: TX1174, RX1238,
+TX underrun/RX FCS/alignment/resource=0. Hashe ELF i użytych źródeł oraz
+logi są w `evidence/ethernet-build-2026-10-07.json` i
+`evidence/ethernet-hardware-2026-10-07.json`. DHCP adres może się zmienić.
+
+Polecenia `make test-hw-ethernet` i `make test-hw-ethernet-bringup` dodane;
+drugie obejmuje identyfikację JTAG, reset/start, UART/DHCP, MAC, ICMP, TCP
+i MAC counters. Instrukcja: `diagnostics/ethernet/README.md`.
+PASS dotyczy początkowego ruchu pakietowego, nie długiego stressu, link flap
+lub prędkości 10/100 Mb/s. GEM DMA działa w tym teście; RTIO DMA to osobny
+subsystem nadal MISSING. Networking/RPC/management produkcyjnego ARTIQ
+nadal MISSING; ten ELF uruchamia diagnostykę echo, nie ARTIQ core device.

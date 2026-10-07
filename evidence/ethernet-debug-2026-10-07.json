@@ -1,0 +1,14 @@
+{
+  "kind": "hardware-debug",
+  "date": "2026-10-07",
+  "scope": "failed/intermediate diagnostic attempts; not success evidence",
+  "logs": {
+    "uart-first.log": "GENESYS-ZU GEM0 DIAGNOSTIC AMD 2025.2, not ARTIQ\n\n\n\n-----lwIP TCP echo server ------\n\nTCP packets sent to port 6001 will be echoed back\n\nStart PHY autonegotiation \nWaiting for PHY to complete autonegotiation.\nAuto negotiation error \nPhy setup error : link_speed invalid\nPhy setup failure init_emacps \n\nEthernet Link down\nStart PHY autonegotiation \nWaiting for PHY to complete autonegotiation.\nAuto negotiation error \nPhy setup error : link_speed invalid\n",
+    "uart-debug.log": "GENESYS-ZU GEM0 DIAGNOSTIC AMD 2025.2, not ARTIQ\n\n\n\n-----lwIP TCP echo server ------\n\nTCP packets sent to port 6001 will be echoed back\n\nStart PHY autonegotiation addr=15 \nWaiting for PHY to complete autonegotiation.\nAUTONEG sec=1 BMSR=7949\nAUTONEG sec=2 BMSR=7949\nAUTONEG sec=3 BMSR=7949\nAUTONEG sec=4 BMSR=7949\nAUTONEG sec=5 BMSR=7949\nautonegotiation complete \nUsing default Speed from design\nlink speed for phy address 15: 1000\n",
+    "debug-gic.log": "F9010000:   00000003\n\nF9010080:   FE00FFFF\n\nF9010088:   FFFFFFFF\n\nF9010108:   02000010\n\nF9010208:   00000010\n\nF9020000:   00000007\n\nF9020004:   000000F0\n\nF9020018:   000003FF\n\nDHCP_AFTER_GROUP_FIX=   21244:   000000F0\n\n",
+    "debug-active.log": "F9010000:   00000003\n\nF9010088:   FDFFFFEF\n\nF9010108:   02000010\n\nF9010208:   00000010\n\nF9010300:   00000000\n\nF9010308:   00000010\n\nF9010844:   00000001\n\nF9020000:   00000007\n\nF9020014:   000000A0\n\nF9020018:   000003FF\n\nDHCP_AFTER_ACTIVE_CLEAR=   21244:   00000000\n\n",
+    "debug-eoi.log": "RPR_BEFORE=F9020014:   000000A0\n\nRPR_AFTER=F9020014:   000000FF\n\nDHCP_BEFORE=   213C4:   000000F0\n\nDHCP_AFTER=   213C4:   000000C7\n\npc: 00000000000104fc\n\nF9020014:   000000FF\n\n",
+    "uart-eoi.log": "DHCP Timeout\nTEST ethernet_dhcp FAIL; no static fallback\n"
+  },
+  "resolution": "20-second TI autonegotiation timeout and clean PS reset before AMD EL3 firmware; final code has no manual GIC patch"
+}

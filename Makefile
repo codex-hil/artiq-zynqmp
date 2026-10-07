@@ -40,3 +40,17 @@ test-hw-jtag:
 	$(if $(A53_ELF),,$(error Specify A53_ELF= DDR diagnostic ELF))
 	$(if $(PSU_INIT),,$(error Specify PSU_INIT= local-rtio generated psu_init.tcl))
 	$(PYTHON) scripts/test_jtag_hw.py --server="$(JTAG_SERVER)" --cable="$(JTAG_CABLE)" --serial="$(SERIAL)" --elf="$(A53_ELF)" --psu-init="$(PSU_INIT)" --output="$(abspath $(O))/jtag-hardware"
+
+.PHONY: test-hw-ethernet test-hw-ethernet-bringup
+test-hw-ethernet:
+	$(if $(BOARD_IP),,$(error Specify BOARD_IP= DHCP address reported by diagnostic UART))
+	$(PYTHON) scripts/test_ethernet_hw.py --ip="$(BOARD_IP)" --output="$(abspath $(O))/ethernet-packets.json"
+
+test-hw-ethernet-bringup:
+	$(if $(JTAG_SERVER),,$(error Specify JTAG_SERVER= current hw_server URL))
+	$(if $(JTAG_CABLE),,$(error Specify JTAG_CABLE= identified Genesys cable serial))
+	$(if $(SERIAL),,$(error Specify SERIAL= identified Genesys UART))
+	$(if $(PMU_ELF),,$(error Specify PMU_ELF= built PMU firmware))
+	$(if $(FSBL_ELF),,$(error Specify FSBL_ELF= Piotr-patched FSBL firmware))
+	$(if $(ETHERNET_ELF),,$(error Specify ETHERNET_ELF= AMD lwIP diagnostic))
+	$(PYTHON) scripts/test_ethernet_bringup.py --server="$(JTAG_SERVER)" --cable="$(JTAG_CABLE)" --serial="$(SERIAL)" --pmu="$(PMU_ELF)" --fsbl="$(FSBL_ELF)" --elf="$(ETHERNET_ELF)" --output="$(abspath $(O))/ethernet-hardware"

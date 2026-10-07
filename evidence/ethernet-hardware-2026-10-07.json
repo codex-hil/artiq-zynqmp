@@ -1,0 +1,64 @@
+{
+  "kind": "hardware",
+  "time": 1791389664.4643722,
+  "cable": "210383B7F02DA",
+  "scope": "AMD bare-metal Ethernet diagnostic, not ARTIQ",
+  "status": "PASS",
+  "startup": {
+    "kind": "hardware",
+    "time": 1791389677.4598498,
+    "port": "/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0",
+    "baud": 115200,
+    "uart_log": [
+      "GENESYS-ZU GEM0 DIAGNOSTIC AMD 2025.2, not ARTIQ",
+      "-----lwIP TCP echo server ------",
+      "TCP packets sent to port 7 will be echoed back",
+      "Start PHY autonegotiation addr=15",
+      "Waiting for PHY to complete autonegotiation.",
+      "autonegotiation complete",
+      "Using default Speed from design",
+      "link speed for phy address 15: 1000",
+      "TEST ethernet_dhcp PASS",
+      "Board IP: 192.168.2.16",
+      "Netmask : 255.255.255.0",
+      "Gateway : 192.168.2.1",
+      "TCP echo server started @ port 7"
+    ],
+    "status": "PASS",
+    "ip": "192.168.2.16"
+  },
+  "packets": {
+    "kind": "hardware",
+    "time": 1791389697.0897722,
+    "ip": "192.168.2.16",
+    "mac": "02:38:3b:7f:02:0d",
+    "scope": "AMD lwIP/GEM diagnostic, not ARTIQ management/RPC",
+    "tests": {
+      "icmp": "PASS",
+      "identity": "PASS",
+      "tcp_echo": "PASS"
+    },
+    "ping_log": "PING 192.168.2.16 (192.168.2.16) from 192.168.2.107 enp1s0: 56(84) bytes of data.\n64 bytes from 192.168.2.16: icmp_seq=1 ttl=255 time=0.190 ms\n64 bytes from 192.168.2.16: icmp_seq=2 ttl=255 time=0.081 ms\n64 bytes from 192.168.2.16: icmp_seq=3 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.16: icmp_seq=4 ttl=255 time=0.150 ms\n64 bytes from 192.168.2.16: icmp_seq=5 ttl=255 time=0.074 ms\n64 bytes from 192.168.2.16: icmp_seq=6 ttl=255 time=0.080 ms\n64 bytes from 192.168.2.16: icmp_seq=7 ttl=255 time=0.083 ms\n64 bytes from 192.168.2.16: icmp_seq=8 ttl=255 time=0.079 ms\n64 bytes from 192.168.2.16: icmp_seq=9 ttl=255 time=0.084 ms\n64 bytes from 192.168.2.16: icmp_seq=10 ttl=255 time=0.079 ms\n64 bytes from 192.168.2.16: icmp_seq=11 ttl=255 time=0.076 ms\n64 bytes from 192.168.2.16: icmp_seq=12 ttl=255 time=0.076 ms\n64 bytes from 192.168.2.16: icmp_seq=13 ttl=255 time=0.076 ms\n64 bytes from 192.168.2.16: icmp_seq=14 ttl=255 time=0.148 ms\n64 bytes from 192.168.2.16: icmp_seq=15 ttl=255 time=0.075 ms\n64 bytes from 192.168.2.16: icmp_seq=16 ttl=255 time=0.093 ms\n64 bytes from 192.168.2.16: icmp_seq=17 ttl=255 time=0.080 ms\n64 bytes from 192.168.2.16: icmp_seq=18 ttl=255 time=0.085 ms\n64 bytes from 192.168.2.16: icmp_seq=19 ttl=255 time=0.087 ms\n64 bytes from 192.168.2.16: icmp_seq=20 ttl=255 time=0.084 ms\n\n--- 192.168.2.16 ping statistics ---\n20 packets transmitted, 20 received, 0% packet loss, time 1979ms\nrtt min/avg/max/mdev = 0.074/0.093/0.190/0.030 ms\n",
+    "neighbor": "192.168.2.16 lladdr 02:38:3b:7f:02:0d DELAY \n",
+    "tcp": {
+      "connections": 5,
+      "exchanges": 1080,
+      "verified_bytes": 1129210,
+      "sha256": "356a58e3a9a984d7c60d319eb3fe057e1974194655f76117bee20708c0daac7f",
+      "elapsed_s": 0.9635171741247177
+    }
+  },
+  "mac_counters": "GEM_FRAMES tx=1174 rx=1238\nGEM_ERROR tx_underrun=0\nGEM_ERROR rx_fcs=0\nGEM_ERROR rx_alignment=0\nGEM_ERROR rx_resource=0\nTEST ethernet_mac_counters PASS\n",
+  "firmware": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced/app/build/lwip_echo_server.elf",
+    "sha256": "d04a320ee82740ecb97c5fd0aad346d4aceceb188990c461e625b361306c8132",
+    "build_evidence": "ethernet-build-2026-10-07.json"
+  },
+  "boot_uart": "Zynq MP First Stage Boot Loader\nRelease 2025.2   Oct  7 2026  -  15:27:15\nMultiBootOffset: 0x0\nReset Mode\t:\tSystem Reset\nPlatform: Silicon (4.0), Cluster ID 0x80000000\nRunning on A53-0 (64-bit) Processor, Device Name: XCZU5EV\nProcessor Initialization Done\n================= In Stage 2 ============\nIn JTAG Boot Mode\n================= In Stage 4 ============\nProtection configuration applied\nExit from FSBL\n",
+  "limitations": [
+    "GEM DMA is exercised; RTIO DMA remains NOT_RUN",
+    "No ARTIQ management or RPC server in this diagnostic",
+    "Only negotiated 1000Mbps mode tested",
+    "Initial packet exercise, not long-term saturation/link-flap test"
+  ]
+}

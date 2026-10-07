@@ -350,3 +350,16 @@ returns 1 on diagnostic failure, 2 when these diagnostics pass but physical
 TTL, Ethernet packets and DMA remain NOT_RUN. Make reports that incomplete
 suite as an error; do not interpret diagnostic PASS as the full project's DoD.
 This command temporarily halts A53 cores and runs the bare-metal diagnostic.
+
+## Ethernet packet milestone — physical PASS
+
+The Genesys now obtains a DHCP lease and passes ICMP/TCP echo through GEM0
+using AMD's maintained bare-metal driver and lwIP. The complete reset/PMU/FSBL/
+UART/DHCP/MAC/packet/counter test is repeatable with
+`make test-hw-ethernet-bringup`; an already running diagnostic is tested with
+`make test-hw-ethernet BOARD_IP=<UART DHCP address>`.
+
+See [Ethernet build and hardware instructions](diagnostics/ethernet/README.md).
+Evidence: `evidence/ethernet-hardware-2026-10-07.json`. This validates Ethernet
+hardware, GEM DMA and initial byte-exact packet transfers. Production ARTIQ
+networking and management/RPC integration remain pending.
