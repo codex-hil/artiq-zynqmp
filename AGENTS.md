@@ -123,3 +123,21 @@ write/readback hardware test yet; no board bitstream/top generated here.
 Elastic buffers enabled in diagnostic PHY, no deterministic latency claim.
 Existing Digilent clock-control sources preserved in mirrors; origins in
 diagnostics/drtio/clock-source-origins.json. Read docs/DRTIO_CLOCKING.md.
+
+Latest2026-10-08 physical GTH diagnostic PASS supersedes the earlier
+no-board-top note. Separate PS/HPM0 diagnostic top is in diagnostics/drtio;
+build-vivado/drtio-diagnostic-relocated-2026-10-08 contains bitstream,
+resumed build logs and corrected timing/Gray bus-skew reports. Physical
+internal PMA PRBS7 passed3 resets, RX/TX-to-PS clock ratios, intentional
+PRBS15 mismatch errors and reset recovery. Module TX remained disabled,
+mux D10=1. This proves local GTH only, not external SFP/remote DRTIO.
+No Si5342 writes, recovered-input lock or deterministic latency test.
+Old Migen mr_ff false-path targets nets; diagnostic checked register-D
+constraints fix that locally. Separate copied XCI output paths prevent
+multi-IP collisions. Do not modify original archived IP/Migen sources.
+Board restored to prior CoreDMA runtime192.168.2.16; Ethernet and normal
+artiq_run genesys_dma.py physical8 pulses/16 edges PASS. Evidence files
+evidence/drtio-{top-build,phy-loopback,restored-core}-2026-10-08.*.
+Diagnostic CSR magic0x44525430 is incompatible with RTIO map; only use its
+probe while diagnostic PL loaded and A53 CPUs halted. Next remote-link test
+needs user's Kasli, matched ARTIQ/RTIO frequency and suitable SFP/cable.
