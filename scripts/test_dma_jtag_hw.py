@@ -91,12 +91,28 @@ wr rtio_i_timeout 0
 if {[rd rtio_i_status] != 1} {error "Unexpected extra input edge"}
 if {[rd rtio_core_async_error] != 0} {error "RTIO asynchronous errors"}
 puts "DMA_PHYSICAL_PASS start=$start latency=$latency edges=$stamps"
+# Negative control: replay into the past; firmware must not call this success.
+wr rtio_dma_time_offset 0
+wr cri_con_selected 1
+wr rtio_dma_enable 1
+set deadline [expr {[clock milliseconds]+3000}]
+while {[rd rtio_dma_enable] != 0} {
+ if {[clock milliseconds]>$deadline} {error "Underflow drain timeout"}
+ after 10
+}
+wr cri_con_selected 0
+if {[rd rtio_dma_wb_reader_bus_error] != 0} {error "Unexpected DDR error"}
+if {[rd rtio_dma_error] != 1} {error "Missing real DMA underflow"}
+if {[rd rtio_dma_error_channel] != 1 || [rd rtio_dma_error_timestamp] != 0 || [rd rtio_dma_error_address] != 2} {error "DMA underflow metadata mismatch"}
+wr rtio_dma_error 1
+if {[rd rtio_dma_error] != 0} {error "DMA error acknowledgment failed"}
+puts "DMA_UNDERFLOW_PASS channel=1 timestamp=0 address=2 acknowledged=1"
 disconnect
 ''']
     script=out/'probe.tcl';script.write_text('\n'.join(tcl))
     proc=subprocess.run(['vivado-container','shell','-c','exec /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb "$@"','xsdb',str(script)],capture_output=True,text=True,timeout=60)
     log=proc.stdout+proc.stderr;(out/'xsdb.log').write_text(log)
-    result={'kind':'hardware','scope':__doc__,'csr_map':o.csr_map,'trace_address':'0x22000000','trace_bytes':len(trace),'status':'PASS' if proc.returncode==0 and 'DMA_PHYSICAL_PASS' in log else 'FAIL','log':log}
+    result={'kind':'hardware','scope':__doc__,'csr_map':o.csr_map,'trace_address':'0x22000000','trace_bytes':len(trace),'status':'PASS' if proc.returncode==0 and 'DMA_PHYSICAL_PASS' in log and 'DMA_UNDERFLOW_PASS' in log else 'FAIL','log':log}
     (out/'results.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2));return 0 if result['status']=='PASS' else 1
 
 if __name__=='__main__':raise SystemExit(main())

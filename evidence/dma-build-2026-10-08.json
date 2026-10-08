@@ -1,0 +1,40 @@
+{
+  "kind": "DMA-platform-build-and-RTL-simulation-not-hardware",
+  "simulation_tests_passed": 15,
+  "status": "PASS",
+  "bitstream": "PASS",
+  "hardware_dma": "PASS5 playback tests, including2 native DMA underflow/ACK tests",
+  "artifacts": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/platform.xsa",
+      "sha256": "5c1fb3a472f5f7d878722bac43d26f3bc0020de15b9117de490aa74eeb494390"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/migen-build/csr-map.json",
+      "sha256": "b481e69823f7704b92c5222ab79de48b1505a2cb180a0845dd6f988a4d5ddad5"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/migen-build/top.v",
+      "sha256": "fc10fa9abdf285c845985a81611c24e660612887edb179dee5a4e5223c01a853"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/migen-build/top.bit",
+      "sha256": "091d077628852e38fad961e16164f679380538fc5faac705bf74ed455127155a"
+    }
+  ],
+  "build_issue": "First full Vivado synthesis process exited137 without RTL error; second build uses general.maxThreads2 and synthesis completed.",
+  "timing": {
+    "wns_ns": 2.933,
+    "tns_ns": 0,
+    "whs_ns": 0.012
+  },
+  "original_csr_abi_preserved": true
+}

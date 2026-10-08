@@ -38,3 +38,14 @@ The probe resets local RTIO, so run with no concurrent kernel/experiment.
 
 CoreDMA recording/named persistent buffers/handles and exception exports
 are not integrated yet; direct engine validation is not a CoreDMA API PASS.
+
+2026-10-08 hardware engine PASS: five plays,20 physical pulses/40 edges,
+100us width, fixed120ns loopback delay. Two negative underflow/metadata/ACK
+tests PASS, including successful next playback without PS/PL reset. Ethernet
+regression PASS and normal artiq_run TTL10/10 PASS. CoreDMA API still pending.
+
+Reproducible bitstream build: `bash scripts/build_rtio_dma.sh FRESH_OUTPUT`.
+Build uses maxThreads2; first unrestricted synthesis exited137, retry PASS
+with WNS+2.933ns, WHS+0.012ns, zero failing timing endpoints.
+Build matching FSBL/PMU via scripts/build_boot_firmware.sh and platform.xsa.
+Current DMA firmware is loaded through JTAG; existing SD image unchanged.

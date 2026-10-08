@@ -1,7 +1,7 @@
 """Local upstream RTIO behind a PS AXI master, without a LiteX SoC migration.
 
 Uses LiteX only for its maintained AXI bridge and MiSoC for ARTIQ's CSR ABI.
-DMA/analyzer/DRTIO are deliberately deferred until this path is measured.
+Optional upstream DMA uses the PS HP0 DDR port. Analyzer/DRTIO remain pending.
 """
 import json
 from pathlib import Path

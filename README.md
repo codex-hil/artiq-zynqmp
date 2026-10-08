@@ -385,3 +385,11 @@ cycle), networking/management, kernels/RPC, TTL10/10 and exception recovery.
 See [SD boot instructions](docs/SD_BOOT.md) for reproducible packaging,
 memory layout, card preservation and physical acceptance checks.
 Updated CPU0 + embedded CPU1 image passed JTAG networking and TTL10/10.
+
+## RTIO DMA engine (2026-10-08)
+
+Optional local-rtio-dma variant reads standard ARTIQ records from DDR through
+HP0 and replays them in FPGA. Physical20 pulses/40 loopback edges and native
+DMA underflow/ACK/replay passed. Ordinary CoreDMA recording/handles remain
+pending. [Build and hardware reproducer](diagnostics/DMA_BRINGUP.md).
+The validated SD image retains the preceding non-DMA runtime.

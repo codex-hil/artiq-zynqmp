@@ -32,7 +32,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Kernel→CSR i fizyczny JB1→JB2 TTL loopback 10/10 PASS; 100 us, stałe15mu |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
 | TTL input | MISSING | MISSING | ttl_simple.Input | PARTIAL: JB2/AG14, synchronizacja i timestamp FIFO | Symulowany loopback PASS; fizyczny loopback NOT_RUN |
-| DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | MISSING: brak transportu DDR->CRI ZynqMP | NOT_RUN; suite nie zgłasza sukcesu DMA |
+| DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | PARTIAL: HP0 AXI DDR reader + upstream DMA/CRI; CoreDMA API pending | RTL15 tests; physical DMA5 plays/20 pulses/40 edges PASS; API pending |
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
@@ -509,3 +509,32 @@ including complete UART log and SHA-256 linked to written SD image.
 One cold power cycle tested. Earlier SD NOT_RUN notes are historical.
 DDR/cache/MMU production qualification, repeat cold boots, fatal-trap/timeout
 recovery, DMA/analyzer/moninj/DRTIO and QSPI remain incomplete.
+
+## Hardware RTIO DMA engine — PASS, 2026-10-08
+
+Preserved M-Labs artiq-zynq AXI DMA reader connected to ZynqMP HP0(64-bit
+data/49-bit address), upstream RecordSlicer/TimeOffset/CRIMaster and CRISwitch.
+Existing CSR banks/addresses preserved; DMA bank3 and selector bank4 added.
+DDR record buffer0x22000000 filled through DAP, autonomous PL playback.
+Five hardware plays:20 pulses/40 physical JB1→JB2 edges match every expected
+timestamp, width100us and fixed input latency120ns; AXI/RTIO errors zero.
+Two deliberately late DMA plays correctly report native underflow with
+channel1,timestamp0,address2; ACK clears error and next playback passes
+without PS/PL reset. Test scripts/test_dma_jtag_hw.py / make test-hw-dma-engine.
+
+Full bitstream timing PASS WNS+2.933ns,WHS+0.012ns at125MHz.15 RTL tests PASS.
+Initial unrestricted synthesis terminated137 without RTL error; two-thread
+retry completed. Reproducer scripts/build_rtio_dma.sh. Debug reset now selects
+volatile alternate JTAG BEFORE system reset, preventing the inserted SD image
+from racing FSBL download. New matching PS FSBL/PMU also built/booted.
+
+Regression: DHCP/ICMP20/20/TCP echo1080/GEMerrors0 PASS, regular artiq_run
+TTL10/10 PASS, native exception suite10 invocations PASS including recovery.
+Evidence dma-build/engine-*/ethernet/ttl-regression/exceptions-regression.
+Current board runs DMA gateware through JTAG with existing services/worker;
+validated autonomous SD image remains unchanged and contains no DMA engine.
+
+DMA overall PARTIAL: CoreDMA prepare_record/retrieve/playback_handle exports,
+persistent named trace storage, lifecycle/limits and API hardware tests still
+missing. No claim that ordinary ARTIQ CoreDMA experiments already work.
+Next step reuse M-Labs recorder/runtime with ZynqMP storage/CSR adapters.

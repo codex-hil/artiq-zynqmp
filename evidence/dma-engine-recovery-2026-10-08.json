@@ -1,0 +1,9 @@
+{
+  "kind": "hardware",
+  "scope": "Physical PL DDR-reader -> upstream RTIO DMA -> JB1/JB2 test.\n\nRequires DMA PL/PS configuration initialized, CPU1 idle, JB1-JB2 jumper.\nNo software pulse replay; DAP only fills DDR and starts the FPGA engine.\nNot a CoreDMA record/playback API test. No PS/PL reset performed here.\n",
+  "csr_map": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/migen-build/csr-map.json",
+  "trace_address": "0x22000000",
+  "trace_bytes": 256,
+  "status": "PASS",
+  "log": "DMA_PHYSICAL_PASS start=20415801536 latency=15 edges=20416801551 20416814051 20416826551 20416839051 20416851551 20416864051 20416876551 20416889051\nDMA_UNDERFLOW_PASS channel=1 timestamp=0 address=2 acknowledged=1\n"
+}

@@ -91,3 +91,13 @@ Latest: physical cold SD boot PASS2026-10-08, one power cycle. Board runs
 from card/J9/JP3 SD without JTAG download/setup. Evidence sd-cold-boot-*.
 Management9, network5, TTL10/10, exception30 and Ethernet PASS. Prior SD
 NOT_RUN notes historical; repeat power cycles and production qualification pending.
+
+Latest2026-10-08: hardware RTIO DMA engine PASS through JTAG, variant
+local-rtio-dma, build-vivado/genesys-rtio-dma and dma-ps-2025.2.5 plays,
+20 pulses/40 JB1→JB2 edges,2 negative underflow/ACK tests and next replay PASS.
+CoreDMA exports/recording/named storage are NOT implemented; do not claim
+CoreDMA experiment support. DMA buffer debug0x22000000. Read diagnostics/
+DMA_BRINGUP.md and evidence/dma-*. Existing SD image still non-DMA.
+Boot debug: select alternate JTAG before system reset (fixed script), because
+a working SD image otherwise boots during FSBL download. Shared launchers
+unchanged; new build script limits local Vivado threads2 after exit137.
