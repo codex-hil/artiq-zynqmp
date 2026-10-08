@@ -1,10 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
-Stan: 2026-10-06. **Definition of Done nie została osiągnięta.** Powstał
-kompilowalny firmware diagnostyczny A53, symulowany local RTIO i wykonywany
-pod QEMU kernel NAC3 na A53/AArch32, ale nie ma
-jeszcze działającego runtime ARTIQ ani pomiarów hardware. Nowy bitstream
-migacza Piotra zbudowano; local RTIO również zbudowano (125 MHz, timing/bitgen PASS).
+Stan: 2026-10-08. **Pełna Definition of Done nie została osiągnięta.**
+Fizyczny Genesys wykonuje standardowe kernele ARTIQ przez Ethernet z RPC,
+TTL loopback i local CoreDMA (216 impulsów/432 zbocza); szczegóły i granice
+w docs/CORE_DMA.md. To runtime integracyjny, nie kompletny standardowy core.
+Starszy obraz SD przeszedł cold boot; nowy obraz CoreDMA jeszcze NOT_RUN.
+Aktualny priorytet: satelita DRTIO do istniejącego Kasli master dla przyszłego
+DAC AD9172. PHY GTHE4 i symulacje protokołu mają build/simulation PASS;
+fizyczny link i recovered-clock/jitter-cleaner testy pozostają NOT_RUN.
 
 Punktem bazowym jest praca Piotra: `main@e15b8a2` i `wip@b25e75b`.
 Rozwój odbywa się na `bringup/genesys` wyprowadzonym z `wip`. Oryginalne
@@ -37,7 +40,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
 | RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL runtime: TCP1381 → rzeczywisty loader i wykonanie CPU1 → scalar RPC, physical TTL i native exception/unwind/recovery PASS; complex returns/cancellation pending | artiq_run/RPC 5/5; TTL10/10; exception suite30 experiments PASS; ABI QEMU/hardware PASS |
-| DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; active clock/PHY investigation | Brak recovered clock/latency/link-training tests |
+| DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | PARTIAL: raw GTHE4 PHY OOC build PASS, protocol simulation PASS; satellite integration MISSING | 2 profiles + 19 legacy/19 current RTL tests; hardware NOT_RUN |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: physical SD BOOT.BIN PASS; QSPI NOT_RUN | sd-cold-boot-2026-10-08.json |
 
 ## Wyniki wykonane
@@ -574,3 +577,32 @@ FPGA-driven SFP_REC_CLK input, cleaned GTH quad224 reference. Design and
 validation sequence: docs/DRTIO_CLOCKING.md. No physical DRTIO/clock-lock
 test has run; GTHE4 adapter/profile/reset FSM still missing. Existing
 local RTIO firmware and bitstreams were not changed.
+
+
+## 2026-10-08: DRTIO PHY preparation
+
+Separate diagnostic GTHE4 X0Y7 raw20-bit PHY at2.5Gb/s synthesized with
+Vivado2025.2 for both125MHz and factory156.25MHz reference profiles. Generated
+RXOUTCLK and RX/TX user clocks are125MHz in both cases. PRBS/loopback/PLL
+and reset status ports exposed. OOC synthesis is not board implementation
+or hardware validation. Diagnostic elastic buffers remain enabled; final
+deterministic adapter/satellite/reset and clock-forwarding top are missing.
+
+Reproducer: make drtio-phy / make test-drtio-protocol; documentation in
+diagnostics/drtio/README.md. Original Piotr ARTIQ1461cf9 and current
+ARTIQ486e8f8 each passed19 DRTIO RTL simulations. Build verifier rejects
+wrong line rate and incomplete synthesis. Evidence: drtio-phy-ref125,
+drtio-phy-ref156, drtio-protocol-simulation and drtio-phy-validator-negative
+2026-10-08 JSONs. Existing physical runtime was not reprogrammed.
+
+Build compatibility: initial synth_ip in project mode produced Vivado
+12-5447; replaced by create_ip_run/launch_runs/wait_on_run plus completion
+check. An intermediate launch without create_ip_run failed12-821; corrected
+and final two profiles synthesized successfully. Logs remain in
+build/drtio-phy-2026-10-08. Vendor CPLL helper warnings are retained.
+
+Existing Digilent HDMI Si5342 driver/profile and revC clock constraints
+located in archived sources; exact origins/hashes in clock-source-origins.json.
+HDMI profile is not suitable directly for125MHz SFP lock. Its I2C error
+handling needs explicit propagation before reuse. Physical chip readback,
+board-revision pin confirmation, profiles and lock tests still pending.

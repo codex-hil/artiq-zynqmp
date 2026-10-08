@@ -113,3 +113,13 @@ build/sd-core-dma-2026-10-08/BOOT.BIN prepared; its cold SD boot NOT_RUN.
 Card still holds validated earlier non-DMA image. Read docs/CORE_DMA.md.
 NAC3 pinned return tuple ABI24B(header8); compile-time offsets enforced.
 Wide outputs,DDMA, hardware-stall recovery and production qualification pending.
+
+2026-10-08 DRTIO preparation: user target now Kasli master -> ZynqMP satellite
+with future AD9172 JESD204B DAC. diagnostics/drtio contains separate GTHE4
+X0Y7 raw20-bit2.5Gb/s OOC build for125/156.25MHz refs (user clocks125MHz),
+verifier and protocol simulation targets. Both profiles synthesis PASS;
+19 legacy +19 current protocol RTL tests PASS. No DRTIO link or Si5342
+write/readback hardware test yet; no board bitstream/top generated here.
+Elastic buffers enabled in diagnostic PHY, no deterministic latency claim.
+Existing Digilent clock-control sources preserved in mirrors; origins in
+diagnostics/drtio/clock-source-origins.json. Read docs/DRTIO_CLOCKING.md.
