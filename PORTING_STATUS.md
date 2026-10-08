@@ -484,3 +484,9 @@ Evidence: sd-boot-image-2026-10-08.json, sd-worker-jtag-2026-10-08.json,
 sd-worker-ttl-2026-10-08.json. Reproducer/docs: docs/SD_BOOT.md.
 No card/flash was written or formatted. Card availability/data preservation
 awaits user information; no removable block device is visible on the host.
+
+2026-10-08: user-provided32GB USB-reader card identified as /dev/sdc1
+(28.8GiB FAT). Original System Volume Information/TLGLOG backed up on
+large disk and preserved on card. BOOT.BIN3,413,000bytes copied, fsync/sync
+and readback SHA-256 match PASS. Evidence sd-card-write-2026-10-08.json.
+Cold board SD boot still NOT_RUN; card unmount requires greg sudo.
