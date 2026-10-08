@@ -1,0 +1,28 @@
+{
+  "kind": "packaged-artifacts-not-boot-proof",
+  "artifacts": {
+    "fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    "bitstream": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/migen-build/top.bit",
+      "sha256": "091d077628852e38fad961e16164f679380538fc5faac705bf74ed455127155a"
+    },
+    "application": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/eh-kernel-services/amd/app/build/lwip_echo_server.elf",
+      "sha256": "42504ab5e29fb683b1a0171a3d213d10623863a32002048b15737c56e0b3b101"
+    },
+    "pmufw": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    "worker_boot": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/sd-core-dma-worker-2026-10-08/worker-boot.elf",
+      "sha256": "caef92dc4f522f398fa343098eb196804afb081a125eb74d8100601b691fd63f"
+    },
+    "boot.bin": {
+      "sha256": "b7ed502116b883beac63687b184a901ead6e707cc7b351203ca91a398d10dc06"
+    }
+  }
+}

@@ -25,7 +25,7 @@ def main():
         m=CommMgmt(o.ip)
         try:m.open();return int(m.config_read('rtio_counter'))
         finally:m.close()
-    def run(source,marker=None,loopbacks=0,negative=False):
+    def run(source,marker=None,loopbacks=0,negative=False,tight=False):
         proc=subprocess.run([str(Path(sys.executable).with_name('artiq_run')),'--device-db',str(db),
                              '--dataset-db',str(out/'datasets.mdb'),str(repo/'examples'/source)],
                             capture_output=True,text=True,timeout=40)
@@ -37,14 +37,17 @@ def main():
             if 'Core Device Traceback' not in log or 'KernelStartupFailed' in log:raise RuntimeError('Invalid exception behavior')
             return
         if proc.returncode or (marker and marker not in proc.stdout):raise RuntimeError('CoreDMA fixture failed: '+source)
-        matches=re.findall(r'^COREDMA_LOOPBACK_PASS (\d+) (\d+) (\d+) (-?\d+)$',proc.stdout,re.M)
+        prefix='COREDMA_TIGHT_PASS' if tight else 'COREDMA_LOOPBACK_PASS'
+        matches=re.findall(r'^'+prefix+r' (\d+) (\d+) (\d+) (-?\d+)$',proc.stdout,re.M)
         if len(matches)!=loopbacks:raise RuntimeError('Wrong physical DMA edge validation count')
         for start,first,duration,extra in matches:
-            if int(first)-int(start)!=1250015 or int(duration)!=1350000 or int(extra)!=-1:raise RuntimeError('Incorrect physical DMA timing')
+            expected_duration=1250384 if tight else 1350000
+            if int(first)-int(start)!=1250015 or int(duration)!=expected_duration or int(extra)!=-1:raise RuntimeError('Incorrect physical DMA timing')
     try:
         before=counter();result['counter_before']=before
         for _ in range(o.cycles):
             run('genesys_dma.py',loopbacks=2)
+            run('genesys_dma_tight.py',loopbacks=2,tight=True)
             run('genesys_dma_errors.py','COREDMA_ERRORS_PASS')
             run('genesys_dma_persistence.py','COREDMA_PERSISTENCE_PASS',loopbacks=2)
             run('genesys_dma_store_limits.py','COREDMA_LIMITS_PASS')
@@ -53,8 +56,8 @@ def main():
             run('genesys_dma.py',loopbacks=2)
         after=counter()
         if after<=before:raise RuntimeError('RTIO counter stopped/reset')
-        result.update(status='PASS',counter_after=after,validated_pulses=o.cycles*24,
-                      validated_edges=o.cycles*48,width_mu=12500,input_latency_mu=15,
+        result.update(status='PASS',counter_after=after,validated_pulses=o.cycles*72,
+                      validated_edges=o.cycles*144,width_mu=12500,tight_width_mu=8,input_latency_mu=15,
                       record_slot_limit=32,slot_bytes=65536,name_bytes_limit=64)
     except Exception as error:result['failure']=str(error)
     (out/'results.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

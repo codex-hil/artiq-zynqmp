@@ -1,0 +1,30 @@
+{
+  "kind": "build-artifacts",
+  "status": "PASS",
+  "compiler": "Rust1.87, GCCARM13, LLVM19",
+  "nac3_revision": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+  "tuple_abi": {
+    "bytes": 24,
+    "duration_offset": 8,
+    "address_offset": 16,
+    "bool_offset": 20
+  },
+  "files": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/migen-build/top.bit",
+      "sha256": "091d077628852e38fad961e16164f679380538fc5faac705bf74ed455127155a"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/migen-build/csr-map.json",
+      "sha256": "b481e69823f7704b92c5222ab79de48b1505a2cb180a0845dd6f988a4d5ddad5"
+    }
+  ]
+}
