@@ -1,0 +1,130 @@
+{
+  "kind": "hardware",
+  "time": 1791458198.7544537,
+  "ip": "192.168.2.16",
+  "scope": "physical JB1 output/JB2 input; both edges, 100 us width",
+  "status": "PASS",
+  "runs": [
+    {
+      "index": 0,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14038210121 14038210136 14038222636 -1\nTTL_LOOPBACK_PASS 14038210121 14038210136 14038222636 15 12500\n",
+      "stderr": "",
+      "start": 14038210121,
+      "rise": 14038210136,
+      "fall": 14038222636,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 1,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14104476487 14104476502 14104489002 -1\nTTL_LOOPBACK_PASS 14104476487 14104476502 14104489002 15 12500\n",
+      "stderr": "",
+      "start": 14104476487,
+      "rise": 14104476502,
+      "fall": 14104489002,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 2,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14168107797 14168107812 14168120312 -1\nTTL_LOOPBACK_PASS 14168107797 14168107812 14168120312 15 12500\n",
+      "stderr": "",
+      "start": 14168107797,
+      "rise": 14168107812,
+      "fall": 14168120312,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 3,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14232401775 14232401790 14232414290 -1\nTTL_LOOPBACK_PASS 14232401775 14232401790 14232414290 15 12500\n",
+      "stderr": "",
+      "start": 14232401775,
+      "rise": 14232401790,
+      "fall": 14232414290,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 4,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14294684495 14294684510 14294697010 -1\nTTL_LOOPBACK_PASS 14294684495 14294684510 14294697010 15 12500\n",
+      "stderr": "",
+      "start": 14294684495,
+      "rise": 14294684510,
+      "fall": 14294697010,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 5,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14359408747 14359408762 14359421262 -1\nTTL_LOOPBACK_PASS 14359408747 14359408762 14359421262 15 12500\n",
+      "stderr": "",
+      "start": 14359408747,
+      "rise": 14359408762,
+      "fall": 14359421262,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 6,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14427063075 14427063090 14427075590 -1\nTTL_LOOPBACK_PASS 14427063075 14427063090 14427075590 15 12500\n",
+      "stderr": "",
+      "start": 14427063075,
+      "rise": 14427063090,
+      "fall": 14427075590,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 7,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14491151970 14491151985 14491164485 -1\nTTL_LOOPBACK_PASS 14491151970 14491151985 14491164485 15 12500\n",
+      "stderr": "",
+      "start": 14491151970,
+      "rise": 14491151985,
+      "fall": 14491164485,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 8,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14557735184 14557735199 14557747699 -1\nTTL_LOOPBACK_PASS 14557735184 14557735199 14557747699 15 12500\n",
+      "stderr": "",
+      "start": 14557735184,
+      "rise": 14557735199,
+      "fall": 14557747699,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 9,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 14623359145 14623359160 14623371660 -1\nTTL_LOOPBACK_PASS 14623359145 14623359160 14623371660 15 12500\n",
+      "stderr": "",
+      "start": 14623359145,
+      "rise": 14623359160,
+      "fall": 14623371660,
+      "latency_mu": 15,
+      "width_mu": 12500
+    }
+  ],
+  "width_mu": 12500,
+  "width_us": 100,
+  "latency_mu": 15,
+  "ref_period_ns": 8,
+  "source_revisions": {
+    "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "artiq_zynq": "15c856f315969b5c1d01d2917ed52f1b0f199677",
+    "nac3": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+    "native_integration": "944fa71",
+    "vendor_sources": "93084a3"
+  }
+}

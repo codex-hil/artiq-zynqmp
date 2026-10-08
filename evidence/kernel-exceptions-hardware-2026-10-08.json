@@ -1,0 +1,206 @@
+{
+  "kind": "hardware",
+  "time": 1791458453.9478698,
+  "ip": "192.168.2.16",
+  "tests": {
+    "cycle_0_catch_and_recovery": "PASS",
+    "cycle_1_catch_and_recovery": "PASS",
+    "cycle_2_catch_and_recovery": "PASS"
+  },
+  "runs": [
+    {
+      "source": "genesys_exceptions.py",
+      "returncode": 0,
+      "stdout": "EXCEPTION_CATCH_RESULT 7\nEXCEPTION_CATCH_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_nested_exceptions.py",
+      "returncode": 0,
+      "stdout": "NESTED_EXCEPTION_RESULT 7\nNESTED_EXCEPTION_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_rtio_overflow.py",
+      "returncode": 0,
+      "stdout": "RTIO_OVERFLOW_RESULT 1\nRTIO_OVERFLOW_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_exception_same_connection.py",
+      "returncode": 0,
+      "stdout": "SAME_CONNECTION_KERNEL_PASS 46161176834\nSAME_CONNECTION_RECOVERY_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_rtio_underflow.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"src/lib.rs\", line 426, column 14, in (Rust function)\n    <unknown>\n                 ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x1d4)\n    <unknown>\n                ^\nartiq.coredevice.exceptions.RTIOUnderflow(0): RTIO underflow at 0 mu, channel 1, slack -46219265080 mu\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nartiq.coredevice.exceptions.RTIOUnderflow: RTIO underflow at 0 mu, channel 1, slack -46219265080 mu\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 46277936612 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_uncaught_exception.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_exception.py\", line 12, column 9, in artiq_run_genesys_uncaught_exception.GenesysUncaughtException.run.0\n    raise ValueError(\"intentional uncaught kernel failure\")\n    ^\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_exception.py\", line 12, column 27, in artiq_run_genesys_uncaught_exception.GenesysUncaughtException.run.0 (RA=+0x1c8)\n    raise ValueError(\"intentional uncaught kernel failure\")\n                      ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x108)\n    <unknown>\n                ^\nValueError(0): intentional uncaught kernel failure\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nValueError: intentional uncaught kernel failure\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 46435304844 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_uncaught_rpc.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_rpc.py\", line 13, in broken\n    raise ValueError(\"intentional uncaught RPC failure\")\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x1a4)\n    <unknown>\n                ^\nValueError(0): intentional uncaught RPC failure\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nValueError: intentional uncaught RPC failure\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 46585670381 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_exceptions.py",
+      "returncode": 0,
+      "stdout": "EXCEPTION_CATCH_RESULT 7\nEXCEPTION_CATCH_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_nested_exceptions.py",
+      "returncode": 0,
+      "stdout": "NESTED_EXCEPTION_RESULT 7\nNESTED_EXCEPTION_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_rtio_overflow.py",
+      "returncode": 0,
+      "stdout": "RTIO_OVERFLOW_RESULT 1\nRTIO_OVERFLOW_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_exception_same_connection.py",
+      "returncode": 0,
+      "stdout": "SAME_CONNECTION_KERNEL_PASS 46871484876\nSAME_CONNECTION_RECOVERY_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_rtio_underflow.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"src/lib.rs\", line 426, column 14, in (Rust function)\n    <unknown>\n                 ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x1d4)\n    <unknown>\n                ^\nartiq.coredevice.exceptions.RTIOUnderflow(0): RTIO underflow at 0 mu, channel 1, slack -46929570095 mu\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nartiq.coredevice.exceptions.RTIOUnderflow: RTIO underflow at 0 mu, channel 1, slack -46929570095 mu\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 46982872667 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_uncaught_exception.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_exception.py\", line 12, column 9, in artiq_run_genesys_uncaught_exception.GenesysUncaughtException.run.0\n    raise ValueError(\"intentional uncaught kernel failure\")\n    ^\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_exception.py\", line 12, column 27, in artiq_run_genesys_uncaught_exception.GenesysUncaughtException.run.0 (RA=+0x1c8)\n    raise ValueError(\"intentional uncaught kernel failure\")\n                      ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x108)\n    <unknown>\n                ^\nValueError(0): intentional uncaught kernel failure\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nValueError: intentional uncaught kernel failure\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 47147498058 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_uncaught_rpc.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_rpc.py\", line 13, in broken\n    raise ValueError(\"intentional uncaught RPC failure\")\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x1a4)\n    <unknown>\n                ^\nValueError(0): intentional uncaught RPC failure\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nValueError: intentional uncaught RPC failure\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 47303314367 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_exceptions.py",
+      "returncode": 0,
+      "stdout": "EXCEPTION_CATCH_RESULT 7\nEXCEPTION_CATCH_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_nested_exceptions.py",
+      "returncode": 0,
+      "stdout": "NESTED_EXCEPTION_RESULT 7\nNESTED_EXCEPTION_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_rtio_overflow.py",
+      "returncode": 0,
+      "stdout": "RTIO_OVERFLOW_RESULT 1\nRTIO_OVERFLOW_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_exception_same_connection.py",
+      "returncode": 0,
+      "stdout": "SAME_CONNECTION_KERNEL_PASS 47594941097\nSAME_CONNECTION_RECOVERY_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_rtio_underflow.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"src/lib.rs\", line 426, column 14, in (Rust function)\n    <unknown>\n                 ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x1d4)\n    <unknown>\n                ^\nartiq.coredevice.exceptions.RTIOUnderflow(0): RTIO underflow at 0 mu, channel 1, slack -47653872651 mu\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nartiq.coredevice.exceptions.RTIOUnderflow: RTIO underflow at 0 mu, channel 1, slack -47653872651 mu\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 47707189594 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_uncaught_exception.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_exception.py\", line 12, column 9, in artiq_run_genesys_uncaught_exception.GenesysUncaughtException.run.0\n    raise ValueError(\"intentional uncaught kernel failure\")\n    ^\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_exception.py\", line 12, column 27, in artiq_run_genesys_uncaught_exception.GenesysUncaughtException.run.0 (RA=+0x1c8)\n    raise ValueError(\"intentional uncaught kernel failure\")\n                      ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x108)\n    <unknown>\n                ^\nValueError(0): intentional uncaught kernel failure\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nValueError: intentional uncaught kernel failure\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 47865586921 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_uncaught_rpc.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_rpc.py\", line 13, in broken\n    raise ValueError(\"intentional uncaught RPC failure\")\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x1a4)\n    <unknown>\n                ^\nValueError(0): intentional uncaught RPC failure\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nValueError: intentional uncaught RPC failure\n"
+    },
+    {
+      "source": "genesys_network_probe.py",
+      "returncode": 0,
+      "stdout": "NETWORK_KERNEL_RPC 0x1234567887654321 48022023040 1.25\nNETWORK_KERNEL_RETURN_PASS 3.75\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "native catch/reraise/finally, kernel/RPC/RTIO exceptions, worker recovery with CPU0/PL preserved",
+  "counter_before": 45921925469,
+  "counter_after": 48134999336,
+  "runtime_log": "1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nCPU1 kernel ELF relocated and loaded.\nCPU1 uncaught kernel exception.\nCPU1 worker recovered after kernel exception.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 uncaught kernel exception.\nCPU1 worker recovered after kernel exception.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement TCP connection accepted.\n",
+  "status": "PASS",
+  "source_revisions": {
+    "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "artiq_zynq": "15c856f315969b5c1d01d2917ed52f1b0f199677",
+    "nac3": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+    "native_integration": "944fa71",
+    "vendor_sources": "93084a3"
+  },
+  "additional_device_traceback_same_connection_check": "DEVICE_TRACEBACK_PASS [('<nac3_internal>', 2, 17, '__modinit__', 468, []), ('examples/genesys_exception_same_connection.py', 17, 41, 'artiq_run_genesys_exception_same_connection.GenesysExceptionSameConnection.failing.0', 460, [('<nac3_internal>', 2, 17, '__modinit__', 460)]), ('examples/genesys_exception_same_connection.py', 17, 41, 'artiq_run_genesys_exception_same_connection.GenesysExceptionSameConnection.failing.0', 364, [('<nac3_internal>', 2, 17, '__modinit__', 364)])]\nSAME_CONNECTION_KERNEL_PASS 60209224578\nSAME_CONNECTION_RECOVERY_PASS\n",
+  "additional_check_note": "Host-side fixture now asserts nonempty decoded device traceback; separately executed successfully after the 30-experiment suite."
+}

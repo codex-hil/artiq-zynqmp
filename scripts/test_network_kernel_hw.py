@@ -19,7 +19,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--ip', required=True)
     p.add_argument('--output', required=True, type=Path)
-    p.add_argument('--underflow', action='store_true', help='Negative RTIO control last; requires worker restart')
+    p.add_argument('--underflow', action='store_true', help='Native RTIO exception and subsequent kernel recovery')
     p.add_argument('--rtio', action='store_true', help='Real RTIO worker: load TTL ELF without running it')
     p.add_argument('--runs', type=int, default=5)
     o = p.parse_args()
@@ -147,17 +147,21 @@ def main():
         if 'CPU1 kernel finished.' not in result['runtime_log']:raise RuntimeError('No actual kernel completion log')
         result['tests']['ttl_physical']='NOT_RUN'
         if o.underflow:
-            proc=subprocess.run([str(Path(sys.executable).with_name('artiq_compile')), '--device-db',str(db),
-                '--dataset-db',str(out/'datasets.mdb'),'-o',str(out/'underflow.elf'),'-d',str(out/'underflow-debug.elf'),
-                str(repo/'examples/genesys_rtio_underflow.py')],capture_output=True,text=True,timeout=30)
-            (out/'underflow-compile.log').write_text(proc.stdout+proc.stderr)
-            if proc.returncode: raise RuntimeError('Underflow fixture failed compilation')
-            client=CommKernel(o.ip);client.load((out/'underflow.elf').read_bytes());client.run()
-            client._read_header();client._read_expect(Reply.KernelStartupFailed)
-            client.close();client=None
-            management(check_busy=True)
-            result['tests']['past_sample_rejected_without_kernel_finished']='PASS'
-            result['worker_requires_restart']=True
+            proc=subprocess.run([str(Path(sys.executable).with_name('artiq_run')), '--device-db',str(db),
+                '--dataset-db',str(out/'datasets.mdb'),str(repo/'examples/genesys_rtio_underflow.py')],
+                capture_output=True,text=True,timeout=35)
+            (out/'underflow.log').write_text(proc.stdout+proc.stderr)
+            if proc.returncode!=1 or 'artiq.coredevice.exceptions.RTIOUnderflow:' not in proc.stderr:
+                raise RuntimeError('Expected native RTIOUnderflow missing')
+            management()
+            proc=subprocess.run([str(Path(sys.executable).with_name('artiq_run')), '--device-db',str(db),
+                '--dataset-db',str(out/'datasets.mdb'),str(repo/'examples/genesys_network_probe.py')],
+                capture_output=True,text=True,timeout=35)
+            (out/'after-underflow.log').write_text(proc.stdout+proc.stderr)
+            if proc.returncode or 'NETWORK_KERNEL_RETURN_PASS 3.75' not in proc.stdout:
+                raise RuntimeError('Worker did not recover after underflow')
+            result['tests']['native_underflow_and_worker_recovery']='PASS'
+            result['worker_requires_restart']=False
         result['status']='PASS'
     except Exception as e:
         result['status']='FAIL';result['failure']=str(e)
