@@ -141,3 +141,24 @@ evidence/drtio-{top-build,phy-loopback,restored-core}-2026-10-08.*.
 Diagnostic CSR magic0x44525430 is incompatible with RTIO map; only use its
 probe while diagnostic PL loaded and A53 CPUs halted. Next remote-link test
 needs user's Kasli, matched ARTIQ/RTIO frequency and suitable SFP/cable.
+
+Latest Kasli master preparation2026-10-08: user requested newest standard
+Kasli hardware, v2.1 (not Kasli-SoC). diagnostics/kasli-master has JSON,
+minimal Nix tools environment, reproducible build script and README.
+Separate upstream worktrees work/kasli-master@486e8f8 and
+work/kasli-misoc@0e99d28 preserve sources; Migenbeffe831 and Vex2e4f43d.
+build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software
+contains verified bootloader/ksupport/runtime; firmware PASS, ELF32 RISC-V
+and runtime.fbi length/CRC PASS. Build overall PARTIAL: shared Vivado lacks
+Artix-7/XC7A100T support. AMD installed-tree Add rejects expired token;
+user was asked to run vivado-installer2025.2 AuthTokenGen. Do not claim a
+successful Kasli bitstream. 117 offline archives cached by symlink under
+Xilinx/Downloads/Vivado_2025.2/payload, originals extracted selectively
+under shared/installers/kasli-offline-2025.2 (~2.47GB). Add configuration is
+shared/install-2025.2-kasli-artix7.conf. Use installed .xinstall/2025.2/xsetup
+-b Add after auth renewal; full offline-image Add tried fresh install and
+failed disk check. Shared installation and Genesys physical state unchanged.
+Firmware toolchain Nix Rustnightly2021-09-01/LLVM20.1.8 prepared; old Cargo
+index is cached under build/kasli-v2.1-master-2026-10-08/cargo-home.
+Assumed test configuration: no EEM, RTIO125MHz, WRPLL off; optional question
+about user's modules remains pending. Evidence kasli-v2.1-master-2026-10-08.json.
