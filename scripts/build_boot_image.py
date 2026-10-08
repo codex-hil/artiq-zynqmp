@@ -16,6 +16,8 @@ def main():
     for name in ["fsbl", "bitstream", "application"]:
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--pmufw", type=Path)
+    parser.add_argument("--worker-boot", type=Path,
+                        help="AArch64 CPU1 bridge ELF containing the AArch32 worker")
     parser.add_argument("--bootgen", default="bootgen")
     parser.add_argument("--output-dir", type=Path, required=True)
     options = parser.parse_args()
@@ -23,6 +25,10 @@ def main():
              ["fsbl", "bitstream", "application"]}
     if options.pmufw is not None:
         paths["pmufw"] = options.pmufw.resolve()
+    if options.worker_boot is not None:
+        if options.pmufw is None:
+            parser.error("CPU1 boot requires --pmufw")
+        paths["worker_boot"] = options.worker_boot.resolve()
     hashes = {}
     for name, path in paths.items():
         payload = path.read_bytes()
@@ -38,6 +44,8 @@ def main():
         f'  [bootloader, destination_cpu=a53-0] "{paths["fsbl"]}"\n' +
         (f'  [pmufw_image] "{paths["pmufw"]}"\n' if "pmufw" in paths else '') +
         f'  [destination_device=pl] "{paths["bitstream"]}"\n' +
+        (f'  [destination_cpu=a53-1, exception_level=el-3] "{paths["worker_boot"]}"\n'
+         if "worker_boot" in paths else '') +
         f'  [destination_cpu=a53-0, exception_level=el-3] "{paths["application"]}"\n' +
         '}\n')
     subprocess.run([options.bootgen, "-arch", "zynqmp", "-image", str(bif),

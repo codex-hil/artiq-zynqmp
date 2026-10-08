@@ -150,8 +150,14 @@ static err_t accepted(void *arg,struct tcp_pcb *p,err_t error) {
  owner=p;pending=0;mode=0;closing=loaded=0;count=0;callbacks();return ERR_OK;
 }
 int genesys_kernel_start(void) {
- Xil_DCacheInvalidateRange(MAILBOX+64,64);
- if(read_mb(68)!=1||!frequency())return -1;
+ /* FSBL releases CPU1 before handing CPU0 over, but does not wait for READY. */
+ uint64_t hz=frequency();if(!hz)return -1;
+ uint64_t deadline=ticks()+hz*5;
+ do {
+  Xil_DCacheInvalidateRange(MAILBOX+64,64);
+  if(read_mb(68)==1)break;
+  if(ticks()>=deadline){xil_printf("CPU1 READY timeout\r\n");return -1;}
+ } while(1);
  seen_event=read_mb(64);cmd_seq=read_mb(0);
  struct tcp_pcb *p=tcp_new_ip_type(IPADDR_TYPE_V4);if(!p)return -1;
  if(tcp_bind(p,IP_ANY_TYPE,1381)!=ERR_OK){tcp_close(p);return -1;}

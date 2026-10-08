@@ -465,3 +465,22 @@ Historical pre-exception images/probes still describe fail-stop behavior.
 Remaining: arbitrary hardware traps/Rust panic, cancellation/disconnect and
 30s watchdog recovery, metadata>4096B, complex returns, MMU/cache/DDR production
 qualification, autonomous SD/QSPI boot, DMA/analyzer/moninj/DRTIO.
+
+## Standalone SD image — packaged, cold boot NOT_RUN (2026-10-08)
+
+Built 3,413,000-byte BOOT.BIN with existing Piotr DDR/SPD FSBL, AMD PMU,
+local-RTIO PL, current CPU0 runtime and embedded CPU1 worker. CPU1 bridge
+clears cold mailbox and enters the verified EL1/AArch32 worker. CPU0 startup
+waits at most five seconds for READY. Bootgen partition inspection confirms
+CPU1 entry0x20000000, worker load0x20200000 and final CPU0 EL3 handoff.
+Generated PS clock/AFI and AMD FSBL post-bitstream isolation/reset match
+the tested JTAG sequence; actual SD boot remains NOT_RUN.
+
+Embedded worker + updated CPU0 booted through JTAG: DHCP, ICMP20/20,
+1080 TCP echo exchanges and zero GEM errors PASS. Genuine ARTIQ physical
+TTL loopback10/10 PASS, 100us pulse and fixed120ns input latency.
+This validates firmware changes, not BootROM/SD loading or FSBL PL loading.
+Evidence: sd-boot-image-2026-10-08.json, sd-worker-jtag-2026-10-08.json,
+sd-worker-ttl-2026-10-08.json. Reproducer/docs: docs/SD_BOOT.md.
+No card/flash was written or formatted. Card availability/data preservation
+awaits user information; no removable block device is visible on the host.

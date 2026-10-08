@@ -80,3 +80,9 @@ Network test --underflow now expects typed exception and successful recovery,
 not historical fail-stop. Old probe_rtio_failure.tcl applies to old images.
 Hardware traps/panic/watchdog/disconnect and complex RPC still limited.
 Evidence kernel-exceptions-*-2026-10-08.json; standard boot order unchanged.
+
+2026-10-08 SD boot image prepared at build/sd-boot-2026-10-08/BOOT.BIN.
+Cold SD boot NOT_RUN; do not claim autonomous boot from JTAG evidence.
+Embedded CPU1 bridge build/sd-worker-2026-10-08/worker-boot.elf clears
+cold mailbox; current CPU0 waits up to5s for READY. JTAG networking and
+TTL10/10 PASS. Read docs/SD_BOOT.md; no card/flash writes performed.
