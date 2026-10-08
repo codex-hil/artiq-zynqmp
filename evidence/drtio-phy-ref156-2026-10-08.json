@@ -1,0 +1,23 @@
+{
+  "kind": "fpga-ooc-build-not-hardware-proof",
+  "status": "PASS",
+  "hardware_status": "NOT_RUN",
+  "refclk_mhz": 156.25,
+  "rxoutclk_mhz": 125,
+  "line_rate_gbps": 2.5,
+  "buffers": "enabled; deterministic latency NOT_VALIDATED",
+  "artifacts": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/ref156/project/drtio_phy.gen/sources_1/ip/drtio_gth/synth/drtio_gth.v",
+      "sha256": "614f157843e6def80ae81b302f74ce2c8ff588a2bd13276bc32fb3bd8186507b"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/ref156/configuration.txt",
+      "sha256": "e5b3dfa03c65a9b237d44e349c99cc1ffe078aa5b4c69bd6829053f68a772312"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/ref156/project/drtio_phy.gen/sources_1/ip/drtio_gth/drtio_gth.dcp",
+      "sha256": "1e5fbb742b07cb643e09e757bf42cb6aa8fbd584c29cd8f2298e356384b61a60"
+    }
+  ]
+}

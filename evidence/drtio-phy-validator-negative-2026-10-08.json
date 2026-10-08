@@ -1,0 +1,8 @@
+{
+  "kind": "host-validation-not-hardware-proof",
+  "status": "PASS",
+  "tests": {
+    "wrong_line_rate_rejected": "RX_LINE_RATE: '3' != '2.5'",
+    "unfinished_build_rejected": "Vivado did not complete PHY synthesis"
+  }
+}

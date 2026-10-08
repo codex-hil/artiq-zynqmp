@@ -1,0 +1,31 @@
+{
+  "kind": "fpga-ooc-build-not-hardware-proof",
+  "status": "PASS",
+  "hardware_status": "NOT_RUN",
+  "refclk_mhz": 125.0,
+  "rxoutclk_mhz": 125,
+  "line_rate_gbps": 2.5,
+  "buffers": "enabled; deterministic latency NOT_VALIDATED",
+  "artifacts": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/validated125/project/drtio_phy.gen/sources_1/ip/drtio_gth/synth/drtio_gth.v",
+      "sha256": "7728f537b546e200b3a7be44148faf989200d0bb555706350dc98cdeb44d9295"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/validated125/configuration.txt",
+      "sha256": "4b68b5af580e439dd1d6304bdbe5e23f2a1bf4fe0fed6e4f584ed3e9e9e85389"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/validated125/project/drtio_phy.gen/sources_1/ip/drtio_gth/drtio_gth.dcp",
+      "sha256": "8eca4eb410fcaf6f2a9c7e63bb2057ef627d00f0d301c9a8b983ea6db8c34417"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/validated125/project/drtio_phy.cache/ip/2025.2/1/2/12f8fc899fd60dbe/drtio_gth.dcp",
+      "sha256": "c339d8face44fc7ea010b2f5d27c5c3741b2107e65d34ead1665491c3bddf25e"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/validated125/project/drtio_phy.runs/drtio_gth_synth_1/drtio_gth.dcp",
+      "sha256": "8eca4eb410fcaf6f2a9c7e63bb2057ef627d00f0d301c9a8b983ea6db8c34417"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "purpose": "existing board clock configuration/constraints reference; not DRTIO profile",
+  "sources": [
+    {
+      "mirror": "/srv/codex-hil-data/artiq-zynqmp/sources/digilent-genesys-zu-sw.git",
+      "revision": "6d783aab93dc4586bf6c06921808aa53517e1689",
+      "path": "src/5ev_hdmi_demo/src/si5432_axi.c",
+      "sha256": "32db1bdbc4064136dfc0fb9850a864b02fd967577554e0c9831658424a6ce72b"
+    },
+    {
+      "mirror": "/srv/codex-hil-data/artiq-zynqmp/sources/digilent-genesys-zu-sw.git",
+      "revision": "6d783aab93dc4586bf6c06921808aa53517e1689",
+      "path": "src/5ev_hdmi_demo/src/si5432_axi.h",
+      "sha256": "3ef3bb7e5e352d75f27402956501d9c674a8d736aba0cf9972cc7b3366f811c3"
+    },
+    {
+      "mirror": "/srv/codex-hil-data/artiq-zynqmp/sources/digilent-genesys-zu-hw.git",
+      "revision": "b00bef7fcbd9e5b0561900fc262f69c55bc4a50e",
+      "path": "src/constraints/Genesys_ZU_revC.xdc",
+      "sha256": "3fdb835e1adf069ecdc0276798f157db6efb20ffb38f3e025ecc09d34d236c5b"
+    }
+  ]
+}

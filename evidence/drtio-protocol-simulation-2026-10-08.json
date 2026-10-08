@@ -1,0 +1,22 @@
+{
+  "kind": "rtl-simulation-not-hardware-proof",
+  "suites": [
+    {
+      "source": "common/artiq",
+      "revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+      "tests": 19,
+      "status": "PASS",
+      "log": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/protocol-tests.log",
+      "sha256": "b8c4883ae3246361fcbef42b1ce115dfc35e5348a1def41654cc8a0dbf4f9d7f"
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/reference/artiq",
+      "revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+      "tests": 19,
+      "status": "PASS",
+      "log": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-phy-2026-10-08/upstream-protocol-tests.log",
+      "sha256": "cb09cd860227e92a2bb03ebbadc302197c5df4cc99d8d168b01b52055a1f725a"
+    }
+  ],
+  "hardware_status": "NOT_RUN"
+}

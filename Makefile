@@ -105,3 +105,16 @@ test-hw-kernel-exceptions:
 test-hw-core-dma:
 	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
 	artiq-host python scripts/test_core_dma_hw.py --ip="$(BOARD_IP)" --output="$(abspath $(O))/core-dma"
+
+# DRTIO PHY diagnostics: synthesis only, no programming of the board.
+DRTIO_REFCLK_MHZ ?= 125
+MISOC_SOURCE ?= /srv/codex-hil-data/artiq-zynqmp/reference/misoc-current
+.PHONY: drtio-phy test-drtio-protocol
+drtio-phy:
+	mkdir -p "$(abspath $(O))/drtio-phy"
+	cd "$(abspath $(O))/drtio-phy" && vivado -mode batch -source "$(CURDIR)/diagnostics/drtio/build_phy.tcl" -tclargs "$(abspath $(O))/drtio-phy/generated" "$(DRTIO_REFCLK_MHZ)" > build.log 2>&1
+	$(PYTHON) diagnostics/drtio/check_phy_build.py "$(abspath $(O))/drtio-phy/generated" "$(abspath $(O))/drtio-phy/build.log" --output="$(abspath $(O))/drtio-phy/results.json"
+
+test-drtio-protocol:
+	mkdir -p "$(abspath $(O))/drtio-protocol"
+	cd "$(abspath $(O))/drtio-protocol" && PYTHONPATH="$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s "$(abspath $(ARTIQ_SOURCE))/artiq/gateware/test/drtio" -t "$(abspath $(ARTIQ_SOURCE))" -v
