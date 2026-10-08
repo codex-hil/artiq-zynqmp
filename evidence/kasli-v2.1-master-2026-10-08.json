@@ -1,0 +1,58 @@
+{
+  "kind": "software-build-not-hardware",
+  "status": "PARTIAL",
+  "hardware": "Kasli v2.1 Artix-7 XC7A100T",
+  "role": "master",
+  "rtio_hz": 125000000,
+  "drtio_bps": 2500000000,
+  "eem_peripherals": [],
+  "firmware_status": "PASS",
+  "firmware_fbi_crc": "PASS",
+  "elf32_riscv": "PASS",
+  "gateware_status": "BLOCKED_MISSING_ARTIX7_SUPPORT",
+  "hardware_status": "NOT_RUN",
+  "blocker": "AMD Add action rejects expired token; renewal requested; selective offline payload cached",
+  "sources": {
+    "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "migen": "beffe831bf1a691eaebf9ddbb4660f8b3e7fd964",
+    "misoc": "0e99d28d88c25ca86b39d2452417cb500fc52abd",
+    "vexriscv": "2e4f43d72404a986c9d7251d9d543cf7aef077bc"
+  },
+  "toolchain": {
+    "rust": "nightly-2021-09-01 1.56.0",
+    "llvm": "20.1.8",
+    "vivado": "2025.2"
+  },
+  "artifacts": {
+    "bootloader/bootloader.bin": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software/bootloader/bootloader.bin",
+      "bytes": 123192,
+      "sha256": "aa5990a77f253cf479abb185416be33395b6da36c17878f6f3ae7bcec7097189"
+    },
+    "bootloader/bootloader.elf": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software/bootloader/bootloader.elf",
+      "bytes": 2403532,
+      "sha256": "ac5c84aa3e36a462a30f09d1eb401216a78986de40d8f8697fa44dd99e0b5476"
+    },
+    "ksupport/ksupport.elf": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software/ksupport/ksupport.elf",
+      "bytes": 667092,
+      "sha256": "062afd168b5091de44af0c509c3e767a21fcc9b1e27267eeb26f6ebf6e8f30c4"
+    },
+    "runtime/runtime.bin": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software/runtime/runtime.bin",
+      "bytes": 1847000,
+      "sha256": "f425ff58562eb78031cc9a07cd1034ced9c5bf9c595185e5ccd3dab42a547424"
+    },
+    "runtime/runtime.fbi": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software/runtime/runtime.fbi",
+      "bytes": 1847008,
+      "sha256": "2aed8ea350df4cf1576164f0b2736abe3eb3bffa9cefa763b8a264107cf8907a"
+    },
+    "runtime/runtime.elf": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software/runtime/runtime.elf",
+      "bytes": 15784972,
+      "sha256": "3f6643528ae00c624d4a5f65248a5f15e2030cae905976dff97ef90d53814583"
+    }
+  }
+}

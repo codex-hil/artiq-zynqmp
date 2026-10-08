@@ -646,3 +646,27 @@ zero GEM error counters passed. Standard artiq_run genesys_dma.py then
 passed handle/name playback with 8 physical pulses/16 exact loopback edges.
 Evidence: evidence/drtio-restored-core-2026-10-08.json. The board is left
 running the integration runtime at192.168.2.16, not the GTH diagnostic.
+
+## 2026-10-08: Kasli v2.1 master build in preparation
+
+User requested standard Kasli at its latest hardware revision: v2.1,
+Artix-7 XC7A100T, not Kasli-SoC. Separate upstream worktree builds a test
+master at125MHz/2.5Gb/s, no EEMs and WRPLL disabled. Same ARTIQ486e8f8
+snapshot as current Genesys host/protocol work; hardware revision selection
+does not imply compatibility with a different existing system JSON.
+Bootloader, ksupport and master runtime compile/link PASS with upstream
+Rustnightly2021-09-01 and LLVM/Clang/LLD20.1.8. ELF32 RISC-V and runtime.fbi
+length/CRC32 validation PASS. No successful Kasli bitstream or physical
+Kasli test yet. Shared Vivado initially has only ZynqMP device support;
+XC7A100T is missing. Installed-tree Add action requires renewed AMD token.
+117 relevant offline packages (~2.47GB with installer files) fetched via
+random access to SMB archive and cached for Add. Offline-image Add instead
+attempts fresh installation and rejects available disk space, so it was
+not allowed to replace the working shared installation. Firmware-only
+build is PARTIAL, not deployable as a complete core-device package.
+
+Configuration/reproducer: diagnostics/kasli-master/. Source revisions and
+artifact hashes: evidence/kasli-v2.1-master-2026-10-08.json. Outputs in
+build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master.
+Genesys remains running prior CoreDMA image; no hardware programming was
+performed while preparing this Kasli build.

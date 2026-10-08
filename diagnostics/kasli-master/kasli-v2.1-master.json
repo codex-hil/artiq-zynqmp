@@ -1,0 +1,12 @@
+{
+  "target": "kasli",
+  "variant": "genesys_drtio_master",
+  "hw_rev": "v2.1",
+  "drtio_role": "master",
+  "rtio_frequency": 125000000,
+  "enable_wrpll": false,
+  "enable_sata_drtio": false,
+  "peripherals": [],
+  "core_addr": "192.168.2.70",
+  "_description": "Kasli v2.1 test master for Genesys ZU DRTIO bring-up; no EEM peripherals"
+}
