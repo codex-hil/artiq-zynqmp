@@ -101,3 +101,15 @@ DMA_BRINGUP.md and evidence/dma-*. Existing SD image still non-DMA.
 Boot debug: select alternate JTAG before system reset (fixed script), because
 a working SD image otherwise boots during FSBL download. Shared launchers
 unchanged; new build script limits local Vivado threads2 after exit137.
+
+Latest2026-10-08 CoreDMA API physical PASS. Current CPU1 is
+build/kernel-worker-dma-final with same DMA PL/PS and CPU0 eh-kernel-services.
+make test-hw-core-dma uses normal ARTIQ API;21 CLI invocations,216 pulses/
+432 edges (100us and64ns), lifecycle/limits/errors/persistence PASS.
+Reserve DDR0x22000000–0x22200000 for32x64KiB named traces; survives ELF
+reload and exception recovery, not CPU1 hardware/image reset. Do not use
+old DAP DMA probe on committed traces: it overwrites slot0. New SD package
+build/sd-core-dma-2026-10-08/BOOT.BIN prepared; its cold SD boot NOT_RUN.
+Card still holds validated earlier non-DMA image. Read docs/CORE_DMA.md.
+NAC3 pinned return tuple ABI24B(header8); compile-time offsets enforced.
+Wide outputs,DDMA, hardware-stall recovery and production qualification pending.

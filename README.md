@@ -10,7 +10,10 @@ Management, DDR/UART/IRQ/Ethernet oraz kernel→RTIO timeline/input/sample spraw
 Fizyczny JB1→JB2 loopback: 10/10 PASS, impuls100 µs, stałe opóźnienie120 ns.
 Native wyjątki kernel/RPC/RTIO, reraise/finally oraz odzyskiwanie po błędzie
 bez resetu urządzenia przeszły testy hardware (30 eksperymentów).
-Boot z SD, RTIO DMA, analyzer/moninj i produkcyjna kwalifikacja pozostają do integracji.
+Boot z SD (poprzedni obraz) oraz lokalne CoreDMA przez JTAG przeszły testy.
+Standardowe nagrywanie, odtwarzanie po nazwie/uchwycie, trwałość między kernelami
+i po wyjątku PASS;216 impulsów/432 zbocza, także64ns.
+Instrukcja: [CoreDMA](docs/CORE_DMA.md). Analyzer/moninj i pełna kwalifikacja pozostają.
 
 Instrukcja buildu/startu/runtime i test bez TTL:
 [boards/genesys_zu-5ev/3_kernel/README.md](boards/genesys_zu-5ev/3_kernel/README.md).

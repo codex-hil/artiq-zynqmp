@@ -6,7 +6,8 @@ management; CPU1 enters EL1/AArch32 through the previously validated AArch64
 stub and loads ARM32 ET_DYN modules with the preserved M-Labs loader.
 RPC value serialization is copied unmodified from M-Labs (see ORIGIN.md).
 Physical TTL loopback and native exception catch/unwind/recovery are verified.
-RTIO DMA, analyzer, moninj, complex RPC returns, standalone boot and full
+Local CoreDMA API and prior standalone SD boot now PASS; analyzer, moninj,
+complex RPC returns and full
 production memory/cache/DDR qualification remain pending.
 
 ## Verified behavior
@@ -206,3 +207,10 @@ before clearing recovery state/counter guard. Recovery is tested for language
 exceptions, not arbitrary aborts, panic, broken ELF, watchdog or cancellation.
 Exception/RPC event capacity remains4096 bytes; excess exception metadata
 fails closed. Complex RPC results remain unsupported.
+
+## Local CoreDMA integration
+
+See ../../../docs/CORE_DMA.md for current final worker, DDR ownership, build,
+standard API experiment and physical tests. Reserve0x22000000–0x22200000
+for32 persistent trace slots.21 CLI invocations/216 pulses/432 edges PASS.
+Existing SD image is older; new CoreDMA SD package is not cold-boot tested.

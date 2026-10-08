@@ -36,13 +36,13 @@ then checks eight actual loopback timestamps for four100us pulses. Only
 DDR buffer fill/control uses DAP; FPGA performs playback independently.
 The probe resets local RTIO, so run with no concurrent kernel/experiment.
 
-CoreDMA recording/named persistent buffers/handles and exception exports
-are not integrated yet; direct engine validation is not a CoreDMA API PASS.
+Standard local CoreDMA API is now integrated and physically validated;
+see docs/CORE_DMA.md. Direct engine validation alone is not an API test.
 
 2026-10-08 hardware engine PASS: five plays,20 physical pulses/40 edges,
 100us width, fixed120ns loopback delay. Two negative underflow/metadata/ACK
 tests PASS, including successful next playback without PS/PL reset. Ethernet
-regression PASS and normal artiq_run TTL10/10 PASS. CoreDMA API still pending.
+regression PASS and normal artiq_run TTL10/10 PASS. CoreDMA API now PASS in the separate core-dma-* suite.
 
 Reproducible bitstream build: `bash scripts/build_rtio_dma.sh FRESH_OUTPUT`.
 Build uses maxThreads2; first unrestricted synthesis exited137, retry PASS

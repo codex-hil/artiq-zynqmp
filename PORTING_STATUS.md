@@ -32,7 +32,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Kernel→CSR i fizyczny JB1→JB2 TTL loopback 10/10 PASS; 100 us, stałe15mu |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
 | TTL input | MISSING | MISSING | ttl_simple.Input | PARTIAL: JB2/AG14, synchronizacja i timestamp FIFO | Symulowany loopback PASS; fizyczny loopback NOT_RUN |
-| DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | PARTIAL: HP0 AXI DDR reader + upstream DMA/CRI; CoreDMA API pending | RTL15 tests; physical DMA5 plays/20 pulses/40 edges PASS; API pending |
+| DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | PARTIAL: local scalar CoreDMA API + persistent DDR + FPGA playback PASS; wide/DDMA pending | core-dma-hardware-2026-10-08.json:216 pulses/432 edges; lifecycle/errors PASS |
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
@@ -538,3 +538,31 @@ DMA overall PARTIAL: CoreDMA prepare_record/retrieve/playback_handle exports,
 persistent named trace storage, lifecycle/limits and API hardware tests still
 missing. No claim that ordinary ARTIQ CoreDMA experiments already work.
 Next step reuse M-Labs recorder/runtime with ZynqMP storage/CSR adapters.
+
+## Standard local CoreDMA API — physical PASS, 2026-10-08
+
+Preserved M-Labs recorder/runtime originals and standard ABI/record format.
+ZynqMP adapters redirect recording output, use32 fixed64KiB uncached DDR
+slots at0x22000000–0x22200000 and drive already verified FPGA DMA CSRs.
+Committed traces survive ELF replacement and uncaught exception recovery;
+abandoned recorder cleared without touching other traces or resettable heaps.
+NAC3 tuple ObjectHeader changed return ABI: plain older16-byte DmaTrace
+initially decoded wrong pointer; pinned compiler needs24 bytes/header8.
+Adapter/compile-time offsets fixed this; CoreDMA handle list also PASS.
+
+Final suite3 cycles/21 artiq_run invocations,216 validated pulses/432 actual
+JB1→JB2 edges. Named/handle playback,100us and64ns pulses with64ns gaps,
+fixed120ns input latency PASS. Timeline restore/advance, overwrite, erase,
+missing/stale handles, full32 slots, trace/name bounds, empty name/trace,
+nested recording, DDMA rejection, invalid pointer, native DMA underflow/ACK
+and next playback PASS. Uncaught host DMAError/device traceback then next
+kernel PASS. Stored trace survives uncaught ValueError during another record
+with same TCP connection. Regression TTL10/10, exception10, management9,
+Ethernet DHCP/ICMP20/TCP1080/GEMerrors0 PASS. See evidence/core-dma-* and
+docs/CORE_DMA.md; make test-hw-core-dma.
+
+Final worker build/kernel-worker-dma-final. New BOOT.BIN prepared at
+build/sd-core-dma-2026-10-08, packaging PASS; its cold SD boot NOT_RUN.
+Current physical card still earlier validated non-DMA image. Current board
+runs CoreDMA firmware through JTAG. Wide RTIO/DDMA, general hardware-stall
+recovery and production DDR/MMU/cache qualification remain incomplete.

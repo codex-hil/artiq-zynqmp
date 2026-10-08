@@ -60,3 +60,7 @@ artiq_run --device-db examples/device_db_genesys.py \
 
 Loopback requires the verified JB1→JB2 jumper. The current runtime remains
 `kernel-bringup`; successful SD boot does not imply DMA/DRTIO completeness.
+
+New CoreDMA image (2026-10-08): build/sd-core-dma-2026-10-08/BOOT.BIN.
+Packaging PASS, new-image cold SD boot NOT_RUN; previous physical boot
+PASS above applies to the earlier image still on the card. See CORE_DMA.md.
