@@ -155,3 +155,14 @@ not a catchable ARTIQ exception. Output WAIT is polled with a one-second
 bring-up bound; input status polls have at least a one-second bound (extended
 to a finite future timeout). CPU0's existing 30-second watchdog still applies.
 Use no infinite/blocking input waits for production experiments yet.
+
+2026-10-08 physical test attempt: USB permissions restored; runtime recovered.
+The fitted jumper has not yielded input edges. Moninj output toggles 0→1
+while the input remains0. Physical loopback remains unvalidated. Reproducer:
+`make test-hw-ttl-loopback BOARD_IP=192.168.2.16 O=/large-disk/results`.
+The fixture reports raw rising/falling/extra timestamps and a PASS/FAIL marker;
+the runner checks the marker and fails even if artiq_run returns zero.
+It avoids host RPCException on missing edges because that still poisons the
+initial worker. Successful runs must show both edges, 100 us width and
+identical sampled latency across10 runs; precision external timing validation
+still requires an instrument.

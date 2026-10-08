@@ -392,3 +392,26 @@ CPU0 build-vivado/rtio-kernel-services, CPU1 build/kernel-worker-rtio-final.
 Evidence: evidence/rtio-kernel-{build,hardware,negative,ethernet,management}-2026-10-07.json.
 Prepared normal ARTIQ GenesysLoopback (100 us pulse): offline compilation and
 on-board relocation PASS, execution NOT_RUN until physical jumper testing.
+
+## Physical JB1→JB2 attempt — 2026-10-08
+
+User fitted the jumper. First actual artiq_run loopback reached CPU1 RPC
+but failed with connection reset; no valid edge result, hence NOT_VALIDATED.
+Recovery/inspection blocked by USB write ACL lost after host restart:
+Genesys serial210383B7F02D is USB001/006, codex-hil has read-only access.
+Current restarted hw_server container is 172.17.0.2 (previous .3 stale).
+CPU0 management remains responsive. Both-edge/100 us width fixture compiles;
+hardware execution pending diagnosis/recovery, not declared PASS.
+Evidence: evidence/ttl-loopback-2026-10-08.json.
+
+USB access restored 2026-10-08. Mailbox showed unsupported host RPCException
+from the first failed validation, not PL underflow (o_status=0). Full runtime
+recovery passed Ethernet tests. Updated both-edge fixture reports FAIL
+without throwing RPCException; runner rejects FAIL even when artiq_run exits0.
+Physical attempt still FAIL: rising/falling timestamps -1. Independent
+moninj override drives output probe 0→1, but input probe stays0. Pins AE13/
+AG14 verified against Digilent master XDC. Jumper placement/contact needs
+inspection; do not declare TTL/loopback PASS. Output override removed and
+output returned low; worker and management remain running.
+`make test-hw-ttl-loopback` repeats 10 genuine artiq_run kernels and validates
+both edges, exact12500mu/100us width, no extra edge and fixed sampled latency.

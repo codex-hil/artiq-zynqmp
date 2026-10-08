@@ -84,3 +84,8 @@ test-hw-network-kernel:
 test-hw-rtio-kernel:
 	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
 	artiq-host python scripts/test_network_kernel_hw.py --rtio --ip="$(BOARD_IP)" --output="$(abspath $(O))/rtio-kernel"
+
+.PHONY: test-hw-ttl-loopback
+test-hw-ttl-loopback:
+	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
+	artiq-host python scripts/test_ttl_loopback_hw.py --ip="$(BOARD_IP)" --output="$(abspath $(O))/ttl-loopback"
