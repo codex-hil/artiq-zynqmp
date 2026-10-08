@@ -37,7 +37,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
 | RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL runtime: TCP1381 → rzeczywisty loader i wykonanie CPU1 → scalar RPC, physical TTL i native exception/unwind/recovery PASS; complex returns/cancellation pending | artiq_run/RPC 5/5; TTL10/10; exception suite30 experiments PASS; ABI QEMU/hardware PASS |
-| DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
+| DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; active clock/PHY investigation | Brak recovered clock/latency/link-training tests |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: physical SD BOOT.BIN PASS; QSPI NOT_RUN | sd-cold-boot-2026-10-08.json |
 
 ## Wyniki wykonane
@@ -566,3 +566,11 @@ build/sd-core-dma-2026-10-08, packaging PASS; its cold SD boot NOT_RUN.
 Current physical card still earlier validated non-DMA image. Current board
 runs CoreDMA firmware through JTAG. Wide RTIO/DDMA, general hardware-stall
 recovery and production DDR/MMU/cache qualification remain incomplete.
+
+
+2026-10-08 DRTIO reprioritized for Kasli-master DAC satellite. Board clock
+recovery resources confirmed in Digilent documentation: Si5342 IC46,
+FPGA-driven SFP_REC_CLK input, cleaned GTH quad224 reference. Design and
+validation sequence: docs/DRTIO_CLOCKING.md. No physical DRTIO/clock-lock
+test has run; GTHE4 adapter/profile/reset FSM still missing. Existing
+local RTIO firmware and bitstreams were not changed.
