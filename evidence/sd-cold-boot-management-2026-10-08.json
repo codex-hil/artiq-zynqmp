@@ -1,0 +1,38 @@
+{
+  "kind": "hardware",
+  "time": 1791465436.3866572,
+  "ip": "192.168.2.16",
+  "scope": "Rust management integrated with CPU1 kernel-bringup; full ARTIQ support pending",
+  "tests": {
+    "upstream_commmgmt": "PASS",
+    "a53_ps_pl_rtio_counter": "PASS",
+    "clear_log": "PASS",
+    "fragmented_and_concurrent": "PASS",
+    "oversized_key_rejected": "PASS",
+    "unsupported_write_rejected": "PASS",
+    "real_artiq_coremgmt_cli": "PASS",
+    "real_cli_config_read": "PASS",
+    "kernel_system_info": "PASS"
+  },
+  "client_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "runtime_log": "U1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nManagement TCP connection accepted.\n",
+  "metadata": {
+    "ip": "192.168.2.16",
+    "mac": "02:38:3b:7f:02:0d",
+    "board": "genesys_zu-5ev",
+    "runtime_mode": "kernel-bringup"
+  },
+  "rtio": {
+    "before": 6917011798,
+    "after": 6983711911,
+    "estimated_hz": 124961990.87055357,
+    "method": "physical A53 MMIO -> Rust -> management TCP vs host monotonic, tolerance5%; not precision clock calibration"
+  },
+  "cli_log": "Management TCP connection accepted.\nManagement TCP connection accepted.\nManagement configuration read.\nManagement configuration read.\nManagement TCP connection accepted.\nManagement TCP connection accepted.\nManagement TCP connection accepted.\n",
+  "cli_config": [
+    "genesys_zu-5ev",
+    "kernel-bringup",
+    "7167029916"
+  ],
+  "status": "PASS"
+}

@@ -380,7 +380,8 @@ networking and management/RPC integration remain pending.
 
 ## Standalone SD boot preparation (2026-10-08)
 
-Complete current two-core BOOT.BIN is packaged; cold SD boot NOT_RUN.
+Complete current two-core BOOT.BIN passed physical cold SD boot (one power
+cycle), networking/management, kernels/RPC, TTL10/10 and exception recovery.
 See [SD boot instructions](docs/SD_BOOT.md) for reproducible packaging,
 memory layout, card preservation and physical acceptance checks.
 Updated CPU0 + embedded CPU1 image passed JTAG networking and TTL10/10.

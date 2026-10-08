@@ -1,7 +1,9 @@
 # Standalone Genesys ZU SD boot
 
-Status: image packaging completed; cold SD boot is NOT_RUN. JTAG validation
-of the embedded CPU1 image is recorded separately and is not SD evidence.
+Status: physical cold SD boot PASS on 2026-10-08 (one power cycle).
+BootROM/FSBL loaded PL and both CPU images without JTAG setup/download.
+Ethernet, management, real kernels/RPC, TTL10/10 and native exceptions PASS.
+Evidence: evidence/sd-cold-boot-2026-10-08.json and accompanying UART/test logs.
 
 Use the existing Piotr DDR/SPD FSBL port and matching PS configuration,
 AMD PMU firmware, local-RTIO bitstream and current CPU0 runtime. Rebuild
@@ -40,6 +42,21 @@ with board power off, select the documented Genesys SD boot setting, and
 power-cycle: volatile alternate JTAG boot settings disappear at power loss.
 Capture UART from power-on, verify PMU/FSBL/PL and CPU1 startup, DHCP,
 management and genuine artiq_run. Run the loopback and exception suites.
-Record cold-power-cycle repetitions separately; none has yet passed.
+Record cold-power-cycle repetitions separately; one cycle has passed.
 
 No Linux, U-Boot, Vitis or PetaLinux is part of this boot image.
+
+Select JP3 pins labeled SD with power off; insert card in J9.
+Source: https://digilent.com/reference/programmable-logic/genesys-zu/reference-manual#microSD_boot_mode
+
+After power-on the board obtained192.168.2.16 by DHCP. On this host:
+
+```sh
+artiq_coremgmt -D 192.168.2.16 log
+artiq_run --device-db examples/device_db_genesys.py \
+  --dataset-db /srv/codex-hil-data/artiq-zynqmp/build/sd-user-datasets.mdb \
+  examples/genesys_loopback.py
+```
+
+Loopback requires the verified JB1→JB2 jumper. The current runtime remains
+`kernel-bringup`; successful SD boot does not imply DMA/DRTIO completeness.

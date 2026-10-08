@@ -1,0 +1,123 @@
+{
+  "kind": "hardware",
+  "time": 1791465426.5948973,
+  "ip": "192.168.2.16",
+  "scope": "physical JB1 output/JB2 input; both edges, 100 us width",
+  "status": "PASS",
+  "runs": [
+    {
+      "index": 0,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 5632010739 5632010754 5632023254 -1\nTTL_LOOPBACK_PASS 5632010739 5632010754 5632023254 15 12500\n",
+      "stderr": "",
+      "start": 5632010739,
+      "rise": 5632010754,
+      "fall": 5632023254,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 1,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 5689591618 5689591633 5689604133 -1\nTTL_LOOPBACK_PASS 5689591618 5689591633 5689604133 15 12500\n",
+      "stderr": "",
+      "start": 5689591618,
+      "rise": 5689591633,
+      "fall": 5689604133,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 2,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 5750127582 5750127597 5750140097 -1\nTTL_LOOPBACK_PASS 5750127582 5750127597 5750140097 15 12500\n",
+      "stderr": "",
+      "start": 5750127582,
+      "rise": 5750127597,
+      "fall": 5750140097,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 3,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 5809955761 5809955776 5809968276 -1\nTTL_LOOPBACK_PASS 5809955761 5809955776 5809968276 15 12500\n",
+      "stderr": "",
+      "start": 5809955761,
+      "rise": 5809955776,
+      "fall": 5809968276,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 4,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 5869779505 5869779520 5869792020 -1\nTTL_LOOPBACK_PASS 5869779505 5869779520 5869792020 15 12500\n",
+      "stderr": "",
+      "start": 5869779505,
+      "rise": 5869779520,
+      "fall": 5869792020,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 5,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 5933172703 5933172718 5933185218 -1\nTTL_LOOPBACK_PASS 5933172703 5933172718 5933185218 15 12500\n",
+      "stderr": "",
+      "start": 5933172703,
+      "rise": 5933172718,
+      "fall": 5933185218,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 6,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 5992089705 5992089720 5992102220 -1\nTTL_LOOPBACK_PASS 5992089705 5992089720 5992102220 15 12500\n",
+      "stderr": "",
+      "start": 5992089705,
+      "rise": 5992089720,
+      "fall": 5992102220,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 7,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 6049488570 6049488585 6049501085 -1\nTTL_LOOPBACK_PASS 6049488570 6049488585 6049501085 15 12500\n",
+      "stderr": "",
+      "start": 6049488570,
+      "rise": 6049488585,
+      "fall": 6049501085,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 8,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 6108848450 6108848465 6108860965 -1\nTTL_LOOPBACK_PASS 6108848450 6108848465 6108860965 15 12500\n",
+      "stderr": "",
+      "start": 6108848450,
+      "rise": 6108848465,
+      "fall": 6108860965,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 9,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 6167428770 6167428785 6167441285 -1\nTTL_LOOPBACK_PASS 6167428770 6167428785 6167441285 15 12500\n",
+      "stderr": "",
+      "start": 6167428770,
+      "rise": 6167428785,
+      "fall": 6167441285,
+      "latency_mu": 15,
+      "width_mu": 12500
+    }
+  ],
+  "width_mu": 12500,
+  "width_us": 100,
+  "latency_mu": 15,
+  "ref_period_ns": 8
+}

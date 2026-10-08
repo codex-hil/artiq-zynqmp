@@ -1,0 +1,21 @@
+{
+  "kind": "hardware",
+  "time": 1791465410.4677424,
+  "ip": "192.168.2.16",
+  "mac": "02:38:3b:7f:02:0d",
+  "scope": "AMD lwIP/GEM diagnostic, not ARTIQ management/RPC",
+  "tests": {
+    "icmp": "PASS",
+    "identity": "PASS",
+    "tcp_echo": "PASS"
+  },
+  "ping_log": "PING 192.168.2.16 (192.168.2.16) from 192.168.2.107 enp1s0: 56(84) bytes of data.\n64 bytes from 192.168.2.16: icmp_seq=1 ttl=255 time=0.089 ms\n64 bytes from 192.168.2.16: icmp_seq=2 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.16: icmp_seq=3 ttl=255 time=0.095 ms\n64 bytes from 192.168.2.16: icmp_seq=4 ttl=255 time=0.119 ms\n64 bytes from 192.168.2.16: icmp_seq=5 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.16: icmp_seq=6 ttl=255 time=0.130 ms\n64 bytes from 192.168.2.16: icmp_seq=7 ttl=255 time=0.085 ms\n64 bytes from 192.168.2.16: icmp_seq=8 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.16: icmp_seq=9 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.16: icmp_seq=10 ttl=255 time=0.124 ms\n64 bytes from 192.168.2.16: icmp_seq=11 ttl=255 time=0.156 ms\n64 bytes from 192.168.2.16: icmp_seq=12 ttl=255 time=0.169 ms\n64 bytes from 192.168.2.16: icmp_seq=13 ttl=255 time=0.121 ms\n64 bytes from 192.168.2.16: icmp_seq=14 ttl=255 time=0.117 ms\n64 bytes from 192.168.2.16: icmp_seq=15 ttl=255 time=0.129 ms\n64 bytes from 192.168.2.16: icmp_seq=16 ttl=255 time=0.076 ms\n64 bytes from 192.168.2.16: icmp_seq=17 ttl=255 time=0.130 ms\n64 bytes from 192.168.2.16: icmp_seq=18 ttl=255 time=0.137 ms\n64 bytes from 192.168.2.16: icmp_seq=19 ttl=255 time=0.159 ms\n64 bytes from 192.168.2.16: icmp_seq=20 ttl=255 time=0.086 ms\n\n--- 192.168.2.16 ping statistics ---\n20 packets transmitted, 20 received, 0% packet loss, time 1979ms\nrtt min/avg/max/mdev = 0.076/0.113/0.169/0.027 ms\n",
+  "neighbor": "192.168.2.16 lladdr 02:38:3b:7f:02:0d REACHABLE \n",
+  "tcp": {
+    "connections": 5,
+    "exchanges": 1080,
+    "verified_bytes": 1129210,
+    "sha256": "c9dde4e1ff0e7390e8ab8d7fc30fd17579376998ddbb814b8c7f095b83eb3049",
+    "elapsed_s": 1.0321002809996571
+  }
+}

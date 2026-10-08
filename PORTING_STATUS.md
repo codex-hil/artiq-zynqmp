@@ -38,7 +38,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
 | RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL runtime: TCP1381 → rzeczywisty loader i wykonanie CPU1 → scalar RPC, physical TTL i native exception/unwind/recovery PASS; complex returns/cancellation pending | artiq_run/RPC 5/5; TTL10/10; exception suite30 experiments PASS; ABI QEMU/hardware PASS |
 | DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
-| SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: kod/konfiguracja bez odtworzonego boot.bin | NOT_RUN |
+| SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: physical SD BOOT.BIN PASS; QSPI NOT_RUN | sd-cold-boot-2026-10-08.json |
 
 ## Wyniki wykonane
 
@@ -490,3 +490,22 @@ awaits user information; no removable block device is visible on the host.
 large disk and preserved on card. BOOT.BIN3,413,000bytes copied, fsync/sync
 and readback SHA-256 match PASS. Evidence sd-card-write-2026-10-08.json.
 Cold board SD boot still NOT_RUN; card unmount requires greg sudo.
+
+## Autonomous cold SD boot — physical PASS, 2026-10-08
+
+User moved verified32GB card into J9, selected JP3 SD and switched board
+on after UART capture armed. Log explicitly reports SD1 level-shifter boot,
+BOOT.BIN, successful PL programming, all partitions loaded, CPU1 release
+at0x20000000 and final CPU0 handoff. No JTAG download, register setup or
+reset during this test. Both core services started, DHCP192.168.2.16.
+
+Post-boot acceptance: management9 tests/actual artiq_coremgmt PASS; network
+kernels5/5 plus native underflow/recovery PASS; physical TTL loopback10/10
+(100us, fixed120ns input latency) PASS; Ethernet ICMP20/20 and1080 TCP echo
+exchanges PASS; native exception suite3 cycles/30 invocations PASS, including
+same-connection recovery and real device traceback. Evidence sd-cold-boot-*
+including complete UART log and SHA-256 linked to written SD image.
+
+One cold power cycle tested. Earlier SD NOT_RUN notes are historical.
+DDR/cache/MMU production qualification, repeat cold boots, fatal-trap/timeout
+recovery, DMA/analyzer/moninj/DRTIO and QSPI remain incomplete.

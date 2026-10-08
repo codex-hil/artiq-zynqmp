@@ -86,3 +86,8 @@ Cold SD boot NOT_RUN; do not claim autonomous boot from JTAG evidence.
 Embedded CPU1 bridge build/sd-worker-2026-10-08/worker-boot.elf clears
 cold mailbox; current CPU0 waits up to5s for READY. JTAG networking and
 TTL10/10 PASS. Read docs/SD_BOOT.md; no card/flash writes performed.
+
+Latest: physical cold SD boot PASS2026-10-08, one power cycle. Board runs
+from card/J9/JP3 SD without JTAG download/setup. Evidence sd-cold-boot-*.
+Management9, network5, TTL10/10, exception30 and Ethernet PASS. Prior SD
+NOT_RUN notes historical; repeat power cycles and production qualification pending.
