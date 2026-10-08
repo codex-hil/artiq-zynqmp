@@ -1,6 +1,9 @@
 # Genesys local-RTIO variant. Update host to the actual DHCP address.
 # Network kernels/RPC and local RTIO bindings work; physical loopback pending.
 device_db = {
+    "core_dma": {
+        "type": "local", "module": "artiq.coredevice.dma", "class": "CoreDMA",
+    },
     "core": {
         "type": "local",
         "module": "artiq.coredevice.core",

@@ -100,3 +100,8 @@ test-hw-ttl-loopback:
 test-hw-kernel-exceptions:
 	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
 	artiq-host python scripts/test_kernel_exceptions_hw.py --ip="$(BOARD_IP)" --output="$(abspath $(O))/kernel-exceptions"
+
+.PHONY: test-hw-core-dma
+test-hw-core-dma:
+	$(if $(BOARD_IP),,$(error Specify BOARD_IP= actual DHCP address))
+	artiq-host python scripts/test_core_dma_hw.py --ip="$(BOARD_IP)" --output="$(abspath $(O))/core-dma"
