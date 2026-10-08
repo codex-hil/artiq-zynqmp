@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/m-labs/artiq-zynq",
+  "revision": "15c856f315969b5c1d01d2917ed52f1b0f199677",
+  "files": [
+    {
+      "source": "src/libksupport/src/kernel/dma.rs",
+      "sha256": "7e0344f655bf4c7cfe17b092fbc2576397b81dd60baba68d1017fc841071c4f1"
+    },
+    {
+      "source": "src/runtime/src/rtio_dma.rs",
+      "sha256": "50c667111f97525165c6265af7f91b62c652e0b2d502e4d53d4d1c3a07466817"
+    },
+    {
+      "source": "LICENSE",
+      "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+    }
+  ]
+}

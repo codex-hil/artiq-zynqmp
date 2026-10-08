@@ -29,6 +29,34 @@ static uint64_t read64(uintptr_t a) {
  uint32_t hi=read32(a), lo=read32(a+4); return ((uint64_t)hi<<32)|lo;
 }
 static void write64(uintptr_t a,uint64_t v) {write32(a,v>>32);write32(a+4,v);}
+/* M-Labs DMA CSR sequence, generated ZynqMP CSR widths and bounded wait. */
+uint32_t worker_dma_playback(int64_t timestamp,uint32_t address,uint32_t *channel,int64_t *error_timestamp) {
+#ifdef RTIO_DMA_ENABLE
+ if(read32(RTIO_DMA_ENABLE))return 16;
+ if(RTIO_DMA_BASE_ADDRESS_WORDS==2)write64(RTIO_DMA_BASE_ADDRESS,address);
+ else write32(RTIO_DMA_BASE_ADDRESS,address);
+ write64(RTIO_DMA_TIME_OFFSET,(uint64_t)timestamp);
+ uint32_t old=read32(CRI_CON_SELECTED);
+ write32(CRI_CON_SELECTED,1);
+ /* Trace stores use volatile byte writes with cache off; make DDR visible. */
+ asm volatile("dsb sy" ::: "memory");
+ write32(RTIO_DMA_ENABLE,1);
+ int64_t deadline=worker_counter()+3125000000LL; /*25s, before transport watchdog*/
+ while(read32(RTIO_DMA_ENABLE)) {
+  if(worker_counter()>deadline){write32(CRI_CON_SELECTED,old);return 16;}
+ }
+ write32(CRI_CON_SELECTED,old);
+ uint32_t bus_error=read32(RTIO_DMA_WB_READER_BUS_ERROR);
+ uint32_t error=read32(RTIO_DMA_ERROR);
+ *channel=read32(RTIO_DMA_ERROR_CHANNEL);
+ *error_timestamp=(int64_t)read64(RTIO_DMA_ERROR_TIMESTAMP);
+ if(error)write32(RTIO_DMA_ERROR,1);
+ return bus_error?4:error;
+#else
+ (void)timestamp;(void)address;(void)channel;(void)error_timestamp;
+ return 8;
+#endif
+}
 int64_t worker_now(void) {return read64(RTIO_NOW);}
 void worker_at(int64_t t) {write64(RTIO_NOW,(uint64_t)t);}
 uint32_t worker_output(int32_t target,int32_t data) {

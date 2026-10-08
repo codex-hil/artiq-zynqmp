@@ -3,6 +3,7 @@ extern crate alloc;
 mod eh_artiq;
 mod kernel;
 mod rpc;
+mod dma;
 use core::cell::UnsafeCell;
 use core::{
     alloc::{GlobalAlloc, Layout},
@@ -214,6 +215,7 @@ fn valid_elf(b: &[u8]) -> bool {
 }
 #[no_mangle]
 pub extern "C" fn worker_main() -> ! {
+    dma::abort_recording();
     unsafe {
         (&mut *ALLOCATOR.0.get()).init(ptr::addr_of_mut!(HEAP.0).cast::<u8>(), HEAP_SIZE / 2);
         reset_kernel_heap();
@@ -229,6 +231,7 @@ pub extern "C" fn worker_main() -> ! {
     loop {
         match command() {
             1 => {
+                dma::abort_recording();
                 drop(library.take());
                 unsafe {
                     reset_kernel_heap();
@@ -262,6 +265,7 @@ pub extern "C" fn worker_main() -> ! {
                     unsafe {
                         worker_invoke(entry);
                     }
+                    dma::abort_recording();
                     unsafe {
                         kernel::KERNEL_IMAGE = core::ptr::null();
                     }
@@ -421,6 +425,10 @@ extern "C" fn rtio_output(target: i32, data: i32) {
     if target != 0 && target != 0x102 && target != 0x103 {
         fail(b"RTIO unsupported local TTL target");
     }
+    if dma::is_recording() {
+        dma::record_output(target, data);
+        return;
+    }
     match unsafe { worker_output(target, data) } {
         0 => (),
         2 => artiq_raise!(
@@ -468,6 +476,15 @@ extern "C" fn rtio_input_data(channel: i32) -> i32 {
     unsafe { worker_input_data() }
 }
 fn resolve(name: &[u8]) -> Option<u32> {
+    for (symbol, address) in [
+        (b"dma_record_start".as_slice(), dma::dma_record_start as usize),
+        (b"dma_record_stop".as_slice(), dma::dma_record_stop as usize),
+        (b"dma_erase".as_slice(), dma::dma_erase as usize),
+        (b"dma_retrieve".as_slice(), dma::dma_retrieve as usize),
+        (b"dma_playback".as_slice(), dma::dma_playback as usize),
+    ] {
+        if name == symbol { return Some(address as u32); }
+    }
     macro_rules! sym {($($s:ident),*) => {$(if name==stringify!($s).as_bytes() {return Some($s as usize as u32);})*};}
     sym!(
         rpc_send,
