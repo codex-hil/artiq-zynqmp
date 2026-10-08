@@ -6,7 +6,7 @@ TTL loopback i local CoreDMA (216 impulsów/432 zbocza); szczegóły i granice
 w docs/CORE_DMA.md. To runtime integracyjny, nie kompletny standardowy core.
 Starszy obraz SD przeszedł cold boot; nowy obraz CoreDMA jeszcze NOT_RUN.
 Aktualny priorytet: satelita DRTIO do istniejącego Kasli master dla przyszłego
-DAC AD9172. PHY GTHE4 i symulacje protokołu mają build/simulation PASS;
+DAC AD9172. PHY GTHE4 ma build i fizyczny internal-PMA PRBS7 PASS; symulacje protokołu PASS;
 fizyczny link i recovered-clock/jitter-cleaner testy pozostają NOT_RUN.
 
 Punktem bazowym jest praca Piotra: `main@e15b8a2` i `wip@b25e75b`.
@@ -40,7 +40,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
 | RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL runtime: TCP1381 → rzeczywisty loader i wykonanie CPU1 → scalar RPC, physical TTL i native exception/unwind/recovery PASS; complex returns/cancellation pending | artiq_run/RPC 5/5; TTL10/10; exception suite30 experiments PASS; ABI QEMU/hardware PASS |
-| DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | PARTIAL: raw GTHE4 PHY OOC build PASS, protocol simulation PASS; satellite integration MISSING | 2 profiles + 19 legacy/19 current RTL tests; hardware NOT_RUN |
+| DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | PARTIAL: board GTH diagnostic + internal PMA PRBS7 hardware PASS; satellite integration MISSING | 3 reset/negative-control/recovery cycles; 19 legacy/19 current RTL tests; remote link NOT_RUN |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: physical SD BOOT.BIN PASS; QSPI NOT_RUN | sd-cold-boot-2026-10-08.json |
 
 ## Wyniki wykonane
@@ -606,3 +606,43 @@ located in archived sources; exact origins/hashes in clock-source-origins.json.
 HDMI profile is not suitable directly for125MHz SFP lock. Its I2C error
 handling needs explicit propagation before reuse. Physical chip readback,
 board-revision pin confirmation, profiles and lock tests still pending.
+
+
+## 2026-10-08: physical GTH internal PMA loopback
+
+Separate diagnostic board bitstream reuses Piotr PS/HPM0/Migen integration,
+selects SFP (D10=1) and keeps module TX disabled (AB13=1). GTH X0Y7 uses
+unchanged factory 156.25MHz reference, 2.5Gb/s raw20 PHY, RX/TX word clocks
+125MHz. Three reset cycles passed CPLL/reset/clock status, clock ratios
+within 1%, zero settled PRBS7 errors. TX PRBS15 / RX PRBS7 negative control
+registered >12 million error cycles on each trial; after full GTH reset,
+PRBS7 recovered with zero errors. Switching patterns alone did NOT recover
+in the initial trial; the diagnostic does not expose RXPRBSCNTRESET, so
+explicit reset is required. These are error-cycle counts, not BER estimates.
+
+Full board build passed DRC and corrected timing: WNS +2.783ns, WHS +0.017ns,
+all three Gray bus-skew checks passed (>6ns slack against 8ns requirement).
+Build used resumed synthesis/routing after checked constraints corrections;
+all initial and resumed logs are retained in build-vivado/
+drtio-diagnostic-relocated-2026-10-08. This is not a clean-build claim.
+Compatibility fixes are local to diagnostic platform/build scripts:
+separate each IP's output directory, relocate only copied JSON XCI generation
+paths, replace obsolete project-mode synth_ip with IP runs, select flip-flops
+rather than similarly named logic when applying Gray constraints, and target
+first-stage mr_ff register D pins (old Migen targets nets, ineffective here).
+Original IP sources and archived Migen remain unchanged.
+
+Evidence: evidence/drtio-top-build-2026-10-08.json and
+evidence/drtio-phy-loopback-2026-10-08.{json,log}. Remote Kasli link, optical
+path, RX symbol alignment, deterministic latency, Si5342 recovered-input
+lock and ARTIQ satellite firmware remain NOT_RUN/MISSING. Internal PMA
+loopback does not validate the external SFP/mux electrical path. No Si5342
+configuration writes were performed.
+
+
+After diagnostic testing, the prior CoreDMA PS/PL/firmware was restored.
+DHCP, 20/20 ICMP, five connections/1080 byte-exact TCP echo exchanges and
+zero GEM error counters passed. Standard artiq_run genesys_dma.py then
+passed handle/name playback with 8 physical pulses/16 exact loopback edges.
+Evidence: evidence/drtio-restored-core-2026-10-08.json. The board is left
+running the integration runtime at192.168.2.16, not the GTH diagnostic.

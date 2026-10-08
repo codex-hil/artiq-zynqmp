@@ -1,0 +1,18 @@
+{
+  "kind": "software",
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "missing_bitstream",
+      "rejected": true
+    },
+    {
+      "case": "bad_timing",
+      "rejected": true
+    },
+    {
+      "case": "bad_skew",
+      "rejected": true
+    }
+  ]
+}

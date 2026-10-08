@@ -1,0 +1,8 @@
+PHY_NEGATIVE_CONTROL cycle=0 mismatch_errors=12971596 recovery_errors=0
+PHY_RESULT cycle=0 status=895 boot_delta=126698738 rx_delta=126700139 tx_delta=126700139 errors=0
+PHY_NEGATIVE_CONTROL cycle=1 mismatch_errors=12943613 recovery_errors=0
+PHY_RESULT cycle=1 status=895 boot_delta=126717067 rx_delta=126718467 tx_delta=126718467 errors=0
+PHY_NEGATIVE_CONTROL cycle=2 mismatch_errors=12920321 recovery_errors=0
+PHY_RESULT cycle=2 status=895 boot_delta=126831362 rx_delta=126832762 tx_delta=126832762 errors=0
+TEST GTHE4_INTERNAL_PMA_PRBS7 PASS
+TEST REMOTE_DRTIO NOT_RUN

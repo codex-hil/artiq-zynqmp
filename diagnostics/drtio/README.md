@@ -1,8 +1,8 @@
 # Genesys single-SFP DRTIO PHY preparation
 
-This stage generates and synthesizes the GTHE4 PHY and runs upstream DRTIO
-protocol simulations. It does not yet produce a board-level bitstream or a
-working DRTIO satellite. Clocking plan: ../../docs/DRTIO_CLOCKING.md.
+This stage builds a separate GTHE4 diagnostic board bitstream and runs
+upstream DRTIO protocol simulations. Internal PMA PRBS7 hardware tests
+passed on 2026-10-08. A working DRTIO satellite is still missing. Clocking plan: ../../docs/DRTIO_CLOCKING.md.
 
 ## Reproduce
 
@@ -29,7 +29,7 @@ PRBS selection/error, loopback, PLL lock, RX/TX resetdone, RXOUTCLK,
 and the wizard CDR-stable indication are exposed. The CDR-stable indication
 is a reset-sequencer estimate, not a substitute for measured clock activity
 or a verified remote link. User-clock buffers/active/reset handling are
-external to this generated core and still require a board-level wrapper.
+external to this generated core and are supplied by diag_gateware.py.
 No 10G Ethernet MAC or protocol is instantiated. There is no need to change
 PS Ethernet, existing local RTIO or CPU1 firmware for this build.
 
@@ -46,8 +46,8 @@ latency tests. Kasli125MHz is the initial profile;150MHz requires a separate
 
 1. Confirm board revision and physical SFP mux/clock-forwarding pin mapping.
 2. Read Si5342 identity/status and save its existing register configuration.
-3. Add a separate diagnostic top: user clock buffers, reset control, PRBS
-   counters, recovered-clock counter and PS-readable status. Place/route.
+3. DONE: separate diagnostic top with clock buffers, reset control, PRBS
+   counters and PS-readable status; place/route and internal loopback PASS.
 4. Verify local loopback, then Kasli-to-Genesys RX125MHz and raw symbol stream.
 5. Configure recovered-input jitter attenuation and test lock/reacquisition.
 6. Integrate ARTIQ satellite/auxiliary firmware and synchronized TTL tests.
@@ -74,3 +74,41 @@ The archived revC constraints identify SFP recovered-clock P as A2 and mux
 select as D10 (sel_sfp_not_fmc). Treat these as historical reference only
 until matched against the physical board revision; confirm complementary
 clock pin/electrical standard before driving it.
+
+## Separate board diagnostic
+
+`make drtio-top DRTIO_PS_EXPORT=/path/to/genesys-rtio-dma
+DRTIO_PHY_EXPORT=/path/to/validated156 O=/fresh/output` builds a separate
+PS/HPM0-accessible diagnostic bitstream. Put the command on one line.
+It reuses Piotr's PS export and AXI bridge, selects SFP on D10, and keeps
+external SFP TX disabled. This image replaces local RTIO while loaded.
+It does not implement a satellite or change Si5342 configuration.
+
+Run `make test-drtio-monitor` with the existing Migen Python environment.
+The tests exercise counter wrap, gated error counting and held snapshots.
+Gray counters cross RX/TX clock domains into PS; synthesis must find all
+32 source and destination bits and routing reports the 8ns bus-skew limit.
+
+After exact-cable PS reset, PMU/FSBL startup and PL configuration, run
+`prepare_ps.tcl SERVER PSU_INIT CABLE` using the existing matching DMA PS
+initialization file. All A53 CPUs must be halted. The diagnostic CSR magic
+is `0x44525430`; ordinary RTIO register maps are incompatible. Then:
+
+```sh
+make test-hw-drtio-phy JTAG_SERVER=tcp:172.17.0.2:3121 \
+  CSR_MAP=/path/to/diagnostic/csr-map.json O=/path/to/evidence
+```
+
+The test performs three reset/acquisition cycles in internal near-end PMA
+loopback, checks RX/TX clock ratios against the 125MHz bootstrap counter,
+and requires zero settled PRBS7 errors. A mismatched TX PRBS15 negative
+control must register errors, then PRBS7 must recover after a GTH reset. External SFP TX stays disabled.
+A passing result proves local GTH operation only. Remote DRTIO, recovered
+Si5342 lock, symbol alignment and deterministic latency need separate tests.
+Restore the working local-RTIO/CoreDMA image and matching firmware afterward.
+
+The historical Migen CDC constraint targets nets carrying `mr_ff`, whereas
+Vivado retains that attribute on first-stage registers. This diagnostic
+adds a checked register-D false path and retains explicit Gray bus-skew
+constraints. No archived Migen source is changed. The build verifier rejects
+missing artifacts, unclosed timing and missing/failing bus-skew reports.

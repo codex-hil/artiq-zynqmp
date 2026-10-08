@@ -118,3 +118,17 @@ drtio-phy:
 test-drtio-protocol:
 	mkdir -p "$(abspath $(O))/drtio-protocol"
 	cd "$(abspath $(O))/drtio-protocol" && PYTHONPATH="$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s "$(abspath $(ARTIQ_SOURCE))/artiq/gateware/test/drtio" -t "$(abspath $(ARTIQ_SOURCE))" -v
+
+.PHONY: drtio-top test-drtio-monitor test-hw-drtio-phy
+drtio-top:
+	$(if $(DRTIO_PS_EXPORT),,$(error Specify DRTIO_PS_EXPORT= existing Piotr PS export))
+	$(if $(DRTIO_PHY_EXPORT),,$(error Specify DRTIO_PHY_EXPORT= validated GTH diagnostic IP export))
+	PYTHON="$(PYTHON)" bash diagnostics/drtio/build_top.sh "$(DRTIO_PS_EXPORT)" "$(DRTIO_PHY_EXPORT)" "$(abspath $(O))/drtio-top"
+
+test-drtio-monitor:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/common/artiq:$(CURDIR)/common/migen:$(MISOC_SOURCE)" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_*.py' -v
+
+test-hw-drtio-phy:
+	$(if $(CSR_MAP),,$(error Specify diagnostic CSR_MAP=; original RTIO map is incompatible))
+	$(if $(JTAG_SERVER),,$(error Specify JTAG_SERVER= current hw_server URL))
+	$(PYTHON) diagnostics/drtio/test_phy_hw.py --csr-map="$(CSR_MAP)" --server="$(JTAG_SERVER)" --cable=210383B7F02DA --output="$(abspath $(O))/drtio-phy-hardware"
