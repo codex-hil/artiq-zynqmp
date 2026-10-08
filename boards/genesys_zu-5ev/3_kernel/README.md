@@ -166,3 +166,10 @@ It avoids host RPCException on missing edges because that still poisons the
 initial worker. Successful runs must show both edges, 100 us width and
 identical sampled latency across10 runs; precision external timing validation
 still requires an instrument.
+
+Later 2026-10-08: user corrected adjacent JB1/JB2 jumper; 10/10 physical
+loopback runs PASS. Both edges, 12500mu/100us width, latency15mu/120ns
+identical in every run, no extra edge. This supersedes the initial missing
+input result above. Management remains available. Keep the jumper fitted
+for test-hw-ttl-loopback. Scope is sampled physical loopback, not calibrated
+external timing or full production core qualification.

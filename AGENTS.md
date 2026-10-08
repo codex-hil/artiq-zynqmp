@@ -65,3 +65,9 @@ hardware PASS; rtio_output/input exports enabled. TTL and loopback ELF load
 without execution are checked. Physical JB1 pulses/JB1→JB2 still NOT_RUN.
 make test-hw-rtio-kernel runs without a jumper or output pin transitions.
 Optional --underflow parks CPU1; full runtime reboot required afterward.
+
+2026-10-08: physical JB1→JB2 loopback PASS10/10 after user corrected jumper.
+Both edges, width12500mu=100us, latency15mu=120ns fixed; no extra edge.
+make test-hw-ttl-loopback validates real artiq_run; jumper currently fitted.
+USB ACL restored on001/006; restarted JTAG server172.17.0.2:3121.
+Evidence ttl-loopback-2026-10-08.json supersedes older pending/fail notes.

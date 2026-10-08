@@ -29,7 +29,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | clocks | TCL i FSBL PS PLL; LED counter | Własna inicjalizacja SLCR PLL | AMD; LiteX config/preset | PARTIAL: local-rtio żąda PL0 125 MHz | Estymacja counter/monotonic około 125 MHz PASS (5% tolerancji); nie precyzyjna kalibracja |
 | Ethernet | ENET0 MIO26–37, MDIO76–77; Linux | GEM/PHY/smoltcp; uwagi o ograniczeniach TX | AMD GEM, Linux macb; Zynq7000 NAR3 | PARTIAL: GEM0 bare-metal DHCP/ping/TCP echo fizycznie PASS; Rust management i kernel load/run/scalar RPC fizycznie PASS | MDIO/link/DHCP/20 ping/1,129,210 B TCP PASS; rzeczywisty scalar RPC PASS |
 | AXI | Historyczny read-only slave 0x80000000; usunięty z późniejszego kodu | AFI HP/HPC rejestry, bez ARTIQ | LiteX AXI2Wishbone; MiSoC CSR | PARTIAL: HPM0_FPD -> CSR 0xA0000000; naprawiony importer PS | Symulacja AXI/ID/backpressure/CSR PASS; fizyczny CSR readback przez PS DAP PASS; A53 MMIO counter via TCP PASS |
-| RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Kernel→CSR timeline/input/sample i TTL ELF load hardware PASS; fizyczny loopback NOT_RUN |
+| RTIO | MISSING: tylko migacz LED | MISSING integracja ARTIQ | ARTIQ TSC/Core/SED/KernelInitiator | PARTIAL: prawdziwy upstream RTIO, 2 kanały, coarse 8 ns przy 125 MHz | Kernel→CSR i fizyczny JB1→JB2 TTL loopback 10/10 PASS; 100 us, stałe15mu |
 | TTL output | MISSING | MISSING | ttl_simple.Output | PARTIAL: JB1/AE13, LVCMOS33 z XDC Piotra | Odstęp zboczy 50 taktów w symulacji; fizyczny determinism NOT_RUN |
 | TTL input | MISSING | MISSING | ttl_simple.Input | PARTIAL: JB2/AG14, synchronizacja i timestamp FIFO | Symulowany loopback PASS; fizyczny loopback NOT_RUN |
 | DMA | MISSING | PS/SD/GEM DMA ≠ RTIO DMA | ARTIQ RTIO DMA; zynq DMA adapter | MISSING: brak transportu DDR->CRI ZynqMP | NOT_RUN; suite nie zgłasza sukcesu DMA |
@@ -415,3 +415,18 @@ inspection; do not declare TTL/loopback PASS. Output override removed and
 output returned low; worker and management remain running.
 `make test-hw-ttl-loopback` repeats 10 genuine artiq_run kernels and validates
 both edges, exact12500mu/100us width, no extra edge and fixed sampled latency.
+
+## Physical TTL milestone — PASS, 2026-10-08
+
+After user corrected the jumper from opposite rows to adjacent JB1/JB2,
+10/10 standard artiq_run experiments passed on the physical board. Rising
+and falling timestamps both present, width12500mu=100us in every run,
+loopback latency15mu=120ns identical across10 runs, extra edge=-1. This
+validates the actual kernel→local RTIO→JB1→wire→JB2→input FIFO→host RPC path.
+Measured latency includes output pipeline, wire/input and synchronization;
+it is not isolated pin propagation latency or external oscilloscope accuracy.
+Management remains active after the series. Physical output/input and basic
+experiment milestone now PASS, superseding earlier NOT_RUN/FAIL entries.
+Production core completeness (exceptions, DDR qualification, standalone boot,
+DMA/analyzer/moninj/DRTIO) is not claimed. Evidence ttl-loopback-2026-10-08.json;
+initial failed attempt retained in ttl-loopback-initial-failure-2026-10-08.json.

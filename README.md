@@ -2,12 +2,13 @@
 
 Rozwój kontynuuje `pjedyk/artiq-new`, na gałęzi `bringup/genesys` bazującej
 na `wip@b25e75b`. **Runtime wykonuje już kernela przez Ethernet i obsługuje
-podstawowy RPC na fizycznej Genesys ZU. Pełny core device z TTL pozostaje celem.**
+podstawowy RPC oraz fizyczny TTL output/input na Genesys ZU.**
+
 Host `artiq_run` → AMD/lwIP na CPU0 AArch64 → loader M-Labs na CPU1 AArch32
 → rzeczywiste wykonanie i RPC działa. Pięć uruchomień oraz testy negatywne PASS.
 Management, DDR/UART/IRQ/Ethernet oraz kernel→RTIO timeline/input/sample sprawdzone.
-Eksporty TTL są powiązane z PL; fizyczny output/loopback, RTIO DMA, analyzer/moninj
-i wyjątki pozostają do walidacji lub integracji.
+Fizyczny JB1→JB2 loopback: 10/10 PASS, impuls100 µs, stałe opóźnienie120 ns.
+RTIO DMA, analyzer/moninj, wyjątki i produkcyjna kwalifikacja pozostają do integracji.
 
 Instrukcja buildu/startu/runtime i test bez TTL:
 [boards/genesys_zu-5ev/3_kernel/README.md](boards/genesys_zu-5ev/3_kernel/README.md).

@@ -1,58 +1,137 @@
 {
   "kind": "hardware",
-  "status": "FAIL",
-  "physical_loopback": "NOT_VALIDATED",
-  "board": "Genesys ZU-5EV",
+  "time": 1791456550.7800822,
+  "ip": "192.168.2.16",
+  "scope": "physical JB1 output/JB2 input; both edges, 100 us width",
+  "status": "PASS",
+  "runs": [
+    {
+      "index": 0,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55104160820 55104160835 55104173335 -1\nTTL_LOOPBACK_PASS 55104160820 55104160835 55104173335 15 12500\n",
+      "stderr": "",
+      "start": 55104160820,
+      "rise": 55104160835,
+      "fall": 55104173335,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 1,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55160695650 55160695665 55160708165 -1\nTTL_LOOPBACK_PASS 55160695650 55160695665 55160708165 15 12500\n",
+      "stderr": "",
+      "start": 55160695650,
+      "rise": 55160695665,
+      "fall": 55160708165,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 2,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55220810032 55220810047 55220822547 -1\nTTL_LOOPBACK_PASS 55220810032 55220810047 55220822547 15 12500\n",
+      "stderr": "",
+      "start": 55220810032,
+      "rise": 55220810047,
+      "fall": 55220822547,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 3,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55280309351 55280309366 55280321866 -1\nTTL_LOOPBACK_PASS 55280309351 55280309366 55280321866 15 12500\n",
+      "stderr": "",
+      "start": 55280309351,
+      "rise": 55280309366,
+      "fall": 55280321866,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 4,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55338522352 55338522367 55338534867 -1\nTTL_LOOPBACK_PASS 55338522352 55338522367 55338534867 15 12500\n",
+      "stderr": "",
+      "start": 55338522352,
+      "rise": 55338522367,
+      "fall": 55338534867,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 5,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55397281216 55397281231 55397293731 -1\nTTL_LOOPBACK_PASS 55397281216 55397281231 55397293731 15 12500\n",
+      "stderr": "",
+      "start": 55397281216,
+      "rise": 55397281231,
+      "fall": 55397293731,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 6,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55455842456 55455842471 55455854971 -1\nTTL_LOOPBACK_PASS 55455842456 55455842471 55455854971 15 12500\n",
+      "stderr": "",
+      "start": 55455842456,
+      "rise": 55455842471,
+      "fall": 55455854971,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 7,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55514367332 55514367347 55514379847 -1\nTTL_LOOPBACK_PASS 55514367332 55514367347 55514379847 15 12500\n",
+      "stderr": "",
+      "start": 55514367332,
+      "rise": 55514367347,
+      "fall": 55514379847,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 8,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55573011439 55573011454 55573023954 -1\nTTL_LOOPBACK_PASS 55573011439 55573011454 55573023954 15 12500\n",
+      "stderr": "",
+      "start": 55573011439,
+      "rise": 55573011454,
+      "fall": 55573023954,
+      "latency_mu": 15,
+      "width_mu": 12500
+    },
+    {
+      "index": 9,
+      "returncode": 0,
+      "stdout": "TTL_LOOPBACK_RESULT 55631020502 55631020517 55631033017 -1\nTTL_LOOPBACK_PASS 55631020502 55631020517 55631033017 15 12500\n",
+      "stderr": "",
+      "start": 55631020502,
+      "rise": 55631020517,
+      "fall": 55631033017,
+      "latency_mu": 15,
+      "width_mu": 12500
+    }
+  ],
+  "width_mu": 12500,
+  "width_us": 100,
+  "latency_mu": 15,
+  "ref_period_ns": 8,
   "board_serial": "210383B7F02D",
-  "user_report": "JB pins 1 and 2 connected",
-  "first_attempt": {
-    "result": "FAIL",
-    "error": "ConnectionResetError after CPU1 RPC request",
-    "log": "/srv/codex-hil-data/artiq-zynqmp/build/ttl-loopback-2026-10-08/first-run.log",
-    "cause": "not established; no valid edge result recorded"
-  },
-  "blocker": null,
-  "prepared_tests": {
-    "both_edges_100us_elf_compile": "PASS",
-    "physical_execution": "PENDING"
-  },
-  "required_action": "Inspect jumper placement/contact; no software assertion of a valid JB1-JB2 connection.",
-  "current_jtag_server": "tcp:172.17.0.2:3121",
-  "management": "TCP1380 remains responsive; kernel worker needs diagnosis/recovery",
-  "usb_access": "RESTORED",
-  "worker_failure_cause": "Previous RPC validation raised a host exception unsupported by worker; worker was recovered with full PS/PMU/FSBL/PL/runtime boot.",
-  "continuity": {
-    "forced_output_0": {
-      "output_probe": 0,
-      "input_probe": 0
-    },
-    "forced_output_1": {
-      "output_probe": 1,
-      "input_probe": 0
-    },
-    "output_restored_low": true,
-    "method": "upstream moninj override plus actual output/input probes through DAP"
-  },
-  "current_runtime": "RUNNING; management and worker restored; latest failed loopback completes without poisoning worker",
-  "pin_mapping": {
-    "JB1_output": "AE13",
-    "JB2_input": "AG14",
-    "source": "https://github.com/Digilent/digilent-xdc/blob/master/Genesys-ZU-5EV-D-Master.xdc"
-  },
-  "physical_test": {
-    "kind": "hardware",
-    "time": 1791456231.861372,
-    "ip": "192.168.2.16",
-    "scope": "physical JB1 output/JB2 input; both edges, 100 us width",
-    "status": "FAIL",
-    "runs": [
-      {
-        "index": 0,
-        "returncode": 0,
-        "stdout": "TTL_LOOPBACK_RESULT 15242346582 -1 -1 -1\nTTL_LOOPBACK_FAIL\n",
-        "stderr": ""
-      }
-    ],
-    "failure": "Physical loopback failed on run 0; inspect raw timestamps"
+  "physical_loopback": "PASS",
+  "latency_ns": 120,
+  "management_after": "kernel-bringup; artiq_coremgmt actual config read succeeded",
+  "history": "Initial test failed with jumper across rows; user moved jumper. Prior evidence preserved separately.",
+  "limitations": [
+    "Loopback timestamps sampled at 8 ns; no external oscilloscope calibration",
+    "Exception/unwind, full DDR qualification, DMA/analyzer/moninj/DRTIO and standalone boot still pending"
+  ],
+  "artifacts_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-rtio-final/worker32.elf": "626b0c54f014b7a1076c6112ffd9d84b28e01e342847eae1804eea03a57655ec",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-kernel-services/amd/app/build/lwip_echo_server.elf": "ad9993683cbe850094642de12026bcbce407caffdb81303630f3a2df51cb0933",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-local-rtio/migen-build/top.bit": "de421e03b788a487d8b2f05bffb1e9ae988a479f694b4bca35a93170e55f270f"
   }
 }
