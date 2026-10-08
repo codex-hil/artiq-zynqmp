@@ -15,6 +15,11 @@ proc select_genesys_target {name} {
 }
 connect -url $server
 for {set i 0} {$i < 4} {incr i} {select_genesys_target "Cortex-A53 #$i"; catch {stop}}
+# With a working SD image inserted, select alternate JTAG BEFORE reset.
+# Otherwise BootROM immediately restarts SD firmware while XSDB downloads
+# a new FSBL, racing CPU state/cache and potentially programming the old PL.
+select_genesys_target PSU
+mwr 0xFF5E0200 0x10E
 select_genesys_target "Cortex-A53 #0"
 rst -system
 after 3000
