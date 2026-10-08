@@ -8,7 +8,9 @@ Host `artiq_run` → AMD/lwIP na CPU0 AArch64 → loader M-Labs na CPU1 AArch32
 → rzeczywiste wykonanie i RPC działa. Pięć uruchomień oraz testy negatywne PASS.
 Management, DDR/UART/IRQ/Ethernet oraz kernel→RTIO timeline/input/sample sprawdzone.
 Fizyczny JB1→JB2 loopback: 10/10 PASS, impuls100 µs, stałe opóźnienie120 ns.
-RTIO DMA, analyzer/moninj, wyjątki i produkcyjna kwalifikacja pozostają do integracji.
+Native wyjątki kernel/RPC/RTIO, reraise/finally oraz odzyskiwanie po błędzie
+bez resetu urządzenia przeszły testy hardware (30 eksperymentów).
+Boot z SD, RTIO DMA, analyzer/moninj i produkcyjna kwalifikacja pozostają do integracji.
 
 Instrukcja buildu/startu/runtime i test bez TTL:
 [boards/genesys_zu-5ev/3_kernel/README.md](boards/genesys_zu-5ev/3_kernel/README.md).

@@ -97,3 +97,19 @@ Fresh CPU0 and CPU1 builds passed; CPU0 UART banners no longer incorrectly
 claim kernels/RTIO exports are unavailable for every worker image.
 Direct unittest initially lacked ARTIQ on PYTHONPATH; rerun with the pinned
 reference/artiq passed actual AXI/RTIO scheduled TTL simulation.
+
+## Native ARM exception integration — 2026-10-08
+
+Preserved M-Labs EHABI/LLVM sources build with Clang19, Cortex-A9 hard-float.
+Removed -flto from the imported unwinder build: GNU final ld cannot consume
+LLVM bitcode. C/Rust force unwind tables; linker exposes bounded exidx/extab.
+Freestanding newlib headers needed _FORTIFY_SOURCE=0 for GCC compilation;
+otherwise stdio requested absent ssp/stdio.h. Existing Rust libunwind abort
+symbol replaces temporary C abort to avoid a duplicate definition.
+
+Uncaught exception packet initially optimized Vec<u8> appends into unaligned
+word stores under CPU1 MMU-off; actual A53 data abort pinpointed the store
+in core1::terminate. Switched to volatile byte stores in the existing mailbox,
+matching the working RPC writer. Explicit worker_invoke boundary prevents
+unwinding into the polling activation. Import origin/license/hash manifest
+and minimal adaptations recorded in worker ORIGIN.md/EXCEPTION_SOURCES.json.

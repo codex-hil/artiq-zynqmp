@@ -71,3 +71,12 @@ Both edges, width12500mu=100us, latency15mu=120ns fixed; no extra edge.
 make test-hw-ttl-loopback validates real artiq_run; jumper currently fitted.
 USB ACL restored on001/006; restarted JTAG server172.17.0.2:3121.
 Evidence ttl-loopback-2026-10-08.json supersedes older pending/fail notes.
+
+2026-10-08 native exceptions: latest CPU0 build-vivado/eh-kernel-services and
+CPU1 build/kernel-worker-eh-final. M-Labs ARM unwinder + DWARF preserved.
+Catch/reraise/finally, kernel/RPC/RTIO errors and automatic CPU1 activation
+recovery PASS; same TCP connection works afterward. make test-hw-kernel-exceptions.
+Network test --underflow now expects typed exception and successful recovery,
+not historical fail-stop. Old probe_rtio_failure.tcl applies to old images.
+Hardware traps/panic/watchdog/disconnect and complex RPC still limited.
+Evidence kernel-exceptions-*-2026-10-08.json; standard boot order unchanged.

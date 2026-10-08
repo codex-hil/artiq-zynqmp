@@ -5,8 +5,9 @@ staticlib design. CPU0 runs the maintained AMD/lwIP network stack plus Rust
 management; CPU1 enters EL1/AArch32 through the previously validated AArch64
 stub and loads ARM32 ET_DYN modules with the preserved M-Labs loader.
 RPC value serialization is copied unmodified from M-Labs (see ORIGIN.md).
-It is **not full ARTIQ support yet**: physical TTL loopback validation, RTIO DMA,
-analyzer, moninj, exception unwinding and complex RPC returns are pending.
+Physical TTL loopback and native exception catch/unwind/recovery are verified.
+RTIO DMA, analyzer, moninj, complex RPC returns, standalone boot and full
+production memory/cache/DDR qualification remain pending.
 
 ## Verified behavior
 
@@ -21,8 +22,7 @@ Enabled exports: RPC send/receive, malloc/free, Core.reset/RTIO counter,
 hardware CSR timeline and local rtio_output/input_timestamp/input_data.
 Output targets are restricted to channel 0/address 0 and channel 1/address
 2/3 (input sensitivity/sample). Wide output and timestamped-data tuple API
-are not exported. Loading the TTL example now succeeds; executing physical
-pulses/loopback remains NOT_RUN. `genesys_rtio_probe.py` schedules input PHY
+are not exported. Physical TTL loopback now passes 10/10 runs, both edges and 100 us width. `genesys_rtio_probe.py` schedules input PHY
 samples without driving JB1, checks 64-bit timeline values, an empty FIFO
 (timeout -1), timestamp and sampled input bit. Hardware sample timestamp is
 scheduled time +10 ticks (80 ns); this is not physical TTL latency validation.
@@ -119,10 +119,13 @@ latch. Metadata/log management remains available. A 30-second progress
 watchdog bounds this initial runtime's load/run/RPC waits. Long-running
 experiments require a proper watchdog/cancellation policy before support.
 
-Worker hardware traps, panic, unsupported RPC return/host exception or
-unwinding fail closed and require restarting the worker/runtime; they never
-report KernelFinished. CPU0 remains independent. Kernel isolation, hardened
-ELF parsing, cancellation, idle-owner eviction, application exceptions and
+Worker hardware traps, Rust panic and unsupported RPC return types still
+fail closed and require restarting the worker/runtime. Native kernel and
+host RPC exceptions use the preserved M-Labs ARM unwinder: caught exceptions
+continue the kernel; uncaught exceptions are transmitted as KernelException,
+then CPU1's private polling activation/heaps are rebuilt. They never report
+KernelFinished for the failed kernel. CPU0/PS/PL continue running. CPU0 remains independent. Kernel isolation, hardened
+ELF parsing, cancellation, idle-owner eviction, exception-packet size limits and
 complex return allocation are not production-ready. Only trusted local
 compiler artifacts were used. Tests do not claim physical TTL, RTIO DMA,
 analyzer, moninj or DRTIO success.
@@ -145,15 +148,13 @@ methods; calling direction-changing input()/output() is unsupported.
 JB1→JB2 loopback and oscilloscope/deterministic pulse measurements remain
 pending; neither sample diagnostics nor RTL simulation replaces them.
 
-Optional negative control: append `--underflow` to the test script. It sends
-an input-sample event at timestamp zero, expects KernelStartupFailed rather
-than Finished, and confirms management remains available. It intentionally
-parks CPU1; reboot the two-core runtime afterward. Inspect the actual cause
-with `probe_rtio_failure.tcl SERVER CABLE`: the mailbox must say
-RTIOUnderflow and PL o_status must contain bit 1. This is fail-stop handling,
-not a catchable ARTIQ exception. Output WAIT is polled with a one-second
-bring-up bound; input status polls have at least a one-second bound (extended
-to a finite future timeout). CPU0's existing 30-second watchdog still applies.
+Optional negative control: append `--underflow` to the network test script.
+It expects a real host RTIOUnderflow, then validates another actual kernel.
+The old fail-stop control and probe_rtio_failure.tcl remain historical tools
+for the pre-exception images; they are not the current recovery test.
+Output WAIT still has a one-second bring-up bound; input status polls have
+at least a one-second bound (extended to a finite future timeout). CPU0's
+existing 30-second watchdog still applies.
 Use no infinite/blocking input waits for production experiments yet.
 
 2026-10-08 physical test attempt: USB permissions restored; runtime recovered.
@@ -173,3 +174,35 @@ identical in every run, no extra edge. This supersedes the initial missing
 input result above. Management remains available. Keep the jumper fitted
 for test-hw-ttl-loopback. Scope is sampled physical loopback, not calibrated
 external timing or full production core qualification.
+
+## Native exceptions and recovery — 2026-10-08
+
+Current CPU0: build-vivado/eh-kernel-services; CPU1: build/kernel-worker-eh-final.
+Use the same builders/boot ordering above, with these output directories.
+
+```sh
+make test-hw-kernel-exceptions BOARD_IP=192.168.2.16 O=/large-disk/results
+```
+
+The runner compiles real NAC3 kernels and checks caught kernel ValueError,
+RTIOUnderflow and host RPC ValueError; reraise/finally; real input FIFO
+RTIOOverflow; and uncaught kernel/RPC/RTIO errors. Each uncaught error must
+reconstruct the expected Python exception and be followed by a successful
+fresh kernel without JTAG or device reset. The PL counter must keep increasing.
+
+Exception algorithms are preserved from M-Labs; native LLVM ARM unwind
+objects are compiled with Clang19 (LTO disabled for GNU ld). Rust/C use
+unwind tables and an explicit assembly invocation boundary. Dynamic exidx
+lookup covers only the actual worker/kernel images. KernelException packets
+follow upstream wire layout including host string keys, stack-pointer ranges,
+relative backtrace addresses and async flags. Packets use volatile byte
+stores: initial Vec optimizations caused an unaligned word-store fault with
+CPU1 MMU-off. No fabricated empty exception or successful completion is used.
+
+CPU0 copies the packet before acknowledgement. CPU1 then resets local RTIO,
+re-enters its polling entry on a fresh stack and rebuilds both private heaps.
+The old library is invalidated, and a new LOAD is required. CPU0 tracks READY
+before clearing recovery state/counter guard. Recovery is tested for language
+exceptions, not arbitrary aborts, panic, broken ELF, watchdog or cancellation.
+Exception/RPC event capacity remains4096 bytes; excess exception metadata
+fails closed. Complex RPC results remain unsupported.

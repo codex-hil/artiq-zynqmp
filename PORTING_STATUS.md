@@ -36,7 +36,7 @@ PASS w symulacji lub buildzie nigdy nie oznacza PASS hardware.
 | analyzer | STUB serwera TCP1382 | Brak integracji | ARTIQ analyzer + NAR3 protokół | MISSING sprzętowy recorder/DDR i obsługa sieci | NOT_RUN |
 | moninj | STUB serwera TCP1383 | Brak integracji | ARTIQ MonInj | PARTIAL: CSR probes/injection; TCP nadal STUB | Fizyczny CSR output probe PASS; pełny protocol NOT_RUN |
 | management | STUB: handler `pass`, TCP1380 | Nie zastępuje NAR3 mgmt | artiq-zynq management | PARTIAL: Rust A53 + AMD/lwIP TCP1380; GetLog/ClearLog/read-only metadata | Aktualny artiq_coremgmt log/config oraz 9 testów hardware PASS |
-| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL runtime: TCP1381 → rzeczywisty loader i wykonanie CPU1 → scalar RPC PASS; TTL exports i exceptions/unwind pending | artiq_run 5/5; błędne/oversized/unsupported ELF odrzucone; ABI QEMU/hardware PASS |
+| RPC/kernel | STUB: LoadCompleted/KernelFinished bez wykonania ELF | Board runtime, nie runtime ARTIQ | NAR3 loader/ksupport/RPC/unwind | PARTIAL runtime: TCP1381 → rzeczywisty loader i wykonanie CPU1 → scalar RPC, physical TTL i native exception/unwind/recovery PASS; complex returns/cancellation pending | artiq_run/RPC 5/5; TTL10/10; exception suite30 experiments PASS; ABI QEMU/hardware PASS |
 | DRTIO | MISSING | Brak ARTIQ GT layer | ARTIQ protokół + GT-specyficzne PHY | MISSING; odłożone po local RTIO | Brak recovered clock/latency/link-training tests |
 | SD/QSPI | PS config, boot recipes | SDIO/ADMA/FAT, ograniczenia 1.8 V | AMD SD/QSPI, Linux | PARTIAL: kod/konfiguracja bez odtworzonego boot.bin | NOT_RUN |
 
@@ -430,3 +430,38 @@ experiment milestone now PASS, superseding earlier NOT_RUN/FAIL entries.
 Production core completeness (exceptions, DDR qualification, standalone boot,
 DMA/analyzer/moninj/DRTIO) is not claimed. Evidence ttl-loopback-2026-10-08.json;
 initial failed attempt retained in ttl-loopback-initial-failure-2026-10-08.json.
+
+## Native kernel exceptions and recovery — PASS, 2026-10-08
+
+Integrated preserved M-Labs eh_artiq/libdwarf/libunwind and LLVM ARM EHABI
+sources at the existing pinned artiq-zynq revision. No replacement unwinder,
+DWARF parser or exception protocol. ZynqMP adapters provide exidx lookup,
+explicit ARM invocation boundary, packet marshaling and recovery handshake.
+Catchable exceptions: kernel ValueError, actual RTIOUnderflow/RTIOOverflow,
+and host RPC ValueError. Reraise and finally PASS. Uncaught exceptions use
+standard KernelException wire layout and reconstruct the actual Python type,
+message and decoded device traceback. No false KernelFinished on error.
+
+Final hardware suite: 3 cycles /30 artiq_run invocations, including reuse of
+the identical TCP connection after a host-caught device error; each uncaught
+kernel/RPC/RTIO error followed by fresh compile/load/execute/RPC without JTAG
+or PS/PL reset. Counter continuous. Real input FIFO64 entries overflowed by80
+scheduled samples, caught/reset successfully. Same-connection traceback check
+also separately PASS with source filename/line/function from actual kernel.
+
+On uncaught exception CPU0 copies the bounded packet before ACK. CPU1 resets
+local RTIO, re-enters polling on a fresh stack and rebuilds private heaps;
+old library invalidated, READY completes recovery. CPU0/network/GIC/PS/PL
+keep running. Initial Vec packet used unaligned word stores and faulted under
+MMU-off; bytewise volatile marshaling fixed it. Reused upstream abort handler
+removed duplicate C abort; native LLVM objects replace bitcode LTO for GNU ld.
+Rust/C unwind tables and linker exidx/extab bounds now explicit.
+
+Regression: network/RPC5/5 plus native underflow/recovery PASS, physical TTL
+10/10 (100us, latency15mu=120ns fixed), management9 tests PASS, GEM errors0.
+Current runtime: build-vivado/eh-kernel-services + build/kernel-worker-eh-final.
+Reproducer make test-hw-kernel-exceptions; evidence/kernel-exceptions-*-2026-10-08.json.
+Historical pre-exception images/probes still describe fail-stop behavior.
+Remaining: arbitrary hardware traps/Rust panic, cancellation/disconnect and
+30s watchdog recovery, metadata>4096B, complex returns, MMU/cache/DDR production
+qualification, autonomous SD/QSPI boot, DMA/analyzer/moninj/DRTIO.

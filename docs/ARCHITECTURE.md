@@ -248,3 +248,14 @@ i odczytu FIFO. Fizyczny TTL output/loopback pozostaje NOT_RUN.
 Kanał ma osobne linie cache producentów, CPU0 stosuje cache maintenance
 AMD, CPU1 utrzymuje cache/MMU-off policy początkowego bring-upu.
 Mapa, ograniczenia i reproducer: boards/genesys_zu-5ev/3_kernel/README.md.
+
+## Exceptions/recovery
+
+M-Labs personality/DWARF + LLVM ARM unwinder resolve dynamic kernel exidx.
+Caught exceptions remain in the current kernel; unhandled exceptions stop
+at the assembly invocation boundary and serialize upstream KernelException.
+CPU0 copies the packet, sends ACK and marks recovering. CPU1 reinitializes
+its private stack/heaps and local RTIO; READY clears the CPU0 guard. There
+is no PS/PL/network reset on this path. Standard host reconstructs the type
+and symbolizes actual device traceback. Arbitrary fault/watchdog/cancellation
+recovery and production memory policy remain outside this validated path.
