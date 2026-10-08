@@ -15,9 +15,9 @@ static struct tcp_pcb *owner;
 static uint8_t output[8192];
 static size_t pending;
 static uint32_t cmd_seq,seen_event;
-static int mode,closing,loaded,busy,dead;
+static int mode,closing,loaded,busy,dead,recovering;
 /* Prevent CPU0 diagnostic access to the shared RTIO counter latch while CPU1 runs. */
-int genesys_kernel_running(void) { return busy != 0 || dead; }
+int genesys_kernel_running(void) { return busy != 0 || dead || recovering; }
 static size_t count,total;
 static uint32_t length;
 static uint8_t operation,return_tag;
@@ -75,7 +75,8 @@ static int byte(uint8_t b) {
   else if(b==5) {if(busy)return -1;loaded=0;length=0;count=0;mode=3;}
   else if(b==6) {
    if(!loaded||busy||dead){header(8);closing=1;}else{busy=2;mode=5;command(2,0);}
-  } else if(b==7&&busy==3) {length=0;count=0;mode=6;}
+  } else if(b==8&&busy==3) {total=48;count=0;mode=9;}
+  else if(b==7&&busy==3) {length=0;count=0;mode=6;}
   else return -1;
   return 0;
  }
@@ -89,7 +90,7 @@ static int byte(uint8_t b) {
  }
  if(mode==4) {
   ((uint8_t *)INPUT)[count++]=b;
-  if(count==length){count=0;mode=5;if(dead){error_load("CPU1 unavailable; restart worker");mode=1;}else{busy=1;command(1,length);}}
+  if(count==length){count=0;mode=5;if(dead||recovering){error_load("CPU1 unavailable; restart worker");mode=1;}else{busy=1;command(1,length);}}
   return 0;
  }
  if(mode==7) {
@@ -97,6 +98,11 @@ static int byte(uint8_t b) {
   if(b=='n')total=0;else if(b=='b')total=1;else if(b=='i'||b=='u')total=4;else if(b=='I'||b=='U'||b=='f')total=8;else return -1;
   mode=8;count=0;
   if(!total){command(4,0);busy=2;mode=5;}
+  return 0;
+ }
+ if(mode==9) {
+  ((uint8_t *)INPUT)[count++]=b;
+  if(count==total){command(7,total);busy=2;mode=5;count=0;}
   return 0;
  }
  if(mode==8) {
@@ -123,10 +129,12 @@ void genesys_kernel_poll(void) {
   uint32_t status=read_mb(68),n=read_mb(72);
   if(n>BODY_MAX){dead=1;if(owner)abort_owner();return;}
   Xil_DCacheInvalidateRange(BODY,BODY_MAX);
+  if(status==1&&recovering) {recovering=0;log_event("CPU1 worker recovered after kernel exception.\n");}
   if(owner&&busy) {
    if(status==2&&busy==1){log_event("CPU1 kernel ELF relocated and loaded.\n");header(5);loaded=1;busy=0;mode=1;}
    else if(status==3&&busy==1){log_event("CPU1 kernel load rejected.\n");header(6);chunk((void *)BODY,n);busy=0;mode=1;}
    else if(status==4&&busy==2){log_event("CPU1 kernel finished.\n");header(7);append((void *)BODY,n);busy=0;mode=1;}
+   else if(status==8&&busy==2){log_event("CPU1 uncaught kernel exception.\n");header(9);append((void *)BODY,n);loaded=0;busy=0;mode=1;recovering=1;command(6,0);}
    else if((status==5||status==6)&&busy==2){
     log_event("CPU1 kernel RPC request.\n");header(10);if(append((void *)BODY,n)){abort_owner();return;}
     if(status==5){command(3,0);}else{busy=3;mode=1;count=0;}

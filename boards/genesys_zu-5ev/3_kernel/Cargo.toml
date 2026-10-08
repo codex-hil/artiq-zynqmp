@@ -5,6 +5,9 @@ edition = "2021"
 [lib]
 crate-type = ["staticlib"]
 [dependencies]
+dwarf = { path="libdwarf" }
+unwind = { path="libunwind" }
+libc = { path="libc" }
 dyld = { path = "../../../prototypes/kernel-abi/upstream-dyld", default-features = false }
 io = { path = "upstream-io", features = ["alloc", "byteorder"] }
 cslice = "=0.3.0"

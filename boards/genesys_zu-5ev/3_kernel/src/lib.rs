@@ -1,5 +1,7 @@
 #![no_std]
 extern crate alloc;
+mod eh_artiq;
+mod kernel;
 mod rpc;
 use core::cell::UnsafeCell;
 use core::{
@@ -71,6 +73,8 @@ extern "C" {
     fn worker_uart(s: *const u8, n: usize);
     fn worker_counter() -> i64;
     fn worker_rtio_init();
+    fn worker_recover() -> !;
+    fn worker_invoke(entry: u32);
     fn worker_now() -> i64;
     fn worker_at(t: i64);
     fn worker_output(target: i32, data: i32) -> u32;
@@ -90,6 +94,20 @@ fn barrier() {
         core::arch::asm!("dsb sy", options(nostack));
     }
 }
+fn publish_from_body(status: u32, n: usize) {
+    if n > BODY_MAX {
+        fail(b"worker event overflow");
+    }
+    unsafe {
+        wr(68, status);
+        wr(72, n as u32);
+        barrier();
+        EVENT_SEQ = EVENT_SEQ.wrapping_add(1);
+        wr(64, EVENT_SEQ);
+        barrier();
+        core::arch::asm!("sev", options(nostack));
+    }
+}
 fn publish(status: u32, bytes: &[u8]) {
     if bytes.len() > BODY_MAX {
         fail(b"worker event overflow");
@@ -98,14 +116,8 @@ fn publish(status: u32, bytes: &[u8]) {
         for (i, b) in bytes.iter().enumerate() {
             ptr::write_volatile((BODY + i) as *mut u8, *b);
         }
-        wr(68, status);
-        wr(72, bytes.len() as u32);
-        barrier();
-        EVENT_SEQ = EVENT_SEQ.wrapping_add(1);
-        wr(64, EVENT_SEQ);
-        barrier();
-        core::arch::asm!("sev", options(nostack));
     }
+    publish_from_body(status, bytes.len());
 }
 fn command() -> u32 {
     loop {
@@ -209,7 +221,9 @@ pub extern "C" fn worker_main() -> ! {
     let mut library: Option<dyld::Library> = None;
     unsafe {
         COMMAND_SEQ = rd(0);
-        EVENT_SEQ = 0;
+        EVENT_SEQ = rd(64);
+        eh_artiq::reset_exception_buffer();
+        kernel::KERNEL_IMAGE = core::ptr::null();
     }
     publish(1, b"A53 AArch32 worker ready; local RTIO CSR exports");
     loop {
@@ -240,9 +254,17 @@ pub extern "C" fn worker_main() -> ! {
             }
             2 => {
                 if let Some(ref lib) = library {
+                    unsafe {
+                        kernel::KERNEL_IMAGE = lib as *const dyld::Library;
+                        eh_artiq::reset_exception_buffer();
+                    }
                     let entry = lib.lookup(b"__modinit__").unwrap();
-                    let run: extern "C" fn() = unsafe { core::mem::transmute(entry as usize) };
-                    run();
+                    unsafe {
+                        worker_invoke(entry);
+                    }
+                    unsafe {
+                        kernel::KERNEL_IMAGE = core::ptr::null();
+                    }
                     publish(4, &[unsafe { worker_async_errors() } as u8]);
                 } else {
                     publish(7, b"no loaded kernel");
@@ -324,8 +346,36 @@ extern "C" fn rpc_send_async(service: u32, tag: &CSlice<u8>, data: *const *const
     rpc_send_common(true, service, tag, data);
 }
 extern "C" fn rpc_recv(slot: *mut ()) -> usize {
-    if command() != 4 {
-        fail(b"RPC return or exception unsupported");
+    let cmd = command();
+    if cmd == 7 {
+        #[repr(C)]
+        struct HostException {
+            id: u32,
+            message: u32,
+            param: [i64; 3],
+            file: u32,
+            line: u32,
+            column: u32,
+            function: u32,
+        }
+        // Input is aligned; protocol has 48 bytes in little-endian ARM layout.
+        if unsafe { rd(8) } != 48 {
+            fail(b"invalid RPC exception length");
+        }
+        let e = unsafe { &*(INPUT as *const HostException) };
+        let ex = eh_artiq::Exception {
+            id: e.id,
+            file: unsafe { CSlice::new(e.file as *const u8, usize::MAX) },
+            line: e.line,
+            column: e.column,
+            function: unsafe { CSlice::new(e.function as *const u8, usize::MAX) },
+            message: unsafe { CSlice::new(e.message as *const u8, usize::MAX) },
+            param: e.param,
+        };
+        unsafe { eh_artiq::raise(&ex) };
+    }
+    if cmd != 4 {
+        fail(b"RPC reply command invalid");
     }
     let n = unsafe { rd(8) as usize };
     if n > BODY_MAX {
@@ -373,7 +423,13 @@ extern "C" fn rtio_output(target: i32, data: i32) {
     }
     match unsafe { worker_output(target, data) } {
         0 => (),
-        2 => fail(b"RTIOUnderflow; restart CPU1 required"),
+        2 => artiq_raise!(
+            "RTIOUnderflow",
+            "RTIO underflow at {1} mu, channel {0}, slack {2} mu",
+            (target >> 8) as i64,
+            now_mu(),
+            now_mu().wrapping_sub(rtio_get_counter())
+        ),
         4 | 6 => fail(b"RTIODestinationUnreachable; restart CPU1 required"),
         _ => fail(b"RTIO output WAIT timeout; restart CPU1 required"),
     }
@@ -384,7 +440,13 @@ fn input_status(timeout: i64, channel: i32) -> u32 {
     }
     let status = unsafe { worker_input(timeout, channel) };
     if status & 2 != 0 {
-        fail(b"RTIOOverflow; restart CPU1 required");
+        artiq_raise!(
+            "RTIOOverflow",
+            "RTIO input overflow on channel {0}",
+            channel as i64,
+            0,
+            0
+        );
     }
     if status & 8 != 0 {
         fail(b"RTIODestinationUnreachable input; restart CPU1 required");
@@ -405,9 +467,6 @@ extern "C" fn rtio_input_data(channel: i32) -> i32 {
     input_status(-1, channel);
     unsafe { worker_input_data() }
 }
-extern "C" fn unsupported() {
-    fail(b"kernel exception/unwind unsupported; restart CPU1 required");
-}
 fn resolve(name: &[u8]) -> Option<u32> {
     macro_rules! sym {($($s:ident),*) => {$(if name==stringify!($s).as_bytes() {return Some($s as usize as u32);})*};}
     sym!(
@@ -425,8 +484,20 @@ fn resolve(name: &[u8]) -> Option<u32> {
         malloc,
         free
     );
-    if name == b"__nac3_personality" || name == b"__nac3_resume" {
-        return Some(unsupported as usize as u32);
+    if name == b"__nac3_personality" {
+        return Some(eh_artiq::artiq_personality as usize as u32);
+    }
+    if name == b"__nac3_raise" {
+        return Some(eh_artiq::raise as usize as u32);
+    }
+    if name == b"__nac3_resume" {
+        return Some(eh_artiq::resume as usize as u32);
+    }
+    if name == b"__nac3_end_catch" {
+        return Some(eh_artiq::end_catch as usize as u32);
+    }
+    if name == b"_Unwind_Resume" {
+        return Some(unwind::_Unwind_Resume as usize as u32);
     }
     None
 }

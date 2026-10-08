@@ -21,6 +21,12 @@ _start:
     strlo r2, [r0], #4
     blo 1b
     bl worker_main
+    /* An uncaught kernel exception discards only CPU1's current Rust stack.
+       CPU0/networking remains active; heaps are rebuilt before accepting LOAD. */
+.global worker_recover
+worker_recover:
+    ldr sp, =_stack_top
+    b worker_main
 2:  wfe
     b 2b
 
@@ -44,3 +50,17 @@ trapped:
     ldr sp, =_stack_top
     b worker_trap
 .section .note.GNU-stack,"",%progbits
+
+.section .text.worker_invoke,"ax"
+.global worker_invoke
+.type worker_invoke,%function
+worker_invoke:
+    .fnstart
+    push {r4, lr}
+    .save {r4, lr}
+    blx r0
+.global worker_unwind_boundary
+worker_unwind_boundary:
+    pop {r4, pc}
+    .fnend
+.size worker_invoke, .-worker_invoke

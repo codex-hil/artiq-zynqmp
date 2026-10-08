@@ -75,6 +75,8 @@ int memcmp(const void *a, const void *b, size_t n) {
     while (n--) { if (*x != *y) return *x - *y; x++; y++; } return 0;
 }
 int bcmp(const void *a,const void *b,size_t n) {return memcmp(a,b,n);}
-void __aeabi_unwind_cpp_pr0(void) {worker_trap();}
-void __aeabi_unwind_cpp_pr1(void) {worker_trap();}
-void _Unwind_Resume(void *exception) {(void)exception;worker_trap();}
+void _putchar(char c) {
+ volatile uint32_t *uart=(void *)0xFF000000;
+ while(uart[0x2c/4]&(1u<<4)) {} uart[0x30/4]=(uint8_t)c;
+}
+size_t strlen(const char *s) {const char *p=s;while(*p)p++;return p-s;}

@@ -9,10 +9,36 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
+name = "cc"
+version = "1.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f74872d07caf508b30a21f6836e7d7016a2eaf7d9ff4f48deaa58cd8a0407630"
+dependencies = [
+ "find-msvc-tools",
+ "shlex",
+]
+
+[[package]]
+name = "cfg-if"
+version = "0.1.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4785bdd1c96b2a846b2bd7cc02e86b6b3dbf14e7e53446c4f54c92a361040822"
+
+[[package]]
 name = "cslice"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0f8cb7306107e4b10e64994de6d3274bd08996a7c1322a27b86482392f96be0a"
+
+[[package]]
+name = "dwarf"
+version = "0.0.0"
+dependencies = [
+ "cfg-if",
+ "cslice",
+ "libc",
+ "unwind",
+]
 
 [[package]]
 name = "dyld"
@@ -28,16 +54,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9eb1aa714776b75c7e67e1da744b81a129b3ff919c8712b5e1b32252c1f07cc7"
 
 [[package]]
+name = "find-msvc-tools"
+version = "0.1.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "aedcfb3409746eddb02b9e19ebda1c3394f759a152e48ee875a0844d1b955484"
+
+[[package]]
 name = "genesys-kernel-worker"
 version = "0.1.0"
 dependencies = [
  "byteorder",
  "cslice",
+ "dwarf",
  "dyld",
  "embedded-io",
  "io",
+ "libc",
  "linked_list_allocator",
  "log",
+ "unwind",
 ]
 
 [[package]]
@@ -47,6 +82,10 @@ dependencies = [
  "byteorder",
  "embedded-io",
 ]
+
+[[package]]
+name = "libc"
+version = "0.1.0"
 
 [[package]]
 name = "linked_list_allocator"
@@ -59,3 +98,18 @@ name = "log"
 version = "0.4.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13dc2df351e3202783a1fe0d44375f7295ffb4049267b0f3018346dc122a1d94"
+
+[[package]]
+name = "shlex"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba"
+
+[[package]]
+name = "unwind"
+version = "0.0.0"
+dependencies = [
+ "cc",
+ "cfg-if",
+ "libc",
+]
