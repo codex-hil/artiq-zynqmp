@@ -18,14 +18,21 @@ BANKS = {"rtio": 0, "rtio_core": 1, "rtio_moninj": 2}
 
 
 class LocalRTIO(Module):
-    def __init__(self, output_pad, input_pad):
+    def __init__(self, output_pad, input_pad, dma_bus=None):
         self.submodules.ttl_out = ttl_simple.Output(output_pad)
         self.submodules.ttl_in = ttl_simple.Input(input_pad)
         channels = [rtio.Channel.from_phy(self.ttl_out), rtio.Channel.from_phy(self.ttl_in)]
         self.submodules.rtio_tsc = rtio.TSC(glbl_fine_ts_width=0)
         self.submodules.rtio_core = rtio.Core(self.rtio_tsc, channels)
         self.submodules.rtio = rtio.KernelInitiator(self.rtio_tsc, now64=True)
-        self.comb += self.rtio.cri.connect(self.rtio_core.cri)
+        if dma_bus is None:
+            self.comb += self.rtio.cri.connect(self.rtio_core.cri)
+        else:
+            from zynqmp_dma import DMA
+            from artiq.gateware.rtio.cri import CRISwitch
+            self.submodules.rtio_dma = DMA(dma_bus)
+            self.submodules.cri_con = CRISwitch(
+                [self.rtio.cri, self.rtio_dma.cri], self.rtio_core.cri)
         self.submodules.rtio_moninj = rtio.MonInj(channels)
 
         # ZynqMP MAXIGP exports a 40-bit physical address, even with a
@@ -39,7 +46,7 @@ class LocalRTIO(Module):
             self.axi, self.wb2csr.wishbone, base_address=CSR_BASE
         )
         self.submodules.banks = csr_bus.CSRBankArray(
-            self, lambda name, memory: BANKS.get(name) if memory is None else None,
+            self, lambda name, memory: dict(BANKS, rtio_dma=3, cri_con=4).get(name) if memory is None else None,
             data_width=32, address_width=14
         )
         self.submodules.csr_interconnect = csr_bus.Interconnect(

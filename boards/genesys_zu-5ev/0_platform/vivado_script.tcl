@@ -4,7 +4,7 @@ set artiq_variant blinker
 if {[llength $argv] > 0} {
     set artiq_variant [lindex $argv 0]
 }
-if {$artiq_variant ni {blinker local-rtio}} {
+if {$artiq_variant ni {blinker local-rtio local-rtio-dma}} {
     error "Unsupported ARTIQ gateware variant: $artiq_variant"
 }
 

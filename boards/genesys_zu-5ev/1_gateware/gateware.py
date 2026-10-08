@@ -40,16 +40,36 @@ class Top(Module):
             self.cd_sys, ~self.zynq_ultra_ps_e_0.outputs["pl_resetn0"]
         )
 
-        if variant == "local-rtio":
+        if variant in ("local-rtio", "local-rtio-dma"):
             from local_rtio import LocalRTIO, connect_ps_hpm0
             # Recovered from Piotr's original Genesys_ZU_revC.xdc, ec8c4a9.
             platform.add_extension([
                 ("ttl_out", 0, Pins("AE13"), IOStandard("LVCMOS33")),  # JB1
                 ("ttl_in", 0, Pins("AG14"), IOStandard("LVCMOS33")),   # JB2
             ])
+            dma_bus = None
+            if variant == "local-rtio-dma":
+                from litex.soc.interconnect.axi import AXIInterface
+                ps = self.zynq_ultra_ps_e_0
+                dma_bus = AXIInterface(data_width=len(ps.outputs["saxigp2_rdata"]),
+                                       address_width=len(ps.inputs["saxigp2_araddr"]),
+                                       id_width=len(ps.inputs["saxigp2_arid"]))
+                self.comb += ps.inputs["saxihp0_fpd_aclk"].eq(self.cd_sys.clk)
+                for channel, fields in {
+                    "aw": "id addr len size burst lock cache prot qos valid ready",
+                    "ar": "id addr len size burst lock cache prot qos valid ready",
+                    "w": "data strb last valid ready", "b": "id resp valid ready",
+                    "r": "id data resp last valid ready",
+                }.items():
+                    for field in fields.split():
+                        name = "saxigp2_" + channel + field
+                        signal = getattr(getattr(dma_bus, channel), field)
+                        collection = ps.inputs if name in ps.inputs else ps.outputs
+                        pin = collection[name]
+                        if len(pin) != len(signal): raise ValueError("DMA AXI width: " + name)
+                        self.comb += pin.eq(signal) if collection is ps.inputs else signal.eq(pin)
             self.submodules.local_rtio = LocalRTIO(
-                platform.request("ttl_out"), platform.request("ttl_in")
-            )
+                platform.request("ttl_out"), platform.request("ttl_in"), dma_bus)
             connect_ps_hpm0(self, self.zynq_ultra_ps_e_0, self.local_rtio.axi)
 
         counter = Signal(30)
@@ -71,13 +91,13 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     arg_parser.add_argument("-B", "--vivado-build-dir", default=".")
     arg_parser.add_argument("-M", "--migen-build-dir", default="migen-build")
     arg_parser.add_argument("-N", "--no-run", action="store_true")
-    arg_parser.add_argument("--variant", choices=["blinker", "local-rtio"], default="blinker")
+    arg_parser.add_argument("--variant", choices=["blinker", "local-rtio", "local-rtio-dma"], default="blinker")
     p_args = arg_parser.parse_args(argv[1:])
 
     platform = ThisPlatform(Path(p_args.vivado_build_dir))
     top = Top(platform, p_args.variant)
     platform.build(top, build_dir=Path(p_args.migen_build_dir).absolute(), run=not p_args.no_run)
-    if p_args.variant == "local-rtio":
+    if p_args.variant in ("local-rtio", "local-rtio-dma"):
         top.local_rtio.write_map(Path(p_args.migen_build_dir) / "csr-map.json")
 
 

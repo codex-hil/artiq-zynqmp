@@ -10,6 +10,12 @@ test: test-sim firmware diagnostics
 test-sim:
 	$(PYTHON) -m unittest discover -s tests -v
 
+.PHONY: test-hw-dma-engine
+test-hw-dma-engine:
+	$(if $(CSR_MAP),,$(error Specify DMA CSR_MAP=))
+	$(if $(SERVER),,$(error Specify SERVER= for Genesys JTAG))
+	$(PYTHON) scripts/test_dma_jtag_hw.py --csr-map=$(CSR_MAP) --server=$(SERVER) --cable=210383B7F02DA --output=$(abspath $(O))/dma-engine-hardware
+
 hdl:
 	$(PYTHON) scripts/generate_rtio_hdl.py --output=$(abspath $(O))/local-rtio-hdl
 
