@@ -86,3 +86,14 @@ interface. DAC clock/SYSREF deterministic phase remains a separate test.
 - AMD UG572 BUFG_GT:
   https://docs.amd.com/r/en-US/ug572-ultrascale-clocking/BUFG_GT-and-BUFG_GT_SYNC
 - Checked-in common/artiq/artiq/gateware/drtio/transceiver/gtx_7series.py.
+
+## Confirmed SFP routing, 2026-10-08
+
+Digilent manual section7.3 explicitly connects SFP serial lanes to PL GTH
+quad224 channel3 (GTHE4 X0Y7), through IC38 CBTU02043. They are not PS-GTR
+lanes. SEL_SFP_NOT_FMC, FPGA pinD10, must be high for SFP; low/default
+selects FMC. SFP_TX_DISABLE, pinAB13, has a board pull-up and must be
+actively driven low to enable transmission. Diagnostic OOC core does not
+yet drive these board controls; its future board top must do so. Build
+validator now also requires CONFIG.GT_TYPE=GTH. Physical link remains
+NOT_RUN. Source: Digilent reference manual sections7.3/7.3.1.

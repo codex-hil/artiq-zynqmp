@@ -11,7 +11,8 @@ def check(directory, log):
     config = dict(line.split('=', 1) for line in
                   (directory / 'configuration.txt').read_text().splitlines())
     expected = {
-        'CHANNEL_ENABLE': 'X0Y7', 'TX_LINE_RATE': '2.5', 'RX_LINE_RATE': '2.5',
+        'CHANNEL_ENABLE': 'X0Y7', 'GT_TYPE': 'GTH',
+        'TX_LINE_RATE': '2.5', 'RX_LINE_RATE': '2.5',
         'TX_USER_DATA_WIDTH': '20', 'RX_USER_DATA_WIDTH': '20',
         'TX_DATA_ENCODING': 'RAW', 'RX_DATA_DECODING': 'RAW',
         'RX_OUTCLK_SOURCE': 'RXOUTCLKPMA', 'RX_BUFFER_MODE': '1',
