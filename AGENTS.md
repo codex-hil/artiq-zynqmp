@@ -169,3 +169,11 @@ for both PASS. evidence/artix7-install-2026-10-09.json. Read shared Vivado
 notes for read-only SMB tar FUSE helper; it is unmounted after installation.
 Full Kasli master gateware build resumed in existing output tree. Previous
 AMD-token blocker is superseded; do not ask user to renew authentication.
+
+Latest2026-10-09 Kasli master complete BUILD_PASS_HARDWARE_NOT_RUN.
+Existing generated output contains top.bit/top.bin plus firmware; timing
+WNS0.141ns/WHS0.037ns and bitgen PASS. Packaged tar.gz and hashes/results
+in build/kasli-v2.1-master-2026-10-08. Build script fixes suppression of .bit
+locally. OpenOCD+bscan package symlink toolchains/kasli-openocd (from pinned
+flake); prepend its bin to PATH for artiq_flash. Dry-run PASS, no flash/JTAG
+write and no physical Kasli test. Review timing-scope caveats in evidence.

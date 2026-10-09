@@ -1,6 +1,6 @@
 {
   "kind": "software-build-not-hardware",
-  "status": "PARTIAL",
+  "status": "BUILD_PASS_HARDWARE_NOT_RUN",
   "hardware": "Kasli v2.1 Artix-7 XC7A100T",
   "role": "master",
   "rtio_hz": 125000000,
@@ -9,7 +9,7 @@
   "firmware_status": "PASS",
   "firmware_fbi_crc": "PASS",
   "elf32_riscv": "PASS",
-  "gateware_status": "BUILD_IN_PROGRESS",
+  "gateware_status": "PASS",
   "hardware_status": "NOT_RUN",
   "blocker": null,
   "sources": {
@@ -53,7 +53,35 @@
       "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/software/runtime/runtime.elf",
       "bytes": 15784972,
       "sha256": "3f6643528ae00c624d4a5f65248a5f15e2030cae905976dff97ef90d53814583"
+    },
+    "gateware/top.bit": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/gateware/top.bit",
+      "bytes": 2910880,
+      "sha256": "d2391e4c222dda381430c33bbd9a89f3f1b82fb4eca94c2291ed1d19fddd7180"
+    },
+    "gateware/top.bin": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master/gateware/top.bin",
+      "bytes": 2910752,
+      "sha256": "534e98e85a61e9b535c4a5e5cd6e41e66077a2646ba3cd8872c851773903fb89"
     }
   },
-  "artix7_support": "INSTALLED_SYNTHESIS_VALIDATED_2026-10-09"
+  "artix7_support": "INSTALLED_SYNTHESIS_VALIDATED_2026-10-09",
+  "completed_at": "2026-10-09T06:41:12.051730+00:00",
+  "flash_dry_run": "PASS",
+  "timing": {
+    "setup_wns_ns": 0.141,
+    "hold_whs_ns": 0.037,
+    "pulse_width_slack_ns": 0.264,
+    "violating_endpoints": 0,
+    "constraints_met": true
+  },
+  "timing_scope": {
+    "unconstrained_internal_endpoints": 0,
+    "no_clock_pins": 1,
+    "no_clock_pin": "sma_clkin_p external-clock input (unused in this test profile)",
+    "input_ports_without_delay": 21,
+    "output_ports_without_delay": 56,
+    "multiple_clock_pins": 77,
+    "limitation": "Inherited upstream external-I/O delays and switching-clock constraints require review/physical validation; this is a build-qualified test image, not production qualification."
+  }
 }

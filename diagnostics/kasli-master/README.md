@@ -51,26 +51,37 @@ network storage. Set the actual Kasli address/MAC/storage separately once
 identified. For a future complete build, preview the flashing script with:
 
 ```sh
-artiq-host artiq_flash --dry-run -t kasli --srcbuild \
+PATH=/srv/codex-hil-data/artiq-zynqmp/toolchains/kasli-openocd/bin:$PATH \
+  artiq-host artiq_flash --dry-run -t kasli --srcbuild \
   -d /path/to/generated/genesys_drtio_master
 ```
 
 Do not select an arbitrary USB device: identify the Kasli FTDI serial first,
 then use artiq_flash's preinit selector. No Kasli has been flashed here.
 
-## Current build status (2026-10-08)
+## Current build status (2026-10-09)
 
-Bootloader, ksupport and master runtime compile/link PASS. Generated headers
-confirm DRTIO_ROLE=master and RTIO_FREQUENCY=125.0. Gateware is blocked by
-missing Artix-7 support in shared Vivado. AMD's installed-tree Add action
-rejects the expired authentication token; token renewal was requested.
-Selective offline packages (117 archives, ~2.47GB including installer files)
-were fetched from the original SMB installer and cached for the Add action.
-No successful Kasli bitstream or physical DRTIO link is claimed.
+BUILD_PASS_HARDWARE_NOT_RUN. Bootloader, ksupport, runtime, top.bit and top.bin
+are complete. Vivado2025.2 synthesis, placement, routing and bitgen PASS.
+Setup WNS0.141ns, hold WHS0.037ns, pulse-width slack0.264ns; no violating
+endpoints. DRC before bitgen0 errors. The inherited upstream timing report
+still flags external ports without delays, multiple-clock pins and the unused
+sma_clkin_p clock source; build qualification does not establish physical
+DDR/DRTIO performance or production constraint completeness.
 
-### Update2026-10-09
+OpenOCD+bscan-SPI was built from this same upstream flake and linked at
+`/srv/codex-hil-data/artiq-zynqmp/toolchains/kasli-openocd`. Dry-run flash
+script generation PASS, with no USB/JTAG or flash writes. First deployment
+must identify the actual Kasli cable and back up its existing image/storage.
 
-Artix-7 is now installed and synthesis validated in shared Vivado2025.2.
-The offline SMB installation required no AMD authentication. Previous token
-blocker is superseded. Full Kasli gateware build resumed; bitstream/timing
-and physical hardware validation are still pending.
+Outputs: `build/kasli-v2.1-master-2026-10-08/`, results.json and artifacts.sha256.
+Packaged source-build layout:
+`kasli-v2.1-master-125mhz-artiq10-test.tar.gz`. It uses ARTIQ10 snapshot486e8f8,
+RTIO125MHz, WRPLL off and no EEM peripherals; substitute the real existing
+system configuration before replacing a production Kasli master.
+
+The initial device-support/token blocker was resolved by official offline
+Add from the SMB installer. Evidence: evidence/artix7-install-2026-10-09.json.
+The build script now emits both .bit and .bin; upstream's initial
+-no_binary_bitfile option emitted only .bin. Existing route checkpoint was
+used to export .bit without repeating synthesis or place/route.

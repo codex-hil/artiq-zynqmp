@@ -29,6 +29,9 @@ set_false_path -to [get_pins -of_objects $first_sync -filter {REF_PIN_NAME == D}
 lines=s.splitlines();i=next(i for i,l in enumerate(lines) if l.startswith('synth_design '))
 lines.insert(i+1,fix)
 p.write_text('set_param general.maxThreads 2\n'+'\n'.join(lines)+'\n')
+# Upstream suppresses .bit and emits only .bin; retain both promised artifacts.
+bit=p.with_name('top_bitstream.tcl')
+bit.write_text(bit.read_text().replace(' -no_binary_bitfile', ''))
 PY
 cd "$build/gateware"
 "${VIVADO:-/home/codex-hil/.local/bin/vivado}" -mode batch -source top.tcl > build.log 2>&1

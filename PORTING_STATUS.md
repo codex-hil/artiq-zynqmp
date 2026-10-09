@@ -683,3 +683,19 @@ Vivado launcher. Kintex-7 and other7-series families are not asserted.
 Evidence: evidence/artix7-install-2026-10-09.json. Reproduction documented
 in /home/codex-hil/docs/toolchains/vivado.md. Full Kasli master gateware
 build resumed; timing closure/bitstream/hardware validation pending.
+
+## 2026-10-09: Kasli v2.1 DRTIO master build PASS
+
+Complete test-master package built from pinned upstream ARTIQ486e8f8:
+bootloader, ksupport, runtime and gateware top.bit/top.bin. Vivado2025.2
+synthesis/place/route/bitgen PASS; WNS0.141ns, WHS0.037ns, pulse width0.264ns,
+zero violating endpoints and pre-bitgen DRC0 errors. Both .bit and .bin now
+retained by the reproducible build script. Runtime FBI length/CRC32 and all
+artifact hashes verified. Upstream OpenOCD+bscan-SPI built; artiq_flash
+--dry-run PASS. No Kasli was programmed. Build-qualified test configuration
+(no EEM,125MHz,WRPLL off), not a validated production/master-satellite link.
+Inherited external I/O-delay / multiple-clock / unused SMA-clock warnings
+are recorded in evidence/kasli-v2.1-master-2026-10-08.json for hardware and
+constraint qualification. No unconstrained internal maximum-delay endpoint.
+Package: build/kasli-v2.1-master-2026-10-08/kasli-v2.1-master-125mhz-artiq10-test.tar.gz.
+Physical Kasli boot/Ethernet/DRTIO and Genesys satellite firmware remain pending.
