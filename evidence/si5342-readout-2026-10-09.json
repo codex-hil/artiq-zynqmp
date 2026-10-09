@@ -1,0 +1,30 @@
+{
+  "kind": "physical-hardware",
+  "status": "PASS",
+  "scope": "read-only paged register backup, not recovered-clock lock",
+  "cable": "210383B7F02DA",
+  "i2c_base": "ff020000",
+  "mux_address": "70",
+  "mux_channel": 2,
+  "device_address": "68",
+  "identity": "Si5342",
+  "revision": 3,
+  "registers_per_readout": 3072,
+  "verified_pages_per_readout": 12,
+  "repeated_readouts": 2,
+  "differences": [
+    "00b9",
+    "00ba",
+    "00bb",
+    "00bc",
+    "0961",
+    "0963",
+    "0965"
+  ],
+  "readouts": [
+    "1f98c3b313202a412bbe892fa40c7de9a9603a72de4dbaeae66d304e9a60f04e",
+    "5bd70138d40d8505b6d28ae1fa111672da29027944a3065bb3b975c365f288dd"
+  ],
+  "artifacts": "/srv/codex-hil-data/artiq-zynqmp/build/si5342-2026-10-09",
+  "elaborations": "100us receive-to-transmit settling guard; page write STOP then recheck mux; register-pointer/read repeated START"
+}
