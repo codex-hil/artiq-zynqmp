@@ -11,8 +11,9 @@ XSDB='/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb'
 
 def main():
  p=argparse.ArgumentParser(description=__doc__)
- for name in ('server','cable','port','ps-export','bitstream','csr-map','service-elf','output'):
+ for name in ('server','cable','port','ps-export','bitstream','csr-map','output'):
   p.add_argument('--'+name,required=True)
+ p.add_argument('--service-elf', help='Optional Si5342 UART service; omit for halted-CPU GTH protocol tests')
  a=p.parse_args();out=Path(a.output);out.mkdir(parents=True,exist_ok=True)
  ps=Path(a.ps_export)
  def run(name,args):
@@ -37,6 +38,8 @@ def main():
   xs('prepare','diagnostics/drtio/prepare_ps.tcl',a.server,str(ps/'sdt/psu_init.tcl'),a.cable)
   run('phy',['/srv/codex-hil-data/artiq-zynqmp/venv/bin/python',str(REPO/'diagnostics/drtio/test_phy_hw.py'),
              '--server',a.server,'--cable',a.cable,'--csr-map',a.csr_map,'--output',str(out/'phy'),'--cycles','1'])
+  if not a.service_elf:
+   return 0
   xs('service','scripts/run_ethernet.tcl',a.server,a.service_elf,a.cable)
   deadline=time.monotonic()+10
   while time.monotonic()<deadline:

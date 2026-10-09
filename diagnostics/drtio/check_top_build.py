@@ -19,9 +19,11 @@ def main():
     timing = (a.build/'top_timing.rpt').read_text()
     if 'All user specified timing constraints are met.' not in timing:
         raise ValueError('Timing did not close')
+    mapping = json.loads((a.build/'csr-map.json').read_text())
+    skew_count = 9 if 'protocol_alignment' in mapping['registers'] else 3
     skew = (a.build/'top_bus_skew.rpt').read_text()
-    if 'VIOLATED' in skew or len(re.findall(r'Slack \(MET\)', skew)) != 3:
-        raise ValueError('Expected three passing Gray bus-skew constraints')
+    if 'VIOLATED' in skew or len(re.findall(r'Slack \(MET\)', skew)) != skew_count:
+        raise ValueError('Expected all Gray bus-skew constraints to pass')
     mapping = json.loads((a.build/'csr-map.json').read_text())
     if mapping['magic'] != 0x44525430:
         raise ValueError('Wrong CSR map')

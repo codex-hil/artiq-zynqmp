@@ -7,10 +7,11 @@ phy=$(realpath "$2")
 out=$(realpath -m "$3")
 if [ -e "$out" ]; then echo 'Use a fresh output directory' >&2; exit 2; fi
 mkdir -p "$out"
-export PYTHONPATH="$repo/common/artiq:$repo/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH="${ARTIQ_SOURCE:-$repo/common/artiq}:$repo/common/migen:${MISOC_SOURCE:-/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current}${PYTHONPATH:+:$PYTHONPATH}"
 python_bin=${PYTHON:-/srv/codex-hil-data/artiq-zynqmp/venv/bin/python}
 extra=()
 if [ "${FORWARD_RX_CLOCK:-0}" = 1 ]; then extra+=(--forward-rx-clock); fi
+if [ "${DRTIO_PROTOCOL:-0}" = 1 ]; then extra+=(--protocol); fi
 "$python_bin" "$repo/diagnostics/drtio/diag_gateware.py" "${extra[@]}" --ps "$ps" --phy "$phy" --output "$out" > "$out/generate.log" 2>&1
 # Piotr's Migen importer emits synth_ip in project mode. Use proper IP runs
 # without modifying the archived Migen checkout.

@@ -137,3 +137,48 @@ RT/AUX packets survive encoding/decoding byte-exactly. Swapping the10-bit
 lanes is an intentional negative control and corrupts both traffic types.
 All16 readiness combinations are checked. These tests do not prove GT
 comma acquisition, clock recovery, link firmware or deterministic latency.
+
+## RT/AUX framing through physical GTH
+
+The optional `DRTIO_PROTOCOL=1` top instantiates the preserved upstream
+ARTIQ LinkLayerTX/LinkLayerRX and software 8b/10b codec in the actual GTH
+TX/RX clock domains. A fabric aligner searches all 20 serial offsets for
+lane-zero K28.5, then holds its selected offset until the RX domain resets.
+This laboratory aligner does not provide GT buffer bypass, deterministic
+latency or automatic remote-link loss detection.
+
+The generator sends 16-word RT and 16-nibble AUX frames, with known payload
+sequences. RX-domain counters check payload and frame length; Gray counters
+cross into independent PS management. Raw encoded-bit corruption is an
+explicit negative control, followed by a clean recovery interval.
+External SFP TX stays disabled. This is link framing, not satellite RTIO
+packet execution or AUX firmware discovery.
+
+```sh
+make test-drtio-framing PYTHON=/path/to/venv/bin/python \
+  ARTIQ_SOURCE="$PWD/common/artiq" MISOC_SOURCE=/path/to/misoc
+FORWARD_RX_CLOCK=1 DRTIO_PROTOCOL=1 \
+  PYTHON=/path/to/venv/bin/python MISOC_SOURCE=/path/to/misoc \
+  bash diagnostics/drtio/build_top.sh \
+  /path/to/ps-export /path/to/validated156 /fresh/drtio-protocol
+```
+
+Use the exact-cable reset → PMU/FSBL → PL programming → `prepare_ps.tcl`
+sequence above, with all A53s halted. The unchanged PRBS hardware runner
+can still be used first; it resets the GTH and selects PRBS7. Then:
+
+```sh
+make test-hw-drtio-framing PYTHON=/path/to/venv/bin/python \
+  JTAG_SERVER=tcp:SERVER:3121 SI5342_CABLE=YOUR_GENESYS_SERIAL \
+  CSR_MAP=/fresh/drtio-protocol/csr-map.json O=/path/to/evidence
+```
+
+The framing runner disables PRBS, selects internal PMA loopback, performs
+three reset/alignment/traffic cycles, checks receiver-side RT and AUX
+payloads, injects corruption and checks recovery. Restore the normal
+ARTIQ/CoreDMA PL and both CPU images afterward. No Si5342 configuration is
+changed by this runner; the default 156.25 MHz reference profile is used.
+
+Physical result (2026-10-09): three cycles PASS, each with over 15,000 RT
+and AUX frames, zero new settled errors, detected encoded-bit corruption
+and clean recovery. Evidence: `evidence/drtio-framing-hardware-2026-10-09.json`.

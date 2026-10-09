@@ -150,3 +150,11 @@ test-hw-si5342:
 	$(if $(CSR_MAP),,$(error Specify clock-forward diagnostic CSR_MAP=; ordinary RTIO image is incompatible))
 	$(if $(JTAG_SERVER),,$(error Specify JTAG_SERVER= current hw_server URL))
 	$(PYTHON) diagnostics/si5342/test_lock_hw.py --port="$(SI5342_UART)" --server="$(JTAG_SERVER)" --cable="$(SI5342_CABLE)" --csr-map="$(CSR_MAP)" --seed-bootstrap --reset-clock-chip --output="$(abspath $(O))/si5342-clock-hardware"
+
+.PHONY: test-drtio-framing test-hw-drtio-framing
+test-drtio-framing:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_protocol_probe.py' -v
+
+test-hw-drtio-framing:
+	@test -n "$(CSR_MAP)" -a -n "$(JTAG_SERVER)" || (echo 'Set protocol CSR_MAP and JTAG_SERVER'; exit 2)
+	$(PYTHON) diagnostics/drtio/test_protocol_hw.py --csr-map="$(CSR_MAP)" --server="$(JTAG_SERVER)" --cable="$(SI5342_CABLE)" --output="$(abspath $(O))/drtio-framing-hardware"

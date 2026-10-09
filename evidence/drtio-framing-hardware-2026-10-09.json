@@ -1,0 +1,38 @@
+{
+  "kind": "hardware",
+  "time": 1791576458.2586832,
+  "status": "PASS",
+  "scope": "upstream ARTIQ 8b10b and RT/AUX link framing over physical internal GTH PMA loopback",
+  "cycles": 3,
+  "cable": "210383B7F02DA",
+  "external_sfp_tx": "disabled",
+  "remote_drtio": "NOT_RUN",
+  "deterministic_latency": "NOT_RUN",
+  "results": [
+    "PROTOCOL_RESULT cycle=0 alignment=35 rt_words=256544 rt_frames=15934 rt_errors=0 aux_words=253456 aux_frames=15791 aux_errors=0 injected=60577",
+    "PROTOCOL_RESULT cycle=1 alignment=37 rt_words=250976 rt_frames=15661 rt_errors=0 aux_words=250512 aux_frames=15656 aux_errors=0 injected=60550",
+    "PROTOCOL_RESULT cycle=2 alignment=23 rt_words=255152 rt_frames=15852 rt_errors=0 aux_words=252317 aux_frames=15730 aux_errors=0 injected=62587"
+  ],
+  "csr_map_sha256": "4fe94c4085dbdf3b95eab50c9ef7d73059b5e9cf2545bf55ef9c9f8f7fa096d2",
+  "log_sha256": "4546275e148289e8ebca53ba94fce6ac4ac1302835dabc0c263eaabbf63938c4",
+  "build": {
+    "kind": "fpga-build-not-hardware",
+    "status": "PASS",
+    "scope": "separate raw GTH diagnostic; not a DRTIO satellite",
+    "sha256": {
+      "top.bit": "9ee496f8ad3b4f4c8e3b6c65569db7ced9cdbb7b856bfa4e19acbcf4246a7958",
+      "top.v": "f8a9293a057359a9c83fd00c574238199fec094f7b3cab6298a3a0e18fc45944",
+      "top.xdc": "f093a5d1531a648daf0a6924fdd3a22155fbb35931c25a250178c3d613fdf3a1",
+      "csr-map.json": "4fe94c4085dbdf3b95eab50c9ef7d73059b5e9cf2545bf55ef9c9f8f7fa096d2",
+      "top_timing.rpt": "da2d8741f8200c8c2328ee49fb22d816f7bee0963774bbf54acf8c801c5b2220",
+      "top_bus_skew.rpt": "6dfbf38d81613f4540d302e5048de08c0c7fb79179fd0a725fa7519921112d44"
+    }
+  },
+  "simulation": {
+    "status": "PASS",
+    "tests": 3,
+    "alignment_offsets": 20,
+    "log_sha256": "3c6504a6e58920624d8f275e3c15a41562ff131b1719f4ce5d21ab0a6b61e3ab"
+  },
+  "build_note": "Initial synthesis stopped on mismatched counter register names; fixed constraints, resumed from synthesis checkpoint, all nine Gray bus-skew constraints and 318 first-stage CDC register checks passed."
+}

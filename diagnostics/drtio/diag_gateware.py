@@ -41,7 +41,7 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform, forward_rx_clock=False):
+    def __init__(self, platform, forward_rx_clock=False, protocol=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -84,6 +84,11 @@ class Diagnostic(Module):
         self.specials += [MultiReg(monitor.tx_prbs.storage, txprbs, odomain='gth_tx'),
                          MultiReg(monitor.prbs.storage, rxprbs, odomain='gth_rx'),
                          MultiReg(monitor.loopback.storage, loopback)]
+        txdata, rxdata = Signal(20), Signal(20)
+        if protocol:
+            from protocol_probe import ProtocolProbe
+            self.submodules.protocol = ProtocolProbe()
+            self.comb += [txdata.eq(self.protocol.tx_raw), self.protocol.rx_raw.eq(rxdata)]
         self.specials += Instance('drtio_gth',
             i_gtwiz_userclk_tx_reset_in=~txpma,
             i_gtwiz_userclk_tx_active_in=txactive, i_gtwiz_userclk_rx_active_in=rxactive,
@@ -93,7 +98,7 @@ class Diagnostic(Module):
             i_gtwiz_reset_rx_pll_and_datapath_in=0, i_gtwiz_reset_rx_datapath_in=0,
             o_gtwiz_reset_rx_cdr_stable_out=cdr,
             o_gtwiz_reset_tx_done_out=txdone, o_gtwiz_reset_rx_done_out=rxdone,
-            i_gtwiz_userdata_tx_in=0, i_drpclk_in=self.cd_sys.clk,
+            i_gtwiz_userdata_tx_in=txdata, o_gtwiz_userdata_rx_out=rxdata, i_drpclk_in=self.cd_sys.clk,
             i_gthrxn_in=pads.rxn, i_gthrxp_in=pads.rxp, i_gtrefclk0_in=refclk,
             i_loopback_in=loopback, i_rxprbssel_in=rxprbs, i_txprbssel_in=txprbs,
             i_rxusrclk_in=self.cd_gth_rx.clk, i_rxusrclk2_in=self.cd_gth_rx.clk,
@@ -132,7 +137,7 @@ class Diagnostic(Module):
             bus_csr=csr_bus.Interface(data_width=32, address_width=14))
         self.submodules.axi2wb = AXI2Wishbone(self.axi, self.wb2csr.wishbone, base_address=CSR_BASE)
         self.submodules.banks = csr_bus.CSRBankArray(self,
-            lambda name, memory: 0 if name == 'monitor' and memory is None else None,
+            lambda name, memory: {'monitor': 0, 'protocol': 1}.get(name) if memory is None else None,
             data_width=32, address_width=14)
         self.submodules.csr_interconnect = csr_bus.Interconnect(self.wb2csr.csr, self.banks.get_buses())
         connect_ps_hpm0(self, ps, self.axi)
@@ -158,6 +163,7 @@ def main():
     p.add_argument('--phy', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument("--forward-rx-clock", action="store_true")
+    p.add_argument("--protocol", action="store_true")
     args = p.parse_args()
     platform = DiagnosticPlatform(args.ps.resolve())
     platform.add_extension([
@@ -188,22 +194,25 @@ def main():
             IOStandard('DIFF_HSTL_I_DCI_12'))])
         platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
         platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
-    top = Diagnostic(platform, args.forward_rx_clock)
+    top = Diagnostic(platform, args.forward_rx_clock, args.protocol)
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
-    first_stage_count = 118 if args.forward_rx_clock else 117
+    first_stage_count = (118 if args.forward_rx_clock else 117) + (200 if args.protocol else 0)
+    prefixes = ['diagnostic_rx_count_gth_rx', 'diagnostic_tx_count_gth_tx', 'diagnostic_error_count_gth_rx']
+    if args.protocol:
+        prefixes += ['diagnostic_protocolprobe_graycounter'+str(i)+'_gth_rx' for i in range(6)]
     platform.toolchain.post_synthesis_commands.append("""
 # Vivado retains mr_ff on registers; Piotr's old Migen targets nets.
 set first_sync [get_cells -hierarchical -filter {mr_ff == TRUE && REF_NAME =~ FD*}]
 if {[llength $first_sync] != CDC_COUNT} {error "Missing first-stage CDC registers"}
 set_false_path -to [get_pins -of_objects $first_sync -filter {REF_PIN_NAME == D}]
-foreach prefix {diagnostic_rx_count_gth_rx diagnostic_tx_count_gth_tx diagnostic_error_count_gth_rx} {
+foreach prefix {GRAY_PREFIXES} {
  set sources [get_cells -hierarchical -filter "NAME =~ ${prefix}_gray_source_reg* && REF_NAME =~ FD*"]
  if {[llength $sources] != 32} {write_checkpoint -force gray-debug.dcp; error "Missing Gray source registers: $prefix count=[llength $sources] cells=$sources"}
  set endpoints [all_fanout -flat -endpoints_only -from [get_pins -of_objects $sources -filter {REF_PIN_NAME == Q}]]
  if {[llength $endpoints] != 32} {error "Unexpected Gray CDC endpoints: $prefix"}
  set_bus_skew 8 -from $sources -to $endpoints
 }
-""".replace("CDC_COUNT", str(first_stage_count)).replace("{", "{{").replace("}", "}}"))
+""".replace("CDC_COUNT", str(first_stage_count)).replace("GRAY_PREFIXES", " ".join(prefixes)).replace("{", "{{").replace("}", "}}"))
     platform.toolchain.additional_commands.append('report_bus_skew -file top_bus_skew.rpt')
     platform.build(top, build_dir=str(args.output.resolve()), run=False)
     top.write_map(args.output.resolve() / 'csr-map.json')

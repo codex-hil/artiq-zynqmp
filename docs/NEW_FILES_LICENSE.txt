@@ -357,3 +357,6 @@ tests/test_kernel_protocol.py
 tests/test_local_rtio.py
 tests/test_vivado_integration.py
 tests/test_zynqmp_dma.py
+diagnostics/drtio/protocol_probe.py
+diagnostics/drtio/test_protocol_probe.py
+diagnostics/drtio/test_protocol_hw.py

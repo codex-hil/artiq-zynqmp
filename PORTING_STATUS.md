@@ -752,3 +752,26 @@ ARTIQ integration runtime is running again; diagnostic PL is not left loaded.
 Two complete clock-test sessions passed, six loss/relock cycles total.
 Final evidence: `evidence/si5342-recovered-clock-2026-10-09.json` and
 `evidence/si5342-restored-core-2026-10-09.json`.
+
+## 2026-10-09 — upstream RT/AUX framing over physical GTH
+
+The optional protocol diagnostic top integrates existing ARTIQ LinkLayerTX/RX
+and MiSoC 8b/10b on actual GTH clocks. Three internal PMA loopback cycles
+passed with zero new settled RT/AUX payload or frame-length errors. Each
+cycle received more than 15,000 frames of each traffic type; deliberate raw
+bit corruption produced over 60,000 receiver errors and clean recovery.
+Alignment offsets varied after resets, demonstrating acquisition rather than
+a fixed assumed word boundary. External SFP TX remains disabled.
+
+Three simulations passed: all 20 aligner offsets, clean framed traffic and
+encoded-bit corruption/recovery. Bitstream, timing, 318 first-stage CDC
+register checks and nine Gray bus-skew checks PASS. Counter constraint
+names were corrected after initial synthesis, then implementation resumed
+from the preserved checkpoint. See diagnostics/drtio/README.md and
+evidence/drtio-framing-hardware-2026-10-09.json.
+
+This is link framing, not satellite packet execution, AUX firmware discovery
+or deterministic latency. Elastic buffers and a fabric comma aligner remain
+laboratory choices. Board temporarily runs diagnostic PL while the next
+firmware clock-control stage is developed; normal runtime must be restored
+after testing. No OTP/flash or other connected FPGA board was modified.
