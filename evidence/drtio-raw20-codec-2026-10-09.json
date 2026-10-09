@@ -1,0 +1,28 @@
+{
+  "kind": "RTL_SIMULATION_NOT_HARDWARE",
+  "utc": "2026-10-09T11:18:29.080471+00:00",
+  "status": "PASS",
+  "test_cases": 3,
+  "snapshots": [
+    "Piotr preserved common/artiq",
+    "ARTIQ486e8f897547d282d46a02c30463449c21e30cfe"
+  ],
+  "checks": [
+    "Concurrent RT/AUX wire-level 8b10b roundtrip with 2ns RX clock phase offset",
+    "Swapped raw10-bit lanes negative control",
+    "All16 PHY-ready/reset combinations"
+  ],
+  "hardware_status": "NOT_RUN",
+  "physical_blocker": "Genesys and Kasli USB cables absent after host restart",
+  "limitations": [
+    "No GTH word alignment/reset sequencer",
+    "No buffer-bypass or deterministic-latency qualification",
+    "No Si5342 recovered-input control",
+    "No production satellite firmware integration"
+  ],
+  "files": {
+    "diagnostics/drtio/raw20_codec.py": "90e126331bcc19eeef99d9d7cd6fc2821918549ae906ad9f60a1403576894149",
+    "diagnostics/drtio/test_raw20_codec.py": "a5af5d33f8dafbeda528d3358c010162fd10f40e816d078b9cc3a0829c59ca25"
+  },
+  "logs": "build/drtio-codec-resume/tests*.log"
+}

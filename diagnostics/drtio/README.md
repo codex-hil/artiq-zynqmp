@@ -112,3 +112,28 @@ Vivado retains that attribute on first-stage registers. This diagnostic
 adds a checked register-D false path and retains explicit Gray bus-skew
 constraints. No archived Migen source is changed. The build verifier rejects
 missing artifacts, unclosed timing and missing/failing bus-skew reports.
+
+## Raw20 codec integration (simulation only)
+
+`raw20_codec.py` connects the existing MiSoC Encoder(2, True), Decoder(True)
+and ARTIQ ChannelInterface to a raw20-bit transceiver port. Lane0 occupies
+bits0–9, lane1 bits10–19; the existing LSB-first convention matches Kasli's
+upstream PHY. TX runs in sys; decoders run in recovered rtio_rx. Readiness
+requires reset done, an active RX clock, verified word alignment and no
+active reset. These status inputs must already be synchronized to sys.
+No GT reset/alignment logic, elastic-buffer bypass, CDC timing constraints,
+Si5342 control or satellite firmware is provided by this codec.
+The diagnostic PRBS image is unchanged and does not instantiate this codec.
+
+```sh
+make test-drtio-codec PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python \
+  ARTIQ_SOURCE=/srv/codex-hil-data/artiq-zynqmp/work/kasli-master \
+  MISOC_SOURCE=/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc
+```
+
+Wire-level tests extend the upstream LGPLv3+ link-layer test with actual
+8b/10b encoders/decoders and two phase-offset125MHz-model clocks. Concurrent
+RT/AUX packets survive encoding/decoding byte-exactly. Swapping the10-bit
+lanes is an intentional negative control and corrupts both traffic types.
+All16 readiness combinations are checked. These tests do not prove GT
+comma acquisition, clock recovery, link firmware or deterministic latency.

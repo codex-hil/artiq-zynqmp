@@ -132,3 +132,7 @@ test-hw-drtio-phy:
 	$(if $(CSR_MAP),,$(error Specify diagnostic CSR_MAP=; original RTIO map is incompatible))
 	$(if $(JTAG_SERVER),,$(error Specify JTAG_SERVER= current hw_server URL))
 	$(PYTHON) diagnostics/drtio/test_phy_hw.py --csr-map="$(CSR_MAP)" --server="$(JTAG_SERVER)" --cable=210383B7F02DA --output="$(abspath $(O))/drtio-phy-hardware"
+
+.PHONY: test-drtio-codec
+test-drtio-codec:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_raw20_codec.py' -v

@@ -177,3 +177,9 @@ in build/kasli-v2.1-master-2026-10-08. Build script fixes suppression of .bit
 locally. OpenOCD+bscan package symlink toolchains/kasli-openocd (from pinned
 flake); prepend its bin to PATH for artiq_flash. Dry-run PASS, no flash/JTAG
 write and no physical Kasli test. Review timing-scope caveats in evidence.
+
+Resume2026-10-09: USB Genesys/Kasli absent after host restart. No hardware
+writes. Raw20Codec plus wire-level RT/AUX simulation added under diagnostics/
+drtio; make test-drtio-codec passes3 tests on Piotr/current snapshots.
+Not wired into GTH top and no clock recovery/deterministic-latency proof.
+Kasli1.1 qualification belongs to the separately requested thread.

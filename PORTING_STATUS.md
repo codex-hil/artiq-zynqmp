@@ -699,3 +699,18 @@ are recorded in evidence/kasli-v2.1-master-2026-10-08.json for hardware and
 constraint qualification. No unconstrained internal maximum-delay endpoint.
 Package: build/kasli-v2.1-master-2026-10-08/kasli-v2.1-master-125mhz-artiq10-test.tar.gz.
 Physical Kasli boot/Ethernet/DRTIO and Genesys satellite firmware remain pending.
+
+## 2026-10-09: resumed DRTIO raw20 protocol integration
+
+Genesys/Kasli USB connections are absent after host restart; no hardware
+reset/programming was attempted. Existing completed Kasli v2.1 package and
+physical GTH PRBS evidence are preserved. Raw20Codec reuses existing
+MiSoC8b10b and ARTIQ ChannelInterface for future GTH integration. Three
+wire-level simulations PASS against both Piotr's preserved ARTIQ and the
+pinned current master snapshot: concurrent RT/AUX payloads with RX phase
+offset, swapped-lane negative control and all16 ready/reset conditions.
+Reproducer: make test-drtio-codec; evidence/drtio-raw20-codec-2026-10-09.json.
+Codec is not yet connected to board diagnostic or satellite firmware.
+GT alignment, Si5342 clock recovery, buffer bypass/deterministic latency,
+remote link and auxiliary satellite firmware remain pending. Kasli1.1
+board qualification was handed to a separate user-requested thread.
