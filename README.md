@@ -30,11 +30,17 @@ Dokładny stan: [PORTING_STATUS.md](PORTING_STATUS.md). Architektura i decyzje:
 
 ## Clone i zachowanie źródeł
 
-Ta gałąź nie została wypchnięta na GitHub. Na hoście roboczym:
+Publiczne repozytorium: https://github.com/codex-hil/artiq-zynqmp
+
+Licencje i autorstwo: [THIRD_PARTY.md](THIRD_PARTY.md). Nowe pliki mają
+licencję LGPL-3.0-or-later; licencja oryginalnego snapshotu Piotra wymaga
+wyjaśnienia z autorem. Projekt nie jest oficjalnym wydaniem M-Labs.
+
+Pobranie:
 
 ```sh
 git clone --branch bringup/genesys \
-  /home/codex-hil/artiq-zynqmp/work/artiq-new-wip artiq-genesys
+  https://github.com/codex-hil/artiq-zynqmp.git artiq-genesys
 cd artiq-genesys
 git submodule update --init common/artiq common/migen
 ```
