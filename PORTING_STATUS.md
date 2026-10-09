@@ -714,3 +714,41 @@ Codec is not yet connected to board diagnostic or satellite firmware.
 GT alignment, Si5342 clock recovery, buffer bypass/deterministic latency,
 remote link and auxiliary satellite firmware remain pending. Kasli1.1
 board qualification was handed to a separate user-requested thread.
+
+## 2026-10-09: Si5342 recovered RX clock — laboratory hardware milestone
+
+| Subsystem | Piotr | Duke | Upstream reused | Current status | Test |
+|---|---|---|---|---|---|
+| PS I2C/Si5342 backup | Existing PS export reused; no board-clock driver reused | Not used | AMD XIicPs2025.2, Digilent mux protocol | DONE diagnostic | Two3072-register reads, identity/rev03 and12 page selectors verified |
+| RX clock forwarding | Existing PS/Migen top extended locally | Not used | ODDRE1/OBUFDS/BUFGCTRL, Digilent clock pins | DONE diagnostic | Vivado timing/Gray CDC checks and physical IN0 LOS transition |
+| Si5342 PLL lock | No clock profile reused from Piotr | Not used | Digilent generated DSPLL settings, Si5342 Rev-D register definitions | DONE laboratory; production integration PARTIAL | Independent PS125MHz lock, actual RXCLK lock, three loss/relock cycles |
+| GTH under recovered-clock lock | Existing PHY diagnostic extended | Not used | AMD GTHE4 PRBS7 checker and user clocks | DONE internal loopback | Both TX/RX counters active, zero new settled PRBS errors after each reacquisition |
+| Remote DRTIO clock/synchronization | Still pending | Not used | Existing ARTIQ protocol/PHY planned | MISSING hardware proof | Kasli/SFP link, deterministic latency, jitter and cross-board timing NOT_RUN |
+
+The recovered user-clock target is nominal125MHz; the
+GTH reference output remains156.25MHz. Profile P0=63/M=1386 gives a PFD
+near1.984MHz and preserves the original13.75GHz VCO/N/R/output settings.
+The profile is experimental, derived from the existing Digilent HDMI
+configuration rather than certified by a new ClockBuilder Pro run. The
+laboratory OOF window is widened; its absolute threshold and output jitter
+are not independently measured. Self-loop lock does not establish an
+accurate external time reference. Elastic buffers remain enabled.
+
+`make test-hw-si5342` reproduces the clock test after the documented loader.
+It saves/restores every touched volatile register and verifies real clock
+activity/PRBS, not just ready flags. `make test-si5342` checks the frequency
+plan and rejects the previously observed fractional-mode/clock-gate and
+output-plan mistakes. No OTP/boot-flash writes or changes to original
+source checkouts. See [Si5342 instructions](diagnostics/si5342/README.md).
+
+Evidence: `evidence/si5342-readout-2026-10-09.json`,
+`evidence/drtio-clock-forward-build-2026-10-09.json`, and final physical
+clock/core-restore evidence recorded for this session.
+
+Final restoration PASS: board DHCP address192.168.2.3, CPU1 ready,
+ICMP3/3, normal `artiq_run examples/genesys_dma.py` produced eight physical
+pulses/sixteen edges with the expected input timing. The previous local
+ARTIQ integration runtime is running again; diagnostic PL is not left loaded.
+Two complete clock-test sessions passed, six loss/relock cycles total.
+Final evidence: `evidence/si5342-recovered-clock-2026-10-09.json` and
+`evidence/si5342-restored-core-2026-10-09.json`.

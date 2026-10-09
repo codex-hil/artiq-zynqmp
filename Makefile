@@ -136,3 +136,17 @@ test-hw-drtio-phy:
 .PHONY: test-drtio-codec
 test-drtio-codec:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_raw20_codec.py' -v
+
+SI5342_UART ?= /dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0
+SI5342_CABLE ?= 210383B7F02DA
+.PHONY: si5342-readout si5342-control test-si5342 test-hw-si5342
+si5342-readout:
+	vivado-container shell -c 'exec "$$@"' bash "$(CURDIR)/diagnostics/si5342/build_readout.sh" "$(abspath $(O))/si5342"
+si5342-control:
+	vivado-container shell -c 'export SI_SOURCE=control; exec "$$@"' bash "$(CURDIR)/diagnostics/si5342/build_readout.sh" "$(abspath $(O))/si5342"
+test-si5342:
+	PYTHONPATH="$(CURDIR)/diagnostics/si5342" $(PYTHON) -m unittest discover -s diagnostics/si5342 -p 'test_profile.py' -v
+test-hw-si5342:
+	$(if $(CSR_MAP),,$(error Specify clock-forward diagnostic CSR_MAP=; ordinary RTIO image is incompatible))
+	$(if $(JTAG_SERVER),,$(error Specify JTAG_SERVER= current hw_server URL))
+	$(PYTHON) diagnostics/si5342/test_lock_hw.py --port="$(SI5342_UART)" --server="$(JTAG_SERVER)" --cable="$(SI5342_CABLE)" --csr-map="$(CSR_MAP)" --seed-bootstrap --reset-clock-chip --output="$(abspath $(O))/si5342-clock-hardware"

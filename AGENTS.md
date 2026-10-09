@@ -183,3 +183,23 @@ writes. Raw20Codec plus wire-level RT/AUX simulation added under diagnostics/
 drtio; make test-drtio-codec passes3 tests on Piotr/current snapshots.
 Not wired into GTH top and no clock recovery/deterministic-latency proof.
 Kasli1.1 qualification belongs to the separately requested thread.
+
+Latest2026-10-09 Si5342 recovered-clock hardware PASS. Genesys USB returned.
+New diagnostics/si5342 uses AMD XIicPs standalone BSP, main I2C0/mux0x70
+channel2/Si0x68;100us held-RX-to-TX guard and STOP/bus-idle sequencing.
+Two3072-register backups verified all12 pages/identity5342/rev03.
+Optional FORWARD_RX_CLOCK=1 GTH top adds A2/A1 DIFF_HSTL_I_DCI_12,
+ODDRE1/OBUFDS and BUFGCTRL PS125MHz vs GTH RX125MHz. CSR forward-enable
+0xA0000030 and bootstrap-select0xA0000034, magic0x44525430. Build/timing PASS.
+P0=63/M=1386 integer profile preserves factory VCO13.75GHz and OUT156.25MHz.
+Hardware loader + make test-hw-si5342 passed two sessions/six loss/relock
+cycles, both clocks active and zero new settled PRBS7 errors. Correct
+integer clock gates, near-original1.984MHz PFD, GTH reset after Si config
+and no redundant outer reset are required. Laboratory OOF window widened;
+absolute threshold/jitter/remote accuracy are not measured. No OTP/flash.
+Not a DRTIO satellite or deterministic-latency proof. Source evidence
+si5342-{readout,recovered-clock,restored-core}-2026-10-09.json and README.
+Normal ARTIQ/CoreDMA PL+worker+CPU0 restored, DHCP now192.168.2.3 (old.16
+is stale). Normal artiq_run GenesysDMA passed8 physical pulses/16 edges.
+Example device_db still has.16: use actual DHCP address or copied test DB.
+Use exact Genesys JTAG cable210383B7F02DA; Kasli1.1 remains another thread.

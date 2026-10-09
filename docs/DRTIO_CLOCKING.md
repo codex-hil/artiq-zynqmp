@@ -97,3 +97,27 @@ actively driven low to enable transmission. Diagnostic OOC core does not
 yet drive these board controls; its future board top must do so. Build
 validator now also requires CONFIG.GT_TYPE=GTH. Physical link remains
 NOT_RUN. Source: Digilent reference manual sections7.3/7.3.1.
+
+## 2026-10-09 physical recovered-clock milestone
+
+The optional raw GTH diagnostic now forwards RXCLK through A2/A1
+(DIFF_HSTL_I_DCI_12, bank66) to Si5342 IN0. Complementary pinA1 was checked
+against the vendor package database and both pins against Digilent revC
+constraints. The physical IN0 LOS transition confirms the board path.
+A BUFGCTRL-selected PS125MHz source provides an independent startup check;
+management remains independent of the recovered clock. Gate defaults off.
+
+A repeated3072-register backup verified all12 pages, then a volatile
+125MHz→156.25MHz profile locked first to PS and then actual GTH RXCLK.
+P0=63/M=1386 preserves the factory13.75GHz VCO and156.25MHz output plan.
+Three clock-gate loss/reacquisition cycles passed with active RX/TX counters
+and zero new settled PRBS7 errors. The physical GTH reset after clock-chip
+configuration is required; high resetdone alone did not prove TX activity.
+The laboratory OOF window, loop bandwidth and jitter are not production
+characterization. This remains internal PMA loopback with elastic buffers,
+not remote Kasli synchronization, DRTIO packets or deterministic latency.
+
+Reproducer and register/profile details:
+[diagnostics/si5342/README.md](../diagnostics/si5342/README.md).
+No archived Piotr/Migen code or OTP was modified. The normal ARTIQ/CoreDMA
+runtime is restored after the diagnostic session.

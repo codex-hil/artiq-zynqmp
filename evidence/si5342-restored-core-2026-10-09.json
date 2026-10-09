@@ -1,0 +1,24 @@
+{
+  "kind": "physical-hardware",
+  "status": "PASS",
+  "scope": "restore previous local ARTIQ integration runtime after Si5342 diagnostic",
+  "board_ip": "192.168.2.3",
+  "cable": "210383B7F02DA",
+  "si5342_settings_restored": true,
+  "cpu1_worker_ready": true,
+  "icmp": "3/3 received, 0% loss",
+  "normal_artiq_run": {
+    "source": "examples/genesys_dma.py",
+    "returncode": 0,
+    "loopbacks": 2,
+    "physical_pulses": 8,
+    "physical_edges": 16,
+    "log": "COREDMA_RESULT 8 16347190126 16348440141 1350000 -1\nCOREDMA_LOOPBACK_PASS 16347190126 16348440141 1350000 -1\nCOREDMA_RESULT 8 16355529769 16356779784 1350000 -1\nCOREDMA_LOOPBACK_PASS 16355529769 16356779784 1350000 -1\n"
+  },
+  "artifacts": "/srv/codex-hil-data/artiq-zynqmp/build/si5342-2026-10-09",
+  "sha256": {
+    "restored-core-uart.log": "0b9e5832f6342fa658ffcb42a0c3f519b420472a103bc660e0279252687f8d6e",
+    "restored-core-jtag.json": "dd2674814eb149ada9f8559eb1ba31f1fb98b48a8747a562e760e439fe84e4c2",
+    "restored-dma.log": "56aaa9ee3b9476791cde3069d4c670874566f7e905df9b69ac70485a02a2a065"
+  }
+}

@@ -1,0 +1,1036 @@
+{
+  "kind": "physical-hardware",
+  "scope": "internal GTH PMA RXCLK -> Si5342 IN0; no remote master or jitter/deterministic latency measurement",
+  "profile": {
+    "kind": "experimental-derived-profile-not-ClockBuilder-Pro-validated",
+    "input_hz": 125000000,
+    "output_hz": 156250000,
+    "vco_hz": 13750000000,
+    "pfd_hz": "125000000/63",
+    "input": 0,
+    "basis": "Digilent 6d783aa DSPLL coefficients and timing; manual IN0; integer P0=63, M=1386, PFD~1.984MHz close to original1.98MHz; preserved factory MXAXB/N/R/output drivers. Loop bandwidth/jitter not characterized.",
+    "writes": {
+      "002c": 1,
+      "003f": 17,
+      "0040": 4,
+      "0041": 14,
+      "0046": 64,
+      "004a": 32,
+      "004e": 5,
+      "0051": 3,
+      "0055": 3,
+      "0059": 1,
+      "005a": 171,
+      "005b": 170,
+      "005c": 166,
+      "005d": 0,
+      "0208": 63,
+      "0209": 0,
+      "020a": 0,
+      "020b": 0,
+      "020c": 0,
+      "020d": 0,
+      "020e": 1,
+      "020f": 0,
+      "0210": 0,
+      "0211": 0,
+      "0231": 11,
+      "0508": 19,
+      "0509": 34,
+      "050a": 12,
+      "050b": 11,
+      "050c": 7,
+      "050d": 63,
+      "050e": 20,
+      "050f": 38,
+      "0510": 11,
+      "0511": 10,
+      "0512": 7,
+      "0513": 63,
+      "0515": 0,
+      "0516": 0,
+      "0517": 0,
+      "0518": 0,
+      "0519": 181,
+      "051a": 2,
+      "051b": 0,
+      "051c": 0,
+      "051d": 0,
+      "051e": 0,
+      "051f": 128,
+      "0521": 43,
+      "052a": 1,
+      "052b": 1,
+      "052c": 135,
+      "052d": 3,
+      "052e": 25,
+      "052f": 25,
+      "0531": 0,
+      "0532": 74,
+      "0533": 3,
+      "0534": 0,
+      "0535": 0,
+      "0536": 4,
+      "0537": 0,
+      "0538": 0,
+      "0539": 0,
+      "053a": 2,
+      "053b": 3,
+      "053c": 0,
+      "053d": 17,
+      "053e": 6,
+      "0589": 13,
+      "058a": 0,
+      "059b": 250,
+      "059d": 19,
+      "059e": 36,
+      "059f": 12,
+      "05a0": 11,
+      "05a1": 7,
+      "05a2": 63,
+      "05a6": 3,
+      "0949": 1,
+      "094a": 1,
+      "002e": 54,
+      "002f": 0,
+      "0036": 54,
+      "0037": 0,
+      "0092": 2,
+      "0093": 160,
+      "0095": 0,
+      "0096": 128,
+      "0098": 96,
+      "009a": 2,
+      "009b": 96,
+      "009d": 12,
+      "009e": 64,
+      "00a0": 32,
+      "0804": 0,
+      "0b44": 47,
+      "0b47": 0,
+      "0b48": 0,
+      "00a9": 159,
+      "00aa": 129,
+      "00ab": 1,
+      "00ac": 0,
+      "00e5": 0,
+      "00ea": 42,
+      "00eb": 128,
+      "00ec": 1,
+      "00ed": 0,
+      "0294": 144,
+      "0296": 2,
+      "0297": 2,
+      "0299": 2,
+      "029d": 66,
+      "029e": 7,
+      "029f": 0,
+      "02a9": 51,
+      "02aa": 19,
+      "02ab": 0,
+      "028a": 31,
+      "028e": 28,
+      "0045": 12
+    },
+    "oof_window": "laboratory loopback: nominal500ppm set /450ppm clear from 1/16ppm extended threshold encoding; not remote synchronization accuracy"
+  },
+  "cycles": [
+    {
+      "loss": {
+        "time": 1791560239.3656683,
+        "internal": 192,
+        "inputs": 17,
+        "pll": 47,
+        "cal": 223,
+        "active": 63
+      },
+      "relock": {
+        "time": 1791560245.9733288,
+        "internal": 192,
+        "inputs": 0,
+        "pll": 13,
+        "cal": 221,
+        "active": 63
+      },
+      "gth": {
+        "before": [
+          895,
+          3107645591,
+          3346460700,
+          3346584610,
+          3
+        ],
+        "after": [
+          895,
+          3633027824,
+          3871844262,
+          3871968173,
+          3
+        ],
+        "deltas_boot_rx_tx_errors": [
+          525382233,
+          525383562,
+          525383563,
+          0
+        ]
+      }
+    },
+    {
+      "loss": {
+        "time": 1791560257.6209004,
+        "internal": 192,
+        "inputs": 17,
+        "pll": 47,
+        "cal": 223,
+        "active": 63
+      },
+      "relock": {
+        "time": 1791560264.148688,
+        "internal": 192,
+        "inputs": 0,
+        "pll": 13,
+        "cal": 221,
+        "active": 63
+      },
+      "gth": {
+        "before": [
+          895,
+          1083044930,
+          1321862913,
+          1321986823,
+          3
+        ],
+        "after": [
+          895,
+          1608124993,
+          1846944183,
+          1847068093,
+          3
+        ],
+        "deltas_boot_rx_tx_errors": [
+          525080063,
+          525081270,
+          525081270,
+          0
+        ]
+      }
+    },
+    {
+      "loss": {
+        "time": 1791560275.76439,
+        "internal": 192,
+        "inputs": 17,
+        "pll": 47,
+        "cal": 223,
+        "active": 63
+      },
+      "relock": {
+        "time": 1791560282.291687,
+        "internal": 192,
+        "inputs": 0,
+        "pll": 13,
+        "cal": 221,
+        "active": 63
+      },
+      "gth": {
+        "before": [
+          895,
+          3328712007,
+          3567532625,
+          3567656535,
+          3
+        ],
+        "after": [
+          895,
+          3850874380,
+          4089696159,
+          4089820070,
+          3
+        ],
+        "deltas_boot_rx_tx_errors": [
+          522162373,
+          522163534,
+          522163535,
+          0
+        ]
+      }
+    }
+  ],
+  "status": "PASS",
+  "restored": true,
+  "clock_chip_hard_reset": true,
+  "arithmetic": {
+    "p": "63",
+    "m": "1386",
+    "vco_hz": 13750000000,
+    "output_hz": 156250000
+  },
+  "initial": {
+    "time": 1791560188.7520278,
+    "internal": 192,
+    "inputs": 0,
+    "pll": 47,
+    "cal": 221,
+    "active": 0
+  },
+  "baseline_gth": {
+    "before": [
+      895,
+      781981451,
+      526205289,
+      526329249,
+      3
+    ],
+    "after": [
+      895,
+      1303801029,
+      1048030673,
+      1048154633,
+      3
+    ],
+    "deltas_boot_rx_tx_errors": [
+      521819578,
+      521825384,
+      521825384,
+      0
+    ]
+  },
+  "seed_source": "independent-PS-125MHz",
+  "phases": [
+    {
+      "name": "input0-clock-off",
+      "samples": [
+        {
+          "time": 1791560211.2784312,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560211.5585506,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560211.830331,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560212.1027374,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560212.3744984,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "input0-clock-on",
+      "samples": [
+        {
+          "time": 1791560215.4548204,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560215.7337048,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560216.0062747,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560216.278178,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560216.5501254,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "initial-lock",
+      "samples": [
+        {
+          "time": 1791560216.6223478,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560216.9024675,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560217.1741168,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560217.4464207,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560217.7182877,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560217.990341,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560218.2622097,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560218.53429,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560218.8061254,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560219.0781107,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "switch-to-rx-lock",
+      "samples": [
+        {
+          "time": 1791560226.5969255,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560226.8699818,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560227.141769,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560227.4134307,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560227.6858923,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "loss-0",
+      "samples": [
+        {
+          "time": 1791560238.2763972,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560238.549363,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560238.821406,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560239.093351,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560239.3656683,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "relock-0",
+      "samples": [
+        {
+          "time": 1791560242.6983907,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560242.9811711,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560243.252999,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560243.525513,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560243.797392,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560244.0694706,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560244.3415277,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560244.6134853,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560244.8857563,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560245.1572459,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560245.42935,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560245.7011986,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560245.9733288,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "loss-1",
+      "samples": [
+        {
+          "time": 1791560256.5266125,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560256.804935,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560257.0767467,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560257.348288,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560257.6209004,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "relock-1",
+      "samples": [
+        {
+          "time": 1791560260.8830972,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560261.1564944,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560261.4289627,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560261.700358,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560261.9726787,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560262.2450314,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560262.5169704,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560262.7887812,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560263.0609872,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560263.3327968,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560263.6047187,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560263.8762946,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560264.148688,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "loss-2",
+      "samples": [
+        {
+          "time": 1791560274.6773028,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560274.9482212,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560275.2202153,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560275.492268,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        },
+        {
+          "time": 1791560275.76439,
+          "internal": 192,
+          "inputs": 17,
+          "pll": 47,
+          "cal": 223,
+          "active": 63
+        }
+      ]
+    },
+    {
+      "name": "relock-2",
+      "samples": [
+        {
+          "time": 1791560279.0254734,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560279.300439,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560279.572149,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560279.8439605,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560280.1157417,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560280.388131,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560280.6601915,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560280.9325647,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 47,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560281.2042572,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560281.4760633,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560281.747784,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560282.0194893,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        },
+        {
+          "time": 1791560282.291687,
+          "internal": 192,
+          "inputs": 0,
+          "pll": 13,
+          "cal": 221,
+          "active": 63
+        }
+      ]
+    }
+  ],
+  "initial_gth": {
+    "before": [
+      895,
+      820036760,
+      1058852247,
+      1058976157,
+      3
+    ],
+    "after": [
+      895,
+      1344523673,
+      1583338815,
+      1583462726,
+      3
+    ],
+    "deltas_boot_rx_tx_errors": [
+      524486913,
+      524486568,
+      524486569,
+      0
+    ]
+  },
+  "restore_status": {
+    "time": 1791560300.4273968,
+    "internal": 192,
+    "inputs": 0,
+    "pll": 47,
+    "cal": 221,
+    "active": 0
+  },
+  "repeated_session_result": "/srv/codex-hil-data/artiq-zynqmp/build/si5342-2026-10-09/lock-p63-m1386/results.json",
+  "validated_clock_gate_cycles_total": 6,
+  "reproduction": "make test-hw-si5342 after load_diagnostic.py",
+  "artifact_root": "/srv/codex-hil-data/artiq-zynqmp/build/si5342-2026-10-09",
+  "sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/si5342-2026-10-09/si5342-control.elf": "1c5c072da86eb923827fa09b574a7379863fc2c6fae7c1a28b4293ebeac11aa3",
+    "/srv/codex-hil-data/artiq-zynqmp/build/si5342-2026-10-09/reproduce/si5342-clock-hardware/uart.log": "5a6d75b26f66b2ec4c3257d09cbf78fc516d7e9fa153d9260cf79c3f1d05df9c",
+    "/srv/codex-hil-data/artiq-zynqmp/build/si5342-2026-10-09/reproduce/si5342-clock-hardware/jtag.log": "01fe1e036521e8979fd82867205657b538a0bb969dc77f2eca290625d7de692d",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-clock-select-2026-10-09/top.bit": "1db108e0b9ccdd825fab9a8418bb2f2924e1d76c38984774aa85f3c815f05265"
+  },
+  "source_sha256": {
+    "diagnostics/si5342/clock_csr.tcl": "58e741452d064839d19707ab0e176f8d40ca92826dbcefb71f73ecdd810a362d",
+    "diagnostics/si5342/validate_profile.py": "18c19f78488fe6e3ddac87252a835147458f35e43f291c365670b6a85bb60d28",
+    "diagnostics/si5342/control.c": "f747d35a90e863132fa67f554ba9aaf4c9f414af03dd4e021f2c9d7c06fba1b4",
+    "diagnostics/si5342/test_lock_hw.py": "2b74672a753ebd497732e84225ba4b84e79d317f04b8aafa442c2cd6768b9ecc",
+    "diagnostics/si5342/profile-rx125.json": "6ec8afa25c62555bd84aa299ce7de6b3d50f5e0b49c2ee92b757d30ee20080a0",
+    "diagnostics/si5342/parse_readout.py": "bbd85e3196ca825fd6b1aa5c377a422edce8fe90dcc0d8778d6f13120b41c153",
+    "diagnostics/si5342/client.py": "70f128b0fd754ee481a97701d4871583c8bdbd704097f6b014921604b6917527",
+    "diagnostics/si5342/readout.c": "ae069b116d4f6acbc3eeb99d1269d745ac140ea56687198de04ce25f210bf9bc",
+    "diagnostics/si5342/load_diagnostic.py": "7be709d0cd3303472e6e0bfe336b4ca14a05d71e3ae4337157515c13e0546b2f",
+    "diagnostics/si5342/factory-plan.json": "e7b99d5258682207b7d7ec48d55c10781c6ba0c79561f47689a2c5abfbf80477",
+    "diagnostics/si5342/test_profile.py": "bd17e955fab3ddf7044b8569a5a44513fe1e731fe92ece11b43599f142aba366"
+  }
+}

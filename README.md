@@ -396,3 +396,18 @@ HP0 and replays them in FPGA. Physical20 pulses/40 loopback edges and native
 DMA underflow/ACK/replay passed. Ordinary CoreDMA recording/handles remain
 pending. [Build and hardware reproducer](diagnostics/DMA_BRINGUP.md).
 The validated SD image retains the preceding non-DMA runtime.
+
+## Si5342 i odzyskiwany zegar (2026-10-09)
+
+Na fizycznym Genesys ZU-5EV potwierdzono lock Si5342 do nominalnego125MHz
+RXCLK z wewnętrznego loopbacku GTH. Wyjście referencyjne GTH pozostaje
+156,25MHz. Automatyczny test obejmuje start z niezależnego zegara PS,
+przełączenie na RXCLK, trzy zaniki/powroty zegara, aktywność TX/RX i brak
+nowych błędów PRBS7 po ustabilizowaniu. Profil i test dotyczą stanowiska
+laboratoryjnego; synchronizacja z Kasli, jitter i deterministyczna latencja
+pozostają kolejnym etapem DRTIO.
+
+Instrukcje: [diagnostyka Si5342](diagnostics/si5342/README.md),
+`make test-si5342` oraz `make test-hw-si5342`. Test zapisuje i odtwarza
+zmieniane rejestry; nie programuje OTP. Po diagnostyce przywracamy
+normalny runtime ARTIQ/CoreDMA.
