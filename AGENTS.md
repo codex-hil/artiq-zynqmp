@@ -203,3 +203,25 @@ Normal ARTIQ/CoreDMA PL+worker+CPU0 restored, DHCP now192.168.2.3 (old.16
 is stale). Normal artiq_run GenesysDMA passed8 physical pulses/16 edges.
 Example device_db still has.16: use actual DHCP address or copied test DB.
 Use exact Genesys JTAG cable210383B7F02DA; Kasli1.1 remains another thread.
+
+Latest2026-10-09 continuation: physical upstream RT/AUX link framing over
+GTH PMA loopback PASS3 resets, zero settled errors, detected corruption and
+recovery. Autonomous diagnostic Si5342 firmware PS bootstrap/RX switch and
+three loss/recovery cycles PASS, volatile registers restored. Neither is a
+production satellite or deterministic latency proof. No other board writes.
+
+Current normal local runtime: PL build-vivado/rtio-debug-fixed-2026-10-09/
+top.bit, CPU0 build-vivado/debug-services-2026-10-09/amd/app/build/
+lwip_echo_server.elf, same CPU1 build/kernel-worker-dma-final. DHCP192.168.2.3.
+Standard analyzer1382 and MonInj1383 physical PASS;72 DMA pulses/144 edges
+plus native DMA mask255/underflow record PASS. Analyzer is256-record BRAM
+with brief retrieval pause, one client per port, MonInj500ms polling; DDR
+analyzer DMA remains absent. Docs RTIO_DEBUG.md and evidence rtio-debug-*.
+Shared hw_server restarted after daemon recovery, container172.17.0.3;
+resolve its actual address each time and use exact Genesys cable.
+
+New SD image build/sd-debug-2026-10-09/boot.bin packaged, NOT cold-booted.
+USB card/reader absent; no card write. Preserve earlier image. User asked
+whether card can be moved after debug tests; physical reply remains pending.
+Do not edit shell script files while those scripts are executing: Bash may
+read later commands from changed offsets. Copy scripts for active long runs.

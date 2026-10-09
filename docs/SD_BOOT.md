@@ -64,3 +64,22 @@ Loopback requires the verified JB1→JB2 jumper. The current runtime remains
 New CoreDMA image (2026-10-08): build/sd-core-dma-2026-10-08/BOOT.BIN.
 Packaging PASS, new-image cold SD boot NOT_RUN; previous physical boot
 PASS above applies to the earlier image still on the card. See CORE_DMA.md.
+
+## CoreDMA + analyzer/MonInj image (2026-10-09)
+
+Prepared image: `build/sd-debug-2026-10-09/boot.bin` (copy as `BOOT.BIN`).
+It includes the physically validated CoreDMA worker, debug runtime and
+local-RTIO debug PL. Artifacts and bootgen partition headers were verified;
+the CPU1 bridge loads at0x20000000 and embedded worker at0x20200000.
+Evidence: `evidence/sd-debug-package-2026-10-09.json`.
+
+The equivalent JTAG images passed management, normal DMA loopback, native
+exceptions, analyzer and MonInj. **This new image has not been written to
+the card or cold-booted.** Older SD-boot PASS evidence does not apply to it.
+No USB card reader/card was present during preparation; physical installation
+and a user-operated power cycle are required. Keep the previous BOOT.BIN
+backup, then follow the card-preservation procedure above.
+
+After cold boot, capture UART and the actual DHCP address, run management
+log retrieval, normal DMA loopback, and `make test-hw-rtio-debug` using the
+correct device database. Count repeated cold-power cycles separately.

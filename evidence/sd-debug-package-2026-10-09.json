@@ -1,0 +1,34 @@
+{
+  "kind": "packaged-artifacts-not-cold-boot-proof",
+  "status": "PACKAGING_PASS_COLD_BOOT_NOT_RUN",
+  "artifacts": {
+    "fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    "bitstream": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+      "sha256": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582"
+    },
+    "application": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    "pmufw": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    "worker_boot": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/sd-debug-worker-2026-10-09/worker-boot.elf",
+      "sha256": "caef92dc4f522f398fa343098eb196804afb081a125eb74d8100601b691fd63f"
+    },
+    "boot.bin": {
+      "sha256": "28f9dc7c6b5dda8bd1b84a423c54d141c9ae007e8c26dc397f3e54a9a6eb0942"
+    }
+  },
+  "partition_headers_sha256": "b7ee50204555dea6e9c1707eba6a4ae08dae4de2f6652e3739412a6cb8aaf80b",
+  "scope": "FSBL/PMU, local RTIO CoreDMA+BRAM analyzer/MonInj, embedded CPU1 worker and CPU0 services",
+  "card_write": "NOT_RUN",
+  "physical_power_cycle": "NOT_RUN",
+  "jtag_equivalent_images": "PASS"
+}

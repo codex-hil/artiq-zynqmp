@@ -815,3 +815,13 @@ Evidence: rtio-debug-hardware-2026-10-09.json. Reproducer: docs/RTIO_DEBUG.md.
 This finite BRAM prototype pauses capture briefly on retrieval, serves one
 client per debug port and polls MonInj every500ms. It is not full upstream
 analyzer DMA or production qualification. No other FPGA, OTP or flash write.
+
+## 2026-10-09 — updated standalone SD image prepared
+
+`build/sd-debug-2026-10-09/boot.bin` includes FSBL/PMU, the validated local
+CoreDMA/analyzer/MonInj PL and CPU0 runtime, and the embedded CPU1 worker.
+Packaging and partition-header checks PASS; source images physically
+validated via JTAG. Card write and new-image cold boot NOT_RUN: the USB
+reader/card is not present on the host and a physical power cycle requires
+user assistance. Previous non-DMA SD image remains unchanged.
+Evidence: sd-debug-package-2026-10-09.json. See docs/SD_BOOT.md.
