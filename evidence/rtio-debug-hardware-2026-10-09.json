@@ -178,5 +178,22 @@
   "test_compatibility_fixes": [
     "Wait for asynchronous client disconnect before reconnecting to single-client MonInj",
     "Use actual artiq_run --device-db option"
-  ]
+  ],
+  "make_reproduction": {
+    "status": "PASS",
+    "dma_experiments": 9,
+    "analyzer": {
+      "bytes": 1200,
+      "messages": 37,
+      "ttl_outputs": 16,
+      "ttl_inputs": 16,
+      "sha256": "6fd02c88640151abe50cb0ff73e12a99fa1fb0089ece9b6c21c63a3f0e91b1cc"
+    },
+    "wrapped_analyzer": {
+      "bytes": 8208,
+      "messages": 256,
+      "total_bytes": 9248,
+      "sha256": "e520f43aa44ecc5b41cde8264c4d68ee2f5b8305cbe2cefe8d2095ecbbd300be"
+    }
+  }
 }
