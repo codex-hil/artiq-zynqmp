@@ -162,3 +162,10 @@ Firmware toolchain Nix Rustnightly2021-09-01/LLVM20.1.8 prepared; old Cargo
 index is cached under build/kasli-v2.1-master-2026-10-08/cargo-home.
 Assumed test configuration: no EEM, RTIO125MHz, WRPLL off; optional question
 about user's modules remains pending. Evidence kasli-v2.1-master-2026-10-08.json.
+
+Latest2026-10-09: shared Vivado Artix-7 Add completed offline from SMB,
+no AMD token needed. get_parts XC7A100T24 / XCZU5EV26 and small synthesis
+for both PASS. evidence/artix7-install-2026-10-09.json. Read shared Vivado
+notes for read-only SMB tar FUSE helper; it is unmounted after installation.
+Full Kasli master gateware build resumed in existing output tree. Previous
+AMD-token blocker is superseded; do not ask user to renew authentication.

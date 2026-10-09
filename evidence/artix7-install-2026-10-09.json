@@ -1,0 +1,21 @@
+{
+  "status": "INSTALLED_VALIDATED",
+  "version": "2025.2",
+  "added_family": "Artix-7",
+  "part": "xc7a100t-fgg484-3",
+  "source": "SMB offline installer",
+  "authentication_required": false,
+  "installation_log": "/srv/codex-hil-data/toolchains/amd/shared/logs/add-artix7-offline-smb-2026-10-09.log",
+  "validation_directory": "/srv/codex-hil-data/toolchains/amd/shared/tmp/validate-artix7-2026-10-09",
+  "validated_at": "2026-10-09T06:25:05.731599+00:00",
+  "checks": {
+    "xc7a100t_variants": 24,
+    "xczu5ev_variants": 26,
+    "artix7_synthesis": "PASS",
+    "zynqmp_synthesis": "PASS"
+  },
+  "notes": [
+    "Read-only SMB tar FUSE view; selected archives cached locally",
+    "Source cleanup attempted deleting installer_patch from read-only view; nonfatal; installer exited 0"
+  ]
+}

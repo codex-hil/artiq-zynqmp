@@ -67,3 +67,10 @@ rejects the expired authentication token; token renewal was requested.
 Selective offline packages (117 archives, ~2.47GB including installer files)
 were fetched from the original SMB installer and cached for the Add action.
 No successful Kasli bitstream or physical DRTIO link is claimed.
+
+### Update2026-10-09
+
+Artix-7 is now installed and synthesis validated in shared Vivado2025.2.
+The offline SMB installation required no AMD authentication. Previous token
+blocker is superseded. Full Kasli gateware build resumed; bitstream/timing
+and physical hardware validation are still pending.

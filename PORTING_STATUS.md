@@ -670,3 +670,16 @@ artifact hashes: evidence/kasli-v2.1-master-2026-10-08.json. Outputs in
 build/kasli-v2.1-master-2026-10-08/generated/genesys_drtio_master.
 Genesys remains running prior CoreDMA image; no hardware programming was
 performed while preparing this Kasli build.
+
+## 2026-10-09: shared Artix-7 support restored from SMB
+
+Official installed-tree Vivado2025.2 `Add` completed offline with exit0,
+without AMD authentication. Selected archives read from local cache; a
+read-only FUSE view exposes the remaining real SMB tar entries for the
+installer's all-Linux-archive presence check. No dummy archives or patched
+installer. XC7A100T24 variants / XCZU5EV26 variants found; small synthesis
+PASS for both Kasli v2.1 and Genesys ZU5EV. All threads retain the shared
+Vivado launcher. Kintex-7 and other7-series families are not asserted.
+Evidence: evidence/artix7-install-2026-10-09.json. Reproduction documented
+in /home/codex-hil/docs/toolchains/vivado.md. Full Kasli master gateware
+build resumed; timing closure/bitstream/hardware validation pending.

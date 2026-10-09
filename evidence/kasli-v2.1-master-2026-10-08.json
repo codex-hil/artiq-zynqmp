@@ -9,9 +9,9 @@
   "firmware_status": "PASS",
   "firmware_fbi_crc": "PASS",
   "elf32_riscv": "PASS",
-  "gateware_status": "BLOCKED_MISSING_ARTIX7_SUPPORT",
+  "gateware_status": "BUILD_IN_PROGRESS",
   "hardware_status": "NOT_RUN",
-  "blocker": "AMD Add action rejects expired token; renewal requested; selective offline payload cached",
+  "blocker": null,
   "sources": {
     "artiq": "486e8f897547d282d46a02c30463449c21e30cfe",
     "migen": "beffe831bf1a691eaebf9ddbb4660f8b3e7fd964",
@@ -54,5 +54,6 @@
       "bytes": 15784972,
       "sha256": "3f6643528ae00c624d4a5f65248a5f15e2030cae905976dff97ef90d53814583"
     }
-  }
+  },
+  "artix7_support": "INSTALLED_SYNTHESIS_VALIDATED_2026-10-09"
 }
