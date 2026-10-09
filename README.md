@@ -16,8 +16,10 @@ Hardware results include:
 - Cold SD boot of the earlier runtime: one validated power cycle.
 - CoreDMA recording and replay by name/handle, persistence between kernels and exception recovery: 216 pulses / 432 edges, including 64 ns pulses.
 - Internal GTH PRBS7 loopback and Si5342 lock to recovered RXCLK: six loss/relock cycles with no new settled PRBS7 errors.
+- Upstream ARTIQ RT/AUX framing through physical GTH loopback: three reset/alignment cycles, detected raw-bit corruption and clean recovery.
+- Autonomous diagnostic Si5342 firmware: PS bootstrap, RX clock selection and three physical loss/recovery cycles. Satellite runtime integration remains pending.
 
-Local analyzer/moninj have also passed physical tests using standard ARTIQ clients; see [RTIO debug instructions](docs/RTIO_DEBUG.md). The analyzer currently uses a finite 256-record BRAM ring. Full DDR stress testing, external DRTIO synchronization and production qualification remain outstanding. The newer CoreDMA SD image has been packaged but has not been validated by a cold boot; the validated SD image contains the earlier non-DMA runtime.
+Local analyzer/moninj have also passed physical tests using standard ARTIQ clients; see [RTIO debug instructions](docs/RTIO_DEBUG.md). The analyzer currently uses a finite 256-record BRAM ring. Full DDR stress testing, external DRTIO synchronization and production qualification remain outstanding. The newer CoreDMA/analyzer/MonInj SD image has been packaged but has not been validated by a cold boot; the validated SD image contains the earlier non-DMA runtime.
 
 See [PORTING_STATUS.md](PORTING_STATUS.md) for detailed evidence and limitations, [architecture](docs/ARCHITECTURE.md), [source revisions](docs/SOURCES.md) and [build compatibility notes](docs/BUILD_COMPATIBILITY.md). Some supporting documents are still in Polish.
 
