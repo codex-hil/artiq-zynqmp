@@ -787,3 +787,31 @@ registers were restored afterward; no OTP/flash. Evidence:
 si5342-autoclock-hardware-2026-10-09.json. Firmware clock control PARTIAL:
 autonomous diagnostic PASS; production satellite integration, time
 synchronization, remote master and jitter remain NOT_RUN.
+
+## 2026-10-09 — physical analyzer and MonInj PASS
+
+| Subsystem | Existing work reused | Current status | Test |
+|---|---|---|---|
+| Analyzer | Upstream ARTIQ MessageEncoder, standard dump ABI/client | PARTIAL: local 256-record BRAM ring and network dump PASS; DDR-backed writer absent | Physical DMA dump37 records:16 output/16 input, stop; wrapped256-record TCP dump, reset/restart, native underflow record |
+| MonInj | Existing ARTIQ gateware and CommMonInj client | DONE for the two local simple TTL channels; wider channel support and multiple clients pending | Probe subscriptions, injected high/low physically seen on JB1→JB2, readback, disconnect cleanup, invalid handshake rejection |
+
+The normal runtime now uses `build-vivado/rtio-debug-fixed-2026-10-09/top.bit`,
+CPU0 `build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf`
+and existing CPU1 `build/kernel-worker-dma-final`. DHCP192.168.2.3.
+Standard analyzerTCP1382 and MonInjTCP1383 are active alongside management
+1380 and kernels1381. Nine normal CoreDMA experiments validated72 pulses/
+144 loopback edges. Native DMA errors mask255 and analyzer underflow record
+passed additionally; management log retrieval still works.
+
+FPGA timing WNS1.900ns/WHS0.016ns, checked42 first-stage CDC registers and
+all existing CSR offsets/widths unchanged. BRAM wrap/stop/restart simulation
+and AXI/local-RTIO regression PASS. Test runner fixes address the asynchronous
+CommMonInj close/reconnect race and the actual `artiq_run --device-db` flag.
+Initial build was superseded by the fixed output tree. A shell-script edit
+during the fixed run interrupted only post-build verification; verification
+was rerun explicitly against the completed bitstream and reports.
+
+Evidence: rtio-debug-hardware-2026-10-09.json. Reproducer: docs/RTIO_DEBUG.md.
+This finite BRAM prototype pauses capture briefly on retrieval, serves one
+client per debug port and polls MonInj every500ms. It is not full upstream
+analyzer DMA or production qualification. No other FPGA, OTP or flash write.

@@ -17,7 +17,7 @@ Hardware results include:
 - CoreDMA recording and replay by name/handle, persistence between kernels and exception recovery: 216 pulses / 432 edges, including 64 ns pulses.
 - Internal GTH PRBS7 loopback and Si5342 lock to recovered RXCLK: six loss/relock cycles with no new settled PRBS7 errors.
 
-Full DDR stress testing, analyzer/moninj integration, external DRTIO synchronization and production qualification remain outstanding. The newer CoreDMA SD image has been packaged but has not been validated by a cold boot; the validated SD image contains the earlier non-DMA runtime.
+Local analyzer/moninj have also passed physical tests using standard ARTIQ clients; see [RTIO debug instructions](docs/RTIO_DEBUG.md). The analyzer currently uses a finite 256-record BRAM ring. Full DDR stress testing, external DRTIO synchronization and production qualification remain outstanding. The newer CoreDMA SD image has been packaged but has not been validated by a cold boot; the validated SD image contains the earlier non-DMA runtime.
 
 See [PORTING_STATUS.md](PORTING_STATUS.md) for detailed evidence and limitations, [architecture](docs/ARCHITECTURE.md), [source revisions](docs/SOURCES.md) and [build compatibility notes](docs/BUILD_COMPATIBILITY.md). Some supporting documents are still in Polish.
 
@@ -188,14 +188,14 @@ After booting the matching runtime and setting the actual DHCP address in your d
 
 ```sh
 artiq_coremgmt -D device_db.py log
-artiq_run -D device_db.py examples/ttl_loopback.py
+artiq_run --device-db device_db.py examples/ttl_loopback.py
 ```
 
 The historical `examples/ttl_loopback.py` acceptance example is retained; current physical runtime examples and ABI requirements are documented in `3_kernel/README.md`. CoreDMA instructions are in [docs/CORE_DMA.md](docs/CORE_DMA.md). Use the compiler revision pinned for this port rather than assuming any ARTIQ release or NAC3 master is ABI-compatible.
 
 The last recorded DHCP address was `192.168.2.3`; it can change. Some example databases still contain the earlier `192.168.2.16`, so update the address before running them.
 
-Analyzer/moninj networking, DRTIO master/satellite synchronization and AFCZ remain later stages.
+Local analyzer/moninj networking is available in the optional debug runtime. DRTIO master/satellite synchronization and AFCZ remain later stages.
 
 ## Kernel ABI prototype without Vivado
 

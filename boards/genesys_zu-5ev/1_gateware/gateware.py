@@ -30,7 +30,7 @@ class ThisPlatform(XilinxPlatformAuto):
 
 
 class Top(Module):
-    def __init__(self, platform: ThisPlatform, variant="blinker"):
+    def __init__(self, platform: ThisPlatform, variant="blinker", analyzer=False):
         super().__init__()
 
         platform.import_submodules_to(self)
@@ -69,7 +69,7 @@ class Top(Module):
                         if len(pin) != len(signal): raise ValueError("DMA AXI width: " + name)
                         self.comb += pin.eq(signal) if collection is ps.inputs else signal.eq(pin)
             self.submodules.local_rtio = LocalRTIO(
-                platform.request("ttl_out"), platform.request("ttl_in"), dma_bus)
+                platform.request("ttl_out"), platform.request("ttl_in"), dma_bus, analyzer)
             connect_ps_hpm0(self, self.zynq_ultra_ps_e_0, self.local_rtio.axi)
 
         counter = Signal(30)
@@ -92,10 +92,11 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     arg_parser.add_argument("-M", "--migen-build-dir", default="migen-build")
     arg_parser.add_argument("-N", "--no-run", action="store_true")
     arg_parser.add_argument("--variant", choices=["blinker", "local-rtio", "local-rtio-dma"], default="blinker")
+    arg_parser.add_argument("--analyzer", action="store_true")
     p_args = arg_parser.parse_args(argv[1:])
 
     platform = ThisPlatform(Path(p_args.vivado_build_dir))
-    top = Top(platform, p_args.variant)
+    top = Top(platform, p_args.variant, p_args.analyzer)
     platform.build(top, build_dir=Path(p_args.migen_build_dir).absolute(), run=not p_args.no_run)
     if p_args.variant in ("local-rtio", "local-rtio-dma"):
         top.local_rtio.write_map(Path(p_args.migen_build_dir) / "csr-map.json")

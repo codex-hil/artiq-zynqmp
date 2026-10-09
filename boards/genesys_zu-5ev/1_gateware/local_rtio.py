@@ -1,7 +1,8 @@
 """Local upstream RTIO behind a PS AXI master, without a LiteX SoC migration.
 
 Uses LiteX only for its maintained AXI bridge and MiSoC for ARTIQ's CSR ABI.
-Optional upstream DMA uses the PS HP0 DDR port. Analyzer/DRTIO remain pending.
+Optional upstream DMA uses PS HP0 DDR; the optional BRAM analyzer reuses
+ARTIQ MessageEncoder. DRTIO remains separate.
 """
 import json
 from pathlib import Path
@@ -18,9 +19,10 @@ BANKS = {"rtio": 0, "rtio_core": 1, "rtio_moninj": 2}
 
 
 class LocalRTIO(Module):
-    def __init__(self, output_pad, input_pad, dma_bus=None):
+    def __init__(self, output_pad, input_pad, dma_bus=None, analyzer=False):
         self.submodules.ttl_out = ttl_simple.Output(output_pad)
         self.submodules.ttl_in = ttl_simple.Input(input_pad)
+        self.ttl_in.probes = [self.ttl_in.input_state]
         channels = [rtio.Channel.from_phy(self.ttl_out), rtio.Channel.from_phy(self.ttl_in)]
         self.submodules.rtio_tsc = rtio.TSC(glbl_fine_ts_width=0)
         self.submodules.rtio_core = rtio.Core(self.rtio_tsc, channels)
@@ -34,6 +36,9 @@ class LocalRTIO(Module):
             self.submodules.cri_con = CRISwitch(
                 [self.rtio.cri, self.rtio_dma.cri], self.rtio_core.cri)
         self.submodules.rtio_moninj = rtio.MonInj(channels)
+        if analyzer:
+            from analyzer_bram import AnalyzerBRAM
+            self.submodules.rtio_analyzer = AnalyzerBRAM(self.rtio_tsc, self.rtio_core.cri)
 
         # ZynqMP MAXIGP exports a 40-bit physical address, even with a
         # 32-bit data bus. Confirmed against Piotr's archived XSA/HWH.
@@ -46,7 +51,7 @@ class LocalRTIO(Module):
             self.axi, self.wb2csr.wishbone, base_address=CSR_BASE
         )
         self.submodules.banks = csr_bus.CSRBankArray(
-            self, lambda name, memory: dict(BANKS, rtio_dma=3, cri_con=4).get(name) if memory is None else None,
+            self, lambda name, memory: dict(BANKS, rtio_dma=3, cri_con=4, rtio_analyzer=5).get(name) if memory is None else None,
             data_width=32, address_width=14
         )
         self.submodules.csr_interconnect = csr_bus.Interconnect(

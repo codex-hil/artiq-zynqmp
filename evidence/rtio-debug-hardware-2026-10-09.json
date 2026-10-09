@@ -1,0 +1,182 @@
+{
+  "kind": "physical-hardware",
+  "status": "PASS",
+  "ip": "192.168.2.3",
+  "scope": "finite BRAM analyzer and local TTL MonInj using standard ARTIQ clients",
+  "moninj_events": [
+    [
+      "probe",
+      0,
+      0,
+      0
+    ],
+    [
+      "probe",
+      1,
+      0,
+      0
+    ],
+    [
+      "injection",
+      0,
+      0,
+      0
+    ],
+    [
+      "injection",
+      0,
+      1,
+      1
+    ],
+    [
+      "probe",
+      0,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      0,
+      1
+    ],
+    [
+      "probe",
+      1,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      1,
+      1
+    ],
+    [
+      "probe",
+      0,
+      0,
+      0
+    ],
+    [
+      "probe",
+      1,
+      0,
+      0
+    ],
+    [
+      "injection",
+      0,
+      1,
+      0
+    ],
+    [
+      "injection",
+      0,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      1,
+      0
+    ],
+    [
+      "probe",
+      0,
+      0,
+      1
+    ],
+    [
+      "probe",
+      1,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      1,
+      1
+    ],
+    [
+      "probe",
+      0,
+      0,
+      0
+    ],
+    [
+      "probe",
+      1,
+      0,
+      0
+    ]
+  ],
+  "analyzer": {
+    "bytes": 1200,
+    "messages": 37,
+    "ttl_outputs": 16,
+    "ttl_inputs": 16,
+    "sha256": "a0ba1a2bf93e96bd92bbe7daa647f0ed77fb06a9f8a0db02c3ef84cd4ce6e134"
+  },
+  "wrapped_analyzer": {
+    "bytes": 8208,
+    "messages": 256,
+    "total_bytes": 9248,
+    "sha256": "ddc3519baea8a30a809de4c6693fbbf85bebd6f7a26e922af790d8e78a2c3bb6"
+  },
+  "dma_experiments": 9,
+  "build": {
+    "kind": "build-not-hardware",
+    "status": "PASS",
+    "scope": "local RTIO CoreDMA plus BRAM analyzer and MonInj",
+    "sha256": {
+      "top.bit": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582",
+      "top.v": "ede20cf1089979d4e49f723bc66d1635e0f15054b749ea808aa1073f1b448805",
+      "top.xdc": "54b6126caa79dc1e305623c2ba74ef021c682ad5cbb16a92d2774280cbc052f2",
+      "csr-map.json": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049",
+      "top_timing.rpt": "9183470437a67cb214f4da237a487a98712e7faf14b191f2fa03929091be0794"
+    }
+  },
+  "timing": {
+    "wns_ns": 1.9,
+    "whs_ns": 0.016,
+    "first_stage_cdc_registers": 42
+  },
+  "simulation": {
+    "analyzer_ring_wrap_stop_restart": "PASS",
+    "existing_axi_rtio_regression": "PASS"
+  },
+  "images": {
+    "cpu0": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    "cpu1": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    }
+  },
+  "extra_validation": {
+    "management_log": "PASS",
+    "native_dma_error_mask": 255,
+    "analyzer_underflow_exception": "PASS"
+  },
+  "limitations": [
+    "256-record BRAM ring, not upstream DDR analyzer DMA",
+    "One client per debug port; MonInj polling500ms",
+    "Brief analyzer capture pause during retrieval",
+    "No external DRTIO synchronization or deterministic latency validation"
+  ],
+  "test_compatibility_fixes": [
+    "Wait for asynchronous client disconnect before reconnecting to single-client MonInj",
+    "Use actual artiq_run --device-db option"
+  ]
+}

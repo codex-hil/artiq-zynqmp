@@ -158,3 +158,11 @@ test-drtio-framing:
 test-hw-drtio-framing:
 	@test -n "$(CSR_MAP)" -a -n "$(JTAG_SERVER)" || (echo 'Set protocol CSR_MAP and JTAG_SERVER'; exit 2)
 	$(PYTHON) diagnostics/drtio/test_protocol_hw.py --csr-map="$(CSR_MAP)" --server="$(JTAG_SERVER)" --cable="$(SI5342_CABLE)" --output="$(abspath $(O))/drtio-framing-hardware"
+
+.PHONY: test-analyzer-bram test-hw-rtio-debug
+test-analyzer-bram:
+	PYTHONPATH="$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(PYTHONPATH)" $(PYTHON) -m unittest discover -s tests -p 'test_analyzer_bram.py' -v
+
+test-hw-rtio-debug:
+	@test -n "$(BOARD_IP)" -a -n "$(DEVICE_DB)" || (echo 'Set actual BOARD_IP and DEVICE_DB'; exit 2)
+	$(ARTIQ_PYTHON) scripts/test_rtio_debug_hw.py --ip="$(BOARD_IP)" --device-db="$(DEVICE_DB)" --artiq-run="$(ARTIQ_RUN)" --output="$(abspath $(O))/rtio-debug-hardware"

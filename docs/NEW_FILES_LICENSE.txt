@@ -363,3 +363,12 @@ diagnostics/drtio/test_protocol_hw.py
 diagnostics/si5342/autoclock.c
 diagnostics/si5342/profile_rx125.h
 diagnostics/si5342/test_autoclock_hw.py
+boards/genesys_zu-5ev/1_gateware/analyzer_bram.py
+boards/genesys_zu-5ev/2_firmware_a53/c/debug_lwip.c
+scripts/attach_rtio_debug.py
+scripts/build_debug_services.sh
+scripts/build_rtio_debug.sh
+scripts/load_rtio_runtime.py
+scripts/test_rtio_debug_hw.py
+tests/test_analyzer_bram.py
+docs/RTIO_DEBUG.md
