@@ -360,3 +360,6 @@ tests/test_zynqmp_dma.py
 diagnostics/drtio/protocol_probe.py
 diagnostics/drtio/test_protocol_probe.py
 diagnostics/drtio/test_protocol_hw.py
+diagnostics/si5342/autoclock.c
+diagnostics/si5342/profile_rx125.h
+diagnostics/si5342/test_autoclock_hw.py

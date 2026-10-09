@@ -24,6 +24,7 @@ static int writereg(unsigned reg,u8 value) {
  for(unsigned i=0;XIicPs_BusIsBusy(&bus)&&i<10000;i++)usleep(1);
  return XIicPs_BusIsBusy(&bus)?-1:0;
 }
+#ifndef SI_NO_MAIN
 static int digit(char c) {
  if(c>='0'&&c<='9')return c-'0';
  if(c>='a'&&c<='f')return c-'a'+10;
@@ -54,3 +55,5 @@ int main(void) {
   n=0;
  }
 }
+
+#endif /* SI_NO_MAIN */

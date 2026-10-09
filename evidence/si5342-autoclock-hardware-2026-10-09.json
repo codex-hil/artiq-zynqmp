@@ -1,0 +1,19 @@
+{
+  "kind": "physical-hardware",
+  "scope": "autonomous laboratory Si5342 manager over AMD XIicPs, internal GTH RX clock only",
+  "status": "PASS",
+  "restored": true,
+  "cycles": 3,
+  "phases": {
+    "startup": "CLOCK BOOTSTRAP\r\nCLOCK PS_LOCK PASS\r\nCLOCK RX_LOCK PASS\r\nCLOCK PHY_PASS 62500108 62499688 62499688 0\r\nCLOCK LOCKED\r\n",
+    "recovery-0": "CLOCK LOSS\r\nCLOCK BOOTSTRAP\r\nCLOCK PS_LOCK PASS\r\nCLOCK RX_LOCK PASS\r\nCLOCK PHY_PASS 62500108 62500000 62499999 0\r\nCLOCK LOCKED\r\n",
+    "recovery-1": "CLOCK LOSS\r\nCLOCK BOOTSTRAP\r\nCLOCK PS_LOCK PASS\r\nCLOCK RX_LOCK PASS\r\nCLOCK PHY_PASS 62500108 62499856 62499856 0\r\nCLOCK LOCKED\r\n",
+    "recovery-2": "CLOCK LOSS\r\nCLOCK BOOTSTRAP\r\nCLOCK PS_LOCK PASS\r\nCLOCK RX_LOCK PASS\r\nCLOCK PHY_PASS 62500109 62499714 62499714 0\r\nCLOCK LOCKED\r\n",
+    "restore": "CLOCK RESTORED\r\n"
+  },
+  "elf_sha256": "acbf7d6b690f64b33353bf3b2aa44fc5e53ccfba7cfa944249b296397034ae0e",
+  "uart_sha256": "45a4c5cec0edce1e4da06c6d0111dd443fefa7f7e914456ff07bd92f25cc461a",
+  "production_runtime_integration": "NOT_RUN",
+  "remote_master": "NOT_RUN",
+  "jitter": "NOT_RUN"
+}

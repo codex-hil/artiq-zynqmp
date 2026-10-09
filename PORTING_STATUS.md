@@ -775,3 +775,15 @@ or deterministic latency. Elastic buffers and a fabric comma aligner remain
 laboratory choices. Board temporarily runs diagnostic PL while the next
 firmware clock-control stage is developed; normal runtime must be restored
 after testing. No OTP/flash or other connected FPGA board was modified.
+
+## 2026-10-09 — autonomous Si5342 diagnostic firmware
+
+CPU0 firmware, using the maintained AMD XIicPs transport and validated
+P0=63/M=1386 profile, independently bootstraps Si5342 from PS125MHz, resets
+GTH, switches to RXCLK and monitors lock. Three physical one-second IN0
+loss events each triggered PS fallback and RX reacquisition. All four
+settled clock measurements passed with zero new PRBS7 errors. Saved volatile
+registers were restored afterward; no OTP/flash. Evidence:
+si5342-autoclock-hardware-2026-10-09.json. Firmware clock control PARTIAL:
+autonomous diagnostic PASS; production satellite integration, time
+synchronization, remote master and jitter remain NOT_RUN.

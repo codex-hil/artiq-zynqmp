@@ -7,7 +7,7 @@ arm=/srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.R
 linker=/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced/app/src/lscript.ld
 mkdir -p "$out"
 source_name=${SI_SOURCE:-readout}
-case "$source_name" in readout|control) ;; *) exit 2 ;; esac
+case "$source_name" in readout|control|autoclock) ;; *) exit 2 ;; esac
 "$arm/bin/aarch64-none-elf-gcc" -DSDT -specs="$bsp/Xilinx.spec" -I"$bsp/include" -Wall -Wextra -O2 -g \
  "$repo/diagnostics/si5342/$source_name.c" -Wl,-T,"$linker" -L"$bsp/lib" \
  -Wl,--start-group -lxilstandalone -lxiltimer -lxil -lgcc -lc -Wl,--end-group -o "$out/si5342-$source_name.elf"

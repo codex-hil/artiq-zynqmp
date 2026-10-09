@@ -127,3 +127,33 @@ GTH reset and clock-counter checks are mandatory.
 Restore the normal core afterward using the existing [CoreDMA boot flow](../../docs/CORE_DMA.md)
 and matching local RTIO PL/CPU1/CPU0 artifacts. The hardware test restores
 Si5342 settings, but leaves the diagnostic PL and UART service loaded.
+
+## Autonomous firmware clock manager
+
+`autoclock.c` reuses the validated AMD XIicPs transport and JSON-derived
+P0=63/M=1386 laboratory profile. It runs on CPU0 in the separate GTH
+clock-forward diagnostic, independently of host register commands:
+
+1. Verify Si5342 identity, factory frequency plan and diagnostic CSR magic.
+2. Save touched volatile registers and configure the existing profile.
+3. Seed IN0 with the independent PS 125 MHz clock and wait for stable lock.
+4. Reset/reacquire GTH, switch IN0 to RXCLK, verify stable lock and actual
+   TX/RX clock counters with zero new settled PRBS7 errors.
+5. On loss, return to PS clock and repeat acquisition. A UART `L` command
+   physically removes IN0 for one second as a negative control; `Q` restores
+   the saved registers and disables forwarding.
+
+```sh
+vivado-container shell -c 'export SI_SOURCE=autoclock; exec "$@"' bash \
+  diagnostics/si5342/build_readout.sh /path/to/autoclock
+python diagnostics/si5342/test_autoclock_hw.py \
+  --server tcp:SERVER:3121 --cable YOUR_GENESYS_SERIAL \
+  --port /dev/serial/by-id/YOUR_GENESYS_UART \
+  --elf /path/to/autoclock/si5342-autoclock.elf --output /path/to/evidence
+```
+
+Physical startup, three loss/recovery cycles and volatile register restore
+passed on 2026-10-09. This is autonomous **diagnostic firmware**, not yet
+integration with the ARTIQ satellite runtime. It does not resynchronize RTIO
+time, implement remote link selection or measure jitter. Loss recovery
+resets GTH; packet traffic must be retrained at a later integration stage.
