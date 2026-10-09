@@ -89,3 +89,14 @@ Evidence: `evidence/rtio-debug-hardware-2026-10-09.json`.
 
 The standard client closes asynchronously. Allow the peer to process FIN
 before reconnecting to this single-client service. The test runner does so.
+
+Equivalent Make target (use the pinned host environment, separate from HDL
+Python dependencies):
+
+```sh
+make test-hw-rtio-debug BOARD_IP=ACTUAL_DHCP_ADDRESS \
+  DEVICE_DB=/path/to/device_db.py ARTIQ_PYTHON=/path/to/artiq-host/bin/python \
+  ARTIQ_RUN=/path/to/artiq_run O=/path/to/evidence
+```
+
+The target clears HDL PYTHONPATH before launching the host test and compiler.

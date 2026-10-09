@@ -1,5 +1,7 @@
 .DEFAULT_GOAL := test
 PYTHON ?= python3
+ARTIQ_PYTHON ?= python3
+ARTIQ_RUN ?= artiq_run
 O ?= build-host
 ARTIQ_SOURCE ?= $(CURDIR)/common/artiq
 export PYTHONPATH := $(ARTIQ_SOURCE):$(CURDIR)/common/migen$(if $(PYTHONPATH),:$(PYTHONPATH))
@@ -165,4 +167,4 @@ test-analyzer-bram:
 
 test-hw-rtio-debug:
 	@test -n "$(BOARD_IP)" -a -n "$(DEVICE_DB)" || (echo 'Set actual BOARD_IP and DEVICE_DB'; exit 2)
-	$(ARTIQ_PYTHON) scripts/test_rtio_debug_hw.py --ip="$(BOARD_IP)" --device-db="$(DEVICE_DB)" --artiq-run="$(ARTIQ_RUN)" --output="$(abspath $(O))/rtio-debug-hardware"
+	env -u PYTHONPATH $(ARTIQ_PYTHON) scripts/test_rtio_debug_hw.py --ip="$(BOARD_IP)" --device-db="$(DEVICE_DB)" --artiq-run="$(ARTIQ_RUN)" --output="$(abspath $(O))/rtio-debug-hardware"
