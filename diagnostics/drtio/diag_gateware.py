@@ -41,7 +41,7 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform):
+    def __init__(self, platform, forward_rx_clock=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -102,6 +102,30 @@ class Diagnostic(Module):
             o_gtpowergood_out=powergood, o_rxoutclk_out=rxout, o_txoutclk_out=txout,
             o_rxpmaresetdone_out=rxpma, o_txpmaresetdone_out=txpma,
             o_rxprbserr_out=rxerr)
+        if forward_rx_clock:
+            # Genesys rev-C SFP_REC_CLK: A2/A1, bank 66, documented 1.2 V.
+            # Gate in RX domain; management remains on independent PS clock.
+            from misoc.interconnect.csr import CSRStorage
+            monitor.forward_enable = CSRStorage(1, name='forward_enable')
+            monitor.forward_bootstrap = CSRStorage(1, name='forward_bootstrap')
+            self.clock_domains.cd_forward = ClockDomain('forward')
+            self.specials += Instance('BUFGCTRL', p_PRESELECT_I0='FALSE',
+                p_PRESELECT_I1='TRUE', i_I0=self.cd_sys.clk,
+                i_I1=self.cd_gth_rx.clk, i_CE0=1, i_CE1=1,
+                i_S0=monitor.forward_bootstrap.storage,
+                i_S1=~monitor.forward_bootstrap.storage,
+                i_IGNORE0=0, i_IGNORE1=0, o_O=self.cd_forward.clk)
+            enable = Signal()
+            forwarded = Signal()
+            self.specials += MultiReg(monitor.forward_enable.storage, enable,
+                                      odomain='forward')
+            self.specials += Instance('ODDRE1', p_IS_C_INVERTED=0,
+                p_IS_D1_INVERTED=0, p_IS_D2_INVERTED=0, p_SRVAL=0,
+                i_C=self.cd_forward.clk, i_D1=enable, i_D2=0,
+                i_SR=self.cd_sys.rst, o_Q=forwarded)
+            recovery = platform.request('sfp_recovered_clock')
+            self.specials += Instance('OBUFDS', i_I=forwarded,
+                                      o_O=recovery.p, o_OB=recovery.n)
         self.axi = AXIInterface(data_width=32, address_width=40, id_width=16)
         self.submodules.wb2csr = wishbone2csr.WB2CSR(
             bus_wishbone=wishbone.Interface(data_width=32, address_width=40, addressing='word'),
@@ -133,6 +157,7 @@ def main():
     p.add_argument('--ps', type=Path, required=True)
     p.add_argument('--phy', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument("--forward-rx-clock", action="store_true")
     args = p.parse_args()
     platform = DiagnosticPlatform(args.ps.resolve())
     platform.add_extension([
@@ -157,12 +182,19 @@ def main():
     reference_mhz = float(config['CONFIG.RX_REFCLK_FREQUENCY'])
     if reference_mhz not in (125, 156.25) or config['CONFIG.GT_TYPE'] != 'GTH':
         raise ValueError('Unsupported PHY/reference configuration')
-    top = Diagnostic(platform)
+    if args.forward_rx_clock:
+        platform.add_extension([('sfp_recovered_clock', 0,
+            Subsignal('p', Pins('A2')), Subsignal('n', Pins('A1')),
+            IOStandard('DIFF_HSTL_I_DCI_12'))])
+        platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
+        platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
+    top = Diagnostic(platform, args.forward_rx_clock)
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
+    first_stage_count = 118 if args.forward_rx_clock else 117
     platform.toolchain.post_synthesis_commands.append("""
 # Vivado retains mr_ff on registers; Piotr's old Migen targets nets.
 set first_sync [get_cells -hierarchical -filter {mr_ff == TRUE && REF_NAME =~ FD*}]
-if {[llength $first_sync] != 117} {error "Missing first-stage CDC registers"}
+if {[llength $first_sync] != CDC_COUNT} {error "Missing first-stage CDC registers"}
 set_false_path -to [get_pins -of_objects $first_sync -filter {REF_PIN_NAME == D}]
 foreach prefix {diagnostic_rx_count_gth_rx diagnostic_tx_count_gth_tx diagnostic_error_count_gth_rx} {
  set sources [get_cells -hierarchical -filter "NAME =~ ${prefix}_gray_source_reg* && REF_NAME =~ FD*"]
@@ -171,7 +203,7 @@ foreach prefix {diagnostic_rx_count_gth_rx diagnostic_tx_count_gth_tx diagnostic
  if {[llength $endpoints] != 32} {error "Unexpected Gray CDC endpoints: $prefix"}
  set_bus_skew 8 -from $sources -to $endpoints
 }
-""".replace("{", "{{").replace("}", "}}"))
+""".replace("CDC_COUNT", str(first_stage_count)).replace("{", "{{").replace("}", "}}"))
     platform.toolchain.additional_commands.append('report_bus_skew -file top_bus_skew.rpt')
     platform.build(top, build_dir=str(args.output.resolve()), run=False)
     top.write_map(args.output.resolve() / 'csr-map.json')

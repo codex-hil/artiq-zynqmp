@@ -1,0 +1,21 @@
+{
+  "kind": "fpga-build-not-hardware",
+  "status": "PASS",
+  "scope": "separate raw GTH diagnostic; not a DRTIO satellite",
+  "sha256": {
+    "top.bit": "1db108e0b9ccdd825fab9a8418bb2f2924e1d76c38984774aa85f3c815f05265",
+    "top.v": "be3feefd57b1a717f188689df1216ca5687084b46d52724e12637c6eef79e953",
+    "top.xdc": "f093a5d1531a648daf0a6924fdd3a22155fbb35931c25a250178c3d613fdf3a1",
+    "csr-map.json": "68bafc524570746491c4579e20ab7a5fdeaf4f2adf9acb1ba631b1525da0b4d0",
+    "top_timing.rpt": "b9cb28a52a46337943e64638fc94dd00f6c8a5a5d87ebcfa68346ccf6810581b",
+    "top_bus_skew.rpt": "1b64eafc9ebd43f4e464be4d9709e14b7471604e1d4014e2e7f7fefd8ce38e8f"
+  },
+  "clock_forward_pins": {
+    "positive": "A2",
+    "negative": "A1",
+    "standard": "DIFF_HSTL_I_DCI_12",
+    "source": "Digilent revC XDC b00bef7 and vendor package database; physical Si5342 IN0 LOS transition verified"
+  },
+  "switch": "BUFGCTRL selects GTH RXCLK or independent PS clock, ODDRE1/OBUFDS output, gate defaults off",
+  "artifacts": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-clock-select-2026-10-09"
+}
