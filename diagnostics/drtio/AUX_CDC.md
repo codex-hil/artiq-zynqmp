@@ -37,3 +37,24 @@ They are simulation evidence only. Top-level AXI address decoding, additional
 CDC constraints, Vivado build, physical AUX SRAM transfers and firmware
 protocol/discovery/routing are still pending. No board is reset or programmed
 by this test target.
+
+## PS aperture decode and AXI errors
+
+`aux_bus.py` reserves offsets 0x00000–0x03fff for CSR and
+0x10000–0x13fff for the upstream AUX SRAM aperture. With the existing
+0xa0000000 PS aperture, TX begins at 0xa0010000 and RX slots begin at
+0xa0012000. Decode precedes address narrowing. High addresses and gaps do
+not select a slave; Wishbone ERR terminates an active invalid transaction.
+The original controller's aliases inside its 16 KiB window are preserved.
+
+The installed LiteX AXI-Lite bridge ignores Wishbone ERR and waits only for
+ACK, then emits OKAY. `aux_axi.py` provides a shape-checked local overlay of
+that existing FSM: completion is ACK or ERR, with a latched SLVERR response
+for errors. Only non-low-latency mode is supported. The upstream file is
+unchanged; unexpected future FSM shape fails construction explicitly.
+
+`make test-drtio-aux-bus` verifies address boundaries and high-address alias
+rejection, real upstream AUX SRAM word accesses, AXI-Lite read/write error
+completion, response backpressure, and error-to-success recovery. This is
+not yet a full AXI/PS hardware acceptance test. Diagnostic top-level wiring,
+CSR exposure and reset/CDC constraints remain next steps.

@@ -926,3 +926,19 @@ Acceptance: `make test-drtio-aux-cdc` — five tests PASS. This includes the
 maximum 1024-byte packet through upstream TX/RX SRAM and raw20 framing,
 not only FIFO token testing. Evidence:
 evidence/aux-cdc-simulation-2026-10-11.json (source/log SHA-256 recorded).
+
+## 2026-10-11 — AUX bus decode and AXI error propagation
+
+Offline integration components now reserve relative CSR0x00000–0x03fff and
+AUX SRAM0x10000–0x13fff without high-address truncation aliases. Two bus
+simulation tests PASS, including actual upstream AUX SRAM TX word
+readback and RX window selection. No physical transactions were issued.
+
+Inspection found that installed LiteX AXILite2Wishbone ignores ERR and
+always returns OKAY. A checked local overlay reuses its FSM, terminates on
+ACK or ERR and latches SLVERR. Read/write negative controls, response
+backpressure and error-to-success recovery PASS (one additional test).
+Upstream LiteX remains unchanged. Full AXI conversion/PS validation and
+physical diagnostic top-level/CSR/reset/CDC integration remain NOT_RUN.
+Evidence: evidence/aux-bus-simulation-2026-10-11.json. No board access,
+reset/programming, persistent writes or running-runtime changes this turn.

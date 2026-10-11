@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-11",
+  "kind": "RTL_SIMULATION_NOT_HARDWARE",
+  "status": "PASS",
+  "tests": 3,
+  "command": "make test-drtio-aux-bus PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+  "sources": {
+    "diagnostics/drtio/aux_bus.py": "7a610191ddd0b8d724f123e94824c9c71210ddc49f0f79ca914e27355fd469da",
+    "diagnostics/drtio/aux_axi.py": "bfecf660f87cd8817dc60e0f40edda9ec0772c8c50283ece6bc5a2405cda729f",
+    "diagnostics/drtio/test_aux_bus.py": "67dec91663cd7520ea5d6d1b0fd128e284bbf131d326b254355799c95055f9b5",
+    "diagnostics/drtio/test_aux_axi.py": "db05c9908a9010dd70d8f19e31ad4a631a84d0c64bf3985cb65294de312c1e5d"
+  },
+  "log": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-packets-2026-10-11/aux-bus-simulation.log",
+  "log_sha256": "c2b9ad1b4f574fa6df0c74ba7893dadd32bf414e23d65d979eaa155801ce5b4a",
+  "litex_bridge_source": "/srv/codex-hil-data/artiq-zynqmp/reference/litex/litex/soc/interconnect/axi/axi_lite_to_wishbone.py",
+  "litex_bridge_sha256": "f67d45f7e007adbab8096aabcc40434d7adf31659813e523722104663734e28d",
+  "hardware_actions": [],
+  "limitations": [
+    "Full AXI conversion and PS hardware NOT_RUN",
+    "Diagnostic top-level/CSR/reset/CDC integration pending"
+  ]
+}
