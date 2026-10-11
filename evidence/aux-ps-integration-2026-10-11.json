@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-11",
+  "status": "PASS",
+  "kind": "FULL_AXI_RTL_SIMULATION_AND_HDL_GENERATION_NOT_HARDWARE",
+  "tests": 1,
+  "source_sha256": {
+    "diagnostics/drtio/aux_ps.py": "fc7349dcaa44062358b2bd9d0df3c1566c2190634750084096de5fb6cd967193",
+    "diagnostics/drtio/test_aux_ps.py": "e009e2d465ba96cde844468e642d522f2bac228f255f0d9ea5ef3ab2ba814148",
+    "diagnostics/drtio/generate_aux_ps.py": "cc04093e4a6b525131ca0fc3568343e8661db51ae5480f71a71bb6d0eceed85a"
+  },
+  "log": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-aux-ps-2026-10-11/validation.log",
+  "log_sha256": "901fde5031c7c9424b895b252f5c276bd07acaa983b314d51dad88d38c990591",
+  "hdl": {
+    "status": "PASS",
+    "kind": "HDL_GENERATION_NOT_SYNTHESIS_OR_HARDWARE",
+    "sha256": {
+      "aux_ps.v": "a5f9413f17a12af19aa84e0a0a213cf298529390c99ad27fcd0b6d687c0fa9b9",
+      "csr-map.json": "07696307b627fb2b0b97f293689224ac5b32b48fddc643a78c16a1c37a051816"
+    }
+  },
+  "map": {
+    "kind": "aux-integration-map-not-hardware-evidence",
+    "registers": {
+      "aux_tx_length": {
+        "address": 2684360704,
+        "words": 1,
+        "bits": 11
+      },
+      "aux_tx": {
+        "address": 2684360708,
+        "words": 1,
+        "bits": 1
+      },
+      "aux_rx_present": {
+        "address": 2684360712,
+        "words": 1,
+        "bits": 1
+      },
+      "aux_rx_error": {
+        "address": 2684360716,
+        "words": 1,
+        "bits": 1
+      },
+      "aux_read_pointer": {
+        "address": 2684360720,
+        "words": 1,
+        "bits": 3
+      },
+      "bridge_busy": {
+        "address": 2684360724,
+        "words": 1,
+        "bits": 1
+      },
+      "rx_up": {
+        "address": 2684360728,
+        "words": 1,
+        "bits": 1
+      },
+      "in_reset": {
+        "address": 2684360732,
+        "words": 1,
+        "bits": 1
+      }
+    },
+    "aux_sram": {
+      "base": 2684420096,
+      "size": 16384,
+      "rx_offset": 8192,
+      "slot_size": 1024,
+      "slots": 8
+    }
+  },
+  "limitations": [
+    "Physical top-level embedding pending",
+    "Vivado timing/CDC and reset hardware NOT_RUN",
+    "Functional reset simulation does not qualify asynchronous timing",
+    "Active-transfer reset/relock NOT_RUN",
+    "Firmware AUX NOT_RUN"
+  ],
+  "hardware_actions": []
+}

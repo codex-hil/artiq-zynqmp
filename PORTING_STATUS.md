@@ -942,3 +942,23 @@ Upstream LiteX remains unchanged. Full AXI conversion/PS validation and
 physical diagnostic top-level/CSR/reset/CDC integration remain NOT_RUN.
 Evidence: evidence/aux-bus-simulation-2026-10-11.json. No board access,
 reset/programming, persistent writes or running-runtime changes this turn.
+
+## 2026-10-11 — standalone full-AXI AUX integration
+
+AuxPS now joins full AXI conversion, the error-aware LiteX bridge, CSR/SRAM
+routing and retained upstream AUX endpoint. Bank3 exposes AUX control and
+RX ring registers plus bridge_busy/rx_up/in_reset. Private PS/TX/RX endpoint
+domains share a reset input with FPGA reset synchronizers; enclosing physical
+top-level must drive PS reset OR GT reset/not-ready. Transport stays alive.
+
+One full AXI simulation test PASS: IDs/last, SRAM first/last word, CSR
+length, SLVERR/no high-address alias, recovery and functional reset. It
+caught two issues: aligned MiSoC CSR readback write68/read512 and CSRBank
+ownership keeping the length register outside endpoint reset. Both fixed
+locally; preserved dependencies unchanged. Simulation reset override is
+functional only; hardware reset timing/active-transfer recovery NOT_RUN.
+
+Standalone HDL with complete AXI/raw20/clock ports and map generated PASS.
+This is not synthesis or hardware acceptance. Physical top-level embedding,
+CDC/timing constraints, Vivado build and firmware AUX still pending. No HW
+access this turn. Evidence: evidence/aux-ps-integration-2026-10-11.json.

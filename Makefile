@@ -191,3 +191,10 @@ test-drtio-aux-cdc:
 test-drtio-aux-bus:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_aux_bus.py' -v
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_aux_axi.py' -v
+
+.PHONY: test-drtio-aux-ps hdl-drtio-aux-ps
+test-drtio-aux-ps:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_aux_ps.py' -v
+
+hdl-drtio-aux-ps:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) diagnostics/drtio/generate_aux_ps.py --output=$(abspath $(O))/aux-ps-hdl

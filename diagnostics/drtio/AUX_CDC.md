@@ -58,3 +58,33 @@ rejection, real upstream AUX SRAM word accesses, AXI-Lite read/write error
 completion, response backpressure, and error-to-success recovery. This is
 not yet a full AXI/PS hardware acceptance test. Diagnostic top-level wiring,
 CSR exposure and reset/CDC constraints remain next steps.
+
+## Standalone PS integration block
+
+`aux_ps.py` combines full AXI -> upstream AXI-Lite conversion -> checked
+Wishbone bridge -> CSR/SRAM router -> the retained AUX endpoint. CSR bank3
+begins at 0xa0001800 and exposes TX length/start, RX present/error/pointer,
+bridge busy, RX ready and reset status. `generate_aux_ps.py` exports all AXI
+channels, raw20 ports and PS/TX/RX clock inputs with a generated map/hash.
+
+The endpoint uses private domains aux_sys/aux_tx/aux_rx. A common asynchronous
+reset input drives three FPGA reset synchronizers; deassertion is local to
+each clock. The enclosing diagnostic must drive this input from PS reset OR
+GT reset/not-ready and hold it through clock restart. AXI/CSR transport
+remains alive while the endpoint is held reset. The length CSR is owned by
+CSRBank on PS clock and needs an additional explicit synchronous reset.
+In-flight CPU transactions must be aborted before reset; active-transfer
+reset/relock qualification is still pending.
+
+The pinned MiSoC aligned CSRStorage readback incorrectly inserts
+hi-alignment zero bits rather than alignment bits. This makes a valid AUX
+length write68 read back512. A checked local readback replacement fixes only
+that finalized CSR, without modifying the preserved dependency.
+
+`make test-drtio-aux-ps hdl-drtio-aux-ps` checks full AXI IDs/last/SLVERR,
+CSR length/readback, TX SRAM boundaries, reset and error recovery. Its reset
+special has a functional simulation override: it does not model or prove
+asynchronous assertion/synchronous-release timing. The HDL generator uses
+actual Xilinx reset synchronizer lowering. Vivado timing/CDC, connection to
+the physical GTH/PS top-level, active-transfer reset and physical AUX tests
+remain pending.
