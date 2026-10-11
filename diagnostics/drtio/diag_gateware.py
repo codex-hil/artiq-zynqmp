@@ -41,7 +41,7 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False):
+    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -85,8 +85,15 @@ class Diagnostic(Module):
                          MultiReg(monitor.prbs.storage, rxprbs, odomain='gth_rx'),
                          MultiReg(monitor.loopback.storage, loopback)]
         txdata, rxdata = Signal(20), Signal(20)
-        if protocol and packets:
-            raise ValueError("Choose framing or packet diagnostic")
+        if sum((protocol,packets,aux)) > 1:
+            raise ValueError("Choose framing, packet or AUX diagnostic")
+        self.aux_mode=aux
+        if aux:
+            from aux_ps import AuxPS
+            self.submodules.aux = AuxPS(extra_banks=[('monitor',0,monitor.get_csrs())])
+            self.comb += [txdata.eq(self.aux.tx_raw),self.aux.rx_raw.eq(rxdata),
+                self.aux.reset.eq(self.cd_sys.rst | monitor.reset.storage |
+                    ~txpma | ~rxpma | ~txdone | ~rxdone | ~txactive | ~rxactive)]
         if packets:
             from packet_probe import PacketProbe
             self.submodules.packets = PacketProbe()
@@ -137,26 +144,33 @@ class Diagnostic(Module):
             recovery = platform.request('sfp_recovered_clock')
             self.specials += Instance('OBUFDS', i_I=forwarded,
                                       o_O=recovery.p, o_OB=recovery.n)
-        self.axi = AXIInterface(data_width=32, address_width=40, id_width=16)
-        self.submodules.wb2csr = wishbone2csr.WB2CSR(
-            bus_wishbone=wishbone.Interface(data_width=32, address_width=40, addressing='word'),
-            bus_csr=csr_bus.Interface(data_width=32, address_width=14))
-        self.submodules.axi2wb = AXI2Wishbone(self.axi, self.wb2csr.wishbone, base_address=CSR_BASE)
-        self.submodules.banks = csr_bus.CSRBankArray(self,
-            lambda name, memory: {'monitor': 0, 'protocol': 1, 'packets': 2}.get(name) if memory is None else None,
-            data_width=32, address_width=14)
-        self.submodules.csr_interconnect = csr_bus.Interconnect(self.wb2csr.csr, self.banks.get_buses())
+        if aux:
+            self.axi=self.aux.axi
+        else:
+            self.axi = AXIInterface(data_width=32, address_width=40, id_width=16)
+            self.submodules.wb2csr = wishbone2csr.WB2CSR(
+                bus_wishbone=wishbone.Interface(data_width=32, address_width=40, addressing='word'),
+                bus_csr=csr_bus.Interface(data_width=32, address_width=14))
+            self.submodules.axi2wb = AXI2Wishbone(self.axi, self.wb2csr.wishbone, base_address=CSR_BASE)
+            self.submodules.banks = csr_bus.CSRBankArray(self,
+                lambda name, memory: {'monitor': 0, 'protocol': 1, 'packets': 2}.get(name) if memory is None else None,
+                data_width=32, address_width=14)
+            self.submodules.csr_interconnect = csr_bus.Interconnect(self.wb2csr.csr, self.banks.get_buses())
         connect_ps_hpm0(self, ps, self.axi)
 
     def write_map(self, path):
         regs = {}
-        for name, csrs, bankid, bank in self.banks.banks:
+        banks=(self.banks.banks if not self.aux_mode else
+               [(name,csrs,bankid,None) for name,bankid,csrs in self.aux.extra_banks])
+        for name, csrs, bankid, bank in banks:
             address = CSR_BASE + bankid * 0x800
             for csr in csrs:
                 words = (csr.size + 31) // 32
                 regs[name+'_'+csr.name] = {'address': address, 'words': words, 'bits': csr.size}
                 address += words * 4
-        path.write_text(json.dumps({'kind': 'diagnostic-map-not-hardware-evidence',
+        if self.aux_mode:
+            regs.update({'aux_'+name:value for name,value in self.aux.memory_map()['registers'].items()})
+        path.write_text(json.dumps({'aux_sram':self.aux.memory_map()['aux_sram'] if self.aux_mode else None,'kind': 'diagnostic-map-not-hardware-evidence',
             'magic': 0x44525430, 'boot_hz': 125000000, 'registers': regs,
             'status_bits': {'cpll_lock':0, 'tx_done':1, 'rx_done':2, 'powergood':3,
                 'cdr_estimate':4, 'tx_active':5, 'rx_active':6, 'module_present':7,
@@ -171,6 +185,7 @@ def main():
     p.add_argument("--forward-rx-clock", action="store_true")
     p.add_argument("--protocol", action="store_true")
     p.add_argument("--packets", action="store_true")
+    p.add_argument("--aux", action="store_true")
     args = p.parse_args()
     platform = DiagnosticPlatform(args.ps.resolve())
     platform.add_extension([
@@ -201,12 +216,14 @@ def main():
             IOStandard('DIFF_HSTL_I_DCI_12'))])
         platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
         platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
-    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets)
+    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux)
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
     first_stage_count = (118 if args.forward_rx_clock else 117) + (200 if args.protocol else 0)
     prefixes = ['diagnostic_rx_count_gth_rx', 'diagnostic_tx_count_gth_tx', 'diagnostic_error_count_gth_rx']
     if args.protocol:
         prefixes += ['diagnostic_protocolprobe_graycounter'+str(i)+'_gth_rx' for i in range(6)]
+    if args.packets or args.aux:
+        first_stage_count = 'PACKET_CDC_COUNT'
     if args.packets:
         # Replaced from the generated HDL by the build wrapper, before Vivado.
         # Counts are exact, not a minimum permitting missing synchronizers.
@@ -229,13 +246,16 @@ foreach prefix {GRAY_PREFIXES} {
  set_bus_skew 8 -from $sources -to $endpoints
 }
 """.replace("CDC_COUNT", str(first_stage_count)).replace("GRAY_PREFIXES", " ".join(prefixes)).replace("{", "{{").replace("}", "}}"))
-    if args.packets:
+    if args.packets or args.aux:
         # Upstream master RX packet counter and the asynchronous reply FIFO
         # also use Gray buses. Constrain their first CDC register endpoints,
         # excluding local counter/RAM address fanout.
         extra_gray = [('diagnostic_packetprobe_rtpacketmaster_graycodetransfer_value_gray_rtio',32),
                       ('diagnostic_packetprobe_asyncfifo_graycounter0_q',7),
                       ('diagnostic_packetprobe_asyncfifo_graycounter1_q',7)]
+        if args.aux:
+            extra_gray=[('diagnostic_auxendpoint_auxtxcdc_graycounter0_q',13),
+                        ('diagnostic_auxendpoint_auxtxcdc_graycounter1_q',13)]
         for source,width in extra_gray:
             command = """
 set sources [get_cells -hierarchical -filter {NAME =~ SOURCE_reg* && REF_NAME =~ FD*}]
@@ -250,7 +270,7 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
     platform.toolchain.additional_commands.append('report_bus_skew -file top_bus_skew.rpt')
     platform.build(top, build_dir=str(args.output.resolve()), run=False)
     top.write_map(args.output.resolve() / 'csr-map.json')
-    if args.packets:
+    if args.packets or args.aux:
         import re
         text = (args.output.resolve() / 'top.v').read_text()
         # Vivado's lowering emits a standalone mr_ff attribute per declaration.
@@ -258,7 +278,7 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
         if not marked: raise ValueError('No generated packet CDC declarations')
         bits = sum(int(width)+1 if width else 1 for width,name in marked)
         manifest = {'first_stage_bits':bits, 'first_stage_registers':marked,
-                    'gray_counter_buses':len(prefixes)+3}
+                    'gray_counter_buses':len(prefixes)+(3 if args.packets else 2)}
         (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
         route = args.output.resolve() / 'top_route.tcl'
         route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))

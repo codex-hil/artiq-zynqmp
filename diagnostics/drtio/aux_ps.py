@@ -22,7 +22,7 @@ class AuxPS(Module):
     BASE = 0xa0000000
     BANK = 3
 
-    def __init__(self):
+    def __init__(self, extra_banks=()):
         self.reset = Signal(reset=1)
         self.clock_domains.cd_aux_sys = ClockDomain('aux_sys')
         self.clock_domains.cd_aux_tx = ClockDomain('aux_tx')
@@ -44,7 +44,17 @@ class AuxPS(Module):
         self.submodules.wb2csr = w = wishbone2csr.WB2CSR(
             bus_wishbone=wishbone.Interface(data_width=32,address_width=40,addressing='word'),
             bus_csr=csr_bus.Interface(data_width=32,address_width=14))
-        self.submodules.bank = csr_bus.CSRBank(self.csrs,self.BANK,bus=w.csr)
+        bank_bus=csr_bus.Interface(data_width=32,address_width=14)
+        self.submodules.bank = csr_bus.CSRBank(self.csrs,self.BANK,bus=bank_bus)
+        buses=[bank_bus]
+        self.extra_banks=[]
+        for name,bank_id,description in extra_banks:
+            bus=csr_bus.Interface(data_width=32,address_width=14)
+            bank=csr_bus.CSRBank(description,bank_id,bus=bus)
+            setattr(self.submodules,'bank_'+name,bank)
+            self.extra_banks.append((name,bank_id,description))
+            buses.append(bus)
+        self.submodules.csr_interconnect=csr_bus.Interconnect(w.csr,buses)
         # Pinned MiSoC CSRStorage pads aligned readback with hi-alignment
         # zeros instead of alignment zeros. Fix only this finalized CSR.
         length=e.aux.transmitter.aux_tx_length

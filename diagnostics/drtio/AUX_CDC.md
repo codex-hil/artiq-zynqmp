@@ -88,3 +88,22 @@ asynchronous assertion/synchronous-release timing. The HDL generator uses
 actual Xilinx reset synchronizer lowering. Vivado timing/CDC, connection to
 the physical GTH/PS top-level, active-transfer reset and physical AUX tests
 remain pending.
+
+## Genesys top-level integration
+
+`diag_gateware.py --aux` now embeds AuxPS in the existing Genesys PS/GTH
+platform. It connects HPM0 to the full AXI adapter, raw20 to the physical
+GTH IP and retains the monitor in CSR bank0. AUX bank3 and SRAM map are
+included in `csr-map.json`. Framing, packet and AUX diagnostics are mutually
+exclusive images. SFP TX remains disabled by default.
+
+Common endpoint reset includes PS reset, monitor reset and GT TX/RX
+PMA/done/user-clock-active loss. A generated exact first-stage count replaces
+the CDC count placeholder. The baseline three counter constraints plus
+both 13-bit AUX FIFO Gray pointers give five bus-skew constraints. Vivado
+must verify the retained register counts and timing before hardware use.
+
+Build with `DRTIO_AUX=1 diagnostics/drtio/build_top.sh PS_EXPORT PHY_EXPORT
+FRESH_OUTPUT` in the documented shared environment. `DRTIO_IP_CACHE` may
+point at an existing compatible Vivado cache. Generation alone is not a
+passing FPGA build; no AUX image has been loaded on hardware yet.

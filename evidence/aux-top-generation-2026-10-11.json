@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-11",
+  "status": "PASS",
+  "kind": "TOP_HDL_GENERATION_NOT_SYNTHESIS_OR_HARDWARE",
+  "output": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-aux-top-2026-10-11",
+  "first_stage_bits": 153,
+  "gray_buses": 5,
+  "source_sha256": {
+    "diagnostics/drtio/diag_gateware.py": "ce09b6afdcb68945fb0575a38b0f00c451230c53b6cb88a983d0bd8931779e3f",
+    "diagnostics/drtio/aux_ps.py": "4a96d49eff1bd9d046fe61bc173ff3bf9067a6fa2b9aa0247b6b2f1787c3261f",
+    "diagnostics/drtio/build_top.sh": "8323085102ba1377d183d10039fdc6121c34a2ecfc6eb1e9bf8e8fa9a9ef19a0",
+    "diagnostics/drtio/check_top_build.py": "c21c9c4a62f1cdc9d9cc3d79746ce88932d07dcbe09b845cb3e3d040dfddbca0",
+    "diagnostics/drtio/test_aux_ps.py": "01242e2f138e7f859519ce3e696569e17198b734d2a806ff6c080238da3de12c"
+  },
+  "artifact_sha256": {
+    "top.v": "ca99e7969026c82373ae83ac7bed26de3505a0a7700aed30013682cc8f54e7e7",
+    "top_route.tcl": "d9e429616073563a9ba4b8c5f00e91317d28cc55290d0441b16727d5dc9a3992",
+    "csr-map.json": "3bb65c3bff081ea439f08cd7b77376c5e77fdeba0bdd6a3e71733ad3f9adb0e4",
+    "cdc-manifest.json": "f78564d29a9576013d0b2af023e64b0eca01daaeadfc20f0c1f6cbd99966db6e",
+    "integration-test.log": "dc4de7d7453b0d81fbd5b3d832b1a66e9c59628cd0989dd4fd7dea07c8e60ce8"
+  },
+  "limitations": [
+    "Vivado synthesis/route NOT_RUN",
+    "Physical AUX NOT_RUN",
+    "Active-transfer reset qualification NOT_RUN"
+  ],
+  "hardware_actions": []
+}

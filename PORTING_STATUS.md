@@ -962,3 +962,19 @@ Standalone HDL with complete AXI/raw20/clock ports and map generated PASS.
 This is not synthesis or hardware acceptance. Physical top-level embedding,
 CDC/timing constraints, Vivado build and firmware AUX still pending. No HW
 access this turn. Evidence: evidence/aux-ps-integration-2026-10-11.json.
+
+## 2026-10-11 — Genesys AUX top-level HDL generation
+
+Diagnostic --aux now embeds the full-AXI AUX block in Piotr's existing
+Genesys PS/GTH platform. Existing monitor bank0 remains accessible; bank3
+and 16 KiB AUX SRAM map are exported. Reset includes PS/monitor reset and
+GT TX/RX PMA/done/active loss. External SFP TX defaults disabled.
+
+HDL/map generation PASS using the preserved PS export and existing156.25 MHz
+GTH IP. Generated exact153 first-stage synchronizer bits and five Gray
+bus-skew constraints (three counters plus two13-bit FIFO pointers). These
+are pre-synthesis counts, not Vivado retained-cell or timing acceptance.
+Full AXI extra-monitor-bank simulation PASS; shell/Python syntax checks PASS.
+Build wrapper now supports DRTIO_AUX=1 and checker requires five skew results.
+Vivado synthesis/route and physical AUX/active-transfer reset remain NOT_RUN.
+No hardware access. Evidence: evidence/aux-top-generation-2026-10-11.json.

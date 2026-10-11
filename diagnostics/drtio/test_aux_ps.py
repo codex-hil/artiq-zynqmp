@@ -4,6 +4,7 @@ from migen import Module
 from migen.sim import run_simulation
 from migen.genlib.resetsync import AsyncResetSynchronizer
 from aux_ps import AuxPS
+from misoc.interconnect.csr import CSRStatus
 
 
 class FunctionalReset:
@@ -18,7 +19,9 @@ class FunctionalReset:
 class AuxPSTest(unittest.TestCase):
     def test_full_axi_csr_sram_errors_and_reset(self):
         d=Module()
-        d.submodules.ps=p=AuxPS()
+        magic=CSRStatus(32,name='magic')
+        magic.status.reset=0x44525430
+        d.submodules.ps=p=AuxPS(extra_banks=[('monitor',0,[magic])])
         a=p.axi
         regs=p.memory_map()['registers']
         def wait(signal):
@@ -71,6 +74,7 @@ class AuxPSTest(unittest.TestCase):
             yield a.b.ready.eq(0)
             yield
         def test():
+            self.assertEqual((yield from read(p.BASE)),0x44525430)
             self.assertEqual((yield from read(regs['in_reset']['address'])),1)
             yield p.reset.eq(0)
             for _ in range(10):yield
