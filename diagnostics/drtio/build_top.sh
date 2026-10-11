@@ -12,14 +12,29 @@ python_bin=${PYTHON:-/srv/codex-hil-data/artiq-zynqmp/venv/bin/python}
 extra=()
 if [ "${FORWARD_RX_CLOCK:-0}" = 1 ]; then extra+=(--forward-rx-clock); fi
 if [ "${DRTIO_PROTOCOL:-0}" = 1 ]; then extra+=(--protocol); fi
+if [ "${DRTIO_PACKETS:-0}" = 1 ]; then extra+=(--packets); fi
 "$python_bin" "$repo/diagnostics/drtio/diag_gateware.py" "${extra[@]}" --ps "$ps" --phy "$phy" --output "$out" > "$out/generate.log" 2>&1
 # Piotr's Migen importer emits synth_ip in project mode. Use proper IP runs
 # without modifying the archived Migen checkout.
 "$python_bin" - "$out" <<'PY'
 from pathlib import Path
 import sys
+import os
+import hashlib
+import json
 out=Path(sys.argv[1])
 s=(out/'top_route.tcl').read_text()
+cache=os.environ.get('DRTIO_IP_CACHE')
+if cache:
+ cache=str(Path(cache).resolve())
+ if not Path(cache).is_dir() or any(c in cache for c in '{}\n'):
+  raise ValueError('Invalid existing Vivado IP cache directory')
+ lines=s.splitlines(keepends=True)
+ project=[i for i,line in enumerate(lines) if line.startswith('create_project ')]
+ if len(project)!=1:raise ValueError('Expected one project creation')
+ lines.insert(project[0]+1,'config_ip_cache -use_cache_location {'+cache+'}\n')
+ s=''.join(lines)
+
 for name in ('drtio_gth','platform_zynq_ultra_ps_e_0_0'):
  old=f'synth_ip [get_ips {name}] -force'
  new=f'''create_ip_run [get_ips {name}]

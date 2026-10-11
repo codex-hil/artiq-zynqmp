@@ -41,7 +41,7 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform, forward_rx_clock=False, protocol=False):
+    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -85,6 +85,12 @@ class Diagnostic(Module):
                          MultiReg(monitor.prbs.storage, rxprbs, odomain='gth_rx'),
                          MultiReg(monitor.loopback.storage, loopback)]
         txdata, rxdata = Signal(20), Signal(20)
+        if protocol and packets:
+            raise ValueError("Choose framing or packet diagnostic")
+        if packets:
+            from packet_probe import PacketProbe
+            self.submodules.packets = PacketProbe()
+            self.comb += [txdata.eq(self.packets.tx_raw), self.packets.rx_raw.eq(rxdata)]
         if protocol:
             from protocol_probe import ProtocolProbe
             self.submodules.protocol = ProtocolProbe()
@@ -137,7 +143,7 @@ class Diagnostic(Module):
             bus_csr=csr_bus.Interface(data_width=32, address_width=14))
         self.submodules.axi2wb = AXI2Wishbone(self.axi, self.wb2csr.wishbone, base_address=CSR_BASE)
         self.submodules.banks = csr_bus.CSRBankArray(self,
-            lambda name, memory: {'monitor': 0, 'protocol': 1}.get(name) if memory is None else None,
+            lambda name, memory: {'monitor': 0, 'protocol': 1, 'packets': 2}.get(name) if memory is None else None,
             data_width=32, address_width=14)
         self.submodules.csr_interconnect = csr_bus.Interconnect(self.wb2csr.csr, self.banks.get_buses())
         connect_ps_hpm0(self, ps, self.axi)
@@ -164,6 +170,7 @@ def main():
     p.add_argument('--output', type=Path, required=True)
     p.add_argument("--forward-rx-clock", action="store_true")
     p.add_argument("--protocol", action="store_true")
+    p.add_argument("--packets", action="store_true")
     args = p.parse_args()
     platform = DiagnosticPlatform(args.ps.resolve())
     platform.add_extension([
@@ -194,12 +201,21 @@ def main():
             IOStandard('DIFF_HSTL_I_DCI_12'))])
         platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
         platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
-    top = Diagnostic(platform, args.forward_rx_clock, args.protocol)
+    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets)
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
     first_stage_count = (118 if args.forward_rx_clock else 117) + (200 if args.protocol else 0)
     prefixes = ['diagnostic_rx_count_gth_rx', 'diagnostic_tx_count_gth_tx', 'diagnostic_error_count_gth_rx']
     if args.protocol:
         prefixes += ['diagnostic_protocolprobe_graycounter'+str(i)+'_gth_rx' for i in range(6)]
+    if args.packets:
+        # Replaced from the generated HDL by the build wrapper, before Vivado.
+        # Counts are exact, not a minimum permitting missing synchronizers.
+        first_stage_count = 'PACKET_CDC_COUNT'
+        domains = ('gth_tx','gth_rx','gth_tx','gth_tx','gth_rx',
+                   'gth_rx','gth_rx','gth_tx','gth_tx','gth_rx',
+                   'gth_rx','gth_rx','gth_rx')
+        prefixes += ['diagnostic_packetprobe_graycounter'+str(i)+'_'+domain
+                     for i,domain in enumerate(domains)]
     platform.toolchain.post_synthesis_commands.append("""
 # Vivado retains mr_ff on registers; Piotr's old Migen targets nets.
 set first_sync [get_cells -hierarchical -filter {mr_ff == TRUE && REF_NAME =~ FD*}]
@@ -213,9 +229,39 @@ foreach prefix {GRAY_PREFIXES} {
  set_bus_skew 8 -from $sources -to $endpoints
 }
 """.replace("CDC_COUNT", str(first_stage_count)).replace("GRAY_PREFIXES", " ".join(prefixes)).replace("{", "{{").replace("}", "}}"))
+    if args.packets:
+        # Upstream master RX packet counter and the asynchronous reply FIFO
+        # also use Gray buses. Constrain their first CDC register endpoints,
+        # excluding local counter/RAM address fanout.
+        extra_gray = [('diagnostic_packetprobe_rtpacketmaster_graycodetransfer_value_gray_rtio',32),
+                      ('diagnostic_packetprobe_asyncfifo_graycounter0_q',7),
+                      ('diagnostic_packetprobe_asyncfifo_graycounter1_q',7)]
+        for source,width in extra_gray:
+            command = """
+set sources [get_cells -hierarchical -filter {NAME =~ SOURCE_reg* && REF_NAME =~ FD*}]
+if {[llength $sources] != WIDTH} {error "Missing internal Gray source: SOURCE"}
+set fanout [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects $sources -filter {REF_PIN_NAME == Q}]]
+set endpoints [filter $fanout {mr_ff == TRUE && REF_NAME =~ FD*}]
+if {[llength $endpoints] != WIDTH} {error "Missing internal Gray endpoints: SOURCE"}
+set_bus_skew 8 -from $sources -to $endpoints
+set_max_delay -datapath_only 8 -from $sources -to $endpoints
+""".replace('SOURCE',source).replace('WIDTH',str(width))
+            platform.toolchain.post_synthesis_commands.append(command.replace('{','{{').replace('}','}}'))
     platform.toolchain.additional_commands.append('report_bus_skew -file top_bus_skew.rpt')
     platform.build(top, build_dir=str(args.output.resolve()), run=False)
     top.write_map(args.output.resolve() / 'csr-map.json')
+    if args.packets:
+        import re
+        text = (args.output.resolve() / 'top.v').read_text()
+        # Vivado's lowering emits a standalone mr_ff attribute per declaration.
+        marked = re.findall(r'\(\*[^\n]*mr_ff = "true"[^\n]*\*\)\s*reg\s*(?:\[(\d+):0\]\s*)?([a-zA-Z0-9_]+)', text)
+        if not marked: raise ValueError('No generated packet CDC declarations')
+        bits = sum(int(width)+1 if width else 1 for width,name in marked)
+        manifest = {'first_stage_bits':bits, 'first_stage_registers':marked,
+                    'gray_counter_buses':len(prefixes)+3}
+        (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+        route = args.output.resolve() / 'top_route.tcl'
+        route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))
 
 
 if __name__ == '__main__':

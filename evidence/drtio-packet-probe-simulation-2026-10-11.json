@@ -1,0 +1,42 @@
+{
+  "kind": "rtl-simulation",
+  "date": "2026-10-11",
+  "status": "PASS",
+  "scope": "time-slotted request and reply packet probe through raw20 codec loopback",
+  "tests": 6,
+  "command": "make test-drtio-packet-probe PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+  "log_sha256": "b51a815f7c0eccada803e9dfda20f18175847cdc9fa4515e8301be3770b96d83",
+  "simulation_settings": {
+    "slot_cycles": 256,
+    "diagnostic_counter_width": 8
+  },
+  "hardware_settings": {
+    "slot_cycles": 32768,
+    "diagnostic_counter_width": 32
+  },
+  "cases": [
+    "echo",
+    "set_time",
+    "extended write payload",
+    "buffer space",
+    "read data",
+    "read timeout",
+    "read overflow",
+    "dropped echo reply timeout",
+    "unknown packet type",
+    "truncated header",
+    "echo after negatives",
+    "original truncation negative control"
+  ],
+  "compatibility_fixes": [
+    "unreachable upstream satellite INPUT truncation guard moved outside frame guard",
+    "diagnostic timeout armed by sent request and remains armed after generator disable"
+  ],
+  "hardware": "NOT_RUN",
+  "source_files_sha256": {
+    "diagnostics/drtio/packet_probe.py": "ac3b432ffa22857e1e43f228e5db8ac5ac55efae7035f787b9e67e9900cb4b9b",
+    "diagnostics/drtio/satellite_packet.py": "56ce2c20c15137b8e86f28590c1b67a6fb3c909c651001550e78b98342d422d7",
+    "diagnostics/drtio/test_packet_probe.py": "6560292b0d617055446b31c64aa65740f29924a1cfd3d801ec7d246521ef2651",
+    "diagnostics/drtio/test_satellite_truncation.py": "bedd9b9a4096527c0ab7efe23c3ba529fe503703ccfa3c8efdc0b7a3fb713631"
+  }
+}

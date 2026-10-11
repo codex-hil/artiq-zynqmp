@@ -208,3 +208,102 @@ is insufficient evidence for this mapping.
 These are simulation results. The existing physical framing diagnostic is
 still separate: no packet-executing satellite bitstream, CPU AUX discovery
 service, routing or external SFP link has been validated by this suite.
+
+## Single-GTH RT packet diagnostic
+
+`DRTIO_PACKETS=1` selects a separate packet variant; do not combine it with
+`DRTIO_PROTOCOL=1`. It keeps upstream RTPacketMaster and satellite packet
+serialization unchanged, with the port-local truncation guard correction
+in `satellite_packet.py`. A 32768-cycle scheduler reserves the first half
+for master-to-satellite requests and the second half for satellite-to-master
+replies. A 64-entry asynchronous FIFO preserves complete reply frames
+between recovered RX and TX clocks. Both directions traverse the actual GTH
+PMA loopback and the same 8b/10b codec; replies are not injected into a parser
+through an ideal decoded fabric path. Guard intervals separate RX routing
+changes from serial traffic. This diagnostic transport is not DRTIO's normal
+full-duplex topology and cannot establish deterministic latency.
+
+The satellite uses a diagnostic CRI responder. It checks all decoded write
+fields including a 512-bit payload with bit400 set, read channel/timeout,
+buffer-space destination and set_time timestamp. Responses carry checked
+buffer space, event data/timestamp and timeout/overflow flags. This backend
+does not instantiate local RTIO/SED and does not drive the PMOD pins.
+
+| Command | Packet / check |
+|---|---|
+| 0 | Echo request and reply |
+| 1 | set_time and timestamp validation |
+| 2 | Write channel/address/timestamp and extended payload validation |
+| 3 | Buffer-space request and reply |
+| 4 | Read request and data/timestamp reply |
+| 5 | Read timeout reply |
+| 6 | Read overflow reply |
+| 7 | Suppressed CRI buffer-space response; upstream satellite timeout |
+| 8 | Unknown packet type; receiver error |
+| 9 | Truncated write header; receiver error |
+
+`packets_drop_reply=1` discards captured return frames while draining their
+FIFO; echo must then produce the diagnostic master's bounded timeout and
+zero received echo replies. Returning to command0 with suppression disabled
+checks recovery. Every test requires active physical traffic, not flags only.
+Configure command/drop only with enable0 and after outstanding slots drain.
+
+```sh
+make test-drtio-packet-probe PYTHON=/path/to/HDL/venv/bin/python
+DRTIO_PACKETS=1 PYTHON=/path/to/HDL/venv/bin/python \
+  bash diagnostics/drtio/build_top.sh /path/to/ps-export \
+  /path/to/validated156 /fresh/drtio-packets
+python scripts/load_drtio_diagnostic.py --server tcp:SERVER:3121 \
+  --cable 210383B7F02DA --port /path/to/verified/Genesys/UART \
+  --ps-export /path/to/dma-ps-2025.2 \
+  --bitstream /fresh/drtio-packets/top.bit --output /path/to/load-evidence
+make test-hw-drtio-packets PYTHON=/path/to/HDL/venv/bin/python \
+  JTAG_SERVER=tcp:SERVER:3121 CSR_MAP=/fresh/drtio-packets/csr-map.json \
+  O=/path/to/evidence
+```
+
+Hold the shared board lock through diagnostic load, testing and normal
+runtime restoration. This host uses
+`/home/codex-hil/.cache/genesys-210383B7F02DA.lock`. The loader selects only
+that verified cable, resets PS, runs existing PMU/FSBL, loads PL and prepares
+AXI while A53s remain halted. External SFP TX stays disabled, Si5342 is
+unchanged, and there are no SD/flash/OTP writes. Restore the validated
+CoreDMA/analyzer/MonInj runtime using `scripts/load_rtio_runtime.py` and
+repeat its physical tests afterward.
+
+### Satellite truncation guard
+
+Both the pinned Piotr ARTIQ dependency and the archived modern reference
+place `If(~frame & ongoing, packet_truncated=1)` inside `If(frame, ...)`.
+The port-local checked subclass moves that one existing action outside the
+contradictory enclosing guard. It rejects an unexpected upstream FSM shape
+rather than silently applying the wrong edit. The tiny regression sends a
+one-word write header: the original engine reports zero errors (negative
+control), the corrected engine reports exactly one and neither issues a
+CRI command. Original source checkouts are untouched.
+
+The accelerated packet simulations use256-cycle slots and8-bit diagnostic
+counters; packet/payload widths, engines, codec and FIFO are unchanged.
+Hardware uses32768-cycle slots (allowing the8191-cycle upstream timeout)
+and32-bit counters. A sent-request latch keeps the diagnostic timeout armed
+even after the traffic generator is disabled, and prevents counting slots
+in which no request was sent.
+
+For load/test/restore with automatic cleanup, use
+`scripts/test_drtio_packets_bringup.py --help`. It checks build artifact
+hashes before board access, holds the exact-board flock, records each stage
+and attempts restoration in `finally` even if the packet test fails. After
+restoring both CPUs and normal PL it repeats standard-client analyzer,
+MonInj and physical TTL/CoreDMA tests, followed by Ethernet diagnostics.
+The Make hardware target alone expects an already loaded diagnostic and
+an externally held board lock.
+
+The bounded wrapper first repeats the existing physical PRBS7/clock-activity
+and PRBS mismatch/recovery tests on the new bitstream, then resets GTH into
+raw encoded packet mode. Existing physical framing results therefore do not
+substitute for testing the newly generated image.
+
+Optional `DRTIO_IP_CACHE=/existing/Vivado/project.cache/ip` reuses the official
+Vivado IP synthesis cache for unchanged PS and GTH configuration. It saves
+rebuilding vendor IP while still synthesizing/routing the changed top-level
+HDL. It is optional and does not replace artifact/timing verification.

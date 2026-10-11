@@ -225,3 +225,11 @@ USB card/reader absent; no card write. Preserve earlier image. User asked
 whether card can be moved after debug tests; physical reply remains pending.
 Do not edit shell script files while those scripts are executing: Bash may
 read later commands from changed offsets. Copy scripts for active long runs.
+
+2026-10-11 packet diagnostic development: use shared exact-board flock
+/home/codex-hil/.cache/genesys-210383B7F02DA.lock across Genesys reset,
+programming, UART/DAP/network test and restoration. Packet bring-up wrapper
+scripts/test_drtio_packets_bringup.py enforces it and attempts restoration
+in finally. New DRTIO_PACKETS diagnostic replaces local RTIO while loaded;
+it is a time-slotted single-GTH protocol test with a diagnostic CRI backend,
+not a production satellite. Refer to newest PORTING_STATUS for results.

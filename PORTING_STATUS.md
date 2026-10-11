@@ -841,3 +841,21 @@ synchronization NOT_RUN. This does not upgrade physical framing results
 into packet-layer hardware results. Working normal core was not reset or
 reprogrammed. Reproducer: `make test-drtio-raw-packets`; evidence:
 `evidence/drtio-packets-simulation-2026-10-11.json`.
+
+## 2026-10-11 — time-slotted physical packet diagnostic prepared
+
+Six packet-probe/regression simulations PASS. Upstream master/satellite RT
+packet engines are connected to one raw20 codec, with time slots and an
+asynchronous reply FIFO so each request and reply can traverse the same
+physical GTH loopback. The backend checks CRI fields and synthesizes replies;
+it does not execute local RTIO/SED. Echo, set_time, extended writes,
+buffer-space replies, read/event/timeout/overflow, dropped-reply timeout,
+unknown-type and truncated-header errors plus clean recovery simulated.
+
+The original satellite truncation guard is unreachable in both pinned and
+archived modern ARTIQ; a guarded local subclass corrects its nesting without
+editing original sources. Tiny negative-control tests PASS on both snapshots.
+A test also caught diagnostic timeout loss when disabling the generator;
+request-based arming fixes it. See docs/DRTIO_PACKET_TRUNCATION.md and
+new simulation evidence. Current FPGA build/hardware validation in progress;
+this section alone is not hardware evidence.

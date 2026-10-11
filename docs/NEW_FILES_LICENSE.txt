@@ -372,3 +372,13 @@ scripts/load_rtio_runtime.py
 scripts/test_rtio_debug_hw.py
 tests/test_analyzer_bram.py
 docs/RTIO_DEBUG.md
+diagnostics/drtio/packet_probe.py
+diagnostics/drtio/satellite_packet.py
+diagnostics/drtio/test_packet_probe.py
+diagnostics/drtio/test_packets_hw.py
+diagnostics/drtio/test_satellite_truncation.py
+scripts/load_drtio_diagnostic.py
+diagnostics/drtio/test_aux_raw20.py
+diagnostics/drtio/test_packets_raw20.py
+scripts/test_drtio_packets_bringup.py
+docs/DRTIO_PACKET_TRUNCATION.md
