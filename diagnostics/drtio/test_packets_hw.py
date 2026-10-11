@@ -52,17 +52,19 @@ proc exercise {command drop expected negative} {
  wr packets_command $command
  wr packets_drop_reply $drop
  after 25
- wr packets_enable 1
- after 100
  set before [counts]
+ wr packets_enable 1
  after 250
+ wr packets_enable 0
+ # Drain in-flight requests/replies/timeouts before every counter read.
+ after 25
  set after_value [counts]
  set delta [difference $before $after_value]
  set requests [dict get $delta requests]
  if {$requests<500} {error "Too few physical packets command=$command delta=$delta"}
  foreach n $expected {
   set count [dict get $delta $n]
-  if {$count<500 || abs($count-$requests)>150} {error "Missing or duplicate command/result $n command=$command delta=$delta"}
+  if {$count != $requests} {error "Missing or duplicate command/result $n command=$command delta=$delta"}
  }
  foreach n {sat_errors master_errors fifo_errors timeouts} {
   if {$n eq $negative} {
@@ -125,7 +127,7 @@ disconnect
     ok=r.returncode==0 and 'TEST ARTIQ_GTH_RT_PACKETS PASS' in log
     result={'kind':'physical-hardware','time':time.time(),'status':'PASS' if ok else 'FAIL',
             'scope':'upstream RT request and reply packet engines through time-slotted single GTH PMA loopback; diagnostic CRI backend',
-            'cycles':a.cycles,'cable':a.cable,'external_sfp_tx':'disabled',
+            'cycles':a.cycles,'counter_sampling':'quiescent after draining pending slots; exact request/result equality','cable':a.cable,'external_sfp_tx':'disabled',
             'satellite_rtio_execution':'NOT_RUN','aux_firmware':'NOT_RUN',
             'remote_drtio':'NOT_RUN','deterministic_latency':'NOT_RUN',
             'results':[l for l in log.splitlines() if l.startswith(('PACKET_RESULT','PACKET_CYCLE'))],

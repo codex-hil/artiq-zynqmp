@@ -233,3 +233,14 @@ scripts/test_drtio_packets_bringup.py enforces it and attempts restoration
 in finally. New DRTIO_PACKETS diagnostic replaces local RTIO while loaded;
 it is a time-slotted single-GTH protocol test with a diagnostic CRI backend,
 not a production satellite. Refer to newest PORTING_STATUS for results.
+
+Latest2026-10-11 physical RT packets PASS: final diagnostic PL
+build-vivado/drtio-packets-armed-2026-10-11, WNS2.641/WHS0.012ns,
+604 CDC bits/19 Gray buses. Three resets/36 cases/36239 requests with
+exact quiescent request/result counts, native error controls and recovery.
+Both request and reply traverse actual GTH using lab time slots/FIFO and
+checked CRI backend; no local satellite RTIO/SED, AUX firmware, external
+SFP/Kasli or deterministic latency proof. Normal rtio-debug-fixed PL,
+debug-services CPU0 and kernel-worker-dma-final CPU1 restored to192.168.2.3.
+Two restore suites PASS: normal DMA/TTL, analyzer/MonInj and Ethernet.
+Evidence drtio-packets-hardware-2026-10-11.json. SD/flash/OTP/Si unchanged.

@@ -859,3 +859,44 @@ A test also caught diagnostic timeout loss when disabling the generator;
 request-based arming fixes it. See docs/DRTIO_PACKET_TRUNCATION.md and
 new simulation evidence. Current FPGA build/hardware validation in progress;
 this section alone is not hardware evidence.
+
+## 2026-10-11 — physical RT request/reply packets PASS
+
+| Subsystem | Current status | Physical acceptance |
+|---|---|---|
+| RT packet serialization/parsing | PARTIAL: diagnostic physical request/reply path PASS; production satellite absent | 36 cases,36,239 requests across three GTH resets, exact drained-counter conservation |
+| Satellite command backend | STUB for RTIO execution: deliberately checked diagnostic CRI responder | set_time; channel/address/timestamp and extended512-bit write payload; buffer space; read data/timestamp, timeout and overflow |
+| Error handling | DONE for diagnostic cases | Exactly one error/result per deliberately suppressed reply, CRI buffer timeout, unknown type and truncated header; clean echo recovery |
+| AUX | PARTIAL: prior framing hardware and controller simulation PASS | CPU AUX protocol/discovery/routing hardware still NOT_RUN |
+| External master and deterministic PHY latency | MISSING integration/qualification | SFP/Kasli link, synchronized RTIO/SED and GT buffer bypass still NOT_RUN |
+
+Both directions use the same actual GTHE4/PMA loopback, with a laboratory
+half-duplex slot scheduler and asynchronous reply FIFO. It is not a normal
+full-duplex DRTIO topology and not a working production satellite. The CRI
+backend does not drive TTL/SED. Separate native unknown/truncation/buffer
+error counters establish which path fired. Positive traffic has zero new
+satellite/master/FIFO errors. Each required result count exactly matches
+sent requests after generation stops and pending slots drain. Sequential
+DAP reads while traffic runs were superseded by this coherent acceptance.
+
+Build: build-vivado/drtio-packets-armed-2026-10-11, bit SHA-256
+12ae72ea4c027a45b244919e92e81ce1f8e7f84c27324346a577263911a6683b.
+WNS2.641ns/WHS0.012ns, exact604 first-stage CDC bits and19 Gray bus-skew
+constraints PASS. Existing PRBS7/clock-activity/mismatch/recovery also PASS
+on this bitstream. Earlier builds were stopped as simulation/review exposed
+missing diagnostics and the timeout-arm bug; final top-level was rebuilt
+using official unchanged PS/GTH IP cache. Original checkout code untouched.
+
+Two complete volatile load/test/restore sessions PASS; the second is the
+exact-counter acceptance run. Normal CoreDMA/analyzer/MonInj PL and both
+CPU images restored, DHCP192.168.2.3. Both restoration suites passed nine
+normal DMA experiments (72 pulses/144 loopback edges), analyzer256-record
+wrap/restart and MonInj physical loopback/injection/cleanup. GEM tests passed
+20/20 ICMP and five byte-exact TCP echo connections per session. External
+SFP TX remained disabled; no Si5342, SD/flash/OTP or other FPGA writes.
+
+Evidence: evidence/drtio-packets-hardware-2026-10-11.json. Reproducer:
+diagnostics/drtio/README.md, scripts/test_drtio_packets_bringup.py. Shared
+Genesys flock held through reset/programming/tests/restoration. Remaining
+next work: AUX controller/firmware, production satellite RTIO/SED wiring,
+clock-manager integration and external Kasli synchronization.

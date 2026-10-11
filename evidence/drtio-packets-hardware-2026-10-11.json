@@ -1,0 +1,377 @@
+{
+  "kind": "physical-hardware",
+  "time": 1791704852.7733269,
+  "status": "PASS",
+  "scope": "upstream RT request and reply packet engines through time-slotted single GTH PMA loopback; diagnostic CRI backend",
+  "cycles": 3,
+  "counter_sampling": "quiescent after draining pending slots; exact request/result equality",
+  "cable": "210383B7F02DA",
+  "external_sfp_tx": "disabled",
+  "satellite_rtio_execution": "NOT_RUN",
+  "aux_firmware": "NOT_RUN",
+  "remote_drtio": "NOT_RUN",
+  "deterministic_latency": "NOT_RUN",
+  "results": [
+    "PACKET_CYCLE cycle=0 alignment=17",
+    "PACKET_RESULT command=0 drop=0 delta={requests 997 echo_replies 997 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=1 drop=0 delta={requests 982 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 982 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=2 drop=0 delta={requests 1016 echo_replies 0 buffer_replies 0 read_replies 0 writes 1016 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=3 drop=0 delta={requests 1000 echo_replies 0 buffer_replies 1000 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=4 drop=0 delta={requests 993 echo_replies 0 buffer_replies 0 read_replies 993 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=5 drop=0 delta={requests 1007 echo_replies 0 buffer_replies 0 read_replies 1007 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=6 drop=0 delta={requests 1020 echo_replies 0 buffer_replies 0 read_replies 1020 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=0 drop=1 delta={requests 997 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 997 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=7 drop=0 delta={requests 997 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 997 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 997}",
+    "PACKET_RESULT command=8 drop=0 delta={requests 1012 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 1012 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 1012 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=9 drop=0 delta={requests 1003 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 1003 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 1003 buffer_timeouts 0}",
+    "PACKET_RESULT command=0 drop=0 delta={requests 992 echo_replies 992 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_CYCLE cycle=1 alignment=23",
+    "PACKET_RESULT command=0 drop=0 delta={requests 1015 echo_replies 1015 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=1 drop=0 delta={requests 993 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 993 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=2 drop=0 delta={requests 1004 echo_replies 0 buffer_replies 0 read_replies 0 writes 1004 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=3 drop=0 delta={requests 1012 echo_replies 0 buffer_replies 1012 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=4 drop=0 delta={requests 995 echo_replies 0 buffer_replies 0 read_replies 995 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=5 drop=0 delta={requests 1049 echo_replies 0 buffer_replies 0 read_replies 1049 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=6 drop=0 delta={requests 1001 echo_replies 0 buffer_replies 0 read_replies 1001 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=0 drop=1 delta={requests 995 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 995 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=7 drop=0 delta={requests 1011 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 1011 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 1011}",
+    "PACKET_RESULT command=8 drop=0 delta={requests 993 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 993 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 993 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=9 drop=0 delta={requests 1013 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 1013 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 1013 buffer_timeouts 0}",
+    "PACKET_RESULT command=0 drop=0 delta={requests 1002 echo_replies 1002 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_CYCLE cycle=2 alignment=9",
+    "PACKET_RESULT command=0 drop=0 delta={requests 1026 echo_replies 1026 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=1 drop=0 delta={requests 1015 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 1015 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=2 drop=0 delta={requests 1011 echo_replies 0 buffer_replies 0 read_replies 0 writes 1011 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=3 drop=0 delta={requests 990 echo_replies 0 buffer_replies 990 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=4 drop=0 delta={requests 988 echo_replies 0 buffer_replies 0 read_replies 988 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=5 drop=0 delta={requests 998 echo_replies 0 buffer_replies 0 read_replies 998 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=6 drop=0 delta={requests 998 echo_replies 0 buffer_replies 0 read_replies 998 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=0 drop=1 delta={requests 1017 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 1017 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=7 drop=0 delta={requests 1013 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 1013 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 1013}",
+    "PACKET_RESULT command=8 drop=0 delta={requests 1026 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 1026 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 1026 truncated_errors 0 buffer_timeouts 0}",
+    "PACKET_RESULT command=9 drop=0 delta={requests 1015 echo_replies 0 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 1015 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 1015 buffer_timeouts 0}",
+    "PACKET_RESULT command=0 drop=0 delta={requests 1043 echo_replies 1043 buffer_replies 0 read_replies 0 writes 0 time_loads 0 sat_errors 0 master_errors 0 timeouts 0 fifo_errors 0 unknown_errors 0 truncated_errors 0 buffer_timeouts 0}"
+  ],
+  "csr_map_sha256": "ac45b42ce2e7492ff00f7daa4ceb57da52aa090b39193702f8ec6f57cc711b2d",
+  "log_sha256": "3473dcc6d31be9f00e86703a2baed615a65b44b0d9577c0fb68ea082636d0c8e",
+  "case_count": 36,
+  "counter_totals": {
+    "requests": 36239,
+    "echo_replies": 6075,
+    "buffer_replies": 3002,
+    "read_replies": 9049,
+    "writes": 3031,
+    "time_loads": 2990,
+    "sat_errors": 9083,
+    "master_errors": 0,
+    "timeouts": 3009,
+    "fifo_errors": 0,
+    "unknown_errors": 3031,
+    "truncated_errors": 3031,
+    "buffer_timeouts": 3021
+  },
+  "build": {
+    "kind": "fpga-build-not-hardware",
+    "status": "PASS",
+    "scope": "separate raw GTH diagnostic; not a DRTIO satellite",
+    "sha256": {
+      "top.bit": "12ae72ea4c027a45b244919e92e81ce1f8e7f84c27324346a577263911a6683b",
+      "top.v": "77c6ceaa9cd6ab381f34a864abaea96a193cb67b72905074f0c7869fcb7873cd",
+      "top.xdc": "45f9dbf885cd56f1f7864beb5f1bed7e87663cdcb508b6e9feac21b34fcd9e50",
+      "csr-map.json": "ac45b42ce2e7492ff00f7daa4ceb57da52aa090b39193702f8ec6f57cc711b2d",
+      "top_timing.rpt": "fcb1bfc38829f0e13d92ad2593706dd9e326a13cb070b13aea6b7e49d1f72486",
+      "top_bus_skew.rpt": "1d466a8aaf9db6056acbab7409ba6978d20cce6791fcbd28626d6000afe25ac8"
+    },
+    "directory": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11",
+    "WNS_ns": 2.641,
+    "WHS_ns": 0.012,
+    "first_stage_CDC_bits": 604,
+    "gray_bus_skew_constraints": 19,
+    "cdc_manifest_sha256": "44588072252802206ef97d1f153dae28b9e10c619183e910dcced269d9db3a71"
+  },
+  "sources": {
+    "created_after_generation": true,
+    "source_files_sha256": {
+      "diagnostics/drtio/packet_probe.py": "ac3b432ffa22857e1e43f228e5db8ac5ac55efae7035f787b9e67e9900cb4b9b",
+      "diagnostics/drtio/satellite_packet.py": "56ce2c20c15137b8e86f28590c1b67a6fb3c909c651001550e78b98342d422d7",
+      "diagnostics/drtio/raw20_codec.py": "90e126331bcc19eeef99d9d7cd6fc2821918549ae906ad9f60a1403576894149",
+      "diagnostics/drtio/protocol_probe.py": "130b6eeafc1c9cb1866037b5249f9b3c21d7269c0230df331143948176a4e526",
+      "diagnostics/drtio/monitor.py": "27bfa3b378d98d184c7f378727d94bdb71a0f8f2d9be5741d67253104cf6e083",
+      "diagnostics/drtio/diag_gateware.py": "b8ad1f764cea87142f7a458118185f6e4e0446d2fb4258dd1becf5ad19dc8a8c",
+      "diagnostics/drtio/build_top.sh": "0570a6bb1e937bc168bef8823acaf886aa777f76dfcb5f68ca69be747cb09b26"
+    },
+    "dependencies": {
+      "common/artiq": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+      "common/migen": "44e5627d367c528b3ce5e686b6f305a9dfc56f2a",
+      "/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current": "8a909c8b638fbec584048d6929d0c577f6be182d"
+    }
+  },
+  "simulation": {
+    "kind": "rtl-simulation",
+    "date": "2026-10-11",
+    "status": "PASS",
+    "scope": "time-slotted request and reply packet probe through raw20 codec loopback",
+    "tests": 6,
+    "command": "make test-drtio-packet-probe PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+    "log_sha256": "b51a815f7c0eccada803e9dfda20f18175847cdc9fa4515e8301be3770b96d83",
+    "simulation_settings": {
+      "slot_cycles": 256,
+      "diagnostic_counter_width": 8
+    },
+    "hardware_settings": {
+      "slot_cycles": 32768,
+      "diagnostic_counter_width": 32
+    },
+    "cases": [
+      "echo",
+      "set_time",
+      "extended write payload",
+      "buffer space",
+      "read data",
+      "read timeout",
+      "read overflow",
+      "dropped echo reply timeout",
+      "unknown packet type",
+      "truncated header",
+      "echo after negatives",
+      "original truncation negative control"
+    ],
+    "compatibility_fixes": [
+      "unreachable upstream satellite INPUT truncation guard moved outside frame guard",
+      "diagnostic timeout armed by sent request and remains armed after generator disable"
+    ],
+    "hardware": "NOT_RUN",
+    "source_files_sha256": {
+      "diagnostics/drtio/packet_probe.py": "ac3b432ffa22857e1e43f228e5db8ac5ac55efae7035f787b9e67e9900cb4b9b",
+      "diagnostics/drtio/satellite_packet.py": "56ce2c20c15137b8e86f28590c1b67a6fb3c909c651001550e78b98342d422d7",
+      "diagnostics/drtio/test_packet_probe.py": "6560292b0d617055446b31c64aa65740f29924a1cfd3d801ec7d246521ef2651",
+      "diagnostics/drtio/test_satellite_truncation.py": "bedd9b9a4096527c0ab7efe23c3ba529fe503703ccfa3c8efdc0b7a3fb713631"
+    }
+  },
+  "phy": {
+    "kind": "hardware",
+    "time": 1791704831.188054,
+    "cable": "210383B7F02DA",
+    "scope": "internal PMA PRBS7 and relative clock activity only",
+    "remote_drtio_status": "NOT_RUN",
+    "si5342_recovered_lock_status": "NOT_RUN",
+    "status": "PASS",
+    "log": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-packets-2026-10-11/hardware-exact/phy/probe.log"
+  },
+  "restoration": {
+    "kind": "hardware-bringup",
+    "status": "PASS",
+    "restoration": "PASS",
+    "cable": "210383B7F02DA",
+    "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+    "started": 1791704773.729716,
+    "stages": {
+      "diagnostic-load": {
+        "exit_code": 0,
+        "log_sha256": "446ba28e1fc65502ade205e0d9ec29e820ddab1ed57054cd29a44739ec4b2b44"
+      },
+      "phy": {
+        "exit_code": 0,
+        "log_sha256": "7e3af56ae26f4286e6b9b95b7dce03486b176e0be843be9167c2f81d5c41d33f"
+      },
+      "packets": {
+        "exit_code": 0,
+        "log_sha256": "17ec8d92b2023a47a5f7626611e6038694a69642a7df0c9eda5c9c571ce235d0"
+      },
+      "restore-load": {
+        "exit_code": 0,
+        "log_sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63"
+      },
+      "restored-debug": {
+        "exit_code": 0,
+        "log_sha256": "64e6d7a7f158549454c8cb4c2c6ba188968c240954e4eb06cd301f7a5f2e6e6e"
+      },
+      "restored-ethernet": {
+        "exit_code": 0,
+        "log_sha256": "a03cc9b1ed38725b26b3f491ac0b7bac1bb9573f710175912c5f9002c4085fd8"
+      }
+    },
+    "restored_ip": "192.168.2.3",
+    "elapsed_seconds": 151.312
+  },
+  "restored_debug": {
+    "kind": "physical-hardware",
+    "status": "PASS",
+    "ip": "192.168.2.3",
+    "scope": "finite BRAM analyzer and local TTL MonInj using standard ARTIQ clients",
+    "moninj_events": [
+      [
+        "probe",
+        0,
+        0,
+        0
+      ],
+      [
+        "probe",
+        1,
+        0,
+        0
+      ],
+      [
+        "injection",
+        0,
+        0,
+        0
+      ],
+      [
+        "injection",
+        0,
+        1,
+        0
+      ],
+      [
+        "probe",
+        0,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        0,
+        1
+      ],
+      [
+        "probe",
+        1,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        1
+      ],
+      [
+        "injection",
+        0,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        1
+      ],
+      [
+        "probe",
+        0,
+        0,
+        0
+      ],
+      [
+        "probe",
+        1,
+        0,
+        0
+      ],
+      [
+        "injection",
+        0,
+        1,
+        0
+      ],
+      [
+        "injection",
+        0,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        0
+      ],
+      [
+        "probe",
+        0,
+        0,
+        1
+      ],
+      [
+        "probe",
+        1,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        1
+      ],
+      [
+        "probe",
+        0,
+        0,
+        0
+      ],
+      [
+        "probe",
+        1,
+        0,
+        0
+      ]
+    ],
+    "analyzer": {
+      "bytes": 1200,
+      "messages": 37,
+      "ttl_outputs": 16,
+      "ttl_inputs": 16,
+      "sha256": "bc515cf9dca9ec6754079080d7f6880640185a8df9da731900febf1615a293fb"
+    },
+    "wrapped_analyzer": {
+      "bytes": 8208,
+      "messages": 256,
+      "total_bytes": 9248,
+      "sha256": "2deb04c1ae41bcac54a90bbd6d2f6623e75224b49c7c286a566175c70b1e627b"
+    },
+    "dma_experiments": 9
+  },
+  "restored_ethernet": {
+    "kind": "hardware",
+    "time": 1791704922.0387387,
+    "ip": "192.168.2.3",
+    "mac": "02:38:3b:7f:02:0d",
+    "scope": "AMD lwIP/GEM diagnostic, not ARTIQ management/RPC",
+    "tests": {
+      "icmp": "PASS",
+      "identity": "PASS",
+      "tcp_echo": "PASS"
+    },
+    "neighbor": "192.168.2.3 lladdr 02:38:3b:7f:02:0d REACHABLE \n",
+    "tcp": {
+      "connections": 5,
+      "exchanges": 1080,
+      "verified_bytes": 1129210,
+      "sha256": "86bf462a4418c7e16126c0f74ff143ce8212c4d821e18a7b42a004038f2615f3",
+      "elapsed_s": 1.0120885200158227
+    }
+  },
+  "prior_run": {
+    "status": "PASS",
+    "directory": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-packets-2026-10-11/hardware",
+    "sampling": "sequential reads during traffic; approximate counts, superseded for exact conservation by this run",
+    "restoration": "PASS"
+  },
+  "build_notes": [
+    "Earlier FPGA/simulation attempts were stopped before hardware access after identifying the unreachable upstream truncation guard, adding separate native error counters and fixing diagnostic timeout arming.",
+    "Final build reuses the official unchanged PS/GTH IP synthesis cache; changed top-level HDL resynthesized and rerouted.",
+    "First hardware run passed; improved quiescent counter sampling subsequently proved exact request/result equality on the same validated bitstream."
+  ],
+  "no_writes": [
+    "SD card",
+    "boot flash",
+    "OTP",
+    "Si5342 configuration",
+    "other FPGA boards"
+  ]
+}

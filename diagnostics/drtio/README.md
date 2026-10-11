@@ -307,3 +307,10 @@ Optional `DRTIO_IP_CACHE=/existing/Vivado/project.cache/ip` reuses the official
 Vivado IP synthesis cache for unchanged PS and GTH configuration. It saves
 rebuilding vendor IP while still synthesizing/routing the changed top-level
 HDL. It is optional and does not replace artifact/timing verification.
+
+The packet acceptance runner pauses generation and drains outstanding slots
+before reading each counter set. It requires exact request/result equality;
+sequential DAP reads while traffic is running are not a coherent snapshot
+and cannot prove packet conservation. Missing/duplicate responses and every
+unexpected error fail the test. Deliberate timeout/unknown/truncation cases
+must each produce exactly one corresponding result for each sent request.

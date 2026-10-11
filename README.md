@@ -293,3 +293,22 @@ The physical Genesys ZU-5EV Si5342 locked to nominal 125 MHz RXCLK from internal
 This is a laboratory profile and internal-loopback result. External Kasli synchronization, jitter, absolute frequency and deterministic latency remain unmeasured; it is not yet a working DRTIO satellite.
 
 See [Si5342 diagnostics](diagnostics/si5342/README.md), `make test-si5342` and `make test-hw-si5342`. The hardware test backs up and restores changed registers without programming OTP. The normal ARTIQ/CoreDMA runtime was restored and its physical DMA experiment passed afterward.
+
+## DRTIO RT packet loopback
+
+Physical upstream RT request/reply engines passed a single-GTH internal PMA
+loopback diagnostic:36 cases and36,239 requests over three resets, with
+exact request/result conservation. Echo, set_time, extended write fields,
+buffer-space and read/event/timeout/overflow replies passed. Missing replies,
+unknown types and truncated headers produced the expected errors, followed
+by clean echo recovery. A port-local overlay corrects an unreachable header
+truncation guard present in both archived ARTIQ snapshots; original sources
+remain unchanged.
+
+This uses laboratory time slots and a checked CRI responder, not a normal
+full-duplex satellite executing local RTIO. AUX firmware, external Kasli
+synchronization and deterministic latency remain outstanding. The normal
+local CoreDMA/analyzer/MonInj runtime was restored and physically retested.
+See [packet diagnostic instructions](diagnostics/drtio/README.md),
+[truncation correction](docs/DRTIO_PACKET_TRUNCATION.md) and
+`evidence/drtio-packets-hardware-2026-10-11.json`.
