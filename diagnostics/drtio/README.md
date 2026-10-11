@@ -314,3 +314,11 @@ sequential DAP reads while traffic is running are not a coherent snapshot
 and cannot prove packet conservation. Missing/duplicate responses and every
 unexpected error fail the test. Deliberate timeout/unknown/truncation cases
 must each produce exactly one corresponding result for each sent request.
+
+### PS/GTH AUX crossing
+
+The upstream AUX SRAM controller can now be tested with independent PS and
+GTH clocks using `make test-drtio-aux-cdc`. See [AUX_CDC.md](AUX_CDC.md) for
+whole-packet buffering, startup quarantine, reset constraints and pending
+physical integration. These are simulation tests, not firmware/hardware
+AUX discovery results.

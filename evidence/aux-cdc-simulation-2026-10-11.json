@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-11",
+  "kind": "RTL_SIMULATION_NOT_HARDWARE",
+  "status": "PASS",
+  "tests": 5,
+  "command": "make test-drtio-aux-cdc PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+  "log": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-packets-2026-10-11/aux-cdc-simulation.log",
+  "log_sha256": "48d210c7a80af5bb221289988d5d44de126b261bc46383aa14a2b88831880b4b",
+  "upstream_artiq_revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+  "sources": {
+    "diagnostics/drtio/aux_tx_cdc.py": "0e21e83a0e7963c148760054e23fb237ace4cdbd5637c045363c00a15070f7f7",
+    "diagnostics/drtio/aux_endpoint.py": "1a8e8651f218f50d5c459d159520fd208893aff65cf192f9ffc77c0184bd0b45",
+    "diagnostics/drtio/test_aux_tx_cdc.py": "e2876fda5e2e161fbd2c9a00a8ec6b310264dc18ea4eb0230ebbfae710bbc598",
+    "diagnostics/drtio/test_aux_endpoint.py": "3625cf9ae1fdb402e41139757d81ea814c44b63a823b075465bcd2c36d5a1f26",
+    "diagnostics/drtio/test_aux_raw20.py": "770a0946cbf096c871d94fad2db645f95c03340722dba206324adb18bf18a0a3"
+  },
+  "coverage": [
+    "PS faster and slower than GTH",
+    "1024-byte packet through upstream AUX SRAM/raw20/link receiver",
+    "ring wrap",
+    "RT contention",
+    "raw word misalignment",
+    "ring overflow and recovery"
+  ],
+  "bug_found": "RX admitted pre-convergence descrambler samples as a spurious first packet; fixed by 127 recovered-clock cycle quarantine after alignment",
+  "limitations": [
+    "Top-level AXI/CSR integration NOT_RUN",
+    "Vivado build NOT_RUN",
+    "physical AUX NOT_RUN",
+    "firmware protocol/discovery/routing NOT_RUN",
+    "independent GT reset requires coherent bridge reset"
+  ],
+  "hardware_actions": []
+}

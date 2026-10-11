@@ -26,8 +26,8 @@ class AuxWire(Module):
 
 
 class AuxRaw20Test(unittest.TestCase):
-    def exercise(self, offset, traffic=False, overflow=False):
-        dut = AuxWire(offset)
+    def exercise(self, offset, traffic=False, overflow=False, dut=None, clocks=None, sizes=(1, 3, 17)):
+        dut = dut if dut is not None else AuxWire(offset)
         tx, rx = dut.aux.transmitter, dut.aux.receiver
 
         def wait(csr, expected, limit=12000):
@@ -42,7 +42,7 @@ class AuxRaw20Test(unittest.TestCase):
             for _ in range(50): yield
             # More than eight packets validates ring pointer wrap, not just slot0.
             for number in range(10):
-                size = (1, 3, 17)[number % 3]
+                size = sizes[number % len(sizes)]
                 words = [((number+1)*0x1020304 ^ i*0x7654321) & 0xffffffff
                          for i in range(size)]
                 for i, word in enumerate(words):
@@ -108,7 +108,10 @@ class AuxRaw20Test(unittest.TestCase):
 
         generators = [test()]
         if traffic: generators.append(rt_traffic())
-        run_simulation(dut, generators, clocks={'sys':8, 'rtio_rx':(8,2)})
+        if clocks is not None:
+            generators = {'sys': [test()]}
+            if traffic: generators['gth_tx'] = [rt_traffic()]
+        run_simulation(dut, generators, clocks=clocks or {'sys':8, 'rtio_rx':(8,2)})
 
     def test_memory_ring(self): self.exercise(0)
     def test_rt_contention_and_alignment(self): self.exercise(7, True)

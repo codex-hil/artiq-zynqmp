@@ -181,3 +181,8 @@ test-drtio-packet-probe:
 test-hw-drtio-packets:
 	@test -n "$(CSR_MAP)" -a -n "$(JTAG_SERVER)" || (echo 'Set packet diagnostic CSR_MAP and JTAG_SERVER'; exit 2)
 	$(PYTHON) diagnostics/drtio/test_packets_hw.py --csr-map="$(CSR_MAP)" --server="$(JTAG_SERVER)" --cable="$(SI5342_CABLE)" --output="$(abspath $(O))/drtio-packets-hardware"
+
+.PHONY: test-drtio-aux-cdc
+test-drtio-aux-cdc:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_aux_tx_cdc.py' -v
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_aux_endpoint.py' -v

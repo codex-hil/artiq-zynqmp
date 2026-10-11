@@ -900,3 +900,29 @@ diagnostics/drtio/README.md, scripts/test_drtio_packets_bringup.py. Shared
 Genesys flock held through reset/programming/tests/restoration. Remaining
 next work: AUX controller/firmware, production satellite RTIO/SED wiring,
 clock-manager integration and external Kasli synchronization.
+
+## 2026-10-11 — PS/GTH AUX clock crossing
+
+The next AUX integration preserves the upstream SRAM controller and moves
+only its TX stream across clocks using a whole-packet asynchronous FIFO.
+The controller/Wishbone remain on the PS clock; TX link uses the GTH clock
+and RX retains its upstream recovered-clock memory writer. No original
+ARTIQ/Migen sources were changed. See diagnostics/drtio/AUX_CDC.md.
+
+Unrelated-clock simulation exposed a false first RX packet before
+scrambler convergence. A 127-cycle recovered-clock startup quarantine fixes
+that issue. Ring wrap, overflow/recovery and RT arbitration use the actual
+upstream AUX controller, link layer and raw20 codec in these tests.
+
+Status remains PARTIAL: this endpoint is not yet in the physical diagnostic
+top-level. AXI decode/CSR mapping, additional CDC constraints, coordinated
+reset integration, Vivado build and physical AUX/firmware tests remain
+NOT_RUN. This step does not reset/program the Genesys or modify its running
+local CoreDMA/analyzer/MonInj image. Firmware must wait for bridge drain in
+addition to the upstream TX enqueue-busy flag. Independent GT reset while
+the PS bridge runs is not supported yet.
+
+Acceptance: `make test-drtio-aux-cdc` — five tests PASS. This includes the
+maximum 1024-byte packet through upstream TX/RX SRAM and raw20 framing,
+not only FIFO token testing. Evidence:
+evidence/aux-cdc-simulation-2026-10-11.json (source/log SHA-256 recorded).
