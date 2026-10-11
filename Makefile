@@ -210,3 +210,7 @@ firmware-drtio-aux:
 test-hw-drtio-aux:
 	$(if $(AUX_BRINGUP_ARGS),,$(error Specify AUX_BRINGUP_ARGS with diagnostic and restoration inputs))
 	$(PYTHON) scripts/test_drtio_aux_bringup.py $(AUX_BRINGUP_ARGS)
+
+.PHONY: test-drtio-satellite-sed
+test-drtio-satellite-sed:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_sed.py' -v

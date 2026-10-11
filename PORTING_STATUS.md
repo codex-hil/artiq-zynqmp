@@ -1084,3 +1084,18 @@ flash/OTP or other board writes. Evidence:
 evidence/aux-service-hardware-2026-10-11.json. Reproducer: bounded AUX wrapper
 --firmware ELF --service-test. Next offline step: connect retained upstream
 satellite packet/CRI path to real RTIO/SED, with simulation before hardware.
+
+### 2026-10-11 — real satellite SED simulation
+
+PASS: retained upstream master packet serialization → checked satellite parser
+→ actual SyncRTIO/SED → TTL PHY; four scheduled writes, exact four output
+strobes/edges, preserved 32-clock intervals and no asynchronous SED errors.
+Disconnected-frame negative control PASS with no strobes/edges. Uncompensated
+latency is nine clocks to PHY strobe plus two to TTL: timestamp compensation
+is still pending. Two output channels/eight SED lanes used to avoid retained
+Migen zero-width address/counter elaboration failures. No original source or
+hardware modified. Ideal single-clock packet wiring only; no physical DRTIO
+satellite or remote synchronization claim. Reproducer and scope:
+diagnostics/drtio/SATELLITE_SED.md; make test-drtio-satellite-sed.
+Next: validate timestamp compensation, TSC load and error recovery offline,
+then integrate the real backend into the physical diagnostic.
