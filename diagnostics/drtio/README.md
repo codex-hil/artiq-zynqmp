@@ -182,3 +182,29 @@ changed by this runner; the default 156.25 MHz reference profile is used.
 Physical result (2026-10-09): three cycles PASS, each with over 15,000 RT
 and AUX frames, zero new settled errors, detected encoded-bit corruption
 and clean recovery. Evidence: `evidence/drtio-framing-hardware-2026-10-09.json`.
+
+## Encoded packet regression (2026-10-11)
+
+```sh
+make test-drtio-raw-packets PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python
+```
+
+This bounded simulation suite keeps the pinned ARTIQ master, satellite,
+packet engines, SED and AUX controller unchanged. The master/satellite test
+replaces only the upstream decoded dummy wires with two Raw20Codec instances
+and comma aligners. It verifies an echo response and scheduled TTL edges
+with relative intervals 20/30/20 cycles. Those intervals validate scheduling
+in simulation, not absolute PHY latency or external synchronization.
+
+AUX tests send ten differently sized packets through raw 8b/10b, read the
+actual Wishbone RX aperture (8192 bytes plus 1024 bytes per ring slot), wrap
+all eight pointers and check byte-exact payloads. Additional cases exercise
+RT traffic contention, offset acquisition, queue overflow, preservation of
+seven queued packets, error acknowledgement and successful reception after
+recovery. Wait loops have finite bounds; failed acquisition cannot hang tests.
+The old upstream AUX test bypasses 8b/10b and reads a fixed RX address, so it
+is insufficient evidence for this mapping.
+
+These are simulation results. The existing physical framing diagnostic is
+still separate: no packet-executing satellite bitstream, CPU AUX discovery
+service, routing or external SFP link has been validated by this suite.

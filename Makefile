@@ -168,3 +168,7 @@ test-analyzer-bram:
 test-hw-rtio-debug:
 	@test -n "$(BOARD_IP)" -a -n "$(DEVICE_DB)" || (echo 'Set actual BOARD_IP and DEVICE_DB'; exit 2)
 	env -u PYTHONPATH $(ARTIQ_PYTHON) scripts/test_rtio_debug_hw.py --ip="$(BOARD_IP)" --device-db="$(DEVICE_DB)" --artiq-run="$(ARTIQ_RUN)" --output="$(abspath $(O))/rtio-debug-hardware"
+
+.PHONY: test-drtio-raw-packets
+test-drtio-raw-packets:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_*raw20.py' -v

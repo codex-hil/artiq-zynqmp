@@ -825,3 +825,19 @@ validated via JTAG. Card write and new-image cold boot NOT_RUN: the USB
 reader/card is not present on the host and a physical power cycle requires
 user assistance. Previous non-DMA SD image remains unchanged.
 Evidence: sd-debug-package-2026-10-09.json. See docs/SD_BOOT.md.
+
+## 2026-10-11 — encoded DRTIO packet and AUX simulation
+
+Upstream master/satellite packet engines now have a port-local regression
+through raw 20-bit 8b/10b codecs and comma alignment, rather than decoded
+ideal wires. Echo response and scheduled TTL edge intervals PASS. AUX
+Wishbone memory transfers, ring wrap, concurrent RT traffic, offset
+acquisition, queue overflow and recovery PASS. Four new tests, all bounded.
+Original upstream/submodule code remains unchanged.
+
+Status: packet integration PARTIAL (simulation PASS); physical satellite
+packet execution, AUX firmware discovery/routing and external master
+synchronization NOT_RUN. This does not upgrade physical framing results
+into packet-layer hardware results. Working normal core was not reset or
+reprogrammed. Reproducer: `make test-drtio-raw-packets`; evidence:
+`evidence/drtio-packets-simulation-2026-10-11.json`.

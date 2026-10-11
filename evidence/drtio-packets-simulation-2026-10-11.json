@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "status": "SIMULATION_PASS_HARDWARE_NOT_RUN",
+  "command": "make test-drtio-raw-packets PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python",
+  "revisions": {
+    "common/artiq": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+    "common/migen": "44e5627d367c528b3ce5e686b6f305a9dfc56f2a",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current": "8a909c8b638fbec584048d6929d0c577f6be182d"
+  },
+  "log": "/srv/codex-hil-data/artiq-zynqmp/build/drtio-packets-2026-10-11/tests.log",
+  "tests": [
+    "AUX raw20 memory ring wrap",
+    "AUX queue overflow preservation and recovery",
+    "AUX RT contention and serial alignment",
+    "DRTIO master/satellite encoded echo and scheduled TTL"
+  ],
+  "limitations": [
+    "No satellite packet hardware test",
+    "No CPU AUX protocol service or discovery",
+    "No external SFP/master",
+    "No deterministic PHY latency qualification"
+  ],
+  "hardware_actions": []
+}
