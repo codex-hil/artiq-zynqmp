@@ -20,7 +20,7 @@ def interface():
 
 
 class SatelliteSEDTest(unittest.TestCase):
-    def exercise(self, connected):
+    def exercise(self, connected, advance=0, load_time=False, stale_write=False):
         dut = Module()
         pad = Signal()
         master_link, satellite_link = interface(), interface()
@@ -38,21 +38,35 @@ class SatelliteSEDTest(unittest.TestCase):
                      master_link.rx_rt_data.eq(satellite_link.tx_rt_data),
                      dut.tsc.load.eq(dut.satellite.tsc_load),
                      dut.tsc.load_value.eq(dut.satellite.tsc_load_value)]
-        edges, strobes, errors = [], [], []
+        edges, strobes, errors, loads, underflows = [], [], [], [], []
+        base = 1240 if load_time else 240
 
         def run():
             previous = 0
             for cycle in range(420):
+                # Hold set_time until the serializer acknowledges the complete packet.
+                if load_time and cycle == 5:
+                    yield dut.master.tsc_value.eq(1000)
+                    yield dut.master.set_time_stb.eq(1)
+                if (yield dut.master.set_time_ack):
+                    yield dut.master.set_time_stb.eq(0)
                 # Requests arrive long before their execution timestamps.
                 if cycle in (40, 80, 120, 160):
                     index = (cycle - 40) // 40
                     self.assertEqual((yield dut.master.sr_ack), 1)
-                    yield dut.master.sr_timestamp.eq(240 + index * 32)
+                    yield dut.master.sr_timestamp.eq(base + index * 32 - advance)
                     yield dut.master.sr_data.eq(1 - index % 2)
+                    yield dut.master.sr_stb.eq(1)
+                elif stale_write and cycle == 25:
+                    yield dut.master.sr_timestamp.eq(10)
+                    yield dut.master.sr_data.eq(1)
                     yield dut.master.sr_stb.eq(1)
                 else:
                     yield dut.master.sr_stb.eq(0)
                 timestamp = (yield dut.tsc.coarse_ts)
+                if (yield dut.satellite.tsc_load):
+                    loads.append((yield dut.satellite.tsc_load_value))
+                underflows.append(bool((yield dut.rtio.cri.o_status) & 2))
                 value = (yield pad)
                 if value != previous:
                     edges.append((timestamp, value))
@@ -62,12 +76,23 @@ class SatelliteSEDTest(unittest.TestCase):
                 errors.append((yield dut.rtio.async_errors.raw_bits()))
                 yield
         run_simulation(dut, run())
-        self.assertEqual(strobes, [(249, 1), (281, 0), (313, 1), (345, 0)] if connected else [])
-        self.assertEqual(edges, [(251, 1), (283, 0), (315, 1), (347, 0)] if connected else [])
+        self.assertEqual(strobes, [(base + 9 - advance + i * 32, 1 - i % 2) for i in range(4)] if connected else [])
+        self.assertEqual(edges, [(base + 11 - advance + i * 32, 1 - i % 2) for i in range(4)] if connected else [])
         self.assertFalse(any(errors))
+        self.assertEqual(loads, [1000] if load_time else [])
+        self.assertEqual(any(underflows), stale_write)
 
     def test_scheduled_ttl(self):
         self.exercise(True)
+
+    def test_sender_timestamp_advance(self):
+        self.exercise(True, advance=11)
+
+    def test_serialized_time_load_then_ttl(self):
+        self.exercise(True, load_time=True)
+
+    def test_stale_write_rejected_without_extra_edge(self):
+        self.exercise(True, stale_write=True)
 
     def test_disconnected_packet_negative_control(self):
         self.exercise(False)

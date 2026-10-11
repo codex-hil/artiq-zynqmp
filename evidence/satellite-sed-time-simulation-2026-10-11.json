@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "kind": "simulation",
+  "hardware_access": false,
+  "tests": 5,
+  "artiq_revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+  "checks": [
+    "serialized writes to real SyncRTIO SED and TTL",
+    "disconnected frame negative control",
+    "sender timestamp advance 11 (diagnostic only)",
+    "serialized set_time loads 1000 once",
+    "stale write native underflow and subsequent valid-write recovery"
+  ],
+  "limitations": [
+    "ideal single-clock packet wires",
+    "no external synchronization or physical latency qualification",
+    "production timestamp compensation undecided"
+  ],
+  "reproducer": "make test-drtio-satellite-sed PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python MISOC_SOURCE=/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current"
+}

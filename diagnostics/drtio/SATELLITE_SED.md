@@ -33,3 +33,22 @@ All domains are deliberately mapped to one simulation clock. This validates
 packet decoding, CRI dispatch, SED scheduling and TTL behavior only. GTH,
 clock-domain crossings, recovered-clock synchronization, TSC loading, input
 reads, reset handling and a remote Kasli remain separate acceptance steps.
+
+## Time and underflow controls (2026-10-11)
+
+The suite now has five passing tests:
+
+- Original scheduling and disconnected-frame negative control.
+- Sender-side timestamp advance of 11 clocks produces edges at exactly the
+  requested 240/272/304/336 counter values. This is a diagnostic parameter,
+  not a modification to production master semantics or remote synchronization.
+- An actual serialized `set_time` packet loads 1000 exactly once; subsequent
+  events use timestamps 1240/1272/1304/1336 and retain the measured latency.
+- A stale timestamp-10 write is sent before the valid sequence. Real SED CRI
+  underflow status asserts, the stale event produces no edge, and the four
+  subsequent valid events execute normally without extra strobes or edges.
+
+No compensation is applied to the upstream SED, PHY or standard master.
+A final platform integration must choose a consistent time reference and
+validate physical latency before changing timestamp conventions. These tests
+establish local counter behavior, not master/satellite counter alignment.

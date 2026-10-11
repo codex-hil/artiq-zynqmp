@@ -1099,3 +1099,15 @@ satellite or remote synchronization claim. Reproducer and scope:
 diagnostics/drtio/SATELLITE_SED.md; make test-drtio-satellite-sed.
 Next: validate timestamp compensation, TSC load and error recovery offline,
 then integrate the real backend into the physical diagnostic.
+
+### 2026-10-11 — satellite time-load and underflow recovery simulation
+
+Five satellite SED tests PASS. Serialized set_time loads counter1000 exactly
+once and subsequent timestamped TTL events execute. A stale timestamp10 write
+raises native CRI underflow, produces no output, and four later valid writes
+execute with no extra strobes/edges. Diagnostic sender advance11 yields edges
+at requested counter values; production master/SED semantics remain unchanged.
+No GTH/CDC/external-clock proof or hardware access in this stage. Reproducer:
+make test-drtio-satellite-sed; scope in diagnostics/drtio/SATELLITE_SED.md.
+Next safe offline step: read/input and real buffer-space replies, then refactor
+the tested backend for physical GTH diagnostic integration.
