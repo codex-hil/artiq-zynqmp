@@ -265,3 +265,13 @@ Normal local core restored192.168.2.3 with physical TTL/DMA/debug/Ethernet
 PASS. Shared lock held139.957s; no Si/SD/flash/OTP writes. Evidence
 artiq-new-wip/evidence/aux-firmware-hardware-2026-10-11.json; reproducer
  diagnostics/drtio/aux_protocol/README.md. Use bounded AUX wrapper --firmware.
+
+Genesys2026-10-11 persistent AUX lab service PASS: echo/status-DOWN responder
+stays active after31-pair self-test.18 UART-injected requests,9 responses,
+9 ignored loopback replies,3 each CRC/unknown/unsupported-reset drops and
+recovery PASS through physical GTH. Persistent ResetRequest remains unsupported
+until real RTIO/SED backend exists. UART injector and responder share one A53;
+no remote Kasli/TSC/routing proof. Normal core restored192.168.2.3 with physical
+TTL/DMA/debug/Ethernet PASS. Shared lease168.681s; no persistent/Si writes.
+Evidence aux-service-hardware-2026-10-11.json; bounded AUX wrapper requires
+--firmware ELF --service-test. Next work is upstream satellite RTIO/SED wiring.

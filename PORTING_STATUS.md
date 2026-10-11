@@ -1059,3 +1059,28 @@ Evidence: evidence/aux-codec-reference-2026-10-11.json and
  evidence/aux-firmware-hardware-2026-10-11.json. Reproducer:
 diagnostics/drtio/aux_protocol/README.md. Next work is a persistent handler,
 TSC/control integration and real satellite RTIO/SED; remote Kasli NOT_RUN.
+
+## 2026-10-11 — persistent minimal AUX responder PASS
+
+After its original31-pair self-test, firmware now stays in a receive/dispatch
+loop. Echo receives EchoReply; destination queries receive DOWN. Replies are
+consumed without another response, preventing PMA-loopback storms. Malformed
+CRC and unknown packets are dropped. Persistent ResetRequest is explicitly
+unsupported and dropped until a real RTIO backend exists; the prior bounded
+self-test's laboratory ResetAck remains separate.
+
+Physical persistent service PASS:18 UART-injected AUX requests across three
+rounds, nine response packets and nine ignored loopback replies, three each
+bad-CRC/unknown/unsupported-reset drops, echo recovery after every set. Exact
+UART event counts and no RX/SEND errors. All traffic traverses physical GTH,
+but injector and responder share one A53. No remote Kasli, production
+satellite RTIO/SED/TSC/reset or routing claim. Unchanged upstream Rust
+codec/CRC and the previously routed AUX PL retained.
+
+AUX memory/PHY and original firmware self-test repeated PASS. Shared lock
+covered168.681s load/test/restoration. Normal local core restored192.168.2.3;
+physical TTL/CoreDMA, standard analyzer/MonInj and Ethernet PASS. No Si/SD/
+flash/OTP or other board writes. Evidence:
+evidence/aux-service-hardware-2026-10-11.json. Reproducer: bounded AUX wrapper
+--firmware ELF --service-test. Next offline step: connect retained upstream
+satellite packet/CRI path to real RTIO/SED, with simulation before hardware.

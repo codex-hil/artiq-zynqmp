@@ -24,7 +24,9 @@ def main():
                  'worker','cpu0','device-db','artiq-python','artiq-run','output'):
         p.add_argument('--'+name,required=True)
     p.add_argument('--firmware',help='Optional built AUX firmware ELF')
+    p.add_argument('--service-test',action='store_true',help='Exercise persistent firmware via UART')
     a=p.parse_args()
+    if a.service_test and not a.firmware:p.error('--service-test requires --firmware')
     out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     bit=Path(a.bitstream).resolve()
     build=json.loads((bit.parent/'results.json').read_text())
@@ -71,7 +73,8 @@ def main():
         if a.firmware:
             run('aux-firmware',[sys.executable,str(REPO/'diagnostics/drtio/aux_protocol/test_firmware_hw.py'),
                 '--server',a.server,'--port',a.port,'--elf',a.firmware,
-                '--csr-map',a.csr_map,'--output',str(out/'aux-firmware')],timeout=120)
+                '--csr-map',a.csr_map,'--output',str(out/'aux-firmware'),
+                *(['--service'] if a.service_test else [])],timeout=180)
         result['status']='PASS'
     except Exception as e:
         result['error']=str(e);print('Diagnostic FAIL: '+str(e),flush=True)

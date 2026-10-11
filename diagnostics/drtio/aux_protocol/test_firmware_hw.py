@@ -13,6 +13,7 @@ import serial
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for n in ('server','port','elf','csr-map','output'):p.add_argument('--'+n,required=True)
+    p.add_argument('--service',action='store_true')
     a=p.parse_args()
     lock=Path.home()/'.cache/genesys-210383B7F02DA.lock'
     fd=os.environ.get('GENESYS_LEASE_FD')
@@ -38,18 +39,44 @@ def main():
         while time.monotonic()<deadline:
             raw.extend(uart.read(uart.in_waiting or 1))
             if b'TEST ARTIQ_AUX_FIRMWARE PASS' in raw or b'TEST ARTIQ_AUX_FIRMWARE FAIL' in raw or b'AUX_FW PANIC' in raw:break
+        service_counts={}
+        if a.service:
+            def await_token(token,number):
+                limit=time.monotonic()+10
+                while raw.count(token.encode())<number:
+                    if time.monotonic()>limit:raise RuntimeError('Service timeout: '+token)
+                    raw.extend(uart.read(uart.in_waiting or 1))
+            await_token('AUX_SERVICE READY',1)
+            for cycle in range(3):
+                for command,tokens in [
+                    (b'e',['AUX_SERVICE RESPOND request=0 reply=1','AUX_SERVICE IGNORE reply=1']),
+                    (b'd',['AUX_SERVICE RESPOND request=32 reply=33','AUX_SERVICE IGNORE reply=33']),
+                    (b'c',['AUX_SERVICE DROP kind=-1']),
+                    (b'u',['AUX_SERVICE DROP kind=-2']),
+                    (b'r',['AUX_SERVICE DROP kind=2']),
+                    (b'e',['AUX_SERVICE RESPOND request=0 reply=1','AUX_SERVICE IGNORE reply=1'])]:
+                    uart.write(command);uart.flush()
+                    for token in tokens:
+                        service_counts[token]=service_counts.get(token,0)+1
+                        await_token(token,service_counts[token])
+            limit=time.monotonic()+.5
+            while time.monotonic()<limit:raw.extend(uart.read(uart.in_waiting or 1))
     (out/'uart.log').write_bytes(raw)
     lines=raw.decode(errors='replace').splitlines()
     exchanges=[line for line in lines if line.startswith('AUX_FW EXCHANGE')]
     ok=(run.returncode==0 and b'TEST ARTIQ_AUX_FIRMWARE PASS' in raw and
         len(exchanges)==31 and b'AUX_FW BAD_CRC PASS' in raw and
         b'AUX_FW UNKNOWN_TYPE PASS' in raw and b'FAIL' not in raw and b'PANIC' not in raw)
-    result={'kind':'PHYSICAL_FIRMWARE','status':'PASS' if ok else 'FAIL',
+    if a.service:
+        ok=ok and all(raw.count(token.encode())==number for token,number in service_counts.items())
+        ok=ok and b'AUX_SERVICE RX_ERROR' not in raw and b'AUX_SERVICE SEND_FAIL' not in raw
+    result={'kind':'PHYSICAL_FIRMWARE' ,'status':'PASS' if ok else 'FAIL',
         'scope':'two laboratory AUX roles on one A53, upstream Rust packet codec/CRC over real GTH loopback',
         'exchanges':exchanges,'bad_crc':b'AUX_FW BAD_CRC PASS' in raw,
         'unknown_type':b'AUX_FW UNKNOWN_TYPE PASS' in raw,'elf_sha256':build['elf_sha256'],
         'uart_sha256':hashlib.sha256(raw).hexdigest(),'remote_kasli':'NOT_RUN',
-        'production_satellite_rtio':'NOT_RUN','destination_status':'DOWN'}
+        'production_satellite_rtio':'NOT_RUN','destination_status':'DOWN','persistent_service':'PASS' if a.service and ok else 'NOT_RUN',
+        'service_counts':service_counts}
     (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
     if not ok:print(raw.decode(errors='replace'))
