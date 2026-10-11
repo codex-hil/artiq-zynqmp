@@ -254,3 +254,14 @@ NOT_RUN. No physical in-flight reset proof. Normal local core restored to
 192.168.2.3 and physical TTL/DMA/debug/Ethernet PASS. Shared Genesys lease
 covered129.218-second load/test/restore; no persistent or Si writes.
 Use scripts/test_drtio_aux_bringup.py; evidence aux-hardware-2026-10-11.json.
+
+Genesys2026-10-11 AUX Rust firmware lab PASS: unchanged current upstream
+packet codec/libio plus CRC linked into A53 firmware,31 request/reply pairs,
+bad CRC/unknown type and recovery through physical GTH loopback. Both roles
+on one CPU; after self-test firmware idles. Destination DOWN, laboratory
+ResetAck only; no production satellite RTIO reset, persistent service,
+remote Kasli or TSC/routing proof. Piotr/current seven basic vectors match.
+Normal local core restored192.168.2.3 with physical TTL/DMA/debug/Ethernet
+PASS. Shared lock held139.957s; no Si/SD/flash/OTP writes. Evidence
+artiq-new-wip/evidence/aux-firmware-hardware-2026-10-11.json; reproducer
+ diagnostics/drtio/aux_protocol/README.md. Use bounded AUX wrapper --firmware.

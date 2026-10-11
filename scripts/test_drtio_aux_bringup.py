@@ -72,7 +72,7 @@ def main():
             run('aux-firmware',[sys.executable,str(REPO/'diagnostics/drtio/aux_protocol/test_firmware_hw.py'),
                 '--server',a.server,'--port',a.port,'--elf',a.firmware,
                 '--csr-map',a.csr_map,'--output',str(out/'aux-firmware')],timeout=120)
-        result['status']='PASS' 
+        result['status']='PASS'
     except Exception as e:
         result['error']=str(e);print('Diagnostic FAIL: '+str(e),flush=True)
     finally:
