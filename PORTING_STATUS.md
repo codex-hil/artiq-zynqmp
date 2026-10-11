@@ -1028,3 +1028,34 @@ CPU1 restored, DHCP192.168.2.3. Standard physical TTL/CoreDMA/debug tests
 PASS; analyzer ring wrap/restart and MonInj PASS; Ethernet20/20 ICMP and
 five TCP connections/1080 exchanges/1129210 exact bytes PASS. AUX firmware
 handling is the next independent stage; remote Kasli remains NOT_RUN.
+
+## 2026-10-11 — upstream Rust AUX codec in physical A53 firmware PASS
+
+Unchanged current ARTIQ drtioaux_proto/libio and CRC library are linked into
+a no_std AArch64 static library, with a small C ABI/envelope wrapper. AMD BSP
+C harness provides MMIO/UART and two laboratory AUX roles on CPU0. No
+upstream source modification or rewritten packet enum/serializer. Locked
+Rust dependencies retained; existing Rust1.87/GNUArm13.2/AMD BSP used.
+libio never_type uses scoped RUSTC_BOOTSTRAP. Host compatibility required an
+explicit extern crate core for the old derive; original sources untouched.
+
+Actual Piotr and current upstream host codecs generate identical seven
+basic wire vectors; roundtrip/CRC/truncation/unknown controls PASS. This
+comparison is limited to those basic packets, not all modern AUX variants.
+
+Physical firmware PASS:31 request/reply exchanges using the actual GTH PMA
+loopback, corrupted CRC rejection, unknown type rejection and echo recovery.
+Requests cover echo, laboratory reset acknowledgement and destination status.
+Destination replies DOWN because satellite RTIO is absent; ResetAck does not
+imply production RTIO reset. Firmware idles after its bounded self-test;
+there is no persistent autonomous AUX service or remote discovery yet.
+
+AUX SRAM/PHY tests also repeated PASS. Shared Genesys flock covered139.957s
+load/test/restore. Normal local core restored192.168.2.3; physical TTL/CoreDMA,
+standard analyzer/MonInj ring-wrap/restart and Ethernet20/20 ICMP/five TCP
+connections PASS. No Si/SD/flash/OTP or other board writes. Firmware ELF
+SHA e1414739dea3b4707597a0c919ce4d9fc0e50d17d0c77fcee605c0cf44d955b0.
+Evidence: evidence/aux-codec-reference-2026-10-11.json and
+ evidence/aux-firmware-hardware-2026-10-11.json. Reproducer:
+diagnostics/drtio/aux_protocol/README.md. Next work is a persistent handler,
+TSC/control integration and real satellite RTIO/SED; remote Kasli NOT_RUN.

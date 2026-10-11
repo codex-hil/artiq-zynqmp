@@ -23,6 +23,7 @@ def main():
     for name in ('server','port','ps-export','bitstream','csr-map','restore-bitstream',
                  'worker','cpu0','device-db','artiq-python','artiq-run','output'):
         p.add_argument('--'+name,required=True)
+    p.add_argument('--firmware',help='Optional built AUX firmware ELF')
     a=p.parse_args()
     out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True)
     bit=Path(a.bitstream).resolve()
@@ -67,7 +68,11 @@ def main():
         run('aux',[sys.executable,str(REPO/'diagnostics/drtio/test_aux_hw.py'),
             '--server',a.server,'--cable',CABLE,'--csr-map',a.csr_map,
             '--output',str(out/'aux')],timeout=360)
-        result['status']='PASS'
+        if a.firmware:
+            run('aux-firmware',[sys.executable,str(REPO/'diagnostics/drtio/aux_protocol/test_firmware_hw.py'),
+                '--server',a.server,'--port',a.port,'--elf',a.firmware,
+                '--csr-map',a.csr_map,'--output',str(out/'aux-firmware')],timeout=120)
+        result['status']='PASS' 
     except Exception as e:
         result['error']=str(e);print('Diagnostic FAIL: '+str(e),flush=True)
     finally:

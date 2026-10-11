@@ -198,3 +198,15 @@ test-drtio-aux-ps:
 
 hdl-drtio-aux-ps:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) diagnostics/drtio/generate_aux_ps.py --output=$(abspath $(O))/aux-ps-hdl
+
+.PHONY: test-drtio-aux-codec firmware-drtio-aux test-hw-drtio-aux
+test-drtio-aux-codec:
+	$(PYTHON) diagnostics/drtio/aux_protocol/build_vectors.py --artiq-source="$(abspath $(ARTIQ_SOURCE))" --output="$(abspath $(O))/aux-reference"
+
+firmware-drtio-aux:
+	$(if $(CSR_MAP),,$(error Specify passing AUX CSR_MAP=))
+	$(PYTHON) diagnostics/drtio/aux_protocol/build_firmware.py --artiq-source="$(abspath $(ARTIQ_SOURCE))" --csr-map="$(CSR_MAP)" --output="$(abspath $(O))/aux-firmware"
+
+test-hw-drtio-aux:
+	$(if $(AUX_BRINGUP_ARGS),,$(error Specify AUX_BRINGUP_ARGS with diagnostic and restoration inputs))
+	$(PYTHON) scripts/test_drtio_aux_bringup.py $(AUX_BRINGUP_ARGS)

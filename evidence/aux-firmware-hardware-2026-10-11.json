@@ -1,0 +1,281 @@
+{
+  "date": "2026-10-11",
+  "status": "PASS",
+  "kind": "PHYSICAL_A53_FIRMWARE",
+  "artifacts": "/srv/codex-hil-data/artiq-zynqmp/build/aux-firmware-2026-10-11",
+  "build": {
+    "kind": "FIRMWARE_BUILD_NOT_HARDWARE",
+    "status": "PASS",
+    "elf_sha256": "e1414739dea3b4707597a0c919ce4d9fc0e50d17d0c77fcee605c0cf44d955b0",
+    "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "csr_map_sha256": "3bb65c3bff081ea439f08cd7b77376c5e77fdeba0bdd6a3e71733ad3f9adb0e4",
+    "rust_source_sha256": "dead6ef5f74e84c08304292e0d8ea53ec91f64e20d2191dc40815331361d6ba0",
+    "c_source_sha256": "4161f8f1ef2b86d951ee033fd5eeac2e16f0aae615acea74a31b1a5cdc3a587e"
+  },
+  "firmware": {
+    "kind": "PHYSICAL_FIRMWARE",
+    "status": "PASS",
+    "scope": "two laboratory AUX roles on one A53, upstream Rust packet codec/CRC over real GTH loopback",
+    "exchanges": [
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS",
+      "AUX_FW EXCHANGE request=2 reply=3 PASS",
+      "AUX_FW EXCHANGE request=32 reply=33 PASS",
+      "AUX_FW EXCHANGE request=0 reply=1 PASS"
+    ],
+    "bad_crc": true,
+    "unknown_type": true,
+    "elf_sha256": "e1414739dea3b4707597a0c919ce4d9fc0e50d17d0c77fcee605c0cf44d955b0",
+    "uart_sha256": "6898bb34155b34ea882035c10ffb8119bd7a1e68f3f807da48ea5bc62f4c94fb",
+    "remote_kasli": "NOT_RUN",
+    "production_satellite_rtio": "NOT_RUN",
+    "destination_status": "DOWN"
+  },
+  "wrapper": {
+    "kind": "hardware-bringup",
+    "status": "PASS",
+    "restoration": "PASS",
+    "cable": "210383B7F02DA",
+    "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+    "started": 1791721878.2053232,
+    "stages": {
+      "diagnostic-load": {
+        "exit_code": 0,
+        "log_sha256": "446ba28e1fc65502ade205e0d9ec29e820ddab1ed57054cd29a44739ec4b2b44"
+      },
+      "phy": {
+        "exit_code": 0,
+        "log_sha256": "2416361c0f4bf9c916bd736ff92fa5dbc88f2f32efb0c6cef5b9ac7b19cb544f"
+      },
+      "aux": {
+        "exit_code": 0,
+        "log_sha256": "15fcfca77a4000dc67491f1212e434edcce7ee92cc4359c8a6e491c48ffa5781"
+      },
+      "aux-firmware": {
+        "exit_code": 0,
+        "log_sha256": "0ffd11135756a8e4434a721d312ae59a9121a11613875966bb45e3ed0fcb9dd6"
+      },
+      "restore-load": {
+        "exit_code": 0,
+        "log_sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63"
+      },
+      "restored-debug": {
+        "exit_code": 0,
+        "log_sha256": "39f3f25be75150ec8b6bb34ed66c6a87994bc2d336b0437d9617ed0cfb280d96"
+      },
+      "restored-ethernet": {
+        "exit_code": 0,
+        "log_sha256": "62530eca64e14a6af9e24ebf1e49030d30f0d196fb4fef6884232df6b3043c23"
+      }
+    },
+    "restored_ip": "192.168.2.3",
+    "elapsed_seconds": 139.957
+  },
+  "restored_debug": {
+    "kind": "physical-hardware",
+    "status": "PASS",
+    "ip": "192.168.2.3",
+    "scope": "finite BRAM analyzer and local TTL MonInj using standard ARTIQ clients",
+    "moninj_events": [
+      [
+        "probe",
+        0,
+        0,
+        0
+      ],
+      [
+        "probe",
+        1,
+        0,
+        0
+      ],
+      [
+        "injection",
+        0,
+        0,
+        0
+      ],
+      [
+        "injection",
+        0,
+        1,
+        0
+      ],
+      [
+        "probe",
+        0,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        0,
+        1
+      ],
+      [
+        "probe",
+        1,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        1
+      ],
+      [
+        "injection",
+        0,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        1
+      ],
+      [
+        "probe",
+        0,
+        0,
+        0
+      ],
+      [
+        "probe",
+        1,
+        0,
+        0
+      ],
+      [
+        "injection",
+        0,
+        1,
+        0
+      ],
+      [
+        "injection",
+        0,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        0
+      ],
+      [
+        "probe",
+        0,
+        0,
+        1
+      ],
+      [
+        "probe",
+        1,
+        0,
+        1
+      ],
+      [
+        "injection",
+        0,
+        1,
+        1
+      ],
+      [
+        "probe",
+        0,
+        0,
+        0
+      ],
+      [
+        "probe",
+        1,
+        0,
+        0
+      ]
+    ],
+    "analyzer": {
+      "bytes": 1200,
+      "messages": 37,
+      "ttl_outputs": 16,
+      "ttl_inputs": 16,
+      "sha256": "2fa507f7077bca3919a75f58efebfb50f817228ca572dd251b97191bdfaa08ca"
+    },
+    "wrapped_analyzer": {
+      "bytes": 8208,
+      "messages": 256,
+      "total_bytes": 9248,
+      "sha256": "65fc36495194f382d53ad00c787eae62bee460c76445b21b81288905b37de319"
+    },
+    "dma_experiments": 9
+  },
+  "restored_ethernet": {
+    "kind": "hardware",
+    "time": 1791722015.198906,
+    "ip": "192.168.2.3",
+    "mac": "02:38:3b:7f:02:0d",
+    "scope": "AMD lwIP/GEM diagnostic, not ARTIQ management/RPC",
+    "tests": {
+      "icmp": "PASS",
+      "identity": "PASS",
+      "tcp_echo": "PASS"
+    },
+    "ping_log": "PING 192.168.2.3 (192.168.2.3) from 192.168.2.107 enp1s0: 56(84) bytes of data.\n64 bytes from 192.168.2.3: icmp_seq=1 ttl=255 time=0.078 ms\n64 bytes from 192.168.2.3: icmp_seq=2 ttl=255 time=0.069 ms\n64 bytes from 192.168.2.3: icmp_seq=3 ttl=255 time=0.066 ms\n64 bytes from 192.168.2.3: icmp_seq=4 ttl=255 time=0.060 ms\n64 bytes from 192.168.2.3: icmp_seq=5 ttl=255 time=0.067 ms\n64 bytes from 192.168.2.3: icmp_seq=6 ttl=255 time=0.070 ms\n64 bytes from 192.168.2.3: icmp_seq=7 ttl=255 time=0.060 ms\n64 bytes from 192.168.2.3: icmp_seq=8 ttl=255 time=0.052 ms\n64 bytes from 192.168.2.3: icmp_seq=9 ttl=255 time=0.065 ms\n64 bytes from 192.168.2.3: icmp_seq=10 ttl=255 time=0.060 ms\n64 bytes from 192.168.2.3: icmp_seq=11 ttl=255 time=0.060 ms\n64 bytes from 192.168.2.3: icmp_seq=12 ttl=255 time=0.059 ms\n64 bytes from 192.168.2.3: icmp_seq=13 ttl=255 time=0.061 ms\n64 bytes from 192.168.2.3: icmp_seq=14 ttl=255 time=0.085 ms\n64 bytes from 192.168.2.3: icmp_seq=15 ttl=255 time=0.078 ms\n64 bytes from 192.168.2.3: icmp_seq=16 ttl=255 time=0.062 ms\n64 bytes from 192.168.2.3: icmp_seq=17 ttl=255 time=0.083 ms\n64 bytes from 192.168.2.3: icmp_seq=18 ttl=255 time=0.085 ms\n64 bytes from 192.168.2.3: icmp_seq=19 ttl=255 time=0.080 ms\n64 bytes from 192.168.2.3: icmp_seq=20 ttl=255 time=0.093 ms\n\n--- 192.168.2.3 ping statistics ---\n20 packets transmitted, 20 received, 0% packet loss, time 1979ms\nrtt min/avg/max/mdev = 0.052/0.069/0.093/0.011 ms\n",
+    "neighbor": "192.168.2.3 lladdr 02:38:3b:7f:02:0d REACHABLE \n",
+    "tcp": {
+      "connections": 5,
+      "exchanges": 1080,
+      "verified_bytes": 1129210,
+      "sha256": "1c22e8e8f18eaf1432918eb074f575df57dd6abc27dc754301b5b5e0dc97e5dd",
+      "elapsed_s": 0.9537360760150477
+    }
+  },
+  "limitations": [
+    "Two laboratory roles on one A53, no persistent remote-facing service",
+    "Destination DOWN; no production satellite RTIO/SED",
+    "ResetAck is laboratory only",
+    "Remote Kasli/TSC synchronization/routing NOT_RUN"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "c78e9ccb8d960bac6752ed995fb2ab3eab00af08711debad441f8ac3fa213c83",
+    "diagnostics/drtio/aux_protocol/README.md": "195f54d6fdbaaba705d022badd08fb1e984ab4b0a78c22eb7c38da6713ce14d5",
+    "diagnostics/drtio/aux_protocol/build_firmware.py": "c63bd250291627da481edd4e57d6f59a04430058cdf48931852a88c90d16e602",
+    "diagnostics/drtio/aux_protocol/firmware.c": "4161f8f1ef2b86d951ee033fd5eeac2e16f0aae615acea74a31b1a5cdc3a587e",
+    "diagnostics/drtio/aux_protocol/test_firmware_hw.py": "9db3fcc367a7e01399a94bac55f55c713c651461b957ddebb171b42fb0c0bfd4",
+    "diagnostics/drtio/aux_protocol/lib.rs": "dead6ef5f74e84c08304292e0d8ea53ec91f64e20d2191dc40815331361d6ba0",
+    "diagnostics/drtio/aux_protocol/firmware.Cargo.lock": "e7391cb71d2643a249d0a56ecbec420955b1836a9a1878e2c8c1115b7ca794ae",
+    "diagnostics/drtio/aux_protocol/main.rs": "cdd9c1c39fc79cd15226d852069d1108c9bd84cae61c78d4ca118a4fa050f7aa",
+    "diagnostics/drtio/aux_protocol/reference.Cargo.lock": "2107c5e66d4e5f0f673bd40931ce3b92967e08c6c6ecf062e3f8f55919fb79bf"
+  },
+  "persistent_writes": []
+}

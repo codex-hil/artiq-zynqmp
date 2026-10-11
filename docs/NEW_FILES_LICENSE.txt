@@ -397,3 +397,7 @@ diagnostics/drtio/test_aux_hw.py
 scripts/test_drtio_aux_bringup.py
 diagnostics/drtio/aux_protocol/main.rs
 diagnostics/drtio/aux_protocol/build_vectors.py
+diagnostics/drtio/aux_protocol/lib.rs
+diagnostics/drtio/aux_protocol/firmware.c
+diagnostics/drtio/aux_protocol/build_firmware.py
+diagnostics/drtio/aux_protocol/test_firmware_hw.py
