@@ -88,15 +88,27 @@ class AuxPSTest(unittest.TestCase):
             yield from write(p.BASE+0x14000,123,2)
             yield from read(p.BASE+0x100010000,2)
             self.assertEqual((yield from read(base)),0x12345678)
+            # Abort while maximum packet is still entering the CDC FIFO.
+            yield from write(regs['aux_tx_length']['address'],1024)
+            yield from write(regs['aux_tx']['address'],1)
+            self.assertEqual((yield from read(regs['aux_tx']['address'])),1)
             yield p.reset.eq(1)
             for _ in range(10):yield
             self.assertEqual((yield from read(regs['in_reset']['address'])),1)
             self.assertEqual((yield from read(regs['aux_tx_length']['address'])),0)
+            self.assertEqual((yield from read(regs['aux_tx']['address'])),0)
+            self.assertEqual((yield from read(regs['bridge_busy']['address'])),0)
             yield p.reset.eq(0)
             for _ in range(10):yield
             self.assertEqual((yield from read(regs['in_reset']['address'])),0)
             yield from write(regs['aux_tx_length']['address'],4)
             self.assertEqual((yield from read(regs['aux_tx_length']['address'])),4)
+            yield from write(regs['aux_tx']['address'],1)
+            for _ in range(100):
+                enqueue=yield from read(regs['aux_tx']['address'])
+                draining=yield from read(regs['bridge_busy']['address'])
+                if not enqueue and not draining:break
+            else:self.fail('AUX did not recover after interrupted enqueue')
         run_simulation(d,test(),clocks={'sys':8,'gth_tx':10,'gth_rx':12,
             'aux_sys':8,'aux_tx':10,'aux_rx':12},
             special_overrides={AsyncResetSynchronizer:FunctionalReset})

@@ -978,3 +978,27 @@ Full AXI extra-monitor-bank simulation PASS; shell/Python syntax checks PASS.
 Build wrapper now supports DRTIO_AUX=1 and checker requires five skew results.
 Vivado synthesis/route and physical AUX/active-transfer reset remain NOT_RUN.
 No hardware access. Evidence: evidence/aux-top-generation-2026-10-11.json.
+
+## 2026-10-11 — AUX diagnostic Vivado build PASS
+
+Physical Genesys AUX top-level synthesized, placed, routed and generated a
+bitstream successfully with shared Vivado2025.2. Existing PS/GTH IP cache
+reused. Exact153 retained first-stage synchronizer bits and five Gray
+bus-skew constraints PASS. Timing closed: WNS2.696ns, WHS0.011ns, no failing
+setup/hold endpoints. Build checker and artifact hashes PASS.
+
+Build: build-vivado/drtio-aux-route-2026-10-11. Bit SHA-256:
+c54dcb6e82f9d45b658de4762926ef75f18831242b9b3ad0ad40391b8aabdfc9.
+Evidence: evidence/aux-vivado-build-2026-10-11.json. Source/dependency
+manifest and all reports/logs retained in the build directory.
+
+Full AXI functional reset simulation now aborts a1024-byte packet during
+CDC enqueue, verifies cleared TX/bridge/length state, and successfully
+sends a fresh packet after reset. PASS; this does not qualify physical
+reset timing, stopped-clock reset or exact RX payload recovery.
+
+No hardware access/programming/restoration this turn. Physical AUX remains
+NOT_RUN. Next bounded acceptance is documented in
+ diagnostics/drtio/AUX_HARDWARE_ACCEPTANCE.md: locked load/test/restore,
+patterned SRAM/packet/ring/error/reset checks and normal-core regression.
+Firmware AUX protocol/discovery/routing and external Kasli remain pending.

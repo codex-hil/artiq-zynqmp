@@ -107,3 +107,8 @@ Build with `DRTIO_AUX=1 diagnostics/drtio/build_top.sh PS_EXPORT PHY_EXPORT
 FRESH_OUTPUT` in the documented shared environment. `DRTIO_IP_CACHE` may
 point at an existing compatible Vivado cache. Generation alone is not a
 passing FPGA build; no AUX image has been loaded on hardware yet.
+
+2026-10-11: Genesys AUX top-level Vivado build PASS, WNS2.696ns/WHS0.011ns,
+153 retained CDC bits and five Gray bus-skew constraints. Evidence is in
+`evidence/aux-vivado-build-2026-10-11.json`. No AUX hardware test has run.
+The next acceptance scope is [AUX_HARDWARE_ACCEPTANCE.md](AUX_HARDWARE_ACCEPTANCE.md).

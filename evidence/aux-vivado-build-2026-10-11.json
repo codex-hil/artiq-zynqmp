@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-11",
+  "kind": "FPGA_BUILD_AND_RTL_SIMULATION_NOT_HARDWARE",
+  "status": "PASS",
+  "build": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-aux-route-2026-10-11",
+  "build_result": {
+    "kind": "fpga-build-not-hardware",
+    "status": "PASS",
+    "scope": "separate raw GTH diagnostic; not a DRTIO satellite",
+    "sha256": {
+      "top.bit": "c54dcb6e82f9d45b658de4762926ef75f18831242b9b3ad0ad40391b8aabdfc9",
+      "top.v": "ca99e7969026c82373ae83ac7bed26de3505a0a7700aed30013682cc8f54e7e7",
+      "top.xdc": "45f9dbf885cd56f1f7864beb5f1bed7e87663cdcb508b6e9feac21b34fcd9e50",
+      "csr-map.json": "3bb65c3bff081ea439f08cd7b77376c5e77fdeba0bdd6a3e71733ad3f9adb0e4",
+      "top_timing.rpt": "d21f99b8d824e43f655481b8e22ef1931b75eb86eeaf010f2460e84bbf805df5",
+      "top_bus_skew.rpt": "b9575b5522235290fd6d78b960251c6aa85f51ed7e99587f4fa7ff332047a202"
+    }
+  },
+  "timing": {
+    "wns_ns": 2.696,
+    "whs_ns": 0.011
+  },
+  "cdc": {
+    "retained_first_stage_bits": 153,
+    "gray_bus_skew_constraints": 5
+  },
+  "source_manifest": {
+    "created_after_generation": true,
+    "source_files_sha256": {
+      "diagnostics/drtio/test_raw20_codec.py": "a5af5d33f8dafbeda528d3358c010162fd10f40e816d078b9cc3a0829c59ca25",
+      "diagnostics/drtio/test_ip_import.py": "b3a7a0727ddfb8ccf86f61e91818d353109e765aa9fe6b11f1b76a1270c84b43",
+      "diagnostics/drtio/raw20_codec.py": "90e126331bcc19eeef99d9d7cd6fc2821918549ae906ad9f60a1403576894149",
+      "diagnostics/drtio/check_top_build.py": "c21c9c4a62f1cdc9d9cc3d79746ce88932d07dcbe09b845cb3e3d040dfddbca0",
+      "diagnostics/drtio/aux_ps.py": "4a96d49eff1bd9d046fe61bc173ff3bf9067a6fa2b9aa0247b6b2f1787c3261f",
+      "diagnostics/drtio/satellite_packet.py": "56ce2c20c15137b8e86f28590c1b67a6fb3c909c651001550e78b98342d422d7",
+      "diagnostics/drtio/test_protocol_probe.py": "4431c0c07a7454db65d73144679f30f3c75464d93f4a10a0488c5c6889d26e34",
+      "diagnostics/drtio/test_aux_tx_cdc.py": "e2876fda5e2e161fbd2c9a00a8ec6b310264dc18ea4eb0230ebbfae710bbc598",
+      "diagnostics/drtio/test_protocol_hw.py": "31735d0a18641a1a077f6a0e0cf890602d49b09ae5111c17bbf3385bb872efaa",
+      "diagnostics/drtio/generate_aux_ps.py": "cc04093e4a6b525131ca0fc3568343e8661db51ae5480f71a71bb6d0eceed85a",
+      "diagnostics/drtio/test_packets_raw20.py": "f230d13ff221e80a94e3ff856efb85c39dd4ae4c574608967c8dee9016eaf6e4",
+      "diagnostics/drtio/test_aux_raw20.py": "770a0946cbf096c871d94fad2db645f95c03340722dba206324adb18bf18a0a3",
+      "diagnostics/drtio/packet_probe.py": "ac3b432ffa22857e1e43f228e5db8ac5ac55efae7035f787b9e67e9900cb4b9b",
+      "diagnostics/drtio/aux_axi.py": "bfecf660f87cd8817dc60e0f40edda9ec0772c8c50283ece6bc5a2405cda729f",
+      "diagnostics/drtio/test_aux_ps.py": "01242e2f138e7f859519ce3e696569e17198b734d2a806ff6c080238da3de12c",
+      "diagnostics/drtio/test_aux_axi.py": "db05c9908a9010dd70d8f19e31ad4a631a84d0c64bf3985cb65294de312c1e5d",
+      "diagnostics/drtio/test_phy_hw.py": "b9ad83bf3d15793edd1d98805b524da42c3931b3cc2290b52d43071341dcf1e2",
+      "diagnostics/drtio/test_satellite_truncation.py": "bedd9b9a4096527c0ab7efe23c3ba529fe503703ccfa3c8efdc0b7a3fb713631",
+      "diagnostics/drtio/test_packets_hw.py": "c5bfd37ae5c22cce095ca1dca597923e9a9ada4203ffb22f3db88048abef2570",
+      "diagnostics/drtio/test_monitor.py": "91d52ec43ac06e229595d4c78dfaf5b696945f63454cde012349cd459546e80d",
+      "diagnostics/drtio/aux_endpoint.py": "1a8e8651f218f50d5c459d159520fd208893aff65cf192f9ffc77c0184bd0b45",
+      "diagnostics/drtio/test_packet_probe.py": "6560292b0d617055446b31c64aa65740f29924a1cfd3d801ec7d246521ef2651",
+      "diagnostics/drtio/diag_gateware.py": "ce09b6afdcb68945fb0575a38b0f00c451230c53b6cb88a983d0bd8931779e3f",
+      "diagnostics/drtio/test_aux_bus.py": "67dec91663cd7520ea5d6d1b0fd128e284bbf131d326b254355799c95055f9b5",
+      "diagnostics/drtio/monitor.py": "27bfa3b378d98d184c7f378727d94bdb71a0f8f2d9be5741d67253104cf6e083",
+      "diagnostics/drtio/test_aux_endpoint.py": "3625cf9ae1fdb402e41139757d81ea814c44b63a823b075465bcd2c36d5a1f26",
+      "diagnostics/drtio/protocol_probe.py": "130b6eeafc1c9cb1866037b5249f9b3c21d7269c0230df331143948176a4e526",
+      "diagnostics/drtio/check_phy_build.py": "b0dee87fbec4538efa85dedbede7e5f05ba6e84e758e7a135de9a8ca6b659a55",
+      "diagnostics/drtio/aux_tx_cdc.py": "0e21e83a0e7963c148760054e23fb237ace4cdbd5637c045363c00a15070f7f7",
+      "diagnostics/drtio/aux_bus.py": "7a610191ddd0b8d724f123e94824c9c71210ddc49f0f79ca914e27355fd469da",
+      "diagnostics/drtio/build_top.sh": "8323085102ba1377d183d10039fdc6121c34a2ecfc6eb1e9bf8e8fa9a9ef19a0"
+    },
+    "dependencies": {
+      "common/artiq": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+      "common/migen": "44e5627d367c528b3ce5e686b6f305a9dfc56f2a",
+      "/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current": "8a909c8b638fbec584048d6929d0c577f6be182d"
+    }
+  },
+  "reset_simulation": {
+    "status": "PASS",
+    "scope": "functional abort during 1024-byte enqueue and fresh TX recovery; not asynchronous reset timing or exact RX validation",
+    "test_source_sha256": "5faaf7297b7c758d3c5d22cb94f7cca278e342681a15cb71d0c1215a27749140",
+    "log_sha256": "fcce4310b5bcdd135301a0328308e4c0eae5e2d52a0b1740a3a15baeedb0b47f"
+  },
+  "hardware_actions": [],
+  "physical_aux": "NOT_RUN",
+  "firmware_aux": "NOT_RUN"
+}
