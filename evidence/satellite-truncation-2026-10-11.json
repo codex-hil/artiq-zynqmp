@@ -1,0 +1,17 @@
+{
+  "kind": "rtl-simulation",
+  "date": "2026-10-11",
+  "status": "PASS",
+  "scope": "satellite packet header truncation regression and original-engine negative control; complete unknown-type packet check",
+  "test_count_per_snapshot": 3,
+  "artiq_revisions": {
+    "common/artiq": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/artiq": "486e8f897547d282d46a02c30463449c21e30cfe"
+  },
+  "sha256": {
+    "truncation-simulation.log": "fa60be476b6709abdc1c9c1a02e3eee95342251263cbfd85a984517358a670d3",
+    "truncation-modern.log": "fa60be476b6709abdc1c9c1a02e3eee95342251263cbfd85a984517358a670d3"
+  },
+  "original_source_modified": false,
+  "hardware": "NOT_RUN"
+}
