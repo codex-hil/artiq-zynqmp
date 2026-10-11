@@ -1,0 +1,42 @@
+{
+  "kind": "HOST_CODEC_NOT_HARDWARE",
+  "status": "PASS",
+  "basic_wire_vectors_equal": true,
+  "modern": {
+    "kind": "HOST_CODEC_TEST_NOT_FIRMWARE_OR_HARDWARE",
+    "status": "PASS",
+    "vectors": {
+      "echo_request": "000000001cdf4421",
+      "echo_reply": "0100000079b8f899",
+      "reset_request": "0200000097174d8b",
+      "reset_ack": "03000000f270f133",
+      "destination_request": "20010000151ab480",
+      "destination_down": "210000004717ca39",
+      "destination_ok": "22000000a9b87f2b"
+    },
+    "source_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "upstream_protocol_sha256": "d9c2f34b78106347a85856e0b7c07dc898f2bd7f6c93da2bc86d66ba76ad4f9a",
+    "reference_source_sha256": "cdd9c1c39fc79cd15226d852069d1108c9bd84cae61c78d4ca118a4fa050f7aa",
+    "log_sha256": "f31151c5154d835c92d823b4e5bae0ee16fdd1a6fc765225897b3085f2fe7c96",
+    "cargo_lock_sha256": "2107c5e66d4e5f0f673bd40931ce3b92967e08c6c6ecf062e3f8f55919fb79bf"
+  },
+  "piotr": {
+    "kind": "HOST_CODEC_TEST_NOT_FIRMWARE_OR_HARDWARE",
+    "status": "PASS",
+    "vectors": {
+      "echo_request": "000000001cdf4421",
+      "echo_reply": "0100000079b8f899",
+      "reset_request": "0200000097174d8b",
+      "reset_ack": "03000000f270f133",
+      "destination_request": "20010000151ab480",
+      "destination_down": "210000004717ca39",
+      "destination_ok": "22000000a9b87f2b"
+    },
+    "source_revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+    "upstream_protocol_sha256": "1c267b85a4f70759991049de6b30777d0da396b807e9fcfbade985538498d1fa",
+    "reference_source_sha256": "cdd9c1c39fc79cd15226d852069d1108c9bd84cae61c78d4ca118a4fa050f7aa",
+    "log_sha256": "e106fc3b9f94e67a7f86430847393d2ef6568c9a0a97d5624697f0482ce89c16",
+    "cargo_lock_sha256": "2107c5e66d4e5f0f673bd40931ce3b92967e08c6c6ecf062e3f8f55919fb79bf"
+  },
+  "coverage": "seven roundtrips, seven corrupted CRC controls, seven truncated controls and unknown packet per source"
+}
