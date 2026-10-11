@@ -112,3 +112,18 @@ passing FPGA build; no AUX image has been loaded on hardware yet.
 153 retained CDC bits and five Gray bus-skew constraints. Evidence is in
 `evidence/aux-vivado-build-2026-10-11.json`. No AUX hardware test has run.
 The next acceptance scope is [AUX_HARDWARE_ACCEPTANCE.md](AUX_HARDWARE_ACCEPTANCE.md).
+
+2026-10-11: physical AUX SRAM/raw20/GTH PMA loopback PASS. Three resets,
+30 patterned positive packets (six at1024 bytes), ring wrap, three overflow
+controls and recovery. Total57 packets sent,54 readable packets checked,
+three deliberate full-ring discards;1704 payload words checked exactly.
+No AUX firmware protocol or remote-master claim. Normal core restored;
+physical TTL/DMA, analyzer/MonInj and Ethernet regression PASS.
+
+Use `scripts/test_drtio_aux_bringup.py` with the same restoration arguments
+as the packet bring-up wrapper, replacing bitstream/map with the passing
+AUX build. It holds the exact-board flock over all stages and restoration.
+`test_aux_hw.py --dry-run` only emits the Tcl script; no hardware access.
+Physical AUX tests can also acquire the board lock themselves; an inherited
+wrapper lease is verified and reused. Active-transfer reset remains NOT_RUN
+physically because sequential JTAG writes cannot establish that timing.

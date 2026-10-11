@@ -244,3 +244,13 @@ SFP/Kasli or deterministic latency proof. Normal rtio-debug-fixed PL,
 debug-services CPU0 and kernel-worker-dma-final CPU1 restored to192.168.2.3.
 Two restore suites PASS: normal DMA/TTL, analyzer/MonInj and Ethernet.
 Evidence drtio-packets-hardware-2026-10-11.json. SD/flash/OTP/Si unchanged.
+
+Latest2026-10-11 physical AUX PASS: routed drtio-aux-route-2026-10-11,
+WNS2.696/WHS0.011ns,153 CDC bits/five Gray buses. Three resets;57 sends,
+54 byte-exact checked receives, three deliberate full-ring discards;
+ring wrap/overflow/recovery and six1024-byte packets PASS. Diagnostic SRAM
+transport only: AUX firmware/protocol/CRC/discovery and remote Kasli remain
+NOT_RUN. No physical in-flight reset proof. Normal local core restored to
+192.168.2.3 and physical TTL/DMA/debug/Ethernet PASS. Shared Genesys lease
+covered129.218-second load/test/restore; no persistent or Si writes.
+Use scripts/test_drtio_aux_bringup.py; evidence aux-hardware-2026-10-11.json.

@@ -1002,3 +1002,29 @@ NOT_RUN. Next bounded acceptance is documented in
  diagnostics/drtio/AUX_HARDWARE_ACCEPTANCE.md: locked load/test/restore,
 patterned SRAM/packet/ring/error/reset checks and normal-core regression.
 Firmware AUX protocol/discovery/routing and external Kasli remain pending.
+
+## 2026-10-11 — physical AUX controller/memory PASS
+
+The routed AUX image passed the bounded physical Genesys test under the
+shared board lock. Upstream AUX controller SRAM, independent PS/TX/RX
+clocks, raw20/8b10b framing and actual GTHE4 PMA loopback participated.
+Three GT resets,30 positive packets of4/12/68/1024 bytes (six maximum-sized),
+ring pointer wrap and exact payload comparison PASS. Three deliberate
+ring-overflow controls preserve seven readable packets, clear the flag and
+successfully receive fresh packets.57 total sends,54 receives checked;
+three deliberate discards,1704 payload words checked exactly. Length CSR
+readback, GT/PRBS clock/error baseline and recovery PASS.
+
+No firmware AUX protocol/CRC/discovery/routing is claimed. Active-transfer
+physical reset remains NOT_RUN: sequential JTAG accesses cannot prove the
+reset landed during a microsecond transmission. Functional RTL enqueue-abort
+coverage remains distinct. External SFP TX disabled; no Si/SD/flash/OTP or
+other board writes. Evidence: evidence/aux-hardware-2026-10-11.json.
+
+Wrapper scripts/test_drtio_aux_bringup.py held the shared Genesys lease over
+load/PHY/AUX/restore and normal-core regressions; released after129.218s.
+Normal rtio-debug-fixed PL, debug-services CPU0 and kernel-worker-dma-final
+CPU1 restored, DHCP192.168.2.3. Standard physical TTL/CoreDMA/debug tests
+PASS; analyzer ring wrap/restart and MonInj PASS; Ethernet20/20 ICMP and
+five TCP connections/1080 exchanges/1129210 exact bytes PASS. AUX firmware
+handling is the next independent stage; remote Kasli remains NOT_RUN.
