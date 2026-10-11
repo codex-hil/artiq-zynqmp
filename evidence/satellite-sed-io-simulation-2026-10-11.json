@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "kind": "simulation",
+  "hardware_access": false,
+  "tests": 7,
+  "buffer_space_replies": [
+    128,
+    124,
+    128
+  ],
+  "input_event": {
+    "data": 1,
+    "timestamp": 253,
+    "count": 1
+  },
+  "second_read": {
+    "no_event": 1,
+    "is_overflow": 0
+  },
+  "reproducer": "make test-drtio-satellite-sed PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python MISOC_SOURCE=/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current",
+  "limitations": [
+    "ideal single-clock packet connection",
+    "simulated TTL loopback",
+    "no external synchronization or physical latency qualification"
+  ]
+}

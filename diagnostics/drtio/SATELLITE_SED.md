@@ -52,3 +52,22 @@ No compensation is applied to the upstream SED, PHY or standard master.
 A final platform integration must choose a consistent time reference and
 validate physical latency before changing timestamp conventions. These tests
 establish local counter behavior, not master/satellite counter alignment.
+
+## Real queue capacity and input reads
+
+Seven tests now pass. The buffer-space test sends three serialized requests
+around four queued writes and requires replies **128 → 124 → 128**. The values
+come from the actual upstream SED FIFO occupancy logic, not a constant responder.
+It also checks packet parsing and buffer-space timeout errors remain absent.
+
+The input test replaces the spare output PHY with upstream `ttl_simple.Input`
+connected to the simulated output pad. A serialized channel-1 write enables
+rising-edge sensitivity, then channel-0 writes generate a pulse. The collector
+captures exactly one rising event with data1 at timestamp253. A serialized read
+returns that exact data and timestamp; a second read from the empty FIFO returns
+native timeout (`no_event=1`, `is_overflow=0`). For an event response, the upstream
+protocol explicitly leaves `is_overflow` unspecified, so it is not asserted.
+The test requires no unknown/truncated packet errors.
+
+The input synchronizer latency is included in timestamp253; no physical pin,
+loopback jumper, recovered-clock or input-delay calibration is qualified here.

@@ -1111,3 +1111,16 @@ No GTH/CDC/external-clock proof or hardware access in this stage. Reproducer:
 make test-drtio-satellite-sed; scope in diagnostics/drtio/SATELLITE_SED.md.
 Next safe offline step: read/input and real buffer-space replies, then refactor
 the tested backend for physical GTH diagnostic integration.
+
+### 2026-10-11 — real satellite buffer-space and input reads
+
+Seven satellite SED simulation tests PASS. Serialized buffer-space replies from
+actual SED FIFOs are128→124→128 around four queued/executed writes. Upstream TTL
+input PHY and InputCollector capture one simulated loopback rising event at253;
+serialized read returns exact data1/timestamp253. Subsequent empty read returns
+native timeout without overflow. Event-response overflow field is unspecified
+by upstream and intentionally ignored. No packet parsing/buffer timeout errors.
+No hardware access or physical input/synchronization claim. Evidence:
+evidence/satellite-sed-io-simulation-2026-10-11.json; same Make reproducer.
+Next safe step: extract reusable real satellite backend and connect it to the
+existing physical GTH diagnostic, retaining bounded reset/test/restoration.
