@@ -87,3 +87,20 @@ The interrupted foreground build was restarted as the user systemd service
 `artiq-kasli03-netboot-20261013.service`; check ActiveState/ExecMainStatus and
 `systemd-build.log` in the netboot output directory. It runs a frozen build
 script snapshot, holds no hardware locks and performs no device operations.
+
+## Bootloader networking correction
+
+Source inspection confirmed the upstream bootloader does **not** start a DHCP
+client. `IPv4=use_dhcp` in its console is the selected configuration policy,
+not a lease or proof of IPv4 connectivity. The runtime has its own networking.
+The netboot-only image can listen on IPv6 link-local
+`fe80::4b:3ff:fe48:4854` (derived from the forced lab MAC), TCP4269; the host
+must provide the actual switch-facing interface scope. No IPv6 connection
+has been tested yet. A separate static IPv4 profile would require a rebuild.
+The startup wrapper checks `Waiting for connections...` but reports DHCP
+as not implemented and does not claim network acceptance from that console.
+
+The upstream wire format is `F`, four-byte big-endian runtime binary length,
+raw runtime.bin payload, `OK`, then `B` to request execution. runtime.fbi has
+an extra header and is not the raw netboot payload. Do not send runtime until
+its clock configuration/restoration and shared hardware lease are addressed.

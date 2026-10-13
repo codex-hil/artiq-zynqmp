@@ -1174,3 +1174,13 @@ locks, UART CRC/DDR/netboot evidence and finally guarded diagnostic restoration
 with bounded CSR verification. Wrapper hardware NOT_RUN; image still pending
 routing. Bootloader stage does not upload runtime or initialize Si5324 via
 runtime. Next: finish/qualify image, preflight wrapper, bounded bootloader test.
+
+### 2026-10-13 — netboot network policy corrected during route wait
+
+Inspected actual upstream network_boot: no DHCP client. Its use_dhcp console
+field is configuration, not an acquired IPv4 address. Netboot-only image has
+IPv6 link-local fe80::4b:3ff:fe48:4854/TCP4269; host interface scope and network
+acceptance pending. Startup wrapper additionally requires Waiting for connections
+and records DHCP not implemented. Raw runtime.bin is the protocol payload,
+not runtime.fbi. No hardware access. Netboot routing still running; next safe
+step is build acceptance followed by bounded bootloader SRAM test.

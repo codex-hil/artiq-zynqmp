@@ -92,7 +92,8 @@ def main():
             deadline = time.monotonic() + 120
             expected = [b'Bootloader CRC passed', b'SDRAM initialized',
                         b'Memory test passed', b'Flash booting has been disabled.',
-                        b'MAC=02:4b:03:48:48:54', b'IPv4=use_dhcp']
+                        b'MAC=02:4b:03:48:48:54', b'IPv4=use_dhcp',
+                        b'Waiting for connections...']
             while time.monotonic() < deadline:
                 log.extend(uart.read(4096))
                 if all(token in log for token in expected):
@@ -101,6 +102,8 @@ def main():
             if b'Booting from flash' in log or not all(token in log for token in expected):
                 raise RuntimeError('Required netboot-only startup evidence absent')
             result['bootloader_test'] = 'PASS'
+            result['dhcp_lease'] = 'NOT_IMPLEMENTED_BY_BOOTLOADER'
+            result['netboot_ipv6_link_local'] = 'fe80::4b:3ff:fe48:4854'
             result['status'] = 'PASS'
     except BlockingIOError:
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')
