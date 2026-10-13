@@ -1,0 +1,25 @@
+{
+  "status": "WITHDRAWN",
+  "boot_mode": "network-only",
+  "bit_sha256": "e0355396dc7af770c982ba704ea1be87d696caa685848df69133b6864839748e",
+  "artifact_hashes": {
+    "gateware/top.bit": "e0355396dc7af770c982ba704ea1be87d696caa685848df69133b6864839748e",
+    "gateware/top.bin": "a799d2ab0a9232fb8e3ad91bc0b3d52a1ce8b026f4b53b378e53ed4f92a83adf",
+    "software/bootloader/bootloader.bin": "29d19085971ea4675421071fa61806be91b21bf4cacd20af498d4c80ff0d8068",
+    "software/runtime/runtime.bin": "f6dd92b32d09142af660d4c742351bac56f4b592016df614f8ba5ba57be579e4",
+    "software/runtime/runtime.elf": "c9bf7871d264a28a968b4797cc0bd2bfe98a07cde613edfd544febbee4605fa0",
+    "software/runtime/runtime.fbi": "b012bd5666fb5156907bf0eec80b02f1acf133c4d67f14f1049980467fc4b110"
+  },
+  "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "overlay_sha256": "5fbfdc3d139473c5ec0ed5c3ce4fd2a9e07de315780db8c1b1717a7add697d5b",
+  "setup_wns_ns": 0.001,
+  "hold_whs_ns": 0.061,
+  "pulse_slack_ns": 0.264,
+  "network": "IPv6 link-local; bootloader has no DHCP client",
+  "limitations": [
+    "inherited external timing warnings",
+    "no physical qualification"
+  ],
+  "build": "/srv/codex-hil-data/artiq-zynqmp/build/kasli03-netboot-2026-10-13",
+  "reason": "Bootloader source compiled but not embedded; CPU booted old flash firmware"
+}

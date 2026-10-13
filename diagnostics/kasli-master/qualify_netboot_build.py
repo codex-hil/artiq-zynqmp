@@ -49,8 +49,7 @@ def main():
     if re.search(r'^\S+#\d+\s+(?:Error|Critical Warning)\s*$', drc, re.M):
         raise SystemExit('DRC error/critical warning requires review')
     hashes = {}
-    for name in ('gateware/top.bit', 'gateware/top.bin', 'software/bootloader/bootloader.bin',
-                 'software/runtime/runtime.bin', 'software/runtime/runtime.elf', 'software/runtime/runtime.fbi'):
+    for name in ('gateware/top.bit', 'gateware/top.bin', 'software/bootloader/bootloader.bin'):
         data = (tree / name).read_bytes()
         if not data:
             raise SystemExit(f'Empty artifact: {name}')
@@ -60,7 +59,7 @@ def main():
     # The completed build script emits this only after Vivado and artifact checks.
     if not (args.build / 'artifacts.sha256').is_file():
         raise SystemExit('Build completion marker absent')
-    result = {'status': 'BUILD_PASS_HARDWARE_NOT_RUN', 'boot_mode': 'network-only', 'bram_boot': rom,
+    result = {'status': 'BUILD_PASS_HARDWARE_NOT_RUN', 'boot_mode': 'network-only', 'scope': 'bootloader-only', 'bram_boot': rom,
               'bit_sha256': hashes['gateware/top.bit'], 'artifact_hashes': hashes,
               'upstream_revision': revision, 'overlay_sha256': hashlib.sha256(patch.encode()).hexdigest(),
               'setup_wns_ns': float(match[1]), 'hold_whs_ns': float(match[5]),

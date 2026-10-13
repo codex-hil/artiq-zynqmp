@@ -1209,3 +1209,11 @@ Manifest records embedded hash/size/reset; qualifier/wrapper now require it.
 Old image negative control rejected. Corrected isolated worktree and durable
 build started; physical corrected image NOT_RUN. Next safe step: qualify actual
 embedded ROM and timing, repeat bounded bootloader-only test.
+
+Corrected integrated-ROM build initially failed because upstream runtime assumes
+SPI flash imports/reload/address even with no flash core. For the next bounded
+boot-only acceptance, build explicitly contains bootloader only; no runtime
+artifact claim. Compiled bootloader and actual ROM initialization PASS/reset0;
+evidence kasli03-bram-initialization-2026-10-13.json. Durable FPGA build restarted,
+routing pending. Prior netboot build evidence marked WITHDRAWN. No further HW
+access after diagnostic restoration; runtime flash-free support remains pending.

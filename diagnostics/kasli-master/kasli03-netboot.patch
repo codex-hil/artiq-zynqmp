@@ -1,12 +1,14 @@
 diff --git a/artiq/build_soc.py b/artiq/build_soc.py
-index 0e6deb499..cb5be2b8b 100644
+index 0e6deb499..6ad0fea7f 100644
 --- a/artiq/build_soc.py
 +++ b/artiq/build_soc.py
-@@ -72,6 +72,22 @@ def build_artiq_soc(soc, argdict):
+@@ -72,6 +72,25 @@ def build_artiq_soc(soc, argdict):
          builder.add_software_package("runtime", os.path.join(firmware_dir, "runtime"))
      else:
          builder.add_software_package("satman", os.path.join(firmware_dir, "satman"))
 +    if soc.integrated_rom_size:
++        # This first BRAM image is bootloader-only; no runtime SPI-flash ABI.
++        builder.software_packages = [p for p in builder.software_packages if p[0] == "bootloader"]
 +        # Upstream MiSoC initializer expects software/bios; ARTIQ builds bootloader.
 +        def initialize_artiq_rom():
 +            import hashlib, json, struct
@@ -16,6 +18,7 @@ index 0e6deb499..cb5be2b8b 100644
 +            assert len(payload) <= soc.integrated_rom_size and len(payload) % 4 == 0
 +            soc.rom.mem.init = list(struct.unpack("<%dI" % (len(payload) // 4), payload))
 +            Path(builder.output_dir, "bram-boot.json").write_text(json.dumps({
++                "bootloader_only": True,
 +                "cpu_reset_address": soc.cpu_reset_address,
 +                "integrated_rom_size": soc.integrated_rom_size,
 +                "bootloader_sha256": hashlib.sha256(payload).hexdigest(),

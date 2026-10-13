@@ -43,7 +43,9 @@ cd "$build/gateware"
 if ! grep -q 'All user specified timing constraints are met.' top_timing.rpt; then
   echo 'Kasli timing did not close; inspect reports' >&2; exit 1
 fi
-for artifact in top.bit top.bin ../software/bootloader/bootloader.bin ../software/runtime/runtime.elf ../software/runtime/runtime.fbi; do
+artifacts=(top.bit top.bin ../software/bootloader/bootloader.bin)
+if [ "${KASLI_ROM_SIZE:-0}" == 0 ]; then artifacts+=(../software/runtime/runtime.elf ../software/runtime/runtime.fbi); fi
+for artifact in "${artifacts[@]}"; do
   test -s "$artifact"
 done
-sha256sum top.bit top.bin ../software/bootloader/bootloader.bin ../software/runtime/runtime.elf ../software/runtime/runtime.fbi > "$out/artifacts.sha256"
+sha256sum "${artifacts[@]}" > "$out/artifacts.sha256"

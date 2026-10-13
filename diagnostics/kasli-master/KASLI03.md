@@ -142,3 +142,12 @@ Corrected build is running as `artiq-kasli03-bram-netboot-20261013.service`,
 output `build/kasli03-bram-netboot-2026-10-13`. No corrected image has been loaded.
 Next physical test remains bootloader-only; runtime clock restoration is a
 separate acceptance step. Original sources and prior artifact/log trees remain.
+
+The first integrated-ROM attempt exposed upstream runtime assumptions:
+unconditional SPI-flash imports/reload/FLASH_BOOT_ADDRESS do not compile when
+MiSoC omits the flash core. This is not solved by claiming a complete runtime.
+For the bounded next test, the BRAM builder intentionally compiles only the
+bootloader; the qualifier marks bootloader-only scope and does not require
+runtime artifacts. Runtime support without flash remains a separate offline
+implementation step. Corrected firmware and actual ROM initialization PASS;
+`bram-boot.json` generated. FPGA routing remains pending.

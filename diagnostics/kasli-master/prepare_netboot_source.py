@@ -56,6 +56,8 @@ def main():
     if text.count(needle) != 1:
         raise SystemExit('ARTIQ builder changed; review ROM initialization')
     overlay = '''    if soc.integrated_rom_size:
+        # This first BRAM image is bootloader-only; no runtime SPI-flash ABI.
+        builder.software_packages = [p for p in builder.software_packages if p[0] == "bootloader"]
         # Upstream MiSoC initializer expects software/bios; ARTIQ builds bootloader.
         def initialize_artiq_rom():
             import hashlib, json, struct
@@ -65,6 +67,7 @@ def main():
             assert len(payload) <= soc.integrated_rom_size and len(payload) % 4 == 0
             soc.rom.mem.init = list(struct.unpack("<%dI" % (len(payload) // 4), payload))
             Path(builder.output_dir, "bram-boot.json").write_text(json.dumps({
+                "bootloader_only": True,
                 "cpu_reset_address": soc.cpu_reset_address,
                 "integrated_rom_size": soc.integrated_rom_size,
                 "bootloader_sha256": hashlib.sha256(payload).hexdigest(),
