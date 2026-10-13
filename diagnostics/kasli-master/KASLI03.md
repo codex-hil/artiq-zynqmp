@@ -184,3 +184,25 @@ csr.rs and regions.ld are byte-identical to the physically tested BRAM image.
 Runtime hardware NOT_RUN. Evidence kasli03-flashfree-runtime-build-2026-10-13.json.
 Next: establish host-scoped IPv6 netboot connectivity and a bounded runtime
 clock-profile capture/restoration plan before firmware execution.
+
+## IPv6 netboot connectivity acceptance
+
+The same bounded wrapper now accepts `--network-interface enp1s0`. It checks
+that the host has a usable IPv6 link-local address before touching hardware.
+Under the Kasli lease, after boot evidence it opens TCP4269, sends only an
+unknown command and a boot request without firmware, requires connection close
+and matching UART rejection evidence, then opens a fresh third connection.
+It also checks the IPv6 neighbor MAC is02:4b:03:48:48:54. No firmware download
+or execution is performed. The normal guarded diagnostic restoration remains
+in finally. This network extension is prepared, physical test NOT_RUN.
+
+At preparation time enp1s0 had no IPv6 link-local address and sudo needed a
+password. Operator command requested:
+
+```sh
+sudo ip -6 addr add fe80::c0de:3/64 dev enp1s0
+```
+
+This temporary host address does not replace IPv4. No privilege workaround
+or host network mutation was performed by the agent. Once available, run the
+bounded wrapper with the existing reviewed BRAM qualification and exact SHA.

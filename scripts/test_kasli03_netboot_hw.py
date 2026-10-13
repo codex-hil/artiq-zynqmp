@@ -9,6 +9,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import socket
 import subprocess
 import time
 
@@ -24,6 +25,7 @@ def main():
     parser.add_argument('--sha256', required=True)
     parser.add_argument('--qualification', type=Path, required=True)
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--network-interface', help='Optional bounded IPv6 TCP4269 negative/recovery test')
     args = parser.parse_args()
     qualification = json.loads(args.qualification.read_text())
     if (qualification.get('status'), qualification.get('boot_mode'),
@@ -47,6 +49,12 @@ def main():
                           'bit_sha256': args.sha256, 'uart': UART,
                           'scope': 'bootloader only, restore diagnostic'}))
         return
+    if args.network_interface:
+        addresses = json.loads(subprocess.check_output(
+            ['ip', '-j', '-6', 'addr', 'show', 'dev', args.network_interface], text=True))
+        if not any(a.get('scope') == 'link' and 'tentative' not in a.get('flags', [])
+                   for entry in addresses for a in entry.get('addr_info', [])):
+            raise SystemExit('Host interface has no usable IPv6 link-local address; no hardware access')
     import serial
     from litex.tools.remote.comm_uart import CommUART
     class BoundedUART(CommUART):
@@ -108,6 +116,38 @@ def main():
             result['bootloader_test'] = 'PASS'
             result['dhcp_lease'] = 'NOT_IMPLEMENTED_BY_BOOTLOADER'
             result['netboot_ipv6_link_local'] = 'fe80::4b:3ff:fe48:4854'
+            if args.network_interface:
+                scope = socket.if_nametoindex(args.network_interface)
+                actions = [(b'\xff', b'Received unknown netboot command: 0xff'),
+                           (b'B', b'Received boot command, but no firmware downloaded')]
+                for index, (request, evidence) in enumerate(actions):
+                    with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as connection:
+                        connection.settimeout(5)
+                        connection.connect((result['netboot_ipv6_link_local'], 4269, 0, scope))
+                        connection.sendall(request)
+                        if connection.recv(1) != b'':
+                            raise RuntimeError('Malformed netboot command did not close connection')
+                    deadline = time.monotonic() + 3
+                    while time.monotonic() < deadline and evidence not in log:
+                        log.extend(uart.read(4096))
+                    (args.output / 'uart.log').write_bytes(log)
+                    if evidence not in log:
+                        raise RuntimeError('Netboot command rejection evidence absent')
+                with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as connection:
+                    connection.settimeout(5)
+                    connection.connect((result['netboot_ipv6_link_local'], 4269, 0, scope))
+                neighbors = subprocess.check_output(
+                    ['ip', '-j', '-6', 'neigh', 'show', 'dev', args.network_interface], text=True)
+                (args.output / 'ipv6-neighbors.json').write_text(neighbors)
+                matching = [entry for entry in json.loads(neighbors)
+                            if entry.get('dst') == result['netboot_ipv6_link_local']]
+                if not any(entry.get('lladdr', '').lower() == '02:4b:03:48:48:54' for entry in matching):
+                    raise RuntimeError('Netboot neighbor MAC identity not confirmed')
+                result['netboot_network'] = {
+                    'status': 'PASS', 'interface': args.network_interface,
+                    'tcp_connections': 3, 'unknown_command_rejected': True,
+                    'boot_without_firmware_rejected': True, 'listener_recovery': True,
+                    'neighbor_mac': '02:4b:03:48:48:54'}
             result['status'] = 'PASS'
     except BlockingIOError:
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')

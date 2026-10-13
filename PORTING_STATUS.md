@@ -1236,3 +1236,15 @@ halts, config uses upstream NoFlash. mem.rs/csr.rs/regions.ld byte-identical to
 physical BRAM image. Runtime hardware NOT_RUN; build evidence committed. Next
 safe work: scoped IPv6 netboot connection and bounded clock capture/restoration
 before uploading runtime; external satellite integration still pending.
+
+### 2026-10-13 — IPv6 netboot negative/recovery test prepared
+
+Extended bounded Kasli boot wrapper with optional interface-scoped TCP4269:
+unknown command and boot-without-firmware rejection checked against UART,
+fresh listener connection recovery and exact IPv6 neighbor MAC. No payload
+upload/runtime/clock writes in this scope. Host IPv6 preflight before any HW.
+Physical network test NOT_RUN: enp1s0 currently has no IPv6 address, sudo requires
+password; requested explicit temporary link-local address from operator.
+No privilege bypass, network mutation or new hardware access performed.
+Safe independent continuation: satellite GTH/CDC and runtime clock restoration
+preparation while host address is unavailable.
