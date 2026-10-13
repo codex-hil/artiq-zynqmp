@@ -1184,3 +1184,8 @@ acceptance pending. Startup wrapper additionally requires Waiting for connection
 and records DHCP not implemented. Raw runtime.bin is the protocol payload,
 not runtime.fbi. No hardware access. Netboot routing still running; next safe
 step is build acceptance followed by bounded bootloader SRAM test.
+
+Netboot build qualifier added: checked overlay/revision, source selection,
+config/part, timing/DRC, completion and artifact hashes. Original flash-first
+build negative control rejected as expected; no qualification JSON generated.
+Positive netboot acceptance pending current routing. No hardware access.

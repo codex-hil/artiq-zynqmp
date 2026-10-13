@@ -104,3 +104,11 @@ The upstream wire format is `F`, four-byte big-endian runtime binary length,
 raw runtime.bin payload, `OK`, then `B` to request execution. runtime.fbi has
 an extra header and is not the raw netboot payload. Do not send runtime until
 its clock configuration/restoration and shared hardware lease are addressed.
+
+`qualify_netboot_build.py --build BUILD --source SOURCE --output JSON` checks
+the exact upstream revision and reviewed overlay, selected bootloader path,
+v1.1 master config/part, timing summary/violating endpoints, DRC severity,
+completion marker and all firmware/bitstream hashes before issuing the
+qualification required by the hardware wrapper. Negative control using the
+completed original flash-first build was correctly rejected for selecting the
+wrong bootloader source. Positive netboot qualification awaits routing.
