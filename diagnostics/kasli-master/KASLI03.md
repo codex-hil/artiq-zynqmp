@@ -46,3 +46,23 @@ AUX services. The extracted real satellite backend has seven simulation tests
 and generated HDL; a routed external satellite transport/reset/CDC integration
 is still pending. Do not claim remote discovery, TSC synchronization or remote
 TTL execution from the current state.
+
+## Build checkpoint
+
+Original v1.1 build completed: bitstream/bootloader/runtime PASS. Setup
+WNS0.001ns, hold WHS0.061ns, pulse slack0.264ns; no violating endpoints.
+Very small positive setup slack and inherited external timing warnings require
+hardware qualification. Bit SHA256322910c4441297ad4757f0cd33bcf3d3bdf11e6f6e657394c28ba7b7d0dce7b4.
+This flash-first image has not been selected for deployment.
+
+`prepare_netboot_source.py` creates a separate detached worktree at the exact
+pinned upstream revision and checked boot/network overlays. It disables the
+flash-boot branch, fixes unique lab MAC02:4b:03:48:48:54, selects DHCP and
+removes inherited static addresses/routes. No EEPROM/flash writes are introduced.
+The reviewable overlay is `kasli03-netboot.patch`; the original source remains
+unchanged. Upstream volatile clock initialization is retained, not yet tested
+on this board.
+
+Netboot-only build is running in `build/kasli03-netboot-2026-10-13` on the data
+volume. Initial overlay compilation found a shadowed untyped None; this was
+corrected before restarting the build. Firmware/bitstream acceptance pending.

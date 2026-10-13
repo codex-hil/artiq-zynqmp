@@ -1,0 +1,19 @@
+{
+  "status": "BUILD_PASS_HARDWARE_NOT_RUN",
+  "artiq_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "hw_rev": "v1.1",
+  "part": "xc7a100t-fgg484-2",
+  "role": "master",
+  "rtio_hz": 125000000,
+  "setup_wns_ns": 0.001,
+  "hold_whs_ns": 0.061,
+  "pulse_slack_ns": 0.264,
+  "bit_sha256": "322910c4441297ad4757f0cd33bcf3d3bdf11e6f6e657394c28ba7b7d0dce7b4",
+  "output": "/srv/codex-hil-data/artiq-zynqmp/build/kasli-v1.1-master-2026-10-13",
+  "limitations": [
+    "narrow positive setup slack",
+    "inherited external-port timing warnings",
+    "original bootloader flash-first; not selected for SRAM deployment",
+    "no hardware/runtime/remote DRTIO validation"
+  ]
+}

@@ -1149,3 +1149,16 @@ Exact Kasli SFP downstream port awaiting operator clarification. Before SRAM
 deployment, prepare RAM-only firmware boot: upstream bootloader tries flash
 first. No flash modification authorized or performed. See diagnostics/
 kasli-master/KASLI03.md. Remote Genesys transport integration remains pending.
+
+### 2026-10-13 — Kasli1.1 master build and RAM-only preparation
+
+Original pinned master build PASS: bit/bootloader/runtime complete,
+WNS0.001/WHS0.061/pulse0.264ns, no violating endpoints; hardware NOT_RUN.
+Evidence kasli-v11-master-build-2026-10-13.json. Narrow setup margin and inherited
+external constraint warnings retained as limits. This flash-first image not loaded.
+Prepared checked separate netboot-only source worktree, preserving upstream:
+flash boot disabled, unique KASLI03 lab MAC02:4b:03:48:48:54/DHCP, no static
+address/routes from persistent configuration. Reviewable overlay committed.
+Initial shadowed-None compile failure fixed; netboot build restarted and ongoing.
+No hardware access or storage/clock changes. Next: qualify netboot artifacts,
+then bounded identified SRAM boot/network test with clock restoration addressed.

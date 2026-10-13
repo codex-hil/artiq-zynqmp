@@ -1,0 +1,73 @@
+diff --git a/artiq/firmware/bootloader/main.rs b/artiq/firmware/bootloader/main.rs
+index 8465cb98f..892723db7 100644
+--- a/artiq/firmware/bootloader/main.rs
++++ b/artiq/firmware/bootloader/main.rs
+@@ -508,7 +508,8 @@ pub extern fn main() -> i32 {
+ 
+     if startup() {
+         println!("");
+-        if !config::read_str("no_flash_boot", |r| r == Ok("1")) {
++        // KASLI03 laboratory image: network/RAM boot only.
++        if false {
+             #[cfg(has_slave_fpga_cfg)]
+             load_slave_fpga();
+             flash_boot();
+diff --git a/artiq/firmware/libboard_misoc/net_settings.rs b/artiq/firmware/libboard_misoc/net_settings.rs
+index 290c8898c..c4c51060e 100644
+--- a/artiq/firmware/libboard_misoc/net_settings.rs
++++ b/artiq/firmware/libboard_misoc/net_settings.rs
+@@ -69,32 +69,10 @@ impl Display for NetAddresses {
+ }
+ 
+ pub fn get_addresses() -> NetAddresses {
+-    let hardware_addr;
+-    match config::read_str("mac", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => hardware_addr = addr,
+-        _ => {
+-            #[cfg(soc_platform = "kasli")]
+-            {
+-                let eeprom = i2c_eeprom::EEPROM::new();
+-                hardware_addr =
+-                    eeprom.read_eui48()
+-                    .map(|addr_buf| EthernetAddress(addr_buf))
+-                    .unwrap_or_else(|_e| EthernetAddress([0x02, 0x00, 0x00, 0x00, 0x00, 0x21]));
+-            }
+-            #[cfg(soc_platform = "kc705")]
+-            { hardware_addr = EthernetAddress([0x02, 0x00, 0x00, 0x00, 0x00, 0x01]); }
+-        }
+-    }
+-
+-    let ipv4_addr = match config::read_str("ip", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => addr,
+-        _ => Ipv4AddrConfig::UseDhcp,
+-    };
+-
+-    let ipv4_default_route = match config::read_str("ip_default_route", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => Some(addr),
+-        _ => None,
+-    };
++    // Unique volatile laboratory identity; do not read/write board storage.
++    let hardware_addr = EthernetAddress([0x02, 0x4b, 0x03, 0x48, 0x48, 0x54]);
++    let ipv4_addr = Ipv4AddrConfig::UseDhcp;
++    let ipv4_default_route = None;
+ 
+     let ipv6_ll_addr = IpCidr::new(IpAddress::v6(
+         0xfe80, 0x0000, 0x0000, 0x0000,
+@@ -103,15 +81,9 @@ pub fn get_addresses() -> NetAddresses {
+         0xfe00 | (hardware_addr.0[3] as u16),
+         ((hardware_addr.0[4] as u16) << 8) | (hardware_addr.0[5] as u16)), 10);
+ 
+-    let ipv6_addr = match config::read_str("ip6", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => Some(addr),
+-        _ => None
+-    };
++    let ipv6_addr = None;
+ 
+-    let ipv6_default_route = match config::read_str("ip6_default_route", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => Some(addr),
+-        _ => None,
+-    };
++    let ipv6_default_route = None;
+ 
+     NetAddresses {
+         hardware_addr,
