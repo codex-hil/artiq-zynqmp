@@ -112,3 +112,33 @@ completion marker and all firmware/bitstream hashes before issuing the
 qualification required by the hardware wrapper. Negative control using the
 completed original flash-first build was correctly rejected for selecting the
 wrong bootloader source. Positive netboot qualification awaits routing.
+
+## Failed deployment and correction — 2026-10-13
+
+The first netboot-only qualification was insufficient and is **withdrawn**.
+The built bootloader was not embedded: standard Kasli CPU reset points at flash
+0x400000. SRAM loading therefore ran the existing 2024 MiSoC bootloader, passed
+its DDR tests, then started old ARTIQ8 `VOR2309003` from flash. That runtime
+configured Si5324 internal125MHz and reported lock/reboot. No flash programming
+commands were issued, but flash content was not re-read after this test.
+
+The bounded test correctly failed its required netboot UART checks. Its finally
+path restored full-checker SRAM and verified identity/EEM0/GTP0/SFPdisable7.
+Exact original Si5324 registers were not captured/restored; do not describe the
+clock profile as unchanged. Raw UART and results are in
+`evidence/kasli03-netboot-hardware-2026-10-13/`.
+
+Corrected source is the separate `work/kasli03-bram-netboot` worktree. Build uses
+`KASLI_ROM_SIZE=131072`: MiSoC resets CPU at zero and removes the SPI-flash core.
+ARTIQ's builder needs a local initialization hook because the generic MiSoC
+hook loads `software/bios/bios.bin`, while ARTIQ builds `bootloader.bin`.
+The checked overlay initializes ROM words from the compiled bootloader and
+records reset address/ROM size/hash in `bram-boot.json`. Flash boot code is
+removed from this no-flash laboratory image, not merely hidden behind a branch.
+Qualification and the hardware wrapper now require this embedded-ROM evidence.
+The old image negative control is rejected for lacking it.
+
+Corrected build is running as `artiq-kasli03-bram-netboot-20261013.service`,
+output `build/kasli03-bram-netboot-2026-10-13`. No corrected image has been loaded.
+Next physical test remains bootloader-only; runtime clock restoration is a
+separate acceptance step. Original sources and prior artifact/log trees remain.

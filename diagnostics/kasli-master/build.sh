@@ -15,8 +15,10 @@ config=${KASLI_CONFIG:-$repo/diagnostics/kasli-master/kasli-v2.1-master.json}
 variant=$("$python_bin" -c 'import json,sys; print(json.load(open(sys.argv[1]))["variant"])' "$config")
 mkdir -p "$out"
 cp "$config" "$out/config.json"
+rom_args=()
+if [ "${KASLI_ROM_SIZE:-0}" != 0 ]; then rom_args=(--integrated-rom-size "$KASLI_ROM_SIZE"); fi
 "$python_bin" -m artiq.gateware.targets.kasli \
-  "$config" \
+  "$config" "${rom_args[@]}" \
   --output-dir "$out/generated" --no-compile-gateware > "$out/firmware-generate.log" 2>&1
 build="$out/generated/$variant"
 "$python_bin" - "$build/gateware/top_route.tcl" <<'PY'

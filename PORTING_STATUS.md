@@ -1189,3 +1189,23 @@ Netboot build qualifier added: checked overlay/revision, source selection,
 config/part, timing/DRC, completion and artifact hashes. Original flash-first
 build negative control rejected as expected; no qualification JSON generated.
 Positive netboot acceptance pending current routing. No hardware access.
+
+### 2026-10-13 — failed KASLI03 netboot deployment, restored diagnostic
+
+Original qualification WITHDRAWN: compiler/source checks missed absent embedded
+ROM. Standard Kasli CPU reset0x400000 fetched old flash bootloader/ARTIQ8 instead
+of newly compiled netboot firmware. UART shows original bootloader DDR PASS,
+old runtime VOR2309003 and volatile Si5324 internal125MHz initialization/lock.
+Netboot-only hardware test FAIL; full-checker restored and CSR identity/EEM0/
+GTP0/SFPdisable7 PASS. Shared three Kasli locks held across test/restoration;
+Genesys untouched. No flash programming commands; content recheck NOT_RUN.
+Exact original Si5324 register restoration NOT_PROVEN. Raw evidence:
+evidence/kasli03-netboot-hardware-2026-10-13. Earlier clock_written=false field
+corrected from actual console evidence; do not claim unchanged clocks.
+
+Corrected overlay removes flash boot code, uses integrated128KiB ROM/reset0
+and initializes ROM from ARTIQ bootloader.bin rather than generic MiSoC BIOS.
+Manifest records embedded hash/size/reset; qualifier/wrapper now require it.
+Old image negative control rejected. Corrected isolated worktree and durable
+build started; physical corrected image NOT_RUN. Next safe step: qualify actual
+embedded ROM and timing, repeat bounded bootloader-only test.

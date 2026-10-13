@@ -30,6 +30,8 @@ def main():
             qualification.get('bit_sha256')) != ('BUILD_PASS_HARDWARE_NOT_RUN',
                                                   'network-only', args.sha256):
         raise SystemExit('Reviewed netboot-only build qualification required')
+    if qualification.get('bram_boot', {}).get('cpu_reset_address') != 0:
+        raise SystemExit('Qualification lacks embedded bootloader at reset address zero')
     gate = args.build / 'generated/genesys_drtio_master_v11/gateware'
     bit = gate / 'top.bit'
     if hashlib.sha256(bit.read_bytes()).hexdigest() != args.sha256:
@@ -99,6 +101,8 @@ def main():
                 if all(token in log for token in expected):
                     break
             (args.output / 'uart.log').write_bytes(log)
+            result['prior_flash_runtime_started'] = b'Booting from flash' in log
+            result['clock_profile_written'] = b'waiting for Si5324 lock' in log
             if b'Booting from flash' in log or not all(token in log for token in expected):
                 raise RuntimeError('Required netboot-only startup evidence absent')
             result['bootloader_test'] = 'PASS'

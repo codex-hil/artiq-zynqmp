@@ -1,0 +1,19 @@
+{
+  "status": "FAIL",
+  "board": "KASLI03",
+  "bit_sha256": "e0355396dc7af770c982ba704ea1be87d696caa685848df69133b6864839748e",
+  "flash_written": false,
+  "runtime_uploaded": false,
+  "genesys_accessed": false,
+  "clock_profile_written": true,
+  "usb_busdev": "001:077",
+  "dna": "0x0048458a64b04854",
+  "error": "Required netboot-only startup evidence absent",
+  "restoration": "PASS",
+  "prior_flash_runtime_started": true,
+  "clock_profile_source": "old flash ARTIQ8 runtime; console reports internal125MHz Si5324 lock",
+  "flash_write_commands_issued": false,
+  "flash_content_reverified": "NOT_RUN",
+  "original_clock_registers_restored": "NOT_PROVEN",
+  "diagnostic_restoration": "PASS CSR identity/EEM0/GTP0/SFP disable7; no exact prior Si5324 register restoration"
+}

@@ -26,7 +26,13 @@ def main():
     guard = 'if !config::read_str("no_flash_boot", |r| r == Ok("1")) {'
     if text.count(guard) != 1:
         raise SystemExit('Flash boot guard changed; review required')
-    boot.write_text(text.replace(guard, '// KASLI03 laboratory image: network/RAM boot only.\n        if false {'))
+    start = text.index('fn flash_boot() {')
+    end = text.index('#[cfg(has_ethmac)]\nenum NetConnState', start)
+    text = text[:start] + text[end:]
+    start = text.index('        ' + guard)
+    end = text.index('        #[cfg(has_ethmac)]\n        network_boot();', start)
+    text = text[:start] + '        println!("Flash booting has been disabled.");\n' + text[end:]
+    boot.write_text(text)
     net = args.output / 'artiq/firmware/libboard_misoc/net_settings.rs'
     text = net.read_text()
     start = text.index('    let hardware_addr;\n', text.index('pub fn get_addresses()'))
@@ -44,6 +50,30 @@ def main():
     end = text.index('\n    };', start) + len('\n    };')
     text = text[:start] + '    let ipv6_default_route = None;' + text[end:]
     net.write_text(text)
+    build = args.output / 'artiq/build_soc.py'
+    text = build.read_text()
+    needle = '    try:\n        builder.build()'
+    if text.count(needle) != 1:
+        raise SystemExit('ARTIQ builder changed; review ROM initialization')
+    overlay = '''    if soc.integrated_rom_size:
+        # Upstream MiSoC initializer expects software/bios; ARTIQ builds bootloader.
+        def initialize_artiq_rom():
+            import hashlib, json, struct
+            from pathlib import Path
+            payload = Path(builder.output_dir, "software/bootloader/bootloader.bin").read_bytes()
+            assert soc.cpu_reset_address == 0
+            assert len(payload) <= soc.integrated_rom_size and len(payload) % 4 == 0
+            soc.rom.mem.init = list(struct.unpack("<%dI" % (len(payload) // 4), payload))
+            Path(builder.output_dir, "bram-boot.json").write_text(json.dumps({
+                "cpu_reset_address": soc.cpu_reset_address,
+                "integrated_rom_size": soc.integrated_rom_size,
+                "bootloader_sha256": hashlib.sha256(payload).hexdigest(),
+                "bootloader_bytes": len(payload)
+            }, indent=2) + "\\n")
+        builder.initialize_memory = initialize_artiq_rom
+    try:
+        builder.build()'''
+    build.write_text(text.replace(needle, overlay))
     patch = subprocess.check_output(['git', '-C', str(args.output), 'diff'], text=True)
     (args.output / 'kasli03-netboot.patch').write_text(patch)
     (args.output / 'kasli03-netboot.json').write_text(json.dumps({

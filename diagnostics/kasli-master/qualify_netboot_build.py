@@ -28,6 +28,11 @@ def main():
     if (config['hw_rev'], config['drtio_role'], config['rtio_frequency'], config['peripherals']) != ('v1.1', 'master', 125000000, []):
         raise SystemExit('Unexpected board configuration')
     tree = args.build / 'generated/genesys_drtio_master_v11'
+    if not (tree / 'bram-boot.json').is_file():
+        raise SystemExit('No embedded bootloader manifest; refusing flash-first image')
+    rom = json.loads((tree / 'bram-boot.json').read_text())
+    if rom['cpu_reset_address'] != 0 or rom['integrated_rom_size'] < rom['bootloader_bytes']:
+        raise SystemExit('Bootloader not embedded at CPU reset address zero')
     variables = (tree / 'software/include/generated/variables.mak').read_text()
     if f'BOOTLOADER_DIRECTORY={source}/artiq/firmware/bootloader\n' not in variables:
         raise SystemExit('Build did not select the reviewed bootloader source')
@@ -50,10 +55,12 @@ def main():
         if not data:
             raise SystemExit(f'Empty artifact: {name}')
         hashes[name] = hashlib.sha256(data).hexdigest()
+    if rom['bootloader_sha256'] != hashes['software/bootloader/bootloader.bin']:
+        raise SystemExit('Embedded bootloader hash differs from artifact')
     # The completed build script emits this only after Vivado and artifact checks.
     if not (args.build / 'artifacts.sha256').is_file():
         raise SystemExit('Build completion marker absent')
-    result = {'status': 'BUILD_PASS_HARDWARE_NOT_RUN', 'boot_mode': 'network-only',
+    result = {'status': 'BUILD_PASS_HARDWARE_NOT_RUN', 'boot_mode': 'network-only', 'bram_boot': rom,
               'bit_sha256': hashes['gateware/top.bit'], 'artifact_hashes': hashes,
               'upstream_revision': revision, 'overlay_sha256': hashlib.sha256(patch.encode()).hexdigest(),
               'setup_wns_ns': float(match[1]), 'hold_whs_ns': float(match[5]),

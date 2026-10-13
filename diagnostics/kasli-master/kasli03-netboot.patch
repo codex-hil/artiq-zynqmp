@@ -1,17 +1,95 @@
+diff --git a/artiq/build_soc.py b/artiq/build_soc.py
+index 0e6deb499..cb5be2b8b 100644
+--- a/artiq/build_soc.py
++++ b/artiq/build_soc.py
+@@ -72,6 +72,22 @@ def build_artiq_soc(soc, argdict):
+         builder.add_software_package("runtime", os.path.join(firmware_dir, "runtime"))
+     else:
+         builder.add_software_package("satman", os.path.join(firmware_dir, "satman"))
++    if soc.integrated_rom_size:
++        # Upstream MiSoC initializer expects software/bios; ARTIQ builds bootloader.
++        def initialize_artiq_rom():
++            import hashlib, json, struct
++            from pathlib import Path
++            payload = Path(builder.output_dir, "software/bootloader/bootloader.bin").read_bytes()
++            assert soc.cpu_reset_address == 0
++            assert len(payload) <= soc.integrated_rom_size and len(payload) % 4 == 0
++            soc.rom.mem.init = list(struct.unpack("<%dI" % (len(payload) // 4), payload))
++            Path(builder.output_dir, "bram-boot.json").write_text(json.dumps({
++                "cpu_reset_address": soc.cpu_reset_address,
++                "integrated_rom_size": soc.integrated_rom_size,
++                "bootloader_sha256": hashlib.sha256(payload).hexdigest(),
++                "bootloader_bytes": len(payload)
++            }, indent=2) + "\n")
++        builder.initialize_memory = initialize_artiq_rom
+     try:
+         builder.build()
+     except subprocess.CalledProcessError as e:
 diff --git a/artiq/firmware/bootloader/main.rs b/artiq/firmware/bootloader/main.rs
-index 8465cb98f..892723db7 100644
+index 8465cb98f..6fae3586b 100644
 --- a/artiq/firmware/bootloader/main.rs
 +++ b/artiq/firmware/bootloader/main.rs
-@@ -508,7 +508,8 @@ pub extern fn main() -> i32 {
+@@ -154,45 +154,6 @@ fn load_slave_fpga() {
+     println!("  ...done");
+ }
+ 
+-fn flash_boot() {
+-    const FIRMWARE: *mut u8 = board_mem::FLASH_BOOT_ADDRESS as *mut u8;
+-    const MAIN_RAM: *mut u8 = board_mem::MAIN_RAM_BASE as *mut u8;
+-
+-    println!("Booting from flash...");
+-
+-    let header = unsafe { slice::from_raw_parts(FIRMWARE, 8) };
+-    let length = LittleEndian::read_u32(&header[0..]) as usize;
+-    let expected_crc = LittleEndian::read_u32(&header[4..]);
+-
+-    if length == 0 || length == 0xffffffff {
+-        println!("No firmware present");
+-        return
+-    } else if length > 4 * 1024 * 1024 {
+-        println!("Firmware too large (is it corrupted?)");
+-        return
+-    }
+-
+-    let firmware_in_flash = unsafe { slice::from_raw_parts(FIRMWARE.offset(8), length) };
+-    let actual_crc_flash = crc32::checksum_ieee(firmware_in_flash);
+-
+-    if actual_crc_flash == expected_crc {
+-        let firmware_in_sdram = unsafe { slice::from_raw_parts_mut(MAIN_RAM, length) };
+-        firmware_in_sdram.copy_from_slice(firmware_in_flash);
+-
+-        let actual_crc_sdram = crc32::checksum_ieee(firmware_in_sdram);
+-        if actual_crc_sdram == expected_crc {
+-            println!("Starting firmware.");
+-            unsafe { boot::jump(MAIN_RAM as usize) }
+-        } else {
+-            println!("Firmware CRC failed in SDRAM (actual {:08x}, expected {:08x})",
+-                     actual_crc_sdram, expected_crc);
+-        }
+-    } else {
+-        println!("Firmware CRC failed in flash (actual {:08x}, expected {:08x})",
+-                 actual_crc_flash, expected_crc);
+-    }
+-}
+-
+ #[cfg(has_ethmac)]
+ enum NetConnState {
+     WaitCommand,
+@@ -508,13 +469,7 @@ pub extern fn main() -> i32 {
  
      if startup() {
          println!("");
 -        if !config::read_str("no_flash_boot", |r| r == Ok("1")) {
-+        // KASLI03 laboratory image: network/RAM boot only.
-+        if false {
-             #[cfg(has_slave_fpga_cfg)]
-             load_slave_fpga();
-             flash_boot();
+-            #[cfg(has_slave_fpga_cfg)]
+-            load_slave_fpga();
+-            flash_boot();
+-        } else {
+-            println!("Flash booting has been disabled.");
+-        }
++        println!("Flash booting has been disabled.");
+         #[cfg(has_ethmac)]
+         network_boot();
+     } else {
 diff --git a/artiq/firmware/libboard_misoc/net_settings.rs b/artiq/firmware/libboard_misoc/net_settings.rs
 index 290c8898c..c4c51060e 100644
 --- a/artiq/firmware/libboard_misoc/net_settings.rs

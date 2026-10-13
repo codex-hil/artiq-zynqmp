@@ -1,0 +1,34 @@
+
+ __  __ _ ____         ____ 
+|  \/  (_) ___|  ___  / ___|
+| |\/| | \___ \ / _ \| |    
+| |  | | |___) | (_) | |___ 
+|_|  |_|_|____/ \___/ \____|
+
+MiSoC Bootloader
+Copyright (c) 2017-2024 M-Labs Limited
+
+Bootloader CRC passed
+Gateware ident 10.0+unknown.beta;genesys_drtio_master_v11
+Initializing SDRAM...
+Read leveling scan:
+Module 1:
+00000011111111110000000000000000
+Module 0:
+00000011111111110000000000000000
+Read leveling: 10+-5 10+-5 done
+SDRAM initialized
+Memory test passed
+
+Booting from flash...
+Starting firmware.
+[     0.000005s]  INFO(runtime): ARTIQ runtime starting...
+[     0.003830s]  INFO(runtime): software ident 8.8978+b013902;VOR2309003
+[     0.010265s]  INFO(runtime): gateware ident 10.0+unknown.beta;genesys_drtio_master_v11
+[     0.018179s]  INFO(runtime): log level set to INFO by default
+[     0.023893s]  INFO(runtime): UART log level set to INFO by default
+[     0.030264s]  WARN(runtime::rtio_clocking): rtio_clock setting not recognised. Falling back to default.
+[     0.039431s]  INFO(runtime::rtio_clocking): using internal 125MHz RTIO clock
+[     0.315817s]  INFO(board_artiq::si5324): waiting for Si5324 lock...
+[     3.221934s]  INFO(board_artiq::si5324):   ...locked
+[     3.225544s]  INFO(runtime::rtio_clocking): Switching sys clock, rebooting...
