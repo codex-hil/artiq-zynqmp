@@ -206,3 +206,20 @@ sudo ip -6 addr add fe80::c0de:3/64 dev enp1s0
 This temporary host address does not replace IPv4. No privilege workaround
 or host network mutation was performed by the agent. Once available, run the
 bounded wrapper with the existing reviewed BRAM qualification and exact SHA.
+
+## Physical IPv6 netboot network PASS
+
+Operator added host link-local fe80::c0de:3/64 on enp1s0. Bounded wrapper with
+`--network-interface enp1s0` PASS: three TCP4269 connections, unknown-command
+rejection, boot-without-firmware rejection and fresh listener recovery. UART
+confirms each command rejection; neighbor MAC02:4b:03:48:48:54 matches KASLI03.
+No runtime bytes uploaded or executed. Shared three-Kasli lease covered the
+whole SRAM/UART/network/restoration session; full-checker CSR baseline restored
+PASS. No Genesys access or observed Si5324 setup. Raw evidence:
+`evidence/kasli03-netboot-network-2026-10-13`.
+
+The operator's temporary host IPv6 address remains in place for subsequent
+netboot tests. Next useful step is a bounded RAM download without the B command,
+then runtime execution only with clock/reset behavior accounted for. Upstream
+runtime may initiate a sys-clock switch/reboot and return to the BRAM loader;
+that may require a second firmware download, not a flash boot.

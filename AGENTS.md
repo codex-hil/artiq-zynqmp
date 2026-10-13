@@ -284,3 +284,10 @@ it ran old flash ARTIQ8 and set Si5324 internal125MHz (exact original registers
 not restored). Corrected runs did not run it. Separate flash-free runtime compile
 PASS, identical generated memory/CSR maps; physical runtime NOT_RUN. Read
  diagnostics/kasli-master/KASLI03.md and newest evidence/status before hardware.
+
+2026-10-13 KASLI03 IPv6 netboot network PASS: operator added enp1s0 address
+fe80::c0de:3/64, three TCP4269 connections to fe80::4b:3ff:fe48:4854, unknown/
+boot-without-firmware rejection and recovery with MAC confirmation. No firmware
+uploaded/executed; diagnostic restored PASS under three shared Kasli locks.
+Evidence kasli03-netboot-network-2026-10-13. Next bounded RAM download only;
+runtime Si5324/sys-clock switch/reboot behavior not qualified yet.

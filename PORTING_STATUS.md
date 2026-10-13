@@ -1248,3 +1248,15 @@ password; requested explicit temporary link-local address from operator.
 No privilege bypass, network mutation or new hardware access performed.
 Safe independent continuation: satellite GTH/CDC and runtime clock restoration
 preparation while host address is unavailable.
+
+### 2026-10-13 — KASLI03 IPv6 netboot network hardware PASS
+
+Operator provided enp1s0 link-local address. Scoped TCP4269 three connections,
+unknown-command and boot-without-firmware rejection with exact UART evidence,
+listener recovery and neighbor MAC02:4b:03:48:48:54 PASS. Boot CRC/DDR repeated
+PASS. No runtime upload/execute, flash command, Genesys access or observed Si5324
+setup. Shared three-Kasli locks held through full-checker restore/CSR PASS.
+Raw evidence/kasli03-netboot-network-2026-10-13. Host temporary link-local retained.
+Next safe step: bounded RAM firmware download without execution. Later runtime
+clock initialization/sys switch may reboot to BRAM loader and need re-upload;
+clock snapshot/restoration must be addressed before that execution step.
