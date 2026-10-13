@@ -1124,3 +1124,14 @@ No hardware access or physical input/synchronization claim. Evidence:
 evidence/satellite-sed-io-simulation-2026-10-11.json; same Make reproducer.
 Next safe step: extract reusable real satellite backend and connect it to the
 existing physical GTH diagnostic, retaining bounded reset/test/restoration.
+
+### 2026-10-13 — reusable satellite backend
+
+Extracted SatelliteBackend with retained upstream TSC/SyncRTIO/TTL and checked
+packet parser. All seven packet/SED/input/capacity/time/error simulations PASS
+using the extracted module. Standalone Verilog generation PASS, artifacts in
+build/satellite-backend-2026-10-13 on the data volume. No FPGA synthesis/routing
+or hardware access performed. All domains deliberately map to sys; caller must
+provide synchronous words or verified crossing. Production satellite reset/AUX
+ResetRequest remains unsupported. Next step is lab GTH transport/common-reset
+integration and simulation before routing and bounded physical validation.

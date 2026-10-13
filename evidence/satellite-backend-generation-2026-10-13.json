@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": {
+    "simulation_tests": 7,
+    "verilog_generation": "PASS"
+  },
+  "hardware_access": false,
+  "synthesis": "NOT_RUN",
+  "rtl_sha256": "5a8499f95d1799b5de75b9c0766a0a858ebd0fa01240eb06a475a15b4fae8695",
+  "artifact": "/srv/codex-hil-data/artiq-zynqmp/build/satellite-backend-2026-10-13/satellite_backend.v",
+  "limitations": [
+    "single backend clock domain",
+    "transport CDC/reset integration pending",
+    "no production AUX reset"
+  ]
+}

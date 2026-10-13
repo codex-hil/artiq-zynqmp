@@ -6,12 +6,8 @@ import unittest
 from types import SimpleNamespace
 from migen import Module, Signal, ClockDomainsRenamer
 from migen.sim import run_simulation
-from artiq.gateware.drtio.core import SyncRTIO
 from artiq.gateware.drtio.rt_packet_master import RTPacketMaster
-from artiq.gateware.rtio.tsc import TSC
-from artiq.gateware.rtio.channel import Channel
-from artiq.gateware.rtio.phy.ttl_simple import Output, Input
-from satellite_packet import CheckedRTPacketSatellite
+from satellite_backend import SatelliteBackend
 
 
 def interface():
@@ -24,21 +20,13 @@ class SatelliteSEDTest(unittest.TestCase):
         dut = Module()
         pad = Signal()
         master_link, satellite_link = interface(), interface()
-        dut.submodules.tsc = TSC()
-        dut.submodules.phy = ClockDomainsRenamer({'rio_phy': 'sys'})(Output(pad))
-        dut.submodules.unused_phy = ClockDomainsRenamer({'rio_phy': 'sys', 'rio': 'sys'})(
-            Input(pad) if with_input else Output(Signal()))
-        dut.submodules.rtio = ClockDomainsRenamer({'rio': 'sys'})(
-            SyncRTIO(dut.tsc, [Channel.from_phy(dut.phy), Channel.from_phy(dut.unused_phy)],
-                     lane_count=8, fifo_depth=128))
-        dut.submodules.satellite = CheckedRTPacketSatellite(satellite_link, dut.rtio.cri)
+        dut.submodules.backend = SatelliteBackend(satellite_link, pad,
+                                                   pad if with_input else None)
         dut.submodules.master = ClockDomainsRenamer({'rtio_rx': 'sys'})(RTPacketMaster(master_link))
         dut.comb += [satellite_link.rx_rt_frame.eq(master_link.tx_rt_frame if connected else 0),
                      satellite_link.rx_rt_data.eq(master_link.tx_rt_data),
                      master_link.rx_rt_frame.eq(satellite_link.tx_rt_frame),
-                     master_link.rx_rt_data.eq(satellite_link.tx_rt_data),
-                     dut.tsc.load.eq(dut.satellite.tsc_load),
-                     dut.tsc.load_value.eq(dut.satellite.tsc_load_value)]
+                     master_link.rx_rt_data.eq(satellite_link.tx_rt_data)]
         return dut, pad
 
     def exercise(self, connected, advance=0, load_time=False, stale_write=False):
@@ -68,17 +56,17 @@ class SatelliteSEDTest(unittest.TestCase):
                     yield dut.master.sr_stb.eq(1)
                 else:
                     yield dut.master.sr_stb.eq(0)
-                timestamp = (yield dut.tsc.coarse_ts)
-                if (yield dut.satellite.tsc_load):
-                    loads.append((yield dut.satellite.tsc_load_value))
-                underflows.append(bool((yield dut.rtio.cri.o_status) & 2))
+                timestamp = (yield dut.backend.tsc.coarse_ts)
+                if (yield dut.backend.packet.tsc_load):
+                    loads.append((yield dut.backend.packet.tsc_load_value))
+                underflows.append(bool((yield dut.backend.rtio.cri.o_status) & 2))
                 value = (yield pad)
                 if value != previous:
                     edges.append((timestamp, value))
                     previous = value
-                if (yield dut.phy.rtlink.o.stb):
-                    strobes.append((timestamp, (yield dut.phy.rtlink.o.data)))
-                errors.append((yield dut.rtio.async_errors.raw_bits()))
+                if (yield dut.backend.phy.rtlink.o.stb):
+                    strobes.append((timestamp, (yield dut.backend.phy.rtlink.o.data)))
+                errors.append((yield dut.backend.rtio.async_errors.raw_bits()))
                 yield
         run_simulation(dut, run())
         self.assertEqual(strobes, [(base + 9 - advance + i * 32, 1 - i % 2) for i in range(4)] if connected else [])
@@ -125,7 +113,7 @@ class SatelliteSEDTest(unittest.TestCase):
                     yield dut.master.sr_stb.eq(1)
                 if (yield dut.master.buffer_space_not):
                     replies.append((yield dut.master.buffer_space))
-                errors.append((yield dut.satellite.buffer_space_timeout))
+                errors.append((yield dut.backend.packet.buffer_space_timeout))
                 errors.append((yield dut.master.err_unknown_packet_type))
                 errors.append((yield dut.master.err_packet_truncated))
                 yield
@@ -164,9 +152,9 @@ class SatelliteSEDTest(unittest.TestCase):
                     yield dut.master.sr_address.eq(1)
                     yield dut.master.sr_timestamp.eq(500)
                     yield dut.master.sr_stb.eq(1)
-                if (yield dut.unused_phy.rtlink.i.stb):
-                    captured.append(((yield dut.tsc.coarse_ts),
-                                     (yield dut.unused_phy.rtlink.i.data)))
+                if (yield dut.backend.input_phy.rtlink.i.stb):
+                    captured.append(((yield dut.backend.tsc.coarse_ts),
+                                     (yield dut.backend.input_phy.rtlink.i.data)))
                 if (yield dut.master.read_not):
                     replies.append(((yield dut.master.read_no_event),
                                     (yield dut.master.read_is_overflow),

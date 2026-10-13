@@ -71,3 +71,24 @@ The test requires no unknown/truncated packet errors.
 
 The input synchronizer latency is included in timestamp253; no physical pin,
 loopback jumper, recovered-clock or input-delay calibration is qualified here.
+
+## Reusable backend (2026-10-13)
+
+`SatelliteBackend(packet_link, output_pad, input_pad)` now owns the checked
+packet parser, TSC, real SyncRTIO and TTL PHYs. All seven tests instantiate
+this module directly. Channel0 is output; channel1 is input when supplied,
+otherwise a spare output used by the negative controls. All internal domains
+map to `sys`. An outer `ClockDomainsRenamer` can move the entire backend to a
+recovered-clock domain; packet frame/data must be synchronous to that domain.
+This is a laboratory backend, not a complete upstream DRTIOSatellite target.
+
+Generate standalone Verilog with `make hdl-drtio-satellite-backend` using the
+same Python/MiSoC arguments above and an `O` directory on the data volume.
+Ports expose packet words, TTL pins, coarse counter and asynchronous errors.
+Generation passed, but synthesis/routing and physical integration are pending.
+The generator writes a scope manifest alongside the HDL.
+
+Next integration must provide explicit common-reset handling and verified
+transport CDC, preserve diagnostic error counters and use the shared bounded
+Genesys load/test/restoration wrapper. AUX ResetRequest stays unsupported until
+that reset path is implemented and physically validated.

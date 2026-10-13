@@ -214,3 +214,7 @@ test-hw-drtio-aux:
 .PHONY: test-drtio-satellite-sed
 test-drtio-satellite-sed:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_sed.py' -v
+
+.PHONY: hdl-drtio-satellite-backend
+hdl-drtio-satellite-backend:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) diagnostics/drtio/generate_satellite_backend.py --output=$(abspath $(O))/satellite-backend
