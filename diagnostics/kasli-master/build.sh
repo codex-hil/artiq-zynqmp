@@ -11,11 +11,14 @@ host_site=${ARTIQ_HOST_SITE:-/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/l
 export PYTHONPATH="$ARTIQ_SOURCE:$MIGEN_SOURCE:$MISOC_SOURCE:$host_site${PYTHONPATH:+:$PYTHONPATH}"
 export PATH="$(dirname "$python_bin"):$PATH"
 export CARGO_HOME=${CARGO_HOME:-$out/cargo-home}
+config=${KASLI_CONFIG:-$repo/diagnostics/kasli-master/kasli-v2.1-master.json}
+variant=$("$python_bin" -c 'import json,sys; print(json.load(open(sys.argv[1]))["variant"])' "$config")
 mkdir -p "$out"
+cp "$config" "$out/config.json"
 "$python_bin" -m artiq.gateware.targets.kasli \
-  "$repo/diagnostics/kasli-master/kasli-v2.1-master.json" \
+  "$config" \
   --output-dir "$out/generated" --no-compile-gateware > "$out/firmware-generate.log" 2>&1
-build="$out/generated/genesys_drtio_master"
+build="$out/generated/$variant"
 "$python_bin" - "$build/gateware/top_route.tcl" <<'PY'
 from pathlib import Path
 import sys

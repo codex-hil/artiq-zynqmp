@@ -1135,3 +1135,17 @@ or hardware access performed. All domains deliberately map to sys; caller must
 provide synchronous words or verified crossing. Production satellite reset/AUX
 ResetRequest remains unsupported. Next step is lab GTH transport/common-reset
 integration and simulation before routing and bounded physical validation.
+
+### 2026-10-13 — KASLI03 handoff accepted
+
+User handed over KASLI03 for master/Genesys integration and reports Kasli
+loopback removed. Read rng-rpi's board-specific handoff. Read-only JTAG identity
+PASS under KASLI01/02/03 shared locks: DNA0048458a64b04854, USB001:077,
+topology1-6.2; raw logs copied to evidence/kasli03-handoff-2026-10-13.
+No programming/reset/UART/network/clock writes performed; locks released.
+Separate v1.1 master125MHz configuration added; build started on pinned current
+ARTIQ, completion pending. Earlier v2.1 artifacts are incompatible and excluded.
+Exact Kasli SFP downstream port awaiting operator clarification. Before SRAM
+deployment, prepare RAM-only firmware boot: upstream bootloader tries flash
+first. No flash modification authorized or performed. See diagnostics/
+kasli-master/KASLI03.md. Remote Genesys transport integration remains pending.
