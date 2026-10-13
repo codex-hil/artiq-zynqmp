@@ -291,3 +291,9 @@ boot-without-firmware rejection and recovery with MAC confirmation. No firmware
 uploaded/executed; diagnostic restored PASS under three shared Kasli locks.
 Evidence kasli03-netboot-network-2026-10-13. Next bounded RAM download only;
 runtime Si5324/sys-clock switch/reboot behavior not qualified yet.
+
+2026-10-13 KASLI03 netboot RAM download PASS1752788 bytes runtime.bin,
+UART completed confirmation, no B/execute/Si setup, restored diagnostic PASS.
+No RAM readback checksum claim. See evidence/kasli03-netboot-download-2026-10-13.
+Runtime execution still pending clock capture/restoration and sys-switch reboot
+handling; download flag is connection-scoped, so later B needs re-download.

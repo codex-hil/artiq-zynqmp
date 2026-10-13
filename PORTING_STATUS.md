@@ -1260,3 +1260,14 @@ Raw evidence/kasli03-netboot-network-2026-10-13. Host temporary link-local retai
 Next safe step: bounded RAM firmware download without execution. Later runtime
 clock initialization/sys switch may reboot to BRAM loader and need re-upload;
 clock snapshot/restoration must be addressed before that execution step.
+
+### 2026-10-13 — KASLI03 RAM firmware download hardware PASS
+
+Uploaded1752788 bytes reviewed flash-free runtime.bin through native IPv6
+netboot F/length/payload/OK; upstream UART reports completed download. No B
+command or runtime execution, flash command, observed Si5324 setup or Genesys
+access. RAM readback/checksum NOT_RUN; no independent byte-exact memory claim.
+Boot/DDR/network negative/recovery and guarded full-checker CSR restore PASS
+under all three shared Kasli locks. Evidence kasli03-netboot-download-2026-10-13.
+Connection closure resets upstream downloaded flag; future execution requires
+same-connection re-download/B after clock capture/restoration preparation.

@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 import re
 import socket
+import struct
 import subprocess
 import time
 
@@ -26,7 +27,16 @@ def main():
     parser.add_argument('--qualification', type=Path, required=True)
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('--network-interface', help='Optional bounded IPv6 TCP4269 negative/recovery test')
+    parser.add_argument('--download-runtime', type=Path)
+    parser.add_argument('--runtime-sha256')
     args = parser.parse_args()
+    payload = None
+    if args.download_runtime:
+        if not args.network_interface or not args.runtime_sha256:
+            raise SystemExit('RAM download requires network interface and reviewed runtime hash')
+        payload = args.download_runtime.read_bytes()
+        if not 0 < len(payload) <= 4 * 1024 * 1024 or hashlib.sha256(payload).hexdigest() != args.runtime_sha256:
+            raise SystemExit('Runtime size/hash mismatch')
     qualification = json.loads(args.qualification.read_text())
     if (qualification.get('status'), qualification.get('boot_mode'),
             qualification.get('bit_sha256')) != ('BUILD_PASS_HARDWARE_NOT_RUN',
@@ -148,6 +158,30 @@ def main():
                     'tcp_connections': 3, 'unknown_command_rejected': True,
                     'boot_without_firmware_rejected': True, 'listener_recovery': True,
                     'neighbor_mac': '02:4b:03:48:48:54'}
+            if payload is not None:
+                with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as connection:
+                    connection.settimeout(5)
+                    connection.connect((result['netboot_ipv6_link_local'], 4269, 0, scope))
+                    connection.sendall(b'F' + struct.pack('>I', len(payload)))
+                    deadline = time.monotonic() + 30
+                    for offset in range(0, len(payload), 16384):
+                        if time.monotonic() >= deadline:
+                            raise TimeoutError('Bounded firmware download deadline exceeded')
+                        connection.sendall(payload[offset:offset + 16384])
+                    connection.sendall(b'OK')
+                    deadline = time.monotonic() + 10
+                    while time.monotonic() < deadline and b'Firmware successfully downloaded' not in log:
+                        log.extend(uart.read(4096))
+                    (args.output / 'uart.log').write_bytes(log)
+                    if b'Firmware successfully downloaded' not in log:
+                        raise RuntimeError('Bootloader did not confirm completed RAM download')
+                    if b'ARTIQ runtime starting' in log:
+                        raise RuntimeError('Unexpected runtime execution')
+                result['runtime_uploaded'] = True
+                result['runtime_executed'] = False
+                result['ram_download'] = {'status': 'PASS', 'bytes': len(payload),
+                    'source_sha256': args.runtime_sha256, 'boot_command_sent': False,
+                    'memory_readback': 'NOT_RUN'}
             result['status'] = 'PASS'
     except BlockingIOError:
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')

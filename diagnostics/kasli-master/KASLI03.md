@@ -223,3 +223,22 @@ netboot tests. Next useful step is a bounded RAM download without the B command,
 then runtime execution only with clock/reset behavior accounted for. Upstream
 runtime may initiate a sys-clock switch/reboot and return to the BRAM loader;
 that may require a second firmware download, not a flash boot.
+
+## Physical RAM firmware download PASS
+
+Bounded wrapper `--download-runtime /path/runtime.bin --runtime-sha256 SHA`
+with the IPv6 interface checks the reviewed source hash/maximum4MiB size before
+hardware. It sends F + big-endian length + chunks + OK, waits for the upstream
+UART completion and never sends B. Physical test PASS for1752788 bytes,
+SHA4799375ac6490807578b147efa91ac84dc2154c0b4eb640c35dda15147d4bdef.
+UART confirms Received firmware load command/Firmware successfully downloaded.
+No ARTIQ runtime execution or Si5324 setup observed. RAM readback/checksum is
+NOT_RUN; completion does not establish byte-exact stored memory independently.
+
+Boot/DDR and TCP negative/recovery checks repeated PASS; shared locks covered
+whole test/restoration. Full-checker CSR restoration PASS. Evidence
+`evidence/kasli03-netboot-download-2026-10-13`.
+The connection is closed afterward; upstream clears its firmware_downloaded
+flag on disconnect. Runtime execution must download and issue B on the same
+connection in a later separately bounded session. Next preparation is a clock
+snapshot and safe restoration plan, then controlled runtime execution.
