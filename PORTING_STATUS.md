@@ -1162,3 +1162,15 @@ address/routes from persistent configuration. Reviewable overlay committed.
 Initial shadowed-None compile failure fixed; netboot build restarted and ongoing.
 No hardware access or storage/clock changes. Next: qualify netboot artifacts,
 then bounded identified SRAM boot/network test with clock restoration addressed.
+
+### 2026-10-13 — durable netboot build and bounded boot acceptance prepared
+
+Netboot firmware compilation PASS. Previous FPGA build stopped during synthesis
+without completion evidence; do not treat it as routed. Restarted in user
+systemd service artiq-kasli03-netboot-20261013 with frozen script snapshot and
+persistent log; no device access or locks held. Prepared KASLI03 bootloader-only
+wrapper requiring reviewed netboot qualification/hash, exact DNA, shared Kasli
+locks, UART CRC/DDR/netboot evidence and finally guarded diagnostic restoration
+with bounded CSR verification. Wrapper hardware NOT_RUN; image still pending
+routing. Bootloader stage does not upload runtime or initialize Si5324 via
+runtime. Next: finish/qualify image, preflight wrapper, bounded bootloader test.

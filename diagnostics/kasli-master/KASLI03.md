@@ -66,3 +66,24 @@ on this board.
 Netboot-only build is running in `build/kasli03-netboot-2026-10-13` on the data
 volume. Initial overlay compilation found a shadowed untyped None; this was
 corrected before restarting the build. Firmware/bitstream acceptance pending.
+
+## Bounded bootloader-only acceptance
+
+`scripts/test_kasli03_netboot_hw.py` is prepared but NOT_RUN. It requires a
+reviewed netboot-only qualification JSON plus exact bit SHA and passing timing.
+`--dry-run` checks files only. Actual execution holds all three shared Kasli
+locks; verifies USB topology and DNA before SRAM loading; captures exclusive
+UART; requires bootloader CRC, SDRAM initialization/memory test, disabled flash
+boot and the unique DHCP identity. It does not upload runtime or touch Genesys,
+so no Si5324 runtime initialization is performed by this stage.
+
+After any programming attempt it restores the handed-over full-checker image
+with its existing guarded loader and checks UARTBone identity/EEMenable0/
+GTPcontrol0/SFPTXdisable7 with bounded reads before releasing the locks.
+This is not remote DRTIO or even runtime acceptance. Runtime clock changes need
+a separate restoration plan before that later test.
+
+The interrupted foreground build was restarted as the user systemd service
+`artiq-kasli03-netboot-20261013.service`; check ActiveState/ExecMainStatus and
+`systemd-build.log` in the netboot output directory. It runs a frozen build
+script snapshot, holds no hardware locks and performs no device operations.
