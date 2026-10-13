@@ -1,6 +1,7 @@
 """Generate standalone diagnostic satellite RTL. LGPL-3.0-or-later."""
 import argparse
 import json
+import os
 from pathlib import Path
 from types import SimpleNamespace
 from migen import Signal
@@ -19,7 +20,10 @@ def main():
     dut = SatelliteBackend(link, ttl_out, ttl_in)
     ios = set(vars(link).values()) | {ttl_out, ttl_in, dut.tsc.coarse_ts}
     ios.update(getattr(dut.async_errors, field) for field, _ in dut.async_errors.layout)
+    args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
+    # Migen emits ROM initialization files relative to the current directory.
+    os.chdir(args.output)
     verilog.convert(dut, ios=ios, name='satellite_backend').write(
         str(args.output / 'satellite_backend.v'))
     (args.output / 'scope.json').write_text(json.dumps({
