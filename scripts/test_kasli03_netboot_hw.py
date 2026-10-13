@@ -94,7 +94,7 @@ def main():
             deadline = time.monotonic() + 120
             expected = [b'Bootloader CRC passed', b'SDRAM initialized',
                         b'Memory test passed', b'Flash booting has been disabled.',
-                        b'MAC=02:4b:03:48:48:54', b'IPv4=use_dhcp',
+                        b'MAC=02-4b-03-48-48-54', b'IPv4=use_dhcp',
                         b'Waiting for connections...']
             while time.monotonic() < deadline:
                 log.extend(uart.read(4096))

@@ -151,3 +151,36 @@ bootloader; the qualifier marks bootloader-only scope and does not require
 runtime artifacts. Runtime support without flash remains a separate offline
 implementation step. Corrected firmware and actual ROM initialization PASS;
 `bram-boot.json` generated. FPGA routing remains pending.
+
+## Embedded bootloader hardware PASS
+
+Routed BRAM image SHA4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715,
+WNS0.092/WHS0.051/pulse0.264ns. Qualifier now also compares the complete
+`mem.init` word sequence to compiled bootloader bytes and checks generated HDL
+reset-zero and ROM initialization wiring. Positive qualification PASS.
+
+Physical SRAM boot PASS: 2026 upstream bootloader, CRC, DDR initialization and
+memory test, disabled flash boot, correct forced MAC and network listener startup.
+No runtime uploaded, old flash runtime absent from UART, no Si5324 setup observed.
+First host assertion falsely rejected hyphen-separated MAC; corrected to match
+actual upstream display and repeated full load/test/restoration PASS.
+Both sessions restored full-checker and CSR baseline under all three shared
+Kasli locks. Raw evidence in `evidence/kasli03-bram-netboot-hardware-2026-10-13`.
+Network TCP connectivity and remote DRTIO remain NOT_RUN.
+
+## Flash-free runtime compile PASS
+
+`prepare_flashfree_runtime.py` creates a separate worktree from the reviewed
+BRAM overlay, enables runtime compilation, and guards upstream SPI-dependent
+imports/functions with has_spiflash. In no-flash builds, management flash/reboot
+return Error and panic halts; upstream configuration returns NoFlash. Flash
+builds retain their original behavior. The reviewable patch is
+`kasli03-flashfree-runtime.patch`. First overlay shape check caught duplicate
+local/remote function names; the corrected script changes only local handlers.
+
+Full bootloader/ksupport/runtime compile PASS in
+`build/kasli03-flashfree-runtime-2026-10-13/generated-fixed`. Generated mem.rs,
+csr.rs and regions.ld are byte-identical to the physically tested BRAM image.
+Runtime hardware NOT_RUN. Evidence kasli03-flashfree-runtime-build-2026-10-13.json.
+Next: establish host-scoped IPv6 netboot connectivity and a bounded runtime
+clock-profile capture/restoration plan before firmware execution.

@@ -275,3 +275,12 @@ no remote Kasli/TSC/routing proof. Normal core restored192.168.2.3 with physical
 TTL/DMA/debug/Ethernet PASS. Shared lease168.681s; no persistent/Si writes.
 Evidence aux-service-hardware-2026-10-11.json; bounded AUX wrapper requires
 --firmware ELF --service-test. Next work is upstream satellite RTIO/SED wiring.
+
+2026-10-13 KASLI03 BRAM boot PASS: DNA0048458a64b04854, USB topology1-6.2,
+three shared Kasli locks, corrected SRAM bit4fb33ce8.../reset0/ROM128KiB.
+Bootloader CRC/DDR/memory test/listener PASS; no runtime uploaded, restored
+full-checker CSR baseline PASS. First flash-first image qualification withdrawn;
+it ran old flash ARTIQ8 and set Si5324 internal125MHz (exact original registers
+not restored). Corrected runs did not run it. Separate flash-free runtime compile
+PASS, identical generated memory/CSR maps; physical runtime NOT_RUN. Read
+ diagnostics/kasli-master/KASLI03.md and newest evidence/status before hardware.

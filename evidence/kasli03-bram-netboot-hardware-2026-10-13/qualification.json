@@ -1,0 +1,31 @@
+{
+  "status": "BUILD_PASS_HARDWARE_NOT_RUN",
+  "boot_mode": "network-only",
+  "scope": "bootloader-only",
+  "bram_boot": {
+    "bootloader_only": true,
+    "cpu_reset_address": 0,
+    "integrated_rom_size": 131072,
+    "bootloader_sha256": "04b62521df6e272d5664589660760516dc8fa7335ef9ef1f3cdaaf4c3465e92f",
+    "bootloader_bytes": 112288
+  },
+  "bit_sha256": "4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715",
+  "artifact_hashes": {
+    "gateware/top.bit": "4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715",
+    "gateware/top.bin": "4a8588f9a54fac1ede9b7c48439f28766e9f5075fd7f88f8c9b6388c43dcfe4e",
+    "software/bootloader/bootloader.bin": "04b62521df6e272d5664589660760516dc8fa7335ef9ef1f3cdaaf4c3465e92f"
+  },
+  "rom_init_sha256": "a9c3f7548f20fbf08c94b7e1d5c74a5baa8589874e67671c34b2df541f24d1eb",
+  "generated_hdl_sha256": "8ab83023230ffd9034479377a03958764bedba6e686a33b0dbb90681542150fd",
+  "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "overlay_sha256": "7f132b7df5b655a2da54b20ff2a76ba3873fe8a26e6a9ca1d501d1114d29dc69",
+  "setup_wns_ns": 0.092,
+  "hold_whs_ns": 0.051,
+  "pulse_slack_ns": 0.264,
+  "network": "IPv6 link-local; bootloader has no DHCP client",
+  "limitations": [
+    "inherited external timing warnings",
+    "no physical qualification"
+  ],
+  "build": "/srv/codex-hil-data/artiq-zynqmp/build/kasli03-bram-netboot-2026-10-13"
+}

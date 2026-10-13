@@ -7,6 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import struct
 import subprocess
 
 
@@ -48,6 +49,14 @@ def main():
     drc = (gate / 'top_drc.rpt').read_text()
     if re.search(r'^\S+#\d+\s+(?:Error|Critical Warning)\s*$', drc, re.M):
         raise SystemExit('DRC error/critical warning requires review')
+    payload = (tree / 'software/bootloader/bootloader.bin').read_bytes()
+    words = [int(line, 16) for line in (gate / 'mem.init').read_text().splitlines()]
+    expected_words = list(struct.unpack('<%dI' % (len(payload) // 4), payload))
+    if words != expected_words:
+        raise SystemExit('Generated ROM initialization differs from bootloader bytes')
+    hdl = (gate / 'top.v').read_text()
+    if not re.search(r"\.externalResetVector\(\d+'d0\)", hdl) or '$readmemh("mem.init", mem)' not in hdl:
+        raise SystemExit('Generated HDL lacks reset-zero/ROM initialization wiring')
     hashes = {}
     for name in ('gateware/top.bit', 'gateware/top.bin', 'software/bootloader/bootloader.bin'):
         data = (tree / name).read_bytes()
@@ -61,6 +70,8 @@ def main():
         raise SystemExit('Build completion marker absent')
     result = {'status': 'BUILD_PASS_HARDWARE_NOT_RUN', 'boot_mode': 'network-only', 'scope': 'bootloader-only', 'bram_boot': rom,
               'bit_sha256': hashes['gateware/top.bit'], 'artifact_hashes': hashes,
+              'rom_init_sha256': hashlib.sha256((gate / 'mem.init').read_bytes()).hexdigest(),
+              'generated_hdl_sha256': hashlib.sha256(hdl.encode()).hexdigest(),
               'upstream_revision': revision, 'overlay_sha256': hashlib.sha256(patch.encode()).hexdigest(),
               'setup_wns_ns': float(match[1]), 'hold_whs_ns': float(match[5]),
               'pulse_slack_ns': float(match[9]), 'network': 'IPv6 link-local; bootloader has no DHCP client',

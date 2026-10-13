@@ -1217,3 +1217,22 @@ artifact claim. Compiled bootloader and actual ROM initialization PASS/reset0;
 evidence kasli03-bram-initialization-2026-10-13.json. Durable FPGA build restarted,
 routing pending. Prior netboot build evidence marked WITHDRAWN. No further HW
 access after diagnostic restoration; runtime flash-free support remains pending.
+
+### 2026-10-13 — KASLI03 BRAM boot hardware PASS; flash-free runtime compile PASS
+
+BRAM bit SHA4fb33ce8..., WNS0.092/WHS0.051/pulse0.264ns. Actual ROM words
+match compiled bootloader; generated reset0/ROM wiring verified. Physical boot
+CRC/DDR initialization/memory test, disabled flash boot, forced MAC and listener
+startup PASS. First automated run false-negative on MAC separators; fixed and
+full repeated test PASS. Both restores full-checker CSR identity/EEM0/GTP0/
+SFPdisable7 PASS under all three Kasli shared locks. No runtime upload, old flash
+runtime or observed Si5324 setup in these corrected runs; Genesys untouched.
+Raw logs evidence/kasli03-bram-netboot-hardware-2026-10-13. Network connections
+and remote DRTIO NOT_RUN; prior first-image clock caveat remains historical.
+
+Separate checked flash-free runtime overlay compiles bootloader/ksupport/runtime
+PASS. Guards SPI imports/functions; no-flash flash/reboot return Error, panic
+halts, config uses upstream NoFlash. mem.rs/csr.rs/regions.ld byte-identical to
+physical BRAM image. Runtime hardware NOT_RUN; build evidence committed. Next
+safe work: scoped IPv6 netboot connection and bounded clock capture/restoration
+before uploading runtime; external satellite integration still pending.
