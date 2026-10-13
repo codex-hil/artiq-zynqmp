@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "board": "KASLI03",
+  "clock_configuration_written": false,
+  "si_source_sha256": "573582c7674f2ee8f78cb6a3d67b15734941dcb977196a5347c478238224e5f6",
+  "registers": {
+    "0": [
+      84,
+      84
+    ],
+    "2": [
+      66,
+      66
+    ],
+    "3": [
+      85,
+      85
+    ],
+    "4": [
+      18,
+      18
+    ],
+    "6": [
+      63,
+      63
+    ],
+    "21": [
+      254,
+      254
+    ],
+    "25": [
+      192,
+      192
+    ],
+    "31": [
+      0,
+      0
+    ],
+    "32": [
+      0,
+      0
+    ],
+    "33": [
+      3,
+      3
+    ],
+    "34": [
+      0,
+      0
+    ],
+    "35": [
+      0,
+      0
+    ],
+    "36": [
+      3,
+      3
+    ],
+    "40": [
+      192,
+      192
+    ],
+    "41": [
+      78,
+      78
+    ],
+    "42": [
+      3,
+      3
+    ],
+    "43": [
+      0,
+      0
+    ],
+    "44": [
+      17,
+      17
+    ],
+    "45": [
+      212,
+      212
+    ],
+    "46": [
+      0,
+      0
+    ],
+    "47": [
+      17,
+      17
+    ],
+    "48": [
+      212,
+      212
+    ],
+    "129": [
+      2,
+      2
+    ],
+    "130": [
+      64,
+      64
+    ],
+    "134": [
+      1,
+      1
+    ],
+    "135": [
+      130,
+      130
+    ],
+    "136": [
+      0,
+      0
+    ],
+    "137": [
+      1,
+      1
+    ]
+  },
+  "retries": [
+    {
+      "register": 4,
+      "sample": 0,
+      "attempt": 0,
+      "error": "I2C address NACK"
+    },
+    {
+      "register": 31,
+      "sample": 1,
+      "attempt": 0,
+      "error": "I2C address NACK"
+    },
+    {
+      "register": 32,
+      "sample": 1,
+      "attempt": 0,
+      "error": "I2C address NACK"
+    },
+    {
+      "register": 40,
+      "sample": 0,
+      "attempt": 0,
+      "error": "I2C offset NACK"
+    },
+    {
+      "register": 41,
+      "sample": 0,
+      "attempt": 0,
+      "error": "I2C address NACK"
+    },
+    {
+      "register": 48,
+      "sample": 0,
+      "attempt": 0,
+      "error": "I2C address NACK"
+    },
+    {
+      "register": 136,
+      "sample": 0,
+      "attempt": 0,
+      "error": "I2C offset NACK"
+    }
+  ],
+  "restoration_profile_validated": false,
+  "dna": "0x0048458a64b04854",
+  "usb_busdev": "001:077",
+  "prior_mux": {
+    "0x70": 0,
+    "0x71": 8
+  },
+  "changed_registers": [],
+  "routing_restoration": "PASS",
+  "session_seconds": 41.551,
+  "decoded_profile": {
+    "n1_hs": 10,
+    "nc1_ls": 4,
+    "nc2_ls": 4,
+    "n2_hs": 10,
+    "n2_ls": 19972,
+    "n31": 4565,
+    "n32": 4565,
+    "bwsel": 4,
+    "free_run": true,
+    "input_selection": 1
+  },
+  "upstream_int125_dividers_match": true,
+  "i2c_reliability": "PARTIAL: seven retried NACKs",
+  "snapshot_acquisition": "PASS: two identical readings per register"
+}

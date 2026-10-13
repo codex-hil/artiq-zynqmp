@@ -242,3 +242,22 @@ The connection is closed afterward; upstream clears its firmware_downloaded
 flag on disconnect. Runtime execution must download and issue B on the same
 connection in a later separately bounded session. Next preparation is a clock
 snapshot and safe restoration plan, then controlled runtime execution.
+
+## Read-only clock snapshot
+
+Physical snapshot acquisition PASS:27 Si5324 registers selected from the actual
+retained driver read/write addresses, two identical readings each, expected
+ID0182 and PLLlocked. Seven transient address/offset NACKs required bounded
+retries, so I2C reliability remains PARTIAL. Three shared Kasli locks held for
+41.551s, no clock data/FPGA/flash write; mux70=0/71=8 and prior bus CSR restored.
+Raw evidence: `evidence/kasli03-clock-snapshot-2026-10-13`.
+
+Decoded dividers exactly match current upstream Int125: N1HS10, NC1/2LS4,
+N2HS10, N2LS19972, N31/N324565, BWSEL4, FREE_RUN1, selected CKIN2.
+This comparison uses the retained driver encoding and runtime settings; it is
+not an independent frequency/jitter measurement or validation of a restoration
+sequence. Do not blindly replay readonly/status/ICAL registers. Snapshot covers
+registers touched/read by that driver, not every Si5324 register or factory state.
+
+Next: account for runtime Si5324 hard-reset/sys-clock switch behavior and
+validate bounded restoration against this baseline before full execution.

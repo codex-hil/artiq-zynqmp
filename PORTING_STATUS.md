@@ -1271,3 +1271,14 @@ Boot/DDR/network negative/recovery and guarded full-checker CSR restore PASS
 under all three shared Kasli locks. Evidence kasli03-netboot-download-2026-10-13.
 Connection closure resets upstream downloaded flag; future execution requires
 same-connection re-download/B after clock capture/restoration preparation.
+
+### 2026-10-13 — KASLI03 Si5324 snapshot acquired
+
+27 registers, two identical reads each, ID0182/PLLlocked: acquisition PASS.
+Seven transient NACKs retried; I2C reliability PARTIAL. Shared three-Kasli locks
+41.551s; no clock configuration/FPGA/flash writes. Original mux/bus CSR restored.
+Decoded dividers match actual current ARTIQ Int125 profile exactly (including
+both output dividers, CKIN2/free-run/BWSEL). No independent frequency/jitter or
+restoration-sequence claim; snapshot covers driver-touched registers only.
+Evidence kasli03-clock-snapshot-2026-10-13. Runtime remains NOT_RUN; next safe
+step is hard-reset/sys-clock-switch and bounded restoration preparation.
