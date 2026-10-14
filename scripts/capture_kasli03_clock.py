@@ -57,6 +57,9 @@ def main():
             handles.append(fd)
             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
         usb = Path('/sys/bus/usb/devices/1-6.2')
+        if not (usb / 'idVendor').is_file():
+            result['status'] = 'BLOCKED_HARDWARE_ABSENT'
+            raise RuntimeError('Expected KASLI03 USB topology1-6.2 absent; no replacement device selected')
         if [(usb / key).read_text().strip() for key in ('idVendor', 'idProduct', 'manufacturer')] != ['0403', '6011', 'FTDI']:
             raise RuntimeError('USB identity changed')
         busdev = f'{int((usb / "busnum").read_text()):03}:{int((usb / "devnum").read_text()):03}'

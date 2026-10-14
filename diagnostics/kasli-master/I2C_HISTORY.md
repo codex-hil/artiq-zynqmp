@@ -39,3 +39,13 @@ not causal proof: fresh interleaved original/settled controls remain pending.
 Two offline controls PASS: delayed ACK is detected by late sampling, while a
 true persistent NACK remains a failure. Simulation does not qualify electrical
 margins. Evidence kasli03-clock-settled-2026-10-14; capture wrapper --settled-timing.
+
+## Fresh A/B repeat blocked by missing board
+
+The next original-timing attempt stopped before JTAG/UART access: expected
+KASLI03 topology1-6.2 and its handed-over UART path were absent. Host inventory
+showed Genesys plus another FT4232H on the historical KASLI01 path, which was
+not accessed or substituted. No fresh timing comparison result exists.
+The capture wrapper now reports BLOCKED_HARDWARE_ABSENT explicitly.
+Operator must reconnect KASLI03 or provide a new handoff location; exact DNA
+must be reconfirmed under its shared locks before any retargeted access.

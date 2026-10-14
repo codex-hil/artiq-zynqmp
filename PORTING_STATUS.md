@@ -1316,3 +1316,12 @@ NOT_PROVEN pending fresh interleaved controls. Two delayed-ACK/true-NACK offline
 controls PASS. Shared three-Kasli lease79.554s; routing restored, no clock data/
 FPGA/flash/Genesys changes. Evidence kasli03-clock-settled-2026-10-14.
 Next safe step: fresh original-vs-settled repeat, then bounded profile restoration.
+
+### Continuation — fresh I2C A/B blocked before device access
+
+Expected KASLI03 USB1-6.2 and UART disappeared. Original-timing capture aborted
+before JTAG/UART/I2C; shared locks released. Host metadata inventory shows
+Genesys and another FT4232H on historical KASLI01 path; no substitute access.
+No new I2C measurements/configuration changes. Capture distinguishes absent
+hardware from I2C failure. User clarification/reconnection needed; last settled
+54 reads/zero-NACK result remains a single run, not causal proof.
