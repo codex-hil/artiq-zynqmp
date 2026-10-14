@@ -261,3 +261,24 @@ registers touched/read by that driver, not every Si5324 register or factory stat
 
 Next: account for runtime Si5324 hard-reset/sys-clock switch behavior and
 validate bounded restoration against this baseline before full execution.
+
+## Clock/reset restoration plan — 2026-10-14
+
+`plan_kasli03_clock_restore.py` validates snapshot DNA, duplicate reads, exact
+driver hash and generated Rust cfg. Actual build selects **si5324_soft_reset**;
+previous generic references to runtime hard reset do not apply to this build.
+The checked plan contains23 configuration registers, excluding status/product
+ID and register136 command bits. Saved reset/ICAL bits must never be replayed.
+If configuration changes, restoration requires a deliberate fresh calibration,
+readback/lock/output-frequency validation and mux/bus restoration.
+This is an offline plan, not a validated hardware recovery sequence.
+Unstable-read negative control rejected with no plan output.
+
+Runtime first setup may switch sys clock and reset CPU to BRAM loader; second
+same-connection firmware download/B after loader recovery should skip setup
+via switch_done. This flow remains physically NOT_RUN.
+Runtime enables downstream TX, so the user's Genesys connection requires the
+Genesys lock as well as all three Kasli locks, acquired lexically/nonblocking
+and held through tests/restoration. No independent runtime attempt is allowed
+under only a Kasli lease while Genesys is in use.
+Plan evidence: `evidence/kasli03-clock-restore-plan-2026-10-14.json`.

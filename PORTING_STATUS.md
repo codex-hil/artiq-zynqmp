@@ -1282,3 +1282,16 @@ both output dividers, CKIN2/free-run/BWSEL). No independent frequency/jitter or
 restoration-sequence claim; snapshot covers driver-touched registers only.
 Evidence kasli03-clock-snapshot-2026-10-13. Runtime remains NOT_RUN; next safe
 step is hard-reset/sys-clock-switch and bounded restoration preparation.
+
+### 2026-10-14 — clock/reset plan validated offline
+
+Generated cfg confirms Si5324 soft reset, not GPIO hard reset. Checked snapshot/
+driver plan covers23 configuration registers; excludes status/ID/136 commands,
+requires deliberate calibration/readback/PLL/frequency and bus restoration.
+Unstable duplicate-read negative control rejected/no plan emitted. Physical
+restoration sequence still NOT_RUN. Runtime sys-switch/reboot to BRAM and
+second upload flow documented but NOT_RUN. Runtime enables downstream TX:
+all future execute sessions must also lease Genesys because of user's cable.
+No hardware access this stage; evidence kasli03-clock-restore-plan-2026-10-14.
+Next safe step: implement/test bounded baseline-profile restoration, then
+controlled runtime startup under both boards' shared locks.
