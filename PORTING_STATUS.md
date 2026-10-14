@@ -1295,3 +1295,14 @@ all future execute sessions must also lease Genesys because of user's cable.
 No hardware access this stage; evidence kasli03-clock-restore-plan-2026-10-14.
 Next safe step: implement/test bounded baseline-profile restoration, then
 controlled runtime startup under both boards' shared locks.
+
+### 2026-10-14 — historical I2C hardware/firmware findings
+
+Found primary Kasli issue46 (2019) on pullup strength, repeaters and low-level
+margins, with maintainer-reported changes implemented. Exact board revision and
+onboard Si5324 applicability unresolved; no claim this explains KASLI03 NACKs.
+Upstream2020 driver fixed open-drain/phase handling;2018/2025 Si5324 reset-value
+NACK special case does not match our read address/offset failures. Diagnostic
+uses its own UART-side Python bitbang, so firmware-vs-hardware remains open.
+References and exact commits in diagnostics/kasli-master/I2C_HISTORY.md.
+No HW access; next safe step compare ACK timing and trace relevant schematics.
