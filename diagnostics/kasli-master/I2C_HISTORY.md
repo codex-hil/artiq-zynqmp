@@ -25,3 +25,17 @@ not explain them. The diagnostic uses LiteX open-drain GPIO and our UART-side
 Python bitbang, not the upstream Rust transaction implementation. Attribution
 to hardware remains unproven; compare timing/ACK sampling first and trace the
 repeater/pullup path before any physical rework. No hardware accessed here.
+
+## First timing overlay experiment
+
+`settled_i2c.py` reuses original RNG-RPI transactions but separates falling SCL
+from SDA changes, holds phases100us and samples SDA again after settling.
+Physical54 register reads PASS with zero retries/NACKs; all27 pairs match the
+prior original snapshot exactly and PLL remains locked. Session79.554s under
+three shared Kasli locks; mux/bus restored, no clock configuration writes.
+Previous original run had seven retried NACKs. This is a promising observation,
+not causal proof: fresh interleaved original/settled controls remain pending.
+
+Two offline controls PASS: delayed ACK is detected by late sampling, while a
+true persistent NACK remains a failure. Simulation does not qualify electrical
+margins. Evidence kasli03-clock-settled-2026-10-14; capture wrapper --settled-timing.

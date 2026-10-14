@@ -1306,3 +1306,13 @@ NACK special case does not match our read address/offset failures. Diagnostic
 uses its own UART-side Python bitbang, so firmware-vs-hardware remains open.
 References and exact commits in diagnostics/kasli-master/I2C_HISTORY.md.
 No HW access; next safe step compare ACK timing and trace relevant schematics.
+
+### 2026-10-14 — settled diagnostic I2C first hardware run PASS
+
+54 reads/27 register pairs, zero NACK/retry, exact prior snapshot match/PLLlocked.
+Timing overlay separates SCL falling from SDA changes, holds100us and samples
+late. Earlier original run had seven retried NACKs; causal attribution remains
+NOT_PROVEN pending fresh interleaved controls. Two delayed-ACK/true-NACK offline
+controls PASS. Shared three-Kasli lease79.554s; routing restored, no clock data/
+FPGA/flash/Genesys changes. Evidence kasli03-clock-settled-2026-10-14.
+Next safe step: fresh original-vs-settled repeat, then bounded profile restoration.

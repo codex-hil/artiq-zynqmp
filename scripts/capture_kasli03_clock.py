@@ -21,9 +21,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--si-source', type=Path, required=True)
+    parser.add_argument('--settled-timing', action='store_true')
     args = parser.parse_args()
     sys.path.insert(0, str(RNG / 'kasli'))
     from i2c import I2C
+    if args.settled_timing:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "diagnostics/kasli-master"))
+        from settled_i2c import SettledI2C
+        I2C = SettledI2C
     from litex.tools.remote.comm_uart import CommUART
 
     class BoundedUART(CommUART):
@@ -41,6 +46,7 @@ def main():
     registers = sorted({int(r) for r in re.findall(r'\b(?:read|write|write_no_ack_value)\((\d+)', source)})
     result = {'status': 'FAIL', 'board': 'KASLI03', 'clock_configuration_written': False,
               'si_source_sha256': hashlib.sha256(source.encode()).hexdigest(),
+              'timing': 'settled100us' if args.settled_timing else 'original',
               'registers': {}, 'retries': [], 'restoration_profile_validated': False}
     args.output.mkdir(parents=True, exist_ok=True)
     handles, comm, i2c, prior_csr, prior_mux = [], None, None, None, {}
