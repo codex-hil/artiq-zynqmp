@@ -36,6 +36,7 @@ class AuxEndpoint(Module):
         self.sync.rtio_rx += If(~self.aligner.aligned, settled.eq(0)).Elif(
             settled != 127, settled.eq(settled + 1))
         self.comb += ready.eq(settled == 127)
+        self.rx_ready = ready  # RX-domain qualifier for the real RT backend.
         self.specials += MultiReg(ready, self.link.rx_up.status)
         self.submodules.aux = DRTIOAuxController(self.link)
         self.comb += [self.tx_raw.eq(self.codec.tx_raw),

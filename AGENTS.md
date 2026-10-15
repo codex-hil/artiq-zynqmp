@@ -357,3 +357,10 @@ TTL/DMA/debug/Ethernet and Kasli diagnostic/clock baseline verified. No active
 session. Evidence kasli03-external-aux-2026-10-15; next real satellite backend
 clock/reset/CDC/TSC integration. Config mode external-aux-down and qualified
 firmware/map hashes required. No flash/SD/OTP/Genesys Si writes.
+
+2026-10-15 SatelliteTransport RTL simulation3 tests/HDL generation PASS: real
+RX-clock packet/SED/TTL, actual TSC-load Gray counter and existing whole-packet
+RT reply CDC to TX. Busy arrivals drop whole and latch fatal RX-domain fault.
+AuxEndpoint.rx_ready exposes existing settled qualifier. No top/routed/HW
+integration or TSCAck yet. See SATELLITE_SED.md/newest PORTING_STATUS. Last HW
+normal restored state unchanged. Next AuxPS common-reset/top/CSR integration.

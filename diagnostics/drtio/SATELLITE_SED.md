@@ -92,3 +92,39 @@ Next integration must provide explicit common-reset handling and verified
 transport CDC, preserve diagnostic error counters and use the shared bounded
 Genesys load/test/restoration wrapper. AUX ResetRequest stays unsupported until
 that reset path is implemented and physically validated.
+
+## Receive-clock transport block — 2026-10-15
+
+`SatelliteTransport` connects the existing decoded AuxEndpoint RT wires to
+SatelliteBackend. RT packet parsing, TSC, SED and TTL PHYs run directly on
+rtio_rx. This avoids using a free-running PS elastic buffer for request words.
+The existing tested AuxTxCDC is reused at16-bit width/128-byte capacity to
+cross whole RT reply packets from RX to gth_tx; link-layer TX retains native
+RT priority over AUX. All three domains must share reset assertion.
+
+RTPacketSatellite offers no TX backpressure. RTReplyCDC therefore admits a
+packet only when idle, drops a busy arrival as a whole, and latches fault on
+busy rejection or overflow/oversize. Fault is fatal for acceptance until a
+common reset; it is in RX domain and needs synchronization before PS reads.
+This is a bounded lab reply path, not a general lossless pipelined transport.
+
+A Gray counter increments on actual packet.tsc_load at the same RX edge that
+loads TSC. Its PS-side count can later gate genuine TSCAck; no ACK firmware or
+new CSR has been added yet. AuxEndpoint now exposes its existing RX-domain
+settled-ready signal without changing its logic.
+
+Three offline tests PASS: one real time-load and scheduled TTL edge at1461
+for timestamp1450 (existing11-cycle uncompensated SED/PHY latency); real buffer
+replies128→127 across8ns RX/11ns TX and13ns PS clocks; busy reply rejection
+without a partial second packet; and no TSC load/TTL/replies when RX is unready.
+The notification is counted once per assertion, since its valid flag can span
+several source-clock cycles. Distinct master source/RX clock names avoid old
+Migen sequential clock-renaming aliases in the testbench.
+
+Use `make test-drtio-satellite-transport` and
+`make hdl-drtio-satellite-transport` with the same source/Python overrides as
+above. Generated standalone HDL includes all three clock/reset interfaces and
+a scope manifest. No board top integration, route/timing or hardware validation
+is claimed. Next: integrate inside the AuxPS common-reset domains, expose/load
+counter and fatal faults through CSR, then implement real TSC ACK and reset
+semantics before accepting production AUX reset or destination-UP.

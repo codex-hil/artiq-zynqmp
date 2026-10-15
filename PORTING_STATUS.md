@@ -1485,3 +1485,20 @@ Six offline acceptance/failure tests PASS; external firmware compile PASS.
 Evidence kasli03-external-aux-2026-10-15 and aux-external-firmware-build-2026-10-15.
 Next safe stage: real satellite RT packet/SED backend clock/reset/CDC wiring,
 then genuine TSC load acknowledgement, routing and remote TTL tests.
+
+### 2026-10-15 — receive-clock real satellite transport RTL PASS
+
+New SatelliteTransport connects existing real RT packet/SED/TTL backend to
+AuxEndpoint decoded RT wires on RX clock. Existing whole-packet AuxTxCDC is
+reused for16-bit replies crossing to TX, with whole-packet busy rejection and
+sticky fatal fault. Actual TSC-load Gray counter crosses to PS; no TSCAck is
+emitted by this module. AuxEndpoint exposes existing settled-ready qualifier.
+Three simulations PASS11.173s: time load count1, real buffer128→127 replies,
+TTL timestamp1450→edge1461, unequal RX8ns/TX11ns/PS13ns, plus unready-RX and
+busy/drop negative controls. Testbench overlapping clock rename and held
+notification sampling corrected; no passing hardware claim from those failures.
+Standalone HDL generation PASS, top/CDC constraints/route/hardware PENDING.
+Evidence satellite-transport-simulation-2026-10-15.json. No HW access this stage;
+last physical baseline remains restored normal Genesys and Kasli diagnostic.
+Next: AuxPS/top integration and actual-load CSR gating of TSC acknowledgement,
+then genuine reset/routing and remote TTL; no fake production ResetAck/UP.

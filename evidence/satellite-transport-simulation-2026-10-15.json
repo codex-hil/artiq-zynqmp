@@ -1,0 +1,28 @@
+{
+  "kind": "RTL simulation and generated HDL, not hardware",
+  "status": "PASS",
+  "tests": 3,
+  "log": "test_busy_reply_is_dropped_whole_and_latches_fault (test_satellite_transport.TransportTests.test_busy_reply_is_dropped_whole_and_latches_fault) ... ok\ntest_time_load_scheduled_ttl_and_async_buffer_replies (test_satellite_transport.TransportTests.test_time_load_scheduled_ttl_and_async_buffer_replies) ... ok\ntest_unready_rx_cannot_load_time_or_toggle_ttl (test_satellite_transport.TransportTests.test_unready_rx_cannot_load_time_or_toggle_ttl) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 11.173s\n\nOK\n",
+  "tsc_load_events": 1,
+  "buffer_replies": [
+    128,
+    127
+  ],
+  "ttl_timestamp": 1450,
+  "observed_edge_timestamp": 1461,
+  "negative_controls": [
+    "unready RX blocks load/output/reply",
+    "busy reply dropped whole with sticky fault"
+  ],
+  "clock_periods_ns": {
+    "rx": 8,
+    "tx": 11,
+    "ps": 13
+  },
+  "sha256": {
+    "satellite_transport.v": "db96a5cadc04d020f60e8d40080accc6b47d3640eddf8ee47a74f0da00fe21fd",
+    "scope.json": "8032c0a73866c813b2bacd5c411a2bf163539b1034bfb6ac476cc539f0a86c0d"
+  },
+  "hardware": "NOT_RUN",
+  "top_integration": "PENDING"
+}

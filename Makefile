@@ -222,3 +222,9 @@ hdl-drtio-satellite-backend:
 .PHONY: test-drtio-link-observer
 test-drtio-link-observer:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_link_observer.py' -v
+
+.PHONY: test-drtio-satellite-transport hdl-drtio-satellite-transport
+test-drtio-satellite-transport:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_transport.py' -v
+hdl-drtio-satellite-transport:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) diagnostics/drtio/generate_satellite_transport.py --output=$(abspath $(O))/satellite-transport
