@@ -1336,3 +1336,15 @@ Three shared Kasli locks covered each bounded session44.26/79.557s. Supports
 timing-sensitive diagnostic behavior, not proof excluding electrical margins.
 Evidence kasli03-clock-ab-2026-10-15. Next safe step: bounded profile restoration
 using settled diagnostic reads, followed by cross-board-locked runtime startup.
+
+### 2026-10-15 — KASLI03 volatile clock reset/restore hardware PASS
+
+Under three Kasli locks149.249s, fresh baseline/disabled EEM/GTP/SFP verified;
+soft reset136/0x80 produced expected value NACK;23 config registers restored,
+fresh ICAL136/0x40, settled command bits/PLLlock, exact config/ID readback PASS.
+No ordinary read/write retries. Diagnostic counter/host-time125.51–125.54MHz
+within coarse ±1% nominal125MHz criterion; no ppm/jitter/phase qualification.
+Mux/bus restored; no FPGA/flash/OTP/runtime/Genesys action. Two offline controls
+PASS including rejecting config NACK and bounded recovery without repeated reset.
+Evidence kasli03-clock-restore-2026-10-15. Runtime execution remains next stage,
+with all connected-device locks, profile restoration and reboot/re-download.

@@ -295,3 +295,26 @@ Fresh ordered A/B: original54 reads/13 retried NACKs, settled54 reads/zero;
 values identical and PLLlocked, routing restored. No programming/clock changes.
 See evidence/kasli03-clock-ab-2026-10-15. Restorable clock profile validation
 and runtime execution remain pending; this test only characterizes reads.
+
+## Volatile profile reset/restore hardware PASS — 2026-10-15
+
+Capture wrapper `--settled-timing --restore-plan PLAN` now optionally performs
+an explicitly volatile test after comparing a fresh repeated snapshot with the
+reviewed baseline. It requires EEMenable0/GTPcontrol0/SFPdisable7 before mutation.
+No FPGA/flash/OTP/runtime/Genesys operations. Shared three-Kasli lease149.249s.
+
+Physical PASS: expected reset-value NACK,23 configuration writes, fresh ICAL,
+command bits settled/PLLlocked, exact23-register readback and product ID0182.
+No ordinary transfer retries or NACKs. One bounded recovery attempt is available
+if a transfer fails; it never repeats the reset. Two offline controls verify
+normal restore/reset-NACK acceptance and bounded failure on configuration NACK.
+
+Three counter/host-time samples were approximately125.51/125.54/125.52MHz,
+inside the deliberately coarse125MHz ±1% diagnostic tolerance. This detects
+wrong nominal clocks; it is not a calibrated frequency/ppm/jitter measurement.
+Mux and bus CSR restored; snapshot confirms original config values, not every
+reserved register or analog phase. Evidence kasli03-clock-restore-2026-10-15.
+Next controlled runtime execution must hold Genesys plus all Kasli leases,
+include post-test diagnostic/profile restoration and handle the clock-switch
+reboot/re-download flow. SFP physical port mapping still needs confirmation
+before claiming external link behavior.

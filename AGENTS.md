@@ -297,3 +297,11 @@ UART completed confirmation, no B/execute/Si setup, restored diagnostic PASS.
 No RAM readback checksum claim. See evidence/kasli03-netboot-download-2026-10-13.
 Runtime execution still pending clock capture/restoration and sys-switch reboot
 handling; download flag is connection-scoped, so later B needs re-download.
+
+2026-10-15 KASLI03 now USB1-2.4.1/001:019, channelC path usb-0:2.4.1:1.2-port0,
+DNA0048458a64b04854 verified. Fresh original54 reads/13 retried NACKs vs settled54/
+zero; same registers. Volatile soft-reset23-register restore/calibration/PLL and
+nominal125MHz ±1% counter check PASS, shared three-Kasli lease149.249s. Expected
+reset-value NACK only. No FPGA/flash/runtime/Genesys writes. Evidence
+kasli03-clock-restore-2026-10-15. Runtime NOT_RUN and must also lock Genesys due
+connected downstream TX. Capture/netboot wrappers accept explicit hub location.

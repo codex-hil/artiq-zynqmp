@@ -413,3 +413,5 @@ scripts/capture_kasli03_clock.py
 scripts/plan_kasli03_clock_restore.py
 diagnostics/kasli-master/settled_i2c.py
 tests/test_kasli_i2c_timing.py
+diagnostics/kasli-master/clock_restore.py
+tests/test_kasli_clock_restore.py

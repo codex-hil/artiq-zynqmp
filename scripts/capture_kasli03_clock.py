@@ -1,7 +1,8 @@
-"""Read-only KASLI03 Si5324 snapshot under shared hardware locks.
+"""KASLI03 Si5324 snapshot, optionally bounded baseline reset/restore.
 
 LGPL-3.0-or-later. I2C routing/register pointers change; no clock register data,
-flash, FPGA image or runtime is written. Routing and bus CSR restored afterward.
+flash, FPGA image or runtime is written by snapshot mode. --restore-plan
+explicitly exercises volatile soft-reset/restore/calibration. Routing and bus CSR restored afterward.
 """
 import argparse
 import fcntl
@@ -24,7 +25,11 @@ def main():
     parser.add_argument('--settled-timing', action='store_true')
     parser.add_argument('--usb-topology', default='1-6.2')
     parser.add_argument('--uart', default=UART)
+    parser.add_argument('--restore-plan', type=Path)
     args = parser.parse_args()
+    plan = json.loads(args.restore_plan.read_text()) if args.restore_plan else None
+    if plan and not args.settled_timing:
+        raise SystemExit('Restore test requires settled timing')
     sys.path.insert(0, str(RNG / 'kasli'))
     from i2c import I2C
     if args.settled_timing:
@@ -45,6 +50,13 @@ def main():
             self.port.flush()
 
     source = args.si_source.read_text()
+    if plan:
+        baseline_file = Path(__file__).resolve().parents[1] / 'evidence/kasli03-clock-snapshot-2026-10-13/results.json'
+        baseline_bytes = baseline_file.read_bytes()
+        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256']:
+            raise SystemExit('Restoration baseline hash mismatch')
+        if json.loads(baseline_bytes)['si_source_sha256'] != hashlib.sha256(source.encode()).hexdigest():
+            raise SystemExit('Driver differs from restoration baseline')
     registers = sorted({int(r) for r in re.findall(r'\b(?:read|write|write_no_ack_value)\((\d+)', source)})
     result = {'status': 'FAIL', 'board': 'KASLI03', 'clock_configuration_written': False,
               'si_source_sha256': hashlib.sha256(source.encode()).hexdigest(),
@@ -116,9 +128,15 @@ def main():
             raise RuntimeError('Si5324 not locked')
         changed = [r for r, values in regs.items() if values[0] != values[1]]
         result.update(status='PASS' if not changed else 'PARTIAL', changed_registers=changed)
+        if plan:
+            if changed:
+                raise RuntimeError('Unstable baseline; reset/restore refused')
+            from clock_restore import exercise
+            exercise(comm, i2c, regs, plan, result)
     except BlockingIOError:
         result.update(status='BUSY', error='Shared Kasli lock unavailable; no hardware access')
     except Exception as error:
+        result['status'] = 'FAIL' if result['status'] != 'BLOCKED_HARDWARE_ABSENT' else result['status']
         result['error'] = str(error)
     finally:
         if i2c is not None:
