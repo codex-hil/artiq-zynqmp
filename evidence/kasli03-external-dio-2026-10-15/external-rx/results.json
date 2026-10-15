@@ -1,0 +1,18 @@
+{
+  "status": "NOT_RUN",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ idle/AUX with real TSC/RTIO backend; advertised DOWN",
+  "remote_drtio": "NOT_RUN",
+  "firmware_sha256": "5b7334559f7db98266c5c593d2843204c0288e1598319e560eac418908fe647c",
+  "bit_sha256": "500206ab7b931263bc678a32ec74d204c0fb1cb9eca3bdaa8cb5a67f731ff244",
+  "reset_handshake": "PASS",
+  "reset_completed_load_counts": [
+    "1",
+    "1"
+  ],
+  "reset_ack_replies": 2,
+  "master_reset_errors_before": 0,
+  "master_reset_errors_after": 0,
+  "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+  "restored_ip": "192.168.2.3"
+}

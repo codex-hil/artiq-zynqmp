@@ -1625,3 +1625,36 @@ restored PASS (69.645s clock restore). Genesys normal dual-CPU core restored
 flash/SD/OTP/Genesys Si writes. All leases released. Full raw evidence under
 evidence/kasli03-external-reset-2026-10-15. Next implement and test bounded
 upstream routing/rank state before advertising readiness or remote TTL.
+
+### 2026-10-15 — real Kasli → DRTIO → Genesys TTL loopback PASS
+
+Implemented fixed direct rank1/destination1 leaf routing/readiness using native
+upstream AUX RoutingSetPath/Rank/Ack and DestinationOk packets. Paths store the
+local-hop predicate; only destination1 is eligible, after valid path/rank,
+actual TSC load, PHY/queue release and no sticky fault. No repeaters/forwarding.
+Firmware --external --tsc --reset --dio SHA5b7334559f7db98266c5c593d2843204c0288e1598319e560eac418908fe647c;
+reused qualified split-reset bit500206ab.16 host policy/acceptance controls PASS.
+
+Physical full session PASS. Native Kasli log [DEST#1] destination is up. Two
+standard artiq_run kernels execute examples/kasli_drtio_dio.py on Kasli, global
+channels0x10000/JB1 out and0x10001/JB2 in. Each schedules eight10us pulses at
+100us intervals and reads exactly eight rising timestamps through external
+DRTIO, all seven spacings100000mu, ninth read empty. Both print
+DRTIO_DIO_PASS8 100000. No new master reset/sequence/collision/busy/buffer/TSC
+errors. Two preparatory native resets also PASS. Simple PHY physical resolution
+8ns; absolute phase,jitter and deterministic link latency NOT_MEASURED.
+
+First attempt reached destination-UP but NAC3 rejected legacy delay syntax
+before TTL execution. Corrected core.delay,float pulse duration,parallel-variable
+declaration passed static artiq_compile, then final hardware acceptance. Both
+raw sessions retained separately. In final raw results legacy remote_drtio
+NOT_RUN is generic inherited metadata; acceptance.json clarifies actual DIO
+PASS. Reporter corrected for future sessions without rewriting raw evidence.
+
+Kasli diagnostic and internal125MHz clock profile restored PASS; Genesys normal
+core192.168.2.3 restored with local TTL/DMA/analyzer/MonInj and Ethernet PASS.
+All four shared locks covered load/test/restore and are released. No flash/SD/
+OTP/Genesys Si writes. Evidence kasli03-external-dio-final-2026-10-15; instructions
+diagnostics/drtio/DIO_EXPERIMENT.md, database examples/device_db_kasli_genesys.py.
+Next safe scope: more pulse patterns/error controls and DRTIO stability, then
+measured phase/deterministic latency and remaining satellite services.

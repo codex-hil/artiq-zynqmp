@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "kind": "PHYSICAL_EXTERNAL_DRTIO_DIO",
+  "runs": 2,
+  "rising_edges_per_run": 8,
+  "all_seven_spacings_per_run_mu": 100000,
+  "ninth_timestamp_read": "empty",
+  "master": "KASLI03 DNA0x0048458a64b04854",
+  "satellite": "Genesys210383B7F02DA destination1 direct rank1 leaf",
+  "source_sha256": "b189f0d26e03700a6657fad880a9d84aa06d1c01a54c0a001f077169519e4b68",
+  "scope": "Standard Kasli kernel -> external DRTIO -> JB1 -> physical jumper -> JB2 -> timestamp replies. Not absolute phase/jitter/deterministic-latency qualification or a complete satellite service set.",
+  "raw_metadata_note": "Inherited remote_drtio NOT_RUN descriptor is superseded for physical TTL by dio_loopback PASS and remote_rtio physical TTL output/input PASS; raw results retained unchanged.",
+  "restoration": "both boards PASS; Genesys local TTL/DMA/debug and Ethernet PASS",
+  "prior_attempt": "Separate first session failed NAC3 compilation before DIO execution; preserved separately."
+}

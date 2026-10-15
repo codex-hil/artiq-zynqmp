@@ -411,3 +411,13 @@ restored/validated (Genesys192.168.2.3 local TTL/DMA/debug/Ethernet; Kasli diagn
 and internal125MHz clock). Evidence kasli03-external-reset-2026-10-15. Combined
 wrapper owns Genesys/allKasli leases across entire load/test/restore. No flash/Si
 Genesys writes. Next routing/rank state and readiness qualification.
+
+
+External DRTIO DIO2026-10-15 PASS: real Kasli03 master -> Genesys destination1
+rank1 direct leaf -> JB1/JB2 jumper -> timestamps. Two normal kernels,8 pulses/
+8 rising edges each,all seven intervals100000mu,ninth read empty. Native UP,
+TSC/reset handshake pass; no new master errors. Not absolute phase/jitter or
+complete satellite service qualification. Both boards restored/validated,
+Genesys192.168.2.3 local TTL/DMA/debug/Ethernet PASS; locks released. Evidence
+kasli03-external-dio-final-2026-10-15; source examples/kasli_drtio_dio.py and
+DIO_EXPERIMENT.md. Initial NAC3 compile failure kept in separate evidence.

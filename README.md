@@ -312,3 +312,14 @@ local CoreDMA/analyzer/MonInj runtime was restored and physically retested.
 See [packet diagnostic instructions](diagnostics/drtio/README.md),
 [truncation correction](docs/DRTIO_PACKET_TRUNCATION.md) and
 `evidence/drtio-packets-hardware-2026-10-11.json`.
+
+
+External DRTIO digital I/O milestone (2026-10-15): standard Kasli kernels
+physically drive Genesys JB1 and read JB2 through DRTIO. Two runs passed eight
+edges and100us spacing each. See [experiment and scope](diagnostics/drtio/DIO_EXPERIMENT.md),
+[kernel](examples/kasli_drtio_dio.py), [device database](examples/device_db_kasli_genesys.py)
+and [physical acceptance](evidence/kasli03-external-dio-final-2026-10-15/acceptance.json).
+This is a direct destination1 laboratory leaf; full satellite services and
+absolute phase/deterministic-latency qualification remain pending. Both boards
+are restored after each guarded session; load the qualified volatile images
+under the shared leases before running the experiment.

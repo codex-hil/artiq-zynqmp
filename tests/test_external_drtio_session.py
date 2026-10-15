@@ -121,3 +121,23 @@ class ExternalResetAcceptanceTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):self.exercise(acks=1)
     def test_new_master_error_rejected(self):
         with self.assertRaises(RuntimeError):self.exercise(failed=True)
+
+class ExternalDIOAcceptanceTests(unittest.TestCase):
+    def exercise(self,up=True,marker=True,error=False):
+        with tempfile.TemporaryDirectory() as tmp:
+            s=module.ExternalSession.__new__(module.ExternalSession)
+            s.output=Path(tmp);s.config={'artiq_python':'fake'};s.result={}
+            def run(name,*a,**kw):
+                if name.startswith('master-dio-probe'):return 'DRTIO_DIO_PASS 8 100000' if marker else 'no measurement'
+                return ('[DEST#1] destination is up' if up else 'down')+(' RTIO collision error' if error and name=='master-after-dio-log' else '')
+            s.run=run
+            uart=SimpleNamespace(in_waiting=0,read=lambda n:b'')
+            with patch.object(module.time,'monotonic',side_effect=itertools.count()):s.probe_dio('fake',uart,bytearray())
+            self.assertEqual(s.result['dio_loopback'],'PASS')
+    def test_both_physical_results_required(self):
+        self.exercise()
+        with self.assertRaises(RuntimeError):self.exercise(marker=False)
+    def test_no_output_probe_before_destination_up(self):
+        with self.assertRaises(RuntimeError):self.exercise(up=False)
+    def test_native_error_rejects_measurement(self):
+        with self.assertRaises(RuntimeError):self.exercise(error=True)

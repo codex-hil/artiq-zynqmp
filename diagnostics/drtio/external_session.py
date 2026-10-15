@@ -41,7 +41,9 @@ class ExternalSession:
                 raise ValueError('Observer artifact hash mismatch: ' + key)
         self.mapping = json.loads(Path(c['csr_map']).read_text())
         self.tsc_test = c.get('mode') == 'external-tsc-down'
+        self.dio_test = bool(c.get('dio_test',False))
         self.reset_test = bool(c.get('reset_test',False))
+        if self.dio_test and not self.reset_test: raise ValueError('DIO requires reset test')
         if self.reset_test and not self.tsc_test: raise ValueError('Reset test requires TSC mode')
         self.external_aux = c.get('mode') in ('external-aux-down','external-tsc-down')
         if not self.external_aux and 'observer_alignment' not in self.mapping['registers']:
@@ -76,7 +78,16 @@ class ExternalSession:
                     raise ValueError('Stale reset firmware source')
                 if not all('aux_'+n in self.mapping['registers'] for n in ('rtio_reset_request','rtio_reset_applied','phy_reset_request','phy_reset_applied')):
                     raise ValueError('Split reset CSRs required')
+            if self.dio_test:
+                policy=REPO/'diagnostics/drtio/aux_protocol/leaf_policy.h'
+                if not fw.get('dio_leaf') or fw.get('leaf_policy_sha256') != hashlib.sha256(policy.read_bytes()).hexdigest():
+                    raise ValueError('Qualified leaf readiness required')
+                if fw.get('rust_source_sha256') != hashlib.sha256(policy.with_name('lib.rs').read_bytes()).hexdigest():
+                    raise ValueError('Stale leaf AUX codec')
+            elif fw.get('dio_leaf'):
+                raise ValueError('Readiness firmware requires explicit physical DIO test')
             self.result['optical_tx'] = ('upstream ARTIQ idle/AUX with real TSC/RTIO backend; advertised DOWN' if self.tsc_test else 'upstream ARTIQ idle and AUX replies; no RTIO backend')
+            if self.dio_test: self.result['optical_tx']='upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf'
             self.result['firmware_sha256'] = fw['elf_sha256']
         self.result['bit_sha256'] = build['sha256']['top.bit']
 
@@ -195,6 +206,7 @@ disconnect
                     if b'AUX_TSC ACK count=1' not in raw or b'AUX_RESET COLD_RELEASE PASS' not in raw:
                         raise RuntimeError('Reset probe requires observed cold release and TSC ACK')
                     self.probe_reset(master_host,uart,raw)
+                    if getattr(self,'dio_test',False): self.probe_dio(master_host,uart,raw)
             finally:
                 (self.output/'aux-uart.log').write_bytes(raw)
         text = raw.decode(errors='replace')
@@ -223,7 +235,10 @@ disconnect
         good = tsc_ok and echo > 0 and self.result['master_link_echo_observed'] and not (
             self.result['firmware_send_errors'] or self.result['firmware_rx_errors'])
         if getattr(self,'reset_test',False): good = good and self.result.get('reset_handshake')=='PASS'
-        self.result['status'] = ('EXTERNAL_RESET_ACK' if getattr(self,'reset_test',False) else 'EXTERNAL_TSC_LOAD_ACK' if getattr(self,'tsc_test',False) else 'EXTERNAL_AUX_ECHO') if good else 'EXTERNAL_AUX_NOT_CONFIRMED'
+        if getattr(self,'dio_test',False):
+            good = good and self.result.get('dio_loopback')=='PASS'
+            self.result['remote_rtio']='physical TTL output/input PASS'
+        self.result['status'] = ('EXTERNAL_DIO_LOOPBACK' if getattr(self,'dio_test',False) else 'EXTERNAL_RESET_ACK' if getattr(self,'reset_test',False) else 'EXTERNAL_TSC_LOAD_ACK' if getattr(self,'tsc_test',False) else 'EXTERNAL_AUX_ECHO') if good else 'EXTERNAL_AUX_NOT_CONFIRMED'
         if not good: raise RuntimeError('External AUX echo not confirmed; inspect both UART/master logs')
 
     def probe_reset(self,master_host,uart,raw):
@@ -255,6 +270,39 @@ disconnect
             master_reset_errors_before=errors(before),master_reset_errors_after=errors(after),
             reset_scope='two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof')
         if not good:raise RuntimeError('External native reset/ACK not confirmed')
+
+    def probe_dio(self,master_host,uart,raw):
+        c=self.config
+        before=self.run('master-before-dio-log',[c['artiq_python'],'-m',
+            'artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+        if '[DEST#1] destination is up' not in before:
+            raise RuntimeError('Native master has not enabled destination1; no TTL experiment')
+        db={'core':{'type':'local','module':'artiq.coredevice.core','class':'Core',
+            'arguments':{'host':master_host,'target':'rv32ima','ref_period':1e-9,'analyzer_proxy':None}}}
+        for name,cls,channel in [('ttl_out','TTLOut',0x10000),('ttl_in','TTLInOut',0x10001)]:
+            db[name]={'type':'local','module':'artiq.coredevice.ttl','class':cls,
+                'arguments':{'channel':channel}}
+        path=self.output/'dio-device-db.py';path.write_text('device_db = '+repr(db)+'\n')
+        for i in range(2):
+            log=self.run('master-dio-probe-'+str(i),[c['artiq_python'],'-m','artiq.frontend.artiq_run',
+                '--device-db='+str(path),'--dataset-db='+str(self.output/'dio-datasets.mdb'),
+                str(REPO/'examples/kasli_drtio_dio.py')],timeout=45,host=True)
+            if not re.search(r'DRTIO_DIO_PASS\s+8\s+100000',log):
+                raise RuntimeError('Remote physical DIO result absent')
+            end=time.monotonic()+1
+            while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
+        after=self.run('master-after-dio-log',[c['artiq_python'],'-m',
+            'artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+        bad=r'reset failed|RTIO (?:sequence|collision|busy) error|failed to sync TSC|timeout attempting to get remote buffer space'
+        if len(re.findall(bad,after))!=len(re.findall(bad,before)):
+            raise RuntimeError('New master transport/RTIO error during DIO')
+        text=raw.decode(errors='replace')
+        if any(t in text for t in ('AUX_FW PANIC','AUX_RESET REJECT','AUX_SERVICE SEND_FAIL','AUX_SERVICE RX_ERROR')):
+            raise RuntimeError('Satellite firmware fault during DIO')
+        self.result.update(dio_loopback='PASS',dio_runs=2,pulses_per_run=8,
+            remote_drtio='direct-leaf physical TTL PASS; remaining satellite services incomplete',
+            rising_edge_spacing_mu=100000,remote_rtio='physical TTL output/input PASS',
+            dio_scope='Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED')
 
     def restore(self):
         if not self.touched: return
