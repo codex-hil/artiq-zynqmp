@@ -1377,3 +1377,18 @@ Simple local counter/wait/scalar-RPC example compiled rv32ima ELF32/RISC-V,
 hardware NOT_RUN. NAC3 global delay name resolution fixed using core.delay.
 Next safe step run experiment with actual scoped core address, retaining all
 connected-board locks and restoration. Remote DRTIO remains NOT_RUN.
+
+### 2026-10-15 — KASLI03 standard local kernel and RPC hardware PASS
+
+Two standard artiq_run invocations compiled/uploaded/executed the rv32ima
+counter probe over scoped IPv6. RTIO counter intervals1124392/1124776mu
+exceeded the requested1000000mu wait; synchronous host RPC returned the
+asserted0x12345678 value. No TTL writes. Standard coremgmt log also PASS twice.
+This validates local kernel loading/execution, timeline wait and scalar RPC;
+external DRTIO/AUX/discovery/TSC/remote TTL remain NOT_RUN.
+
+Shared Genesys+three Kasli locks covered BRAM load, two-stage RAM startup,
+clients and full-checker/23-register-clock restoration PASS. No Genesys
+configuration, flash or OTP writes. Evidence kasli03-counter-2026-10-15.
+Next safe step: prepare bounded external-link observation using both board
+leases and reviewed Genesys diagnostic restoration before remote protocol tests.

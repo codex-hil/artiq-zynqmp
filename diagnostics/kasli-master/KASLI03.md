@@ -362,3 +362,20 @@ in this NAC3 context; explicit core.delay compiles. Generated device_db has a
 placeholder IPv4 address; physical execution must supply scoped actual host
 and disable unstarted optional analyzer proxy. Next: run this experiment in
 the same bounded cross-board session before diagnostic/profile restoration.
+
+## Standard local kernel/RPC hardware PASS — 2026-10-15
+
+Run the reviewed netboot wrapper with all runtime/management arguments above
+and `--counter-experiment`. It supplies the actual scoped core host, rv32ima
+and1ns machine unit, disables the optional analyzer proxy and invokes standard
+artiq_run twice on examples/kasli_counter_probe.py. Each invocation compiles,
+uploads and executes a fresh kernel, waits at least1ms on the RTIO timeline,
+then checks synchronous scalar RPC return0x12345678. The host also requires
+the printed before/after values and minimum1000000mu interval.
+
+Physical runs PASS:7079654360→7080778752 and7566664016→7567788792mu.
+Two management connections and final diagnostic/clock restoration also PASS.
+Shared Genesys+three Kasli locks cover the complete window. No TTL writes,
+Genesys configuration, flash or OTP writes. Evidence:
+`evidence/kasli03-counter-2026-10-15`. Earlier NOT_RUN notes above are historical.
+This does not establish external DRTIO synchronization or remote TTL operation.

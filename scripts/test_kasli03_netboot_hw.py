@@ -35,6 +35,7 @@ def main():
     parser.add_argument('--runtime-sha256')
     parser.add_argument('--execute-runtime', action='store_true')
     parser.add_argument('--management-client', action='store_true')
+    parser.add_argument('--counter-experiment', action='store_true')
     parser.add_argument('--clock-plan', type=Path)
     parser.add_argument('--clock-baseline', type=Path)
     parser.add_argument('--clock-validation', type=Path)
@@ -52,6 +53,8 @@ def main():
             raise SystemExit('Clock baseline/validation identity mismatch')
         sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'diagnostics/kasli-master'))
         sys.path.insert(0, str(RNG / 'kasli'))
+    if args.counter_experiment and not args.management_client:
+        raise SystemExit('Counter experiment requires management-client and runtime checks')
     if args.management_client and not args.execute_runtime:
         raise SystemExit('Management test requires runtime execution')
     payload = None
@@ -240,6 +243,26 @@ def main():
                     logs.append(len(completed.stdout))
                 result['management_client'] = {'status': 'PASS', 'client': 'standard artiq_coremgmt log',
                                                'independent_connections': 2, 'log_characters': logs}
+            if args.counter_experiment:
+                device_db = {'core': {'type': 'local', 'module': 'artiq.coredevice.core',
+                    'class': 'Core', 'arguments': {'host': host, 'target': 'rv32ima',
+                    'ref_period': 1e-9, 'analyzer_proxy': None}}}
+                db_path = args.output / 'device_db.py'
+                db_path.write_text('device_db = ' + repr(device_db) + '\n')
+                example = Path(__file__).resolve().parents[1] / 'examples/kasli_counter_probe.py'
+                measured = []
+                for run in range(2):
+                    completed = subprocess.run([host_python, '-m', 'artiq.frontend.artiq_run',
+                        '--device-db=' + str(db_path), '--dataset-db=' + str(args.output / 'datasets.mdb'),
+                        str(example)], capture_output=True, text=True, timeout=30, env=client_env)
+                    (args.output / f'counter-experiment-{run}.txt').write_text(completed.stdout + completed.stderr)
+                    match = re.search(r'KASLI_COUNTER_RPC_PASS\s+(\d+)\s+(\d+)', completed.stdout)
+                    if completed.returncode or not match or int(match[2]) - int(match[1]) < 1000000:
+                        raise RuntimeError('Standard local counter/RPC experiment failed; inspect captured output')
+                    measured.append({'before_mu': int(match[1]), 'after_mu': int(match[2])})
+                result['counter_experiment'] = {'status': 'PASS', 'standard_artiq_run': True,
+                    'runs': measured, 'ref_period': 1e-9, 'ttl_writes': False,
+                    'source_sha256': hashlib.sha256(example.read_bytes()).hexdigest()}
             result['status'] = 'PASS'
     except BlockingIOError:
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')

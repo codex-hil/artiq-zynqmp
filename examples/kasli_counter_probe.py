@@ -16,8 +16,8 @@ class KasliCounterProbe(EnvExperiment):
 
     @rpc
     def report(self, before: int64, after: int64) -> int64:
-        if before <= 0 or after <= before:
-            raise ValueError('RTIO counter failed to advance')
+        if before <= 0 or after - before < 1000000:
+            raise ValueError('RTIO counter failed to advance by requested 1ms')
         print('KASLI_COUNTER_RPC_PASS', before, after, flush=True)
         return int64(0x12345678)
 

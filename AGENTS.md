@@ -313,3 +313,12 @@ three Kasli locks held through startup and full-checker/clock-profile restoratio
 PASS. No Genesys config/flash/OTP writes; volatile Si setup/restore explicit.
 Evidence kasli03-runtime-startup-2026-10-15. Use --execute-runtime only with
 reviewed clock baseline/validation and exact payload hash; current enp2s0.
+
+2026-10-15 KASLI03 standard artiq_coremgmt log and artiq_run counter/RPC hardware
+PASS twice. Scoped core fe80::4b:3ff:fe48:4854%enp2s0, rv32ima,1ns machine unit.
+Kernel RTIO wait>=1ms, synchronous scalar RPC return asserted; no TTL writes.
+Netboot wrapper --counter-experiment requires --management-client and reviewed
+runtime/clock inputs. Full-checker and clock baseline restored PASS under
+Genesys+three Kasli locks. External DRTIO remains NOT_RUN. Evidence
+kasli03-counter-2026-10-15. Next external-link test needs both board leases and
+reviewed Genesys diagnostic load/restore, never rely on old USB bus numbers.
