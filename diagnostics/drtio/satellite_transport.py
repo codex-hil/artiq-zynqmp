@@ -59,6 +59,7 @@ class SatelliteTransport(Module):
 
         self.rtio_error_flags = Signal(3)
         self.rtio_error_flags.attr.add("keep")
-        self.sync.rtio_rx += self.rtio_error_flags.eq(self.rtio_error_flags | Cat(
-            self.backend.async_errors.sequence_error,
-            self.backend.async_errors.collision, self.backend.async_errors.busy))
+        self.sync.rtio_rx += If(self.backend.rtio_reset,
+            self.rtio_error_flags.eq(0)).Else(self.rtio_error_flags.eq(self.rtio_error_flags | Cat(
+                self.backend.async_errors.sequence_error,
+                self.backend.async_errors.collision, self.backend.async_errors.busy)))

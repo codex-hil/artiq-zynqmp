@@ -59,6 +59,25 @@ class AuxSatellitePSTests(unittest.TestCase):
             yield a.r.ready.eq(0)
             yield
             return value
+        def write(name,value):
+            yield a.aw.addr.eq(regs[name]['address'])
+            yield a.aw.id.eq(5);yield a.aw.len.eq(0)
+            yield a.aw.size.eq(2);yield a.aw.burst.eq(1)
+            yield a.aw.valid.eq(1)
+            yield from wait(a.aw.ready)
+            yield
+            yield a.aw.valid.eq(0)
+            yield a.w.data.eq(value);yield a.w.strb.eq(15)
+            yield a.w.last.eq(1);yield a.w.valid.eq(1)
+            yield from wait(a.w.ready)
+            yield
+            yield a.w.valid.eq(0)
+            yield from wait(a.b.valid)
+            self.assertEqual((yield a.b.resp),0)
+            yield a.b.ready.eq(1)
+            yield
+            yield a.b.ready.eq(0)
+            yield
         def run():
             yield p.reset.eq(1)
             for _ in range(10):yield
@@ -73,6 +92,32 @@ class AuxSatellitePSTests(unittest.TestCase):
                 self.assertGreaterEqual((yield p.satellite.backend.tsc.coarse_ts),epoch*1000)
                 self.assertEqual((yield from read('rt_reply_fault')),0)
                 self.assertEqual((yield from read('rtio_error_flags')),0)
+                self.assertEqual((yield from read('rtio_reset_applied')),1)
+                self.assertEqual((yield from read('phy_reset_applied')),1)
+                yield from write('phy_reset_request',0)
+                for _ in range(20):yield
+                self.assertEqual((yield from read('phy_reset_applied')),0)
+                # Release the cold/common-reset hold, then command a new
+                # datapath reset solely through actual PS AXI CSR writes.
+                yield from write('rtio_reset_request',0)
+                for _ in range(20):yield
+                self.assertEqual((yield from read('rtio_reset_applied')),0)
+                before=(yield p.satellite.backend.tsc.coarse_ts)
+                yield from write('rtio_reset_request',1)
+                for _ in range(20):yield
+                self.assertEqual((yield from read('rtio_reset_applied')),1)
+                self.assertGreater((yield p.satellite.backend.tsc.coarse_ts),before)
+                self.assertEqual((yield from read('tsc_load_count')),1)
+                yield from write('rtio_reset_request',0)
+                for _ in range(20):yield
+                self.assertEqual((yield from read('rtio_reset_applied')),0)
+                self.assertEqual((yield from read('tsc_load_count')),1)
+                yield from write('phy_reset_request',1)
+                for _ in range(20):yield
+                self.assertEqual((yield from read('phy_reset_applied')),1)
+                self.assertEqual((yield from read('tsc_load_count')),1)
+                # Return the hold for the next common-reset epoch.
+                yield from write('rtio_reset_request',1)
                 yield p.reset.eq(1)
                 for _ in range(10):yield
                 self.assertEqual((yield from read('tsc_load_count')),0)

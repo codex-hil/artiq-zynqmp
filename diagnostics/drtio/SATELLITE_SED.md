@@ -163,3 +163,37 @@ faults. Migen simulation needs explicit private aux_* clock schedules matching
 their parent clocks; a combinatorial clock alias alone does not schedule them.
 Use `generate_aux_ps.py --satellite` for standalone AXI HDL. TSCAck firmware,
 backend-only production reset, routing and destination-UP remain absent.
+
+## Separate RTIO and PHY reset — 2026-10-15
+
+Current upstream satman handles ResetRequest via drtiosat.reset, with a100us
+hold; reset_phy is separate. SatelliteBackend now mirrors that split before
+merging clock domains: rtio_reset clears SED queues/input collector and input
+control, preserving output PHY state. phy_reset controls physical sampling/
+output state. TSC, packet serializer and RT reply CDC are outside both datapath
+reset controls. Common GT/domain reset still resets the whole endpoint.
+
+Each applied flag is registered only after four complete backend clock edges
+with its request asserted. This includes the reset-less output pad register's
+settling interval. AuxPS appends independent rtio_reset_request/applied and
+phy_reset_request/applied CSRs. Requests default to asserted cold holds; future
+firmware must release PHY and RTIO explicitly before advertising any readiness.
+Both request/status paths have synchronizers. Applied flags are masked during
+common reset. They are hardware state observations, not writes echoed back.
+
+Three new decoded RT simulations PASS: four pending output events cleared,
+output reset/reuse while TSC increments continuously; pending input discarded
+with native empty timeout and no phantom capture; queue-only reset preserves a
+high output while cancelling its pending low transition. Buffer124→128 proof
+uses actual SED occupancy. The AXI/raw20 test now commands/releases both reset
+paths in two epochs, checks applied flags and unchanged TSC-load count/running
+coarse counter. Seven previous SED tests also PASS (11 test methods total).
+
+An initial combined-reset build satellite-reset-route-2026-10-15 was stopped,
+not loaded, after upstream comparison required the split. Current build is
+satellite-split-reset-route-2026-10-15,213 generated first-stage CDC bits/eight
+Gray buses. Routing/timing qualification is pending. No ResetAck firmware or
+hardware reset acceptance is added in this stage. Fatal RT reply CDC faults
+remain fatal: a queue reset does not pretend to repair a damaged transport.
+Next qualify the bitstream, implement bounded CSR hold/release checking, and
+prove real ResetRequest/ResetAck under the existing both-board lease/restoration.

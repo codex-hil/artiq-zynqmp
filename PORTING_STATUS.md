@@ -1560,3 +1560,25 @@ writes; Kasli volatile clock restore explicit. All leases released.
 Evidence kasli03-external-tsc-2026-10-15 and aux-tsc-firmware-build-2026-10-15.
 Next safe work: actual SED/PHY reset while preserving TSC, with empty-buffer/
 output-state proof, then routing/rank state and remote TTL experiments.
+
+### 2026-10-15 — native-style separate RTIO/PHY reset RTL PASS
+
+SatelliteBackend now inserts reset before domain merging: RTIO queue/input
+control reset preserves output PHY state and running TSC; PHY reset is separate,
+matching current upstream satman ResetRequest/reset_phy behavior. Registered
+applied flags require four backend edges; AuxPS requests/statuses cross clock
+domains, default cold holds asserted. SED sticky errors clear on RTIO reset;
+RT reply transport faults remain fatal. No firmware ResetAck enabled yet.
+
+11 tests PASS:3 new reset cases (queued outputs cancelled, combined output-zero/
+reuse, pending input discarded without phantom capture, queue-only high-output
+preservation, continuous TSC),1 raw20/AXI reset-control/two-epoch test,7 existing
+SED/input regressions. Buffer124→128 from actual SED. Logs9.179/60.703/14.951s.
+Common-reset simulation uses functional model, not silicon reset timing proof.
+Initial combined-reset lab build stopped/never loaded after upstream comparison.
+Corrected satellite-split-reset-route-2026-10-15 running:213 generated CDC bits/
+eight Gray buses; route/timing/bitstream PENDING. No hardware access; prior
+normal restored Genesys/Kasli state unchanged. Evidence
+satellite-split-reset-simulation-2026-10-15.json. Next qualify build and implement
+hardware-confirmed CSR hold/release in real AUX ResetRequest, preserving TSC;
+then routing/rank and remote TTL. No production ResetAck/UP claim yet.

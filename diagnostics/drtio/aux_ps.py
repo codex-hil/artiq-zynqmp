@@ -62,7 +62,25 @@ class AuxPS(Module):
             self.comb += [self.tsc_load_count.status.eq(Mux(self.reset,0,transport.tsc_load_count)),
                 self.rt_reply_fault.status.eq(fault & ~self.reset),
                 self.rtio_error_flags.status.eq(Mux(self.reset,0,errors))]
-            self.csrs += [self.tsc_load_count,self.rt_reply_fault,self.rtio_error_flags,self.rtio_spread_enable]
+            self.rtio_reset_request = CSRStorage(1, reset=1, name='rtio_reset_request')
+            self.rtio_reset_applied = CSRStatus(1, name='rtio_reset_applied')
+            reset_rx = Signal(reset=1)
+            applied = Signal()
+            self.specials += [MultiReg(self.rtio_reset_request.storage, reset_rx, 'aux_rx', reset=1),
+                              MultiReg(transport.backend.reset_applied, applied)]
+            self.comb += [transport.backend.rtio_reset.eq(reset_rx),
+                          self.rtio_reset_applied.status.eq(applied & ~self.reset)]
+            self.phy_reset_request = CSRStorage(1, reset=1, name='phy_reset_request')
+            self.phy_reset_applied = CSRStatus(1, name='phy_reset_applied')
+            phy_reset_rx = Signal(reset=1)
+            phy_applied = Signal()
+            self.specials += [MultiReg(self.phy_reset_request.storage, phy_reset_rx, 'aux_rx', reset=1),
+                              MultiReg(transport.backend.phy_reset_applied, phy_applied)]
+            self.comb += [transport.backend.phy_reset.eq(phy_reset_rx),
+                          self.phy_reset_applied.status.eq(phy_applied & ~self.reset)]
+            self.csrs += [self.tsc_load_count,self.rt_reply_fault,self.rtio_error_flags,
+                          self.rtio_spread_enable,self.rtio_reset_request,self.rtio_reset_applied,
+                          self.phy_reset_request,self.phy_reset_applied]
         self.submodules.wb2csr = w = wishbone2csr.WB2CSR(
             bus_wishbone=wishbone.Interface(data_width=32,address_width=40,addressing='word'),
             bus_csr=csr_bus.Interface(data_width=32,address_width=14))

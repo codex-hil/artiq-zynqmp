@@ -388,3 +388,16 @@ banner still legacy no-RTIO-backend; correct it with next firmware revision;
 loaded bit actually contains real backend. Raw evidence preserved/clarified in
 kasli03-external-tsc-2026-10-15/acceptance.json. Next SED/PHY reset must preserve
 running TSC; never reset entire transport/time just to acknowledge ResetRequest.
+
+2026-10-15 split RTIO/PHY reset RTL11 methods PASS. Match upstream satman:
+ResetRequest resets queues/input control, preserves output PHY state/TSC;
+separate PHY reset can clear output. Actual applied flags after4 backend edges,
+new AuxPS CSR req/applied pairs default asserted cold holds. Firmware must
+release holds explicitly; ResetAck remains unsupported. Raw20/AXI two-epoch,
+SED buffer124→128, pending input removal, output-state preservation verified.
+No HW touched. Build satellite-split-reset-route-2026-10-15 running(session31053),
+213 generated CDC bits/eight Gray constraints; qualification pending. Do not
+edit active build_top.sh/check_top_build.py. Earlier satellite-reset-route-
+2026-10-15 combined lab build stopped/never loaded. Next qualify then bounded
+CSR hold/release and physical native ResetRequest proof; no fake transport
+recovery (RT reply fault remains fatal). Evidence satellite-split-reset-simulation.

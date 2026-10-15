@@ -232,3 +232,7 @@ hdl-drtio-satellite-transport:
 .PHONY: test-drtio-aux-satellite
 test-drtio-aux-satellite:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_aux_satellite_ps.py' -v
+
+.PHONY: test-drtio-satellite-reset
+test-drtio-satellite-reset:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_reset.py' -v
