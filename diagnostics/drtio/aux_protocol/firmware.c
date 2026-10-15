@@ -50,6 +50,7 @@ static void service(void) {
  xil_printf("AUX_SERVICE READY\r\n");
  while(1) {
   if(rd(REG_AUX_IN_RESET) || !rd(REG_AUX_RX_UP)) {usleep(1000);continue;}
+#ifndef AUX_EXTERNAL
   if(XUartPs_IsReceiveData(STDIN_BASEADDRESS)) {
    unsigned command=XUartPs_ReadReg(STDIN_BASEADDRESS,XUARTPS_FIFO_OFFSET)&255;
    uint8_t bytes[16];int size=-1;
@@ -62,6 +63,7 @@ static void service(void) {
     if(send(bytes,size))xil_printf("AUX_SERVICE SEND_FAIL\r\n");
    }
   }
+#endif
   if(rd(REG_AUX_AUX_RX_ERROR)) {
    xil_printf("AUX_SERVICE RX_ERROR\r\n");wr(REG_AUX_AUX_RX_ERROR,1);
   }
@@ -82,6 +84,18 @@ static void service(void) {
 }
 int main(void) {
  Xil_DCacheDisable();
+#ifdef AUX_EXTERNAL
+ xil_printf("AUX_EXTERNAL START upstream-codec no-RTIO-backend\r\n");
+ if(rd(REG_MONITOR_MAGIC)!=0x44525430)goto fail;
+ wr(REG_MONITOR_TX_ENABLE,0);wr(REG_MONITOR_RESET,1);
+ wr(REG_MONITOR_PRBS,0);wr(REG_MONITOR_TX_PRBS,0);wr(REG_MONITOR_LOOPBACK,0);
+ usleep(50000);wr(REG_MONITOR_RESET,0);
+ if(wait(REG_AUX_IN_RESET,0) || wait(REG_AUX_RX_UP,1))goto fail;
+ usleep(25000);
+ wr(REG_MONITOR_TX_ENABLE,1);
+ xil_printf("AUX_EXTERNAL TX_IDLE_ENABLED destination=DOWN\r\n");
+ service();
+#else
  xil_printf("AUX_FW START upstream-codec\r\n");
  if(rd(REG_MONITOR_MAGIC)!=0x44525430)goto fail;
  wr(REG_MONITOR_TX_ENABLE,0);wr(REG_MONITOR_RESET,1);
@@ -105,7 +119,9 @@ int main(void) {
  if(exchange(0,0,1)||rd(REG_AUX_AUX_RX_ERROR)||rd(REG_AUX_AUX_RX_PRESENT))goto fail;
  xil_printf("TEST ARTIQ_AUX_FIRMWARE PASS\r\n");
  service();
+#endif
 fail:
+ wr(REG_MONITOR_TX_ENABLE,0);
  xil_printf("TEST ARTIQ_AUX_FIRMWARE FAIL\r\n");
  while(1)usleep(1000000);
  return 1;

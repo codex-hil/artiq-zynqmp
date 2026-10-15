@@ -275,7 +275,7 @@ def main():
                     'runs': measured, 'ref_period': 1e-9, 'ttl_writes': False,
                     'source_sha256': hashlib.sha256(example.read_bytes()).hexdigest()}
             if observer:
-                observer.observe()
+                observer.observe(result['netboot_ipv6_link_local'] + '%' + args.network_interface)
                 result['external_rx'] = observer.result
             result['status'] = 'PASS'
     except BlockingIOError:

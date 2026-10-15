@@ -1,0 +1,18 @@
+{
+  "status": "EXTERNAL_AUX_ECHO",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ idle and AUX replies; no RTIO backend",
+  "remote_drtio": "NOT_RUN",
+  "firmware_sha256": "4e17e0bd48c5e13e1d4d926e54ce42f4e41110e6d6a3eb4d72967064e072297d",
+  "bit_sha256": "c54dcb6e82f9d45b658de4762926ef75f18831242b9b3ad0ad40391b8aabdfc9",
+  "echo_replies": 1,
+  "destination_down_replies": 71,
+  "firmware_send_errors": 0,
+  "firmware_rx_errors": 0,
+  "unsupported_drops": 2,
+  "master_link_echo_observed": true,
+  "scope": "real external AUX codec/CRC echo and DOWN status, not production satellite",
+  "tsc_synchronization": "NOT_IMPLEMENTED",
+  "remote_rtio": "NOT_IMPLEMENTED",
+  "restored_ip": "192.168.2.3"
+}

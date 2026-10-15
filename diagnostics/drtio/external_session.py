@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import time
 
 REPO = Path(__file__).resolve().parents[2]
 CABLE = '210383B7F02DA'
@@ -39,11 +40,27 @@ class ExternalSession:
             if hashlib.sha256(Path(c[key]).read_bytes()).hexdigest() != build['sha256'][filename]:
                 raise ValueError('Observer artifact hash mismatch: ' + key)
         self.mapping = json.loads(Path(c['csr_map']).read_text())
-        if 'observer_alignment' not in self.mapping['registers']:
+        self.external_aux = c.get('mode') == 'external-aux-down'
+        if not self.external_aux and 'observer_alignment' not in self.mapping['registers']:
             raise ValueError('Observer CSR map required')
         verilog = (bit.parent/'top.v').read_text()
-        if "assign sfp_disable = 1'd1;" not in verilog:
+        if not self.external_aux and "assign sfp_disable = 1'd1;" not in verilog:
             raise ValueError('Hard optical TX disable not verified')
+        if self.external_aux:
+            if 'aux_bridge_busy' not in self.mapping['registers']:
+                raise ValueError('External AUX map required')
+            if 'assign sfp_disable = (~diagnostic_tx_enable_storage);' not in verilog:
+                raise ValueError('Expected gated AUX optical TX')
+            elf = Path(c['firmware'])
+            fw = json.loads((elf.parent/'results.json').read_text())
+            if fw.get('status') != 'PASS' or fw.get('mode') != 'external-aux-down':
+                raise ValueError('External-only firmware qualification required')
+            if hashlib.sha256(elf.read_bytes()).hexdigest() != fw['elf_sha256']:
+                raise ValueError('External firmware hash mismatch')
+            if fw['csr_map_sha256'] != build['sha256']['csr-map.json']:
+                raise ValueError('External firmware/PL maps differ')
+            self.result['optical_tx'] = 'upstream ARTIQ idle and AUX replies; no RTIO backend'
+            self.result['firmware_sha256'] = fw['elf_sha256']
         self.result['bit_sha256'] = build['sha256']['top.bit']
 
     def run(self, name, argv, timeout=240, host=False):
@@ -73,7 +90,9 @@ class ExternalSession:
             *self.common(), '--bitstream',self.config['bitstream'],
             '--output',str(self.output/'load')])
 
-    def observe(self):
+    def observe(self, master_host=None):
+        if getattr(self, 'external_aux', False):
+            return self.observe_aux(master_host)
         lines = ['lassign $argv server cable', 'connect -url $server', 'set matches {}',
             'foreach p [targets -target-properties -filter {name == "PSU"}] {',
             'if {[dict exists $p jtag_cable_serial] && [dict get $p jtag_cable_serial] eq $cable} {lappend matches [dict get $p target_id]}',
@@ -132,6 +151,45 @@ disconnect
         good = good and len(ratios)==3 and all(.95 < x < 1.05 for x in ratios)
         self.result['status'] = 'RX_CLOCK_AND_COMMA' if good else 'RX_NOT_CONFIRMED'
         if not good: raise RuntimeError('External RX not confirmed; inspect status/LOS/clock/alignment')
+
+    def observe_aux(self, master_host):
+        import serial
+        if not master_host: raise ValueError('Actual scoped master host required')
+        raw = bytearray()
+        with serial.Serial(self.config['port'],115200,timeout=.2,exclusive=True) as uart:
+            uart.reset_input_buffer()
+            self.run('aux-start',[ 'vivado-container','shell','-c','exec "$@"','bash',XSDB,
+                str(REPO/'scripts/run_ethernet.tcl'),self.config['server'],
+                self.config['firmware'],CABLE],timeout=60)
+            start = time.monotonic()
+            queried = False
+            master = ""
+            try:
+                while time.monotonic()-start < 25:
+                    raw.extend(uart.read(uart.in_waiting or 1))
+                    if not queried and time.monotonic()-start > 3:
+                        queried = True
+                        master = self.run('master-aux-log',[self.config['artiq_python'],
+                            '-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],
+                            timeout=15,host=True)
+                    if b'AUX_FW PANIC' in raw or b'ARTIQ_AUX_FIRMWARE FAIL' in raw:
+                        raise RuntimeError('External AUX firmware rejected startup')
+            finally:
+                (self.output/'aux-uart.log').write_bytes(raw)
+        text = raw.decode(errors='replace')
+        echo = text.count('AUX_SERVICE RESPOND request=0 reply=1')
+        down = text.count('AUX_SERVICE RESPOND request=32 reply=33')
+        self.result.update(echo_replies=echo, destination_down_replies=down,
+            firmware_send_errors=text.count('AUX_SERVICE SEND_FAIL'),
+            firmware_rx_errors=text.count('AUX_SERVICE RX_ERROR'),
+            unsupported_drops=text.count('AUX_SERVICE DROP'),
+            master_link_echo_observed=bool(re.search(r'\[LINK#\d+\] remote replied after \d+ packets',master)),
+            scope='real external AUX codec/CRC echo and DOWN status, not production satellite',
+            tsc_synchronization='NOT_IMPLEMENTED', remote_rtio='NOT_IMPLEMENTED')
+        good = echo > 0 and self.result['master_link_echo_observed'] and not (
+            self.result['firmware_send_errors'] or self.result['firmware_rx_errors'])
+        self.result['status'] = 'EXTERNAL_AUX_ECHO' if good else 'EXTERNAL_AUX_NOT_CONFIRMED'
+        if not good: raise RuntimeError('External AUX echo not confirmed; inspect both UART/master logs')
 
     def restore(self):
         if not self.touched: return

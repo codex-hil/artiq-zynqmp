@@ -98,3 +98,23 @@ runtime. Genesys restoration validates normal physical TTL/DMA/analyzer/MonInj
 and Ethernet under the same leases. Any failed observation remains failed after
 successful restoration. Four offline controls cover counter wrap/idle traffic,
 LOS, absent module, wrong clock and recording restoration failures.
+
+## External AUX echo/DOWN mode
+
+Build `aux_protocol/build_firmware.py --external` against the reviewed AUX
+CSR map and pinned upstream ARTIQ. The external variant bypasses the laboratory
+loopback self-test, selects loopback0/PRBS off, waits for settled receive state,
+then enables ARTIQ idle and AUX replies. UART command injection is disabled in
+this mode. It answers EchoRequest and DestinationStatusRequest (DOWN only),
+and drops unsupported requests including production reset. No synthetic
+ResetAck, routing, rank, TSC or destination-UP implementation is supplied.
+
+Set configuration mode to `external-aux-down`, bitstream/csr_map to the
+qualified AUX build and firmware to the external ELF. Preflight checks its
+mode, ELF hash and matching map. The same four-board parent lease and baseline
+restoration apply. Observation collects25s of Genesys UART and queries standard
+Kasli coremgmt logs after initial settling. Acceptance requires a Genesys echo
+reply and the master's own `remote replied after ... packets` evidence, with
+no firmware send/RX errors. This is only external AUX echo acceptance. Upstream
+master may log initialization completed even after TSC/routing/rank errors;
+that message must not be treated as synchronized satellite acceptance.

@@ -346,3 +346,14 @@ Original final Ethernet FAIL was stale enp1s0; four-board-locked enp2s0 recheck
 now required by external_session.py. Raw failure retained in evidence/
 kasli03-external-rx-2026-10-15. No active HW/build sessions. Next: upstream idle
 return TX and external AUX echo/status-DOWN (no production ResetAck yet).
+
+2026-10-15 external Kasli↔Genesys AUX echo physical PASS. KASLI03 LINK#0 master
+confirms reply after1 packet; Genesys1 echo/71 DOWN replies, zero reported
+send/RX/bad-CRC drops,2 unsupported packets. External firmware build flag
+--external bypasses lab self-test/UART injection, enables real idle/AUX TX and
+never production ResetAck/UP. TSC/routing/remote RTIO still absent. Same four
+leases cover startup/service/full normal restoration PASS; Genesys192.168.2.3
+TTL/DMA/debug/Ethernet and Kasli diagnostic/clock baseline verified. No active
+session. Evidence kasli03-external-aux-2026-10-15; next real satellite backend
+clock/reset/CDC/TSC integration. Config mode external-aux-down and qualified
+firmware/map hashes required. No flash/SD/OTP/Genesys Si writes.

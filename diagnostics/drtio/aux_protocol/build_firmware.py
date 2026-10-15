@@ -13,6 +13,7 @@ def main():
     p.add_argument('--artiq-source',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--csr-map',type=Path,required=True)
+    p.add_argument('--external',action='store_true',help='Receive real remote requests; skip loopback self-test')
     a=p.parse_args();out=a.output.resolve();out.mkdir(parents=True,exist_ok=True)
     root=a.artiq_source.resolve()/'artiq/firmware'
     project=out/'rust';(project/'src').mkdir(parents=True,exist_ok=True)
@@ -55,13 +56,14 @@ io={path=IO_PATH,features=["byteorder"]}
     firmware=Path(__file__).with_name('firmware.c')
     elf=out/'aux-firmware.elf'
     cmd=[str(arm/'bin/aarch64-none-elf-gcc'),'-DSDT','-specs='+str(bsp/'Xilinx.spec'),
-        '-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
+        *(['-DAUX_EXTERNAL'] if a.external else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
         str(library),'-Wl,-T,'+str(linker),'-L'+str(bsp/'lib'),'-Wl,--start-group',
         '-lxilstandalone','-lxiltimer','-lxil','-lgcc','-lc','-Wl,--end-group','-o',str(elf)]
     result=subprocess.run(cmd,capture_output=True,text=True,timeout=120)
     (out/'link.log').write_text(result.stdout+result.stderr)
     if result.returncode:raise RuntimeError(result.stderr[-4000:])
     evidence={'kind':'FIRMWARE_BUILD_NOT_HARDWARE','status':'PASS',
+        'mode':'external-aux-down' if a.external else 'internal-loopback',
         'elf_sha256':hashlib.sha256(elf.read_bytes()).hexdigest(),
         'upstream_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
         'csr_map_sha256':hashlib.sha256(a.csr_map.read_bytes()).hexdigest(),

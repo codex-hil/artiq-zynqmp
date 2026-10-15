@@ -4,6 +4,9 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
+from types import SimpleNamespace
+import itertools
 
 spec = importlib.util.spec_from_file_location('external_session',
     Path(__file__).resolve().parents[1]/'diagnostics/drtio/external_session.py')
@@ -55,3 +58,34 @@ class ExternalObservationTests(unittest.TestCase):
             recorded = json.loads((Path(tmp)/'results.json').read_text())
             self.assertEqual(recorded['restoration'], 'FAIL')
             self.assertEqual(recorded['status'], 'RX_NOT_CONFIRMED')
+
+
+class ExternalAuxAcceptanceTests(unittest.TestCase):
+    def exercise(self, master_ok=True, send_error=False):
+        with tempfile.TemporaryDirectory() as tmp:
+            session = module.ExternalSession.__new__(module.ExternalSession)
+            session.output = Path(tmp)
+            session.config = dict(port='fake',server='fake',firmware='fake',artiq_python='fake')
+            session.result = {}
+            text = b'AUX_EXTERNAL TX_IDLE_ENABLED destination=DOWN\nAUX_SERVICE RESPOND request=0 reply=1\n'
+            if send_error: text += b'AUX_SERVICE SEND_FAIL\n'
+            class UART:
+                in_waiting = 0
+                def __enter__(self): return self
+                def __exit__(self, *args): pass
+                def reset_input_buffer(self): pass
+                def read(self, size): return text
+            def run(name, *args, **kwargs):
+                return '[LINK#1] remote replied after 1 packets' if master_ok else 'ping failed'
+            session.run = run
+            with patch.dict('sys.modules',serial=SimpleNamespace(Serial=lambda *a,**kw:UART())):
+                with patch.object(module.time,'monotonic',side_effect=itertools.count()):
+                    session.observe_aux('fe80::test%eth0')
+            self.assertEqual(session.result['status'],'EXTERNAL_AUX_ECHO')
+
+    def test_both_remote_ends_required(self):
+        self.exercise()
+        with self.assertRaises(RuntimeError): self.exercise(master_ok=False)
+
+    def test_send_error_rejects_successful_echo(self):
+        with self.assertRaises(RuntimeError): self.exercise(send_error=True)

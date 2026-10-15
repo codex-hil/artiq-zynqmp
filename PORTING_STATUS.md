@@ -1459,3 +1459,29 @@ Evidence evidence/kasli03-external-rx-2026-10-15/acceptance.json plus raw origin
 FAIL and recheck records. Next safe step: upstream ARTIQ idle return TX and
 external AUX echo/status-DOWN service, retaining both-board leases/restoration;
 never acknowledge production reset or destination-UP before real RTIO backend.
+
+### 2026-10-15 — physical external Kasli↔Genesys AUX echo hardware PASS
+
+External-only firmware uses unchanged current upstream Rust codec/CRC and
+existing qualified AUX PL. It bypasses lab loopback self-test, selects external
+RX/PRBS off, enables real ARTIQ idle/AUX TX after readiness and disables UART
+request injection. Production ResetRequest remains unsupported; destination
+status is DOWN. No simulated ResetAck or destination-UP behavior.
+
+Real KASLI03 master LINK#0 RX became up; master log confirms remote replied
+after1 packet. Genesys UART records1 EchoReply and71 DestinationDownReply,
+zero SEND_FAIL/RX_ERROR/bad-CRC drops,2 unsupported request drops. The71 DOWN
+replies are Genesys-side counts, not independently paired master receipts.
+TSC/routing/rank/remote RTIO not implemented by this lab responder; master
+initialization text must not be confused with synchronized-satellite success.
+
+Full session PASS under Genesys+three Kasli leases: master RAM startup,
+management/local counter-RPC tests, external AUX and restoration. Kasli
+full-checker/23-register clock baseline restored PASS. Normal Genesys192.168.2.3
+PL/CPU1/CPU0 and physical TTL/DMA/analyzer/MonInj/Ethernet checks PASS. Explicit
+enp2s0 avoids previous obsolete-NIC check failure. No flash/SD/OTP or Genesys
+Si writes; Kasli volatile Si setup/restore explicit. Leases released.
+Six offline acceptance/failure tests PASS; external firmware compile PASS.
+Evidence kasli03-external-aux-2026-10-15 and aux-external-firmware-build-2026-10-15.
+Next safe stage: real satellite RT packet/SED backend clock/reset/CDC wiring,
+then genuine TSC load acknowledgement, routing and remote TTL tests.

@@ -1,0 +1,23 @@
+{
+  "kind": "physical external AUX, not full satellite",
+  "status": "PASS",
+  "echo_replies": 1,
+  "down_replies_reported_by_genesys": 71,
+  "master_link": 0,
+  "master_echo_confirmation": true,
+  "crc_error_drops_observed": 0,
+  "send_rx_errors": 0,
+  "unsupported_drops": 2,
+  "production_tsc_rtio": "NOT_IMPLEMENTED",
+  "restoration": "PASS",
+  "normal_genesys_ip": "192.168.2.3",
+  "locks": [
+    "genesys-210383B7F02DA",
+    "kasli-KASLI01",
+    "kasli-KASLI02",
+    "kasli-KASLI03"
+  ],
+  "flash_sd_otp_writes": false,
+  "genesys_si_writes": false,
+  "kasli_volatile_si_setup_restore": true
+}
