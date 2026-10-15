@@ -41,6 +41,8 @@ class ExternalSession:
                 raise ValueError('Observer artifact hash mismatch: ' + key)
         self.mapping = json.loads(Path(c['csr_map']).read_text())
         self.tsc_test = c.get('mode') == 'external-tsc-down'
+        self.reset_test = bool(c.get('reset_test',False))
+        if self.reset_test and not self.tsc_test: raise ValueError('Reset test requires TSC mode')
         self.external_aux = c.get('mode') in ('external-aux-down','external-tsc-down')
         if not self.external_aux and 'observer_alignment' not in self.mapping['registers']:
             raise ValueError('Observer CSR map required')
@@ -66,6 +68,14 @@ class ExternalSession:
                     raise ValueError('Stale/unreviewed TSC acknowledgement policy')
                 if 'aux_tsc_load_count' not in self.mapping['registers'] or not re.search(r'reg \[60:0\] \w+coarse_ts',verilog):
                     raise ValueError('Kasli fine3 actual-load satellite map required')
+            if self.reset_test:
+                policy=REPO/'diagnostics/drtio/aux_protocol/reset_backend.h'
+                if not fw.get('reset_backend') or fw.get('reset_policy_sha256') != hashlib.sha256(policy.read_bytes()).hexdigest():
+                    raise ValueError('Hardware reset firmware/policy required')
+                if fw.get('c_source_sha256') != hashlib.sha256(policy.with_name('firmware.c').read_bytes()).hexdigest():
+                    raise ValueError('Stale reset firmware source')
+                if not all('aux_'+n in self.mapping['registers'] for n in ('rtio_reset_request','rtio_reset_applied','phy_reset_request','phy_reset_applied')):
+                    raise ValueError('Split reset CSRs required')
             self.result['optical_tx'] = ('upstream ARTIQ idle/AUX with real TSC/RTIO backend; advertised DOWN' if self.tsc_test else 'upstream ARTIQ idle and AUX replies; no RTIO backend')
             self.result['firmware_sha256'] = fw['elf_sha256']
         self.result['bit_sha256'] = build['sha256']['top.bit']
@@ -181,6 +191,10 @@ disconnect
                             timeout=15,host=True)
                     if b'AUX_FW PANIC' in raw or b'ARTIQ_AUX_FIRMWARE FAIL' in raw:
                         raise RuntimeError('External AUX firmware rejected startup')
+                if getattr(self,'reset_test',False):
+                    if b'AUX_TSC ACK count=1' not in raw or b'AUX_RESET COLD_RELEASE PASS' not in raw:
+                        raise RuntimeError('Reset probe requires observed cold release and TSC ACK')
+                    self.probe_reset(master_host,uart,raw)
             finally:
                 (self.output/'aux-uart.log').write_bytes(raw)
         text = raw.decode(errors='replace')
@@ -208,8 +222,39 @@ disconnect
         else: tsc_ok=True
         good = tsc_ok and echo > 0 and self.result['master_link_echo_observed'] and not (
             self.result['firmware_send_errors'] or self.result['firmware_rx_errors'])
-        self.result['status'] = ('EXTERNAL_TSC_LOAD_ACK' if getattr(self,'tsc_test',False) else 'EXTERNAL_AUX_ECHO') if good else 'EXTERNAL_AUX_NOT_CONFIRMED'
+        if getattr(self,'reset_test',False): good = good and self.result.get('reset_handshake')=='PASS'
+        self.result['status'] = ('EXTERNAL_RESET_ACK' if getattr(self,'reset_test',False) else 'EXTERNAL_TSC_LOAD_ACK' if getattr(self,'tsc_test',False) else 'EXTERNAL_AUX_ECHO') if good else 'EXTERNAL_AUX_NOT_CONFIRMED'
         if not good: raise RuntimeError('External AUX echo not confirmed; inspect both UART/master logs')
+
+    def probe_reset(self,master_host,uart,raw):
+        c=self.config
+        before=self.run('master-before-reset-log',[c['artiq_python'],'-m',
+            'artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+        db={'core':{'type':'local','module':'artiq.coredevice.core','class':'Core',
+            'arguments':{'host':master_host,'target':'rv32ima','ref_period':1e-9,'analyzer_proxy':None}}}
+        path=self.output/'reset-device-db.py';path.write_text('device_db = '+repr(db)+'\n')
+        for i in range(2):
+            log=self.run('master-reset-probe-'+str(i),[c['artiq_python'],'-m','artiq.frontend.artiq_run',
+                '--device-db='+str(path),'--dataset-db='+str(self.output/'reset-datasets.mdb'),
+                str(REPO/'examples/kasli_counter_probe.py')],timeout=30,host=True)
+            if 'KASLI_COUNTER_RPC_PASS' not in log:raise RuntimeError('Reset kernel/RPC did not finish')
+            end=time.monotonic()+1
+            while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
+        after=self.run('master-after-reset-log',[c['artiq_python'],'-m',
+            'artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+        text=raw.decode(errors='replace')
+        completed=re.findall(r'AUX_RESET COMPLETE count=(\d+)',text)
+        replies=text.count('AUX_SERVICE RESPOND request=2 reply=3')
+        # Prior startup probes may have timed out before the responder existed.
+        # Compare occurrence counts so those historical errors cannot hide a new one.
+        errors=lambda log:len(re.findall(r'\[LINK#\d+\] reset failed',log))
+        good=(completed==['1','1'] and replies==2 and 'AUX_RESET REJECT' not in text and
+            'AUX_FW PANIC' not in text and errors(after)==errors(before))
+        self.result.update(reset_handshake='PASS' if good else 'FAIL',
+            reset_completed_load_counts=completed,reset_ack_replies=replies,
+            master_reset_errors_before=errors(before),master_reset_errors_after=errors(after),
+            reset_scope='two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof')
+        if not good:raise RuntimeError('External native reset/ACK not confirmed')
 
     def restore(self):
         if not self.touched: return

@@ -197,3 +197,23 @@ hardware reset acceptance is added in this stage. Fatal RT reply CDC faults
 remain fatal: a queue reset does not pretend to repair a damaged transport.
 Next qualify the bitstream, implement bounded CSR hold/release checking, and
 prove real ResetRequest/ResetAck under the existing both-board lease/restoration.
+
+
+### Hardware-confirmed AUX reset firmware
+
+The split-reset bitstream now qualifies with WNS2.397ns/WHS0.010ns. Firmware
+build option `--external --tsc --reset` requires the split-reset CSR map. Startup
+waits for both cold applied flags, releases PHY then queue reset, and checks
+readiness before enabling TX. Native ResetRequest asserts only queue reset,
+waits for applied, holds100us, releases and waits for deassertion. PHY release,
+unchanged TSC-load count and no transport/SED error are required before ResetAck.
+Failures disable TX and halt rather than acknowledge an incomplete reset.
+Destination status remains DOWN; routing/rank and remote TTL are separate work.
+
+The combined-board session configuration may set `reset_test: true`. It binds
+the actual firmware source and reset helper hashes to build metadata, then runs
+two standard Kasli counter/RPC kernels after external TSC handshaking. Each
+kernel calls native core.reset. Acceptance requires two completed queue resets,
+two AUX ResetAck sends and no new master reset errors relative to pre-probe log.
+Shared Genesys/all-Kasli leases cover load, both endpoints, clients and restoration.
+Host MMIO tests and acceptance-negative controls are not hardware proof.

@@ -401,3 +401,13 @@ edit active build_top.sh/check_top_build.py. Earlier satellite-reset-route-
 2026-10-15 combined lab build stopped/never loaded. Next qualify then bounded
 CSR hold/release and physical native ResetRequest proof; no fake transport
 recovery (RT reply fault remains fatal). Evidence satellite-split-reset-simulation.
+
+
+Genesys/KASLI03 external reset2026-10-15: native two core.reset kernels after
+link setup PASS, two actual split queue reset completions/two AUX ResetAck,
+TSC-load count1 unchanged,zero master reset errors. Routing/rank unsupported,
+destination DOWN,remoteTTL pending; no absolute offset/jitter claim. Both boards
+restored/validated (Genesys192.168.2.3 local TTL/DMA/debug/Ethernet; Kasli diagnostic
+and internal125MHz clock). Evidence kasli03-external-reset-2026-10-15. Combined
+wrapper owns Genesys/allKasli leases across entire load/test/restore. No flash/Si
+Genesys writes. Next routing/rank state and readiness qualification.

@@ -102,3 +102,22 @@ class ExternalAuxAcceptanceTests(unittest.TestCase):
         self.exercise(tsc=True)
         with self.assertRaises(RuntimeError): self.exercise(tsc=True,ack=False)
         with self.assertRaises(RuntimeError): self.exercise(tsc=True,master_tsc_error=True)
+
+class ExternalResetAcceptanceTests(unittest.TestCase):
+    def exercise(self,acks=2,failed=False):
+        with tempfile.TemporaryDirectory() as tmp:
+            s=module.ExternalSession.__new__(module.ExternalSession)
+            s.output=Path(tmp);s.config={'artiq_python':'fake'};s.result={}
+            def run(name,*a,**kw):
+                if name.startswith('master-reset-probe'):return 'KASLI_COUNTER_RPC_PASS 1 1000001'
+                return '[LINK#0] reset failed startup\n'+('[LINK#0] reset failed new\n' if failed and name=='master-after-reset-log' else '')
+            s.run=run
+            raw=bytearray(('AUX_RESET COMPLETE count=1\nAUX_SERVICE RESPOND request=2 reply=3\n'*acks).encode())
+            uart=SimpleNamespace(in_waiting=0,read=lambda n:b'')
+            with patch.object(module.time,'monotonic',side_effect=itertools.count()):s.probe_reset('fake',uart,raw)
+            self.assertEqual(s.result['reset_handshake'],'PASS')
+    def test_two_completed_resets_and_historical_errors(self):self.exercise()
+    def test_missing_ack_rejected(self):
+        with self.assertRaises(RuntimeError):self.exercise(acks=1)
+    def test_new_master_error_rejected(self):
+        with self.assertRaises(RuntimeError):self.exercise(failed=True)

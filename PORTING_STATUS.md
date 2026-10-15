@@ -1600,3 +1600,28 @@ Firmware build evidence aux-split-reset-firmware-build-2026-10-15.json.
 No hardware accessed or state changed in this stage. Next extend combined-board
 session acceptance/hash binding and run native master reset after external
 handshake under all shared leases, restoring both baselines. Remote TTL pending.
+
+### 2026-10-15 — external native Kasli ResetRequest/ResetAck physical PASS
+
+Combined bounded session PASS under Genesys plus all three Kasli locks. Exact
+KASLI03 DNA0048458a64b04854, USB001:019; SRAM-only master runtime as previously
+qualified. Genesys split-reset bit500206ab and reset firmware0f1ad0c loaded.
+Cold PHY/queue release confirmed; external echo and actual TSC load/ACK count1.
+Two standard counter/RPC kernels called native core.reset after link setup:
+two hardware-confirmed queue resets and two genuine upstream AUX ResetAck
+replies. TSC-load count stayed1; master reset-error count0 before and after.
+One echo,138 DOWN replies,zero send/RX errors; two routing/rank drops expected.
+
+This proves native reset/ACK interoperation and the observed split reset path,
+not measured absolute TSC offset, jitter or deterministic latency. Continuous
+TSC and output-state preservation have RTL simulation evidence; count1 alone
+is not a physical waveform measurement. Routing/rank and remote TTL remain
+NOT_VALIDATED; destination intentionally DOWN.12 host controls PASS, including
+missing-ACK/new-master-error rejection. Source/hash guard binds reset firmware.
+
+Kasli full-checker identity/EEM/GTP/SFP and23-register internal125MHz profile
+restored PASS (69.645s clock restore). Genesys normal dual-CPU core restored
+192.168.2.3; physical TTL/DMA/analyzer/MonInj and Ethernet checks PASS. No
+flash/SD/OTP/Genesys Si writes. All leases released. Full raw evidence under
+evidence/kasli03-external-reset-2026-10-15. Next implement and test bounded
+upstream routing/rank state before advertising readiness or remote TTL.

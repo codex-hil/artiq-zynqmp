@@ -1,0 +1,31 @@
+{
+  "status": "EXTERNAL_RESET_ACK",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ idle/AUX with real TSC/RTIO backend; advertised DOWN",
+  "remote_drtio": "NOT_RUN",
+  "firmware_sha256": "0f1ad0c11f0c61e2e04285f45fe3a29d938456c2f6dac0ff075f29e99869dabf",
+  "bit_sha256": "500206ab7b931263bc678a32ec74d204c0fb1cb9eca3bdaa8cb5a67f731ff244",
+  "reset_handshake": "PASS",
+  "reset_completed_load_counts": [
+    "1",
+    "1"
+  ],
+  "reset_ack_replies": 2,
+  "master_reset_errors_before": 0,
+  "master_reset_errors_after": 0,
+  "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+  "echo_replies": 1,
+  "destination_down_replies": 138,
+  "firmware_send_errors": 0,
+  "firmware_rx_errors": 0,
+  "unsupported_drops": 2,
+  "master_link_echo_observed": true,
+  "scope": "real external AUX codec/CRC echo and DOWN status, not production satellite",
+  "tsc_synchronization": "load/ACK only; offset/jitter/deterministic latency NOT_MEASURED",
+  "remote_rtio": "NOT_VALIDATED",
+  "tsc_ack_counts": [
+    1
+  ],
+  "tsc_load_handshake": "PASS",
+  "restored_ip": "192.168.2.3"
+}
