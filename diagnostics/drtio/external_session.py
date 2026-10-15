@@ -40,7 +40,8 @@ class ExternalSession:
             if hashlib.sha256(Path(c[key]).read_bytes()).hexdigest() != build['sha256'][filename]:
                 raise ValueError('Observer artifact hash mismatch: ' + key)
         self.mapping = json.loads(Path(c['csr_map']).read_text())
-        self.external_aux = c.get('mode') == 'external-aux-down'
+        self.tsc_test = c.get('mode') == 'external-tsc-down'
+        self.external_aux = c.get('mode') in ('external-aux-down','external-tsc-down')
         if not self.external_aux and 'observer_alignment' not in self.mapping['registers']:
             raise ValueError('Observer CSR map required')
         verilog = (bit.parent/'top.v').read_text()
@@ -53,13 +54,19 @@ class ExternalSession:
                 raise ValueError('Expected gated AUX optical TX')
             elf = Path(c['firmware'])
             fw = json.loads((elf.parent/'results.json').read_text())
-            if fw.get('status') != 'PASS' or fw.get('mode') != 'external-aux-down':
+            if fw.get('status') != 'PASS' or fw.get('mode') != c['mode']:
                 raise ValueError('External-only firmware qualification required')
             if hashlib.sha256(elf.read_bytes()).hexdigest() != fw['elf_sha256']:
                 raise ValueError('External firmware hash mismatch')
             if fw['csr_map_sha256'] != build['sha256']['csr-map.json']:
                 raise ValueError('External firmware/PL maps differ')
-            self.result['optical_tx'] = 'upstream ARTIQ idle and AUX replies; no RTIO backend'
+            if self.tsc_test:
+                policy = REPO/'diagnostics/drtio/aux_protocol/tsc_ack_policy.h'
+                if fw.get('tsc_policy_sha256') != hashlib.sha256(policy.read_bytes()).hexdigest():
+                    raise ValueError('Stale/unreviewed TSC acknowledgement policy')
+                if 'aux_tsc_load_count' not in self.mapping['registers'] or not re.search(r'reg \[60:0\] \w+coarse_ts',verilog):
+                    raise ValueError('Kasli fine3 actual-load satellite map required')
+            self.result['optical_tx'] = ('upstream ARTIQ idle/AUX with real TSC/RTIO backend; advertised DOWN' if self.tsc_test else 'upstream ARTIQ idle and AUX replies; no RTIO backend')
             self.result['firmware_sha256'] = fw['elf_sha256']
         self.result['bit_sha256'] = build['sha256']['top.bit']
 
@@ -186,9 +193,22 @@ disconnect
             master_link_echo_observed=bool(re.search(r'\[LINK#\d+\] remote replied after \d+ packets',master)),
             scope='real external AUX codec/CRC echo and DOWN status, not production satellite',
             tsc_synchronization='NOT_IMPLEMENTED', remote_rtio='NOT_IMPLEMENTED')
-        good = echo > 0 and self.result['master_link_echo_observed'] and not (
+        if getattr(self,'tsc_test',False):
+            final_master = self.run('master-tsc-log',[self.config['artiq_python'],
+                '-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+            link = re.search(r'\[LINK#(\d+)\] remote replied after',master)
+            prefix = '[LINK#'+link[1]+']' if link else 'MISSING-LINK'
+            counts = [int(n) for n in re.findall(r'AUX_TSC ACK count=(\d+)',text)]
+            tsc_ok = ('AUX_TSC BASELINE count=0' in text and counts==[1] and
+                'AUX_TSC REJECT' not in text and bool(link) and
+                prefix+' failed to sync TSC' not in final_master and
+                prefix+' link initialization completed' in final_master)
+            self.result.update(tsc_ack_counts=counts, tsc_load_handshake='PASS' if tsc_ok else 'FAIL',
+                tsc_synchronization='load/ACK only; offset/jitter/deterministic latency NOT_MEASURED', remote_rtio='NOT_VALIDATED')
+        else: tsc_ok=True
+        good = tsc_ok and echo > 0 and self.result['master_link_echo_observed'] and not (
             self.result['firmware_send_errors'] or self.result['firmware_rx_errors'])
-        self.result['status'] = 'EXTERNAL_AUX_ECHO' if good else 'EXTERNAL_AUX_NOT_CONFIRMED'
+        self.result['status'] = ('EXTERNAL_TSC_LOAD_ACK' if getattr(self,'tsc_test',False) else 'EXTERNAL_AUX_ECHO') if good else 'EXTERNAL_AUX_NOT_CONFIRMED'
         if not good: raise RuntimeError('External AUX echo not confirmed; inspect both UART/master logs')
 
     def restore(self):

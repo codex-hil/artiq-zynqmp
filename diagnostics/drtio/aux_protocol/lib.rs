@@ -19,7 +19,7 @@ pub unsafe extern "C" fn aux_encode(kind: u32, destination: u32, buffer: *mut u8
     if buffer.is_null() || capacity > 1024 || capacity < 8 { return -4; }
     let packet = match kind {
         0 => Packet::EchoRequest, 1 => Packet::EchoReply,
-        2 => Packet::ResetRequest, 3 => Packet::ResetAck,
+        2 => Packet::ResetRequest, 3 => Packet::ResetAck, 4 => Packet::TSCAck,
         0x20 => Packet::DestinationStatusRequest { destination: destination as u8 },
         0x21 => Packet::DestinationDownReply,
         _ => return -2,
@@ -48,7 +48,7 @@ pub unsafe extern "C" fn aux_decode(buffer: *const u8, length: usize, destinatio
     *destination = 0;
     match packet {
         Packet::EchoRequest => 0, Packet::EchoReply => 1,
-        Packet::ResetRequest => 2, Packet::ResetAck => 3,
+        Packet::ResetRequest => 2, Packet::ResetAck => 3, Packet::TSCAck => 4,
         Packet::DestinationStatusRequest { destination: d } => { *destination = d as u32; 0x20 },
         Packet::DestinationDownReply => 0x21,
         _ => -2,

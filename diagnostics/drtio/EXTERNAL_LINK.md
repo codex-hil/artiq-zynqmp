@@ -118,3 +118,25 @@ reply and the master's own `remote replied after ... packets` evidence, with
 no firmware send/RX errors. This is only external AUX echo acceptance. Upstream
 master may log initialization completed even after TSC/routing/rank errors;
 that message must not be treated as synchronized satellite acceptance.
+
+## Actual-load TSCAck laboratory mode
+
+The fine3 satellite bitstream must be qualified before use. Build external
+firmware with `--external --tsc` and the matching actual-load/error CSR map.
+Config mode `external-tsc-down` requires that ELF mode/hash/map and61-bit
+coarse-counter HDL. The existing both-board lease/restoration wrapper applies.
+
+Firmware reads baseline count0 before enabling optical TX. The C gate in
+aux_protocol/tsc_ack_policy.h sends one upstream TSCAck per observed increment
+by one, only with settled RX/no hardware faults. Stale values, no event, count
+gaps and fault states cannot ACK. Readiness loss alone preserves consumed
+count; actual reset clears the gate. Zero is reserved for an uninitialized
+count; counter-wrap/recovery is not qualified. Send failure disables TX and
+parks firmware. This is a load/ACK handshake, not offset/phase validation.
+
+Host acceptance additionally requires exactly one UART ACK count1, initial
+zero, no REJECT, master echo and a later master log past initialization without
+`failed to sync TSC` on that link. Routing/rank and production reset remain
+unsupported; status remains DOWN. Master initialization-completed text alone
+is insufficient. Physical timestamp offset, jitter and repeat-reset latency
+must be tested separately.

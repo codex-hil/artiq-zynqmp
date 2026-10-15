@@ -1,0 +1,22 @@
+{
+  "status": "EXTERNAL_TSC_LOAD_ACK",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ idle and AUX replies; no RTIO backend",
+  "remote_drtio": "NOT_RUN",
+  "firmware_sha256": "ba905d3ff55ba863b00bc81d4ea071a48e0825b2b1cf110048a81042e6a69ff0",
+  "bit_sha256": "9bacda697117c222dcc7c74cab0ed0c1447218614fb1e1ce631eb5afc79e3c41",
+  "echo_replies": 1,
+  "destination_down_replies": 119,
+  "firmware_send_errors": 0,
+  "firmware_rx_errors": 0,
+  "unsupported_drops": 2,
+  "master_link_echo_observed": true,
+  "scope": "real external AUX codec/CRC echo and DOWN status, not production satellite",
+  "tsc_synchronization": "load/ACK only; offset/jitter/deterministic latency NOT_MEASURED",
+  "remote_rtio": "NOT_VALIDATED",
+  "tsc_ack_counts": [
+    1
+  ],
+  "tsc_load_handshake": "PASS",
+  "restored_ip": "192.168.2.3"
+}

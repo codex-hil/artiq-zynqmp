@@ -1,0 +1,19 @@
+{
+  "kind": "fpga-build-not-hardware",
+  "status": "PASS",
+  "scope": "separate raw GTH diagnostic; not a DRTIO satellite",
+  "sha256": {
+    "top.bit": "9bacda697117c222dcc7c74cab0ed0c1447218614fb1e1ce631eb5afc79e3c41",
+    "top.v": "6077e3ff42159f804ee25bcc5c9c1f27955c451737ca484f0ec78f160c902222",
+    "top.xdc": "c9d9ecb3c03aef3b104ab7dd501612ef91005cc1bd84c2fa91f79de77a2dc406",
+    "csr-map.json": "140a5adcf54ad8ea658eca4a50689a37d15ca0fc5cb6bf591fe7136d6d8a1d15",
+    "top_timing.rpt": "aa5b16cf22db960a24135653939cca45445d7fd00976f3316390e0a0ba5e3cda",
+    "top_bus_skew.rpt": "8be5af3fae8ff289290baaa8dbd23517491581501194b6d3ebbdc45fea055625"
+  },
+  "wns_ns": 2.56,
+  "whs_ns": 0.007,
+  "first_stage_bits": 209,
+  "gray_buses": 8,
+  "fine_ts_width": 3,
+  "hardware": "NOT_RUN by build qualification"
+}

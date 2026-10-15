@@ -61,27 +61,35 @@ class ExternalObservationTests(unittest.TestCase):
 
 
 class ExternalAuxAcceptanceTests(unittest.TestCase):
-    def exercise(self, master_ok=True, send_error=False):
+    def exercise(self, master_ok=True, send_error=False, tsc=False, ack=True, master_tsc_error=False):
         with tempfile.TemporaryDirectory() as tmp:
             session = module.ExternalSession.__new__(module.ExternalSession)
             session.output = Path(tmp)
             session.config = dict(port='fake',server='fake',firmware='fake',artiq_python='fake')
             session.result = {}
+            session.tsc_test = tsc
             text = b'AUX_EXTERNAL TX_IDLE_ENABLED destination=DOWN\nAUX_SERVICE RESPOND request=0 reply=1\n'
+            if tsc:
+                text += b'AUX_TSC BASELINE count=0\n'
+                if ack: text += b'AUX_TSC ACK count=1\n'
             if send_error: text += b'AUX_SERVICE SEND_FAIL\n'
             class UART:
                 in_waiting = 0
+                remaining = text
                 def __enter__(self): return self
                 def __exit__(self, *args): pass
                 def reset_input_buffer(self): pass
-                def read(self, size): return text
+                def read(self, size):
+                    result=self.remaining;self.remaining=b'';return result
             def run(name, *args, **kwargs):
+                if name=='master-tsc-log':
+                    return '[LINK#1] link initialization completed'+(' [LINK#1] failed to sync TSC' if master_tsc_error else '')
                 return '[LINK#1] remote replied after 1 packets' if master_ok else 'ping failed'
             session.run = run
             with patch.dict('sys.modules',serial=SimpleNamespace(Serial=lambda *a,**kw:UART())):
                 with patch.object(module.time,'monotonic',side_effect=itertools.count()):
                     session.observe_aux('fe80::test%eth0')
-            self.assertEqual(session.result['status'],'EXTERNAL_AUX_ECHO')
+            self.assertEqual(session.result['status'],'EXTERNAL_TSC_LOAD_ACK' if tsc else 'EXTERNAL_AUX_ECHO')
 
     def test_both_remote_ends_required(self):
         self.exercise()
@@ -89,3 +97,8 @@ class ExternalAuxAcceptanceTests(unittest.TestCase):
 
     def test_send_error_rejects_successful_echo(self):
         with self.assertRaises(RuntimeError): self.exercise(send_error=True)
+
+    def test_tsc_requires_actual_ack_and_no_master_timeout(self):
+        self.exercise(tsc=True)
+        with self.assertRaises(RuntimeError): self.exercise(tsc=True,ack=False)
+        with self.assertRaises(RuntimeError): self.exercise(tsc=True,master_tsc_error=True)

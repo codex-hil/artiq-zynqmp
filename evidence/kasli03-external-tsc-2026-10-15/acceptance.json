@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "physical actual TSC load and native AUX acknowledgement, not offset/phase qualification",
+  "tsc_ack_counts": [
+    1
+  ],
+  "initial_load_count": 0,
+  "master_tsc_timeout": false,
+  "master_echo_link": 0,
+  "down_replies_reported_by_genesys": 119,
+  "unsupported_route_rank_drops": 2,
+  "real_rtio_backend_present": true,
+  "remote_rtio": "NOT_VALIDATED",
+  "routing_rank_reset": "NOT_IMPLEMENTED",
+  "restoration": "PASS",
+  "normal_genesys_ip": "192.168.2.3",
+  "flash_sd_otp_writes": false,
+  "genesys_si_writes": false,
+  "kasli_volatile_clock_restore": true,
+  "note": "Raw firmware START banner and optical_tx result retain inherited no-RTIO-backend wording; qualified fine3 bitstream actually contains real RTIO/SED. Production reset/routing/UP are absent. Raw records preserved."
+}

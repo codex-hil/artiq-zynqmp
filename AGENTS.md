@@ -375,3 +375,16 @@ qualification PENDING. Do not edit active build_top.sh/check_top_build.py.
 Old satellite-route-2026-10-15 fine0 stopped/withdrawn, never load. No HW actions;
 prior normal baseline unchanged. Next inspect build then actual-load-gated
 TSCAck firmware; production reset/routing/UP and deterministic latency pending.
+
+2026-10-15 fine3 satellite bitstream BUILD_PASS WNS2.560/WHS0.007,209 CDC bits/
+eight Gray buses. Actual TSC-load ACK physical PASS: count0→1, native master
+LINK#0 proceeds without TSC timeout;1 echo/119 DOWN/2 unsupported route-rank
+packets. Full four-board-locked restoration local TTL/DMA/debug/Ethernet and
+Kasli diagnostic/clock PASS; normal Genesys192.168.2.3. No active build/HW.
+TSC offset/jitter/deterministic latency still NOT_MEASURED; routing/rank/reset/
+remote TTL remain pending. Use external-tsc-down and final aux-tsc-firmware-final-
+2026-10-15 ELF/map/policy hash. Non-final build superseded/never loaded. Source
+banner still legacy no-RTIO-backend; correct it with next firmware revision;
+loaded bit actually contains real backend. Raw evidence preserved/clarified in
+kasli03-external-tsc-2026-10-15/acceptance.json. Next SED/PHY reset must preserve
+running TSC; never reset entire transport/time just to acknowledge ResetRequest.

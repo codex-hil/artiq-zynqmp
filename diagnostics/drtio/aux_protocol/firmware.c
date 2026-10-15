@@ -8,6 +8,9 @@
 #include "bspconfig.h"
 #include "xuartps_hw.h"
 #include "aux_regs.h"
+#ifdef AUX_TSC
+#include "tsc_ack_policy.h"
+#endif
 extern int32_t aux_encode(uint32_t,uint32_t,uint8_t*,uintptr_t);
 extern int32_t aux_decode(const uint8_t*,uintptr_t,uint32_t*);
 extern uint32_t aux_crc(const uint8_t*,uintptr_t);
@@ -47,9 +50,29 @@ static int exchange(unsigned request,unsigned destination,unsigned reply) {
 /* Persistent minimal responder. Reset has no production backend yet and
  * must not receive a successful acknowledgement from this service. */
 static void service(void) {
+#ifdef AUX_TSC
+ struct tsc_ack_state tsc_state={0,0};
+#endif
  xil_printf("AUX_SERVICE READY\r\n");
  while(1) {
-  if(rd(REG_AUX_IN_RESET) || !rd(REG_AUX_RX_UP)) {usleep(1000);continue;}
+  unsigned in_reset=rd(REG_AUX_IN_RESET),ready=rd(REG_AUX_RX_UP);
+  if(in_reset || !ready) {
+#ifdef AUX_TSC
+   tsc_ack_step(&tsc_state,0,in_reset,ready,0);
+#endif
+   usleep(1000);continue;
+  }
+#ifdef AUX_TSC
+  uint32_t loads=rd(REG_AUX_TSC_LOAD_COUNT);
+  unsigned faults=rd(REG_AUX_RT_REPLY_FAULT)|rd(REG_AUX_RTIO_ERROR_FLAGS);
+  int action=tsc_ack_step(&tsc_state,loads,0,1,faults!=0);
+  if(action<0)xil_printf("AUX_TSC REJECT count=%u fault=%u\r\n",loads,faults);
+  if(action>0) {
+   uint8_t bytes[16];int size=aux_encode(4,0,bytes,sizeof(bytes));
+   if(size<0||send(bytes,size)) {wr(REG_MONITOR_TX_ENABLE,0);aux_panic();}
+   xil_printf("AUX_TSC ACK count=%u\r\n",loads);
+  }
+#endif
 #ifndef AUX_EXTERNAL
   if(XUartPs_IsReceiveData(STDIN_BASEADDRESS)) {
    unsigned command=XUartPs_ReadReg(STDIN_BASEADDRESS,XUARTPS_FIFO_OFFSET)&255;
@@ -92,6 +115,10 @@ int main(void) {
  usleep(50000);wr(REG_MONITOR_RESET,0);
  if(wait(REG_AUX_IN_RESET,0) || wait(REG_AUX_RX_UP,1))goto fail;
  usleep(25000);
+#ifdef AUX_TSC
+ if(rd(REG_AUX_TSC_LOAD_COUNT)!=0)goto fail;
+ xil_printf("AUX_TSC BASELINE count=0\r\n");
+#endif
  wr(REG_MONITOR_TX_ENABLE,1);
  xil_printf("AUX_EXTERNAL TX_IDLE_ENABLED destination=DOWN\r\n");
  service();

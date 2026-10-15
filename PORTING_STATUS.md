@@ -1526,3 +1526,37 @@ production backend reset/routing/destination-UP are NOT_IMPLEMENTED. Evidence
 aux-satellite-integration-2026-10-15.json. Next inspect build constraints/timing,
 then gate TSCAck on an actual new TSC-load epoch and validate under both-board
 leases/restoration. Do not claim deterministic latency from this laboratory PHY.
+
+### 2026-10-15 — fine3 satellite build and actual-load TSCAck physical PASS
+
+Vivado fine3 satellite implementation PASS: WNS2.560ns/WHS0.007ns,209 retained
+first-stage bits/eight passing Gray buses. Bit SHA9bacda697117c222dcc7c74cab0ed0c1447218614fb1e1ce631eb5afc79e3c41.
+Build evidence satellite-fine3-top-build-2026-10-15.json supersedes pending route.
+
+External firmware --external --tsc uses unchanged upstream Packet::TSCAck/CRC.
+The shared C policy observes actual hardware count0 then increment1, rejects
+stale/gapped/faulted observations, preserves consumed count across readiness
+loss, and sends no synthetic acknowledgement. Native host compilation executes
+the same header's controls; seven host acceptance controls also PASS. Qualified
+ELFba905d3ff55ba863b00bc81d4ea071a48e0825b2b1cf110048a81042e6a69ff0.
+Older non-final policy build never loaded and marked superseded; wrapper binds
+TSC policy hash to current reviewed header before hardware access.
+
+Physical session PASS under Genesys+three Kasli leases: Genesys BASELINE count0,
+AUX_TSC ACK count1; native Kasli LINK#0 echo after1 packet and later log proceeds
+past TSC without failed-to-sync timeout. Genesys119 DOWN replies,2 unsupported
+routing/rank drops, no send/RX errors or TSC REJECT. Real RX-clock TSC loaded
+from master RT packet and genuine AUX ACK received. This is only load/ACK
+handshake acceptance: physical offset/jitter/repeated-reset deterministic
+latency NOT_MEASURED. Routing/rank still timeout; production reset/remote TTL
+NOT_VALIDATED. Do not infer destination-UP or full synchronization.
+
+Raw START banner/optical_tx descriptor retain inherited no-RTIO-backend wording;
+qualified loaded bitstream actually contains real RTIO/SED, with production
+reset/routing/UP absent. Raw evidence remains intact and acceptance.json clarifies.
+Normal Kasli diagnostic+23-register clock and Genesys192.168.2.3 dual-CPU local
+TTL/DMA/analyzer/MonInj/Ethernet restoration PASS. No flash/SD/OTP/Genesys Si
+writes; Kasli volatile clock restore explicit. All leases released.
+Evidence kasli03-external-tsc-2026-10-15 and aux-tsc-firmware-build-2026-10-15.
+Next safe work: actual SED/PHY reset while preserving TSC, with empty-buffer/
+output-state proof, then routing/rank state and remote TTL experiments.
