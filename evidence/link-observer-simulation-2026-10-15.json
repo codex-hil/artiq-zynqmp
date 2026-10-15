@@ -1,0 +1,28 @@
+{
+  "kind": "RTL simulation",
+  "status": "PASS",
+  "hardware": "NOT_RUN",
+  "test_methods": 1,
+  "serial_offset_cases": 20,
+  "elapsed_seconds": 168.729,
+  "controls": [
+    "arbitrary RT payload: one frame/five words",
+    "arbitrary AUX payload: one frame/four words",
+    "zero acquisition counts while disabled",
+    "disabled counters remain unchanged during traffic",
+    "independent management/RX clock CDC"
+  ],
+  "not_proven": [
+    "CRC",
+    "symbol validity",
+    "external link",
+    "clock recovery",
+    "synchronization",
+    "deterministic latency"
+  ],
+  "log": "test_all_twenty_bit_offsets_and_disabled_counting (test_link_observer.ObserverTests.test_all_twenty_bit_offsets_and_disabled_counting) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 168.729s\n\nOK\n",
+  "source_sha256": {
+    "diagnostics/drtio/link_observer.py": "59d3f5b6a185c564a2fcfab8180a7225509ab7a598db44403c56740f776022cb",
+    "diagnostics/drtio/test_link_observer.py": "f30e086bbf51c458acfb52f0f2c13671d9b3d4f5664ee2679ffbc2dda47f6f43"
+  }
+}

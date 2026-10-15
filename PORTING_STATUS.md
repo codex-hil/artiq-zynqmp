@@ -1392,3 +1392,19 @@ clients and full-checker/23-register-clock restoration PASS. No Genesys
 configuration, flash or OTP writes. Evidence kasli03-counter-2026-10-15.
 Next safe step: prepare bounded external-link observation using both board
 leases and reviewed Genesys diagnostic restoration before remote protocol tests.
+
+### 2026-10-15 — external-link receive observer RTL simulation PASS
+
+Existing ProtocolProbe checks a synthetic payload and cannot judge arbitrary
+Kasli payload correctness. Separate LinkObserver uses unchanged raw20 codec,
+comma aligner/upstream RX and four Gray counters, without a connected TX.
+Twenty serial offsets PASS: exact arbitrary RT5/AUX4 words, one frame each,
+disabled acquisition/counting and asynchronous management-clock visibility.
+One test method/20 subcases,168.729s. Evidence link-observer-simulation-2026-10-15.
+No hardware access. Not CRC/symbol-validity/link-up/synchronization proof.
+
+External-link procedure diagnostics/drtio/EXTERNAL_LINK.md records required
+both-board leases, RX-only first stage and full restoration. Integration into
+diagnostic top, exact CDC/Gray constraints, timing-qualified bitstream and
+bounded hardware wrapper remain next steps. The aligner must reset on lost
+readiness before external use. External Kasli DRTIO remains NOT_RUN.

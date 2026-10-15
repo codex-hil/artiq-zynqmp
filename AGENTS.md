@@ -322,3 +322,10 @@ runtime/clock inputs. Full-checker and clock baseline restored PASS under
 Genesys+three Kasli locks. External DRTIO remains NOT_RUN. Evidence
 kasli03-counter-2026-10-15. Next external-link test needs both board leases and
 reviewed Genesys diagnostic load/restore, never rely on old USB bus numbers.
+
+2026-10-15 external receive-only LinkObserver RTL simulation PASS20 serial
+offsets with arbitrary RT/AUX payload/counts and disabled-count controls.
+No HW action. Not integrated in top/routed; no external link claim. Existing
+ProtocolProbe's synthetic payload checker must not qualify real Kasli data.
+See diagnostics/drtio/EXTERNAL_LINK.md for integration/CDC/reset/lease/restore
+requirements. Evidence link-observer-simulation-2026-10-15.json.
