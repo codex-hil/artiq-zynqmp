@@ -5,7 +5,7 @@ import json
 import sys
 import shutil
 from pathlib import Path
-from migen import Module, Signal, ClockDomain, Instance, Cat, ClockSignal
+from migen import Module, Signal, ClockDomain, Instance, Cat, ClockSignal, ClockDomainsRenamer
 from migen.genlib.cdc import MultiReg
 from migen.genlib.resetsync import AsyncResetSynchronizer
 from migen.build.generic_platform import Pins, Subsignal, IOStandard
@@ -41,7 +41,7 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False):
+    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False, observer=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -63,7 +63,7 @@ class Diagnostic(Module):
         self.submodules.monitor = Monitor(status, rxerr)
         monitor = self.monitor
         self.comb += [platform.request('sfp_select').eq(1),
-                     platform.request('sfp_disable').eq(~monitor.tx_enable.storage),
+                     platform.request('sfp_disable').eq(1 if observer else ~monitor.tx_enable.storage),
                      platform.request('pl_leds', 0).eq(lock),
                      platform.request('pl_leds', 1).eq(rxdone),
                      platform.request('pl_leds', 2).eq(self.monitor.rx_count.value[26]),
@@ -85,8 +85,21 @@ class Diagnostic(Module):
                          MultiReg(monitor.prbs.storage, rxprbs, odomain='gth_rx'),
                          MultiReg(monitor.loopback.storage, loopback)]
         txdata, rxdata = Signal(20), Signal(20)
-        if sum((protocol,packets,aux)) > 1:
-            raise ValueError("Choose framing, packet or AUX diagnostic")
+        if sum((protocol,packets,aux,observer)) > 1:
+            raise ValueError("Choose framing, packet, AUX or receive observer diagnostic")
+        if observer:
+            # Dedicated RX reset invalidates stale comma alignment and counters
+            # whenever the GTH receiver loses readiness. No optical TX source.
+            from link_observer import LinkObserver
+            monitor.loopback.storage_full.reset = 0
+            monitor.prbs.storage_full.reset = 0
+            monitor.tx_prbs.storage_full.reset = 0
+            self.clock_domains.cd_observer_rx = ClockDomain('observer_rx')
+            self.comb += self.cd_observer_rx.clk.eq(self.cd_gth_rx.clk)
+            self.specials += AsyncResetSynchronizer(self.cd_observer_rx,
+                self.cd_sys.rst | monitor.reset.storage | ~rxpma | ~rxdone | ~rxactive)
+            self.submodules.observer = ClockDomainsRenamer({'gth_rx': 'observer_rx'})(LinkObserver())
+            self.comb += [self.observer.rx_raw.eq(rxdata), txdata.eq(0)]
         self.aux_mode=aux
         if aux:
             from aux_ps import AuxPS
@@ -153,7 +166,7 @@ class Diagnostic(Module):
                 bus_csr=csr_bus.Interface(data_width=32, address_width=14))
             self.submodules.axi2wb = AXI2Wishbone(self.axi, self.wb2csr.wishbone, base_address=CSR_BASE)
             self.submodules.banks = csr_bus.CSRBankArray(self,
-                lambda name, memory: {'monitor': 0, 'protocol': 1, 'packets': 2}.get(name) if memory is None else None,
+                lambda name, memory: {'monitor': 0, 'protocol': 1, 'packets': 2, 'observer': 3}.get(name) if memory is None else None,
                 data_width=32, address_width=14)
             self.submodules.csr_interconnect = csr_bus.Interconnect(self.wb2csr.csr, self.banks.get_buses())
         connect_ps_hpm0(self, ps, self.axi)
@@ -186,6 +199,7 @@ def main():
     p.add_argument("--protocol", action="store_true")
     p.add_argument("--packets", action="store_true")
     p.add_argument("--aux", action="store_true")
+    p.add_argument("--observer", action="store_true")
     args = p.parse_args()
     platform = DiagnosticPlatform(args.ps.resolve())
     platform.add_extension([
@@ -216,13 +230,15 @@ def main():
             IOStandard('DIFF_HSTL_I_DCI_12'))])
         platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
         platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
-    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux)
+    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux, args.observer)
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
     first_stage_count = (118 if args.forward_rx_clock else 117) + (200 if args.protocol else 0)
     prefixes = ['diagnostic_rx_count_gth_rx', 'diagnostic_tx_count_gth_tx', 'diagnostic_error_count_gth_rx']
     if args.protocol:
         prefixes += ['diagnostic_protocolprobe_graycounter'+str(i)+'_gth_rx' for i in range(6)]
-    if args.packets or args.aux:
+    if args.observer:
+        prefixes += ['diagnostic_linkobserver_graycounter'+str(i)+'_gth_rx' for i in range(4)]
+    if args.packets or args.aux or args.observer:
         first_stage_count = 'PACKET_CDC_COUNT'
     if args.packets:
         # Replaced from the generated HDL by the build wrapper, before Vivado.
@@ -270,7 +286,7 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
     platform.toolchain.additional_commands.append('report_bus_skew -file top_bus_skew.rpt')
     platform.build(top, build_dir=str(args.output.resolve()), run=False)
     top.write_map(args.output.resolve() / 'csr-map.json')
-    if args.packets or args.aux:
+    if args.packets or args.aux or args.observer:
         import re
         text = (args.output.resolve() / 'top.v').read_text()
         # Vivado's lowering emits a standalone mr_ff attribute per declaration.
@@ -278,7 +294,7 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
         if not marked: raise ValueError('No generated packet CDC declarations')
         bits = sum(int(width)+1 if width else 1 for width,name in marked)
         manifest = {'first_stage_bits':bits, 'first_stage_registers':marked,
-                    'gray_counter_buses':len(prefixes)+(3 if args.packets else 2)}
+                    'gray_counter_buses':len(prefixes)+(3 if args.packets else 2 if args.aux else 0)}
         (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
         route = args.output.resolve() / 'top_route.tcl'
         route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))

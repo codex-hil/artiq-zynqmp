@@ -329,3 +329,10 @@ No HW action. Not integrated in top/routed; no external link claim. Existing
 ProtocolProbe's synthetic payload checker must not qualify real Kasli data.
 See diagnostics/drtio/EXTERNAL_LINK.md for integration/CDC/reset/lease/restore
 requirements. Evidence link-observer-simulation-2026-10-15.json.
+
+2026-10-15 observer top integrated/preflight PASS252 CDC bits/seven Gray buses,
+CSR bank3, hard optical TX disable. RX reset/reacquire simulation PASS. Corrected
+Vivado build running build-vivado/drtio-observer-route-fixed-2026-10-15; acceptance
+PENDING. Do not edit active build_top.sh/check_top_build.py before it finishes.
+First drtio-observer-route-2026-10-15 stopped/withdrawn after HDL caught incorrect
+CSR defaults; never load it. See latest PORTING_STATUS/EXTERNAL_LINK. No HW access.

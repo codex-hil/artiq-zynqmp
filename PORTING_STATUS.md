@@ -1408,3 +1408,21 @@ both-board leases, RX-only first stage and full restoration. Integration into
 diagnostic top, exact CDC/Gray constraints, timing-qualified bitstream and
 bounded hardware wrapper remain next steps. The aligner must reset on lost
 readiness before external use. External Kasli DRTIO remains NOT_RUN.
+
+### 2026-10-15 — external observer top HDL/preflight PASS; route pending
+
+Independent --observer/DRTIO_OBSERVER mode integrated in diagnostic top:
+CSR bank3, external RX/PRBS-off defaults, hardwired optical TX disable and
+zero TX data. Dedicated observer_rx domain resets alignment/counts on PS/
+monitor reset or lost RX PMA/resetdone/active. LOS-only recovery requires
+host monitor reset and discarded acquisition counts. RX reset/reacquisition
+simulation PASS8.461s. Generated HDL structural checks PASS252 CDC bits/
+seven Gray buses with exact synthesis guards. Not hardware evidence.
+
+Initial route attempt withdrawn/stopped: CSRStorage.storage.reset did not
+change actual storage_full reset values. Fixed, regenerated and verified
+actual HDL defaults. Corrected build running in
+build-vivado/drtio-observer-route-fixed-2026-10-15; route/timing/bitstream
+acceptance remains PENDING. Evidence link-observer-top-preflight-2026-10-15.
+No board/UART/network/reset/Si/flash/SD/OTP actions. Next: inspect corrected
+Vivado result, address any timing/CDC issues, then bounded external RX wrapper.

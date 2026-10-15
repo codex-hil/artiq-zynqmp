@@ -60,6 +60,33 @@ class ObserverTests(unittest.TestCase):
         run_simulation(dut, {'gth_tx':run()},
                        clocks={'sys':13, 'gth_tx':8, 'gth_rx':(8, 2)})
 
+    def test_receiver_reset_clears_counts_and_reacquires(self):
+        dut = Wire(7)
+        o = dut.observer
+        def run():
+            yield o.enable.storage.eq(1)
+            for _ in range(100): yield
+            yield dut.tx.rt_frame.eq(1)
+            for _ in range(5): yield
+            yield dut.tx.rt_frame.eq(0)
+            for _ in range(50): yield
+            self.assertGreater((yield o.rt_words.status), 0)
+            yield dut.cd_gth_rx.rst.eq(1)
+            for _ in range(10): yield
+            self.assertEqual((yield o.alignment.status) & 1, 0)
+            self.assertEqual((yield o.rt_words.status), 0)
+            yield dut.cd_gth_rx.rst.eq(0)
+            for _ in range(100): yield
+            self.assertEqual((yield o.alignment.status) & 1, 1)
+            before = (yield o.rt_words.status)
+            yield dut.tx.rt_frame.eq(1)
+            for _ in range(3): yield
+            yield dut.tx.rt_frame.eq(0)
+            for _ in range(50): yield
+            self.assertEqual((yield o.rt_words.status) - before, 3)
+        run_simulation(dut, {'gth_tx':run()},
+                       clocks={'sys':13, 'gth_tx':8, 'gth_rx':(8, 2)})
+
     def test_all_twenty_bit_offsets_and_disabled_counting(self):
         for offset in range(20):
             with self.subTest(offset=offset): self.exercise(offset)

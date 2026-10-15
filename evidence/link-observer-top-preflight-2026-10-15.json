@@ -1,0 +1,19 @@
+{
+  "kind": "generated HDL structural checks, not synthesis or hardware",
+  "status": "PASS",
+  "build": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-observer-preflight-fixed-2026-10-15",
+  "optical_tx": "hard disabled",
+  "tx_data": "zero",
+  "default_prbs": 0,
+  "default_loopback": 0,
+  "observer_rx_reset_domain": true,
+  "first_stage_bits": 252,
+  "gray_buses": 7,
+  "sha256": {
+    "top.v": "a5412004ced1e2d77d47af35ef1afff77592c181daed60f186719c7baa70eaa7",
+    "csr-map.json": "107fe48c9e78ce8a2025646bd6ad4a537b390e55763626da741ae9e450742aae",
+    "cdc-manifest.json": "493069f05f38515c86eed95434ee342488ec513ad0870b33d7bd9b9950cecc10"
+  },
+  "reset_simulation_log": "test_receiver_reset_clears_counts_and_reacquires (test_link_observer.ObserverTests.test_receiver_reset_clears_counts_and_reacquires) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 8.461s\n\nOK\n",
+  "withdrawn_build": "drtio-observer-route-2026-10-15 stopped before completion; incorrect CSR reset defaults; never loaded"
+}

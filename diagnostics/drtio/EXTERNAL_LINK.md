@@ -49,3 +49,28 @@ remote discovery, synchronization or deterministic latency.
 After reception is established, wire the real satellite RTIO/SED and persistent
 AUX service before accepting ResetRequest or reporting destination UP. TSC,
 routing and remote physical TTL require separate tests.
+
+## Observer top integration — 2026-10-15
+
+`DRTIO_OBSERVER=1 diagnostics/drtio/build_top.sh PS_EXPORT PHY_EXPORT FRESH_OUTPUT`
+selects the independent observer mode. Use the existing Genesys RTIO/DMA PS
+export and raw20 final156 PHY. It is mutually exclusive with protocol/packet/
+AUX modes. CSR bank3 exposes observer enable/alignment/four counters. TX_DISABLE
+is hardwired high, regardless of monitor_tx_enable. TX data is zero; CSR reset
+defaults select external RX and PRBS off. Use monitor_reset around mode changes.
+
+A separate observer_rx clock domain shares GTH RX clock and asynchronously
+asserts reset on PS reset, monitor reset, or lost RX PMA/resetdone/user-clock
+active. This clears alignment and counters; each readiness reset starts a new
+measurement epoch. Optical LOS alone is not in that reset condition: the host
+must reject LOS samples and assert monitor_reset before reacquisition.
+Observer enable is in PS/sys domain and survives an RX-only reset; disable it
+while reacquiring and settling the decoder before taking deltas.
+
+Generated HDL preflight PASS:252 first-stage CDC bits and seven32-bit Gray
+buses, each with exact-count synthesis guards/bus-skew constraints. A separate
+RX reset simulation PASS verifies counts clear and alignment reacquires.
+Full route/timing validation is still pending; this top has not been loaded.
+First route attempt was stopped after HDL checks caught ineffective reset
+assignments to CSRStorage.storage. Corrected code sets storage_full.reset;
+the abandoned build must not be used for hardware.
