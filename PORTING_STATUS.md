@@ -1325,3 +1325,14 @@ Genesys and another FT4232H on historical KASLI01 path; no substitute access.
 No new I2C measurements/configuration changes. Capture distinguishes absent
 hardware from I2C failure. User clarification/reconnection needed; last settled
 54 reads/zero-NACK result remains a single run, not causal proof.
+
+### 2026-10-15 — KASLI03 returned; fresh I2C comparison
+
+DNA0048458a64b04854 confirmed on USB1-2.4.1/001:019, UART channelC new hub path.
+Wrappers support explicit location and UART-to-USB identity check. Fresh54-read
+original run13 retried NACKs; subsequent54-read settled run zero. All values
+identical/PLLlocked, mux/bus restored; no clock/FPGA/flash/Genesys writes.
+Three shared Kasli locks covered each bounded session44.26/79.557s. Supports
+timing-sensitive diagnostic behavior, not proof excluding electrical margins.
+Evidence kasli03-clock-ab-2026-10-15. Next safe step: bounded profile restoration
+using settled diagnostic reads, followed by cross-board-locked runtime startup.

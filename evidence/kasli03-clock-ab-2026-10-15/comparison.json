@@ -1,0 +1,14 @@
+{
+  "status": "COMPARISON_COMPLETE",
+  "reads_per_mode": 54,
+  "original_retried_nacks": 13,
+  "settled_retried_nacks": 0,
+  "register_values_identical": true,
+  "usb_topology": "1-2.4.1",
+  "dna": "0x0048458a64b04854",
+  "limitations": [
+    "single ordered pair, not randomized electrical characterization",
+    "timing overlay changes both hold and sampling",
+    "no clock reconfiguration or restoration validation"
+  ]
+}

@@ -27,6 +27,8 @@ def main():
     parser.add_argument('--qualification', type=Path, required=True)
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('--network-interface', help='Optional bounded IPv6 TCP4269 negative/recovery test')
+    parser.add_argument('--usb-topology', default='1-6.2')
+    parser.add_argument('--uart', default=UART)
     parser.add_argument('--download-runtime', type=Path)
     parser.add_argument('--runtime-sha256')
     args = parser.parse_args()
@@ -56,7 +58,7 @@ def main():
     # Caller must review the netboot overlay and this hash before execution.
     if args.dry_run:
         print(json.dumps({'status': 'PREFLIGHT_PASS_NO_HARDWARE_ACCESS',
-                          'bit_sha256': args.sha256, 'uart': UART,
+                          'bit_sha256': args.sha256, 'uart': args.uart,
                           'scope': 'bootloader only, restore diagnostic'}))
         return
     if args.network_interface:
@@ -92,11 +94,11 @@ def main():
             handle = open(f'/home/codex-hil/.cache/kasli-{board}.lock', 'a')
             handles.append(handle)
             fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        usb = Path('/sys/bus/usb/devices/1-6.2')
+        usb = Path('/sys/bus/usb/devices') / args.usb_topology
         if [(usb / n).read_text().strip() for n in ('idVendor', 'idProduct', 'manufacturer')] != ['0403', '6011', 'FTDI']:
             raise RuntimeError('USB topology identity changed')
         busdev = f'{int((usb / "busnum").read_text()):03}:{int((usb / "devnum").read_text()):03}'
-        result['usb_busdev'] = busdev
+        result.update(usb_busdev=busdev, usb_topology=args.usb_topology, uart=args.uart)
         base = [str(RNG / 'build/oss-cad-suite/bin/openFPGALoader'), '-c', 'ft4232',
                 '--busdev-num', busdev, '--ftdi-channel', '0', '--freq', '1000000']
         identity = command(base + ['--read-dna'], 'dna.log')
@@ -104,7 +106,10 @@ def main():
         if not match or int(match[1], 16) != DNA:
             raise RuntimeError('DNA mismatch')
         result['dna'] = match[1]
-        with serial.Serial(UART, 115200, timeout=0.2, exclusive=True) as uart:
+        tty = Path(args.uart).resolve().name
+        if f'{args.usb_topology}:1.2' not in (Path('/sys/class/tty') / tty / 'device').resolve().parts:
+            raise RuntimeError('UART does not belong to selected USB topology/channel C')
+        with serial.Serial(args.uart, 115200, timeout=0.2, exclusive=True) as uart:
             uart.reset_input_buffer()
             changed = True  # Restore even if programming fails partway through.
             command(base + ['--write-sram', str(bit)], 'program.log')
@@ -193,7 +198,7 @@ def main():
                 command(['python3', str(RNG / 'kasli/program_sram.py'), 'KASLI03',
                          '--busdev', result['usb_busdev'], '--dna', hex(DNA),
                          '--build', str(RNG / 'kasli/artifacts/kasli-full-checker')], 'restore.log')
-                comm = BoundedUART(UART)
+                comm = BoundedUART(args.uart)
                 comm.port.timeout = 2
                 comm.open()
                 try:

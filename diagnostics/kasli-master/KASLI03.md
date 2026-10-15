@@ -282,3 +282,16 @@ Genesys lock as well as all three Kasli locks, acquired lexically/nonblocking
 and held through tests/restoration. No independent runtime attempt is allowed
 under only a Kasli lease while Genesys is in use.
 Plan evidence: `evidence/kasli03-clock-restore-plan-2026-10-14.json`.
+
+## USB relocation and fresh timing comparison — 2026-10-15
+
+Verified DNA0048458a64b04854 now at topology1-2.4.1, USB001:019, UART channelC
+`/dev/serial/by-path/pci-0000:00:14.0-usb-0:2.4.1:1.2-port0`.
+Capture/netboot wrappers accept explicit `--usb-topology` and `--uart` and
+verify UART belongs to that USB interface before opening it. Historical default
+paths stay unchanged; pass the current confirmed location explicitly.
+
+Fresh ordered A/B: original54 reads/13 retried NACKs, settled54 reads/zero;
+values identical and PLLlocked, routing restored. No programming/clock changes.
+See evidence/kasli03-clock-ab-2026-10-15. Restorable clock profile validation
+and runtime execution remain pending; this test only characterizes reads.

@@ -49,3 +49,18 @@ not accessed or substituted. No fresh timing comparison result exists.
 The capture wrapper now reports BLOCKED_HARDWARE_ABSENT explicitly.
 Operator must reconnect KASLI03 or provide a new handoff location; exact DNA
 must be reconfirmed under its shared locks before any retargeted access.
+
+## Fresh ordered original/settled comparison — 2026-10-15
+
+KASLI03 reappeared through hubs at USB1-2.4.1/001:019. Exact DNA confirmed;
+UART channelC maps to usb-0:2.4.1:1.2-port0. Both captures hold all three Kasli
+locks, check DNA and diagnostic identity, restore mux/bus state and release.
+54 original-timing reads needed13 retried NACKs;54 settled reads needed zero.
+All register pairs and values match across modes; PLL remains locked.
+No clock configuration/FPGA/flash writes. Evidence kasli03-clock-ab-2026-10-15.
+
+This reinforces a timing-sensitive diagnostic effect; it does not identify
+which timing change matters or exclude electrical margins. The settled mode
+now has two separate54-read zero-NACK runs. Do not label Kasli1.1 defective or
+claim a universal hardware cure from this ordered pair. Next use settled
+sampling for diagnostic profile handling while qualifying actual runtime.

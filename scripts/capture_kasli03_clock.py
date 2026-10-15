@@ -22,6 +22,8 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--si-source', type=Path, required=True)
     parser.add_argument('--settled-timing', action='store_true')
+    parser.add_argument('--usb-topology', default='1-6.2')
+    parser.add_argument('--uart', default=UART)
     args = parser.parse_args()
     sys.path.insert(0, str(RNG / 'kasli'))
     from i2c import I2C
@@ -56,10 +58,10 @@ def main():
             fd = open(f'/home/codex-hil/.cache/kasli-{board}.lock', 'a')
             handles.append(fd)
             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        usb = Path('/sys/bus/usb/devices/1-6.2')
+        usb = Path('/sys/bus/usb/devices') / args.usb_topology
         if not (usb / 'idVendor').is_file():
             result['status'] = 'BLOCKED_HARDWARE_ABSENT'
-            raise RuntimeError('Expected KASLI03 USB topology1-6.2 absent; no replacement device selected')
+            raise RuntimeError(f'Expected KASLI03 USB topology {args.usb_topology} absent; no replacement device selected')
         if [(usb / key).read_text().strip() for key in ('idVendor', 'idProduct', 'manufacturer')] != ['0403', '6011', 'FTDI']:
             raise RuntimeError('USB identity changed')
         busdev = f'{int((usb / "busnum").read_text()):03}:{int((usb / "devnum").read_text()):03}'
@@ -70,8 +72,11 @@ def main():
         match = re.search(r'"dna":\s*"(0x[0-9a-fA-F]+)"', loader.stdout)
         if loader.returncode or not match or int(match[1], 16) != 0x0048458a64b04854:
             raise RuntimeError('DNA mismatch')
-        result.update(dna=match[1], usb_busdev=busdev)
-        comm = BoundedUART(UART, csr_csv=str(RNG / 'kasli/artifacts/kasli-full-checker/csr.csv'))
+        result.update(dna=match[1], usb_busdev=busdev, usb_topology=args.usb_topology, uart=args.uart)
+        tty = Path(args.uart).resolve().name
+        if f'{args.usb_topology}:1.2' not in (Path('/sys/class/tty') / tty / 'device').resolve().parts:
+            raise RuntimeError('UART does not belong to selected USB topology/channel C')
+        comm = BoundedUART(args.uart, csr_csv=str(RNG / 'kasli/artifacts/kasli-full-checker/csr.csv'))
         comm.port.timeout = 2
         comm.open()
         if comm.regs.diag_identity.read() != 0x4b110001:
