@@ -305,3 +305,11 @@ nominal125MHz ±1% counter check PASS, shared three-Kasli lease149.249s. Expecte
 reset-value NACK only. No FPGA/flash/runtime/Genesys writes. Evidence
 kasli03-clock-restore-2026-10-15. Runtime NOT_RUN and must also lock Genesys due
 connected downstream TX. Capture/netboot wrappers accept explicit hub location.
+
+2026-10-15 KASLI03 current ARTIQ10 RAM startup hardware PASS: first upload/B
+PLL/sys-switch reboot→BRAM, second upload/B matching runtime management/session
+UART active. Runtime TCP client/kernel/remote DRTIO NOT_RUN. Shared Genesys plus
+three Kasli locks held through startup and full-checker/clock-profile restoration
+PASS. No Genesys config/flash/OTP writes; volatile Si setup/restore explicit.
+Evidence kasli03-runtime-startup-2026-10-15. Use --execute-runtime only with
+reviewed clock baseline/validation and exact payload hash; current enp2s0.

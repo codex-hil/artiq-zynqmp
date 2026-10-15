@@ -1,6 +1,6 @@
-"""Bounded KASLI03 bootloader-only SRAM test and diagnostic restoration.
+"""Bounded KASLI03 SRAM boot/download/optional runtime and restoration.
 
-LGPL-3.0-or-later. No runtime upload, flash operations or Genesys access.
+LGPL-3.0-or-later. No flash operations. Runtime option also leases Genesys.
 """
 import argparse
 import csv
@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 import socket
 import struct
+import sys
 import subprocess
 import time
 
@@ -31,7 +32,24 @@ def main():
     parser.add_argument('--uart', default=UART)
     parser.add_argument('--download-runtime', type=Path)
     parser.add_argument('--runtime-sha256')
+    parser.add_argument('--execute-runtime', action='store_true')
+    parser.add_argument('--clock-plan', type=Path)
+    parser.add_argument('--clock-baseline', type=Path)
+    parser.add_argument('--clock-validation', type=Path)
     args = parser.parse_args()
+    if args.execute_runtime:
+        if not all((args.download_runtime, args.clock_plan, args.clock_baseline, args.clock_validation)):
+            raise SystemExit('Execution requires payload and reviewed clock baseline/plan/physical validation')
+        validation = json.loads(args.clock_validation.read_text())
+        if not validation.get('restoration_profile_validated') or validation.get('status') != 'PASS':
+            raise SystemExit('Clock restoration not physically validated')
+        plan = json.loads(args.clock_plan.read_text())
+        baseline_bytes = args.clock_baseline.read_bytes()
+        baseline = json.loads(baseline_bytes)
+        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256'] or int(validation['dna'], 16) != DNA or validation['si_source_sha256'] != baseline['si_source_sha256']:
+            raise SystemExit('Clock baseline/validation identity mismatch')
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'diagnostics/kasli-master'))
+        sys.path.insert(0, str(RNG / 'kasli'))
     payload = None
     if args.download_runtime:
         if not args.network_interface or not args.runtime_sha256:
@@ -59,7 +77,7 @@ def main():
     if args.dry_run:
         print(json.dumps({'status': 'PREFLIGHT_PASS_NO_HARDWARE_ACCESS',
                           'bit_sha256': args.sha256, 'uart': args.uart,
-                          'scope': 'bootloader only, restore diagnostic'}))
+                          'scope': 'runtime plus clock restoration' if args.execute_runtime else 'bootloader/download, restore diagnostic'}))
         return
     if args.network_interface:
         addresses = json.loads(subprocess.check_output(
@@ -76,6 +94,10 @@ def main():
                 raise TimeoutError('Restored UARTBone read incomplete')
             return data
 
+        def write(self, *values, **kwargs):
+            super().write(*values, **kwargs)
+            self.port.flush()
+
     args.output.mkdir(parents=True, exist_ok=True)
     result = {'status': 'FAIL', 'board': 'KASLI03', 'bit_sha256': args.sha256,
               'flash_written': False, 'runtime_uploaded': False,
@@ -90,8 +112,11 @@ def main():
         return completed.stdout + completed.stderr
 
     try:
-        for board in ('KASLI01', 'KASLI02', 'KASLI03'):
-            handle = open(f'/home/codex-hil/.cache/kasli-{board}.lock', 'a')
+        locks = [f'/home/codex-hil/.cache/kasli-{board}.lock' for board in ('KASLI01', 'KASLI02', 'KASLI03')]
+        if args.execute_runtime:
+            locks.append('/home/codex-hil/.cache/genesys-210383B7F02DA.lock')
+        for lock in sorted(locks):
+            handle = open(lock, 'a')
             handles.append(handle)
             fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
         usb = Path('/sys/bus/usb/devices') / args.usb_topology
@@ -180,12 +205,16 @@ def main():
                     (args.output / 'uart.log').write_bytes(log)
                     if b'Firmware successfully downloaded' not in log:
                         raise RuntimeError('Bootloader did not confirm completed RAM download')
-                    if b'ARTIQ runtime starting' in log:
+                    if args.execute_runtime:
+                        from runtime_startup import execute
+                        execute(connection, uart, log, payload, result['netboot_ipv6_link_local'], scope,
+                                args.output / 'uart.log', result)
+                    if not args.execute_runtime and b'ARTIQ runtime starting' in log:
                         raise RuntimeError('Unexpected runtime execution')
                 result['runtime_uploaded'] = True
-                result['runtime_executed'] = False
+                result['runtime_executed'] = bool(args.execute_runtime and result.get('runtime_startup') == 'PASS')
                 result['ram_download'] = {'status': 'PASS', 'bytes': len(payload),
-                    'source_sha256': args.runtime_sha256, 'boot_command_sent': False,
+                    'source_sha256': args.runtime_sha256, 'boot_command_sent': args.execute_runtime,
                     'memory_readback': 'NOT_RUN'}
             result['status'] = 'PASS'
     except BlockingIOError:
@@ -212,6 +241,33 @@ def main():
                         if value != expected_value:
                             raise RuntimeError(f'Restored {name} mismatch: {value}')
                     result['restoration'] = 'PASS'
+                    if args.execute_runtime and result.get('runtime_execute_attempted'):
+                        from settled_i2c import SettledI2C
+                        from clock_restore import exercise
+                        bus = SettledI2C(comm)
+                        plan = json.loads(args.clock_plan.read_text())
+                        baseline_bytes = args.clock_baseline.read_bytes()
+                        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256']:
+                            raise RuntimeError('Clock baseline hash mismatch')
+                        prior_mux = {}
+                        prior_csr = comm.read(addresses['i2c_w'], length=1)[0]
+                        # Attach CSR names for reused guarded diagnostic I2C implementation.
+                        from litex.tools.remote.csr_builder import CSRBuilder
+                        CSRBuilder.__init__(comm, comm=comm, csr_csv=str(RNG / 'kasli/artifacts/kasli-full-checker/csr.csv'))
+                        try:
+                            for address in (0x70, 0x71):
+                                bus.start()
+                                try:
+                                    if not bus.put((address << 1) | 1): raise RuntimeError('Mux read NACK')
+                                    prior_mux[address] = bus.get(last=True)
+                                finally: bus.stop()
+                            bus.select_mux(0x70, 0); bus.select_mux(0x71, 8)
+                            result['clock_profile_written'] = True
+                            result['clock_restore'] = {}
+                            exercise(comm, bus, json.loads(baseline_bytes)['registers'], plan, result['clock_restore'])
+                        finally:
+                            for address, value in prior_mux.items(): bus.select_mux(address, value)
+                            comm.write(addresses['i2c_w'], [prior_csr])
                 finally:
                     comm.close()
             except Exception as error:

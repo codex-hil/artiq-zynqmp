@@ -1348,3 +1348,19 @@ Mux/bus restored; no FPGA/flash/OTP/runtime/Genesys action. Two offline controls
 PASS including rejecting config NACK and bounded recovery without repeated reset.
 Evidence kasli03-clock-restore-2026-10-15. Runtime execution remains next stage,
 with all connected-device locks, profile restoration and reboot/re-download.
+
+### 2026-10-15 — current KASLI03 ARTIQ10 runtime starts from RAM: hardware PASS
+
+Native netboot upload/B twice: first runtime initializes Si5324 and switches
+sys clock/reboots to BRAM; second skips setup and starts matching current
+ARTIQ10. UART management-active/accepting-network-sessions observed. No flash
+commands/original flash runtime. Standard management client/kernel/remote DRTIO
+still NOT_RUN. Two offline startup/reboot/panic controls PASS.
+
+Shared Genesys+three Kasli locks held through load/UART/network/downstream TX
+and restoration. No Genesys programming/configuration writes. Full-checker
+CSR/disabled EEM/GTP/SFP restored PASS, then23-register clock baseline restore,
+calibration/PLL/readback/nominal125MHz ±1% PASS and mux/bus restore. Volatile
+Si writes explicit; no flash/OTP. Evidence kasli03-runtime-startup-2026-10-15.
+Next safe step: repeat controlled startup with standard management queries
+and then a simple local ARTIQ experiment, retaining cross-board leases/restore.

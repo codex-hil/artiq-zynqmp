@@ -1,0 +1,203 @@
+{
+  "status": "PASS",
+  "board": "KASLI03",
+  "bit_sha256": "4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715",
+  "flash_written": false,
+  "runtime_uploaded": true,
+  "genesys_accessed": false,
+  "clock_profile_written": true,
+  "usb_busdev": "001:019",
+  "usb_topology": "1-2.4.1",
+  "uart": "/dev/serial/by-path/pci-0000:00:14.0-usb-0:2.4.1:1.2-port0",
+  "dna": "0x0048458a64b04854",
+  "prior_flash_runtime_started": false,
+  "bootloader_test": "PASS",
+  "dhcp_lease": "NOT_IMPLEMENTED_BY_BOOTLOADER",
+  "netboot_ipv6_link_local": "fe80::4b:3ff:fe48:4854",
+  "netboot_network": {
+    "status": "PASS",
+    "interface": "enp2s0",
+    "tcp_connections": 3,
+    "unknown_command_rejected": true,
+    "boot_without_firmware_rejected": true,
+    "listener_recovery": true,
+    "neighbor_mac": "02:4b:03:48:48:54"
+  },
+  "runtime_execute_attempted": true,
+  "runtime_boot_commands": 2,
+  "clock_switch_reboot_observed": true,
+  "runtime_startup": "PASS",
+  "runtime_executed": true,
+  "ram_download": {
+    "status": "PASS",
+    "bytes": 1752788,
+    "source_sha256": "4799375ac6490807578b147efa91ac84dc2154c0b4eb640c35dda15147d4bdef",
+    "boot_command_sent": true,
+    "memory_readback": "NOT_RUN"
+  },
+  "restoration": "PASS",
+  "clock_restore": {
+    "writes": [
+      {
+        "register": 136,
+        "value": 128,
+        "value_ack": false
+      },
+      {
+        "register": 0,
+        "value": 84,
+        "value_ack": true
+      },
+      {
+        "register": 2,
+        "value": 66,
+        "value_ack": true
+      },
+      {
+        "register": 3,
+        "value": 85,
+        "value_ack": true
+      },
+      {
+        "register": 4,
+        "value": 18,
+        "value_ack": true
+      },
+      {
+        "register": 6,
+        "value": 63,
+        "value_ack": true
+      },
+      {
+        "register": 21,
+        "value": 254,
+        "value_ack": true
+      },
+      {
+        "register": 25,
+        "value": 192,
+        "value_ack": true
+      },
+      {
+        "register": 31,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 32,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 33,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 34,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 35,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 36,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 40,
+        "value": 192,
+        "value_ack": true
+      },
+      {
+        "register": 41,
+        "value": 78,
+        "value_ack": true
+      },
+      {
+        "register": 42,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 43,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 44,
+        "value": 17,
+        "value_ack": true
+      },
+      {
+        "register": 45,
+        "value": 212,
+        "value_ack": true
+      },
+      {
+        "register": 46,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 47,
+        "value": 17,
+        "value_ack": true
+      },
+      {
+        "register": 48,
+        "value": 212,
+        "value_ack": true
+      },
+      {
+        "register": 137,
+        "value": 1,
+        "value_ack": true
+      },
+      {
+        "register": 136,
+        "value": 64,
+        "value_ack": true
+      }
+    ],
+    "restore_retries": [],
+    "profile_restoration": "PASS",
+    "clock_configuration_written": true,
+    "post_configuration": {
+      "0": 84,
+      "2": 66,
+      "3": 85,
+      "4": 18,
+      "6": 63,
+      "21": 254,
+      "25": 192,
+      "31": 0,
+      "32": 0,
+      "33": 3,
+      "34": 0,
+      "35": 0,
+      "36": 3,
+      "40": 192,
+      "41": 78,
+      "42": 3,
+      "43": 0,
+      "44": 17,
+      "45": 212,
+      "46": 0,
+      "47": 17,
+      "48": 212,
+      "137": 1
+    },
+    "output_hz_against_host": [
+      125573278.20919454,
+      125528513.13752137,
+      125528466.35888854
+    ],
+    "restoration_profile_validated": true,
+    "restore_test_seconds": 69.642
+  }
+}

@@ -318,3 +318,29 @@ Next controlled runtime execution must hold Genesys plus all Kasli leases,
 include post-test diagnostic/profile restoration and handle the clock-switch
 reboot/re-download flow. SFP physical port mapping still needs confirmation
 before claiming external link behavior.
+
+## ARTIQ10 runtime RAM startup hardware PASS — 2026-10-15
+
+The bounded wrapper's explicit `--execute-runtime` requires reviewed payload
+hash plus clock baseline/plan/physical restoration validation. It acquires
+Genesys and all three Kasli locks lexically/nonblocking for the whole session,
+including UART/TCP, downstream TX activation and diagnostic/clock restoration.
+Genesys is leased because of the external cable; its FPGA/configuration is not
+programmed. Current host interface is enp2s0 with native IPv6 link-local.
+
+Physical PASS: first upload/B runs current ARTIQ10, soft-reset/PLL setup and
+sys-clock switch return CPU to BRAM loader. Second upload/B skips clock setup
+via switch_done. UART shows matching software/gateware identifiers,
+management interface active and accepting network sessions. No flash command
+or original flash runtime. No standard management-client transaction, kernel
+experiment, remote AUX/discovery/TSC/TTL or external DRTIO acceptance yet.
+Two offline controls verify reboot/re-download handling and panic rejection.
+
+Finally full-checker/disabled outputs restored PASS, then reviewed23-register
+clock profile reset/restored/calibrated, readback/PLL/nominal125MHz ±1% PASS,
+mux/bus restored. These are intentional volatile Si writes, no flash/OTP.
+Evidence: `evidence/kasli03-runtime-startup-2026-10-15`.
+Reproducer: netboot wrapper with --execute-runtime, --download-runtime,
+--runtime-sha256, --clock-plan, --clock-baseline, --clock-validation plus
+current explicit USB/UART/interface and reviewed BRAM artifact arguments.
+Next: bounded standard management client queries and a simple local kernel.
