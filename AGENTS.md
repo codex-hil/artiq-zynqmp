@@ -336,3 +336,13 @@ Vivado build running build-vivado/drtio-observer-route-fixed-2026-10-15; accepta
 PENDING. Do not edit active build_top.sh/check_top_build.py before it finishes.
 First drtio-observer-route-2026-10-15 stopped/withdrawn after HDL caught incorrect
 CSR defaults; never load it. See latest PORTING_STATUS/EXTERNAL_LINK. No HW access.
+
+2026-10-15 physical KASLI03→Genesys external RX clock/comma observed: four
+status255/alignment31 snapshots, RX/PS ratio~1.00002, zero RT/AUX frames.
+Optical Genesys TX hard-disabled; no remote DRTIO/CRC/TSC/latency acceptance.
+Normal Kasli diagnostic+clock and Genesys192.168.2.3 TTL/DMA/debug restored PASS.
+Original final Ethernet FAIL was stale enp1s0; four-board-locked enp2s0 recheck
+20/20 ping and1129210 exact TCP bytes PASS. Explicit restore network_interface
+now required by external_session.py. Raw failure retained in evidence/
+kasli03-external-rx-2026-10-15. No active HW/build sessions. Next: upstream idle
+return TX and external AUX echo/status-DOWN (no production ResetAck yet).

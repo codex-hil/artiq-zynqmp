@@ -1,0 +1,14 @@
+{
+  "kind": "hardware",
+  "time": 1792080417.6123247,
+  "ip": "192.168.2.3",
+  "mac": "02:38:3b:7f:02:0d",
+  "scope": "AMD lwIP/GEM diagnostic, not ARTIQ management/RPC",
+  "tests": {
+    "icmp": "NOT_RUN",
+    "identity": "NOT_RUN",
+    "tcp_echo": "NOT_RUN"
+  },
+  "ping_log": "ping: SO_BINDTODEVICE enp1s0: No such device\n",
+  "failure": "ICMP did not complete without packet loss"
+}

@@ -1,0 +1,19 @@
+{
+  "kind": "fpga-build-not-hardware",
+  "status": "PASS",
+  "scope": "separate raw GTH diagnostic; not a DRTIO satellite",
+  "sha256": {
+    "top.bit": "63cc40e7e3ee1cba153aef8a96d0c61be9af1355b63099c58cb3f3eaf5f1a59a",
+    "top.v": "a5412004ced1e2d77d47af35ef1afff77592c181daed60f186719c7baa70eaa7",
+    "top.xdc": "45f9dbf885cd56f1f7864beb5f1bed7e87663cdcb508b6e9feac21b34fcd9e50",
+    "csr-map.json": "107fe48c9e78ce8a2025646bd6ad4a537b390e55763626da741ae9e450742aae",
+    "top_timing.rpt": "b3d40e825f72b0294736164a43a7a2999506971d2c83669587d1e9dfb490aa6a",
+    "top_bus_skew.rpt": "221294e85eb22d0e5924583e96c81e6f803b5072ae818cf04eb4bb9e7fe0552c"
+  },
+  "build": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-observer-route-fixed-2026-10-15",
+  "wns_ns": 2.77,
+  "whs_ns": 0.002,
+  "gray_buses": 7,
+  "first_stage_bits": 252,
+  "hardware": "NOT_RUN in build qualification"
+}

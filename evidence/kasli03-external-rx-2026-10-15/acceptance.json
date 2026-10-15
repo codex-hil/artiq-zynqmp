@@ -1,0 +1,14 @@
+{
+  "observation": "RX_CLOCK_AND_COMMA",
+  "original_session_status": "FAIL",
+  "original_failure": "External stage failed: restore-ethernet",
+  "explanation": "Restore Ethernet check selected obsolete enp1s0; explicit enp2s0 recheck passed under reacquired four-board leases; original failure retained.",
+  "kasli_diagnostic_and_clock_restore": "PASS",
+  "genesys_runtime_and_debug_restore": "PASS",
+  "genesys_ethernet_recheck": "PASS",
+  "final_known_genesys_ip": "192.168.2.3",
+  "remote_drtio": "NOT_RUN",
+  "rt_aux_frames_observed": 0,
+  "flash_sd_otp_writes": false,
+  "next": "enable upstream ARTIQ idle return path and remote AUX echo/status-DOWN before full RTIO satellite"
+}

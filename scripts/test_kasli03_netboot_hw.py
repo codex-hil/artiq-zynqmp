@@ -39,7 +39,14 @@ def main():
     parser.add_argument('--clock-plan', type=Path)
     parser.add_argument('--clock-baseline', type=Path)
     parser.add_argument('--clock-validation', type=Path)
+    parser.add_argument('--genesys-observer', type=Path, help='Reviewed external RX/restore configuration')
     args = parser.parse_args()
+    observer = None
+    if args.genesys_observer:
+        if not args.execute_runtime: raise SystemExit('External RX requires runtime and both-board leases')
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'diagnostics/drtio'))
+        from external_session import ExternalSession
+        observer = ExternalSession(args.genesys_observer, args.output / 'external-rx')
     if args.execute_runtime:
         if not all((args.download_runtime, args.clock_plan, args.clock_baseline, args.clock_validation)):
             raise SystemExit('Execution requires payload and reviewed clock baseline/plan/physical validation')
@@ -141,6 +148,10 @@ def main():
         tty = Path(args.uart).resolve().name
         if f'{args.usb_topology}:1.2' not in (Path('/sys/class/tty') / tty / 'device').resolve().parts:
             raise RuntimeError('UART does not belong to selected USB topology/channel C')
+        if observer:
+            lease = next(h for h in handles if 'genesys-' in h.name)
+            result['genesys_accessed'] = True
+            observer.prepare(lease.fileno())
         with serial.Serial(args.uart, 115200, timeout=0.2, exclusive=True) as uart:
             uart.reset_input_buffer()
             changed = True  # Restore even if programming fails partway through.
@@ -263,6 +274,9 @@ def main():
                 result['counter_experiment'] = {'status': 'PASS', 'standard_artiq_run': True,
                     'runs': measured, 'ref_period': 1e-9, 'ttl_writes': False,
                     'source_sha256': hashlib.sha256(example.read_bytes()).hexdigest()}
+            if observer:
+                observer.observe()
+                result['external_rx'] = observer.result
             result['status'] = 'PASS'
     except BlockingIOError:
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')
@@ -319,6 +333,12 @@ def main():
                     comm.close()
             except Exception as error:
                 result.update(status='FAIL', restoration='FAIL', restore_error=str(error))
+        if observer and observer.touched:
+            try:
+                observer.restore()
+            except Exception as error:
+                result.update(status='FAIL', genesys_restore_error=str(error))
+            result['external_rx'] = observer.result
         (args.output / 'results.json').write_text(json.dumps(result, indent=2) + '\n')
         for handle in reversed(handles):
             handle.close()

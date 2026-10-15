@@ -74,3 +74,27 @@ Full route/timing validation is still pending; this top has not been loaded.
 First route attempt was stopped after HDL checks caught ineffective reset
 assignments to CSRStorage.storage. Corrected code sets storage_full.reset;
 the abandoned build must not be used for hardware.
+
+## Bounded external session
+
+The existing `scripts/test_kasli03_netboot_hw.py` accepts
+`--genesys-observer CONFIG.json` together with its reviewed runtime/clock inputs.
+The configuration supplies server, port (exact Genesys UART serial), ps_export,
+bitstream, csr_map, restore_bitstream, worker, cpu0, device_db, artiq_python and
+artiq_run paths, plus explicit network_interface. Preflight requires timing-qualified observer artifacts/hashes
+and all restoration files before acquiring hardware. `external_session.py` is
+not a standalone hardware tool: the Kasli parent holds all four board leases.
+
+After both identities are selected, Genesys observer loads first; Kasli then
+starts its reviewed RAM runtime. The observer resets/reacquires external RX,
+settles, records four500ms-spaced samples, disables counting and retains optical
+TX hard-disabled. Acceptance requires present module, no LOS, PHY readiness,
+comma alignment and RX clock approximately matching independent PS125MHz clock.
+It is reported as RX_CLOCK_AND_COMMA only. Idle/no RT/AUX frames can be normal
+without a returning optical signal; no packet/CRC/discovery success is inferred.
+
+Finally the parent restores Kasli diagnostic/clock and Genesys normal dual-CPU
+runtime. Genesys restoration validates normal physical TTL/DMA/analyzer/MonInj
+and Ethernet under the same leases. Any failed observation remains failed after
+successful restoration. Four offline controls cover counter wrap/idle traffic,
+LOS, absent module, wrong clock and recording restoration failures.

@@ -1426,3 +1426,36 @@ build-vivado/drtio-observer-route-fixed-2026-10-15; route/timing/bitstream
 acceptance remains PENDING. Evidence link-observer-top-preflight-2026-10-15.
 No board/UART/network/reset/Si/flash/SD/OTP actions. Next: inspect corrected
 Vivado result, address any timing/CDC issues, then bounded external RX wrapper.
+
+### 2026-10-15 — observer bitstream BUILD_PASS
+
+Corrected observer Vivado implementation/bitstream PASS; WNS2.770ns,
+WHS0.002ns,252 retained first-stage synchronizer bits and seven passing
+Gray-bus skew constraints. Optical TX hard-disabled in HDL; external RX/
+PRBS-off reset defaults checked. Artifact SHA25663cc40e7e3ee1cba153aef8a96d0c61be9af1355b63099c58cb3f3eaf5f1a59a.
+Evidence link-observer-top-build-2026-10-15.json. Build alone is not remote
+link or deterministic-latency acceptance; hold slack is positive but small.
+
+### 2026-10-15 — physical external KASLI03→Genesys RX clock/comma observed
+
+Reviewed observer bitstream loaded under shared Genesys+three Kasli leases;
+KASLI03 DNA0048458a64b04854 verified, current ARTIQ10 RAM startup, management
+and two local counter/RPC experiments PASS. Four external snapshots show
+status255 (PHY ready/module present/no LOS), alignment31 (aligned, offset15),
+and RX/PS clock ratios near1.00002. RT/AUX word/frame counts all zero.
+Optical Genesys TX hard-disabled. One receive epoch only: not a packet/CRC,
+remote link-up/discovery, TSC/synchronization or deterministic-latency proof.
+
+Restored Kasli full-checker/23-register Si5324 profile/calibration PASS; Genesys
+normal PL/CPU1/CPU0 DHCP192.168.2.3 and TTL/DMA/analyzer/MonInj suite PASS.
+Original session statusFAIL preserved: final Ethernet test used obsolete host
+NIC default enp1s0. Separate four-board-locked explicit enp2s0 recheck PASS:
+20/20 ICMP, exact neighbor MAC,5 TCP connections/1080 exchanges/1129210 bytes.
+Wrapper now requires explicit restore network_interface. No extra FPGA reset
+or programming needed for recheck. Final baseline restored/validated; locks
+released. No flash/SD/OTP or Genesys Si writes; Kasli volatile Si setup/restore
+explicit. Four offline acceptance/failure controls PASS.
+Evidence evidence/kasli03-external-rx-2026-10-15/acceptance.json plus raw original
+FAIL and recheck records. Next safe step: upstream ARTIQ idle return TX and
+external AUX echo/status-DOWN service, retaining both-board leases/restoration;
+never acknowledge production reset or destination-UP before real RTIO backend.
