@@ -1,0 +1,7 @@
+{
+  "kind": "HOST_TEST_NOT_HARDWARE",
+  "status": "PASS",
+  "command": "python3 -m unittest tests.test_reset_backend tests.test_tsc_ack_policy tests.test_external_drtio_session",
+  "tests": 9,
+  "scope": "Actual C reset helper under mocked MMIO: completion, stuck applied, changed TSC-load count, lost clock, transport fault, PHY hold, sticky error, cold hold/release. Existing TSC policy and external acceptance controls also pass. Not physical reset/ResetAck validation."
+}

@@ -1582,3 +1582,21 @@ normal restored Genesys/Kasli state unchanged. Evidence
 satellite-split-reset-simulation-2026-10-15.json. Next qualify build and implement
 hardware-confirmed CSR hold/release in real AUX ResetRequest, preserving TSC;
 then routing/rank and remote TTL. No production ResetAck/UP claim yet.
+
+### 2026-10-15 — split-reset build qualified; reset firmware host controls PASS
+
+Split-reset Vivado build PASS: WNS2.397ns/WHS0.010ns,213 retained CDC bits,
+eight Gray buses; bit500206ab7b931263bc678a32ec74d204c0fb1cb9eca3bdaa8cb5a67f731ff244.
+This supersedes previous pending build status. Not loaded on hardware yet.
+
+Optional AUX firmware --external --tsc --reset explicitly confirms/releases both
+cold holds before TX enable. ResetRequest then asserts only queue reset, waits
+for hardware applied, holds100us, releases and confirms completion, PHY released,
+unchanged TSC-load count and no transport/SED fault before encoding ResetAck.
+Failure disables TX and halts; destination stays DOWN, routing/rank unsupported.
+Nine host tests PASS, including actual C helper with injected MMIO failures;
+A53 ELF builds PASS. These do not prove physical TSC continuity or remote reset.
+Firmware build evidence aux-split-reset-firmware-build-2026-10-15.json.
+No hardware accessed or state changed in this stage. Next extend combined-board
+session acceptance/hash binding and run native master reset after external
+handshake under all shared leases, restoring both baselines. Remote TTL pending.

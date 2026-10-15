@@ -21,6 +21,9 @@ void aux_panic(void) { xil_printf("AUX_FW PANIC\r\n");while(1)usleep(1000000); }
 static int wait(uintptr_t a,uint32_t value) {
  for(unsigned i=0;i<10000;i++) {if(rd(a)==value)return 0;usleep(1000);}return -1;
 }
+#ifdef AUX_RESET
+#include "reset_backend.h"
+#endif
 static int send(const uint8_t *data,unsigned length) {
  if(!length || length%4 || length>1024 || wait(REG_AUX_AUX_TX,0) || wait(REG_AUX_BRIDGE_BUSY,0))return -1;
  for(unsigned i=0;i<length/4;i++) {uint32_t word;memcpy(&word,data+4*i,4);wr(AUX_MEMORY+4*i,word);}
@@ -47,8 +50,7 @@ static int exchange(unsigned request,unsigned destination,unsigned reply) {
  xil_printf("AUX_FW EXCHANGE request=%u reply=%u PASS\r\n",request,reply);
  return 0;
 }
-/* Persistent minimal responder. Reset has no production backend yet and
- * must not receive a successful acknowledgement from this service. */
+/* Persistent responder; optional reset ACK requires hardware completion. */
 static void service(void) {
 #ifdef AUX_TSC
  struct tsc_ack_state tsc_state={0,0};
@@ -93,9 +95,24 @@ static void service(void) {
   if(rd(REG_AUX_AUX_RX_PRESENT)) {
    uint32_t destination=0;int request=receive(&destination);
    int reply=request==0?1:request==0x20?0x21:-1;
+#ifdef AUX_RESET
+   if(request==2) {
+    if(reset_backend()) {
+     xil_printf("AUX_RESET REJECT\r\n");
+     wr(REG_MONITOR_TX_ENABLE,0);aux_panic();
+    }
+    xil_printf("AUX_RESET COMPLETE count=%u\r\n",rd(REG_AUX_TSC_LOAD_COUNT));
+    reply=3;
+   }
+#endif
    if(reply>=0) {
     uint8_t bytes[16];int size=aux_encode(reply,0,bytes,sizeof(bytes));
-    if(size<0||send(bytes,size))xil_printf("AUX_SERVICE SEND_FAIL\r\n");
+    if(size<0||send(bytes,size)) {
+     xil_printf("AUX_SERVICE SEND_FAIL\r\n");
+#ifdef AUX_RESET
+     wr(REG_MONITOR_TX_ENABLE,0);aux_panic();
+#endif
+    }
     else xil_printf("AUX_SERVICE RESPOND request=%d reply=%d\r\n",request,reply);
    } else if(request==1||request==3||request==0x21) {
     /* Local loopback sees our response: do not answer a response. */
@@ -108,13 +125,21 @@ static void service(void) {
 int main(void) {
  Xil_DCacheDisable();
 #ifdef AUX_EXTERNAL
- xil_printf("AUX_EXTERNAL START upstream-codec no-RTIO-backend\r\n");
+ #ifdef AUX_RESET
+ xil_printf("AUX_EXTERNAL START upstream-codec split-reset RTIO-backend\r\n");
+#else
+ xil_printf("AUX_EXTERNAL START upstream-codec\r\n");
+#endif
  if(rd(REG_MONITOR_MAGIC)!=0x44525430)goto fail;
  wr(REG_MONITOR_TX_ENABLE,0);wr(REG_MONITOR_RESET,1);
  wr(REG_MONITOR_PRBS,0);wr(REG_MONITOR_TX_PRBS,0);wr(REG_MONITOR_LOOPBACK,0);
  usleep(50000);wr(REG_MONITOR_RESET,0);
  if(wait(REG_AUX_IN_RESET,0) || wait(REG_AUX_RX_UP,1))goto fail;
  usleep(25000);
+#ifdef AUX_RESET
+ if(release_backend())goto fail;
+ xil_printf("AUX_RESET COLD_RELEASE PASS\r\n");
+#endif
 #ifdef AUX_TSC
  if(rd(REG_AUX_TSC_LOAD_COUNT)!=0)goto fail;
  xil_printf("AUX_TSC BASELINE count=0\r\n");

@@ -15,7 +15,9 @@ def main():
     p.add_argument('--csr-map',type=Path,required=True)
     p.add_argument('--external',action='store_true',help='Receive real remote requests; skip loopback self-test')
     p.add_argument('--tsc',action='store_true',help='ACK only observed hardware TSC loads; requires external')
+    p.add_argument('--reset',action='store_true',help='Hardware-confirmed split reset; requires --tsc')
     a=p.parse_args();
+    if a.reset and not a.tsc:p.error('--reset requires --tsc')
     if a.tsc and not a.external:p.error('--tsc requires --external')
     out=a.output.resolve();out.mkdir(parents=True,exist_ok=True)
     root=a.artiq_source.resolve()/'artiq/firmware'
@@ -47,6 +49,7 @@ io={path=IO_PATH,features=["byteorder"]}
     mapping=json.loads(a.csr_map.read_text())
     if 'aux_bridge_busy' not in mapping['registers']:p.error('AUX CSR map required')
     if a.tsc and not all('aux_'+n in mapping['registers'] for n in ('tsc_load_count','rt_reply_fault','rtio_error_flags')):p.error('Real satellite TSC/error CSR map required')
+    if a.reset and not all('aux_'+n in mapping['registers'] for n in ('rtio_reset_request','rtio_reset_applied','phy_reset_request','phy_reset_applied')):p.error('Split reset CSR map required')
     header=['#pragma once']
     for name,register in mapping['registers'].items():
         if register['words']!=1:raise ValueError('Single-word CSR required')
@@ -60,7 +63,7 @@ io={path=IO_PATH,features=["byteorder"]}
     firmware=Path(__file__).with_name('firmware.c')
     elf=out/'aux-firmware.elf'
     cmd=[str(arm/'bin/aarch64-none-elf-gcc'),'-DSDT','-specs='+str(bsp/'Xilinx.spec'),
-        *(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
+        *(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
         str(library),'-Wl,-T,'+str(linker),'-L'+str(bsp/'lib'),'-Wl,--start-group',
         '-lxilstandalone','-lxiltimer','-lxil','-lgcc','-lc','-Wl,--end-group','-o',str(elf)]
     result=subprocess.run(cmd,capture_output=True,text=True,timeout=120)
@@ -68,6 +71,8 @@ io={path=IO_PATH,features=["byteorder"]}
     if result.returncode:raise RuntimeError(result.stderr[-4000:])
     evidence={'kind':'FIRMWARE_BUILD_NOT_HARDWARE','status':'PASS',
         'mode':'external-tsc-down' if a.tsc else 'external-aux-down' if a.external else 'internal-loopback',
+        'reset_backend':a.reset,
+        'reset_policy_sha256':hashlib.sha256(Path(__file__).with_name('reset_backend.h').read_bytes()).hexdigest(),
         'elf_sha256':hashlib.sha256(elf.read_bytes()).hexdigest(),
         'upstream_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
         'csr_map_sha256':hashlib.sha256(a.csr_map.read_bytes()).hexdigest(),
