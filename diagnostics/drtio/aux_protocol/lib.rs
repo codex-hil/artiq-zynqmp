@@ -22,6 +22,8 @@ pub unsafe extern "C" fn aux_encode(kind: u32, destination: u32, buffer: *mut u8
         2 => Packet::ResetRequest, 3 => Packet::ResetAck, 4 => Packet::TSCAck,
         0x20 => Packet::DestinationStatusRequest { destination: destination as u8 },
         0x21 => Packet::DestinationDownReply,
+        0x22 => Packet::DestinationOkReply,
+        0x32 => Packet::RoutingAck,
         _ => return -2,
     };
     let bytes = slice::from_raw_parts_mut(buffer, capacity);
@@ -51,6 +53,15 @@ pub unsafe extern "C" fn aux_decode(buffer: *const u8, length: usize, destinatio
         Packet::ResetRequest => 2, Packet::ResetAck => 3, Packet::TSCAck => 4,
         Packet::DestinationStatusRequest { destination: d } => { *destination = d as u32; 0x20 },
         Packet::DestinationDownReply => 0x21,
+        Packet::DestinationOkReply => 0x22,
+        Packet::RoutingAck => 0x32,
+        // Explicit single-hop leaf: master port1, rank1, no repeater.
+        // Return destination plus the reviewed local-hop predicate to C.
+        Packet::RoutingSetPath { destination: d, hops } => {
+            *destination = d as u32 | (((hops[0] == 1 && hops[1] == 0) as u32) << 8);
+            0x30
+        },
+        Packet::RoutingSetRank { rank } => { *destination=rank as u32; 0x31 },
         _ => -2,
     }
 }

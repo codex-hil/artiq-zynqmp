@@ -16,7 +16,9 @@ def main():
     p.add_argument('--external',action='store_true',help='Receive real remote requests; skip loopback self-test')
     p.add_argument('--tsc',action='store_true',help='ACK only observed hardware TSC loads; requires external')
     p.add_argument('--reset',action='store_true',help='Hardware-confirmed split reset; requires --tsc')
+    p.add_argument('--dio',action='store_true',help='Single-hop rank1 leaf readiness; requires --reset')
     a=p.parse_args();
+    if a.dio and not a.reset:p.error('--dio requires --reset')
     if a.reset and not a.tsc:p.error('--reset requires --tsc')
     if a.tsc and not a.external:p.error('--tsc requires --external')
     out=a.output.resolve();out.mkdir(parents=True,exist_ok=True)
@@ -63,7 +65,7 @@ io={path=IO_PATH,features=["byteorder"]}
     firmware=Path(__file__).with_name('firmware.c')
     elf=out/'aux-firmware.elf'
     cmd=[str(arm/'bin/aarch64-none-elf-gcc'),'-DSDT','-specs='+str(bsp/'Xilinx.spec'),
-        *(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
+        *(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
         str(library),'-Wl,-T,'+str(linker),'-L'+str(bsp/'lib'),'-Wl,--start-group',
         '-lxilstandalone','-lxiltimer','-lxil','-lgcc','-lc','-Wl,--end-group','-o',str(elf)]
     result=subprocess.run(cmd,capture_output=True,text=True,timeout=120)
@@ -71,6 +73,8 @@ io={path=IO_PATH,features=["byteorder"]}
     if result.returncode:raise RuntimeError(result.stderr[-4000:])
     evidence={'kind':'FIRMWARE_BUILD_NOT_HARDWARE','status':'PASS',
         'mode':'external-tsc-down' if a.tsc else 'external-aux-down' if a.external else 'internal-loopback',
+        'dio_leaf':a.dio,
+        'leaf_policy_sha256':hashlib.sha256(Path(__file__).with_name('leaf_policy.h').read_bytes()).hexdigest(),
         'reset_backend':a.reset,
         'reset_policy_sha256':hashlib.sha256(Path(__file__).with_name('reset_backend.h').read_bytes()).hexdigest(),
         'elf_sha256':hashlib.sha256(elf.read_bytes()).hexdigest(),

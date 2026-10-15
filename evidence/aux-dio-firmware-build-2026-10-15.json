@@ -1,0 +1,15 @@
+{
+  "kind": "FIRMWARE_BUILD_NOT_HARDWARE",
+  "status": "PASS",
+  "mode": "external-tsc-down",
+  "dio_leaf": true,
+  "leaf_policy_sha256": "b43a23508e48be1d61850859c4d6f82a430f040569ded767f2736441ec282a3e",
+  "reset_backend": true,
+  "reset_policy_sha256": "0217cb208a146b26b433573853803176ab8cfc9ad5199feb601c82ce62e7510e",
+  "elf_sha256": "5b7334559f7db98266c5c593d2843204c0288e1598319e560eac418908fe647c",
+  "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "csr_map_sha256": "d58768a9e9a281e718d376d61c357d44931c1a0a9b5055ec584f093c1d0a7a6e",
+  "rust_source_sha256": "c2553f5d603f0a2a6eed098f61d4f52e8cf8ce5bdd040cb40ca3f3485f3ee9a1",
+  "tsc_policy_sha256": "1c3f5f96617a559e565a85e246447c3405f2dcd97b651ff637ae2c5b592d439d",
+  "c_source_sha256": "f2f26bf0251b56b438a6f8922d1fda39fe631d4e047cf4102ef73c1bf6ca307e"
+}

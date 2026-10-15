@@ -23,6 +23,9 @@ static int wait(uintptr_t a,uint32_t value) {
 }
 #ifdef AUX_RESET
 #include "reset_backend.h"
+#ifdef AUX_DIO
+#include "leaf_policy.h"
+#endif
 #endif
 static int send(const uint8_t *data,unsigned length) {
  if(!length || length%4 || length>1024 || wait(REG_AUX_AUX_TX,0) || wait(REG_AUX_BRIDGE_BUSY,0))return -1;
@@ -54,6 +57,9 @@ static int exchange(unsigned request,unsigned destination,unsigned reply) {
 static void service(void) {
 #ifdef AUX_TSC
  struct tsc_ack_state tsc_state={0,0};
+#ifdef AUX_DIO
+ unsigned rank=0;uint8_t local_route[256]={0};
+#endif
 #endif
  xil_printf("AUX_SERVICE READY\r\n");
  while(1) {
@@ -95,6 +101,17 @@ static void service(void) {
   if(rd(REG_AUX_AUX_RX_PRESENT)) {
    uint32_t destination=0;int request=receive(&destination);
    int reply=request==0?1:request==0x20?0x21:-1;
+#ifdef AUX_DIO
+   if(request==0x30) {
+    local_route[destination&255]=(destination>>8)&1;
+    reply=0x32;
+   }
+   if(request==0x31 && destination==1) {rank=1;reply=0x32;}
+   if(request==0x20 && leaf_ready(destination,rank,local_route[1],
+      tsc_state.seen,tsc_state.blocked,reset_backend_ready(),
+      rd(REG_AUX_RTIO_RESET_REQUEST)|rd(REG_AUX_RTIO_RESET_APPLIED),
+      rd(REG_AUX_RTIO_ERROR_FLAGS)))reply=0x22;
+#endif
 #ifdef AUX_RESET
    if(request==2) {
     if(reset_backend()) {
@@ -145,7 +162,11 @@ int main(void) {
  xil_printf("AUX_TSC BASELINE count=0\r\n");
 #endif
  wr(REG_MONITOR_TX_ENABLE,1);
+ #ifdef AUX_DIO
+ xil_printf("AUX_EXTERNAL TX_IDLE_ENABLED single-hop-leaf destination=1\r\n");
+#else
  xil_printf("AUX_EXTERNAL TX_IDLE_ENABLED destination=DOWN\r\n");
+#endif
  service();
 #else
  xil_printf("AUX_FW START upstream-codec\r\n");
