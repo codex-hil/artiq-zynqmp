@@ -12,8 +12,8 @@ from satellite_packet import CheckedRTPacketSatellite
 
 
 class SatelliteBackend(Module):
-    def __init__(self, packet_link, output_pad, input_pad=None):
-        self.submodules.tsc = TSC()
+    def __init__(self, packet_link, output_pad, input_pad=None, glbl_fine_ts_width=0):
+        self.submodules.tsc = TSC(glbl_fine_ts_width=glbl_fine_ts_width)
         self.submodules.phy = ClockDomainsRenamer({'rio_phy': 'sys'})(Output(output_pad))
         self.submodules.input_phy = ClockDomainsRenamer({'rio': 'sys', 'rio_phy': 'sys'})(
             Input(input_pad) if input_pad is not None else Output(Signal()))

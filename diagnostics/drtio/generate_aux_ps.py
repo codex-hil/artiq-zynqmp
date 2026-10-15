@@ -3,7 +3,7 @@
 import argparse
 import json
 import hashlib
-from migen import Module, ClockDomain
+from migen import Module, Signal, ClockDomain
 from migen.fhdl import verilog
 from migen.build.xilinx.common import xilinx_special_overrides
 from aux_ps import AuxPS
@@ -12,6 +12,7 @@ from aux_ps import AuxPS
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',required=True)
+    p.add_argument('--satellite',action='store_true',help='Include real RX-clock RTIO transport')
     a=p.parse_args()
     from pathlib import Path
     out=Path(a.output)
@@ -22,8 +23,9 @@ def main():
         cd=ClockDomain(name)
         setattr(m.clock_domains,'cd_'+name,cd)
         clocks.append(cd.clk)
-    m.submodules.aux=aux=AuxPS()
-    ios=set(clocks+[aux.reset,aux.tx_raw,aux.rx_raw])
+    pins = dict(output_pad=Signal(name='ttl_out'),input_pad=Signal(name='ttl_in')) if a.satellite else {}
+    m.submodules.aux=aux=AuxPS(**pins)
+    ios=set(clocks+[aux.reset,aux.tx_raw,aux.rx_raw]) | set(pins.values())
     for channel in (aux.axi.aw,aux.axi.w,aux.axi.b,aux.axi.ar,aux.axi.r):
         ios.update(signal for signal,direction in channel.iter_flat())
     v=verilog.convert(m,ios=ios,name='aux_ps',special_overrides=xilinx_special_overrides)

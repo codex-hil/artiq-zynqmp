@@ -20,7 +20,8 @@ def main():
     if 'All user specified timing constraints are met.' not in timing:
         raise ValueError('Timing did not close')
     mapping = json.loads((a.build/'csr-map.json').read_text())
-    skew_count = (7 if 'observer_alignment' in mapping['registers'] else
+    skew_count = (8 if 'aux_tsc_load_count' in mapping['registers'] else
+                  7 if 'observer_alignment' in mapping['registers'] else
                   5 if 'aux_bridge_busy' in mapping['registers'] else
                   19 if 'packets_alignment' in mapping['registers'] else
                   9 if 'protocol_alignment' in mapping['registers'] else 3)

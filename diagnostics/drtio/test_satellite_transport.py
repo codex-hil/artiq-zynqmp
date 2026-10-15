@@ -8,7 +8,7 @@ from satellite_transport import SatelliteTransport, RTReplyCDC
 
 
 class TransportTests(unittest.TestCase):
-    def exercise(self, ready=True):
+    def exercise(self, ready=True, fine_bits=0):
         d = Module()
         for name in ('rtio_rx','gth_tx','master_tx'):
             setattr(d.clock_domains,'cd_'+name,ClockDomain(name))
@@ -18,7 +18,7 @@ class TransportTests(unittest.TestCase):
         master_link = SimpleNamespace(rx_rt_frame=endpoint.tx.rt_frame,
             rx_rt_data=endpoint.tx.rt_data,tx_rt_frame=endpoint.rx.rt_frame,
             tx_rt_data=endpoint.rx.rt_data)
-        d.submodules.transport = t = SatelliteTransport(endpoint,pad)
+        d.submodules.transport = t = SatelliteTransport(endpoint,pad,glbl_fine_ts_width=fine_bits)
         d.submodules.master = m = ClockDomainsRenamer({'sys':'master_tx','rtio_rx':'gth_tx'})(RTPacketMaster(master_link))
         replies, edges, errors = [], [], []
         def run():
@@ -39,7 +39,7 @@ class TransportTests(unittest.TestCase):
                 if cycle==100:
                     yield m.sr_notwrite.eq(0)
                     yield m.sr_address.eq(0)
-                    yield m.sr_timestamp.eq(1450)
+                    yield m.sr_timestamp.eq(1450 << fine_bits)
                     yield m.sr_data.eq(1)
                     yield m.sr_stb.eq(1)
                 notified = (yield m.buffer_space_not)
@@ -58,6 +58,9 @@ class TransportTests(unittest.TestCase):
 
     def test_time_load_scheduled_ttl_and_async_buffer_replies(self):
         self.exercise()
+
+    def test_kasli_three_fine_bits_preserve_coarse_scheduled_edge(self):
+        self.exercise(fine_bits=3)
 
     def test_unready_rx_cannot_load_time_or_toggle_ttl(self):
         self.exercise(ready=False)

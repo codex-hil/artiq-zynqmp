@@ -1502,3 +1502,27 @@ Evidence satellite-transport-simulation-2026-10-15.json. No HW access this stage
 last physical baseline remains restored normal Genesys and Kasli diagnostic.
 Next: AuxPS/top integration and actual-load CSR gating of TSC acknowledgement,
 then genuine reset/routing and remote TTL; no fake production ResetAck/UP.
+
+### 2026-10-15 — AuxPS/raw20/AXI real satellite integration RTL PASS
+
+Optional AuxPS satellite mode now owns real RTIO/SED transport inside the same
+three-domain common-reset group. Appended CSRs expose actual TSC-load count,
+RT reply fatal fault, sticky SED flags and spread enable; AUX-only layout stays
+unchanged. Six tests PASS: raw20/AXI two-reset-epoch TSC load count, four transport
+controls including Kasli fine-width3, and legacy AUX PS regression. Raw20 test
+40.125s, transport17.809s, legacy2.297s. Functional reset simulation does not
+qualify asynchronous assertion/release timing in silicon. HDL generation PASS.
+
+Kasli uses glbl_fine_ts_width3 (1ns wire machine unit/125MHz coarse clock).
+Board integration now matches it; simple TTL remains8ns resolution. Initial
+fine0 board build stopped/withdrawn before loading. Corrected top generation
+verifies61-bit coarse counter/full_ts<<3,209 generated first-stage CDC bits,
+eight Gray constraints and real load/error CSRs. New diagnostic mode
+DRTIO_SATELLITE uses JB1/AE13 and JB2/AG14, no extra/unverified pins.
+
+Corrected Vivado build running build-vivado/satellite-fine3-route-2026-10-15;
+route/timing/bitstream qualification PENDING. No HW access this stage. TSCAck,
+production backend reset/routing/destination-UP are NOT_IMPLEMENTED. Evidence
+aux-satellite-integration-2026-10-15.json. Next inspect build constraints/timing,
+then gate TSCAck on an actual new TSC-load epoch and validate under both-board
+leases/restoration. Do not claim deterministic latency from this laboratory PHY.

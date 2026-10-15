@@ -4,7 +4,7 @@ Lab transport only: caller resets sys/rtio_rx/gth_tx together. No production
 AUX acknowledgements, deterministic PHY latency, or timestamp compensation.
 """
 from types import SimpleNamespace
-from migen import Module, Signal, If, ClockDomainsRenamer
+from migen import Module, Signal, Cat, If, ClockDomainsRenamer
 from aux_tx_cdc import AuxTxCDC
 from satellite_backend import SatelliteBackend
 from monitor import GrayCounter
@@ -37,14 +37,14 @@ class RTReplyCDC(Module):
 
 
 class SatelliteTransport(Module):
-    def __init__(self, endpoint, output_pad, input_pad=None):
+    def __init__(self, endpoint, output_pad, input_pad=None, glbl_fine_ts_width=0):
         # All RTIO state follows recovered RX directly; no free-running PS
         # elastic-buffer crossing can silently drop request words/TSC loads.
         self.packet_link = link = SimpleNamespace(
             rx_rt_frame=Signal(), rx_rt_data=Signal(16),
             tx_rt_frame=Signal(), tx_rt_data=Signal(16))
         self.submodules.backend = ClockDomainsRenamer({'sys':'rtio_rx'})(
-            SatelliteBackend(link, output_pad, input_pad))
+            SatelliteBackend(link, output_pad, input_pad, glbl_fine_ts_width))
         self.submodules.replies = replies = RTReplyCDC()
         self.comb += [link.rx_rt_frame.eq(endpoint.rx.rt_frame & endpoint.rx_ready),
             link.rx_rt_data.eq(endpoint.rx.rt_data),
@@ -56,3 +56,9 @@ class SatelliteTransport(Module):
         # This count crosses to PS/sys only after the actual TSC load edge.
         self.tsc_load_count = self.load_events.value
         self.reply_fault = replies.fault  # RX domain; synchronize before PS use.
+
+        self.rtio_error_flags = Signal(3)
+        self.rtio_error_flags.attr.add("keep")
+        self.sync.rtio_rx += self.rtio_error_flags.eq(self.rtio_error_flags | Cat(
+            self.backend.async_errors.sequence_error,
+            self.backend.async_errors.collision, self.backend.async_errors.busy))

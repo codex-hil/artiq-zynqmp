@@ -14,6 +14,7 @@ if [ "${FORWARD_RX_CLOCK:-0}" = 1 ]; then extra+=(--forward-rx-clock); fi
 if [ "${DRTIO_PROTOCOL:-0}" = 1 ]; then extra+=(--protocol); fi
 if [ "${DRTIO_PACKETS:-0}" = 1 ]; then extra+=(--packets); fi
 if [ "${DRTIO_AUX:-0}" = 1 ]; then extra+=(--aux); fi
+if [ "${DRTIO_SATELLITE:-0}" = 1 ]; then extra+=(--satellite); fi
 if [ "${DRTIO_OBSERVER:-0}" = 1 ]; then extra+=(--observer); fi
 "$python_bin" "$repo/diagnostics/drtio/diag_gateware.py" "${extra[@]}" --ps "$ps" --phy "$phy" --output "$out" > "$out/generate.log" 2>&1
 # Piotr's Migen importer emits synth_ip in project mode. Use proper IP runs

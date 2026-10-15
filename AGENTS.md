@@ -364,3 +364,14 @@ RT reply CDC to TX. Busy arrivals drop whole and latch fatal RX-domain fault.
 AuxEndpoint.rx_ready exposes existing settled qualifier. No top/routed/HW
 integration or TSCAck yet. See SATELLITE_SED.md/newest PORTING_STATUS. Last HW
 normal restored state unchanged. Next AuxPS common-reset/top/CSR integration.
+
+2026-10-15 AuxPS satellite integration/raw20/AXI simulations6 methods PASS;
+includes two reset epochs of real TSC-load counter, legacy AUX, transport and
+Kasli fine3 timestamp compatibility. Optional pad mode uses fine-width3; simple
+TTL8ns, wire machine unit1ns. New CSR fields actual load/fatal reply/sticky SED/
+spread. Top DRTIO_SATELLITE pins JB1AE13/JB2AG14. Generated209 CDC bits/eight
+Gray buses; Vivado build running satellite-fine3-route-2026-10-15 (session96547),
+qualification PENDING. Do not edit active build_top.sh/check_top_build.py.
+Old satellite-route-2026-10-15 fine0 stopped/withdrawn, never load. No HW actions;
+prior normal baseline unchanged. Next inspect build then actual-load-gated
+TSCAck firmware; production reset/routing/UP and deterministic latency pending.

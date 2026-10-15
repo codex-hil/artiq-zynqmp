@@ -41,7 +41,7 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False, observer=False):
+    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False, observer=False, satellite=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -101,9 +101,18 @@ class Diagnostic(Module):
             self.submodules.observer = ClockDomainsRenamer({'gth_rx': 'observer_rx'})(LinkObserver())
             self.comb += [self.observer.rx_raw.eq(rxdata), txdata.eq(0)]
         self.aux_mode=aux
+        if satellite and not aux:
+            raise ValueError('Satellite transport requires AUX integration')
         if aux:
             from aux_ps import AuxPS
-            self.submodules.aux = AuxPS(extra_banks=[('monitor',0,monitor.get_csrs())])
+            rtio_pads = {}
+            if satellite:
+                platform.add_extension([
+                    ('satellite_ttl_out',0,Pins('AE13'),IOStandard('LVCMOS33')),
+                    ('satellite_ttl_in',0,Pins('AG14'),IOStandard('LVCMOS33'))])
+                rtio_pads = dict(output_pad=platform.request('satellite_ttl_out'),
+                                 input_pad=platform.request('satellite_ttl_in'))
+            self.submodules.aux = AuxPS(extra_banks=[('monitor',0,monitor.get_csrs())], **rtio_pads)
             self.comb += [txdata.eq(self.aux.tx_raw),self.aux.rx_raw.eq(rxdata),
                 self.aux.reset.eq(self.cd_sys.rst | monitor.reset.storage |
                     ~txpma | ~rxpma | ~txdone | ~rxdone | ~txactive | ~rxactive)]
@@ -200,7 +209,9 @@ def main():
     p.add_argument("--packets", action="store_true")
     p.add_argument("--aux", action="store_true")
     p.add_argument("--observer", action="store_true")
+    p.add_argument("--satellite", action="store_true")
     args = p.parse_args()
+    if args.satellite: args.aux = True
     platform = DiagnosticPlatform(args.ps.resolve())
     platform.add_extension([
         ('sfp_serial', 0, Subsignal('txp', Pins('N4')), Subsignal('txn', Pins('N3')),
@@ -230,12 +241,14 @@ def main():
             IOStandard('DIFF_HSTL_I_DCI_12'))])
         platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
         platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
-    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux, args.observer)
+    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux, args.observer, args.satellite)
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
     first_stage_count = (118 if args.forward_rx_clock else 117) + (200 if args.protocol else 0)
     prefixes = ['diagnostic_rx_count_gth_rx', 'diagnostic_tx_count_gth_tx', 'diagnostic_error_count_gth_rx']
     if args.protocol:
         prefixes += ['diagnostic_protocolprobe_graycounter'+str(i)+'_gth_rx' for i in range(6)]
+    if args.satellite:
+        prefixes += ['diagnostic_auxps_satellitetransport_rtio_rx']
     if args.observer:
         prefixes += ['diagnostic_linkobserver_graycounter'+str(i)+'_gth_rx' for i in range(4)]
     if args.packets or args.aux or args.observer:
@@ -272,6 +285,9 @@ foreach prefix {GRAY_PREFIXES} {
         if args.aux:
             extra_gray=[('diagnostic_auxendpoint_auxtxcdc_graycounter0_q',13),
                         ('diagnostic_auxendpoint_auxtxcdc_graycounter1_q',13)]
+        if args.satellite:
+            extra_gray = [(name.replace('diagnostic_auxendpoint','diagnostic_auxps_auxendpoint'),width) for name,width in extra_gray]
+            extra_gray += [('diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter'+str(i)+'_q',8) for i in range(2)]
         for source,width in extra_gray:
             command = """
 set sources [get_cells -hierarchical -filter {NAME =~ SOURCE_reg* && REF_NAME =~ FD*}]
@@ -294,7 +310,7 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
         if not marked: raise ValueError('No generated packet CDC declarations')
         bits = sum(int(width)+1 if width else 1 for width,name in marked)
         manifest = {'first_stage_bits':bits, 'first_stage_registers':marked,
-                    'gray_counter_buses':len(prefixes)+(3 if args.packets else 2 if args.aux else 0)}
+                    'gray_counter_buses':len(prefixes)+(3 if args.packets else (4 if args.satellite else 2) if args.aux else 0)}
         (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
         route = args.output.resolve() / 'top_route.tcl'
         route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))

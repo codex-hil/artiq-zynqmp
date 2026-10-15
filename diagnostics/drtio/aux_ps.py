@@ -1,9 +1,10 @@
 """PS AXI, AUX CSR/SRAM and coherently reset GT endpoint; LGPL-3.0-or-later."""
-from migen import Module, ClockDomain, ClockSignal, Signal, ClockDomainsRenamer, ResetInserter
+from migen import Module, ClockDomain, ClockSignal, Signal, ClockDomainsRenamer, ResetInserter, Mux
 from migen.genlib.resetsync import AsyncResetSynchronizer
+from migen.genlib.cdc import MultiReg
 from migen.fhdl.structure import _Assign
 from misoc.interconnect import csr_bus, wishbone2csr
-from misoc.interconnect.csr import CSRStatus
+from misoc.interconnect.csr import CSRStatus, CSRStorage
 from litex.soc.interconnect import wishbone
 from litex.soc.interconnect.axi import AXIInterface, AXILiteInterface, AXI2AXILite
 from aux_endpoint import AuxEndpoint
@@ -22,7 +23,7 @@ class AuxPS(Module):
     BASE = 0xa0000000
     BANK = 3
 
-    def __init__(self, extra_banks=()):
+    def __init__(self, extra_banks=(), output_pad=None, input_pad=None):
         self.reset = Signal(reset=1)
         self.clock_domains.cd_aux_sys = ClockDomain('aux_sys')
         self.clock_domains.cd_aux_tx = ClockDomain('aux_tx')
@@ -31,8 +32,16 @@ class AuxPS(Module):
                                (self.cd_aux_tx,'gth_tx'),(self.cd_aux_rx,'gth_rx')):
             self.comb += domain.clk.eq(ClockSignal(source))
             self.specials += AsyncResetSynchronizer(domain,self.reset)
-        self.submodules.endpoint = e = ClockDomainsRenamer(
-            {'sys':'aux_sys','gth_tx':'aux_tx','rtio_rx':'aux_rx'})(AuxEndpoint())
+        e = AuxEndpoint()
+        transport = None
+        if output_pad is not None:
+            from satellite_transport import SatelliteTransport
+            e.submodules.satellite = transport = SatelliteTransport(e, output_pad, input_pad, glbl_fine_ts_width=3)
+        elif input_pad is not None:
+            raise ValueError('Satellite input requires an output pad')
+        self.submodules.endpoint = ClockDomainsRenamer(
+            {'sys':'aux_sys','gth_tx':'aux_tx','rtio_rx':'aux_rx'})(e)
+        self.satellite = transport
         self.tx_raw, self.rx_raw = e.tx_raw, e.rx_raw
         self.bridge_busy = CSRStatus(1,name='bridge_busy')
         self.rx_up = CSRStatus(1,name='rx_up')
@@ -41,6 +50,19 @@ class AuxPS(Module):
                      self.rx_up.status.eq(e.link.rx_up.status),
                      self.in_reset.status.eq(self.reset)]
         self.csrs = e.aux.get_csrs()+[self.bridge_busy,self.rx_up,self.in_reset]
+        if transport is not None:
+            self.tsc_load_count = CSRStatus(32, name='tsc_load_count')
+            self.rt_reply_fault = CSRStatus(1, name='rt_reply_fault')
+            self.rtio_error_flags = CSRStatus(3, name='rtio_error_flags')
+            self.rtio_spread_enable = CSRStorage(1, name='rtio_spread_enable')
+            self.comb += transport.backend.rtio.sed_spread_enable.eq(self.rtio_spread_enable.storage)
+            fault, errors = Signal(), Signal(3)
+            self.specials += [MultiReg(transport.reply_fault, fault),
+                              MultiReg(transport.rtio_error_flags, errors)]
+            self.comb += [self.tsc_load_count.status.eq(Mux(self.reset,0,transport.tsc_load_count)),
+                self.rt_reply_fault.status.eq(fault & ~self.reset),
+                self.rtio_error_flags.status.eq(Mux(self.reset,0,errors))]
+            self.csrs += [self.tsc_load_count,self.rt_reply_fault,self.rtio_error_flags,self.rtio_spread_enable]
         self.submodules.wb2csr = w = wishbone2csr.WB2CSR(
             bus_wishbone=wishbone.Interface(data_width=32,address_width=40,addressing='word'),
             bus_csr=csr_bus.Interface(data_width=32,address_width=14))

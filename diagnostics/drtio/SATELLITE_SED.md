@@ -128,3 +128,38 @@ a scope manifest. No board top integration, route/timing or hardware validation
 is claimed. Next: integrate inside the AuxPS common-reset domains, expose/load
 counter and fatal faults through CSR, then implement real TSC ACK and reset
 semantics before accepting production AUX reset or destination-UP.
+
+## AuxPS and board-top integration — 2026-10-15
+
+`AuxPS(output_pad=..., input_pad=...)` now instantiates SatelliteTransport
+inside the same aux_sys/aux_rx/aux_tx common-reset group as the existing AUX
+endpoint. Default AuxPS() remains AUX-only, with its existing CSR layout.
+Satellite mode appends tsc_load_count, rt_reply_fault, rtio_error_flags and
+rtio_spread_enable. The load counter already crosses through Gray encoding;
+reply fault and three sticky sequence/collision/busy flags use synchronizers
+before PS reads. During common reset these status values read as zero; discard
+settling reads after reset release. Fine-width/clock/reset qualification remains
+separate from the functional reset simulation model.
+
+The board variant uses glbl_fine_ts_width=3 to match current Kasli. Coarse
+counter advances at125MHz, wire event timestamps use1ns machine units, and
+simple TTL PHY resolution remains8ns. This is protocol-unit compatibility,
+not sub-cycle TTL capability. Existing standalone backend/transport tests keep
+their default fine width0; an explicit fine-width3 case requires timestamp
+1450<<3 to produce the same coarse1461 edge (uncompensated11-cycle latency).
+The original fine-width0 board build was stopped/withdrawn and must not load.
+
+`DRTIO_SATELLITE=1 diagnostics/drtio/build_top.sh PS PHY FRESH_OUTPUT` selects
+AUX plus real RTIO backend on the already validated JB1/AE13 output and
+JB2/AG14 input. It requires eight Gray-bus constraints: monitor3, AUX FIFO2,
+RT reply FIFO2 and actual-load counter1. Generated first-stage manifest is209
+bits. Exact cell names are guarded; AUX-only and satellite hierarchy differ.
+The current fine3 route is still pending; no hardware loaded in this stage.
+
+`make test-drtio-aux-satellite` drives real upstream time packets through raw20
+8b10b, alignment, RX/SED and PS AXI reads for two reset epochs. It requires0→1
+only after a real load, reset→0, reacquisition, then a fresh load→1 and no fatal
+faults. Migen simulation needs explicit private aux_* clock schedules matching
+their parent clocks; a combinatorial clock alias alone does not schedule them.
+Use `generate_aux_ps.py --satellite` for standalone AXI HDL. TSCAck firmware,
+backend-only production reset, routing and destination-UP remain absent.
