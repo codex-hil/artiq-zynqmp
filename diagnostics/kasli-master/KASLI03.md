@@ -344,3 +344,21 @@ Reproducer: netboot wrapper with --execute-runtime, --download-runtime,
 --runtime-sha256, --clock-plan, --clock-baseline, --clock-validation plus
 current explicit USB/UART/interface and reviewed BRAM artifact arguments.
 Next: bounded standard management client queries and a simple local kernel.
+
+## Standard management-client hardware PASS
+
+Bounded wrapper `--management-client` requires --execute-runtime and invokes
+unmodified installed `artiq_coremgmt -D fe80::4b:3ff:fe48:4854%enp2s0 log`.
+Two independent connections PASS, returning1909/2000 characters with matching
+runtime identity and active management/session services. Parent retains Genesys
+and three Kasli locks during child network clients and final diagnostic/profile
+restoration, both PASS. No flash/OTP. Evidence kasli03-management-2026-10-15.
+
+`examples/kasli_counter_probe.py` compiles successfully for generated Kasli1.1
+rv32ima device database; ELF32/RISC-V verified. It reads advancing RTIO counter,
+waits on the local timeline and tests synchronous scalar RPC return, without
+TTL writes. Hardware kernel execution NOT_RUN. Global delay did not resolve
+in this NAC3 context; explicit core.delay compiles. Generated device_db has a
+placeholder IPv4 address; physical execution must supply scoped actual host
+and disable unstarted optional analyzer proxy. Next: run this experiment in
+the same bounded cross-board session before diagnostic/profile restoration.

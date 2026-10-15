@@ -7,6 +7,7 @@ import csv
 import fcntl
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import socket
@@ -33,6 +34,7 @@ def main():
     parser.add_argument('--download-runtime', type=Path)
     parser.add_argument('--runtime-sha256')
     parser.add_argument('--execute-runtime', action='store_true')
+    parser.add_argument('--management-client', action='store_true')
     parser.add_argument('--clock-plan', type=Path)
     parser.add_argument('--clock-baseline', type=Path)
     parser.add_argument('--clock-validation', type=Path)
@@ -50,6 +52,8 @@ def main():
             raise SystemExit('Clock baseline/validation identity mismatch')
         sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'diagnostics/kasli-master'))
         sys.path.insert(0, str(RNG / 'kasli'))
+    if args.management_client and not args.execute_runtime:
+        raise SystemExit('Management test requires runtime execution')
     payload = None
     if args.download_runtime:
         if not args.network_interface or not args.runtime_sha256:
@@ -216,6 +220,26 @@ def main():
                 result['ram_download'] = {'status': 'PASS', 'bytes': len(payload),
                     'source_sha256': args.runtime_sha256, 'boot_command_sent': args.execute_runtime,
                     'memory_readback': 'NOT_RUN'}
+            if args.management_client:
+                host_python = '/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/python'
+                host = result['netboot_ipv6_link_local'] + '%' + args.network_interface
+                client_env = dict(os.environ, PYTHONPATH='')
+                logs = []
+                for run in range(2):
+                    # Runtime logs network configuration just before it binds services.
+                    time.sleep(0.25)
+                    completed = subprocess.run([host_python, '-m', 'artiq.frontend.artiq_coremgmt',
+                        '-D', host, 'log'], capture_output=True, text=True, timeout=15, env=client_env)
+                    (args.output / f'coremgmt-log-{run}.txt').write_text(completed.stdout + completed.stderr)
+                    if completed.returncode:
+                        raise RuntimeError(f'Standard coremgmt log failed: exit {completed.returncode}')
+                    for token in ('ARTIQ runtime starting', 'genesys_drtio_master_v11',
+                                  'management interface active', 'accepting network sessions'):
+                        if token not in completed.stdout:
+                            raise RuntimeError('Management log missing runtime identity/service evidence')
+                    logs.append(len(completed.stdout))
+                result['management_client'] = {'status': 'PASS', 'client': 'standard artiq_coremgmt log',
+                                               'independent_connections': 2, 'log_characters': logs}
             result['status'] = 'PASS'
     except BlockingIOError:
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')

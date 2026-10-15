@@ -1364,3 +1364,16 @@ calibration/PLL/readback/nominal125MHz ±1% PASS and mux/bus restore. Volatile
 Si writes explicit; no flash/OTP. Evidence kasli03-runtime-startup-2026-10-15.
 Next safe step: repeat controlled startup with standard management queries
 and then a simple local ARTIQ experiment, retaining cross-board leases/restore.
+
+### 2026-10-15 — standard KASLI03 management hardware PASS
+
+Two unmodified artiq_coremgmt log IPv6 connections PASS1909/2000 characters,
+matching runtime ID and management/session startup evidence. Repeated RAM
+startup/reboot/re-upload PASS. Cross-board locks retained through standard
+client subprocesses and diagnostic/23-register-clock restoration PASS.
+No flash/OTP; raw evidence kasli03-management-2026-10-15.
+
+Simple local counter/wait/scalar-RPC example compiled rv32ima ELF32/RISC-V,
+hardware NOT_RUN. NAC3 global delay name resolution fixed using core.delay.
+Next safe step run experiment with actual scoped core address, retaining all
+connected-board locks and restoration. Remote DRTIO remains NOT_RUN.

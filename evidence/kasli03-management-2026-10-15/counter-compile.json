@@ -1,0 +1,10 @@
+{
+  "status": "COMPILE_PASS_HARDWARE_NOT_RUN",
+  "target": "rv32ima",
+  "elf_class": 32,
+  "machine": "RISC-V",
+  "elf_sha256": "fade429a1a6bc652cec3033ce426b3bfc455e8aa7c3363a1c0881dbb4779a1d0",
+  "source_sha256": "ba1bc49ab76e520ade0703d36494fb7254f1d7dccf963d3339ca6e34e10a4201",
+  "scope": "local counter/RPC, no TTL writes",
+  "compatibility_note": "NAC3 requires explicit core.delay rather than global delay here"
+}
