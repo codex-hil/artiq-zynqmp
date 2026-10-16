@@ -2013,3 +2013,13 @@ map, retain old6/164 support. Vivado RUNNING satellite-dma-tsc-route-2026-10-16,
 1500s bound, log build/tsc-snapshot-vivado-session-2026-10-16.log. No HW access.
 Do not edit running RTL/build/checker helpers. Next inspect implementation and
 fix failures if any, then bounded snapshot firmware callback/DDMA dispatch.
+
+
+Snapshot route2026-10-16 PASS: bit860bb0e5...,8groups/170 individually timed
+endpoints,8ns requirement/minslack7.153ns,16skew groups PASS. Bounded firmware
+reader added: native snapshot + conservative age allowance, ordered64-bit CSR,
+load epoch/readiness guards, timeout100polls/100us. Host ASan/UBSan PASS; CNTPCT/
+CNTFRQ age binding A53 compile PASS. No HW accessed/new firmware loaded.
+Evidence tsc-reader-offline-2026-10-16 and tsc-snapshot-build-2026-10-16.
+Next build snapshot probe firmware, exact-new-bit guarded cold/DIO/snapshot
+qualification, then actual AUX DDMA dispatch/status integration.

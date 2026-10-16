@@ -292,3 +292,9 @@ test-drtio-tsc-snapshot:
 .PHONY: test-drtio-dma-cdc-constraints
 test-drtio-dma-cdc-constraints:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_cdc_constraints.py' -v
+
+.PHONY: test-drtio-tsc-reader
+test-drtio-tsc-reader:
+	mkdir -p $(abspath $(O))/tsc-reader
+	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_tsc_reader.c -o $(abspath $(O))/tsc-reader/test
+	$(abspath $(O))/tsc-reader/test

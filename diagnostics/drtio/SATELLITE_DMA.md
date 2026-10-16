@@ -467,3 +467,28 @@ log `build/tsc-snapshot-vivado-session-2026-10-16.log`, timeout1500s. Do not edi
 running build/RTL/checker helpers until completion. No routed PASS or hardware
 claim yet. Next inspect route/CDC results, fix any real failures, then firmware
 snapshot read/dispatch. Prior hardware baseline remains restored and unchanged.
+
+
+## Snapshot routed PASS and bounded firmware reader (2026-10-16)
+
+Build `satellite-dma-tsc-route-2026-10-16` finished PASS. Bit SHA256
+860bb0e5f0048101552d43c40ccafb33655c9dc2209f6ff75d8fd9298415c900.
+All170 endpoints in8 exact CDC groups have numeric8ns requirements, minimum
+slack7.153ns;16 skew groups and top timing checks PASS. This supersedes the
+previous RUNNING note; no physical snapshot read has yet been performed.
+
+`aux_protocol/tsc_reader.h` provides bounded ordered MMIO snapshot reads with
+nonzero/matching load epoch, pre/post readiness, stable MSW-first64-bit read,
+100-poll bound and100us maximum elapsed. It returns sample+2*elapsed_ns+1000,
+a conservative upper-time estimate under the explicit target rate<=2mu/ns
+assumption. The1ms backend deadline margin uses that upper estimate. Output is
+unchanged on error. A single firmware owner must ensure no concurrent request,
+reset or epoch ABA; live dispatch integration must preserve that invariant.
+
+`tsc_a53.h` uses CNTPCT/CNTFRQ solely to bound age; it does not synthesize RTIO
+time.1us poll delay and ordered DSB MMIO use existing AMD standalone bindings.
+Host ASan/UBSan tests cover age, timeout, changed epoch/readiness and signed
+range; A53 compile PASS. Register constants matched the new qualified map.
+Not yet linked into AUX dispatch, loaded or physically qualified. Next build
+a firmware snapshot probe and repeat guarded cold AUX/DIO/snapshot validation
+on this exact new bit/firmware before native DDMA service activation.

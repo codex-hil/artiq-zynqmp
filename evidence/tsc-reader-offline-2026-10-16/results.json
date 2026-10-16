@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "kind": "MOCKED_MMIO_TEST_AND_A53_COMPILE_NOT_HARDWARE",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "a53_compile": "PASS",
+  "csr_offsets": "PASS",
+  "firmware_dispatch": "NOT_IMPLEMENTED",
+  "physical_snapshot": "NOT_RUN",
+  "sha256": {
+    "tsc_reader.h": "291cdb706fab01cec934107e05642375912a8ca8abb0927d0a37495922268e8a",
+    "tsc_a53.h": "68558a5048efda7f3c3a44fffe7a5287d4db83624ff9dd8740faffe636becedf",
+    "test_tsc_reader.c": "e7a3cd25bcabbb45989ab1bfc0dd174a3344afc4555a88ef174c6f52a708a3df"
+  }
+}
