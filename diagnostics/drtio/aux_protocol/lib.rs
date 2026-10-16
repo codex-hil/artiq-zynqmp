@@ -40,6 +40,8 @@ pub unsafe extern "C" fn aux_encode(kind: u32, destination: u32, buffer: *mut u8
 pub unsafe extern "C" fn aux_decode(buffer: *const u8, length: usize, destination: *mut u32) -> i32 {
     if buffer.is_null() || destination.is_null() || length > 1024 { return -4; }
     let bytes = slice::from_raw_parts(buffer, length);
+    // DDMA must use the checked full-field ABI, never the legacy scalar path.
+    if bytes.first().map_or(false, |b| *b >= 0xb0 && *b <= 0xb6) { return -2; }
     let mut reader = Cursor::new(bytes);
     let packet = match Packet::read_from(&mut reader) { Ok(packet) => packet, Err(_) => return -2 };
     let checksum_at = reader.position() + (12 - reader.position() % 8) % 8;
@@ -71,3 +73,5 @@ pub unsafe extern "C" fn aux_crc(buffer: *const u8, length: usize) -> u32 {
     if buffer.is_null() || length > 1024 { return 0; }
     crc::crc32::checksum_ieee(slice::from_raw_parts(buffer,length))
 }
+
+mod ddma_codec;

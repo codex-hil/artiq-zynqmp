@@ -26,6 +26,7 @@ def main():
     project=out/'rust';(project/'src').mkdir(parents=True,exist_ok=True)
     source=Path(__file__).with_name('lib.rs')
     (project/'src/lib.rs').write_bytes(source.read_bytes())
+    (project/'src/ddma_codec.rs').write_bytes(Path(__file__).with_name('ddma_codec.rs').read_bytes())
     manifest='''[package]
 name="genesys-aux-codec"
 version="0.1.0"
@@ -85,6 +86,7 @@ io={path=IO_PATH,features=["byteorder"]}
         'upstream_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
         'csr_map_sha256':hashlib.sha256(a.csr_map.read_bytes()).hexdigest(),
         'rust_source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
+        'ddma_codec_sha256':hashlib.sha256(source.with_name('ddma_codec.rs').read_bytes()).hexdigest(),
         'tsc_policy_sha256':hashlib.sha256(Path(__file__).with_name('tsc_ack_policy.h').read_bytes()).hexdigest(),
         'c_source_sha256':hashlib.sha256(firmware.read_bytes()).hexdigest()}
     (out/'results.json').write_text(json.dumps(evidence,indent=2)+'\n')

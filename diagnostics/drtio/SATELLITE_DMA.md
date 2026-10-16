@@ -351,3 +351,26 @@ maximum valid trace, padding and recovery. This is not a wire-codec, cache/MMIO,
 playback/status or hardware test. Next extend the unchanged upstream Rust codec
 C ABI with DDMA fields, test real packet vectors, then connect staging/cache
 flush and bounded DMA CSR control under the existing guarded session.
+
+
+## Native DDMA codec ABI (offline, 2026-10-16)
+
+`aux_protocol/ddma_codec.rs` wraps unchanged pinned upstream packet read/write
+for types0xb0–0xb6 (add/reply, remove/reply, playback/reply, status), including
+native CRC/padding. C layout is declared in `ddma_codec.h`; host Rust/C assert
+1056-byte size, timestamp offset32 and trace offset40. Callers must supply
+valid nonoverlapping buffers and initialized, aligned structs for the stated
+lengths; pointer/null/capacity checks do not validate arbitrary addresses.
+
+The upload decoder checks status and payload length before upstream parsing,
+as upstream assumes valid status/slice bounds. CRC, short frames and unsupported
+kinds are rejected; decode output is published only on success. The legacy
+scalar AUX decoder rejects DDMA before upstream parsing. Actual dispatch must
+use the new full-field ABI so malformed DDMA cannot enter the old path.
+
+Host reference tests cover all seven kinds, field preservation, every truncated
+length, CRC corruption, invalid status/oversized length and maximum1010-byte
+payload (1024-byte frame), plus ABI layout. A53 static library/firmware link is
+also checked; the firmware service still does not dispatch DDMA. No physical
+DDMA transfer or playback is claimed. Next connect checked packets to staging,
+reply semantics and deferred playback/status with cache/MMIO guards.

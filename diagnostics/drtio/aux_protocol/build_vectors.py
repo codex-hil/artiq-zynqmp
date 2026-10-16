@@ -21,6 +21,7 @@ def main():
     (out/'src').mkdir(exist_ok=True)
     source=Path(__file__).with_name('main.rs')
     (out/'src/main.rs').write_bytes(source.read_bytes())
+    (out/'src/ddma_codec.rs').write_bytes(Path(__file__).with_name('ddma_codec.rs').read_bytes())
     manifest='''[package]
 name="genesys-aux-reference-vectors"
 version="0.1.0"
@@ -44,10 +45,11 @@ io={path=IO_PATH,features=["byteorder"]}
     vectors={}
     for line in result.stdout.splitlines():
         if line.startswith('VECTOR '):_,name,data=line.split();vectors[name]=data
-    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout:
+    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout or 'TEST DDMA_C_ABI PASS' not in result.stdout:
         raise RuntimeError('Missing upstream acceptance output')
     evidence={'kind':'HOST_CODEC_TEST_NOT_FIRMWARE_OR_HARDWARE','status':'PASS',
-        'vectors':vectors,'source_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
+        'vectors':vectors,'ddma_c_abi':'PASS',
+        'ddma_codec_sha256':hashlib.sha256(source.with_name('ddma_codec.rs').read_bytes()).hexdigest(),'source_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
         'upstream_protocol_sha256':hashlib.sha256(proto.read_bytes()).hexdigest(),
         'reference_source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
         'log_sha256':hashlib.sha256(log.encode()).hexdigest(),

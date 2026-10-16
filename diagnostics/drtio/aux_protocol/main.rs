@@ -38,6 +38,7 @@ fn decode(buffer: &[u8]) -> Result<Packet, &'static str> {
 }
 
 fn main() {
+    test_ddma_abi();
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -58,4 +59,41 @@ fn main() {
     }
     assert!(decode(&[0xff;8]).is_err());
     println!("TEST UPSTREAM_AUX_CODEC PASS");
+}
+
+mod ddma_codec;
+
+fn test_ddma_abi() {
+    use ddma_codec::{DdmaPacket,aux_ddma_encode,aux_ddma_decode};
+    assert_eq!(core::mem::size_of::<DdmaPacket>(),1056);
+    assert_eq!(core::mem::offset_of!(DdmaPacket,timestamp),32);
+    assert_eq!(core::mem::offset_of!(DdmaPacket,trace),40);
+    let mut d=DdmaPacket {source:0,destination:1,id:0xfedcba98,status:3,length:17,succeeded:1,error:7,channel:0x123456,timestamp:0x123456789abcdef,trace:[0;protocol::MASTER_PAYLOAD_MAX_SIZE]};
+    d.trace[..17].copy_from_slice(&[17,0,0,1,8,0,0,0,0,0,0,0,0,1,0,0,0]);
+    for kind in 0xb0..=0xb6 {
+        let mut bytes=[0u8;1024];let mut out=d.clone();
+        let n=unsafe {aux_ddma_encode(kind,&d,bytes.as_mut_ptr(),bytes.len())};assert!(n>0);
+        let reference=decode(&bytes[..n as usize]).unwrap();
+        assert_eq!(encode(&reference),bytes[..n as usize]);
+        assert_eq!(unsafe{aux_ddma_decode(bytes.as_ptr(),n as usize,&mut out)},kind as i32);
+        assert_eq!(out.destination,1);
+        if kind==0xb0 || kind==0xb1 || kind==0xb2 || kind==0xb4 || kind==0xb6 {assert_eq!(out.id,d.id);assert_eq!(out.source,d.source);}
+        if kind==0xb1 || kind==0xb3 || kind==0xb5 {assert_eq!(out.succeeded,1);}
+        if kind==0xb0 {assert_eq!(out.length,17);assert_eq!(&out.trace[..17],&d.trace[..17]);assert_eq!(out.status,3);}
+        if kind==0xb4 || kind==0xb6 {assert_eq!(out.timestamp,d.timestamp);}
+        if kind==0xb6 {assert_eq!(out.error,7);assert_eq!(out.channel,d.channel);}
+        for len in 0..n as usize {assert!(unsafe{aux_ddma_decode(bytes.as_ptr(),len,&mut out)}<0);}
+        bytes[n as usize-1]^=1;
+        assert_eq!(unsafe{aux_ddma_decode(bytes.as_ptr(),n as usize,&mut out)},-1);
+    }
+    let mut bytes=[0u8;1024];let mut out=d.clone();
+    let n=unsafe{aux_ddma_encode(0xb0,&d,bytes.as_mut_ptr(),1024)} as usize;
+    bytes[7]=4;assert!(unsafe{aux_ddma_decode(bytes.as_ptr(),n,&mut out)}<0);
+    bytes[7]=3;bytes[8]=255;bytes[9]=255;
+    assert!(unsafe{aux_ddma_decode(bytes.as_ptr(),n,&mut out)}<0);
+    d.length=protocol::MASTER_PAYLOAD_MAX_SIZE as u32;
+    let n=unsafe{aux_ddma_encode(0xb0,&d,bytes.as_mut_ptr(),1024)};
+    assert_eq!(n,1024);assert_eq!(unsafe{aux_ddma_decode(bytes.as_ptr(),1024,&mut out)},0xb0);
+    d.length+=1;assert!(unsafe{aux_ddma_encode(0xb0,&d,bytes.as_mut_ptr(),1024)}<0);
+    println!("TEST DDMA_C_ABI PASS");
 }

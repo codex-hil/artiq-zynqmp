@@ -1,0 +1,17 @@
+{
+  "kind": "FIRMWARE_BUILD_NOT_HARDWARE",
+  "status": "PASS",
+  "mode": "external-tsc-down",
+  "dio_leaf": true,
+  "dma_bank_owner": "external diagnostic only; no AUX DDMA service",
+  "leaf_policy_sha256": "b43a23508e48be1d61850859c4d6f82a430f040569ded767f2736441ec282a3e",
+  "reset_backend": true,
+  "reset_policy_sha256": "0217cb208a146b26b433573853803176ab8cfc9ad5199feb601c82ce62e7510e",
+  "elf_sha256": "b765cb32949cb419376c568eb1d4d785a8f331eb68115410bb05598e9d14597f",
+  "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "csr_map_sha256": "8f367b32b6af6a810cc99c74d6550f58adb556984e77d72ea9657a2131416ad6",
+  "rust_source_sha256": "b4a78b93925c2a56181de859d28373585da543ebfb87eec97e10a2fb96a25fd4",
+  "ddma_codec_sha256": "1cab385aa8b75099573253f4eade82d5512b5d69c444699950ddc4f040c3cc96",
+  "tsc_policy_sha256": "1c3f5f96617a559e565a85e246447c3405f2dcd97b651ff637ae2c5b592d439d",
+  "c_source_sha256": "2a4ff4ed34c9e820ac2826bb3114407a3c44b7e7cebd7d154112319f1a932b69"
+}

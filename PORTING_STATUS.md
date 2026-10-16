@@ -1968,3 +1968,11 @@ ASan/UBSan native tests PASS (fragmentation/truncation/bounds/fields/ownership/
 busy/max-size/recovery). Not linked into AUX firmware; no HW accessed.
 Next upstream-codec DDMA C ABI + packet vectors, then actual upload/cache/
 CSR playback/status integration. Physical prior DDR DMA remains host-armed.
+
+
+DDMA codec ABI2026-10-16: unchanged current upstream packet codec wrapped for
+all7 DDMA types, full fields/CRC/padding and pre-parse upload bounds/status.
+Host tests PASS including truncation/CRC/max payload and Rust/C layout. A53
+build PASS; not loaded. Legacy scalar decoder rejects DDMA explicitly;
+service dispatch/store/cache/CSR playback/status integration remains pending.
+No HW access. Evidence ddma-codec-offline-2026-10-16; next service integration.
