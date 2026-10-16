@@ -1,0 +1,34 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_csr.py' -v
+test_missing_terminator_bounded_reads_and_recovery (test_dma_csr.DMACSRTests.test_missing_terminator_bounded_reads_and_recovery) ... /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+ok
+test_preflight_rejects_without_memory_access (test_dma_csr.DMACSRTests.test_preflight_rejects_without_memory_access) ... ok
+test_ps_axi_multiword_snapshot_and_result_ack (test_dma_csr.DMACSRTests.test_ps_axi_multiword_snapshot_and_result_ack) ... ok
+test_watchdog_abort_drains_and_next_trace_recovers (test_dma_csr.DMACSRTests.test_watchdog_abort_drains_and_next_trace_recovers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 40.553s
+
+OK
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_read_budget.py' -v
+test_bounded_reads_under_fast_ar_and_r_backpressure (test_dma_read_budget.ReadBudgetTests.test_bounded_reads_under_fast_ar_and_r_backpressure) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.118s
+
+OK
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_memory*.py' -v
+test_actual_simulator_rx_clock_pause_does_not_block_axi_drain (test_dma_memory_cdc.MemoryCDCTests.test_actual_simulator_rx_clock_pause_does_not_block_axi_drain) ... ok
+test_faster_consumer_reset_and_fresh_epoch (test_dma_memory_cdc.MemoryCDCTests.test_faster_consumer_reset_and_fresh_epoch) ... ok
+test_one_sys_edge_reset_cannot_reuse_stale_ready (test_dma_memory_cdc.MemoryCDCTests.test_one_sys_edge_reset_cannot_reuse_stale_ready) ... ok
+test_slower_consumer_reset_and_fresh_epoch (test_dma_memory_cdc.MemoryCDCTests.test_slower_consumer_reset_and_fresh_epoch) ... ok
+test_abort_before_first_response_and_restart (test_dma_memory_guard.MemoryGuardTests.test_abort_before_first_response_and_restart) ... ok
+test_abort_stalled_consumer_and_restart (test_dma_memory_guard.MemoryGuardTests.test_abort_stalled_consumer_and_restart) ... ok
+test_abort_waits_for_delayed_axi_ready_and_response (test_dma_memory_guard.MemoryGuardTests.test_abort_waits_for_delayed_axi_ready_and_response) ... ok
+test_bus_error_latched_and_new_epoch_clears (test_dma_memory_guard.MemoryGuardTests.test_bus_error_latched_and_new_epoch_clears) ... ok
+test_normal_finish_drains_even_without_consumer (test_dma_memory_guard.MemoryGuardTests.test_normal_finish_drains_even_without_consumer) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.686s
+
+OK

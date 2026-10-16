@@ -1770,3 +1770,34 @@ Done is admission/drain completion, not elapsed trace duration. Evidence
  dma-async-engine-offline-2026-10-16; SATELLITE_DMA.md updated. Next map hardware
 control/status and PS memory interface with checked CDC constraints, then native
 AUX trace upload/playback/status. Existing board baselines unchanged.
+
+### 2026-10-16 — bounded DMA PS AXI/CSR peripheral offline PASS
+
+New DMACSR bank4 base0xa0002000: address49,time_offset64,max_bursts32,watchdog32,
+start/abort/idle-clear,active/pending/reject and stable error/channel/timestamp/
+accepted/completed status. Real AuxPS32-bit AXI bridge/MiSoC bank exercised.
+Default immutable arena0x22000000–0x22200000; start rejects alignment/window,
+max_bursts<4 or beyond arena,zero watchdog,fault,busy or unacknowledged result.
+Multiword fields are MSW-first. Result cannot be overwritten until idle clear.
+Fault defaults asserted. Shadow writes do not mutate an accepted trace.
+
+Memory guard now bounds native128-byte reads, reserving3 final request slots
+while terminating/draining. Fourteen limit/queue subcases PASS on each source:
+limits1,2,3 rejected without AR;4,5,16,32 fit bounds and all RLAST counts equal
+accepted AR. Budget fault aborts decoder/SED path and clears only for idle new
+epoch. Watchdog requests abort and waits for memory drain, never fakes completion.
+
+4 CSR cases each Piotr/current PASS plus PS busy/clear/shadow case PASS;9 memory
+regressions and7 current full-engine regressions PASS.64-bit underflow timestamp
+snapshot, pending-result protection, preflight rejection with no reads,
+watchdog/restart and missing-terminator budget/restart proved. CSR tests use a
+controlled-status CRI target; physical SED/TTL is separate existing qualification.
+Standalone peripheral HDL and exact map generated PASS. No board access.
+
+Not yet connected to Genesys PS pins/GT/backend, no physical CDC constraints,
+Vivado or hardware claim; AUX DDMA trace allocation/validation still missing.
+Read window must include prefetch/drain padding; large valid traces near window
+end may exhaust a conservatively bounded allocation. Existing qualified board
+baselines unchanged. Evidence dma-csr-offline-2026-10-16. Next connect existing
+HP0 read port and target backend/owner/reset, add exact Gray/bundled constraints
+and qualify generated/routed artifacts before volatile bring-up.

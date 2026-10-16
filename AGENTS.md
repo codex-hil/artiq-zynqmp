@@ -468,3 +468,14 @@ CSR/DDR target/AUX service yet. External fault abort + trace validation/bounds/
 padding/watchdog/idle CRI ownership required; done is admission not trace end.
 No HW accessed. Next hardware CSR/PS memory/CDC constraints then native AUX DDMA.
 See evidence/dma-async-engine-offline-2026-10-16 and SATELLITE_DMA.md.
+
+
+DMA CSR offline2026-10-16: bounded read guard + real PS AXI/MiSoC bank4 control
+PASS.4 CSR tests each Piotr/current+extra busy/clear/shadow case;14 read-budget
+subcases each,9 memory,7 current async regressions PASS. Immutable default arena
+0x22000000/2MiB,128 alignment; positive burst budget>=4+watchdog required. Native
+read bound reserves3 drain requests. Result latched until idle clear; watchdog/
+budget drain and fresh trace recover. Fault defaults1. Standalone HDL/map only,
+no physical PS/GT/SED/CDC constraints or HW access. AUX trace layer missing.
+Next HP0/target owner/reset and physical Gray/bundled constraints then build.
+Evidence dma-csr-offline-2026-10-16; SATELLITE_DMA.md. Baselines unchanged.

@@ -1,0 +1,54 @@
+{
+  "kind": "RTL_SIMULATION_AND_GENERATED_CSR_MAP_NOT_HARDWARE",
+  "status": "PASS",
+  "tests": {
+    "piotr_csr": 4,
+    "current_csr": 4,
+    "extra_ps_busy_control": 1,
+    "read_budget_each_source": 1,
+    "read_budget_subcases_each_source": 14,
+    "memory_regression": 9,
+    "current_full_async_regression": 7
+  },
+  "piotr_revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+  "current_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "register_bank": 4,
+  "register_base": 2684362752,
+  "hardware_default_arena": {
+    "base": 570425344,
+    "size": 2097152,
+    "alignment": 128
+  },
+  "test_arena": {
+    "base": 0,
+    "size": 4096
+  },
+  "checks": [
+    "real PS32-bit AXI bridge and MiSoC CSR bank access",
+    "MSW-first64-bit config/result snapshot and underflow timestamp",
+    "pending result cannot be overwritten before idle clear",
+    "invalid address/window/limit/watchdog/fault rejected without AR",
+    "watchdog abort drains then permits a fresh trace",
+    "missing terminator read-budget abort drains then permits fresh trace",
+    "guard limits1,2,3,4,5,16,32 under queue1/12, all accepted AR complete and all addresses fit bound",
+    "busy start/clear and shadow address write cannot mutate active trace"
+  ],
+  "hdl_sha256": "6b2bee769f07df25bbdba06c4c7a75869c7eb6d1b2232e3223cabe8c3adb9ee2",
+  "source_sha256": {
+    "dma_csr.py": "5eb61db09aa949f41752636c364ca13ae199214ba283d06ce1c280be1892463d",
+    "generate_dma_csr.py": "800bb55129ea948ed87adee60ad45f2c49ffc2dc906631971f519c1ac696caa4",
+    "test_dma_csr.py": "471511221bf045200881881ee556297357d02ef8c75b32397e3ecdac3ec9e252",
+    "test_dma_read_budget.py": "9a8e260f34c14fef162790b15a4c27aa2783d83960d3f2fcf0e77a92901b87ff",
+    "dma_memory_guard.py": "1b378ae06e2803f8567e4a2d50714016494ba1c029f6d7d564c0605788484802",
+    "dma_async_engine.py": "d78e22f008cbb97ae6cade2b9dc4133bacf40345cbdaf1a14e80f4dc57529a62"
+  },
+  "limits": [
+    "CRI target in CSR tests supplies status; actual SED covered by separate engine tests",
+    "standalone periphery only, no physical PS port or GT/SED integration",
+    "physical Gray/bundled-data constraints and Vivado/hardware NOT_RUN",
+    "AUX trace protocol/storage/record validation still missing",
+    "watchdog abort must wait for AXI response; it cannot manufacture memory completion",
+    "allocated read window needs native prefetch/drain padding"
+  ],
+  "hardware_accessed": false
+}

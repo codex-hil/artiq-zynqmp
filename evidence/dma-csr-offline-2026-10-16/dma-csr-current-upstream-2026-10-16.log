@@ -1,0 +1,32 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/reference/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_csr.py' -v
+test_missing_terminator_bounded_reads_and_recovery (test_dma_csr.DMACSRTests.test_missing_terminator_bounded_reads_and_recovery) ... /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+ok
+test_preflight_rejects_without_memory_access (test_dma_csr.DMACSRTests.test_preflight_rejects_without_memory_access) ... ok
+test_ps_axi_multiword_snapshot_and_result_ack (test_dma_csr.DMACSRTests.test_ps_axi_multiword_snapshot_and_result_ack) ... ok
+test_watchdog_abort_drains_and_next_trace_recovers (test_dma_csr.DMACSRTests.test_watchdog_abort_drains_and_next_trace_recovers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 40.486s
+
+OK
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/reference/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_read_budget.py' -v
+test_bounded_reads_under_fast_ar_and_r_backpressure (test_dma_read_budget.ReadBudgetTests.test_bounded_reads_under_fast_ar_and_r_backpressure) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.119s
+
+OK
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/reference/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_async_engine.py' -v
+test_busy_start_rejected_and_original_epoch_drains (test_dma_async_engine.AsyncDMAAdmissionTests.test_busy_start_rejected_and_original_epoch_drains) ... ok
+test_unaligned_trace_rejected_before_axi (test_dma_async_engine.AsyncDMAAdmissionTests.test_unaligned_trace_rejected_before_axi) ... ok
+test_unsupported_memory_width_rejected (test_dma_async_engine.AsyncDMAAdmissionTests.test_unsupported_memory_width_rejected) ... ok
+test_async_native_decoder_cri_ttl_and_next_trace (test_dma_async_engine.AsyncDMAEngineTests.test_async_native_decoder_cri_ttl_and_next_trace) ... ok
+test_axi_error_report_and_next_trace (test_dma_async_engine.AsyncDMAEngineTests.test_axi_error_report_and_next_trace) ... ok
+test_clock_pause_abort_drain_and_recovery (test_dma_async_engine.AsyncDMAEngineTests.test_clock_pause_abort_drain_and_recovery) ... ok
+test_native_underflow_snapshot_and_recovery (test_dma_async_engine.AsyncDMAEngineTests.test_native_underflow_snapshot_and_recovery) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 62.084s
+
+OK

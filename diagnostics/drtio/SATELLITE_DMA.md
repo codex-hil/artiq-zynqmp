@@ -144,3 +144,59 @@ commands or active firmware ownership changes are qualified here.
 
 Clock loss needs an external sys-domain fault/abort request. This engine does not
 infer loss of a clock merely from backpressure; without abort it may wait for RX.
+
+## PS AXI/CSR control and bounded reads (offline)
+
+`DMACSR` places the asynchronous engine behind MiSoC registers, tested through
+the actual AuxPS32-bit AXI bridge and CSR bank4 (base0xa0002000). Configuration
+is shadowed; accepted start latches byte address, offset, read budget and sys
+watchdog. Real Genesys PS port/GT/SED wiring is not added by this peripheral.
+
+Default trace arena is0x22000000–0x22200000,128-byte aligned. Start requires an
+aligned address, a positive budget of at least four128-byte bursts, the entire
+read window inside the arena, positive watchdog, no external fault, idle engine
+and no unacknowledged result. Fault defaults asserted until explicitly wired.
+This reuses the normal core's documented arena only in a separate exclusive
+image/session; it does not coexist with the normal core's trace allocator.
+
+The memory guard reserves three outstanding request opportunities when stopping
+on budget so **all** issued128-byte bursts fit the requested window, including
+the terminating drain request. Fourteen fast/blocked-memory subcases test limits
+1,2,3,4,5,16,32 with short invalid limits rejected before any AR. Zero remains
+an unlimited low-level laboratory mode, but DMACSR rejects it. Guard budget
+failure aborts the decoder and drains memory; it cannot be cleared into a new
+active read until the old AXI epoch has finished. Idle launch clears that fault.
+
+Watchdog expiry requests abort and then waits for AXI drain. It never resets
+an unresponsive memory interface to manufacture completion. A missing AXI
+response remains a fault requiring system-level recovery. Trace record/length
+validation and valid padding are still firmware duties; hardware budget bounds
+reads even if native decoding cannot reach a terminator.
+
+Register protocol:
+
+1. Configure address, time_offset, max_bursts, watchdog using MSW-first32-bit
+   words for multiword fields. Positive watchdog is in sys clocks.
+2. Write start=1; check accepted/active or sticky reject reason.
+3. Poll pending, then read stable result_error/channel/timestamp and completed.
+4. Write clear=1 while idle before another start. It cannot erase an active run.
+
+Result error bits0–4 keep engine meanings; bit5 is watchdog expiry and bit6 is
+read-budget exhaustion. Reject bits0–6 are busy, alignment, arena window, burst
+budget, zero watchdog, fault, unacknowledged result. Counters are32-bit wrapping.
+
+Five PS AXI tests cover high/low-word underflow timestamp snapshot, pending-result
+protection, invalid inputs with no memory access, watchdog/drain/restart and
+missing-terminator budget/drain/restart. The test target supplies CRI status;
+actual SED/TTL playback is covered by the separate full-engine tests. The fifth
+case holds CRI busy and confirms PS start/clear/shadow writes cannot mutate the
+active epoch; four cases are repeated against both ARTIQ source variants.
+`generate_dma_csr.py --output DIR` emits standalone PS AXI+memory AXI+CRI HDL and
+its exact csr-map.json. No physical CDC constraints, actual PS pin connection,
+AUX trace allocation or Vivado/hardware acceptance are implied.
+
+```sh
+make test-drtio-dma-csr test-drtio-dma-read-budget \
+  PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python \
+  MISOC_SOURCE=/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current
+```

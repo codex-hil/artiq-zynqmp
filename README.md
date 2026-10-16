@@ -331,3 +331,9 @@ cycles and four passing post-recovery DIO kernels. Both boards were restored
 and regression checked. See [stability kernel](examples/kasli_drtio_stability.py)
 and [test scope/recovery procedure](diagnostics/drtio/DIO_EXPERIMENT.md).
 Distributed DMA and absolute phase/jitter qualification remain pending.
+
+
+Distributed-DMA integration now has offline-tested asynchronous native decoding,
+AXI abort/drain, bounded reads/watchdog and a PS AXI/CSR peripheral. Physical
+satellite DMA and AUX trace handling remain pending; see the current scope in
+[Satellite DMA integration](diagnostics/drtio/SATELLITE_DMA.md).
