@@ -1896,3 +1896,41 @@ unqualified; do not interpret active-fault controlled-CRI tests as that proof.
 Evidence dma-cold-release-offline-2026-10-16 and kasli03-dma-idle[-v2]-hardware-
 2026-10-16 / kasli03-netboot-isolation-2026-10-16. Next finish fixed build,
 restore cold-release/DIO acceptance, then host-armed DDR-to-RTIO diagnostic.
+
+### 2026-10-16 — corrected DMA image cold release/DIO hardware PASS; read prefetch fixed offline
+
+Cold-release imagee0fd4389788c228808b170f567424728e3b0c6540e7c0929af2e97c18a1c61b1
+build PASS: WNS2.486/WHS0.007ns,14bus-skew groups,164timed DMA endpoints,
+minimum DMA slack7.319ns. Physical AUX cold release/TSC load, native resets
+and two standard Kasli DIO kernels PASS (8 rises each,100000mu spacing).
+Both boards restored/checked PASS. Evidence kasli03-dma-cold-release-hardware.
+
+Added opt-in host_dma_session guarded stage: previous successful physical
+cold/DIO/restore proof must bind exact bit+firmware. Failed proof negative
+rejected offline. Existing all-board parent leases cover host RPC/DAP DDR
+access and native Kasli input capture. Native AUX DDMA remains absent.
+
+First DDR attempt failed with generic status; expanded diagnostic captures full
+configuration and result before rejecting. Instrumented repeat:2048-byte DDR
+readback PASS; address570425344, offset75936927240, max_bursts16,
+watchdog134217728 readback PASS; active0,pending1,reject0,error65,channel0,
+timestamp0,accepted1,completed1,RTIOreset1,PHYreset0,async-errors0,reply-fault0,
+TSC-loads1. No physical DMA pulse acceptance. Both attempts restored normal
+Genesys/Kasli and reviewed volatile clock profile PASS. No persistent writes.
+
+A70-request-acceptance AXI model reproduces identical65 on a short trace:
+unbounded upstream AR prefetch exhausts cumulative budget before terminator
+reaches decoder. Added4 outstanding credits around unchanged reused reader;
+accepted RLAST returns credit. Budget/window unchanged; drain/EOP remain native.
+Short and exact host-byte trace now complete with no budget error in simulation;
+CRI monitor moved to RX to avoid double sampling on faster sys clock. New
+regressions check outstanding<=4 throughout. Full final source suites running;
+new Vivado build RUNNING at build-vivado/satellite-dma-credit4-route-2026-10-16,
+25min timeout/log build/dma-credit4-vivado-session-2026-10-16.log. Do not edit
+running build/RTL/qualifier helpers. Next qualify build, repeat physical cold/
+DIO for new bit hash, then host-armed physical DDR DMA. Post-abort handoff and
+native AUX DDMA upload/allocator/validation/status remain unqualified/missing.
+
+Final prefetch regressions2026-10-16:26 tests each Piotr/current PASS,
+including14 read-budget subcases each. Credit4 Vivado remains RUNNING;
+no physical DDR-DMA success claimed. Evidence dma-prefetch-offline-2026-10-16.

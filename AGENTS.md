@@ -515,3 +515,22 @@ DIO acceptance before DDR DMA. Host-armed experiment/helper prepared and native
 trace decode+compile PASS, NOT_RUN/not yet wired into ExternalSession. Native
 AUX DDMA and post-abort packet handoff still unqualified. Evidence latest
 PORTING_STATUS/dma-cold-release-offline-2026-10-16. Shared locks unchanged.
+
+DMA continuation2026-10-16: cold-release fixe0fd4389... physically PASS AUX/TSC,
+reset and2 standard DIO kernels; both boards restored. Host DMA stage now
+requires exact prior physical cold/DIO/restore proof. Two DDR attempts restored
+both boards but failed: instrumented2048-byte readback/config PASS, error65
+(abort+budget), no physical pulse acceptance. High-acceptance70-request model
+reproduces issue hidden by former3-request model. Memory guard now caps4 AR
+outstanding, RLAST returns credit; cumulative16-burst/2048-byte budget unchanged.
+Short and host-byte trace tests pass after RX-domain command monitor correction.
+Final full regressions RUNNING; Vivado credit4 RUNNING at
+build-vivado/satellite-dma-credit4-route-2026-10-16, timeout1500s/log
+build/dma-credit4-vivado-session-2026-10-16.log. Check completion before edits.
+Next new-bit cold/DIO proof then guarded DDR test. host_dma_test config must
+point to proof of EXACT new bit+firmware, not e0fd old proof. Existing shared
+locks/restoration unchanged. Native AUX DDMA/post-abort handoff still pending.
+
+Final prefetch regressions2026-10-16:26 tests each Piotr/current PASS,
+including14 read-budget subcases each. Credit4 Vivado remains RUNNING;
+no physical DDR-DMA success claimed. Evidence dma-prefetch-offline-2026-10-16.

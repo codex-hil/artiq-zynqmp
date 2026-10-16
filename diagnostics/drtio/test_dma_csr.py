@@ -59,22 +59,31 @@ class CSRDriver:
         self.test.fail('No stable DMA result')
 
 class DMACSRTests(unittest.TestCase):
-    def exercise(self,mode):
+    def exercise(self,mode,max_queue=3):
         d=Module();d.clock_domains.cd_rtio_rx=ClockDomain('rtio_rx')
         bus=AXIInterface(data_width=64,address_width=49,id_width=6)
         d.submodules.control=c=DMACSR(bus,arena_base=0,arena_size=4096)
         d.submodules.ps=p=AuxPS(extra_banks=[('dma',4,c.csrs)])
         driver=CSRDriver(self,p.axi,c.memory_map(p.BASE+4*0x800)['registers'])
         trace=encode_sequence([(0,32,0,1),(0,64,0,0)],8)
+        if mode=='hosttrace':
+            from satellite_dma_probe import trace_bytes
+            raw=trace_bytes();trace=[int.from_bytes(raw[i:i+8],'big') for i in range(0,len(raw),8)]
         words=trace+[0]*(64-len(trace))+trace
         if mode in ('watchdog','budget'):words=[0x0101010101010101]*1024
-        memory=AXIMemorySim(bus,words,max_queue=3)
-        ar=[];last=[]
+        memory=AXIMemorySim(bus,words,max_queue=max_queue)
+        ar=[];last=[];commands=[]
         @passive
         def monitor():
             while True:
+                self.assertLessEqual((yield c.engine.guard.outstanding),4)
                 if (yield bus.ar.valid) and (yield bus.ar.ready):ar.append((yield bus.ar.addr))
                 if (yield bus.r.valid) and (yield bus.r.ready) and (yield bus.r.last):last.append(1)
+                yield
+        @passive
+        def cri_monitor():
+            while True:
+                if (yield c.engine.cri.cmd)==1:commands.append((yield c.engine.cri.chan_sel))
                 yield
         def configure(watch=100000):
             yield from driver.write('address',0)
@@ -121,6 +130,7 @@ class DMACSRTests(unittest.TestCase):
             yield from driver.pending()
             result=(yield from driver.read('result_error'))
             self.assertEqual(result,4 if mode=='snapshot' else 33 if mode=='watchdog' else 65 if mode=='budget' else 1 if mode=='fault' else 0)
+            if mode=='hosttrace':self.assertEqual(commands,[1]+[0]*8+[1])
             if mode=='snapshot':
                 self.assertEqual((yield from driver.read('result_timestamp')),0x1234567800000020)
             self.assertEqual(len(ar),len(last))
@@ -146,7 +156,7 @@ class DMACSRTests(unittest.TestCase):
             self.assertEqual((yield from driver.read('accepted')),2)
             self.assertEqual((yield from driver.read('completed')),2)
             self.assertEqual(len(ar),len(last))
-        run_simulation(d,{'sys':[run(),monitor(),memory.ar(),memory.r()]},
+        run_simulation(d,{'sys':[run(),monitor(),memory.ar(),memory.r()],'rtio_rx':cri_monitor()},
             clocks={'sys':10,'rtio_rx':(13,2),'dma_write':10,'dma_read':(13,2),
                     'gth_rx':8,'gth_tx':(11,3),'aux_sys':10,'aux_rx':8,'aux_tx':(11,3)},
             special_overrides={AsyncResetSynchronizer:FunctionalReset})
@@ -158,3 +168,7 @@ class DMACSRTests(unittest.TestCase):
     def test_busy_start_and_clear_do_not_mutate_active_epoch(self):self.exercise('busy')
 
     def test_active_fault_still_aborts_drains_and_recovers(self):self.exercise('fault')
+
+    def test_full_axi_acceptance_short_trace_does_not_exhaust_budget(self):self.exercise('plain',max_queue=70)
+
+    def test_full_axi_acceptance_host_trace_completes(self):self.exercise('hosttrace',max_queue=70)

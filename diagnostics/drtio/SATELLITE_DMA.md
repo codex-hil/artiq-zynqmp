@@ -272,3 +272,32 @@ of8000mu width/80000mu period. The epoch is30s ahead of master TSC so the bounde
 experiment compilation passed; wrapper integration and physical use NOT_RUN.
 This tests PL DDR DMA, not standard AUX DDMA upload/playback. Native AUX DDMA
 service, record validation/allocation and post-abort packet handoff are pending.
+
+## Physical cold release and first DDR attempt (2026-10-16)
+
+Fixed imagee0fd4389... passed cold release/TSC load, two native resets and two
+physical DIO kernels (8 rises each,100000mu spacing). Normal Genesys and Kasli
+baselines were restored and checked. Host-armed DMA is now an optional guarded
+external-session stage (`host_dma_test`), requiring a previous successful
+cold-release/DIO/restoration report bound to the exact bit and firmware hashes.
+A report from a failed or different image is rejected before hardware access.
+
+Two DDR attempts with that image failed safely before physical pulse acceptance.
+Instrumented evidence proves full2048-byte DDR readback and exact address,
+offset, burst-budget and watchdog CSR readback. Result65 is abort+read-budget
+exhaustion, not a successful trace. The16-burst allocation was unchanged.
+A model accepting70 queued requests reproduces65 with the former unlimited
+AR speculation; the previous model's3-request queue hid this integration case.
+
+DMAMemoryGuard now wraps the reused reader with4 outstanding AR credits. RLAST
+handshake returns a credit; valid/ready are gated together only on admission.
+All accepted responses still drain. The cumulative read-window budget remains
+independent and unchanged; no fake completion or error masking. High-acceptance
+short/full diagnostic trace tests and all prior abort/error/reset checks must
+pass before the rebuilt image is used. Performance is not qualified.
+
+The full-trace test counts CRI commands on RX rather than sys; otherwise a
+13ns RX command was sampled twice on some10ns sys edges. The resulting native
+command sequence must be input gate,8 output events and input gate close.
+Physical DDR playback and post-abort packet handoff remain NOT_QUALIFIED until
+rebuild/routing/CDC and new guarded physical sessions complete.

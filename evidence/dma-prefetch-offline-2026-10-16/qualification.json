@@ -1,0 +1,23 @@
+{
+  "kind": "OFFLINE_PREFETCH_FIX_AND_SEPARATE_HARDWARE_EVIDENCE",
+  "status": "PASS_OFFLINE",
+  "tests_each_piotr_current": 26,
+  "read_budget_subcases_each": 14,
+  "old_reader_70_request_model": "EXPECTED_FAIL_ERROR65",
+  "credit4_reader_70_request_short_and_host_trace": "PASS",
+  "physical_cold_release_and_dio": "PASS_E0FD_IMAGE",
+  "physical_ddr_dma": "FAIL_ERROR65_E0FD_IMAGE_RESTORED",
+  "physical_ddr_readback_bytes": 2048,
+  "cumulative_budget_bursts": 16,
+  "outstanding_credit_limit": 4,
+  "new_image_hardware": "NOT_RUN",
+  "credit4_vivado": "RUNNING",
+  "build_directory": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/satellite-dma-credit4-route-2026-10-16",
+  "sources_sha256": {
+    "diagnostics/drtio/dma_memory_guard.py": "6c6d20144d56e8b3428b00c09db83aeab875f7e98972663e1bf85749a6049134",
+    "diagnostics/drtio/test_dma_csr.py": "551e0767ba8a02412d2a4e34011e463cc71d7e9890758724e316153441a29236",
+    "diagnostics/drtio/host_dma_session.py": "ccb8022d70909924f59932e6ab450ee1a121aeb4df001569d6493497a83f68ff",
+    "diagnostics/drtio/external_session.py": "893f65e038915bc4a6d5bf534ee591eae5c039a4aa23d57eee77380cdbae7d4b",
+    "diagnostics/drtio/satellite_dma_probe.py": "e614ec388cd9e987b9b2abcfc4dd5c0892d36188b11cc628aa1600958a7bfea0"
+  }
+}

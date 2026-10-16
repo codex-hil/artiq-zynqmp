@@ -6,6 +6,7 @@ reader. This module is not an asynchronous FIFO or complete DMA engine.
 """
 from migen import Module,Signal,If,FSM,NextState
 from misoc.interconnect import stream
+from litex.soc.interconnect.axi import AXIInterface
 from zynqmp_dma import DMAReader
 
 
@@ -20,7 +21,26 @@ class DMAMemoryGuard(Module):
         self.budget_error=Signal()
         self.source=stream.Endpoint([('data',len(membus.r.data))])
         flow=Signal();limit=Signal(32);budget=Signal();bad_limit=Signal()
-        self.submodules.reader=reader=DMAReader(membus,flow)
+        # The original reader can issue one AR every cycle without an
+        # outstanding limit. A real PS can accept dozens before the decoder
+        # observes a short trace's terminator, exhausting its bounded window.
+        # Preserve the upstream reader; throttle only new address admission.
+        limited=AXIInterface(data_width=len(membus.r.data),
+            address_width=len(membus.ar.addr),id_width=len(membus.ar.id))
+        self.outstanding=outstanding=Signal(max=5)
+        permit=Signal()
+        self.comb += permit.eq(outstanding<4)
+        for channel in ('aw','w'):
+            self.comb += getattr(limited,channel).connect(getattr(membus,channel))
+        for channel in ('b','r'):
+            self.comb += getattr(membus,channel).connect(getattr(limited,channel))
+        self.comb += limited.ar.connect(membus.ar,omit={'valid','ready'})
+        self.comb += [membus.ar.valid.eq(limited.ar.valid & permit),
+            limited.ar.ready.eq(membus.ar.ready & permit)]
+        self.sync += outstanding.eq(outstanding+
+            (membus.ar.valid & membus.ar.ready)-
+            (membus.r.valid & membus.r.ready & membus.r.last))
+        self.submodules.reader=reader=DMAReader(limited,flow)
         self.submodules.fsm=fsm=FSM(reset_state='IDLE')
         self.comb += [self.active.eq(~fsm.ongoing('IDLE')),
                      self.source.data.eq(reader.source.data),
