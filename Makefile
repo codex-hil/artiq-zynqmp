@@ -244,3 +244,7 @@ test-drtio-satellite-dma:
 .PHONY: test-drtio-dma-memory
 test-drtio-dma-memory:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_memory*.py' -v
+
+.PHONY: test-drtio-dma-async
+test-drtio-dma-async:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_async_engine.py' -v

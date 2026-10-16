@@ -1,0 +1,13 @@
+{
+  "kind": "GENERATED_RTL_NOT_HARDWARE",
+  "memory_domain": "sys must remain running until engine.done",
+  "consumer_domain": "rtio_rx may pause; restart requires reset handshake",
+  "reset_input_minimum": "one sys edge; memory clock/reset must remain alive through done",
+  "alignment_bytes": 128,
+  "width_bits": 64,
+  "queue_depth": 16,
+  "gray_constraints": "NOT_ADDED: both FIFO pointer buses need physical CDC constraints",
+  "decoder_cri": "native RX engine included",
+  "firmware_ps_target": "NOT_CONNECTED",
+  "vivado_hardware": "NOT_RUN"
+}

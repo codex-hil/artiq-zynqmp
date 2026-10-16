@@ -93,3 +93,54 @@ model. It does not qualify physical clocks or reset-release timing.
 `generate_dma_memory.py --output DIR` emits standalone Xilinx-reset RTL; neither
 Gray-bus physical constraints nor a PS/board target have been added. No hardware
 access occurred. Evidence: `evidence/dma-memory-offline-2026-10-16`.
+
+## Asynchronous native decoder/CRI engine (offline)
+
+`AsyncSatelliteDMA` now composes the running sys-clock memory guard, raw FIFO,
+upstream RecordSlicer, TimeOffset and CRIMaster. Decoder/CRI run on rtio_rx and
+share the queue's extended read_reset. The raw FIFO carries a separate EOP bit.
+After the native zero-length trace marker, a synchronized finish stops memory
+streaming; AXI drains, then a terminal FIFO token lets the native decoder flush
+and the CRI master finish. Completion/error payload is held stable until reset;
+the sys side waits two extra edges after synchronized completion before capture.
+
+Byte address and time offset are latched at accepted start; the offset settles
+through synchronization before queue readiness permits memory reads. Busy
+starts are rejected. Invalid128-byte alignment is rejected before any AXI AR.
+The caller must supply the qualified64-bit memory interface and keep sys alive.
+Status error bits are internal flags, not a direct native AUX status encoding:
+
+| Bit | Meaning |
+|---:|---|
+|0|Aborted trace|
+|1|AXI read-response error|
+|2|Native CRI underflow|
+|3|Native destination-unreachable|
+|4|Unaligned start|
+
+A PS abort resets the FIFO/decoder while memory independently drains. The RX
+`rtio_reset_request` output **must** be connected to the actual SED queue reset
+alongside its other reset sources. This cancels already-enqueued future events;
+it preserves output PHY state, so it cannot undo a level transition which has
+already fired. New start releases that hold only through the fresh reset epoch.
+The clock-pause test first queues actual future CRI writes, pauses RX, drains
+on abort, resumes, verifies no cancelled TTL edges, then plays a fresh trace.
+
+Six engine tests (four full-path and two admission cases) pass on each ARTIQ source variant: both clock-rate orders,
+precise fine3 TTL/time offset, native underflow snapshot/recovery, AXI error/
+recovery, pause-after-enqueue abort/recovery, bad alignment and busy admission.
+Existing memory CDC and packet/SED/reset regressions also pass.
+`generate_dma_memory.py --engine --output DIR` emits standalone AXI/control/CRI
+RTL with Xilinx reset primitives. The physical Genesys target and firmware
+remain unchanged; no Vivado/hardware/DDMA protocol claim is made.
+
+Before live use: map CSRs and the PS memory port; add and check Gray/bundled-data
+constraints; implement native AUX trace admission/storage/lifecycle and CRI
+ownership; validate trace records, bounds/arena/prefetch padding and watchdogs.
+This engine has no trace-length limit and invalid/missing terminators can keep
+reading until explicit abort. Consumer completion means events admitted, not
+that every scheduled pin transition has fired. No arbitrary concurrent packet
+commands or active firmware ownership changes are qualified here.
+
+Clock loss needs an external sys-domain fault/abort request. This engine does not
+infer loss of a clock merely from backpressure; without abort it may wait for RX.

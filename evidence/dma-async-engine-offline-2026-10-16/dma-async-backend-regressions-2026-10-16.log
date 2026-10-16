@@ -1,0 +1,22 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_satellite_sed.py' -v
+test_disconnected_packet_negative_control (test_satellite_sed.SatelliteSEDTest.test_disconnected_packet_negative_control) ... ok
+test_real_buffer_space_consumption_and_recovery (test_satellite_sed.SatelliteSEDTest.test_real_buffer_space_consumption_and_recovery) ... ok
+test_scheduled_ttl (test_satellite_sed.SatelliteSEDTest.test_scheduled_ttl) ... ok
+test_sender_timestamp_advance (test_satellite_sed.SatelliteSEDTest.test_sender_timestamp_advance) ... ok
+test_serialized_time_load_then_ttl (test_satellite_sed.SatelliteSEDTest.test_serialized_time_load_then_ttl) ... ok
+test_stale_write_rejected_without_extra_edge (test_satellite_sed.SatelliteSEDTest.test_stale_write_rejected_without_extra_edge) ... ok
+test_ttl_input_event_and_empty_timeout (test_satellite_sed.SatelliteSEDTest.test_ttl_input_event_and_empty_timeout) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 14.954s
+
+OK
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_satellite_reset.py' -v
+test_clear_pending_events_preserve_tsc_and_reuse (test_satellite_reset.SatelliteResetTests.test_clear_pending_events_preserve_tsc_and_reuse) ... ok
+test_pending_input_is_cleared_without_phantom_event (test_satellite_reset.SatelliteResetTests.test_pending_input_is_cleared_without_phantom_event) ... ok
+test_queue_only_reset_preserves_output_state (test_satellite_reset.SatelliteResetTests.test_queue_only_reset_preserves_output_state) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 9.176s
+
+OK

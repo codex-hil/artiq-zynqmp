@@ -47,10 +47,10 @@ class DMARawCDC(Module):
         self.sync.dma_read += rp.eq(Cat(1,rp[0]))
         self.comb += [read_ready.eq(rp[1]),
             self.write_ready.eq(~internal_reset & wp[1] & read_seen & ~reset_ack_sys)]
-        self.submodules.fifo=f=ClockDomainsRenamer({'write':'dma_write','read':'dma_read'})(AsyncFIFOBuffered(width,depth))
-        self.comb += [f.din.eq(self.sink.data),
+        self.submodules.fifo=f=ClockDomainsRenamer({'write':'dma_write','read':'dma_read'})(AsyncFIFOBuffered(width+1,depth))
+        self.comb += [f.din.eq(Cat(self.sink.data,self.sink.eop)),
             self.sink.ack.eq(self.write_ready & f.writable),
             f.we.eq(self.sink.stb & self.sink.ack),
-            self.source.data.eq(f.dout),
+            self.source.data.eq(f.dout[:width]),
             self.source.stb.eq(~internal_reset & rp[1] & f.readable),
-            f.re.eq(self.source.stb & self.source.ack),self.source.eop.eq(0)]
+            f.re.eq(self.source.stb & self.source.ack),self.source.eop.eq(f.dout[width])]

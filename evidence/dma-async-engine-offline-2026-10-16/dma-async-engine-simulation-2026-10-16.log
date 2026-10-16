@@ -1,0 +1,12 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_async_engine.py' -v
+test_busy_start_rejected_and_original_epoch_drains (test_dma_async_engine.AsyncDMAAdmissionTests.test_busy_start_rejected_and_original_epoch_drains) ... ok
+test_unaligned_trace_rejected_before_axi (test_dma_async_engine.AsyncDMAAdmissionTests.test_unaligned_trace_rejected_before_axi) ... ok
+test_async_native_decoder_cri_ttl_and_next_trace (test_dma_async_engine.AsyncDMAEngineTests.test_async_native_decoder_cri_ttl_and_next_trace) ... ok
+test_axi_error_report_and_next_trace (test_dma_async_engine.AsyncDMAEngineTests.test_axi_error_report_and_next_trace) ... ok
+test_clock_pause_abort_drain_and_recovery (test_dma_async_engine.AsyncDMAEngineTests.test_clock_pause_abort_drain_and_recovery) ... ok
+test_native_underflow_snapshot_and_recovery (test_dma_async_engine.AsyncDMAEngineTests.test_native_underflow_snapshot_and_recovery) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 61.398s
+
+OK

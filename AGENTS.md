@@ -456,3 +456,15 @@ DDMA firmware yet. sys cannot reset/stop before guard.done. Queue reset during
 trace needs guard.abort. No HW accessed; restored board baselines unchanged.
 Next native record decoder/CRIMaster plus completion/error CDC/ownership.
 Evidence dma-memory-offline-2026-10-16; SATELLITE_DMA.md updated.
+
+
+Async DMA engine offline2026-10-16: native RecordSlicer/TimeOffset/CRIMaster now
+behind sys AXI guard/raw CDC, real SED/TTL via external dma_cri/native switch.
+6 cases each Piotr/current PASS+width reject;9 memory,7 SED,3 reset regressions.
+Clock pause AFTER future CRI admission: abort drains PS, resets decoder and
+requests actual SED reset; no old edges after resume, next trace PASS. Target
+must OR RX rtio_reset_request into real RTIO reset. No physical constraints/PS
+CSR/DDR target/AUX service yet. External fault abort + trace validation/bounds/
+padding/watchdog/idle CRI ownership required; done is admission not trace end.
+No HW accessed. Next hardware CSR/PS memory/CDC constraints then native AUX DDMA.
+See evidence/dma-async-engine-offline-2026-10-16 and SATELLITE_DMA.md.

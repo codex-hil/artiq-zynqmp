@@ -1743,3 +1743,30 @@ abort for interrupted trace. Qualified hardware images/baselines unchanged;
 no board access or persistent writes. Evidence dma-memory-offline-2026-10-16.
 Next connect native record decoder and CRIMaster in RX with coordinated abort/
 completion/error reporting and queue ownership; then target and AUX trace layer.
+
+### 2026-10-16 — asynchronous native DMA decoder/CRI/SED offline PASS
+
+New AsyncSatelliteDMA composes guarded PS-clock reads, raw async FIFO with EOP,
+and upstream RecordSlicer/TimeOffset/CRIMaster in RX. Native terminator triggers
+memory drain, explicit final token flushes decoder, stable completion/error
+payload crosses back with extra settling before capture. Byte base/time offset
+latched at start; alignment and busy starts rejected.64-bit interface enforced.
+SatelliteBackend external dma_cri option supplies native CRISwitch; default DIO
+path unchanged. No hand-written trace decoder replaces upstream code.
+
+6 engine tests each Piotr/current PASS (4 complete paths+2 admission), extra
+width rejection PASS,9 memory and7 SED+3 reset regressions PASS. Actual SED/TTL
+fine3 events and offset replay, native underflow timestamp/recovery, AXI error/
+recovery, faster/slower clocks qualified in simulation. Abort case first admits
+future CRI events, pauses RX driver, drains memory on sys, holds consumer reset
+and asserts RX rtio_reset_request into real SED, then resumes with no cancelled
+edges and a successful new trace. Cannot undo already-fired output transitions.
+
+Standalone --engine HDL PASS. No physical timing/Gray constraints/CSR/PS target/
+AUX trace service or HW access. sys must stay alive through engine.done; external
+fault/abort detection required. Trace bounds/record validation/prefetch padding/
+watchdog and concurrent ownership policy remain necessary before live use.
+Done is admission/drain completion, not elapsed trace duration. Evidence
+ dma-async-engine-offline-2026-10-16; SATELLITE_DMA.md updated. Next map hardware
+control/status and PS memory interface with checked CDC constraints, then native
+AUX trace upload/playback/status. Existing board baselines unchanged.

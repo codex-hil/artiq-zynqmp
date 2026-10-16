@@ -1,0 +1,41 @@
+{
+  "kind": "RTL_SIMULATION_AND_HDL_NOT_HARDWARE",
+  "status": "PASS",
+  "tests": {
+    "piotr_engine": 6,
+    "current_engine": 6,
+    "extra_width_rejection": 1,
+    "memory_regression": 9,
+    "packet_sed_regression": 7,
+    "split_reset_regression": 3
+  },
+  "piotr_revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+  "current_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "checks": [
+    "real native RecordSlicer/TimeOffset/CRIMaster after async raw AXI queue",
+    "native switch actual satellite SED/TTL fine3 and second trace time offset",
+    "underflow timestamp snapshot and fresh-trace recovery",
+    "SLVERR error report and fresh-trace recovery",
+    "RX clock pause after future CRI events admitted; PS abort drains AXI and resets SED queue; no old edges on resume; new trace correct",
+    "busy start cannot change latched base address",
+    "unaligned address rejected before AXI AR",
+    "unsupported data width rejected"
+  ],
+  "hdl_sha256": "e8508b351d70f2d836bc08dd4f8542976444c78c17a06537082469a4bfabc3ca",
+  "source_sha256": {
+    "dma_async_engine.py": "fafef1766754dd16eb7d8e6d749dd1a6bb1332415971e8b1c9d7c316faab7ed3",
+    "test_dma_async_engine.py": "d484116573b40b32215715204fe75060d4b619f563637cd2e7de81c326b10051",
+    "dma_raw_cdc.py": "abc4d671ad3ecdb8f10e08150d431876f355c6e74f3c60693b79f068e1ad29ee",
+    "satellite_backend.py": "3deaaedc191a8053ce4b77f91f7384e3ac38bad1ad9abfead127988a7132c32f",
+    "generate_dma_memory.py": "44bf3e1ccfb5cb93399892b45d2455fd19a761e6a4bcb45c580c0401fd2b3e64"
+  },
+  "limits": [
+    "functional reset model and ideal simulated AXI memory",
+    "no physical CDC constraints, PS CSR map/board integration, Vivado or hardware",
+    "external fault must request abort; memory clock cannot stop before done",
+    "CRI ownership still caller-managed; concurrent packet requests unqualified",
+    "trace validation/bounds/prefetch padding/watchdog/AUX DDMA lifecycle absent",
+    "done means records admitted, not scheduled pin transitions completed"
+  ],
+  "hardware_accessed": false
+}
