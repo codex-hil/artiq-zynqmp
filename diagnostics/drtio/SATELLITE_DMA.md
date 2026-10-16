@@ -301,3 +301,27 @@ The full-trace test counts CRI commands on RX rather than sys; otherwise a
 command sequence must be input gate,8 output events and input gate close.
 Physical DDR playback and post-abort packet handoff remain NOT_QUALIFIED until
 rebuild/routing/CDC and new guarded physical sessions complete.
+
+
+## Physical credit-limited DDR playback (2026-10-16)
+
+Credit4 image `40dac1f7a5875d015f6df00aefcaa618204ffc86d7f95280d9f636a9d337568c`
+passed routed implementation and all164 individually timed CDC endpoints
+(minimum slack7.265ns against8ns). The exact image first passed guarded
+cold AUX/TSC/reset/DIO qualification and full baseline restoration.
+
+The subsequent host-armed physical playback returned error0, accepted1,
+completed1, active0, pending1, no rejection, no RTIO/PHY reset and no asynchronous
+or reply fault. All2048 DDR bytes were read back before arming. The cumulative
+budget remained16 bursts with4 outstanding read credits.
+
+The standard Kasli kernel captured eight physical JB1→JB2 edges: four pulses,
+width8000mu and period80000mu. First edge minus programmed offset was1000120mu.
+This difference is an observation for this diagnostic, not calibrated phase,
+jitter or deterministic-link-latency qualification. Evidence is
+`evidence/kasli03-ddr-credit4-hardware-2026-10-16`.
+
+This proves the native PL DDR reader/decoder/RTIO path, with host RPC/DAP upload
+and arming. It does **not** implement native AUX DDMA. Next stages are bounded
+upload/allocation/record validation and native AUX playback/status integration;
+post-abort handoff to packet ownership also requires explicit qualification.

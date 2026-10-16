@@ -1,0 +1,15 @@
+{
+  "kind": "ROUTED_IMPLEMENTATION_NOT_HARDWARE",
+  "status": "PASS",
+  "groups": 6,
+  "endpoints": 164,
+  "requirement_ns": 8,
+  "minimum_slack_ns": 7.265,
+  "sha256": {
+    "top_route.dcp": "8a17a29424790782f36efb3893f11e00aa2eba2468e50698a8f8ba66690b90e3",
+    "top.v": "9d0a916abc14ad56c205ee3d0f5680dd92a97b2d5e278887d9ccd38253ff0071",
+    "csr-map.json": "8f367b32b6af6a810cc99c74d6550f58adb556984e77d72ea9657a2131416ad6",
+    "cdc-manifest.json": "2be2eed674a39eda2ec93722fe312db36d51f80badc8d20a6c46b98d4e339b3e",
+    "dma_cdc_endpoints.tsv": "28c8affbdc951dd507eeafe1f002c1de6264c1c86456ffc5255e33e2bc09a74c"
+  }
+}

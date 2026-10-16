@@ -1,0 +1,43 @@
+{
+  "status": "EXTERNAL_DIO_LOOPBACK",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+  "remote_drtio": "direct-leaf physical TTL PASS; remaining satellite services incomplete",
+  "firmware_sha256": "3269091e7d7797a12dae911547c604e4bc9c633a36faddc6e5147124d1790b5d",
+  "bit_sha256": "40dac1f7a5875d015f6df00aefcaa618204ffc86d7f95280d9f636a9d337568c",
+  "reset_handshake": "PASS",
+  "reset_completed_load_counts": [
+    "1",
+    "1"
+  ],
+  "reset_ack_replies": 2,
+  "master_reset_errors_before": 0,
+  "master_reset_errors_after": 0,
+  "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+  "dio_loopback": "PASS",
+  "dio_runs": 2,
+  "pulses_per_run": 8,
+  "rising_edge_spacing_mu": 100000,
+  "remote_rtio": "physical TTL output/input PASS",
+  "dio_scope": "Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED",
+  "ddr_dma_loopback": "PASS",
+  "ddr_dma_pulses": 4,
+  "ddr_dma_edges": 8,
+  "ddr_dma_width_mu": 8000,
+  "ddr_dma_period_mu": 80000,
+  "ddr_dma_first_delta_mu": 1000120,
+  "ddr_dma_scope": "host DAP writes/reads back DDR and arms native PL DMA; physical loopback read via standard Kasli kernel; NOT native AUX DDMA; no abort/absolute phase proof",
+  "echo_replies": 1,
+  "destination_down_replies": 0,
+  "firmware_send_errors": 0,
+  "firmware_rx_errors": 0,
+  "unsupported_drops": 0,
+  "master_link_echo_observed": true,
+  "scope": "real external AUX codec/CRC echo and DOWN status, not production satellite",
+  "tsc_synchronization": "load/ACK only; offset/jitter/deterministic latency NOT_MEASURED",
+  "tsc_ack_counts": [
+    1
+  ],
+  "tsc_load_handshake": "PASS",
+  "restored_ip": "192.168.2.3"
+}

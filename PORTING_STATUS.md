@@ -1934,3 +1934,28 @@ native AUX DDMA upload/allocator/validation/status remain unqualified/missing.
 Final prefetch regressions2026-10-16:26 tests each Piotr/current PASS,
 including14 read-budget subcases each. Credit4 Vivado remains RUNNING;
 no physical DDR-DMA success claimed. Evidence dma-prefetch-offline-2026-10-16.
+
+
+Credit4 routed implementation completed2026-10-16: PASS, bit SHA256
+40dac1f7a5875d015f6df00aefcaa618204ffc86d7f95280d9f636a9d337568c.
+All164 DMA CDC endpoints have numeric8ns requirements, minimum slack7.265ns;
+artifact-bound routed CDC and top-build checks PASS. Physical cold release,
+TSC/reset and two8-rise DIO kernels PASS with this exact bit/firmware;
+Kasli checker/volatile clock profile and Genesys normal runtime/TTL/debug/
+Ethernet restoration PASS. Evidence kasli03-dma-credit4-idle-hardware-2026-10-16.
+Guarded host-armed DDR playback session started only after that proof; its
+physical result is separate from this idle qualification.
+
+
+Physical DDR DMA credit4 session2026-10-16 PASS:2048-byte exact DDR readback,
+accepted1/completed1,error0,no rejection/reset/async/reply faults. Standard
+Kasli kernel captured4 physical pulses/8 edges, width8000mu, period80000mu,
+first_delta1000120mu. Budget16 bursts unchanged. AUX/TSC/native reset and
+both DIO kernels also PASS. Both boards and reviewed Kasli volatile clock
+profile restored/validated PASS; Genesys normal local TTL/CoreDMA/analyzer/
+MonInj/Ethernet PASS at192.168.2.3. No flash/SD/OTP/Genesys Si writes.
+Evidence kasli03-ddr-credit4-hardware-2026-10-16/results.json. Host RPC/DAP
+uploads and arms; native AUX DDMA remains MISSING, post-abort packet handoff
+and absolute phase/jitter/deterministic-link latency remain NOT_QUALIFIED.
+Next implement bounded native AUX upload/allocation/validation/playback/status
+against upstream packet definitions, with offline negative tests first.

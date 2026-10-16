@@ -1,0 +1,4 @@
+SATELLITE_DDR_READBACK_PASS bytes=2048 base=570425344
+SATELLITE_DMA_CONFIG address=570425344 offset=74838788320 max_bursts=16 watchdog=134217728
+SATELLITE_DMA_STATUS active=0 pending=1 reject=0 error=0 channel=0 timestamp=0 accepted=1 completed=1 rtio_reset=0 phy_reset=0 errors=0 reply_fault=0 loads=1
+SATELLITE_DDR_DMA_ADMITTED_PASS bursts_limit=16 readback_bytes=2048
