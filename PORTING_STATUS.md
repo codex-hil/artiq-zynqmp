@@ -2242,3 +2242,17 @@ exception); original diagnostic labels replydestination0, not remote1. No
 firmware/HW changes. Next optin bounded expectedfailure wrapper with concrete
 AUX/master evidence and validnative recovery. Evidence ddma-oversize-offline-
 2026-10-17; physical NOT_RUN.
+
+
+Native oversize rejection/recovery2026-10-17 physical PASS:1054B ID1076235456
+first1010ACK/final44NACK, concrete upstream mastererror, no rejectedplayback.
+New host session/same name/reusedID valid upload/playback/status0/erase and
+physical8edges/8000width/80000period/firstdelta1000120mu PASS. Validexperiment
+uses normalcore.reset; no reload/linkreset between negative/positive. Limit:
+Python ConnectionResetError (upstream sessionclose), cleanupNACK logged for
+alreadyinvalidated trace before recovery succeeds. Preserve both diagnostics.
+6wrapper/parser tests including11negativecases PASS. Both boards restored
+Kasli/clock and Genesys192.168.2.3 localTTL/DMA/debug/Ethernet PASS; all4locks;
+no persistent/GenesysSi writes. Evidence kasli03-native-ddma-rejection-hardware-
+2026-10-17. Next structured hosterror/idempotent rejectedcleanup audit; runtime
+faultstatus and pausedRX hardware remain NOT_RUN.

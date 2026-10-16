@@ -1,0 +1,6 @@
+{
+  "host_exception": "ConnectionResetError, upstream closes runtime session on upload NACK",
+  "cleanup": "same-name recovery issues erase for invalidated slot; NACK logged by upstream; new upload/playback succeeds",
+  "production_dma_fault_status": "NOT_RUN",
+  "paused_rx_fault": "NOT_RUN"
+}

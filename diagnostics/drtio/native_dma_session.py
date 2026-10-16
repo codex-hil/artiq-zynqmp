@@ -7,6 +7,9 @@ def validate(session,fw):
     c=session.config;mode=c.get('native_ddma_mode')
     if mode not in ('idle','playback') or session.host_dma_test or not session.dio_test or not session.snapshot_test:
         raise ValueError('Native DDMA requires explicit idle/playback mode, DIO/snapshot; no host DMA')
+    if c.get('native_ddma_rejection') and (mode!='playback' or any(c.get(n) for n in
+            ('native_ddma_lifecycle','native_ddma_fragmentation','native_ddma_long_lifecycle'))):
+        raise ValueError('Rejection requires standalone native playback/recovery mode')
     for name in ('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h'):
         import hashlib
         if fw.get('ddma_sources',{}).get(name)!=hashlib.sha256((Path(__file__).parent/'aux_protocol'/name).read_bytes()).hexdigest():
@@ -96,6 +99,11 @@ def probe(session,master_host,uart,raw):
     db=runpy.run_path(str(out/'dio-device-db.py'))['device_db']
     db['core_dma']={'type':'local','module':'artiq.coredevice.dma','class':'CoreDMA'}
     path=out/'native-ddma-device-db.py';path.write_text('device_db = '+repr(db)+'\n')
+    rejected=None;recovery_begin=0
+    if c.get('native_ddma_rejection'):
+        from native_dma_reject_session import attempt
+        rejected=attempt(session,master_host,uart,raw,path)
+        recovery_begin=len(raw)
     lifecycle=bool(c.get('native_ddma_lifecycle',False))
     fragment=bool(c.get('native_ddma_fragmentation',False))
     long_lifecycle=bool(c.get('native_ddma_long_lifecycle',False))
@@ -109,7 +117,8 @@ def probe(session,master_host,uart,raw):
     if not match and not lifecycle and not fragment and not long_lifecycle:raise RuntimeError('Native DDMA physical timestamps absent')
     end=time.monotonic()+1
     while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
-    text=raw.decode(errors='replace')
+    text=raw[recovery_begin:].decode(errors='replace')
+    if rejected:session.result.update(rejected)
     adds=re.findall(r'AUX_DDMA REPLY kind=177 id=(\d+) succeeded=1',text)
     plays=re.findall(r'AUX_DDMA REPLY kind=181 id=(\d+) succeeded=1',text)
     status=re.findall(r'AUX_DDMA STATUS id=(\d+) error=0',text)

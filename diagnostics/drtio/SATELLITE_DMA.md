@@ -962,3 +962,39 @@ last-fragmentNACK, no playback/status, matching IDs and master error, then run
 a valid native playback in a fresh host connection before restoration. Guard
 against treating timeout, link loss, panic or arbitrary nonzero exit as PASS.
 Evidence `evidence/ddma-oversize-offline-2026-10-17`; physical NOT_RUN.
+
+
+### Native oversized-upload rejection/recovery physical PASS (2026-10-17)
+
+Opt-in `native_ddma_rejection=true` requires standalone native playback mode
+and exact prior idle/DIO/snapshot/restoration proof. The inherited all-board
+lease covers a bounded30s expected-failure subprocess and the subsequent
+normal60s playback. Parser requires nonzero positive exit, exact upload
+1010/44 with matching IDs, firstACK/finalNACK, no playback/status before
+recovery, and concrete master upload error. Timeout, kill, generic link loss,
+panic, altered fragments or unexpected upload success cannot count as PASS.
+Six wrapper/parser regression tests (including11 negative evidence cases) PASS.
+
+Physical result:1054-byte trace ID1076235456 first1010 ACK/final44 NACK; master
+logs `error adding DMA trace on satellite #0` (upstream reply-destination label).
+No playback/status for rejected trace. New host session, same trace name and
+reusedID, valid upload/playback/error0status/erase PASS; physical4pulses/8edges,
+8000mu width,80000mu period,first_delta1000120mu. No FPGA reload, firmware
+restart or DRTIO link reset between rejection and valid playback. The valid
+experiment performs its normal core.reset; no claim of reset-free recovery.
+
+Two observed limitations are retained explicitly. Upstream closes the kernel
+session on uploadNACK, so Python receives ConnectionResetError rather than a
+structured DMAError. The next same-name record attempts to erase the already
+invalidated slot; Genesys NACKs this, upstream logs cleanup failure and proceeds
+to successful new upload. This is demonstrated recovery with diagnostic noise,
+not polished production error handling. No underlying policy was relaxed.
+
+Both boards restored: Kasli diagnostic/reviewed volatile clock profile and
+Genesys normal192.168.2.3 localTTL/CoreDMA/analyzer/MonInj/Ethernet PASS. All4
+shared locks through restoration; no flash/SD/OTP/GenesysSi writes. Evidence
+`kasli03-native-ddma-rejection-hardware-2026-10-17`, limitations.json and raw
+logs; offline `ddma-rejection-wrapper-offline-2026-10-17`. Next examine
+structured master upload error and idempotent rejected-trace cleanup without
+masking source/id ownership or changing successful playback. Runtime fault
+status injection and pausedRX hardware recovery remain NOT_RUN.

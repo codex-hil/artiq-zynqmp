@@ -13,6 +13,9 @@ class ValidationTests(unittest.TestCase):
         s=SimpleNamespace(config={'native_ddma_mode':'idle'},host_dma_test=False,
             dio_test=True,snapshot_test=True,result={'bit_sha256':'bit','firmware_sha256':'fw'})
         validate(s,fw)
+        s.config['native_ddma_rejection']=True
+        with self.assertRaises(ValueError):validate(s,fw)
+        s.config.pop('native_ddma_rejection')
         s.host_dma_test=True
         with self.assertRaises(ValueError):validate(s,fw)
         s.host_dma_test=False;s.config['native_ddma_mode']='playback'
