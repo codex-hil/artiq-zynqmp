@@ -831,3 +831,27 @@ Required next steps before hardware use:
    is a separate test; running-clock cancellation alone cannot qualify it.
 
 Evidence `evidence/dma-abort-fixture-offline-2026-10-16`; no HW accessed.
+
+
+### Long fixture backpressure qualified in complete RTL (2026-10-16)
+
+The exact32768-byte/1100-record host-only fixture now runs through actual
+AXI reader, two-credit guard, raw CDC, native decoder/CRI switch and native
+SyncRTIO/SED with8 lanes/depth128. It stalls after129 write commands (lane
+distribution need not fill all1024 nominal slots). At abort,20 AR have been
+accepted and18 RLAST returned: two reads are outstanding. The256-burst budget
+is not exhausted, no pre-abort errors/edges occur, and DMA is active.
+
+Abort drains all accepted reads, yields exact rawerror1 with no budget fault
+and zero outstanding reads, completes recovery and restores packet ownership.
+A normal native RT packet pulse then passes without a new DMA start, without
+clearing sticky abort telemetry, and without PHY reset or TSC discontinuity.
+Current and Piotr variants PASS. The long-fixture case intentionally does not
+simulate to its distant canceled timestamps; absence of late physical edges
+is still NOT_RUN. Earlier short-fixture cases cover that property in RTL.
+
+No hardware access. The fixture is still disconnected from live wrappers.
+Next integrate guarded block DDR loading, live-TSC/active checks, explicit
+abort and rearmed physical input observation into the existing host-only
+parent session. Native AUX payload/burst limits and fail-closed policy stay
+unchanged. Evidence `evidence/dma-saturated-abort-offline-2026-10-16`.

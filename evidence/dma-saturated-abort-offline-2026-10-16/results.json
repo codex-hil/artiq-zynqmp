@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "complete RTL current and Piotr; no hardware access",
+  "fixture_records": 1100,
+  "fixture_bytes": 32768,
+  "burst_limit": 256,
+  "before_abort": {
+    "write_commands": 129,
+    "ar": 20,
+    "rlast": 18,
+    "active": 1,
+    "error": 0,
+    "budget_error": 0
+  },
+  "after_abort": {
+    "ar": 22,
+    "rlast": 22,
+    "outstanding": 0,
+    "error": 1,
+    "budget_error": 0,
+    "recovering": 0
+  },
+  "packet_after_abort_without_new_dma": "PASS",
+  "phy_tsc_preserved": "PASS",
+  "all_distant_canceled_edges_observed": "NOT_RUN",
+  "physical_abort": "NOT_RUN"
+}

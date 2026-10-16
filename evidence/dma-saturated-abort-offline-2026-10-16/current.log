@@ -1,0 +1,8 @@
+test_long_fixture_actual_sed_backpressure_abort_and_packet (test_dma_abort_handoff.HandoffTests.test_long_fixture_actual_sed_backpressure_abort_and_packet) ... SATURATED_DMA_BEFORE_ABORT writes=129 ar=20 rlast=18
+SATURATED_DMA_AFTER_ABORT ar=22 rlast=22 error=1 outstanding=0
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 17.432s
+
+OK

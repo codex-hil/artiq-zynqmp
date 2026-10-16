@@ -2185,3 +2185,13 @@ shapes with8ns/nonnegative slack and unchanged hash validation. Native AUX
 backpressure proof, guarded block-load/live-TSC/active checks and postabort
 input rearm/no-edge+DIO experiment remain pending; detailed sequence in
 SATELLITE_DMA.md. Evidence dma-abort-fixture-offline-2026-10-16.
+
+
+Long abort fixture2026-10-16 full RTL PASS current/Piotr: actual nativeSED
+backpressure after129 writes, activeDMA,20AR/18RLAST at abort (two outstanding),
+256burst bound not exhausted. Abort exacterror1, no budget error, outstanding0,
+AR/RLAST conserved; native packet pulse after recovery without newDMA/clear,
+PHY/TSC preserved. No HW access; distant canceled-edge physical observation
+NOT_RUN. Evidence dma-saturated-abort-offline-2026-10-16. Next integrate bounded
+host-only blockload/active-abort/liveTSC/input-rearm wrapper before physical
+qualification; nativeAUX1024B/16burst and failclosed policy unchanged.
