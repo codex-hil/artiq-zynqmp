@@ -400,3 +400,26 @@ alignment, busy slot, status retention, error forwarding and policy reuse.
 Mock reuse does not qualify physical abort recovery. No service is active on
 hardware yet. Next implement the firmware's checked decoder dispatch, backend
 cache/CSR operations and status polling under bounded failure handling.
+
+
+## DDR/cache/CSR backend adapter (offline, 2026-10-16)
+
+`ddma_backend.h` supplies the service start callback: readiness and live time
+checks, idle/pending checks, exact2048-byte copy/flush, MSW-first64-bit CSRs,
+configuration readback and bounded accepted-counter polling. Immutable arena
+is0x22000000, bank0xa0002000, budget16, watchdog134217728. Register offsets
+were compared with the qualified credit4 map. Timestamp must have at least
+1000000mu lead both before copying and immediately before start. Missing live
+time refuses admission. A timeout/rejection after START latches a backend fault;
+no automatic reset, retry or pointer reuse is permitted by this adapter.
+
+`ddma_a53.h` binds volatile MMIO plus DSB, DDR memcpy, AMD cache flush plus DSB
+and1ms poll delay; cross-compiled with the existing A53 toolchain/BSP. It still
+requires board-specific live readiness and time callbacks. Current diagnostic
+CSR map has TSC-load count but **no live TSC snapshot**; add and qualify that
+CSR/CDC before enabling playback through AUX. Do not substitute host/wall time.
+
+Host ASan/UBSan tests use mocked IO for sequencing, active/pending rejection,
+missing/expired time, bounds and timeout fault latch. They do not exercise
+physical DDR/cache/AXI. No new service dispatch or hardware load in this stage.
+Next add live snapshot to gateware, test CDC, then firmware dispatch/status.

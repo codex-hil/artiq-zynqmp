@@ -278,3 +278,9 @@ test-drtio-ddma-service:
 	mkdir -p $(abspath $(O))/ddma-service
 	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_service.c -o $(abspath $(O))/ddma-service/test
 	$(abspath $(O))/ddma-service/test
+
+.PHONY: test-drtio-ddma-backend
+test-drtio-ddma-backend:
+	mkdir -p $(abspath $(O))/ddma-backend
+	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_backend.c -o $(abspath $(O))/ddma-backend/test
+	$(abspath $(O))/ddma-backend/test

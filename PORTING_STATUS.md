@@ -1984,3 +1984,12 @@ through successful status transport. ASan/UBSan host tests use mock admission;
 no hardware/backend/cache/CSR integration or physical recovery claimed.
 Next firmware checked decode dispatch plus bounded actual backend/status poll.
 No HW accessed; normal restored baselines unchanged.
+
+
+DDMA backend2026-10-16 offline PASS: actual-address DDR/cache/CSR adapter,
+MSW-first64-bit config/readback, bounded accepted-counter polling, positive
+future-time guards and sticky ambiguous-admission fault. ASan/UBSan mocked IO
+PASS; AMD cache/MMIO binding cross-compile A53 PASS;15 CSR offsets match credit4
+map. No live dispatch/HW access. Identified missing live TSC snapshot CSR;
+TSC-load count cannot establish future deadline. Next implement snapshot/CDC
+and tests before enabling AUX playback. Evidence ddma-backend-offline-2026-10-16.

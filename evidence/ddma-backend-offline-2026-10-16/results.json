@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "kind": "HOST_MOCK_IO_AND_A53_COMPILE_NOT_HARDWARE",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "csr_map_offsets": "PASS",
+  "a53_compile": "PASS",
+  "live_tsc": "MISSING_CSR",
+  "firmware_dispatch": "NOT_IMPLEMENTED",
+  "sha256": {
+    "ddma_backend.h": "8e873fc519635145b5437dd10da4ac7b2648b17a6b4141f050522550c4343476",
+    "ddma_a53.h": "85481467612dfb53e3a9e9320fe73585a94bd71c8234ee5feb6df8238b64eb99",
+    "test_ddma_backend.c": "2a13b47d634b4b2756b38624d4534ab6b8d5825d9f585a3e24690d4750b3666d"
+  }
+}
