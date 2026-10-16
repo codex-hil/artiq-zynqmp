@@ -1,0 +1,23 @@
+test_abort_drain_then_native_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_abort_drain_then_native_packet_without_new_dma) ... FAIL
+
+======================================================================
+FAIL: test_abort_drain_then_native_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_abort_drain_then_native_packet_without_new_dma)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_abort_handoff.py", line 83, in test_abort_drain_then_native_packet_without_new_dma
+    run_simulation(d,{'sys':[run(),monitor(),memory.ar(),memory.r()],'rtio_rx':rx()},
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 513, in run_simulation
+    s.run()
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 502, in run
+    self._process_generators(cd)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 456, in _process_generators
+    request = generator.send(reply)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_abort_handoff.py", line 72, in run
+    self.assertEqual((yield b.rtio_reset),0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 1 test in 2.321s
+
+FAILED (failures=1)

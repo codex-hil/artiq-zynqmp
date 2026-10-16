@@ -46,6 +46,7 @@ class AsyncSatelliteDMA(Module):
         self.error=Signal(5);self.error_channel=Signal(24);self.error_timestamp=Signal(64)
         self.rejected_start=Signal()
         self.rtio_reset_request=Signal()
+        self.recovering=Signal()
         self.submodules.guard=g=DMAMemoryGuard(membus)
         self.submodules.cross=q=DMARawCDC(len(membus.r.data))
         self.submodules.consumer=c=ClockDomainsRenamer('rtio_rx')(DMAConsumer(len(membus.r.data)))
@@ -59,7 +60,22 @@ class AsyncSatelliteDMA(Module):
         finish,complete=Signal(),Signal()
         abort_rx=Signal()
         err,ch,ts=Signal(2),Signal(24),Signal(64)
-        self.specials += [MultiReg(self.error[0] | abort_now,abort_rx,'rtio_rx'),
+        # Retain abort across stopped RX clocks; sticky result.error is only
+        # diagnostic. RX acknowledges eight actual reset edges before sys can
+        # release the request. A new epoch waits for the full return-to-zero.
+        abort_hold,abort_ack_sys = Signal(),Signal()
+        abort_edges=Signal(4)
+        abort_ack_rx=Signal()
+        blocked=Signal()
+        self.comb += [self.recovering.eq(abort_hold | abort_ack_sys),
+                      abort_ack_rx.eq(abort_edges==8),
+                      blocked.eq(self.abort | abort_hold | abort_ack_sys)]
+        self.sync.rtio_rx += If(abort_rx & q.read_reset,
+            If(abort_edges!=8,abort_edges.eq(abort_edges+1))).Else(abort_edges.eq(0))
+        self.sync += If(self.active & abort_now,abort_hold.eq(1)).Elif(
+            ~self.active & abort_ack_sys & ~self.abort,abort_hold.eq(0))
+        self.specials += [MultiReg(abort_ack_rx,abort_ack_sys),
+            MultiReg(abort_hold | (self.active & abort_now),abort_rx,'rtio_rx'),
             MultiReg(offset,offset_rx,'rtio_rx'),MultiReg(c.finish,finish),
             MultiReg(c.complete,complete),MultiReg(c.error,err),
             MultiReg(c.error_channel,ch),MultiReg(c.error_timestamp,ts)]
@@ -80,15 +96,15 @@ class AsyncSatelliteDMA(Module):
         self.sync += [If(self.start & self.active,self.rejected_start.eq(1)),
             If(f.ongoing('IDLE') & self.start,
                 address.eq(self.address),offset.eq(self.time_offset),bursts.eq(self.max_bursts),
-                self.error.eq(Mux(self.abort,1,Mux(self.address[:7]!=0,16,0))),
+                self.error.eq(Mux(blocked,1,Mux(self.address[:7]!=0,16,0))),
                 self.error_channel.eq(0),self.error_timestamp.eq(0),
-                self.rejected_start.eq(self.abort | (self.address[:7]!=0))),
+                self.rejected_start.eq(blocked | (self.address[:7]!=0))),
             If(self.active,self.error.eq(self.error | Mux(abort_now,1,0) |
                 Mux(f.ongoing('RUN') & g.done & g.reader.wb_reader.bus_error.status,2,0) |
                 Mux(f.ongoing('CAPTURE'),err<<2,0))),
             If(f.ongoing('CAPTURE'),self.error_channel.eq(ch),self.error_timestamp.eq(ts))]
         f.act('IDLE',If(self.start,
-            If(self.abort | (self.address[:7]!=0),NextState('DONE')).Else(NextState('ARM'))))
+            If(blocked | (self.address[:7]!=0),NextState('DONE')).Else(NextState('ARM'))))
         f.act('ARM',If(abort_now,NextState('ABORT')).Elif(q.write_ready,
             g.start.eq(1),NextState('RUN')))
         f.act('RUN',g.finish.eq(finish),g.abort.eq(abort_now),

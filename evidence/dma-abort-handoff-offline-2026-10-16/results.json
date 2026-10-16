@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "kind": "RTL_SIMULATION_NOT_HARDWARE",
+  "current_regressions": 24,
+  "final_handoff_tests_current": 2,
+  "final_handoff_tests_piotr": 2,
+  "physical_abort_recovery": "NOT_RUN",
+  "native_firmware_policy": "UNCHANGED_FAIL_CLOSED",
+  "vivado": "RUNNING",
+  "sha256": {
+    "diagnostics/drtio/dma_async_engine.py": "166b5ad6750346c4e1a4e9aae1f4830491c982eb0ee04163c355b2f87771a74d",
+    "diagnostics/drtio/dma_csr.py": "e194721025401991b1109c2b516ba11ffcb605d8b8b71c2ec94f70a8bec638c7",
+    "diagnostics/drtio/test_dma_abort_handoff.py": "7180dbc7755e9c4676c6b372f77b7ad0d01fcd30a9eddb81429c2fc4c3f339d6"
+  }
+}

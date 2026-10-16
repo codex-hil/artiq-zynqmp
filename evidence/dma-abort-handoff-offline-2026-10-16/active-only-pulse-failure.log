@@ -1,0 +1,25 @@
+test_rx_clock_pause_abort_then_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_rx_clock_pause_abort_then_packet_without_new_dma) ... FAIL
+
+======================================================================
+FAIL: test_rx_clock_pause_abort_then_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_rx_clock_pause_abort_then_packet_without_new_dma)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_abort_handoff.py", line 96, in test_rx_clock_pause_abort_then_packet_without_new_dma
+    def test_rx_clock_pause_abort_then_packet_without_new_dma(self):self.exercise(pause=True)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_abort_handoff.py", line 92, in exercise
+    sim_box.append(sim);sim.run()
+                        ^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 502, in run
+    self._process_generators(cd)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 456, in _process_generators
+    request = generator.send(reply)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_abort_handoff.py", line 83, in run
+    self.assertFalse(edges)
+AssertionError: [(1211, 1), (2011, 0)] is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 15.716s
+
+FAILED (failures=1)

@@ -1,0 +1,31 @@
+test_abort_drain_then_native_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_abort_drain_then_native_packet_without_new_dma) ... ok
+test_rx_clock_pause_abort_then_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_rx_clock_pause_abort_then_packet_without_new_dma) ... ok
+test_busy_start_rejected_and_original_epoch_drains (test_dma_async_engine.AsyncDMAAdmissionTests.test_busy_start_rejected_and_original_epoch_drains) ... ok
+test_unaligned_trace_rejected_before_axi (test_dma_async_engine.AsyncDMAAdmissionTests.test_unaligned_trace_rejected_before_axi) ... ok
+test_unsupported_memory_width_rejected (test_dma_async_engine.AsyncDMAAdmissionTests.test_unsupported_memory_width_rejected) ... ok
+test_async_native_decoder_cri_ttl_and_next_trace (test_dma_async_engine.AsyncDMAEngineTests.test_async_native_decoder_cri_ttl_and_next_trace) ... ok
+test_axi_error_report_and_next_trace (test_dma_async_engine.AsyncDMAEngineTests.test_axi_error_report_and_next_trace) ... ok
+test_clock_pause_abort_drain_and_recovery (test_dma_async_engine.AsyncDMAEngineTests.test_clock_pause_abort_drain_and_recovery) ... ok
+test_native_underflow_snapshot_and_recovery (test_dma_async_engine.AsyncDMAEngineTests.test_native_underflow_snapshot_and_recovery) ... ok
+test_actual_simulator_rx_clock_pause_does_not_block_axi_drain (test_dma_memory_cdc.MemoryCDCTests.test_actual_simulator_rx_clock_pause_does_not_block_axi_drain) ... ok
+test_faster_consumer_reset_and_fresh_epoch (test_dma_memory_cdc.MemoryCDCTests.test_faster_consumer_reset_and_fresh_epoch) ... ok
+test_one_sys_edge_reset_cannot_reuse_stale_ready (test_dma_memory_cdc.MemoryCDCTests.test_one_sys_edge_reset_cannot_reuse_stale_ready) ... ok
+test_slower_consumer_reset_and_fresh_epoch (test_dma_memory_cdc.MemoryCDCTests.test_slower_consumer_reset_and_fresh_epoch) ... ok
+test_1530_byte_trace_hits_read_budget_and_drains (test_dma_csr.DMACSRTests.test_1530_byte_trace_hits_read_budget_and_drains) ... /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+ok
+test_active_fault_still_aborts_drains_and_recovers (test_dma_csr.DMACSRTests.test_active_fault_still_aborts_drains_and_recovers) ... ok
+test_busy_start_and_clear_do_not_mutate_active_epoch (test_dma_csr.DMACSRTests.test_busy_start_and_clear_do_not_mutate_active_epoch) ... ok
+test_fragmented_1020_byte_trace_completes (test_dma_csr.DMACSRTests.test_fragmented_1020_byte_trace_completes) ... ok
+test_full_axi_acceptance_host_trace_completes (test_dma_csr.DMACSRTests.test_full_axi_acceptance_host_trace_completes) ... ok
+test_full_axi_acceptance_short_trace_does_not_exhaust_budget (test_dma_csr.DMACSRTests.test_full_axi_acceptance_short_trace_does_not_exhaust_budget) ... ok
+test_missing_terminator_bounded_reads_and_recovery (test_dma_csr.DMACSRTests.test_missing_terminator_bounded_reads_and_recovery) ... ok
+test_preflight_rejects_without_memory_access (test_dma_csr.DMACSRTests.test_preflight_rejects_without_memory_access) ... ok
+test_ps_axi_multiword_snapshot_and_result_ack (test_dma_csr.DMACSRTests.test_ps_axi_multiword_snapshot_and_result_ack) ... ok
+test_watchdog_abort_drains_and_next_trace_recovers (test_dma_csr.DMACSRTests.test_watchdog_abort_drains_and_next_trace_recovers) ... ok
+test_idle_fault_rejects_start_without_holding_sed_in_reset (test_dma_cold_release.ColdReleaseTests.test_idle_fault_rejects_start_without_holding_sed_in_reset) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 223.512s
+
+OK

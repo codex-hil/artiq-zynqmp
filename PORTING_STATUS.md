@@ -2133,3 +2133,17 @@ normal Genesys TTL/DMA/debug/Ethernet PASS192.168.2.3. All4locks; no persistent/
 Genesys Si writes. Firmware/bit unchanged. Evidence kasli03-native-ddma-long-
 lifecycle-hardware-2026-10-16,ddma-reject-offline-2026-10-16. Next abort-to-packet
 handoff audit/RTL recovery tests; current firmware abort remains fail-closed.
+
+
+Abort handoff2026-10-16 RTL PASS: reproduced sticky error holdingSED reset;
+active-only pulse negative under actual RX clock pause reproduced2 canceled
+outputs firing. New held request/RX8-reset-edge ACK/return-to-zero handshake
+preserves error telemetry, exposes recovery busy through CSRactive, rejects
+starts/clear during recovery. Native packet pulse afterabort withoutsuccessful
+newDMA, no cancelededges, AR/RLAST conservation, PHY/TSC preservation PASS.
+Final exact-owner tests2 each current/Piotr PASS; current24engine/CDC/CSR/cold
+regressions PASS. No HW access/newpolicy. Vivado RUNNING satellite-dma-abort-
+handoff-route-2026-10-16/1500s, log build/dma-abort-handoff-vivado-session-
+2026-10-16.log. Freeze active RTL/build helpers. Next implementation qualification
+then bounded guarded hardware diagnostic; native firmware remains fail-closed
+and AUX fault mapping/production recovery still require review.

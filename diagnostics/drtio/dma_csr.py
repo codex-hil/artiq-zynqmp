@@ -39,7 +39,7 @@ class DMACSR(Module):
             self.address.storage+(self.max_bursts.storage<<7)>arena_base+arena_size)
         bad_limit=(self.max_bursts.storage<4) | (self.max_bursts.storage>arena_size//128)
         self.comb += [attempt.eq(self.start.re & self.start.r),
-            reason.eq(Cat(e.active,self.address.storage[:7]!=0,invalid_window,
+            reason.eq(Cat(e.active | e.recovering,self.address.storage[:7]!=0,invalid_window,
                 bad_limit,self.watchdog.storage==0,self.fault,self.pending.status)),
             launch.eq(attempt & (reason==0)),e.start.eq(launch),
             e.address.eq(self.address.storage),e.time_offset.eq(self.time_offset.storage),
@@ -49,13 +49,13 @@ class DMACSR(Module):
             # epoch may propagate a fault into the RX SED abort/reset path;
             # otherwise no-TSC boot holds RTIO reset before AUX can get TSC.
             e.abort.eq((self.fault & e.active) | (self.abort.re & self.abort.r) | expired | (timed_out & e.active)),
-            self.active.status.eq(e.active | launch)]
+            self.active.status.eq(e.active | e.recovering | launch)]
         self.sync += [If(launch,remaining.eq(self.watchdog.storage),timed_out.eq(0),
                 self.accepted.status.eq(self.accepted.status+1)),
             If(e.active & (remaining!=0),remaining.eq(remaining-1)),
             If(expired,timed_out.eq(1)),
             If(attempt & (reason!=0),self.reject.status.eq(self.reject.status | reason)),
-            If(self.clear.re & self.clear.r & ~e.active,
+            If(self.clear.re & self.clear.r & ~(e.active | e.recovering),
                 self.pending.status.eq(0),self.reject.status.eq(0)),
             If(e.done,self.pending.status.eq(1),self.completed.status.eq(self.completed.status+1),
                 self.result_error.status.eq(e.error | Mux(timed_out,32,0) | Mux(e.budget_error,64,0)),

@@ -724,3 +724,34 @@ at192.168.2.3. All4 leases held; no persistent/Genesys Si writes. Evidence
 `kasli03-native-ddma-long-lifecycle-hardware-2026-10-16` and
 `ddma-reject-offline-2026-10-16`. Next audit and RTL-test abort-to-packet handoff;
 current production service fails closed on abort and does not claim recovery.
+
+
+## Abort-to-packet handoff RTL recovery (2026-10-16)
+
+A new actual AXI/native DMA -> CRISwitch/SED -> serialized native packet test
+reproduced sticky abort telemetry holding SED reset after memory drain. Simply
+gating reset by engine active fixed running-clock handoff but FAILED a real
+simulator RX-clock pause: both canceled DMA events fired on resume. This
+negative is preserved; a short reset pulse across a stopped clock is invalid.
+
+Abort request now remains latched until RX observes eight actual reset edges
+and acknowledges them to sys. Sys releases only after engine drain/IDLE, then
+waits for acknowledgement return-to-zero before admitting another epoch.
+`recovering` extends CSR active/busy, rejects new starts and prevents result
+clear while the handshake is incomplete. Target ownership therefore remains
+DMA through recovery. Sticky error diagnostics remain latched; recovery does
+not clear the reported error. Software must wait active0 before result clear.
+
+Both running-RX and paused-RX tests verify no canceled events, conserved AXI
+AR/RLAST, preserved PHY/TSC, rejected early start without new reads and a native
+packet pulse after handoff without a successful new DMA epoch. Final target-
+ownership/TSC assertions PASS twice each current/Piotr. Current full24-test
+engine/CDC/CSR/cold-release regression PASS. No physical abort recovery claim.
+
+Vivado RUNNING `build-vivado/satellite-dma-abort-handoff-route-2026-10-16`,
+1500s bound/log `build/dma-abort-handoff-vivado-session-2026-10-16.log`.
+Do not edit running RTL/build/checker helpers. Firmware native service still
+fails closed on abort; no recovery policy was relaxed and no HW was touched.
+Next qualify implementation/CDC, then prepare a bounded guarded handoff test.
+Native AUX fault-code mapping/recovery semantics need separate review before
+claiming production recovery. Prior long-DDMA hardware baseline is unchanged.

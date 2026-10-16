@@ -304,3 +304,7 @@ test-drtio-ddma-reject:
 	mkdir -p $(abspath $(O))/ddma-reject
 	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_reject.c -o $(abspath $(O))/ddma-reject/test
 	$(abspath $(O))/ddma-reject/test
+
+.PHONY: test-drtio-dma-abort-handoff
+test-drtio-dma-abort-handoff:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_abort_handoff.py' -v
