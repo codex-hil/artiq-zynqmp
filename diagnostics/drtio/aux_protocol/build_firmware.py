@@ -18,7 +18,9 @@ def main():
     p.add_argument('--reset',action='store_true',help='Hardware-confirmed split reset; requires --tsc')
     p.add_argument('--dio',action='store_true',help='Single-hop rank1 leaf readiness; requires --reset')
     p.add_argument('--snapshot-probe',action='store_true',help='Four bounded live TSC snapshot reads after TSC ACK')
+    p.add_argument('--ddma',action='store_true',help='Opt-in bounded native DDMA leaf service; hardware unqualified')
     a=p.parse_args();
+    if a.ddma and not a.snapshot_probe:p.error('--ddma requires --snapshot-probe')
     if a.snapshot_probe and not a.dio:p.error('--snapshot-probe requires --dio')
     if a.dio and not a.reset:p.error('--dio requires --reset')
     if a.reset and not a.tsc:p.error('--reset requires --tsc')
@@ -61,6 +63,13 @@ io={path=IO_PATH,features=["byteorder"]}
                   'aux_tsc_snapshot_value':0xa000184c}
         if any(mapping['registers'].get(n,{}).get('address')!=v for n,v in expected.items()):
             p.error('Snapshot probe requires exact qualified snapshot map')
+    if a.ddma:
+        names=['address','time_offset','max_bursts','watchdog','start','abort','clear','active',
+               'pending','reject','result_error','result_channel','result_timestamp','accepted','completed']
+        offsets=[0,8,16,20,24,28,32,36,40,44,48,52,56,64,68]
+        if (not mapping.get('dma') or mapping['dma']['arena']!=dict(base=0x22000000,size=0x200000,alignment=128) or
+            any(mapping['registers'].get('dma_'+n,{}).get('address')!=0xa0002000+o for n,o in zip(names,offsets))):
+            p.error('Native DDMA requires immutable qualified arena/bank map')
     header=['#pragma once']
     for name,register in mapping['registers'].items():
         # This responder does not own DMA. Bank4 is reserved for the bounded
@@ -77,7 +86,7 @@ io={path=IO_PATH,features=["byteorder"]}
     firmware=Path(__file__).with_name('firmware.c')
     elf=out/'aux-firmware.elf'
     cmd=[str(arm/'bin/aarch64-none-elf-gcc'),'-DSDT','-specs='+str(bsp/'Xilinx.spec'),
-        *(['-DAUX_SNAPSHOT'] if a.snapshot_probe else []),*(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
+        *(['-DAUX_DDMA'] if a.ddma else []),*(['-DAUX_SNAPSHOT'] if a.snapshot_probe else []),*(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
         str(library),'-Wl,-T,'+str(linker),'-L'+str(bsp/'lib'),'-Wl,--start-group',
         '-lxilstandalone','-lxiltimer','-lxil','-lgcc','-lc','-Wl,--end-group','-o',str(elf)]
     result=subprocess.run(cmd,capture_output=True,text=True,timeout=120)
@@ -87,7 +96,9 @@ io={path=IO_PATH,features=["byteorder"]}
         'mode':'external-tsc-down' if a.tsc else 'external-aux-down' if a.external else 'internal-loopback',
         'dio_leaf':a.dio,'snapshot_probe':a.snapshot_probe,
         'snapshot_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('tsc_reader.h','tsc_a53.h','ddma_a53.h','ddma_backend.h')},
-        'dma_bank_owner':'external diagnostic only; no AUX DDMA service',
+        'dma_bank_owner':'native AUX DDMA laboratory service' if a.ddma else 'external diagnostic only; no AUX DDMA service',
+        'native_ddma':a.ddma,
+        'ddma_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h')},
         'leaf_policy_sha256':hashlib.sha256(Path(__file__).with_name('leaf_policy.h').read_bytes()).hexdigest(),
         'reset_backend':a.reset,
         'reset_policy_sha256':hashlib.sha256(Path(__file__).with_name('reset_backend.h').read_bytes()).hexdigest(),

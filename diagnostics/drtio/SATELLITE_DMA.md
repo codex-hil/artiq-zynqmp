@@ -511,3 +511,31 @@ Firmware build uses `--snapshot-probe` with exact map validation. External
 session requires matching `snapshot_test`, helper hashes and four UART samples.
 Next connect checked DDMA requests to service/backend with this live-time
 callback; then test upload/reply/status offline before guarded native playback.
+
+
+## Opt-in native AUX DDMA firmware wiring (2026-10-16, not loaded)
+
+`build_firmware.py --external --tsc --reset --dio --snapshot-probe --ddma`
+now compiles the checked full-field decoder into the actual AUX service loop.
+Upload/remove/playback requests dispatch to the bounded store/service. Playback
+uses A53 DDR copy/cache flush, live snapshot age bound and actual DMA CSR
+admission. Firmware replies through the unchanged upstream codec/physical AUX
+transmitter. Completion polling sends native PlaybackStatus before releasing
+the slot. The immutable DMA arena/bank and snapshot CSR map are build-checked.
+
+No physical native DDMA claim: this ELF has only built/linked. Host wire-flow
+test links actual upstream Rust codec to C service and checks fragmented upload,
+playback response, busy removal/replay rejection, status transport/CRC and erase;
+its hardware admission callback is mocked. Four existing ASan/UBSan policy
+suites PASS. A53 firmware build PASS. Current external-session wrapper rejects
+native-DDMA firmware until dedicated guarded qualification is implemented;
+never use the host-DAP stage to imply AUX upload success.
+
+The service is a single-slot TTL-only laboratory subset. It fails closed on
+ambiguous start/transport fault, unexpected reset while running or a2s running
+bound. Hardware error latches backend fault: no post-abort/recovery promise.
+No software event replay, DDR reuse on an ambiguous start, or automatic hardware
+reset is introduced. Native status means DMA admission/drain completion, not
+elapsed event time. Multi-slot/general RTIO/wide outputs/routing remain absent.
+Next prepare a standard Kasli distributed-CoreDMA kernel and dedicated guarded
+service stage, checking upload replies/status plus physical loopback edges.

@@ -2032,3 +2032,15 @@ restorations PASS; Genesys normal TTL/CoreDMA/analyzer/MonInj/Ethernet PASS at
 192.168.2.3. No persistent/Genesys Si writes. Evidence kasli03-tsc-snapshot-
 hardware-2026-10-16. Native AUX DDMA still not dispatched; next wire checked
 packets to service/backend/live-time/status and test full offline flow first.
+
+
+Native AUX DDMA wiring2026-10-16 BUILD/OFFLINE PASS, HW NOT_RUN: opt-in --ddma
+routes checked packets into store/service, actual DDR/cache/live-time/CSR start,
+native reply/status sends and bounded completion poll. Exact immutable maps
+required. Host upstream-codec->C-service wire flow PASS with mocked admission;
+4 ASan/UBSan policy suites PASS; A53 ELF build PASS. Native service remains
+blocked in external_session until dedicated guarded experiment qualification.
+No HW accessed. Next standard Kasli distributed-CoreDMA experiment/guarded stage
+with exact upload/status evidence and physical8-edge loopback, then restoration.
+Evidence native-ddma-offline-2026-10-16. Abort/transportfault fail closed; no
+post-error reuse or production/general DDMA claim.

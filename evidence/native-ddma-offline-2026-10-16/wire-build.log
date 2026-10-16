@@ -1,0 +1,53 @@
+TEST DDMA_WIRE_SERVICE PASS
+TEST DDMA_C_ABI PASS
+VECTOR echo_request 000000001cdf4421
+VECTOR echo_reply 0100000079b8f899
+VECTOR reset_request 0200000097174d8b
+VECTOR reset_ack 03000000f270f133
+VECTOR destination_request 20010000151ab480
+VECTOR destination_down 210000004717ca39
+VECTOR destination_ok 22000000a9b87f2b
+TEST UPSTREAM_AUX_CODEC PASS
+   Compiling unicode-xid v0.0.4
+   Compiling quote v0.3.15
+   Compiling build_const v0.2.2
+   Compiling byteorder v1.5.0
+   Compiling failure v0.1.1
+   Compiling synom v0.11.3
+   Compiling crc v1.8.1
+   Compiling syn v0.11.11
+   Compiling synstructure v0.6.1
+   Compiling failure_derive v0.1.1
+   Compiling io v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libio)
+   Compiling genesys-aux-reference-vectors v0.1.0 (/srv/codex-hil-data/artiq-zynqmp/build/native-ddma-wire-2026-10-16)
+warning: associated items `is_first`, `is_last`, and `from_status` are never used
+  --> /srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libproto_artiq/drtioaux_proto.rs:51:12
+   |
+50 | impl PayloadStatus {
+   | ------------------ associated items in this implementation
+51 |     pub fn is_first(self) -> bool {
+   |            ^^^^^^^^
+...
+55 |     pub fn is_last(self) -> bool {
+   |            ^^^^^^^
+...
+59 |     pub fn from_status(first: bool, last: bool) -> PayloadStatus {
+   |            ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: methods `routable_destination` and `expects_response` are never used
+    --> /srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libproto_artiq/drtioaux_proto.rs:1091:12
+     |
+ 171 | impl Packet {
+     | ----------- methods in this implementation
+...
+1091 |     pub fn routable_destination(&self) -> Option<u8> {
+     |            ^^^^^^^^^^^^^^^^^^^^
+...
+1112 |     pub fn expects_response(&self) -> bool {
+     |            ^^^^^^^^^^^^^^^^
+
+warning: `genesys-aux-reference-vectors` (bin "genesys-aux-reference-vectors") generated 2 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.13s
+     Running `/srv/codex-hil-data/artiq-zynqmp/build/native-ddma-wire-2026-10-16/target/debug/genesys-aux-reference-vectors`

@@ -37,7 +37,10 @@ fn decode(buffer: &[u8]) -> Result<Packet, &'static str> {
     Ok(packet)
 }
 
+extern "C" { fn ddma_wire_test() -> i32; }
 fn main() {
+    assert_eq!(unsafe { ddma_wire_test() },0);
+    println!("TEST DDMA_WIRE_SERVICE PASS");
     test_ddma_abi();
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),

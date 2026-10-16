@@ -62,6 +62,8 @@ class ExternalSession:
                 raise ValueError('Expected gated AUX optical TX')
             elf = Path(c['firmware'])
             fw = json.loads((elf.parent/'results.json').read_text())
+            if fw.get('native_ddma',False):
+                raise ValueError('Native DDMA requires dedicated guarded service qualification; not host-DAP stage')
             if fw.get('status') != 'PASS' or fw.get('mode') != c['mode']:
                 raise ValueError('External-only firmware qualification required')
             if hashlib.sha256(elf.read_bytes()).hexdigest() != fw['elf_sha256']:

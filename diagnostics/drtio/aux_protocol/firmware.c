@@ -58,11 +58,21 @@ static int send(const uint8_t *data,unsigned length) {
  wr(REG_AUX_AUX_TX_LENGTH,length);wr(REG_AUX_AUX_TX,1);
  return wait(REG_AUX_AUX_TX,0)||wait(REG_AUX_BRIDGE_BUSY,0)?-1:0;
 }
+#ifdef AUX_DDMA
+#include "ddma_runtime.h"
+static struct ddma_packet ddma_received;
+#endif
 static int receive(uint32_t *destination) {
  if(wait(REG_AUX_AUX_RX_PRESENT,1) || rd(REG_AUX_AUX_RX_ERROR))return -99;
  unsigned pointer=rd(REG_AUX_AUX_READ_POINTER);
  for(unsigned i=0;i<256;i++)received[i]=rd(AUX_MEMORY+8192+1024*pointer+4*i);
- int kind=aux_decode((uint8_t*)received,sizeof(received),destination);
+ int kind;
+#ifdef AUX_DDMA
+ if(((uint8_t*)received)[0]>=0xb0 && ((uint8_t*)received)[0]<=0xb6)
+  kind=aux_ddma_decode((uint8_t*)received,sizeof(received),&ddma_received);
+ else
+#endif
+ kind=aux_decode((uint8_t*)received,sizeof(received),destination);
  wr(REG_AUX_AUX_RX_PRESENT,1);
  return kind;
 }
@@ -86,8 +96,14 @@ static void service(void) {
  unsigned rank=0;uint8_t local_route[256]={0};
 #endif
 #endif
+#ifdef AUX_DDMA
+ ddma_init();
+#endif
  xil_printf("AUX_SERVICE READY\r\n");
  while(1) {
+#ifdef AUX_DDMA
+  ddma_poll();
+#endif
   unsigned in_reset=rd(REG_AUX_IN_RESET),ready=rd(REG_AUX_RX_UP);
   if(in_reset || !ready) {
 #ifdef AUX_TSC
@@ -128,6 +144,16 @@ static void service(void) {
   }
   if(rd(REG_AUX_AUX_RX_PRESENT)) {
    uint32_t destination=0;int request=receive(&destination);
+#ifdef AUX_DDMA
+   if(request>=0xb0 && request<=0xb6) {
+    unsigned leaf=leaf_ready(1,rank,local_route[1],tsc_state.seen,tsc_state.blocked,
+      reset_backend_ready(),rd(REG_AUX_RTIO_RESET_REQUEST)|rd(REG_AUX_RTIO_RESET_APPLIED),
+      rd(REG_AUX_RTIO_ERROR_FLAGS));
+    if(!ddma_handle(request,&ddma_received,leaf))xil_printf("AUX_DDMA DROP kind=%u\r\n",request);
+    continue;
+   }
+   if(request==2 && (ddma.running || ddma.status_pending))ddma_fatal();
+#endif
    int reply=request==0?1:request==0x20?0x21:-1;
 #ifdef AUX_DIO
    if(request==0x30) {
