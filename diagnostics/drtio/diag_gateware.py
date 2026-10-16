@@ -41,7 +41,7 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False, observer=False, satellite=False):
+    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False, observer=False, satellite=False, satellite_dma=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -100,6 +100,9 @@ class Diagnostic(Module):
                 self.cd_sys.rst | monitor.reset.storage | ~rxpma | ~rxdone | ~rxactive)
             self.submodules.observer = ClockDomainsRenamer({'gth_rx': 'observer_rx'})(LinkObserver())
             self.comb += [self.observer.rx_raw.eq(rxdata), txdata.eq(0)]
+        self.satellite_dma = satellite_dma
+        if satellite_dma and not satellite:
+            raise ValueError("DMA target requires satellite mode")
         self.aux_mode=aux
         if satellite and not aux:
             raise ValueError('Satellite transport requires AUX integration')
@@ -112,7 +115,42 @@ class Diagnostic(Module):
                     ('satellite_ttl_in',0,Pins('AG14'),IOStandard('LVCMOS33'))])
                 rtio_pads = dict(output_pad=platform.request('satellite_ttl_out'),
                                  input_pad=platform.request('satellite_ttl_in'))
-            self.submodules.aux = AuxPS(extra_banks=[('monitor',0,monitor.get_csrs())], **rtio_pads)
+            extra_banks = [('monitor',0,monitor.get_csrs())]
+            if satellite_dma:
+                from dma_csr import DMACSR
+                memory = AXIInterface(data_width=len(ps.outputs['saxigp2_rdata']),
+                    address_width=len(ps.inputs['saxigp2_araddr']),
+                    id_width=len(ps.inputs['saxigp2_arid']))
+                self.comb += ps.inputs['saxihp0_fpd_aclk'].eq(self.cd_sys.clk)
+                for channel, fields in {
+                        'aw':'id addr len size burst lock cache prot qos valid ready',
+                        'ar':'id addr len size burst lock cache prot qos valid ready',
+                        'w':'data strb last valid ready','b':'id resp valid ready',
+                        'r':'id data resp last valid ready'}.items():
+                    for field in fields.split():
+                        name = 'saxigp2_'+channel+field
+                        signal = getattr(getattr(memory,channel),field)
+                        collection = ps.inputs if name in ps.inputs else ps.outputs
+                        pin = collection[name]
+                        if len(pin) != len(signal):
+                            raise ValueError('DMA AXI width: '+name)
+                        self.comb += pin.eq(signal) if collection is ps.inputs else signal.eq(pin)
+                self.submodules.dma = dma = DMACSR(memory)
+                self.clock_domains.cd_rtio_rx = ClockDomain('rtio_rx')
+                self.comb += self.cd_rtio_rx.clk.eq(self.cd_gth_rx.clk)
+                owner = Signal()
+                self.specials += MultiReg(dma.active.status,owner,'rtio_rx')
+                rtio_pads.update(dma_cri=dma.cri, dma_rtio_reset=dma.rtio_reset_request,
+                                 dma_owner=owner)
+                extra_banks.append(('dma',4,dma.csrs))
+            self.submodules.aux = AuxPS(extra_banks=extra_banks, **rtio_pads)
+            if satellite_dma:
+                self.specials += AsyncResetSynchronizer(self.cd_rtio_rx,self.aux.reset)
+                # AXI/guard remain on always-running PS sys during GT loss.
+                self.comb += dma.fault.eq(self.aux.reset | ~self.aux.rx_up.status |
+                    self.aux.rtio_reset_request.storage | self.aux.phy_reset_request.storage |
+                    (self.aux.tsc_load_count.status == 0) | self.aux.rt_reply_fault.status |
+                    (self.aux.rtio_error_flags.status != 0))
             self.comb += [txdata.eq(self.aux.tx_raw),self.aux.rx_raw.eq(rxdata),
                 self.aux.reset.eq(self.cd_sys.rst | monitor.reset.storage |
                     ~txpma | ~rxpma | ~txdone | ~rxdone | ~txactive | ~rxactive)]
@@ -188,11 +226,12 @@ class Diagnostic(Module):
             address = CSR_BASE + bankid * 0x800
             for csr in csrs:
                 words = (csr.size + 31) // 32
-                regs[name+'_'+csr.name] = {'address': address, 'words': words, 'bits': csr.size}
+                regs[csr.name if name == 'dma' else name+'_'+csr.name] = {'address': address, 'words': words, 'bits': csr.size}
                 address += words * 4
         if self.aux_mode:
             regs.update({'aux_'+name:value for name,value in self.aux.memory_map()['registers'].items()})
-        path.write_text(json.dumps({'aux_sram':self.aux.memory_map()['aux_sram'] if self.aux_mode else None,'kind': 'diagnostic-map-not-hardware-evidence',
+        dma_map = self.dma.memory_map(CSR_BASE + 4*0x800) if self.satellite_dma else None
+        path.write_text(json.dumps({'dma':dma_map, 'aux_sram':self.aux.memory_map()['aux_sram'] if self.aux_mode else None,'kind': 'diagnostic-map-not-hardware-evidence',
             'magic': 0x44525430, 'boot_hz': 125000000, 'registers': regs,
             'status_bits': {'cpll_lock':0, 'tx_done':1, 'rx_done':2, 'powergood':3,
                 'cdr_estimate':4, 'tx_active':5, 'rx_active':6, 'module_present':7,
@@ -210,7 +249,9 @@ def main():
     p.add_argument("--aux", action="store_true")
     p.add_argument("--observer", action="store_true")
     p.add_argument("--satellite", action="store_true")
+    p.add_argument("--satellite-dma", action="store_true")
     args = p.parse_args()
+    if args.satellite_dma: args.satellite = True
     if args.satellite: args.aux = True
     platform = DiagnosticPlatform(args.ps.resolve())
     platform.add_extension([
@@ -241,7 +282,7 @@ def main():
             IOStandard('DIFF_HSTL_I_DCI_12'))])
         platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
         platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
-    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux, args.observer, args.satellite)
+    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux, args.observer, args.satellite, args.satellite_dma)
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
     first_stage_count = (118 if args.forward_rx_clock else 117) + (200 if args.protocol else 0)
     prefixes = ['diagnostic_rx_count_gth_rx', 'diagnostic_tx_count_gth_tx', 'diagnostic_error_count_gth_rx']
@@ -314,6 +355,13 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
         (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
         route = args.output.resolve() / 'top_route.tcl'
         route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))
+        if args.satellite_dma:
+            # Fail closed until all added DMA Gray/bundled crossings have
+            # checked implementation constraints. HDL inspection is allowed.
+            manifest['dma_physical_constraints'] = 'NOT_ADDED_BUILD_BLOCKED'
+            manifest['gray_counter_buses'] += 2
+            (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+            route.write_text('error {Satellite DMA physical CDC constraints pending; HDL-only target}\n'+route.read_text())
 
 
 if __name__ == '__main__':

@@ -23,7 +23,10 @@ class AuxPS(Module):
     BASE = 0xa0000000
     BANK = 3
 
-    def __init__(self, extra_banks=(), output_pad=None, input_pad=None):
+    def __init__(self, extra_banks=(), output_pad=None, input_pad=None, dma_cri=None,
+                 dma_rtio_reset=None, dma_owner=None):
+        if dma_cri is not None and (output_pad is None or dma_rtio_reset is None or dma_owner is None):
+            raise ValueError("DMA requires satellite pads, RX reset and RX owner")
         self.reset = Signal(reset=1)
         self.clock_domains.cd_aux_sys = ClockDomain('aux_sys')
         self.clock_domains.cd_aux_tx = ClockDomain('aux_tx')
@@ -36,7 +39,7 @@ class AuxPS(Module):
         transport = None
         if output_pad is not None:
             from satellite_transport import SatelliteTransport
-            e.submodules.satellite = transport = SatelliteTransport(e, output_pad, input_pad, glbl_fine_ts_width=3)
+            e.submodules.satellite = transport = SatelliteTransport(e, output_pad, input_pad, glbl_fine_ts_width=3, dma_cri=dma_cri)
         elif input_pad is not None:
             raise ValueError('Satellite input requires an output pad')
         self.submodules.endpoint = ClockDomainsRenamer(
@@ -68,8 +71,10 @@ class AuxPS(Module):
             applied = Signal()
             self.specials += [MultiReg(self.rtio_reset_request.storage, reset_rx, 'aux_rx', reset=1),
                               MultiReg(transport.backend.reset_applied, applied)]
-            self.comb += [transport.backend.rtio_reset.eq(reset_rx),
+            self.comb += [transport.backend.rtio_reset.eq(reset_rx | (dma_rtio_reset if dma_rtio_reset is not None else 0)),
                           self.rtio_reset_applied.status.eq(applied & ~self.reset)]
+            if dma_cri is not None:
+                self.comb += transport.backend.cri_switch.selected.storage.eq(dma_owner)
             self.phy_reset_request = CSRStorage(1, reset=1, name='phy_reset_request')
             self.phy_reset_applied = CSRStatus(1, name='phy_reset_applied')
             phy_reset_rx = Signal(reset=1)

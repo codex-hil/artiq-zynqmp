@@ -255,3 +255,7 @@ test-drtio-dma-csr:
 .PHONY: test-drtio-dma-read-budget
 test-drtio-dma-read-budget:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_read_budget.py' -v
+
+.PHONY: test-drtio-dma-transport
+test-drtio-dma-transport:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_dma_transport.py' -v

@@ -200,3 +200,25 @@ make test-drtio-dma-csr test-drtio-dma-read-budget \
   PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python \
   MISOC_SOURCE=/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current
 ```
+
+## Optional Genesys target wiring (2026-10-16)
+
+`diag_gateware.py --satellite-dma` implies satellite/AUX mode and generates
+PS HP0 64-bit memory AXI wiring with every PS signal width checked. Bank4 at
+0xa0002000 exposes the bounded DMACSR, with its immutable DDR arena recorded
+in csr-map.json. The memory guard stays on PS sys during GT reset/loss; only
+the RX decoder/SED side follows recovered-clock reset. A synchronized active
+level selects the native CRISwitch before the FIFO warmup finishes. Firmware
+must keep packet traffic quiescent throughout DMA ownership, including return.
+
+DMA abort resets actual SED queues while preserving PHY/TSC. Fault holds DMA
+when the link is reset/down, no TSC load has been observed, explicit RTIO/PHY
+reset is requested, or reply/RTIO errors are latched. This is target wiring,
+not an AUX DDMA upload/playback service or a hardware-qualified image.
+
+The generated implementation script deliberately stops with an error until
+DMA Gray and bundled-data CDC constraints are implemented and checked. The
+manifest reports383 first-stage bits/10 Gray buses for the current legacy
+source configuration; it explicitly marks DMA physical constraints pending.
+Do not remove that guard merely to obtain a bitstream. The qualified default
+DIO target and board baselines remain separate.

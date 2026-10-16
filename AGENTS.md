@@ -479,3 +479,12 @@ budget drain and fresh trace recover. Fault defaults1. Standalone HDL/map only,
 no physical PS/GT/SED/CDC constraints or HW access. AUX trace layer missing.
 Next HP0/target owner/reset and physical Gray/bundled constraints then build.
 Evidence dma-csr-offline-2026-10-16; SATELLITE_DMA.md. Baselines unchanged.
+
+DMA target HDL2026-10-16: --satellite-dma wires checked PS HP0,bank4DMACSR,
+RX native switch/abort-to-SED and link/reset/TSC/error fault gating.2 transport
+cases each Piotr/current PASS; actual queued event cancellation preserves PHY
+and TSC, new event succeeds. Generated HDL/map only,383 CDCbits/10Graybuses.
+Vivado script intentionally blocks pending DMA Gray/bundled constraints; do not
+remove guard without completing them. No HW access/new image. Next physical
+constraints and build, then AUX DDMA firmware. See latest PORTING_STATUS and
+evidence/satellite-dma-target-offline-2026-10-16; existing baselines unchanged.

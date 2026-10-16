@@ -1801,3 +1801,23 @@ end may exhaust a conservatively bounded allocation. Existing qualified board
 baselines unchanged. Evidence dma-csr-offline-2026-10-16. Next connect existing
 HP0 read port and target backend/owner/reset, add exact Gray/bundled constraints
 and qualify generated/routed artifacts before volatile bring-up.
+
+### 2026-10-16 — optional DMA Genesys target HDL and transport tests PASS
+
+Added --satellite-dma target: checked PS HP0 AXI wiring, DMACSR bank4 at
+0xa0002000, always-running sys memory guard and recovered-RX decoder domain.
+Native CRISwitch ownership follows synchronized active level after launch;
+abort reaches actual SED queue reset while leaving PHY/TSC running. Link/reset/
+TSC/error fault conditions gate launch and abort active DMA. Firmware still
+must serialize packet traffic and DMA ownership; no concurrent traffic claim.
+
+Two new transport tests each Piotr/current PASS. Native RX-clock command source
+proves first TTL edge, cancellation of queued future low transition, preserved
+high/TSC and successful later low event/packet-owner return. Incomplete DMA
+connections rejected. Initial Python direct one-cycle pulse test lost commands
+in aliased simulator clocks; replaced with an RX-register single-command source.
+Generated full target HDL/map PASS:383 first-stage bits,10 Gray buses. Physical
+DMA constraints pending; generated Vivado script fails closed until added.
+No Vivado/HW qualification or board access in this stage. Evidence
+satellite-dma-target-offline-2026-10-16. Next exact Gray/bundled constraints,
+routed timing checks, then bounded volatile bring-up and AUX DDMA service.

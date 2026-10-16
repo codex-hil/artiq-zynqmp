@@ -37,14 +37,14 @@ class RTReplyCDC(Module):
 
 
 class SatelliteTransport(Module):
-    def __init__(self, endpoint, output_pad, input_pad=None, glbl_fine_ts_width=0):
+    def __init__(self, endpoint, output_pad, input_pad=None, glbl_fine_ts_width=0, dma_cri=None):
         # All RTIO state follows recovered RX directly; no free-running PS
         # elastic-buffer crossing can silently drop request words/TSC loads.
         self.packet_link = link = SimpleNamespace(
             rx_rt_frame=Signal(), rx_rt_data=Signal(16),
             tx_rt_frame=Signal(), tx_rt_data=Signal(16))
         self.submodules.backend = ClockDomainsRenamer({'sys':'rtio_rx'})(
-            SatelliteBackend(link, output_pad, input_pad, glbl_fine_ts_width))
+            SatelliteBackend(link, output_pad, input_pad, glbl_fine_ts_width, dma_cri=dma_cri))
         self.submodules.replies = replies = RTReplyCDC()
         self.comb += [link.rx_rt_frame.eq(endpoint.rx.rt_frame & endpoint.rx_ready),
             link.rx_rt_data.eq(endpoint.rx.rt_data),

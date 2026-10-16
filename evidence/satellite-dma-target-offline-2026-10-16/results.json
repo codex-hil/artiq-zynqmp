@@ -1,0 +1,25 @@
+{
+  "kind": "OFFLINE_ONLY_NOT_HARDWARE",
+  "tests": {
+    "piotr_transport": 2,
+    "current_transport": 2,
+    "default_satellite_regression": 1
+  },
+  "target_hdl": "PASS",
+  "physical_constraints": "PENDING_IMPLEMENTATION_BLOCKED",
+  "vivado": "NOT_RUN",
+  "hardware": "NOT_ACCESSED",
+  "sources": {
+    "diagnostics/drtio/diag_gateware.py": "cad43439787c0791f79d750f4de7b57aa589f8b2607f703d2267025e36e2b3a0",
+    "diagnostics/drtio/aux_ps.py": "e64c3cf03b2454e90a24aadb514cdfa37be17ae8448d22f493c8a696a6d4d069",
+    "diagnostics/drtio/satellite_transport.py": "c7cf78256cb9f44643f52a9fdae49eade6a32b881d65c9c3918dae1c8a626afd",
+    "diagnostics/drtio/test_satellite_dma_transport.py": "a9ef5fb6e2db57c6a0cfa609077d5b234f56f945ccaefde07057b038aa6028f9"
+  },
+  "hdl_sha256": "dedff38539baa77e26a7cfd62990aa4bda94215581c3503c7a01201fa41cb279",
+  "pending": [
+    "Gray/bundled CDC constraints",
+    "Vivado timing qualification",
+    "AUX DDMA firmware",
+    "volatile hardware validation"
+  ]
+}
