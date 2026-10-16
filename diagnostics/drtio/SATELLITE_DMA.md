@@ -539,3 +539,28 @@ reset is introduced. Native status means DMA admission/drain completion, not
 elapsed event time. Multi-slot/general RTIO/wide outputs/routing remain absent.
 Next prepare a standard Kasli distributed-CoreDMA kernel and dedicated guarded
 service stage, checking upload replies/status plus physical loopback edges.
+
+
+## Native CoreDMA guarded attempt (2026-10-16)
+
+Standard distributed CoreDMA example compiles for Kasli rv32ima. The native
+service stage requires successful exact-bit/firmware idle snapshot/DIO and
+restoration proof, rejects host-DAP arming, checks helper hashes and requires
+native upload/playback/status/remove messages plus8 physical edges. Negative
+proof/mismatched firmware/host-mode tests PASS.
+
+New native-service firmware passed guarded idle AUX/TSC/snapshot/reset and
+both DIO kernels, then both baseline restorations PASS. Evidence
+`kasli03-native-ddma-idle-hardware-2026-10-16`.
+
+First actual CoreDMA attempt FAIL: standard client reported unexpected core
+connection close. Satellite UART contains no DDMA request/reply/status lines;
+physical native playback is NOT_PROVEN. No cause is established yet. Runtime
+UART was previously only saved during startup, losing later buffered panic
+output. Parent now drains the same already-open Kasli UART in observer finally,
+while all leases remain held and before restoration; capture errors are recorded
+without masking the original test error. This logging fix is not yet exercised.
+Both boards restored and validated PASS after the failed attempt (normal local
+Genesys192.168.2.3). No persistent/Genesys Si writes. Next bounded diagnostic
+repeat with master UART capture, then fix the demonstrated software failure;
+do not label this as native-DDMA success or suppress its exception.

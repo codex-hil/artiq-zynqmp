@@ -2044,3 +2044,14 @@ No HW accessed. Next standard Kasli distributed-CoreDMA experiment/guarded stage
 with exact upload/status evidence and physical8-edge loopback, then restoration.
 Evidence native-ddma-offline-2026-10-16. Abort/transportfault fail closed; no
 post-error reuse or production/general DDMA claim.
+
+
+Native DDMA physical attempt2026-10-16: standard CoreDMA example compiles;
+exact native-service firmware idle AUX/snapshot/reset/DIO qualification PASS,
+both restored. Playback attempt FAIL: Kasli connection closed unexpectedly;
+no satellite DDMA packets logged, no physical native-DMA proof. Cause unknown.
+Both restorations/normal local TTL/DMA/debug/Ethernet PASS. Added parent UART
+finally drain under existing leases before restoring SRAM, to capture master
+panic on next bounded diagnostic attempt; fix not yet physically exercised.
+Proof-negative tests PASS. Evidence kasli03-native-ddma[-idle]-hardware-2026-10-16.
+Next capture master failure and resolve software issue; do not mask failure.

@@ -62,8 +62,6 @@ class ExternalSession:
                 raise ValueError('Expected gated AUX optical TX')
             elf = Path(c['firmware'])
             fw = json.loads((elf.parent/'results.json').read_text())
-            if fw.get('native_ddma',False):
-                raise ValueError('Native DDMA requires dedicated guarded service qualification; not host-DAP stage')
             if fw.get('status') != 'PASS' or fw.get('mode') != c['mode']:
                 raise ValueError('External-only firmware qualification required')
             if hashlib.sha256(elf.read_bytes()).hexdigest() != fw['elf_sha256']:
@@ -104,6 +102,13 @@ class ExternalSession:
             self.result['firmware_sha256'] = fw['elf_sha256']
         self.result['bit_sha256'] = build['sha256']['top.bit']
         self.host_dma_test = bool(c.get('host_dma_test',False))
+        self.native_ddma=bool(fw.get('native_ddma',False)) if self.external_aux else False
+        if bool(c.get('native_ddma_mode')) != self.native_ddma:
+            raise ValueError('Native DDMA mode/firmware mismatch')
+        if self.native_ddma:
+            from native_dma_session import validate
+            validate(self,fw)
+
         if self.host_dma_test:
             from host_dma_session import validate
             validate(self)
@@ -227,6 +232,9 @@ disconnect
                     self.probe_reset(master_host,uart,raw)
                     if getattr(self,'dio_test',False): self.probe_dio(master_host,uart,raw)
                     if getattr(self,'stability_test',False): self.probe_stability(master_host,uart,raw)
+                    if self.native_ddma and self.config['native_ddma_mode']=='playback':
+                        from native_dma_session import probe
+                        probe(self,master_host,uart,raw)
                     if getattr(self,'host_dma_test',False):
                         from host_dma_session import probe
                         probe(self,master_host,uart,raw)

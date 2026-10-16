@@ -275,8 +275,19 @@ def main():
                     'runs': measured, 'ref_period': 1e-9, 'ttl_writes': False,
                     'source_sha256': hashlib.sha256(example.read_bytes()).hexdigest()}
             if observer:
-                observer.observe(result['netboot_ipv6_link_local'] + '%' + args.network_interface)
-                result['external_rx'] = observer.result
+                try:
+                    observer.observe(result['netboot_ipv6_link_local'] + '%' + args.network_interface)
+                    result['external_rx'] = observer.result
+                finally:
+                    # Same open UART and all-board leases: capture master panic
+                    # before baseline restoration replaces the SRAM runtime.
+                    try:
+                        deadline = time.monotonic() + 1
+                        while time.monotonic() < deadline:
+                            log.extend(uart.read(uart.in_waiting or 1))
+                        (args.output / 'uart.log').write_bytes(log)
+                    except Exception as capture_error:
+                        result['master_uart_capture_error'] = str(capture_error)
             result['status'] = 'PASS'
     except BlockingIOError:
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')
