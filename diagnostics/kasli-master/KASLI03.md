@@ -379,3 +379,35 @@ Shared Genesys+three Kasli locks cover the complete window. No TTL writes,
 Genesys configuration, flash or OTP writes. Evidence:
 `evidence/kasli03-counter-2026-10-15`. Earlier NOT_RUN notes above are historical.
 This does not establish external DRTIO synchronization or remote TTL operation.
+
+
+## Pinned NAC3 DMA tuple ABI and native DDMA (2026-10-16)
+
+The standard native-DDMA experiment initially panicked in Kasli ksupport's
+DMA pointer-alignment assertion. The compiled NAC3 caller allocates24 bytes
+and reads address at16, while upstream ksupport's legacy tuple had no8-byte
+ObjectHeader and returned address at8. Keep the alignment assertion. Prepare
+an isolated RAM-only source with the optional ABI overlay:
+
+```sh
+python3 diagnostics/kasli-master/prepare_flashfree_runtime.py \
+  --source /srv/codex-hil-data/artiq-zynqmp/reference/artiq \
+  --output /srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi \
+  --nac3-dma-abi
+```
+
+Use a fresh worktree path when reproducing; the script refuses overwrites.
+The firmware generation command must use `--integrated-rom-size 131072`,
+matching the qualified BRAM bit. An initial65536-byte attempt overflowed ROM;
+the corrected128KiB build passed. The complete offline build invocation is
+recorded in `evidence/kasli03-dma-abi-build-2026-10-16/build.sh`, run under
+`tools-env.nix` with ARTIQ_SOURCE set to that isolated worktree. It does not
+invoke Vivado. Generated mem.rs/csr.rs/regions.ld must all match the existing
+qualified bitstream before RAM download; recorded hashes are in abi-headers.json.
+
+Runtime SHA256 f0b53c4cc100951258422bb1bb6e617348cda8eacc0eacc10a09e71968d79d4b
+passed guarded management/counter/reset/DIO and native distributed CoreDMA
+upload/playback/status/erase plus physical8-edge loopback. Both boards restored
+PASS. Evidence `kasli03-native-ddma-fixedabi-hardware-2026-10-16`. Use the
+existing all-four-board-lease wrapper and preserve its snapshot/DIO prerequisite;
+never flash this laboratory runtime. Repetition/abort/general RTIO remain pending.

@@ -1,0 +1,521 @@
+USER LED at RTIO channel 0x000000
+USER LED at RTIO channel 0x000001
+USER LED at RTIO channel 0x000002
+make: Entering directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software'
+make -C /srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/bootloader CPU=vexriscv
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/bootloader'
+ CARGO    cargo/riscv32ima-unknown-none-elf/debug/libbootloader.a
+   Compiling board_misoc v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libboard_misoc)
+warning: unused import: `config`
+ --> libboard_misoc/net_settings.rs:7:5
+  |
+7 | use config;
+  |     ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `i2c_eeprom`
+ --> libboard_misoc/net_settings.rs:9:5
+  |
+9 | use i2c_eeprom;
+  |     ^^^^^^^^^^
+
+warning: `board_misoc` (lib) generated 2 warnings
+   Compiling bootloader v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/bootloader)
+warning: unused imports: `ByteOrder`, `LittleEndian`
+  --> bootloader/main.rs:13:17
+   |
+13 | use byteorder::{ByteOrder, LittleEndian};
+   |                 ^^^^^^^^^  ^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `config`
+  --> bootloader/main.rs:14:40
+   |
+14 | use board_misoc::{ident, cache, sdram, config, boot, mem as board_mem};
+   |                                        ^^^^^^
+
+warning: `bootloader` (lib) generated 2 warnings
+    Finished dev [unoptimized + debuginfo] target(s) in 2.33s
+ LD       bootloader.elf
+ OBJCOPY  bootloader.bin
+ MSCIMG   bootloader.bin
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/bootloader'
+make -C /srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libm CPU=vexriscv
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libm'
+ CC       k_standard.o
+ CC       k_rem_pio2.o
+ CC       k_cos.o
+ CC       k_sin.o
+ CC       k_tan.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/k_tan.c:1:9: warning: unknown pragma ignored [-Wunknown-pragmas]
+    1 | #pragma ident "@(#)k_tan.c 1.5 04/04/22 SMI"
+      |         ^
+1 warning generated.
+ CC       e_acos.o
+ CC       e_acosh.o
+ CC       e_asin.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_asin.c:90:3: warning: misleading indentation; statement is not part of the previous 'else' [-Wmisleading-indentation]
+   90 |                 p = t*(pS0+t*(pS1+t*(pS2+t*(pS3+t*(pS4+t*pS5)))));
+      |                 ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_asin.c:88:8: note: previous statement is here
+   88 |             } else 
+      |               ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_asin.c:87:6: warning: variable 't' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+   87 |                 if(huge+x>one) return x;/* return x with inexact if x!=0*/
+      |                    ^~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_asin.c:90:7: note: uninitialized use occurs here
+   90 |                 p = t*(pS0+t*(pS1+t*(pS2+t*(pS3+t*(pS4+t*pS5)))));
+      |                     ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_asin.c:87:3: note: remove the 'if' if its condition is always true
+   87 |                 if(huge+x>one) return x;/* return x with inexact if x!=0*/
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_asin.c:76:10: note: initialize the variable 't' to silence this warning
+   76 |         double t,w,p,q,c,r,s;
+      |                 ^
+      |                  = 0.0
+2 warnings generated.
+ CC       e_atan2.o
+ CC       e_atanh.o
+ CC       e_cosh.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_cosh.c:81:24: warning: '&&' within '||' [-Wlogical-op-parentheses]
+   80 |         if (ix<0x408633CE || 
+      |                           ~~
+   81 |               (ix==0x408633ce)&&(lx<=(unsigned)0x8fb9f87d)) {
+      |               ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_cosh.c:81:24: note: place parentheses around the '&&' expression to silence this warning
+   81 |               (ix==0x408633ce)&&(lx<=(unsigned)0x8fb9f87d)) {
+      |                               ^                           
+      |               (                                           )
+1 warning generated.
+ CC       e_exp.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_exp.c:140:9: warning: variable 'k' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  140 |             if(huge+x>one) return one+x;/* trigger inexact */
+      |                ^~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_exp.c:147:5: note: uninitialized use occurs here
+  147 |         if(k==0)        return one-((x*c)/(c-2.0)-x); 
+      |            ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_exp.c:140:6: note: remove the 'if' if its condition is always true
+  140 |             if(huge+x>one) return one+x;/* trigger inexact */
+      |             ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_exp.c:109:7: note: initialize the variable 'k' to silence this warning
+  109 |         int k,xsb;
+      |              ^
+      |               = 0
+1 warning generated.
+ CC       e_fmod.o
+ CC       e_gamma.o
+ CC       e_gamma_r.o
+ CC       e_hypot.o
+ CC       e_j0.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:338:10: warning: variable 'p' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  338 |         else if(ix>=0x40000000){p = pR2; q= pS2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:340:6: note: uninitialized use occurs here
+  340 |         r = p[0]+z*(p[1]+z*(p[2]+z*(p[3]+z*(p[4]+z*p[5]))));
+      |             ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:338:7: note: remove the 'if' if its condition is always true
+  338 |         else if(ix>=0x40000000){p = pR2; q= pS2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:328:17: note: initialize the variable 'p' to silence this warning
+  328 |         const double *p,*q;
+      |                        ^
+      |                         = 0
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:338:10: warning: variable 'q' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  338 |         else if(ix>=0x40000000){p = pR2; q= pS2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:341:13: note: uninitialized use occurs here
+  341 |         s = one+z*(q[0]+z*(q[1]+z*(q[2]+z*(q[3]+z*q[4]))));
+      |                    ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:338:7: note: remove the 'if' if its condition is always true
+  338 |         else if(ix>=0x40000000){p = pR2; q= pS2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:328:20: note: initialize the variable 'q' to silence this warning
+  328 |         const double *p,*q;
+      |                           ^
+      |                            = 0
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:473:10: warning: variable 'p' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  473 |         else if(ix>=0x40000000){p = qR2; q= qS2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:475:6: note: uninitialized use occurs here
+  475 |         r = p[0]+z*(p[1]+z*(p[2]+z*(p[3]+z*(p[4]+z*p[5]))));
+      |             ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:473:7: note: remove the 'if' if its condition is always true
+  473 |         else if(ix>=0x40000000){p = qR2; q= qS2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:463:17: note: initialize the variable 'p' to silence this warning
+  463 |         const double *p,*q;
+      |                        ^
+      |                         = 0
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:473:10: warning: variable 'q' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  473 |         else if(ix>=0x40000000){p = qR2; q= qS2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:476:13: note: uninitialized use occurs here
+  476 |         s = one+z*(q[0]+z*(q[1]+z*(q[2]+z*(q[3]+z*(q[4]+z*q[5])))));
+      |                    ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:473:7: note: remove the 'if' if its condition is always true
+  473 |         else if(ix>=0x40000000){p = qR2; q= qS2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j0.c:463:20: note: initialize the variable 'q' to silence this warning
+  463 |         const double *p,*q;
+      |                           ^
+      |                            = 0
+4 warnings generated.
+ CC       e_j1.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:336:17: warning: variable 'p' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  336 |         else if(ix>=0x40000000){p = pr2; q= ps2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:338:13: note: uninitialized use occurs here
+  338 |         r = p[0]+z*(p[1]+z*(p[2]+z*(p[3]+z*(p[4]+z*p[5]))));
+      |             ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:336:14: note: remove the 'if' if its condition is always true
+  336 |         else if(ix>=0x40000000){p = pr2; q= ps2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:326:17: note: initialize the variable 'p' to silence this warning
+  326 |         const double *p,*q;
+      |                        ^
+      |                         = 0
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:336:17: warning: variable 'q' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  336 |         else if(ix>=0x40000000){p = pr2; q= ps2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:339:20: note: uninitialized use occurs here
+  339 |         s = one+z*(q[0]+z*(q[1]+z*(q[2]+z*(q[3]+z*q[4]))));
+      |                    ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:336:14: note: remove the 'if' if its condition is always true
+  336 |         else if(ix>=0x40000000){p = pr2; q= ps2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:326:20: note: initialize the variable 'q' to silence this warning
+  326 |         const double *p,*q;
+      |                           ^
+      |                            = 0
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:472:10: warning: variable 'p' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  472 |         else if(ix>=0x40000000){p = qr2; q= qs2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:474:6: note: uninitialized use occurs here
+  474 |         r = p[0]+z*(p[1]+z*(p[2]+z*(p[3]+z*(p[4]+z*p[5]))));
+      |             ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:472:7: note: remove the 'if' if its condition is always true
+  472 |         else if(ix>=0x40000000){p = qr2; q= qs2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:462:17: note: initialize the variable 'p' to silence this warning
+  462 |         const double *p,*q;
+      |                        ^
+      |                         = 0
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:472:10: warning: variable 'q' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  472 |         else if(ix>=0x40000000){p = qr2; q= qs2;}
+      |                 ^~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:475:13: note: uninitialized use occurs here
+  475 |         s = one+z*(q[0]+z*(q[1]+z*(q[2]+z*(q[3]+z*(q[4]+z*q[5])))));
+      |                    ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:472:7: note: remove the 'if' if its condition is always true
+  472 |         else if(ix>=0x40000000){p = qr2; q= qs2;}
+      |              ^~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_j1.c:462:20: note: initialize the variable 'q' to silence this warning
+  462 |         const double *p,*q;
+      |                           ^
+      |                            = 0
+4 warnings generated.
+ CC       e_jn.o
+ CC       e_lgamma.o
+ CC       e_lgamma_r.o
+ CC       e_log.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_log.c:115:41: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+  115 |             if(f==zero) if(k==0) return zero;  else {dk=(double)k;
+      |                                                ^
+1 warning generated.
+ CC       e_log10.o
+ CC       e_pow.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_pow.c:109:9: warning: variable 'i1' set but not used [-Wunused-but-set-variable]
+  109 |         int i0,i1,i,j,k,yisint,n;
+      |                ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_pow.c:3:14: warning: unused variable 'sccsid' [-Wunused-variable]
+    3 | static  char sccsid[] = "@(#)e_pow.c 1.5 04/04/22 SMI"; 
+      |              ^~~~~~
+2 warnings generated.
+ CC       e_rem_pio2.o
+ CC       e_remainder.o
+ CC       e_scalb.o
+ CC       e_sinh.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_sinh.c:74:39: warning: '&&' within '||' [-Wlogical-op-parentheses]
+   74 |         if (ix<0x408633CE || (ix==0x408633ce)&&(lx<=(unsigned)0x8fb9f87d)) {
+      |                           ~~ ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/e_sinh.c:74:39: note: place parentheses around the '&&' expression to silence this warning
+   74 |         if (ix<0x408633CE || (ix==0x408633ce)&&(lx<=(unsigned)0x8fb9f87d)) {
+      |                                              ^                           
+      |                              (                                           )
+1 warning generated.
+ CC       e_sqrt.o
+ CC       w_acos.o
+ CC       w_acosh.o
+ CC       w_asin.o
+ CC       w_atan2.o
+ CC       w_atanh.o
+ CC       w_cosh.o
+ CC       w_exp.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/w_exp.c:24:1: warning: unused variable 'o_threshold' [-Wunused-const-variable]
+   24 | o_threshold=  7.09782712893383973096e+02,  /* 0x40862E42, 0xFEFA39EF */
+      | ^~~~~~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/w_exp.c:25:1: warning: unused variable 'u_threshold' [-Wunused-const-variable]
+   25 | u_threshold= -7.45133219101941108420e+02;  /* 0xc0874910, 0xD52D3051 */
+      | ^~~~~~~~~~~
+2 warnings generated.
+ CC       w_fmod.o
+ CC       w_gamma.o
+ CC       w_gamma_r.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/w_gamma_r.c:22:9: warning: no previous prototype for function 'gamma_r' [-Wmissing-prototypes]
+   22 |         double gamma_r(double x, int *signgamp) /* wrapper lgamma_r */
+      |                ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/w_gamma_r.c:22:2: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   22 |         double gamma_r(double x, int *signgamp) /* wrapper lgamma_r */
+      |         ^
+      |         static 
+1 warning generated.
+ CC       w_hypot.o
+ CC       w_j0.o
+ CC       w_j1.o
+ CC       w_jn.o
+ CC       w_lgamma.o
+ CC       w_lgamma_r.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/w_lgamma_r.c:22:9: warning: no previous prototype for function 'lgamma_r' [-Wmissing-prototypes]
+   22 |         double lgamma_r(double x, int *signgamp) /* wrapper lgamma_r */
+      |                ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/w_lgamma_r.c:22:2: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   22 |         double lgamma_r(double x, int *signgamp) /* wrapper lgamma_r */
+      |         ^
+      |         static 
+1 warning generated.
+ CC       w_log.o
+ CC       w_log10.o
+ CC       w_pow.o
+ CC       w_remainder.o
+ CC       w_scalb.o
+ CC       w_sinh.o
+ CC       w_sqrt.o
+ CC       s_asinh.o
+ CC       s_atan.o
+ CC       s_cbrt.o
+ CC       s_ceil.o
+ CC       s_copysign.o
+ CC       s_cos.o
+ CC       s_erf.o
+ CC       s_expm1.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/s_expm1.c:196:10: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+  196 |                 else          return  one+2.0*(x-e);
+      |                 ^
+1 warning generated.
+ CC       s_fabs.o
+ CC       s_finite.o
+ CC       s_floor.o
+ CC       s_frexp.o
+ CC       s_ilogb.o
+ CC       s_isnan.o
+ CC       s_ldexp.o
+ CC       s_lib_version.o
+ CC       s_log1p.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/s_log1p.c:155:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+  155 |                         else {c += k*ln2_lo; return k*ln2_hi+c;}
+      |                         ^
+1 warning generated.
+ CC       s_logb.o
+ CC       s_matherr.o
+ CC       s_modf.o
+ CC       s_nextafter.o
+ CC       s_rint.o
+ CC       s_scalbn.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/libm/s_scalbn.c:59:6: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+   59 |             else return tiny*copysign(tiny,x);  /*underflow*/
+      |             ^
+1 warning generated.
+ CC       s_signgam.o
+ CC       s_significand.o
+ CC       s_sin.o
+ CC       s_tan.o
+ CC       s_tanh.o
+ AR       libm.a
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libm'
+make -C /srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libprintf CPU=vexriscv
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libprintf'
+ CC       ctype.o
+ CC       printf-float.o
+ AR       libprintf-float.a
+ CC       printf-nofloat.o
+ AR       libprintf-nofloat.a
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libprintf'
+make -C /srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libunwind CPU=vexriscv
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libunwind'
+ CC       UnwindRegistersSave-vexriscv-bare.o
+ CC       UnwindRegistersRestore-vexriscv-bare.o
+ CC       UnwindLevel1-vexriscv-bare.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/unwinder/src/UnwindLevel1.c:74:19: warning: variable 'functionName' set but not used [-Wunused-but-set-variable]
+   74 |       const char *functionName = functionBuf;
+      |                   ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/unwinder/src/UnwindLevel1.c:173:19: warning: variable 'functionName' set but not used [-Wunused-but-set-variable]
+  173 |       const char *functionName = functionBuf;
+      |                   ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/unwinder/src/UnwindLevel1.c:264:19: warning: variable 'functionName' set but not used [-Wunused-but-set-variable]
+  264 |       const char *functionName = functionBuf;
+      |                   ^
+3 warnings generated.
+ CC       UnwindLevel1-gcc-ext-vexriscv-bare.o
+ CX       libunwind-vexriscv-bare.o
+ AR       libunwind-vexriscv-bare.a
+ CC       UnwindRegistersSave-vexriscv-libc.o
+ CC       UnwindRegistersRestore-vexriscv-libc.o
+ CC       UnwindLevel1-vexriscv-libc.o
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/unwinder/src/UnwindLevel1.c:74:19: warning: variable 'functionName' set but not used [-Wunused-but-set-variable]
+   74 |       const char *functionName = functionBuf;
+      |                   ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/unwinder/src/UnwindLevel1.c:173:19: warning: variable 'functionName' set but not used [-Wunused-but-set-variable]
+  173 |       const char *functionName = functionBuf;
+      |                   ^
+/srv/codex-hil-data/artiq-zynqmp/work/kasli-misoc/misoc/software/unwinder/src/UnwindLevel1.c:264:19: warning: variable 'functionName' set but not used [-Wunused-but-set-variable]
+  264 |       const char *functionName = functionBuf;
+      |                   ^
+3 warnings generated.
+ CC       UnwindLevel1-gcc-ext-vexriscv-libc.o
+ CX       libunwind-vexriscv-libc.o
+ AR       libunwind-vexriscv-libc.a
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/libunwind'
+make -C /srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/ksupport CPU=vexriscv
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/ksupport'
+ CARGO    cargo/riscv32ima-unknown-none-elf/debug/libksupport.a
+   Compiling compiler_builtins v0.1.49
+   Compiling core v0.0.0 (/nix/store/p0jf4m3dh3xc0v2dl85xdrpqnpf0ais7-rust-default-1.56.0-nightly-2021-09-01/lib/rustlib/src/rust/library/core)
+   Compiling memchr v2.4.1
+   Compiling semver-parser v0.7.0
+   Compiling build_misoc v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libbuild_misoc)
+   Compiling unicode-xid v0.0.4
+   Compiling regex-syntax v0.6.29
+   Compiling quote v0.3.15
+   Compiling lazy_static v1.4.0
+   Compiling cc v1.0.69
+   Compiling build_const v0.2.2
+   Compiling log v0.4.14
+   Compiling synom v0.11.3
+   Compiling semver v0.9.0
+   Compiling board_artiq v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libboard_artiq)
+   Compiling ksupport v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/ksupport)
+   Compiling syn v0.11.11
+   Compiling crc v1.8.1
+   Compiling rustc_version v0.2.3
+   Compiling bare-metal v0.2.5
+   Compiling aho-corasick v0.7.20
+   Compiling synstructure v0.6.1
+   Compiling board_misoc v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libboard_misoc)
+   Compiling regex v1.7.3
+   Compiling failure_derive v0.1.1
+   Compiling riscv-target v0.1.2
+   Compiling riscv v0.6.0
+   Compiling rustc-std-workspace-core v1.99.0 (/nix/store/p0jf4m3dh3xc0v2dl85xdrpqnpf0ais7-rust-default-1.56.0-nightly-2021-09-01/lib/rustlib/src/rust/library/rustc-std-workspace-core)
+   Compiling alloc v0.0.0 (/nix/store/p0jf4m3dh3xc0v2dl85xdrpqnpf0ais7-rust-default-1.56.0-nightly-2021-09-01/lib/rustlib/src/rust/library/alloc)
+   Compiling byteorder v1.4.3
+   Compiling cfg-if v0.1.10
+   Compiling libc v0.1.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libc)
+   Compiling failure v0.1.1
+   Compiling bit_field v0.10.2
+   Compiling cslice v0.3.0
+   Compiling cfg-if v1.0.0
+   Compiling dyld v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libdyld)
+   Compiling bitflags v1.3.2
+   Compiling alloc_list v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/liballoc_list)
+   Compiling unwind v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libunwind)
+   Compiling io v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libio)
+   Compiling eh v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libeh)
+   Compiling proto_artiq v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libproto_artiq)
+    Finished dev [unoptimized + debuginfo] target(s) in 10.67s
+ CC       glue.o
+ LD       ksupport.elf
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/ksupport'
+make -C /srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/runtime CPU=vexriscv
+make[1]: Entering directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/runtime'
+ CARGO    cargo/riscv32ima-unknown-none-elf/debug/libruntime.a
+   Compiling compiler_builtins v0.1.49
+   Compiling core v0.0.0 (/nix/store/p0jf4m3dh3xc0v2dl85xdrpqnpf0ais7-rust-default-1.56.0-nightly-2021-09-01/lib/rustlib/src/rust/library/core)
+   Compiling memchr v2.4.1
+   Compiling build_misoc v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libbuild_misoc)
+   Compiling semver-parser v0.7.0
+   Compiling regex-syntax v0.6.29
+   Compiling lazy_static v1.4.0
+   Compiling unicode-xid v0.0.4
+   Compiling quote v0.3.15
+   Compiling log v0.4.14
+   Compiling cc v1.0.69
+   Compiling build_const v0.2.2
+   Compiling semver v0.9.0
+   Compiling board_artiq v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libboard_artiq)
+   Compiling runtime v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/runtime)
+   Compiling synom v0.11.3
+   Compiling crc v1.8.1
+   Compiling rustc_version v0.2.3
+   Compiling syn v0.11.11
+   Compiling bare-metal v0.2.5
+   Compiling aho-corasick v0.7.20
+   Compiling board_misoc v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libboard_misoc)
+   Compiling synstructure v0.6.1
+   Compiling regex v1.7.3
+   Compiling failure_derive v0.1.1
+   Compiling riscv-target v0.1.2
+   Compiling riscv v0.6.0
+   Compiling rustc-std-workspace-core v1.99.0 (/nix/store/p0jf4m3dh3xc0v2dl85xdrpqnpf0ais7-rust-default-1.56.0-nightly-2021-09-01/lib/rustlib/src/rust/library/rustc-std-workspace-core)
+   Compiling alloc v0.0.0 (/nix/store/p0jf4m3dh3xc0v2dl85xdrpqnpf0ais7-rust-default-1.56.0-nightly-2021-09-01/lib/rustlib/src/rust/library/alloc)
+   Compiling byteorder v1.4.3
+   Compiling bitflags v1.3.2
+   Compiling libc v0.1.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libc)
+   Compiling cfg-if v1.0.0
+   Compiling cfg-if v0.1.10
+   Compiling managed v0.8.0
+   Compiling bit_field v0.10.2
+   Compiling failure v0.1.1
+   Compiling cslice v0.3.0
+   Compiling dyld v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libdyld)
+   Compiling arrayvec v0.7.4
+   Compiling log_buffer v1.2.0
+   Compiling managed v0.7.2
+   Compiling alloc_list v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/liballoc_list)
+   Compiling fringe v1.2.1 (https://git.m-labs.hk/M-Labs/libfringe.git?rev=53a964#53a964a6)
+   Compiling unwind v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libunwind)
+   Compiling io v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libio)
+   Compiling smoltcp v0.8.2
+   Compiling eh v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libeh)
+   Compiling unwind_backtrace v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libunwind_backtrace)
+   Compiling tar-no-std v0.1.8 (https://git.m-labs.hk/M-Labs/tar-no-std?rev=2ab6dc5#2ab6dc58)
+   Compiling proto_artiq v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/libproto_artiq)
+warning: unused import: `config`
+ --> libboard_misoc/net_settings.rs:7:5
+  |
+7 | use config;
+  |     ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `i2c_eeprom`
+ --> libboard_misoc/net_settings.rs:9:5
+  |
+9 | use i2c_eeprom;
+  |     ^^^^^^^^^^
+
+warning: `board_misoc` (lib) generated 2 warnings
+   Compiling logger_artiq v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi/artiq/firmware/liblogger_artiq)
+warning: unused imports: `ByteOrder`, `NativeEndian`
+  --> runtime/mgmt.rs:17:21
+   |
+17 |     use byteorder::{ByteOrder, NativeEndian};
+   |                     ^^^^^^^^^  ^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `crc::crc32`
+  --> runtime/mgmt.rs:18:9
+   |
+18 |     use crc::crc32;
+   |         ^^^^^^^^^^
+
+warning: `runtime` (lib) generated 2 warnings
+    Finished dev [unoptimized + debuginfo] target(s) in 26.44s
+ LD       ksupport_data.o
+ LD       runtime.elf
+ OBJCOPY  runtime.bin
+ MSCIMG   runtime.fbi
+make[1]: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software/runtime'
+make: Leaving directory '/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-abi-2026-10-16/generated/genesys_drtio_master_v11/software'

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "kind": "FIRMWARE_BUILD_NOT_HARDWARE",
+  "source": "/srv/codex-hil-data/artiq-zynqmp/work/kasli03-bram-runtime-dma-abi",
+  "upstream": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "rom_bytes": 131072,
+  "generated_header_match": "PASS",
+  "sha256": {
+    "runtime.bin": "f0b53c4cc100951258422bb1bb6e617348cda8eacc0eacc10a09e71968d79d4b",
+    "runtime.elf": "96cc693a82208efea4828619d003fdf4e5f42eabe61b73318f0196654488db92",
+    "runtime.fbi": "4071f87584b99720aaa28d5a08c577c5c75f5d823c91ff9f5a96f49f27f8f781"
+  }
+}

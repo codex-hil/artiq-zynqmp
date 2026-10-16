@@ -239,6 +239,10 @@ disconnect
                         from host_dma_session import probe
                         probe(self,master_host,uart,raw)
             finally:
+                # Preserve satellite evidence even if the host kernel fails
+                # before probe() reaches its normal UART drain.
+                end=time.monotonic()+1
+                while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
                 (self.output/'aux-uart.log').write_bytes(raw)
         text = raw.decode(errors='replace')
         echo = text.count('AUX_SERVICE RESPOND request=0 reply=1')

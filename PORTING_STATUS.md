@@ -2066,3 +2066,17 @@ Full runtime compile RUNNING build/kasli03-dma-abi-2026-10-16,900s bound/log.
 No fixed-runtime HW test; previous attempt failed before satellite DDMA traffic,
 both normal baselines restored PASS. Next finish compile and compare ABI headers,
 then guarded test of new master runtime. Keep all alignment/error checks.
+
+
+Native distributed CoreDMA2026-10-16 physical PASS. Corrected Kasli tuple ABI
+runtime built with128KiB ROM; first64KiB attempt overflowed; mem.rs/csr.rs/
+regions.ld byte-identical to qualified BRAM image. Runtime SHAf0b53c4c... .
+Native AUX upload/playback/status(error0)/erase succeeded ID1076235456.
+Standard Kasli CoreDMA kernel captured8 physical JB edges: width8000mu,
+period80000mu,first_delta1000120mu; no host DAP upload/arming. Snapshot/reset/
+2DIO and both restores PASS; normal Genesys TTL/DMA/debug/Ethernet PASS at
+192.168.2.3. All4 leases held; no persistent/Genesys Si writes. Evidence
+kasli03-native-ddma-fixedabi-hardware-2026-10-16 and kasli03-dma-abi-build-2026-10-16.
+Native DDMA PARTIAL: single-slot TTL subset. Next physical repeated playback/
+replacement/erase/reupload/fragmentation; abort recovery and general RTIO still
+unqualified. Original/reference source checkouts preserved.

@@ -586,3 +586,28 @@ all generated hardware ABI headers with qualified BRAM bitstream, then a guarded
 runtime qualification and repeat CoreDMA. No claim that tuple fix resolves all
 remaining native DDMA issues. Evidence native-ddma-abi-diagnosis-2026-10-16 and
 kasli03-native-ddma-capture-hardware-2026-10-16.
+
+
+## Native distributed CoreDMA physical PASS (2026-10-16)
+
+ABI-corrected Kasli RAM runtime built with matching128KiB ROM configuration;
+all three generated hardware ABI headers byte-identical to the qualified bit.
+Runtime SHA256 f0b53c4cc100951258422bb1bb6e617348cda8eacc0eacc10a09e71968d79d4b.
+Standard `examples/kasli_drtio_native_dma.py` now passes on physical boards.
+Native AUX AddTraceReply/PlaybackReply/PlaybackStatus(error0)/RemoveTraceReply
+all reference ID1076235456 and succeed. Kasli captures8 physical edges,
+width8000mu/period80000mu/first_delta1000120mu. No DAP DDR upload or arming.
+
+This proves one bounded TTL trace through native master CoreDMA, AUX codec,
+firmware store/cache/CSR backend, native PL DDR DMA/RTIO and physical loopback.
+AUX/snapshot/reset/two DIO kernels and both baseline restorations also PASS;
+Genesys normal local TTL/CoreDMA/analyzer/MonInj/Ethernet at192.168.2.3.
+All four shared leases held throughout. No flash/SD/OTP/Genesys Si writes.
+Evidence `kasli03-native-ddma-fixedabi-hardware-2026-10-16/results.json`.
+
+Native service now PARTIAL, not MISSING: single-slot/17-byte TTL subset only.
+Next repeat handle playback, replacement/erase/reupload and fragmentation near
+bounds under guarded physical capture. Do not claim post-abort recovery,
+general wide-output DMA, production routing, absolute offset/jitter or link
+latency qualification. The new satellite UART finally drain preserves logs on
+future client failures as well as successful completion.
