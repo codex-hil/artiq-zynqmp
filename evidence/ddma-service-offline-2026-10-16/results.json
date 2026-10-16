@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "kind": "HOST_POLICY_TEST_NOT_HARDWARE",
+  "backend": "MOCK",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "hardware_accessed": false,
+  "firmware_dispatch": "NOT_IMPLEMENTED",
+  "sha256": {
+    "diagnostics/drtio/aux_protocol/ddma_service.h": "10a15e5f4095bad437bcf555827f635b0b18f74094e6797c2a3a131a02585eee",
+    "diagnostics/drtio/aux_protocol/test_ddma_service.c": "e4758a302a16a3c82b99bdd57e5ae4cbe2ad61309d46a9b7686913ef094f5761"
+  }
+}

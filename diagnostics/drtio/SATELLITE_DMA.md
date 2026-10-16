@@ -374,3 +374,29 @@ payload (1024-byte frame), plus ABI layout. A53 static library/firmware link is
 also checked; the firmware service still does not dispatch DDMA. No physical
 DDMA transfer or playback is claimed. Next connect checked packets to staging,
 reply semantics and deferred playback/status with cache/MMIO guards.
+
+
+## DDMA service state machine (offline, 2026-10-16)
+
+`aux_protocol/ddma_service.h` connects full-field decoded requests to the
+bounded store and native reply/status fields. Only direct destination1 is
+handled. Source/ID ownership, readiness, completion and timestamp alignment/
+signed-overflow checks gate playback. The hardware-start callback must validate
+live readiness/future time, copy and flush all2048 padded bytes and obtain real
+CSR admission; it is mocked in the present host tests, not implemented here.
+
+A successful admission reserves the slot until engine completion and successful
+status transport. Upload/remove/replay are rejected while running or while a
+status awaits transport. Native status preserves requesting source, ID, error,
+channel and timestamp. The transport must send the immediate reply or fail
+closed; it cannot undo outputs already admitted. Link/reset abort handling and
+post-error hardware requalification remain to be integrated. Completion itself
+means decoder admission/drain, not elapsed event time or proven queue-empty.
+
+`make test-drtio-ddma-service O=/srv/codex-hil-data/artiq-zynqmp/build/ddma-service`
+runs native ASan/UBSan tests with mock admission. Coverage includes incomplete
+trace, wrong destination/ID, unready, admission failure, timestamp overflow and
+alignment, busy slot, status retention, error forwarding and policy reuse.
+Mock reuse does not qualify physical abort recovery. No service is active on
+hardware yet. Next implement the firmware's checked decoder dispatch, backend
+cache/CSR operations and status polling under bounded failure handling.

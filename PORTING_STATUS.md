@@ -1976,3 +1976,11 @@ Host tests PASS including truncation/CRC/max payload and Rust/C layout. A53
 build PASS; not loaded. Legacy scalar decoder rejects DDMA explicitly;
 service dispatch/store/cache/CSR playback/status integration remains pending.
 No HW access. Evidence ddma-codec-offline-2026-10-16; next service integration.
+
+
+DDMA dispatcher2026-10-16 offline PASS: checked requests -> bounded store ->
+reply/status fields, ownership/readiness/time-overflow guards and slot held
+through successful status transport. ASan/UBSan host tests use mock admission;
+no hardware/backend/cache/CSR integration or physical recovery claimed.
+Next firmware checked decode dispatch plus bounded actual backend/status poll.
+No HW accessed; normal restored baselines unchanged.
