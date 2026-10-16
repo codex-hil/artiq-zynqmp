@@ -154,7 +154,12 @@ int main(void) {
  if(wait(REG_AUX_IN_RESET,0) || wait(REG_AUX_RX_UP,1))goto fail;
  usleep(25000);
 #ifdef AUX_RESET
- if(release_backend())goto fail;
+ if(release_backend()) {
+  xil_printf("AUX_RESET COLD_RELEASE FAIL rtio_request=%u rtio_applied=%u phy_request=%u phy_applied=%u loads=%u\r\n",
+   rd(REG_AUX_RTIO_RESET_REQUEST),rd(REG_AUX_RTIO_RESET_APPLIED),
+   rd(REG_AUX_PHY_RESET_REQUEST),rd(REG_AUX_PHY_RESET_APPLIED),rd(REG_AUX_TSC_LOAD_COUNT));
+  goto fail;
+ }
  xil_printf("AUX_RESET COLD_RELEASE PASS\r\n");
 #endif
 #ifdef AUX_TSC

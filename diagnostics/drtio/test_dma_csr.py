@@ -100,8 +100,15 @@ class DMACSRTests(unittest.TestCase):
                 return
             if mode=='budget':yield from driver.write('max_bursts',4)
             if mode=='snapshot':yield c.engine.cri.o_status.eq(2)
-            if mode=='busy':yield c.engine.cri.o_status.eq(1)
+            if mode in ('busy','fault'):yield c.engine.cri.o_status.eq(1)
             yield from driver.write('start',1)
+            if mode=='fault':
+                for _ in range(2000):
+                    if ar:break
+                    yield
+                else:self.fail('No accepted AXI read before injected fault')
+                self.assertEqual((yield from driver.read('active')),1)
+                yield c.fault.eq(1)
             if mode=='busy':
                 yield from driver.write('clear',1)
                 self.assertEqual((yield from driver.read('active')),1)
@@ -113,7 +120,7 @@ class DMACSRTests(unittest.TestCase):
                 yield c.engine.cri.o_status.eq(0)
             yield from driver.pending()
             result=(yield from driver.read('result_error'))
-            self.assertEqual(result,4 if mode=='snapshot' else 33 if mode=='watchdog' else 65 if mode=='budget' else 0)
+            self.assertEqual(result,4 if mode=='snapshot' else 33 if mode=='watchdog' else 65 if mode=='budget' else 1 if mode=='fault' else 0)
             if mode=='snapshot':
                 self.assertEqual((yield from driver.read('result_timestamp')),0x1234567800000020)
             self.assertEqual(len(ar),len(last))
@@ -127,6 +134,7 @@ class DMACSRTests(unittest.TestCase):
             self.assertEqual((yield from driver.read('accepted')),1)
             # Acknowledgement permits a fresh, bounded trace after any failure.
             yield from driver.write('clear',1)
+            yield c.fault.eq(0)
             yield c.engine.cri.o_status.eq(0)
             memory.data=words[:64]+trace+[0]*64
             yield from driver.write('address',512)
@@ -148,3 +156,5 @@ class DMACSRTests(unittest.TestCase):
     def test_missing_terminator_bounded_reads_and_recovery(self):self.exercise('budget')
 
     def test_busy_start_and_clear_do_not_mutate_active_epoch(self):self.exercise('busy')
+
+    def test_active_fault_still_aborts_drains_and_recovers(self):self.exercise('fault')

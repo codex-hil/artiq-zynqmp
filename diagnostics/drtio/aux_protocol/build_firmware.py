@@ -54,6 +54,9 @@ io={path=IO_PATH,features=["byteorder"]}
     if a.reset and not all('aux_'+n in mapping['registers'] for n in ('rtio_reset_request','rtio_reset_applied','phy_reset_request','phy_reset_applied')):p.error('Split reset CSR map required')
     header=['#pragma once']
     for name,register in mapping['registers'].items():
+        # This responder does not own DMA. Bank4 is reserved for the bounded
+        # host diagnostic until native AUX DDMA firmware is implemented.
+        if name.startswith('dma_'): continue
         if register['words']!=1:raise ValueError('Single-word CSR required')
         header.append('#define REG_'+name.upper()+' ((uintptr_t)'+hex(register['address'])+'u)')
     header.append('#define AUX_MEMORY ((uintptr_t)'+hex(mapping['aux_sram']['base'])+'u)')
@@ -74,6 +77,7 @@ io={path=IO_PATH,features=["byteorder"]}
     evidence={'kind':'FIRMWARE_BUILD_NOT_HARDWARE','status':'PASS',
         'mode':'external-tsc-down' if a.tsc else 'external-aux-down' if a.external else 'internal-loopback',
         'dio_leaf':a.dio,
+        'dma_bank_owner':'external diagnostic only; no AUX DDMA service',
         'leaf_policy_sha256':hashlib.sha256(Path(__file__).with_name('leaf_policy.h').read_bytes()).hexdigest(),
         'reset_backend':a.reset,
         'reset_policy_sha256':hashlib.sha256(Path(__file__).with_name('reset_backend.h').read_bytes()).hexdigest(),

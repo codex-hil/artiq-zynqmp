@@ -1,0 +1,8 @@
+test_active_fault_still_aborts_drains_and_recovers (test_dma_csr.DMACSRTests.test_active_fault_still_aborts_drains_and_recovers) ... /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 10.304s
+
+OK

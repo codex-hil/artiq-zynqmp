@@ -1,0 +1,28 @@
+{
+  "status": "FAIL",
+  "board": "KASLI03",
+  "bit_sha256": "4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715",
+  "flash_written": false,
+  "runtime_uploaded": false,
+  "genesys_accessed": true,
+  "clock_profile_written": false,
+  "usb_busdev": "001:019",
+  "usb_topology": "1-2.4.1",
+  "uart": "/dev/serial/by-path/pci-0000:00:14.0-usb-0:2.4.1:1.2-port0",
+  "dna": "0x0048458a64b04854",
+  "prior_flash_runtime_started": false,
+  "bootloader_test": "PASS",
+  "dhcp_lease": "NOT_IMPLEMENTED_BY_BOOTLOADER",
+  "netboot_ipv6_link_local": "fe80::4b:3ff:fe48:4854",
+  "error": "timed out",
+  "restoration": "PASS",
+  "external_rx": {
+    "status": "NOT_RUN",
+    "restoration": "PASS",
+    "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+    "remote_drtio": "NOT_RUN",
+    "firmware_sha256": "5b7334559f7db98266c5c593d2843204c0288e1598319e560eac418908fe647c",
+    "bit_sha256": "3ee1173c22e578f2c4e7d9ec8dc73de258c291ea6e1733d098e7abc135d8396c",
+    "restored_ip": "192.168.2.3"
+  }
+}

@@ -1,0 +1,25 @@
+test_idle_fault_rejects_start_without_holding_sed_in_reset (test_dma_cold_release.ColdReleaseTests.test_idle_fault_rejects_start_without_holding_sed_in_reset) ... /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+FAIL
+
+======================================================================
+FAIL: test_idle_fault_rejects_start_without_holding_sed_in_reset (test_dma_cold_release.ColdReleaseTests.test_idle_fault_rejects_start_without_holding_sed_in_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_cold_release.py", line 44, in test_idle_fault_rejects_start_without_holding_sed_in_reset
+    run_simulation(d,{'sys':run()},clocks={'sys':10,'gth_tx':8,'gth_rx':8,
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 513, in run_simulation
+    s.run()
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 502, in run
+    self._process_generators(cd)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 456, in _process_generators
+    request = generator.send(reply)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_cold_release.py", line 33, in run
+    self.assertEqual((yield c.rtio_reset_request),0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 1 test in 2.902s
+
+FAILED (failures=1)

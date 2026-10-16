@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "board": "KASLI03",
+  "bit_sha256": "4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715",
+  "flash_written": false,
+  "runtime_uploaded": false,
+  "genesys_accessed": false,
+  "clock_profile_written": false,
+  "usb_busdev": "001:019",
+  "usb_topology": "1-2.4.1",
+  "uart": "/dev/serial/by-path/pci-0000:00:14.0-usb-0:2.4.1:1.2-port0",
+  "dna": "0x0048458a64b04854",
+  "prior_flash_runtime_started": false,
+  "bootloader_test": "PASS",
+  "dhcp_lease": "NOT_IMPLEMENTED_BY_BOOTLOADER",
+  "netboot_ipv6_link_local": "fe80::4b:3ff:fe48:4854",
+  "netboot_network": {
+    "status": "PASS",
+    "interface": "enp2s0",
+    "tcp_connections": 3,
+    "unknown_command_rejected": true,
+    "boot_without_firmware_rejected": true,
+    "listener_recovery": true,
+    "neighbor_mac": "02:4b:03:48:48:54"
+  },
+  "restoration": "PASS"
+}

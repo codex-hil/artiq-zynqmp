@@ -45,7 +45,10 @@ class DMACSR(Module):
             e.address.eq(self.address.storage),e.time_offset.eq(self.time_offset.storage),
             e.max_bursts.eq(self.max_bursts.storage),
             expired.eq(e.active & ~e.done & (remaining<=1)),
-            e.abort.eq(self.fault | (self.abort.re & self.abort.r) | expired | (timed_out & e.active)),
+            # Readiness faults reject idle launches via reason. Only an active
+            # epoch may propagate a fault into the RX SED abort/reset path;
+            # otherwise no-TSC boot holds RTIO reset before AUX can get TSC.
+            e.abort.eq((self.fault & e.active) | (self.abort.re & self.abort.r) | expired | (timed_out & e.active)),
             self.active.status.eq(e.active | launch)]
         self.sync += [If(launch,remaining.eq(self.watchdog.storage),timed_out.eq(0),
                 self.accepted.status.eq(self.accepted.status+1)),
