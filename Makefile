@@ -288,3 +288,7 @@ test-drtio-ddma-backend:
 .PHONY: test-drtio-tsc-snapshot
 test-drtio-tsc-snapshot:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/common/migen" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_tsc_snapshot.py' -v
+
+.PHONY: test-drtio-dma-cdc-constraints
+test-drtio-dma-cdc-constraints:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_cdc_constraints.py' -v

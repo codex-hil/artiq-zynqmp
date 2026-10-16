@@ -361,10 +361,10 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
         route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))
         if args.satellite_dma:
             from dma_cdc_constraints import dma_crossings,dma_tcl
-            groups = dma_crossings(text,marked)
+            groups = dma_crossings(text,marked,snapshot=True)
             manifest['dma_crossings'] = groups
             manifest['dma_physical_constraints'] = 'GENERATED_NOT_IMPLEMENTATION_QUALIFIED'
-            manifest['gray_counter_buses'] += 2
+            manifest['gray_counter_buses'] += 4
             manifest['held_payload_buses'] = 4
             (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
             route.write_text(route.read_text().replace('DMA_TIMED_CONSTRAINTS',dma_tcl(groups)))

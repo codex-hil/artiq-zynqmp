@@ -13,7 +13,9 @@ def main():
     # A failed recheck must not leave a previous PASS beside its new log.
     (build/'dma-cdc-results.json').unlink(missing_ok=True)
     groups=json.loads((build/'cdc-manifest.json').read_text())['dma_crossings']
-    if len(groups)!=6 or sum(g['bits'] for g in groups)!=164:
+    snapshot='aux_tsc_snapshot_value' in json.loads((build/'csr-map.json').read_text())['registers']
+    count,total=(8,170) if snapshot else (6,164)
+    if len(groups)!=count or sum(g['bits'] for g in groups)!=total:
         raise ValueError('Expected six complete DMA CDC groups/164 bits')
     dcp=build/'top_route.dcp'
     if not dcp.is_file() or any(c in str(dcp) for c in '{}\n'):
@@ -40,18 +42,18 @@ def main():
             '}',
             f'report_timing -from $sources -to $endpoints -max_paths {width} -file dma_cdc_{src}.rpt']
     lines += ['close $report','report_exceptions -coverage -file dma_cdc_exceptions.rpt',
-              'puts "DMA_ROUTED_ENDPOINTS_PASS 164"','close_design']
+              f'puts "DMA_ROUTED_ENDPOINTS_PASS {total}"','close_design']
     script=build/'check_dma_cdc.tcl';script.write_text('\n'.join(lines)+'\n')
     with (build/'check_dma_cdc.log').open('w') as log:
         subprocess.run(['vivado','-mode','batch','-source',str(script)],cwd=build,
                        stdout=log,stderr=subprocess.STDOUT,check=True,timeout=180)
     log=(build/'check_dma_cdc.log').read_text()
-    if not re.search(r'^DMA_ROUTED_ENDPOINTS_PASS 164$',log,re.M):
+    if not re.search(rf'^DMA_ROUTED_ENDPOINTS_PASS {total}$',log,re.M):
         raise ValueError('Vivado did not qualify all routed endpoints')
     rows=(build/'dma_cdc_endpoints.tsv').read_text().splitlines()
-    if len(rows)!=165:raise ValueError('Missing routed endpoint evidence')
+    if len(rows)!=total+1:raise ValueError('Missing routed endpoint evidence')
     result={'kind':'ROUTED_IMPLEMENTATION_NOT_HARDWARE','status':'PASS',
-            'groups':6,'endpoints':164,'requirement_ns':8,
+            'groups':count,'endpoints':total,'requirement_ns':8,
             'minimum_slack_ns':min(float(row.split('\t')[3]) for row in rows[1:]),
             'sha256':{name:hashlib.sha256((build/name).read_bytes()).hexdigest()
                 for name in ('top_route.dcp','top.v','csr-map.json','cdc-manifest.json','dma_cdc_endpoints.tsv')}}

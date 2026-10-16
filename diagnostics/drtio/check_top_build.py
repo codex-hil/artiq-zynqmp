@@ -26,12 +26,14 @@ def main():
                   19 if 'packets_alignment' in mapping['registers'] else
                   9 if 'protocol_alignment' in mapping['registers'] else 3)
     if mapping.get('dma'):
-        skew_count += 6  # two FIFO Gray and four held payload buses
+        snapshot='aux_tsc_snapshot_value' in mapping['registers']
+        count,total=(8,170) if snapshot else (6,164)
+        skew_count += count  # Gray FIFO pointers and held payload buses
         manifest = json.loads((a.build/'cdc-manifest.json').read_text())
-        if len(manifest.get('dma_crossings',[])) != 6:
+        if len(manifest.get('dma_crossings',[])) != count:
             raise ValueError('Missing exact DMA CDC constraints')
         qualified = json.loads((a.build/'dma-cdc-results.json').read_text())
-        if qualified.get('status') != 'PASS' or qualified.get('endpoints') != 164 or qualified.get('groups') != 6:
+        if qualified.get('status') != 'PASS' or qualified.get('endpoints') != total or qualified.get('groups') != count:
             raise ValueError('Missing routed DMA endpoint qualification')
         for name,expected_hash in qualified['sha256'].items():
             if hashlib.sha256((a.build/name).read_bytes()).hexdigest() != expected_hash:

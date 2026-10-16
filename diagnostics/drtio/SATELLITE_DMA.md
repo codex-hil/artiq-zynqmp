@@ -448,3 +448,22 @@ the prior qualified credit4 bit remains the hardware baseline.
 Next add exact Gray-pointer constraints/counts for this FIFO, update routed
 qualification, then firmware MSW-first snapshot read with bounded wait and
 reset/load-count/readiness checks. Only then enable AUX DDMA dispatch.
+
+
+## Snapshot FIFO implementation qualification in progress (2026-10-16)
+
+Exact generated-HDL extraction now includes both3-bit snapshot Gray pointers
+in the protected timed-first-stage set:8 groups/170 endpoints total. Each gets
+8ns datapath-only max delay and8ns bus skew; generic first-stage false paths
+exclude these endpoints. Routed checker opens the DCP and requires a numeric
+8ns requirement/nonnegative slack on every endpoint. The top checker now expects
+16 total skew groups for the snapshot target. Older six-group/164-bit builds
+remain checkable using their map; the current snapshot map requires8/170.
+
+HDL extraction and missing-endpoint/wrong-width negative tests PASS. The interim
+build prohibition is replaced by these constraints and mandatory implementation
+checks. Build is RUNNING at `build-vivado/satellite-dma-tsc-route-2026-10-16`,
+log `build/tsc-snapshot-vivado-session-2026-10-16.log`, timeout1500s. Do not edit
+running build/RTL/checker helpers until completion. No routed PASS or hardware
+claim yet. Next inspect route/CDC results, fix any real failures, then firmware
+snapshot read/dispatch. Prior hardware baseline remains restored and unchanged.

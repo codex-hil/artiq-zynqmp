@@ -2003,3 +2003,13 @@ checker not yet extended: build_top refuses new snapshot map before Vivado.
 No new bit/firmware/HW access; prior restored credit4 evidence remains valid.
 Next exact snapshot FIFO constraints/routed qualification, then bounded firmware
 snapshot/time callback and DDMA dispatch. Evidence tsc-snapshot-offline-2026-10-16.
+
+
+Snapshot CDC2026-10-16 offline PASS: generated HDL exact8 groups/170 endpoints,
+including both3-bit snapshot FIFO Gray pointers; all excluded from generic false
+paths and constrained8ns maxdelay/skew. Missing endpoint/wrong width negatives
+PASS. Routed checker and top checker require8/170 and16 skew groups for this
+map, retain old6/164 support. Vivado RUNNING satellite-dma-tsc-route-2026-10-16,
+1500s bound, log build/tsc-snapshot-vivado-session-2026-10-16.log. No HW access.
+Do not edit running RTL/build/checker helpers. Next inspect implementation and
+fix failures if any, then bounded snapshot firmware callback/DDMA dispatch.

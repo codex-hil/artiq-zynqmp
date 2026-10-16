@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "kind": "HDL_CONSTRAINT_GENERATION_NOT_ROUTED_OR_HARDWARE",
+  "groups": 8,
+  "endpoints": 170,
+  "negative_tests": "missing endpoint and wrong width rejected",
+  "vivado": "RUNNING",
+  "sha256": {
+    "dma_cdc_constraints.py": "c201f60cf88a9a0376831cff9bfb55385f81bb4f2b7872918c6f26ba1b914010",
+    "check_dma_cdc.py": "ceff9087f281e46fa7d576a19b3d375644a1a994e62e7360d3abea6060373725",
+    "check_top_build.py": "fc8810dba0f824e223f01592965943482c460314b107897b9f518539c3f273a3",
+    "diag_gateware.py": "90b2a5cd0891f239cd3dbbb05adbc28c0a4353c3f5836981d9d3754d0b9f188b",
+    "build_top.sh": "cf7a1c690368a9bc6d4841e268020bb032da8550a9f126935966da4a23c92d13",
+    "test_dma_cdc_constraints.py": "0b4643e0c8fa27d00646168ed380ee5dcb85aef78f1ed9c841a6269e4eacd89e"
+  }
+}
