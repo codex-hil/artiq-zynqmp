@@ -434,3 +434,14 @@ Old JTAG server disappeared; started filtered Genesys-only hw_server container
 34e5dd105b4c,172.17.0.3:3121 (do not assume stale172.17.0.2 or touch other thread's
 Vivado container). Re-discover metadata before use. Initial connection-refused
 FAIL preserved; no board programming occurred in that failed attempt.
+
+
+SatelliteDMA offline2026-10-16: optional SatelliteBackend dma_membus uses existing
+AXI DMA + native CRISwitch;2 tests each Piotr/current upstream PASS,fine3/time
+ offset,quiescent handoff,underflow/drain/reuse.7 SED+3 reset regressions PASS.
+Standalone HDL emitted; no Vivado/HW/PS CDC or AUX DDMA trace handling. Default
+qualified DIO image unchanged. AXI64/16 requires128-byte alignment (satman64
+insufficient). Do not wire resettable recovered-clock DMA directly to PS AXI
+without drain/isolation; active reset/concurrent commands unqualified. Next
+memory/CRI CDC with running-clock isolation/quiescence. See SATELLITE_DMA.md
+and evidence/satellite-dma-offline-2026-10-16. No HW accessed in this stage.

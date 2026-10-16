@@ -1697,3 +1697,28 @@ All Genesys/all-Kasli locks held across entire session and released. No flash/
 SD/OTP/Genesys Si writes. Evidence kasli03-external-recovery-2026-10-16. Next
 integrate native distributed-DMA memory reader/CRI ownership and trace protocol;
 current satellite image has no DMA engine. Upstream reuse map in DIO_EXPERIMENT.md.
+
+### 2026-10-16 — optional satellite DMA backend offline PASS
+
+Continued existing port: SatelliteBackend optional dma_membus reuses qualified
+M-Labs AXI DMA adaptation and upstream CRISwitch. Default DIO backend has no
+DMA instance/change to its direct packet path. Native packet->DMA->packet->DMA
+quiescent ownership, actual SED/TTL edges, fine3 and nonzero time offset PASS.
+Stale trace raises native underflow; error clear and next trace recover without
+phantom output. AXI response queues fully drain at completion. Measured519–520
+cycles; initial400-cycle test deadline was too short, final bounded deadline1500.
+
+Two DMA tests PASS on Piotr1461cf9 and two on contemporary486e8f8. Existing7 SED
+and3 split-reset tests PASS (14 methods across both source variants). Standalone
+--dma --fine-ts-width3 HDL generation PASS. No Vivado or hardware access; no PS
+CDC/trace protocol claim. Native switch remains firmware-managed; only idle
+transaction-free handoffs tested. Active DMA/link/queue reset and simultaneous
+packet requests remain unqualified and must be rejected/quiesced before use.
+
+Important integration findings: AXI64-bit/16-beat reader needs128-byte trace
+alignment, unlike current satman ALIGNMENT64. Recovered RX can stop; resetting
+an AXI reader with outstanding PS reads is unsafe. Next provide running-clock
+memory-side isolation/CDC and explicit quiescence, then native AUX trace storage/
+status before physical DDMA. Qualified board baselines remain unchanged.
+Evidence satellite-dma-offline-2026-10-16; detailed scope/reproducer
+ diagnostics/drtio/SATELLITE_DMA.md. No flash/SD/OTP/Si writes or board probes.

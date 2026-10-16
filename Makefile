@@ -236,3 +236,7 @@ test-drtio-aux-satellite:
 .PHONY: test-drtio-satellite-reset
 test-drtio-satellite-reset:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_reset.py' -v
+
+.PHONY: test-drtio-satellite-dma
+test-drtio-satellite-dma:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_dma.py' -v

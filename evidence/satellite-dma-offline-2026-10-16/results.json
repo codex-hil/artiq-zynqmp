@@ -1,0 +1,39 @@
+{
+  "kind": "RTL_SIMULATION_AND_HDL_NOT_HARDWARE",
+  "status": "PASS",
+  "piotr_revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+  "current_artiq_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "tests": {
+    "piotr_dma": 2,
+    "current_dma": 2,
+    "unchanged_packet_sed": 7,
+    "unchanged_split_reset": 3
+  },
+  "dma_drain_wait_cycles": {
+    "normal": [
+      520,
+      520
+    ],
+    "underflow_recovery": [
+      519,
+      520
+    ]
+  },
+  "fine_ts_width": 3,
+  "axi_trace_alignment_bytes": 128,
+  "hdl_sha256": "50c05e47e6aa06f7a1071ffb78a4a95d921d78b65c1fd0803f38b1c840cef921",
+  "source_sha256": {
+    "diagnostics/drtio/satellite_backend.py": "1d4e857f39018e03f59d769983f7325ff10556994b86941920eee33ce02532c0",
+    "diagnostics/drtio/test_satellite_dma.py": "2e6afd8a6b1245b7ebc6cecf636ba1ecc732e5ec3c701f12804e046d84e38c41",
+    "diagnostics/drtio/generate_satellite_backend.py": "76f4ed94827b6118ff6ad8e5d4a42d382cf01145c2c677df2cd1445dbd3b8cbb",
+    "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py": "673d0a713ccbec2b7b81914145b854449470fab6678a5c39b4dba8bee70e0f43"
+  },
+  "scope": "Native AXI DMA with native CRISwitch, real satellite SED/TTL, synchronous memory and packet model; quiescent handoff, fine3/time-offset and underflow recovery.",
+  "not_validated": [
+    "PS memory CDC and clock-loss isolation",
+    "active DMA reset/handoff/concurrent packet traffic",
+    "AUX distributed trace handling",
+    "Vivado or remote DMA hardware"
+  ],
+  "hardware_accessed": false
+}

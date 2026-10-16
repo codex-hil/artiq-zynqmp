@@ -1,0 +1,15 @@
+{
+  "kind": "generated RTL, not hardware validation",
+  "dma": true,
+  "global_fine_ts_width": 3,
+  "dma_base_alignment_bytes": 128,
+  "dma_scope": "same-clock AXI read/CRI switch only; quiescent ownership changes; no PS CDC, DDMA firmware or active reset qualification",
+  "clock_domain": "sys",
+  "channel_0": "TTL output",
+  "channel_1": "TTL input",
+  "lane_count": 8,
+  "fifo_depth": 128,
+  "transport_requirement": "packet frame/data synchronous to sys",
+  "external_synchronization": "NOT_RUN",
+  "aux_reset_service": "NOT_IMPLEMENTED"
+}

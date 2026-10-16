@@ -9,10 +9,11 @@ from artiq.gateware.rtio.tsc import TSC
 from artiq.gateware.rtio.channel import Channel
 from artiq.gateware.rtio.phy.ttl_simple import Output, Input
 from satellite_packet import CheckedRTPacketSatellite
+from artiq.gateware.rtio import cri
 
 
 class SatelliteBackend(Module):
-    def __init__(self, packet_link, output_pad, input_pad=None, glbl_fine_ts_width=0):
+    def __init__(self, packet_link, output_pad, input_pad=None, glbl_fine_ts_width=0, dma_membus=None):
         self.rtio_reset, self.phy_reset = Signal(), Signal()
         self.reset_applied, self.phy_reset_applied = Signal(), Signal()
         self.submodules.tsc = TSC(glbl_fine_ts_width=glbl_fine_ts_width)
@@ -24,7 +25,18 @@ class SatelliteBackend(Module):
         self.submodules.rtio = ClockDomainsRenamer({'rio':'sys'})(ResetInserter(['rio'])(SyncRTIO(
             self.tsc, [Channel.from_phy(self.phy), Channel.from_phy(self.input_phy)],
             lane_count=8, fifo_depth=128)))
-        self.submodules.packet = CheckedRTPacketSatellite(packet_link, self.rtio.cri)
+        packet_cri = self.rtio.cri
+        if dma_membus is not None:
+            # Optional same-clock laboratory path only. Reuse the qualified
+            # M-Labs AXI DMA port and native switch, not a new trace decoder.
+            # The caller must own all transactions and switch only while idle.
+            # Do not reset AXI DMA with queue reset: outstanding reads must drain.
+            from zynqmp_dma import DMA
+            self.submodules.dma = DMA(dma_membus)
+            packet_cri = cri.Interface()
+            self.submodules.cri_switch = cri.CRISwitch(
+                [packet_cri, self.dma.cri], self.rtio.cri)
+        self.submodules.packet = CheckedRTPacketSatellite(packet_link, packet_cri)
         self.comb += [self.tsc.load.eq(self.packet.tsc_load),
             self.tsc.load_value.eq(self.packet.tsc_load_value),
             self.rtio.reset_rio.eq(self.rtio_reset),
