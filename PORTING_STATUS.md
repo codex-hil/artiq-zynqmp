@@ -1658,3 +1658,23 @@ OTP/Genesys Si writes. Evidence kasli03-external-dio-final-2026-10-15; instructi
 diagnostics/drtio/DIO_EXPERIMENT.md, database examples/device_db_kasli_genesys.py.
 Next safe scope: more pulse patterns/error controls and DRTIO stability, then
 measured phase/deterministic latency and remaining satellite services.
+
+### 2026-10-16 — external DRTIO varied pulse stability PASS
+
+Two normal Kasli kernels PASS,4096 measured physical JB1/JB2 edges from2048
+pulses in256 drained batches. Four width/period pairs800/16000,8000/40000,
+10000/100000,30000/250000mu; every high width and rising interval exact.256
+empty final reads,eight native core.reset invocations within stability kernels.
+No new master RTIO/reset/buffer/TSC or firmware errors.18 host controls PASS;
+NAC3 static compilation PASS. Not saturation/maximum throughput qualification.
+
+First session refused JTAG connection before any programming; restoration also
+could not connect, so its FAIL record is retained (no board writes occurred).
+Old hw_server container absent; another thread's Vivado container occupied its
+old172.17.0.2 address. Under shared locks started Genesys-filtered hw_server
+34e5dd105b4c at172.17.0.3:3121, leaving other container untouched. This endpoint
+supersedes stale address examples until rediscovery. New session passed all
+load/test/restoration checks. Kasli diagnostic/125MHz profile and Genesys normal
+192.168.2.3 localTTL/DMA/analyzer/MonInj/Ethernet restored PASS. No flash/SD/OTP/
+Genesys Si writes. Evidence kasli03-external-stability-v2-2026-10-16. Next genuine
+link DOWN/retraining/new-TSC-ACK/UP and repeated DIO, separately from RTIO reset.

@@ -141,3 +141,21 @@ class ExternalDIOAcceptanceTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):self.exercise(up=False)
     def test_native_error_rejects_measurement(self):
         with self.assertRaises(RuntimeError):self.exercise(error=True)
+
+class ExternalStabilityAcceptanceTests(unittest.TestCase):
+    def exercise(self,marker=True,error=False,up=True):
+        with tempfile.TemporaryDirectory() as tmp:
+            s=module.ExternalSession.__new__(module.ExternalSession)
+            s.output=Path(tmp);s.config={'artiq_python':'fake'};s.result={}
+            def run(name,*a,**kw):
+                if name.startswith('master-stability-'):return 'DRTIO_STABILITY_PASS 2048 128' if marker else 'partial'
+                return ('[DEST#1] destination is up' if up else 'down')+(' reset failed' if error and name=='master-after-stability-log' else '')
+            s.run=run;uart=SimpleNamespace(in_waiting=0,read=lambda n:b'')
+            with patch.object(module.time,'monotonic',side_effect=itertools.count()):s.probe_stability('fake',uart,bytearray())
+            self.assertEqual(s.result['stability_edges'],4096)
+    def test_requires_complete_measurement(self):
+        self.exercise()
+        with self.assertRaises(RuntimeError):self.exercise(marker=False)
+    def test_requires_up_and_no_new_native_errors(self):
+        with self.assertRaises(RuntimeError):self.exercise(up=False)
+        with self.assertRaises(RuntimeError):self.exercise(error=True)

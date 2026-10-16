@@ -41,7 +41,9 @@ class ExternalSession:
                 raise ValueError('Observer artifact hash mismatch: ' + key)
         self.mapping = json.loads(Path(c['csr_map']).read_text())
         self.tsc_test = c.get('mode') == 'external-tsc-down'
+        self.stability_test = bool(c.get('stability_test',False))
         self.dio_test = bool(c.get('dio_test',False))
+        if self.stability_test and not self.dio_test: raise ValueError('Stability requires physical DIO configuration')
         self.reset_test = bool(c.get('reset_test',False))
         if self.dio_test and not self.reset_test: raise ValueError('DIO requires reset test')
         if self.reset_test and not self.tsc_test: raise ValueError('Reset test requires TSC mode')
@@ -207,6 +209,7 @@ disconnect
                         raise RuntimeError('Reset probe requires observed cold release and TSC ACK')
                     self.probe_reset(master_host,uart,raw)
                     if getattr(self,'dio_test',False): self.probe_dio(master_host,uart,raw)
+                    if getattr(self,'stability_test',False): self.probe_stability(master_host,uart,raw)
             finally:
                 (self.output/'aux-uart.log').write_bytes(raw)
         text = raw.decode(errors='replace')
@@ -303,6 +306,35 @@ disconnect
             remote_drtio='direct-leaf physical TTL PASS; remaining satellite services incomplete',
             rising_edge_spacing_mu=100000,remote_rtio='physical TTL output/input PASS',
             dio_scope='Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED')
+
+    def probe_stability(self,master_host,uart,raw):
+        c=self.config
+        before=self.run('master-before-stability-log',[c['artiq_python'],'-m',
+            'artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+        if '[DEST#1] destination is up' not in before:raise RuntimeError('Stability requires native destination UP')
+        for i in range(2):
+            log=self.run('master-stability-'+str(i),[c['artiq_python'],'-m','artiq.frontend.artiq_run',
+                '--device-db='+str(self.output/'dio-device-db.py'),
+                '--dataset-db='+str(self.output/'stability-datasets.mdb'),
+                str(REPO/'examples/kasli_drtio_stability.py')],timeout=120,host=True)
+            if not re.search(r'DRTIO_STABILITY_PASS\s+2048\s+128',log):
+                raise RuntimeError('Missing physical width/spacing stability result')
+            end=time.monotonic()+1
+            while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
+        after=self.run('master-after-stability-log',[c['artiq_python'],'-m',
+            'artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+        bad=r'reset failed|RTIO (?:sequence|collision|busy) error|failed to sync TSC|timeout attempting to get remote buffer space'
+        if len(re.findall(bad,after))!=len(re.findall(bad,before)):
+            raise RuntimeError('New native master error in stability test')
+        text=raw.decode(errors='replace')
+        if any(t in text for t in ('AUX_FW PANIC','AUX_RESET REJECT','AUX_SERVICE SEND_FAIL','AUX_SERVICE RX_ERROR')):
+            raise RuntimeError('Satellite fault in stability test')
+        self.result.update(dio_stability='PASS',stability_runs=2,
+            stability_edges=4096,stability_pulses=2048,stability_batches=256,
+            stability_widths_mu=[800,8000,10000,30000],
+            stability_periods_mu=[16000,40000,100000,250000],
+            stability_empty_reads=256,stability_native_rtio_resets=8,
+            stability_scope='Both physical edge timestamps and widths/periods; no link-loss/retraining or absolute phase proof')
 
     def restore(self):
         if not self.touched: return

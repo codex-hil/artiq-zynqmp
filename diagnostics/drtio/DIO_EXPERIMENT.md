@@ -56,3 +56,28 @@ Both returned `DRTIO_DIO_PASS 8 100000`; native destination1 UP, no new master
 reset/RTIO/buffer/TSC errors, and both board restorations passed. Genesys local
 TTL/DMA/analyzer/MonInj and Ethernet regression checks passed afterward. See
 `evidence/kasli03-external-dio-final-2026-10-15/acceptance.json` and raw logs.
+
+## Bounded stability test
+
+`examples/kasli_drtio_stability.py` measures both edges of1024 pulses per
+kernel, in128 batches of eight pulses. The input FIFO is drained after each
+16-edge batch and a seventeenth read must be empty. Four width/period pairs
+(in1ns machine units) repeat evenly:
+
+| Width | Period |
+|---:|---:|
+|800|16000|
+|8000|40000|
+|10000|100000|
+|30000|250000|
+
+Every high time and rising-to-rising interval must match exactly. Native
+core.reset is invoked at batches0,32,64,96. Two kernel executions measure4096
+physical edges,256 empty reads and eight native resets. This tests integrity
+and varied scheduling; it is not maximum sustained throughput or FIFO capacity.
+
+The guarded session enables this with `stability_test: true` in its reviewed
+external DIO configuration. It requires standard DIO acceptance first, captures
+both standard artiq_run results, rejects new master/firmware errors, and restores
+the same baseline. Static artiq_compile can use a localhost-only device database;
+it performs no physical board access.

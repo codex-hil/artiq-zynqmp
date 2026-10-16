@@ -1,0 +1,5 @@
+{
+  "kind": "hardware-diagnostic-load",
+  "status": "FAIL",
+  "error": "reset: Connection refused\n    while executing\n\"error $message\"\n    (procedure \"connect\" line 143)\n    invoked from within\n\"connect -url $server\"\n    (file \"/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/reset_genesys_ps.tcl\" line 16)\n"
+}

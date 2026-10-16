@@ -1,0 +1,8 @@
+FAIL reset: Connection refused
+    while executing
+"error $message"
+    (procedure "connect" line 143)
+    invoked from within
+"connect -url $server"
+    (file "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/reset_genesys_ps.tcl" line 16)
+
