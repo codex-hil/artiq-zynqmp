@@ -10,6 +10,29 @@ CABLE='210383B7F02DA'
 XSDB='/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb'
 
 
+def abort_trace_bytes():
+    """Offline fixture only: exceed the target's 8x128 SED queue capacity.
+
+    No input-gate records: abort resets input control, so the eventual physical
+    test must arm observation through packets after recovery, before offset.
+    A guarded host-only test may use this 32KiB window (256 bursts). Native
+    AUX DDMA remains limited to 1024 payload bytes/16 bursts.
+    """
+    records=[]
+    for i in range(1100):
+        records.append(bytes([17,0,0,0])+struct.pack('<Q',1000000+i*16000)+
+                       bytes([0])+struct.pack('<I',1-(i%2)))
+    return (b''.join(records)+b'\0').ljust(32768,b'\0')
+
+
+def qualified_dma_shape(qualification):
+    """Accept only known routed CDC shapes, including snapshot-enabled target."""
+    return (qualification.get('status')=='PASS' and
+            (qualification.get('groups'),qualification.get('endpoints')) in
+            ((6,164),(8,170)) and qualification.get('requirement_ns')==8 and
+            qualification.get('minimum_slack_ns',-1)>=0)
+
+
 def trace_bytes():
     events=[(1,0,2,3)]
     for i in range(4):
@@ -94,7 +117,7 @@ def run_probe(config,output,timestamp):
     fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
     c=json.loads(Path(config).read_text());build=Path(c['bitstream']).parent
     q=json.loads((build/'dma-cdc-results.json').read_text())
-    if q.get('status')!='PASS' or q.get('endpoints')!=164:raise ValueError('DMA implementation unqualified')
+    if not qualified_dma_shape(q):raise ValueError('DMA implementation unqualified')
     for name,expected_hash in q['sha256'].items():
         if hashlib.sha256((build/name).read_bytes()).hexdigest()!=expected_hash:
             raise ValueError('Stale DMA qualification: '+name)

@@ -792,3 +792,42 @@ restoration. No flash/SD/OTP/GenesysSi writes. Evidence kasli03-abort-handoff-
 {idle,long}-hardware-2026-10-16. Physical abort/fault status injection NOT_RUN;
 production error recovery remains fail-closed. Next prepare bounded host-armed
 abort-to-native-packet diagnostic with canceled-output and postabort-DIO checks.
+
+
+### Preparation for physical abort cancellation test (2026-10-16)
+
+The existing host-armed ten-record trace may finish admission before a DAP
+abort. An abort after completion would not validate queue cancellation. New
+`abort_trace_bytes()` is an offline-only fixture:1100 alternating TTL writes
+(channel0, address0), strictly increasing fine3 timestamps1000000+16000*i,
+terminator plus zero padding to32768bytes. This exceeds the target's nominal
+8x128 SED slots. Native RecordSlicer decodes all1100 records and terminator
+correctly in both current and Piotr trees. This does not yet prove actual
+backpressure in the complete engine. Tests also retain short-trace coverage.
+
+The future guarded host-only diagnostic may reserve256 bursts in the existing
+exclusive DDR arena. Native AUX remains limited to1024 payload bytes/16 bursts;
+the fixture is not enabled by any live wrapper. The old host probe qualification
+now accepts only known6/164 and8/170 CDC shapes, with8ns requirement and
+nonnegative slack, while retaining per-artifact hash verification.
+
+Required next steps before hardware use:
+
+1. Prove long-fixture backpressure and abort drain with the complete native SED
+   model. Confirm actual outstanding-read conservation at the256-burst bound.
+2. Integrate an opt-in host probe under the existing parent/all4 leases. Use
+   bounded block DDR write/readback, not thousands of individual DAP accesses.
+   Validate a live TSC snapshot and ample future offset after loading.
+3. Require accepted counter+1 and active1/pending0 after a settling interval.
+   If DMA already completed, fail the test; do not claim cancellation. Abort,
+   then require result bit0, no extra faults, completed+1 and active0 (which
+   includes recovery handshake), with unchanged TSC epoch and live link.
+4. Abort resets input control. Rearm the physical input through normal RT
+   packets after recovery and before the canceled events; capture beyond the
+   last canceled timestamp. Assert no edges. Then exercise ordinary DIO
+   without a new DMA start or core.reset masking the handoff.
+5. Record failure evidence and restore both baselines in all cases. No flash,
+   SD, OTP, Genesys Si writes. Paused recovered-clock hardware fault injection
+   is a separate test; running-clock cancellation alone cannot qualify it.
+
+Evidence `evidence/dma-abort-fixture-offline-2026-10-16`; no HW accessed.

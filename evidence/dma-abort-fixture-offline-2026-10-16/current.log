@@ -1,0 +1,12 @@
+test_abort_fixture_exceeds_sed_capacity_and_is_bounded (test_satellite_dma_probe.ProbeTests.test_abort_fixture_exceeds_sed_capacity_and_is_bounded) ... ok
+test_abort_fixture_native_decoder (test_satellite_dma_probe.ProbeTests.test_abort_fixture_native_decoder) ... ok
+test_exact_ddr_bytes_decode_with_native_record_slicer (test_satellite_dma_probe.ProbeTests.test_exact_ddr_bytes_decode_with_native_record_slicer) ... ok
+test_invalid_epoch_or_arena_rejected_before_hardware (test_satellite_dma_probe.ProbeTests.test_invalid_epoch_or_arena_rejected_before_hardware) ... ok
+test_known_routed_cdc_shapes_only (test_satellite_dma_probe.ProbeTests.test_known_routed_cdc_shapes_only) ... ok
+test_abort_drain_then_native_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_abort_drain_then_native_packet_without_new_dma) ... ok
+test_rx_clock_pause_abort_then_packet_without_new_dma (test_dma_abort_handoff.HandoffTests.test_rx_clock_pause_abort_then_packet_without_new_dma) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 38.943s
+
+OK

@@ -2174,3 +2174,14 @@ restoration. No flash/SD/OTP/GenesysSi writes. Evidence kasli03-abort-handoff-
 {idle,long}-hardware-2026-10-16. Physical abort/fault status injection NOT_RUN;
 production error recovery remains fail-closed. Next prepare bounded host-armed
 abort-to-native-packet diagnostic with canceled-output and postabort-DIO checks.
+
+
+Physical abort test preparation2026-10-16 offline: short host trace can finish
+before DAPabort, so added disabled-by-default1100-record/32768B fixture beyond
+8x128 nominal SEDcapacity. Native RecordSlicer exact decode/terminator PASS
+current and Piotr; host qualification now accepts exact6/164 or8/170 CDC
+shapes with8ns/nonnegative slack and unchanged hash validation. Native AUX
+1024B/16burst policy unchanged. No hardware access. Full-engine256burst
+backpressure proof, guarded block-load/live-TSC/active checks and postabort
+input rearm/no-edge+DIO experiment remain pending; detailed sequence in
+SATELLITE_DMA.md. Evidence dma-abort-fixture-offline-2026-10-16.

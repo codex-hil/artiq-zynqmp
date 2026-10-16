@@ -1,0 +1,13 @@
+{
+  "status": "PARTIAL_OFFLINE_PASS",
+  "native_decoder": "1100 records and terminator PASS current/Piotr",
+  "fixture_bytes": 32768,
+  "host_only_burst_budget": 256,
+  "native_aux_policy": "unchanged 1024-byte payload / 16 bursts",
+  "hardware_access": "NONE",
+  "remaining": [
+    "full engine backpressure qualification of long fixture",
+    "guarded abort probe and physical observation integration",
+    "physical abort cancellation and post-abort packet test"
+  ]
+}
