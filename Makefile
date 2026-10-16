@@ -298,3 +298,9 @@ test-drtio-tsc-reader:
 	mkdir -p $(abspath $(O))/tsc-reader
 	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_tsc_reader.c -o $(abspath $(O))/tsc-reader/test
 	$(abspath $(O))/tsc-reader/test
+
+.PHONY: test-drtio-ddma-reject
+test-drtio-ddma-reject:
+	mkdir -p $(abspath $(O))/ddma-reject
+	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_reject.c -o $(abspath $(O))/ddma-reject/test
+	$(abspath $(O))/ddma-reject/test

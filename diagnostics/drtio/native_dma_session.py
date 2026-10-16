@@ -64,6 +64,32 @@ def fragment_result(log,text):
         native_ddma_scope='29 physical pulses after native two-packet upload across record boundary; no abort/phase/jitter qualification')
 
 
+
+def long_lifecycle_result(log,text):
+    rows=re.findall(r'NATIVE_DDMA_LONG_LIFECYCLE_PASS phase=(\d+) replay=(\d+) edges=58 width_mu=(\d+) period_mu=(\d+) first_delta_mu=(\d+)',log)
+    expected=[(p,r,4000+p*2000,16000+p*4000) for p in range(3) for r in range(3)]
+    if len(rows)!=9 or [tuple(map(int,row[:4])) for row in rows]!=expected or not all(1000000<=int(row[4])<1100000 for row in rows):
+        raise RuntimeError('Incomplete long lifecycle physical timestamps')
+    uploads=re.findall(r'AUX_DDMA UPLOAD id=(\d+) status=(\d+) bytes=(\d+)',text)
+    if len(uploads)!=6 or [tuple(map(int,row[1:])) for row in uploads]!=[(1,1010),(2,10)]*3:
+        raise RuntimeError('Long lifecycle requires three two-packet uploads')
+    events=[]
+    for line in text.splitlines():
+        m=re.fullmatch(r'AUX_DDMA REPLY kind=(177|181|179) id=(\d+) succeeded=1',line)
+        if m:events.append((int(m[1]),m[2]))
+        m=re.fullmatch(r'AUX_DDMA STATUS id=(\d+) error=0',line)
+        if m:events.append((182,m[1]))
+    pattern=[177,177,181,182,181,182,181,182,179]
+    if len(events)!=27 or text.count('AUX_DDMA REPLY')!=18 or text.count('AUX_DDMA STATUS')!=9 or [k for k,_ in events]!=pattern*3:
+        raise RuntimeError('Long lifecycle operation order mismatch')
+    for p in range(3):
+        ids={id for _,id in events[9*p:9*p+9]}|{row[0] for row in uploads[2*p:2*p+2]}
+        if len(ids)!=1:raise RuntimeError('Long lifecycle mixed trace IDs')
+    return dict(native_ddma_long_lifecycle='PASS',native_ddma_plays=9,native_ddma_edges=522,
+        native_ddma_fragment_lengths=[1010,10]*3,
+        native_ddma_scope='three fragmented uploads, nine plays (six via handle), replacement/erase/reupload,522 physical edges; no abort/phase proof')
+
+
 def probe(session,master_host,uart,raw):
     c=session.config;out=session.output
     before=session.run('master-before-native-ddma-log',[c['artiq_python'],'-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
@@ -72,13 +98,15 @@ def probe(session,master_host,uart,raw):
     path=out/'native-ddma-device-db.py';path.write_text('device_db = '+repr(db)+'\n')
     lifecycle=bool(c.get('native_ddma_lifecycle',False))
     fragment=bool(c.get('native_ddma_fragmentation',False))
-    if fragment and lifecycle:raise ValueError('Select one native DDMA experiment')
+    long_lifecycle=bool(c.get('native_ddma_long_lifecycle',False))
+    if sum((fragment,lifecycle,long_lifecycle))>1:raise ValueError('Select one native DDMA experiment')
     example='kasli_drtio_native_dma_fragmented.py' if fragment else 'kasli_drtio_native_dma_lifecycle.py' if lifecycle else 'kasli_drtio_native_dma.py'
+    if long_lifecycle:example='kasli_drtio_native_dma_long_lifecycle.py'
     log=session.run('master-native-ddma-probe',[c['artiq_python'],'-m','artiq.frontend.artiq_run',
         '--device-db='+str(path),'--dataset-db='+str(out/'native-ddma-datasets.mdb'),
         str(Path(__file__).resolve().parents[2]/'examples'/example)],timeout=60,host=True)
     match=re.search(r'NATIVE_DDMA_PHYSICAL_PASS edges=8 width_mu=8000 period_mu=80000 first_delta_mu=(\d+)',log)
-    if not match and not lifecycle and not fragment:raise RuntimeError('Native DDMA physical timestamps absent')
+    if not match and not lifecycle and not fragment and not long_lifecycle:raise RuntimeError('Native DDMA physical timestamps absent')
     end=time.monotonic()+1
     while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
     text=raw.decode(errors='replace')
@@ -86,13 +114,17 @@ def probe(session,master_host,uart,raw):
     plays=re.findall(r'AUX_DDMA REPLY kind=181 id=(\d+) succeeded=1',text)
     status=re.findall(r'AUX_DDMA STATUS id=(\d+) error=0',text)
     removes=re.findall(r'AUX_DDMA REPLY kind=179 id=(\d+) succeeded=1',text)
-    if not lifecycle and not fragment and not (adds and len(plays)==len(status)==len(removes)==1 and plays==status==removes and set(adds)==set(plays)):
+    if not lifecycle and not fragment and not long_lifecycle and not (adds and len(plays)==len(status)==len(removes)==1 and plays==status==removes and set(adds)==set(plays)):
         raise RuntimeError('Missing native upload/playback/status/remove evidence')
     if any(t in text for t in ('AUX_DDMA FAIL_CLOSED','AUX_FW PANIC','AUX_SERVICE SEND_FAIL','AUX_SERVICE RX_ERROR')):
         raise RuntimeError('Native service fault')
     after=session.run('master-after-native-ddma-log',[c['artiq_python'],'-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
     bad=r'reset failed|RTIO (?:sequence|collision|busy) error|failed to sync TSC|timeout attempting to get remote buffer space'
     if len(re.findall(bad,before))!=len(re.findall(bad,after)):raise RuntimeError('New master fault during DDMA')
+    if long_lifecycle:
+        session.result.update(long_lifecycle_result(log,text))
+        session.result['native_ddma']='PASS'
+        return
     if fragment:
         session.result.update(fragment_result(log,text))
         session.result['native_ddma']='PASS'

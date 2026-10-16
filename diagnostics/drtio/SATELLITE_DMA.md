@@ -699,3 +699,28 @@ Next repeat long-trace handles/replacement and test bounded upload rejection/
 recovery offline before further physical negatives. Fragmentation PASS does not
 qualify reset/abort recovery, arbitrary RTIO records, general routing or phase/
 jitter/deterministic link latency.
+
+
+## Long native trace lifecycle physical PASS (2026-10-16)
+
+`kasli_drtio_native_dma_long_lifecycle.py` records three1020-byte versions,
+each uploaded as First1010/Last10, and plays each three times (six via handle).
+All9 plays/522 physical edges (261 pulses) PASS. Width/period pairs4000/16000,
+6000/20000,8000/24000mu, first_delta1000120mu throughout; no extra edges.
+Replacement and erase/reupload PASS. Checker requires six exact fragments,
+ordered18 successful replies plus9 error0 statuses with consistent per-phase ID.
+Four host preflight/parser tests PASS, including wrong length/width/status and
+missing erase negatives. Firmware/bit/master runtime unchanged.
+
+New `make test-drtio-ddma-reject` exercises source mismatch, orphan last,
+truncated/invalid final record, wrong destination, oversized accumulated payload
+and wire-array length, invalid status and busy ownership. ASan/UBSan PASS;
+zero mock start calls across all malformed uploads, then valid recovery/two
+admissions. This is host policy validation, not physical malformed-packet proof.
+
+Actual hardware session restored both board baselines PASS, including Kasli
+checker/clock profile and Genesys local TTL/CoreDMA/analyzer/MonInj/Ethernet
+at192.168.2.3. All4 leases held; no persistent/Genesys Si writes. Evidence
+`kasli03-native-ddma-long-lifecycle-hardware-2026-10-16` and
+`ddma-reject-offline-2026-10-16`. Next audit and RTL-test abort-to-packet handoff;
+current production service fails closed on abort and does not claim recovery.

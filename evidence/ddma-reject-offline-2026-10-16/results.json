@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "kind": "HOST_MOCK_ADMISSION_NOT_HARDWARE",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "invalid_start_callbacks": 0,
+  "valid_recovery_start_callbacks": 2,
+  "source_sha256": "115bab4be1cdcd0d84782c93d0460e134ddee7cb535efb92c292899d13882075"
+}

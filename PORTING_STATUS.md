@@ -2121,3 +2121,15 @@ PASS192.168.2.3; all4locks; no persistent/Genesys Si writes. Evidence ddma-credi
 build-2026-10-16,kasli03-credit2-idle-hardware-2026-10-16,kasli03-native-ddma-
 fragment-hardware-2026-10-16. Next long-handle/replacement and bounded invalid
 upload tests; abort/generalRTIO/phase/jitter remain unqualified.
+
+
+Native long DDMA lifecycle2026-10-16 physical PASS:3 fragmented1020B uploads,
+6packets1010/10;9plays (6handle),522edges/261pulses. Width/period4000/16000,
+6000/20000,8000/24000mu;first_delta1000120mu all9. Replace/erase/reupload PASS;
+18success replies+9error0status in required order.4parser/preflight tests PASS.
+New malformed-upload C policy ASan/UBSan PASS:0mockstarts on invalid inputs,
+valid recovery2starts; physical malformed traffic NOT_RUN. Both board restores/
+normal Genesys TTL/DMA/debug/Ethernet PASS192.168.2.3. All4locks; no persistent/
+Genesys Si writes. Firmware/bit unchanged. Evidence kasli03-native-ddma-long-
+lifecycle-hardware-2026-10-16,ddma-reject-offline-2026-10-16. Next abort-to-packet
+handoff audit/RTL recovery tests; current firmware abort remains fail-closed.

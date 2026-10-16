@@ -1,0 +1,62 @@
+{
+  "status": "EXTERNAL_DIO_LOOPBACK",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+  "remote_drtio": "direct-leaf physical TTL PASS; remaining satellite services incomplete",
+  "firmware_sha256": "acd37886053973bfe211b84a4e6b2ff8c80c7c5f5bba4fa75c7e8689e4236740",
+  "bit_sha256": "0c8fcc5c6b6e1721267dd453e2a1f4a97c89b426a0d22f6e795f996afccf5de9",
+  "reset_handshake": "PASS",
+  "reset_completed_load_counts": [
+    "1",
+    "1"
+  ],
+  "reset_ack_replies": 2,
+  "master_reset_errors_before": 0,
+  "master_reset_errors_after": 0,
+  "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+  "dio_loopback": "PASS",
+  "dio_runs": 2,
+  "pulses_per_run": 8,
+  "rising_edge_spacing_mu": 100000,
+  "remote_rtio": "physical TTL output/input PASS",
+  "dio_scope": "Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED",
+  "native_ddma_long_lifecycle": "PASS",
+  "native_ddma_plays": 9,
+  "native_ddma_edges": 522,
+  "native_ddma_fragment_lengths": [
+    1010,
+    10,
+    1010,
+    10,
+    1010,
+    10
+  ],
+  "native_ddma_scope": "three fragmented uploads, nine plays (six via handle), replacement/erase/reupload,522 physical edges; no abort/phase proof",
+  "native_ddma": "PASS",
+  "echo_replies": 1,
+  "destination_down_replies": 0,
+  "firmware_send_errors": 0,
+  "firmware_rx_errors": 0,
+  "unsupported_drops": 0,
+  "master_link_echo_observed": true,
+  "scope": "real external AUX codec/CRC echo and DOWN status, not production satellite",
+  "tsc_synchronization": "load/ACK only; offset/jitter/deterministic latency NOT_MEASURED",
+  "tsc_ack_counts": [
+    1
+  ],
+  "tsc_load_handshake": "PASS",
+  "tsc_snapshot": "PASS",
+  "tsc_snapshot_values": [
+    13817373008,
+    13819635288,
+    13825624304,
+    13831613288
+  ],
+  "tsc_snapshot_allowances": [
+    11466,
+    10932,
+    10534,
+    10534
+  ],
+  "restored_ip": "192.168.2.3"
+}
