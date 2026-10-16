@@ -1821,3 +1821,37 @@ DMA constraints pending; generated Vivado script fails closed until added.
 No Vivado/HW qualification or board access in this stage. Evidence
 satellite-dma-target-offline-2026-10-16. Next exact Gray/bundled constraints,
 routed timing checks, then bounded volatile bring-up and AUX DDMA service.
+
+### 2026-10-16 — satellite DDR DMA Vivado/CDC implementation PASS
+
+Optional satellite-DMA target now has exact generated-HDL CDC constraints:
+2x5-bit FIFO Gray pointers and64/2/24/64-bit held offset/error/channel/timestamp.
+Held sources are explicitly preserved, including constant TTL-target bits.
+All164 new data synchronizer endpoints are excluded from the general first-
+stage false path, with8ns datapath maximum delay and8ns bus skew. Missing HDL
+source/assignment/width fails generation.383 first-stage bits retained exactly.
+
+Vivado2025.2 build-vivado/satellite-dma-route-v3-2026-10-16 PASS, bitstream
+3ee1173c22e578f2c4e7d9ec8dc73de258c291ea6e1733d098e7abc135d8396c.
+WNS1.416ns/WHS0.003ns,14/14 bus-skew groups PASS (10Gray+4held).
+Routed checker independently finds all164 timed endpoints, each with8ns
+requirement/nonnegative slack; minimum slack7.157ns. No missing/false-pathed
+endpoint can qualify. Final checker binds checkpoint/HDL/map/manifest/TSV by
+hash; modified HDL hash negative rejected. Default qualified DIO build still
+passes its original8-group checker. Current-upstream HDL generation and twelve
+missing-assignment negative cases across legacy/current HDL passed.
+
+Initial attempt hit unsupported collection commands in Vivado Tcl; replaced
+with standard concat/foreach/lsearch. A cache path absent in the failed build
+was rejected before Vivado; reused original existing shared cache. Negative
+false-path test exposed Vivado returning a path with nonnumeric requirement;
+checker now explicitly rejects missing/nonnumeric timing before arithmetic.
+Build wrapper runs routed checks before accepting a DMA image. Reports/hashes
+are under evidence/dma-cdc-implementation-2026-10-16.
+
+No board programming/reset/network/UART access or persistent writes. This is
+routed FPGA implementation qualification only: DDR-to-RTIO hardware playback,
+AUX DDMA trace upload/validation/allocation/status and concurrent ownership
+policy remain unqualified/missing. Normal board baselines untouched. Next
+bounded volatile DDR-DMA playback/abort test under all shared device locks,
+then native AUX DDMA firmware integration and standard Kasli experiment.

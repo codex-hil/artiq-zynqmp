@@ -216,9 +216,38 @@ when the link is reset/down, no TSC load has been observed, explicit RTIO/PHY
 reset is requested, or reply/RTIO errors are latched. This is target wiring,
 not an AUX DDMA upload/playback service or a hardware-qualified image.
 
-The generated implementation script deliberately stops with an error until
-DMA Gray and bundled-data CDC constraints are implemented and checked. The
-manifest reports383 first-stage bits/10 Gray buses for the current legacy
-source configuration; it explicitly marks DMA physical constraints pending.
-Do not remove that guard merely to obtain a bitstream. The qualified default
-DIO target and board baselines remain separate.
+The initial HDL-only checkpoint deliberately blocked implementation pending
+DMA CDC constraints. The following implementation-check stage replaces that
+guard with exact constrained groups and routed endpoint checks. The manifest
+reports383 first-stage bits/10 Gray buses for the current legacy configuration.
+The qualified default DIO target and board baselines remain separate.
+
+### DMA CDC implementation checks
+
+The DMA variant now generates six exact source/first-stage groups from emitted
+HDL, including two5-bit Gray pointers and held64/2/24/64-bit payloads. Missing
+or ambiguous source/assignment/width rejects generation. Held source registers
+are deliberately preserved, including constant bits of this TTL-only target,
+so synthesis cannot silently shrink the checked payload contract.
+
+The164 data synchronizer endpoints are excluded from the general first-stage
+false path and receive8ns datapath-only maximum-delay and8ns bus-skew limits.
+Other first-stage synchronizers retain the existing false path. The RTL launch
+and completion settling intervals remain necessary; these constraints alone do
+not make arbitrary changing multibit data coherent.
+
+Build with `DRTIO_SATELLITE_DMA=1 diagnostics/drtio/build_top.sh PS PHY FRESH_OUT`.
+The build checker requires all six exact post-synthesis checks and14 passing
+bus-skew groups (10 Gray plus4 held payload). The wrapper automatically runs
+the following routed check before accepting the build; it can also be repeated:
+
+```
+python diagnostics/drtio/check_dma_cdc.py FRESH_OUT
+```
+
+This opens only the routed checkpoint and requires a real timed path to each
+of164 first-stage endpoints, with8ns requirement and nonnegative slack. Missing, nonnumeric
+or false-pathed endpoints reject qualification. The final build check verifies
+the hashes of the checkpoint, HDL, map, manifest and endpoint TSV, so an old
+PASS cannot qualify changed artifacts. Reports/TSV and
+`dma-cdc-results.json` are implementation evidence, never hardware evidence.

@@ -488,3 +488,13 @@ Vivado script intentionally blocks pending DMA Gray/bundled constraints; do not
 remove guard without completing them. No HW access/new image. Next physical
 constraints and build, then AUX DDMA firmware. See latest PORTING_STATUS and
 evidence/satellite-dma-target-offline-2026-10-16; existing baselines unchanged.
+
+DMA implementation2026-10-16: optional target Vivado PASS at
+build-vivado/satellite-dma-route-v3-2026-10-16, bitsha3ee1173c22e578f2c4e7d9ec8dc73de258c291ea6e1733d098e7abc135d8396c.
+WNS1.416/WHS0.003ns,14bus-skew groups PASS.383 first-stage bits;164DMA data
+endpoints excluded from generic false path and individually timed at8ns;
+minimum slack7.157ns. check_dma_cdc.py + final artifact-hash binding required;
+build wrapper runs them. Default DIO checker PASS. No HW access/new boardimage.
+Native AUX DDMA upload/allocator/validation/status still missing. Next bounded
+volatile DDR-to-RTIO DMA/abort qualification, then firmware/normal experiment.
+See latest PORTING_STATUS and evidence/dma-cdc-implementation-2026-10-16.

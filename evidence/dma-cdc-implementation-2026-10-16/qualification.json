@@ -1,0 +1,53 @@
+{
+  "kind": "FPGA_IMPLEMENTATION_NOT_HARDWARE",
+  "status": "PASS",
+  "build_directory": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/satellite-dma-route-v3-2026-10-16",
+  "timing": {
+    "wns_ns": 1.416,
+    "whs_ns": 0.003,
+    "bus_skew_groups": 14
+  },
+  "cdc": {
+    "first_stage_bits": 383,
+    "gray_buses": 10,
+    "held_payload_buses": 4,
+    "individually_timed_endpoints": 164,
+    "minimum_slack_ns": 7.157
+  },
+  "negative_controls": {
+    "removed_assignment_legacy": 6,
+    "removed_assignment_current": 6,
+    "false_path_rejected": "PASS",
+    "stale_hdl_hash_rejected": "PASS"
+  },
+  "current_upstream_hdl": "PASS_NOT_ROUTED",
+  "default_dio_build_regression": "PASS",
+  "hardware_access": "NONE",
+  "aux_ddma_firmware": "MISSING",
+  "hardware_ddr_dma": "NOT_RUN",
+  "artifacts_sha256": {
+    "top.bit": "3ee1173c22e578f2c4e7d9ec8dc73de258c291ea6e1733d098e7abc135d8396c",
+    "top.v": "21cd4b0fc9a95e79173e79fbbb7eb4f116f02fd525fe7f39f5f01418df6dfd1f",
+    "top_route.dcp": "cfe272e43ce54db01b28bb1500caf428c363af8eb1cac1feee03221b9dac1f5d",
+    "top.xdc": "c9d9ecb3c03aef3b104ab7dd501612ef91005cc1bd84c2fa91f79de77a2dc406",
+    "csr-map.json": "8f367b32b6af6a810cc99c74d6550f58adb556984e77d72ea9657a2131416ad6",
+    "cdc-manifest.json": "2be2eed674a39eda2ec93722fe312db36d51f80badc8d20a6c46b98d4e339b3e",
+    "top_timing.rpt": "0bfd1cba8c2d53666376306568ffa94e6bc7d6da6b54d5f78703192f20bc7a2c",
+    "top_bus_skew.rpt": "4eac16b9e0e93e52bbdc5dea3cac9cdd652ee44c133b89e1bf68ccf65a0f078e",
+    "check_dma_cdc.tcl": "5c105abe256313f493f822a29f226f09f8f24b25b5e8fa1d9e21a586a2f73bb7",
+    "negative_dma_cdc.tcl": "d9bd40f868d3e0090e20e1df76d854b0b18e8950022eb22260834fc85d9283b1"
+  },
+  "sources_sha256": {
+    "diagnostics/drtio/build_top.sh": "cf7a1c690368a9bc6d4841e268020bb032da8550a9f126935966da4a23c92d13",
+    "diagnostics/drtio/check_top_build.py": "1ac40ace75d2f0f6aef94ebc5d48967e475b723d7066ba66ffbfa383a0c65f2f",
+    "diagnostics/drtio/diag_gateware.py": "17c7ca3e07d89ec888263961d94b6dc5d04949fd5b403b4c5ee342ebc8ebee8b",
+    "diagnostics/drtio/dma_async_engine.py": "ad9a4f9cbd1b63b19ce0d75ce68ededa61474db7c7aab31ca793de69ffc7c724",
+    "diagnostics/drtio/dma_cdc_constraints.py": "5b585a1825cedb280753f41119dccc0791bdcc3bad47c62fdd2df784f8419438",
+    "diagnostics/drtio/check_dma_cdc.py": "7d1e4053f07829183ab8226f170a4b29099e02a9c40ba31e895847f721e708dd"
+  },
+  "compatibility_fixes": [
+    "standard Tcl list operations replace unsupported collection commands",
+    "use existing original IP cache; failed build has no IP cache directory",
+    "reject nonnumeric timing on false-pathed paths before arithmetic"
+  ]
+}

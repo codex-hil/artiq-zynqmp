@@ -25,6 +25,22 @@ def main():
                   5 if 'aux_bridge_busy' in mapping['registers'] else
                   19 if 'packets_alignment' in mapping['registers'] else
                   9 if 'protocol_alignment' in mapping['registers'] else 3)
+    if mapping.get('dma'):
+        skew_count += 6  # two FIFO Gray and four held payload buses
+        manifest = json.loads((a.build/'cdc-manifest.json').read_text())
+        if len(manifest.get('dma_crossings',[])) != 6:
+            raise ValueError('Missing exact DMA CDC constraints')
+        qualified = json.loads((a.build/'dma-cdc-results.json').read_text())
+        if qualified.get('status') != 'PASS' or qualified.get('endpoints') != 164 or qualified.get('groups') != 6:
+            raise ValueError('Missing routed DMA endpoint qualification')
+        for name,expected_hash in qualified['sha256'].items():
+            if hashlib.sha256((a.build/name).read_bytes()).hexdigest() != expected_hash:
+                raise ValueError('Stale DMA endpoint qualification: '+name)
+        log = (a.build/'build.log').read_text()
+        for group in manifest['dma_crossings']:
+            expected = 'DMA_CDC_CHECK {source} {bits} {bits}'.format(**group)
+            if not re.search('^'+re.escape(expected)+'$',log,re.M):
+                raise ValueError('Missing implemented DMA CDC group: '+group['source'])
     skew = (a.build/'top_bus_skew.rpt').read_text()
     if 'VIOLATED' in skew or len(re.findall(r'Slack \(MET\)', skew)) != skew_count:
         raise ValueError('Expected all Gray bus-skew constraints to pass')
@@ -32,7 +48,8 @@ def main():
     if mapping['magic'] != 0x44525430:
         raise ValueError('Wrong CSR map')
     result = {'kind':'fpga-build-not-hardware','status':'PASS',
-        'scope':'separate raw GTH diagnostic; not a DRTIO satellite',
+        'scope':('laboratory satellite DDR DMA target; AUX DDMA firmware and hardware unqualified'
+                 if mapping.get('dma') else 'separate raw GTH diagnostic; not a DRTIO satellite'),
         'sha256':{n:hashlib.sha256((a.build/n).read_bytes()).hexdigest() for n in files}}
     a.output.write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

@@ -303,11 +303,15 @@ def main():
                    'gth_rx','gth_rx','gth_rx')
         prefixes += ['diagnostic_packetprobe_graycounter'+str(i)+'_'+domain
                      for i,domain in enumerate(domains)]
+    if args.satellite_dma:
+        platform.toolchain.post_synthesis_commands.append("write_checkpoint -force dma_synth.dcp")
+    first_stage_constraints = ("DMA_TIMED_CONSTRAINTS" if args.satellite_dma else
+        "set_false_path -to [get_pins -of_objects $first_sync -filter {REF_PIN_NAME == D}]")
     platform.toolchain.post_synthesis_commands.append("""
 # Vivado retains mr_ff on registers; Piotr's old Migen targets nets.
 set first_sync [get_cells -hierarchical -filter {mr_ff == TRUE && REF_NAME =~ FD*}]
 if {[llength $first_sync] != CDC_COUNT} {error "Missing first-stage CDC registers"}
-set_false_path -to [get_pins -of_objects $first_sync -filter {REF_PIN_NAME == D}]
+DMA_FIRST_STAGE_CONSTRAINTS
 foreach prefix {GRAY_PREFIXES} {
  set sources [get_cells -hierarchical -filter "NAME =~ ${prefix}_gray_source_reg* && REF_NAME =~ FD*"]
  if {[llength $sources] != 32} {write_checkpoint -force gray-debug.dcp; error "Missing Gray source registers: $prefix count=[llength $sources] cells=$sources"}
@@ -315,7 +319,7 @@ foreach prefix {GRAY_PREFIXES} {
  if {[llength $endpoints] != 32} {error "Unexpected Gray CDC endpoints: $prefix"}
  set_bus_skew 8 -from $sources -to $endpoints
 }
-""".replace("CDC_COUNT", str(first_stage_count)).replace("GRAY_PREFIXES", " ".join(prefixes)).replace("{", "{{").replace("}", "}}"))
+""".replace("DMA_FIRST_STAGE_CONSTRAINTS", first_stage_constraints).replace("CDC_COUNT", str(first_stage_count)).replace("GRAY_PREFIXES", " ".join(prefixes)).replace("{", "{{").replace("}", "}}"))
     if args.packets or args.aux:
         # Upstream master RX packet counter and the asynchronous reply FIFO
         # also use Gray buses. Constrain their first CDC register endpoints,
@@ -356,12 +360,14 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
         route = args.output.resolve() / 'top_route.tcl'
         route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))
         if args.satellite_dma:
-            # Fail closed until all added DMA Gray/bundled crossings have
-            # checked implementation constraints. HDL inspection is allowed.
-            manifest['dma_physical_constraints'] = 'NOT_ADDED_BUILD_BLOCKED'
+            from dma_cdc_constraints import dma_crossings,dma_tcl
+            groups = dma_crossings(text,marked)
+            manifest['dma_crossings'] = groups
+            manifest['dma_physical_constraints'] = 'GENERATED_NOT_IMPLEMENTATION_QUALIFIED'
             manifest['gray_counter_buses'] += 2
+            manifest['held_payload_buses'] = 4
             (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
-            route.write_text('error {Satellite DMA physical CDC constraints pending; HDL-only target}\n'+route.read_text())
+            route.write_text(route.read_text().replace('DMA_TIMED_CONSTRAINTS',dma_tcl(groups)))
 
 
 if __name__ == '__main__':

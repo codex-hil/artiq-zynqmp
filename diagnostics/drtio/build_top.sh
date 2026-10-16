@@ -15,6 +15,7 @@ if [ "${DRTIO_PROTOCOL:-0}" = 1 ]; then extra+=(--protocol); fi
 if [ "${DRTIO_PACKETS:-0}" = 1 ]; then extra+=(--packets); fi
 if [ "${DRTIO_AUX:-0}" = 1 ]; then extra+=(--aux); fi
 if [ "${DRTIO_SATELLITE:-0}" = 1 ]; then extra+=(--satellite); fi
+if [ "${DRTIO_SATELLITE_DMA:-0}" = 1 ]; then extra+=(--satellite-dma); fi
 if [ "${DRTIO_OBSERVER:-0}" = 1 ]; then extra+=(--observer); fi
 "$python_bin" "$repo/diagnostics/drtio/diag_gateware.py" "${extra[@]}" --ps "$ps" --phy "$phy" --output "$out" > "$out/generate.log" 2>&1
 # Piotr's Migen importer emits synth_ip in project mode. Use proper IP runs
@@ -51,4 +52,7 @@ PY
 cd "$out"
 vivado -mode batch -source top.tcl > build.log 2>&1
 sha256sum top.bit top.v top.xdc csr-map.json > artifacts.sha256
+if [ "${DRTIO_SATELLITE_DMA:-0}" = 1 ]; then
+ "$python_bin" "$repo/diagnostics/drtio/check_dma_cdc.py" "$out"
+fi
 "$python_bin" "$repo/diagnostics/drtio/check_top_build.py" "$out" --output "$out/results.json"

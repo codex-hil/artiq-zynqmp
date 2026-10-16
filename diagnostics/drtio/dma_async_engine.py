@@ -51,6 +51,10 @@ class AsyncSatelliteDMA(Module):
         self.submodules.consumer=c=ClockDomainsRenamer('rtio_rx')(DMAConsumer(len(membus.r.data)))
         self.cri=c.cri
         address=Signal.like(self.address);offset=Signal(64);offset_rx=Signal(64)
+        # Preserve complete held snapshots so implementation constraints can
+        # check every payload bit, including constant bits of this TTL target.
+        for held_payload in (offset,c.error,c.error_channel,c.error_timestamp):
+            held_payload.attr.add(('dont_touch','true'))
         bursts=Signal(32);abort_now=Signal()
         finish,complete=Signal(),Signal()
         abort_rx=Signal()
