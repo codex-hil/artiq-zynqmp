@@ -421,3 +421,16 @@ complete satellite service qualification. Both boards restored/validated,
 Genesys192.168.2.3 local TTL/DMA/debug/Ethernet PASS; locks released. Evidence
 kasli03-external-dio-final-2026-10-15; source examples/kasli_drtio_dio.py and
 DIO_EXPERIMENT.md. Initial NAC3 compile failure kept in separate evidence.
+
+
+2026-10-16 external DRTIO stability/recovery PASS. Two kernels measured4096
+physical edges,4 width/period patterns,256 empty final reads,eight native RTIO
+resets. Separate session forced two1s Genesys GTH resets: native master DOWN,
+fresh TSC ACK/new UP each time; four post-recovery DIO kernels PASS. Both boards
+restored/validated,Genesys192.168.2.3 local TTL/DMA/debug/Ethernet. Locks released.
+Evidence external-stability-v2/external-recovery-2026-10-16. No absolute phase/
+jitter/cable-removal proof; remote DMA NOT_IMPLEMENTED. Next native DMA+CRI work.
+Old JTAG server disappeared; started filtered Genesys-only hw_server container
+34e5dd105b4c,172.17.0.3:3121 (do not assume stale172.17.0.2 or touch other thread's
+Vivado container). Re-discover metadata before use. Initial connection-refused
+FAIL preserved; no board programming occurred in that failed attempt.

@@ -159,3 +159,32 @@ class ExternalStabilityAcceptanceTests(unittest.TestCase):
     def test_requires_up_and_no_new_native_errors(self):
         with self.assertRaises(RuntimeError):self.exercise(up=False)
         with self.assertRaises(RuntimeError):self.exercise(error=True)
+
+class ExternalLinkRecoveryTests(unittest.TestCase):
+    def exercise(self,ack=True,transition=True):
+        with tempfile.TemporaryDirectory() as tmp:
+            s=module.ExternalSession.__new__(module.ExternalSession)
+            s.output=Path(tmp);s.config={'artiq_python':'fake','port':'fake','server':'fake'};s.result={}
+            s.mapping={'registers':{'monitor_magic':{'address':0},'monitor_reset':{'address':4}}}
+            class UART:
+                in_waiting=0
+                remaining=b'AUX_TSC ACK count=1\n' if ack else b'no ack'
+                def __enter__(self):return self
+                def __exit__(self,*a):pass
+                def reset_input_buffer(self):pass
+                def read(self,n):r=self.remaining;self.remaining=b'';return r
+            tokens=['[LINK#0] link is down','[LINK#0] link initialization completed','[DEST#1] destination is up']
+            def run(name,*a,**kw):
+                if name.startswith('link-reset-'):return 'GENESYS_GTH_RESET_RELEASED'
+                cycle=int(name[-1]);n=cycle+1+(int('after' in name) if transition else 0)
+                return '\n'.join(tokens)*n
+            def dio(*a):
+                for name in ('master-dio-probe-0.log','master-dio-probe-1.log','master-before-dio-log.log','master-after-dio-log.log'):(s.output/name).write_text('probe')
+            s.run=run;s.probe_dio=dio
+            with patch.dict('sys.modules',serial=SimpleNamespace(Serial=lambda *a,**kw:UART())):
+                with patch.object(module.time,'monotonic',side_effect=itertools.count()):s.probe_link_recovery('fake')
+            self.assertEqual(len(s.result['link_recovery_cycles']),2)
+    def test_new_transition_and_ack_required(self):
+        self.exercise()
+        with self.assertRaises(RuntimeError):self.exercise(ack=False)
+        with self.assertRaises(RuntimeError):self.exercise(transition=False)

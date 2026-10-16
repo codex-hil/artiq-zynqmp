@@ -81,3 +81,32 @@ external DIO configuration. It requires standard DIO acceptance first, captures
 both standard artiq_run results, rejects new master/firmware errors, and restores
 the same baseline. Static artiq_compile can use a localhost-only device database;
 it performs no physical board access.
+
+## Forced GTH link recovery
+
+Configuration `recovery_test: true` requires qualified DIO/reset configuration.
+After baseline DIO acceptance, the parent retains every shared lease while an
+exact-cable XSDB script asserts only Genesys monitor_reset for1000ms. It neither
+reprograms PL nor resets the PS or Kasli. Two cycles each require one **new**
+master LINK#0 DOWN, initialization-completed and destination1 UP occurrence,
+one fresh actual-load TSCAck in that reset epoch, and two physical DIO kernels.
+New TSC/reset/RTIO/buffer errors reject acceptance. Raw UART/master logs are
+preserved per cycle, including baseline experiment logs. Normal restoration
+runs even if reset or retraining fails. This tests forced transceiver reset,
+not physical cable removal or deterministic recovered phase.
+
+## Next: distributed DMA
+
+Current upstream implements DmaAddTraceRequest/Reply, DmaRemoveTraceRequest/
+Reply, DmaPlaybackRequest/Reply and asynchronous DmaPlaybackStatus. Reuse those
+packet definitions and satman trace lifecycle. The default CoreDMA context
+records with enable_ddma=False; distributed recording must explicitly enable it.
+
+The current laboratory satellite routes only the RT packet engine to SyncRTIO.
+It has no DMA memory reader or CRI arbitration. Upstream Kasli satellite target
+connects drtiosat.cri, rtio_dma.cri and local rtio.cri through
+CRIInterconnectShared; satman/dma.rs drives the native engine and reports status.
+Genesys normal local-core DMA is a different already-qualified image. Its PASS
+does not imply remote DMA support in this satellite image. The next integration
+must provide a memory-backed upstream DMA engine, safe CRI ownership/reset and
+trace lifecycle/status handling, with RTL tests before hardware acceptance.

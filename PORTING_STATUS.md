@@ -1678,3 +1678,22 @@ load/test/restoration checks. Kasli diagnostic/125MHz profile and Genesys normal
 192.168.2.3 localTTL/DMA/analyzer/MonInj/Ethernet restored PASS. No flash/SD/OTP/
 Genesys Si writes. Evidence kasli03-external-stability-v2-2026-10-16. Next genuine
 link DOWN/retraining/new-TSC-ACK/UP and repeated DIO, separately from RTIO reset.
+
+### 2026-10-16 — forced GTH reset / external DRTIO recovery PASS
+
+Two bounded Genesys-only monitor_reset assertions1000ms, without PS/PL reload
+or Kasli reset. Each native master log gained exactly one LINK#0 DOWN, one link
+initialization-completed and destination1 UP. Each new reset epoch emitted one
+actual-load AUX_TSC ACK count1; no TSC rejection or new reset/RTIO/buffer/TSC
+errors. After each recovery two standard kernels measured8 rising edges at
+100000mu spacing. Four post-recovery kernels PASS in total. Separate baseline
+DIO and all cycle logs retained, so stale UP or old handshake cannot pass.
+19 host tests PASS including missing fresh ACK/transition negative controls.
+This is transceiver-reset recovery, not cable-removal or phase/jitter proof.
+
+Kasli full-checker + internal125MHz clock restored PASS. Genesys normal local
+core192.168.2.3 restored; TTL/DMA/analyzer/MonInj and ICMP/identity/TCP echo PASS.
+All Genesys/all-Kasli locks held across entire session and released. No flash/
+SD/OTP/Genesys Si writes. Evidence kasli03-external-recovery-2026-10-16. Next
+integrate native distributed-DMA memory reader/CRI ownership and trace protocol;
+current satellite image has no DMA engine. Upstream reuse map in DIO_EXPERIMENT.md.

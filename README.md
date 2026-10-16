@@ -323,3 +323,11 @@ This is a direct destination1 laboratory leaf; full satellite services and
 absolute phase/deterministic-latency qualification remain pending. Both boards
 are restored after each guarded session; load the qualified volatile images
 under the shared leases before running the experiment.
+
+
+DRTIO stability/recovery acceptance (2026-10-16):4096 physical edges with four
+pulse-width/period patterns passed, followed by two forced GTH reset/retrain
+cycles and four passing post-recovery DIO kernels. Both boards were restored
+and regression checked. See [stability kernel](examples/kasli_drtio_stability.py)
+and [test scope/recovery procedure](diagnostics/drtio/DIO_EXPERIMENT.md).
+Distributed DMA and absolute phase/jitter qualification remain pending.

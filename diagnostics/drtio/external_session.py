@@ -41,8 +41,10 @@ class ExternalSession:
                 raise ValueError('Observer artifact hash mismatch: ' + key)
         self.mapping = json.loads(Path(c['csr_map']).read_text())
         self.tsc_test = c.get('mode') == 'external-tsc-down'
+        self.recovery_test = bool(c.get('recovery_test',False))
         self.stability_test = bool(c.get('stability_test',False))
         self.dio_test = bool(c.get('dio_test',False))
+        if self.recovery_test and not self.dio_test: raise ValueError('Recovery requires qualified physical DIO')
         if self.stability_test and not self.dio_test: raise ValueError('Stability requires physical DIO configuration')
         self.reset_test = bool(c.get('reset_test',False))
         if self.dio_test and not self.reset_test: raise ValueError('DIO requires reset test')
@@ -122,7 +124,9 @@ class ExternalSession:
 
     def observe(self, master_host=None):
         if getattr(self, 'external_aux', False):
-            return self.observe_aux(master_host)
+            self.observe_aux(master_host)
+            if getattr(self,'recovery_test',False): self.probe_link_recovery(master_host)
+            return
         lines = ['lassign $argv server cable', 'connect -url $server', 'set matches {}',
             'foreach p [targets -target-properties -filter {name == "PSU"}] {',
             'if {[dict exists $p jtag_cable_serial] && [dict get $p jtag_cable_serial] eq $cable} {lappend matches [dict get $p target_id]}',
@@ -335,6 +339,62 @@ disconnect
             stability_periods_mu=[16000,40000,100000,250000],
             stability_empty_reads=256,stability_native_rtio_resets=8,
             stability_scope='Both physical edge timestamps and widths/periods; no link-loss/retraining or absolute phase proof')
+
+    def probe_link_recovery(self,master_host):
+        import serial
+        c=self.config
+        reg=self.mapping['registers']
+        lines=['lassign $argv server cable','connect -url $server','set matches {}',
+            'foreach p [targets -target-properties -filter {name == "PSU"}] {',
+            'if {[dict exists $p jtag_cable_serial] && [dict get $p jtag_cable_serial] eq $cable} {lappend matches [dict get $p target_id]}',
+            '}','if {[llength $matches]!=1} {error "Exact Genesys target missing"}',
+            'targets -set [lindex $matches 0]','configparams force-mem-accesses 1',
+            'if {[expr {wide([mrd -value '+str(reg['monitor_magic']['address'])+']) & 0xffffffff}] != 0x44525430} {error "Wrong PL"}',
+            'mwr '+str(reg['monitor_reset']['address'])+' 1','after 1000',
+            'mwr '+str(reg['monitor_reset']['address'])+' 0',
+            'puts "GENESYS_GTH_RESET_RELEASED"','disconnect']
+        tcl=self.output/'link-reset.tcl';tcl.write_text('\n'.join(lines)+'\n')
+        cycles=[]
+        for name in ('master-dio-probe-0.log','master-dio-probe-1.log',
+                     'master-before-dio-log.log','master-after-dio-log.log'):
+            source=self.output/name
+            if source.exists():(self.output/('initial-'+name)).write_bytes(source.read_bytes())
+        def master_log(name):
+            return self.run(name,[c['artiq_python'],'-m','artiq.frontend.artiq_coremgmt',
+                '-D',master_host,'log'],timeout=15,host=True)
+        for cycle in range(2):
+            before=master_log('master-before-recovery-'+str(cycle))
+            raw=bytearray()
+            with serial.Serial(c['port'],115200,timeout=.2,exclusive=True) as uart:
+                uart.reset_input_buffer()
+                try:
+                    reset=self.run('link-reset-'+str(cycle),['vivado-container','shell','-c','exec "$@"',
+                        'bash',XSDB,str(tcl),c['server'],CABLE],timeout=30)
+                    if 'GENESYS_GTH_RESET_RELEASED' not in reset:raise RuntimeError('GTH reset not confirmed')
+                    end=time.monotonic()+15
+                    while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
+                    after=master_log('master-after-recovery-'+str(cycle))
+                    tokens=['[LINK#0] link is down','[LINK#0] link initialization completed',
+                            '[DEST#1] destination is up']
+                    if not all(after.count(t)==before.count(t)+1 for t in tokens):
+                        raise RuntimeError('Native DOWN/reinitialization/destination-UP cycle absent')
+                    text=raw.decode(errors='replace')
+                    if len(re.findall(r'AUX_TSC ACK count=1\b',text))!=1 or 'AUX_TSC REJECT' in text:
+                        raise RuntimeError('Fresh actual-load TSC ACK absent after GTH reset')
+                    bad=r'failed to sync TSC|reset failed|RTIO (?:sequence|collision|busy) error|timeout attempting to get remote buffer space'
+                    if len(re.findall(bad,after))!=len(re.findall(bad,before)):
+                        raise RuntimeError('New native error after link recovery')
+                    self.probe_dio(master_host,uart,raw)
+                    # Preserve each cycle's standard experiment/log outputs.
+                    for name in ('master-dio-probe-0.log','master-dio-probe-1.log',
+                                 'master-before-dio-log.log','master-after-dio-log.log'):
+                        (self.output/('recovery-'+str(cycle)+'-'+name)).write_bytes((self.output/name).read_bytes())
+                    cycles.append({'cycle':cycle,'status':'PASS','hold_ms':1000,
+                        'fresh_tsc_ack':1,'native_down_up':True,'dio_runs':2})
+                finally:
+                    (self.output/('recovery-uart-'+str(cycle)+'.log')).write_bytes(raw)
+        self.result.update(link_recovery='PASS',link_recovery_cycles=cycles,
+            link_recovery_scope='Forced volatile Genesys GTH reset, native master link DOWN/new TSC ACK/UP and physical DIO again; no cable removal or absolute phase qualification')
 
     def restore(self):
         if not self.touched: return
