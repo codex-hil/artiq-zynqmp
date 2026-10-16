@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "offline only; no hardware access",
+  "error_mapping": {
+    "0": 0,
+    "4": 1,
+    "8": 2,
+    "12": 3,
+    "all_other_values": "fail closed without AUX status"
+  },
+  "tests": "ASan/UBSan service test; all 256 raw byte combinations and unknown bit 256",
+  "firmware_build": "PASS",
+  "hardware_fault_injection": "NOT_RUN",
+  "production_abort_recovery": "NOT_IMPLEMENTED"
+}

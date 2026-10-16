@@ -1,0 +1,4 @@
+mkdir -p /srv/codex-hil-data/artiq-zynqmp/build/ddma-status-map-2026-10-16/ddma-service
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_service.c -o /srv/codex-hil-data/artiq-zynqmp/build/ddma-status-map-2026-10-16/ddma-service/test
+/srv/codex-hil-data/artiq-zynqmp/build/ddma-status-map-2026-10-16/ddma-service/test
+DDMA_SERVICE_OFFLINE_PASS upload, admission, busy, status, recovery

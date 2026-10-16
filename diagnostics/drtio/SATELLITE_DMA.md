@@ -755,3 +755,27 @@ fails closed on abort; no recovery policy was relaxed and no HW was touched.
 Next qualify implementation/CDC, then prepare a bounded guarded handoff test.
 Native AUX fault-code mapping/recovery semantics need separate review before
 claiming production recovery. Prior long-DDMA hardware baseline is unchanged.
+
+
+### Routed abort fix and AUX error ABI audit (2026-10-16)
+
+The above Vivado run completed PASS: eight groups/170 CDC endpoints meet
+8ns, minimum slack7.206ns. Bitstream SHA256
+`21c187cbeaf98543153b126bda5fd32ee079f1b4345a8aa9ec057863b5af24a8`.
+This is implementation qualification only, not a physical abort test.
+
+Lab CSR error bits differ from the upstream AUX playback status ABI. Native
+CRI underflow/unreachable are CSR bits2/3, whereas master ksupport tests AUX
+bits0/1. `ddma_aux_error` now translates only these native errors, preserving
+channel/timestamp. All other errors (abort, AXI, alignment, watchdog, read
+budget, unknown bits) fail closed with raw UART telemetry and no playback
+status. The existing upstream master ignores unknown AUX error bits, so
+forwarding the raw byte could falsely indicate success or the wrong exception.
+Internal failure intentionally requires session restoration and can surface
+as a master timeout; this is not automatic recovery. No upstream edit needed.
+
+ASan/UBSan service tests exhaust all256 raw-byte combinations and reject a
+future unknownbit256. A53/Rust firmware compilation PASS; evidence in
+`evidence/ddma-status-map-offline-2026-10-16`. Both new image qualification on
+hardware and error-injection semantics remain NOT_RUN. The next session must
+qualify fresh bit/firmware idle before native playback regression.

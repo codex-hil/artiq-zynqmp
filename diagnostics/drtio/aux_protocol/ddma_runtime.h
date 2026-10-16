@@ -34,7 +34,12 @@ static void ddma_poll(void) {
   uint64_t now;
   if(db_read(&ddma_backend,DB_PENDING) && !db_read(&ddma_backend,DB_ACTIVE)) {
    unsigned error=db_read(&ddma_backend,DB_ERROR);
-   if(ddma_service_complete(&ddma,error,db_read(&ddma_backend,DB_CHANNEL),
+   int aux_error=ddma_aux_error(error);
+   if(aux_error<0) {
+    xil_printf("AUX_DDMA INTERNAL_ERROR raw=%u\r\n",error);
+    ddma_backend.faulted=1;ddma_fatal();return;
+   }
+   if(ddma_service_complete(&ddma,(unsigned)aux_error,db_read(&ddma_backend,DB_CHANNEL),
          db_read64(&ddma_backend,DB_TIMESTAMP)))ddma_fatal();
    if(error)ddma_backend.faulted=1; /* no unqualified post-error reuse */
   } else if(!ddma_ready(0) || rd(REG_AUX_TSC_LOAD_COUNT)!=ddma_epoch ||

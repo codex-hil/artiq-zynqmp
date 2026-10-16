@@ -2147,3 +2147,17 @@ handoff-route-2026-10-16/1500s, log build/dma-abort-handoff-vivado-session-
 2026-10-16.log. Freeze active RTL/build helpers. Next implementation qualification
 then bounded guarded hardware diagnostic; native firmware remains fail-closed
 and AUX fault mapping/production recovery still require review.
+
+
+Abort-handoff implementation2026-10-16 PASS: Vivado routed bit21c187cb...,
+8 CDC groups/170 endpoints,8ns requirements, minimum slack7.206ns. No hardware
+access. AUX error ABI audit found raw CSR values incompatible with native
+master: CRI underflow4/unreachable8 must become AUX1/2. Firmware now maps
+0/4/8/12 to0/1/2/3; any internal/unknown error terminates optical service
+without sending a status the current master could mistake for success. This
+retains fail-closed behavior; does not implement production abort recovery.
+Exhaustive256 byte values plus unknownbit256 ASan/UBSan PASS; actual A53/Rust
+firmware build PASS ELF668ca20c... . Existing success-only physical results
+remain valid; new bit/firmware and physical faults NOT_RUN. Evidence
+ddma-status-map-offline-2026-10-16. Next guarded fresh-image idle qualification
+and normal native DDMA regression before any bounded physical abort test.

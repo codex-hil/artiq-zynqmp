@@ -9,6 +9,12 @@ static int start(void *context,const uint8_t *bytes,size_t size,uint64_t ts) {
  return b->fail;
 }
 int main(void) {
+ for(unsigned raw=0;raw<256;raw++) {
+  int mapped=ddma_aux_error(raw);
+  if(raw & ~12u)assert(mapped==-1);
+  else assert(mapped==(int)(raw/4));
+ }
+ assert(ddma_aux_error(256)==-1); /* reject unknown future CSR bits too */
  struct ddma_service s;struct ddma_packet p={0},r;struct backend b={0,0};
  ddma_service_init(&s);p.destination=1;p.id=42;p.timestamp=8000;
  assert(ddma_service_request(&s,0xb4,&p,&r,1,start,&b)==0xb5 && !r.succeeded && !b.calls);

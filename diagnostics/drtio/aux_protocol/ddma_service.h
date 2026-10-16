@@ -2,6 +2,14 @@
 #pragma once
 #include "ddma_codec.h"
 #include "ddma_store.h"
+/* Lab CSR bits are not the upstream AUX status ABI. Only native CRI faults
+ * have a corresponding upstream status (underflow=1, unreachable=2).
+ * Internal faults must terminate the session instead of sending a misleading
+ * status: the current upstream master ignores other error bits.
+ */
+static inline int ddma_aux_error(unsigned raw) {
+ return (raw & ~12u) ? -1 : (int)(raw >> 2);
+}
 struct ddma_service {
  struct ddma_store store;
  unsigned running, status_pending;
