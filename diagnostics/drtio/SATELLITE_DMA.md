@@ -998,3 +998,33 @@ logs; offline `ddma-rejection-wrapper-offline-2026-10-17`. Next examine
 structured master upload error and idempotent rejected-trace cleanup without
 masking source/id ownership or changing successful playback. Runtime fault
 status injection and pausedRX hardware recovery remain NOT_RUN.
+
+
+### Identity-bound rejected-trace cleanup (2026-10-17, offline)
+
+On payload overflow or final record-validation failure, the staging slot now
+zeros every payload byte and retains only a rejected source/ID marker. Matching
+DmaRemoveTraceRequest succeeds repeatedly while that marker remains. Wrong
+source (including >255), wrongID or busy ownership still fails. No complete/
+uploading flag, length or playback eligibility survives invalidation. A new
+First fragment replaces the marker; stale cleanup cannot erase a newer
+upload or valid trace, even when source/ID differs. Successful trace removal
+semantics and the1024-byte/16-burst playback policy remain unchanged.
+
+Four ASan/UBSan store/service/rejection/backend suites PASS: zero payload,
+matching repeated cleanup, wrong source/ID, pending-status busy, no rejected
+playback, new First replacement and valid recovery. Fresh A53/Rust firmware
+compilation PASS at`build/native-ddma-rejected-cleanup-firmware-2026-10-17`.
+No HW access. Exact fresh-image idle qualification is required before repeating
+the rejection/recovery experiment; old qualification hashes deliberately fail.
+Evidence `evidence/ddma-rejected-cleanup-offline-2026-10-17`.
+
+Structured master error audit: DmaRecordStop currently uses synchronous mailbox
+`send`/ack with no result reply; runtime propagates upload failure out of the
+session and closes the socket. A correct kernel DMAError requires a coordinated
+reply in libproto_artiq, runtime and ksupport, followed by normal exception
+raising/unwinding, not merely acknowledging a failed upload. Keep original
+upstream and qualified master artifacts untouched; implement any such change
+as an optional isolated overlay with success/failure validation. Not implemented
+in this cleanup change. Next qualify fresh firmware idle then rejected upload
+cleanup/recovery with no extra eraseNACK; structured master exception later.

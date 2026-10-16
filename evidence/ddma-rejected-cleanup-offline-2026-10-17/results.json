@@ -1,0 +1,13 @@
+{
+  "status": "OFFLINE_PASS",
+  "hardware_access": "NONE",
+  "asan_ubsan_suites": 4,
+  "a53_rust_firmware_build": "PASS",
+  "cleanup_identity": "only last rejected source/id",
+  "repeated_cleanup": "PASS",
+  "wrong_source_id_busy": "REJECTED",
+  "payload_zeroed": "PASS",
+  "new_first_replaces_marker": "PASS",
+  "structured_master_exception": "AUDITED_NOT_IMPLEMENTED",
+  "physical_new_firmware": "NOT_RUN"
+}

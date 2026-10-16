@@ -41,9 +41,24 @@ int main(void) {
  p.status=2;p.length=44;memcpy(p.trace,real_trace+1010,44);add(&s,&p,0);
  playback(&s,&p,0);
  assert(starts==0 && !s.running && !s.store.complete);
+ /* Only the last rejected identity may acknowledge cleanup. No payload,
+  * playback admission or arbitrary-source erase is allowed by this marker.
+  */
+ assert(s.store.rejected && s.store.id==42 && s.store.source==0);
+ assert(!s.store.length && !s.store.uploading);
+ for(unsigned i=0;i<DDMA_WINDOW;i++)assert(s.store.bytes[i]==0);
+ struct ddma_packet reply;
+ p.source=1;ddma_service_request(&s,0xb2,&p,&reply,1,start,0);assert(!reply.succeeded);p.source=0;
+ p.id=43;ddma_service_request(&s,0xb2,&p,&reply,1,start,0);assert(!reply.succeeded);p.id=42;
+ s.status_pending=1;ddma_service_request(&s,0xb2,&p,&reply,1,start,0);assert(!reply.succeeded);s.status_pending=0;
+ for(unsigned i=0;i<2;i++) {
+  ddma_service_request(&s,0xb2,&p,&reply,1,start,0);assert(reply.succeeded);
+  playback(&s,&p,0);assert(starts==0);
+ }
  /* A fresh valid first/last upload must recover after each rejection chain. */
  p.status=3;p.length=17;memcpy(p.trace,record,17);add(&s,&p,1);playback(&s,&p,1);
  assert(starts==1 && s.running);
+ assert(!s.store.rejected); /* fresh First replaces the rejected identity */
  add(&s,&p,0);assert(s.store.complete); /* busy cannot corrupt active slot */
  assert(!ddma_service_complete(&s,0,0,0));playback(&s,&p,0);
  assert(!ddma_service_status_sent(&s));playback(&s,&p,1);assert(starts==2);

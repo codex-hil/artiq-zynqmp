@@ -39,5 +39,13 @@ int main(void) {
  assert(ddma_store_add(&s,0,42,4,r,34,0)<0 && s.complete);
  uint8_t oversized[17*90];memset(oversized,0,sizeof(oversized));
  assert(ddma_store_add(&s,0,42,3,oversized,sizeof(oversized),0)<0 && !s.complete);
+ assert(s.rejected && ddma_store_remove(&s,256,42,0)<0);
+ assert(ddma_store_remove(&s,0,42,0)==0);
+ assert(ddma_store_remove(&s,0,42,0)==0); /* repeated rejected cleanup */
+ assert(ddma_store_add(&s,7,99,1,r,5,0)==0 && !s.rejected);
+ assert(ddma_store_remove(&s,0,42,0)<0 && s.uploading); /* no stale identity */
+ assert(ddma_store_add(&s,7,99,2,r+5,29,0)==0 && s.complete);
+ assert(ddma_store_remove(&s,0,42,0)<0 && s.complete);
+ assert(ddma_store_remove(&s,7,99,0)==0);
  puts("DDMA_STORE_OFFLINE_PASS fragmented, bounds, records, ownership, busy, recovery");
 }

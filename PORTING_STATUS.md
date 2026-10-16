@@ -2256,3 +2256,13 @@ Kasli/clock and Genesys192.168.2.3 localTTL/DMA/debug/Ethernet PASS; all4locks;
 no persistent/GenesysSi writes. Evidence kasli03-native-ddma-rejection-hardware-
 2026-10-17. Next structured hosterror/idempotent rejectedcleanup audit; runtime
 faultstatus and pausedRX hardware remain NOT_RUN.
+
+
+Rejected cleanup2026-10-17 offline PASS: invalidation retains only source/ID
+marker with zero payload; matching repeated removeACK, wrongsource/ID/busyNACK,
+no playback, newFirst removes staleidentity. Four ASan/UBSan suites and fresh
+A53/Rust build PASS. No HW access; newfirmware idle/physicalcleanup NOT_RUN.
+Evidence ddma-rejected-cleanup-offline-2026-10-17. Master audit: structured
+DMAError requires coordinated recordstop reply in mailboxproto/runtime/ksupport;
+not solved by ACKing failed upload. Next freshfirmware qualification and repeat
+rejection/recovery without eraseNACK, then isolated mastererror overlay.
