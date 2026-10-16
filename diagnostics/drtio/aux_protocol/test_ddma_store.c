@@ -31,11 +31,13 @@ int main(void) {
  assert(ddma_store_add(&s,0,42,1,large,sizeof(large),0)==0);
  assert(ddma_store_add(&s,0,42,2,r,1,0)<0 && !s.uploading);
  assert(ddma_store_add(&s,0,42,3,r,34,0)==0); /* recovery */
- uint8_t maximum[17*90];
- for(unsigned i=0;i<90;i++)memcpy(maximum+17*i,r,17);
+ uint8_t maximum[17*60];
+ for(unsigned i=0;i<60;i++)memcpy(maximum+17*i,r,17);
  assert(ddma_store_add(&s,255,0xffffffff,3,maximum,sizeof(maximum),0)==0);
- assert(s.complete && s.length==1530 && s.bytes[1530]==0);
+ assert(s.complete && s.length==1020 && s.bytes[1020]==0);
  assert(ddma_store_add(&s,256,42,3,r,34,0)<0 && s.complete);
  assert(ddma_store_add(&s,0,42,4,r,34,0)<0 && s.complete);
+ uint8_t oversized[17*90];memset(oversized,0,sizeof(oversized));
+ assert(ddma_store_add(&s,0,42,3,oversized,sizeof(oversized),0)<0 && !s.complete);
  puts("DDMA_STORE_OFFLINE_PASS fragmented, bounds, records, ownership, busy, recovery");
 }

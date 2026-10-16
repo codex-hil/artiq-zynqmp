@@ -2092,3 +2092,18 @@ snapshot/reset/2DIO and both restores PASS; local Genesys TTL/DMA/debug/Ethernet
 at192.168.2.3. No persistent/Genesys Si writes. Evidence kasli03-native-ddma-
 lifecycle-hardware-2026-10-16. Next offline long-trace budget tests then native
 fragmentation; abort/phase/general RTIO remain unqualified.
+
+
+Long native DDMA2026-10-16 offline boundary:4-credit image fails1020-byte trace
+with65 before terminator; no physical long upload attempted.2-credit guard now
+passes1020-byte/60-record trace,16burst/2048B window unchanged. Payload limit
+reduced1536->1024 (whole17B max1020);1530B rejected by store, RTL injected1530B
+still proves budget/drain/recovery. Current CSR10+engine/CDC17 PASS; initial
+Python recovery-test local variable error fixed/retested. C ASan/UBSan and real
+codec1010+10 fragment reconstruction PASS; new A53 firmware build PASS. No HW.
+Vivado RUNNING satellite-dma-credit2-route-2026-10-16/1500s; log build/dma-credit2-
+vivado-session-2026-10-16.log. Piotr2boundary cases RUNNING. Freeze active build/
+RTL helpers. Next route qualification/new exact cold-DIO proof then physical
+fragmented29pulse test. Previous short lifecycle hardware baseline unchanged.
+
+Piotr boundary regressions2026-10-16:2/2 PASS (1020B completion,1530B bounded error/drain/restart). Vivado credit2 still RUNNING; no new bit/HW qualification.

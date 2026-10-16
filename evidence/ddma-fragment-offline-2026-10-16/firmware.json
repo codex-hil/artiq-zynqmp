@@ -1,0 +1,33 @@
+{
+  "kind": "FIRMWARE_BUILD_NOT_HARDWARE",
+  "status": "PASS",
+  "mode": "external-tsc-down",
+  "dio_leaf": true,
+  "snapshot_probe": true,
+  "snapshot_sources": {
+    "tsc_reader.h": "291cdb706fab01cec934107e05642375912a8ca8abb0927d0a37495922268e8a",
+    "tsc_a53.h": "68558a5048efda7f3c3a44fffe7a5287d4db83624ff9dd8740faffe636becedf",
+    "ddma_a53.h": "85481467612dfb53e3a9e9320fe73585a94bd71c8234ee5feb6df8238b64eb99",
+    "ddma_backend.h": "8e873fc519635145b5437dd10da4ac7b2648b17a6b4141f050522550c4343476"
+  },
+  "dma_bank_owner": "native AUX DDMA laboratory service",
+  "native_ddma": true,
+  "ddma_sources": {
+    "ddma_runtime.h": "932ecd920c89a4cdc3a78fe75ca77a026228157668d3cdc1dd9412958e490c50",
+    "ddma_service.h": "10a15e5f4095bad437bcf555827f635b0b18f74094e6797c2a3a131a02585eee",
+    "ddma_store.h": "49f84948e472ea14c0a73a52bd0faeb709831c1304da4901f06d4cfcaef9d013",
+    "ddma_backend.h": "8e873fc519635145b5437dd10da4ac7b2648b17a6b4141f050522550c4343476",
+    "ddma_a53.h": "85481467612dfb53e3a9e9320fe73585a94bd71c8234ee5feb6df8238b64eb99",
+    "ddma_codec.h": "429b2344ec669faca45c13b420568bfa1761afaad6b71af1bc5c16d0bc8207c3"
+  },
+  "leaf_policy_sha256": "b43a23508e48be1d61850859c4d6f82a430f040569ded767f2736441ec282a3e",
+  "reset_backend": true,
+  "reset_policy_sha256": "0217cb208a146b26b433573853803176ab8cfc9ad5199feb601c82ce62e7510e",
+  "elf_sha256": "acd37886053973bfe211b84a4e6b2ff8c80c7c5f5bba4fa75c7e8689e4236740",
+  "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "csr_map_sha256": "7e9713129e8324928b1222112e9cef5aaa216790e840654e6807a8cd70c14065",
+  "rust_source_sha256": "b4a78b93925c2a56181de859d28373585da543ebfb87eec97e10a2fb96a25fd4",
+  "ddma_codec_sha256": "1cab385aa8b75099573253f4eade82d5512b5d69c444699950ddc4f040c3cc96",
+  "tsc_policy_sha256": "1c3f5f96617a559e565a85e246447c3405f2dcd97b651ff637ae2c5b592d439d",
+  "c_source_sha256": "4d127f2bcf393530f7758e837dd2222588e3e05b57f92dba22d822e012efb685"
+}

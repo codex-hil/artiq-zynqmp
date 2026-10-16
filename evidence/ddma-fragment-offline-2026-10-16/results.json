@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "kind": "OFFLINE_NOT_HARDWARE",
+  "current_csr_tests": 10,
+  "current_engine_tests": 17,
+  "piotr_boundary_tests": 2,
+  "max_payload": 1024,
+  "max_whole_trace": 1020,
+  "padded_window": 2048,
+  "burst_budget": 16,
+  "outstanding_limit": 2,
+  "physical_fragmentation": "NOT_RUN",
+  "vivado": "RUNNING",
+  "sha256": {
+    "diagnostics/drtio/dma_memory_guard.py": "b632d2948d4f1929e44b106816484304f7f2842e3869fb8f4ac41069a4251b37",
+    "diagnostics/drtio/test_dma_csr.py": "e18feebfb939e17e9889a465f237c7adfbb594a795dcb9e435a2bce8794fb946",
+    "diagnostics/drtio/aux_protocol/ddma_store.h": "49f84948e472ea14c0a73a52bd0faeb709831c1304da4901f06d4cfcaef9d013",
+    "diagnostics/drtio/aux_protocol/ddma_runtime.h": "932ecd920c89a4cdc3a78fe75ca77a026228157668d3cdc1dd9412958e490c50",
+    "diagnostics/drtio/aux_protocol/test_ddma_wire.c": "71a939f102b94d4ba348818b4f35d1cd0b6884ab457031be7cabfef225dc88e1",
+    "diagnostics/drtio/aux_protocol/test_ddma_store.c": "551f4cf3e2be2bf8c6f44412686c582b6dfe5ff932f811a4cf3f294ed924c5ff"
+  }
+}

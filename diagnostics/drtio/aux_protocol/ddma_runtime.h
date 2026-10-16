@@ -49,6 +49,8 @@ static void ddma_poll(void) {
 }
 static int ddma_handle(unsigned kind,const struct ddma_packet *packet,unsigned ready) {
  struct ddma_packet reply;
+ if(kind==0xb0)xil_printf("AUX_DDMA UPLOAD id=%u status=%u bytes=%u\r\n",
+   packet->id,packet->status,packet->length);
  unsigned response=ddma_service_request(&ddma,kind,packet,&reply,ready && ddma_ready(0),
    ddma_backend_start,&ddma_backend);
  if(!response)return 0;

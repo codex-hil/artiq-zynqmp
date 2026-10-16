@@ -24,12 +24,14 @@ class DMAMemoryGuard(Module):
         # The original reader can issue one AR every cycle without an
         # outstanding limit. A real PS can accept dozens before the decoder
         # observes a short trace's terminator, exhausting its bounded window.
+        # Two credits leave headroom for the raw CDC FIFO plus the reserved
+        # drain bursts within a16-burst allocation for <=1024-byte payloads.
         # Preserve the upstream reader; throttle only new address admission.
         limited=AXIInterface(data_width=len(membus.r.data),
             address_width=len(membus.ar.addr),id_width=len(membus.ar.id))
-        self.outstanding=outstanding=Signal(max=5)
+        self.outstanding=outstanding=Signal(max=3)
         permit=Signal()
-        self.comb += permit.eq(outstanding<4)
+        self.comb += permit.eq(outstanding<2)
         for channel in ('aw','w'):
             self.comb += getattr(limited,channel).connect(getattr(membus,channel))
         for channel in ('b','r'):

@@ -638,3 +638,35 @@ persistent/Genesys Si writes. Evidence
 Next offline qualify long trace versus read-window/prefetch budget, then native
 multi-packet upload/physical fragmentation. No long-trace/abort/absolute-phase
 qualification inferred from these short-trace lifecycle tests.
+
+
+## Long-trace prefetch boundary (2026-10-16, offline)
+
+Before physical fragmentation tests, new fast-AXI simulation exposed error65
+for1020-byte/60-record trace with the previously qualified4-outstanding guard.
+Outstanding responses plus already-buffered raw FIFO data let cumulative AR
+reach the reserved drain threshold before the terminator was decoded. Existing
+short-trace physical PASS does not qualify this longer trace.
+
+Guard now permits2 outstanding requests, preserving the reused reader,16-burst
+budget and2048-byte padded window. Firmware payload admission is reduced from
+1536 to1024 bytes (maximum whole17-byte trace1020 bytes); larger uploads are
+invalidated rather than launched. The retained1530-byte RTL negative proves
+budget error/drain/restart. A1020-byte trace succeeds with70-request AXI model,
+exact60 native CRI commands, bounded addresses and matched AR/RLAST counts.
+No error masking or larger speculative window. Performance unqualified.
+
+Current-source CSR10 tests +engine/CDC17 tests PASS. New first CSR run had a
+Python local-variable error in the recovery test; fixed and full suite rerun
+PASS. Store/service/backend ASan/UBSan PASS. Real upstream codec->C store splits
+1020 bytes into1010/10 payloads across a record boundary; reconstructed60 records,
+normalization and padding PASS. Optional upload UART metadata records status/
+length per packet for future physical evidence. New A53 firmware build PASS.
+
+Vivado RUNNING `build-vivado/satellite-dma-credit2-route-2026-10-16`,1500s bound,
+log `build/dma-credit2-vivado-session-2026-10-16.log`. Piotr decoder two boundary
+cases also running. Do not edit running RTL/build/checker/test helpers.
+No hardware accessed in this stage; restored lifecycle-tested baseline remains.
+Next qualify route/CDC, obtain new exact-bit/firmware idle/DIO proof, then native
+29-pulse/58-edge1020-byte physical upload in two packets. Do not use previous
+firmware proof after payload-policy/helper hashes changed.

@@ -7,7 +7,7 @@
 #include <stddef.h>
 #include <string.h>
 #define DDMA_WINDOW 2048u
-#define DDMA_PAYLOAD_MAX (DDMA_WINDOW-512u)
+#define DDMA_PAYLOAD_MAX 1024u /*128B CDC FIFO + two read credits + drain headroom*/
 struct ddma_store {
  uint8_t bytes[DDMA_WINDOW];
  uint32_t id;

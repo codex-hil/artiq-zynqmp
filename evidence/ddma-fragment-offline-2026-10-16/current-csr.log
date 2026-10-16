@@ -1,0 +1,17 @@
+test_1530_byte_trace_hits_read_budget_and_drains (test_dma_csr.DMACSRTests.test_1530_byte_trace_hits_read_budget_and_drains) ... /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+ok
+test_active_fault_still_aborts_drains_and_recovers (test_dma_csr.DMACSRTests.test_active_fault_still_aborts_drains_and_recovers) ... ok
+test_busy_start_and_clear_do_not_mutate_active_epoch (test_dma_csr.DMACSRTests.test_busy_start_and_clear_do_not_mutate_active_epoch) ... ok
+test_fragmented_1020_byte_trace_completes (test_dma_csr.DMACSRTests.test_fragmented_1020_byte_trace_completes) ... ok
+test_full_axi_acceptance_host_trace_completes (test_dma_csr.DMACSRTests.test_full_axi_acceptance_host_trace_completes) ... ok
+test_full_axi_acceptance_short_trace_does_not_exhaust_budget (test_dma_csr.DMACSRTests.test_full_axi_acceptance_short_trace_does_not_exhaust_budget) ... ok
+test_missing_terminator_bounded_reads_and_recovery (test_dma_csr.DMACSRTests.test_missing_terminator_bounded_reads_and_recovery) ... ok
+test_preflight_rejects_without_memory_access (test_dma_csr.DMACSRTests.test_preflight_rejects_without_memory_access) ... ok
+test_ps_axi_multiword_snapshot_and_result_ack (test_dma_csr.DMACSRTests.test_ps_axi_multiword_snapshot_and_result_ack) ... ok
+test_watchdog_abort_drains_and_next_trace_recovers (test_dma_csr.DMACSRTests.test_watchdog_abort_drains_and_next_trace_recovers) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 108.393s
+
+OK

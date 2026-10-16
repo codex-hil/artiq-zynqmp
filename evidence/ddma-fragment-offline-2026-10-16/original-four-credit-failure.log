@@ -1,0 +1,29 @@
+test_fragmented_1020_byte_trace_completes (test_dma_csr.DMACSRTests.test_fragmented_1020_byte_trace_completes) ... /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+FAIL
+test_1530_byte_trace_hits_read_budget_and_drains (test_dma_csr.DMACSRTests.test_1530_byte_trace_hits_read_budget_and_drains) ... ok
+
+======================================================================
+FAIL: test_fragmented_1020_byte_trace_completes (test_dma_csr.DMACSRTests.test_fragmented_1020_byte_trace_completes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_csr.py", line 188, in test_fragmented_1020_byte_trace_completes
+    def test_fragmented_1020_byte_trace_completes(self):self.exercise('longtrace',max_queue=70)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_csr.py", line 171, in exercise
+    run_simulation(d,{'sys':[run(),monitor(),memory.ar(),memory.r()],'rtio_rx':cri_monitor()},
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 513, in run_simulation
+    s.run()
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 502, in run
+    self._process_generators(cd)
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/sim/core.py", line 456, in _process_generators
+    request = generator.send(reply)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/test_dma_csr.py", line 142, in run
+    self.assertEqual(result,4 if mode=='snapshot' else 33 if mode=='watchdog' else 65 if mode=='budget' else 1 if mode=='fault' else expected_error)
+AssertionError: 65 != 0
+
+----------------------------------------------------------------------
+Ran 2 tests in 27.372s
+
+FAILED (failures=1)

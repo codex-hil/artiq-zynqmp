@@ -31,5 +31,14 @@ int ddma_wire_test(void) {
  wire[n-1]^=1;assert(aux_ddma_decode(wire,n,&status)==-1);
  request(&s,0xb4,&p,0); /* status must first be sent */
  assert(!ddma_service_status_sent(&s));request(&s,0xb2,&p,1);
- assert(!s.store.complete);return 0;
+ assert(!s.store.complete);
+ uint8_t longtrace[17*60];
+ for(unsigned i=0;i<60;i++)memcpy(longtrace+17*i,record,17);
+ p.status=1;p.length=1010;memcpy(p.trace,longtrace,1010);request(&s,0xb0,&p,1);
+ assert(!s.store.complete);
+ p.status=2;p.length=10;memcpy(p.trace,longtrace+1010,10);request(&s,0xb0,&p,1);
+ assert(s.store.complete && s.store.length==1020 && !s.store.bytes[1020]);
+ for(unsigned i=0;i<60;i++)assert(s.store.bytes[17*i+3]==0);
+ request(&s,0xb2,&p,1);
+ return 0;
 }
