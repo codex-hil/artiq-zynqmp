@@ -17,7 +17,9 @@ def main():
     p.add_argument('--tsc',action='store_true',help='ACK only observed hardware TSC loads; requires external')
     p.add_argument('--reset',action='store_true',help='Hardware-confirmed split reset; requires --tsc')
     p.add_argument('--dio',action='store_true',help='Single-hop rank1 leaf readiness; requires --reset')
+    p.add_argument('--snapshot-probe',action='store_true',help='Four bounded live TSC snapshot reads after TSC ACK')
     a=p.parse_args();
+    if a.snapshot_probe and not a.dio:p.error('--snapshot-probe requires --dio')
     if a.dio and not a.reset:p.error('--dio requires --reset')
     if a.reset and not a.tsc:p.error('--reset requires --tsc')
     if a.tsc and not a.external:p.error('--tsc requires --external')
@@ -53,12 +55,18 @@ io={path=IO_PATH,features=["byteorder"]}
     if 'aux_bridge_busy' not in mapping['registers']:p.error('AUX CSR map required')
     if a.tsc and not all('aux_'+n in mapping['registers'] for n in ('tsc_load_count','rt_reply_fault','rtio_error_flags')):p.error('Real satellite TSC/error CSR map required')
     if a.reset and not all('aux_'+n in mapping['registers'] for n in ('rtio_reset_request','rtio_reset_applied','phy_reset_request','phy_reset_applied')):p.error('Split reset CSR map required')
+    if a.snapshot_probe:
+        expected={'aux_tsc_load_count':0xa0001820,'aux_tsc_snapshot_request':0xa0001840,
+                  'aux_tsc_snapshot_busy':0xa0001844,'aux_tsc_snapshot_valid':0xa0001848,
+                  'aux_tsc_snapshot_value':0xa000184c}
+        if any(mapping['registers'].get(n,{}).get('address')!=v for n,v in expected.items()):
+            p.error('Snapshot probe requires exact qualified snapshot map')
     header=['#pragma once']
     for name,register in mapping['registers'].items():
         # This responder does not own DMA. Bank4 is reserved for the bounded
         # host diagnostic until native AUX DDMA firmware is implemented.
         if name.startswith('dma_'): continue
-        if register['words']!=1:raise ValueError('Single-word CSR required')
+        if register['words']!=1 and not (name=='aux_tsc_snapshot_value' and register['words']==2):raise ValueError('Single-word or snapshot64 CSR required')
         header.append('#define REG_'+name.upper()+' ((uintptr_t)'+hex(register['address'])+'u)')
     header.append('#define AUX_MEMORY ((uintptr_t)'+hex(mapping['aux_sram']['base'])+'u)')
     (out/'aux_regs.h').write_text('\n'.join(header)+'\n')
@@ -69,7 +77,7 @@ io={path=IO_PATH,features=["byteorder"]}
     firmware=Path(__file__).with_name('firmware.c')
     elf=out/'aux-firmware.elf'
     cmd=[str(arm/'bin/aarch64-none-elf-gcc'),'-DSDT','-specs='+str(bsp/'Xilinx.spec'),
-        *(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
+        *(['-DAUX_SNAPSHOT'] if a.snapshot_probe else []),*(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
         str(library),'-Wl,-T,'+str(linker),'-L'+str(bsp/'lib'),'-Wl,--start-group',
         '-lxilstandalone','-lxiltimer','-lxil','-lgcc','-lc','-Wl,--end-group','-o',str(elf)]
     result=subprocess.run(cmd,capture_output=True,text=True,timeout=120)
@@ -77,7 +85,8 @@ io={path=IO_PATH,features=["byteorder"]}
     if result.returncode:raise RuntimeError(result.stderr[-4000:])
     evidence={'kind':'FIRMWARE_BUILD_NOT_HARDWARE','status':'PASS',
         'mode':'external-tsc-down' if a.tsc else 'external-aux-down' if a.external else 'internal-loopback',
-        'dio_leaf':a.dio,
+        'dio_leaf':a.dio,'snapshot_probe':a.snapshot_probe,
+        'snapshot_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('tsc_reader.h','tsc_a53.h','ddma_a53.h','ddma_backend.h')},
         'dma_bank_owner':'external diagnostic only; no AUX DDMA service',
         'leaf_policy_sha256':hashlib.sha256(Path(__file__).with_name('leaf_policy.h').read_bytes()).hexdigest(),
         'reset_backend':a.reset,

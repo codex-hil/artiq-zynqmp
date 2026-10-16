@@ -2023,3 +2023,12 @@ CNTFRQ age binding A53 compile PASS. No HW accessed/new firmware loaded.
 Evidence tsc-reader-offline-2026-10-16 and tsc-snapshot-build-2026-10-16.
 Next build snapshot probe firmware, exact-new-bit guarded cold/DIO/snapshot
 qualification, then actual AUX DDMA dispatch/status integration.
+
+
+Physical TSC snapshot2026-10-16 PASS: exact newbit860bb0e5..., snapshot-probe
+firmware,4 monotonic fine3 samples; upper-age allowances10000/8066/7800/7800mu.
+AUX/TSC/reset +2DIO kernels PASS. All4 shared locks held through both board
+restorations PASS; Genesys normal TTL/CoreDMA/analyzer/MonInj/Ethernet PASS at
+192.168.2.3. No persistent/Genesys Si writes. Evidence kasli03-tsc-snapshot-
+hardware-2026-10-16. Native AUX DDMA still not dispatched; next wire checked
+packets to service/backend/live-time/status and test full offline flow first.

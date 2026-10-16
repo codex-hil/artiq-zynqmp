@@ -492,3 +492,22 @@ range; A53 compile PASS. Register constants matched the new qualified map.
 Not yet linked into AUX dispatch, loaded or physically qualified. Next build
 a firmware snapshot probe and repeat guarded cold AUX/DIO/snapshot validation
 on this exact new bit/firmware before native DDMA service activation.
+
+
+## Physical snapshot probe PASS (2026-10-16)
+
+Guarded all-four-lease session loaded bit860bb0e5... and snapshot-enabled
+A53 firmware. After actual Kasli TSC-load ACK, four coherent fine3-aligned
+samples increased:14433320128,14435585360,14441487432,14447389872mu.
+Conservative age allowances were10000,8066,7800,7800mu. Native reset and
+both8-rise DIO kernels also passed. This qualifies this bounded snapshot
+probe; it does not establish absolute offset/jitter or native AUX DDMA.
+
+Kasli checker/volatile clock profile and Genesys normal local core restored
+and validated PASS, including TTL/CoreDMA/analyzer/MonInj/Ethernet;192.168.2.3.
+No flash/SD/OTP/Genesys Si writes. Evidence
+`evidence/kasli03-tsc-snapshot-hardware-2026-10-16/results.json`.
+Firmware build uses `--snapshot-probe` with exact map validation. External
+session requires matching `snapshot_test`, helper hashes and four UART samples.
+Next connect checked DDMA requests to service/backend with this live-time
+callback; then test upload/reply/status offline before guarded native playback.

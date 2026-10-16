@@ -27,6 +27,31 @@ static int wait(uintptr_t a,uint32_t value) {
 #include "leaf_policy.h"
 #endif
 #endif
+#ifdef AUX_SNAPSHOT
+#include "tsc_a53.h"
+static int snapshot_ready(void *context) {
+ (void)context;
+ return reset_backend_ready() && !rd(REG_AUX_RTIO_RESET_REQUEST) &&
+  !rd(REG_AUX_RTIO_RESET_APPLIED) && !rd(REG_AUX_RTIO_ERROR_FLAGS);
+}
+static void snapshot_probe(void) {
+ struct tsc_reader reader=tsc_a53_bind(0,snapshot_ready);
+ uint64_t previous=0;
+ for(unsigned i=0;i<4;i++) {
+  uint64_t upper;
+  if(tsc_read_upper(&reader,&upper))goto bad;
+  uint64_t sample=((uint64_t)rd(REG_AUX_TSC_SNAPSHOT_VALUE)<<32)|rd(REG_AUX_TSC_SNAPSHOT_VALUE+4);
+  if((i && sample<=previous) || (sample&7) || upper<sample)goto bad;
+  previous=sample;
+  xil_printf("AUX_SNAPSHOT SAMPLE index=%u hi=%08x lo=%08x allowance=%u\r\n",
+   i,(uint32_t)(sample>>32),(uint32_t)sample,(uint32_t)(upper-sample));
+  usleep(100);
+ }
+ xil_printf("AUX_SNAPSHOT PASS reads=4\r\n");return;
+bad:
+ xil_printf("AUX_SNAPSHOT FAIL\r\n");wr(REG_MONITOR_TX_ENABLE,0);aux_panic();
+}
+#endif
 static int send(const uint8_t *data,unsigned length) {
  if(!length || length%4 || length>1024 || wait(REG_AUX_AUX_TX,0) || wait(REG_AUX_BRIDGE_BUSY,0))return -1;
  for(unsigned i=0;i<length/4;i++) {uint32_t word;memcpy(&word,data+4*i,4);wr(AUX_MEMORY+4*i,word);}
@@ -79,6 +104,9 @@ static void service(void) {
    uint8_t bytes[16];int size=aux_encode(4,0,bytes,sizeof(bytes));
    if(size<0||send(bytes,size)) {wr(REG_MONITOR_TX_ENABLE,0);aux_panic();}
    xil_printf("AUX_TSC ACK count=%u\r\n",loads);
+#ifdef AUX_SNAPSHOT
+   snapshot_probe();
+#endif
   }
 #endif
 #ifndef AUX_EXTERNAL

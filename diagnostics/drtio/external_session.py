@@ -92,6 +92,13 @@ class ExternalSession:
                 raise ValueError('Readiness firmware requires explicit physical DIO test')
             self.result['optical_tx'] = ('upstream ARTIQ idle/AUX with real TSC/RTIO backend; advertised DOWN' if self.tsc_test else 'upstream ARTIQ idle and AUX replies; no RTIO backend')
             if self.dio_test: self.result['optical_tx']='upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf'
+            self.snapshot_test=bool(c.get('snapshot_test',False))
+            if self.snapshot_test != bool(fw.get('snapshot_probe',False)):
+                raise ValueError('Snapshot probe firmware requires explicit matching snapshot test')
+            if self.snapshot_test:
+                for name in ('tsc_reader.h','tsc_a53.h','ddma_a53.h','ddma_backend.h'):
+                    if fw.get('snapshot_sources',{}).get(name)!=hashlib.sha256((policy.parent/name).read_bytes()).hexdigest():
+                        raise ValueError('Stale snapshot probe helper: '+name)
             self.result['firmware_sha256'] = fw['elf_sha256']
         self.result['bit_sha256'] = build['sha256']['top.bit']
         self.host_dma_test = bool(c.get('host_dma_test',False))
@@ -248,6 +255,16 @@ disconnect
         else: tsc_ok=True
         good = tsc_ok and echo > 0 and self.result['master_link_echo_observed'] and not (
             self.result['firmware_send_errors'] or self.result['firmware_rx_errors'])
+        if getattr(self,'snapshot_test',False):
+            rows=re.findall(r'AUX_SNAPSHOT SAMPLE index=(\d+) hi=([0-9a-fA-F]{8}) lo=([0-9a-fA-F]{8}) allowance=(\d+)',text)
+            values=[(int(hi,16)<<32)|int(lo,16) for _,hi,lo,_ in rows]
+            snapshot_ok=(len(rows)==4 and [int(row[0]) for row in rows]==list(range(4)) and
+                all(a<b for a,b in zip(values,values[1:])) and all(v%8==0 for v in values) and
+                all(1000<=int(row[3])<=201000 for row in rows) and
+                text.count('AUX_SNAPSHOT PASS reads=4')==1 and 'AUX_SNAPSHOT FAIL' not in text)
+            self.result.update(tsc_snapshot='PASS' if snapshot_ok else 'FAIL',
+                tsc_snapshot_values=values,tsc_snapshot_allowances=[int(row[3]) for row in rows])
+            good=good and snapshot_ok
         if getattr(self,'reset_test',False): good = good and self.result.get('reset_handshake')=='PASS'
         if getattr(self,'dio_test',False):
             good = good and self.result.get('dio_loopback')=='PASS'
