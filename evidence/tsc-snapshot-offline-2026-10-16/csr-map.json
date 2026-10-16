@@ -1,0 +1,350 @@
+{
+  "dma": {
+    "kind": "dma-csr-map-not-hardware",
+    "registers": {
+      "dma_address": {
+        "address": 2684362752,
+        "words": 2,
+        "bits": 49
+      },
+      "dma_time_offset": {
+        "address": 2684362760,
+        "words": 2,
+        "bits": 64
+      },
+      "dma_max_bursts": {
+        "address": 2684362768,
+        "words": 1,
+        "bits": 32
+      },
+      "dma_watchdog": {
+        "address": 2684362772,
+        "words": 1,
+        "bits": 32
+      },
+      "dma_start": {
+        "address": 2684362776,
+        "words": 1,
+        "bits": 1
+      },
+      "dma_abort": {
+        "address": 2684362780,
+        "words": 1,
+        "bits": 1
+      },
+      "dma_clear": {
+        "address": 2684362784,
+        "words": 1,
+        "bits": 1
+      },
+      "dma_active": {
+        "address": 2684362788,
+        "words": 1,
+        "bits": 1
+      },
+      "dma_pending": {
+        "address": 2684362792,
+        "words": 1,
+        "bits": 1
+      },
+      "dma_reject": {
+        "address": 2684362796,
+        "words": 1,
+        "bits": 7
+      },
+      "dma_result_error": {
+        "address": 2684362800,
+        "words": 1,
+        "bits": 8
+      },
+      "dma_result_channel": {
+        "address": 2684362804,
+        "words": 1,
+        "bits": 24
+      },
+      "dma_result_timestamp": {
+        "address": 2684362808,
+        "words": 2,
+        "bits": 64
+      },
+      "dma_accepted": {
+        "address": 2684362816,
+        "words": 1,
+        "bits": 32
+      },
+      "dma_completed": {
+        "address": 2684362820,
+        "words": 1,
+        "bits": 32
+      }
+    },
+    "arena": {
+      "base": 570425344,
+      "size": 2097152,
+      "alignment": 128
+    },
+    "limit_units": "128-byte AXI bursts; min4; zero rejected",
+    "watchdog_units": "sys clocks; zero rejected",
+    "result_protocol": "read latched result, write clear=1, then next start",
+    "word_order": "MiSoC multiword CSRs: most significant word first"
+  },
+  "aux_sram": {
+    "base": 2684420096,
+    "size": 16384,
+    "rx_offset": 8192,
+    "slot_size": 1024,
+    "slots": 8
+  },
+  "kind": "diagnostic-map-not-hardware-evidence",
+  "magic": 1146246192,
+  "boot_hz": 125000000,
+  "registers": {
+    "monitor_magic": {
+      "address": 2684354560,
+      "words": 1,
+      "bits": 32
+    },
+    "monitor_reset": {
+      "address": 2684354564,
+      "words": 1,
+      "bits": 1
+    },
+    "monitor_tx_enable": {
+      "address": 2684354568,
+      "words": 1,
+      "bits": 1
+    },
+    "monitor_loopback": {
+      "address": 2684354572,
+      "words": 1,
+      "bits": 3
+    },
+    "monitor_prbs": {
+      "address": 2684354576,
+      "words": 1,
+      "bits": 4
+    },
+    "monitor_tx_prbs": {
+      "address": 2684354580,
+      "words": 1,
+      "bits": 4
+    },
+    "monitor_snapshot": {
+      "address": 2684354584,
+      "words": 1,
+      "bits": 1
+    },
+    "monitor_status": {
+      "address": 2684354588,
+      "words": 1,
+      "bits": 10
+    },
+    "monitor_boot_ticks": {
+      "address": 2684354592,
+      "words": 1,
+      "bits": 32
+    },
+    "monitor_rx_ticks": {
+      "address": 2684354596,
+      "words": 1,
+      "bits": 32
+    },
+    "monitor_tx_ticks": {
+      "address": 2684354600,
+      "words": 1,
+      "bits": 32
+    },
+    "monitor_prbs_errors": {
+      "address": 2684354604,
+      "words": 1,
+      "bits": 32
+    },
+    "dma_address": {
+      "address": 2684362752,
+      "words": 2,
+      "bits": 49
+    },
+    "dma_time_offset": {
+      "address": 2684362760,
+      "words": 2,
+      "bits": 64
+    },
+    "dma_max_bursts": {
+      "address": 2684362768,
+      "words": 1,
+      "bits": 32
+    },
+    "dma_watchdog": {
+      "address": 2684362772,
+      "words": 1,
+      "bits": 32
+    },
+    "dma_start": {
+      "address": 2684362776,
+      "words": 1,
+      "bits": 1
+    },
+    "dma_abort": {
+      "address": 2684362780,
+      "words": 1,
+      "bits": 1
+    },
+    "dma_clear": {
+      "address": 2684362784,
+      "words": 1,
+      "bits": 1
+    },
+    "dma_active": {
+      "address": 2684362788,
+      "words": 1,
+      "bits": 1
+    },
+    "dma_pending": {
+      "address": 2684362792,
+      "words": 1,
+      "bits": 1
+    },
+    "dma_reject": {
+      "address": 2684362796,
+      "words": 1,
+      "bits": 7
+    },
+    "dma_result_error": {
+      "address": 2684362800,
+      "words": 1,
+      "bits": 8
+    },
+    "dma_result_channel": {
+      "address": 2684362804,
+      "words": 1,
+      "bits": 24
+    },
+    "dma_result_timestamp": {
+      "address": 2684362808,
+      "words": 2,
+      "bits": 64
+    },
+    "dma_accepted": {
+      "address": 2684362816,
+      "words": 1,
+      "bits": 32
+    },
+    "dma_completed": {
+      "address": 2684362820,
+      "words": 1,
+      "bits": 32
+    },
+    "aux_aux_tx_length": {
+      "address": 2684360704,
+      "words": 1,
+      "bits": 11
+    },
+    "aux_aux_tx": {
+      "address": 2684360708,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_aux_rx_present": {
+      "address": 2684360712,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_aux_rx_error": {
+      "address": 2684360716,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_aux_read_pointer": {
+      "address": 2684360720,
+      "words": 1,
+      "bits": 3
+    },
+    "aux_bridge_busy": {
+      "address": 2684360724,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_rx_up": {
+      "address": 2684360728,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_in_reset": {
+      "address": 2684360732,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_tsc_load_count": {
+      "address": 2684360736,
+      "words": 1,
+      "bits": 32
+    },
+    "aux_rt_reply_fault": {
+      "address": 2684360740,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_rtio_error_flags": {
+      "address": 2684360744,
+      "words": 1,
+      "bits": 3
+    },
+    "aux_rtio_spread_enable": {
+      "address": 2684360748,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_rtio_reset_request": {
+      "address": 2684360752,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_rtio_reset_applied": {
+      "address": 2684360756,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_phy_reset_request": {
+      "address": 2684360760,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_phy_reset_applied": {
+      "address": 2684360764,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_tsc_snapshot_request": {
+      "address": 2684360768,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_tsc_snapshot_busy": {
+      "address": 2684360772,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_tsc_snapshot_valid": {
+      "address": 2684360776,
+      "words": 1,
+      "bits": 1
+    },
+    "aux_tsc_snapshot_value": {
+      "address": 2684360780,
+      "words": 2,
+      "bits": 64
+    }
+  },
+  "status_bits": {
+    "cpll_lock": 0,
+    "tx_done": 1,
+    "rx_done": 2,
+    "powergood": 3,
+    "cdr_estimate": 4,
+    "tx_active": 5,
+    "rx_active": 6,
+    "module_present": 7,
+    "rx_los": 8,
+    "tx_fault": 9
+  }
+}

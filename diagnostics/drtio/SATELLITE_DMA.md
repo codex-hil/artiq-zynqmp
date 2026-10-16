@@ -423,3 +423,28 @@ Host ASan/UBSan tests use mocked IO for sequencing, active/pending rejection,
 missing/expired time, bounds and timeout fault latch. They do not exercise
 physical DDR/cache/AXI. No new service dispatch or hardware load in this stage.
 Next add live snapshot to gateware, test CDC, then firmware dispatch/status.
+
+
+## Coherent live TSC snapshot RTL (2026-10-16, offline)
+
+The DMA target now appends `aux_tsc_snapshot_request`, `busy`, `valid` and
+64-bit `value` CSRs. Existing register addresses are preserved. A request edge
+clears valid and toggles an RX request; RX admits exactly one full64-bit TSC
+into a4-entry asynchronous FIFO. PS publishes the complete value, then holds
+it stable until the next accepted request. Busy requests are dropped. Shared
+endpoint reset clears token/FIFO/output state; it must cover RX clock loss.
+The captured value is in fine3 units from native `tsc.full_ts`, not a software
+clock estimate. A read is a past sample; firmware must bound its age and
+invalidate observations on reset/link/TSC-load epoch changes.
+
+Two asynchronous-clock simulations PASS: changing binary values/backward loads
+without torn reads, stable publication, duplicate busy requests, and common
+reset discarding in-flight data before a fresh request. Existing current-source
+DMA transport2 tests PASS. Top HDL/CSR generation PASS. No timing, hardware
+or new firmware activation claimed. `build_top.sh` explicitly refuses this new
+map until snapshot FIFO CDC constraints and implementation checks are added;
+the prior qualified credit4 bit remains the hardware baseline.
+
+Next add exact Gray-pointer constraints/counts for this FIFO, update routed
+qualification, then firmware MSW-first snapshot read with bounded wait and
+reset/load-count/readiness checks. Only then enable AUX DDMA dispatch.

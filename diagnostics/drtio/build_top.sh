@@ -27,6 +27,8 @@ import os
 import hashlib
 import json
 out=Path(sys.argv[1])
+if 'aux_tsc_snapshot_value' in json.loads((out/'csr-map.json').read_text())['registers']:
+ raise RuntimeError('TSC snapshot FIFO physical CDC constraints/checker pending; HDL only, no Vivado launch')
 s=(out/'top_route.tcl').read_text()
 cache=os.environ.get('DRTIO_IP_CACHE')
 if cache:

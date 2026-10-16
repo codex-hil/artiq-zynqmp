@@ -284,3 +284,7 @@ test-drtio-ddma-backend:
 	mkdir -p $(abspath $(O))/ddma-backend
 	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_backend.c -o $(abspath $(O))/ddma-backend/test
 	$(abspath $(O))/ddma-backend/test
+
+.PHONY: test-drtio-tsc-snapshot
+test-drtio-tsc-snapshot:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/common/migen" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_tsc_snapshot.py' -v

@@ -1,0 +1,230 @@
+{
+  "first_stage_bits": 390,
+  "first_stage_registers": [
+    [
+      "9",
+      "xilinxmultiregimpl0_xilinxmultiregimpl00"
+    ],
+    [
+      "31",
+      "xilinxmultiregimpl10"
+    ],
+    [
+      "31",
+      "xilinxmultiregimpl20"
+    ],
+    [
+      "31",
+      "xilinxmultiregimpl30"
+    ],
+    [
+      "3",
+      "xilinxmultiregimpl40"
+    ],
+    [
+      "3",
+      "xilinxmultiregimpl50"
+    ],
+    [
+      "2",
+      "xilinxmultiregimpl60"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl70"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl80"
+    ],
+    [
+      "4",
+      "xilinxmultiregimpl90"
+    ],
+    [
+      "4",
+      "xilinxmultiregimpl100"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl11_xilinxmultiregimpl110"
+    ],
+    [
+      "63",
+      "xilinxmultiregimpl120"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl130"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl140"
+    ],
+    [
+      "1",
+      "xilinxmultiregimpl150"
+    ],
+    [
+      "23",
+      "xilinxmultiregimpl160"
+    ],
+    [
+      "63",
+      "xilinxmultiregimpl170"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl180"
+    ],
+    [
+      "12",
+      "xilinxmultiregimpl190"
+    ],
+    [
+      "12",
+      "xilinxmultiregimpl200"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl210"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl220"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl230"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl240"
+    ],
+    [
+      "2",
+      "xilinxmultiregimpl250"
+    ],
+    [
+      "2",
+      "xilinxmultiregimpl260"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl270"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl280"
+    ],
+    [
+      "7",
+      "xilinxmultiregimpl290"
+    ],
+    [
+      "7",
+      "xilinxmultiregimpl300"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl310"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl320"
+    ],
+    [
+      "31",
+      "xilinxmultiregimpl330"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl340"
+    ],
+    [
+      "2",
+      "xilinxmultiregimpl350"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl360"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl370"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl380"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl390"
+    ],
+    [
+      "",
+      "xilinxmultiregimpl400"
+    ],
+    [
+      "2",
+      "xilinxmultiregimpl410"
+    ],
+    [
+      "2",
+      "xilinxmultiregimpl420"
+    ]
+  ],
+  "gray_counter_buses": 10,
+  "dma_crossings": [
+    {
+      "source": "diagnostic_dmacsr_asyncsatellitedma_offset1",
+      "first_stage": "xilinxmultiregimpl120",
+      "bits": 64,
+      "kind": "held-payload",
+      "max_delay_ns": 8,
+      "bus_skew_ns": 8
+    },
+    {
+      "source": "diagnostic_dmacsr_asyncsatellitedma_crimaster_error_w",
+      "first_stage": "xilinxmultiregimpl150",
+      "bits": 2,
+      "kind": "held-payload",
+      "max_delay_ns": 8,
+      "bus_skew_ns": 8
+    },
+    {
+      "source": "diagnostic_dmacsr_asyncsatellitedma_crimaster_error_channel_status",
+      "first_stage": "xilinxmultiregimpl160",
+      "bits": 24,
+      "kind": "held-payload",
+      "max_delay_ns": 8,
+      "bus_skew_ns": 8
+    },
+    {
+      "source": "diagnostic_dmacsr_asyncsatellitedma_crimaster_error_timestamp_status",
+      "first_stage": "xilinxmultiregimpl170",
+      "bits": 64,
+      "kind": "held-payload",
+      "max_delay_ns": 8,
+      "bus_skew_ns": 8
+    },
+    {
+      "source": "diagnostic_dmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q",
+      "first_stage": "xilinxmultiregimpl90",
+      "bits": 5,
+      "kind": "gray",
+      "max_delay_ns": 8,
+      "bus_skew_ns": 8
+    },
+    {
+      "source": "diagnostic_dmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q",
+      "first_stage": "xilinxmultiregimpl100",
+      "bits": 5,
+      "kind": "gray",
+      "max_delay_ns": 8,
+      "bus_skew_ns": 8
+    }
+  ],
+  "dma_physical_constraints": "GENERATED_NOT_IMPLEMENTATION_QUALIFIED",
+  "held_payload_buses": 4
+}

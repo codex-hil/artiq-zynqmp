@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "kind": "RTL_SIMULATION_AND_HDL_NOT_HARDWARE",
+  "snapshot_tests": 2,
+  "current_dma_transport_tests": 2,
+  "physical_cdc": "PENDING_BUILD_BLOCKED",
+  "sha256": {
+    "diagnostics/drtio/tsc_snapshot.py": "1b324caeb17db5aed67c19eb14547a6d312d4798166dfe9cdf8286901883a60b",
+    "diagnostics/drtio/test_tsc_snapshot.py": "13f98ba91cb3f609cbb56e6e2832eef4c8cf59e63869c2d9cba44c7f7ba4c8d2",
+    "diagnostics/drtio/aux_ps.py": "bd817b01b504f0051642bd953295c50c92e90d2bb177e280cd58de341a68f9cf"
+  },
+  "top_v_sha256": "cdd211e805458ac7514c55bdbcda448a5fc4072e4e686264ea26091de68e4868"
+}

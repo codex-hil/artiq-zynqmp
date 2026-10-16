@@ -1993,3 +1993,13 @@ PASS; AMD cache/MMIO binding cross-compile A53 PASS;15 CSR offsets match credit4
 map. No live dispatch/HW access. Identified missing live TSC snapshot CSR;
 TSC-load count cannot establish future deadline. Next implement snapshot/CDC
 and tests before enabling AUX playback. Evidence ddma-backend-offline-2026-10-16.
+
+
+TSC snapshot2026-10-16 RTL/HDL PASS: DMA-only appended request/busy/valid/value
+CSRs, coherent64-bit native full_ts transfer through async FIFO, common endpoint
+reset invalidates old data.2 asynchronous snapshot tests +2 current DMA transport
+regressions PASS; top HDL/map generation PASS. Physical FIFO CDC constraints/
+checker not yet extended: build_top refuses new snapshot map before Vivado.
+No new bit/firmware/HW access; prior restored credit4 evidence remains valid.
+Next exact snapshot FIFO constraints/routed qualification, then bounded firmware
+snapshot/time callback and DDMA dispatch. Evidence tsc-snapshot-offline-2026-10-16.

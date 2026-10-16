@@ -4,7 +4,7 @@ from migen.genlib.resetsync import AsyncResetSynchronizer
 from migen.genlib.cdc import MultiReg
 from migen.fhdl.structure import _Assign
 from misoc.interconnect import csr_bus, wishbone2csr
-from misoc.interconnect.csr import CSRStatus, CSRStorage
+from misoc.interconnect.csr import CSRStatus, CSRStorage, CSR
 from litex.soc.interconnect import wishbone
 from litex.soc.interconnect.axi import AXIInterface, AXILiteInterface, AXI2AXILite
 from aux_endpoint import AuxEndpoint
@@ -86,6 +86,21 @@ class AuxPS(Module):
             self.csrs += [self.tsc_load_count,self.rt_reply_fault,self.rtio_error_flags,
                           self.rtio_spread_enable,self.rtio_reset_request,self.rtio_reset_applied,
                           self.phy_reset_request,self.phy_reset_applied]
+            if dma_cri is not None:
+                from tsc_snapshot import TSCSnapshot
+                self.submodules.tsc_snapshot = snap = ClockDomainsRenamer(
+                    {'sys':'aux_sys','sample':'aux_rx'})(TSCSnapshot())
+                self.tsc_snapshot_request = CSR(1,name='tsc_snapshot_request')
+                self.tsc_snapshot_busy = CSRStatus(1,name='tsc_snapshot_busy')
+                self.tsc_snapshot_valid = CSRStatus(1,name='tsc_snapshot_valid')
+                self.tsc_snapshot_value = CSRStatus(64,name='tsc_snapshot_value')
+                self.comb += [snap.request.eq(self.tsc_snapshot_request.re & ~self.reset),
+                    snap.sample.eq(transport.backend.tsc.full_ts),
+                    self.tsc_snapshot_busy.status.eq(snap.busy & ~self.reset),
+                    self.tsc_snapshot_valid.status.eq(snap.valid & ~self.reset),
+                    self.tsc_snapshot_value.status.eq(Mux(self.reset,0,snap.value))]
+                self.csrs += [self.tsc_snapshot_request,self.tsc_snapshot_busy,
+                              self.tsc_snapshot_valid,self.tsc_snapshot_value]
         self.submodules.wb2csr = w = wishbone2csr.WB2CSR(
             bus_wishbone=wishbone.Interface(data_width=32,address_width=40,addressing='word'),
             bus_csr=csr_bus.Interface(data_width=32,address_width=14))
