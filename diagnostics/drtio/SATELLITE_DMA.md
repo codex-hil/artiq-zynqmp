@@ -779,3 +779,16 @@ future unknownbit256. A53/Rust firmware compilation PASS; evidence in
 `evidence/ddma-status-map-offline-2026-10-16`. Both new image qualification on
 hardware and error-injection semantics remain NOT_RUN. The next session must
 qualify fresh bit/firmware idle before native playback regression.
+
+
+Abort-handoff image2026-10-16 physical regression PASS: fresh bit21c187cb...
+and mapped-status firmware668ca20c... first passed guarded idle qualification
+(native reset2, physical DIO2x8pulses, TSCsnapshot4), then native long DDMA
+3fragmented1020B uploads/9plays/6handles/522edges PASS. All9first_delta1000120mu;
+width/period4000/16000,6000/20000,8000/24000mu. No new AUXsend/RX/masterreset
+errors. Both sessions restored Kasli diagnostic/clock and Genesys normallocal
+TTL/DMA/analyzer/MonInj/Ethernet PASS192.168.2.3. All4sharedlocks held through
+restoration. No flash/SD/OTP/GenesysSi writes. Evidence kasli03-abort-handoff-
+{idle,long}-hardware-2026-10-16. Physical abort/fault status injection NOT_RUN;
+production error recovery remains fail-closed. Next prepare bounded host-armed
+abort-to-native-packet diagnostic with canceled-output and postabort-DIO checks.

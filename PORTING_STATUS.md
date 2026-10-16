@@ -2161,3 +2161,16 @@ firmware build PASS ELF668ca20c... . Existing success-only physical results
 remain valid; new bit/firmware and physical faults NOT_RUN. Evidence
 ddma-status-map-offline-2026-10-16. Next guarded fresh-image idle qualification
 and normal native DDMA regression before any bounded physical abort test.
+
+
+Abort-handoff image2026-10-16 physical regression PASS: fresh bit21c187cb...
+and mapped-status firmware668ca20c... first passed guarded idle qualification
+(native reset2, physical DIO2x8pulses, TSCsnapshot4), then native long DDMA
+3fragmented1020B uploads/9plays/6handles/522edges PASS. All9first_delta1000120mu;
+width/period4000/16000,6000/20000,8000/24000mu. No new AUXsend/RX/masterreset
+errors. Both sessions restored Kasli diagnostic/clock and Genesys normallocal
+TTL/DMA/analyzer/MonInj/Ethernet PASS192.168.2.3. All4sharedlocks held through
+restoration. No flash/SD/OTP/GenesysSi writes. Evidence kasli03-abort-handoff-
+{idle,long}-hardware-2026-10-16. Physical abort/fault status injection NOT_RUN;
+production error recovery remains fail-closed. Next prepare bounded host-armed
+abort-to-native-packet diagnostic with canceled-output and postabort-DIO checks.
