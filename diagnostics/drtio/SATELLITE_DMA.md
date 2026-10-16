@@ -921,3 +921,16 @@ observation. No claim of paused-RX hardware recovery, native AUX fault recovery,
 absolute phase/jitter or cancellation of events that already fired. Next repeat
 the bounded abort session independently, then qualify native AUX fault status
 propagation before relaxing its fail-closed policy.
+
+
+Independent physical abort repeat2026-10-16 PASS: images reloaded under all4
+shared leases, reset/DIO/TSC prerequisites repeated. Preabort active1/accepted1/
+completed0, sampled50195627976mu, offset76882906768mu, epoch1. Postabort
+active0/pending1/error1/accepted1/completed1, epoch1 unchanged. All canceled
+1100trace timestamps covered by rearmed input:0edges; subsequent packet pulse
+2edges/8000mu without DMA restart/core.reset PASS. Both board restorations and
+normal Genesys localTTL/DMA/analyzer/MonInj/Ethernet PASS192.168.2.3. No flash/
+SD/OTP/GenesysSi writes. Evidence kasli03-host-abort-repeat-hardware-2026-10-16.
+Two independent physical runningclock hostabort sessions now PASS. NativeAUX
+fault-status propagation/recovery and pausedRX hardware tests remain NOT_RUN;
+next nativeDDMA rejection/error handling, preserving existing failclosed policy.
