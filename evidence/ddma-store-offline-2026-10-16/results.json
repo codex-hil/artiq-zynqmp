@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "kind": "HOST_POLICY_TEST_NOT_HARDWARE",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "upstream": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "firmware_integration": "NOT_IMPLEMENTED",
+  "sha256": {
+    "diagnostics/drtio/aux_protocol/ddma_store.h": "31f0bafec5379f56e5b32b2f453cef9256d045455a74240a0962732923e352b4",
+    "diagnostics/drtio/aux_protocol/test_ddma_store.c": "577d1e21a6c543f1ac9a82f1aa58135dae2316c9b77aea03993083d374bdcb9a"
+  }
+}

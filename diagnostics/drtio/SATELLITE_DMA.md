@@ -325,3 +325,29 @@ This proves the native PL DDR reader/decoder/RTIO path, with host RPC/DAP upload
 and arming. It does **not** implement native AUX DDMA. Next stages are bounded
 upload/allocation/record validation and native AUX playback/status integration;
 post-abort handoff to packet ownership also requires explicit qualification.
+
+
+## Bounded native-upload staging policy (offline, 2026-10-16)
+
+`aux_protocol/ddma_store.h` is a pure-memory, single-entry staging policy for
+native AUX integration, not yet linked into firmware. It uses the pinned
+upstream PayloadStatus first/last bits and `(source,id)` identity. A first
+fragment replaces the prior slot; continuations require the matching active
+upload. Busy playback rejects every mutation. Overflow or malformed final
+records invalidate the slot; incomplete slots cannot be marked complete.
+
+The2048-byte window reserves512 bytes for terminator/speculative read padding;
+at most1536 uploaded bytes are accepted (1530 for whole17-byte records).
+The first supported subset is channel0 TTL output and channel1 edge gate,
+destination1,17-byte records, monotonic nonnegative fine3-aligned timestamps,
+and bounded address/data values. Complete validation precedes stripping the
+remote destination byte. The remainder of the window is zero-filled.
+This intentionally rejects wider/general RTIO records pending dedicated tests.
+
+Run `make test-drtio-ddma-store O=/srv/codex-hil-data/artiq-zynqmp/build/ddma-store`.
+Host C tests use ASan/UBSan, exercise fragmentation across records, truncation,
+invalid fields/timestamps, source/ID mismatch, busy ownership, overflow,
+maximum valid trace, padding and recovery. This is not a wire-codec, cache/MMIO,
+playback/status or hardware test. Next extend the unchanged upstream Rust codec
+C ABI with DDMA fields, test real packet vectors, then connect staging/cache
+flush and bounded DMA CSR control under the existing guarded session.

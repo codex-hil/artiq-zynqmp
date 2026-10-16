@@ -1959,3 +1959,12 @@ uploads and arms; native AUX DDMA remains MISSING, post-abort packet handoff
 and absolute phase/jitter/deterministic-link latency remain NOT_QUALIFIED.
 Next implement bounded native AUX upload/allocation/validation/playback/status
 against upstream packet definitions, with offline negative tests first.
+
+
+DDMA upload policy2026-10-16 offline PASS: single bounded2048-byte staging
+window, source/ID ownership, upstream first/last bits,1536-byte payload limit,
+conservative17-byte destination1 TTL records and zero speculative padding.
+ASan/UBSan native tests PASS (fragmentation/truncation/bounds/fields/ownership/
+busy/max-size/recovery). Not linked into AUX firmware; no HW accessed.
+Next upstream-codec DDMA C ABI + packet vectors, then actual upload/cache/
+CSR playback/status integration. Physical prior DDR DMA remains host-armed.

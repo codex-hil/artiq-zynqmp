@@ -266,3 +266,9 @@ test-drtio-dma-cold-release:
 
 test-drtio-dma-host-probe:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_dma_probe.py' -v
+
+.PHONY: test-drtio-ddma-store
+test-drtio-ddma-store:
+	mkdir -p $(abspath $(O))/ddma-store
+	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_store.c -o $(abspath $(O))/ddma-store/test
+	$(abspath $(O))/ddma-store/test
