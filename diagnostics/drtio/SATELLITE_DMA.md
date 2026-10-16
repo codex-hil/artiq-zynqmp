@@ -891,3 +891,33 @@ wrong proof. Fresh non-native snapshot A53/Rust firmware build PASS at
 `build/host-abort-firmware-2026-10-16`; it needs its own physical idle proof.
 Evidence `evidence/dma-abort-host-integration-offline-2026-10-16`. Next guarded
 idle qualification, followed by exact-proof abort session; physical NOT_RUN.
+
+
+### Physical host-only abort cancellation PASS (2026-10-16)
+
+Fresh non-native snapshot firmware SHA256
+`4569379d08b9a58921d8379a9ba5fa0d4458cd8bc376d19f7a9eff238da33ed9`
+and routed bit`21c187cb...` first passed guarded idle qualification:2 native
+reset handshakes,2x8 physical DIO pulses,4 TSC snapshots and full restoration.
+An independent guarded session then passed the opt-in host-only abort test.
+
+The complete32768-byte DDR window was block-loaded and read back exactly
+(hashes recorded in binary-manifest.json; large generated binaries archived).
+Before abort: active1, accepted1, completed0, epoch1, sampled49376986304mu,
+offset76029910816mu. After abort: active0, pending1, exacterror1, accepted1,
+completed1, epoch1; readiness/error checks clean. Input was rearmed after
+recovery and observed across every timestamp of the1100-record canceled
+trace: zero edges. A subsequent native RT packet pulse yielded2 physical
+edges with8000mu width without a new DMA epoch, result clear or core.reset.
+
+Both sessions restored Kasli diagnostic and reviewed volatile Si5324 baseline
+and Genesys normal local ARTIQ at192.168.2.3. Local TTL/CoreDMA/analyzer/MonInj
+and Ethernet restoration checks PASS. All4 shared locks held through
+restoration; no flash/SD/OTP/Genesys Si writes. AUX send/RX/master reset error
+counts unchanged. Evidence `kasli03-host-abort-{idle,physical}-hardware-2026-10-16`.
+
+Scope: one running-clock host-DAP-started/aborted epoch with physical TTL
+observation. No claim of paused-RX hardware recovery, native AUX fault recovery,
+absolute phase/jitter or cancellation of events that already fired. Next repeat
+the bounded abort session independently, then qualify native AUX fault status
+propagation before relaxing its fail-closed policy.

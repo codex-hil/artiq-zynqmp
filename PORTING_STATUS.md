@@ -2206,3 +2206,15 @@ A53/Rust firmware build PASS;7tests include5executed mock-Tcl scenarios and
 mode/proof rejection. No HW access. Evidence dma-abort-host-integration-offline-
 2026-10-16. Next freshfirmware guarded idle qualification then physicalabort;
 pausedclock/nativeAUXrecovery still NOT_RUN.
+
+
+Physical host abort2026-10-16 PASS: fresh non-native snapshot fw4569379d...
+first qualified idle/DIO/TSC on bit21c187cb... . Independent32768B host-only
+start/abort: active1/accepted1/completed0 before, active0/pending1/error1/
+accepted1/completed1 after, TSCepoch1 unchanged. All1100 futuretrace timestamps
+observed after inputrearm:0edges; subsequent nativepacket2edges/8000mu without
+newDMA/resultclear/core.reset PASS. Both sessions restored Kasli/clock and
+Genesys normallocal TTL/DMA/analyzer/MonInj/Ethernet PASS192.168.2.3. All4locks,
+no flash/SD/OTP/GenesysSi writes. Evidence kasli03-host-abort-{idle,physical}-
+hardware-2026-10-16. Scope single runningclock hostabort; pausedclock/nativeAUX
+faultrecovery NOT_RUN. Next independentrepeat then nativeAUX faultpropagation.
