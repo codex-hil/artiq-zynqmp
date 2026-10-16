@@ -1,0 +1,18 @@
+{
+  "status": "OFFLINE_PASS",
+  "hardware_access": "NONE",
+  "payload_records": 62,
+  "payload_bytes": 1054,
+  "fragment_lengths": [
+    1010,
+    44
+  ],
+  "native_payload_limit": 1024,
+  "actual_artiq_compile": "PASS",
+  "elf_sha256": "bc931d6c8c002aa9504d2531e6529fe345269f9d52c2683fbb80e3379cd148df",
+  "c_policy_asan_ubsan": "PASS",
+  "invalid_upload_mock_starts": 0,
+  "valid_recovery_mock_starts": 2,
+  "physical_rejection": "NOT_RUN",
+  "next": "bounded expected-failure session, require AUX rejection and no playback, then valid native recovery"
+}

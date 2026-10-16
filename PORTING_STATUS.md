@@ -2231,3 +2231,14 @@ SD/OTP/GenesysSi writes. Evidence kasli03-host-abort-repeat-hardware-2026-10-16.
 Two independent physical runningclock hostabort sessions now PASS. NativeAUX
 fault-status propagation/recovery and pausedRX hardware tests remain NOT_RUN;
 next nativeDDMA rejection/error handling, preserving existing failclosed policy.
+
+
+Native oversize rejection2026-10-17 preparation offline PASS: new experiment
+records62events/1054B (1010+44), neverplayback, unexpected-upload-success marker
+is failure. ActualARTIQcompile PASS. ASan/UBSan policy boundary accepts1010,
+rejects44, zeroinvalidmockstarts then validrecovery2starts PASS. Upstream upload
+NACK propagates session error at recordstop (not assumed catchable kernel
+exception); original diagnostic labels replydestination0, not remote1. No
+firmware/HW changes. Next optin bounded expectedfailure wrapper with concrete
+AUX/master evidence and validnative recovery. Evidence ddma-oversize-offline-
+2026-10-17; physical NOT_RUN.

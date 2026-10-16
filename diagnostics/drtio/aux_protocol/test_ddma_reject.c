@@ -30,9 +30,19 @@ int main(void) {
  p.status=2;p.length=15;add(&s,&p,0);playback(&s,&p,0); /*1025 > policy*/
  p.status=3;p.length=1011;add(&s,&p,0);playback(&s,&p,0); /*larger than wire array*/
  p.length=17;p.status=4;add(&s,&p,0);playback(&s,&p,0);
+ /* Exact real-experiment boundary:62 valid17B records=1054,1010+44. */
+ uint8_t real_trace[62*17];
+ for(unsigned i=0;i<62;i++) {
+  memcpy(real_trace+i*17,record,17);
+  uint64_t ts=(uint64_t)i*8;
+  for(unsigned j=0;j<8;j++)real_trace[i*17+4+j]=(uint8_t)(ts>>(8*j));
+ }
+ p.status=1;p.length=1010;memcpy(p.trace,real_trace,1010);add(&s,&p,1);
+ p.status=2;p.length=44;memcpy(p.trace,real_trace+1010,44);add(&s,&p,0);
+ playback(&s,&p,0);
  assert(starts==0 && !s.running && !s.store.complete);
  /* A fresh valid first/last upload must recover after each rejection chain. */
- p.status=3;memcpy(p.trace,record,17);add(&s,&p,1);playback(&s,&p,1);
+ p.status=3;p.length=17;memcpy(p.trace,record,17);add(&s,&p,1);playback(&s,&p,1);
  assert(starts==1 && s.running);
  add(&s,&p,0);assert(s.store.complete); /* busy cannot corrupt active slot */
  assert(!ddma_service_complete(&s,0,0,0));playback(&s,&p,0);

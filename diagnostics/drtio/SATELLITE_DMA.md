@@ -934,3 +934,31 @@ SD/OTP/GenesysSi writes. Evidence kasli03-host-abort-repeat-hardware-2026-10-16.
 Two independent physical runningclock hostabort sessions now PASS. NativeAUX
 fault-status propagation/recovery and pausedRX hardware tests remain NOT_RUN;
 next nativeDDMA rejection/error handling, preserving existing failclosed policy.
+
+
+### Native oversized-upload rejection preparation (2026-10-17)
+
+The upstream master calls remote upload during DmaRecordStop. A failed
+DmaAddTraceReply propagates a runtime/session error before any playback call;
+this must be tested as an expected failing host invocation, not a successful
+kernel or a guessed catchable kernel exception. Reference paths:
+`runtime/session.rs` DmaRecordStop, `runtime/rtio_mgt.rs` ddma_upload_trace.
+The latter currently constructs DmaAddTraceFail using reply destination (master
+0), so the diagnostic can label satellite#0 despite actual remote destination1.
+Do not infer physical routing from that error label. Upstream is untouched.
+
+New `examples/kasli_drtio_native_dma_oversize.py` records30 pulses plus input
+gate open/close:62x17B=1054, fragments1010/44, over the unchanged1024B bound.
+It never calls playback. If recorder exit unexpectedly succeeds it prints
+`NATIVE_DDMA_OVERSIZE_UNEXPECTED_ACCEPT`, which the future guarded parser must
+reject. Actual ARTIQ/NAC3 compilation PASS. Existing C policy ASan/UBSan now
+tests the same1054-byte boundary with valid records, accepts the first1010B,
+rejects the final44B, blocks playback (zero mock starts) and subsequently
+accepts valid recovery with two mock starts. No firmware policy changed.
+
+No HW access this turn. Next integrate opt-in bounded expected-failure process
+under the existing all-board leases: require concrete AUX first-fragmentACK/
+last-fragmentNACK, no playback/status, matching IDs and master error, then run
+a valid native playback in a fresh host connection before restoration. Guard
+against treating timeout, link loss, panic or arbitrary nonzero exit as PASS.
+Evidence `evidence/ddma-oversize-offline-2026-10-17`; physical NOT_RUN.

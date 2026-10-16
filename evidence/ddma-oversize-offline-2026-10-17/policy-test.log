@@ -1,0 +1,4 @@
+mkdir -p /srv/codex-hil-data/artiq-zynqmp/build/ddma-oversize-2026-10-17/ddma-reject
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_reject.c -o /srv/codex-hil-data/artiq-zynqmp/build/ddma-oversize-2026-10-17/ddma-reject/test
+/srv/codex-hil-data/artiq-zynqmp/build/ddma-oversize-2026-10-17/ddma-reject/test
+DDMA_REJECT_OFFLINE_PASS zero starts for invalid uploads; valid recovery and busy ownership
