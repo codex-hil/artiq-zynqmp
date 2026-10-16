@@ -2107,3 +2107,17 @@ RTL helpers. Next route qualification/new exact cold-DIO proof then physical
 fragmented29pulse test. Previous short lifecycle hardware baseline unchanged.
 
 Piotr boundary regressions2026-10-16:2/2 PASS (1020B completion,1530B bounded error/drain/restart). Vivado credit2 still RUNNING; no new bit/HW qualification.
+
+
+Credit2/native fragmented DDMA2026-10-16 physical PASS. Route bit0c8fcc5c...,
+8CDCgroups/170endpoints minslack7.228ns,16skew groups PASS. Exact new bit/fw
+idle AUX/snapshot/reset/2DIO+restoration PASS, then standard CoreDMA1020B upload
+First1010/Last10 crossing record boundary, both upload ACK/playback/error0status/
+erase PASS ID1076235456. Physical29pulses/58edges,width8000mu,period16000mu,
+first_delta1000120mu; no extraedge/hostDAP. Maximum whole17B trace under1024B
+policy, unchanged16burst/2048B window.3 parser/preflight tests PASS. Both
+sessions restored normal Kasli/clock and Genesys local TTL/DMA/debug/Ethernet
+PASS192.168.2.3; all4locks; no persistent/Genesys Si writes. Evidence ddma-credit2-
+build-2026-10-16,kasli03-credit2-idle-hardware-2026-10-16,kasli03-native-ddma-
+fragment-hardware-2026-10-16. Next long-handle/replacement and bounded invalid
+upload tests; abort/generalRTIO/phase/jitter remain unqualified.

@@ -1,0 +1,13 @@
+{
+  "kind": "fpga-build-not-hardware",
+  "status": "PASS",
+  "scope": "laboratory satellite DDR DMA target; AUX DDMA firmware and hardware unqualified",
+  "sha256": {
+    "top.bit": "0c8fcc5c6b6e1721267dd453e2a1f4a97c89b426a0d22f6e795f996afccf5de9",
+    "top.v": "42053e0bd02204e3d3bc1c81ebfc411d16be34c89ae1788c938af43094d229b7",
+    "top.xdc": "c9d9ecb3c03aef3b104ab7dd501612ef91005cc1bd84c2fa91f79de77a2dc406",
+    "csr-map.json": "7e9713129e8324928b1222112e9cef5aaa216790e840654e6807a8cd70c14065",
+    "top_timing.rpt": "98cf33d3b74fb6eba800136034e5c6e0c4832b3451ca1344cca159570074ebfd",
+    "top_bus_skew.rpt": "c44709209c84b8c6ac3598da5ceccd608bd91a6e8e45b29812b5181ca71e94e0"
+  }
+}

@@ -41,3 +41,18 @@ class LifecycleTests(unittest.TestCase):
         for badlog,badtext in ((log.replace('width_mu=8000','width_mu=8008'),text),
                 (log,text.replace('error=0','error=1',1)),(log,'\n'.join(lines[:-1]))):
             with self.assertRaises(RuntimeError):lifecycle_result(badlog,badtext)
+
+
+class FragmentTests(unittest.TestCase):
+    def test_two_exact_fragments_and_physical_capture(self):
+        from native_dma_session import fragment_result
+        log='NATIVE_DDMA_FRAGMENT_PASS edges=58 width_mu=8000 period_mu=16000 first_delta_mu=1000120'
+        lines=['AUX_DDMA UPLOAD id=42 status=1 bytes=1010','AUX_DDMA REPLY kind=177 id=42 succeeded=1',
+            'AUX_DDMA UPLOAD id=42 status=2 bytes=10','AUX_DDMA REPLY kind=177 id=42 succeeded=1',
+            'AUX_DDMA REPLY kind=181 id=42 succeeded=1','AUX_DDMA STATUS id=42 error=0',
+            'AUX_DDMA REPLY kind=179 id=42 succeeded=1']
+        text='\n'.join(lines)
+        self.assertEqual(fragment_result(log,text)['native_ddma_edges'],58)
+        for bad in (text.replace('bytes=10\n','bytes=11\n'),text.replace('error=0','error=1'),
+                    '\n'.join(lines[:-1]),text.replace('status=2','status=0')):
+            with self.assertRaises(RuntimeError):fragment_result(log,bad)

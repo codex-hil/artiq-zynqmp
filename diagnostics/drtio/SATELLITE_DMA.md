@@ -670,3 +670,32 @@ No hardware accessed in this stage; restored lifecycle-tested baseline remains.
 Next qualify route/CDC, obtain new exact-bit/firmware idle/DIO proof, then native
 29-pulse/58-edge1020-byte physical upload in two packets. Do not use previous
 firmware proof after payload-policy/helper hashes changed.
+
+
+## Native fragmented upload physical PASS (2026-10-16)
+
+Credit2 route PASS, bit SHA256
+0c8fcc5c6b6e1721267dd453e2a1f4a97c89b426a0d22f6e795f996afccf5de9.
+All170 endpoints/8 CDC groups have8ns requirement, minimum slack7.228ns;
+16 skew groups/top timing PASS. Exact new bit/firmware first passed guarded
+idle AUX/snapshot/reset/two DIO kernels and both baseline restorations.
+
+Standard `kasli_drtio_native_dma_fragmented.py` then uploaded1020 bytes through
+native AUX as First1010 +Last10, splitting a17-byte record across packets.
+Both AddTraceReplies, PlaybackReply, PlaybackStatus(error0) and RemoveTraceReply
+succeeded for ID1076235456. Kasli physically captured29 pulses/58 edges,
+width8000mu,period16000mu,first_delta1000120mu and no extra edge. No host DAP
+upload or arming. This tests the largest whole17-byte trace under current1024B
+payload policy, while preserving the16-burst/2048-byte padded read window.
+
+Parser negatives reject wrong fragment length/status, DMA error and missing
+erase;3 host preflight/parser tests PASS. Both actual hardware sessions restored
+Kasli checker/clock profile and normal Genesys local TTL/CoreDMA/analyzer/
+MonInj/Ethernet PASS at192.168.2.3. All4 leases held throughout; no flash/SD/OTP/
+Genesys Si writes. Evidence `kasli03-credit2-idle-hardware-2026-10-16` and
+`kasli03-native-ddma-fragment-hardware-2026-10-16`.
+
+Next repeat long-trace handles/replacement and test bounded upload rejection/
+recovery offline before further physical negatives. Fragmentation PASS does not
+qualify reset/abort recovery, arbitrary RTIO records, general routing or phase/
+jitter/deterministic link latency.
