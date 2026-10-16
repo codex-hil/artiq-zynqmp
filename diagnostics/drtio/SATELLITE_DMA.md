@@ -564,3 +564,25 @@ Both boards restored and validated PASS after the failed attempt (normal local
 Genesys192.168.2.3). No persistent/Genesys Si writes. Next bounded diagnostic
 repeat with master UART capture, then fix the demonstrated software failure;
 do not label this as native-DDMA success or suppress its exception.
+
+
+## Master tuple ABI failure captured (2026-10-16)
+
+Bounded repeat captured the master UART before restoration: kernel panic at
+`ksupport/lib.rs:442:5`, `ptr % 64 == 0`. No satellite DDMA requests observed.
+Both board baseline restorations PASS. The generated RISC-V callsite allocates
+24 bytes, reads duration at8/12, address at16 and uses_ddma at20. Old upstream
+ksupport returns a16-byte C struct with fields0/8/12. This reproduces the known
+NAC3 ObjectHeader tuple mismatch already fixed in the A53 local-CoreDMA bridge.
+
+`prepare_flashfree_runtime.py --nac3-dma-abi` now optionally adds the same two
+header words and zero initialization, retaining alignment assertions and adding
+a24-byte Rust size check. Applied only in isolated worktree
+`work/kasli03-bram-runtime-dma-abi`; references and prior source trees preserved.
+RISC-V C static layout assertions PASS. Full firmware build RUNNING in
+`build/kasli03-dma-abi-2026-10-16`,900s timeout; build.log records toolchain
+resolution/compilation. Fixed runtime has not run. Next finish build, compare
+all generated hardware ABI headers with qualified BRAM bitstream, then a guarded
+runtime qualification and repeat CoreDMA. No claim that tuple fix resolves all
+remaining native DDMA issues. Evidence native-ddma-abi-diagnosis-2026-10-16 and
+kasli03-native-ddma-capture-hardware-2026-10-16.

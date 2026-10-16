@@ -2055,3 +2055,14 @@ finally drain under existing leases before restoring SRAM, to capture master
 panic on next bounded diagnostic attempt; fix not yet physically exercised.
 Proof-negative tests PASS. Evidence kasli03-native-ddma[-idle]-hardware-2026-10-16.
 Next capture master failure and resolve software issue; do not mask failure.
+
+
+Native DDMA master failure diagnosed2026-10-16: captured UART kernel panic
+ptr%64 assertion ksupport442. Actual kernel RV32 callsite expects NAC3 headered
+24-byte tuple (address16,flag20), old ksupport returns16-byte C tuple(address8,
+flag12). Optional --nac3-dma-abi overlay prepared in isolated Kasli source;
+header/zero-init/size assertion mirror proven A53 bridge. RV32 C layout PASS.
+Full runtime compile RUNNING build/kasli03-dma-abi-2026-10-16,900s bound/log.
+No fixed-runtime HW test; previous attempt failed before satellite DDMA traffic,
+both normal baselines restored PASS. Next finish compile and compare ABI headers,
+then guarded test of new master runtime. Keep all alignment/error checks.

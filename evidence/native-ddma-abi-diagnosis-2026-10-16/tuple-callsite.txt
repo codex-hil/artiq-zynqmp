@@ -1,0 +1,19 @@
+     804: 01800513     	li	a0, 0x18
+     808: 00000097     	auipc	ra, 0x0
+     80c: 000080e7     	jalr	ra <.Lpcrel_hi7+0x5e0>
+     810: 00050493     	mv	s1, a0
+     814: 00001517     	auipc	a0, 0x1
+     818: bb950593     	addi	a1, a0, -0x447
+     81c: 01300613     	li	a2, 0x13
+     820: 00048513     	mv	a0, s1
+     824: 00000097     	auipc	ra, 0x0
+     828: 000080e7     	jalr	ra <.Lpcrel_hi7+0x5fc>
+     82c: 00c4aa83     	lw	s5, 0xc(s1)
+     830: 0084aa03     	lw	s4, 0x8(s1)
+     834: 0104a603     	lw	a2, 0x10(s1)
+     838: 0144c683     	lbu	a3, 0x14(s1)
+     83c: 00492503     	lw	a0, 0x4(s2)
+     840: 00092583     	lw	a1, 0x0(s2)
+     844: 00d036b3     	snez	a3, a3
+     848: 00000097     	auipc	ra, 0x0
+     84c: 000080e7     	jalr	ra <.Lpcrel_hi7+0x620>

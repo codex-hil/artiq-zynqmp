@@ -1,0 +1,21 @@
+{
+  "status": "DIAGNOSED_PATCH_PREPARED",
+  "physical_native_ddma": "FAIL",
+  "master_panic": "ksupport/lib.rs:442 ptr % 64 == 0",
+  "restoration": "PASS",
+  "kernel_tuple": {
+    "size": 24,
+    "duration_offset": 8,
+    "address_offset": 16,
+    "uses_ddma_offset": 20
+  },
+  "old_ksupport_tuple": {
+    "size": 16,
+    "duration_offset": 0,
+    "address_offset": 8,
+    "uses_ddma_offset": 12
+  },
+  "riscv_c_layout": "PASS",
+  "runtime_build": "RUNNING",
+  "fixed_runtime_hardware": "NOT_RUN"
+}

@@ -14,6 +14,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--nac3-dma-abi', action='store_true',help='Adapt DMA tuple return to pinned NAC3 object header ABI')
     args = parser.parse_args()
     if args.output.exists():
         raise SystemExit('Refusing to overwrite a source worktree')
@@ -61,6 +62,19 @@ def main():
     pub fn debug_allocator('''
     text = replace_once(text, needle, replacement)
     mgmt.write_text(text + original[boundary:])
+    if args.nac3_dma_abi:
+        ksupport = args.output / 'artiq/firmware/ksupport/lib.rs'
+        text = replace_once(ksupport.read_text(),
+            'struct DmaTrace {\n    duration: i64,',
+            'struct DmaTrace {\n    // Pinned NAC3 tuple ObjectHeader, matching the A53 port ABI.\n'
+            '    refcount: u32,\n    typeinfo_offset: i32,\n    duration: i64,')
+        text = replace_once(text, '            Some(bytes) => Ok(DmaTrace {\n',
+            '            Some(bytes) => Ok(DmaTrace {\n                refcount: 0,\n                typeinfo_offset: 0,\n')
+        text = replace_once(text,
+            'extern "C-unwind" fn dma_retrieve(name: CSlice<u8>) -> DmaTrace {',
+            'const _: [(); 24] = [(); core::mem::size_of::<DmaTrace>()];\n\n'
+            'extern "C-unwind" fn dma_retrieve(name: CSlice<u8>) -> DmaTrace {')
+        ksupport.write_text(text)
     patch = subprocess.check_output(['git', '-C', str(args.output), 'diff'], text=True)
     (args.output / 'kasli03-flashfree-runtime.patch').write_text(patch)
 
