@@ -1,0 +1,9 @@
+SATELLITE_DDR_READBACK_PASS bytes=2048 base=570425344
+SATELLITE_DMA_CONFIG address=570425344 offset=75936927240 max_bursts=16 watchdog=134217728
+SATELLITE_DMA_STATUS active=0 pending=1 reject=0 error=65 channel=0 timestamp=0 accepted=1 completed=1 rtio_reset=1 phy_reset=0 errors=0 reply_fault=0 loads=1
+DMA failed/rejected
+    while executing
+"error "DMA failed/rejected""
+    invoked from within
+"if {[rd dma_active]!=0 || [rd dma_reject]!=0 || [rd dma_result_error]!=0} {error "DMA failed/rejected"}"
+    (file "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-ddr-dma-v2-hardware-2026-10-16/external-rx/dma-playback/probe.tcl" line 1115)

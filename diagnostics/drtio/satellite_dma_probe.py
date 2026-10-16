@@ -65,13 +65,18 @@ set completed [rd dma_completed]
     for i in range(0,len(data),4):
         word=int.from_bytes(data[i:i+4],'little');addr=0x22000000+i
         lines += [f'mwr {addr} {word}',f'if {{(wide([mrd -value {addr}])&0xffffffff)!={word}}} {{error "DDR readback offset {i}"}}']
+    lines.append('puts "SATELLITE_DDR_READBACK_PASS bytes=2048 base=570425344"')
     lines += [f'wr dma_address {0x22000000}',f'wr dma_time_offset {timestamp}',
-        'wr dma_max_bursts 16','wr dma_watchdog 134217728','wr dma_start 1','''
+        'wr dma_max_bursts 16','wr dma_watchdog 134217728',
+        f'if {{[rd dma_address]!=570425344 || [rd dma_time_offset]!={timestamp} || [rd dma_max_bursts]!=16 || [rd dma_watchdog]!=134217728}} {{error "DMA configuration readback mismatch"}}',
+        'puts "SATELLITE_DMA_CONFIG address=[rd dma_address] offset=[rd dma_time_offset] max_bursts=[rd dma_max_bursts] watchdog=[rd dma_watchdog]"',
+        'wr dma_start 1','''
 set deadline [expr {[clock milliseconds]+3000}]
 while {[rd dma_pending]==0} {
  if {[clock milliseconds]>$deadline} {error "DMA completion timeout; restoration required"}
  after 1
 }
+puts "SATELLITE_DMA_STATUS active=[rd dma_active] pending=[rd dma_pending] reject=[rd dma_reject] error=[rd dma_result_error] channel=[rd dma_result_channel] timestamp=[rd dma_result_timestamp] accepted=[rd dma_accepted] completed=[rd dma_completed] rtio_reset=[rd aux_rtio_reset_applied] phy_reset=[rd aux_phy_reset_applied] errors=[rd aux_rtio_error_flags] reply_fault=[rd aux_rt_reply_fault] loads=[rd aux_tsc_load_count]"
 if {[rd dma_active]!=0 || [rd dma_reject]!=0 || [rd dma_result_error]!=0} {error "DMA failed/rejected"}
 if {[rd dma_accepted]!=$accepted+1 || [rd dma_completed]!=$completed+1} {error "Missing hardware DMA epoch"}
 if {[rd aux_rt_reply_fault]!=0 || [rd aux_rtio_error_flags]!=0} {error "Satellite RTIO fault"}

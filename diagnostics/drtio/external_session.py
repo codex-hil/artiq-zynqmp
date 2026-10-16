@@ -94,6 +94,10 @@ class ExternalSession:
             if self.dio_test: self.result['optical_tx']='upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf'
             self.result['firmware_sha256'] = fw['elf_sha256']
         self.result['bit_sha256'] = build['sha256']['top.bit']
+        self.host_dma_test = bool(c.get('host_dma_test',False))
+        if self.host_dma_test:
+            from host_dma_session import validate
+            validate(self)
 
     def run(self, name, argv, timeout=240, host=False):
         self.output.mkdir(parents=True, exist_ok=True)
@@ -214,6 +218,9 @@ disconnect
                     self.probe_reset(master_host,uart,raw)
                     if getattr(self,'dio_test',False): self.probe_dio(master_host,uart,raw)
                     if getattr(self,'stability_test',False): self.probe_stability(master_host,uart,raw)
+                    if getattr(self,'host_dma_test',False):
+                        from host_dma_session import probe
+                        probe(self,master_host,uart,raw)
             finally:
                 (self.output/'aux-uart.log').write_bytes(raw)
         text = raw.decode(errors='replace')

@@ -1,0 +1,6 @@
+DMA failed/rejected
+    while executing
+"error "DMA failed/rejected""
+    invoked from within
+"if {[rd dma_active]!=0 || [rd dma_reject]!=0 || [rd dma_result_error]!=0} {error "DMA failed/rejected"}"
+    (file "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-ddr-dma-hardware-2026-10-16/external-rx/dma-playback/probe.tcl" line 1111)
