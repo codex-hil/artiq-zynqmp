@@ -1,0 +1,10 @@
+{
+  "status": "OFFLINE_PASS",
+  "hardware_access": "NONE",
+  "unit_tests": 7,
+  "tcl_mock_scenarios": 5,
+  "actual_artiq_compile": "PASS",
+  "a53_rust_firmware_build": "PASS",
+  "physical_abort": "NOT_RUN",
+  "next": "qualify fresh non-native snapshot firmware in guarded idle, then exact-proof abort session"
+}

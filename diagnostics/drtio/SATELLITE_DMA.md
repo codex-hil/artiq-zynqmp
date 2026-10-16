@@ -855,3 +855,39 @@ Next integrate guarded block DDR loading, live-TSC/active checks, explicit
 abort and rearmed physical input observation into the existing host-only
 parent session. Native AUX payload/burst limits and fail-closed policy stay
 unchanged. Evidence `evidence/dma-saturated-abort-offline-2026-10-16`.
+
+
+### Guarded host abort integration (2026-10-16, offline)
+
+`host_dma_abort_test=true` now selects a separate host-only diagnostic through
+`host_dma_session`/`abort_dma_session`. It requires non-native firmware, snapshot
+test, explicit `abort_acknowledgement="host-only-32768-byte-window"` and exact
+prior bit/firmware idle+DIO/restoration proof in `dma_idle_qualification`. A
+native DDMA session cannot enable it. Normal host/native playback paths retain
+their existing limits. No live abort session has been run.
+
+`make_abort_tcl` uses documented XSDB binary block write/read to transfer and
+compare32768 bytes. It validates identity/readiness, live snapshot age/future
+lead (conservative2mu/ns bound), active/pending and epoch counters before an
+explicit abort. It then requires exacterror1, completed+1, active0 (including
+recovery), unchanged link/TSC epoch, no RTIO/PHY reset or async error and time
+remaining for observation. It logs before/after counters; does not clear the
+result, reset RTIO or restart DMA. The inherited Genesys lease and existing
+all-board parent remain mandatory.
+
+`examples/kasli_drtio_dma_abort.py` compiles with actual ARTIQ/NAC3. It allows
+30s future offset for RPC load/abort, rearms input after recovery, observes
+start-1ms through start+20ms (last canceled timestamp start+18.584ms), requires
+zero edges, then demands one ordinary packet pulse/two edges/8000mu width
+without another core.reset or DMA start. RPC child25s, experiment75s bounds.
+Parent restores both boards on failure. A positive result would qualify only
+running-clock host-armed abort; paused-clock and native AUX recovery remain
+separate.
+
+Seven offline tests PASS, including actual Tcl execution with mocked MMIO/DDR:
+success plus early completion, unexpected fault, corrupt readback and late
+offset rejection. Wrapper rejects native mode/missing snapshot/acknowledgement/
+wrong proof. Fresh non-native snapshot A53/Rust firmware build PASS at
+`build/host-abort-firmware-2026-10-16`; it needs its own physical idle proof.
+Evidence `evidence/dma-abort-host-integration-offline-2026-10-16`. Next guarded
+idle qualification, followed by exact-proof abort session; physical NOT_RUN.

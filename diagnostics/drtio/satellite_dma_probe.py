@@ -109,6 +109,76 @@ disconnect
     return '\n'.join(lines)+'\n'
 
 
+def make_abort_tcl(mapping,timestamp):
+    """Host-only abort plan; caller must hold lease and stage exact trace.bin.
+
+    Separate opt-in host-only mode; native AUX DDMA cannot enable this plan.
+    """
+    regs=mapping.get('registers',{})
+    extra=('dma_abort','aux_tsc_snapshot_request','aux_tsc_snapshot_busy',
+           'aux_tsc_snapshot_valid','aux_tsc_snapshot_value','aux_rtio_reset_applied',
+           'aux_phy_reset_applied')
+    if any(n not in regs for n in extra):raise ValueError('Incomplete abort/snapshot map')
+    # Reuse exact identity/readiness checks and MSW-first CSR helpers.
+    prefix=make_tcl(mapping,timestamp).split('wr dma_clear 1',1)[0]
+    return prefix+\
+'''
+proc binary_read {name} {
+ set f [open $name rb];set data [read $f];close $f;return $data
+}
+proc snapshot {} {
+ if {[rd aux_tsc_snapshot_busy]} {error "Snapshot already busy"}
+ wr aux_tsc_snapshot_request 1
+ set deadline [expr {[clock milliseconds]+1000}]
+ while {[rd aux_tsc_snapshot_busy] || ![rd aux_tsc_snapshot_valid]} {
+  if {[clock milliseconds]>$deadline} {error "Snapshot timeout"}
+ }
+ return [rd aux_tsc_snapshot_value]
+}
+set directory [file dirname [info script]]
+set expected [binary_read [file join $directory trace.bin]]
+if {[string length $expected]!=32768} {error "Wrong abort fixture size"}
+mwr -bin -file [file join $directory trace.bin] 570425344 8192
+mrd -bin -file [file join $directory readback.bin] 570425344 8192
+if {[binary_read [file join $directory readback.bin]] ne $expected} {error "DDR block readback mismatch"}
+wr dma_clear 1
+set accepted [rd dma_accepted];set completed [rd dma_completed]
+set epoch [rd aux_tsc_load_count]
+'''+f'wr dma_address 570425344\nwr dma_time_offset {timestamp}\n'+\
+'''wr dma_max_bursts 256
+wr dma_watchdog 134217728
+if {[rd dma_address]!=570425344 || [rd dma_max_bursts]!=256 || [rd dma_watchdog]!=134217728} {error "Abort configuration mismatch"}
+set sampled_at [clock milliseconds]
+set sampled [snapshot]
+'''+f'set offset {timestamp}\n'+\
+'''if {[rd dma_time_offset]!=$offset} {error "Time offset readback mismatch"}
+# Conservative age bound: at most2 mu/ns, plus1 second of lead.
+if {$sampled+([clock milliseconds]-$sampled_at)*2000000+1000000000 >= $offset} {error "Insufficient future offset"}
+wr dma_start 1
+after 20
+if {[rd dma_accepted]!=$accepted+1 || [rd dma_completed]!=$completed || ![rd dma_active] || [rd dma_pending]} {error "DMA did not remain active before abort"}
+if {[rd dma_reject] || [rd dma_result_error]} {error "Unexpected preabort fault"}
+puts "SATELLITE_DMA_PREABORT active=[rd dma_active] accepted=[rd dma_accepted] completed=[rd dma_completed] epoch=$epoch sampled=$sampled offset=$offset"
+wr dma_abort 1
+set deadline [expr {[clock milliseconds]+3000}]
+while {[rd dma_active] || ![rd dma_pending]} {
+ if {[clock milliseconds]>$deadline} {error "Abort/recovery timeout"}
+ after 1
+}
+if {[rd dma_result_error]!=1 || [rd dma_reject] || [rd dma_accepted]!=$accepted+1 || [rd dma_completed]!=$completed+1} {error "Unexpected abort result"}
+foreach n {aux_in_reset aux_rtio_reset_request aux_phy_reset_request aux_rtio_reset_applied aux_phy_reset_applied aux_rt_reply_fault aux_rtio_error_flags} {
+ if {[rd $n]} {error "Postabort RTIO fault: $n"}
+}
+if {[rd aux_rx_up]!=1 || [rd aux_tsc_load_count]!=$epoch} {error "Postabort link/TSC epoch changed"}
+if {[snapshot]<=$sampled} {error "TSC did not advance"}
+if {$sampled+([clock milliseconds]-$sampled_at)*2000000+1000000000 >= $offset} {error "Abort too late for observation"}
+# Keep sticky error/pending, do not clear/restart DMA or reset RTIO.
+puts "SATELLITE_DMA_POSTABORT active=[rd dma_active] pending=[rd dma_pending] error=[rd dma_result_error] accepted=[rd dma_accepted] completed=[rd dma_completed] epoch=[rd aux_tsc_load_count]"
+puts "SATELLITE_DMA_ABORT_DRAIN_PASS bytes=32768 bursts_limit=256 error=1"
+disconnect
+'''
+
+
 def run_probe(config,output,timestamp):
     fd=int(os.environ['GENESYS_LEASE_FD'])
     actual=os.fstat(fd);expected=Path('/home/codex-hil/.cache/genesys-'+CABLE+'.lock').stat()
@@ -123,16 +193,22 @@ def run_probe(config,output,timestamp):
             raise ValueError('Stale DMA qualification: '+name)
     mapping=json.loads(Path(c['csr_map']).read_text())
     if Path(c['csr_map']).resolve()!=(build/'csr-map.json').resolve():raise ValueError('Wrong DMA map')
+    abort=bool(c.get('host_dma_abort_test',False))
+    if abort and (not c.get('host_dma_test') or not c.get('snapshot_test') or c.get('native_ddma_mode') or
+                  c.get('abort_acknowledgement')!='host-only-32768-byte-window'):
+        raise ValueError('Abort requires reviewed host-only mode, snapshot and explicit window')
     out=Path(output);out.mkdir(parents=True,exist_ok=False)
-    (out/'trace.bin').write_bytes(trace_bytes())
+    (out/'trace.bin').write_bytes(abort_trace_bytes() if abort else trace_bytes())
     prefix=['lassign $argv server cable','connect -url $server','set matches {}',
         'foreach p [targets -target-properties -filter {name == "PSU"}] {',
         'if {[dict exists $p jtag_cable_serial] && [dict get $p jtag_cable_serial] eq $cable} {lappend matches [dict get $p target_id]}',
         '}','if {[llength $matches]!=1} {error "Exact Genesys target missing"}',
         'targets -set [lindex $matches 0]','configparams force-mem-accesses 1']
-    script=out/'probe.tcl';script.write_text('\n'.join(prefix)+'\n'+make_tcl(mapping,int(timestamp)))
+    script=out/'probe.tcl';script.write_text('\n'.join(prefix)+'\n'+
+        (make_abort_tcl(mapping,int(timestamp)) if abort else make_tcl(mapping,int(timestamp))))
     r=subprocess.run(['vivado-container','shell','-c','exec "$@"','bash',XSDB,str(script.resolve()),c['server'],CABLE],
         capture_output=True,text=True,timeout=25,pass_fds=(fd,))
     log=r.stdout+r.stderr;(out/'probe.log').write_text(log)
-    if r.returncode or 'SATELLITE_DDR_DMA_ADMITTED_PASS' not in log:
+    marker='SATELLITE_DMA_ABORT_DRAIN_PASS' if abort else 'SATELLITE_DDR_DMA_ADMITTED_PASS'
+    if r.returncode or marker not in log:
         raise RuntimeError('Host-armed satellite DMA failed; inspect probe.log and restore via parent')

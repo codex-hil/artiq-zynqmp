@@ -2195,3 +2195,14 @@ PHY/TSC preserved. No HW access; distant canceled-edge physical observation
 NOT_RUN. Evidence dma-saturated-abort-offline-2026-10-16. Next integrate bounded
 host-only blockload/active-abort/liveTSC/input-rearm wrapper before physical
 qualification; nativeAUX1024B/16burst and failclosed policy unchanged.
+
+
+Host abort integration2026-10-16 offline PASS: separate explicit host-only mode,
+non-native snapshot firmware and exact prior idle proof required. Binary DDR
+block/readback, liveTSC age/lead, active-before-abort/exacterror1/drain/epoch
+checks; experiment rearms input, covers all canceled timestamps, then normal
+packet pulse without reset/newDMA. Actual ARTIQ compile and fresh non-native
+A53/Rust firmware build PASS;7tests include5executed mock-Tcl scenarios and
+mode/proof rejection. No HW access. Evidence dma-abort-host-integration-offline-
+2026-10-16. Next freshfirmware guarded idle qualification then physicalabort;
+pausedclock/nativeAUXrecovery still NOT_RUN.

@@ -4,6 +4,9 @@ from pathlib import Path
 
 
 def validate(session):
+    if session.config.get('host_dma_abort_test') and (session.native_ddma or not session.snapshot_test or
+            session.config.get('abort_acknowledgement')!='host-only-32768-byte-window'):
+        raise ValueError('Abort requires non-native host-only firmware, snapshot and explicit window')
     if not session.dio_test or not session.mapping.get('dma'):
         raise ValueError('Host DMA requires actual satellite DMA target and DIO stage')
     proof=json.loads(Path(session.config['dma_idle_qualification']).read_text())
@@ -16,6 +19,9 @@ def validate(session):
 
 
 def probe(session,master_host,uart,raw):
+    if session.config.get('host_dma_abort_test'):
+        from abort_dma_session import probe as abort_probe
+        return abort_probe(session,master_host,uart,raw)
     c=session.config;out=session.output
     # run() keeps inherited parent lease FD for the host RPC process. The parent
     # additionally holds all Kasli leases through validation and restoration.
