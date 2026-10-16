@@ -1,0 +1,15 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_memory*.py' -v
+test_actual_simulator_rx_clock_pause_does_not_block_axi_drain (test_dma_memory_cdc.MemoryCDCTests.test_actual_simulator_rx_clock_pause_does_not_block_axi_drain) ... ok
+test_faster_consumer_reset_and_fresh_epoch (test_dma_memory_cdc.MemoryCDCTests.test_faster_consumer_reset_and_fresh_epoch) ... ok
+test_one_sys_edge_reset_cannot_reuse_stale_ready (test_dma_memory_cdc.MemoryCDCTests.test_one_sys_edge_reset_cannot_reuse_stale_ready) ... ok
+test_slower_consumer_reset_and_fresh_epoch (test_dma_memory_cdc.MemoryCDCTests.test_slower_consumer_reset_and_fresh_epoch) ... ok
+test_abort_before_first_response_and_restart (test_dma_memory_guard.MemoryGuardTests.test_abort_before_first_response_and_restart) ... ok
+test_abort_stalled_consumer_and_restart (test_dma_memory_guard.MemoryGuardTests.test_abort_stalled_consumer_and_restart) ... ok
+test_abort_waits_for_delayed_axi_ready_and_response (test_dma_memory_guard.MemoryGuardTests.test_abort_waits_for_delayed_axi_ready_and_response) ... ok
+test_bus_error_latched_and_new_epoch_clears (test_dma_memory_guard.MemoryGuardTests.test_bus_error_latched_and_new_epoch_clears) ... ok
+test_normal_finish_drains_even_without_consumer (test_dma_memory_guard.MemoryGuardTests.test_normal_finish_drains_even_without_consumer) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.374s
+
+OK

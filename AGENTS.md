@@ -445,3 +445,14 @@ insufficient). Do not wire resettable recovered-clock DMA directly to PS AXI
 without drain/isolation; active reset/concurrent commands unqualified. Next
 memory/CRI CDC with running-clock isolation/quiescence. See SATELLITE_DMA.md
 and evidence/satellite-dma-offline-2026-10-16. No HW accessed in this stage.
+
+
+DMA memory/CDC offline2026-10-16:9 tests each Piotr/current PASS. DMAMemoryGuard
+keeps AXI on sys and drains on abort even with RX simulator clock paused;
+DMARawCDC coordinates FIFO resets across sys/rtio_rx. Short-reset phantom16-word
+failure fixed by seven RX reset edges + fresh reset/ready handshake. read_reset
+must hold future decoder/CRI. No physical timing/Gray constraints/PS target or
+DDMA firmware yet. sys cannot reset/stop before guard.done. Queue reset during
+trace needs guard.abort. No HW accessed; restored board baselines unchanged.
+Next native record decoder/CRIMaster plus completion/error CDC/ownership.
+Evidence dma-memory-offline-2026-10-16; SATELLITE_DMA.md updated.

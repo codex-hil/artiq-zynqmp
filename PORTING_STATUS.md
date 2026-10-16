@@ -1722,3 +1722,24 @@ memory-side isolation/CDC and explicit quiescence, then native AUX trace storage
 status before physical DDMA. Qualified board baselines remain unchanged.
 Evidence satellite-dma-offline-2026-10-16; detailed scope/reproducer
  diagnostics/drtio/SATELLITE_DMA.md. No flash/SD/OTP/Si writes or board probes.
+
+### 2026-10-16 — DMA running-clock drain + raw CDC offline PASS
+
+New DMAMemoryGuard reuses existing AXI DMAReader, drains all accepted bursts
+on abort independently of blocked consumer, and permits next address epoch
+only after completion. No AXI reset/abandoned read on RX loss. New DMARawCDC
+uses native AsyncFIFOBuffered with coordinated FIFO reset and read-reset output
+for future decoder/CRI. First short-reset test exposed16 phantom zero words;
+fixed by seven RX reset edges plus synchronized reset/ready acknowledgements.
+
+9 tests PASS on Piotr and9 contemporary upstream: normal/early abort, delayed
+AR/R, SLVERR/restart, stalled FIFO, faster/slower RX, single-sys-edge reset,
+and actual RX clock-driver pause in simulator while AXI continues/drains. Resume
+contains only new address data; accepted AR and completed RLAST counts match.
+Standalone HDL emission PASS. Functional reset model only, not physical timing.
+No Gray-bus constraints/PS target/decoder/CRI/AUX DDMA integration yet. Memory
+sys must remain clocked/out of reset through done; FIFO reset requires paired
+abort for interrupted trace. Qualified hardware images/baselines unchanged;
+no board access or persistent writes. Evidence dma-memory-offline-2026-10-16.
+Next connect native record decoder and CRIMaster in RX with coordinated abort/
+completion/error reporting and queue ownership; then target and AUX trace layer.

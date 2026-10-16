@@ -1,0 +1,32 @@
+{
+  "kind": "RTL_SIMULATION_AND_HDL_NOT_HARDWARE",
+  "status": "PASS",
+  "piotr_tests": 9,
+  "current_artiq_tests": 9,
+  "piotr_revision": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+  "current_artiq_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "checks": [
+    "all accepted AXI bursts receive terminal responses after abort, even while downstream stalled",
+    "abort before first response and delayed AR/R acceptance",
+    "bus error latch and fresh epoch clear",
+    "async FIFO backpressure with faster/slower RX",
+    "one-sys-edge reset cannot admit stale queue epoch",
+    "RX simulator clock transitions paused: AXI drains and no RX progress occurs; resume delivers only fresh address epoch"
+  ],
+  "initial_failure": "Short reset test exposed16 phantom zero words before fresh data; fixed by holding FIFO reset through seven RX edges and synchronizing reset/ready acknowledgement. This summary is not an archived failing raw log.",
+  "hdl_sha256": "93003b7da0a3f8ef32180059525bfc4674f44be4321dcd5d9587e4e31756bb19",
+  "source_sha256": {
+    "dma_memory_guard.py": "830e35b9776ecab020a971fdfc6f2a54dd6f9ea6c255bab82c7266aa9bf33f8b",
+    "dma_raw_cdc.py": "76c83e7b6db38047f5ce26af422eb63c1bf78839b956d262c8205061b62b70ef",
+    "test_dma_memory_guard.py": "6b662e2410b495ba1e900a2a036b61b09a303a9c661bdf461e815adb0278dac0",
+    "test_dma_memory_cdc.py": "4da4c2ca76a33254203cd9b849e43468dfab91e49730b3b35d96ce7f887058ca",
+    "generate_dma_memory.py": "1dfbcdd82f3bc2b979122edff0b4afb3b717e3dc807d057b90cded8bb2e0f79e"
+  },
+  "limits": [
+    "functional reset model, no physical asynchronous reset timing proof",
+    "no physical Gray-bus timing constraints yet",
+    "not connected to record decoder, CRI, PS target or AUX DMA firmware",
+    "memory-side sys clock/reset must remain running until drain complete"
+  ],
+  "hardware_accessed": false
+}

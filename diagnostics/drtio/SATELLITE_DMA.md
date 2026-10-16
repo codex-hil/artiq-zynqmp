@@ -56,3 +56,40 @@ Those ports are not a PS CSR map or a routed Genesys bitstream.
 No Vivado build, programming, PS/DDR access, AUX DMA trace transfer or remote
 DMA experiment was performed for this optional path. The last qualified board
 state remains the restored local runtime described in PORTING_STATUS.md.
+
+
+## Running-clock memory drain and raw-word CDC (offline)
+
+`DMAMemoryGuard` reuses the existing DMAReader. The AXI side remains on sys.
+Start/finish/abort are sys-domain pulses/levels; abort suppresses consumer data,
+turns off further streaming and accepts/discards remaining read beats until the
+native terminal EOP. Done requires all accepted bursts to finish. It does not
+reset AXI state. Starting while active is rejected/latched; starting with abort
+asserted is rejected. sys must remain clocked and out of reset until done.
+
+`DMARawCDC` provides a separate AsyncFIFOBuffered raw64-bit queue to rtio_rx.
+Both FIFO domains share coordinated reset, independently of the AXI reader.
+Reset must span a sys edge. Assertion holds until seven RX edges acknowledge
+reset settling; writing waits for fresh read readiness and old reset ACK to
+clear. Merely observing read-ready zero after one RX edge was insufficient:
+the short-reset negative control exposed16 phantom zero words. The corrected
+control passes that test. Downstream decoder/CRI must use `read_reset`, whose
+assertion remains held even when the external reset request has ended.
+
+Always pair an interrupted queue epoch with guard.abort; queue reset alone is
+not a cancellation of outstanding reads. A normal raw end marker will require
+the decoder to request finish, drain memory, and coordinate the next queue epoch.
+Those decoder/CRI control connections are the next step, not implemented here.
+
+```sh
+make test-drtio-dma-memory   PYTHON=/srv/codex-hil-data/artiq-zynqmp/venv/bin/python   MISOC_SOURCE=/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current
+```
+
+Nine tests pass on each preserved ARTIQ source variant. The clock-loss test
+postpones actual RX clock-driver transitions inside Migen's simulator while sys
+continues; it confirms no RX progress during the pause, AXI drain, and fresh-only
+data after resume. This remains simulation with the existing functional reset
+model. It does not qualify physical clocks or reset-release timing.
+`generate_dma_memory.py --output DIR` emits standalone Xilinx-reset RTL; neither
+Gray-bus physical constraints nor a PS/board target have been added. No hardware
+access occurred. Evidence: `evidence/dma-memory-offline-2026-10-16`.
