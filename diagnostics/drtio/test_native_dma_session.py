@@ -24,3 +24,20 @@ class ValidationTests(unittest.TestCase):
             p.write_text(json.dumps(proof));validate(s,fw)
             proof['external_rx']['firmware_sha256']='other';p.write_text(json.dumps(proof))
             with self.assertRaises(ValueError):validate(s,fw)
+
+
+class LifecycleTests(unittest.TestCase):
+    def test_physical_and_aux_conservation(self):
+        from native_dma_session import lifecycle_result
+        log='\n'.join(f'NATIVE_DDMA_LIFECYCLE_PASS phase={p} replay={r} edges=8 width_mu={8000*(p+1)} period_mu={80000+p*40000} first_delta_mu=1000120' for p in range(3) for r in range(3))
+        lines=[]
+        for id in (1,2,1):
+            lines.append(f'AUX_DDMA REPLY kind=177 id={id} succeeded=1')
+            for _ in range(3):
+                lines.extend([f'AUX_DDMA REPLY kind=181 id={id} succeeded=1',f'AUX_DDMA STATUS id={id} error=0'])
+            lines.append(f'AUX_DDMA REPLY kind=179 id={id} succeeded=1')
+        text='\n'.join(lines)
+        self.assertEqual(lifecycle_result(log,text)['native_ddma_edges'],72)
+        for badlog,badtext in ((log.replace('width_mu=8000','width_mu=8008'),text),
+                (log,text.replace('error=0','error=1',1)),(log,'\n'.join(lines[:-1]))):
+            with self.assertRaises(RuntimeError):lifecycle_result(badlog,badtext)

@@ -2080,3 +2080,15 @@ kasli03-native-ddma-fixedabi-hardware-2026-10-16 and kasli03-dma-abi-build-2026-
 Native DDMA PARTIAL: single-slot TTL subset. Next physical repeated playback/
 replacement/erase/reupload/fragmentation; abort recovery and general RTIO still
 unqualified. Original/reference source checkouts preserved.
+
+
+Native DDMA lifecycle2026-10-16 physical PASS:3 trace uploads,9 plays (6handle),
+72 edges/36pulses. Width/period8000/80000,16000/120000,24000/160000mu;
+first_delta1000120mu all9. Replace existing name +erase/reupload +finalerase
+PASS, exact AUX upload/3play-status/erase order per phase,9error0 statuses.
+All3 reused ID1076235456; measured waveform changes prove updated contents.
+Parser negatives PASS. Existing bit/firmware/master runtime unchanged. AUX/
+snapshot/reset/2DIO and both restores PASS; local Genesys TTL/DMA/debug/Ethernet
+at192.168.2.3. No persistent/Genesys Si writes. Evidence kasli03-native-ddma-
+lifecycle-hardware-2026-10-16. Next offline long-trace budget tests then native
+fragmentation; abort/phase/general RTIO remain unqualified.

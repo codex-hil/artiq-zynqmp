@@ -611,3 +611,30 @@ bounds under guarded physical capture. Do not claim post-abort recovery,
 general wide-output DMA, production routing, absolute offset/jitter or link
 latency qualification. The new satellite UART finally drain preserves logs on
 future client failures as well as successful completion.
+
+
+## Native lifecycle physical PASS (2026-10-16)
+
+`kasli_drtio_native_dma_lifecycle.py` runs three versions of the named trace,
+three plays each (first by name, next two via one retained CoreDMA handle).
+Phase1 replaces the existing name; phase2 uploads after explicit erase. Pulse
+width/period pairs are8000/80000,16000/120000,24000/160000mu, with4 pulses
+per play. All9 plays/72 physical edges PASS, first_delta1000120mu throughout.
+Each capture checks count, width, spacing and absence of a ninth edge.
+
+The guarded `native_ddma_lifecycle` stage requires exact native AUX operation
+order: upload, three playback/status pairs and erase for each phase, including
+all9 statuses error0. All3 allocations reused ID1076235456; distinct waveform
+measurements plus ordered erase/replacement prove new content despite ID reuse.
+Parser negative tests reject wrong width, error status and missing erase.
+Standard rv32ima compilation PASS; hardware uses unchanged qualified firmware/
+bit and ABI-corrected Kasli runtime. No host-DAP upload/arming.
+
+AUX/snapshot/reset/two DIO kernels and both baseline restorations PASS; normal
+Genesys local TTL/CoreDMA/analyzer/MonInj/Ethernet restored192.168.2.3. All four
+shared leases covered programming/UART/network/experiments/restoration. No
+persistent/Genesys Si writes. Evidence
+`kasli03-native-ddma-lifecycle-hardware-2026-10-16/results.json`.
+Next offline qualify long trace versus read-window/prefetch budget, then native
+multi-packet upload/physical fragmentation. No long-trace/abort/absolute-phase
+qualification inferred from these short-trace lifecycle tests.
