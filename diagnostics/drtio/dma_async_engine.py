@@ -40,6 +40,8 @@ class AsyncSatelliteDMA(Module):
             raise ValueError('AsyncSatelliteDMA requires 64-bit memory and byte address width>7')
         self.start,self.abort=Signal(),Signal()
         self.address=Signal(len(membus.ar.addr));self.time_offset=Signal(64)
+        self.max_bursts=Signal(32)
+        self.budget_error=Signal()
         self.active,self.done,self.failed=Signal(),Signal(),Signal()
         self.error=Signal(5);self.error_channel=Signal(24);self.error_timestamp=Signal(64)
         self.rejected_start=Signal()
@@ -49,18 +51,22 @@ class AsyncSatelliteDMA(Module):
         self.submodules.consumer=c=ClockDomainsRenamer('rtio_rx')(DMAConsumer(len(membus.r.data)))
         self.cri=c.cri
         address=Signal.like(self.address);offset=Signal(64);offset_rx=Signal(64)
+        bursts=Signal(32);abort_now=Signal()
         finish,complete=Signal(),Signal()
         abort_rx=Signal()
         err,ch,ts=Signal(2),Signal(24),Signal(64)
-        self.specials += [MultiReg(self.error[0] | self.abort,abort_rx,'rtio_rx'),
+        self.specials += [MultiReg(self.error[0] | abort_now,abort_rx,'rtio_rx'),
             MultiReg(offset,offset_rx,'rtio_rx'),MultiReg(c.finish,finish),
             MultiReg(c.complete,complete),MultiReg(c.error,err),
             MultiReg(c.error_channel,ch),MultiReg(c.error_timestamp,ts)]
         self.submodules.fsm=f=FSM(reset_state='IDLE')
         sending=f.ongoing('SEND_EOP')
-        reset_queue=(f.ongoing('IDLE') | f.ongoing('ABORT') | f.ongoing('DONE') | self.abort)
+        reset_queue=(f.ongoing('IDLE') | f.ongoing('ABORT') | f.ongoing('DONE') | abort_now)
         self.comb += [self.active.eq(~f.ongoing('IDLE')),self.done.eq(f.ongoing('DONE')),
-            self.failed.eq(self.error!=0),q.reset.eq(reset_queue),c.reset.eq(q.read_reset),
+            self.failed.eq(self.error!=0),
+            abort_now.eq(self.abort | g.budget_error),
+            self.budget_error.eq(g.budget_error),g.max_bursts.eq(bursts),
+            g.clear.eq(f.ongoing('IDLE') & self.start),q.reset.eq(reset_queue),c.reset.eq(q.read_reset),
             c.offset.eq(offset_rx),q.source.connect(c.sink),
             self.rtio_reset_request.eq(abort_rx & q.read_reset),
             g.reader.base_address.storage.eq(address[7:]),
@@ -69,25 +75,25 @@ class AsyncSatelliteDMA(Module):
             g.source.ack.eq(q.sink.ack & ~sending)]
         self.sync += [If(self.start & self.active,self.rejected_start.eq(1)),
             If(f.ongoing('IDLE') & self.start,
-                address.eq(self.address),offset.eq(self.time_offset),
+                address.eq(self.address),offset.eq(self.time_offset),bursts.eq(self.max_bursts),
                 self.error.eq(Mux(self.abort,1,Mux(self.address[:7]!=0,16,0))),
                 self.error_channel.eq(0),self.error_timestamp.eq(0),
                 self.rejected_start.eq(self.abort | (self.address[:7]!=0))),
-            If(self.active,self.error.eq(self.error | Mux(self.abort,1,0) |
+            If(self.active,self.error.eq(self.error | Mux(abort_now,1,0) |
                 Mux(f.ongoing('RUN') & g.done & g.reader.wb_reader.bus_error.status,2,0) |
                 Mux(f.ongoing('CAPTURE'),err<<2,0))),
             If(f.ongoing('CAPTURE'),self.error_channel.eq(ch),self.error_timestamp.eq(ts))]
         f.act('IDLE',If(self.start,
             If(self.abort | (self.address[:7]!=0),NextState('DONE')).Else(NextState('ARM'))))
-        f.act('ARM',If(self.abort,NextState('ABORT')).Elif(q.write_ready,
+        f.act('ARM',If(abort_now,NextState('ABORT')).Elif(q.write_ready,
             g.start.eq(1),NextState('RUN')))
-        f.act('RUN',g.finish.eq(finish),g.abort.eq(self.abort),
-            If(self.abort,NextState('ABORT')).Elif(g.done,NextState('SEND_EOP')))
-        f.act('SEND_EOP',If(self.abort,NextState('ABORT')).Elif(q.sink.ack,NextState('WAIT_RX')))
-        f.act('WAIT_RX',If(self.abort,NextState('ABORT')).Elif(complete,NextState('SETTLE')))
+        f.act('RUN',g.finish.eq(finish),g.abort.eq(abort_now),
+            If(abort_now,NextState('ABORT')).Elif(g.done,NextState('SEND_EOP')))
+        f.act('SEND_EOP',If(abort_now,NextState('ABORT')).Elif(q.sink.ack,NextState('WAIT_RX')))
+        f.act('WAIT_RX',If(abort_now,NextState('ABORT')).Elif(complete,NextState('SETTLE')))
         # Consumer holds payload stable until queue reset in DONE. Two extra
         # sys edges after synchronized complete provide bundled-data settling.
-        f.act('SETTLE',If(self.abort,NextState('ABORT')).Else(NextState('CAPTURE')))
-        f.act('CAPTURE',If(self.abort,NextState('ABORT')).Else(NextState('DONE')))
+        f.act('SETTLE',If(abort_now,NextState('ABORT')).Else(NextState('CAPTURE')))
+        f.act('CAPTURE',If(abort_now,NextState('ABORT')).Else(NextState('DONE')))
         f.act('ABORT',g.abort.eq(1),If(~g.active | g.done,NextState('DONE')))
         f.act('DONE',NextState('IDLE'))
