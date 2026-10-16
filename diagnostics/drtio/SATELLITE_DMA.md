@@ -251,3 +251,24 @@ or false-pathed endpoints reject qualification. The final build check verifies
 the hashes of the checkpoint, HDL, map, manifest and endpoint TSV, so an old
 PASS cannot qualify changed artifacts. Reports/TSV and
 `dma-cdc-results.json` are implementation evidence, never hardware evidence.
+
+## Cold-release integration correction (2026-10-16)
+
+The initial routed DMA image3ee1173c... fails AUX startup: idle no-TSC admission
+fault forwarded into engine.abort also reset SED, preventing the cold-release
+step preceding AUX TX/TSC. Do not reuse it. DMACSR now gates fault-driven abort
+by active epoch; a fault still rejects idle launches without memory access.
+Actual AuxPS/SED before/after regression and active-fault-after-AR drain/restart
+passed both source revisions. Fixed bitstream rebuild/physical retest pending;
+implementation timing PASS alone did not establish working firmware startup.
+
+A prepared `examples/kasli_drtio_dma_diagnostic.py` uses synchronous host RPC to
+arm the native DDR reader and reads physical JB1/JB2 timestamps via Kasli. Its
+host helper requires the parent's inherited board lease, qualified artifacts,
+exact diagnostic arena, full2048-byte readback and bounded completion/error
+checks. The trace opens/closes input sensitivity itself and contains4 pulses
+of8000mu width/80000mu period. The epoch is30s ahead of master TSC so the bounded
+25s host command completes before execution. Native RecordSlicer decoding and
+experiment compilation passed; wrapper integration and physical use NOT_RUN.
+This tests PL DDR DMA, not standard AUX DDMA upload/playback. Native AUX DDMA
+service, record validation/allocation and post-abort packet handoff are pending.

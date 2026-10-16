@@ -498,3 +498,20 @@ build wrapper runs them. Default DIO checker PASS. No HW access/new boardimage.
 Native AUX DDMA upload/allocator/validation/status still missing. Next bounded
 volatile DDR-to-RTIO DMA/abort qualification, then firmware/normal experiment.
 See latest PORTING_STATUS and evidence/dma-cdc-implementation-2026-10-16.
+
+DMA cold release2026-10-16: OLD routed bit3ee1173c... FAILS AUX startup due
+idle readiness fault asserting SED reset until TSC, blocking TX needed for TSC.
+Do NOT reuse that image. Fixed DMACSR gates fault abort by active epoch;
+idle admission fault still rejects all reads. Before/after actual AuxPS+SED
+regression,5 CSR cases and extra active-fault-after-AR drain/recovery PASS each
+Piotr/current. Both HW attempts restored Kasli+Genesys normal runtime PASS;
+first netboot timeout isolated by passing Kasli-only netboot, full retry reached
+AUX failure. No DMA trace executed. Fixed Vivado build RUNNING at
+build-vivado/satellite-dma-cold-release-route-2026-10-16, timeout1500s;
+log build/dma-cold-release-vivado-session-2026-10-16.log. Check completion before
+editing build/RTL/qualifier helpers. New firmware aux-dio-dma-cold-release-
+firmware-2026-10-16 builds with cold-release register dump. Then repeat guarded
+DIO acceptance before DDR DMA. Host-armed experiment/helper prepared and native
+trace decode+compile PASS, NOT_RUN/not yet wired into ExternalSession. Native
+AUX DDMA and post-abort packet handoff still unqualified. Evidence latest
+PORTING_STATUS/dma-cold-release-offline-2026-10-16. Shared locks unchanged.

@@ -1855,3 +1855,44 @@ AUX DDMA trace upload/validation/allocation/status and concurrent ownership
 policy remain unqualified/missing. Normal board baselines untouched. Next
 bounded volatile DDR-DMA playback/abort test under all shared device locks,
 then native AUX DDMA firmware integration and standard Kasli experiment.
+
+### 2026-10-16 — physical DMA-image cold-release failure reproduced/fixed in RTL
+
+Hardware attempts used routed DMA bit3ee1173c... under all four shared board
+leases. First stopped at Kasli netboot TCP timeout; both boards restored PASS.
+A separate Kasli-only netboot isolation passed3 TCP connections/MAC identity.
+One full retry with unchanged limits passed netboot/runtime/management and
+counter kernels, but Genesys AUX firmware failed startup before cold release,
+TSC exchange or DIO. No DMA trace/playback ran. Both boards restored PASS:
+Kasli full checker+reviewed volatile clock baseline, Genesys normal local
+TTL/DMA/analyzer/MonInj/Ethernet192.168.2.3. No flash/SD/OTP/Genesys Si writes.
+
+Root cause: DMACSR forwarded readiness fault to engine.abort even while idle.
+No observed TSC is a launch fault; it therefore held the DMA SED reset high.
+Firmware waits for RTIO reset release before enabling TX needed to receive
+TSC: circular cold-start dependency. Regression using actual AuxPS/SED and
+bank4 PS AXI reproduces FAIL before fix. Gate readiness-fault abort by active
+DMA epoch; admission still rejects a faulted idle launch with no AXI reads.
+Cold-release +5 existing CSR tests PASS each Piotr/current; additional injected
+active fault AFTER accepted AR still aborts/drains and next trace recovers on
+both sources. Do not reuse old routed DMA bit for further live bring-up.
+
+Firmware builder explicitly excludes the separately owned DMA bank from its
+single-word AUX header. Rebuild before adding failure diagnostics produced the
+identical qualified5b733455... ELF. Added cold-release failure register dump;
+new firmware build PASS with source/map hashes. New Vivado build is RUNNING at
+build-vivado/satellite-dma-cold-release-route-2026-10-16 (25min timeout,
+build/dma-cold-release-vivado-session-2026-10-16.log). No source/helper edits
+until it finishes. Repeat physical cold release/DIO before arming DDR DMA.
+
+Prepared host-armed DMA diagnostic (NOT_RUN): actual PL DMA trace includes
+input gate and4 TTL pulses; standard Kasli kernel reads8 physical timestamps.
+Synchronous RPC only fills/reads back bounded DDR window and starts CSR engine
+under inherited parent lease. It is explicitly not native AUX DDMA. Native
+RecordSlicer decodes the exact bytes on both sources; negative timestamp/arena
+checks and experiment compilation PASS. Integration into guarded external
+wrapper and physical playback remain pending. Abort-to-packet handoff remains
+unqualified; do not interpret active-fault controlled-CRI tests as that proof.
+Evidence dma-cold-release-offline-2026-10-16 and kasli03-dma-idle[-v2]-hardware-
+2026-10-16 / kasli03-netboot-isolation-2026-10-16. Next finish fixed build,
+restore cold-release/DIO acceptance, then host-armed DDR-to-RTIO diagnostic.

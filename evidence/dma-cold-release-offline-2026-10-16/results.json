@@ -1,0 +1,28 @@
+{
+  "kind": "OFFLINE_REGRESSION_NOT_HARDWARE_PASS",
+  "cold_release_before": "EXPECTED_FAIL_RX_RESET_HELD",
+  "cold_release_after_piotr": "PASS",
+  "cold_release_after_current": "PASS",
+  "active_fault_drain_recovery_both_sources": "PASS_AFTER_ACCEPTED_AXI_READ",
+  "existing_csr_tests_each_source": 5,
+  "host_trace_decode_tests_each_source": 2,
+  "experiment_compile": "PASS_NOT_RUN",
+  "physical_attempt": "AUX_STARTUP_FAIL_KNOWN_OLD_BIT",
+  "boards_restored": "PASS_BOTH_ATTEMPTS",
+  "kasli_netboot_isolation": "PASS",
+  "new_vivado_build": "RUNNING",
+  "new_build_directory": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/satellite-dma-cold-release-route-2026-10-16",
+  "native_aux_ddma": "MISSING",
+  "packet_handoff_after_dma_abort": "UNQUALIFIED",
+  "sources_sha256": {
+    "diagnostics/drtio/dma_csr.py": "2d790618319f351c3c28da9498a50e9a973781db0df251cf607a338767b960fd",
+    "diagnostics/drtio/test_dma_cold_release.py": "7c81d1ef379b6038b932ef6756eeca3b76fdece23179944b0aa4e8c6ddcb4904",
+    "diagnostics/drtio/test_dma_csr.py": "f7c559333c434164b57183ed8d76ded1bac9ed667664e2f21a625050bfd12073",
+    "diagnostics/drtio/satellite_dma_probe.py": "dff1901e3e44fc8f433b5074779aac26ef66cfdff0b6d725bd20c680a24c8aef",
+    "diagnostics/drtio/test_satellite_dma_probe.py": "2eb67e29a99df9f2378138a1976689795485d059d7f4942d981bcc88a29866c6",
+    "diagnostics/drtio/aux_protocol/build_firmware.py": "37cdacc8c49117b6eaf73e00710f51b0fac571564080d2b8a3255a280e13e430",
+    "diagnostics/drtio/aux_protocol/firmware.c": "2a4ff4ed34c9e820ac2826bb3114407a3c44b7e7cebd7d154112319f1a932b69",
+    "examples/kasli_drtio_dma_diagnostic.py": "1110937c3c2d5353320853b38c14c8025cf6bff23ad7a11e79039e611bc5b6e8"
+  },
+  "experiment_elf_sha256": "51cd2735ab47bcdbde5eafaae2002ff6fa75a2ff0c4e1894e1a8b71dfef70eb5"
+}

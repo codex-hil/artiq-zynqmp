@@ -259,3 +259,10 @@ test-drtio-dma-read-budget:
 .PHONY: test-drtio-dma-transport
 test-drtio-dma-transport:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_dma_transport.py' -v
+
+.PHONY: test-drtio-dma-cold-release test-drtio-dma-host-probe
+test-drtio-dma-cold-release:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_cold_release.py' -v
+
+test-drtio-dma-host-probe:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_satellite_dma_probe.py' -v
