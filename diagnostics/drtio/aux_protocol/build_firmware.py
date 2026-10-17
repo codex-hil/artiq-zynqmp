@@ -19,7 +19,13 @@ def main():
     p.add_argument('--dio',action='store_true',help='Single-hop rank1 leaf readiness; requires --reset')
     p.add_argument('--snapshot-probe',action='store_true',help='Four bounded live TSC snapshot reads after TSC ACK')
     p.add_argument('--ddma',action='store_true',help='Opt-in bounded native DDMA leaf service; hardware unqualified')
+    p.add_argument('--lab-read-delay',action='store_true',help='Opt-in generated UART F arm overlay; dedicated lab map only')
     a=p.parse_args();
+    lab_cycles=None
+    if a.lab_read_delay:
+        if not a.ddma:p.error('--lab-read-delay requires --ddma')
+        from lab_delay_build import validate_map
+        lab_cycles=validate_map(json.loads(a.csr_map.read_text()))
     if a.ddma and not a.snapshot_probe:p.error('--ddma requires --snapshot-probe')
     if a.snapshot_probe and not a.dio:p.error('--snapshot-probe requires --dio')
     if a.dio and not a.reset:p.error('--dio requires --reset')
@@ -84,9 +90,14 @@ io={path=IO_PATH,features=["byteorder"]}
     arm=Path('/srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf')
     library=project/'target/aarch64-unknown-none/release/libgenesys_aux_codec.a'
     firmware=Path(__file__).with_name('firmware.c')
-    elf=out/'aux-firmware.elf'
+    if a.lab_read_delay:
+        from lab_delay_build import source_overlay
+        generated=out/'firmware-lab-delay.c'
+        generated.write_text(source_overlay(firmware.read_text()))
+        firmware=generated
+    elf=out/'aux-firmware.elf' 
     cmd=[str(arm/'bin/aarch64-none-elf-gcc'),'-DSDT','-specs='+str(bsp/'Xilinx.spec'),
-        *(['-DAUX_DDMA'] if a.ddma else []),*(['-DAUX_SNAPSHOT'] if a.snapshot_probe else []),*(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
+        *(['-DAUX_DDMA_LAB_DELAY','-DAUX_DDMA_LAB_CYCLES='+str(lab_cycles),'-I'+str(Path(__file__).parent.resolve())] if a.lab_read_delay else []),*(['-DAUX_DDMA'] if a.ddma else []),*(['-DAUX_SNAPSHOT'] if a.snapshot_probe else []),*(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
         str(library),'-Wl,-T,'+str(linker),'-L'+str(bsp/'lib'),'-Wl,--start-group',
         '-lxilstandalone','-lxiltimer','-lxil','-lgcc','-lc','-Wl,--end-group','-o',str(elf)]
     result=subprocess.run(cmd,capture_output=True,text=True,timeout=120)
@@ -98,6 +109,7 @@ io={path=IO_PATH,features=["byteorder"]}
         'snapshot_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('tsc_reader.h','tsc_a53.h','ddma_a53.h','ddma_backend.h')},
         'dma_bank_owner':'native AUX DDMA laboratory service' if a.ddma else 'external diagnostic only; no AUX DDMA service',
         'native_ddma':a.ddma,
+        'lab_read_delay':a.lab_read_delay,'lab_read_delay_cycles':lab_cycles,
         'ddma_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h')},
         'leaf_policy_sha256':hashlib.sha256(Path(__file__).with_name('leaf_policy.h').read_bytes()).hexdigest(),
         'reset_backend':a.reset,

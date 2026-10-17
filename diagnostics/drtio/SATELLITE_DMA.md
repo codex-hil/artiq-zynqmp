@@ -1439,3 +1439,24 @@ The normal qualified image remains unchanged. Firmware arm access and wrapper
 validation must explicitly recognize the new diagnostic metadata before this
 image can be used for an active-fault hardware test. Vivado synthesis/routing,
 actual clock measurement and physical fault qualification remain pending.
+
+Firmware building now has an explicit `--lab-read-delay` option, requiring the
+native DDMA flags and the exact checked125MHz/2ms map, including appended CSR
+addresses/widths in both map sections. It creates `firmware-lab-delay.c` in the
+build output from the original source; the normal firmware.c/ddma_runtime.h
+remain byte-identical to the qualified version. The generated overlay accepts
+UART byte `F` only in this lab build. It requires a complete idle trace, service
+readiness, no backend fault or pending status. Only one eligible arming attempt
+per boot is made; ambiguous writes are not retried. The helper checks actual
+CSR cycle count and zero initial delay counters/state, writes only ARM=1 and
+requires ARMED readback. It never writes DMA clear/abort/error registers.
+
+`make test-drtio-ddma-lab-arm` exercises refusal controls with ASan/UBSan and
+map/source guards. The actual generated C overlay cross-compiles for A53 with
+the existing BSP; full Rust/link/ELF build is not yet run. An existing unused
+loopback-only function requires the specific `-Wno-unused-function` exception
+when checking the external build with `-Werror`. Normal qualified-profile offline
+preflight remains PASS. Normal native test wrappers explicitly reject firmware
+marked `lab_read_delay`; no hardware fault wrapper is enabled by these changes.
+UART injection must eventually occur inside the same all-board lease as the
+rest of the session; this is not permission for an independent UART client.

@@ -511,3 +511,8 @@ diagnostics/drtio/test_dma_read_delay.py
 diagnostics/drtio/dma_read_delay_control.py
 diagnostics/drtio/test_dma_read_delay_control.py
 diagnostics/drtio/test_dma_delay_csr_sed.py
+diagnostics/drtio/aux_protocol/ddma_lab_delay.h
+diagnostics/drtio/aux_protocol/ddma_lab_runtime.h
+diagnostics/drtio/aux_protocol/test_ddma_lab_delay.c
+diagnostics/drtio/aux_protocol/lab_delay_build.py
+diagnostics/drtio/aux_protocol/test_lab_delay_build.py

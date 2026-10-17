@@ -1,0 +1,13 @@
+mkdir -p /srv/codex-hil-data/artiq-zynqmp/build/ddma-lab-arm-suite-2026-10-17/ddma-lab-arm
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_ddma_lab_delay.c -o /srv/codex-hil-data/artiq-zynqmp/build/ddma-lab-arm-suite-2026-10-17/ddma-lab-arm/test
+/srv/codex-hil-data/artiq-zynqmp/build/ddma-lab-arm-suite-2026-10-17/ddma-lab-arm/test
+DDMA_LAB_DELAY_ARM_OFFLINE_PASS exact arm-only write; unsafe states refused
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol" python3 -m unittest discover -s diagnostics/drtio/aux_protocol -p 'test_lab_delay_build.py' -v
+test_checked_map_and_mutations (test_lab_delay_build.BuildTests.test_checked_map_and_mutations) ... ok
+test_normal_native_wrapper_refuses_lab (test_lab_delay_build.BuildTests.test_normal_native_wrapper_refuses_lab) ... ok
+test_source_overlay_preserves_original_and_refuses_reapplication (test_lab_delay_build.BuildTests.test_source_overlay_preserves_original_and_refuses_reapplication) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

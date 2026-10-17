@@ -4,6 +4,8 @@ from pathlib import Path
 
 
 def validate(session,fw):
+    if fw.get('lab_read_delay'):
+        raise ValueError('Laboratory delay firmware requires a dedicated fault wrapper; normal native tests refuse it')
     c=session.config;mode=c.get('native_ddma_mode')
     if mode not in ('idle','playback') or session.host_dma_test or not session.dio_test or not session.snapshot_test:
         raise ValueError('Native DDMA requires explicit idle/playback mode, DIO/snapshot; no host DMA')

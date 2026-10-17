@@ -2453,3 +2453,15 @@ PS/PHY exports, alloriginalDMAregisteraddresses unchanged. Evidence genesys-dela
 target-hdl-2026-10-17. NoVivadosynthesis/route/bitstream orHWaccess; physicalclock
 measurement/firmwarearm/wrapperqualification pending. Next offline armprotocol/
 mapguards and boundedfault-experiment integration before candidateimage build.
+
+
+Labarm2026-10-17 offline PASS: opt-inbuilder validateschecked125MHz/2ms map,
+generatesseparateCoverlay; normalfirmware.c/ddma_runtime.h byteunchanged. UART F
+requirescompletetrace/idleready/noerror, oneeligibleattemptperboot; helperwrites
+onlyARM aftercyclecount/counter/statechecks andrequiresARMEDreadback. ASan/UBSan
+refusal/exactwritePASS;3Pythonmap/source/normalwrapperrefusaltestsPASS. Actual
+overlayA53objectcrosscompilePASS (-Werror withspecificoldunusedfunction waiver);
+fullRust/linkELF NOT_RUN. Normal23fileprofilepreflightPASS. Evidence ddma-lab-arm-
+offline-2026-10-17. NoHWaccess. Normalnativewrapperrejectslabfirmware. Next full
+labfirmwarebuild and dedicated boundedfaultsession telemetry/exceptionevidence
+validator beforehardware; noindependentUARTclient orfaultlatchbypass.

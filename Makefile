@@ -333,3 +333,10 @@ test-drtio-dma-read-delay-control:
 .PHONY: test-drtio-dma-delay-csr-sed
 test-drtio-dma-delay-csr-sed:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_delay_csr_sed.py' -v
+
+.PHONY: test-drtio-ddma-lab-arm
+test-drtio-ddma-lab-arm:
+	mkdir -p $(abspath $(O))/ddma-lab-arm
+	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_ddma_lab_delay.c -o $(abspath $(O))/ddma-lab-arm/test
+	$(abspath $(O))/ddma-lab-arm/test
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio/aux_protocol" $(PYTHON) -m unittest discover -s diagnostics/drtio/aux_protocol -p 'test_lab_delay_build.py' -v

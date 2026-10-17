@@ -1,0 +1,17 @@
+{
+  "status": "PASS_OFFLINE",
+  "hardware_access": false,
+  "c_sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "python_tests": 3,
+  "a53_generated_overlay_object_sha256": "47cd1bdf9bdf0e4cd781b7e134d9ae4a2b1bb73a900c339ade4275d12afa1ae2",
+  "normal_firmware_sources_unchanged": true,
+  "normal_profile_preflight": "PASS",
+  "limitations": [
+    "C cross-compile only, no full linked ELF build",
+    "no hardware fault wrapper implemented",
+    "no physical arming or fault test"
+  ]
+}
