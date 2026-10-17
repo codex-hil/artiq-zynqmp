@@ -339,4 +339,6 @@ test-drtio-ddma-lab-arm:
 	mkdir -p $(abspath $(O))/ddma-lab-arm
 	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_ddma_lab_delay.c -o $(abspath $(O))/ddma-lab-arm/test
 	$(abspath $(O))/ddma-lab-arm/test
+	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_ddma_lab_runtime.c -o $(abspath $(O))/ddma-lab-arm/runtime-test
+	$(abspath $(O))/ddma-lab-arm/runtime-test
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio/aux_protocol" $(PYTHON) -m unittest discover -s diagnostics/drtio/aux_protocol -p 'test_lab_delay_build.py' -v

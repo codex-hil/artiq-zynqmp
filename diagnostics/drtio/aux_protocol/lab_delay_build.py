@@ -20,6 +20,7 @@ def source_overlay(original):
     if 'ddma_lab_runtime.h' in original or original.count(include)!=1 or original.count(poll)!=1:
         raise ValueError('Unrecognized firmware injection anchors')
     return original.replace(include,include+'\n#include "ddma_lab_runtime.h"').replace(poll,poll+'''
+  ddma_lab_poll();
   if(XUartPs_IsReceiveData(STDIN_BASEADDRESS)) {
    unsigned command=XUartPs_ReadReg(STDIN_BASEADDRESS,XUARTPS_FIFO_OFFSET)&255;
    if(command=='F')ddma_lab_request();

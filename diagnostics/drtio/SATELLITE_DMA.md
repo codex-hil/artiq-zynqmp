@@ -1460,3 +1460,15 @@ preflight remains PASS. Normal native test wrappers explicitly reject firmware
 marked `lab_read_delay`; no hardware fault wrapper is enabled by these changes.
 UART injection must eventually occur inside the same all-board lease as the
 rest of the session; this is not permission for an independent UART client.
+
+The complete lab firmware (upstream Rust codec plus A53 C/link) now builds with
+`--external --tsc --reset --dio --snapshot-probe --ddma --lab-read-delay` and the
+checked delay target map. Its metadata pins the lab headers/source overlay.
+`LAB_ACTIVE` is emitted only after reading active DMA, holding delay and exactly
+one trigger; `LAB_COMPLETE` then reports real raw error/channel/64-bit timestamp,
+accepted/completed counts and backend fault latch. Each marker occurs at most
+once. These sampled diagnostics do not themselves prove AXI drain or TTL silence;
+the future hardware wrapper must still capture independent counter/pad evidence.
+A53 full build and actual-header ASan/UBSan mock tests pass; no image was loaded
+and no real active-fault log has been observed. Normal firmware sources remain
+unchanged and normal native tests continue to refuse this lab build.

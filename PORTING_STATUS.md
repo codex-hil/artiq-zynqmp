@@ -2465,3 +2465,13 @@ fullRust/linkELF NOT_RUN. Normal23fileprofilepreflightPASS. Evidence ddma-lab-ar
 offline-2026-10-17. NoHWaccess. Normalnativewrapperrejectslabfirmware. Next full
 labfirmwarebuild and dedicated boundedfaultsession telemetry/exceptionevidence
 validator beforehardware; noindependentUARTclient orfaultlatchbypass.
+
+
+Labtelemetryfirmware2026-10-17 fullRust+C/link PASS: separateUARTarmoverlay
+ELFmetadata pinslabheaders/buildoverlay andchecked250000cyclemap. LAB_ACTIVE
+requiresactualactive/holding/trigger1; LAB_COMPLETE reportsrawerror/channel/64bit
+timestamp/accepted/completed/backendfault, bothonce.2actualCheaderASan/UBSan
+suites+3PythonguardtestsPASS. Evidence ddma-lab-telemetry-build-2026-10-17. NoHW
+access/loading; sampledmarkers arenot AXIdrain/TTLsilence proof. Normalfirmware
+sources unchanged. Next dedicated faultsession evidencevalidator/experiment and
+wrapperintegration (independentdrain/TTLmetrics) beforecandidateFPGA build/use.
