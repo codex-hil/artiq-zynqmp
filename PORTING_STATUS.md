@@ -2381,3 +2381,17 @@ wrapperpath; observer identical. Actual profile hashvalidation/preflight and
 3runner testsPASS; no additional hardware session through newprofile entry.
 Evidence start-result-profile-offline-2026-10-17. Next activeplayback fault-status
 qualification; expired admission rejection is not activeplaybackfault proof.
+
+
+Completion policy2026-10-17 offline PASS: ASan/UBSan service lifecycle for
+raw0/4/8/12 -> AUX0/1/2/3, exact source/destination/ID/channel/64-bit timestamp,
+no start/erase while status pending, no replay with faulted readiness, explicit
+idle cleanup allowed after delivery. This tests dispatcher policy with mocked
+backend/readiness, not physical completion faults or runtime polling. Existing
+ddma_poll latches backendfaulted on native CRI errors; recovery requires outer
+restoration, not same-kernel retry. Internal CSR faults terminate service.
+NoHW accessed. Evidence ddma-completion-policy-offline-2026-10-17. Next: design
+a separately hashed opt-in lab fault trigger and RTL proof before hardware;
+assert accepted/active before injection, actual CSRerror and AUXstatus, master
+exception, refusal of reuse, bounded restoration. Never report admissionNACK
+or synthesized AUXstatus as active hardware-fault proof.

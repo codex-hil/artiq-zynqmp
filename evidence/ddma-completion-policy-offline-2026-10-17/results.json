@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "hardware_access": false,
+  "command": [
+    "make",
+    "test-drtio-ddma-service",
+    "O=/srv/codex-hil-data/artiq-zynqmp/build/ddma-completion-policy-2026-10-17"
+  ],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "source_sha256": "a87a0f7b481c0fc2b6ebbfb8a20c1ee53a5650d6d4db3eea4d870913b90941d1",
+  "raw_statuses": [
+    0,
+    4,
+    8,
+    12
+  ],
+  "checks": [
+    "source/destination/id/channel/timestamp preserved",
+    "pending status retains ownership",
+    "faulted readiness rejects replay",
+    "idle cleanup allowed after status delivery"
+  ],
+  "limitations": [
+    "mock backend and readiness",
+    "no physical fault injection",
+    "no proof of transport failure handling"
+  ]
+}

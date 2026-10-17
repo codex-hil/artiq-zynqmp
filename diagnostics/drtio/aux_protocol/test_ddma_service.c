@@ -8,7 +8,43 @@ static int start(void *context,const uint8_t *bytes,size_t size,uint64_t ts) {
  assert(size==2048 && bytes[3]==0 && bytes[17]==0 && ts==8000);
  return b->fail;
 }
+/* Exercise completion ownership and fail-closed admission for every native
+ * CRI status. Backend readiness is deliberately latched low after a fault,
+ * matching ddma_poll/ddma_ready; this is a policy test, not a hardware fault.
+ */
+static void completion_fault_lifecycle(void) {
+ for(unsigned raw=0;raw<=12;raw+=4) {
+  struct ddma_service s;struct ddma_packet p={0},r;struct backend b={0,0};
+  ddma_service_init(&s);
+  p.source=7;p.destination=1;p.id=0xabc;p.timestamp=8000;
+  p.status=3;p.length=17;p.trace[0]=17;p.trace[3]=1;
+  p.trace[4]=8;p.trace[13]=1;
+  assert(ddma_service_request(&s,0xb0,&p,&r,1,start,&b)==0xb1 && r.succeeded);
+  assert(ddma_service_request(&s,0xb4,&p,&r,1,start,&b)==0xb5 && r.succeeded);
+  unsigned mapped=(unsigned)ddma_aux_error(raw);
+  assert(!ddma_service_complete(&s,mapped,0x10001,0x123456789ull));
+  assert(!s.running && s.status_pending);
+  assert(s.status.source==1 && s.status.destination==7 && s.status.id==p.id);
+  assert(s.status.error==mapped && s.status.channel==0x10001 &&
+         s.status.timestamp==0x123456789ull);
+  /* No reuse or erase until the transport has sent the status. */
+  ddma_service_request(&s,0xb4,&p,&r,1,start,&b);assert(!r.succeeded && b.calls==1);
+  ddma_service_request(&s,0xb2,&p,&r,1,start,&b);assert(!r.succeeded);
+  assert(!ddma_service_status_sent(&s));
+  unsigned ready=raw==0;
+  ddma_service_request(&s,0xb4,&p,&r,ready,start,&b);
+  assert(r.succeeded==ready && b.calls==1+ready);
+  if(ready) {
+   assert(!ddma_service_complete(&s,0,0,0));
+   assert(!ddma_service_status_sent(&s));
+  }
+  /* Faulted readiness still permits explicit idle-slot cleanup. */
+  ddma_service_request(&s,0xb2,&p,&r,0,start,&b);
+  assert(r.succeeded && !s.store.complete);
+ }
+}
 int main(void) {
+ completion_fault_lifecycle();
  for(unsigned raw=0;raw<256;raw++) {
   int mapped=ddma_aux_error(raw);
   if(raw & ~12u)assert(mapped==-1);
