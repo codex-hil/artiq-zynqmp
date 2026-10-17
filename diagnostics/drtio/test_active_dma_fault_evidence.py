@@ -7,7 +7,7 @@ AUX_DDMA LAB_ACTIVE id=42 accepted=3 completed=2 triggers=1
 AUX_DDMA STATUS id=42 error=1
 AUX_DDMA LAB_COMPLETE id=42 raw=4 channel=0 timestamp=0000000000002580 accepted=3 completed=3 faulted=1
 '''
-KERNEL='NATIVE_DDMA_ACTIVE_UNDERFLOW_CAUGHT_PASS'
+KERNEL='NATIVE_DDMA_ACTIVE_UNDERFLOW_CAUGHT_PASS timestamp=9600'
 class EvidenceTests(unittest.TestCase):
     def check(self,aux=AUX,kernel=KERNEL,**kw):
         args=dict(expected_timestamp=9600,edge_before=10,edge_after=10,read_requests=2,read_completions=2);args.update(kw)

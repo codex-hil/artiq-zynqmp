@@ -1484,3 +1484,22 @@ internal failures, extra TTL edges and incomplete drain are rejected. This is
 not a hardware runner, does not collect counters itself, and does not qualify
 hardware by accepting fabricated inputs. Dedicated experiment/collection wiring
 and physical qualification remain pending.
+
+The candidate `examples/kasli_drtio_native_dma_active_fault.py` compiles with
+NAC3. It uploads two TTL events, then invokes a host RPC handshake before
+playback. The future guarded parent must create a fresh handshake directory,
+set `ARTIQ_DDMA_LAB_HANDSHAKE` for its experiment child, observe the exclusive
+`arm-request.json`, verify leases/identity/UART arm result, then atomically
+publish `arm-ack.json` with the matching random token and exact schema/status/
+cycle count. The handshake times out after10s, rejects stale acknowledgements
+and never opens hardware itself. No parent implementation is enabled yet.
+
+The candidate playback start is aligned to8mu at current counter+1.5ms;
+firmware admission requires at least1ms while the delay lasts2ms. Transport and
+cache latency can still cause admission rejection: that is a failed fault test,
+not proof of active underflow. The kernel catches only RTIOUnderflow and reports
+the requested absolute timestamp, now checked against completion telemetry by
+the evidence parser. It performs no retry/erase/reset after the fault. Physical
+TTL silence, complete AXI drain, firmware fault handling and final restoration
+must still be verified by the guarded parent. Compilation and synthetic handshake
+checks are not hardware qualification.

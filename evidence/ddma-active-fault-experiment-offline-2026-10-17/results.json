@@ -1,0 +1,17 @@
+{
+  "status": "COMPILE_AND_SYNTHETIC_TESTS_PASS",
+  "hardware_access": false,
+  "tests": 4,
+  "elf_sha256": "5a5fdc5b7305deb1a6cfe20db23629fed178064d3ff0b99da1fdcf91ef042347",
+  "source_sha256": {
+    "examples/kasli_drtio_native_dma_active_fault.py": "bbc1a3cc0a7af31947547854e1c43a523b8984537e8b59a7be8c6c4e91987e14",
+    "diagnostics/drtio/dma_arm_handshake.py": "cf57817e5f4ba1e8c1e31c209975ff0e6dcd941092c3597f80a8b0b84c86d667",
+    "diagnostics/drtio/active_dma_fault_evidence.py": "78aa0ac889eced1039bb1f658762a1f9f6dce8733c7acbc26c3ad07e69092e0b"
+  },
+  "limitations": [
+    "guarded parent handshake integration not implemented",
+    "no hardware execution",
+    "1.5ms lead is a candidate and may fail admission",
+    "independent TTL AXI snapshots and restoration still required"
+  ]
+}

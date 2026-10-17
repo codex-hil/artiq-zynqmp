@@ -2485,3 +2485,14 @@ Not ahardwarerunner/countercollector; parentrestoration separatelyrequired.
 Evidence ddma-active-fault-parser-offline-2026-10-17. NoHW accessed. Dedicated
 experiment andcountercollection/wrapperintegration stillpending; next implement
 boundedhost-arm handshake andcompileexperiment before enablinghardware path.
+
+
+Activefaultexperiment2026-10-17 NAC3compile PASS: uploads2TTLrecords, bounded
+hostRPC handshake afterupload,8mualigned currentcounter+1.5ms playback,catches
+onlyRTIOUnderflow/reportsstarttimestamp; noretry/erase/reset. Helperusesfresh
+request/token/exactack,10stimeout, noHWaccess.4synthetichandshake/parsertestsPASS;
+parser nowtieskernel timestamp toactualcompletion. Evidence ddma-active-fault-
+experiment-offline-2026-10-17. Dedicatedparenthandshake/independentcountercapture
+notimplementedyet; noHWexecution. Candidatelead mayfail1msadmission due latency,
+whichmustfailqualification. Next integrate boundedparentcollection usingexisting
+leases/restoration; normalwrapper remainslab-refusing.

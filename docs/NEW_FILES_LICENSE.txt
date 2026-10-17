@@ -519,3 +519,6 @@ diagnostics/drtio/aux_protocol/test_lab_delay_build.py
 diagnostics/drtio/aux_protocol/test_ddma_lab_runtime.c
 diagnostics/drtio/active_dma_fault_evidence.py
 diagnostics/drtio/test_active_dma_fault_evidence.py
+diagnostics/drtio/dma_arm_handshake.py
+diagnostics/drtio/test_dma_arm_handshake.py
+examples/kasli_drtio_native_dma_active_fault.py

@@ -346,3 +346,7 @@ test-drtio-ddma-lab-arm:
 .PHONY: test-drtio-active-fault-evidence
 test-drtio-active-fault-evidence:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_active_dma_fault_evidence.py' -v
+
+.PHONY: test-drtio-dma-arm-handshake
+test-drtio-dma-arm-handshake:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_arm_handshake.py' -v

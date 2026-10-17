@@ -26,8 +26,9 @@ def validate(aux, kernel, *, expected_timestamp, edge_before, edge_after,
         int(complete[3])!=int(active[2]) or int(complete[4])!=int(active[3])+1 or
         int(active[2])!=int(active[3])+1):
         raise ValueError('Identity/timestamp or accepted/completed conservation mismatch')
-    if kernel.count('NATIVE_DDMA_ACTIVE_UNDERFLOW_CAUGHT_PASS')!=1:
-        raise ValueError('Missing exact caught native underflow marker')
+    caught=re.findall(r'^NATIVE_DDMA_ACTIVE_UNDERFLOW_CAUGHT_PASS timestamp=(\d+)\r?$',kernel,re.M)
+    if len(caught)!=1 or int(caught[0])!=expected_timestamp:
+        raise ValueError('Missing/mismatching caught native underflow timestamp')
     if any(t in kernel for t in ('ConnectionResetError','Previous kernel did not cleanly finish')):
         raise ValueError('Kernel session did not finish cleanly')
     if any(t in aux for t in ('AUX_DDMA INTERNAL_ERROR','AUX_FW PANIC','AUX_DDMA FAIL_CLOSED')):
