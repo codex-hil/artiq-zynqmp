@@ -1056,3 +1056,33 @@ Python ConnectionResetError and next-session unclean-kernel warning. Only
 cleanup was fixed here. Next isolated optional master mailbox/runtime/ksupport
 result reply so upload failure raises structured DMAError without successful
 ACK semantics. Runtime fault-status injection/pausedRX hardware remain NOT_RUN.
+
+
+### Optional structured record-stop result master overlay (2026-10-17)
+
+`prepare_flashfree_runtime.py --dma-record-result` now applies a guarded
+optional overlay to the isolated pinned source. New DmaRecordStopReply carries
+a boolean result shared by runtime/ksupport. Runtime records upload failure
+(with original concrete error), flushes cache and replies false instead of
+aborting the host session. Successful DDMA and non-DDMA record stop reply true.
+Internal record_stop errors still propagate; no false-success acknowledgement.
+Ksupport receives and acknowledges the reply before invoking the standard
+`raise!("DMAError", "Failed to upload distributed DMA trace")` path. Raising
+inside the recv callback would skip its mailbox acknowledgement; the new code
+explicitly avoids that ordering hazard.
+
+Original reference and previously qualified sources/images untouched. New
+worktree`work/kasli03-bram-runtime-dma-result` combines existing flash-free/NAC3
+DMA tuple ABI overlays with this option. Both runtime and ksupport were rebuilt
+with pinned Nix tools. Build PASS; mem.rs/csr.rs/regions.ld byte-identical to
+the physically qualified master. Runtime.bin1754560bytes SHA256
+`e65fec3e15f7d4c79f624bde1746a9573005134190bafbc5aa11406d2203b016`.
+Ksupport ELF SHA256bd3ef87c40309a7e5ed005997322814949b5aca75e7554fabc06a0bc3c2c142a.
+Protocol layout changes require this matching rebuilt runtime/ksupport pair;
+do not mix components with the old mailbox enum. No gateware build or HW access.
+
+Evidence `evidence/kasli03-dma-result-build-2026-10-17` includes reproducible
+build script, complete optional source patch, log and artifact/layout hashes.
+Hardware NOT_RUN. Next guarded new-master normal DDMA qualification, then
+rejection/recovery requiring actual DMAError/message and no session-abort/
+unclean-kernel warning. Keep old master available for exact rollback.

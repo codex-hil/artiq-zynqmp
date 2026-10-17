@@ -1,0 +1,305 @@
+diff --git a/artiq/build_soc.py b/artiq/build_soc.py
+index 0e6deb499..c5c24aa5a 100644
+--- a/artiq/build_soc.py
++++ b/artiq/build_soc.py
+@@ -72,6 +72,24 @@ def build_artiq_soc(soc, argdict):
+         builder.add_software_package("runtime", os.path.join(firmware_dir, "runtime"))
+     else:
+         builder.add_software_package("satman", os.path.join(firmware_dir, "satman"))
++    if soc.integrated_rom_size:
++        # This first BRAM image is bootloader-only; no runtime SPI-flash ABI.
++        # Upstream MiSoC initializer expects software/bios; ARTIQ builds bootloader.
++        def initialize_artiq_rom():
++            import hashlib, json, struct
++            from pathlib import Path
++            payload = Path(builder.output_dir, "software/bootloader/bootloader.bin").read_bytes()
++            assert soc.cpu_reset_address == 0
++            assert len(payload) <= soc.integrated_rom_size and len(payload) % 4 == 0
++            soc.rom.mem.init = list(struct.unpack("<%dI" % (len(payload) // 4), payload))
++            Path(builder.output_dir, "bram-boot.json").write_text(json.dumps({
++                "bootloader_only": False,
++                "cpu_reset_address": soc.cpu_reset_address,
++                "integrated_rom_size": soc.integrated_rom_size,
++                "bootloader_sha256": hashlib.sha256(payload).hexdigest(),
++                "bootloader_bytes": len(payload)
++            }, indent=2) + "\n")
++        builder.initialize_memory = initialize_artiq_rom
+     try:
+         builder.build()
+     except subprocess.CalledProcessError as e:
+diff --git a/artiq/firmware/bootloader/main.rs b/artiq/firmware/bootloader/main.rs
+index 8465cb98f..6fae3586b 100644
+--- a/artiq/firmware/bootloader/main.rs
++++ b/artiq/firmware/bootloader/main.rs
+@@ -154,45 +154,6 @@ fn load_slave_fpga() {
+     println!("  ...done");
+ }
+ 
+-fn flash_boot() {
+-    const FIRMWARE: *mut u8 = board_mem::FLASH_BOOT_ADDRESS as *mut u8;
+-    const MAIN_RAM: *mut u8 = board_mem::MAIN_RAM_BASE as *mut u8;
+-
+-    println!("Booting from flash...");
+-
+-    let header = unsafe { slice::from_raw_parts(FIRMWARE, 8) };
+-    let length = LittleEndian::read_u32(&header[0..]) as usize;
+-    let expected_crc = LittleEndian::read_u32(&header[4..]);
+-
+-    if length == 0 || length == 0xffffffff {
+-        println!("No firmware present");
+-        return
+-    } else if length > 4 * 1024 * 1024 {
+-        println!("Firmware too large (is it corrupted?)");
+-        return
+-    }
+-
+-    let firmware_in_flash = unsafe { slice::from_raw_parts(FIRMWARE.offset(8), length) };
+-    let actual_crc_flash = crc32::checksum_ieee(firmware_in_flash);
+-
+-    if actual_crc_flash == expected_crc {
+-        let firmware_in_sdram = unsafe { slice::from_raw_parts_mut(MAIN_RAM, length) };
+-        firmware_in_sdram.copy_from_slice(firmware_in_flash);
+-
+-        let actual_crc_sdram = crc32::checksum_ieee(firmware_in_sdram);
+-        if actual_crc_sdram == expected_crc {
+-            println!("Starting firmware.");
+-            unsafe { boot::jump(MAIN_RAM as usize) }
+-        } else {
+-            println!("Firmware CRC failed in SDRAM (actual {:08x}, expected {:08x})",
+-                     actual_crc_sdram, expected_crc);
+-        }
+-    } else {
+-        println!("Firmware CRC failed in flash (actual {:08x}, expected {:08x})",
+-                 actual_crc_flash, expected_crc);
+-    }
+-}
+-
+ #[cfg(has_ethmac)]
+ enum NetConnState {
+     WaitCommand,
+@@ -508,13 +469,7 @@ pub extern fn main() -> i32 {
+ 
+     if startup() {
+         println!("");
+-        if !config::read_str("no_flash_boot", |r| r == Ok("1")) {
+-            #[cfg(has_slave_fpga_cfg)]
+-            load_slave_fpga();
+-            flash_boot();
+-        } else {
+-            println!("Flash booting has been disabled.");
+-        }
++        println!("Flash booting has been disabled.");
+         #[cfg(has_ethmac)]
+         network_boot();
+     } else {
+diff --git a/artiq/firmware/ksupport/lib.rs b/artiq/firmware/ksupport/lib.rs
+index 08d2508ff..2e690ee00 100644
+--- a/artiq/firmware/ksupport/lib.rs
++++ b/artiq/firmware/ksupport/lib.rs
+@@ -333,6 +333,11 @@ extern "C-unwind" fn dma_record_stop(duration: i64, enable_ddma: bool) {
+             duration: duration as u64,
+             enable_ddma: enable_ddma
+         });
++        // Acknowledge the reply before raising: runtime waits for it.
++        let succeeded = recv!(&DmaRecordStopReply { succeeded } => succeeded);
++        if !succeeded {
++            raise!("DMAError", "Failed to upload distributed DMA trace");
++        }
+     }
+ }
+ 
+@@ -412,11 +417,16 @@ extern fn dma_erase(name: CSlice<u8>) {
+ 
+ #[repr(C)]
+ struct DmaTrace {
++    // Pinned NAC3 tuple ObjectHeader, matching the A53 port ABI.
++    refcount: u32,
++    typeinfo_offset: i32,
+     duration: i64,
+     address:  i32,
+     uses_ddma: bool,
+ }
+ 
++const _: [(); 24] = [(); core::mem::size_of::<DmaTrace>()];
++
+ extern "C-unwind" fn dma_retrieve(name: CSlice<u8>) -> DmaTrace {
+     let name = str::from_utf8(name.as_ref()).unwrap();
+ 
+@@ -424,6 +434,8 @@ extern "C-unwind" fn dma_retrieve(name: CSlice<u8>) -> DmaTrace {
+     recv!(&DmaRetrieveReply { trace, duration, uses_ddma } => {
+         match trace {
+             Some(bytes) => Ok(DmaTrace {
++                refcount: 0,
++                typeinfo_offset: 0,
+                 address:  bytes.as_ptr() as i32,
+                 duration: duration as i64,
+                 uses_ddma: uses_ddma,
+diff --git a/artiq/firmware/libboard_misoc/net_settings.rs b/artiq/firmware/libboard_misoc/net_settings.rs
+index 290c8898c..c4c51060e 100644
+--- a/artiq/firmware/libboard_misoc/net_settings.rs
++++ b/artiq/firmware/libboard_misoc/net_settings.rs
+@@ -69,32 +69,10 @@ impl Display for NetAddresses {
+ }
+ 
+ pub fn get_addresses() -> NetAddresses {
+-    let hardware_addr;
+-    match config::read_str("mac", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => hardware_addr = addr,
+-        _ => {
+-            #[cfg(soc_platform = "kasli")]
+-            {
+-                let eeprom = i2c_eeprom::EEPROM::new();
+-                hardware_addr =
+-                    eeprom.read_eui48()
+-                    .map(|addr_buf| EthernetAddress(addr_buf))
+-                    .unwrap_or_else(|_e| EthernetAddress([0x02, 0x00, 0x00, 0x00, 0x00, 0x21]));
+-            }
+-            #[cfg(soc_platform = "kc705")]
+-            { hardware_addr = EthernetAddress([0x02, 0x00, 0x00, 0x00, 0x00, 0x01]); }
+-        }
+-    }
+-
+-    let ipv4_addr = match config::read_str("ip", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => addr,
+-        _ => Ipv4AddrConfig::UseDhcp,
+-    };
+-
+-    let ipv4_default_route = match config::read_str("ip_default_route", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => Some(addr),
+-        _ => None,
+-    };
++    // Unique volatile laboratory identity; do not read/write board storage.
++    let hardware_addr = EthernetAddress([0x02, 0x4b, 0x03, 0x48, 0x48, 0x54]);
++    let ipv4_addr = Ipv4AddrConfig::UseDhcp;
++    let ipv4_default_route = None;
+ 
+     let ipv6_ll_addr = IpCidr::new(IpAddress::v6(
+         0xfe80, 0x0000, 0x0000, 0x0000,
+@@ -103,15 +81,9 @@ pub fn get_addresses() -> NetAddresses {
+         0xfe00 | (hardware_addr.0[3] as u16),
+         ((hardware_addr.0[4] as u16) << 8) | (hardware_addr.0[5] as u16)), 10);
+ 
+-    let ipv6_addr = match config::read_str("ip6", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => Some(addr),
+-        _ => None
+-    };
++    let ipv6_addr = None;
+ 
+-    let ipv6_default_route = match config::read_str("ip6_default_route", |r| r.map(|s| s.parse())) {
+-        Ok(Ok(addr)) => Some(addr),
+-        _ => None,
+-    };
++    let ipv6_default_route = None;
+ 
+     NetAddresses {
+         hardware_addr,
+diff --git a/artiq/firmware/libproto_artiq/kernel_proto.rs b/artiq/firmware/libproto_artiq/kernel_proto.rs
+index 54bc072c0..93eac8c9e 100644
+--- a/artiq/firmware/libproto_artiq/kernel_proto.rs
++++ b/artiq/firmware/libproto_artiq/kernel_proto.rs
+@@ -37,6 +37,8 @@ pub enum Message<'a> {
+         enable_ddma: bool
+     },
+ 
++    DmaRecordStopReply { succeeded: bool },
++
+     DmaEraseRequest {
+         name: &'a str
+     },
+diff --git a/artiq/firmware/runtime/main.rs b/artiq/firmware/runtime/main.rs
+index 7802455cf..567ce0617 100644
+--- a/artiq/firmware/runtime/main.rs
++++ b/artiq/firmware/runtime/main.rs
+@@ -35,7 +35,9 @@ use core::convert::TryFrom;
+ use smoltcp::wire::HardwareAddress;
+ use urc::Urc;
+ 
+-use board_misoc::{csr, ident, clock, spiflash, config, net_settings, pmp, boot};
++use board_misoc::{csr, ident, clock, config, net_settings, pmp, boot};
++#[cfg(has_spiflash)]
++use board_misoc::spiflash;
+ #[cfg(has_ethmac)]
+ use board_misoc::ethmac;
+ #[cfg(soc_platform = "kasli")]
+@@ -415,7 +417,10 @@ pub fn panic_impl(info: &core::panic::PanicInfo) -> ! {
+         unsafe {
+             kernel::stop();
+             board_misoc::uart::flush();
++            #[cfg(has_spiflash)]
+             spiflash::reload();
++            #[cfg(not(has_spiflash))]
++            loop {}
+         }
+     } else {
+         println!("halting.");
+diff --git a/artiq/firmware/runtime/mgmt.rs b/artiq/firmware/runtime/mgmt.rs
+index 33396d794..eeff8b0e9 100644
+--- a/artiq/firmware/runtime/mgmt.rs
++++ b/artiq/firmware/runtime/mgmt.rs
+@@ -18,7 +18,9 @@ mod local_coremgmt {
+     use crc::crc32;
+     use log::LevelFilter;
+ 
+-    use board_misoc::{config, mem, spiflash};
++    use board_misoc::config;
++    #[cfg(has_spiflash)]
++    use board_misoc::{mem, spiflash};
+     use io::ProtoWrite;
+     use logger_artiq::BufferLogger;
+ 
+@@ -143,6 +145,7 @@ mod local_coremgmt {
+         Ok(())
+     }
+ 
++    #[cfg(has_spiflash)]
+     pub fn reboot(_io: &Io, stream: &mut TcpStream) -> Result<(), Error<SchedError>> {
+         Reply::RebootImminent.write_to(stream)?;
+         stream.close()?;
+@@ -153,11 +156,24 @@ mod local_coremgmt {
+         unsafe { spiflash::reload(); }
+     }
+ 
++    // Flash/reconfiguration are unavailable in the RAM-only laboratory image.
++    #[cfg(not(has_spiflash))]
++    pub fn reboot(_io: &Io, stream: &mut TcpStream) -> Result<(), Error<SchedError>> {
++        Reply::Error.write_to(stream)?;
++        Ok(())
++    }
++    #[cfg(not(has_spiflash))]
++    pub fn flash(_io: &Io, stream: &mut TcpStream, _image: &[u8]) -> Result<(), Error<SchedError>> {
++        Reply::Error.write_to(stream)?;
++        Ok(())
++    }
++
+     pub fn debug_allocator(_io: &Io, _stream: &mut TcpStream) -> Result<(), Error<SchedError>> {
+         unsafe { println!("{}", ::ALLOC) }
+         Ok(())
+     }
+ 
++    #[cfg(has_spiflash)]
+     pub fn flash(_io: &Io, stream: &mut TcpStream, image: &[u8]) -> Result<(), Error<SchedError>> {
+         let (expected_crc, mut image) = {
+             let (image, crc_slice) = image.split_at(image.len() - 4);
+diff --git a/artiq/firmware/runtime/session.rs b/artiq/firmware/runtime/session.rs
+index a1a654d6e..4a443a603 100644
+--- a/artiq/firmware/runtime/session.rs
++++ b/artiq/firmware/runtime/session.rs
+@@ -536,12 +536,16 @@ fn process_kern_message(io: &Io, aux_mutex: &Mutex,
+             }
+             &kern::DmaRecordStop { duration, enable_ddma } => {
+                 let _id = session.congress.dma_manager.record_stop(duration, enable_ddma, io, ddma_mutex, routing_table)?;
++                let mut succeeded = true;
+                 #[cfg(has_drtio)]
+                 if enable_ddma {
+-                    remote_dma::upload_traces(io, aux_mutex, ddma_mutex, subkernel_mutex, routing_table, _id)?;
++                    if let Err(error) = remote_dma::upload_traces(io, aux_mutex, ddma_mutex, subkernel_mutex, routing_table, _id) {
++                        error!("DDMA upload rejected: {}", error);
++                        succeeded = false;
++                    }
+                 }
+                 cache::flush_l2_cache();
+-                kern_acknowledge()
++                kern_send(io, &kern::DmaRecordStopReply { succeeded: succeeded })
+             }
+             &kern::DmaEraseRequest { name } => {
+                 #[cfg(has_drtio)]

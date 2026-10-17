@@ -2276,3 +2276,13 @@ restored Kasli/clock and Genesys192.168.2.3 localTTL/DMA/debug/Ethernet PASS;
 all4leases; no persistent/GenesysSi writes. Evidence kasli03-rejected-cleanup-
 {idle,recovery}-hardware-2026-10-17. Host ConnectionResetError/uncleanwarning
 remain upstream issue. Next isolated structured master recordstop reply overlay.
+
+
+Structured master recordstop2026-10-17 build PASS: isolated optional
+--dma-record-result adds shared boolean reply to mailboxproto/runtime/ksupport;
+uploadNACK sendsfalse, kernel receives/ACKs before raising standardDMAError.
+Success sends true; internalrecordstop faults not masked. New worktree preserves
+old artifacts/reference. Runtime+ksupport built, generatedmemory/CSR/regions
+byteidentical to qualifiedmaster; runtimebine65fec3e...1754560B. No HW access.
+Evidence kasli03-dma-result-build-2026-10-17. Next guardednormalDDMA then
+negative/recovery requiringDMAError and no abort/uncleanwarning.
