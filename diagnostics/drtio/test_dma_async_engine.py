@@ -16,14 +16,19 @@ sys.path.insert(0,str(ROOT/'tests'))
 from test_zynqmp_dma import AXIMemorySim,encode_sequence
 from test_aux_ps import FunctionalReset
 from dma_async_engine import AsyncSatelliteDMA
+from dma_read_delay import DMAReadDelay
 from satellite_backend import SatelliteBackend
 from test_satellite_sed import interface
 
 class AsyncDMAEngineTests(unittest.TestCase):
-    def exercise(self,underflow=False,pause=False,response=0,rx_period=(8,1),delayed_read=False):
+    def exercise(self,underflow=False,pause=False,response=0,rx_period=(8,1),delayed_read=False,delay_gate=False):
         d=Module();d.clock_domains.cd_rtio_rx=ClockDomain('rtio_rx')
         bus=AXIInterface(data_width=64,address_width=49,id_width=6)
-        d.submodules.engine=e=AsyncSatelliteDMA(bus)
+        engine_bus=AXIInterface(data_width=64,address_width=49,id_width=6) if delay_gate else bus
+        d.submodules.engine=e=AsyncSatelliteDMA(engine_bus)
+        if delay_gate:
+            d.submodules.delay=gate=DMAReadDelay(engine_bus,bus,1600)
+            d.comb += [gate.trigger.eq(e.start & (e.address==0)),gate.idle.eq(~e.active)]
         pad=Signal();link=interface()
         d.submodules.backend=b=ClockDomainsRenamer('rtio_rx')(
             SatelliteBackend(link,pad,glbl_fine_ts_width=3,dma_cri=e.cri))
@@ -32,7 +37,7 @@ class AsyncDMAEngineTests(unittest.TestCase):
         second=encode_sequence([(0,i*32<<3,0,1-i%2) for i in range(4)],8)
         memory=AXIMemorySim(bus,first+[0]*(64-len(first))+second,max_queue=3)
         memory.response=response
-        edges=[];requests=[];last=[];rx_ticks=[];sim_box=[];cri_writes=[]
+        edges=[];requests=[];last=[];rx_ticks=[];sim_box=[];cri_writes=[];held_active=[];gate_accepts=[];payloads=[]
         @passive
         def rx():
             old=0
@@ -47,6 +52,15 @@ class AsyncDMAEngineTests(unittest.TestCase):
             while True:
                 if (yield bus.ar.valid) and (yield bus.ar.ready):requests.append((yield bus.ar.addr))
                 if (yield bus.r.valid) and (yield bus.r.ready) and (yield bus.r.last):last.append(1)
+                if delay_gate:
+                    if (yield gate.accepted):gate_accepts.append(1)
+                    if (yield gate.holding) and (yield e.active) and requests:
+                        held_active.append(1)
+                        self.assertFalse(last)
+                        self.assertFalse(cri_writes)
+                    if (yield engine_bus.r.valid) and (yield engine_bus.r.ready):
+                        payloads.append(((yield engine_bus.r.data),(yield engine_bus.r.id),
+                                         (yield engine_bus.r.last),(yield engine_bus.r.resp)))
                 yield
         @passive
         def delayed_memory():
@@ -67,7 +81,7 @@ class AsyncDMAEngineTests(unittest.TestCase):
         def run():
             yield b.cri_switch.selected.storage.eq(1)
             for _ in range(30):yield
-            if delayed_read:self.assertLess((yield b.tsc.coarse_ts),1200)
+            if delayed_read or delay_gate:self.assertLess((yield b.tsc.coarse_ts),1200)
             yield e.address.eq(0);yield e.start.eq(1);yield;yield e.start.eq(0)
             if pause:
                 # First admit actual future SED events, then stop RX before
@@ -82,7 +96,7 @@ class AsyncDMAEngineTests(unittest.TestCase):
                 ticks=len(rx_ticks)
                 yield e.abort.eq(1)
             yield from done()
-            self.assertEqual((yield e.error),1 if pause else 4 if underflow or delayed_read else 2 if response else 0)
+            self.assertEqual((yield e.error),1 if pause else 4 if underflow or delayed_read or delay_gate else 2 if response else 0)
             self.assertEqual(len(requests),len(last))
             self.assertFalse(memory.queue)
             if pause:
@@ -90,9 +104,14 @@ class AsyncDMAEngineTests(unittest.TestCase):
                 self.assertFalse(edges)
                 for name in ('rtio_rx','dma_read'):
                     c=sim_box[0].time.clocks[name];c.time_before_trans=c.half_period
-            if underflow or delayed_read:
+            if underflow or delayed_read or delay_gate:
                 self.assertEqual((yield e.error_timestamp),(10 if underflow else 1200)<<3)
                 self.assertEqual((yield e.error_channel),0)
+            if delay_gate:
+                self.assertEqual(len(gate_accepts),1)
+                self.assertTrue(held_active)
+                self.assertTrue(payloads)
+                self.assertTrue(all(p[3]==0 for p in payloads))
             yield e.abort.eq(0)
             for _ in range(5):yield
             while (yield b.tsc.coarse_ts)<1600:yield
@@ -108,7 +127,7 @@ class AsyncDMAEngineTests(unittest.TestCase):
             while (yield b.tsc.coarse_ts)<target+200:yield
             self.assertEqual(edges[len(baseline):],[(target+11+i*32,1-i%2) for i in range(4)])
             self.assertEqual((yield b.async_errors.raw_bits()),0)
-            if not (underflow or pause or delayed_read):self.assertEqual(baseline,[(1211+i*32,1-i%2) for i in range(4)])
+            if not (underflow or pause or delayed_read or delay_gate):self.assertEqual(baseline,[(1211+i*32,1-i%2) for i in range(4)])
             else:self.assertFalse(baseline)
         with Simulator(d,{'sys':[run(),axi_monitor(),memory.ar(),delayed_memory() if delayed_read else memory.r()],'rtio_rx':rx()},
             clocks={'sys':10,'rtio_rx':rx_period,'dma_write':10,'dma_read':rx_period},
@@ -117,6 +136,7 @@ class AsyncDMAEngineTests(unittest.TestCase):
     def test_async_native_decoder_cri_ttl_and_next_trace(self):self.exercise(rx_period=(13,2))
     def test_native_underflow_snapshot_and_recovery(self):self.exercise(underflow=True)
     def test_future_trace_expires_during_active_axi_read(self):self.exercise(delayed_read=True)
+    def test_bounded_axi_gate_causes_native_underflow(self):self.exercise(delay_gate=True)
     def test_clock_pause_abort_drain_and_recovery(self):self.exercise(pause=True)
     def test_axi_error_report_and_next_trace(self):self.exercise(response=2)
 

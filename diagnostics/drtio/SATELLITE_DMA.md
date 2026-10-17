@@ -1366,3 +1366,22 @@ both boards and rerun local TTL/DMA/debug/Ethernet before releasing all leases.
 A hardware fault or missing clock is not permission to bypass the watchdog or
 force unqualified reuse. No physical delay trigger is implemented or qualified
 yet; this plan does not alter the current hardware profile.
+
+The standalone `DMAReadDelay` laboratory module now implements a fixed bounded
+R-channel hold, with no payload buffering or modification. Trigger acceptance
+requires caller-proven idle and no memory RVALID. Busy triggers are rejected;
+an exposed response is never hidden. Countdown is independent of subsequent
+trigger changes. AR/AW/W/B remain connected, so this is not memory isolation.
+It requires an always-running clock/reset and must never be reset with reads
+outstanding. The current hardware image does not instantiate it.
+
+`make test-drtio-dma-read-delay` checks the bound, busy/retrigger controls,
+refusal to withdraw exposed RVALID and exact data/ID/LAST/RESP order under
+consumer backpressure. `test_bounded_axi_gate_causes_native_underflow` additionally
+uses this module before the actual async DMA/CRI/SED path, with a1600-cycle
+simulation hold. It checks active DMA with outstanding reads before release,
+native error4/channel0/timestamp9600, drain and fresh RTL playback. The1600-cycle
+simulation value is not a reviewed hardware setting: a physical experiment must
+exceed the firmware's1ms admission lead while remaining below its watchdog.
+Hardware instantiation, CSR control, candidate build and external AUX/master
+exception qualification remain pending.

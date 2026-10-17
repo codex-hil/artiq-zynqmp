@@ -2407,3 +2407,15 @@ fault-rtl-2026-10-17. SATELLITE_DMA documents bounded separatelyhashed hardware
 trigger requirements. Normalprofile unchanged, noHW accessed. Next implement
 and simulate opt-in bounded AXI delay trigger with response-stability/order
 checks before candidateimage build; firmwarefault reuse remains prohibited.
+
+
+Bounded read-delay2026-10-17 RTL PASS: opt-in standalone DMAReadDelay fixed
+countdown, accepts only caller-idle/noRVALID; busy/retrigger rejected; exposed
+RVALID never withdrawn.5unit tests include exact12beat data/ID/LAST/RESP order
+and stability underbackpressure. Integrated1600cyclehold on actual asyncDMA/
+CRI/SED causes nativeunderflow4/channel0/timestamp9600 after active/outstanding
+reads, exactdrain/noerroneousTTL/freshRTLplaybackPASS. Full9engine testsPASS
+101.488s. Evidence ddma-bounded-read-delay-rtl-2026-10-17. NoHW accessed, normal
+image/profileunchanged. Not a physicalfault qualification; nohardwareinstantiation
+orCSRcontrol yet. Next offline integrate opt-in control/telemetry and validate
+physicalclock-derived delay (>1mslead, belowwatchdog) beforecandidatebuild.

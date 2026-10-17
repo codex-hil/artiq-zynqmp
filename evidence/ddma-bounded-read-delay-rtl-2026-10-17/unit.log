@@ -1,0 +1,11 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_read_delay.py' -v
+test_bounded_hold_and_retrigger_cannot_extend_it (test_dma_read_delay.ReadDelayTests.test_bounded_hold_and_retrigger_cannot_extend_it) ... ok
+test_busy_refused (test_dma_read_delay.ReadDelayTests.test_busy_refused) ... ok
+test_exposed_stalled_response_never_withdrawn (test_dma_read_delay.ReadDelayTests.test_exposed_stalled_response_never_withdrawn) ... ok
+test_invalid_bound (test_dma_read_delay.ReadDelayTests.test_invalid_bound) ... ok
+test_order_and_stability_with_consumer_backpressure (test_dma_read_delay.ReadDelayTests.test_order_and_stability_with_consumer_backpressure) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.076s
+
+OK

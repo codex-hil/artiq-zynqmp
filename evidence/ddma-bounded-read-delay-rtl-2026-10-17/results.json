@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "hardware_access": false,
+  "unit_tests": 5,
+  "integration_tests": 9,
+  "simulation_hold_cycles": 1600,
+  "native_error": {
+    "raw": 4,
+    "channel": 0,
+    "timestamp": 9600
+  },
+  "source_sha256": {
+    "diagnostics/drtio/dma_read_delay.py": "7ffc1faf5fbb5e3b5754654518125358d1fc121d6ae1b10b298a772189e02c1b",
+    "diagnostics/drtio/test_dma_read_delay.py": "c7eae785e666358581a88f17f94971246d1c01c91b02a6aa01a222e5a2a64a6d",
+    "diagnostics/drtio/test_dma_async_engine.py": "58ec7f082b0b354072f7b0b148c30c25ec4ba292da3deb6e4c8bb4e63812b5cd"
+  },
+  "limitations": [
+    "not instantiated in any hardware image",
+    "requires caller-proven idle and always-running clock/reset",
+    "simulation delay is not hardware qualification",
+    "AUX/master exception path pending"
+  ]
+}

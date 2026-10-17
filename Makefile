@@ -321,3 +321,7 @@ review-drtio-qualified:
 
 test-hw-drtio-qualified:
 	$(PYTHON) scripts/run_qualified_drtio.py --profile=$(DRTIO_PROFILE) --artifact-root=$(DRTIO_ARTIFACT_ROOT) --output=$(abspath $(O))/qualified-hardware --execute
+
+.PHONY: test-drtio-dma-read-delay
+test-drtio-dma-read-delay:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(PYTHONPATH)" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_read_delay.py' -v
