@@ -310,7 +310,7 @@ test-drtio-dma-abort-handoff:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_abort_handoff.py' -v
 
 .PHONY: test-drtio-qualified-profile review-drtio-qualified test-hw-drtio-qualified
-DRTIO_PROFILE ?= $(CURDIR)/diagnostics/drtio/profiles/kasli03-genesys-cursor.json
+DRTIO_PROFILE ?= $(CURDIR)/diagnostics/drtio/profiles/kasli03-genesys-start-result.json
 DRTIO_ARTIFACT_ROOT ?= /srv/codex-hil-data/artiq-zynqmp
 
 test-drtio-qualified-profile:

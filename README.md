@@ -35,8 +35,8 @@ paused-RX hardware recovery and playback fault-status injection remain pending.
 
 The pinned setup uses KASLI03 v1.1 (DNA `0x0048458a64b04854`) as master and Genesys
 `210383B7F02DA` as destination1, with the existing SFP link and JB1→JB2 jumper.
-[The qualified profile](diagnostics/drtio/profiles/kasli03-genesys-cursor.json)
-pins21 files, including runtime, firmware, bitstreams, restoration/startup artifacts
+[The qualified profile](diagnostics/drtio/profiles/kasli03-genesys-start-result.json)
+pins23 files, including runtime, firmware, bitstreams, restoration/startup artifacts
 and prior evidence. It is a profile of this laboratory host, not an artifact
 installer. Rebuilt artifacts require fresh qualification; do not replace their
 hashes merely to get past validation.
@@ -54,8 +54,8 @@ Inspect `qualified-review/command.json`, `observer.json`, `review.json` and
 Missing artifacts fail with an exact path; source rebuild/overlay instructions
 and pinned build scripts are linked from [SATELLITE_DMA.md](diagnostics/drtio/SATELLITE_DMA.md)
 and [PORTING_STATUS.md](PORTING_STATUS.md). The current master build is reproduced
-by [this script](evidence/kasli03-dma-result-build-2026-10-17/build.sh), together
-with the isolated overlay preparer flags `--nac3-dma-abi --dma-record-result`.
+by [this script](evidence/kasli03-dma-start-result-build-2026-10-17/build.sh), together
+with the isolated overlay preparer flags `--nac3-dma-abi --dma-record-result --dma-start-result`.
 
 When the documented boards/wiring are available, run the reviewed profile in a
 fresh directory:
@@ -395,3 +395,8 @@ Distributed-DMA integration now has offline-tested asynchronous native decoding,
 AXI abort/drain, bounded reads/watchdog and a PS AXI/CSR peripheral. Physical
 satellite DMA and AUX trace handling remain pending; see the current scope in
 [Satellite DMA integration](diagnostics/drtio/SATELLITE_DMA.md).
+
+The previous [record-result profile](diagnostics/drtio/profiles/kasli03-genesys-cursor.json)
+is retained for comparison. The current profile pins three physical sessions:
+normal playback, expired-start rejection/recovery and upload-error/cursor recovery.
+The expired-start case is admission rejection, not active playback fault injection.

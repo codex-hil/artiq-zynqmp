@@ -2366,3 +2366,18 @@ localTTL/DMA/debug/Ethernet PASS;all4leases; no persistent/GenesysSi writes.
 Evidence kasli03-native-ddma-expired-hardware-2026-10-17. Admissionrefusal,
 not activeplaybackfault; negativeenginecounter not independently sampled.
 Next candidate upload/cursor regression then separate pinnedprofile version.
+
+
+Start-result qualification2026-10-17 physical PASS: new master4968da4a...
+regression catches upload DMAError, restores exact cursor on failure/success,
+then same-kernel native playback8edges/8000width/80000period PASS. No reset
+between error/recovery. Kasli/clock and Genesys192.168.2.3 localTTL/DMA/debug/
+Ethernet restoredPASS under all4leases; no persistent/GenesysSi writes.
+Evidence kasli03-start-result-cursor-hardware-2026-10-17. Separate23-file
+start-result profile now default, previous21-file cursor profile preserved.
+Normal/expired/cursor physical proofs bind exact runtime/Genesysimage hashes;
+new rendered command equals physically executed cursor session exceptoutput/
+wrapperpath; observer identical. Actual profile hashvalidation/preflight and
+3runner testsPASS; no additional hardware session through newprofile entry.
+Evidence start-result-profile-offline-2026-10-17. Next activeplayback fault-status
+qualification; expired admission rejection is not activeplaybackfault proof.

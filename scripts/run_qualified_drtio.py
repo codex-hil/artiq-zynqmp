@@ -58,7 +58,7 @@ def validate(profile,variables):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--profile',type=Path,default=REPO/'diagnostics/drtio/profiles/kasli03-genesys-cursor.json')
+    p.add_argument('--profile',type=Path,default=REPO/'diagnostics/drtio/profiles/kasli03-genesys-start-result.json')
     p.add_argument('--artifact-root',type=Path,default=Path('/srv/codex-hil-data/artiq-zynqmp'))
     p.add_argument('--output',type=Path,required=True,help='Fresh review/evidence directory')
     p.add_argument('--execute',action='store_true',help='Run guarded hardware session after preflight')
