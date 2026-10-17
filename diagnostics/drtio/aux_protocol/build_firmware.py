@@ -95,7 +95,7 @@ io={path=IO_PATH,features=["byteorder"]}
         generated=out/'firmware-lab-delay.c'
         generated.write_text(source_overlay(firmware.read_text()))
         firmware=generated
-    elf=out/'aux-firmware.elf' 
+    elf=out/'aux-firmware.elf'
     cmd=[str(arm/'bin/aarch64-none-elf-gcc'),'-DSDT','-specs='+str(bsp/'Xilinx.spec'),
         *(['-DAUX_DDMA_LAB_DELAY','-DAUX_DDMA_LAB_CYCLES='+str(lab_cycles),'-I'+str(Path(__file__).parent.resolve())] if a.lab_read_delay else []),*(['-DAUX_DDMA'] if a.ddma else []),*(['-DAUX_SNAPSHOT'] if a.snapshot_probe else []),*(['-DAUX_DIO'] if a.dio else []),*(['-DAUX_RESET'] if a.reset else []),*(['-DAUX_EXTERNAL'] if a.external else []),*(['-DAUX_TSC'] if a.tsc else []),'-I'+str(bsp/'include'),'-I'+str(out),'-Wall','-Wextra','-O2','-g',str(firmware),
         str(library),'-Wl,-T,'+str(linker),'-L'+str(bsp/'lib'),'-Wl,--start-group',
