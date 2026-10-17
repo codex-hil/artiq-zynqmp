@@ -308,3 +308,16 @@ test-drtio-ddma-reject:
 .PHONY: test-drtio-dma-abort-handoff
 test-drtio-dma-abort-handoff:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_abort_handoff.py' -v
+
+.PHONY: test-drtio-qualified-profile review-drtio-qualified test-hw-drtio-qualified
+DRTIO_PROFILE ?= $(CURDIR)/diagnostics/drtio/profiles/kasli03-genesys-cursor.json
+DRTIO_ARTIFACT_ROOT ?= /srv/codex-hil-data/artiq-zynqmp
+
+test-drtio-qualified-profile:
+	$(PYTHON) -m unittest discover -s tests -p 'test_qualified_drtio.py' -v
+
+review-drtio-qualified:
+	$(PYTHON) scripts/run_qualified_drtio.py --profile=$(DRTIO_PROFILE) --artifact-root=$(DRTIO_ARTIFACT_ROOT) --output=$(abspath $(O))/qualified-review
+
+test-hw-drtio-qualified:
+	$(PYTHON) scripts/run_qualified_drtio.py --profile=$(DRTIO_PROFILE) --artifact-root=$(DRTIO_ARTIFACT_ROOT) --output=$(abspath $(O))/qualified-hardware --execute

@@ -1199,3 +1199,35 @@ Evidence `kasli03-native-ddma-cursor-hardware-2026-10-17` and
 `native-ddma-cursor-offline-2026-10-17`. Next consolidate reproducible master/
 host overlay selection and test commands; actual playback-fault/pausedRX
 hardware qualification remains distinct and NOT_RUN.
+
+
+### Pinned laboratory profile and reproducible entry points (2026-10-17)
+
+`scripts/run_qualified_drtio.py` and checked-in profile
+`diagnostics/drtio/profiles/kasli03-genesys-cursor.json` consolidate the
+physically qualified master, Genesys firmware/bitstream/CSR, startup/restoration
+artifacts, isolated host overlay and prior PASS evidence. Profile pins21 files.
+Path variables support relocated artifact roots and repository checkout; the
+board serials/topology/network paths intentionally describe this laboratory.
+This is not an installer or fresh-host qualification. All binaries must exist
+with exact hashes; newly rebuilt files require new reviewed qualification.
+
+Default invocation creates fresh observer/command/review files and runs only
+the existing wrapper's dry-run. It refuses stale/missing/unpinned references,
+wrapper digest disagreement, failed qualification/restoration, unguarded
+wrapper selection and existing output directories. `--execute` delegates all
+hardware access to the existing parent (all4 locks, identity, bounded checks,
+finally restoration). It requires final statusPASS and restorationPASS, not
+just zero process exit. It never creates a competing lock mechanism.
+
+Make targets: test-drtio-qualified-profile (offline), review-drtio-qualified
+(preflight only), test-hw-drtio-qualified (explicit guarded execution). README
+now describes exact board scope, output/evidence paths, existing setup and
+rebuild links plus remaining limitations. Three unit tests cover matching
+profile, digest/missing/unpinned/proof/unguarded negatives, default dry-run-only
+behavior and false-positive zero exit with failed restoration. Actual21-file
+validation and parent dry-run PASS; no HW access. New execute entry point
+NOT_RUN separately; underlying parent/scenario previously physically PASS.
+Evidence `qualified-drtio-profile-offline-2026-10-17`. Next bounded hardware
+qualification through the new Make/runner entry point, then distinct playback
+fault-status work.

@@ -2321,3 +2321,14 @@ Genesys192.168.2.3 localTTL/DMA/debug/Ethernet PASS;all4leases; no persistent/
 GenesysSi writes. Evidence kasli03-native-ddma-cursor-hardware-2026-10-17.
 Sharedhostpackage untouched; explicithashed childoverlay only. Next consolidate
 reproducible overlay/testselection, then distinctplaybackfault qualification.
+
+
+Qualified entrypoint2026-10-17 offline PASS: checked-in21-file pinned profile,
+relocatable artifactroot/repo, default fresh review+dryrun; explicitexecute
+delegates existing all4-lock wrapper and requires finalsession+restorePASS.
+Stale/missing/unpinned/digest/proof/unguarded references rejected.3unittests
+including dryrunonly and false-success exit0/restoreFAIL PASS. Actual profile
+validation+parentpreflight PASS, noHW. README/Make test-drtio-qualified-profile,
+review-drtio-qualified,test-hw-drtio-qualified added. Evidence qualified-drtio-
+profile-offline-2026-10-17. Newexecute entry NOT_RUN (underlyingparent/scenario
+physicalPASS); next guardedqualification via newentry then playbackfault work.

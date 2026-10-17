@@ -1,0 +1,10 @@
+python3 -m unittest discover -s tests -p 'test_qualified_drtio.py' -v
+test_default_only_preflights_and_execute_requires_restoration_pass (test_qualified_drtio.QualifiedTests.test_default_only_preflights_and_execute_requires_restoration_pass) ... ok
+test_matching_profile_and_template (test_qualified_drtio.QualifiedTests.test_matching_profile_and_template) ... ok
+test_stale_missing_unpinned_digest_bad_proof_and_unguarded_wrapper (test_qualified_drtio.QualifiedTests.test_stale_missing_unpinned_digest_bad_proof_and_unguarded_wrapper) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.034s
+
+OK
+{"status": "PREFLIGHT_PASS_NO_HARDWARE_ACCESS", "review": "/tmp/tmpsdegkxg0/review"}

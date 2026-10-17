@@ -23,6 +23,62 @@ Local analyzer/moninj have also passed physical tests using standard ARTIQ clien
 
 See [PORTING_STATUS.md](PORTING_STATUS.md) for detailed evidence and limitations, [architecture](docs/ARCHITECTURE.md), [source revisions](docs/SOURCES.md) and [build compatibility notes](docs/BUILD_COMPATIBILITY.md). Some supporting documents are still in Polish.
 
+## Qualified Kasli → Genesys DRTIO laboratory setup
+
+External DRTIO now passes physical TTL input/output, native distributed CoreDMA,
+fragmented uploads and handle/replacement tests. Running-clock DMA abort cancels
+queued TTL events and hands control back to packet RTIO. Oversized native uploads
+raise a structured `DMAError`; recovery works inside the same kernel. An isolated
+host patch restores the recording cursor on success and exception. These are
+laboratory results, not full DRTIO/Sinara qualification: absolute phase/jitter,
+paused-RX hardware recovery and playback fault-status injection remain pending.
+
+The pinned setup uses KASLI03 v1.1 (DNA `0x0048458a64b04854`) as master and Genesys
+`210383B7F02DA` as destination1, with the existing SFP link and JB1→JB2 jumper.
+[The qualified profile](diagnostics/drtio/profiles/kasli03-genesys-cursor.json)
+pins21 files, including runtime, firmware, bitstreams, restoration/startup artifacts
+and prior evidence. It is a profile of this laboratory host, not an artifact
+installer. Rebuilt artifacts require fresh qualification; do not replace their
+hashes merely to get past validation.
+
+On the prepared development host, review without hardware access:
+
+```sh
+make test-drtio-qualified-profile
+make review-drtio-qualified O=/large-disk/fresh-review-directory
+```
+
+Inspect `qualified-review/command.json`, `observer.json`, `review.json` and
+`preflight.log`. All referenced binaries/proofs must exist and match. Use
+`DRTIO_ARTIFACT_ROOT=/path/to/artiq-zynqmp` if the artifact tree was relocated.
+Missing artifacts fail with an exact path; source rebuild/overlay instructions
+and pinned build scripts are linked from [SATELLITE_DMA.md](diagnostics/drtio/SATELLITE_DMA.md)
+and [PORTING_STATUS.md](PORTING_STATUS.md). The current master build is reproduced
+by [this script](evidence/kasli03-dma-result-build-2026-10-17/build.sh), together
+with the isolated overlay preparer flags `--nac3-dma-abi --dma-record-result`.
+
+When the documented boards/wiring are available, run the reviewed profile in a
+fresh directory:
+
+```sh
+make test-hw-drtio-qualified O=/large-disk/fresh-hardware-directory
+```
+
+The existing combined wrapper acquires all4 shared device locks, verifies board
+identity, temporarily loads RAM/SRAM images, runs management/reset/TSC/DIO and
+same-kernel native-DDMA rejection/cursor/recovery tests, then restores both
+baselines and verifies local TTL/DMA/debug/Ethernet. The launcher also requires
+final session and restoration PASS; a zero process exit alone is insufficient.
+It leaves boot flash, SD and OTP unchanged. The reviewed Kasli volatile clock
+profile is configured/restored; Genesys Si configuration is untouched. Lock
+contention is handled by the parent without preempting another owner. Existing
+output directories are refused. Raw logs and final results are under
+`qualified-hardware/session/`.
+
+The new launcher has passed file-validation tests and actual wrapper preflight.
+Its `--execute` entry point has not yet been separately hardware-qualified; it
+delegates to the same already-tested wrapper and experimental scenario.
+
 ## Clone and licensing
 
 Public repository: [codex-hil/artiq-zynqmp](https://github.com/codex-hil/artiq-zynqmp).
