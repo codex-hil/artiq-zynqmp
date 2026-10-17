@@ -325,3 +325,7 @@ test-hw-drtio-qualified:
 .PHONY: test-drtio-dma-read-delay
 test-drtio-dma-read-delay:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(PYTHONPATH)" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_read_delay.py' -v
+
+.PHONY: test-drtio-dma-read-delay-control
+test-drtio-dma-read-delay-control:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_read_delay_control.py' -v

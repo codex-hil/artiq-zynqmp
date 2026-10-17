@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "hardware_access": false,
+  "tests": 3,
+  "base_register_addresses_preserved": true,
+  "example_sys_clk_hz": 100000000,
+  "example_delay_cycles": 200000,
+  "generated_rtl_sha256": "28680e2b7b53b0f21eeb43a1ceb8235320dda36c59106556d066e29563f27e3b",
+  "source_sha256": {
+    "diagnostics/drtio/dma_read_delay_control.py": "6112a7efecc4041166ed460bd3f1d6b47118868e20e68b147c33141c30d8f5ef",
+    "diagnostics/drtio/test_dma_read_delay_control.py": "83416bdfe9a336a088bdfc4eecc5348803766caba34111980e3a6af73b66395d",
+    "diagnostics/drtio/generate_dma_csr.py": "d17ab67f31c7a3cb9dff0ccf894ad642431a7ed1a32219ad1dc737d423661222"
+  },
+  "limitations": [
+    "standalone generation only, no synthesis or board image",
+    "no measured physical clock",
+    "not full PS CSR-path active-fault qualification",
+    "positive 50ms playback lead exceeds default 2ms delay"
+  ]
+}

@@ -1385,3 +1385,29 @@ simulation value is not a reviewed hardware setting: a physical experiment must
 exceed the firmware's1ms admission lead while remaining below its watchdog.
 Hardware instantiation, CSR control, candidate build and external AUX/master
 exception qualification remain pending.
+
+`LabDelayedDMACSR` now provides a separate opt-in peripheral with appended
+`dma_lab_delay_*` CSRs. Original DMA register addresses are unchanged. Writing
+`arm=1` while idle arms one actual accepted DMA launch; that launch consumes
+the arm even if injection is refused. Repeated arming, busy arming and existing
+memory RVALID cannot extend/withdraw an exposed response. Counters report arm
+refusals, accepted delay triggers and launch-time delay refusals. Injection is
+skipped unless the configured watchdog is strictly greater than twice the fixed
+hold. Counter values wrap at32 bits; compare bounded-session deltas.
+
+Standalone generation (100MHz here is an explicit example, not a verified
+Genesys clock measurement):
+
+```sh
+python diagnostics/drtio/generate_dma_csr.py --output /large-disk/fresh-delay-rtl \
+  --lab-read-delay-sys-hz 100000000 --lab-read-delay-us 2000
+make test-drtio-dma-read-delay-control
+```
+
+The map records caller-supplied frequency, delay and cycle count. Only delays
+strictly above1ms and at most1048576 cycles are accepted. A2ms gate does not
+necessarily force underflow: the dedicated experiment must choose and record a
+future playback lead smaller than the hold while satisfying firmware admission.
+Existing50ms-lead positive experiments remain positive controls. Physical clock
+verification, PS/PL target instantiation, firmware arm access and full CSR-path
+fault qualification are still pending; generation alone is not a bitstream build.

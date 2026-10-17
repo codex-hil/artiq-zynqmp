@@ -14,10 +14,18 @@ from dma_csr import DMACSR
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--lab-read-delay-sys-hz',type=int,
+        help='Opt in to laboratory delay peripheral; caller-provided actual sys frequency')
+    p.add_argument('--lab-read-delay-us',type=int,default=2000)
     a=p.parse_args();out=a.output.resolve();out.mkdir(parents=True,exist_ok=True)
     d=Module();d.clock_domains.cd_rtio_rx=ClockDomain('rtio_rx')
     bus=AXIInterface(data_width=64,address_width=49,id_width=6)
-    d.submodules.control=c=DMACSR(bus)
+    if a.lab_read_delay_sys_hz is None:
+        d.submodules.control=c=DMACSR(bus)
+    else:
+        from dma_read_delay_control import LabDelayedDMACSR
+        d.submodules.control=c=LabDelayedDMACSR(bus,sys_clk_hz=a.lab_read_delay_sys_hz,
+                                               delay_us=a.lab_read_delay_us)
     d.submodules.ps=ps=AuxPS(extra_banks=[('dma',4,c.csrs)])
     ios={c.fault,c.rtio_reset_request,ps.reset,ps.rx_raw,ps.tx_raw}
     ios.update(c.cri.flatten())

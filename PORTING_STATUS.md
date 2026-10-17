@@ -2419,3 +2419,15 @@ reads, exactdrain/noerroneousTTL/freshRTLplaybackPASS. Full9engine testsPASS
 image/profileunchanged. Not a physicalfault qualification; nohardwareinstantiation
 orCSRcontrol yet. Next offline integrate opt-in control/telemetry and validate
 physicalclock-derived delay (>1mslead, belowwatchdog) beforecandidatebuild.
+
+
+Delay control2026-10-17 offline PASS: separate LabDelayedDMACSR appendsone-shot
+arm/status/counters, preservesoriginalDMAaddresses. Busy/duplicatearm rejected;
+acceptedlaunchconsumesarm evenif RVALID/watchdog prevents injection. Watchdog
+mustexceed2xhold;fixedclockderiveddelay>1ms,<=1048576cycles.3controltestsPASS
+includingRVALIDrefusal/watchdogboundary/noautomaticrepeat;5gate regressionsPASS.
+Standalone RTL/map generated explicitexample100MHz/2ms=200000cycles; notmeasured
+boardclock/notVivadosynthesis/notGenesysimage. Evidence ddma-delay-control-offline-
+2026-10-17. NoHW accessed. Next fullPSCSR/nativeSED faultintegration simulation,
+then reviewtargetclock/optinimagewiring; dedicatedexperimentlead mustbe<hold
+(existing50mspositivelead willnotfault with2mshold).
