@@ -75,9 +75,11 @@ contention is handled by the parent without preempting another owner. Existing
 output directories are refused. Raw logs and final results are under
 `qualified-hardware/session/`.
 
-The new launcher has passed file-validation tests and actual wrapper preflight.
-Its `--execute` entry point has not yet been separately hardware-qualified; it
-delegates to the same already-tested wrapper and experimental scenario.
+The complete Make/launcher entry point passed physical validation on2026-10-17:
+artifact checks, same-kernel DMAError/cursor recovery and8 physical TTL edges,
+followed by both-board restoration and local ARTIQ/Ethernet checks. See
+[the final report](evidence/qualified-drtio-entry-hardware-2026-10-17/review.json)
+and [session evidence](evidence/qualified-drtio-entry-hardware-2026-10-17/session/results.json).
 
 ## Clone and licensing
 

@@ -1231,3 +1231,31 @@ NOT_RUN separately; underlying parent/scenario previously physically PASS.
 Evidence `qualified-drtio-profile-offline-2026-10-17`. Next bounded hardware
 qualification through the new Make/runner entry point, then distinct playback
 fault-status work.
+
+
+### Full qualified Make/launcher entry physically PASS (2026-10-17)
+
+`make test-hw-drtio-qualified O=.../qualified-entry-hardware-2026-10-17`
+completed WRAPPER_PASS. The checked-in21-file profile was verified, fresh
+review/observer/command generated, parent dry-run passed and the exact guarded
+parent executed. Parent finalstatusPASS and restorationPASS were independently
+checked by the launcher. Same-kernel DMAError catch, exact cursor restoration
+on failed/successful records and8physicaledges/8000width/80000period/firstdelta
+1000120mu PASS. Artifact/host overlay selection is therefore exercised through
+the public Make entry, not only historical ad hoc commands.
+
+All4 device leases held through full restoration. Kasli diagnostic/reviewed
+volatile clock and Genesys normal192.168.2.3 localTTL/CoreDMA/analyzer/MonInj/
+Ethernet PASS; no flash/SD/OTP/GenesysSi writes. Raw session evidence plus
+review/profile hash/preflight/command copied to
+`evidence/qualified-drtio-entry-hardware-2026-10-17`. README now marks execute
+entry physically qualified. No new FPGA/firmware source modification this turn.
+
+Next source audit identified a separate old master path: DmaStartRemoteRequest
+currently propagates remote playback admission failure out of runtime session.
+A bounded deliberately expired timestamp should be rejected by Genesys before
+DMA admission; test this as a native playback rejection, distinct from upload
+rejection and actual hardware DMA faults. Any structured start-result overlay
+must first drain/restore local DMA/CRI ownership before raising, because local
+playback may already have started. Do not raise immediately with active local
+DMA or imply distributed playback atomicity. No such fault was injected here.

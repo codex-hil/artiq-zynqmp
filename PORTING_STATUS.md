@@ -2332,3 +2332,13 @@ validation+parentpreflight PASS, noHW. README/Make test-drtio-qualified-profile,
 review-drtio-qualified,test-hw-drtio-qualified added. Evidence qualified-drtio-
 profile-offline-2026-10-17. Newexecute entry NOT_RUN (underlyingparent/scenario
 physicalPASS); next guardedqualification via newentry then playbackfault work.
+
+
+Qualified Makeentry2026-10-17 physical WRAPPER_PASS:21fileprofile/hash/preflight
+then exact guarded sessionPASS/restorationPASS; samekernel DMAError+cursor
+restoration+8physicaledges PASS. Kasli/clock and Genesys192.168.2.3 normallocal
+TTL/DMA/debug/Ethernet restoredPASS,all4leases; no persistent/GenesysSi writes.
+README execute qualification updated. Evidence qualified-drtio-entry-hardware-
+2026-10-17. Next native expired-playback admission rejection; master currently
+propagates startNACK as sessionerror. Future resultreply must drainlocalDMA/
+restoreCRI before raising; actualplaybackfault/pausedRX remainNOT_RUN.
