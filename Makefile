@@ -342,3 +342,7 @@ test-drtio-ddma-lab-arm:
 	$(CC) -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_ddma_lab_runtime.c -o $(abspath $(O))/ddma-lab-arm/runtime-test
 	$(abspath $(O))/ddma-lab-arm/runtime-test
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio/aux_protocol" $(PYTHON) -m unittest discover -s diagnostics/drtio/aux_protocol -p 'test_lab_delay_build.py' -v
+
+.PHONY: test-drtio-active-fault-evidence
+test-drtio-active-fault-evidence:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_active_dma_fault_evidence.py' -v

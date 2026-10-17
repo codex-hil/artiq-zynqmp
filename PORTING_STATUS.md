@@ -2475,3 +2475,13 @@ suites+3PythonguardtestsPASS. Evidence ddma-lab-telemetry-build-2026-10-17. NoHW
 access/loading; sampledmarkers arenot AXIdrain/TTLsilence proof. Normalfirmware
 sources unchanged. Next dedicated faultsession evidencevalidator/experiment and
 wrapperintegration (independentdrain/TTLmetrics) beforecandidateFPGA build/use.
+
+
+Activefaultparser2026-10-17 offline PASS: syntheticfixtures requirearm/admission/
+active/status/completion order, raw4->AUX1, exactID/timestamp/conservation/faultlatch,
+caughtkernelmarker andindependentTTL/AXIdrainsnapshot inputs.2tests withnegative
+controlsPASS (includingNACK,wrongstatus,duplicate/reorder,TTLactivity,undrainedAXI).
+Not ahardwarerunner/countercollector; parentrestoration separatelyrequired.
+Evidence ddma-active-fault-parser-offline-2026-10-17. NoHW accessed. Dedicated
+experiment andcountercollection/wrapperintegration stillpending; next implement
+boundedhost-arm handshake andcompileexperiment before enablinghardware path.

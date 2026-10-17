@@ -1472,3 +1472,15 @@ the future hardware wrapper must still capture independent counter/pad evidence.
 A53 full build and actual-header ASan/UBSan mock tests pass; no image was loaded
 and no real active-fault log has been observed. Normal firmware sources remain
 unchanged and normal native tests continue to refuse this lab build.
+
+`make test-drtio-active-fault-evidence` exercises a strict evidence parser with
+synthetic fixtures only. It requires successful arm/admission, observed active
+hold before status/completion, native underflow raw4 mapped to AUX1, exact ID/
+timestamp, accepted/completed conservation, backend fault latch and a caught
+underflow kernel marker. Independent TTL before/after and AXI request/completion
+snapshots are mandatory caller inputs. Parent restoration remains a separate
+mandatory check. AdmissionNACK, wrong/missing/duplicate/reordered markers,
+internal failures, extra TTL edges and incomplete drain are rejected. This is
+not a hardware runner, does not collect counters itself, and does not qualify
+hardware by accepting fabricated inputs. Dedicated experiment/collection wiring
+and physical qualification remain pending.

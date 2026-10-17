@@ -1,0 +1,8 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio" python3 -m unittest discover -s diagnostics/drtio -p 'test_active_dma_fault_evidence.py' -v
+test_negative_controls (test_active_dma_fault_evidence.EvidenceTests.test_negative_controls) ... ok
+test_synthetic_positive (test_active_dma_fault_evidence.EvidenceTests.test_synthetic_positive) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

@@ -1,0 +1,14 @@
+{
+  "status": "PASS_SYNTHETIC_PARSER_TESTS_ONLY",
+  "hardware_access": false,
+  "tests": 2,
+  "source_sha256": {
+    "diagnostics/drtio/active_dma_fault_evidence.py": "0a0252d1ec516819f8edec17505fcc5a14ee8dd5375365fe57f4f699e337c962",
+    "diagnostics/drtio/test_active_dma_fault_evidence.py": "69d16a0a7fc9e1283c9d1b646cf291052e9a30d73a18d7021b798de7ce53f4af"
+  },
+  "limitations": [
+    "no experiment implemented here",
+    "no hardware runner or independent measurements",
+    "parent must additionally verify restoration"
+  ]
+}
