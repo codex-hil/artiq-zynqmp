@@ -2395,3 +2395,15 @@ a separately hashed opt-in lab fault trigger and RTL proof before hardware;
 assert accepted/active before injection, actual CSRerror and AUXstatus, master
 exception, refusal of reuse, bounded restoration. Never report admissionNACK
 or synthesized AUXstatus as active hardware-fault proof.
+
+
+Active-read fault2026-10-17 RTL PASS: future trace admitted before timestamp,
+AXI addresses accepted; readpayload held until liveTSC passes firstevent. Native
+decoder/CRI/SED reports underflowraw4/channel0/timestamp9600; no forcedstatus,
+no erroneousTTLedges, exactAXIdrain, subsequent freshRTLtracePASS. All8async
+engine/admission testsPASS81.421s. Functionalreset/idealmemory simulation only;
+no physicaltrigger/AUX/masterexception qualification. Evidence ddma-active-read-
+fault-rtl-2026-10-17. SATELLITE_DMA documents bounded separatelyhashed hardware
+trigger requirements. Normalprofile unchanged, noHW accessed. Next implement
+and simulate opt-in bounded AXI delay trigger with response-stability/order
+checks before candidateimage build; firmwarefault reuse remains prohibited.

@@ -1341,3 +1341,28 @@ MonInj/Ethernet restoredPASS. No flash/SD/OTP/GenesysSi writes. Evidence
 previous master until candidate also requalifies upload/cursor recovery.
 Next combined candidate regression and separate reviewed profile version;
 actual runtime fault-status injection/pausedRX hardware remain NOT_RUN.
+
+### Active playback fault qualification
+
+The RTL test `test_future_trace_expires_during_active_axi_read` admits a
+future-dated trace, accepts AXI read addresses and withholds read responses
+until the live RTIO counter passes the first event. It then releases the real
+payload into the native decoder/CRI/SED path. Assertions require active DMA,
+outstanding reads and no CRI writes before release, native underflow bit4 with
+channel0/timestamp9600, complete AXI drain and no erroneous TTL edges. A fresh
+trace subsequently exercises RTL recovery. This does not qualify firmware
+recovery: `ddma_poll` latches the backend fault after a nonzero completion.
+
+For a physical test, use a separately built and hashed laboratory image; retain
+the qualified normal image unchanged. Any read-response delay must preserve AXI
+valid/data stability and same-ID ordering, have a finite release bound below the
+existing watchdog, and permit outstanding transactions to drain. First prove
+those properties in RTL. Do not overwrite completion/error CSRs or synthesize
+an AUX error packet as a substitute for a native CRI error. The hardware wrapper
+must observe accepted/active before the trigger, capture the raw error/channel/
+timestamp and the corresponding AUX status, verify the expected Kasli kernel
+exception, and verify refusal of replay while the backend is faulted. Restore
+both boards and rerun local TTL/DMA/debug/Ethernet before releasing all leases.
+A hardware fault or missing clock is not permission to bypass the watchdog or
+force unqualified reuse. No physical delay trigger is implemented or qualified
+yet; this plan does not alter the current hardware profile.

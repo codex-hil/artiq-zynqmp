@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "hardware_access": false,
+  "tests": 8,
+  "scope": "RTL native AXI/CDC/decoder/CRI/SED with functional reset model",
+  "fault": "future trace expires while accepted AXI reads await response",
+  "expected_raw_error": 4,
+  "expected_error_channel": 0,
+  "expected_error_timestamp": 9600,
+  "checks": [
+    "active with outstanding reads and no CRI writes before release",
+    "native underflow without forcing status",
+    "all AXI reads drained",
+    "no failed-trace TTL edges",
+    "fresh RTL playback succeeds"
+  ],
+  "source_sha256": "db1b70593308247fce094da9e3afbea2726878dda99689af3bb00b79cea4c738",
+  "limitations": [
+    "no physical delayed-read trigger implemented",
+    "no AUX transport or master exception in this RTL test",
+    "firmware fault latch requires outer restoration"
+  ]
+}
