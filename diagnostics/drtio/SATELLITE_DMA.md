@@ -1423,3 +1423,19 @@ the one-shot trigger count remains1. This peripheral-level reuse is not firmware
 recovery: the real A53 service still latches its backend fault. Clock metadata is
 scaled to800kHz solely to obtain a1600-cycle simulation hold; no board clock or
 AUX/CRC/master exception path is exercised by this test.
+
+The Genesys `diag_gateware.py` generator now accepts the same explicit
+`--lab-read-delay-sys-hz` and `--lab-read-delay-us` flags, only together with
+`--satellite-dma`. No flag means the original DMACSR path. In the opt-in path,
+the requested frequency must match exactly one imported JSON PS XCI PL0
+frequency parameter; its SHA-256 and configured frequency are included in the
+DMA map. Missing, ambiguous or mismatching clock data is rejected. This checks
+configuration provenance, not the actual running board clock or FSBL state.
+
+Target HDL/map generation passed using the existing `genesys-rtio-dma` PS
+export and `drtio-phy-2026-10-08/final156` PHY, satellite DMA and RX clock
+forwarding. Imported PL0 is configured125MHz, giving250000 cycles for2ms.
+The normal qualified image remains unchanged. Firmware arm access and wrapper
+validation must explicitly recognize the new diagnostic metadata before this
+image can be used for an active-fault hardware test. Vivado synthesis/routing,
+actual clock measurement and physical fault qualification remain pending.

@@ -41,7 +41,9 @@ class DiagnosticPlatform(ThisPlatform):
 
 
 class Diagnostic(Module):
-    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False, observer=False, satellite=False, satellite_dma=False):
+    def __init__(self, platform, forward_rx_clock=False, protocol=False, packets=False, aux=False, observer=False, satellite=False, satellite_dma=False, lab_read_delay_sys_hz=None, lab_read_delay_us=2000):
+        if lab_read_delay_sys_hz is not None and not satellite_dma:
+            raise ValueError('Laboratory read delay requires satellite DMA')
         self.clock_domains.cd_sys = ClockDomain('sys')
         self.clock_domains.cd_gth_rx = ClockDomain('gth_rx')
         self.clock_domains.cd_gth_tx = ClockDomain('gth_tx')
@@ -135,7 +137,12 @@ class Diagnostic(Module):
                         if len(pin) != len(signal):
                             raise ValueError('DMA AXI width: '+name)
                         self.comb += pin.eq(signal) if collection is ps.inputs else signal.eq(pin)
-                self.submodules.dma = dma = DMACSR(memory)
+                if lab_read_delay_sys_hz is None:
+                    self.submodules.dma = dma = DMACSR(memory)
+                else:
+                    from dma_read_delay_control import LabDelayedDMACSR
+                    self.submodules.dma = dma = LabDelayedDMACSR(memory,
+                        sys_clk_hz=lab_read_delay_sys_hz,delay_us=lab_read_delay_us)
                 self.clock_domains.cd_rtio_rx = ClockDomain('rtio_rx')
                 self.comb += self.cd_rtio_rx.clk.eq(self.cd_gth_rx.clk)
                 owner = Signal()
@@ -250,10 +257,21 @@ def main():
     p.add_argument("--observer", action="store_true")
     p.add_argument("--satellite", action="store_true")
     p.add_argument("--satellite-dma", action="store_true")
+    p.add_argument('--lab-read-delay-sys-hz',type=int,
+        help='Opt-in lab image only; must match imported PS PL0 clock configuration')
+    p.add_argument('--lab-read-delay-us',type=int,default=2000)
     args = p.parse_args()
+    if args.lab_read_delay_sys_hz is not None:
+        if not args.satellite_dma:p.error('--lab-read-delay-sys-hz requires --satellite-dma')
+        from dma_read_delay_control import delay_cycles
+        delay_cycles(args.lab_read_delay_sys_hz,args.lab_read_delay_us)
     if args.satellite_dma: args.satellite = True
     if args.satellite: args.aux = True
     platform = DiagnosticPlatform(args.ps.resolve())
+    clock_proof=None
+    if args.lab_read_delay_sys_hz is not None:
+        from dma_read_delay_control import verify_ps_clock
+        clock_proof=verify_ps_clock(platform.ips,args.lab_read_delay_sys_hz)
     platform.add_extension([
         ('sfp_serial', 0, Subsignal('txp', Pins('N4')), Subsignal('txn', Pins('N3')),
          Subsignal('rxp', Pins('P2')), Subsignal('rxn', Pins('P1'))),
@@ -282,7 +300,8 @@ def main():
             IOStandard('DIFF_HSTL_I_DCI_12'))])
         platform.add_platform_command('set_property SLEW FAST [get_ports {{sfp_recovered_clock_*}}]')
         platform.add_platform_command('set_property OUTPUT_IMPEDANCE RDRV_48_48 [get_ports {{sfp_recovered_clock_*}}]')
-    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux, args.observer, args.satellite, args.satellite_dma)
+    top = Diagnostic(platform, args.forward_rx_clock, args.protocol, args.packets, args.aux, args.observer, args.satellite, args.satellite_dma, args.lab_read_delay_sys_hz, args.lab_read_delay_us)
+    if clock_proof is not None:top.dma.delay_config['ps_clock_source']=clock_proof
     platform.add_period_constraint(platform.lookup_request('gth_refclk').p, 1000/reference_mhz)
     first_stage_count = (118 if args.forward_rx_clock else 117) + (200 if args.protocol else 0)
     prefixes = ['diagnostic_rx_count_gth_rx', 'diagnostic_tx_count_gth_tx', 'diagnostic_error_count_gth_rx']

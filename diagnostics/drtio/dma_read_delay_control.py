@@ -4,6 +4,9 @@ Not used by diag_gateware or the qualified hardware profile. Fixed delay is
 compiled in; the host can arm once, never write an unbounded delay. No reset
 is permitted while reads are outstanding, including diagnostic reset.
 """
+import json,hashlib
+from decimal import Decimal
+from pathlib import Path
 from migen import Module, Signal, If
 from misoc.interconnect.csr import CSR, CSRStatus
 from litex.soc.interconnect.axi import AXIInterface
@@ -20,6 +23,24 @@ def delay_cycles(sys_clk_hz, delay_us=2000):
     if not 1 <= cycles <= 1048576:
         raise ValueError('Delay exceeds bounded read gate capacity')
     return cycles
+
+
+def verify_ps_clock(ip_paths, expected_hz):
+    """Require one imported JSON PS IP with the explicit PL0 frequency."""
+    matches=[]
+    for name in ip_paths:
+        path=Path(name)
+        if path.suffix!='.xci':continue
+        data=json.loads(path.read_text())
+        params=data.get('ip_inst',{}).get('parameters',{}).get('component_parameters',{})
+        value=params.get('PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ')
+        if value is not None:
+            hz=Decimal(value[0]['value'])*1000000
+            if hz!=expected_hz:raise ValueError('Requested delay clock differs from imported PS PL0')
+            matches.append(dict(path=str(path),sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                                configured_hz=int(hz),physical_measurement='NOT_RUN'))
+    if len(matches)!=1:raise ValueError('Exactly one explicit imported PS PL0 clock required')
+    return matches[0]
 
 
 class ReadDelayControl(Module):

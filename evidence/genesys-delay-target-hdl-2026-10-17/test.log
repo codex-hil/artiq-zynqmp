@@ -1,0 +1,10 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware:/srv/codex-hil-data/artiq-zynqmp/reference/artiq:/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen:/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current" /srv/codex-hil-data/artiq-zynqmp/venv/bin/python -m unittest discover -s diagnostics/drtio -p 'test_dma_read_delay_control.py' -v
+test_arm_once_busy_reject_watchdog_and_no_automatic_repeat (test_dma_read_delay_control.ControlTests.test_arm_once_busy_reject_watchdog_and_no_automatic_repeat) ... ok
+test_clock_conversion_and_invalid_parameters (test_dma_read_delay_control.ControlTests.test_clock_conversion_and_invalid_parameters) ... ok
+test_imported_clock_must_be_unique_and_match (test_dma_read_delay_control.ControlTests.test_imported_clock_must_be_unique_and_match) ... ok
+test_variant_preserves_base_csr_addresses (test_dma_read_delay_control.ControlTests.test_variant_preserves_base_csr_addresses) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.096s
+
+OK

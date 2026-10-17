@@ -2443,3 +2443,13 @@ AUX/masterexception. CSRreuse isnot firmwarefaultrecovery. Initialtest harness
 lackedAuxPS clockdomains; corrected to existingCSRfixtureclocks before PASS.
 Next offline targetclock/optinGenesyswiring and map/firmwareguard review before
 candidatebuild; currentqualifiedimage untouched.
+
+
+Genesys delaytarget2026-10-17 HDL/map PASS: explicit opt-in flags require
+satelliteDMA; defaultDMACSR path retained. ImportedPS PL0 XCIconfigured125MHz
+matchedexactly, SHAprovenance inmap; 2ms=250000cycles. Missing/ambiguous/mismatch
+clock rejected;4controltestsPASS. ActualGenesysHDL/XDC/map generated fromexisting
+PS/PHY exports, alloriginalDMAregisteraddresses unchanged. Evidence genesys-delay-
+target-hdl-2026-10-17. NoVivadosynthesis/route/bitstream orHWaccess; physicalclock
+measurement/firmwarearm/wrapperqualification pending. Next offline armprotocol/
+mapguards and boundedfault-experiment integration before candidateimage build.

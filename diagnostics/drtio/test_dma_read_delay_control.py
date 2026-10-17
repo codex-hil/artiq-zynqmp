@@ -1,13 +1,25 @@
 """One-shot arming and watchdog guard RTL; LGPL-3.0-or-later."""
-import unittest
+import unittest,json,tempfile
+from pathlib import Path
 from migen import Module,Signal
 from migen.sim import run_simulation
 from litex.soc.interconnect.axi import AXIInterface
 from dma_read_delay import DMAReadDelay
-from dma_read_delay_control import ReadDelayControl,LabDelayedDMACSR,delay_cycles
+from dma_read_delay_control import ReadDelayControl,LabDelayedDMACSR,delay_cycles,verify_ps_clock
 
 
 class ControlTests(unittest.TestCase):
+    def test_imported_clock_must_be_unique_and_match(self):
+        with tempfile.TemporaryDirectory() as name:
+            p=Path(name)/'ps.xci'
+            p.write_text(json.dumps({'ip_inst':{'parameters':{'component_parameters':{
+                'PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ':[{'value':'125'}]}}}}))
+            self.assertEqual(verify_ps_clock([p],125000000)['configured_hz'],125000000)
+            for ips,hz in [([p],100000000),([],125000000),([p,p],125000000)]:
+                with self.assertRaises(ValueError):verify_ps_clock(ips,hz)
+            p.write_text('{}')
+            with self.assertRaises(ValueError):verify_ps_clock([p],125000000)
+
     def test_clock_conversion_and_invalid_parameters(self):
         self.assertEqual(delay_cycles(100000000),200000)
         self.assertEqual(delay_cycles(125000000),250000)
