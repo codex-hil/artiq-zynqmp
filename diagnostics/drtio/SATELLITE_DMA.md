@@ -1152,3 +1152,50 @@ CoreDMA/analyzer/MonInj/Ethernet PASS. No flash/SD/OTP/GenesysSi writes. Evidenc
 `native-ddma-catch-offline-2026-10-17`. Next exception-safe recording cursor
 audit/fix and validation; actual playback fault-status/pausedRX hardware tests
 remain distinct and NOT_RUN.
+
+
+### Exception-safe host recording cursor physically PASS (2026-10-17)
+
+`prepare_dma_cursor_overlay.py` copies the host artiq package into a new
+explicit directory (refuses overwrite) and changes only DMARecordContextManager
+.__exit__: recordstop runs in try, saved_now restoration runs in finally. The
+original exception is not swallowed. Shared installed package/reference stay
+unchanged. Full copied-package file hashes plus original/changed dma.py hashes
+are recorded and checked before opt-in compilation/execution; modified or
+incomplete overlays fail validation. Changed dma.py SHA256
+005f2be6a7bf05fc25a71f59a08a674c8bee2848d4aaaa2a11aa9163c30b72cb.
+
+Preparation (offline; use fresh output path):
+
+```sh
+python diagnostics/drtio/prepare_dma_cursor_overlay.py \
+  --source /path/to/host/site-packages/artiq --output /path/to/fresh-overlay
+PYTHONPATH=/path/to/fresh-overlay artiq_compile \
+  --device-db /path/to/kasli-with-core-dma-db.py \
+  examples/kasli_drtio_native_dma_cursor.py
+```
+
+Hardware must still use the existing all-board guarded parent, configured
+`native_ddma_catch=true`, `native_ddma_cursor=true`,
+`dma_cursor_overlay=/path/to/fresh-overlay`, and exact prior qualification.
+Only the experiment child receives explicit PYTHONPATH; shared defaults and
+other host processes do not change.
+
+Host behavior test executes the actual extracted method with mocked stop/time:
+original negative control leaves cursor123 after failure; fixed success and
+failure restore456, pass duration123, preserve the same exception object.
+Original bytes unchanged; overwrite/tamper rejected. Actual NAC3 compilation
+of try/finally succeeds. Twelve existing parser/preflight tests also PASS.
+
+Physical experiment in one kernel/one initial reset: oversized upload caught
+asDMAError, exact now_mu==saved before any resynchronization; same-name valid
+record also restores exact saved cursor; only then normal break_realtime/50ms
+playback lead. Markers CAUGHT_PASS, CURSOR_PASS success1/failure1, physical
+8edges/8000width/80000period/firstdelta1000120mu PASS. No reset/restart between
+failure and success. Exact rejection/cleanup/nativeplayback/status/erase PASS.
+All4 leases through restoration; both boards restored, normal Genesys192.168.2.3
+localTTL/CoreDMA/analyzer/MonInj/Ethernet PASS. No persistent/GenesysSi writes.
+Evidence `kasli03-native-ddma-cursor-hardware-2026-10-17` and
+`native-ddma-cursor-offline-2026-10-17`. Next consolidate reproducible master/
+host overlay selection and test commands; actual playback-fault/pausedRX
+hardware qualification remains distinct and NOT_RUN.

@@ -39,12 +39,24 @@ def probe(session,master_host,uart,raw):
     db['core_dma']={'type':'local','module':'artiq.coredevice.dma','class':'CoreDMA'}
     path=out/'catch-device-db.py';path.write_text('device_db = '+repr(db)+'\n')
     before=session.run('master-before-catch-log',[c['artiq_python'],'-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
-    log=session.run('master-native-catch-probe',[c['artiq_python'],'-m','artiq.frontend.artiq_run',
+    example='kasli_drtio_native_dma_cursor.py' if c.get('native_ddma_cursor') else 'kasli_drtio_native_dma_catch.py'
+    command=[c['artiq_python'],'-m','artiq.frontend.artiq_run',
         '--device-db='+str(path),'--dataset-db='+str(out/'catch-datasets.mdb'),
-        str(Path(__file__).resolve().parents[2]/'examples/kasli_drtio_native_dma_catch.py')],timeout=60,host=True)
+        str(Path(__file__).resolve().parents[2]/'examples'/example)]
+    if c.get('native_ddma_cursor'):
+        from prepare_dma_cursor_overlay import validate
+        validate(c['dma_cursor_overlay'])
+        command=['env','PYTHONPATH='+str(Path(c['dma_cursor_overlay']).resolve()),*command]
+    log=session.run('master-native-catch-probe',command,timeout=60,host=True)
     end=time.monotonic()+1
     while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
     after=session.run('master-after-catch-log',[c['artiq_python'],'-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
     bad=r'reset failed|RTIO (?:sequence|collision|busy) error|failed to sync TSC|timeout attempting to get remote buffer space'
     if len(re.findall(bad,before))!=len(re.findall(bad,after)):raise RuntimeError('New RTIO fault during catch')
     session.result.update(catch_result(log,raw[begin:].decode(errors='replace'),after))
+    if c.get('native_ddma_cursor'):
+        marker='NATIVE_DDMA_CURSOR_PASS success=1 failure=1'
+        if log.count(marker)!=1 or log.index(marker)>log.index('NATIVE_DDMA_PHYSICAL_PASS'):
+            raise RuntimeError('Missing exception/success cursor checks before playback')
+        session.result['native_ddma_cursor_restoration']='PASS'
+        session.result['native_ddma_cursor_scope']='exact saved now before resynchronization on both exits; isolated host finally overlay'

@@ -1,0 +1,15 @@
+--- a/artiq/coredevice/dma.py
++++ b/artiq/coredevice/dma.py
+@@ -63,8 +63,10 @@
+ 
+     @kernel
+     def __exit__(self):
+-        dma_record_stop(now_mu(), self.enable_ddma) # see above
+-        at_mu(self.saved_now_mu)
++        try:
++            dma_record_stop(now_mu(), self.enable_ddma)
++        finally:
++            at_mu(self.saved_now_mu)
+ 
+ 
+ @compile

@@ -2309,3 +2309,15 @@ GenesysSi writes. Evidence kasli03-native-ddma-catch-hardware-2026-10-17.
 Sourceaudit: context.__exit__ skips saved-now restoration when stop raises;
 experiment uses break_realtime, not proof of cursorrestoration. Next optional
 exception-safe cursorfinally fix; playbackfault/pausedRX hardware NOT_RUN.
+
+
+Exception-safe cursor2026-10-17 physical PASS: isolated copied hostpackage
+try/finally restores exactsavednow on uploadDMAError and success before any
+break_realtime. Samekernel caught rejection thenvalidDDMA8edges/8000width/
+80000period/firstdelta1000120mu PASS; nointerveningreset/restart. Hostmethod
+negativecontrol/properduration/sameexception/unchangedoriginal/tamperchecks
+and actualNAC3compile PASS;12parser tests PASS. Fullrestore Kasli/clock and
+Genesys192.168.2.3 localTTL/DMA/debug/Ethernet PASS;all4leases; no persistent/
+GenesysSi writes. Evidence kasli03-native-ddma-cursor-hardware-2026-10-17.
+Sharedhostpackage untouched; explicithashed childoverlay only. Next consolidate
+reproducible overlay/testselection, then distinctplaybackfault qualification.
