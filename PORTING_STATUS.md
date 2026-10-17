@@ -2342,3 +2342,15 @@ README execute qualification updated. Evidence qualified-drtio-entry-hardware-
 2026-10-17. Next native expired-playback admission rejection; master currently
 propagates startNACK as sessionerror. Future resultreply must drainlocalDMA/
 restoreCRI before raising; actualplaybackfault/pausedRX remainNOT_RUN.
+
+
+Expired start2026-10-17 offline/build PASS: valid170B trace requested at8,
+catchDMAError thenfutureplayback experiment actualNAC3compilePASS. Backend
+ASan/UBSan now16000000/start8 rejectsbeforecopy/start, nofaultlatch, future
+24000000 recovers. Optional master --dma-start-result repliesboolean; kernel
+ACKs then drainslocalDMA/restoresCRI/handleslocalerrors before remoteNACK
+raise; no waitforabsentstatus. New isolatedruntime+ksupport built; mapsidentical,
+runtimebin4968da4a...1756244B. NoHW; candidatepositive/expiredphysical NOT_RUN.
+Evidence kasli03-dma-start-result-build-2026-10-17. OldownCargocaches archived
+and1207filehashes verified; finalimages preserved and pinnedprofilepreflight
+stillPASS. Next candidatemasterpositive thenexpiredNACK/recovery qualification.

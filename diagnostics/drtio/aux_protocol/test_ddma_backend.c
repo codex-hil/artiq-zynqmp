@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "ddma_backend.h"
-struct mock {uint32_t r[18];unsigned copied,flushed,starts,delays,mode,times;};
+struct mock {uint32_t r[18];unsigned copied,flushed,starts,delays,mode,times;uint64_t now;};
 static uint32_t read_reg(void *c,uintptr_t a) {struct mock *m=c;assert(a>=DDMA_BANK && a<DDMA_BANK+72);return m->r[(a-DDMA_BANK)/4];}
 static void write_reg(void *c,uintptr_t a,uint32_t v) {
  struct mock *m=c;unsigned i=(a-DDMA_BANK)/4;assert(i<18);
@@ -12,7 +12,7 @@ static void write_reg(void *c,uintptr_t a,uint32_t v) {
 }
 static int copy(void *c,uintptr_t a,const uint8_t *p,size_t n) {struct mock *m=c;assert(a==DDMA_ARENA && p && n==2048);m->copied++;return 0;}
 static void flush(void *c,uintptr_t a,size_t n) {struct mock *m=c;assert(m->copied && a==DDMA_ARENA && n==2048);m->flushed++;}
-static int time_read(void *c,uint64_t *t) {struct mock *m=c;m->times++;*t=(m->mode==2 && m->times>1)?8000000:0;return 0;}
+static int time_read(void *c,uint64_t *t) {struct mock *m=c;m->times++;*t=(m->mode==2 && m->times>1)?8000000:m->now;return 0;}
 static int ready(void *c) {(void)c;return 1;}
 static void delay(void *c) {((struct mock*)c)->delays++;}
 int main(void) {
@@ -26,6 +26,9 @@ int main(void) {
  b.time=0;assert(ddma_backend_start(&b,bytes,2048,8000000)<0 && m.starts==1);b.time=time_read;
  assert(ddma_backend_start(&b,bytes,2047,8000000)<0);
  assert(ddma_backend_start(&b,bytes,2048,8)<0);
+ memset(&m,0,sizeof(m));m.now=16000000;
+ assert(ddma_backend_start(&b,bytes,2048,8)<0 && !m.starts && !m.copied && !b.faulted);
+ assert(!ddma_backend_start(&b,bytes,2048,24000000) && m.starts==1 && !b.faulted);
  memset(&m,0,sizeof(m));m.mode=2;
  assert(ddma_backend_start(&b,bytes,2048,8000000)<0 && !m.starts && m.flushed);
  memset(&m,0,sizeof(m));m.mode=1;

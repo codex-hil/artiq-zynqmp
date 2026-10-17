@@ -1259,3 +1259,46 @@ rejection and actual hardware DMA faults. Any structured start-result overlay
 must first drain/restore local DMA/CRI ownership before raising, because local
 playback may already have started. Do not raise immediately with active local
 DMA or imply distributed playback atomicity. No such fault was injected here.
+
+
+### Expired native playback admission result preparation (2026-10-17)
+
+A valid trace requested at positive aligned timestamp8 is a bounded expired-
+start case: service dispatch reaches the backend time check but must reject
+before DDR copy/flush or satellite DMA start. New experiment
+`examples/kasli_drtio_native_dma_expired.py` uploads a valid170B trace, tries
+playback at8, catchesDMAError, then break_realtime/50ms lead and plays the
+same trace normally in one kernel. ActualNAC3 compilation PASS. ASan/UBSan
+backend test now explicitly checks now16000000/start8 gives zero copies and
+starts, no persistent fault latch, and subsequent futurestart24000000 succeeds.
+No production backend admission policy changed. Physical test NOT_RUN.
+
+Optional master `--dma-start-result` overlay adds DmaStartRemoteReply to
+shared mailbox protocol, runtime catches remote admission errors and replies
+false with concrete diagnostic. Master ksupport receives/ACKs the result,
+waits for localDMA enable to drain, restores CRI selection, handles/clears
+local errors, then raises DMAError for a failed remote start before any
+await-status request. This ordering matters: local DMA is enabled before
+the remote request, so immediate unwinding could strand DMA/CRI ownership.
+Successful remote start proceeds to unchanged native completion status path.
+The patch changes the kernel_has_rtio_dma master branch; it does not claim
+updated satellite ksupport request handling. Partial multi-destination outputs
+are not rolled back; distributed playback is not an atomic transaction.
+
+Isolated source`work/kasli03-bram-runtime-dma-start-result` combines existing
+flash-free/NAC3 tuple/upload-result overlays and the new start-result option.
+Both runtime/ksupport build PASS; generated memory/CSR/regions byte-identical
+to the qualified master. Runtime.bin1756244B SHA256
+4968da4accbc5677c609eaada3522d679b81ae250145f30e4de45c9618cc31d7.
+Matching protocol/runtime/ksupport pair mandatory. Evidence
+`kasli03-dma-start-result-build-2026-10-17`; hardware NOT_RUN. Existing pinned
+profile deliberately still selects the physically qualified earlier master.
+Next new-master positive qualification, then guarded expired-start/recovery
+with concrete AUXNACK/no negative completion status and actual DMAError.
+
+Disk housekeeping for this build: only the old DMA-ABI build's three Cargo
+cache directories were archived to195003146-byte tar.gz with per-file content
+verification (1207regular/hard-linked files) before removal. Final images,
+headers, source and evidence preserved. Archive digest/path/removed directories
+recorded in old-cache-archive.json. Previous21-file profile validation and
+preflight still PASS afterward. No board access, flash/SD/OTP/Si writes.

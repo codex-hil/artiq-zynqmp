@@ -1,0 +1,4 @@
+mkdir -p /srv/codex-hil-data/artiq-zynqmp/build/ddma-expired-policy-2026-10-17/ddma-backend
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g diagnostics/drtio/aux_protocol/test_ddma_backend.c -o /srv/codex-hil-data/artiq-zynqmp/build/ddma-expired-policy-2026-10-17/ddma-backend/test
+/srv/codex-hil-data/artiq-zynqmp/build/ddma-expired-policy-2026-10-17/ddma-backend/test
+DDMA_BACKEND_OFFLINE_PASS ordering, bounds, missing-time, expired-time, timeout-latch

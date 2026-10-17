@@ -1,0 +1,26 @@
+{
+  "status": "BUILD_PASS_NOT_HARDWARE",
+  "layout": {
+    "software/include/generated/mem.rs": "1c86b66f1f7adac992853aafe41431f033c167c4dd61801bac74a799e83c5f4e",
+    "software/include/generated/csr.rs": "3f3863105143d4343f94ef857c7ec589d9eb01ff8ec042c52419152fe1204cec",
+    "software/include/generated/regions.ld": "fcea06dbb8faf09d6a8b97f81b3263227b959f1916ecbd293d12967689401aa8"
+  },
+  "artifacts": {
+    "software/runtime/runtime.elf": {
+      "bytes": 14612552,
+      "sha256": "864197e4d6aeada0730a12655bd61d783eaa36e54c09b92df79b1d9895cae837"
+    },
+    "software/runtime/runtime.bin": {
+      "bytes": 1756244,
+      "sha256": "4968da4accbc5677c609eaada3522d679b81ae250145f30e4de45c9618cc31d7"
+    },
+    "software/runtime/runtime.fbi": {
+      "bytes": 1756252,
+      "sha256": "9c0cf3fa984e762f9bc5df21c01f32e1f0c6d80df583fd3c188981544dffc898"
+    },
+    "software/ksupport/ksupport.elf": {
+      "bytes": 647784,
+      "sha256": "b85270382d2e7d4d0faba6817a9c563ac2cd69c0eab453f8dd1b46d8f105f0bb"
+    }
+  }
+}

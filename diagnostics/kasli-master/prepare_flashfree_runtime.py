@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--nac3-dma-abi', action='store_true',help='Adapt DMA tuple return to pinned NAC3 object header ABI')
     parser.add_argument('--dma-record-result', action='store_true',help='Return upload outcome to ksupport and raise structured DMAError')
+    parser.add_argument('--dma-start-result', action='store_true',help='Return remote start result after safely draining local DMA')
     args = parser.parse_args()
     if args.output.exists():
         raise SystemExit('Refusing to overwrite a source worktree')
@@ -78,6 +79,9 @@ def main():
         ksupport.write_text(text)
     if args.dma_record_result:
         from dma_record_result import apply
+        apply(args.output,replace_once)
+    if args.dma_start_result:
+        from dma_start_result import apply
         apply(args.output,replace_once)
     patch = subprocess.check_output(['git', '-C', str(args.output), 'diff'], text=True)
     (args.output / 'kasli03-flashfree-runtime.patch').write_text(patch)
