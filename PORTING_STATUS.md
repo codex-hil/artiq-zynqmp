@@ -2354,3 +2354,15 @@ runtimebin4968da4a...1756244B. NoHW; candidatepositive/expiredphysical NOT_RUN.
 Evidence kasli03-dma-start-result-build-2026-10-17. OldownCargocaches archived
 and1207filehashes verified; finalimages preserved and pinnedprofilepreflight
 stillPASS. Next candidatemasterpositive thenexpiredNACK/recovery qualification.
+
+
+Expired admission2026-10-17 physical PASS: master4968da4a... firstnormalDDMA
+8edges, secondsession onevalid170B upload, timestamp8 startNACK/caughtDMAError,
+samekernel futureplayback8edges/8000width/80000period/firstdelta1000120mu.
+No reupload/reset/restart between negative/positive; exact177ACK/181NACK/
+181ACK/182status0/179ACK sameID PASS. No sessionabort/firmwarefault.14parser/
+preflight testsPASS. Both sessions restored Kasli/clock and Genesys192.168.2.3
+localTTL/DMA/debug/Ethernet PASS;all4leases; no persistent/GenesysSi writes.
+Evidence kasli03-native-ddma-expired-hardware-2026-10-17. Admissionrefusal,
+not activeplaybackfault; negativeenginecounter not independently sampled.
+Next candidate upload/cursor regression then separate pinnedprofile version.

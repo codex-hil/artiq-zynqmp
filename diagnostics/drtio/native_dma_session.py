@@ -22,6 +22,10 @@ def validate(session,fw):
         if not c.get('native_ddma_catch'):raise ValueError('Cursor test requires same-kernel catch')
         from prepare_dma_cursor_overlay import validate as validate_cursor
         validate_cursor(c['dma_cursor_overlay'])
+    if c.get('native_ddma_expired_start') and (mode!='playback' or any(c.get(n) for n in
+            ('native_ddma_rejection','native_ddma_rejected_cleanup','native_ddma_structured_error',
+             'native_ddma_catch','native_ddma_cursor','native_ddma_lifecycle','native_ddma_fragmentation','native_ddma_long_lifecycle'))):
+        raise ValueError('Expired-start test requires standalone native playback mode')
     for name in ('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h'):
         import hashlib
         if fw.get('ddma_sources',{}).get(name)!=hashlib.sha256((Path(__file__).parent/'aux_protocol'/name).read_bytes()).hexdigest():
@@ -106,6 +110,9 @@ def long_lifecycle_result(log,text):
 
 
 def probe(session,master_host,uart,raw):
+    if session.config.get('native_ddma_expired_start'):
+        from native_dma_expired_session import probe as expired_probe
+        return expired_probe(session,master_host,uart,raw)
     if session.config.get('native_ddma_catch'):
         from native_dma_catch_session import probe as catch_probe
         return catch_probe(session,master_host,uart,raw)

@@ -1302,3 +1302,42 @@ verification (1207regular/hard-linked files) before removal. Final images,
 headers, source and evidence preserved. Archive digest/path/removed directories
 recorded in old-cache-archive.json. Previous21-file profile validation and
 preflight still PASS afterward. No board access, flash/SD/OTP/Si writes.
+
+
+### Expired native playback admission/recovery physically PASS (2026-10-17)
+
+Candidate master4968da4a.../matchingksupport first passed an independent
+normal native playback session:8physicaledges/8000width/80000period/firstdelta
+1000120mu. A second guarded session uploaded one valid170B trace, requested
+start timestamp8, received DmaPlaybackReply NACK and caught specifically
+DMAError inside the same kernel. After normal break_realtime/50ms lead, the
+same trace played successfully without reupload, kernel restart or intervening
+core.reset;8physicaledges with expected timings. Exact AUX sequence:
+upload177ACK, expired181NACK, future181ACK, one182statuserror0, final179ACK,
+all matching the single uploadedID. No completion status for the failed start.
+
+Master logs concrete`DDMA playback rejected: DRTIO error: error playing back
+DMA trace on satellite #0` (existing upstream reply-destination label), no
+sessionabort or eraseerror; no firmwarepanic/send/RX fault. The compiled
+experiment catchesDMAError rather than accepting arbitrary process failure.
+Fourteen parser/preflight tests PASS, with wrong/missingmarker, mistakenACK,
+wrongpayload/ID, nonzero/extra status and connectionloss/sessionabort negatives.
+`native_ddma_expired_start=true` requires standalone nativeplayback mode and
+existing exact Genesys idle qualification. No bypass of admission time checks.
+
+Scope: playback admission refusal, not a hardware fault after start. Satellite
+engine zero-start-before-expiry is covered directly in the backend ASan test;
+physical evidence here is NACK/no-status followed by successful reuse without
+firmware reset, not an independent engine counter read for the negative call.
+Local DMA drain/CRI restoration ordering is in the matching master overlay;
+same-kernel recovery confirms no stranded local ownership in this scenario.
+
+Both sessions held all4 shared leases through restoration, Kasli diagnostic/
+reviewed volatile clock and Genesys192.168.2.3 normalTTL/CoreDMA/analyzer/
+MonInj/Ethernet restoredPASS. No flash/SD/OTP/GenesysSi writes. Evidence
+`kasli03-start-result-positive-hardware-2026-10-17`,
+`kasli03-native-ddma-expired-hardware-2026-10-17` and offline
+`native-ddma-expired-offline-2026-10-17`. Existing pinned profile remains on
+previous master until candidate also requalifies upload/cursor recovery.
+Next combined candidate regression and separate reviewed profile version;
+actual runtime fault-status injection/pausedRX hardware remain NOT_RUN.
