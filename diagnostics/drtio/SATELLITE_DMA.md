@@ -1117,3 +1117,38 @@ and matching hashes remain mandatory. Next qualify catching DMAError inside
 one kernel followed by valid native record/playback without another core.reset
 or kernel restart. Physical runtime DMA-error injection and pausedRX remain
 NOT_RUN; upload rejection does not qualify those distinct failure paths.
+
+
+### Same-kernel caught upload error/recovery physically PASS (2026-10-17)
+
+New`examples/kasli_drtio_native_dma_catch.py` runs one kernel with one initial
+core.reset, records an oversized1054B trace, catches specificallyDMAError,
+then records/plays a valid170B trace using the same name. No reset, firmware
+reload, kernel restart or host reconnection occurs between negative/positive
+paths. It calls standard break_realtime after the caught error and leaves
+50ms lead before playback. ActualNAC3 compile PASS.
+
+Physical markers in order: NATIVE_DDMA_CAUGHT_PASS then native8edges,8000mu
+width,80000mu period,firstdelta1000120mu. Exact AUX upload sizes1010/44/170,
+initialACK/NACK, rejected cleanupACK, valid upload/playback/status0/eraseACK
+PASS; no master sessionabort or cleanup eraseerror, no firmwarepanic/send/RX
+fault. Twelve parser/preflight tests PASS, including missingcatch/wrongwidth/
+missingNACK/cleanupNACK/sessionabort/connectionloss negative controls.
+Opt-in`native_ddma_catch=true` requires standalone nativeplayback mode and
+existing exact bit/firmware idle qualification.
+
+Important host-driver detail found by source inspection: upstream
+DMARecordContextManager.__exit__ restores saved_now_mu only after
+dma_record_stop returns. A new recordstop exception bypasses that restoration.
+This experiment explicitly resynchronizes with break_realtime; it does not
+prove exception-safe now restoration. A separate optional host/source fix
+should restore the saved cursor in finally without swallowing DMAError.
+Original installed host package/reference remain untouched in this test.
+
+Full session/restoration PASS: all4 shared leases held through restoration,
+Kasli diagnostic/volatile clock restored, normal Genesys192.168.2.3 localTTL/
+CoreDMA/analyzer/MonInj/Ethernet PASS. No flash/SD/OTP/GenesysSi writes. Evidence
+`kasli03-native-ddma-catch-hardware-2026-10-17` and
+`native-ddma-catch-offline-2026-10-17`. Next exception-safe recording cursor
+audit/fix and validation; actual playback fault-status/pausedRX hardware tests
+remain distinct and NOT_RUN.

@@ -1,0 +1,30 @@
+Zynq MP First Stage Boot Loader 
+Release 2025.2   Oct  8 2026  -  13:40:15
+MultiBootOffset: 0x0
+Reset Mode	:	System Reset
+Platform: Silicon (4.0), Cluster ID 0x80000000
+Running on A53-0 (64-bit) Processor, Device Name: XCZU5EV
+Processor Initialization Done 
+================= In Stage 2 ============ 
+In JTAG Boot Mode 
+================= In Stage 4 ============ 
+Protection configuration applied
+Exit from FSBL 
+GENESYS-ZU GEM0 DIAGNOSTIC AMD 2025.2, not ARTIQ
+
+
+-----lwIP TCP echo server ------
+TCP packets sent to port 7 will be echoed back
+Start PHY autonegotiation addr=15 
+Waiting for PHY to complete autonegotiation.
+autonegotiation complete 
+Using default Speed from design
+link speed for phy address 15: 1000
+TEST ethernet_dhcp PASS
+Board IP: 192.168.2.3
+Netmask : 255.255.255.0
+Gateway : 192.168.2.1
+GENESYS ARTIQ management transport ready @ port 1380
+GENESYS ARTIQ analyzer1382 moninj1383 ready, BRAM256
+GENESYS kernel transport @ port 1381; CPU1 loader/RPC; RTIO capabilities depend on worker
+TCP echo ser

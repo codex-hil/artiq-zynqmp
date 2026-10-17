@@ -1,0 +1,142 @@
+{
+  "kind": "physical-hardware",
+  "status": "PASS",
+  "ip": "192.168.2.3",
+  "scope": "finite BRAM analyzer and local TTL MonInj using standard ARTIQ clients",
+  "moninj_events": [
+    [
+      "probe",
+      0,
+      0,
+      0
+    ],
+    [
+      "probe",
+      1,
+      0,
+      0
+    ],
+    [
+      "injection",
+      0,
+      0,
+      0
+    ],
+    [
+      "injection",
+      0,
+      1,
+      0
+    ],
+    [
+      "probe",
+      0,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      0,
+      1
+    ],
+    [
+      "probe",
+      1,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      1,
+      1
+    ],
+    [
+      "injection",
+      0,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      1,
+      1
+    ],
+    [
+      "probe",
+      0,
+      0,
+      0
+    ],
+    [
+      "probe",
+      1,
+      0,
+      0
+    ],
+    [
+      "injection",
+      0,
+      1,
+      0
+    ],
+    [
+      "injection",
+      0,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      1,
+      0
+    ],
+    [
+      "probe",
+      0,
+      0,
+      1
+    ],
+    [
+      "probe",
+      1,
+      0,
+      1
+    ],
+    [
+      "injection",
+      0,
+      1,
+      1
+    ],
+    [
+      "probe",
+      0,
+      0,
+      0
+    ],
+    [
+      "probe",
+      1,
+      0,
+      0
+    ]
+  ],
+  "analyzer": {
+    "bytes": 1200,
+    "messages": 37,
+    "ttl_outputs": 16,
+    "ttl_inputs": 16,
+    "sha256": "55f9aec5d8c2e7a54ee6b14c087f1cd813f7aa3706e338bbdf00156bfe850ae3"
+  },
+  "wrapped_analyzer": {
+    "bytes": 8208,
+    "messages": 256,
+    "total_bytes": 9248,
+    "sha256": "8d4f35d398e926ea96e3ca3731154bacc9820db396f8e5a3687eccde07729182"
+  },
+  "dma_experiments": 9
+}

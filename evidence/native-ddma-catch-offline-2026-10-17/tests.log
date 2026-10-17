@@ -1,0 +1,17 @@
+test_exact_catch_and_recovery (test_native_dma_catch_session.CatchTests.test_exact_catch_and_recovery) ... ok
+test_missing_catch_wrong_width_no_nack_no_cleanup_and_abort (test_native_dma_catch_session.CatchTests.test_missing_catch_wrong_width_no_nack_no_cleanup_and_abort) ... ok
+test_two_exact_fragments_and_physical_capture (test_native_dma_session.FragmentTests.test_two_exact_fragments_and_physical_capture) ... ok
+test_physical_and_aux_conservation (test_native_dma_session.LifecycleTests.test_physical_and_aux_conservation) ... ok
+test_all_fragment_and_replay_counts_required (test_native_dma_session.LongLifecycleTests.test_all_fragment_and_replay_counts_required) ... ok
+test_failed_proof_and_host_arming_rejected (test_native_dma_session.ValidationTests.test_failed_proof_and_host_arming_rejected) ... ok
+test_exact_rejection (test_native_dma_reject_session.RejectionTests.test_exact_rejection) ... ok
+test_false_success_timeout_fault_and_playback_rejected (test_native_dma_reject_session.RejectionTests.test_false_success_timeout_fault_and_playback_rejected) ... ok
+test_exact_sequence_distinct_or_reused_id (test_rejected_cleanup_evidence.CleanupEvidenceTests.test_exact_sequence_distinct_or_reused_id) ... ok
+test_missing_wrong_identity_nack_extra_reply_and_master_error (test_rejected_cleanup_evidence.CleanupEvidenceTests.test_missing_wrong_identity_nack_extra_reply_and_master_error) ... ok
+test_missing_error_transport_loss_abort_and_unclean_recovery (test_structured_dma_evidence.StructuredTests.test_missing_error_transport_loss_abort_and_unclean_recovery) ... ok
+test_structured_exception (test_structured_dma_evidence.StructuredTests.test_structured_exception) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK

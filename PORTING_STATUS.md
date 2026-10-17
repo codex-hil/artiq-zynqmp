@@ -2297,3 +2297,15 @@ Ethernet PASS; all4leases; no persistent/GenesysSi writes.10parser/preflight
 tests PASS. Evidence kasli03-structured-master-{positive,rejection}-hardware-
 2026-10-17. Next same-kernel catch+validDDMA without core.reset/restart; actual
 runtimefaultstatus/pausedRX hardware remain NOT_RUN.
+
+
+Samekernel catch2026-10-17 physical PASS: oneinitialcore.reset,1054B NACK
+caught asDMAError, break_realtime, samename valid170B/nativeplayback8edges/
+8000width/80000period/firstdelta1000120mu. No reset/restart/reconnect between
+negative/positive; exactAUX rejection+cleanup+success sequence PASS. Actual
+NAC3compile and12parser/preflight tests PASS. Fullrestore Kasli/clock and
+Genesys192.168.2.3 localTTL/DMA/debug/Ethernet PASS; all4leases, no persistent/
+GenesysSi writes. Evidence kasli03-native-ddma-catch-hardware-2026-10-17.
+Sourceaudit: context.__exit__ skips saved-now restoration when stop raises;
+experiment uses break_realtime, not proof of cursorrestoration. Next optional
+exception-safe cursorfinally fix; playbackfault/pausedRX hardware NOT_RUN.
