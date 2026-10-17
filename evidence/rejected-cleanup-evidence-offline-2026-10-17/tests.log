@@ -1,0 +1,13 @@
+test_exact_sequence_distinct_or_reused_id (test_rejected_cleanup_evidence.CleanupEvidenceTests.test_exact_sequence_distinct_or_reused_id) ... ok
+test_missing_wrong_identity_nack_extra_reply_and_master_error (test_rejected_cleanup_evidence.CleanupEvidenceTests.test_missing_wrong_identity_nack_extra_reply_and_master_error) ... ok
+test_exact_rejection (test_native_dma_reject_session.RejectionTests.test_exact_rejection) ... ok
+test_false_success_timeout_fault_and_playback_rejected (test_native_dma_reject_session.RejectionTests.test_false_success_timeout_fault_and_playback_rejected) ... ok
+test_two_exact_fragments_and_physical_capture (test_native_dma_session.FragmentTests.test_two_exact_fragments_and_physical_capture) ... ok
+test_physical_and_aux_conservation (test_native_dma_session.LifecycleTests.test_physical_and_aux_conservation) ... ok
+test_all_fragment_and_replay_counts_required (test_native_dma_session.LongLifecycleTests.test_all_fragment_and_replay_counts_required) ... ok
+test_failed_proof_and_host_arming_rejected (test_native_dma_session.ValidationTests.test_failed_proof_and_host_arming_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.007s
+
+OK

@@ -10,6 +10,8 @@ def validate(session,fw):
     if c.get('native_ddma_rejection') and (mode!='playback' or any(c.get(n) for n in
             ('native_ddma_lifecycle','native_ddma_fragmentation','native_ddma_long_lifecycle'))):
         raise ValueError('Rejection requires standalone native playback/recovery mode')
+    if c.get('native_ddma_rejected_cleanup') and not c.get('native_ddma_rejection'):
+        raise ValueError('Cleanup qualification requires native rejection/recovery mode')
     for name in ('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h'):
         import hashlib
         if fw.get('ddma_sources',{}).get(name)!=hashlib.sha256((Path(__file__).parent/'aux_protocol'/name).read_bytes()).hexdigest():
@@ -123,11 +125,17 @@ def probe(session,master_host,uart,raw):
     plays=re.findall(r'AUX_DDMA REPLY kind=181 id=(\d+) succeeded=1',text)
     status=re.findall(r'AUX_DDMA STATUS id=(\d+) error=0',text)
     removes=re.findall(r'AUX_DDMA REPLY kind=179 id=(\d+) succeeded=1',text)
+    if c.get('native_ddma_rejected_cleanup'):
+        from rejected_cleanup_evidence import cleanup_recovery_result
+        cleanup_recovery_result(text,'',rejected['native_ddma_rejected_trace_id'])
+        removes=removes[1:]  # identity-checked rejected cleanup, not final erase
     if not lifecycle and not fragment and not long_lifecycle and not (adds and len(plays)==len(status)==len(removes)==1 and plays==status==removes and set(adds)==set(plays)):
         raise RuntimeError('Missing native upload/playback/status/remove evidence')
     if any(t in text for t in ('AUX_DDMA FAIL_CLOSED','AUX_FW PANIC','AUX_SERVICE SEND_FAIL','AUX_SERVICE RX_ERROR')):
         raise RuntimeError('Native service fault')
     after=session.run('master-after-native-ddma-log',[c['artiq_python'],'-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
+    if c.get('native_ddma_rejected_cleanup'):
+        session.result.update(cleanup_recovery_result(text,after,rejected['native_ddma_rejected_trace_id']))
     bad=r'reset failed|RTIO (?:sequence|collision|busy) error|failed to sync TSC|timeout attempting to get remote buffer space'
     if len(re.findall(bad,before))!=len(re.findall(bad,after)):raise RuntimeError('New master fault during DDMA')
     if long_lifecycle:

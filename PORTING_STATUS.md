@@ -2266,3 +2266,13 @@ Evidence ddma-rejected-cleanup-offline-2026-10-17. Master audit: structured
 DMAError requires coordinated recordstop reply in mailboxproto/runtime/ksupport;
 not solved by ACKing failed upload. Next freshfirmware qualification and repeat
 rejection/recovery without eraseNACK, then isolated mastererror overlay.
+
+
+Rejected cleanup2026-10-17 physical PASS: freshfw18a99107... idle/reset/DIO/TSC
+qualified, then1054B1010ACK+44NACK, matchingID1076235456 cleanupACK, valid
+upload/playback/status0/eraseACK;8physicaledges/8000width/80000period/firstdelta
+1000120mu. No master eraseerror. Exact5event/ID parser+8tests PASS. Bothsessions
+restored Kasli/clock and Genesys192.168.2.3 localTTL/DMA/debug/Ethernet PASS;
+all4leases; no persistent/GenesysSi writes. Evidence kasli03-rejected-cleanup-
+{idle,recovery}-hardware-2026-10-17. Host ConnectionResetError/uncleanwarning
+remain upstream issue. Next isolated structured master recordstop reply overlay.

@@ -1,0 +1,297 @@
+{
+  "status": "PASS",
+  "board": "KASLI03",
+  "bit_sha256": "4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715",
+  "flash_written": false,
+  "runtime_uploaded": true,
+  "genesys_accessed": true,
+  "clock_profile_written": true,
+  "usb_busdev": "001:019",
+  "usb_topology": "1-2.4.1",
+  "uart": "/dev/serial/by-path/pci-0000:00:14.0-usb-0:2.4.1:1.2-port0",
+  "dna": "0x0048458a64b04854",
+  "prior_flash_runtime_started": false,
+  "bootloader_test": "PASS",
+  "dhcp_lease": "NOT_IMPLEMENTED_BY_BOOTLOADER",
+  "netboot_ipv6_link_local": "fe80::4b:3ff:fe48:4854",
+  "netboot_network": {
+    "status": "PASS",
+    "interface": "enp2s0",
+    "tcp_connections": 3,
+    "unknown_command_rejected": true,
+    "boot_without_firmware_rejected": true,
+    "listener_recovery": true,
+    "neighbor_mac": "02:4b:03:48:48:54"
+  },
+  "runtime_execute_attempted": true,
+  "runtime_boot_commands": 2,
+  "clock_switch_reboot_observed": true,
+  "runtime_startup": "PASS",
+  "runtime_executed": true,
+  "ram_download": {
+    "status": "PASS",
+    "bytes": 1752948,
+    "source_sha256": "f0b53c4cc100951258422bb1bb6e617348cda8eacc0eacc10a09e71968d79d4b",
+    "boot_command_sent": true,
+    "memory_readback": "NOT_RUN"
+  },
+  "management_client": {
+    "status": "PASS",
+    "client": "standard artiq_coremgmt log",
+    "independent_connections": 2,
+    "log_characters": [
+      1908,
+      1999
+    ]
+  },
+  "counter_experiment": {
+    "status": "PASS",
+    "standard_artiq_run": true,
+    "runs": [
+      {
+        "before_mu": 7005629064,
+        "after_mu": 7006753832
+      },
+      {
+        "before_mu": 7484650424,
+        "after_mu": 7485774528
+      }
+    ],
+    "ref_period": 1e-09,
+    "ttl_writes": false,
+    "source_sha256": "33699c75bd99b17e5c1adb8151aa6d7566ded7df48522d8d32146849f984ecf0"
+  },
+  "external_rx": {
+    "status": "EXTERNAL_DIO_LOOPBACK",
+    "restoration": "PASS",
+    "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+    "remote_drtio": "direct-leaf physical TTL PASS; remaining satellite services incomplete",
+    "firmware_sha256": "18a99107897c68393a68306d7b4f026784422ed6aeb866a5480cfc475836391b",
+    "bit_sha256": "21c187cbeaf98543153b126bda5fd32ee079f1b4345a8aa9ec057863b5af24a8",
+    "reset_handshake": "PASS",
+    "reset_completed_load_counts": [
+      "1",
+      "1"
+    ],
+    "reset_ack_replies": 2,
+    "master_reset_errors_before": 0,
+    "master_reset_errors_after": 0,
+    "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+    "dio_loopback": "PASS",
+    "dio_runs": 2,
+    "pulses_per_run": 8,
+    "rising_edge_spacing_mu": 100000,
+    "remote_rtio": "physical TTL output/input PASS",
+    "dio_scope": "Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED",
+    "native_ddma_rejection": "PASS",
+    "native_ddma_rejected_bytes": 1054,
+    "native_ddma_rejection_fragments": [
+      1010,
+      44
+    ],
+    "native_ddma_rejected_trace_id": 1076235456,
+    "native_ddma_rejection_scope": "native upload ACK/NACK and concrete master error; no playback request; subsequent normal playback must pass separately",
+    "native_ddma_rejected_cleanup": "PASS",
+    "native_ddma_cleanup_id": 1076235456,
+    "native_ddma_recovery_id": 1076235456,
+    "native_ddma_cleanup_scope": "identity-matched rejected erase ACK followed by normal upload/playback/status/erase; no master cleanup error",
+    "native_ddma": "PASS",
+    "native_ddma_edges": 8,
+    "native_ddma_width_mu": 8000,
+    "native_ddma_period_mu": 80000,
+    "native_ddma_first_delta_mu": 1000120,
+    "native_ddma_id": 1076235456,
+    "native_ddma_scope": "standard distributed CoreDMA -> native AUX upload/playback/status -> physical TTL; single trace; no abort/phase/jitter qualification",
+    "echo_replies": 1,
+    "destination_down_replies": 0,
+    "firmware_send_errors": 0,
+    "firmware_rx_errors": 0,
+    "unsupported_drops": 0,
+    "master_link_echo_observed": true,
+    "scope": "real external AUX codec/CRC echo and DOWN status, not production satellite",
+    "tsc_synchronization": "load/ACK only; offset/jitter/deterministic latency NOT_MEASURED",
+    "tsc_ack_counts": [
+      1
+    ],
+    "tsc_load_handshake": "PASS",
+    "tsc_snapshot": "PASS",
+    "tsc_snapshot_values": [
+      12613346944,
+      12615607264,
+      12621596080,
+      12627585312
+    ],
+    "tsc_snapshot_allowances": [
+      11534,
+      10600,
+      10000,
+      10066
+    ],
+    "restored_ip": "192.168.2.3"
+  },
+  "restoration": "PASS",
+  "clock_restore": {
+    "writes": [
+      {
+        "register": 136,
+        "value": 128,
+        "value_ack": false
+      },
+      {
+        "register": 0,
+        "value": 84,
+        "value_ack": true
+      },
+      {
+        "register": 2,
+        "value": 66,
+        "value_ack": true
+      },
+      {
+        "register": 3,
+        "value": 85,
+        "value_ack": true
+      },
+      {
+        "register": 4,
+        "value": 18,
+        "value_ack": true
+      },
+      {
+        "register": 6,
+        "value": 63,
+        "value_ack": true
+      },
+      {
+        "register": 21,
+        "value": 254,
+        "value_ack": true
+      },
+      {
+        "register": 25,
+        "value": 192,
+        "value_ack": true
+      },
+      {
+        "register": 31,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 32,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 33,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 34,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 35,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 36,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 40,
+        "value": 192,
+        "value_ack": true
+      },
+      {
+        "register": 41,
+        "value": 78,
+        "value_ack": true
+      },
+      {
+        "register": 42,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 43,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 44,
+        "value": 17,
+        "value_ack": true
+      },
+      {
+        "register": 45,
+        "value": 212,
+        "value_ack": true
+      },
+      {
+        "register": 46,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 47,
+        "value": 17,
+        "value_ack": true
+      },
+      {
+        "register": 48,
+        "value": 212,
+        "value_ack": true
+      },
+      {
+        "register": 137,
+        "value": 1,
+        "value_ack": true
+      },
+      {
+        "register": 136,
+        "value": 64,
+        "value_ack": true
+      }
+    ],
+    "restore_retries": [],
+    "profile_restoration": "PASS",
+    "clock_configuration_written": true,
+    "post_configuration": {
+      "0": 84,
+      "2": 66,
+      "3": 85,
+      "4": 18,
+      "6": 63,
+      "21": 254,
+      "25": 192,
+      "31": 0,
+      "32": 0,
+      "33": 3,
+      "34": 0,
+      "35": 0,
+      "36": 3,
+      "40": 192,
+      "41": 78,
+      "42": 3,
+      "43": 0,
+      "44": 17,
+      "45": 212,
+      "46": 0,
+      "47": 17,
+      "48": 212,
+      "137": 1
+    },
+    "output_hz_against_host": [
+      125515131.77680099,
+      125515001.15544863,
+      125535326.6176118
+    ],
+    "restoration_profile_validated": true,
+    "restore_test_seconds": 69.645
+  }
+}

@@ -1028,3 +1028,31 @@ upstream and qualified master artifacts untouched; implement any such change
 as an optional isolated overlay with success/failure validation. Not implemented
 in this cleanup change. Next qualify fresh firmware idle then rejected upload
 cleanup/recovery with no extra eraseNACK; structured master exception later.
+
+
+### Identity-bound cleanup physically qualified (2026-10-17)
+
+Firmware18a99107897c68393a68306d7b4f026784422ed6aeb866a5480cfc475836391b
+first passed fresh guarded idle/reset/DIO/TSC/restoration qualification on the
+existing routed bit21c187cb... . Independent native rejection/recovery then
+PASS:1054B1010ACK+44NACK, rejectedID1076235456; cleanup179ACK for exactly that
+ID, new170B upload177ACK, playback181ACK, statuserror0, final179ACK. Same
+name/reusedID recovery physical8edges,8000mu width,80000mu period,firstdelta
+1000120mu. No master cleanup erase error remains. No payload/playback policy
+relaxation; native1024B/16burst limits preserved.
+
+`native_ddma_rejected_cleanup=true` requires the existing rejection/recovery
+mode and validates exact five-event sequence/IDs, successful ACKs/error0, and
+absence of master erase errors. Unknown/missing/extra/NACK/mixed IDs fail.
+Eight parser/preflight regression tests PASS, including distinct/reusedID
+positive cases and negative evidence controls. Both hardware sessions used
+all4 shared leases through restoration. Kasli diagnostic/volatile clock and
+Genesys192.168.2.3 localTTL/CoreDMA/analyzer/MonInj/Ethernet restored PASS.
+No flash/SD/OTP/GenesysSi writes. Evidence kasli03-rejected-cleanup-{idle,recovery}
+-hardware-2026-10-17; offline rejected-cleanup-evidence-offline-2026-10-17.
+
+Remaining: upstream upload failure still closes the kernel session, yielding
+Python ConnectionResetError and next-session unclean-kernel warning. Only
+cleanup was fixed here. Next isolated optional master mailbox/runtime/ksupport
+result reply so upload failure raises structured DMAError without successful
+ACK semantics. Runtime fault-status injection/pausedRX hardware remain NOT_RUN.
