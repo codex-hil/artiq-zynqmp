@@ -1086,3 +1086,34 @@ build script, complete optional source patch, log and artifact/layout hashes.
 Hardware NOT_RUN. Next guarded new-master normal DDMA qualification, then
 rejection/recovery requiring actual DMAError/message and no session-abort/
 unclean-kernel warning. Keep old master available for exact rollback.
+
+
+### Structured master upload error physically PASS (2026-10-17)
+
+New master runtimee65fec3e.../matchingksupport was netbooted in two guarded
+sessions. First standard native DDMA success PASS:8physicaledges,8000mu width,
+80000mu period,firstdelta1000120mu. Independent negative/recovery session
+then rejected1054-byte1010/44 upload and raised the actual host exception:
+`artiq.coredevice.exceptions.DMAError: Failed to upload distributed DMA trace`.
+The host processed a normal kernel exception reply, not a lost connection.
+Master logs concrete`DDMA upload rejected: DRTIO error: error adding DMA trace
+on satellite #0`; no`session aborted:` or cleanup erase error. A new host
+connection/same trace name successfully recorded/played/erased8physicaledges
+without the old unclean-kernel warning. Valid experiment uses normalcore.reset;
+same-kernel catch/recovery is not yet qualified.
+
+`native_ddma_structured_error=true` requires rejected-cleanup qualification
+mode. Evidence parser demands DMAError and exact message, master rejection
+log, no ConnectionResetError, no session abort and no previous-kernel warning
+in positive recovery log. Ten parser/preflight regression tests PASS.
+Both sessions restored Kasli diagnostic/volatile clock and normal Genesys
+192.168.2.3 localTTL/CoreDMA/analyzer/MonInj/Ethernet PASS, holding all4 shared
+leases throughout. No flash/SD/OTP/GenesysSi writes. Previous master image
+retained; no original reference checkout changes.
+
+Evidence `kasli03-structured-master-{positive,rejection}-hardware-2026-10-17`,
+offline `structured-dma-evidence-offline-2026-10-17`. Runtime/kernel pairing
+and matching hashes remain mandatory. Next qualify catching DMAError inside
+one kernel followed by valid native record/playback without another core.reset
+or kernel restart. Physical runtime DMA-error injection and pausedRX remain
+NOT_RUN; upload rejection does not qualify those distinct failure paths.

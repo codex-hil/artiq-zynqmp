@@ -12,6 +12,8 @@ def validate(session,fw):
         raise ValueError('Rejection requires standalone native playback/recovery mode')
     if c.get('native_ddma_rejected_cleanup') and not c.get('native_ddma_rejection'):
         raise ValueError('Cleanup qualification requires native rejection/recovery mode')
+    if c.get('native_ddma_structured_error') and not c.get('native_ddma_rejected_cleanup'):
+        raise ValueError('Structured error qualification requires rejected cleanup/recovery mode')
     for name in ('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h'):
         import hashlib
         if fw.get('ddma_sources',{}).get(name)!=hashlib.sha256((Path(__file__).parent/'aux_protocol'/name).read_bytes()).hexdigest():
@@ -136,6 +138,9 @@ def probe(session,master_host,uart,raw):
     after=session.run('master-after-native-ddma-log',[c['artiq_python'],'-m','artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
     if c.get('native_ddma_rejected_cleanup'):
         session.result.update(cleanup_recovery_result(text,after,rejected['native_ddma_rejected_trace_id']))
+    if c.get('native_ddma_structured_error'):
+        from structured_dma_evidence import structured_rejection_result
+        session.result.update(structured_rejection_result((out/'master-native-ddma-rejection.log').read_text(),after,log))
     bad=r'reset failed|RTIO (?:sequence|collision|busy) error|failed to sync TSC|timeout attempting to get remote buffer space'
     if len(re.findall(bad,before))!=len(re.findall(bad,after)):raise RuntimeError('New master fault during DDMA')
     if long_lifecycle:

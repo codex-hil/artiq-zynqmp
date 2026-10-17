@@ -39,4 +39,8 @@ def attempt(session,master_host,uart,raw,device_db):
     while time.monotonic()<end:raw.extend(uart.read(uart.in_waiting or 1))
     master=session.run('master-after-native-rejection-log',[c['artiq_python'],'-m',
         'artiq.frontend.artiq_coremgmt','-D',master_host,'log'],timeout=15,host=True)
-    return rejection_result(process.returncode,host_log,raw[begin:].decode(errors='replace'),master)
+    result=rejection_result(process.returncode,host_log,raw[begin:].decode(errors='replace'),master)
+    if c.get('native_ddma_structured_error'):
+        from structured_dma_evidence import structured_rejection_result
+        result.update(structured_rejection_result(host_log,master,''))
+    return result

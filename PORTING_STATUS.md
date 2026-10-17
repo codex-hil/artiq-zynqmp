@@ -2286,3 +2286,14 @@ old artifacts/reference. Runtime+ksupport built, generatedmemory/CSR/regions
 byteidentical to qualifiedmaster; runtimebine65fec3e...1754560B. No HW access.
 Evidence kasli03-dma-result-build-2026-10-17. Next guardednormalDDMA then
 negative/recovery requiringDMAError and no abort/uncleanwarning.
+
+
+Structured mastererror2026-10-17 physical PASS: newruntimee65fec3e... first
+normalDDMA8edges; independent1054BuploadNACK yields actualDMAError with
+Failed-to-upload message, notConnectionResetError. No sessionaborted/cleanup
+error; next hostsession same-name validDDMA8edges and no unclean-kernel warning.
+Both sessions restored Kasli/clock and Genesys192.168.2.3 localTTL/DMA/debug/
+Ethernet PASS; all4leases; no persistent/GenesysSi writes.10parser/preflight
+tests PASS. Evidence kasli03-structured-master-{positive,rejection}-hardware-
+2026-10-17. Next same-kernel catch+validDDMA without core.reset/restart; actual
+runtimefaultstatus/pausedRX hardware remain NOT_RUN.
