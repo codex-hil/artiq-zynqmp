@@ -1411,3 +1411,15 @@ future playback lead smaller than the hold while satisfying firmware admission.
 Existing50ms-lead positive experiments remain positive controls. Physical clock
 verification, PS/PL target instantiation, firmware arm access and full CSR-path
 fault qualification are still pending; generation alone is not a bitstream build.
+
+`make test-drtio-dma-delay-csr-sed` now exercises the complete modeled PS
+AXI/CSR path, appended arm/control CSRs, bounded memory read delay, native DMA,
+CRI switch and actual satellite SED/TTL together. It requires a future-dated
+start, observes active DMA with accepted reads before release, reads native
+underflow/channel/timestamp through CSR, verifies drain/no erroneous TTL edges,
+and verifies that pending completion blocks restart without losing the snapshot.
+After explicit CSR clear, an unarmed fresh trace produces two exact TTL edges;
+the one-shot trigger count remains1. This peripheral-level reuse is not firmware
+recovery: the real A53 service still latches its backend fault. Clock metadata is
+scaled to800kHz solely to obtain a1600-cycle simulation hold; no board clock or
+AUX/CRC/master exception path is exercised by this test.

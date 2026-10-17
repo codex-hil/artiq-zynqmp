@@ -2431,3 +2431,15 @@ boardclock/notVivadosynthesis/notGenesysimage. Evidence ddma-delay-control-offli
 2026-10-17. NoHW accessed. Next fullPSCSR/nativeSED faultintegration simulation,
 then reviewtargetclock/optinimagewiring; dedicatedexperimentlead mustbe<hold
 (existing50mspositivelead willnotfault with2mshold).
+
+
+Full delayCSR/SED2026-10-17 RTL PASS70.669s: modeledPSAXI writes arm/config/
+start; futuretimestamp beforelaunch, activeDMA/acceptedreads duringhold; native
+underflow4/channel0/exacttimestamp readthroughCSR, exactdrain/noerroneousTTL.
+Pendingresult blocksrestart andretainssnapshot; explicitclear/unarmedfreshtrace
+produces2exactTTLedges,triggercount remains1. Evidence ddma-delay-csr-sed-rtl-
+2026-10-17. Functionalreset/scaled800kHzmetadata/1600cyclehold only; noHW/firmware/
+AUX/masterexception. CSRreuse isnot firmwarefaultrecovery. Initialtest harness
+lackedAuxPS clockdomains; corrected to existingCSRfixtureclocks before PASS.
+Next offline targetclock/optinGenesyswiring and map/firmwareguard review before
+candidatebuild; currentqualifiedimage untouched.

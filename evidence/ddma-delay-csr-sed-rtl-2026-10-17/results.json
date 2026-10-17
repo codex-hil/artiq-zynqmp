@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "hardware_access": false,
+  "tests": 1,
+  "seconds": 70.669,
+  "source_sha256": "a65aecbf218caa580a3ab69e8b69c4d6d6ea570ecf43cbbf9776369fb15034bd",
+  "checks": [
+    "arm and configuration through modeled PS AXI/CSR",
+    "future timestamp before launch",
+    "active DMA and accepted reads during hold",
+    "native underflow bit4 channel0 exact absolute timestamp through CSR",
+    "complete AXI drain and no erroneous TTL edges",
+    "pending restart rejected with snapshot retained",
+    "explicit clear then unarmed positive trace two exact edges",
+    "one-shot counter remains1"
+  ],
+  "limitations": [
+    "scaled 800kHz metadata and functional reset model",
+    "no A53 firmware or AUX/master exception path",
+    "CSR-level reuse does not qualify firmware fault recovery"
+  ]
+}

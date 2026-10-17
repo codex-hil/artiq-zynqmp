@@ -329,3 +329,7 @@ test-drtio-dma-read-delay:
 .PHONY: test-drtio-dma-read-delay-control
 test-drtio-dma-read-delay-control:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_read_delay_control.py' -v
+
+.PHONY: test-drtio-dma-delay-csr-sed
+test-drtio-dma-delay-csr-sed:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/boards/genesys_zu-5ev/1_gateware:$(abspath $(ARTIQ_SOURCE)):$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_delay_csr_sed.py' -v
