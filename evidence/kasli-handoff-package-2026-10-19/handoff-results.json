@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "ready_for_kasli_removal": true,
+  "all_shared_leases_released": true,
+  "kasli_dna": "0x0048458a64b04854",
+  "kasli_restored": "SRAM diagnostic and reviewed volatile clock profile",
+  "genesys_restored_ip": "192.168.2.3",
+  "flash_written": false,
+  "otp_written": false,
+  "stability_edges": 4096,
+  "link_reset_recovery_cycles": 2,
+  "native_dma_plays": 9,
+  "native_dma_edges": 522,
+  "active_playback_fault_hardware": "NOT_RUN"
+}
