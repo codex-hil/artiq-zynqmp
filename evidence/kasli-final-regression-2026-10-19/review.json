@@ -1,0 +1,100 @@
+{
+  "status": "WRAPPER_PASS",
+  "hardware_executed": true,
+  "artifacts": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli03-dma-start-result-2026-10-17/generated/genesys_drtio_master_v11/software/runtime/runtime.bin",
+      "sha256": "4968da4accbc5677c609eaada3522d679b81ae250145f30e4de45c9618cc31d7"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli03-bram-netboot-2026-10-13/qualification.json",
+      "sha256": "fd9929cbbeebd4e871f523277c4f99f2646e1a126f44de32e95f2e1add33b9e2"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/top.bit",
+      "sha256": "21c187cbeaf98543153b126bda5fd32ee079f1b4345a8aa9ec057863b5af24a8"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/csr-map.json",
+      "sha256": "7e9713129e8324928b1222112e9cef5aaa216790e840654e6807a8cd70c14065"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/native-ddma-rejected-cleanup-firmware-2026-10-17/aux-firmware.elf",
+      "sha256": "18a99107897c68393a68306d7b4f026784422ed6aeb866a5480cfc475836391b"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+      "sha256": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/results.json",
+      "sha256": "2dcca470847eabf41e6d23d6fd6ba3f4144e8cb8fb0f6454c1a6497a93880f24"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/dma-cdc-results.json",
+      "sha256": "f29c10008d130b80707ff5de2296083841540f51e707df04331300d1a3ec7e35"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/native-ddma-rejected-cleanup-firmware-2026-10-17/results.json",
+      "sha256": "1cf7df85e49a758a642c80363e882b930b8f8fef210c9f9b315e81d38293e7ac"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/results.json",
+      "sha256": "90208090392acdb5d1da9708c8713d84ae14bfdf4ea15c6efeecdae8b5fcc7f4"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-rejected-cleanup-idle-hardware-2026-10-17/results.json",
+      "sha256": "6353697909a2ea8b3a928b02f3e6d1b32bab0ddeb4cc552b4eaf0ebdfac22cad"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-clock-restore-plan-2026-10-14.json",
+      "sha256": "e6b6c7685f900ab57e0c17d3b7effa6c89351fc923f7196e5a169f3fa7f01a17"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-clock-snapshot-2026-10-13/results.json",
+      "sha256": "cdbbbb23b0413e94a0a95241c18691136716b9cd6d5bea0640a06415b2fd36dd"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-clock-restore-2026-10-15/results.json",
+      "sha256": "9ac4764394f63b308a27aa7eb75e66b5eca8dc1eb95781baa443c01573695ade"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli03-bram-netboot-2026-10-13/generated/genesys_drtio_master_v11/gateware/top.bit",
+      "sha256": "4fb33ce837d29cfe727e97c6e0e5cd86f761b7b60c8800c26eb35a5891a99715"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-start-result-positive-hardware-2026-10-17/results.json",
+      "sha256": "12d02625f1c8d2370afca5516448689bdd541493f5eaa9e5df8a08b5ba2e4893"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-native-ddma-expired-hardware-2026-10-17/results.json",
+      "sha256": "6c490f0b6f0806ddc2d3ffed5273eb7fa7f851d3940d3e959a9d73f449e388ff"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/kasli03-start-result-cursor-hardware-2026-10-17/results.json",
+      "sha256": "3e964a23a9608cf9929ae207cef5142b294439ad3c311dfab6879ea9fa2fef0d"
+    }
+  ],
+  "profile_sha256": "19dd44efdc3379869491f4674f970bdeaef0e9547416589421cfe6900e1e60b4",
+  "returncode": 0
+}

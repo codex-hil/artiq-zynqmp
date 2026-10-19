@@ -1,0 +1,60 @@
+{
+  "status": "EXTERNAL_DIO_LOOPBACK",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+  "remote_drtio": "direct-leaf physical TTL PASS; remaining satellite services incomplete",
+  "firmware_sha256": "18a99107897c68393a68306d7b4f026784422ed6aeb866a5480cfc475836391b",
+  "bit_sha256": "21c187cbeaf98543153b126bda5fd32ee079f1b4345a8aa9ec057863b5af24a8",
+  "reset_handshake": "PASS",
+  "reset_completed_load_counts": [
+    "1",
+    "1"
+  ],
+  "reset_ack_replies": 2,
+  "master_reset_errors_before": 0,
+  "master_reset_errors_after": 0,
+  "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+  "dio_loopback": "PASS",
+  "dio_runs": 2,
+  "pulses_per_run": 8,
+  "rising_edge_spacing_mu": 100000,
+  "remote_rtio": "physical TTL output/input PASS",
+  "dio_scope": "Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED",
+  "native_ddma_rejected_cleanup": "PASS",
+  "native_ddma_cleanup_id": 1076239168,
+  "native_ddma_recovery_id": 1076239168,
+  "native_ddma_cleanup_scope": "identity-matched rejected erase ACK followed by normal upload/playback/status/erase; no master cleanup error",
+  "native_ddma_same_kernel_catch": "PASS",
+  "native_ddma": "PASS",
+  "native_ddma_edges": 8,
+  "native_ddma_first_delta_mu": 1000120,
+  "native_ddma_catch_scope": "one kernel and one initial core.reset; DMAError caught, break_realtime, same-name valid record/playback; no intervening reset/restart",
+  "native_ddma_cursor_restoration": "PASS",
+  "native_ddma_cursor_scope": "exact saved now before resynchronization on both exits; isolated host finally overlay",
+  "echo_replies": 1,
+  "destination_down_replies": 0,
+  "firmware_send_errors": 0,
+  "firmware_rx_errors": 0,
+  "unsupported_drops": 0,
+  "master_link_echo_observed": true,
+  "scope": "real external AUX codec/CRC echo and DOWN status, not production satellite",
+  "tsc_synchronization": "load/ACK only; offset/jitter/deterministic latency NOT_MEASURED",
+  "tsc_ack_counts": [
+    1
+  ],
+  "tsc_load_handshake": "PASS",
+  "tsc_snapshot": "PASS",
+  "tsc_snapshot_values": [
+    12258322912,
+    12260589464,
+    12266578296,
+    12272567392
+  ],
+  "tsc_snapshot_allowances": [
+    11534,
+    10934,
+    10734,
+    10132
+  ],
+  "restored_ip": "192.168.2.3"
+}

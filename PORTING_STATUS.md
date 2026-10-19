@@ -2505,3 +2505,16 @@ independentsimulationmonitors: failedtrace0edges, unarmedpositive2edges, AXI
 request/completionconserved. Evidence ddma-independent-metrics-rtl-2026-10-19.
 NoHWaccess; notwiredintoboardtarget, additionalGrayphysicalconstraints and
 guardedcollection pending. This isRTLproof only, not physical activefaultPASS.
+
+
+Kasliremovalcheckpoint2026-10-19 physical PASS: threeguardedsessions identity
+DNA0048458a64b04854, existingSFP/JBloopback. Normalmanagement/counter/reset/TSC/
+DIO+samekernelDMAerror/cursor/recovery8edgesPASS. Stability4096edges/2048pulses
+PASS;twoforcedGTHreset DOWN/reinit/TSCACK/UP+DIO cyclesPASS. LongfragmentedDDMA
+3versions/9plays/522exactedgesPASS. Every session restoredKasliSRAMdiagnostic/
+reviewedvolatileclock andGenesys192.168.2.3 localTTL/DMA/analyzer/MonInj/Ethernet
+PASS. Flash/OTP untouched; all4leases verifiedavailable/released. Kaslireadyfor
+removal. Evidence kasli-final-{regression,stability,long-dma}-2026-10-19; English
+handoff diagnostics/drtio/KASLI_HANDOFF_2026-10-19.md. Recoverypackage under
+releases/kasli-handoff-2026-10-19; prepared-hostsnapshot, toolchains separate.
+Activeplaybackfault hardware remainsNOT_RUN; noexperimentalimage loaded.
