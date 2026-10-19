@@ -1,0 +1,20 @@
+{
+  "status": "RTL_PASS",
+  "hardware_access": false,
+  "integration_seconds": 84.386,
+  "checks": [
+    "CSR AXI counters match independent simulation monitors",
+    "no failed-trace TTL edges",
+    "two positive-control TTL edges counted after Gray CDC settling"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/dma_lab_metrics.py": "97c9221ffd1fcf9d725e4990d7942a2d3c8d096cfd528c9ee6fffc1224a61fea",
+    "diagnostics/drtio/test_dma_lab_metrics.py": "bf57d795f72e6e10fbf1e2ca60b4c7f9fee4a5d2181eec8cd7921c4112633824",
+    "diagnostics/drtio/test_dma_delay_csr_sed.py": "67972589eee524fbbcb3176076db9834a2213e6d0d00ff16f75536bb3c2113ef"
+  },
+  "limitations": [
+    "not wired into board target",
+    "extra Gray CDC requires physical constraints review",
+    "no hardware measurement or wrapper collection"
+  ]
+}

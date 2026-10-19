@@ -18,6 +18,7 @@ from test_satellite_sed import interface
 from aux_ps import AuxPS
 from satellite_backend import SatelliteBackend
 from dma_read_delay_control import LabDelayedDMACSR
+from dma_lab_metrics import LabDMAMetrics
 
 
 class DelayCSRSEDTests(unittest.TestCase):
@@ -28,8 +29,10 @@ class DelayCSRSEDTests(unittest.TestCase):
         # Physical timing must be chosen separately from the actual PS clock.
         d.submodules.control=c=LabDelayedDMACSR(bus,sys_clk_hz=800000,
                                                 arena_base=0,arena_size=4096)
-        d.submodules.ps=p=AuxPS(extra_banks=[('dma',4,c.csrs)])
         pad=Signal()
+        d.submodules.metrics=metrics=LabDMAMetrics(bus,pad)
+        c.csrs += metrics.csrs
+        d.submodules.ps=p=AuxPS(extra_banks=[('dma',4,c.csrs)])
         d.submodules.backend=b=ClockDomainsRenamer('rtio_rx')(
             SatelliteBackend(interface(),pad,glbl_fine_ts_width=3,dma_cri=c.cri))
         d.comb += b.rtio_reset.eq(c.rtio_reset_request)
@@ -83,6 +86,9 @@ class DelayCSRSEDTests(unittest.TestCase):
             self.assertEqual((yield from driver.read('lab_delay_holding')),0)
             self.assertEqual(len(ar),len(last));self.assertFalse(memory.queue)
             self.assertFalse(edges)
+            self.assertEqual((yield from driver.read('lab_ar_count')),len(ar))
+            self.assertEqual((yield from driver.read('lab_rlast_count')),len(last))
+            self.assertEqual((yield from driver.read('lab_ttl_edges')),0)
             # Pending result owns the slot: an unacknowledged restart is denied.
             count=len(ar)
             yield from driver.write('start',1)
@@ -105,6 +111,10 @@ class DelayCSRSEDTests(unittest.TestCase):
             self.assertEqual(len(ar),len(last));self.assertFalse(memory.queue)
             while (yield b.tsc.coarse_ts)<target+100:yield
             self.assertEqual(edges,[(target+11,1),(target+43,0)])
+            for _ in range(10):yield
+            self.assertEqual((yield from driver.read('lab_ttl_edges')),2)
+            self.assertEqual((yield from driver.read('lab_ar_count')),len(ar))
+            self.assertEqual((yield from driver.read('lab_rlast_count')),len(last))
         run_simulation(d,{'sys':[run(),monitor(),memory.ar(),memory.r()],'rtio_rx':rx()},
                        clocks={'sys':10,'rtio_rx':(8,1),'dma_write':10,'dma_read':(8,1),
                                'gth_rx':8,'gth_tx':(11,3),'aux_sys':10,'aux_rx':8,'aux_tx':(11,3)},

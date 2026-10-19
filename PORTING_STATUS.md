@@ -2496,3 +2496,12 @@ experiment-offline-2026-10-17. Dedicatedparenthandshake/independentcountercaptur
 notimplementedyet; noHWexecution. Candidatelead mayfail1msadmission due latency,
 whichmustfailqualification. Next integrate boundedparentcollection usingexisting
 leases/restoration; normalwrapper remainslab-refusing.
+
+
+Independentmetrics review2026-10-19: completedRTLrun PASS84.386s. Newseparate
+LabDMAMetrics countsactualAR/RLASThandshakes andbothTTLedges inRTIOdomain with
+registeredGrayCDC tosys. UnitPASS andfullPSCSR/SEDtest reads countersmatching
+independentsimulationmonitors: failedtrace0edges, unarmedpositive2edges, AXI
+request/completionconserved. Evidence ddma-independent-metrics-rtl-2026-10-19.
+NoHWaccess; notwiredintoboardtarget, additionalGrayphysicalconstraints and
+guardedcollection pending. This isRTLproof only, not physical activefaultPASS.
