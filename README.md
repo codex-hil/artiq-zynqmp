@@ -400,3 +400,5 @@ The previous [record-result profile](diagnostics/drtio/profiles/kasli03-genesys-
 is retained for comparison. The current profile pins three physical sessions:
 normal playback, expired-start rejection/recovery and upload-error/cursor recovery.
 The expired-start case is admission rejection, not active playback fault injection.
+
+Validated Kasli/Genesys checkpoint and recovery archive: [2026-10-19 public release](https://github.com/codex-hil/artiq-zynqmp/releases/tag/kasli-handoff-2026-10-19). Includes pinned images, source and physical test evidence; prepared-host toolchains are separate dependencies.
