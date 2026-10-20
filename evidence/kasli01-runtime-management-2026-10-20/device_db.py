@@ -1,0 +1,1 @@
+device_db = {'core': {'type': 'local', 'module': 'artiq.coredevice.core', 'class': 'Core', 'arguments': {'host': 'fe80::4b:1ff:fe48:4854%enp2s0', 'target': 'rv32ima', 'ref_period': 1e-09, 'analyzer_proxy': None}}}

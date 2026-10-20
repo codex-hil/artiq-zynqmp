@@ -2657,3 +2657,15 @@ profile writes; Genesys and Kasli03/04 untouched. Evidence:
 `evidence/kasli01-master-fpga-2026-10-20`,
 `evidence/kasli01-netboot-download-2026-10-20`. Next guarded KASLI01 runtime
 execution/management with qualified clock restoration, then external DRTIO.
+
+
+KASLI01 runtime checkpoint (2026-10-20): physical RAM runtime startup PASS
+after expected clock-switch reboot/two netboot loads. Standard coremgmt log
+two independent connections PASS; two standard artiq_run counter/RPC kernels
+PASS (1124648/1124712 mu advances), no TTL writes. Diagnostic restoration and
+volatile Si5324 exact profile/readback/PLL/coarse-frequency restoration PASS.
+Wrapper held sorted KASLI01+Genesys leases through restoration and released
+both; Genesys not accessed, Kasli03/04 untouched, no flash/OTP writes. Evidence
+`evidence/kasli01-runtime-management-2026-10-20`. External KASLI01 DRTIO/DIO/DMA
+remain NOT_RUN; next adapt the external test configuration for this board,
+qualify link/TSC/reset/DIO before lab-idle/active-delay experiments.
