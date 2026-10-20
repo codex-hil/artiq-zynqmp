@@ -2584,3 +2584,15 @@ actualparentdryrun andnormalprofilepreflightPASS. Evidence lab-idle-parent-offli
 2026-10-20. NoHWaccess, physicalidleproofNOT_RUN. Next offlineactiveparent
 integration withexactidleproof/epoch/settling/restorationguards; anyphysical
 window requiresconfirmedKasliavailability andallsharedleases.
+
+
+Labactiveparent2026-10-20 offlineintegrationPASS: explicitactivebranch admitted
+onlywithexactprioridleproof/currentoverlay/artifacts. Existingparentleases/UART
+spanpreidle, boundedexperimentarm, postfaultsettledsamples; epochunchanged/TTL
+silent, pendingraw4/faultlatch1/trigger1,1accepted/1completed,nonzeroAXIdrain
+required. Telemetrytimestamp/counters crosschecked; normalDMAprobeexcluded, no
+retry/reset/erase. Parentrestorestatus neveroverwritten.16testsPASS andnormal
+profilepreflightPASS. Evidence lab-active-parent-offline-2026-10-20. NoHWaccess.
+Physicalactivepreflightblockedwithoutnewidlecounterproof. Next confirmavailable
+boardsunderexistingall4locks andrunboundedlabidle qualification ifavailable;
+otherwise continueofflinepreflight/configreview. Publishednormalcheckpoint intact.

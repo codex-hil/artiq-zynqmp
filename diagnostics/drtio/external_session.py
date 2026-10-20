@@ -26,8 +26,8 @@ class ExternalSession:
                        'optical_tx': 'hard disabled', 'remote_drtio': 'NOT_RUN'}
         c = self.config
         self.lab_fault_mode=c.get('lab_fault_mode')
-        if self.lab_fault_mode not in (None,'idle'):
-            raise ValueError('Only laboratory idle integration is enabled; active parent path pending')
+        if self.lab_fault_mode not in (None,'idle','active'):
+            raise ValueError('Unknown laboratory fault mode')
         if not c.get('network_interface'): raise ValueError('Explicit restore network interface required')
         for key in ('bitstream', 'csr_map', 'restore_bitstream', 'cpu0', 'device_db',
                     'artiq_python', 'artiq_run'):
@@ -242,8 +242,11 @@ disconnect
                     if self.lab_fault_mode=='idle':
                         from lab_idle_probe import probe as probe_lab_idle
                         self.result.update(probe_lab_idle(uart,raw))
+                    if self.lab_fault_mode=='active':
+                        from lab_fault_session import probe as probe_lab_active
+                        probe_lab_active(self,master_host,uart,raw)
                     if getattr(self,'stability_test',False): self.probe_stability(master_host,uart,raw)
-                    if self.native_ddma and self.config['native_ddma_mode']=='playback':
+                    if self.native_ddma and not self.lab_fault_mode and self.config['native_ddma_mode']=='playback':
                         from native_dma_session import probe
                         probe(self,master_host,uart,raw)
                     if getattr(self,'host_dma_test',False):

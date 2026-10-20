@@ -47,10 +47,14 @@ def validate(config,firmware,mapping):
     for name,sha in cdc.get('sha256',{}).items():
         if digest(bit.parent/name)!=sha:raise ValueError('Stale routed CDC '+name)
     if mode=='active':
+        if not config.get('lab_idle_qualification'):raise ValueError('Prior lab idle proof path required')
         proof=json.loads(Path(config['lab_idle_qualification']).read_text());ext=proof.get('external_rx',{})
         if (proof.get('status')!='PASS' or proof.get('restoration')!='PASS' or
             any(ext.get(k)!='PASS' for k in ('restoration','dio_loopback','tsc_snapshot','lab_idle_counters')) or
             ext.get('firmware_sha256')!=firmware['elf_sha256'] or ext.get('bit_sha256')!=build['sha256']['top.bit']):
             raise ValueError('Exact prior lab idle/counter/DIO/snapshot/restoration proof required')
+        if not config.get('dma_cursor_overlay'):raise ValueError('Validated host DMA cursor overlay required')
+        from prepare_dma_cursor_overlay import validate as validate_cursor
+        validate_cursor(config['dma_cursor_overlay'])
     return dict(mode=mode,generated_c_sha256=expected,hardware_access=False,
                 scope='ARTIFACT_ADMISSION_ONLY_NOT_EXECUTION_OR_RESTORATION')

@@ -38,7 +38,8 @@ def validate(aux, kernel, *, expected_timestamp, edge_before, edge_after,
     if edge_before!=edge_after or not read_requests or read_requests!=read_completions:
         raise ValueError('TTL activity or incomplete AXI drain')
     return dict(status='ACTIVE_FAULT_EVIDENCE_PASS',id=int(ident),raw_error=4,
-                aux_error=1,timestamp=expected_timestamp,restoration='PARENT_MUST_VERIFY')
+                aux_error=1,timestamp=expected_timestamp,accepted=int(active[2]),completed=int(complete[4]),
+                restoration='PARENT_MUST_VERIFY')
 
 
 def validate_logged_metrics(aux,kernel,*,expected_timestamp):

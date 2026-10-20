@@ -24,7 +24,7 @@ def acknowledge(directory,request):
     finally:temporary.unlink()
 
 
-def run(argv,*,directory,log,uart,raw,lease_fd,timeout=60,env=None):
+def run(argv,*,directory,log,uart,raw,lease_fd,timeout=60,env=None,cwd=None):
     """Use only inside ExternalSession's all-board guarded lifetime.
 
     UART reads must already have a finite timeout. Child must receive only the
@@ -40,7 +40,7 @@ def run(argv,*,directory,log,uart,raw,lease_fd,timeout=60,env=None):
     child_env['ARTIQ_DDMA_LAB_HANDSHAKE']=str(directory.resolve())
     child_env['GENESYS_LEASE_FD']=str(lease_fd)
     with Path(log).open('x') as output:
-        child=subprocess.Popen(argv,stdout=output,stderr=subprocess.STDOUT,env=child_env,pass_fds=(lease_fd,))
+        child=subprocess.Popen(argv,stdout=output,stderr=subprocess.STDOUT,env=child_env,cwd=cwd,pass_fds=(lease_fd,))
         try:
             request=None
             while True:

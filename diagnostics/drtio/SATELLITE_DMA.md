@@ -1597,3 +1597,27 @@ constructor/dry-run and normal profile preflight pass. None accesses hardware.
 No physical idle proof exists yet, and no new image was loaded. Availability of
 the removed/released Kasli must be confirmed before an exclusive hardware window;
 continued artifact/parent integration work is possible offline meanwhile.
+
+Active parent integration is now implemented behind `lab_fault_mode=active` and
+`native_ddma_mode=playback`, with the existing explicit lab acknowledgement.
+Admission still requires exact prior idle/counter/DIO/snapshot/restoration proof
+and validated host overlay before programming. No such physical proof exists at
+this checkpoint, so active hardware preflight remains blocked.
+
+Inside the already-leased parent/exclusive UART context, the active stage reads
+pristine idle samples, runs the compiled experiment through the bounded arm pump,
+then reads two settled post-fault samples. It requires unchanged TSC epoch/output
+edge count, one accepted/completed DMA, pending native underflow4, fault latch1,
+trigger1, no arm refusal or held delay and conserved nonzero AXI reads. Sampled
+completion telemetry must also describe the same one-play counters and exact
+kernel timestamp. Parent restoration is never overwritten by helper success.
+The ordinary native DMA probe is excluded from this branch, so it cannot attempt
+an unqualified replay after the fault.
+
+Sixteen offline tests cover parent orchestration, post-state/epoch/TTL/drain
+negatives, actual artifact admission, process/handshake and evidence parsing.
+Normal-profile preflight remains PASS. No board was accessed or programmed.
+Source inspection of pinned ARTIQ session DMA handling found erase requests on
+explicit erase/replacement paths; the candidate avoids both after the exception.
+Physical logs must still verify session behavior; any unexpected fatal/cleanup
+path fails the trial rather than relaxing the error latch.

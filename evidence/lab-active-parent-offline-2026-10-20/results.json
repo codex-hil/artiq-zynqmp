@@ -1,0 +1,19 @@
+{
+  "status": "OFFLINE_INTEGRATION_PASS",
+  "hardware_access": false,
+  "tests": 16,
+  "source_sha256": {
+    "diagnostics/drtio/external_session.py": "98b6c7e60ef721fd7e5ceec142501da942166eb72d4dff44213e9e81dd0ef352",
+    "diagnostics/drtio/lab_fault_session.py": "db9e5d08bd682457c3cc7e6ca0535362e2de375ed8df648f4dc4d9ee1e3e7a51",
+    "diagnostics/drtio/lab_fault_admission.py": "cecc128b6ed69fdf4143cf046444bf5a98beb9c25b299e5d1170ea4fabfb06b7",
+    "diagnostics/drtio/lab_idle_probe.py": "1e9dd68e48251b2bd78a576f29b3735daf9996110b0f41e2522c896f349bf02b",
+    "diagnostics/drtio/lab_fault_process.py": "a6bf6df908bb6d6beeeef7d65a36f23f828421a431b3e89ff27a76022296e06b",
+    "diagnostics/drtio/active_dma_fault_evidence.py": "c83a224c8c9282a49c6fd757e2597b4c2b0f2505c881aa2240d01facd64c9565"
+  },
+  "active_hardware_preflight": "BLOCKED_WITHOUT_EXACT_PRIOR_IDLE_COUNTER_PROOF",
+  "limitations": [
+    "synthetic orchestration and actual offline artifacts only",
+    "no physical idle/active-fault proof",
+    "hardware availability and all shared leases required for next physical stage"
+  ]
+}

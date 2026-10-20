@@ -21,7 +21,7 @@ def parse(text):
                 lab_idle_scope='two read-only UART samples; pristine DMA; stable output edge count and TSC epoch')
 
 
-def probe(uart,raw,timeout=2,settle=.05):
+def read_pair(uart,raw,timeout=2,settle=.05):
     if getattr(uart,'timeout',None) is None or not 0<uart.timeout<=.5:
         raise ValueError('Existing finite UART timeout required')
     if not 0<timeout<=5 or not .02<=settle<=1:raise ValueError('Bounded probe/settle required')
@@ -38,4 +38,22 @@ def probe(uart,raw,timeout=2,settle=.05):
             if time.monotonic()>=deadline:raise TimeoutError('Read-only idle reply timed out')
             time.sleep(.01)
         if index==0:time.sleep(settle)
-    return parse(bytes(raw[start:]).decode(errors='replace'))
+    return bytes(raw[start:]).decode(errors='replace')
+
+
+def probe(uart,raw,timeout=2,settle=.05):
+    return parse(read_pair(uart,raw,timeout,settle))
+
+
+def post_fault(uart,raw,before,timeout=2,settle=.05):
+    text=read_pair(uart,raw,timeout,settle)
+    rows=[dict(zip(FIELDS,map(int,m.groups()))) for m in re.finditer(PATTERN,text,re.M)]
+    if len(rows)!=2 or rows[0]!=rows[1] or any(v>=2**32 for row in rows for v in row.values()):
+        raise ValueError('Unstable/invalid post-fault counter samples')
+    row=rows[0];base=before['lab_idle_samples'][0]
+    expected=dict(ready=0,epoch=base['epoch'],active=0,pending=1,armed=0,holding=0,
+                  triggers=1,rejected=0,arm_rejected=0,faulted=1,edges=base['edges'],
+                  accepted=1,completed=1,raw=4)
+    if any(row[k]!=v for k,v in expected.items()) or not row['ar'] or row['ar']!=row['rlast']:
+        raise ValueError('Fault latch/epoch/TTL silence/AXI drain qualification failed')
+    return dict(lab_fault_poststate='PASS',lab_fault_post_samples=rows)

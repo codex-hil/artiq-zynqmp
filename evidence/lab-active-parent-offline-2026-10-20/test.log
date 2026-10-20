@@ -1,0 +1,21 @@
+test_existing_parent_context_and_evidence_wiring (test_lab_fault_session.SessionTests.test_existing_parent_context_and_evidence_wiring) ... ok
+test_requires_active_parent_lease_context (test_lab_fault_session.SessionTests.test_requires_active_parent_lease_context) ... ok
+test_negative_states_and_epoch (test_lab_idle_probe.IdleTests.test_negative_states_and_epoch) ... ok
+test_post_fault_latch_epoch_drain_and_silence (test_lab_idle_probe.IdleTests.test_post_fault_latch_epoch_drain_and_silence) ... ok
+test_read_only_two_samples (test_lab_idle_probe.IdleTests.test_read_only_two_samples) ... ok
+test_actual_guarded_parent_idle_preflight_and_active_refusal (test_lab_fault_admission.AdmissionTests.test_actual_guarded_parent_idle_preflight_and_active_refusal) ... ok
+test_actual_idle_artifacts_and_stale_source_controls (test_lab_fault_admission.AdmissionTests.test_actual_idle_artifacts_and_stale_source_controls) ... ok
+test_explicit_scope_and_missing_idle_proof (test_lab_fault_admission.AdmissionTests.test_explicit_scope_and_missing_idle_proof) ... ok
+test_bad_request_no_uart_write (test_lab_fault_process.PumpTests.test_bad_request_no_uart_write) ... ok
+test_refused_arm_or_timeout_never_acknowledges (test_lab_fault_process.PumpTests.test_refused_arm_or_timeout_never_acknowledges) ... ok
+test_success_one_arm_complete_ack_and_child_log (test_lab_fault_process.PumpTests.test_success_one_arm_complete_ack_and_child_log) ... ok
+test_missing_ack_times_out_and_invalid_ack_refused (test_dma_arm_handshake.HandshakeTests.test_missing_ack_times_out_and_invalid_ack_refused) ... ok
+test_request_ack_and_no_overwrite (test_dma_arm_handshake.HandshakeTests.test_request_ack_and_no_overwrite) ... ok
+test_logged_independent_metrics_and_negative_controls (test_active_dma_fault_evidence.EvidenceTests.test_logged_independent_metrics_and_negative_controls) ... ok
+test_negative_controls (test_active_dma_fault_evidence.EvidenceTests.test_negative_controls) ... ok
+test_synthetic_positive (test_active_dma_fault_evidence.EvidenceTests.test_synthetic_positive) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.991s
+
+OK
