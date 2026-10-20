@@ -1,0 +1,26 @@
+mkdir -p /srv/codex-hil-data/artiq-zynqmp/build/metrics-firmware-evidence-tests-2026-10-20/ddma-lab-arm
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_ddma_lab_delay.c -o /srv/codex-hil-data/artiq-zynqmp/build/metrics-firmware-evidence-tests-2026-10-20/ddma-lab-arm/test
+/srv/codex-hil-data/artiq-zynqmp/build/metrics-firmware-evidence-tests-2026-10-20/ddma-lab-arm/test
+DDMA_LAB_DELAY_ARM_OFFLINE_PASS exact arm-only write; unsafe states refused
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_ddma_lab_runtime.c -o /srv/codex-hil-data/artiq-zynqmp/build/metrics-firmware-evidence-tests-2026-10-20/ddma-lab-arm/runtime-test
+/srv/codex-hil-data/artiq-zynqmp/build/metrics-firmware-evidence-tests-2026-10-20/ddma-lab-arm/runtime-test
+DDMA_LAB_RUNTIME_OFFLINE_PASS readiness, one attempt, active-hold proof, completion once
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol" python3 -m unittest discover -s diagnostics/drtio/aux_protocol -p 'test_lab_delay_build.py' -v
+test_checked_map_and_mutations (test_lab_delay_build.BuildTests.test_checked_map_and_mutations) ... ok
+test_normal_native_wrapper_refuses_lab (test_lab_delay_build.BuildTests.test_normal_native_wrapper_refuses_lab) ... ok
+test_source_overlay_preserves_original_and_refuses_reapplication (test_lab_delay_build.BuildTests.test_source_overlay_preserves_original_and_refuses_reapplication) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio" python3 -m unittest discover -s diagnostics/drtio -p 'test_active_dma_fault_evidence.py' -v
+test_logged_independent_metrics_and_negative_controls (test_active_dma_fault_evidence.EvidenceTests.test_logged_independent_metrics_and_negative_controls) ... ok
+test_negative_controls (test_active_dma_fault_evidence.EvidenceTests.test_negative_controls) ... ok
+test_synthetic_positive (test_active_dma_fault_evidence.EvidenceTests.test_synthetic_positive) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

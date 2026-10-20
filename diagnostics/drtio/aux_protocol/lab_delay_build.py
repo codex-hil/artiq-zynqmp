@@ -11,6 +11,11 @@ def validate_map(mapping):
         expected=dict(address=0xa0002048+4*i,words=1,bits=1 if i<3 else 32)
         if dma.get('registers',{}).get(key)!=expected or mapping.get('registers',{}).get(key)!=expected:
             raise ValueError('Unexpected laboratory delay register: '+key)
+    if not cfg.get('independent_metrics'):raise ValueError('Independent hardware metrics required')
+    for i,name in enumerate(['ar_count','rlast_count','ttl_edges']):
+        key='dma_lab_'+name;expected=dict(address=0xa0002064+4*i,words=1,bits=32)
+        if dma.get('registers',{}).get(key)!=expected or mapping.get('registers',{}).get(key)!=expected:
+            raise ValueError('Unexpected independent metric register: '+key)
     return cfg['cycles']
 
 

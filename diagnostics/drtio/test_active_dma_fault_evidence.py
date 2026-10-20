@@ -1,6 +1,6 @@
 """Synthetic parser fixtures only; LGPL-3.0-or-later."""
 import unittest
-from active_dma_fault_evidence import validate
+from active_dma_fault_evidence import validate,validate_logged_metrics
 AUX='''AUX_DDMA LAB_ARM result=0 cycles=250000
 AUX_DDMA REPLY kind=181 id=42 succeeded=1
 AUX_DDMA LAB_ACTIVE id=42 accepted=3 completed=2 triggers=1
@@ -23,3 +23,12 @@ class EvidenceTests(unittest.TestCase):
             with self.subTest(value=value),self.assertRaises(ValueError):self.check(aux=value)
         for kwargs in [dict(edge_after=11),dict(read_completions=1),dict(read_requests=0,read_completions=0),dict(edge_before=True),dict(kernel='DMAError')]:
             with self.subTest(kwargs=kwargs),self.assertRaises(ValueError):self.check(**kwargs)
+
+    def test_logged_independent_metrics_and_negative_controls(self):
+        text='AUX_DDMA LAB_BASELINE ar=10 rlast=10 edges=6\n'+AUX.replace(
+            'AUX_DDMA LAB_COMPLETE','AUX_DDMA LAB_METRICS ar=12 rlast=12 edges=6\nAUX_DDMA LAB_COMPLETE')
+        self.assertEqual(validate_logged_metrics(text,KERNEL,expected_timestamp=9600)['status'],'ACTIVE_FAULT_EVIDENCE_PASS')
+        for bad in [text.replace('ar=12','ar=13'),text.replace('rlast=12','rlast=11'),
+                    text.replace('ar=12','ar=4294967296'),text.replace('edges=6\nAUX_DDMA LAB_COMPLETE','edges=7\nAUX_DDMA LAB_COMPLETE'),
+                    text+'AUX_DDMA LAB_METRICS ar=12 rlast=12 edges=6\n']:
+            with self.assertRaises(ValueError):validate_logged_metrics(bad,KERNEL,expected_timestamp=9600)

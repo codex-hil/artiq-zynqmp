@@ -1514,3 +1514,23 @@ Missing/wrong-width crossing controls and generated HDL/map checks pass. This is
 not implementation timing qualification; synth/route, firmware counter collection
 and guarded hardware execution remain pending. The published removal checkpoint
 and its normal qualified images are unchanged.
+
+2026-10-20 firmware continuation: the lab builder now requires independent
+metrics metadata and exact appended AR/RLAST/TTL CSR addresses in both map
+sections. Lab firmware reads baseline counts before arm and final counts after
+hardware completion, emitting `LAB_BASELINE`/`LAB_METRICS`. It never writes these
+counters. The parser can consume these logged hardware snapshots, checks32-bit
+bounds and order, and compares accepted/read-completion deltas modulo2^32 while
+requiring unchanged TTL count. Map/ELF identity, uninterrupted clock/reset epoch,
+pad settling and final restoration remain the guarded parent's responsibility.
+Two ASan/UBSan suites and six Python build/parser tests pass; a full Rust+C/link
+build against the metrics target map passes. Normal qualified-profile offline
+preflight is unchanged and PASS. No physical counter measurements are claimed.
+
+`build_top.sh` supports explicit `DRTIO_LAB_READ_DELAY_SYS_HZ=125000000` and
+optional `DRTIO_LAB_READ_DELAY_US=2000`, requiring `DRTIO_SATELLITE_DMA=1`.
+A separate candidate implementation build is running under
+`build-vivado/genesys-delay-metrics-route-2026-10-20`. Check the driver log and
+results.json plus dma-cdc-results.json before claiming routed timing PASS. No
+hardware/JTAG operations are part of this build. Published normal checkpoint
+images and board state remain unchanged.

@@ -2,7 +2,7 @@
 #pragma once
 #include "ddma_backend.h"
 enum {DB_LAB_ARM=72,DB_LAB_ARMED=76,DB_LAB_HOLDING=80,
- DB_LAB_ARM_REJECTED=84,DB_LAB_TRIGGERS=88,DB_LAB_REJECTED=92,DB_LAB_CYCLES=96};
+ DB_LAB_ARM_REJECTED=84,DB_LAB_TRIGGERS=88,DB_LAB_REJECTED=92,DB_LAB_CYCLES=96,DB_LAB_AR=100,DB_LAB_RLAST=104,DB_LAB_TTL_EDGES=108};
 /* Caller must hold device lease and prove a complete idle trace/service ready.
  * Only one arming attempt per boot is allowed by the runtime caller.
  */

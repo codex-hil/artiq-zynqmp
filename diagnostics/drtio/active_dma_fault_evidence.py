@@ -39,3 +39,27 @@ def validate(aux, kernel, *, expected_timestamp, edge_before, edge_after,
         raise ValueError('TTL activity or incomplete AXI drain')
     return dict(status='ACTIVE_FAULT_EVIDENCE_PASS',id=int(ident),raw_error=4,
                 aux_error=1,timestamp=expected_timestamp,restoration='PARENT_MUST_VERIFY')
+
+
+def validate_logged_metrics(aux,kernel,*,expected_timestamp):
+    """Consume firmware reads of the independent hardware counters.
+
+    Caller must also prove artifact/map identity, continuous clock/reset epoch,
+    pad settling and final restoration. These counters are not ARTIQ software
+    event counts; they are separate RTL handshake/pad counters.
+    """
+    def sample(label):
+        matches=list(re.finditer(r'^AUX_DDMA '+label+r' ar=(\d+) rlast=(\d+) edges=(\d+)\r?$',aux,re.M))
+        if len(matches)!=1:raise ValueError('Missing/duplicate independent metrics '+label)
+        values=tuple(int(n) for n in matches[0].groups())
+        if any(n>=2**32 for n in values):raise ValueError('Counter exceeds 32-bit CSR')
+        return matches[0],values
+    before,b=sample('LAB_BASELINE');after,a=sample('LAB_METRICS')
+    arm=aux.find('AUX_DDMA LAB_ARM result=0')
+    complete=aux.find('AUX_DDMA LAB_COMPLETE')
+    status=aux.find('AUX_DDMA STATUS')
+    if not before.start()<arm<status<after.start()<complete:
+        raise ValueError('Independent counter snapshot order invalid')
+    requests=(a[0]-b[0])&0xffffffff;completions=(a[1]-b[1])&0xffffffff
+    return validate(aux,kernel,expected_timestamp=expected_timestamp,edge_before=b[2],edge_after=a[2],
+                    read_requests=requests,read_completions=completions)

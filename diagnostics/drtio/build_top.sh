@@ -10,6 +10,10 @@ mkdir -p "$out"
 export PYTHONPATH="${ARTIQ_SOURCE:-$repo/common/artiq}:$repo/common/migen:${MISOC_SOURCE:-/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current}${PYTHONPATH:+:$PYTHONPATH}"
 python_bin=${PYTHON:-/srv/codex-hil-data/artiq-zynqmp/venv/bin/python}
 extra=()
+if [ -n "${DRTIO_LAB_READ_DELAY_SYS_HZ:-}" ]; then
+ if [ "${DRTIO_SATELLITE_DMA:-0}" != 1 ]; then echo 'Lab delay requires DRTIO_SATELLITE_DMA=1' >&2; exit 2; fi
+ extra+=(--lab-read-delay-sys-hz "$DRTIO_LAB_READ_DELAY_SYS_HZ" --lab-read-delay-us "${DRTIO_LAB_READ_DELAY_US:-2000}")
+fi
 if [ "${FORWARD_RX_CLOCK:-0}" = 1 ]; then extra+=(--forward-rx-clock); fi
 if [ "${DRTIO_PROTOCOL:-0}" = 1 ]; then extra+=(--protocol); fi
 if [ "${DRTIO_PACKETS:-0}" = 1 ]; then extra+=(--packets); fi

@@ -2530,3 +2530,14 @@ Evidence genesys-delay-metrics-hdl-2026-10-20. NoHWaccess/leasesneeded; Kasli
 removalcheckpoint preserved. Synth/route/physicaltiming andfirmwarecounter
 collection stillpending. Next offline candidatebuild/metriccollection integration;
 physicalexternaltests require confirmed available Kasli andallboardleases.
+
+
+Metricsfirmware2026-10-20 fullRust+C/link PASS onactualmetricsmap. Strictbuilder
+requiresindependent32bitCSRfields; actualcounterbaseline/finalreads logged, no
+counterwrites. Parserconsumes orderedbounded32bit snapshots withmoduloAR/RLAST
+deltas andTTLsilence; epoch/settling/restoration stillparentrequirements.
+2ASan/UBSan suites+6Pythonbuild/parsertestsPASS; normalprofilepreflightPASS.
+Evidence ddma-independent-metrics-firmware-2026-10-20. NoHWaccess. Separate
+Vivadocandidatebuild STARTED (exec75189, build-vivado/genesys-delay-metrics-route-
+2026-10-20); noimplementationPASS claimed yet. Next auditbuild and9group/202
+endpointtiming results, resolvefailuresoffline, then dedicatedwrapper integration.
