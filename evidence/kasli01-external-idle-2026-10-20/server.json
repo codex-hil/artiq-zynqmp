@@ -1,0 +1,9 @@
+{
+  "container": "a4f3adefe2bd8467c11bd01c7d96157bfdd68f9107e0e90f4d8ea8e11b58dd31",
+  "server": "tcp:172.17.0.3:3121",
+  "command": [
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/hw_server",
+    "-e",
+    "set jtag-port-filter 210383B7F02DA"
+  ]
+}

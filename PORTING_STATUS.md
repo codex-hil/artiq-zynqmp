@@ -2669,3 +2669,16 @@ both; Genesys not accessed, Kasli03/04 untouched, no flash/OTP writes. Evidence
 `evidence/kasli01-runtime-management-2026-10-20`. External KASLI01 DRTIO/DIO/DMA
 remain NOT_RUN; next adapt the external test configuration for this board,
 qualify link/TSC/reset/DIO before lab-idle/active-delay experiments.
+
+
+KASLI01 external DRTIO attempt (2026-10-20): FAIL at satellite AUX startup,
+before cold-release/TSC/DIO. Master runtime/management/counter/RPC repeat PASS.
+Firmware's generic failure does not distinguish magic/reset/RX-up admission;
+physical cable fault is not established. No bypass, no remote DIO/DMA claim.
+KASLI01 diagnostic+volatile clock restore PASS; Genesys normal runtime/debug/
+Ethernet restore PASS at192.168.2.3; both shared leases released. No flash/OTP/
+SD/GenesysSi writes or Kasli03/04 access. Old hw_server absent; Genesys-filtered
+server restarted under lease at172.17.0.3:3121, container a4f3adefe2bd. Evidence
+`evidence/kasli01-external-idle-2026-10-20`. Next offline: distinguish startup
+admission failures with exact read-only register telemetry before retrying.
+External link/TSC/reset/DIO and lab-delay hardware qualification remain pending.
