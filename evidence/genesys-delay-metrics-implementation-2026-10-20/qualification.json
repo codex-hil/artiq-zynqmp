@@ -1,0 +1,17 @@
+{
+  "status": "IMPLEMENTATION_PASS_NOT_HARDWARE",
+  "hardware_access": false,
+  "bitstream_sha256": "81551ca13468af5f462c1fe4a7fe6f86981c1926f5f64ee536c30baa310dcdc6",
+  "firmware_sha256": "db584eacdedc836766920d4b6bc979ec3192e7640454bba58876ce21fd61fb7a",
+  "map_match": true,
+  "cdc_groups": 9,
+  "cdc_endpoints": 202,
+  "minimum_cdc_slack_ns": 7.264,
+  "initial_final_validator": "FAILED_OLD_GROUP_COUNT",
+  "corrected_final_validator": "PASS_EXISTING_ARTIFACTS_NO_CONSTRAINT_RELAXATION",
+  "validator_sha256": "76729c05e6dae87fad9121e359a2c28bfeeb34b6563a40b1ec7af4d22caae9f7",
+  "limitations": [
+    "no board programming or physical fault test",
+    "dedicated guarded parent integration pending"
+  ]
+}

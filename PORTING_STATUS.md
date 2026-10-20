@@ -2541,3 +2541,14 @@ Evidence ddma-independent-metrics-firmware-2026-10-20. NoHWaccess. Separate
 Vivadocandidatebuild STARTED (exec75189, build-vivado/genesys-delay-metrics-route-
 2026-10-20); noimplementationPASS claimed yet. Next auditbuild and9group/202
 endpointtiming results, resolvefailuresoffline, then dedicatedwrapper integration.
+
+
+Delaymetricsimplementation2026-10-20 PASS: Vivadosynth/route/bitgen completed,
+timing and17skewconstraintsmet. RoutedCDC9groups/202endpointsPASS,8nsrequirement
+minslack7.264ns. Bit81551ca1...,map024e485e...matchesmetricsfirmware. Initial
+finalvalidator failedold8/170count; correctedlabcount, sameartifacts recheckPASS
+withoutrebuild/constraintrelaxation.2syntheticvalidator testscovernormal/lab,
+missinggroup/stalehash/endpoints/skew andstalePASSremoval. Evidence genesys-delay-
+metrics-implementation-2026-10-20. NoHWaccess/programming. Next dedicatedparent
+handshake/metriccollection/epoch/settling/restoration integration before physical
+use; Kasliavailability mustbeconfirmed withsharedlocks if/when needed.

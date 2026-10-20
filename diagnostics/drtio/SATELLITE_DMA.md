@@ -1534,3 +1534,19 @@ A separate candidate implementation build is running under
 results.json plus dma-cdc-results.json before claiming routed timing PASS. No
 hardware/JTAG operations are part of this build. Published normal checkpoint
 images and board state remain unchanged.
+
+2026-10-20 implementation result: `genesys-delay-metrics-route-2026-10-20`
+completed synthesis, placement/routing and bitstream generation. Timing and all
+17 skew constraints pass. The routed CDC check passes9groups/202 endpoints,
+8ns requirement, minimum endpoint slack7.264ns. The final build validator needed
+the lab count update (old8/170 assumption); after that fix the same implementation
+artifacts passed without rebuilding or relaxing constraints. Failed rechecks now
+remove stale output PASS. Synthetic controls cover normal/lab counts, missing
+crossing, stale hash, wrong endpoint count and missing skew result.
+
+Candidate bitstream SHA-256:
+`81551ca13468af5f462c1fe4a7fe6f86981c1926f5f64ee536c30baa310dcdc6`.
+Its map matches the independent-metrics firmware build. These are implementation
+results only, not hardware fault qualification; no programming or board access
+occurred. The dedicated guarded parent still needs handshake/counter collection,
+artifact/epoch/settling checks and mandatory restoration before physical use.

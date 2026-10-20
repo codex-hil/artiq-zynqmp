@@ -354,3 +354,7 @@ test-drtio-dma-arm-handshake:
 .PHONY: test-drtio-dma-lab-metrics
 test-drtio-dma-lab-metrics:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio:$(CURDIR)/common/migen:$(abspath $(MISOC_SOURCE))" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_dma_lab_metrics.py' -v
+
+.PHONY: test-drtio-top-build-check
+test-drtio-top-build-check:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_top_build.py' -v

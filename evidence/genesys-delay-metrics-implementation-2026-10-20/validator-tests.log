@@ -1,0 +1,8 @@
+PYTHONPATH="/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio" python3 -m unittest discover -s diagnostics/drtio -p 'test_top_build.py' -v
+test_missing_group_stale_hash_and_bad_skew (test_top_build.TopBuildTests.test_missing_group_stale_hash_and_bad_skew) ... ok
+test_normal_and_lab_counts (test_top_build.TopBuildTests.test_normal_and_lab_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.711s
+
+OK

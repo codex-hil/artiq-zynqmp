@@ -12,6 +12,7 @@ def main():
     p.add_argument('build', type=Path)
     p.add_argument('--output', required=True, type=Path)
     a = p.parse_args()
+    a.output.unlink(missing_ok=True)  # A failed recheck must not leave stale PASS.
     files = ('top.bit', 'top.v', 'top.xdc', 'csr-map.json', 'top_timing.rpt', 'top_bus_skew.rpt')
     for name in files:
         if not (a.build/name).is_file() or not (a.build/name).stat().st_size:
@@ -28,6 +29,8 @@ def main():
     if mapping.get('dma'):
         snapshot='aux_tsc_snapshot_value' in mapping['registers']
         count,total=(8,170) if snapshot else (6,164)
+        if mapping['dma'].get('laboratory_read_delay',{}).get('independent_metrics'):
+            count+=1;total+=32
         skew_count += count  # Gray FIFO pointers and held payload buses
         manifest = json.loads((a.build/'cdc-manifest.json').read_text())
         if len(manifest.get('dma_crossings',[])) != count:

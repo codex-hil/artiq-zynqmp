@@ -1,0 +1,1757 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Tue Oct 20 10:07:10 2026
+| Host              : 4702d32cb016 running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_bus_skew -file top_bus_skew.rpt
+| Design            : top
+| Device            : xczu5ev-sfvc784
+| Speed File        : -1  PRODUCTION 1.30 05-15-2022
+| Design State      : Physopt postRoute
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+Table of Contents
+-----------------
+1. Bus Skew Report Summary
+2. Bus Skew Report Per Constraint
+
+1. Bus Skew Report Summary
+--------------------------
+
+Id  Position  From                            To                              Corner  Requirement(ns)  Actual(ns)  Slack(ns)
+--  --------  ------------------------------  ------------------------------  ------  ---------------  ----------  ---------
+1   29        [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl130_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.807      7.193
+2   31        [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl160_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.777      7.223
+3   33        [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl170_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.800      7.200
+4   35        [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl180_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.732      7.268
+5   37        [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl90_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.568      7.432
+6   39        [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl100_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.385      7.615
+7   41        [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_tscsnapshot_graycounter0_q_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl430_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.449      7.551
+8   43        [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_tscsnapshot_graycounter1_q_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl440_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.378      7.622
+9   45        [get_cells -hierarchical -filter {NAME =~ diagnostic_rtio_rx_gray_source_reg* && REF_NAME =~ FD*}]
+                                              [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl200_reg* && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.881      7.119
+10  47        [get_cells -hierarchical -filter {NAME =~ diagnostic_rx_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}]
+                                              [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_rx_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]]
+                                                                              Slow              8.000       0.614      7.386
+11  48        [get_cells -hierarchical -filter {NAME =~ diagnostic_tx_count_gth_tx_gray_source_reg* && REF_NAME =~ FD*}]
+                                              [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_tx_count_gth_tx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]]
+                                                                              Slow              8.000       0.570      7.430
+12  49        [get_cells -hierarchical -filter {NAME =~ diagnostic_error_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}]
+                                              [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_error_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]]
+                                                                              Slow              8.000       0.872      7.128
+13  50        [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg* && REF_NAME =~ FD*}]
+                                              [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]]
+                                                                              Slow              8.000       0.701      7.299
+14  51        [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}]
+                                              [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.659      7.341
+15  53        [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}]
+                                              [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       0.629      7.371
+16  55        [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}]
+                                              [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       1.146      6.854
+17  57        [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}]
+                                              [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}]
+                                                                              Slow              8.000       1.176      6.824
+
+
+2. Bus Skew Report Per Constraint
+---------------------------------
+
+Id: 1
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl130_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 64
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clk_pl_0              rxoutclk_out[0]       xilinxmultiregimpl130_reg[36]/D
+                                                                            xilinxmultiregimpl130_reg[54]/D
+                                                                                                            Slow         0.807      7.193
+
+
+Slack (MET) :             7.193ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg[36]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Endpoint Destination:   xilinxmultiregimpl130_reg[36]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Source:       diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg[54]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Destination:  xilinxmultiregimpl130_reg[54]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    1.517ns
+  Reference Relative Delay:   0.375ns
+  Relative CRPR:              0.335ns
+  Actual Bus Skew:            0.807ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.362     2.569    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X11Y77         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg[36]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X11Y77         FDRE (Prop_HFF_SLICEL_C_Q)
+                                                      0.096     2.665 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg[36]/Q
+                         net (fo=1, routed)           0.631     3.296    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1[36]
+    SLICE_X11Y77         FDRE                                         r  xilinxmultiregimpl130_reg[36]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.526     1.752    gth_rx_clk
+    SLICE_X11Y77         FDRE                                         r  xilinxmultiregimpl130_reg[36]/C
+                         clock pessimism              0.000     1.752    
+    SLICE_X11Y77         FDRE (Setup_DFF2_SLICEL_C_D)
+                                                      0.027     1.779    xilinxmultiregimpl130_reg[36]
+  -------------------------------------------------------------------
+                         data arrival                           3.296    
+                         clock arrival                          1.779    
+  -------------------------------------------------------------------
+                         relative delay                         1.517    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.087     2.254    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X12Y84         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg[54]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y84         FDRE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.072     2.326 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1_reg[54]/Q
+                         net (fo=1, routed)           0.105     2.431    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_offset1[54]
+    SLICE_X13Y84         FDRE                                         r  xilinxmultiregimpl130_reg[54]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.745     2.002    gth_rx_clk
+    SLICE_X13Y84         FDRE                                         r  xilinxmultiregimpl130_reg[54]/C
+                         clock pessimism              0.000     2.002    
+    SLICE_X13Y84         FDRE (Hold_DFF2_SLICEM_C_D)
+                                                      0.054     2.056    xilinxmultiregimpl130_reg[54]
+  -------------------------------------------------------------------
+                         data arrival                           2.431    
+                         clock arrival                          2.056    
+  -------------------------------------------------------------------
+                         relative delay                         0.375    
+
+
+
+Id: 2
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl160_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 2
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl160_reg[0]/D  xilinxmultiregimpl160_reg[1]/D  Slow         0.777      7.223
+
+
+Slack (MET) :             7.223ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl160_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl160_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.409ns
+  Reference Relative Delay:  -0.703ns
+  Relative CRPR:              0.335ns
+  Actual Bus Skew:            0.777ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.729     1.986    gth_rx_clk
+    SLICE_X11Y75         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X11Y75         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.096     2.082 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg[0]/Q
+                         net (fo=4, routed)           0.640     2.722    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w[0]
+    SLICE_X10Y75         FDRE                                         r  xilinxmultiregimpl160_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.119     2.286    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X10Y75         FDRE                                         r  xilinxmultiregimpl160_reg[0]/C
+                         clock pessimism              0.000     2.286    
+    SLICE_X10Y75         FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.027     2.313    xilinxmultiregimpl160_reg[0]
+  -------------------------------------------------------------------
+                         data arrival                           2.722    
+                         clock arrival                          2.313    
+  -------------------------------------------------------------------
+                         relative delay                         0.409    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.534     1.760    gth_rx_clk
+    SLICE_X12Y75         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y75         FDRE (Prop_DFF_SLICEM_C_Q)
+                                                      0.070     1.830 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w_reg[1]/Q
+                         net (fo=4, routed)           0.092     1.922    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_w[1]
+    SLICE_X12Y73         FDRE                                         r  xilinxmultiregimpl160_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.364     2.571    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X12Y73         FDRE                                         r  xilinxmultiregimpl160_reg[1]/C
+                         clock pessimism              0.000     2.571    
+    SLICE_X12Y73         FDRE (Hold_DFF2_SLICEM_C_D)
+                                                      0.054     2.625    xilinxmultiregimpl160_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           1.922    
+                         clock arrival                          2.625    
+  -------------------------------------------------------------------
+                         relative delay                        -0.703    
+
+
+
+Id: 3
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl170_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 24
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl170_reg[14]/D
+                                                                            xilinxmultiregimpl170_reg[16]/D
+                                                                                                            Slow         0.800      7.200
+
+
+Slack (MET) :             7.200ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg[14]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl170_reg[14]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg[16]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl170_reg[16]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.428ns
+  Reference Relative Delay:  -0.707ns
+  Relative CRPR:              0.335ns
+  Actual Bus Skew:            0.800ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.737     1.994    gth_rx_clk
+    SLICE_X13Y68         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg[14]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X13Y68         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.097     2.091 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg[14]/Q
+                         net (fo=1, routed)           0.643     2.734    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status[14]
+    SLICE_X9Y72          FDRE                                         r  xilinxmultiregimpl170_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.112     2.279    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X9Y72          FDRE                                         r  xilinxmultiregimpl170_reg[14]/C
+                         clock pessimism              0.000     2.279    
+    SLICE_X9Y72          FDRE (Setup_DFF2_SLICEL_C_D)
+                                                      0.027     2.306    xilinxmultiregimpl170_reg[14]
+  -------------------------------------------------------------------
+                         data arrival                           2.734    
+                         clock arrival                          2.306    
+  -------------------------------------------------------------------
+                         relative delay                         0.428    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.539     1.765    gth_rx_clk
+    SLICE_X12Y66         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg[16]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y66         FDRE (Prop_HFF2_SLICEM_C_Q)
+                                                      0.071     1.836 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status_reg[16]/Q
+                         net (fo=1, routed)           0.083     1.919    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_channel_status[16]
+    SLICE_X11Y66         FDRE                                         r  xilinxmultiregimpl170_reg[16]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.364     2.571    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X11Y66         FDRE                                         r  xilinxmultiregimpl170_reg[16]/C
+                         clock pessimism              0.000     2.571    
+    SLICE_X11Y66         FDRE (Hold_DFF2_SLICEL_C_D)
+                                                      0.055     2.626    xilinxmultiregimpl170_reg[16]
+  -------------------------------------------------------------------
+                         data arrival                           1.919    
+                         clock arrival                          2.626    
+  -------------------------------------------------------------------
+                         relative delay                        -0.707    
+
+
+
+Id: 4
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl180_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 64
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl180_reg[62]/D
+                                                                            xilinxmultiregimpl180_reg[35]/D
+                                                                                                            Slow         0.732      7.268
+
+
+Slack (MET) :             7.268ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg[62]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl180_reg[62]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg[35]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl180_reg[35]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.335ns
+  Reference Relative Delay:  -0.732ns
+  Relative CRPR:              0.336ns
+  Actual Bus Skew:            0.732ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.703     1.960    gth_rx_clk
+    SLICE_X14Y90         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg[62]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X14Y90         FDRE (Prop_GFF_SLICEL_C_Q)
+                                                      0.097     2.057 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg[62]/Q
+                         net (fo=1, routed)           0.564     2.621    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status[62]
+    SLICE_X10Y90         FDRE                                         r  xilinxmultiregimpl180_reg[62]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.092     2.259    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X10Y90         FDRE                                         r  xilinxmultiregimpl180_reg[62]/C
+                         clock pessimism              0.000     2.259    
+    SLICE_X10Y90         FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.027     2.286    xilinxmultiregimpl180_reg[62]
+  -------------------------------------------------------------------
+                         data arrival                           2.621    
+                         clock arrival                          2.286    
+  -------------------------------------------------------------------
+                         relative delay                         0.335    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.514     1.740    gth_rx_clk
+    SLICE_X16Y82         FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg[35]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X16Y82         FDRE (Prop_EFF2_SLICEL_C_Q)
+                                                      0.072     1.812 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status_reg[35]/Q
+                         net (fo=1, routed)           0.078     1.890    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_crimaster_error_timestamp_status[35]
+    SLICE_X15Y82         FDRE                                         r  xilinxmultiregimpl180_reg[35]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.360     2.567    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X15Y82         FDRE                                         r  xilinxmultiregimpl180_reg[35]/C
+                         clock pessimism              0.000     2.567    
+    SLICE_X15Y82         FDRE (Hold_CFF2_SLICEL_C_D)
+                                                      0.055     2.622    xilinxmultiregimpl180_reg[35]
+  -------------------------------------------------------------------
+                         data arrival                           1.890    
+                         clock arrival                          2.622    
+  -------------------------------------------------------------------
+                         relative delay                        -0.732    
+
+
+
+Id: 5
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl90_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 5
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clk_pl_0              rxoutclk_out[0]       xilinxmultiregimpl90_reg[3]/D   xilinxmultiregimpl90_reg[1]/D   Slow         0.568      7.432
+
+
+Slack (MET) :             7.432ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Endpoint Destination:   xilinxmultiregimpl90_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Source:       diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Destination:  xilinxmultiregimpl90_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    1.449ns
+  Reference Relative Delay:   0.405ns
+  Relative CRPR:              0.475ns
+  Actual Bus Skew:            0.568ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.402     2.609    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X6Y70          FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y70          FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.097     2.706 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg[3]/Q
+                         net (fo=2, routed)           0.551     3.258    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q[3]
+    SLICE_X5Y70          FDRE                                         r  xilinxmultiregimpl90_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.556     1.782    gth_rx_clk
+    SLICE_X5Y70          FDRE                                         r  xilinxmultiregimpl90_reg[3]/C
+                         clock pessimism              0.000     1.782    
+    SLICE_X5Y70          FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.027     1.809    xilinxmultiregimpl90_reg[3]
+  -------------------------------------------------------------------
+                         data arrival                           3.258    
+                         clock arrival                          1.809    
+  -------------------------------------------------------------------
+                         relative delay                         1.449    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.126     2.293    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X6Y69          FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y69          FDRE (Prop_CFF2_SLICEL_C_Q)
+                                                      0.071     2.364 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q_reg[1]/Q
+                         net (fo=2, routed)           0.109     2.473    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter0_q[1]
+    SLICE_X6Y69          FDRE                                         r  xilinxmultiregimpl90_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.756     2.013    gth_rx_clk
+    SLICE_X6Y69          FDRE                                         r  xilinxmultiregimpl90_reg[1]/C
+                         clock pessimism              0.000     2.013    
+    SLICE_X6Y69          FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.055     2.068    xilinxmultiregimpl90_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           2.473    
+                         clock arrival                          2.068    
+  -------------------------------------------------------------------
+                         relative delay                         0.405    
+
+
+
+Id: 6
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl100_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 5
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl100_reg[2]/D  xilinxmultiregimpl100_reg[3]/D  Slow         0.385      7.615
+
+
+Slack (MET) :             7.615ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl100_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl100_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.211ns
+  Reference Relative Delay:  -0.684ns
+  Relative CRPR:              0.510ns
+  Actual Bus Skew:            0.385ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.780     2.037    gth_rx_clk
+    SLICE_X6Y66          FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y66          FDRE (Prop_GFF2_SLICEL_C_Q)
+                                                      0.099     2.136 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg[2]/Q
+                         net (fo=2, routed)           0.400     2.536    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q[2]
+    SLICE_X5Y69          FDRE                                         r  xilinxmultiregimpl100_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.131     2.298    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X5Y69          FDRE                                         r  xilinxmultiregimpl100_reg[2]/C
+                         clock pessimism              0.000     2.298    
+    SLICE_X5Y69          FDRE (Setup_HFF2_SLICEM_C_D)
+                                                      0.027     2.325    xilinxmultiregimpl100_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                           2.536    
+                         clock arrival                          2.325    
+  -------------------------------------------------------------------
+                         relative delay                         0.211    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.563     1.789    gth_rx_clk
+    SLICE_X6Y66          FDRE                                         r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y66          FDRE (Prop_FFF_SLICEL_C_Q)
+                                                      0.069     1.858 r  diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q_reg[3]/Q
+                         net (fo=2, routed)           0.129     1.987    diagnostic_dma_labdelayeddmacsr_asyncsatellitedma_dmarawcdc_graycounter1_q[3]
+    SLICE_X5Y70          FDRE                                         r  xilinxmultiregimpl100_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.408     2.615    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X5Y70          FDRE                                         r  xilinxmultiregimpl100_reg[3]/C
+                         clock pessimism              0.000     2.615    
+    SLICE_X5Y70          FDRE (Hold_HFF2_SLICEM_C_D)
+                                                      0.055     2.670    xilinxmultiregimpl100_reg[3]
+  -------------------------------------------------------------------
+                         data arrival                           1.987    
+                         clock arrival                          2.670    
+  -------------------------------------------------------------------
+                         relative delay                        -0.684    
+
+
+
+Id: 7
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_tscsnapshot_graycounter0_q_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl430_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 3
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl430_reg[0]/D  xilinxmultiregimpl430_reg[2]/D  Slow         0.449      7.551
+
+
+Slack (MET) :             7.551ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_auxps_tscsnapshot_graycounter0_q_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl430_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_auxps_tscsnapshot_graycounter0_q_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl430_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.263ns
+  Reference Relative Delay:  -0.677ns
+  Relative CRPR:              0.491ns
+  Actual Bus Skew:            0.449ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.723     1.980    gth_rx_clk
+    SLICE_X17Y101        FDRE                                         r  diagnostic_auxps_tscsnapshot_graycounter0_q_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y101        FDRE (Prop_DFF_SLICEM_C_Q)
+                                                      0.096     2.076 r  diagnostic_auxps_tscsnapshot_graycounter0_q_reg[0]/Q
+                         net (fo=2, routed)           0.461     2.537    diagnostic_auxps_tscsnapshot_graycounter0_q[0]
+    SLICE_X17Y99         FDRE                                         r  xilinxmultiregimpl430_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.080     2.247    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X17Y99         FDRE                                         r  xilinxmultiregimpl430_reg[0]/C
+                         clock pessimism              0.000     2.247    
+    SLICE_X17Y99         FDRE (Setup_GFF2_SLICEM_C_D)
+                                                      0.027     2.274    xilinxmultiregimpl430_reg[0]
+  -------------------------------------------------------------------
+                         data arrival                           2.537    
+                         clock arrival                          2.274    
+  -------------------------------------------------------------------
+                         relative delay                         0.263    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.516     1.742    gth_rx_clk
+    SLICE_X17Y101        FDRE                                         r  diagnostic_auxps_tscsnapshot_graycounter0_q_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y101        FDRE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.072     1.814 r  diagnostic_auxps_tscsnapshot_graycounter0_q_reg[2]/Q
+                         net (fo=2, routed)           0.120     1.934    diagnostic_auxps_tscsnapshot_graycounter0_q[2]
+    SLICE_X17Y99         FDRE                                         r  xilinxmultiregimpl430_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.350     2.557    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X17Y99         FDRE                                         r  xilinxmultiregimpl430_reg[2]/C
+                         clock pessimism              0.000     2.557    
+    SLICE_X17Y99         FDRE (Hold_CFF2_SLICEM_C_D)
+                                                      0.054     2.611    xilinxmultiregimpl430_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                           1.934    
+                         clock arrival                          2.611    
+  -------------------------------------------------------------------
+                         relative delay                        -0.677    
+
+
+
+Id: 8
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_tscsnapshot_graycounter1_q_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl440_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 3
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clk_pl_0              rxoutclk_out[0]       xilinxmultiregimpl440_reg[1]/D  xilinxmultiregimpl440_reg[2]/D  Slow         0.378      7.622
+
+
+Slack (MET) :             7.622ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_auxps_tscsnapshot_graycounter1_q_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Endpoint Destination:   xilinxmultiregimpl440_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Source:       diagnostic_auxps_tscsnapshot_graycounter1_q_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Destination:  xilinxmultiregimpl440_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    1.292ns
+  Reference Relative Delay:   0.397ns
+  Relative CRPR:              0.517ns
+  Actual Bus Skew:            0.378ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.369     2.576    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X16Y100        FDRE                                         r  diagnostic_auxps_tscsnapshot_graycounter1_q_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X16Y100        FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.097     2.673 r  diagnostic_auxps_tscsnapshot_graycounter1_q_reg[1]/Q
+                         net (fo=2, routed)           0.387     3.060    diagnostic_auxps_tscsnapshot_graycounter1_q[1]
+    SLICE_X17Y100        FDRE                                         r  xilinxmultiregimpl440_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.515     1.741    gth_rx_clk
+    SLICE_X17Y100        FDRE                                         r  xilinxmultiregimpl440_reg[1]/C
+                         clock pessimism              0.000     1.741    
+    SLICE_X17Y100        FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.027     1.768    xilinxmultiregimpl440_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           3.060    
+                         clock arrival                          1.768    
+  -------------------------------------------------------------------
+                         relative delay                         1.292    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.090     2.257    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X16Y100        FDRE                                         r  diagnostic_auxps_tscsnapshot_graycounter1_q_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X16Y100        FDRE (Prop_CFF2_SLICEL_C_Q)
+                                                      0.071     2.328 r  diagnostic_auxps_tscsnapshot_graycounter1_q_reg[2]/Q
+                         net (fo=2, routed)           0.102     2.430    diagnostic_auxps_tscsnapshot_graycounter1_q[2]
+    SLICE_X17Y100        FDRE                                         r  xilinxmultiregimpl440_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.721     1.978    gth_rx_clk
+    SLICE_X17Y100        FDRE                                         r  xilinxmultiregimpl440_reg[2]/C
+                         clock pessimism              0.000     1.978    
+    SLICE_X17Y100        FDRE (Hold_GFF2_SLICEM_C_D)
+                                                      0.055     2.033    xilinxmultiregimpl440_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                           2.430    
+                         clock arrival                          2.033    
+  -------------------------------------------------------------------
+                         relative delay                         0.397    
+
+
+
+Id: 9
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_rtio_rx_gray_source_reg* && REF_NAME =~ FD*}] -to [get_cells -hierarchical -filter {NAME =~ xilinxmultiregimpl200_reg* && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 32
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl200_reg[0]/D  xilinxmultiregimpl200_reg[27]/D
+                                                                                                            Slow         0.881      7.119
+
+
+Slack (MET) :             7.119ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_rtio_rx_gray_source_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl200_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_rtio_rx_gray_source_reg[27]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl200_reg[27]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.468ns
+  Reference Relative Delay:  -0.748ns
+  Relative CRPR:              0.335ns
+  Actual Bus Skew:            0.881ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.762     2.019    gth_rx_clk
+    SLICE_X8Y81          FDRE                                         r  diagnostic_rtio_rx_gray_source_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X8Y81          FDRE (Prop_DFF2_SLICEM_C_Q)
+                                                      0.098     2.117 r  diagnostic_rtio_rx_gray_source_reg[0]/Q
+                         net (fo=1, routed)           0.665     2.782    diagnostic_rtio_rx_gray_source[0]
+    SLICE_X8Y80          FDRE                                         r  xilinxmultiregimpl200_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.120     2.287    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X8Y80          FDRE                                         r  xilinxmultiregimpl200_reg[0]/C
+                         clock pessimism              0.000     2.287    
+    SLICE_X8Y80          FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.027     2.314    xilinxmultiregimpl200_reg[0]
+  -------------------------------------------------------------------
+                         data arrival                           2.782    
+                         clock arrival                          2.314    
+  -------------------------------------------------------------------
+                         relative delay                         0.468    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.522     1.748    gth_rx_clk
+    SLICE_X6Y90          FDRE                                         r  diagnostic_rtio_rx_gray_source_reg[27]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y90          FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.070     1.818 r  diagnostic_rtio_rx_gray_source_reg[27]/Q
+                         net (fo=1, routed)           0.076     1.894    diagnostic_rtio_rx_gray_source[27]
+    SLICE_X6Y90          FDRE                                         r  xilinxmultiregimpl200_reg[27]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.380     2.587    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X6Y90          FDRE                                         r  xilinxmultiregimpl200_reg[27]/C
+                         clock pessimism              0.000     2.587    
+    SLICE_X6Y90          FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.055     2.642    xilinxmultiregimpl200_reg[27]
+  -------------------------------------------------------------------
+                         data arrival                           1.894    
+                         clock arrival                          2.642    
+  -------------------------------------------------------------------
+                         relative delay                        -0.748    
+
+
+
+Id: 10
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_rx_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}] -to [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_rx_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] 8.000
+Requirement: 8.000ns
+Endpoints: 32
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl10_reg[21]/D  xilinxmultiregimpl10_reg[3]/D   Slow         0.614      7.386
+
+
+Slack (MET) :             7.386ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_rx_count_gth_rx_gray_source_reg[21]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl10_reg[21]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_rx_count_gth_rx_gray_source_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl10_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.194ns
+  Reference Relative Delay:  -0.755ns
+  Relative CRPR:              0.335ns
+  Actual Bus Skew:            0.614ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.762     2.019    gth_rx_clk
+    SLICE_X4Y114         FDRE                                         r  diagnostic_rx_count_gth_rx_gray_source_reg[21]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y114         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     2.114 r  diagnostic_rx_count_gth_rx_gray_source_reg[21]/Q
+                         net (fo=1, routed)           0.393     2.507    diagnostic_rx_count_gth_rx_gray_source[21]
+    SLICE_X4Y114         FDRE                                         r  xilinxmultiregimpl10_reg[21]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.119     2.286    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X4Y114         FDRE                                         r  xilinxmultiregimpl10_reg[21]/C
+                         clock pessimism              0.000     2.286    
+    SLICE_X4Y114         FDRE (Setup_GFF2_SLICEM_C_D)
+                                                      0.027     2.313    xilinxmultiregimpl10_reg[21]
+  -------------------------------------------------------------------
+                         data arrival                           2.507    
+                         clock arrival                          2.313    
+  -------------------------------------------------------------------
+                         relative delay                         0.194    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.545     1.771    gth_rx_clk
+    SLICE_X3Y110         FDRE                                         r  diagnostic_rx_count_gth_rx_gray_source_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y110         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.070     1.841 r  diagnostic_rx_count_gth_rx_gray_source_reg[3]/Q
+                         net (fo=1, routed)           0.060     1.901    diagnostic_rx_count_gth_rx_gray_source[3]
+    SLICE_X3Y109         FDRE                                         r  xilinxmultiregimpl10_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.394     2.601    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X3Y109         FDRE                                         r  xilinxmultiregimpl10_reg[3]/C
+                         clock pessimism              0.000     2.601    
+    SLICE_X3Y109         FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.055     2.656    xilinxmultiregimpl10_reg[3]
+  -------------------------------------------------------------------
+                         data arrival                           1.901    
+                         clock arrival                          2.656    
+  -------------------------------------------------------------------
+                         relative delay                        -0.755    
+
+
+
+Id: 11
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_tx_count_gth_tx_gray_source_reg* && REF_NAME =~ FD*}] -to [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_tx_count_gth_tx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] 8.000
+Requirement: 8.000ns
+Endpoints: 32
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+txoutclk_out[0]       clk_pl_0              xilinxmultiregimpl20_reg[25]/D  xilinxmultiregimpl20_reg[29]/D  Slow         0.570      7.430
+
+
+Slack (MET) :             7.430ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_tx_count_gth_tx_gray_source_reg[25]/C
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl20_reg[25]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_tx_count_gth_tx_gray_source_reg[29]/C
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl20_reg[29]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.064ns
+  Reference Relative Delay:  -0.900ns
+  Relative CRPR:              0.393ns
+  Actual Bus Skew:            0.570ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.564     1.821    gth_tx_clk
+    SLICE_X6Y114         FDRE                                         r  diagnostic_tx_count_gth_tx_gray_source_reg[25]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y114         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.096     1.917 r  diagnostic_tx_count_gth_tx_gray_source_reg[25]/Q
+                         net (fo=1, routed)           0.469     2.386    diagnostic_tx_count_gth_tx_gray_source[25]
+    SLICE_X6Y116         FDRE                                         r  xilinxmultiregimpl20_reg[25]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.128     2.295    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X6Y116         FDRE                                         r  xilinxmultiregimpl20_reg[25]/C
+                         clock pessimism              0.000     2.295    
+    SLICE_X6Y116         FDRE (Setup_HFF2_SLICEL_C_D)
+                                                      0.027     2.322    xilinxmultiregimpl20_reg[25]
+  -------------------------------------------------------------------
+                         data arrival                           2.386    
+                         clock arrival                          2.322    
+  -------------------------------------------------------------------
+                         relative delay                         0.064    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.103     0.103    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.225 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.374     1.599    gth_tx_clk
+    SLICE_X6Y116         FDRE                                         r  diagnostic_tx_count_gth_tx_gray_source_reg[29]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y116         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.070     1.669 r  diagnostic_tx_count_gth_tx_gray_source_reg[29]/Q
+                         net (fo=1, routed)           0.088     1.757    diagnostic_tx_count_gth_tx_gray_source[29]
+    SLICE_X7Y116         FDRE                                         r  xilinxmultiregimpl20_reg[29]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.396     2.603    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X7Y116         FDRE                                         r  xilinxmultiregimpl20_reg[29]/C
+                         clock pessimism              0.000     2.603    
+    SLICE_X7Y116         FDRE (Hold_DFF2_SLICEM_C_D)
+                                                      0.054     2.657    xilinxmultiregimpl20_reg[29]
+  -------------------------------------------------------------------
+                         data arrival                           1.757    
+                         clock arrival                          2.657    
+  -------------------------------------------------------------------
+                         relative delay                        -0.900    
+
+
+
+Id: 12
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_error_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}] -to [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_error_count_gth_rx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] 8.000
+Requirement: 8.000ns
+Endpoints: 32
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl30_reg[27]/D  xilinxmultiregimpl30_reg[12]/D  Slow         0.872      7.128
+
+
+Slack (MET) :             7.128ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_error_count_gth_rx_gray_source_reg[27]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl30_reg[27]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_error_count_gth_rx_gray_source_reg[12]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl30_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.487ns
+  Reference Relative Delay:  -0.720ns
+  Relative CRPR:              0.335ns
+  Actual Bus Skew:            0.872ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.746     2.003    gth_rx_clk
+    SLICE_X9Y115         FDRE                                         r  diagnostic_error_count_gth_rx_gray_source_reg[27]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y115         FDRE (Prop_BFF_SLICEL_C_Q)
+                                                      0.096     2.099 r  diagnostic_error_count_gth_rx_gray_source_reg[27]/Q
+                         net (fo=1, routed)           0.712     2.811    diagnostic_error_count_gth_rx_gray_source[27]
+    SLICE_X9Y117         FDRE                                         r  xilinxmultiregimpl30_reg[27]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.130     2.297    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X9Y117         FDRE                                         r  xilinxmultiregimpl30_reg[27]/C
+                         clock pessimism              0.000     2.297    
+    SLICE_X9Y117         FDRE (Setup_HFF2_SLICEL_C_D)
+                                                      0.027     2.324    xilinxmultiregimpl30_reg[27]
+  -------------------------------------------------------------------
+                         data arrival                           2.811    
+                         clock arrival                          2.324    
+  -------------------------------------------------------------------
+                         relative delay                         0.487    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.549     1.775    gth_rx_clk
+    SLICE_X10Y112        FDRE                                         r  diagnostic_error_count_gth_rx_gray_source_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X10Y112        FDRE (Prop_HFF2_SLICEM_C_Q)
+                                                      0.071     1.846 r  diagnostic_error_count_gth_rx_gray_source_reg[12]/Q
+                         net (fo=1, routed)           0.086     1.932    diagnostic_error_count_gth_rx_gray_source[12]
+    SLICE_X10Y111        FDRE                                         r  xilinxmultiregimpl30_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.391     2.598    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X10Y111        FDRE                                         r  xilinxmultiregimpl30_reg[12]/C
+                         clock pessimism              0.000     2.598    
+    SLICE_X10Y111        FDRE (Hold_CFF2_SLICEM_C_D)
+                                                      0.054     2.652    xilinxmultiregimpl30_reg[12]
+  -------------------------------------------------------------------
+                         data arrival                           1.932    
+                         clock arrival                          2.652    
+  -------------------------------------------------------------------
+                         relative delay                        -0.720    
+
+
+
+Id: 13
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg* && REF_NAME =~ FD*}] -to [all_fanout -flat -endpoints_only -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] 8.000
+Requirement: 8.000ns
+Endpoints: 32
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       clk_pl_0              xilinxmultiregimpl350_reg[5]/D  xilinxmultiregimpl350_reg[18]/D
+                                                                                                            Slow         0.701      7.299
+
+
+Slack (MET) :             7.299ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg[5]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl350_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg[18]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl350_reg[18]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.312ns
+  Reference Relative Delay:  -0.724ns
+  Relative CRPR:              0.335ns
+  Actual Bus Skew:            0.701ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.710     1.967    gth_rx_clk
+    SLICE_X14Y95         FDRE                                         r  diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X14Y95         FDRE (Prop_GFF_SLICEL_C_Q)
+                                                      0.097     2.064 r  diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg[5]/Q
+                         net (fo=1, routed)           0.529     2.593    diagnostic_auxps_satellitetransport_rtio_rx_gray_source[5]
+    SLICE_X13Y95         FDRE                                         r  xilinxmultiregimpl350_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.087     2.254    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X13Y95         FDRE                                         r  xilinxmultiregimpl350_reg[5]/C
+                         clock pessimism              0.000     2.254    
+    SLICE_X13Y95         FDRE (Setup_GFF2_SLICEM_C_D)
+                                                      0.027     2.281    xilinxmultiregimpl350_reg[5]
+  -------------------------------------------------------------------
+                         data arrival                           2.593    
+                         clock arrival                          2.281    
+  -------------------------------------------------------------------
+                         relative delay                         0.312    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.514     1.740    gth_rx_clk
+    SLICE_X15Y101        FDRE                                         r  diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg[18]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y101        FDRE (Prop_HFF2_SLICEL_C_Q)
+                                                      0.071     1.811 r  diagnostic_auxps_satellitetransport_rtio_rx_gray_source_reg[18]/Q
+                         net (fo=1, routed)           0.101     1.912    diagnostic_auxps_satellitetransport_rtio_rx_gray_source[18]
+    SLICE_X15Y100        FDRE                                         r  xilinxmultiregimpl350_reg[18]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.374     2.581    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X15Y100        FDRE                                         r  xilinxmultiregimpl350_reg[18]/C
+                         clock pessimism              0.000     2.581    
+    SLICE_X15Y100        FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.055     2.636    xilinxmultiregimpl350_reg[18]
+  -------------------------------------------------------------------
+                         data arrival                           1.912    
+                         clock arrival                          2.636    
+  -------------------------------------------------------------------
+                         relative delay                        -0.724    
+
+
+
+Id: 14
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}] -to [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clk_pl_0              txoutclk_out[0]       xilinxmultiregimpl210_reg[11]/D
+                                                                            xilinxmultiregimpl210_reg[3]/D  Slow         0.659      7.341
+
+
+Slack (MET) :             7.341ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg[11]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Endpoint Destination:   xilinxmultiregimpl210_reg[11]/D
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Reference Source:       diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Destination:  xilinxmultiregimpl210_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    1.539ns
+  Reference Relative Delay:   0.478ns
+  Relative CRPR:              0.402ns
+  Actual Bus Skew:            0.659ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.371     2.578    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X14Y120        FDRE                                         r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg[11]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X14Y120        FDRE (Prop_EFF2_SLICEL_C_Q)
+                                                      0.099     2.677 r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg[11]/Q
+                         net (fo=2, routed)           0.521     3.198    diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q[11]
+    SLICE_X12Y122        FDRE                                         r  xilinxmultiregimpl210_reg[11]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.103     0.103    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.225 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.407     1.632    gth_tx_clk
+    SLICE_X12Y122        FDRE                                         r  xilinxmultiregimpl210_reg[11]/C
+                         clock pessimism              0.000     1.632    
+    SLICE_X12Y122        FDRE (Setup_HFF2_SLICEM_C_D)
+                                                      0.027     1.659    xilinxmultiregimpl210_reg[11]
+  -------------------------------------------------------------------
+                         data arrival                           3.198    
+                         clock arrival                          1.659    
+  -------------------------------------------------------------------
+                         relative delay                         1.539    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.094     2.261    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X13Y120        FDRE                                         r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X13Y120        FDRE (Prop_CFF_SLICEM_C_Q)
+                                                      0.069     2.330 r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q_reg[3]/Q
+                         net (fo=2, routed)           0.092     2.422    diagnostic_auxps_auxendpoint_auxtxcdc_graycounter0_q[3]
+    SLICE_X13Y121        FDRE                                         r  xilinxmultiregimpl210_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.632     1.889    gth_tx_clk
+    SLICE_X13Y121        FDRE                                         r  xilinxmultiregimpl210_reg[3]/C
+                         clock pessimism              0.000     1.889    
+    SLICE_X13Y121        FDRE (Hold_HFF2_SLICEM_C_D)
+                                                      0.055     1.944    xilinxmultiregimpl210_reg[3]
+  -------------------------------------------------------------------
+                         data arrival                           2.422    
+                         clock arrival                          1.944    
+  -------------------------------------------------------------------
+                         relative delay                         0.478    
+
+
+
+Id: 15
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}] -to [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+txoutclk_out[0]       clk_pl_0              xilinxmultiregimpl220_reg[0]/D  xilinxmultiregimpl220_reg[10]/D
+                                                                                                            Slow         0.629      7.371
+
+
+Slack (MET) :             7.371ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl220_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Reference Source:       diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg[10]/C
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl220_reg[10]/D
+                            (rising edge-triggered cell FDRE clocked by clk_pl_0)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    0.077ns
+  Reference Relative Delay:  -0.767ns
+  Relative CRPR:              0.215ns
+  Actual Bus Skew:            0.629ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.577     1.834    gth_tx_clk
+    SLICE_X14Y119        FDRE                                         r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X14Y119        FDRE (Prop_FFF2_SLICEL_C_Q)
+                                                      0.099     1.933 r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg[0]/Q
+                         net (fo=2, routed)           0.442     2.374    diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q[0]
+    SLICE_X12Y119        FDRE                                         r  xilinxmultiregimpl220_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.140     0.140    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.027     0.167 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.103     2.270    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X12Y119        FDRE                                         r  xilinxmultiregimpl220_reg[0]/C
+                         clock pessimism              0.000     2.270    
+    SLICE_X12Y119        FDRE (Setup_HFF2_SLICEM_C_D)
+                                                      0.027     2.297    xilinxmultiregimpl220_reg[0]
+  -------------------------------------------------------------------
+                         data arrival                           2.374    
+                         clock arrival                          2.297    
+  -------------------------------------------------------------------
+                         relative delay                         0.077    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.103     0.103    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.225 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.413     1.638    gth_tx_clk
+    SLICE_X14Y121        FDRE                                         r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg[10]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X14Y121        FDRE (Prop_FFF2_SLICEL_C_Q)
+                                                      0.072     1.710 r  diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q_reg[10]/Q
+                         net (fo=2, routed)           0.143     1.853    diagnostic_auxps_auxendpoint_auxtxcdc_graycounter1_q[10]
+    SLICE_X11Y121        FDRE                                         r  xilinxmultiregimpl220_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pl_0 rise edge)
+                                                      0.000     0.000 r  
+    PS8_X0Y0             PS8                          0.000     0.000 r  platform_zynq_ultra_ps_e_0_0/inst/PS8_i/PLCLK[0]
+                         net (fo=1, routed)           0.178     0.178    platform_zynq_ultra_ps_e_0_0/inst/pl_clk_unbuffered[0]
+    BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
+                                                      0.029     0.207 r  platform_zynq_ultra_ps_e_0_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
+    X1Y2 (CLOCK_ROOT)    net (fo=3235, routed)        2.358     2.565    maxihpm0_fpd_aclk__SHIFTED
+    SLICE_X11Y121        FDRE                                         r  xilinxmultiregimpl220_reg[10]/C
+                         clock pessimism              0.000     2.565    
+    SLICE_X11Y121        FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.055     2.620    xilinxmultiregimpl220_reg[10]
+  -------------------------------------------------------------------
+                         data arrival                           1.853    
+                         clock arrival                          2.620    
+  -------------------------------------------------------------------
+                         relative delay                        -0.767    
+
+
+
+Id: 16
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}] -to [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 8
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+rxoutclk_out[0]       txoutclk_out[0]       xilinxmultiregimpl310_reg[6]/D  xilinxmultiregimpl310_reg[4]/D  Slow         1.146      6.854
+
+
+Slack (MET) :             6.854ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg[6]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl310_reg[6]/D
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Reference Source:       diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl310_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    1.460ns
+  Reference Relative Delay:   0.055ns
+  Relative CRPR:              0.260ns
+  Actual Bus Skew:            1.146ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.766     2.023    gth_rx_clk
+    SLICE_X19Y128        FDRE                                         r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X19Y128        FDRE (Prop_AFF2_SLICEL_C_Q)
+                                                      0.099     2.122 r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg[6]/Q
+                         net (fo=3, routed)           0.973     3.094    diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q[6]
+    SLICE_X21Y128        FDRE                                         r  xilinxmultiregimpl310_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.103     0.103    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.225 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.382     1.607    gth_tx_clk
+    SLICE_X21Y128        FDRE                                         r  xilinxmultiregimpl310_reg[6]/C
+                         clock pessimism              0.000     1.607    
+    SLICE_X21Y128        FDRE (Setup_HFF2_SLICEM_C_D)
+                                                      0.027     1.634    xilinxmultiregimpl310_reg[6]
+  -------------------------------------------------------------------
+                         data arrival                           3.094    
+                         clock arrival                          1.634    
+  -------------------------------------------------------------------
+                         relative delay                         1.460    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.556     1.782    gth_rx_clk
+    SLICE_X20Y128        FDRE                                         r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X20Y128        FDRE (Prop_AFF2_SLICEM_C_Q)
+                                                      0.071     1.853 r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q_reg[4]/Q
+                         net (fo=2, routed)           0.092     1.945    diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter0_q[4]
+    SLICE_X20Y127        FDRE                                         r  xilinxmultiregimpl310_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.579     1.836    gth_tx_clk
+    SLICE_X20Y127        FDRE                                         r  xilinxmultiregimpl310_reg[4]/C
+                         clock pessimism              0.000     1.836    
+    SLICE_X20Y127        FDRE (Hold_DFF2_SLICEM_C_D)
+                                                      0.054     1.890    xilinxmultiregimpl310_reg[4]
+  -------------------------------------------------------------------
+                         data arrival                           1.945    
+                         clock arrival                          1.890    
+  -------------------------------------------------------------------
+                         relative delay                         0.055    
+
+
+
+Id: 17
+set_bus_skew -from [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}] -to [filter [all_fanout -flat -endpoints_only -only_cells -from [get_pins -of_objects [get_cells -hierarchical -filter {NAME =~ diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg* && REF_NAME =~ FD*}] -filter {REF_PIN_NAME == Q}]] {mr_ff == TRUE && REF_NAME =~ FD*}] 8.000
+Requirement: 8.000ns
+Endpoints: 8
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+txoutclk_out[0]       rxoutclk_out[0]       xilinxmultiregimpl320_reg[3]/D  xilinxmultiregimpl320_reg[6]/D  Slow         1.176      6.824
+
+
+Slack (MET) :             6.824ns  (requirement - actual skew)
+  Endpoint Source:        diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Endpoint Destination:   xilinxmultiregimpl320_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Reference Source:       diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg[6]/C
+                            (rising edge-triggered cell FDRE clocked by txoutclk_out[0])
+  Reference Destination:  xilinxmultiregimpl320_reg[6]/D
+                            (rising edge-triggered cell FDRE clocked by rxoutclk_out[0])
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.000ns
+  Endpoint Relative Delay:    1.280ns
+  Reference Relative Delay:  -0.287ns
+  Relative CRPR:              0.392ns
+  Actual Bus Skew:            1.176ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.604     1.861    gth_tx_clk
+    SLICE_X21Y125        FDRE                                         r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X21Y125        FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.097     1.958 r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg[3]/Q
+                         net (fo=2, routed)           1.123     3.080    diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q[3]
+    SLICE_X22Y127        FDRE                                         r  xilinxmultiregimpl320_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.104     0.104    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.226 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.547     1.773    gth_rx_clk
+    SLICE_X22Y127        FDRE                                         r  xilinxmultiregimpl320_reg[3]/C
+                         clock pessimism              0.000     1.773    
+    SLICE_X22Y127        FDRE (Setup_HFF2_SLICEL_C_D)
+                                                      0.027     1.800    xilinxmultiregimpl320_reg[3]
+  -------------------------------------------------------------------
+                         data arrival                           3.080    
+                         clock arrival                          1.800    
+  -------------------------------------------------------------------
+                         relative delay                         1.280    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock txoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+                         net (fo=3, routed)           0.103     0.103    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/txoutclk_out[0]
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.122     0.225 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=330, routed)         1.383     1.608    gth_tx_clk
+    SLICE_X21Y126        FDRE                                         r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X21Y126        FDRE (Prop_GFF_SLICEM_C_Q)
+                                                      0.070     1.678 r  diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q_reg[6]/Q
+                         net (fo=2, routed)           0.104     1.782    diagnostic_auxps_satellitetransport_rtreplycdc_auxtxcdc_graycounter1_q[6]
+    SLICE_X22Y126        FDRE                                         r  xilinxmultiregimpl320_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock rxoutclk_out[0] rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+                         net (fo=2, routed)           0.118     0.118    gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/rxoutclk_out[0]
+    BUFG_GT_X0Y40        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.139     0.257 r  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=4317, routed)        1.758     2.015    gth_rx_clk
+    SLICE_X22Y126        FDRE                                         r  xilinxmultiregimpl320_reg[6]/C
+                         clock pessimism              0.000     2.015    
+    SLICE_X22Y126        FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.055     2.070    xilinxmultiregimpl320_reg[6]
+  -------------------------------------------------------------------
+                         data arrival                           1.782    
+                         clock arrival                          2.070    
+  -------------------------------------------------------------------
+                         relative delay                        -0.287    
+
+
+
