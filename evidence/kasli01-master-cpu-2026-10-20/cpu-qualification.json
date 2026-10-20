@@ -1,0 +1,19 @@
+{
+  "status": "CPU_BUILD_AND_ROM_PASS",
+  "hardware_access": false,
+  "rom": {
+    "bootloader_only": false,
+    "cpu_reset_address": 0,
+    "integrated_rom_size": 131072,
+    "bootloader_sha256": "ca7ac29c9735662695007a6bc65211650276c90206215460d66e5ebebf0ccb9c",
+    "bootloader_bytes": 112288
+  },
+  "map_compatibility": "mem.rs/csr.rs/regions.ld byte-identical to previous qualified master",
+  "sha256": {
+    "software/bootloader/bootloader.bin": "ca7ac29c9735662695007a6bc65211650276c90206215460d66e5ebebf0ccb9c",
+    "software/runtime/runtime.bin": "364c5bd7d038672ba7a0d7db879d5e13edab623386afc9b1395d83746323ac4e",
+    "software/runtime/runtime.elf": "a7a7d1ebe8d423800b24fa9c440428a69e8872aa413587119d5211889a374c85",
+    "software/ksupport/ksupport.elf": "f3fa2755fc631fc0ea36e53393c9097bf8c4e62beb16fa41f7d135bded9a57ae",
+    "gateware/mem.init": "af346ff0be58dac3dbc840998fdce60527c0267f8787944d06363ba12a51e0f8"
+  }
+}

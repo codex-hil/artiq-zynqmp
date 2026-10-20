@@ -1,0 +1,18 @@
+test_kasli01_avoids_secure_link_leases (test_kasli_board_identity.BoardTests.test_kasli01_avoids_secure_link_leases) ... ok
+test_legacy_scope_preserved_unknown_board_refused (test_kasli_board_identity.BoardTests.test_legacy_scope_preserved_unknown_board_refused) ... ok
+test_configuration_nack_is_not_accepted_or_reset_repeated (test_kasli_clock_restore.RestoreTest.test_configuration_nack_is_not_accepted_or_reset_repeated) ... ok
+test_restore_and_expected_reset_nack (test_kasli_clock_restore.RestoreTest.test_restore_and_expected_reset_nack) ... ok
+test_actual_board_baseline_and_wrong_board_plan_refused (test_kasli_clock_selection.ClockSelectionTests.test_actual_board_baseline_and_wrong_board_plan_refused) ... ok
+test_kasli01_restore_refused_before_hardware_or_output (test_kasli_clock_selection.ClockSelectionTests.test_kasli01_restore_refused_before_hardware_or_output) ... ok
+test_unknown_board_refused (test_kasli_clock_selection.ClockSelectionTests.test_unknown_board_refused) ... ok
+test_delayed_ack_negative_control (test_kasli_i2c_timing.TimingTest.test_delayed_ack_negative_control) ... ok
+test_true_nack_is_not_hidden (test_kasli_i2c_timing.TimingTest.test_true_nack_is_not_hidden) ... ok
+test_multicast_global_or_malformed_refused (test_kasli_lab_mac.MACTests.test_multicast_global_or_malformed_refused) ... ok
+test_one_network_identity_shared_by_bootloader_and_runtime (test_kasli_lab_mac.MACTests.test_one_network_identity_shared_by_bootloader_and_runtime) ... ok
+test_panic_is_not_startup_success (test_kasli_runtime_startup.StartupTest.test_panic_is_not_startup_success) ... ok
+test_two_upload_clock_switch_flow (test_kasli_runtime_startup.StartupTest.test_two_upload_clock_switch_flow) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.081s
+
+OK

@@ -2628,3 +2628,19 @@ testsPASS; historicaldefault03 unchanged. Evidence kasli01-master-source-2026-
 Nix fetchingRustnightly2021-09-01, finalbuildNOT_YET_QUALIFIED. FPGA mustalso
 be rebuilt fornewbootROMMAC, not old03bit. NoFPGA/flashload. Next auditbuild,
 resolve dependency errors andprepare01-specific guardedruntime wrapper.
+
+
+KASLI01 master CPU checkpoint (2026-10-20): full bootloader/runtime/ksupport
+build PASS using the pinned toolchain. Bootloader 112288 bytes fits 131072-byte
+ROM at reset address zero; mem.init matches bootloader, generated memory/CSR
+maps match the previous qualified master. New per-board MAC is embedded in
+shared bootloader/runtime settings. Vivado synthesis PASS (zero critical
+warnings/errors), implementation still running; complete FPGA qualification
+and physical KASLI01 netboot/runtime/DRTIO remain NOT_RUN. No hardware access
+in this checkpoint. Board-specific guarded wrapper adds KASLI01 identity and
+only KASLI01+Genesys runtime leases, explicit UART/USB selection, exact clock
+validation/profile binding and restoration-backup preflight. All 13 Kasli
+offline tests and historical profile preflight PASS. Evidence:
+`evidence/kasli01-master-cpu-2026-10-20`. Next qualify FPGA timing/ROM/artifacts
+and execute bounded KASLI01 netboot with diagnostic/clock restoration before
+attempting the external DRTIO lab-idle qualification. KASLI03/04 untouched.

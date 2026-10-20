@@ -16,15 +16,21 @@ def main():
     parser.add_argument('--build', type=Path, required=True)
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--expected-overlay',type=Path,help='Explicit reviewed per-board source patch')
+    parser.add_argument('--mac',default='02:4b:03:48:48:54')
     args = parser.parse_args()
+    args.output.unlink(missing_ok=True)
     repo = Path(__file__).resolve().parents[2]
     source = args.source.resolve()
     revision = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
     if revision != '486e8f897547d282d46a02c30463449c21e30cfe':
         raise SystemExit('Wrong upstream revision')
     patch = subprocess.check_output(['git', '-C', str(source), 'diff'], text=True)
-    if patch != (repo / 'diagnostics/kasli-master/kasli03-netboot.patch').read_text():
+    if patch != (args.expected_overlay or (repo / 'diagnostics/kasli-master/kasli03-netboot.patch')).read_text():
         raise SystemExit('Netboot overlay differs from reviewed patch')
+    from lab_mac import literal
+    if 'let hardware_addr = '+literal(args.mac)+';' not in (source/'artiq/firmware/libboard_misoc/net_settings.rs').read_text():
+        raise SystemExit('Wrong volatile bootloader/runtime network identity')
     config = json.loads((args.build / 'config.json').read_text())
     if (config['hw_rev'], config['drtio_role'], config['rtio_frequency'], config['peripherals']) != ('v1.1', 'master', 125000000, []):
         raise SystemExit('Unexpected board configuration')
@@ -68,7 +74,7 @@ def main():
     # The completed build script emits this only after Vivado and artifact checks.
     if not (args.build / 'artifacts.sha256').is_file():
         raise SystemExit('Build completion marker absent')
-    result = {'status': 'BUILD_PASS_HARDWARE_NOT_RUN', 'boot_mode': 'network-only', 'scope': 'bootloader-only', 'bram_boot': rom,
+    result = {'status': 'BUILD_PASS_HARDWARE_NOT_RUN', 'boot_mode': 'network-only', 'scope': 'network-only BRAM bootloader; separately built runtime' if args.expected_overlay else 'bootloader-only', 'volatile_mac':args.mac.lower(), 'bram_boot': rom,
               'bit_sha256': hashes['gateware/top.bit'], 'artifact_hashes': hashes,
               'rom_init_sha256': hashlib.sha256((gate / 'mem.init').read_bytes()).hexdigest(),
               'generated_hdl_sha256': hashlib.sha256(hdl.encode()).hexdigest(),

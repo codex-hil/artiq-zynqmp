@@ -1,4 +1,4 @@
-"""Bounded KASLI03 SRAM boot/download/optional runtime and restoration.
+"""Bounded known-Kasli SRAM boot/download/optional runtime and restoration.
 
 LGPL-3.0-or-later. No flash operations. Runtime option also leases Genesys.
 """
@@ -23,6 +23,7 @@ RNG = Path('/home/codex-hil/rng-rpi')
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--board',choices=['KASLI01','KASLI03'],default='KASLI03')
     parser.add_argument('--build', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sha256', required=True)
@@ -41,6 +42,10 @@ def main():
     parser.add_argument('--clock-validation', type=Path)
     parser.add_argument('--genesys-observer', type=Path, help='Reviewed external RX/restore configuration')
     args = parser.parse_args()
+    from kasli_board_identity import identity,locks as board_locks
+    board=identity(args.board);dna=board['dna'];mac=board['mac']
+    if args.board=='KASLI01' and (args.usb_topology=='1-6.2' or args.uart==UART):
+        raise SystemExit('KASLI01 requires explicit verified USB topology and UART')
     observer = None
     if args.genesys_observer:
         if not args.execute_runtime: raise SystemExit('External RX requires runtime and both-board leases')
@@ -56,8 +61,12 @@ def main():
         plan = json.loads(args.clock_plan.read_text())
         baseline_bytes = args.clock_baseline.read_bytes()
         baseline = json.loads(baseline_bytes)
-        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256'] or int(validation['dna'], 16) != DNA or validation['si_source_sha256'] != baseline['si_source_sha256']:
+        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256'] or int(validation['dna'], 16) != dna or validation['si_source_sha256'] != baseline['si_source_sha256']:
             raise SystemExit('Clock baseline/validation identity mismatch')
+        if int(baseline.get('dna','0'),16)!=dna or any(d.get('board')!=args.board for d in (validation,baseline,plan)):
+            raise SystemExit('Clock inputs belong to another board')
+        if any(validation.get('post_configuration',{}).get(str(item['register']))!=item['value'] for item in plan['configuration_to_compare_then_restore']):
+            raise SystemExit('Clock physical validation did not restore this exact profile')
         sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'diagnostics/kasli-master'))
         sys.path.insert(0, str(RNG / 'kasli'))
     if args.counter_experiment and not args.management_client:
@@ -76,6 +85,8 @@ def main():
             qualification.get('bit_sha256')) != ('BUILD_PASS_HARDWARE_NOT_RUN',
                                                   'network-only', args.sha256):
         raise SystemExit('Reviewed netboot-only build qualification required')
+    if args.board=='KASLI01' and qualification.get('volatile_mac')!=mac:
+        raise SystemExit('KASLI01 requires its own qualified bootloader MAC')
     if qualification.get('bram_boot', {}).get('cpu_reset_address') != 0:
         raise SystemExit('Qualification lacks embedded bootloader at reset address zero')
     gate = args.build / 'generated/genesys_drtio_master_v11/gateware'
@@ -87,6 +98,10 @@ def main():
     config = json.loads((args.build / 'config.json').read_text())
     if (config['hw_rev'], config['drtio_role']) != ('v1.1', 'master'):
         raise SystemExit('Wrong revision/role')
+    # Restoration uses the existing board programmer, which requires backup evidence.
+    backups=(RNG/'kasli/evidence'/args.board).glob('*/flash-summary.json')
+    if not any((summary:=json.loads(path.read_text())).get('result')=='PASS' and summary.get('sha256_read_1')==summary.get('sha256_read_2') for path in backups):
+        raise SystemExit('Verified existing flash-backup evidence required by restoration tool')
     # Caller must review the netboot overlay and this hash before execution.
     if args.dry_run:
         print(json.dumps({'status': 'PREFLIGHT_PASS_NO_HARDWARE_ACCESS',
@@ -113,7 +128,7 @@ def main():
             self.port.flush()
 
     args.output.mkdir(parents=True, exist_ok=True)
-    result = {'status': 'FAIL', 'board': 'KASLI03', 'bit_sha256': args.sha256,
+    result = {'status': 'FAIL', 'board': args.board, 'bit_sha256': args.sha256,
               'flash_written': False, 'runtime_uploaded': False,
               'genesys_accessed': False, 'clock_profile_written': False}
     handles, changed = [], False
@@ -126,9 +141,7 @@ def main():
         return completed.stdout + completed.stderr
 
     try:
-        locks = [f'/home/codex-hil/.cache/kasli-{board}.lock' for board in ('KASLI01', 'KASLI02', 'KASLI03')]
-        if args.execute_runtime:
-            locks.append('/home/codex-hil/.cache/genesys-210383B7F02DA.lock')
+        locks = board_locks(args.board,args.execute_runtime)
         for lock in sorted(locks):
             handle = open(lock, 'a')
             handles.append(handle)
@@ -142,7 +155,7 @@ def main():
                 '--busdev-num', busdev, '--ftdi-channel', '0', '--freq', '1000000']
         identity = command(base + ['--read-dna'], 'dna.log')
         match = re.search(r'"dna":\s*"(0x[0-9a-fA-F]+)"', identity)
-        if not match or int(match[1], 16) != DNA:
+        if not match or int(match[1], 16) != dna:
             raise RuntimeError('DNA mismatch')
         result['dna'] = match[1]
         tty = Path(args.uart).resolve().name
@@ -160,7 +173,7 @@ def main():
             deadline = time.monotonic() + 120
             expected = [b'Bootloader CRC passed', b'SDRAM initialized',
                         b'Memory test passed', b'Flash booting has been disabled.',
-                        b'MAC=02-4b-03-48-48-54', b'IPv4=use_dhcp',
+                        ('MAC='+mac.replace(':','-')).encode(), b'IPv4=use_dhcp',
                         b'Waiting for connections...']
             while time.monotonic() < deadline:
                 log.extend(uart.read(4096))
@@ -173,7 +186,7 @@ def main():
                 raise RuntimeError('Required netboot-only startup evidence absent')
             result['bootloader_test'] = 'PASS'
             result['dhcp_lease'] = 'NOT_IMPLEMENTED_BY_BOOTLOADER'
-            result['netboot_ipv6_link_local'] = 'fe80::4b:3ff:fe48:4854'
+            result['netboot_ipv6_link_local'] = board['link_local']
             if args.network_interface:
                 scope = socket.if_nametoindex(args.network_interface)
                 actions = [(b'\xff', b'Received unknown netboot command: 0xff'),
@@ -199,13 +212,13 @@ def main():
                 (args.output / 'ipv6-neighbors.json').write_text(neighbors)
                 matching = [entry for entry in json.loads(neighbors)
                             if entry.get('dst') == result['netboot_ipv6_link_local']]
-                if not any(entry.get('lladdr', '').lower() == '02:4b:03:48:48:54' for entry in matching):
+                if not any(entry.get('lladdr', '').lower() == mac for entry in matching):
                     raise RuntimeError('Netboot neighbor MAC identity not confirmed')
                 result['netboot_network'] = {
                     'status': 'PASS', 'interface': args.network_interface,
                     'tcp_connections': 3, 'unknown_command_rejected': True,
                     'boot_without_firmware_rejected': True, 'listener_recovery': True,
-                    'neighbor_mac': '02:4b:03:48:48:54'}
+                    'neighbor_mac': mac}
             if payload is not None:
                 with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as connection:
                     connection.settimeout(5)
@@ -296,8 +309,8 @@ def main():
     finally:
         if changed:
             try:
-                command(['python3', str(RNG / 'kasli/program_sram.py'), 'KASLI03',
-                         '--busdev', result['usb_busdev'], '--dna', hex(DNA),
+                command(['python3', str(RNG / 'kasli/program_sram.py'), args.board,
+                         '--busdev', result['usb_busdev'], '--dna', hex(dna),
                          '--build', str(RNG / 'kasli/artifacts/kasli-full-checker')], 'restore.log')
                 comm = BoundedUART(args.uart)
                 comm.port.timeout = 2
