@@ -6,7 +6,7 @@ The launch/complete handshakes must retain their RTL settling intervals.
 import re
 
 
-def dma_crossings(hdl, marked, snapshot=False):
+def dma_crossings(hdl, marked, snapshot=False,lab_metrics=False):
     first = {name: int(width)+1 if width else 1 for width,name in marked}
     specs = [('offset1',64),('crimaster_error_w',2),
              ('crimaster_error_channel_status',24),
@@ -14,9 +14,11 @@ def dma_crossings(hdl, marked, snapshot=False):
              ('dmarawcdc_graycounter0_q',5),('dmarawcdc_graycounter1_q',5)]
     if snapshot:
         specs += [('tscsnapshot_graycounter0_q',3),('tscsnapshot_graycounter1_q',3)]
+    if lab_metrics:specs += [('rtio_rx_gray_source',32)]
     groups=[]
     for suffix,width in specs:
-        prefix = r'\w*' if suffix.startswith('tscsnapshot') else r'\w*dmacsr\w*_'
+        prefix = (r'diagnostic_' if suffix=='rtio_rx_gray_source' else
+                  r'\w*' if suffix.startswith('tscsnapshot') else r'\w*dmacsr\w*_')
         sources=re.findall(r'\breg\s*(?:\[\d+:0\]\s*)?('+prefix+suffix+r')\s*=',hdl)
         if len(sources)!=1:raise ValueError('DMA CDC source: '+suffix)
         source=sources[0]
@@ -24,7 +26,7 @@ def dma_crossings(hdl, marked, snapshot=False):
         if len(endpoints)!=1 or first[endpoints[0]]!=width:
             raise ValueError('DMA CDC first-stage width/source: '+source)
         groups.append({'source':source,'first_stage':endpoints[0],'bits':width,
-                       'kind':'gray' if 'graycounter' in suffix else 'held-payload',
+                       'kind':'gray' if 'graycounter' in suffix or suffix=='rtio_rx_gray_source' else 'held-payload',
                        'max_delay_ns':8,'bus_skew_ns':8})
     return groups
 

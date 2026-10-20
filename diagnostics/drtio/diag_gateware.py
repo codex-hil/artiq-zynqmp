@@ -149,6 +149,11 @@ class Diagnostic(Module):
                 self.specials += MultiReg(dma.active.status,owner,'rtio_rx')
                 rtio_pads.update(dma_cri=dma.cri, dma_rtio_reset=dma.rtio_reset_request,
                                  dma_owner=owner)
+                if lab_read_delay_sys_hz is not None:
+                    from dma_lab_metrics import LabDMAMetrics
+                    self.submodules.lab_metrics=metrics=LabDMAMetrics(memory,rtio_pads['output_pad'])
+                    dma.csrs += metrics.csrs
+                    dma.delay_config['independent_metrics']=True
                 extra_banks.append(('dma',4,dma.csrs))
             self.submodules.aux = AuxPS(extra_banks=extra_banks, **rtio_pads)
             if satellite_dma:
@@ -380,10 +385,10 @@ set_max_delay -datapath_only 8 -from $sources -to $endpoints
         route.write_text(route.read_text().replace('PACKET_CDC_COUNT',str(bits)))
         if args.satellite_dma:
             from dma_cdc_constraints import dma_crossings,dma_tcl
-            groups = dma_crossings(text,marked,snapshot=True)
+            groups = dma_crossings(text,marked,snapshot=True,lab_metrics=args.lab_read_delay_sys_hz is not None)
             manifest['dma_crossings'] = groups
             manifest['dma_physical_constraints'] = 'GENERATED_NOT_IMPLEMENTATION_QUALIFIED'
-            manifest['gray_counter_buses'] += 4
+            manifest['gray_counter_buses'] += 4 + int(args.lab_read_delay_sys_hz is not None)
             manifest['held_payload_buses'] = 4
             (args.output.resolve() / 'cdc-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
             route.write_text(route.read_text().replace('DMA_TIMED_CONSTRAINTS',dma_tcl(groups)))

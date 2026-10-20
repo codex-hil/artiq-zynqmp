@@ -1,0 +1,19 @@
+{
+  "status": "HDL_MAP_CONSTRAINT_GENERATION_PASS",
+  "hardware_access": false,
+  "tests": 4,
+  "cdc_groups": 9,
+  "cdc_endpoints": 202,
+  "old_register_addresses_preserved": true,
+  "generated_sha256": {
+    "top.v": "4a4d81fdbf9535b48ad6dc36b7fd6885c76db40d65754e305a63a0457cd0415a",
+    "top.xdc": "51cff1f790dc7b5ed46c8bc3659c7e54d074f9e17cedc8818301342003b7cbee",
+    "top_route.tcl": "f48ff8e9c1f69b372f7159dcdb5276bfa6f75fc54af40a3d94c42793d9f357e1",
+    "csr-map.json": "024e485e941467531785340d46fc0b841ee2e61333a23ca01d7fda73832386c5",
+    "cdc-manifest.json": "a2da2d1777329d6bfd88786ab8c887af0bdb120f8225c0dee33c19a8083fa584"
+  },
+  "limitations": [
+    "no synthesis/route or timing qualification",
+    "no firmware metric collection or guarded hardware test"
+  ]
+}

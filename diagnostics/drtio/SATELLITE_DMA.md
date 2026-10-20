@@ -1503,3 +1503,14 @@ the evidence parser. It performs no retry/erase/reset after the fault. Physical
 TTL silence, complete AXI drain, firmware fault handling and final restoration
 must still be verified by the guarded parent. Compilation and synthetic handshake
 checks are not hardware qualification.
+
+2026-10-20 continuation: the explicit delayed Genesys target now instantiates
+LabDMAMetrics and appends its AR/RLAST/TTL CSRs, leaving the normal target
+unchanged. The map marks `independent_metrics=true`. The generated timing
+manifest includes the TTL Gray crossing, with exact32-bit source/first-stage
+extraction, max-delay8ns and bus-skew8ns. The routed endpoint checker now requires
+9groups/202 endpoints for this variant (normal snapshot DMA stays8/170).
+Missing/wrong-width crossing controls and generated HDL/map checks pass. This is
+not implementation timing qualification; synth/route, firmware counter collection
+and guarded hardware execution remain pending. The published removal checkpoint
+and its normal qualified images are unchanged.

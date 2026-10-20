@@ -2518,3 +2518,15 @@ removal. Evidence kasli-final-{regression,stability,long-dma}-2026-10-19; Englis
 handoff diagnostics/drtio/KASLI_HANDOFF_2026-10-19.md. Recoverypackage under
 releases/kasli-handoff-2026-10-19; prepared-hostsnapshot, toolchains separate.
 Activeplaybackfault hardware remainsNOT_RUN; noexperimentalimage loaded.
+
+
+Resume2026-10-20 offline: optin delayedGenesystarget nowcontainsindependent
+AR/RLAST/TTLmetrics; originalCSRaddresses preserved, mapindependent_metrics=true.
+TTLGraycrossing exactly32bits addedto8ns maxdelay/skewtimedgroup set; routed
+checker requires9groups/202endpoints forlabvariant, normal8/170unchanged.
+ActualHDL/map/constraints generatedPASS and4unit/negativecontrolsPASS. First
+extractionattempt rejectedMigencompressedname; exactgeneratedname nowchecked.
+Evidence genesys-delay-metrics-hdl-2026-10-20. NoHWaccess/leasesneeded; Kasli
+removalcheckpoint preserved. Synth/route/physicaltiming andfirmwarecounter
+collection stillpending. Next offline candidatebuild/metriccollection integration;
+physicalexternaltests require confirmed available Kasli andallboardleases.

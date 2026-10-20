@@ -30,3 +30,16 @@ class ConstraintsTests(unittest.TestCase):
         with self.assertRaises(ValueError):dma_crossings(hdl,marked[:-1],snapshot=True)
         marked[-1]=('3',marked[-1][1])
         with self.assertRaises(ValueError):dma_crossings(hdl,marked,snapshot=True)
+
+    def test_lab_metrics_requires_exact_gray_crossing(self):
+        hdl,marked=self.fixture()
+        with self.assertRaises(ValueError):dma_crossings(hdl,marked,snapshot=True,lab_metrics=True)
+        name='diagnostic_rtio_rx_gray_source'
+        hdl+='\nreg [31:0] '+name+' = 0;\nmetric_sink <= '+name+';'
+        marked.append(('31','metric_sink'))
+        groups=dma_crossings(hdl,marked,snapshot=True,lab_metrics=True)
+        self.assertEqual((len(groups),sum(g['bits'] for g in groups)),(9,202))
+        self.assertEqual(groups[-1]['kind'],'gray')
+        self.assertIn('metric_sink',dma_tcl(groups))
+        marked[-1]=('30','metric_sink')
+        with self.assertRaises(ValueError):dma_crossings(hdl,marked,snapshot=True,lab_metrics=True)

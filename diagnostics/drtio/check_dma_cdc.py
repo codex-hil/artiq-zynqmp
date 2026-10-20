@@ -14,9 +14,12 @@ def main():
     (build/'dma-cdc-results.json').unlink(missing_ok=True)
     groups=json.loads((build/'cdc-manifest.json').read_text())['dma_crossings']
     snapshot='aux_tsc_snapshot_value' in json.loads((build/'csr-map.json').read_text())['registers']
+    mapping=json.loads((build/'csr-map.json').read_text())
+    lab=bool((mapping.get('dma') or {}).get('laboratory_read_delay',{}).get('independent_metrics'))
     count,total=(8,170) if snapshot else (6,164)
+    if lab:count+=1;total+=32
     if len(groups)!=count or sum(g['bits'] for g in groups)!=total:
-        raise ValueError('Expected six complete DMA CDC groups/164 bits')
+        raise ValueError(f'Expected {count} complete DMA CDC groups/{total} bits')
     dcp=build/'top_route.dcp'
     if not dcp.is_file() or any(c in str(dcp) for c in '{}\n'):
         raise ValueError('Missing/invalid routed checkpoint')

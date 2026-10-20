@@ -1,6 +1,6 @@
 """Independent lab DMA counters, no AXI control; LGPL-3.0-or-later.
 
-Not instantiated in any board target yet. TTL sampling is in rtio_rx; the
+Instantiated only in the opt-in delayed Genesys diagnostic. TTL sampling is in rtio_rx; the
 registered Gray counter crosses to sys. Reset/clock epochs must be unchanged
 between snapshots; constrain this extra Gray crossing before physical use.
 """
