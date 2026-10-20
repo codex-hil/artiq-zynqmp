@@ -1,0 +1,21 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+  "remote_drtio": "NOT_RUN",
+  "firmware_sha256": "18a99107897c68393a68306d7b4f026784422ed6aeb866a5480cfc475836391b",
+  "bit_sha256": "21c187cbeaf98543153b126bda5fd32ee079f1b4345a8aa9ec057863b5af24a8",
+  "startup_failure_status": {
+    "registers": {
+      "monitor_magic": 1146246192,
+      "monitor_reset": 0,
+      "monitor_tx_enable": 0,
+      "monitor_loopback": 0,
+      "monitor_status": 0,
+      "aux_in_reset": 0,
+      "aux_rx_up": 0
+    },
+    "scope": "post-failure sequential read-only sample; not exact failing poll or link qualification"
+  },
+  "restored_ip": "192.168.2.3"
+}

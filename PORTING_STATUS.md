@@ -2692,3 +2692,14 @@ offline tests PASS; actual-map Tcl generation and KASLI01 external preflight
 PASS. Hardware capture NOT_RUN. Evidence `evidence/kasli01-startup-status-
 offline-2026-10-20`. Next one bounded retry to distinguish PL/reset/RX state;
 no gateware/firmware admission bypass, no new hardware access this checkpoint.
+
+
+KASLI01 external retry with status (2026-10-20): AUX startup FAIL again;
+post-failure read-only DAP shows correct0x44525430 magic, monitor_reset0,
+aux_in_reset0, aux_rx_up0. RX link admission absent; exact failing poll and
+cable/module fault not proved. monitor_status0 is unrefreshed snapshot, not
+live PHY diagnosis. Master runtime/management/counter repeat PASS. Both-board
+restoration PASS (Genesys192.168.2.3), leases released, no flash/OTP/SD/GenesysSi
+writes, Kasli03/04 untouched. Evidence `evidence/kasli01-external-status-2026-10-20`.
+Next requires physical confirmation of KASLI01 SFP1-to-Genesys SFP path/modules;
+no identical retry or RX-up bypass until checked. External TSC/DIO/DMA pending.
