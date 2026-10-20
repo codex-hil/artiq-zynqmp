@@ -1,0 +1,12 @@
+{
+  "target": "kasli",
+  "variant": "genesys_drtio_master_v11",
+  "hw_rev": "v1.1",
+  "drtio_role": "master",
+  "rtio_frequency": 125000000,
+  "enable_wrpll": false,
+  "enable_sata_drtio": false,
+  "peripherals": [],
+  "core_addr": "192.168.2.70",
+  "_description": "KASLI01 v1.1 SRAM-only Genesys DRTIO master; no EEM peripherals; volatile MAC02:4b:01:48:48:54; firmware uses DHCP"
+}

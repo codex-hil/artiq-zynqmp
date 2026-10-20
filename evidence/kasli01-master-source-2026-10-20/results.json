@@ -1,0 +1,13 @@
+{
+  "status": "SOURCE_PREPARED_BUILD_STARTED",
+  "hardware_access": false,
+  "source_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "volatile_mac": "02:4b:01:48:48:54",
+  "ipv6_link_local": "fe80::4b:1ff:fe48:4854",
+  "ipv4": "DHCP; retained core_addr target-description value does not configure runtime static IP",
+  "network_source_sha256": "3e569ee8c68b4b27108c36a9826377b211faa7f064435d76eed781f0f4015203",
+  "isolated_source": "/srv/codex-hil-data/artiq-zynqmp/work/kasli01-bram-runtime-dma-start-result",
+  "build_path": "/srv/codex-hil-data/artiq-zynqmp/build/kasli01-dma-start-result-2026-10-20",
+  "exec_session": 66017,
+  "scope": "CPU build and later FPGA ROM rebuild required; old03 bitstream has different bootloader MAC and must not be reused"
+}

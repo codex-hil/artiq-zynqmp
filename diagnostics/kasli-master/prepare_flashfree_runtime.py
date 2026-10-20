@@ -17,7 +17,11 @@ def main():
     parser.add_argument('--nac3-dma-abi', action='store_true',help='Adapt DMA tuple return to pinned NAC3 object header ABI')
     parser.add_argument('--dma-record-result', action='store_true',help='Return upload outcome to ksupport and raise structured DMAError')
     parser.add_argument('--dma-start-result', action='store_true',help='Return remote start result after safely draining local DMA')
+    parser.add_argument('--mac',help='Explicit volatile local-unicast MAC; omitted retains historical KASLI03 identity')
     args = parser.parse_args()
+    if args.mac:
+        from lab_mac import literal
+        literal(args.mac)
     if args.output.exists():
         raise SystemExit('Refusing to overwrite a source worktree')
     repo = Path(__file__).resolve().parents[2]
@@ -25,6 +29,10 @@ def main():
                     '486e8f897547d282d46a02c30463449c21e30cfe'], check=True)
     subprocess.run(['git', '-C', str(args.output), 'apply',
                     str(repo / 'diagnostics/kasli-master/kasli03-netboot.patch')], check=True)
+    if args.mac:
+        from lab_mac import apply as apply_mac
+        settings=args.output/'artiq/firmware/libboard_misoc/net_settings.rs'
+        settings.write_text(apply_mac(settings.read_text(),args.mac))
     build = args.output / 'artiq/build_soc.py'
     text = replace_once(build.read_text(),
                         '        builder.software_packages = [p for p in builder.software_packages if p[0] == "bootloader"]\n', '')

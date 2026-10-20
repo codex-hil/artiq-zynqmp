@@ -2618,3 +2618,13 @@ Si5324softreset/profile/ICAL/readback/PLL/frequencyPASS, mux/busrestorePASS.
 restoretestsPASS. Evidence kasli01-clock-restore-2026-10-20. Frequencyapprox
 125.50MHz againsthost meets existing1percentcriterion, notprecision/jitterproof.
 Next isolatedmaster01build withuniquevolatileMAC; old03images not reused.
+
+
+Master01source2026-10-20 prepared: isolated486e8f897 source with existingRAM-only/
+NAC3DMA/resultreply overlays plus explicitMAC02:4b:01:48:48:54 in sharednetwork
+settings (bootloader+runtime). LLfe80::4b:1ff:fe48:4854, DHCP.2MACshape/type
+testsPASS; historicaldefault03 unchanged. Evidence kasli01-master-source-2026-
+10-20. CPUbuildSTARTED exec66017 inbuild/kasli01-dma-start-result-2026-10-20;
+Nix fetchingRustnightly2021-09-01, finalbuildNOT_YET_QUALIFIED. FPGA mustalso
+be rebuilt fornewbootROMMAC, not old03bit. NoFPGA/flashload. Next auditbuild,
+resolve dependency errors andprepare01-specific guardedruntime wrapper.
