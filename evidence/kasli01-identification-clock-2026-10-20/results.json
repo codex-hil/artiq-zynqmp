@@ -1,0 +1,17 @@
+{
+  "status": "IDENTITY_AND_READ_ONLY_CLOCK_SNAPSHOT_PASS",
+  "board": "KASLI01",
+  "dna": "0x007865085f704854",
+  "usb_topology": "1-1.2",
+  "usb_busdev": "001:007",
+  "shared_lock": "/home/codex-hil/.cache/kasli-KASLI01.lock",
+  "sram_programmed": false,
+  "flash_written": false,
+  "clock_configuration_written": false,
+  "registers_double_sampled": 28,
+  "i2c_retries": 0,
+  "routing_restoration": "PASS",
+  "lease_released": true,
+  "clock_restore_qualification": "NOT_RUN",
+  "notes": "User connected Kasli1; allocation confirmed in shared coordination. KASLI03/04 reserved by secure-link and not accessed."
+}

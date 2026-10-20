@@ -1,4 +1,4 @@
-"""KASLI03 Si5324 snapshot, optionally bounded baseline reset/restore.
+"""Known Kasli Si5324 snapshot; bounded reset/restore remains KASLI03 only.
 
 LGPL-3.0-or-later. I2C routing/register pointers change; no clock register data,
 flash, FPGA image or runtime is written by snapshot mode. --restore-plan
@@ -20,6 +20,8 @@ UART = '/dev/serial/by-path/pci-0000:00:14.0-usb-0:6.2:1.2-port0'
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--board',choices=['KASLI01','KASLI03'],default='KASLI03',
+                        help='Explicit known identity; KASLI01 supports snapshot only')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--si-source', type=Path, required=True)
     parser.add_argument('--settled-timing', action='store_true')
@@ -28,6 +30,8 @@ def main():
     parser.add_argument('--restore-plan', type=Path)
     args = parser.parse_args()
     plan = json.loads(args.restore_plan.read_text()) if args.restore_plan else None
+    if args.board=='KASLI01' and plan:
+        raise SystemExit('KASLI01 restoration is not qualified; snapshot only')
     if plan and not args.settled_timing:
         raise SystemExit('Restore test requires settled timing')
     sys.path.insert(0, str(RNG / 'kasli'))
@@ -58,7 +62,7 @@ def main():
         if json.loads(baseline_bytes)['si_source_sha256'] != hashlib.sha256(source.encode()).hexdigest():
             raise SystemExit('Driver differs from restoration baseline')
     registers = sorted({int(r) for r in re.findall(r'\b(?:read|write|write_no_ack_value)\((\d+)', source)})
-    result = {'status': 'FAIL', 'board': 'KASLI03', 'clock_configuration_written': False,
+    result = {'status': 'FAIL', 'board': args.board, 'clock_configuration_written': False,
               'si_source_sha256': hashlib.sha256(source.encode()).hexdigest(),
               'timing': 'settled100us' if args.settled_timing else 'original',
               'registers': {}, 'retries': [], 'restoration_profile_validated': False}
@@ -66,14 +70,14 @@ def main():
     handles, comm, i2c, prior_csr, prior_mux = [], None, None, None, {}
     started = time.monotonic()
     try:
-        for board in ('KASLI01', 'KASLI02', 'KASLI03'):
+        for board in (('KASLI01',) if args.board=='KASLI01' else ('KASLI01', 'KASLI02', 'KASLI03')):
             fd = open(f'/home/codex-hil/.cache/kasli-{board}.lock', 'a')
             handles.append(fd)
             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
         usb = Path('/sys/bus/usb/devices') / args.usb_topology
         if not (usb / 'idVendor').is_file():
             result['status'] = 'BLOCKED_HARDWARE_ABSENT'
-            raise RuntimeError(f'Expected KASLI03 USB topology {args.usb_topology} absent; no replacement device selected')
+            raise RuntimeError(f'Expected {args.board} USB topology {args.usb_topology} absent; no replacement device selected')
         if [(usb / key).read_text().strip() for key in ('idVendor', 'idProduct', 'manufacturer')] != ['0403', '6011', 'FTDI']:
             raise RuntimeError('USB identity changed')
         busdev = f'{int((usb / "busnum").read_text()):03}:{int((usb / "devnum").read_text()):03}'
@@ -82,7 +86,7 @@ def main():
                     '--freq', '1000000', '--read-dna'], capture_output=True, text=True, timeout=15)
         (args.output / 'dna.log').write_text(loader.stdout + loader.stderr)
         match = re.search(r'"dna":\s*"(0x[0-9a-fA-F]+)"', loader.stdout)
-        if loader.returncode or not match or int(match[1], 16) != 0x0048458a64b04854:
+        if loader.returncode or not match or int(match[1], 16) != {'KASLI01':0x007865085f704854,'KASLI03':0x0048458a64b04854}[args.board]:
             raise RuntimeError('DNA mismatch')
         result.update(dna=match[1], usb_busdev=busdev, usb_topology=args.usb_topology, uart=args.uart)
         tty = Path(args.uart).resolve().name

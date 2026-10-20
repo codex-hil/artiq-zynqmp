@@ -2596,3 +2596,15 @@ profilepreflightPASS. Evidence lab-active-parent-offline-2026-10-20. NoHWaccess.
 Physicalactivepreflightblockedwithoutnewidlecounterproof. Next confirmavailable
 boardsunderexistingall4locks andrunboundedlabidle qualification ifavailable;
 otherwise continueofflinepreflight/configreview. Publishednormalcheckpoint intact.
+
+
+ARTIQboardallocation2026-10-20: userconnectedKasli1, confirmedreadonlyJTAG
+DNA007865085f704854/topology1-1.2/USB001:007 undernamedKASLI01lease. Other
+Kaslis03/04 assignedsecure-link, notaccessed. ExistingdiagnosticSi5324snapshot
+PASS:28registerstwice,nostabilitychanges,0NACKretries,PLLlocked;80sbounded
+session restoredmux/busPASS and releasedlease. NoSRAM/flash/clockprofilewrites.
+Capturetool explicit--boardKASLI01 supports snapshotonly; default03 unchanged,
+newboardrestore refusedbeforeHW;2selector testsPASS. Evidence kasli01-identification-
+clock-2026-10-20. Next prepareandqualify01-specificclockrestore plusdistinct
+masterMAC/netboot/runtimeconfiguration; old03profiles mustnotbe reused blindly.
+Labactivehardware remainsNOT_RUN; normalGenesys/removalcheckpointunchanged.
