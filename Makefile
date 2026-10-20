@@ -358,3 +358,7 @@ test-drtio-dma-lab-metrics:
 .PHONY: test-drtio-top-build-check
 test-drtio-top-build-check:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_top_build.py' -v
+
+.PHONY: test-drtio-lab-fault-process
+test-drtio-lab-fault-process:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_lab_fault_process.py' -v

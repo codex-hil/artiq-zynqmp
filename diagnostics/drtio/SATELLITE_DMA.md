@@ -1550,3 +1550,16 @@ Its map matches the independent-metrics firmware build. These are implementation
 results only, not hardware fault qualification; no programming or board access
 occurred. The dedicated guarded parent still needs handshake/counter collection,
 artifact/epoch/settling checks and mandatory restoration before physical use.
+
+The offline-tested `lab_fault_process` helper now manages the experiment child
+and arm handshake using the existing parent's UART object and lease descriptor.
+It has no standalone entry point and opens no hardware. It requires a finite
+UART read timeout, fresh handshake/log paths and a bounded child deadline. A
+valid request causes exactly one UART F; only one observed successful arm reply
+publishes the complete matching ACK atomically. Invalid request/refusal/timeout
+never acknowledge. Errors terminate and reap the child, preserving log/request
+files for diagnosis. Requests are also atomically published to avoid partial-JSON
+races. Five synthetic subprocess/UART and handshake tests pass. This helper is
+not yet wired into ExternalSession; the normal wrapper still refuses lab firmware.
+Its eventual caller must prove all-board leases/artifact identity, drain/epoch/
+settling and final restoration. No hardware execution is implied by these tests.

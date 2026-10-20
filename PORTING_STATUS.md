@@ -2552,3 +2552,13 @@ missinggroup/stalehash/endpoints/skew andstalePASSremoval. Evidence genesys-dela
 metrics-implementation-2026-10-20. NoHWaccess/programming. Next dedicatedparent
 handshake/metriccollection/epoch/settling/restoration integration before physical
 use; Kasliavailability mustbeconfirmed withsharedlocks if/when needed.
+
+
+Labfaultchild2026-10-20 offlinePASS: boundedsubprocess/handshake pumpusesexisting
+UARTobject/parentleaseFD, opensnoHW; validatesrequestbeforesingleF, verifiesone
+successreplybeforeatomicACK. Failureterminates/reapschild; finiteUARTtimeout
+required. Atomicrequestpublication eliminatespartialJSONrace.5syntheticprocess/
+UART/handshaketestsPASS. Evidence lab-fault-process-offline-2026-10-20. NoHW
+access. HelpernotwiredintoExternalSessionyet; normalwrapperstilllab-refusing.
+Next strictartifact/overlay/mapadmission andguardedparentintegration with
+metric/epoch/settling/evidence/restoration checks beforephysicaltest.

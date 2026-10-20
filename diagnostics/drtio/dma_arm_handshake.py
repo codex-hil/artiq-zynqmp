@@ -4,7 +4,7 @@ No UART or hardware access. Wrapper must obtain leases, verify live identity,
 write UART F, verify LAB_ARM result=0, and only then atomically publish the ack.
 Acknowledgement alone is not active-fault evidence.
 """
-import json,time,secrets
+import json,time,secrets,tempfile,os
 from pathlib import Path
 
 
@@ -14,7 +14,10 @@ def request(directory):
     if (directory/'arm-ack.json').exists():raise ValueError('Stale arm acknowledgement')
     token=secrets.token_hex(16)
     payload=dict(schema=1,token=token,request='arm-native-ddma-delay',cycles=250000)
-    with (directory/'arm-request.json').open('x') as f:json.dump(payload,f)
+    with tempfile.NamedTemporaryFile(mode='w',dir=directory,prefix='arm-request-',suffix='.pending',delete=False) as f:
+        temporary=Path(f.name);json.dump(payload,f)
+    try:os.link(temporary,directory/'arm-request.json')
+    finally:temporary.unlink()
     return token
 
 

@@ -1,0 +1,15 @@
+{
+  "status": "SYNTHETIC_TESTS_PASS",
+  "hardware_access": false,
+  "tests": 5,
+  "source_sha256": {
+    "diagnostics/drtio/lab_fault_process.py": "a7b4841b97d6f2b3576d9f383ab8ca3f8830ec849b1a241be4106fd63e751d32",
+    "diagnostics/drtio/dma_arm_handshake.py": "0d88f6a02be4a66a028297fb420de885b3fb71cd0ededa77f6ba487b2f97dc54",
+    "diagnostics/drtio/test_lab_fault_process.py": "11825d7606caa543d8275ab962e0c9e9dc957b53d56e6ce368aa375a53346088"
+  },
+  "limitations": [
+    "no independent UART client or hardware entrypoint",
+    "not wired into guarded ExternalSession yet",
+    "artifact lease epoch settling and restoration qualification still required"
+  ]
+}

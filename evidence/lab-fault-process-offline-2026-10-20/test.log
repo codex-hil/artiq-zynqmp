@@ -1,0 +1,10 @@
+test_bad_request_no_uart_write (test_lab_fault_process.PumpTests.test_bad_request_no_uart_write) ... ok
+test_refused_arm_or_timeout_never_acknowledges (test_lab_fault_process.PumpTests.test_refused_arm_or_timeout_never_acknowledges) ... ok
+test_success_one_arm_complete_ack_and_child_log (test_lab_fault_process.PumpTests.test_success_one_arm_complete_ack_and_child_log) ... ok
+test_missing_ack_times_out_and_invalid_ack_refused (test_dma_arm_handshake.HandshakeTests.test_missing_ack_times_out_and_invalid_ack_refused) ... ok
+test_request_ack_and_no_overwrite (test_dma_arm_handshake.HandshakeTests.test_request_ack_and_no_overwrite) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.425s
+
+OK
