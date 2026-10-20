@@ -29,4 +29,5 @@ def source_overlay(original):
   if(XUartPs_IsReceiveData(STDIN_BASEADDRESS)) {
    unsigned command=XUartPs_ReadReg(STDIN_BASEADDRESS,XUARTPS_FIFO_OFFSET)&255;
    if(command=='F')ddma_lab_request();
+   if(command=='I')ddma_lab_idle();
   }''')

@@ -1575,3 +1575,25 @@ they skip when prepared artifacts are absent. This module opens no hardware and
 is not yet called by ExternalSession; the normal wrapper still refuses lab
 firmware. Its future guarded integration must also perform live idle counter
 sampling and epoch/settling checks. No idle/counter hardware proof exists yet.
+
+Lab idle integration now exists in ExternalSession, behind explicit
+`lab_fault_mode=idle`, `lab_fault_ack=native-underflow-no-reuse` and
+`native_ddma_mode=idle`. Artifact admission verifies the generated overlay before
+the reset firmware source check. Normal firmware continues through its original
+source/helper checks. Active laboratory selection is explicitly rejected here;
+there is no active hardware path yet.
+
+After the existing reset/DIO checks, the parent uses its already-open exclusive
+UART for two read-only `I` commands. Firmware reports readiness/TSC load epoch,
+DMA/arm/error state and independent counters without writes. Samples must be
+identical, ready in a nonzero epoch, with pristine DMA/arm/error/AXI counts and
+stable output-edge count. Only actual successful sampling can set
+`lab_idle_counters=PASS`; parent restoration must still finish. Latest idle-capable
+firmware is `build/native-ddma-lab-idle-firmware-2026-10-20` and is distinct from
+older telemetry firmware, which is now stale against the updated helper hashes.
+
+Full firmware build, C sanitizers, synthetic probe controls, actual idle-parent
+constructor/dry-run and normal profile preflight pass. None accesses hardware.
+No physical idle proof exists yet, and no new image was loaded. Availability of
+the removed/released Kasli must be confirmed before an exclusive hardware window;
+continued artifact/parent integration work is possible offline meanwhile.

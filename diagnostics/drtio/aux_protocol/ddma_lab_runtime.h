@@ -43,3 +43,17 @@ static void ddma_lab_poll(void) {
  }
 }
 #endif
+#ifdef AUX_DDMA_LAB_DELAY
+/* Read-only diagnostic, usable before any trace upload or arm. */
+static void ddma_lab_idle(void) {
+ xil_printf("AUX_DDMA LAB_IDLE ready=%u epoch=%u active=%u pending=%u armed=%u holding=%u triggers=%u rejected=%u arm_rejected=%u faulted=%u ar=%u rlast=%u edges=%u accepted=%u completed=%u raw=%u\r\n",
+  (unsigned)ddma_ready(0),rd(REG_AUX_TSC_LOAD_COUNT),
+  db_read(&ddma_backend,DB_ACTIVE),db_read(&ddma_backend,DB_PENDING),
+  db_read(&ddma_backend,DB_LAB_ARMED),db_read(&ddma_backend,DB_LAB_HOLDING),
+  db_read(&ddma_backend,DB_LAB_TRIGGERS),db_read(&ddma_backend,DB_LAB_REJECTED),
+  db_read(&ddma_backend,DB_LAB_ARM_REJECTED),ddma_backend.faulted,
+  db_read(&ddma_backend,DB_LAB_AR),db_read(&ddma_backend,DB_LAB_RLAST),
+  db_read(&ddma_backend,DB_LAB_TTL_EDGES),db_read(&ddma_backend,DB_ACCEPTED),
+  db_read(&ddma_backend,DB_COMPLETED),db_read(&ddma_backend,DB_ERROR));
+}
+#endif

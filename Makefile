@@ -366,3 +366,7 @@ test-drtio-lab-fault-process:
 .PHONY: test-drtio-lab-fault-admission
 test-drtio-lab-fault-admission:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_lab_fault_admission.py' -v
+
+.PHONY: test-drtio-lab-idle-probe
+test-drtio-lab-idle-probe:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_lab_idle_probe.py' -v

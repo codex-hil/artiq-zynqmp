@@ -2572,3 +2572,15 @@ stalehelper/overlay/conflictingmode negatives. Evidence lab-fault-admission-offl
 2026-10-20. NoHWaccess. HelpernotwiredintoExternalSessionyet; normalwrapper
 remainslab-refusing. Next implementliveidlecounter/epochprobe andguardedbranch,
 thenofflineintegrationtests. Activephysicalmode blockedwithoutnewidleproof.
+
+
+Labidleparent2026-10-20 offlinePASS: read-onlyI returnsready/TSCepoch/pristine
+DMA-arm-error/independentcounters, twosamplessameepoch/stableedgesrequired.
+ActualguardedExternalSession explicitidlebranch validatesoverlay/artifacts,
+probesexistingUARTafterDIO; onlylivesuccesssets lab_idle_countersPASS, outer
+restorestillrequired. Activeparentmode explicitlyrefused. Fullidlefirmware
+Rust+C/linkPASS,2Csanitizers+5Pythonprobe/admission/parentcontroltestsPASS;
+actualparentdryrun andnormalprofilepreflightPASS. Evidence lab-idle-parent-offline-
+2026-10-20. NoHWaccess, physicalidleproofNOT_RUN. Next offlineactiveparent
+integration withexactidleproof/epoch/settling/restorationguards; anyphysical
+window requiresconfirmedKasliavailability andallsharedleases.

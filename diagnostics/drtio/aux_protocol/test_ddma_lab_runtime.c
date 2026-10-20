@@ -9,7 +9,9 @@
 #define AUX_DDMA_LAB_CYCLES 250000u
 static struct ddma_service ddma;
 static struct ddma_backend ddma_backend;
-static unsigned regs[32],writes,active_logs,complete_logs,arm_logs,refused_logs,baseline_logs,metric_logs;
+static unsigned regs[32],writes,active_logs,complete_logs,arm_logs,refused_logs,baseline_logs,metric_logs,idle_logs;
+#define REG_AUX_TSC_LOAD_COUNT 0x123u
+static unsigned rd(unsigned address) {assert(address==REG_AUX_TSC_LOAD_COUNT);return 7;}
 static int ddma_ready(void *p) {(void)p;return !ddma_backend.faulted;}
 static uint32_t read_reg(void *p,uintptr_t a) {(void)p;return regs[(a-DDMA_BANK)/4];}
 static void write_reg(void *p,uintptr_t a,uint32_t v) {
@@ -23,6 +25,7 @@ static void log_event(const char *format,...) {
   if(strstr(format,"LAB_BASELINE")) {baseline_logs++;assert(!ar && !rlast && !edges);}
   else {metric_logs++;assert(ar==2 && rlast==2 && !edges);}
  }
+ if(strstr(format,"LAB_IDLE"))idle_logs++;
  if(strstr(format,"LAB_ACTIVE"))active_logs++;
  if(strstr(format,"LAB_COMPLETE"))complete_logs++;
  if(strstr(format,"LAB_ARM result"))arm_logs++;
@@ -33,6 +36,7 @@ static void log_event(const char *format,...) {
 int main(void) {
  ddma_backend.read=read_reg;ddma_backend.write=write_reg;
  regs[DB_LAB_CYCLES/4]=250000;
+ ddma_lab_idle();assert(!writes && idle_logs==1);
  ddma_lab_request();assert(!writes && refused_logs==1);
  ddma.store.complete=1;ddma_lab_request();assert(writes==1 && arm_logs==1);
  ddma_lab_request();assert(writes==1 && refused_logs==2);

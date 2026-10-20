@@ -1,0 +1,40 @@
+{
+  "kind": "FIRMWARE_BUILD_NOT_HARDWARE",
+  "status": "PASS",
+  "mode": "external-tsc-down",
+  "dio_leaf": true,
+  "snapshot_probe": true,
+  "snapshot_sources": {
+    "tsc_reader.h": "291cdb706fab01cec934107e05642375912a8ca8abb0927d0a37495922268e8a",
+    "tsc_a53.h": "68558a5048efda7f3c3a44fffe7a5287d4db83624ff9dd8740faffe636becedf",
+    "ddma_a53.h": "85481467612dfb53e3a9e9320fe73585a94bd71c8234ee5feb6df8238b64eb99",
+    "ddma_backend.h": "8e873fc519635145b5437dd10da4ac7b2648b17a6b4141f050522550c4343476"
+  },
+  "dma_bank_owner": "native AUX DDMA laboratory service",
+  "native_ddma": true,
+  "lab_read_delay": true,
+  "lab_read_delay_cycles": 250000,
+  "lab_sources": {
+    "ddma_lab_delay.h": "7be720dc91ccfeed53583c01c9c5dcba6974b63b1e20fdb3bf772ca25868743d",
+    "ddma_lab_runtime.h": "ec412c4ec8e70f812449478dfa0aca7601ed4310dcac4b2317145a7feaa1c133",
+    "lab_delay_build.py": "a874a706df36cd3f6a7528de7908db59e74194552194a53ca3dfab474f115704"
+  },
+  "ddma_sources": {
+    "ddma_runtime.h": "aec11e4d1d785842efb5ba7de894cf8f684300c41c4b4a51cc436f87d08288e1",
+    "ddma_service.h": "4ced7a6b70fe2f729050b0415d1d73d76f103234cbfbaaf436f2b95ca3761c80",
+    "ddma_store.h": "e35d6a69b720ebf170b7b7e860cb3694f409bf6b8e68587233e3d9526da3e524",
+    "ddma_backend.h": "8e873fc519635145b5437dd10da4ac7b2648b17a6b4141f050522550c4343476",
+    "ddma_a53.h": "85481467612dfb53e3a9e9320fe73585a94bd71c8234ee5feb6df8238b64eb99",
+    "ddma_codec.h": "429b2344ec669faca45c13b420568bfa1761afaad6b71af1bc5c16d0bc8207c3"
+  },
+  "leaf_policy_sha256": "b43a23508e48be1d61850859c4d6f82a430f040569ded767f2736441ec282a3e",
+  "reset_backend": true,
+  "reset_policy_sha256": "0217cb208a146b26b433573853803176ab8cfc9ad5199feb601c82ce62e7510e",
+  "elf_sha256": "b59189886d9239aab5b0e61f7641d4546531957eea11f8989b4ab4fa71f582f3",
+  "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "csr_map_sha256": "024e485e941467531785340d46fc0b841ee2e61333a23ca01d7fda73832386c5",
+  "rust_source_sha256": "b4a78b93925c2a56181de859d28373585da543ebfb87eec97e10a2fb96a25fd4",
+  "ddma_codec_sha256": "1cab385aa8b75099573253f4eade82d5512b5d69c444699950ddc4f040c3cc96",
+  "tsc_policy_sha256": "1c3f5f96617a559e565a85e246447c3405f2dcd97b651ff637ae2c5b592d439d",
+  "c_source_sha256": "67d89f8da18e52aa9012731b75c881686b1b0a92f0d5537aaf69c91a1658f7ef"
+}

@@ -1,0 +1,42 @@
+   Compiling unicode-xid v0.0.4
+   Compiling quote v0.3.15
+   Compiling build_const v0.2.2
+   Compiling byteorder v1.5.0
+   Compiling failure v0.1.1
+   Compiling synom v0.11.3
+   Compiling crc v1.8.1
+   Compiling syn v0.11.11
+   Compiling synstructure v0.6.1
+   Compiling failure_derive v0.1.1
+   Compiling io v0.0.0 (/srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libio)
+   Compiling genesys-aux-codec v0.1.0 (/srv/codex-hil-data/artiq-zynqmp/build/native-ddma-lab-idle-firmware-2026-10-20/rust)
+warning: associated items `is_first`, `is_last`, and `from_status` are never used
+  --> /srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libproto_artiq/drtioaux_proto.rs:51:12
+   |
+50 | impl PayloadStatus {
+   | ------------------ associated items in this implementation
+51 |     pub fn is_first(self) -> bool {
+   |            ^^^^^^^^
+...
+55 |     pub fn is_last(self) -> bool {
+   |            ^^^^^^^
+...
+59 |     pub fn from_status(first: bool, last: bool) -> PayloadStatus {
+   |            ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: methods `routable_destination` and `expects_response` are never used
+    --> /srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libproto_artiq/drtioaux_proto.rs:1091:12
+     |
+171  | impl Packet {
+     | ----------- methods in this implementation
+...
+1091 |     pub fn routable_destination(&self) -> Option<u8> {
+     |            ^^^^^^^^^^^^^^^^^^^^
+...
+1112 |     pub fn expects_response(&self) -> bool {
+     |            ^^^^^^^^^^^^^^^^
+
+warning: `genesys-aux-codec` (lib) generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 2.02s

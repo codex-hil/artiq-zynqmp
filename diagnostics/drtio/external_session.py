@@ -25,6 +25,9 @@ class ExternalSession:
         self.result = {'status': 'NOT_RUN', 'restoration': 'NOT_RUN',
                        'optical_tx': 'hard disabled', 'remote_drtio': 'NOT_RUN'}
         c = self.config
+        self.lab_fault_mode=c.get('lab_fault_mode')
+        if self.lab_fault_mode not in (None,'idle'):
+            raise ValueError('Only laboratory idle integration is enabled; active parent path pending')
         if not c.get('network_interface'): raise ValueError('Explicit restore network interface required')
         for key in ('bitstream', 'csr_map', 'restore_bitstream', 'cpu0', 'device_db',
                     'artiq_python', 'artiq_run'):
@@ -68,6 +71,10 @@ class ExternalSession:
                 raise ValueError('External firmware hash mismatch')
             if fw['csr_map_sha256'] != build['sha256']['csr-map.json']:
                 raise ValueError('External firmware/PL maps differ')
+            lab_admission=None
+            if fw.get('lab_read_delay') or self.lab_fault_mode:
+                from lab_fault_admission import validate as validate_lab
+                lab_admission=validate_lab(c,fw,self.mapping)
             if self.tsc_test:
                 policy = REPO/'diagnostics/drtio/aux_protocol/tsc_ack_policy.h'
                 if fw.get('tsc_policy_sha256') != hashlib.sha256(policy.read_bytes()).hexdigest():
@@ -78,7 +85,8 @@ class ExternalSession:
                 policy=REPO/'diagnostics/drtio/aux_protocol/reset_backend.h'
                 if not fw.get('reset_backend') or fw.get('reset_policy_sha256') != hashlib.sha256(policy.read_bytes()).hexdigest():
                     raise ValueError('Hardware reset firmware/policy required')
-                if fw.get('c_source_sha256') != hashlib.sha256(policy.with_name('firmware.c').read_bytes()).hexdigest():
+                expected_c=(lab_admission['generated_c_sha256'] if lab_admission else hashlib.sha256(policy.with_name('firmware.c').read_bytes()).hexdigest())
+                if fw.get('c_source_sha256') != expected_c:
                     raise ValueError('Stale reset firmware source')
                 if not all('aux_'+n in self.mapping['registers'] for n in ('rtio_reset_request','rtio_reset_applied','phy_reset_request','phy_reset_applied')):
                     raise ValueError('Split reset CSRs required')
@@ -105,7 +113,7 @@ class ExternalSession:
         self.native_ddma=bool(fw.get('native_ddma',False)) if self.external_aux else False
         if bool(c.get('native_ddma_mode')) != self.native_ddma:
             raise ValueError('Native DDMA mode/firmware mismatch')
-        if self.native_ddma:
+        if self.native_ddma and not self.lab_fault_mode:
             from native_dma_session import validate
             validate(self,fw)
 
@@ -231,6 +239,9 @@ disconnect
                         raise RuntimeError('Reset probe requires observed cold release and TSC ACK')
                     self.probe_reset(master_host,uart,raw)
                     if getattr(self,'dio_test',False): self.probe_dio(master_host,uart,raw)
+                    if self.lab_fault_mode=='idle':
+                        from lab_idle_probe import probe as probe_lab_idle
+                        self.result.update(probe_lab_idle(uart,raw))
                     if getattr(self,'stability_test',False): self.probe_stability(master_host,uart,raw)
                     if self.native_ddma and self.config['native_ddma_mode']=='playback':
                         from native_dma_session import probe
