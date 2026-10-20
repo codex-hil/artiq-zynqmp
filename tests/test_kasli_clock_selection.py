@@ -11,8 +11,22 @@ class ClockSelectionTests(unittest.TestCase):
             r=subprocess.run([sys.executable,str(SCRIPT),'--board','KASLI01','--output',str(out),
                 '--si-source',str(SCRIPT),'--restore-plan',str(plan),'--settled-timing'],capture_output=True,text=True)
             self.assertNotEqual(r.returncode,0)
-            self.assertIn('KASLI01 restoration is not qualified; snapshot only',r.stderr)
+            self.assertIn('KASLI01 restoration requires explicit matching baseline',r.stderr)
             self.assertFalse(out.exists())
     def test_unknown_board_refused(self):
         r=subprocess.run([sys.executable,str(SCRIPT),'--board','KASLI04'],capture_output=True,text=True)
         self.assertNotEqual(r.returncode,0);self.assertIn('invalid choice',r.stderr)
+
+    def test_actual_board_baseline_and_wrong_board_plan_refused(self):
+        import copy
+        sys.path.insert(0,str(ROOT/'scripts'))
+        from kasli_clock_binding import validate
+        baseline=ROOT/'evidence/kasli01-identification-clock-2026-10-20/clock-snapshot.json'
+        planfile=Path('/srv/codex-hil-data/artiq-zynqmp/build/kasli01-clock-restore-plan-2026-10-20.json')
+        sourcefile=Path('/srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libboard_artiq/si5324.rs')
+        if not planfile.exists():self.skipTest('Prepared clock plan absent')
+        plan=json.loads(planfile.read_text());source=sourcefile.read_text()
+        self.assertEqual(validate('KASLI01',plan,baseline,source)['board'],'KASLI01')
+        with self.assertRaises(ValueError):validate('KASLI03',plan,baseline,source)
+        bad=copy.deepcopy(plan);bad['configuration_to_compare_then_restore'][0]['value']^=1
+        with self.assertRaises(ValueError):validate('KASLI01',bad,baseline,source)

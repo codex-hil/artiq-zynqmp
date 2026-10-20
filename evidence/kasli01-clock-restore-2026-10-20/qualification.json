@@ -1,0 +1,21 @@
+{
+  "status": "PHYSICAL_CLOCK_RESTORE_PASS",
+  "board": "KASLI01",
+  "dna": "0x007865085f704854",
+  "clock_profile_written": true,
+  "sram_programmed": false,
+  "flash_written": false,
+  "otp_written": false,
+  "shared_lock": "kasli-KASLI01",
+  "lease_released": true,
+  "registers_restored": 23,
+  "profile_readback": "PASS",
+  "routing_restoration": "PASS",
+  "frequency_hz_against_host": [
+    125501931.81271799,
+    125515798.60507601,
+    125503076.56747508
+  ],
+  "frequency_scope": "existing diagnostic host-referenced approximately125MHz/1percent criterion, not precision/jitter qualification",
+  "script_sha256": "8b810def15b69320160493a3f7de77dbc9884edd4a50c04e2e1bc51f2e61725a"
+}

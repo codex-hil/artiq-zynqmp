@@ -1,4 +1,4 @@
-"""Known Kasli Si5324 snapshot; bounded reset/restore remains KASLI03 only.
+"""Known Kasli Si5324 snapshot and board-bound bounded reset/restore.
 
 LGPL-3.0-or-later. I2C routing/register pointers change; no clock register data,
 flash, FPGA image or runtime is written by snapshot mode. --restore-plan
@@ -21,17 +21,18 @@ UART = '/dev/serial/by-path/pci-0000:00:14.0-usb-0:6.2:1.2-port0'
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--board',choices=['KASLI01','KASLI03'],default='KASLI03',
-                        help='Explicit known identity; KASLI01 supports snapshot only')
+                        help='Explicit known board identity')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--si-source', type=Path, required=True)
     parser.add_argument('--settled-timing', action='store_true')
     parser.add_argument('--usb-topology', default='1-6.2')
     parser.add_argument('--uart', default=UART)
     parser.add_argument('--restore-plan', type=Path)
+    parser.add_argument('--restore-baseline', type=Path)
     args = parser.parse_args()
     plan = json.loads(args.restore_plan.read_text()) if args.restore_plan else None
-    if args.board=='KASLI01' and plan:
-        raise SystemExit('KASLI01 restoration is not qualified; snapshot only')
+    if args.board=='KASLI01' and plan and not args.restore_baseline:
+        raise SystemExit('KASLI01 restoration requires explicit matching baseline')
     if plan and not args.settled_timing:
         raise SystemExit('Restore test requires settled timing')
     sys.path.insert(0, str(RNG / 'kasli'))
@@ -55,12 +56,9 @@ def main():
 
     source = args.si_source.read_text()
     if plan:
-        baseline_file = Path(__file__).resolve().parents[1] / 'evidence/kasli03-clock-snapshot-2026-10-13/results.json'
-        baseline_bytes = baseline_file.read_bytes()
-        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256']:
-            raise SystemExit('Restoration baseline hash mismatch')
-        if json.loads(baseline_bytes)['si_source_sha256'] != hashlib.sha256(source.encode()).hexdigest():
-            raise SystemExit('Driver differs from restoration baseline')
+        baseline_file = args.restore_baseline or (Path(__file__).resolve().parents[1] / 'evidence/kasli03-clock-snapshot-2026-10-13/results.json')
+        from kasli_clock_binding import validate
+        validate(args.board,plan,baseline_file,source)
     registers = sorted({int(r) for r in re.findall(r'\b(?:read|write|write_no_ack_value)\((\d+)', source)})
     result = {'status': 'FAIL', 'board': args.board, 'clock_configuration_written': False,
               'si_source_sha256': hashlib.sha256(source.encode()).hexdigest(),

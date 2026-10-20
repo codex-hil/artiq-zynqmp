@@ -2608,3 +2608,13 @@ newboardrestore refusedbeforeHW;2selector testsPASS. Evidence kasli01-identifica
 clock-2026-10-20. Next prepareandqualify01-specificclockrestore plusdistinct
 masterMAC/netboot/runtimeconfiguration; old03profiles mustnotbe reused blindly.
 Labactivehardware remainsNOT_RUN; normalGenesys/removalcheckpointunchanged.
+
+
+KASLI01clockrestore2026-10-20 physicalPASS: explicitboard/DNA/snapshothash/driver/
+complete23registerplan binding added; existing03planbinding remainsPASS. Fresh
+28registerdoublebaseline, diagnosticEEM/GTPoff/SFPdisable7 checked; volatile
+Si5324softreset/profile/ICAL/readback/PLL/frequencyPASS, mux/busrestorePASS.
+152.035s under01lease only; nootherboard,FPGA,flash/OTPwrite.5clockselector/
+restoretestsPASS. Evidence kasli01-clock-restore-2026-10-20. Frequencyapprox
+125.50MHz againsthost meets existing1percentcriterion, notprecision/jitterproof.
+Next isolatedmaster01build withuniquevolatileMAC; old03images not reused.

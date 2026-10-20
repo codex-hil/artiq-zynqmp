@@ -1,0 +1,129 @@
+{
+  "status": "OFFLINE_PLAN_ONLY_HARDWARE_NOT_RUN",
+  "board": "KASLI01",
+  "snapshot_sha256": "7ed21a07bac8463d805060d8cce3c63630c5e57d4e2c05ed1aca2a82ab31ca86",
+  "reset_kind": "soft-reset, register136 bit7; reset value-byte NACK allowed by upstream",
+  "configuration_to_compare_then_restore": [
+    {
+      "register": 0,
+      "value": 84
+    },
+    {
+      "register": 2,
+      "value": 66
+    },
+    {
+      "register": 3,
+      "value": 85
+    },
+    {
+      "register": 4,
+      "value": 18
+    },
+    {
+      "register": 6,
+      "value": 63
+    },
+    {
+      "register": 21,
+      "value": 254
+    },
+    {
+      "register": 25,
+      "value": 192
+    },
+    {
+      "register": 31,
+      "value": 0
+    },
+    {
+      "register": 32,
+      "value": 0
+    },
+    {
+      "register": 33,
+      "value": 3
+    },
+    {
+      "register": 34,
+      "value": 0
+    },
+    {
+      "register": 35,
+      "value": 0
+    },
+    {
+      "register": 36,
+      "value": 3
+    },
+    {
+      "register": 40,
+      "value": 192
+    },
+    {
+      "register": 41,
+      "value": 78
+    },
+    {
+      "register": 42,
+      "value": 3
+    },
+    {
+      "register": 43,
+      "value": 0
+    },
+    {
+      "register": 44,
+      "value": 17
+    },
+    {
+      "register": 45,
+      "value": 212
+    },
+    {
+      "register": 46,
+      "value": 0
+    },
+    {
+      "register": 47,
+      "value": 17
+    },
+    {
+      "register": 48,
+      "value": 212
+    },
+    {
+      "register": 137,
+      "value": 1
+    }
+  ],
+  "never_replay": [
+    129,
+    130,
+    134,
+    135,
+    136
+  ],
+  "calibration_if_configuration_changed": "fresh ICAL136 bit6, never saved reset/ICAL command bits",
+  "required_validation": [
+    "exact DNA/diagnostic image under shared locks",
+    "compare fresh baseline before mutation",
+    "bounded I2C retries with STOP on every failure",
+    "readback configuration and product ID",
+    "PLL lock and independent output frequency",
+    "restore previous mux/bus state"
+  ],
+  "runtime_flow": [
+    "first upload/B may soft-reset/setup PLL and initiate sys clock switch",
+    "CPU restarts at BRAM0; wait CRC/DDR/netboot again",
+    "second upload/B uses switch_done and skips PLL setup",
+    "validate runtime/services before any remote DRTIO claim"
+  ],
+  "runtime_locks": [
+    "genesys-210383B7F02DA",
+    "kasli-KASLI01"
+  ],
+  "reason_genesys_lock": "runtime enables downstream TX; user cable connects Genesys",
+  "i2c_reliability": "Read snapshot only; write reliability unqualified",
+  "restoration_validated": false
+}

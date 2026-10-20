@@ -11,6 +11,7 @@ import re
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--board',choices=['KASLI01','KASLI03'],default='KASLI03')
     parser.add_argument('--snapshot', type=Path, required=True)
     parser.add_argument('--si-source', type=Path, required=True)
     parser.add_argument('--runtime-source', type=Path, required=True)
@@ -21,7 +22,7 @@ def main():
     source = args.si_source.read_text()
     if snapshot['si_source_sha256'] != hashlib.sha256(source.encode()).hexdigest():
         raise SystemExit('Driver changed since snapshot')
-    if int(snapshot['dna'], 16) != 0x0048458a64b04854 or snapshot['changed_registers']:
+    if (snapshot.get('board')!=args.board or int(snapshot['dna'],16)!={'KASLI01':0x007865085f704854,'KASLI03':0x0048458a64b04854}[args.board] or snapshot['changed_registers']):
         raise SystemExit('Wrong board or unstable snapshot')
     if any(len(v) != 2 or v[0] != v[1] for v in snapshot['registers'].values()):
         raise SystemExit('Incomplete repeated snapshot')
@@ -40,7 +41,7 @@ def main():
     if registers[136] & 0xc0 or registers[130] & 1:
         raise SystemExit('Baseline reset/calibration active or PLL unlocked')
     plan = {
-        'status': 'OFFLINE_PLAN_ONLY_HARDWARE_NOT_RUN', 'board': 'KASLI03',
+        'status': 'OFFLINE_PLAN_ONLY_HARDWARE_NOT_RUN', 'board': args.board,
         'snapshot_sha256': hashlib.sha256(args.snapshot.read_bytes()).hexdigest(),
         'reset_kind': 'soft-reset, register136 bit7; reset value-byte NACK allowed by upstream',
         'configuration_to_compare_then_restore': [{'register': r, 'value': registers[r]} for r in writable],
@@ -54,9 +55,9 @@ def main():
             'CPU restarts at BRAM0; wait CRC/DDR/netboot again',
             'second upload/B uses switch_done and skips PLL setup',
             'validate runtime/services before any remote DRTIO claim'],
-        'runtime_locks': ['genesys-210383B7F02DA', 'kasli-KASLI01', 'kasli-KASLI02', 'kasli-KASLI03'],
+        'runtime_locks': (['genesys-210383B7F02DA','kasli-KASLI01'] if args.board=='KASLI01' else ['genesys-210383B7F02DA', 'kasli-KASLI01', 'kasli-KASLI02', 'kasli-KASLI03']),
         'reason_genesys_lock': 'runtime enables downstream TX; user cable connects Genesys',
-        'i2c_reliability': snapshot['i2c_reliability'],
+        'i2c_reliability': snapshot.get('i2c_reliability','Read snapshot only; write reliability unqualified'),
         'restoration_validated': False
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
