@@ -252,6 +252,21 @@ disconnect
                     if getattr(self,'host_dma_test',False):
                         from host_dma_session import probe
                         probe(self,master_host,uart,raw)
+            except Exception:
+                # Preserve original failure and sample admission CSRs before restoration.
+                # This uses the existing parent lease and never resets/enables the link.
+                self.result['status'] = 'FAIL'
+                try:
+                    from aux_startup_status import script, parse
+                    path = self.output/'startup-status.tcl'
+                    path.write_text(script(self.mapping))
+                    status_log = self.run('startup-status', [
+                        'vivado-container','shell','-c','exec "$@"','bash',XSDB,
+                        str(path),self.config['server'],CABLE], timeout=30)
+                    self.result['startup_failure_status'] = parse(status_log)
+                except Exception as status_error:
+                    self.result['startup_failure_status_error'] = str(status_error)
+                raise
             finally:
                 # Preserve satellite evidence even if the host kernel fails
                 # before probe() reaches its normal UART drain.

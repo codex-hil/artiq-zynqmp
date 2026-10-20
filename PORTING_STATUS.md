@@ -2682,3 +2682,13 @@ server restarted under lease at172.17.0.3:3121, container a4f3adefe2bd. Evidence
 `evidence/kasli01-external-idle-2026-10-20`. Next offline: distinguish startup
 admission failures with exact read-only register telemetry before retrying.
 External link/TSC/reset/DIO and lab-delay hardware qualification remain pending.
+
+
+AUX startup diagnostics (2026-10-20): external exception path now captures
+seven sequential read-only DAP status/control values under the existing parent
+Genesys lease before restoration; exact cable/PSU selection required. Original
+exception preserved, telemetry failures cannot skip outer restoration. Two
+offline tests PASS; actual-map Tcl generation and KASLI01 external preflight
+PASS. Hardware capture NOT_RUN. Evidence `evidence/kasli01-startup-status-
+offline-2026-10-20`. Next one bounded retry to distinguish PL/reset/RX state;
+no gateware/firmware admission bypass, no new hardware access this checkpoint.
