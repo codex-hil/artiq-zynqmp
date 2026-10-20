@@ -2644,3 +2644,16 @@ offline tests and historical profile preflight PASS. Evidence:
 `evidence/kasli01-master-cpu-2026-10-20`. Next qualify FPGA timing/ROM/artifacts
 and execute bounded KASLI01 netboot with diagnostic/clock restoration before
 attempting the external DRTIO lab-idle qualification. KASLI03/04 untouched.
+
+
+KASLI01 FPGA/netboot checkpoint (2026-10-20): Vivado implementation and
+bitstream qualification PASS, setup/hold/pulse slack 0.092/0.051/0.264 ns,
+zero failing summary endpoints. Physical DNA matched under named01 lease;
+SRAM netboot CRC/SDRAM/inherited memory test PASS. IPv6 TCP negative controls
+and listener recovery PASS, own MAC confirmed. Runtime RAM download 1756420
+bytes acknowledged PASS; runtime execution and memory readback NOT_RUN.
+Diagnostic restoration/register checks PASS, lease released. No flash/OTP/Si
+profile writes; Genesys and Kasli03/04 untouched. Evidence:
+`evidence/kasli01-master-fpga-2026-10-20`,
+`evidence/kasli01-netboot-download-2026-10-20`. Next guarded KASLI01 runtime
+execution/management with qualified clock restoration, then external DRTIO.
