@@ -362,3 +362,7 @@ test-drtio-top-build-check:
 .PHONY: test-drtio-lab-fault-process
 test-drtio-lab-fault-process:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_lab_fault_process.py' -v
+
+.PHONY: test-drtio-lab-fault-admission
+test-drtio-lab-fault-admission:
+	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_lab_fault_admission.py' -v

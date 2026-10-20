@@ -2562,3 +2562,13 @@ UART/handshaketestsPASS. Evidence lab-fault-process-offline-2026-10-20. NoHW
 access. HelpernotwiredintoExternalSessionyet; normalwrapperstilllab-refusing.
 Next strictartifact/overlay/mapadmission andguardedparentintegration with
 metric/epoch/settling/evidence/restoration checks beforephysicaltest.
+
+
+Labfaultadmission2026-10-20 offlinePASS onactualcandidateartifacts: explicit
+standaloneidle/active+ack, currentgeneratedC/helpers, ELF/map/bitstream/routedCDC
+hashes9groups/202endpoints verified. Active requires exactprior idlecounter/DIO/
+snapshot/restorationproof; empty/oldproof refused.2preparedhosttestsPASS including
+stalehelper/overlay/conflictingmode negatives. Evidence lab-fault-admission-offline-
+2026-10-20. NoHWaccess. HelpernotwiredintoExternalSessionyet; normalwrapper
+remainslab-refusing. Next implementliveidlecounter/epochprobe andguardedbranch,
+thenofflineintegrationtests. Activephysicalmode blockedwithoutnewidleproof.

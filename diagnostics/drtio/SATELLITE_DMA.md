@@ -1563,3 +1563,15 @@ races. Five synthetic subprocess/UART and handshake tests pass. This helper is
 not yet wired into ExternalSession; the normal wrapper still refuses lab firmware.
 Its eventual caller must prove all-board leases/artifact identity, drain/epoch/
 settling and final restoration. No hardware execution is implied by these tests.
+
+Offline `lab_fault_admission.validate` checks explicit idle/active selection,
+standalone lab scope, exact generated C overlay/current helper digests, real ELF/
+map hashes and all routed artifact/CDC hashes. It requires9groups/202 endpoints.
+Active selection additionally requires prior exact-image idle hardware proof with
+counter/DIO/snapshot/restoration PASS. Ordinary local/older idle evidence cannot
+substitute. The two prepared-host tests pass against actual candidate artifacts,
+with stale-helper/overlay, conflicting scope and empty proof refusal controls;
+they skip when prepared artifacts are absent. This module opens no hardware and
+is not yet called by ExternalSession; the normal wrapper still refuses lab
+firmware. Its future guarded integration must also perform live idle counter
+sampling and epoch/settling checks. No idle/counter hardware proof exists yet.

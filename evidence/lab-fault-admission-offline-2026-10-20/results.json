@@ -1,0 +1,15 @@
+{
+  "status": "ACTUAL_ARTIFACT_ADMISSION_TESTS_PASS",
+  "hardware_access": false,
+  "tests": 2,
+  "source_sha256": {
+    "diagnostics/drtio/lab_fault_admission.py": "cb526ca8e1d7c4094f93c50c525a1cc98a2b51fc588736b7fb0d8286242b930c",
+    "diagnostics/drtio/test_lab_fault_admission.py": "ce468ceda85e80d215d68ae9c24cfa75c937a05cda87ec64059db640fb8b3c87"
+  },
+  "active_mode": "BLOCKED_WITHOUT_EXACT_PRIOR_IDLE_COUNTER_HARDWARE_PROOF",
+  "limitations": [
+    "offline admission helper not wired into normal wrapper",
+    "no hardware idle/counter proof",
+    "live epoch settling and restoration remain parent responsibilities"
+  ]
+}
