@@ -1,8 +1,26 @@
 {
-  "status": "RUNNING",
+  "status": "FPGA_BUILD_PASS_NOT_HARDWARE",
   "hardware_executed": false,
-  "job": "/srv/codex-hil-data/artiq-zynqmp/build/artiq-source-build-20261021",
-  "remote": "/srv/nvme-fast-1/vivado-work/artiq-source-build-20261021",
-  "inputs_match_prior_qualified_build": true,
-  "scope": "End-to-end remote-tool build from clean generated HDL; result pending"
+  "slack_ns": {
+    "setup": 1.9,
+    "hold": 0.016,
+    "pulse_width": 2.5
+  },
+  "timing_coverage": {
+    "no_clock": 0,
+    "unconstrained_internal_endpoints": 0,
+    "no_input_delay": 1,
+    "no_output_delay": 5
+  },
+  "drc_warnings": [
+    "RTSTAT-10"
+  ],
+  "scope": "Preserved HDL local RTIO/CoreDMA/analyzer/MonInj build; external I/O delays remain as reported, no physical test",
+  "sha256": {
+    "top.bit": "11bed1180281b4111c324fd6fd5317dc963d862451a40c2e12b8f164705f2648",
+    "top_timing.rpt": "b6556a62cab5939f83132ceecf22f8bc45ed003ffc56a3bc7eed324d3584e625",
+    "top_drc.rpt": "273ef54465043b86186d800ca985d5a2fb4f52cf2db9e02bc92d4bf810a88707",
+    "top_route_status.rpt": "075ae97477ab9a99566248783651511bc6f28c2fcc868b110ac1128a876c2e65",
+    "console.log": "eb5c45a0a40e12354bd6aafa24c179131e05c294db4c328749b9788d381864a5"
+  }
 }

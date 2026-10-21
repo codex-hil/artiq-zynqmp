@@ -62,6 +62,14 @@ hashes, then run `scripts/check_remote_rtio_build.py`. Timing/report PASS is
 separate from hardware qualification. The candidate already passed physical
 checks; changing inputs creates a new candidate requiring scoped revalidation.
 
+The complete fresh-source path above passed on2026-10-21. See
+`evidence/source-release-chain-2026-10-21/remote-build/results.json` and
+`source-build-payload-comparison.json` in the same evidence directory. The
+resulting raw FPGA configuration bytes exactly match the JTAG-qualified
+candidate; only the .bit header time differs. No new hardware test was run.
+This equivalence does not close the external PS-export/bootstrap or latest SD
+cold-boot gaps, and the existing package still pins its original qualified .bit.
+
 ## 4. Build matching firmware
 
 Use the same CSR map throughout. Refer to [CLEAN_BUILD.md](CLEAN_BUILD.md) for

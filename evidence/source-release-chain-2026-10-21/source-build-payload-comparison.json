@@ -1,0 +1,32 @@
+{
+  "status": "CONFIGURATION_BYTES_IDENTICAL",
+  "hardware_executed": false,
+  "full_files_identical": false,
+  "metadata": {
+    "left": {
+      "design": "top;UserID=0XFFFFFFFF;COMPRESS=TRUE;Version=2025.2;SW_CRC=3300ee41",
+      "device": "xczu5ev-sfvc784-1-e",
+      "date": "2026/10/21",
+      "time": "17:43:15"
+    },
+    "right": {
+      "design": "top;UserID=0XFFFFFFFF;COMPRESS=TRUE;Version=2025.2;SW_CRC=3300ee41",
+      "device": "xczu5ev-sfvc784-1-e",
+      "date": "2026/10/21",
+      "time": "19:42:24"
+    }
+  },
+  "payload_bytes": {
+    "left": 3202404,
+    "right": 3202404
+  },
+  "payload_sha256": {
+    "left": "57ce1a7974b9ff1d8a6bd9e65bdc514e4ea61498b567211f11a8e8fc457194a2",
+    "right": "57ce1a7974b9ff1d8a6bd9e65bdc514e4ea61498b567211f11a8e8fc457194a2"
+  },
+  "scope": "Exact raw FPGA configuration bytes; header metadata reported separately. No new physical test.",
+  "files": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z/top.bit": "1dc6364737e322022819a22c6561257fe8d10e9a24f436fda70571fcbd96e243",
+    "/srv/codex-hil-data/artiq-zynqmp/build/artiq-source-build-result-20261021/top.bit": "11bed1180281b4111c324fd6fd5317dc963d862451a40c2e12b8f164705f2648"
+  }
+}

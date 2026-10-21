@@ -1,0 +1,41 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date         : Wed Oct 21 19:42:00 2026
+| Host         : 8614154f22c4 running 64-bit Ubuntu 22.04.5 LTS
+| Command      : report_drc -file top_drc.rpt
+| Design       : top
+| Device       : xczu5ev-sfvc784-1-e
+| Speed File   : -1
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: top
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max checks: <unlimited>
+             Checks found: 1
++-----------+----------+-------------------+--------+
+| Rule      | Severity | Description       | Checks |
++-----------+----------+-------------------+--------+
+| RTSTAT-10 | Warning  | No routable loads | 1      |
++-----------+----------+-------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+RTSTAT-10#1 Warning
+No routable loads  
+1 net(s) have no routable loads. The problem bus(es) and/or net(s) are xilinxmultiregimpl61.
+Related violations: <none>
+
+

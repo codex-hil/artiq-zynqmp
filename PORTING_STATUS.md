@@ -17,6 +17,24 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Fresh-source PL release chain — 2026-10-21
+
+Clean source HDL generation, explicit PS IP normalization and full Dell Vivado
+2025.2 build PASS. All16 pinned inputs remain unchanged. Setup/hold/pulse slack:
+1.900/0.016/2.500ns; complete routing, no unconstrained internal endpoints,
+known RTSTAT-10 warning only. External I/O delay coverage remains incomplete
+(one input/five outputs); this is not absolute pin-timing qualification.
+
+The new bitstream contains exactly the same3,202,404 configuration bytes as the
+candidate that passed extended physical TTL/CoreDMA/exception/debug/Ethernet
+checks. Payload SHA-256:
+`57ce1a7974b9ff1d8a6bd9e65bdc514e4ea61498b567211f11a8e8fc457194a2`.
+Only the header generation time differs. This comparison is offline, not another
+hardware run. Evidence: `evidence/source-release-chain-2026-10-21/`.
+The board retains the restored older qualified runtime. The coherent candidate
+SD package remains cold-boot NOT_RUN; no card/flash/OTP writes were performed.
+PS export/bootstrap and complete firmware reproducibility remain separate gaps.
+
 ## Historical baseline — 2026-10-08
 
 Stan: 2026-10-08. **Pełna Definition of Done nie została osiągnięta.**
