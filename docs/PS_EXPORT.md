@@ -115,3 +115,29 @@ The new collector was exercised against the existing completed source export:
 168files verified, no duplicate Vivado run. Evidence:
 `evidence/ps-export-automation-2026-10-21/`. Three new controls cover offline
 preparation/changed input rejection, missing/linked inputs and incomplete outputs.
+
+## Verified importer view and PS comparison
+
+```sh
+python3 scripts/prepare_ps_import.py \
+  --export /path/to/collected-export \
+  --original-root /srv/nvme-fast-1/vivado-work/ORIGINAL_JOB \
+  --baseline /path/to/selected-qualified-export \
+  --output /path/to/fresh-import-view
+```
+
+The tool verifies the collected receipt and input indices, refuses missing,
+changed or linked files and external IP references, then compares PS parameter
+values and exported text reports with the selected baseline. Parameter/report
+differences stop preparation. Omitting `--baseline` only prepares a verified copy;
+it makes no configuration-equivalence claim.
+
+Only pinned files are copied. `mi_xci_files.txt` is rewritten in the fresh copy
+and `import-view.json` records the original/new references. The downloaded tree
+is never edited. Point `build_rtio_debug.sh --generate-only` at that new view.
+This compares PS export values/reports; it does not replace XSA metadata review
+or SDT comparisons. A receipt is consistency evidence, not signed provenance.
+
+The actual2026-10-21 export passed this tool and fresh Migen generation:
+all16generated inputs match the previous relocated export byte-for-byte.
+Three admission tests PASS. Evidence: `evidence/ps-import-automation-2026-10-21/`.

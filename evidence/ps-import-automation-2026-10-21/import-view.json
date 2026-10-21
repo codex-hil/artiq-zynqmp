@@ -1,0 +1,18 @@
+{
+  "status": "IMPORT_VIEW_PREPARED_NOT_HARDWARE",
+  "hardware_executed": false,
+  "source": "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-export-result-20261021",
+  "original_root": "/srv/nvme-fast-1/vivado-work/ps-source-export-20261021",
+  "output": "/srv/codex-hil-data/artiq-zynqmp/build/ps-verified-import-20261021",
+  "receipt_sha256": "71e8df12385a05b66016db0944789c96b2a8ab408b85881aee2bd701925f47b6",
+  "files_verified": 168,
+  "comparison": {
+    "status": "PS_PARAMETERS_AND_REPORTS_IDENTICAL",
+    "parameter_differences": {},
+    "changed_reports": []
+  },
+  "relocation": {
+    "before": "/srv/nvme-fast-1/vivado-work/ps-source-export-20261021/vivado-proj/platform.srcs/sources_1/imports/src/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci\n",
+    "after": "/srv/codex-hil-data/artiq-zynqmp/build/ps-verified-import-20261021/vivado-proj/platform.srcs/sources_1/imports/src/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci\n"
+  }
+}

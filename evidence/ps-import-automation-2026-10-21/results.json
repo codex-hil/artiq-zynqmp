@@ -1,0 +1,73 @@
+{
+  "status": "VERIFIED_IMPORT_AND_GENERATED_INPUTS_PASS",
+  "hardware_executed": false,
+  "generated_files_identical": 16,
+  "files": [
+    {
+      "path": "top.v",
+      "sha256": "ede20cf1089979d4e49f723bc66d1635e0f15054b749ea808aa1073f1b448805"
+    },
+    {
+      "path": "top.xdc",
+      "sha256": "54b6126caa79dc1e305623c2ba74ef021c682ad5cbb16a92d2774280cbc052f2"
+    },
+    {
+      "path": "top.tcl",
+      "sha256": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a"
+    },
+    {
+      "path": "top_route.tcl",
+      "sha256": "885970caf0834ce626e4dc5b4655d1c99a93cfef00309378b0554cee92bf9274"
+    },
+    {
+      "path": "top_bitstream.tcl",
+      "sha256": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a"
+    },
+    {
+      "path": "csr-map.json",
+      "sha256": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049"
+    },
+    {
+      "path": "en_replaces_rom.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_1.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_2.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_3.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_4.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_5.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_6.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_7.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "latency_compensation.init",
+      "sha256": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead"
+    },
+    {
+      "path": "ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci",
+      "sha256": "a0cc4f0c0c3f36e21e365652a91bd8c1f9b3d0e78fb7fc5ece254c17b79f7019"
+    }
+  ],
+  "tests": "3 importer controls PASS",
+  "scope": "Offline relocation and Migen generation only; no new Vivado build or hardware"
+}
