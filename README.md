@@ -7,6 +7,8 @@ This project continues [Piotr Jedyk’s `artiq-new`](https://github.com/pjedyk/a
 Current external-link checkpoint: **KASLI04 SFP1 → Genesys** passes standard
 ARTIQ DIO, native distributed DMA, replacement/erase/replay, two-fragment
 uploads and forced-link recovery. [Reproducer and limits](diagnostics/drtio/KASLI04.md).
+See [current integration gaps](docs/INTEGRATION_GAPS.md) for the remaining
+boot, upstream-runtime and clock qualification work.
 Kasli01/03 currently belong to the separate secure-link project; do not use
 the historical Kasli03 hardware profile on those boards.
 

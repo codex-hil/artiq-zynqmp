@@ -1,5 +1,24 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+
+## Current checkpoint — 2026-10-21
+
+Local kernel upload/run, scalar RPC, TTL loopback, CoreDMA, analyzer and MonInj
+have physical PASS evidence. KASLI04 SFP1 → Genesys now passes remote DIO,
+native distributed DMA, fragmented lifecycle and link recovery. One controlled
+active DMA underflow also passed, including exact exception reporting, blocked
+post-fault state and restoration of both boards. No reuse after that fault was
+attempted before restoration.
+
+Full upstream integration, latest-image cold boot, extensive DDR stress and
+remote clock phase/jitter/deterministic-latency qualification remain open.
+See [current integration gaps](docs/INTEGRATION_GAPS.md) and
+[KASLI04 reproducer](diagnostics/drtio/KASLI04.md). Later dated entries below
+contain the detailed evidence. The following October 8 table is historical,
+not the current aggregate status.
+
+## Historical baseline — 2026-10-08
+
 Stan: 2026-10-08. **Pełna Definition of Done nie została osiągnięta.**
 Fizyczny Genesys wykonuje standardowe kernele ARTIQ przez Ethernet z RPC,
 TTL loopback i local CoreDMA (216 impulsów/432 zbocza); szczegóły i granice
