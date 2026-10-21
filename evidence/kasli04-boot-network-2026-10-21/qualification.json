@@ -1,0 +1,32 @@
+{
+  "status": "BUILD_PASS_HARDWARE_NOT_RUN",
+  "boot_mode": "network-only",
+  "scope": "network-only BRAM bootloader; separately built runtime",
+  "volatile_mac": "02:4b:04:70:48:54",
+  "bram_boot": {
+    "bootloader_only": false,
+    "cpu_reset_address": 0,
+    "integrated_rom_size": 131072,
+    "bootloader_sha256": "e48cdf43da1dca0a8696d34ac44b6e9a87fc48f935dff5f80503e13f3c0963ba",
+    "bootloader_bytes": 112296
+  },
+  "bit_sha256": "80f2d7872aa885ff2bfff8a5f957a620b1d1c11529ee019ef4fd23e10b12fe90",
+  "artifact_hashes": {
+    "gateware/top.bit": "80f2d7872aa885ff2bfff8a5f957a620b1d1c11529ee019ef4fd23e10b12fe90",
+    "gateware/top.bin": "b263862acb8614aa574272821b3c4b8b81c28f0952aeed4a1413b76299661d6b",
+    "software/bootloader/bootloader.bin": "e48cdf43da1dca0a8696d34ac44b6e9a87fc48f935dff5f80503e13f3c0963ba"
+  },
+  "rom_init_sha256": "1677fda58e300b028634a47bda602d61fba06d8311a2409fbaf68bd697b6f7f0",
+  "generated_hdl_sha256": "8ab83023230ffd9034479377a03958764bedba6e686a33b0dbb90681542150fd",
+  "upstream_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "overlay_sha256": "13d74880afe6c44be516603bb13b7da9213b8bdd5447a55504b0242713678deb",
+  "setup_wns_ns": 0.092,
+  "hold_whs_ns": 0.051,
+  "pulse_slack_ns": 0.264,
+  "network": "IPv6 link-local; bootloader has no DHCP client",
+  "limitations": [
+    "inherited external timing warnings",
+    "no physical qualification"
+  ],
+  "build": "/srv/codex-hil-data/artiq-zynqmp/build/kasli04-no-eem-mux-2026-10-21"
+}

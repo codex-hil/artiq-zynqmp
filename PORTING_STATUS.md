@@ -2774,3 +2774,12 @@ stillruns. Old01/03 selections unchanged.15Kaslioffline testsPASS, py_compile/
 diffcheckPASS; full04preflight/HW NOT_RUN awaitingFPGA. Vivadorouting ongoing.
 Next qualifycompleteFPGA and run04netboot/runtime with restoredmode10, then
 externalDRTIO. NoHWaccess thischeckpoint.
+
+
+KASLI04 physical boot (2026-10-21): completeFPGAqualificationPASS, slack
+0.092/0.051/0.264ns. GuardedexactDNA/mode10precheck/SRAMboot/CRC/SDRAMtest
+PASS. IPv6netbootTCP timedout beforepayload; runtime/management/DRTIONOT_RUN.
+Diagnostic+retainedmode10restorePASS; clocksunchanged,04+Genesysleasesreleased,
+Genesys/01/03untouched,noFlash/OTP/SDwrites. Evidence
+`evidence/kasli04-boot-network-2026-10-21`. Next physical network check:04SFP0
+to host/switch;04SFP1 remainsDRTIOtoGenesys. No identicalretry until checked.
