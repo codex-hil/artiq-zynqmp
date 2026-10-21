@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Wed Oct 21 18:58:07 2026
+# Process ID         : 50
+# Current directory  : /srv/nvme-fast-1/vivado-work/alinx-awg-part-20261021a
+# Command line       : vivado -mode batch -nojournal -log enumerate-fixed.log -source enumerate.tcl
+# Log file           : /srv/nvme-fast-1/vivado-work/alinx-awg-part-20261021a/enumerate-fixed.log
+# Journal file       :
+# Running On         : b55eaa407c78
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : Intel(R) Core(TM) i7-9800X CPU @ 3.80GHz
+# CPU Frequency      : 1200.000 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 65762 MB
+# Swap memory        : 8589 MB
+# Total Virtual      : 74352 MB
+# Available Virtual  : 63043 MB
+#-----------------------------------------------------------
+source enumerate.tcl
+# puts "PARTS=[get_parts -quiet *xcau15p*]"
+PARTS=
+# exit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 21 18:58:10 2026...

@@ -11,3 +11,11 @@ hdl:
 
 build-trenz-reference: hdl
 	cd gateware && $(VIVADO) -mode batch -nojournal -log reference-build.log -source build-slow6144.tcl
+
+.PHONY: test-axau15 hdl-axau15
+test-axau15: test
+	$(PYTHON) -m pytest -q axau15/test_target.py
+
+hdl-axau15:
+	$(PYTHON) axau15/generate.py --output build/axau15-jesd
+	$(PYTHON) axau15/generate.py --spi-only --output build/axau15-spi

@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "axau15_awg.v": "6ae25e76755f2d7732ae6b2511e7d5612690a9c5b477e4d1146fad5cf3ed9a14",
+    "build.tcl": "0cd127283d6e4a122454d784823590e752741d56c6c954162042b59db86de185",
+    "constraints.tcl": "72cf9ffa937f4c0b2758dd51e588f2959809325e2d1c03241340aa37aba74e19",
+    "spi-console.v": "781de849a0ec3a3995f2eb73bdb99c974b404b335c90a26ec274635d4ea183f4",
+    "target.json": "0205ba014ed819ed2ea7baf452b6a7e21e8238d9c12bf8932cd0289e35b9f810"
+  },
+  "commit": "aa6b2b8a948dcbeabf6b99427b78b3569f80ac46",
+  "status": " M .gitignore\n M Makefile\n M README.rst\n M gateware/spi-console.v\n?? axau15/\n?? control/\n?? evidence/axau15/\n",
+  "hardware": false
+}

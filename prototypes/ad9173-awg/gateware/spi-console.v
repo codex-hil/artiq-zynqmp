@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 // USER2 stable-mailbox command transport; no flash/OTP access or automatic resets.
-module spi_console(input clk,input spi_en,input miso,output reg sck=0,mosi=0,output reg cs_dac=1,cs_clock=1,output reg [15:0] payload_amp=16'h2000);
+module spi_console #(parameter [15:0] INITIAL_PAYLOAD=16'h2000)(input clk,input spi_en,input miso,output reg sck=0,mosi=0,output reg cs_dac=1,cs_clock=1,output reg [15:0] payload_amp=INITIAL_PAYLOAD);
 wire capture,shift,update,tck,sel,tdi;
 reg [127:0] scan=0;
 reg [31:0] mailbox_cmd=0;reg [15:0] mailbox_seq=0;reg request=0;

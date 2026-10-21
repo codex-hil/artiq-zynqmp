@@ -89,3 +89,13 @@ never into a running job. The packaged build.tcl is Trenz-only. A new AXAU15
 Tcl/XDC/clock target must be implemented before any ALINX programming.
 Use the global Dell flock from the remote handoff. JTAG and measurements stay
 on the lab host with board-specific leases; do not change a running Trenz.
+
+AXAU15 offline continuation (2026-10-21)
+--------------------------------------
+
+``axau15/`` now contains a separate dedicated-reference candidate, SPI-only
+variant, pin constraints, synthesis/package scripts and offline tests.
+``control/ad9173_profile.py`` separates warm-clock DAC/HMC operations from the
+Trenz session. See ``axau15/README.rst`` for exact limitations and reproduction.
+Dell lacks Artix UltraScale+ device support; licensing, implementation and
+physical AXAU15 validation remain pending. This is not a programming-ready port.

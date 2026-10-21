@@ -1,0 +1,88 @@
+{
+  "recorded_utc": "2026-10-21T19:06:15.951898+00:00",
+  "base_commit": "aa6b2b8a948dcbeabf6b99427b78b3569f80ac46",
+  "hardware": false,
+  "status": "OFFLINE_PASS_DEVICE_SUPPORT_BLOCKED",
+  "dependencies": [
+    {
+      "name": "migen",
+      "expected": "e19524c963a8342952840983047557707fbe0b6a",
+      "actual": "e19524c963a8342952840983047557707fbe0b6a",
+      "tracked_diff": ""
+    },
+    {
+      "name": "litex",
+      "expected": "8c01073afb71aa0a0709f02f8e24247589e8f5e4",
+      "actual": "8c01073afb71aa0a0709f02f8e24247589e8f5e4",
+      "tracked_diff": ""
+    },
+    {
+      "name": "liteiclink",
+      "expected": "cb6cd0cf52a38cf303fc5fa02dfcceef1b7e67cf",
+      "actual": "cb6cd0cf52a38cf303fc5fa02dfcceef1b7e67cf",
+      "tracked_diff": ""
+    },
+    {
+      "name": "litejesd204",
+      "expected": "a1d0cbf27f5e386bfcad2190c82677024fc949bd",
+      "actual": "a1d0cbf27f5e386bfcad2190c82677024fc949bd",
+      "tracked_diff": ""
+    }
+  ],
+  "source_sha256": {
+    "axau15/package.py": "5212dfba2b656a656408873c4d585ae49d55038cafb0dcf2dd66a77cff2a4d6a",
+    "axau15/check-part.tcl": "1764335e01cf7cca7e63c549f12074431bf96ff97985edd07f83278696d303b7",
+    "axau15/constraints.tcl": "72cf9ffa937f4c0b2758dd51e588f2959809325e2d1c03241340aa37aba74e19",
+    "axau15/test_target.py": "271ea5b3d5df33b5877a0ee72c1c2d65a7bacb1031322dde11ae43cc5180cbcb",
+    "axau15/build.tcl": "0cd127283d6e4a122454d784823590e752741d56c6c954162042b59db86de185",
+    "axau15/README.rst": "13ed1ea95dd360f1e475e3fb878a064eb1486db41e35eb01c612dd72082efbfb",
+    "axau15/generate.py": "f5dd51410bab473a9677fcc34f1fea253c79d0a57c11967aca92671782a452b6",
+    "control/ad9173_profile.py": "7e438d63c858835d8212a3e96eb4a9238fe883bb771fee2b8739c627c066bd7e",
+    "gateware/spi-console.v": "781de849a0ec3a3995f2eb73bdb99c974b404b335c90a26ec274635d4ea183f4",
+    "boards/axau15-manual-pinmap.json": "4ae3c5a7c6bd8ddf10ef7c63678644ccbe87fb2ca24c51cb49e4825b7e68a7ae",
+    "dependencies.json": "6a1058906ee21c84c6f2ee8f96214af5ba009aa3d553fd48a26c395c8b5460c5"
+  },
+  "simulation": {
+    "reference_tests": 7,
+    "axau15_tests": 6,
+    "old_wiring_negative_control": "PASS",
+    "gth_analog_simulation": "NOT_RUN",
+    "spi_rtl_simulation": "NOT_RUN"
+  },
+  "vivado": {
+    "host": "Dell 192.168.2.7",
+    "version": "2025.2",
+    "get_parts_xcau15p": "EMPTY",
+    "license": "NOT_TESTED",
+    "synthesis": "NOT_RUN",
+    "implementation": "NOT_RUN",
+    "bitstream": "NOT_GENERATED"
+  },
+  "hardware_validation": {
+    "alinx": "NOT_RUN_BOARD_AND_CABLE_UNIDENTIFIED",
+    "other_board_actions": "NONE",
+    "persistent_writes": "NONE"
+  },
+  "manual": {
+    "sha256": "23fa861740903add3042ba0ab378c91d37c905946d126da18a90323e369bf1b3",
+    "fmc_pin_tables": "CROSSCHECKED",
+    "physical_revision": "UNCONFIRMED",
+    "vivado_package_pin_check": "BLOCKED"
+  },
+  "schematic": {
+    "local_path": "/home/codex-hil/trenz-bringup/reference/dac.pdf",
+    "sha256": "5aab1726fcec9a4ff8f35eddb788f722b614c75c1b6ca7b41bc46c2244e23053",
+    "drawing_revision": "D",
+    "user_board_revision": "C",
+    "clock_population": "UNCONFIRMED"
+  },
+  "remaining": [
+    "official Artix UltraScale+ installation packages",
+    "exact part/license check",
+    "RevC physical clock route/levels and board identity",
+    "SPI CDC/IO constraints and clock diagnostics",
+    "cold clock initialization",
+    "implementation and all physical acceptance",
+    "local variable I/Q and RTIO/DRTIO"
+  ]
+}
