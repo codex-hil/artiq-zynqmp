@@ -1,0 +1,2074 @@
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Wed Oct 21 17:36:45 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source top.tcl
+# source "top_route.tcl"
+## set_param general.maxThreads 8
+## create_project -force -name top -part xczu5ev-sfvc784-1-e
+## set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+## add_files {top.v}
+## set_property library work [get_files {top.v}]
+## read_ip {ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci}
+WARNING: [Vivado 12-25524] IP file '/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci' was created in a subcore context and may not behave as expected when used in a standalone context.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/ip'.
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+WARNING: [Vivado 12-13650] The IP file '/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci' has been moved from its original location, as a result the outputs for this IP will now be generated in '/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0'. Alternatively a copy of the IP can be imported into the project using one of the 'import_ip' or 'import_files' commands.
+read_ip: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1784.711 ; gain = 161.523 ; free physical = 28381 ; free virtual = 66470
+## upgrade_ip [get_ips platform_zynq_ultra_ps_e_0_0]
+WARNING: [Coretcl 2-1042] No IP was identified for upgrade.
+## generate_target all [get_ips platform_zynq_ultra_ps_e_0_0]
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [xilinx.com:ip:zynq_ultra_ps_e:3.5-0] platform_zynq_ultra_ps_e_0_0: 
+Changes in your design (including the PCW configuration settings) are not automatically exported from Vivado to Amd's SDK, Petalinux or Yocto.
+This is by design to avoid disrupting existing embedded development efforts. To have any changes of your design taking effect in the embedded software flow please export your
+design by going through Vivado's main menu, click on File, then Export finally select Export Hardware, please ensure you click on the Include BitStream option.
+The auto-generated HDF file is all you need to import in Amd's SDK, Petalinux or Yocto for your changes to be reflected in the Embedded Software Flow.
+For more information, please consult PG201, section: Exporting PCW Settings to Embedded Software Flows
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_HPM0_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HP0_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-1686] Generating 'Miscellaneous' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-1686] Generating 'Hardware Handoff' target for IP 'zynq_ultra_ps_e_0'...
+generate_target: Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1815.711 ; gain = 31.000 ; free physical = 28347 ; free virtual = 66450
+## create_ip_run [get_ips platform_zynq_ultra_ps_e_0_0]
+## launch_runs platform_zynq_ultra_ps_e_0_0_synth_1 -jobs 2
+[Wed Oct 21 17:37:21 2026] Launched platform_zynq_ultra_ps_e_0_0_synth_1...
+Run output will be captured here: /srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.runs/platform_zynq_ultra_ps_e_0_0_synth_1/runme.log
+## wait_on_run platform_zynq_ultra_ps_e_0_0_synth_1
+[Wed Oct 21 17:37:21 2026] Waiting for platform_zynq_ultra_ps_e_0_0_synth_1 to finish...
+
+*** Running vivado
+    with args -log platform_zynq_ultra_ps_e_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source platform_zynq_ultra_ps_e_0_0.tcl
+
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Wed Oct 21 17:37:24 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source platform_zynq_ultra_ps_e_0_0.tcl -notrace
+Command: synth_design -top platform_zynq_ultra_ps_e_0_0 -part xczu5ev-sfvc784-1-e -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 181
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2751.320 ; gain = 141.688 ; free physical = 26345 ; free virtual = 64448
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'dp_audi_ref_clk', assumed default net type 'wire' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:2462]
+INFO: [Synth 8-6157] synthesizing module 'platform_zynq_ultra_ps_e_0_0' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/synth/platform_zynq_ultra_ps_e_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:68]
+INFO: [Synth 8-6157] synthesizing module 'BUFG_PS' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2914]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG_PS' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2914]
+INFO: [Synth 8-6157] synthesizing module 'PS8' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:141540]
+INFO: [Synth 8-6155] done synthesizing module 'PS8' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:141540]
+WARNING: [Synth 8-689] width (5) of port connection 'EMIOSDIO0DATAIN' does not match port width (8) of module 'PS8' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:4646]
+WARNING: [Synth 8-689] width (5) of port connection 'EMIOSDIO0DATAOUT' does not match port width (8) of module 'PS8' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:4647]
+WARNING: [Synth 8-689] width (5) of port connection 'EMIOSDIO0DATAENA' does not match port width (8) of module 'PS8' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:4648]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXN0OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXN1OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXN2OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXN3OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXP0OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXP1OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXP2OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXP3OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_PADO' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_BOOTMODE' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_CLK' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DONEB' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMA' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMACTN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMALERTN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMBA' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMBG' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMCK' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMCKE' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMCKN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMCSN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMDM' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMDQ' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMDQS' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMDQSN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMODT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMPARITY' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_DRAMRAMRSTN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_ERROROUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_ERRORSTATUS' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_INITB' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_JTAGTCK' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_JTAGTDI' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_JTAGTDO' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_JTAGTMS' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MIO' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_PORB' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_PROGB' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_RCALIBINOUT' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_SRSTB' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_ZQ' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXN0IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXN1IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXN2IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXN3IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXP0IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXP1IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXP2IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTRXP3IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_PADI' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFN0IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFN1IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFN2IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFN3IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFP0IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFP1IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFP2IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFP3IN' of module 'PS8' is unconnected for instance 'PS8_i' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+WARNING: [Synth 8-7023] instance 'PS8_i' of module 'PS8' has 1015 connections declared, but only 957 given [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:3837]
+INFO: [Synth 8-6155] done synthesizing module 'zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e' (0#1) [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:68]
+INFO: [Synth 8-7071] port 'emio_enet0_signal_detect' of module 'zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e' is unconnected for instance 'inst' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/synth/platform_zynq_ultra_ps_e_0_0.v:368]
+INFO: [Synth 8-7071] port 'emio_enet1_signal_detect' of module 'zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e' is unconnected for instance 'inst' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/synth/platform_zynq_ultra_ps_e_0_0.v:368]
+INFO: [Synth 8-7071] port 'emio_enet2_signal_detect' of module 'zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e' is unconnected for instance 'inst' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/synth/platform_zynq_ultra_ps_e_0_0.v:368]
+INFO: [Synth 8-7071] port 'emio_enet3_signal_detect' of module 'zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e' is unconnected for instance 'inst' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/synth/platform_zynq_ultra_ps_e_0_0.v:368]
+INFO: [Synth 8-7023] instance 'inst' of module 'zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e' has 1493 connections declared, but only 1489 given [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/synth/platform_zynq_ultra_ps_e_0_0.v:368]
+INFO: [Synth 8-6155] done synthesizing module 'platform_zynq_ultra_ps_e_0_0' (0#1) [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/synth/platform_zynq_ultra_ps_e_0_0.v:53]
+WARNING: [Synth 8-3848] Net dp_audio_ref_clk in module/entity zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e does not have driver. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:331]
+WARNING: [Synth 8-3848] Net irq_ipi_pl_0 in module/entity zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e does not have driver. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:1351]
+WARNING: [Synth 8-3848] Net irq_ipi_pl_1 in module/entity zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e does not have driver. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:1352]
+WARNING: [Synth 8-3848] Net irq_ipi_pl_2 in module/entity zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e does not have driver. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:1353]
+WARNING: [Synth 8-3848] Net irq_ipi_pl_3 in module/entity zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e does not have driver. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:1354]
+WARNING: [Synth 8-3848] Net ps_pl_irq_usb3_0_otg in module/entity zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e does not have driver. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:1426]
+WARNING: [Synth 8-3848] Net ps_pl_irq_usb3_1_otg in module/entity zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e does not have driver. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_5_8.v:1428]
+INFO: [Synth 8-7129] Port dp_audio_ref_clk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port irq_ipi_pl_0 in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port irq_ipi_pl_1 in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port irq_ipi_pl_2 in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port irq_ipi_pl_3 in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port ps_pl_irq_usb3_0_otg in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port ps_pl_irq_usb3_1_otg in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihpc0_fpd_rclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihpc0_fpd_wclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihpc1_fpd_rclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihpc1_fpd_wclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp0_fpd_rclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp0_fpd_wclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp1_fpd_rclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp1_fpd_wclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp2_fpd_rclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp2_fpd_wclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp3_fpd_rclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxihp3_fpd_wclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxi_lpd_rclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port saxi_lpd_wclk in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[15] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[14] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[13] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[12] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[11] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[10] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[9] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[8] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[7] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_awuser[6] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[15] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[14] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[13] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[12] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[11] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[10] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[9] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[8] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[7] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port sacefpd_aruser[6] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_clk[3] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_clk[2] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_clk[1] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_clk[0] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[31] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[30] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[29] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[28] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[27] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[26] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[25] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[24] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[23] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[22] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[21] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[20] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[19] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[18] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[17] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[16] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[15] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[14] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[13] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[12] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[11] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[10] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[9] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[8] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[7] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[6] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[5] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[4] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[3] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[2] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[1] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc_in[0] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[31] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[30] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[29] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[28] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[27] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[26] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[25] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[24] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[23] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[22] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[21] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[20] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[19] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[18] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[17] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[16] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[15] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[14] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[13] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[12] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[11] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[10] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Synth 8-7129] Port test_adc2_in[9] in module zynq_ultra_ps_e_v3_5_8_zynq_ultra_ps_e is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2849.289 ; gain = 239.656 ; free physical = 26229 ; free virtual = 64333
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2849.289 ; gain = 239.656 ; free physical = 26229 ; free virtual = 64333
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2849.289 ; gain = 239.656 ; free physical = 26229 ; free virtual = 64333
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2857.289 ; gain = 0.000 ; free physical = 26229 ; free virtual = 64333
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xdc] for cell 'inst'
+Finished Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xdc] for cell 'inst'
+Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.runs/platform_zynq_ultra_ps_e_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.runs/platform_zynq_ultra_ps_e_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2897.309 ; gain = 0.000 ; free physical = 26243 ; free virtual = 64347
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2897.344 ; gain = 0.000 ; free physical = 26242 ; free virtual = 64346
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2897.344 ; gain = 287.711 ; free physical = 26269 ; free virtual = 64373
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu5ev-sfvc784-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2905.312 ; gain = 295.680 ; free physical = 26269 ; free virtual = 64373
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2905.312 ; gain = 295.680 ; free physical = 26269 ; free virtual = 64373
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2905.312 ; gain = 295.680 ; free physical = 26275 ; free virtual = 64381
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2905.312 ; gain = 295.680 ; free physical = 26282 ; free virtual = 64388
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 4674.805 ; gain = 2065.172 ; free physical = 24723 ; free virtual = 62828
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 4700.812 ; gain = 2091.180 ; free physical = 24691 ; free virtual = 62797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 4708.820 ; gain = 2099.188 ; free physical = 24683 ; free virtual = 62789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG_PS |     1|
+|2     |LUT1    |   264|
+|3     |PS8     |     1|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 4889.633 ; gain = 2231.945 ; free physical = 24527 ; free virtual = 62632
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 4889.633 ; gain = 2280.000 ; free physical = 24527 ; free virtual = 62632
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4889.633 ; gain = 0.000 ; free physical = 24676 ; free virtual = 62782
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4889.633 ; gain = 0.000 ; free physical = 24672 ; free virtual = 62778
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 75ec363f
+INFO: [Common 17-83] Releasing license: Synthesis
+129 Infos, 69 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:00:40 . Memory (MB): peak = 4889.633 ; gain = 3268.445 ; free physical = 24676 ; free virtual = 62782
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 4037.106; main = 3887.799; forked = 281.416
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 5759.746; main = 4815.949; forked = 986.922
+INFO: [Common 17-1381] The checkpoint '/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.runs/platform_zynq_ultra_ps_e_0_0_synth_1/platform_zynq_ultra_ps_e_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP platform_zynq_ultra_ps_e_0_0, cache-ID = db000dc69846dbb0
+INFO: [Common 17-1381] The checkpoint '/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.runs/platform_zynq_ultra_ps_e_0_0_synth_1/platform_zynq_ultra_ps_e_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file platform_zynq_ultra_ps_e_0_0_utilization_synth.rpt -pb platform_zynq_ultra_ps_e_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 21 17:38:12 2026...
+[Wed Oct 21 17:38:13 2026] platform_zynq_ultra_ps_e_0_0_synth_1 finished
+wait_on_runs: Time (s): cpu = 00:00:59 ; elapsed = 00:00:52 . Memory (MB): peak = 1815.746 ; gain = 0.000 ; free physical = 28254 ; free virtual = 66361
+## if {[get_property PROGRESS [get_runs platform_zynq_ultra_ps_e_0_0_synth_1]] ne "100%"} {error "PS synthesis failed"}
+## get_files -all -of_objects [get_files {ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci}]
+## read_xdc top.xdc
+## synth_design -top top -part xczu5ev-sfvc784-1-e
+Command: synth_design -top top -part xczu5ev-sfvc784-1-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 274
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2859.805 ; gain = 135.688 ; free physical = 26943 ; free virtual = 65050
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top' from library 'work' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:2]
+INFO: [Synth 8-3876] $readmem data file 'latency_compensation.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8453]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8601]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_1.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8613]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_2.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8625]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_3.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8637]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_4.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8649]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_5.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8661]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_6.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8673]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_7.init' is read successfully [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8685]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3445]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:7244]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:7479]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:7879]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:7891]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8053]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8117]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8147]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8199]
+INFO: [Synth 8-6157] synthesizing module 'platform_zynq_ultra_ps_e_0_0' [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/.Xil/Vivado-50-2322216a730c/realtime/platform_zynq_ultra_ps_e_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'platform_zynq_ultra_ps_e_0_0' (0#1) [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/.Xil/Vivado-50-2322216a730c/realtime/platform_zynq_ultra_ps_e_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'FDPE' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FDPE' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+INFO: [Synth 8-6155] done synthesizing module 'top' from library 'work' (0#1) [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:2]
+WARNING: [Synth 8-6014] Unused sequential element sync_lhs_self_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5146]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record24_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6253]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record31_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6464]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record32_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6659]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record39_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6680]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record41_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6689]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record42_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6696]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record43_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6757]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record44_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6764]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record45_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6825]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record46_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6832]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record40_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6891]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record47_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6898]
+WARNING: [Synth 8-6014] Unused sequential element time_offset_source_payload_length_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3366]
+WARNING: [Synth 8-6014] Unused sequential element encoder_source_eop_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:7782]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_first_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3934]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_last_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3935]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_payload_lock_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3940]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_payload_prot_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3941]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_payload_cache_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3942]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_payload_qos_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3943]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_payload_region_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3944]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_param_dest_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3946]
+WARNING: [Synth 8-6014] Unused sequential element axi2wb_axi2axi_lite_pipe_valid_source_param_user_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3947]
+WARNING: [Synth 8-6014] Unused sequential element re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:7888]
+WARNING: [Synth 8-6014] Unused sequential element rtio_now_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:7991]
+WARNING: [Synth 8-6014] Unused sequential element enable_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8110]
+WARNING: [Synth 8-6014] Unused sequential element read_index_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8114]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_spread_enable_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8144]
+WARNING: [Synth 8-6014] Unused sequential element dma_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8189]
+WARNING: [Synth 8-6014] Unused sequential element time_offset_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8196]
+WARNING: [Synth 8-6014] Unused sequential element mon_chan_sel_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8226]
+WARNING: [Synth 8-6014] Unused sequential element mon_probe_sel_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8230]
+WARNING: [Synth 8-6014] Unused sequential element inj_chan_sel_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8234]
+WARNING: [Synth 8-6014] Unused sequential element inj_override_sel_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8238]
+WARNING: [Synth 8-6014] Unused sequential element memdat_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8462]
+WARNING: [Synth 8-6014] Unused sequential element memdat_2_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8479]
+WARNING: [Synth 8-6014] Unused sequential element memdat_4_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8496]
+WARNING: [Synth 8-6014] Unused sequential element memdat_6_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8513]
+WARNING: [Synth 8-6014] Unused sequential element memdat_8_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8530]
+WARNING: [Synth 8-6014] Unused sequential element memdat_10_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8547]
+WARNING: [Synth 8-6014] Unused sequential element memdat_12_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8564]
+WARNING: [Synth 8-6014] Unused sequential element memdat_14_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8581]
+WARNING: [Synth 8-6014] Unused sequential element memdat_16_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8694]
+WARNING: [Synth 8-6014] Unused sequential element memadr_9_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:8711]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record1_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5553]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record1_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5554]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record3_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5621]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record3_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5622]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record5_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5689]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record5_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5690]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record7_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5757]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record7_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5758]
+WARNING: [Synth 8-3936] Found unconnected internal register 'comb_rhs_self6_reg' and it is trimmed from '512' to '64' bits. [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:3806]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_nondata_replace_occurred_r7_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:2955]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record11_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5894]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record15_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6030]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record19_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6232]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record23_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6246]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record31_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6466]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record39_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:6682]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_record47_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5452]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r0_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5495]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r1_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5501]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r2_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5507]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r3_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5513]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r4_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5519]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r5_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5525]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r6_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5531]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_channel_r7_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5537]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r0_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5494]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r1_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5500]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r2_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5506]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r3_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5512]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r4_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5518]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r5_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5524]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r6_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5530]
+WARNING: [Synth 8-6014] Unused sequential element rtio_core_sed_stb_r7_reg was removed.  [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.v:5536]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 3029.102 ; gain = 304.984 ; free physical = 26756 ; free virtual = 64865
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 3029.102 ; gain = 304.984 ; free physical = 26760 ; free virtual = 64869
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 3029.102 ; gain = 304.984 ; free physical = 26760 ; free virtual = 64869
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.3 ; elapsed = 00:00:00.3 . Memory (MB): peak = 3029.102 ; gain = 0.000 ; free physical = 26760 ; free virtual = 64869
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'platform_zynq_ultra_ps_e_0_0'
+Finished Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'platform_zynq_ultra_ps_e_0_0'
+Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.xdc]
+Finished Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3190.621 ; gain = 0.000 ; free physical = 26813 ; free virtual = 64923
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3190.656 ; gain = 0.000 ; free physical = 26812 ; free virtual = 64922
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 3190.656 ; gain = 466.539 ; free physical = 26894 ; free virtual = 65003
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu5ev-sfvc784-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 3198.625 ; gain = 474.508 ; free physical = 26894 ; free virtual = 65003
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 3198.625 ; gain = 474.508 ; free physical = 26894 ; free virtual = 65003
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'resetinserter_state_reg' in module 'top'
+INFO: [Synth 8-802] inferred FSM for state register 'recordconverter_state_reg' in module 'top'
+INFO: [Synth 8-802] inferred FSM for state register 'fsm_state_reg' in module 'top'
+INFO: [Synth 8-802] inferred FSM for state register 'axilite2wishbone_state_reg' in module 'top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                            00001 |                              000
+*
+                  iSTATE |                            00010 |                              001
+                 iSTATE0 |                            00100 |                              010
+                 iSTATE1 |                            01000 |                              011
+                 iSTATE2 |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'fsm_state_reg' using encoding 'one-hot' in module 'top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE0 |                               00 |                               00
+*
+                  iSTATE |                               01 |                               01
+                 iSTATE1 |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'resetinserter_state_reg' using encoding 'sequential' in module 'top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 |                               00
+*
+                 iSTATE0 |                               01 |                               01
+                 iSTATE1 |                               10 |                               10
+                 iSTATE2 |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'recordconverter_state_reg' using encoding 'sequential' in module 'top'
+INFO: [Synth 8-6904] The RAM "top/storage_9_reg" of size (depth=64 x width=65) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                              000
+*
+                 iSTATE2 |                              001 |                              011
+                 iSTATE1 |                              010 |                              100
+                 iSTATE3 |                              011 |                              001
+                 iSTATE0 |                              100 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'axilite2wishbone_state_reg' using encoding 'sequential' in module 'top'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 3198.625 ; gain = 474.508 ; free physical = 26887 ; free virtual = 64999
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   65 Bit       Adders := 8     
+	   2 Input   64 Bit       Adders := 3     
+	   2 Input   42 Bit       Adders := 1     
+	   2 Input   40 Bit       Adders := 3     
+	   2 Input   13 Bit       Adders := 1     
+	   3 Input   13 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 17    
+	   2 Input    7 Bit       Adders := 26    
+	   4 Input    7 Bit       Adders := 1     
+	   3 Input    7 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 3     
+	   2 Input    3 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	              672 Bit    Registers := 1     
+	              512 Bit    Registers := 2     
+	              256 Bit    Registers := 1     
+	               81 Bit    Registers := 8     
+	               65 Bit    Registers := 5     
+	               64 Bit    Registers := 18    
+	               49 Bit    Registers := 1     
+	               42 Bit    Registers := 1     
+	               40 Bit    Registers := 1     
+	               32 Bit    Registers := 11    
+	               24 Bit    Registers := 2     
+	               16 Bit    Registers := 12    
+	               14 Bit    Registers := 1     
+	               13 Bit    Registers := 1     
+	               12 Bit    Registers := 45    
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 13    
+	                7 Bit    Registers := 19    
+	                6 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 138   
+	                1 Bit    Registers := 308   
++---RAMs : 
+	              64K Bit	(256 X 256 bit)          RAMs := 1     
+	              10K Bit	(128 X 81 bit)          RAMs := 8     
+	               4K Bit	(64 X 65 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input  672 Bit        Muxes := 2     
+	  78 Input  672 Bit        Muxes := 1     
+	   2 Input  512 Bit        Muxes := 1     
+	   2 Input  256 Bit        Muxes := 3     
+	   2 Input   64 Bit        Muxes := 4     
+	   2 Input   42 Bit        Muxes := 2     
+	   4 Input   40 Bit        Muxes := 3     
+	   2 Input   40 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 37    
+	   4 Input   32 Bit        Muxes := 2     
+	   5 Input   32 Bit        Muxes := 3     
+	   2 Input   24 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 6     
+	   4 Input   16 Bit        Muxes := 3     
+	   3 Input   14 Bit        Muxes := 1     
+	   5 Input   14 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 2     
+	   2 Input   12 Bit        Muxes := 90    
+	   4 Input    9 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 5     
+	   4 Input    8 Bit        Muxes := 1     
+	   3 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 1     
+	   4 Input    7 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 1     
+	   5 Input    5 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 2     
+	   3 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 32    
+	   5 Input    3 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 265   
+	   4 Input    2 Bit        Muxes := 7     
+	   3 Input    2 Bit        Muxes := 1     
+	   5 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 432   
+	   4 Input    1 Bit        Muxes := 31    
+	   3 Input    1 Bit        Muxes := 17    
+	   5 Input    1 Bit        Muxes := 15    
+	   8 Input    1 Bit        Muxes := 24    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6904] The RAM "top/storage_9_reg" of size (depth=64 x width=65) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "top/storage_9_reg" of size (depth=64 x width=65) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM ("top__GB5/storage_1_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/storage_2_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/storage_3_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/storage_4_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/storage_5_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/storage_6_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/storage_7_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/storage_8_reg") is too shallow (depth = 128) to use URAM. Choosing BRAM instead of URAM 
+RAM ("top__GB5/memory_reg") is too shallow (depth = 256) to use URAM. Choosing BRAM instead of URAM 
+INFO: [Synth 8-3886] merging instance 'rtio_core_sed_busy_channel_reg' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_busy_reg)
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[26]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[27]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[28]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[29]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[30]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[31]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[176]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[177]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[178]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[179]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[180]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[181]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[182]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[183]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[184]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[185]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[186]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[187]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[188]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[189]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[190]' (FD) to 'encoder_source_payload_data_reg[191]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[191]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[168]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[169]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[170]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[171]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[172]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[173]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[174]' (FD) to 'encoder_source_payload_data_reg[175]'
+INFO: [Synth 8-3886] merging instance 'encoder_source_payload_data_reg[175]' (FD) to 'rtio_core_sed_lane_dist_quash_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (encoder_status_reg)
+INFO: [Synth 8-3886] merging instance 'cri_master_error_address_status_reg[8]' (FDRE) to 'cri_master_error_address_status_reg[9]'
+INFO: [Synth 8-3886] merging instance 'cri_master_error_address_status_reg[9]' (FDRE) to 'cri_master_error_address_status_reg[10]'
+INFO: [Synth 8-3886] merging instance 'cri_master_error_address_status_reg[10]' (FDRE) to 'cri_master_error_address_status_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cri_master_error_address_status_reg[11]' (FDRE) to 'cri_master_error_address_status_reg[12]'
+INFO: [Synth 8-3886] merging instance 'cri_master_error_address_status_reg[12]' (FDRE) to 'cri_master_error_address_status_reg[13]'
+INFO: [Synth 8-3886] merging instance 'cri_master_error_address_status_reg[13]' (FDRE) to 'cri_master_error_address_status_reg[14]'
+INFO: [Synth 8-3886] merging instance 'cri_master_error_address_status_reg[14]' (FDRE) to 'cri_master_error_address_status_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\cri_master_error_address_status_reg[15] )
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[2]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[3]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[4]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[5]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[6]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[7]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[8]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[9]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[10]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[11]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[12]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[13]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[14]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[15]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[16]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[16]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[17]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[17]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[18]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[18]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[19]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[19]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[20]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[20]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[21]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[21]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[22]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[22]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[23]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[23]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[24]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[24]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[25]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[25]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[26]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[26]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[27]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[27]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[28]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[28]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[29]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[29]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[30]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface3_bank_bus_dat_r_reg[30]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3886] merging instance 'interface0_bank_bus_dat_r_reg[31]' (FDR) to 'interface3_bank_bus_dat_r_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\interface3_bank_bus_dat_r_reg[31] )
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[31]' (FDRE) to 'rtio_core_cri_i_data_reg[30]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[30]' (FDRE) to 'rtio_core_cri_i_data_reg[29]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[29]' (FDRE) to 'rtio_core_cri_i_data_reg[28]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[28]' (FDRE) to 'rtio_core_cri_i_data_reg[27]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[27]' (FDRE) to 'rtio_core_cri_i_data_reg[26]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[26]' (FDRE) to 'rtio_core_cri_i_data_reg[25]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[25]' (FDRE) to 'rtio_core_cri_i_data_reg[24]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[24]' (FDRE) to 'rtio_core_cri_i_data_reg[23]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[23]' (FDRE) to 'rtio_core_cri_i_data_reg[22]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[22]' (FDRE) to 'rtio_core_cri_i_data_reg[21]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[21]' (FDRE) to 'rtio_core_cri_i_data_reg[20]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[20]' (FDRE) to 'rtio_core_cri_i_data_reg[19]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[19]' (FDRE) to 'rtio_core_cri_i_data_reg[18]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[18]' (FDRE) to 'rtio_core_cri_i_data_reg[17]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[17]' (FDRE) to 'rtio_core_cri_i_data_reg[16]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[16]' (FDRE) to 'rtio_core_cri_i_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'rtio_core_cri_i_data_reg[15]' (FDRE) to 'rtio_core_cri_i_data_reg[14]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\rtio_core_cri_i_data_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\rtio_core_cri_i_status_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_lane_dist_quash_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\axi2wb_axi2axi_lite_resp_acc_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_o_busy_sync_blind_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_o_busy_sync_ps_toggle_i_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_lane_dist_quash_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_lane_dist_quash_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_lane_dist_quash_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_lane_dist_quash_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_lane_dist_quash_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rtio_core_sed_replace_occurred_r7_reg)
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:57 . Memory (MB): peak = 3226.559 ; gain = 502.441 ; free physical = 22220 ; free virtual = 60366
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name | RTL Object    | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|top__GB5    | storage_1_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_2_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_3_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_4_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_5_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_6_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_7_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_8_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | memory_reg    | 256 x 256(READ_FIRST)  | W |   | 256 x 256(WRITE_FIRST) |   | R | Port A and B     | 0      | 4      |                 | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+---------------+-----------+----------------------+---------------+
+|Module Name | RTL Object    | Inference | Size (Depth x Width) | Primitives    | 
++------------+---------------+-----------+----------------------+---------------+
+|top         | storage_9_reg | Implied   | 64 x 65              | RAM64M8 x 10  | 
++------------+---------------+-----------+----------------------+---------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:49 ; elapsed = 00:01:09 . Memory (MB): peak = 3765.535 ; gain = 1041.418 ; free physical = 18386 ; free virtual = 56552
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+info: optimization accepted worst group hill climbing move (3446.0/ToG.UNL 5.0ps)
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:33 ; elapsed = 00:01:53 . Memory (MB): peak = 4051.980 ; gain = 1327.863 ; free physical = 18125 ; free virtual = 56291
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name | RTL Object    | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|top__GB5    | storage_1_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_2_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_3_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_4_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_5_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_6_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_7_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | storage_8_reg | 128 x 81(READ_FIRST)   | W |   | 128 x 81(WRITE_FIRST)  |   | R | Port A and B     | 1      | 1      |                 | 
+|top__GB5    | memory_reg    | 256 x 256(READ_FIRST)  | W |   | 256 x 256(WRITE_FIRST) |   | R | Port A and B     | 0      | 4      |                 | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+
+Distributed RAM: Final Mapping Report
++------------+---------------+-----------+----------------------+---------------+
+|Module Name | RTL Object    | Inference | Size (Depth x Width) | Primitives    | 
++------------+---------------+-----------+----------------------+---------------+
+|top         | storage_9_reg | Implied   | 64 x 65              | RAM64M8 x 10  | 
++------------+---------------+-----------+----------------------+---------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_1_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_1_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_2_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_2_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_3_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_3_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_4_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_4_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_5_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_5_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_6_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_6_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_7_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_7_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_8_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/storage_8_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/memory_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/memory_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/memory_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance i_0/memory_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:33 ; elapsed = 00:02:07 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17484 ; free virtual = 55660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance storage_1_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_1_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_2_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_2_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_3_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_3_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_4_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_4_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_5_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_5_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_6_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_6_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_7_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_7_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_8_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance storage_8_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance memory_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance memory_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance memory_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance memory_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:40 ; elapsed = 00:02:14 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17471 ; free virtual = 55677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:40 ; elapsed = 00:02:14 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17471 ; free virtual = 55677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:41 ; elapsed = 00:02:15 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17471 ; free virtual = 55677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:41 ; elapsed = 00:02:15 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17471 ; free virtual = 55677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:43 ; elapsed = 00:02:17 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17471 ; free virtual = 55677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:43 ; elapsed = 00:02:17 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17471 ; free virtual = 55677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+---------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                                | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+---------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|top         | rtio_core_sed_record7_payload_channel2_reg              | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|top         | rtio_core_sed_record0_payload_channel2_reg              | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|top         | rtio_core_sed_record40_rec_nondata_replace_occurred_reg | 3      | 1     | NO           | NO                 | NO                | 1      | 0       | 
+|top         | rtio_core_sed_record40_rec_replace_occurred_reg         | 3      | 1     | NO           | NO                 | NO                | 1      | 0       | 
+|top         | rtio_core_sed_record7_payload_address2_reg[1]           | 4      | 2     | NO           | NO                 | YES               | 2      | 0       | 
+|top         | rtio_core_sed_record0_payload_address2_reg[1]           | 4      | 2     | NO           | NO                 | YES               | 2      | 0       | 
+|top         | rtio_core_sed_record7_payload_data2_reg[1]              | 4      | 2     | NO           | NO                 | YES               | 2      | 0       | 
+|top         | rtio_core_sed_record0_payload_data2_reg[1]              | 4      | 2     | NO           | NO                 | YES               | 2      | 0       | 
++------------+---------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+-----------------------------+----------+
+|      |BlackBox name                |Instances |
++------+-----------------------------+----------+
+|1     |platform_zynq_ultra_ps_e_0_0 |         1|
++------+-----------------------------+----------+
+
+Report Cell Usage: 
++------+---------------------------+------+
+|      |Cell                       |Count |
++------+---------------------------+------+
+|1     |platform_zynq_ultra_ps_e_0 |     1|
+|2     |CARRY8                     |   142|
+|3     |LUT1                       |    43|
+|4     |LUT2                       |   886|
+|5     |LUT3                       |   916|
+|6     |LUT4                       |   869|
+|7     |LUT5                       |  1433|
+|8     |LUT6                       |  4664|
+|9     |MUXF7                      |   580|
+|10    |MUXF8                      |     5|
+|11    |RAM64M                     |     1|
+|12    |RAM64M8                    |     9|
+|13    |RAMB18E2                   |     8|
+|14    |RAMB36E2                   |    12|
+|15    |SRL16E                     |    12|
+|16    |FDPE                       |     2|
+|17    |FDRE                       |  4829|
+|18    |FDSE                       |     5|
+|19    |IBUF                       |     1|
+|20    |OBUF                       |     5|
++------+---------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:43 ; elapsed = 00:02:17 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 17471 ; free virtual = 55677
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:52 ; elapsed = 00:02:11 . Memory (MB): peak = 4063.906 ; gain = 1178.234 ; free physical = 26055 ; free virtual = 64261
+Synthesis Optimization Complete : Time (s): cpu = 00:02:02 ; elapsed = 00:02:21 . Memory (MB): peak = 4063.906 ; gain = 1339.789 ; free physical = 26067 ; free virtual = 64261
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Project 1-454] Reading design checkpoint '/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.dcp' for cell 'platform_zynq_ultra_ps_e_0_0'
+Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 4063.906 ; gain = 0.000 ; free physical = 26067 ; free virtual = 64261
+INFO: [Netlist 29-17] Analyzing 738 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'top' is not ideal for floorplanning, since the cellview 'top' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xdc] for cell 'platform_zynq_ultra_ps_e_0_0/inst'
+Finished Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xdc] for cell 'platform_zynq_ultra_ps_e_0_0/inst'
+Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.xdc]
+Finished Parsing XDC File [/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4063.906 ; gain = 0.000 ; free physical = 26080 ; free virtual = 64274
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 11 instances were transformed.
+  IBUF => IBUF (IBUFCTRL, INBUF): 1 instance 
+  RAM64M => RAM64M (RAMD64E(x4)): 1 instance 
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 9 instances
+
+Synth Design complete | Checksum: 90d8cce2
+INFO: [Common 17-83] Releasing license: Synthesis
+211 Infos, 79 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:16 ; elapsed = 00:02:35 . Memory (MB): peak = 4063.906 ; gain = 2248.160 ; free physical = 26085 ; free virtual = 64279
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 11979.453; main = 3354.171; forked = 9064.803
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 18137.512; main = 4059.992; forked = 14077.523
+## set first_sync [get_cells -hierarchical -filter {mr_ff == TRUE && REF_NAME =~ FD*}]
+## if {[llength $first_sync] != 42} {error "Unexpected CDC register count"}
+## set_false_path -to [get_pins -of_objects $first_sync -filter {REF_PIN_NAME == D}]
+## report_timing_summary -file top_timing_synth.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+report_timing_summary: Time (s): cpu = 00:00:23 ; elapsed = 00:00:21 . Memory (MB): peak = 4470.180 ; gain = 406.273 ; free physical = 25882 ; free virtual = 64076
+## report_utilization -hierarchical -file top_utilization_hierarchical_synth.rpt
+## report_utilization -file top_utilization_synth.rpt
+## opt_design
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu5ev'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.53 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25882 ; free virtual = 64076
+
+Starting Cache Timing Information Task
+Ending Cache Timing Information Task | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25882 ; free virtual = 64076
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+Phase 1 Initialization | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Detect if minReqCache needed
+Phase 2.1 Detect if minReqCache needed | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+
+Phase 2.2 Timer Update
+Phase 2.2 Timer Update | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00.68 ; elapsed = 00:00:00.21 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+
+Phase 2.3 Timing Data Collection
+Phase 2.3 Timing Data Collection | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00.69 ; elapsed = 00:00:00.22 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+Phase 2 Timer Update And Timing Data Collection | Checksum: 1dd25943c
+
+Time (s): cpu = 00:00:00.69 ; elapsed = 00:00:00.22 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+
+Phase 3 Retarget
+INFO: [Opt 31-1851] Number of loadless carry chains removed were: 0
+INFO: [Opt 31-1834] Total Chains To Be Transformed Were: 0 AND Number of Transformed insts Created are: 0
+INFO: [Opt 31-1566] Pulled 1 inverters resulting in an inversion of 2 pins
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 2 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 2ff81d53d
+
+Time (s): cpu = 00:00:00.98 ; elapsed = 00:00:00.51 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+Retarget | Checksum: 2ff81d53d
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 266 cells
+INFO: [Opt 31-1021] In phase Retarget, 4 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 4 Constant propagation | Checksum: 271d96a8b
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.62 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+Constant propagation | Checksum: 271d96a8b
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 1 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 34 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 Sweep
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+Phase 5 Sweep | Checksum: 25429b5aa
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.96 . Memory (MB): peak = 4470.180 ; gain = 0.000 ; free physical = 25910 ; free virtual = 64104
+Sweep | Checksum: 25429b5aa
+INFO: [Opt 31-389] Phase Sweep created 1 cells and removed 0 cells
+INFO: [Opt 31-1021] In phase Sweep, 233 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 6 BUFG optimization
+INFO: [Opt 31-1077] Phase BUFG optimization inserted 0 global clock buffer(s) for CLOCK_LOW_FANOUT.
+Phase 6 BUFG optimization | Checksum: 25429b5aa
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4502.195 ; gain = 32.016 ; free physical = 25909 ; free virtual = 64104
+BUFG optimization | Checksum: 25429b5aa
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 25429b5aa
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4502.195 ; gain = 32.016 ; free physical = 25909 ; free virtual = 64104
+Shift Register Optimization | Checksum: 25429b5aa
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+Phase 8 Post Processing Netlist | Checksum: 25429b5aa
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4502.195 ; gain = 32.016 ; free physical = 25909 ; free virtual = 64104
+Post Processing Netlist | Checksum: 25429b5aa
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 2 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 2d0431bc5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4502.195 ; gain = 32.016 ; free physical = 25909 ; free virtual = 64104
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4502.195 ; gain = 0.000 ; free physical = 25909 ; free virtual = 64104
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 2d0431bc5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4502.195 ; gain = 32.016 ; free physical = 25909 ; free virtual = 64104
+Phase 9 Finalization | Checksum: 2d0431bc5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4502.195 ; gain = 32.016 ; free physical = 25909 ; free virtual = 64104
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |             266  |                                              4  |
+|  Constant propagation         |               0  |               1  |                                             34  |
+|  Sweep                        |               1  |               0  |                                            233  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              2  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 2d0431bc5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4502.195 ; gain = 32.016 ; free physical = 25909 ; free virtual = 64104
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 20 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 0 newly gated: 4 Total Ports: 40
+Ending PowerOpt Patch Enables Task | Checksum: 2a7c84a44
+
+Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.15 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25839 ; free virtual = 64033
+Ending Power Optimization Task | Checksum: 2a7c84a44
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 4606.246 ; gain = 104.051 ; free physical = 25839 ; free virtual = 64033
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 2a7c84a44
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25839 ; free virtual = 64033
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25839 ; free virtual = 64033
+INFO: [Common 17-83] Releasing license: Implementation
+31 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:08 . Memory (MB): peak = 4606.246 ; gain = 136.066 ; free physical = 25839 ; free virtual = 64033
+## place_design
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu5ev'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25842 ; free virtual = 64037
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 1d84463d2
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25842 ; free virtual = 64037
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25842 ; free virtual = 64037
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1ddb045c6
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.78 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25845 ; free virtual = 64040
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 2a64ed305
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25854 ; free virtual = 64048
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 2a64ed305
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25854 ; free virtual = 64048
+Phase 1 Placer Initialization | Checksum: 2a64ed305
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25854 ; free virtual = 64048
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+
+Phase 2.1.1 Partition Driven Placement
+
+Phase 2.1.1.1 PBP: Partition Driven Placement
+Phase 2.1.1.1 PBP: Partition Driven Placement | Checksum: 1e92e1108
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:06 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25877 ; free virtual = 64072
+
+Phase 2.1.1.2 PBP: Clock Region Placement
+INFO: [Place 30-3162] Check ILP status : ILP-based clock placer completed successfully.
+Phase 2.1.1.2 PBP: Clock Region Placement | Checksum: 1e92e1108
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:07 . Memory (MB): peak = 4606.246 ; gain = 0.000 ; free physical = 25877 ; free virtual = 64072
+
+Phase 2.1.1.3 PBP: Compute Congestion
+Phase 2.1.1.3 PBP: Compute Congestion | Checksum: 1e92e1108
+
+Time (s): cpu = 00:00:27 ; elapsed = 00:00:10 . Memory (MB): peak = 4696.254 ; gain = 90.008 ; free physical = 25614 ; free virtual = 63808
+
+Phase 2.1.1.4 PBP: UpdateTiming
+Phase 2.1.1.4 PBP: UpdateTiming | Checksum: 222d59fef
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:10 . Memory (MB): peak = 4728.270 ; gain = 122.023 ; free physical = 25613 ; free virtual = 63807
+
+Phase 2.1.1.5 PBP: Add part constraints
+Phase 2.1.1.5 PBP: Add part constraints | Checksum: 222d59fef
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:10 . Memory (MB): peak = 4728.270 ; gain = 122.023 ; free physical = 25613 ; free virtual = 63807
+Phase 2.1.1 Partition Driven Placement | Checksum: 222d59fef
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:10 . Memory (MB): peak = 4728.270 ; gain = 122.023 ; free physical = 25613 ; free virtual = 63807
+Phase 2.1 Floorplanning | Checksum: 274b6a9a2
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:10 . Memory (MB): peak = 4728.270 ; gain = 122.023 ; free physical = 25613 ; free virtual = 63807
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 274b6a9a2
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:10 . Memory (MB): peak = 4728.270 ; gain = 122.023 ; free physical = 25613 ; free virtual = 63807
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 274b6a9a2
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:10 . Memory (MB): peak = 4728.270 ; gain = 122.023 ; free physical = 25613 ; free virtual = 63807
+
+Phase 2.4 Global Place Phase1
+Phase 2.4 Global Place Phase1 | Checksum: 20e5c656d
+
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:21 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25560 ; free virtual = 63755
+
+Phase 2.5 Global Place Phase2
+
+Phase 2.5.1 UpdateTiming Before Physical Synthesis
+Phase 2.5.1 UpdateTiming Before Physical Synthesis | Checksum: 21d4c1e87
+
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:22 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25562 ; free virtual = 63756
+
+Phase 2.5.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 228 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 111 nets or LUTs. Breaked 0 LUT, combined 111 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-670] No setup violation found.  Equivalent Driver Rewiring was not performed.
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register to Pipeline Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 4779.270 ; gain = 0.000 ; free physical = 25562 ; free virtual = 63756
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            0  |            111  |                   111  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Equivalent Driver Rewiring                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |            0  |            111  |                   111  |           0  |           4  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.5.2 Physical Synthesis In Placer | Checksum: 1d370ed9f
+
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:23 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25561 ; free virtual = 63756
+Phase 2.5 Global Place Phase2 | Checksum: 1e657154d
+
+Time (s): cpu = 00:01:26 ; elapsed = 00:00:26 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25565 ; free virtual = 63760
+Phase 2 Global Placement | Checksum: 1e657154d
+
+Time (s): cpu = 00:01:26 ; elapsed = 00:00:26 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25565 ; free virtual = 63760
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1ccce8b35
+
+Time (s): cpu = 00:01:38 ; elapsed = 00:00:30 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25579 ; free virtual = 63773
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 22e44d2bf
+
+Time (s): cpu = 00:01:40 ; elapsed = 00:00:30 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25578 ; free virtual = 63773
+
+Phase 3.3 Small Shape DP
+
+Phase 3.3.1 Small Shape Clustering
+Phase 3.3.1 Small Shape Clustering | Checksum: 1d8510f6d
+
+Time (s): cpu = 00:01:51 ; elapsed = 00:00:33 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25569 ; free virtual = 63764
+
+Phase 3.3.2 Slice Area Swap
+
+Phase 3.3.2.1 Slice Area Swap Initial
+Phase 3.3.2.1 Slice Area Swap Initial | Checksum: 1eb76efc0
+
+Time (s): cpu = 00:01:52 ; elapsed = 00:00:34 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25569 ; free virtual = 63764
+Phase 3.3.2 Slice Area Swap | Checksum: 1eb76efc0
+
+Time (s): cpu = 00:01:52 ; elapsed = 00:00:34 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25569 ; free virtual = 63764
+Phase 3.3 Small Shape DP | Checksum: 230960e99
+
+Time (s): cpu = 00:01:56 ; elapsed = 00:00:35 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25574 ; free virtual = 63769
+
+Phase 3.4 Re-assign LUT pins
+Phase 3.4 Re-assign LUT pins | Checksum: 20ece84b2
+
+Time (s): cpu = 00:01:57 ; elapsed = 00:00:36 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25574 ; free virtual = 63769
+
+Phase 3.5 Pipeline Register Optimization
+Phase 3.5 Pipeline Register Optimization | Checksum: 2347fa7ed
+
+Time (s): cpu = 00:01:57 ; elapsed = 00:00:36 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25575 ; free virtual = 63770
+Phase 3 Detail Placement | Checksum: 2347fa7ed
+
+Time (s): cpu = 00:01:57 ; elapsed = 00:00:36 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25575 ; free virtual = 63770
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 135760726
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=3.518 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 13b697e44
+
+Time (s): cpu = 00:00:00.56 ; elapsed = 00:00:00.15 . Memory (MB): peak = 4779.270 ; gain = 0.000 ; free physical = 25591 ; free virtual = 63785
+INFO: [Place 46-35] Processed net sys_rst, inserted BUFG to drive 2268 loads.
+INFO: [Place 46-56] BUFG insertion identified 1 candidate nets. Inserted BUFG: 1, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 1878c8185
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.83 . Memory (MB): peak = 4779.270 ; gain = 0.000 ; free physical = 25592 ; free virtual = 63786
+Phase 4.1.1.1 BUFG Insertion | Checksum: 2088fb8e6
+
+Time (s): cpu = 00:02:16 ; elapsed = 00:00:42 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25592 ; free virtual = 63786
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=3.518. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 1632ba9fb
+
+Time (s): cpu = 00:02:16 ; elapsed = 00:00:42 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25592 ; free virtual = 63786
+
+Time (s): cpu = 00:02:16 ; elapsed = 00:00:42 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25592 ; free virtual = 63786
+Phase 4.1 Post Commit Optimization | Checksum: 1632ba9fb
+
+Time (s): cpu = 00:02:16 ; elapsed = 00:00:42 . Memory (MB): peak = 4779.270 ; gain = 173.023 ; free physical = 25592 ; free virtual = 63787
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.07 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25534 ; free virtual = 63729
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 1b700ef78
+
+Time (s): cpu = 00:02:30 ; elapsed = 00:00:48 . Memory (MB): peak = 4799.254 ; gain = 193.008 ; free physical = 25534 ; free virtual = 63729
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ________________________________________________________________________
+|           | Global Congestion | Long Congestion   | Short Congestion  |
+| Direction | Region Size       | Region Size       | Region Size       |
+|___________|___________________|___________________|___________________|
+|      North|                1x1|                1x1|                1x1|
+|___________|___________________|___________________|___________________|
+|      South|                1x1|                1x1|                1x1|
+|___________|___________________|___________________|___________________|
+|       East|                1x1|                1x1|                4x4|
+|___________|___________________|___________________|___________________|
+|       West|                1x1|                1x1|                4x4|
+|___________|___________________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 1b700ef78
+
+Time (s): cpu = 00:02:30 ; elapsed = 00:00:48 . Memory (MB): peak = 4799.254 ; gain = 193.008 ; free physical = 25534 ; free virtual = 63729
+Phase 4.3 Placer Reporting | Checksum: 1b700ef78
+
+Time (s): cpu = 00:02:31 ; elapsed = 00:00:48 . Memory (MB): peak = 4799.254 ; gain = 193.008 ; free physical = 25534 ; free virtual = 63729
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25534 ; free virtual = 63729
+
+Time (s): cpu = 00:02:31 ; elapsed = 00:00:48 . Memory (MB): peak = 4799.254 ; gain = 193.008 ; free physical = 25534 ; free virtual = 63729
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 24456b190
+
+Time (s): cpu = 00:02:31 ; elapsed = 00:00:48 . Memory (MB): peak = 4799.254 ; gain = 193.008 ; free physical = 25534 ; free virtual = 63729
+Ending Placer Task | Checksum: 209fc55e8
+
+Time (s): cpu = 00:02:31 ; elapsed = 00:00:48 . Memory (MB): peak = 4799.254 ; gain = 193.008 ; free physical = 25534 ; free virtual = 63729
+32 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:02:36 ; elapsed = 00:00:50 . Memory (MB): peak = 4799.254 ; gain = 193.008 ; free physical = 25534 ; free virtual = 63729
+## report_utilization -hierarchical -file top_utilization_hierarchical_place.rpt
+## report_utilization -file top_utilization_place.rpt
+## report_io -file top_io.rpt
+report_io: Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.35 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25522 ; free virtual = 63716
+## report_control_sets -verbose -file top_control_sets.rpt
+report_control_sets: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.22 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25523 ; free virtual = 63718
+## report_clock_utilization -file top_clock_utilization.rpt
+## route_design
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu5ev'
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: a59c55b7 ConstDB: 0 ShapeSum: bb90dea1 RouteDB: a8cf2190
+Nodegraph reading from file.  Time (s): cpu = 00:00:00.55 ; elapsed = 00:00:00.58 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25523 ; free virtual = 63718
+Post Restoration Checksum: NetGraph: ca2552e7 | NumContArr: abda1553 | Constraints: 642ca2e | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 23eeb2d05
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25534 ; free virtual = 63729
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 23eeb2d05
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25535 ; free virtual = 63730
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 23eeb2d05
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25535 ; free virtual = 63730
+
+Phase 2.3 Global Clock Net Routing
+ Number of Nodes with overlaps = 0
+Phase 2.3 Global Clock Net Routing | Checksum: 18e5e3488
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25537 ; free virtual = 63732
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 2ade35364
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:06 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25538 ; free virtual = 63733
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=3.865  | TNS=0.000  | WHS=-0.068 | THS=-2.451 |
+
+
+Phase 2.5 Soft Constraint Pins - Fast Budgeting
+Phase 2.5 Soft Constraint Pins - Fast Budgeting | Checksum: 296df6c57
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:07 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25538 ; free virtual = 63733
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 10959
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 7487
+  Number of Partially Routed Nets     = 3472
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 1eef32708
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:08 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25538 ; free virtual = 63733
+
+Phase 3 Global Routing
+Phase 3 Global Routing | Checksum: 1eef32708
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:08 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25538 ; free virtual = 63733
+
+Phase 4 Initial Routing
+
+Phase 4.1 Initial Net Routing Pass
+Phase 4.1 Initial Net Routing Pass | Checksum: 22440f467
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:11 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25539 ; free virtual = 63734
+Phase 4 Initial Routing | Checksum: 2aa26af1f
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:11 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25539 ; free virtual = 63734
+
+Phase 5 Rip-up And Reroute
+
+Phase 5.1 Global Iteration 0
+ Number of Nodes with overlaps = 4311
+ Number of Nodes with overlaps = 361
+ Number of Nodes with overlaps = 15
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=1.899  | TNS=0.000  | WHS=0.015  | THS=0.000  |
+
+Phase 5.1 Global Iteration 0 | Checksum: 1eb927055
+
+Time (s): cpu = 00:01:21 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 5.2 Additional Iteration for Hold
+Phase 5.2 Additional Iteration for Hold | Checksum: 112910ea6
+
+Time (s): cpu = 00:01:21 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+Phase 5 Rip-up And Reroute | Checksum: 112910ea6
+
+Time (s): cpu = 00:01:21 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 6 Delay and Skew Optimization
+
+Phase 6.1 Delay CleanUp
+Phase 6.1 Delay CleanUp | Checksum: 107731ee9
+
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 6.2 Clock Skew Optimization
+Phase 6.2 Clock Skew Optimization | Checksum: 107731ee9
+
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+Phase 6 Delay and Skew Optimization | Checksum: 107731ee9
+
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 7 Post Hold Fix
+
+Phase 7.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=1.899  | TNS=0.000  | WHS=0.015  | THS=0.000  |
+
+Phase 7.1 Hold Fix Iter | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:25 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+Phase 7 Post Hold Fix | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:25 ; elapsed = 00:00:30 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 8 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 1.88409 %
+  Global Horizontal Routing Utilization  = 1.75101 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 8 Route finalize | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:26 ; elapsed = 00:00:31 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 9 Verifying routed nets
+
+ Verification completed successfully
+Phase 9 Verifying routed nets | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:26 ; elapsed = 00:00:31 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 10 Depositing Routes
+Phase 10 Depositing Routes | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:27 ; elapsed = 00:00:32 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 11 Resolve XTalk
+Phase 11 Resolve XTalk | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:27 ; elapsed = 00:00:32 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 12 Post Process Routing
+Phase 12 Post Process Routing | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:28 ; elapsed = 00:00:32 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Phase 13 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=1.899  | TNS=0.000  | WHS=0.015  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 13 Post Router Timing | Checksum: 14e52017f
+
+Time (s): cpu = 00:01:28 ; elapsed = 00:00:32 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+Total Elapsed time in route_design: 31.75 secs
+
+Phase 14 Post-Route Event Processing
+Phase 14 Post-Route Event Processing | Checksum: 167b48251
+
+Time (s): cpu = 00:01:28 ; elapsed = 00:00:32 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+INFO: [Route 35-16] Router Completed Successfully
+Ending Routing Task | Checksum: 167b48251
+
+Time (s): cpu = 00:01:28 ; elapsed = 00:00:32 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+9 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:01:29 ; elapsed = 00:00:32 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+## phys_opt_design
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu5ev'
+INFO: [Vivado_Tcl 4-241] Physical synthesis in post route mode 
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:00.89 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25540 ; free virtual = 63735
+INFO: [Vivado_Tcl 4-2279] Estimated Timing Summary | WNS= 1.900 | TNS= 0.000 | 
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. All physical synthesis setup optimizations will be skipped.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+6 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+## report_timing_summary -no_header -no_detailed_paths
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+No report available as report_methodology has not been run prior. Run report_methodology on the current design for the summary of methodology violations.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (1)
+6. checking no_output_delay (5)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (1)
+------------------------------
+ There is 1 input port with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (5)
+-------------------------------
+ There are 5 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      1.900        0.000                      0                13456        0.016        0.000                      0                13455        2.500        0.000                       0                  4968  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock     Waveform(ns)         Period(ns)      Frequency(MHz)
+-----     ------------         ----------      --------------
+clk_pl_0  {0.000 4.000}        8.000           125.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+clk_pl_0            1.900        0.000                      0                13455        0.016        0.000                      0                13455        2.500        0.000                       0                  4968  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+              clk_pl_0            3.234        0.000                      0                    1                                                                        
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+## write_checkpoint -force top_route.dcp
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.03 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25539 ; free virtual = 63735
+Wrote PlaceDB: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.49 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25532 ; free virtual = 63739
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25532 ; free virtual = 63739
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.63 ; elapsed = 00:00:00.36 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25522 ; free virtual = 63733
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25522 ; free virtual = 63735
+Wrote Device Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25522 ; free virtual = 63738
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.91 . Memory (MB): peak = 4799.254 ; gain = 0.000 ; free physical = 25522 ; free virtual = 63738
+INFO: [Common 17-1381] The checkpoint '/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top_route.dcp' has been generated.
+## report_route_status -file top_route_status.rpt
+## report_drc -file top_drc.rpt
+Command: report_drc -file top_drc.rpt
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z/top_drc.rpt.
+report_drc completed successfully
+## report_timing_summary -datasheet -max_paths 10 -file top_timing.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+## report_power -file top_power.rpt
+Command: report_power -file top_power.rpt
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+0 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+report_power: Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 4839.273 ; gain = 40.020 ; free physical = 25522 ; free virtual = 63737
+# source "top_bitstream.tcl"
+## write_bitstream -force top.bit 
+Command: write_bitstream -force top.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xczu5ev'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado 12-3199] DRC finished with 0 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+Integrating Hard IP ELF/MEM with the PDI.
+INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Bitstream compression saved 36762304 bits.
+Writing bitstream ./top.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Common 17-83] Releasing license: Implementation
+8 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:23 ; elapsed = 00:00:14 . Memory (MB): peak = 4839.273 ; gain = 0.000 ; free physical = 25523 ; free virtual = 63740
+## quit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 21 17:43:16 2026...

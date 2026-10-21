@@ -3104,3 +3104,14 @@ remain. Retrieved28files hash-exact. Combined strict result NOT_QUALIFIED becaus
 upgrade_ip changed six disabled SD0 delay parameters/XCI checksum. Exact diff
 saved; fresh retry pins post-upgrade XCI explicitly. Four checker tests PASS.
 Evidence dell-vivado-2026-10-21; no board access or qualified baseline changes.
+
+
+## Pinned-IP Dell rebuild PASS — 2026-10-21
+
+Second fresh remote Vivado build PASS under strict checks: exit0,28fileshash-
+verified,16inputshashesunchanged, setup1.900/hold0.016/pulse2.500ns, complete
+routing and RTSTAT-10 warning only. Existing IO timing limits remain explicit.
+Bitstream SHA1dc6364737e322022819a22c6561257fe8d10e9a24f436fda70571fcbd96e243.
+Candidate and separate restoration files staged with hashes; bounded JTAG plan
+in docs/CANDIDATE_JTAG.md, hardware execution NOT_RUN. No board access/baseline
+change. Evidence dell-vivado-2026-10-21/pinned-ip-rebuild and candidate-jtag-plan.

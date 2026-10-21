@@ -1,5 +1,5 @@
 {
-  "status": "SUBMITTED",
+  "status": "FPGA_BUILD_PASS_NOT_HARDWARE",
   "hardware_executed": false,
   "job": {
     "job": "artiq-genesys-pinned-ip-20261021T173309Z",
@@ -7,5 +7,6 @@
     "remote": "/srv/nvme-fast-1/vivado-work/artiq-genesys-pinned-ip-20261021T173309Z"
   },
   "transfer": "PASS",
-  "build_result": "PENDING"
+  "build_result": "PASS",
+  "artifact_directory": "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z"
 }

@@ -1,0 +1,27 @@
+{
+  "status": "FPGA_BUILD_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "slack_ns": {
+    "setup": 1.9,
+    "hold": 0.016,
+    "pulse_width": 2.5
+  },
+  "timing_coverage": {
+    "no_clock": 0,
+    "unconstrained_internal_endpoints": 0,
+    "no_input_delay": 1,
+    "no_output_delay": 5
+  },
+  "drc_warnings": [
+    "RTSTAT-10"
+  ],
+  "scope": "Preserved HDL local RTIO/CoreDMA/analyzer/MonInj build; external I/O delays remain as reported, no physical test",
+  "sha256": {
+    "top.bit": "1dc6364737e322022819a22c6561257fe8d10e9a24f436fda70571fcbd96e243",
+    "top_timing.rpt": "2b1426675fe912c3097b4b3ec77ce0164ed07a1a307780baf50967e1188db1b5",
+    "top_drc.rpt": "f223f3ee0fa413de5273d314712943256629ebdb849aab765c6687682221f301",
+    "top_route_status.rpt": "075ae97477ab9a99566248783651511bc6f28c2fcc868b110ac1128a876c2e65",
+    "console.log": "b664c9edc31410a75920fa5af66ee9b996ff807e0f38d67563f0aa7e0bc57e3e"
+  },
+  "input_manifest_sha256": "f9e77a083fac70baace4c57641a004d157216581eb0b227bf78ab383778afa4d"
+}

@@ -1,0 +1,82 @@
+{
+  "status": "INPUTS_STAGED_NOT_EXECUTED",
+  "hardware_executed": false,
+  "cable": "210383B7F02DA",
+  "lease": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "files": {
+    "candidate_pl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z/top.bit",
+      "sha256": "1dc6364737e322022819a22c6561257fe8d10e9a24f436fda70571fcbd96e243"
+    },
+    "candidate_csr": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z/csr-map.json",
+      "sha256": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049"
+    },
+    "candidate_cpu0": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/build/lwip_echo_server.elf",
+      "sha256": "b31af046c9ac42249537590933e7a3782ce9a1630fae07b4854eda0399944f37"
+    },
+    "candidate_worker": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-canonical-a-2026-10-21/worker32.elf",
+      "sha256": "57b9e26a6ec9c92b62118f0899ca8e90dca6c1aa8cb99d34266d82ae9739a9ac"
+    },
+    "candidate_bridge": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-canonical-a-2026-10-21/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    "candidate_fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/build/zynqmp_fsbl.elf",
+      "sha256": "c6d4a3447a218f1b92730543f82f79ac333021598f7e76174597efd438b3f4b2"
+    },
+    "candidate_pmu": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "214086f65bec0f2a2d90b00df603a2f345a7257ea36cc98c538efaacc7d3e8f9"
+    },
+    "candidate_ps_init": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+    },
+    "restore_pl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+      "sha256": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582"
+    },
+    "restore_cpu0": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    "restore_worker": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    },
+    "restore_bridge": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    "restore_fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    "restore_pmu": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    "restore_ps_init": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+    }
+  },
+  "required_wrapper": "Nonblocking Genesys lease through load, tests, restoration and restored tests; not yet executed",
+  "server": "Rediscover exact Genesys-filtered hw_server before execution",
+  "tests": [
+    "UART FSBL and kernel transport/DHCP startup",
+    "physical TTL loopback",
+    "CoreDMA and analyzer/MonInj through standard debug test",
+    "Ethernet ping and byte-exact echo"
+  ],
+  "forbidden": [
+    "SD/flash/OTP writes",
+    "Si writes",
+    "Kasli reconfiguration",
+    "release before restoration"
+  ]
+}

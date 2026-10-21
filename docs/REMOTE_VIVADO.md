@@ -86,3 +86,11 @@ post-upgrade XCI before launching Vivado. Its directory/unit and pinned inputs
 are in `evidence/dell-vivado-2026-10-21/pinned-ip-rebuild`. The same strict checker
 must pass without further input mutation. No qualified hardware profile or
 board image was replaced. Both jobs use the same shared build lock.
+
+
+The pinned-IP follow-up completed successfully. All28 downloaded files match
+remote hashes and all16 pinned inputs remain unchanged. Strict build PASS:
+setup1.900ns, hold0.016ns, pulse-width2.500ns; no internal unconstrained endpoints,
+complete routing, known RTSTAT-10 warning only. Evidence and exact bitstream
+hash are in `pinned-ip-rebuild/build-check.json`. Physical qualification is
+separate; see [candidate JTAG plan](CANDIDATE_JTAG.md).
