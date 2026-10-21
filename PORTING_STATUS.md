@@ -17,6 +17,16 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Source-reconstructed PS to firmware/PL inputs — 2026-10-21
+
+Fresh SDT generation from the reconstructed XSA PASS: all37files byte-identical
+to the qualified firmware input tree. The fresh relocated raw XCI is also
+byte-identical to the input already normalized/synthesized and built on Dell.
+This connects source-reconstructed PS to the existing firmware/PL evidence
+without another identical build. Evidence: `evidence/ps-source-sdt-2026-10-21/`.
+No hardware access. Empty-host bootstrap, firmware binary reproducibility and
+latest-package cold boot remain open; package selections are unchanged.
+
 ## Piotr PS source reconstruction — 2026-10-21
 
 Fresh Dell export from the three pinned Piotr Tcl files PASS;168files transferred

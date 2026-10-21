@@ -1,0 +1,26 @@
+{
+  "status": "SOURCE_RECONSTRUCTED_PS_SDT_AND_RAW_XCI_PASS",
+  "hardware_executed": false,
+  "sdt_files_byte_identical": 37,
+  "raw_relocated_xci_identical": true,
+  "raw_xci_sha256": "a0cc4f0c0c3f36e21e365652a91bd8c1f9b3d0e78fb7fc5ece254c17b79f7019",
+  "prior_normalization": "evidence/remote-submission-2026-10-21/ps-synth-retry",
+  "scope": "Exact raw XCI input equivalence connects reconstructed PS to previously reviewed PS synthesis/full PL build; no repeated synthesis or hardware execution.",
+  "inputs": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-export-result-20261021/platform.xsa": "5444a2b1a5c56a4ea7a2f96a64c1d643748adbd27b0574d4eb67eaa8bde27420",
+    "scripts/generate_sdt.tcl": "7123ca8ce4e383bbcdc117a6f8bdc0f1b5108285ea01e8feec8b9a34cfa37e34",
+    "boards/genesys_zu-5ev/3_bootable/system-user.dtsi": "e073466abd8a12f32f9cc4b73d1777c0e5feb0c7f5b9b8fab91205c3a70e7731"
+  },
+  "tool": {
+    "path": "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/sdtgen",
+    "sha256": "605a5a3c186cb502b5903f09287c79ed760ef615113a513963d9de568ca5e767",
+    "runtime": "Existing shared Ubuntu22.04.5 rootless Vivado container; SDT only, no FPGA build or hardware"
+  },
+  "command": [
+    "sdtgen",
+    "scripts/generate_sdt.tcl",
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-export-result-20261021/platform.xsa",
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-sdt-20261021",
+    "boards/genesys_zu-5ev/3_bootable/system-user.dtsi"
+  ]
+}

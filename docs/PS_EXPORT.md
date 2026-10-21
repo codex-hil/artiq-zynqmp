@@ -70,3 +70,21 @@ claim a fresh normalized PS synthesis, complete rebuilt release or generated
 SDT equivalence. Existing qualified manifests remain unchanged. Next check:
 generate SDT from the new XSA and compare PS initialization/device-tree outputs
 before assembling a source-regenerated release.
+
+## SDT and downstream input equivalence
+
+SDT generation from the reconstructed XSA completed successfully using the
+existing shared2025.2 `sdtgen`, `scripts/generate_sdt.tcl` and the unchanged
+board `system-user.dtsi`. All37output files match the qualified firmware's
+SDT tree byte-for-byte, including PS initialization and device-tree includes.
+See `evidence/ps-source-sdt-2026-10-21/` for input/tool hashes, invocation,
+log and the complete file comparison.
+
+The relocated raw XCI emitted by fresh HDL generation also exactly matches
+`source-hdl-clean-release-2026-10-21`, the input already used by the reviewed
+PS synthesis and full Dell FPGA build. Thus the source reconstruction connects
+to that existing build proof without another identical synthesis. This is
+input equivalence, not a new tool or hardware run. Existing package manifests
+still pin the original qualified binary artifacts. Complete empty-host tool
+bootstrap, firmware binary reproducibility and latest-package cold boot remain
+open independently.

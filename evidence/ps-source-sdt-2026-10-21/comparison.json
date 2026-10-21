@@ -1,0 +1,193 @@
+{
+  "status": "SDT_BYTE_IDENTICAL",
+  "hardware_executed": false,
+  "old": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/sdt",
+  "new": "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-sdt-20261021",
+  "files": {
+    "include/dt-bindings/clock/xlnx-versal-clk.h": {
+      "old_sha256": "235ff89509bf2457aa9f95731758baee66481eaeb0d4abc9615646618aa020f2",
+      "new_sha256": "235ff89509bf2457aa9f95731758baee66481eaeb0d4abc9615646618aa020f2",
+      "identical": true
+    },
+    "include/dt-bindings/clock/xlnx-versal-net-clk.h": {
+      "old_sha256": "433fdb85599605354c44be5557c7abb2f98b7f203a0ad84a99da5202acfd0c53",
+      "new_sha256": "433fdb85599605354c44be5557c7abb2f98b7f203a0ad84a99da5202acfd0c53",
+      "identical": true
+    },
+    "include/dt-bindings/clock/xlnx-versal2-clk.h": {
+      "old_sha256": "feaba1104ab8f0b4149b8a09d92c7fd35d5295dde5d760844fc2c7af3727f4a6",
+      "new_sha256": "feaba1104ab8f0b4149b8a09d92c7fd35d5295dde5d760844fc2c7af3727f4a6",
+      "identical": true
+    },
+    "include/dt-bindings/clock/xlnx-zynqmp-clk.h": {
+      "old_sha256": "ec39a1df89a6620a0adedda516f94c87333942bb689023329007115dfb848233",
+      "new_sha256": "ec39a1df89a6620a0adedda516f94c87333942bb689023329007115dfb848233",
+      "identical": true
+    },
+    "include/dt-bindings/dma/xlnx-zynqmp-dpdma.h": {
+      "old_sha256": "003dcbe17830190984304269a5224ed4cd8580ba48b66b616c512ccf66147a4e",
+      "new_sha256": "003dcbe17830190984304269a5224ed4cd8580ba48b66b616c512ccf66147a4e",
+      "identical": true
+    },
+    "include/dt-bindings/gpio/gpio.h": {
+      "old_sha256": "9459754421011352d52db59d3f5d51b8151043cae13bf430e177308ba89eb671",
+      "new_sha256": "9459754421011352d52db59d3f5d51b8151043cae13bf430e177308ba89eb671",
+      "identical": true
+    },
+    "include/dt-bindings/input/input.h": {
+      "old_sha256": "a6dafc4347f068f2b79296868906b22dc3f81f06251291d6656c42de52e8df0a",
+      "new_sha256": "a6dafc4347f068f2b79296868906b22dc3f81f06251291d6656c42de52e8df0a",
+      "identical": true
+    },
+    "include/dt-bindings/input/linux-event-codes.h": {
+      "old_sha256": "9a9b0af4181b872f8a665d318611f4d5c9a32acfe595d2d8f2b9057d95d1ac72",
+      "new_sha256": "9a9b0af4181b872f8a665d318611f4d5c9a32acfe595d2d8f2b9057d95d1ac72",
+      "identical": true
+    },
+    "include/dt-bindings/interrupt-controller/arm-gic.h": {
+      "old_sha256": "5d0403f41890bbf4fe7cc3519ccc69bc643065f230bb885831a3ebae037e379b",
+      "new_sha256": "5d0403f41890bbf4fe7cc3519ccc69bc643065f230bb885831a3ebae037e379b",
+      "identical": true
+    },
+    "include/dt-bindings/interrupt-controller/irq.h": {
+      "old_sha256": "dd596b1a607b3ef68a85a0741fdf3c63e9a9266e6f8fbd61a739e0f155aa5baa",
+      "new_sha256": "dd596b1a607b3ef68a85a0741fdf3c63e9a9266e6f8fbd61a739e0f155aa5baa",
+      "identical": true
+    },
+    "include/dt-bindings/net/mscc-phy-vsc8531.h": {
+      "old_sha256": "2377299d32b5b12cfb717ae2ad77433b1cd89d64afd6017222dc1747c997989c",
+      "new_sha256": "2377299d32b5b12cfb717ae2ad77433b1cd89d64afd6017222dc1747c997989c",
+      "identical": true
+    },
+    "include/dt-bindings/net/ti-dp83867.h": {
+      "old_sha256": "50b5c5ba74b101f10edbf85e0d1881d44d188efd463a37d3043383ae92e69be1",
+      "new_sha256": "50b5c5ba74b101f10edbf85e0d1881d44d188efd463a37d3043383ae92e69be1",
+      "identical": true
+    },
+    "include/dt-bindings/phy/phy.h": {
+      "old_sha256": "170c5b9e1e14a4cef4b2d7f5163bcf305407937b4727e2232001d8e80e1865cb",
+      "new_sha256": "170c5b9e1e14a4cef4b2d7f5163bcf305407937b4727e2232001d8e80e1865cb",
+      "identical": true
+    },
+    "include/dt-bindings/pinctrl/pinctrl-zynqmp.h": {
+      "old_sha256": "c00b79917d25731c99e03321b6ff1905bf2c523daeec97b321648660ec1e436e",
+      "new_sha256": "c00b79917d25731c99e03321b6ff1905bf2c523daeec97b321648660ec1e436e",
+      "identical": true
+    },
+    "include/dt-bindings/power/xlnx-versal-net-power.h": {
+      "old_sha256": "c437399634ac20bb4d590d8b64747684822685e8ad05a7acedc7bfcbbb360d62",
+      "new_sha256": "c437399634ac20bb4d590d8b64747684822685e8ad05a7acedc7bfcbbb360d62",
+      "identical": true
+    },
+    "include/dt-bindings/power/xlnx-versal-power.h": {
+      "old_sha256": "798a7b09fb9bda521f14210552363ff86a8c3aa9bc317d777402a0363fbf6fae",
+      "new_sha256": "798a7b09fb9bda521f14210552363ff86a8c3aa9bc317d777402a0363fbf6fae",
+      "identical": true
+    },
+    "include/dt-bindings/power/xlnx-versal-regnode.h": {
+      "old_sha256": "d77bb0d3f0073ac7ff7583ab85d953d7e0e6490f93af6652ea78fb3ee8d24895",
+      "new_sha256": "d77bb0d3f0073ac7ff7583ab85d953d7e0e6490f93af6652ea78fb3ee8d24895",
+      "identical": true
+    },
+    "include/dt-bindings/power/xlnx-versal2-power.h": {
+      "old_sha256": "047aab67253eab035fde0a473cd7f77c3910d35d19ba4449f7c43ff405766bad",
+      "new_sha256": "047aab67253eab035fde0a473cd7f77c3910d35d19ba4449f7c43ff405766bad",
+      "identical": true
+    },
+    "include/dt-bindings/power/xlnx-zynqmp-power.h": {
+      "old_sha256": "1375fe3ebe74a79bfef41b29eec3670a797b92b2a33d9919200e5951ce1baa4b",
+      "new_sha256": "1375fe3ebe74a79bfef41b29eec3670a797b92b2a33d9919200e5951ce1baa4b",
+      "identical": true
+    },
+    "include/dt-bindings/reset/xlnx-versal-net-resets.h": {
+      "old_sha256": "e64557d0e8f42f4413c0d71f84f1dd795f104e531dec9e55fc0570395866179f",
+      "new_sha256": "e64557d0e8f42f4413c0d71f84f1dd795f104e531dec9e55fc0570395866179f",
+      "identical": true
+    },
+    "include/dt-bindings/reset/xlnx-versal-resets.h": {
+      "old_sha256": "e1b8d124b4891e2756725a7b7aa72d249b0432af18c3d98732f6e148e1269597",
+      "new_sha256": "e1b8d124b4891e2756725a7b7aa72d249b0432af18c3d98732f6e148e1269597",
+      "identical": true
+    },
+    "include/dt-bindings/reset/xlnx-versal2-resets.h": {
+      "old_sha256": "a7cd8e8b561b6abcbbe84368430e6c8c4e078fb422b22fcb1030116d3fa3bede",
+      "new_sha256": "a7cd8e8b561b6abcbbe84368430e6c8c4e078fb422b22fcb1030116d3fa3bede",
+      "identical": true
+    },
+    "include/dt-bindings/reset/xlnx-zynqmp-resets.h": {
+      "old_sha256": "335755446a4bd67b7131ea25f8713c98647f4159304f7b0f0ef3a53b1b8e32ef",
+      "new_sha256": "335755446a4bd67b7131ea25f8713c98647f4159304f7b0f0ef3a53b1b8e32ef",
+      "identical": true
+    },
+    "include/dt-bindings/thermal/thermal.h": {
+      "old_sha256": "786ef6c211d690213acf0c82df3597db54ff79d52c9a67bc898fb7b6cd0fe051",
+      "new_sha256": "786ef6c211d690213acf0c82df3597db54ff79d52c9a67bc898fb7b6cd0fe051",
+      "identical": true
+    },
+    "pcw.dtsi": {
+      "old_sha256": "9e47bf76fe63f8caacaa973349e62713d5a1ac879fffc1707edd8517928aa613",
+      "new_sha256": "9e47bf76fe63f8caacaa973349e62713d5a1ac879fffc1707edd8517928aa613",
+      "identical": true
+    },
+    "pl.dtsi": {
+      "old_sha256": "ae388d8bfaa77da0725f5d82061084b7dbd1720b6d4b2cf641cc7d1e3c553e25",
+      "new_sha256": "ae388d8bfaa77da0725f5d82061084b7dbd1720b6d4b2cf641cc7d1e3c553e25",
+      "identical": true
+    },
+    "psu_init.c": {
+      "old_sha256": "c10aaf17082b24bcc4b696da0b7061a408d423c7420676c9e804621897081f94",
+      "new_sha256": "c10aaf17082b24bcc4b696da0b7061a408d423c7420676c9e804621897081f94",
+      "identical": true
+    },
+    "psu_init.h": {
+      "old_sha256": "26022f6c19159297fc1e807c54e99f501be65c221fbe32b75861f638337070c5",
+      "new_sha256": "26022f6c19159297fc1e807c54e99f501be65c221fbe32b75861f638337070c5",
+      "identical": true
+    },
+    "psu_init.html": {
+      "old_sha256": "944a66aac62023c0eeb5651fe308bad41e8af054b51ed8da5a8c6fc71216e573",
+      "new_sha256": "944a66aac62023c0eeb5651fe308bad41e8af054b51ed8da5a8c6fc71216e573",
+      "identical": true
+    },
+    "psu_init.tcl": {
+      "old_sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+      "new_sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+      "identical": true
+    },
+    "psu_init_gpl.c": {
+      "old_sha256": "c5551be92044f7ae1104a5f2c2d17e53bf275b7d2847a5a2acb2dfb3b0d8a453",
+      "new_sha256": "c5551be92044f7ae1104a5f2c2d17e53bf275b7d2847a5a2acb2dfb3b0d8a453",
+      "identical": true
+    },
+    "psu_init_gpl.h": {
+      "old_sha256": "70cb11c501a8160906b9ae05e07587bcb2c8f42d3f4b86bb05cb0fa2c42bb5e0",
+      "new_sha256": "70cb11c501a8160906b9ae05e07587bcb2c8f42d3f4b86bb05cb0fa2c42bb5e0",
+      "identical": true
+    },
+    "system-top.dts": {
+      "old_sha256": "09ab201942f3f2281cf90bf78ea3ca71bd436b39817695a1e02b33d827f3da15",
+      "new_sha256": "09ab201942f3f2281cf90bf78ea3ca71bd436b39817695a1e02b33d827f3da15",
+      "identical": true
+    },
+    "system-user.dtsi": {
+      "old_sha256": "e073466abd8a12f32f9cc4b73d1777c0e5feb0c7f5b9b8fab91205c3a70e7731",
+      "new_sha256": "e073466abd8a12f32f9cc4b73d1777c0e5feb0c7f5b9b8fab91205c3a70e7731",
+      "identical": true
+    },
+    "zynqmp-clk-ccf.dtsi": {
+      "old_sha256": "b0b445c927072f9c9ee9a3d56429c2491ccfe5e3e13a07a784d9e15d995714e3",
+      "new_sha256": "b0b445c927072f9c9ee9a3d56429c2491ccfe5e3e13a07a784d9e15d995714e3",
+      "identical": true
+    },
+    "zynqmp-u-boot.dtsi": {
+      "old_sha256": "923f395c5dfb183e71d305d5d05a84e770a01958106a2f42277814b2721ae5f9",
+      "new_sha256": "923f395c5dfb183e71d305d5d05a84e770a01958106a2f42277814b2721ae5f9",
+      "identical": true
+    },
+    "zynqmp.dtsi": {
+      "old_sha256": "b34e3260aa7c222488637d33728b9b54a8f9e4b7a807f8f3c64a02ec25d8a632",
+      "new_sha256": "b34e3260aa7c222488637d33728b9b54a8f9e4b7a807f8f3c64a02ec25d8a632",
+      "identical": true
+    }
+  }
+}
