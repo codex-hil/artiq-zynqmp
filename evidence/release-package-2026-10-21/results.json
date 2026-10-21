@@ -1,0 +1,39 @@
+{
+  "status": "BUILD_AND_PACKAGING_PASS",
+  "hardware_executed": false,
+  "cold_boot": "NOT_RUN",
+  "source_commit_cpu0_and_bridge": "58f1e9367f10477e9a25255a2924e906f7e77be8",
+  "source_commit_worker": "35518ffebea722a178bd33e61b30d2b6d711876a",
+  "cpu0_unit_tests": 6,
+  "cpu0_elf_sha256": "b31af046c9ac42249537590933e7a3782ce9a1630fae07b4854eda0399944f37",
+  "bridge_segments": [
+    {
+      "vaddr": 536870912,
+      "paddr": 536870912,
+      "filesz": 120,
+      "memsz": 120,
+      "sha256": "e69877b24170ce9916e03f7e454ba9974f1643d706125d6a7bf2aa1bb5445ecc"
+    },
+    {
+      "vaddr": 538968064,
+      "paddr": 538968064,
+      "filesz": 86024,
+      "memsz": 86024,
+      "sha256": "354cd5a3b4fa24c87bedd41518eedfe40fb025226ad9dcaacee1c46e4b85e3bf"
+    }
+  ],
+  "worker_embedded_exactly": true,
+  "original_csr_registers_preserved": 33,
+  "reused_inputs": [
+    "previously qualified debug PL",
+    "previously qualified PMU/FSBL",
+    "existing SDT and verified shared toolchains"
+  ],
+  "limitations": [
+    "not a complete fresh-host build",
+    "CPU1 byte reproducibility remains unresolved",
+    "new CPU0/CPU1 images have no hardware qualification",
+    "no SD/card/flash/OTP writes"
+  ],
+  "qualified_baseline_unchanged": true
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "packaged-artifacts-not-boot-proof",
+  "artifacts": {
+    "fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    "bitstream": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+      "sha256": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582"
+    },
+    "application": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/build/lwip_echo_server.elf",
+      "sha256": "b31af046c9ac42249537590933e7a3782ce9a1630fae07b4854eda0399944f37"
+    },
+    "pmufw": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    "worker_boot": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-sd-bridge-2026-10-21/worker-boot.elf",
+      "sha256": "3b26bd2bd17f29a50b6bb915c82e0b3a37b34fa83bb41e533282edd70ec8a104"
+    },
+    "boot.bin": {
+      "sha256": "03457f51058bb05f31c1a3a70240208b313ede72a125b91a7e482f9fe100250a"
+    }
+  }
+}

@@ -1,0 +1,489 @@
+   Compiling genesys-artiq-services v0.1.0 (/srv/codex-hil-data/artiq-zynqmp/work/release-repro-2026-10-21/boards/genesys_zu-5ev/2_firmware_a53)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.34s
+     Running unittests src/lib.rs (/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/rust/debug/deps/genesys_artiq_services-a0935f57f77bc289)
+
+running 6 tests
+test tests::actual_log_read_and_clear ... ok
+test tests::config_metadata_and_counter_fixture ... ok
+test tests::fragmented_handshake_and_coalesced_requests ... ok
+test tests::sessions_are_independent_and_log_is_bounded ... ok
+test tests::unsupported_operations_fail_instead_of_fake_success ... ok
+test tests::reject_bad_greeting_destination_length_and_utf8 ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling genesys-artiq-services v0.1.0 (/srv/codex-hil-data/artiq-zynqmp/work/release-repro-2026-10-21/boards/genesys_zu-5ev/2_firmware_a53)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.40s
+[INFO]: Initializing repositories
+[INFO]: Successfully set the EmbeddedSW path, refer .repo.yaml for more details.
+[INFO]: Validating inputs
+[INFO]: Starting domain creation
+[INFO]: Generating Domain-specific DTS for psu_cortexa53_0
+[INFO]: Generating required metadata from domain specific DT
+[INFO]: Successfully created Domain at /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp
+[INFO]: Validating inputs
+[INFO]: Generating Hardware Metadata for lwip_echo_server
+[INFO]: Generating Linker script for lwip_echo_server
+[INFO]: Successfully Created Application sources at /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src
+[INFO]: Starting Application build process
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/build_configs/gen_bsp
+[INFO]: Building BSP
+[1/269] ========== BSP Build Information ==========
+
+Compiler PATH: /srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc
+
+Compiler FLAGS:  -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2
+026-10-21/amd/bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/bsp/include  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -DNDEBUG
+
+===========================================
+** The above flags are BSP level flags. Increase verbosity to see component specific flags **
+===========================================
+[2/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_sinit.c.obj
+[3/269] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_sinit.c.obj
+[4/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_g.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/emacps/src/xemacps_g.c:16:9: warning: missing initializer for field 'S1GDiv0' of 'XEmacPs_Config' [-Wmissing-field-initializers]
+   16 |         },
+      |         ^
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/emacps/src/xemacps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/emacps/src/xemacps.h:540:13: note: 'S1GDiv0' declared here
+  540 |         u16 S1GDiv0;    /**< 1Gbps Clock Divider 0 */
+      |             ^~~~~~~
+[5/269] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_selftest.c.obj
+[6/269] Building C object libsrc/coresightps_dcc/src/CMakeFiles/coresightps_dcc.dir/xcoresightpsdcc.c.obj
+[7/269] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_g.c.obj
+[8/269] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu_g.c.obj
+[9/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_hw.c.obj
+[10/269] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_g.c.obj
+[11/269] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_selftest.c.obj
+[12/269] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_sinit.c.obj
+[13/269] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu.c.obj
+[14/269] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu_sinit.c.obj
+[15/269] Linking C static library libsrc/coresightps_dcc/src/libcoresightps_dcc.a
+[16/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_divider.c.obj
+[17/269] Linking C static library libsrc/ddrcpsu/src/libddrcpsu.a
+[18/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_g.c.obj
+[19/269] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_g.c.obj
+[20/269] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_intr.c.obj
+[21/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_pcs.c.obj
+[22/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_sinit.c.obj
+[23/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_g.c.obj
+[24/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_intr.c.obj
+[25/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_fixedfactor.c.obj
+[26/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_gate.c.obj
+[27/269] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_sinit.c.obj
+[28/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_mux.c.obj
+[29/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_selftest.c.obj
+[30/269] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_selftest.c.obj
+[31/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_intr.c.obj
+[32/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_sinit.c.obj
+[33/269] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_g.c.obj
+[34/269] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_buf.c.obj
+[35/269] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_hw.c.obj
+[36/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_bdring.c.obj
+[37/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_slave.c.obj
+[38/269] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_g.c.obj
+[39/269] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_sinit.c.obj
+[40/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_control.c.obj
+[41/269] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu.c.obj
+[42/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_hw.c.obj
+[43/269] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_sinit.c.obj
+[44/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps.c.obj
+[45/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_pll.c.obj
+[46/269] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_helper.c.obj
+[47/269] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_g.c.obj
+[48/269] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma.c.obj
+[49/269] Linking C static library libsrc/csudma/src/libcsudma.a
+[50/269] Linking C static library libsrc/ipipsu/src/libipipsu.a
+[51/269] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_sinit.c.obj
+[52/269] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps.c.obj
+[53/269] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps_g.c.obj
+[54/269] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps_sinit.c.obj
+[55/269] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_selftest.c.obj
+[56/269] Linking C static library libsrc/emacps/src/libemacps.a
+[57/269] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_xfer.c.obj
+[58/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_xfer.c.obj
+[59/269] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_g.c.obj
+[60/269] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_sinit.c.obj
+[61/269] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_intr.c.obj
+[62/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_options.c.obj
+[63/269] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_intr.c.obj
+[64/269] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_selftest.c.obj
+[65/269] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_options.c.obj
+[66/269] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_control.c.obj
+[67/269] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_sinit.c.obj
+[68/269] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps.c.obj
+[69/269] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops.c.obj
+[70/269] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_intr.c.obj
+[71/269] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_g.c.obj
+[72/269] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_master.c.obj
+[73/269] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_hw.c.obj
+[74/269] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_sinit.c.obj
+[75/269] Linking C static library libsrc/clockps/src/libclockps.a
+[76/269] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_g.c.obj
+[77/269] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_selftest.c.obj
+[78/269] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps.c.obj
+[79/269] Linking C static library libsrc/iicps/src/libiicps.a
+[80/269] Linking C static library libsrc/gpiops/src/libgpiops.a
+[81/269] Linking C static library libsrc/resetps/src/libresetps.a
+[82/269] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_g.c.obj
+[83/269] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu.c.obj
+[84/269] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_hw.c.obj
+[85/269] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_selftest.c.obj
+[86/269] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_options.c.obj
+[87/269] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps.c.obj
+[88/269] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_intr.c.obj
+[89/269] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_sinit.c.obj
+[90/269] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_g.c.obj
+[91/269] Linking C static library libsrc/rtcpsu/src/librtcpsu.a
+[92/269] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_sinit.c.obj
+[93/269] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_hw.c.obj
+[94/269] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_selftest.c.obj
+[95/269] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_selftest.c.obj
+[96/269] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_sinit.c.obj
+[97/269] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_g.c.obj
+[98/269] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps.c.obj
+[99/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/print.c.obj
+[100/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testcache.c.obj
+[101/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_assert.c.obj
+[102/269] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_intr.c.obj
+[103/269] Linking C static library libsrc/ttcps/src/libttcps.a
+[104/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_mem.c.obj
+[105/269] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_options.c.obj
+[106/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/outbyte.c.obj
+[107/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xpm_init.c.obj
+[108/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/inbyte.c.obj
+[109/269] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic.c.obj
+[110/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/xarmv8_g.c.obj
+[111/269] Linking C static library libsrc/scugic/src/libscugic.a
+[112/269] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon.c.obj
+[113/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xplatform_info.c.obj
+[114/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/clocking/xil_clocking.c.obj
+[115/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testmem.c.obj
+[116/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/cpputest_time.c.obj
+[117/269] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu.c.obj
+[118/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/unlink.c.obj
+[119/269] Linking C static library libsrc/axipmon/src/libaxipmon.a
+[120/269] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps.c.obj
+[121/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/sbrk.c.obj
+[122/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/isatty.c.obj
+[123/269] Linking C static library libsrc/qspipsu/src/libqspipsu.a
+[124/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/getpid.c.obj
+[125/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/_exit.c.obj
+[126/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/fcntl.c.obj
+[127/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/_sbrk.c.obj
+[128/269] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_intr.c.obj
+[129/269] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_options.c.obj
+[130/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/read.c.obj
+[131/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/close.c.obj
+[132/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/fstat.c.obj
+[133/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/write.c.obj
+[134/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/open.c.obj
+[135/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testio.c.obj
+[136/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_util.c.obj
+[137/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/_open.c.obj
+[138/269] Linking C static library libsrc/uartps/src/libuartps.a
+[139/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/errno.c.obj
+[140/269] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/xil-crt0.S.obj
+[141/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/lseek.c.obj
+[142/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/abort.c.obj
+[143/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/kill.c.obj
+[144/269] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/boot.S.obj
+[145/269] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_card.c.obj
+[146/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/vectors.c.obj
+[147/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/time.c.obj
+[148/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/gettimeofday.c.obj
+[149/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/initialise_monitor_handles.c.obj
+[150/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/getentropy.c.obj
+[151/269] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/asm_vectors.S.obj
+[152/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/xil_spinlock.c.obj
+[153/269] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_host.c.obj
+[154/269] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/platform/ZynqMP/gcc/translation_table.S.obj
+[155/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/xil_smc.c.obj
+[156/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/intr/xinterrupt_wrap.c.obj
+[157/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_printf.c.obj
+[158/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/xil_exception.c.obj
+[159/269] Linking C static library libsrc/sdps/src/libsdps.a
+[160/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/xpm_counter.c.obj
+[161/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_sutil.c.obj
+[162/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/dns.c.obj
+[163/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/xil_mmu.c.obj
+[164/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/init.c.obj
+[165/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/putnum.c.obj
+[166/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ip.c.obj
+[167/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/altcp.c.obj
+[168/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/raw.c.obj
+[169/269] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma.c.obj
+[170/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/stats.c.obj
+[171/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/sys.c.obj
+[172/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/altcp_alloc.c.obj
+[173/269] Linking C static library libsrc/zdma/src/libzdma.a
+[174/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/altcp_tcp.c.obj
+[175/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/autoip.c.obj
+[176/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/timeouts.c.obj
+[177/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/memp.c.obj
+[178/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/igmp.c.obj
+[179/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/dhcp6.c.obj
+[180/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/def.c.obj
+[181/269] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/xil_cache.c.obj
+[182/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/icmp.c.obj
+[183/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/icmp6.c.obj
+[184/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/inet_chksum.c.obj
+[185/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/ethip6.c.obj
+[186/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/ip6_addr.c.obj
+[187/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/ip6_frag.c.obj
+[188/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/inet6.c.obj
+[189/269] Linking C static library libsrc/standalone/src/libxilstandalone.a
+[190/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/ip6.c.obj
+[191/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/mem.c.obj
+[192/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/mld6.c.obj
+[193/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/api_lib.c.obj
+[194/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv6/nd6.c.obj
+[195/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/netdb.c.obj
+[196/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/api_msg.c.obj
+[197/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/netifapi.c.obj
+[198/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/netif.c.obj
+[199/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/ip4_addr.c.obj
+[200/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/bridgeif.c.obj
+[201/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/netbuf.c.obj
+[202/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/tcpip.c.obj
+[203/269] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/sysmonpsu/src/xsysmonpsu.c:66:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/build_configs/gen_bsp/include/xbasic_types.h:102:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+  102 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/build_configs/gen_bsp/include/xbasic_types.h:103:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+  103 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+[204/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/err.c.obj
+[205/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/if_api.c.obj
+[206/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/lowpan6_ble.c.obj
+[207/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/api/sockets.c.obj
+[208/269] Linking C static library libsrc/sysmonpsu/src/libsysmonpsu.a
+[209/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/acd.c.obj
+[210/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/slipif.c.obj
+[211/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/lowpan6_common.c.obj
+[212/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/auth.c.obj
+[213/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/lowpan6.c.obj
+[214/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/zepif.c.obj
+[215/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/chap-md5.c.obj
+[216/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/bridgeif_fdb.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/src/netif/bridgeif_fdb.c: In function 'bridgeif_age_tmr':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/src/netif/bridgeif_fdb.c:187:3: warning: implicit declaration of function 'sys_timeout' [-Wimplicit-function-declaration]
+  187 |   sys_timeout(BRIDGEIF_AGE_TIMER_MS, bridgeif_age_tmr, arg);
+      |   ^~~~~~~~~~~
+[217/269] Archiving C static library libsrc/build_configs/gen_bsp/libxil.a
+[218/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/ip4.c.obj
+[219/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/ccp.c.obj
+[220/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ethernet.c.obj
+[221/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/ipv6cp.c.obj
+[222/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/eap.c.obj
+[223/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/fsm.c.obj
+[224/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/demand.c.obj
+[225/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/ipcp.c.obj
+[226/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/udp.c.obj
+[227/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/mppe.c.obj
+[228/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/chap_ms.c.obj
+[229/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/eui64.c.obj
+[230/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/pppapi.c.obj
+[231/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/lcp.c.obj
+[232/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/chap-new.c.obj
+[233/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/ip4_frag.c.obj
+[234/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/pppoe.c.obj
+[235/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/multilink.c.obj[INFO]: Copying headers and built archives
+[INFO]: Successfully built BSP. Generated liblwip220.a, libxilstandalone.a, libxil.a, libxiltimer.a
+[INFO]: Building Application
+
+[236/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/pppos.c.obj
+[237/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/ppp.c.obj
+[238/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/vj.c.obj
+[239/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/pppcrypt.c.obj
+[240/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/polarssl/arc4.c.obj
+[241/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/polarssl/des.c.obj
+[242/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/magic.c.obj
+[243/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/ecp.c.obj
+[244/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/polarssl/sha1.c.obj
+[245/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/polarssl/md5.c.obj
+[246/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/pppol2tp.c.obj
+[247/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/sys_arch_raw.c.obj
+[248/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/upap.c.obj
+[249/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/utils.c.obj
+[250/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/sys_arch.c.obj
+[251/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/netif/ppp/polarssl/md4.c.obj
+[252/269] Building C object libsrc/xiltimer/src/CMakeFiles/xiltimer.dir/core/default_timer/globaltimer_sleep.c.obj
+[253/269] Building C object libsrc/xiltimer/src/CMakeFiles/xiltimer.dir/core/ttcps/ttcps.c.obj
+[254/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/etharp.c.obj
+[255/269] Building C object libsrc/xiltimer/src/CMakeFiles/xiltimer.dir/xiltimer.c.obj
+[256/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/netif/xadapter.c.obj
+[257/269] Linking C static library libsrc/xiltimer/src/libxiltimer.a
+[258/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/pbuf.c.obj
+[259/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/xtopology_g.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/lwip220/src/xtopology_g.c:11:9: warning: initialization of 'long unsigned int' from 'void *' makes integer from pointer without a cast [-Wint-conversion]
+   11 |         NULL
+      |         ^~~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/libsrc/lwip220/src/xtopology_g.c:11:9: note: (near initialization for 'xtopology[1].emac_baseaddr')
+[260/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/tcp_out.c.obj
+[261/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_hw.c.obj
+[262/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/netif/xpqueue.c.obj
+[263/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif.c.obj
+[264/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_physpeed.c.obj
+[265/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_dma.c.obj
+[266/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/tcp_in.c.obj
+[267/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/ipv4/dhcp.c.obj
+[268/269] Building C object libsrc/lwip220/src/CMakeFiles/lwip220.dir/lwip-2.2.0/src/core/tcp.c.obj
+[269/269] Linking C static library libsrc/lwip220/src/liblwip220.a
+[1/9] ==========Application Build Information ==========
+
+Compiler Flags:  -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2
+026-10-21/amd/bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/bsp/include -Wall -Wextra      -O0  -g3     -U__clang__  
+
+Linker Flags:       -Wl,-T -Wl,"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/app/src/lscript.ld" -L"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/a
+md/app/src/" -L"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/lib/" 
+-L"/" -Wl,--start-group,-lxilstandalone,-llwip220,-lxiltimer,-lxil,-lxiltimer,-llwip220,-lgcc,-lc -W
+l,--end-group
+
+===========================================
+[2/9] Building C object CMakeFiles/lwip_echo_server.elf.dir/sfp.c.obj
+[3/9] Building C object CMakeFiles/lwip_echo_server.elf.dir/si5324.c.obj
+[4/9] Building C object CMakeFiles/lwip_echo_server.elf.dir/i2c_access.c.obj
+[5/9] Building C object CMakeFiles/lwip_echo_server.elf.dir/iic_phyreset.c.obj
+[6/9] Building C object CMakeFiles/lwip_echo_server.elf.dir/echo.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c: In function 'recv_callback':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:53:54: warning: parameter 'err' set but not used [-Wunused-but-set-parameter]
+   53 |                                struct pbuf *p, err_t err)
+      |                                                ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:52:27: warning: unused parameter 'arg' [-Wunused-parameter]
+   52 | err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
+      |                     ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c: In function 'accept_callback':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:78:29: warning: unused parameter 'arg' [-Wunused-parameter]
+   78 | err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
+      |                       ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:78:64: warning: unused parameter 'err' [-Wunused-parameter]
+   78 | err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
+      |                                                          ~~~~~~^~~
+[7/9] Building C object CMakeFiles/lwip_echo_server.elf.dir/main.c.obj
+[8/9] Building C object CMakeFiles/lwip_echo_server.elf.dir/platform.c.obj
+[9/9] Linking C executable lwip_echo_server.elf
+/srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/13.2.1/../../../../aarch64-none-elf/bin/ld: warning: lwip_echo_server.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 160664	  10136	8477056	8647856	 83f4b0	lwip_echo_server.elf
+[INFO]: Starting Application build process
+[INFO]: Building BSP
+[INFO]: Copying headers and built archives
+[INFO]: Successfully built BSP. Generated liblwip220.a, libxilstandalone.a, libxil.a, libxiltimer.a
+[INFO]: Building Application
+[1/2] Archiving C static library libsrc/build_configs/gen_bsp/libxil.a
+[2/2] ========== BSP Build Information ==========
+
+Compiler PATH: /srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc
+
+Compiler FLAGS:  -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2
+026-10-21/amd/bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/bsp/include  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -DNDEBUG
+
+===========================================
+** The above flags are BSP level flags. Increase verbosity to see component specific flags **
+===========================================
+[1/11] ==========Application Build Information ==========
+
+Compiler Flags:  -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2
+026-10-21/amd/bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/bsp/include -Wall -Wextra      -O0  -g3     -U__clang__  
+
+Linker Flags:       -Wl,-T -Wl,"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/app/src/lscript.ld" -L"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/a
+md/app/src/" -L"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/lib/" 
+-L"/" -Wl,--start-group,-lxilstandalone,-llwip220,-lxiltimer,-lxil,-lxiltimer,-llwip220,-lgcc,-lc -W
+l,--end-group
+
+===========================================
+[2/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/si5324.c.obj
+[3/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/sfp.c.obj
+[4/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/iic_phyreset.c.obj
+[5/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/i2c_access.c.obj
+[6/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/management_lwip.c.obj
+[7/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/echo.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c: In function 'recv_callback':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:53:54: warning: parameter 'err' set but not used [-Wunused-but-set-parameter]
+   53 |                                struct pbuf *p, err_t err)
+      |                                                ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:52:27: warning: unused parameter 'arg' [-Wunused-parameter]
+   52 | err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
+      |                     ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c: In function 'accept_callback':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:78:29: warning: unused parameter 'arg' [-Wunused-parameter]
+   78 | err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
+      |                       ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:78:64: warning: unused parameter 'err' [-Wunused-parameter]
+   78 | err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
+      |                                                          ~~~~~~^~~
+[8/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/kernel_lwip.c.obj
+[9/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/main.c.obj
+[10/11] Building C object CMakeFiles/lwip_echo_server.elf.dir/platform.c.obj
+[11/11] Linking C executable lwip_echo_server.elf
+/srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/13.2.1/../../../../aarch64-none-elf/bin/ld: warning: lwip_echo_server.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 394012	  10136	8478136	8882284	 87886c	lwip_echo_server.elf
+[INFO]: Starting Application build process
+[INFO]: Building BSP
+[INFO]: Copying headers and built archives
+[INFO]: Successfully built BSP. Generated liblwip220.a, libxilstandalone.a, libxil.a, libxiltimer.a
+[INFO]: Building Application
+[1/2] Archiving C static library libsrc/build_configs/gen_bsp/libxil.a
+[2/2] ========== BSP Build Information ==========
+
+Compiler PATH: /srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc
+
+Compiler FLAGS:  -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2
+026-10-21/amd/bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/bsp/include  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -DNDEBUG
+
+===========================================
+** The above flags are BSP level flags. Increase verbosity to see component specific flags **
+===========================================
+[1/12] ==========Application Build Information ==========
+
+Compiler Flags:  -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2
+026-10-21/amd/bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/bsp/include -Wall -Wextra      -O0  -g3     -U__clang__  
+
+Linker Flags:       -Wl,-T -Wl,"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-2
+1/amd/app/src/lscript.ld" -L"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/a
+md/app/src/" -L"/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/bsp/lib/" 
+-L"/" -Wl,--start-group,-lxilstandalone,-llwip220,-lxiltimer,-lxil,-lxiltimer,-llwip220,-lgcc,-lc -W
+l,--end-group
+
+===========================================
+[2/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/si5324.c.obj
+[3/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/iic_phyreset.c.obj
+[4/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/echo.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c: In function 'recv_callback':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:53:54: warning: parameter 'err' set but not used [-Wunused-but-set-parameter]
+   53 |                                struct pbuf *p, err_t err)
+      |                                                ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:52:27: warning: unused parameter 'arg' [-Wunused-parameter]
+   52 | err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
+      |                     ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c: In function 'accept_callback':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:78:29: warning: unused parameter 'arg' [-Wunused-parameter]
+   78 | err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
+      |                       ~~~~~~^~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/src/echo.c:78:64: warning: unused parameter 'err' [-Wunused-parameter]
+   78 | err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
+      |                                                          ~~~~~~^~~
+[5/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/platform.c.obj
+[6/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/sfp.c.obj
+[7/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/i2c_access.c.obj
+[8/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/main.c.obj
+[9/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/management_lwip.c.obj
+[10/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/kernel_lwip.c.obj
+[11/12] Building C object CMakeFiles/lwip_echo_server.elf.dir/debug_lwip.c.obj
+[12/12] Linking C executable lwip_echo_server.elf
+/srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/13.2.1/../../../../aarch64-none-elf/bin/ld: warning: lwip_echo_server.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 398796	  10136	8478152	8887084	 879b2c	lwip_echo_server.elf

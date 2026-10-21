@@ -42,11 +42,11 @@ worker remains selected by the hardware profiles.
 |---|---|---|
 | PS and initial DMA PL | `scripts/build_rtio_dma.sh` | Vivado 2025.2, initialized Migen/ARTIQ dependencies; fresh release-chain build pending |
 | Analyzer/MonInj PL | `scripts/build_rtio_debug.sh` | Matching verified PS DMA export; recipe reuses generated PS IP |
-| CPU0 services | `scripts/build_debug_services.sh` | Matching `system-top.dts`, CSR map, GNU AArch64 toolchain and shared AMD BSP environment |
+| CPU0 services | `scripts/build_debug_services.sh` | Clean-worktree build and six service tests PASS; existing SDT and shared AMD BSP environment reused |
 | CPU1 worker | `scripts/build_kernel_worker.sh` | Clean-worktree compile PASS as above; byte reproducibility unresolved |
-| CPU1 cold-boot bridge | `scripts/build_sd_worker.sh` | Matching worker32 ELF; fresh release packaging pending |
-| PMU/FSBL | `scripts/build_boot_firmware.sh` | Matching PS SDT and AMD sources, including Piotr's board-specific DDR work |
-| Boot image | `scripts/build_boot_image.py` | Matching FSBL/PMU/PL/CPU0/CPU1 bridge and bootgen; packaging alone is not cold-boot proof |
+| CPU1 cold-boot bridge | `scripts/build_sd_worker.sh` | Fresh build PASS; embedded worker segment verified byte-exact |
+| PMU/FSBL | `scripts/build_boot_firmware.sh` | Matching PS XSA and AMD sources, including Piotr's board-specific DDR work |
+| Boot image | `scripts/build_boot_image.py` | New CPU0/CPU1 package PASS with qualified existing FSBL/PMU/PL; cold boot NOT_RUN |
 
 These are existing component entry points, not yet a verified end-to-end script.
 Read the shared Vivado environment instructions before FPGA work. Neither Vitis
@@ -57,3 +57,39 @@ Next steps: identify remaining binary differences; rebuild CPU0 and the SD bridg
 from a clean checkout; record matching inputs for the complete release chain.
 Only then package and separately qualify the new image on hardware under the
 shared board lease. Do not overwrite the qualified baseline during build work.
+
+
+## CPU0 and SD packaging checkpoint — 2026-10-21
+
+A clean detached worktree at `58f1e93` built CPU0 services and the SD bridge.
+The worker input came from the path-remapped build at `35518ff`; the metadata
+experiment in the later source revision affects only the CPU1 build script,
+which was not used in this CPU0/bridge run. Exact revisions and hashes are in
+`evidence/release-package-2026-10-21/results.json` and `artifacts.json`.
+
+```sh
+bash scripts/build_debug_services.sh \
+  /path/to/matching/system-top.dts /path/to/debug/csr-map.json \
+  /path/to/fresh-cpu0 /path/to/aarch64-gnu-toolchain
+bash scripts/build_sd_worker.sh \
+  /path/to/abi-tools /path/to/worker32.elf /path/to/fresh-bridge
+python3 scripts/build_boot_image.py \
+  --fsbl /path/to/matching/zynqmp_fsbl.elf \
+  --pmufw /path/to/matching/zynqmp_pmufw.elf \
+  --bitstream /path/to/debug/top.bit \
+  --worker-boot /path/to/fresh-bridge/worker-boot.elf \
+  --application /path/to/fresh-cpu0/amd/app/build/lwip_echo_server.elf \
+  --output-dir /path/to/fresh-package
+bootgen -arch zynqmp -read /path/to/fresh-package/boot.bin pht
+```
+
+Local output is `build/release-sd-package-2026-10-21/boot.bin` under the shared
+artifact root. Partition headers were read back successfully. The CPU1 bridge
+contains the exact worker payload at `0x20200000`, with its EL3 startup at
+`0x20000000`. All 33 original worker CSR registers are preserved by the selected
+debug PL map. No new PL, PMU or FSBL build was performed here.
+
+This package is a candidate, not the selected hardware baseline. No card was
+written and no cold boot was performed. Remaining release work includes the
+CPU1 reproducibility diagnosis, complete source/tool provenance for reused
+inputs, and a separately authorized hardware qualification window.

@@ -1,0 +1,23 @@
+{
+  "status": "UNRESOLVED",
+  "differing_bytes": 62,
+  "load_relative_ranges": [
+    [
+      13784,
+      13784
+    ],
+    [
+      13792,
+      13792
+    ],
+    [
+      69271,
+      69294
+    ],
+    [
+      69296,
+      69331
+    ]
+  ],
+  "observation": "Two instruction immediate bytes and constant-data layout differ; no binary or behavioral equivalence established"
+}

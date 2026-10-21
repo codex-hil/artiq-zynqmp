@@ -3049,3 +3049,14 @@ Build PASS, bit-identical reproducibility FAIL; no rebuilt image was loaded.
 Qualified worker and both boards remain unchanged. See docs/CLEAN_BUILD.md and
 evidence/kernel-clean-build-2026-10-21. Next: binary-difference diagnosis and
 clean-checkout CPU0/SD bridge builds; end-to-end release/cold boot remain pending.
+
+
+## Clean CPU0 / SD package — 2026-10-21
+
+Clean-worktree CPU0 compilation and six Rust service tests PASS. Fresh CPU1 SD
+bridge embeds the rebuilt worker byte-exactly at 0x20200000; all 33 worker CSR
+registers preserved by debug PL. Bootgen packaging and partition-header readback
+PASS with existing qualified PMU/FSBL/PL. Candidate build/release-sd-package-
+2026-10-21/boot.bin is NOT hardware-qualified; no SD/card/board access occurred.
+CPU1 62-byte load-segment difference remains unresolved. Evidence:
+evidence/release-package-2026-10-21; recipe docs/CLEAN_BUILD.md.
