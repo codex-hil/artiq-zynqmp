@@ -17,6 +17,15 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Combined source-input binding — 2026-10-21
+
+The one-command release verifier now requires a hash-pinned source-input manifest
+and rechecks retained PS export, both exact37-file SDT trees, generated HDL files
+and raw/normalized XCI equivalence. Combined verification PASS. Two new tamper/
+path/file-set controls and three release admission tests PASS. Evidence:
+`evidence/source-release-chain-2026-10-21/combined-source-inputs.json`.
+Offline only; no hardware changes or cold-boot claim.
+
 ## Source-reconstructed PS to firmware/PL inputs — 2026-10-21
 
 Fresh SDT generation from the reconstructed XSA PASS: all37files byte-identical

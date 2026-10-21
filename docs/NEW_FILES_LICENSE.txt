@@ -591,3 +591,6 @@ scripts/verify_boot_components.py
 tests/test_boot_components.py
 docs/PS_EXPORT.md
 evidence/ps-source-export-2026-10-21/run.sh
+scripts/verify_source_inputs.py
+tests/test_source_inputs.py
+diagnostics/release/source-input-bindings-2026-10-21.json

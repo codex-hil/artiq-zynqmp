@@ -153,3 +153,13 @@ and `source-release-chain-2026-10-21/combined-all-payloads.json` under `evidence
 This extends the earlier CPU-only report; it does not establish execution.
 Run `python3 -m unittest discover -s tests -p 'test_boot_components.py'` for
 corruption controls covering PMU, FSBL, PL, header checksum and ELF overlap.
+
+The selected release configuration now requires `source_inputs`: a SHA-256-pinned
+binding manifest covering the downloaded source PS export, both37-file SDT
+trees, generated HDL inputs, raw XCI equivalence and reviewed normalized XCI
+versus the completed build. `make verify-local-release` rechecks those files
+on disk; it does not trust a prior PASS string. Exact SDT file sets are enforced.
+The configuration remains host-local; retained trees must exist to run the check.
+This is byte-consistency evidence, not signed provenance or proof that a historical
+tool execution consumed these files. Latest report:
+`evidence/source-release-chain-2026-10-21/combined-source-inputs.json`.

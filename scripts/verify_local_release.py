@@ -7,6 +7,7 @@ from compare_bitstreams import compare
 from package_local_candidate import verify_proof,match_worker,loads
 from verify_boot_payloads import partitions,match
 from verify_boot_components import verify as verify_components
+from verify_source_inputs import verify as verify_sources
 
 
 def bind_package(package,manifest,proof,files):
@@ -45,9 +46,11 @@ def verify(config):
     equivalence=compare(Path(files['candidate_pl']['path']).read_bytes(),(build/'top.bit').read_bytes())
     if equivalence['status']!='CONFIGURATION_BYTES_IDENTICAL':raise ValueError('Source build differs from qualified configuration')
     package=bind_package(Path(config['package']),manifest,proof,files)
+    binding=config['source_inputs']
+    sources=verify_sources(Path(binding['path']),binding['sha256'])
     return dict(status='LOCAL_RELEASE_CHAIN_PASS_COLD_BOOT_NOT_RUN',hardware_executed=False,cold_boot='NOT_RUN',
                 manifest_sha256=sha(manifest),hardware_proof_sha256=sha(proof),build_inputs_sha256=sha(inputs),
-                fpga=fpga,configuration_equivalence=equivalence,package=package,
+                fpga=fpga,configuration_equivalence=equivalence,package=package,source_inputs=sources,
                 limits='Offline consistency of selected artifacts and recorded hardware proof; not signed provenance, fresh hardware execution, complete source bootstrap, BSS initialization or cold boot.')
 
 
