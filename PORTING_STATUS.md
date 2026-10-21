@@ -3151,3 +3151,14 @@ maxThreads2->8 differs. XCI componentvaluesunchanged but metadata changes record
 not accepted as identical upgradebehavior. Source pins/generation hashes captured.
 Combined recipe docs/BUILD_RECIPE.md; remote submission/normalization automation
 and original PS/emptyhost provenance remain open. NoHW access or new FPGA build.
+
+
+## Reusable remote job pipeline — 2026-10-21
+
+remote_rtio_build.py prepare/submit/status/collect implemented. Separate PSIP
+normalization requires explicit outputhash selection beforebuild. SharedDelllock,
+uniquejobdir,input/transferchecks,failedbuildlogretention and strictresultchecks.
+SixofflinecontrolsPASS. First freshsource normalization submitted/hashtransferPASS
+but waits behind another shared-lock build; normalization/synthesis resultPENDING.
+NoHWaccess. Evidence remote-submission-2026-10-21. Next collect/diff normalization,
+then explicitly pin selectedIP for full source-generated build.

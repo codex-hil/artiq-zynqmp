@@ -94,3 +94,51 @@ setup1.900ns, hold0.016ns, pulse-width2.500ns; no internal unconstrained endpoin
 complete routing, known RTSTAT-10 warning only. Evidence and exact bitstream
 hash are in `pinned-ip-rebuild/build-check.json`. Physical qualification is
 separate; see [candidate JTAG plan](CANDIDATE_JTAG.md).
+
+## Reusable job tool
+
+`scripts/remote_rtio_build.py` supports offline preparation, explicit submission,
+status and collection. Source must be a fresh generator output with
+`generation.json`. It rejects changed/escaping/symlinked external inputs and
+copies only selected HDL/XDC/Tcl/init/CSR/XCI files, not worktrees or secrets.
+Use a unique fresh job directory; the final directory name becomes the remote
+job/service name. Prepared jobs are hash-pinned and cannot be changed before
+submission. SSH uses the existing local key; no private key is transferred.
+
+```sh
+python3 scripts/remote_rtio_build.py prepare \
+  --source /path/to/generated-hdl --mode normalize \
+  --job /path/to/fresh-normalize-job
+python3 scripts/remote_rtio_build.py submit --job /path/to/fresh-normalize-job
+python3 scripts/remote_rtio_build.py status --job /path/to/fresh-normalize-job
+python3 scripts/remote_rtio_build.py collect \
+  --job /path/to/fresh-normalize-job --output /path/to/fresh-normalize-result
+```
+
+Normalization runs only PS IP read/upgrade/generation, without synthesis, under
+the same common build lock. The result is `NORMALIZED_REVIEW_REQUIRED`, with
+`xci.diff` and the output XCI SHA-256. Inspect the exact changes; collection does
+not approve them or launch a build. If the changed file is selected deliberately,
+prepare a new build with its exact expected digest:
+
+```sh
+python3 scripts/remote_rtio_build.py prepare \
+  --source /path/to/generated-hdl --mode build --job /path/to/fresh-build-job \
+  --normalized-xci /path/to/normalized/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci \
+  --expected-xci-sha256 REVIEWED_EXACT_SHA256
+python3 scripts/remote_rtio_build.py submit --job /path/to/fresh-build-job
+python3 scripts/remote_rtio_build.py collect \
+  --job /path/to/fresh-build-job --output /path/to/fresh-build-result
+```
+
+A build without an explicit normalized override is also possible; the strict
+checker will still reject any Vivado input mutation. Collection checks transfer
+hashes and, on a successful build, input integrity/timing/DRC/routing. Failed
+Vivado jobs retain available logs even if no bitstream exists; the CLI exits
+nonzero for remote failures or rejected results. Collection of an unfinished
+job fails without creating a success report. No command accesses boards.
+
+First tool-driven source normalization was submitted with transfer hash PASS;
+job details are in `evidence/remote-submission-2026-10-21`. At the recorded
+checkpoint it waits for another build's shared lock. This is submission evidence,
+not a completed normalization or synthesis result.

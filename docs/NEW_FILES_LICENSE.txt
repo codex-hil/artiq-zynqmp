@@ -571,3 +571,7 @@ scripts/test_candidate_runtime_hw.py
 tests/test_candidate_runtime.py
 docs/BUILD_RECIPE.md
 diagnostics/release/genesys-local-sources.json
+scripts/remote_rtio_build.py
+tests/test_remote_submission.py
+evidence/remote-submission-2026-10-21/run.sh
+evidence/remote-submission-2026-10-21/normalize.tcl

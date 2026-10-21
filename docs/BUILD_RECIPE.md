@@ -54,8 +54,8 @@ inputs into a fresh job directory and use the common remote build lock. Record
 the exact XCI selected as input. The evaluated candidate uses the explicitly
 post-upgrade pinned XCI recorded in `evidence/dell-vivado-2026-10-21/pinned-ip-rebuild`.
 A fresh unnormalized XCI requires separate normalization/diff review before
-claiming an unchanged-input build. This step is not yet automated by one source
-release command.
+claiming an unchanged-input build. The reusable `scripts/remote_rtio_build.py` automates preparation, submission
+and collection; XCI diff review remains an explicit step.
 
 Retrieve the new bitstream/reports/CSR map and input files, verify remote/local
 hashes, then run `scripts/check_remote_rtio_build.py`. Timing/report PASS is
@@ -97,7 +97,8 @@ the board lease and restores the old baseline. Its initial and extended hardware
 sessions passed. A packaged image still requires a separate cold SD boot test;
 this recipe does not write cards, flash or OTP.
 
-Remaining automation: reusable remote submission/normalization and complete
-source-to-package orchestration. The source HDL regeneration result closes the
+Remaining automation: complete source-to-package orchestration; remote job
+submission/normalization/collection now has a reusable tool, with its first
+source normalization queued for validation. The source HDL regeneration result closes the
 fresh HDL checkpoint; original PS generation and empty-host provisioning remain
 explicit dependencies rather than implied successes.
