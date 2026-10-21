@@ -1,0 +1,219 @@
+{
+  "status": "PASS",
+  "board": "KASLI04",
+  "clock_configuration_written": false,
+  "absent_eem_mux": "0x70: physically removed; not accessed",
+  "registers": {
+    "0": [
+      84,
+      84
+    ],
+    "2": [
+      66,
+      66
+    ],
+    "3": [
+      85,
+      85
+    ],
+    "4": [
+      18,
+      18
+    ],
+    "6": [
+      63,
+      63
+    ],
+    "21": [
+      254,
+      254
+    ],
+    "25": [
+      192,
+      192
+    ],
+    "31": [
+      0,
+      0
+    ],
+    "32": [
+      0,
+      0
+    ],
+    "33": [
+      3,
+      3
+    ],
+    "34": [
+      0,
+      0
+    ],
+    "35": [
+      0,
+      0
+    ],
+    "36": [
+      3,
+      3
+    ],
+    "40": [
+      192,
+      192
+    ],
+    "41": [
+      78,
+      78
+    ],
+    "42": [
+      3,
+      3
+    ],
+    "43": [
+      0,
+      0
+    ],
+    "44": [
+      17,
+      17
+    ],
+    "45": [
+      212,
+      212
+    ],
+    "46": [
+      0,
+      0
+    ],
+    "47": [
+      17,
+      17
+    ],
+    "48": [
+      212,
+      212
+    ],
+    "129": [
+      2,
+      2
+    ],
+    "130": [
+      64,
+      64
+    ],
+    "134": [
+      1,
+      1
+    ],
+    "135": [
+      130,
+      130
+    ],
+    "136": [
+      0,
+      0
+    ],
+    "137": [
+      1,
+      1
+    ]
+  },
+  "before": {
+    "version": 65548,
+    "mode": 10,
+    "link0": 1,
+    "link1": 1,
+    "phy0": 191,
+    "phy1": 191,
+    "sfp_inputs": 0,
+    "sys_cycles": 1139618102,
+    "port0_tx_half_cycles": 2717289731,
+    "port0_rx_half_cycles": 2720166297,
+    "port1_tx_half_cycles": 2717289735,
+    "port1_rx_half_cycles": 2717325785,
+    "i2c_busy": 0,
+    "i2c_done": 1,
+    "i2c_valid": 0,
+    "i2c_error": 4,
+    "i2c_generation": 1,
+    "i2c_changed": 0,
+    "i2c_restored": 0,
+    "i2c_bytes_read": 0,
+    "i2c_failed_step": 1,
+    "eeprom0": 0,
+    "eeprom1": 0,
+    "eeprom2": 0,
+    "eeprom3": 0,
+    "eeprom4": 0,
+    "eeprom5": 0,
+    "eeprom6": 0,
+    "eeprom7": 0,
+    "eeprom8": 0,
+    "eeprom9": 0,
+    "eeprom10": 0,
+    "eeprom11": 0,
+    "eeprom12": 0,
+    "eeprom13": 0,
+    "eeprom14": 0,
+    "eeprom15": 0,
+    "eeprom16": 0,
+    "eeprom17": 0,
+    "eeprom18": 0,
+    "eeprom19": 0,
+    "eeprom20": 0,
+    "eeprom21": 0,
+    "eeprom22": 0,
+    "eeprom23": 0
+  },
+  "prior_mux71": 0,
+  "changed_registers": [],
+  "dna": "0x006c440674704854",
+  "si_source_sha256": "573582c7674f2ee8f78cb6a3d67b15734941dcb977196a5347c478238224e5f6",
+  "routing_restoration": "PASS",
+  "after": {
+    "version": 65548,
+    "mode": 10,
+    "link0": 1,
+    "link1": 1,
+    "phy0": 191,
+    "phy1": 191,
+    "sfp_inputs": 0,
+    "sys_cycles": 1212078468,
+    "port0_tx_half_cycles": 2753519914,
+    "port0_rx_half_cycles": 2756397922,
+    "port1_tx_half_cycles": 2753519918,
+    "port1_rx_half_cycles": 2753555968,
+    "i2c_busy": 0,
+    "i2c_done": 1,
+    "i2c_valid": 0,
+    "i2c_error": 4,
+    "i2c_generation": 1,
+    "i2c_changed": 0,
+    "i2c_restored": 0,
+    "i2c_bytes_read": 0,
+    "i2c_failed_step": 1,
+    "eeprom0": 0,
+    "eeprom1": 0,
+    "eeprom2": 0,
+    "eeprom3": 0,
+    "eeprom4": 0,
+    "eeprom5": 0,
+    "eeprom6": 0,
+    "eeprom7": 0,
+    "eeprom8": 0,
+    "eeprom9": 0,
+    "eeprom10": 0,
+    "eeprom11": 0,
+    "eeprom12": 0,
+    "eeprom13": 0,
+    "eeprom14": 0,
+    "eeprom15": 0,
+    "eeprom16": 0,
+    "eeprom17": 0,
+    "eeprom18": 0,
+    "eeprom19": 0,
+    "eeprom20": 0,
+    "eeprom21": 0,
+    "eeprom22": 0,
+    "eeprom23": 0
+  }
+}

@@ -2726,3 +2726,14 @@ pyftdi before any access. Next fixed04-only snapshot via0x71 with routing
 restore, then clock/retained-SRAM restoration qualification. Evidence
 `evidence/kasli04-no-eem-mux-2026-10-21`. Prior absent-mux blocker superseded
 by user correction; no missing-device waiver for0x71/Si5324.
+
+
+KASLI04 current clock/CPU checkpoint (2026-10-21): freshDNA/idle mode10
+verified under04lease, FTDI B clock readPASS via0x71 only.28registers twice
+exact, SiID0182/PLLlocked; mux71 restored/readback0, FTDI+lease released. No
+absent0x70 access/Si configuration/FPGA/reset/flash/otherboard actions.
+Corrected no-EEMmux CPU build+embedded ROMPASS,112296B in131072B/reset0;
+Vivado buildSTARTED exec47085. Evidence `evidence/kasli04-clock-cpu-2026-10-21`.
+Next FPGAqualification and04-specific volatile clock+retained-mode10 restore
+qualification before runtime. Current clock access is working; historical
+removed-EEMmux NACK is not a blocker.
