@@ -2931,3 +2931,13 @@ route/mode10,GenesyslocalCoreDMA/debug/Ethernet192.168.2.3;leasesreleased,
 no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-ddma-catch-2026-10-21`. Nexttimelinecursor success/exception
 restoration usingexistingisolatedhostoverlay;activefaultlabstillgated.
+
+
+KASLI04 DMAcursor (2026-10-21): physicalPASS usingexistingisolatedhashchecked
+hostoverlay. Exact savednow restored aftersuccess andexception before
+resynchronization, samekernelrecovery8physicaledgesPASS;cleanup/AUXsequence
+checked,no newfaults. Defaulthostinstallationunchanged. BothrestoresPASS
+(04clock/route/mode10,GenesyslocalCoreDMA/debug/Ethernet192.168.2.3),leases
+released,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-ddma-cursor-2026-10-21`. Nextlabidleindependentcounter
+qualification beforeactiveunderflow injection; normalidleproofinsufficient.
