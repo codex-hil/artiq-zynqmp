@@ -51,8 +51,9 @@ until restoration; do not launch a second UART/network client alongside it.
 Schema2 is restricted to this KASLI04 basic DMA scenario. Historical schema1
 retains its catch/cursor requirements. This new profile has passed offline
 review; individual underlying hardware scenarios passed with the same pinned
-artifacts. Execution through the new profile entry point remains NOT_RUN.
+artifacts. Execution through this profile entry point passed physically; see
+`evidence/kasli04-profile-hardware-2026-10-21/review.json`.
 
 Evidence: `evidence/kasli04-{external-idle,native-ddma,ddma-lifecycle,ddma-fragment,link-stability}-2026-10-21`.
-Next validation: execute this consolidated entry point once, then remaining
-long fragmented DMA lifecycle and separately admitted fault tests.
+Next validation: long fragmented DMA lifecycle and separately admitted fault
+tests.

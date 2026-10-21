@@ -2892,3 +2892,12 @@ PASS, realmake review-drtio-qualifiedPASSwithoutHW. Evidence
 NewentrypointphysicalexecutionNOT_RUN; priorindividualscenariosqualified.
 Next executeconsolidatedprofile once, thenlongfragmentedDMA lifecycle and
 separatelyadmittedfaulttests. NoHWaccess/boardstatechanges thischeckpoint.
+
+
+KASLI04 consolidatedentryhardware (2026-10-21): make test-hw-drtio-qualified
+with explicit04profilePASS/WRAPPER_PASS.30artifacthashes+5physicalproofs
+verified,standardruntime/management/counter+externalTSC/reset/DIO+nativeDMA
+8physicaledgesPASS. BothboardrestorationPASS,sharedleasesreleased,no01/03/
+Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-profile-hardware-2026-10-21`; documentedentrypoint now
+physicallyvalidated. NextlongfragmentedDMA lifecycle;faultlabseparatelygated.
