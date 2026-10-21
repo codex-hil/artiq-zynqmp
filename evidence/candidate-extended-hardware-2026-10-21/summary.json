@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "restoration": "PASS",
+  "lease_released": true,
+  "elapsed_seconds": 174.637,
+  "candidate_ip": "192.168.2.3",
+  "restored_ip": "192.168.2.3",
+  "core_dma": {
+    "cycles": 3,
+    "artiq_run_invocations": 21,
+    "pulses": 216,
+    "edges": 432
+  },
+  "exceptions": {
+    "cycles": 3,
+    "artiq_run_invocations": 30,
+    "counter_before": 5800591559,
+    "counter_after": 8264718883
+  },
+  "wrapper_sha256": "a6674d5fa5ae781e3d4197f4e0b926884f10e1407aa422b58bf40360ad6c0bf3",
+  "cold_boot": "NOT_RUN",
+  "scope": "Extended local candidate only; no remote DRTIO/DDR soak/clock jitter qualification",
+  "forbidden_writes": "No Kasli/Si/SD/flash/OTP"
+}

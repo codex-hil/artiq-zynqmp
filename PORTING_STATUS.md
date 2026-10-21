@@ -3127,3 +3127,16 @@ Genesys lease held124.298s across entire session; released after restoration.
 Six wrapper lifecycle/lease/timeout tests and offline preflight PASS. NoKasli/
 Si/SD/flash/OTP access; normal profile unchanged. Cold SD boot still NOT_RUN.
 Evidence candidate-runtime-hardware-2026-10-21; docs/CANDIDATE_JTAG.md reproducer.
+
+
+## Extended fresh candidate hardware PASS — 2026-10-21
+
+ThreeCoreDMAcycles/21artiq_run:216physicalpulses/432edges, tight64ns/error/
+persistence/storelimit controlsPASS. Threeexceptioncycles/30artiq_run: catch/
+reraise/finally/overflow/uncaughtkernel/RPC/RTIO and immediatefreshkernelrecovery
+PASS; counter5800591559->8264718883. Post-error candidate TTL/DMA/analyzer/
+MonInj/Ethernet PASS. Old baseline restored+samechecksPASS,192.168.2.3; shared
+lease174.637s thenreleased. NoKasli/Si/card/flash/OTP. Evidence candidate-extended-
+hardware-2026-10-21. Coldboot/DDRsoak/remoteDRTIO/clockphase remainoutside thissuite.
+Next consolidate source-to-artifact recipe; no further repeatedHWregression needed
+without a new implementation change or concrete concern.

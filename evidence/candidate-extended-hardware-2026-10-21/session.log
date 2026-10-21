@@ -1,0 +1,60 @@
+candidate-load START
+candidate-load PASS
+candidate-debug START
+candidate-debug PASS
+candidate-core-dma START
+candidate-core-dma PASS
+candidate-exceptions START
+candidate-exceptions PASS
+candidate-post-errors-debug START
+candidate-post-errors-debug PASS
+candidate-ethernet START
+candidate-ethernet PASS
+restore-load START
+restore-load PASS
+restore-debug START
+restore-debug PASS
+restore-ethernet START
+restore-ethernet PASS
+{
+  "status": "PASS",
+  "restoration": "PASS",
+  "candidate_ip": "192.168.2.3",
+  "restored_ip": "192.168.2.3",
+  "kind": "candidate-runtime-hardware",
+  "hardware_executed": true,
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "cable": "210383B7F02DA",
+  "elapsed_seconds": 174.637,
+  "stages": {
+    "candidate-load": {
+      "returncode": 0
+    },
+    "candidate-debug": {
+      "returncode": 0
+    },
+    "candidate-core-dma": {
+      "returncode": 0
+    },
+    "candidate-exceptions": {
+      "returncode": 0
+    },
+    "candidate-post-errors-debug": {
+      "returncode": 0
+    },
+    "candidate-ethernet": {
+      "returncode": 0
+    },
+    "restore-load": {
+      "returncode": 0
+    },
+    "restore-debug": {
+      "returncode": 0
+    },
+    "restore-ethernet": {
+      "returncode": 0
+    }
+  },
+  "extended": true,
+  "manifest_sha256": "19a9c2b336fa526833abd279242b98904305151cfd03e5a40f029b81a48fe5dd"
+}

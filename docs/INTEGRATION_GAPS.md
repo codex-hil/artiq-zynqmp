@@ -46,3 +46,10 @@ A fresh candidate assembled from rebuilt PMU/FSBL, the Dell PL rebuild and clean
 CPU0/CPU1 builds passed one bounded JTAG physical session; baseline restoration
 also passed. See [candidate qualification](CANDIDATE_JTAG.md). Its cold SD boot
 remains untested; this result does not close the broader DDR/DRTIO/clock gaps.
+
+The same candidate additionally passed three cycles each of full local CoreDMA
+and exception recovery:216physicalpulses/432edges,21DMA and30exception-suite
+artiq_run invocations. Post-error debug/network and old-baseline restoration
+passed. See `evidence/candidate-extended-hardware-2026-10-21`; this closes the
+candidate's extended local-regression checkpoint, not the excluded boot/DDR/
+remote-link qualifications. Next work is the consolidated source build recipe.
