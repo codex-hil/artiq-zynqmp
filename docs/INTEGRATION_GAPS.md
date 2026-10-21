@@ -1,4 +1,4 @@
-# Integration checkpoint — 2026-10-21
+# Integration checkpoint — 2026-10-22
 
 The physical port runs uploaded ARTIQ kernels, scalar RPC, local TTL input/output,
 CoreDMA, analyzer and MonInj. KASLI04 also drives Genesys as a direct DRTIO leaf.
@@ -7,7 +7,7 @@ complete original Definition of Done remain open.
 
 | Area | Demonstrated | Remaining work |
 |---|---|---|
-| Boot and CPUs | AMD PMU/FSBL; CPU0 AArch64 networking and CPU1 AArch32 kernel worker; earlier SD cold boot | Cold boot the latest packaged runtime; consolidate a reproducible release image and platform build entry point |
+| Boot and CPUs | AMD PMU/FSBL; CPU0 AArch64 networking and CPU1 AArch32 kernel worker; earlier SD cold boot | Cold boot the latest packaged runtime; empty-host provisioning and consolidated upstream platform build entry point |
 | DDR | Initial scratch tests and actual kernel/DMA workloads | Full-range destructive test in a dedicated diagnostic image, then sustained memory stress |
 | Local ARTIQ | Network upload/run, scalar RPC, physical TTL loopback, CoreDMA, standard analyzer/MonInj clients | Broader protocol/exception coverage and consolidation with maintained upstream runtime; current runtime is a custom integration |
 | DRTIO | KASLI04 SFP1 to Genesys GTH, AUX, TSC load/snapshots, resets, physical DIO, forced-link recovery | Full production satellite lifecycle, routing coverage, multihop and subkernels are not qualified |
@@ -32,8 +32,10 @@ accuracy.
 - Host cursor preservation: `evidence/kasli04-ddma-cursor-2026-10-21`.
 - Controlled active fault: `evidence/kasli04-active-underflow-2026-10-21`.
 
-Next work should consolidate these checkpoints into a clean-checkout build and
-release recipe, then address the boot/runtime and remote-clock gaps separately.
+The [source replay](SOURCE_REPLAY.md) now connects verified PS reconstruction,
+SDT equivalence and FPGA generation/build to qualified artifact packaging and
+release verification. Remaining work includes full-range DDR validation, latest
+cold boot, runtime protocol integration and remote clock measurements.
 Hardware revalidation must retain shared board leases through restoration.
 KASLI01/03 belong to the separate secure-link project. Current qualified remote
 identity is KASLI04 DNA `0x006c440674704854`; its removed EEM mux must never be
@@ -52,4 +54,4 @@ and exception recovery:216physicalpulses/432edges,21DMA and30exception-suite
 artiq_run invocations. Post-error debug/network and old-baseline restoration
 passed. See `evidence/candidate-extended-hardware-2026-10-21`; this closes the
 candidate's extended local-regression checkpoint, not the excluded boot/DDR/
-remote-link qualifications. Next work is the consolidated source build recipe.
+remote-link qualifications. The source build/release recipe is now documented; see SOURCE_REPLAY.md.

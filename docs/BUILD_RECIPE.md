@@ -3,7 +3,8 @@
 This recipe connects the component entry points exercised during bring-up. It
 keeps HDL generation separate from Vivado and preserves Piotr's PS/DDR work.
 It requires the documented source/tool environments and an existing matching
-PS export; it is not a complete empty-host bootstrap or a single verified
+PS export, now reconstructible through [SOURCE_REPLAY.md](SOURCE_REPLAY.md);
+it is not a complete empty-host bootstrap or a single verified
 end-to-end release command. Every output directory must be fresh.
 
 ## 1. Check out and select sources
@@ -108,11 +109,10 @@ the board lease and restores the old baseline. Its initial and extended hardware
 sessions passed. A packaged image still requires a separate cold SD boot test;
 this recipe does not write cards, flash or OTP.
 
-Remaining automation: complete source-to-package orchestration; remote job
-submission/normalization/collection now has a reusable tool, with its first
-source normalization queued for validation. The source HDL regeneration result closes the
-fresh HDL checkpoint; original PS generation and empty-host provisioning remain
-explicit dependencies rather than implied successes.
+Remaining automation: complete source-to-package orchestration and empty-host
+provisioning. Remote PS export/import, HDL generation, PS IP normalization and
+full PL collection have reusable commands and verified checkpoints. Source PS
+reconstruction and generated SDT equivalence passed; see SOURCE_REPLAY.md.
 
 The final artifact assembly now has `make package-local-candidate`, binding
 JTAG-qualified input hashes and the SD worker payload; see SD_BOOT.md. This

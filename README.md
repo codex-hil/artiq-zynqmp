@@ -13,6 +13,9 @@ Kasli01/03 currently belong to the separate secure-link project; do not use
 the historical Kasli03 hardware profile on those boards.
 
 
+The [source replay guide](docs/SOURCE_REPLAY.md) connects PS reconstruction,
+SDT, HDL, remote Vivado and release verification.
+
 The [clean-checkout build checkpoint](docs/CLEAN_BUILD.md) records component
 recipes and their current reproducibility limits.
 
@@ -35,7 +38,11 @@ Local analyzer/moninj have also passed physical tests using standard ARTIQ clien
 
 See [PORTING_STATUS.md](PORTING_STATUS.md) for detailed evidence and limitations, [architecture](docs/ARCHITECTURE.md), [source revisions](docs/SOURCES.md) and [build compatibility notes](docs/BUILD_COMPATIBILITY.md). Some supporting documents are still in Polish.
 
-## Qualified Kasli → Genesys DRTIO laboratory setup
+## Historical Kasli03 → Genesys DRTIO laboratory setup
+
+This older procedure is retained for evidence. The current qualified remote
+setup uses [KASLI04](diagnostics/drtio/KASLI04.md); Kasli03 is allocated to
+another project. Do not execute this historical hardware profile.
 
 External DRTIO now passes physical TTL input/output, native distributed CoreDMA,
 fragmented uploads and handle/replacement tests. Running-clock DMA abort cancels
