@@ -556,3 +556,7 @@ diagnostics/drtio/profiles/kasli04-genesys-active-underflow.json
 docs/INTEGRATION_GAPS.md
 docs/CLEAN_BUILD.md
 evidence/kernel-clean-build-2026-10-21/compare.py
+scripts/verify_release_package.py
+tests/test_release_package.py
+evidence/kernel-codegen-repro-2026-10-21/e.sh
+evidence/kernel-codegen-repro-2026-10-21/f.sh

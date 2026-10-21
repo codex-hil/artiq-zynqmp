@@ -1,0 +1,31 @@
+{
+  "status": "PARTIAL_PROVENANCE",
+  "files": {
+    "ps_xsa": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/platform.xsa",
+      "sha256": "5c1fb3a472f5f7d878722bac43d26f3bc0020de15b9117de490aa74eeb494390"
+    },
+    "ps_sdt": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/sdt/system-top.dts",
+      "sha256": "09ab201942f3f2281cf90bf78ea3ca71bd436b39817695a1e02b33d827f3da15"
+    },
+    "fsbl_board_source": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/src/xfsbl_ddr_init.c",
+      "sha256": "ae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5"
+    },
+    "tracked_board_source": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/3_bootable/xfsbl_ddr_init.c",
+      "sha256": "ae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5"
+    },
+    "gnu_toolchain_manifest": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/13.2.Rel1-x86_64-aarch64-none-elf-manifest.txt",
+      "sha256": "396080d4bf391c4c553b78984760bdda3a509db1616d651db18e5bc9fcf668df"
+    }
+  },
+  "fsbl_board_source_matches": true,
+  "limitations": [
+    "Original PS/PL build source-state manifest incomplete; hashes establish artifact identity, not full reproduction",
+    "AMD installed source tree is not represented by a complete immutable source manifest here",
+    "Cold boot and new-image hardware validation NOT_RUN"
+  ]
+}

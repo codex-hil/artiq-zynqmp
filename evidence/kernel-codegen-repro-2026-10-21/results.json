@@ -1,0 +1,30 @@
+{
+  "status": "REPRODUCIBILITY_FAIL",
+  "scope": "Single-codegen-unit scratch experiment; no tracked recipe changes or hardware access",
+  "binaries": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-cgu1-e-2026-10-21/worker32.elf",
+      "sha256": "d0aba64a7deba827a2a010313551a4aac6ed3db5764836efd3102e741595ad28",
+      "load_segments": [
+        {
+          "vaddr": 538968064,
+          "filesz": 82676,
+          "memsz": 1138770,
+          "sha256": "25776a11033a5e0f26a5cea80447c23a614cfc2e4f1eb87d718d46c8ddae842e"
+        }
+      ]
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-cgu1-f-2026-10-21/worker32.elf",
+      "sha256": "5c640f3d213f83c4d5bb3cda1f97a685f8b3d116b9a60ccd807be68c2a69e488",
+      "load_segments": [
+        {
+          "vaddr": 538968064,
+          "filesz": 82676,
+          "memsz": 1138770,
+          "sha256": "bad5d2f61696b136e65d475085ba6b3c2a72323fcdf99f3bed921bd1d832dfdf"
+        }
+      ]
+    }
+  ]
+}

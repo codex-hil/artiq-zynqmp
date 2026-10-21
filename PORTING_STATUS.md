@@ -3060,3 +3060,14 @@ PASS with existing qualified PMU/FSBL/PL. Candidate build/release-sd-package-
 2026-10-21/boot.bin is NOT hardware-qualified; no SD/card/board access occurred.
 CPU1 62-byte load-segment difference remains unresolved. Evidence:
 evidence/release-package-2026-10-21; recipe docs/CLEAN_BUILD.md.
+
+
+## Candidate consistency/provenance — 2026-10-21
+
+Offline verifier checks all candidate artifact hashes and exact PL/FSBL/PMU
+roles against the qualified normal profile: PASS. Three tests cover tampering,
+missing inputs and swapped roles. Original PS XSA/SDT/toolchain manifest hashed;
+FSBL DDR source equals tracked board source. Provenance remains PARTIAL for
+original FPGA/installed AMD source state. Single-codegen-unit scratch builds
+also differ; tracked recipe unchanged. No hardware/card/flash/OTP access.
+See docs/CLEAN_BUILD.md and release-package/kernel-codegen-repro evidence.

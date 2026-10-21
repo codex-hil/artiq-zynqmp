@@ -93,3 +93,35 @@ This package is a candidate, not the selected hardware baseline. No card was
 written and no cold boot was performed. Remaining release work includes the
 CPU1 reproducibility diagnosis, complete source/tool provenance for reused
 inputs, and a separately authorized hardware qualification window.
+
+
+## Candidate consistency and provenance checks
+
+Before selecting a candidate, verify all package input/output hashes against
+its recorded manifest and bind reused PL/FSBL/PMU to their exact roles in the
+qualified profile:
+
+```sh
+python3 scripts/verify_release_package.py \
+  --package /path/to/fresh-package \
+  --baseline-profile diagnostics/drtio/profiles/kasli04-genesys-native-dma.json \
+  --output /path/to/fresh-report.json
+```
+
+This command is offline and refuses to overwrite a report. Current candidate
+passes; `evidence/release-package-2026-10-21/role-consistency.json` records it.
+Tests reject changed applications/boot images, incomplete manifests, unpinned
+baseline inputs and swapped FSBL/PMU roles. This verifies local consistency,
+not trust in a modified manifest, BIF/ELF compatibility or cold boot.
+
+The provenance report in that evidence directory pins the original PS XSA,
+SDT and GNU toolchain manifest and confirms the built FSBL board-specific DDR
+source matches the tracked source. Provenance remains partial: the complete
+source state of the original PS/PL build and installed AMD sources has not
+been reconstructed into an immutable release manifest.
+
+A scratch single-codegen-unit experiment also compiled twice but did not
+produce identical loaded bytes. It did not change the tracked kernel recipe;
+see `evidence/kernel-codegen-repro-2026-10-21`. Byte reproducibility remains
+an open release-quality item and does not invalidate earlier physical results
+for the separately pinned qualified baseline.
