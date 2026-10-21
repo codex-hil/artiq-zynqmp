@@ -55,5 +55,7 @@ artifacts. Execution through this profile entry point passed physically; see
 `evidence/kasli04-profile-hardware-2026-10-21/review.json`.
 
 Evidence: `evidence/kasli04-{external-idle,native-ddma,ddma-lifecycle,ddma-fragment,link-stability}-2026-10-21`.
-Next validation: long fragmented DMA lifecycle and separately admitted fault
-tests.
+Long fragmented lifecycle also passed: three two-packet uploads and nine
+plays,522physicaledges; see `evidence/kasli04-ddma-long-lifecycle-2026-10-21`.
+Next validation: native DMA error reporting/recovery and separately admitted
+active-delay fault tests.

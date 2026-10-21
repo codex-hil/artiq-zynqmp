@@ -2901,3 +2901,13 @@ verified,standardruntime/management/counter+externalTSC/reset/DIO+nativeDMA
 Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-profile-hardware-2026-10-21`; documentedentrypoint now
 physicallyvalidated. NextlongfragmentedDMA lifecycle;faultlabseparatelygated.
+
+
+KASLI04 longfragmentedDMAlifecycle (2026-10-21): physicalPASS,3twofragment
+uploads1010/10B,9plays(6viahandle),replacement+erase/reupload,522physical
+edges/allwidths/periodsPASS. Nativeoperationsequence/traceIDs/error0completion
+checked, no newfaults;TSC/reset/DIOrepeatPASS. BothrestoresPASS (04clock/route/
+mode10;GenesysnormalCoreDMA/debug/Ethernet192.168.2.3),leasesreleased,no01/03/
+Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-ddma-long-lifecycle-2026-10-21`. NextnativeDMAerrorreporting/
+recoveryon04;active-delaylabrequiresseparateidle-counterproof.
