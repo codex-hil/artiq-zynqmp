@@ -29,6 +29,7 @@ def main():
     parser.add_argument('--sha256', required=True)
     parser.add_argument('--qualification', type=Path, required=True)
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--network-readiness-seconds',type=float,default=0,help='Optional connect-only readiness window, max45seconds')
     parser.add_argument('--network-interface', help='Optional bounded IPv6 TCP4269 negative/recovery test')
     parser.add_argument('--usb-topology', default='1-6.2')
     parser.add_argument('--uart', default=UART)
@@ -46,6 +47,8 @@ def main():
     board=identity(args.board);dna=board['dna'];mac=board['mac']
     if args.board in ('KASLI01','KASLI04') and (args.usb_topology=='1-6.2' or args.uart==UART):
         raise SystemExit('Explicit verified USB topology and UART required')
+    if not 0 <= args.network_readiness_seconds <= 45:
+        raise SystemExit('Network readiness must be within0..45seconds')
     observer = None
     if args.genesys_observer:
         if not args.execute_runtime: raise SystemExit('External RX requires runtime and both-board leases')
@@ -212,13 +215,30 @@ def main():
             result['netboot_ipv6_link_local'] = board['link_local']
             if args.network_interface:
                 scope = socket.if_nametoindex(args.network_interface)
+                ready_connection=None
+                if args.network_readiness_seconds:
+                    from netboot_readiness import wait
+                    def connect_only(timeout):
+                        probe=socket.socket(socket.AF_INET6,socket.SOCK_STREAM)
+                        try:
+                            probe.settimeout(timeout)
+                            probe.connect((result['netboot_ipv6_link_local'],4269,0,scope))
+                            return probe
+                        except Exception:
+                            probe.close()
+                            raise
+                    result['network_stage']='readiness:connect-only'
+                    result['network_readiness'],ready_connection=wait(connect_only,args.network_readiness_seconds)
+                    if result['network_readiness']['status']!='PASS':
+                        raise TimeoutError('Bounded netboot readiness failed')
                 actions = [(b'\xff', b'Received unknown netboot command: 0xff'),
                            (b'B', b'Received boot command, but no firmware downloaded')]
                 for index, (request, evidence) in enumerate(actions):
-                    with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as connection:
+                    with (ready_connection if index==0 and ready_connection is not None else socket.socket(socket.AF_INET6,socket.SOCK_STREAM)) as connection:
                         connection.settimeout(5)
-                        result['network_stage']=f'negative-{index}:connect'
-                        connection.connect((result['netboot_ipv6_link_local'], 4269, 0, scope))
+                        if not (index==0 and ready_connection is not None):
+                            result['network_stage']=f'negative-{index}:connect'
+                            connection.connect((result['netboot_ipv6_link_local'],4269,0,scope))
                         result['network_stage']=f'negative-{index}:send'
                         connection.sendall(request)
                         result['network_stage']=f'negative-{index}:receive-close'
@@ -262,10 +282,11 @@ def main():
                     (args.output / 'uart.log').write_bytes(log)
                     if b'Firmware successfully downloaded' not in log:
                         raise RuntimeError('Bootloader did not confirm completed RAM download')
+                    result['runtime_uploaded']=True
                     if args.execute_runtime:
                         from runtime_startup import execute
                         execute(connection, uart, log, payload, result['netboot_ipv6_link_local'], scope,
-                                args.output / 'uart.log', result)
+                                args.output / 'uart.log', result,readiness_seconds=args.network_readiness_seconds)
                     if not args.execute_runtime and b'ARTIQ runtime starting' in log:
                         raise RuntimeError('Unexpected runtime execution')
                 result['runtime_uploaded'] = True

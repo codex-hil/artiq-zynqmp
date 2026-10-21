@@ -2804,3 +2804,16 @@ noGenesys/otherKasli/Flashaccess. Evidence
 `evidence/kasli04-netboot-stage-2026-10-21`. IntermittentpostprogrammingTCP
 readiness established, causeunknown. Next boundedtime-to-first-connect probe;
 switch/linkstartup delay onlyhypothesis, no switchconfigurationchanges.
+
+
+KASLI04 boundedreadiness (2026-10-21): firstTCPconnect after~5s in two
+trials. Emptyprobeclose/immediatereconnect refused; retainedconnection fixed
+that sequence. Secondtrial passedcommands+RAMdownload and firstruntimeboot
+reached Si5324clocksetup/expectedreboot tobootloader; secondTCPdownloadconnect
+timedout. Runtimefullstartup/management/RPCNOT_RUN. Bothmode10restoresPASS;
+secondclock/profile/PLL/frequencyrestorePASS; leasesreleased,noGenesys/other
+Kasli/Flashwrites. Evidence `evidence/kasli04-readiness-2026-10-21`.
+Added opt-in<=45s/15attempts connect-only readiness retainingactualsocket;
+2new+15existingtestsPASS. Extended same readiness to postclock-reboot second
+upload (HW NOT_RUN), preservespanic/2bootlimits. Next onebounded extended
+runtime test; no switchchanges/rootcauseclaim.
