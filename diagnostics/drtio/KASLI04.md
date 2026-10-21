@@ -13,7 +13,9 @@ two forced GTH resets recovered through new TSC ACK and physical DIO.
 
 This is a direct-destination1 laboratory satellite, not a complete upstream
 platform. Absolute phase, jitter and deterministic latency are not measured.
-No maximum-capacity/sustained-throughput or active-underflow proof yet.
+No maximum-capacity/sustained-throughput proof. A separate controlled active
+underflow test now passes; it requires the dedicated laboratory PL/firmware
+and forbids DMA reuse until full restoration.
 
 ## Review without hardware access
 
@@ -59,3 +61,14 @@ Long fragmented lifecycle also passed: three two-packet uploads and nine
 plays,522physicaledges; see `evidence/kasli04-ddma-long-lifecycle-2026-10-21`.
 Next validation: native DMA error reporting/recovery and separately admitted
 active-delay fault tests.
+
+
+## Controlled active-underflow checkpoint
+
+`evidence/kasli04-active-underflow-2026-10-21` records one physical PASS:
+backend start admitted, one2ms AXI read hold during active DMA, raw underflow
+matched to kernel RTIOUnderflow, five AXI reads/completions drained and no
+new TTL edges. Post-fault DMA remains blocked until outer restoration.
+The ordinary profile does not enable this lab path. Reproduction requires
+exact dedicated firmware/PL, the matching new lab-idle proof and the bounded
+parent arm handshake; never add an arm command to an ordinary experiment.

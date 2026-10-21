@@ -3005,3 +3005,16 @@ no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-lab-admission-reason-2026-10-21`. Experimentinitiallead now
 3ms;backendminimum1ms/hardwarehold2ms unchanged. Nextboundedtrialmustprove
 admission/activehold/drain/nativefault/TTLsilence; no outcomeassumed.
+
+
+KASLI04 activeDMAunderflow (2026-10-21): physicalPASS exactnewlabidleproof/
+PL/firmware. One2msAXIholdarm,3msinitiallead,backend1msminimumunchanged;
+admissionACK,active+holding/trigger1 observed. Nativecompletionraw4/channel0/
+ts51188039120 matcheskernelRTIOUnderflow/upstreamAUXstatus. AR5/RLAST5drained,
+TTLedges32unchanged,accepted/completed1/1. Postfault2samplesready0/epoch1/
+active0/pending1/armed0/holding0/faulted1/raw4;noreset/erase/retry/reuse.
+BothrestoresPASS,04clock/route/mode10,GenesyslocalCoreDMA/debug/Ethernet
+192.168.2.3;leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-active-underflow-2026-10-21`. Singlecontrolledfaultproof,
+notarbitraryfaultrecovery/phase/jitter. Nextconsolidatelabreproducer/status
+andremainingintegrationgaps;normalpinnedprofileunchanged.
