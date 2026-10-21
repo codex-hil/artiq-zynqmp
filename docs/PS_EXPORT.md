@@ -50,3 +50,23 @@ No automatic acceptance is implied by successful export. Do not repoint normal
 runtime profiles or release manifests before the relevant comparisons pass.
 A changed configuration needs scoped qualification. A matching reconstruction
 still does not establish latest-package cold boot or complete empty-host setup.
+
+## 2026-10-21 reconstruction result
+
+Export exit0; all168downloaded files hash-verified and the three Tcl inputs
+unchanged. All component/model/project/runtime parameter values match the old
+PS XCI. All pin/interface/address/property reports match byte-for-byte. Fresh
+Migen generation from a separately relocated importer view reproduces HDL,
+XDC, CSR and all initialization files byte-for-byte.
+
+All PS initialization files inside XSA also match byte-for-byte. The only
+uncompressed member differences are timestamps in `platform.hwh`, `xsa.xml`
+and `xsa.json`; full differences are retained in the evidence directory.
+The original downloaded tree remains unchanged. `import-relocation.json`
+records the one path-list relocation in the separate local importer view.
+
+This closes source reconstruction of the retained PS export. It does not
+claim a fresh normalized PS synthesis, complete rebuilt release or generated
+SDT equivalence. Existing qualified manifests remain unchanged. Next check:
+generate SDT from the new XSA and compare PS initialization/device-tree outputs
+before assembling a source-regenerated release.

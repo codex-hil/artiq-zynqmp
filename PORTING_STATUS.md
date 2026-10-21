@@ -17,6 +17,17 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Piotr PS source reconstruction — 2026-10-21
+
+Fresh Dell export from the three pinned Piotr Tcl files PASS;168files transferred
+with hash checks. All PS parameter values and pin/interface/address/property
+reports match the retained export. Fresh HDL/XDC/CSR/init generation is byte-exact.
+XSA PS initialization bytes match; only three metadata timestamps differ.
+Evidence: `evidence/ps-source-export-2026-10-21/`. Source reconstruction closes
+this part of the external-export gap; source bootstrap, new-XSA SDT generation,
+normalized-IP/full release rebuild and latest cold boot remain separate.
+No hardware changes; existing qualified manifests still select prior artifacts.
+
 ## Serialized PMU/FSBL/PL verification — 2026-10-21
 
 Boot-header checksum/layout and exact serialized PMU129,760B, FSBL155,864B,

@@ -1,6 +1,13 @@
 {
-  "status": "WAITING_FOR_BUILD_LOCK",
+  "status": "PS_SOURCE_RECONSTRUCTION_COMPARISON_PASS",
   "hardware_executed": false,
-  "remote": "/srv/nvme-fast-1/vivado-work/ps-source-export-20261021",
-  "scope": "Piotr PS Tcl source reconstruction only; no output qualification yet"
+  "export_files_verified": 168,
+  "all_ps_parameter_values_identical": true,
+  "pin_interface_address_property_reports_byte_identical": true,
+  "hdl_xdc_csr_init_byte_identical": true,
+  "xsa_ps_initialization_files_byte_identical": true,
+  "xsa_differences": "Only timestamps in platform.hwh/xsa.xml/xsa.json; archive ordering/metadata also differ",
+  "new_xsa_sha256": "5444a2b1a5c56a4ea7a2f96a64c1d643748adbd27b0574d4eb67eaa8bde27420",
+  "original_xsa_sha256": "5c1fb3a472f5f7d878722bac43d26f3bc0020de15b9117de490aa74eeb494390",
+  "limits": "Source export and generation comparisons only. No new normalized PS synthesis/full FPGA build, SDT generation, boot firmware execution or cold boot. Existing release manifests still pin prior artifacts."
 }

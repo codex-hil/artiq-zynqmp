@@ -1,0 +1,10 @@
+--- old/xsa.xml
++++ new/xsa.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <Root VersionMajor="1" VersionMinor="15">
+-  <GenAppInfo Name="Vivado" Version="2025.2" CL="6299465" TimeStamp="Thu Oct  8 13:38:43 2026"/>
++  <GenAppInfo Name="Vivado" Version="2025.2" CL="6299465" TimeStamp="Wed Oct 21 21:02:04 2026"/>
+   <DSA Vendor="xilinx" BoardId="" Name="" VersionMajor="0" VersionMinor="0" Description="Vivado generated Hardware Platform" FeatureRomTimestamp="0" DcpLogicFunctionStripped="false" DcpEncrypt="false" Unified="true" Fixed="true" DefaultOutputType="hw_export">
+     <Build UsesPR="false" PlatformState="pre_synth" AcceleratorBinaryContent="bitstream" ValidBinaryContentValues="dcp,bitstream" TopModuleName="platform_wrapper"/>
+     <Board Name="" Vendor="" Part="">
