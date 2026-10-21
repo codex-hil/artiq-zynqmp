@@ -549,3 +549,6 @@ evidence/kasli04-clock-cpu-2026-10-21/build_gateware.sh
 scripts/test_kasli04_clock_restore_hw.py
 scripts/netboot_readiness.py
 tests/test_netboot_readiness.py
+diagnostics/drtio/aux_protocol/ddma_lab_admission.h
+diagnostics/drtio/aux_protocol/test_ddma_lab_admission.c
+evidence/kasli04-lab-admission-offline-2026-10-21/firmware-lab-delay.c

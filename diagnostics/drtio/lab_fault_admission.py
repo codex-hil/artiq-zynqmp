@@ -31,7 +31,7 @@ def validate(config,firmware,mapping):
         raise ValueError('Lab cycle count mismatch')
     expected=hashlib.sha256(source_overlay((SOURCES/'firmware.c').read_text()).encode()).hexdigest()
     if firmware.get('c_source_sha256')!=expected:raise ValueError('Stale generated laboratory C overlay')
-    for group,names in [('lab_sources',('ddma_lab_delay.h','ddma_lab_runtime.h','lab_delay_build.py')),
+    for group,names in [('lab_sources',('ddma_lab_delay.h','ddma_lab_runtime.h','ddma_lab_admission.h','lab_delay_build.py')),
                         ('ddma_sources',('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h'))]:
         for name in names:
             if firmware.get(group,{}).get(name)!=digest(SOURCES/name):raise ValueError('Stale lab helper '+name)

@@ -110,7 +110,7 @@ io={path=IO_PATH,features=["byteorder"]}
         'dma_bank_owner':'native AUX DDMA laboratory service' if a.ddma else 'external diagnostic only; no AUX DDMA service',
         'native_ddma':a.ddma,
         'lab_read_delay':a.lab_read_delay,'lab_read_delay_cycles':lab_cycles,
-        'lab_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('ddma_lab_delay.h','ddma_lab_runtime.h','lab_delay_build.py')} if a.lab_read_delay else {},
+        'lab_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('ddma_lab_delay.h','ddma_lab_runtime.h','ddma_lab_admission.h','lab_delay_build.py')} if a.lab_read_delay else {},
         'ddma_sources':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('ddma_runtime.h','ddma_service.h','ddma_store.h','ddma_backend.h','ddma_a53.h','ddma_codec.h')},
         'leaf_policy_sha256':hashlib.sha256(Path(__file__).with_name('leaf_policy.h').read_bytes()).hexdigest(),
         'reset_backend':a.reset,

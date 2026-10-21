@@ -2974,3 +2974,14 @@ retry/play/armwrites.3session+3idleprobetestsPASS,compile/diffPASS. Normal
 firmware/PL/baselinesunchanged,noHWaccess. Exactadmissioncause stillunknown;
 nextisolatedlab-onlycallback telemetry forready/time/lastadmissionstep,
 keepingnormalbackendimplementationandchecksunchanged. No blindHWretry.
+
+
+Labadmissioncallbacktelemetry (2026-10-21,offline): generatedlab-onlywrapper
+forwardsoriginalbackendcallbacks,records laststep/ready/time/now/requested/
+lastMMIO onrejectonly. NoextraMMIO/timecalls;CPUoverhead acknowledged. Normal
+firmware.c/backend/runtime unchanged.8caseC differentialPASSmatchingreturn/
+fault/mockI/Ocounts,3overlay+4admission+3sessiontestsPASS. NewA53labELFbuilt
+PASS; oldlabimagesnowrefused byhashguard. Normal04profilepreflightPASS. NoHW
+access. Evidence `evidence/kasli04-lab-admission-offline-2026-10-21`. Next
+newphysicalidlecounter/DIO/snapshot/restoration forchangedELF beforeactive
+attempt;oldidleproofcannotqualifythisELF,minimumstartmargin unchanged.
