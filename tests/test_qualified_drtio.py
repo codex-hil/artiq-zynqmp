@@ -41,6 +41,24 @@ class QualifiedTests(unittest.TestCase):
             p['artifacts'][2]['sha256']=hashlib.sha256(proof.read_bytes()).hexdigest()
             with self.assertRaises(ValueError):validate(p,{})
 
+    def test_kasli04_schema_requires_identity_restore_and_basic_dma(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p=self.fixture(tmp);p.update(schema=2,qualification='kasli04-basic-native-dma')
+            proof=Path(tmp)/'proof.json'
+            proof.write_text(json.dumps(dict(status='PASS',restoration='PASS',board='KASLI04',dna='0x006c440674704854',retained_restoration='PASS',external_rx=dict(restoration='PASS'))))
+            p['artifacts'][2]['sha256']=hashlib.sha256(proof.read_bytes()).hexdigest()
+            p['argv']+=['--board','KASLI04','--clock-plan',str(proof),'--clock-baseline',str(proof),'--clock-validation',str(proof)]
+            p['observer'].update(native_ddma_mode='playback',ddma_idle_qualification=str(proof))
+            for key in ('native_ddma_catch','native_ddma_cursor','dma_cursor_overlay'):p['observer'].pop(key)
+            validate(p,{})
+            bad=copy.deepcopy(p);bad['argv'][bad['argv'].index('--board')+1]='KASLI03'
+            with self.assertRaises(ValueError):validate(bad,{})
+            bad=copy.deepcopy(p);bad['observer']['native_ddma_fragmentation']=True
+            with self.assertRaises(ValueError):validate(bad,{})
+            proof.write_text(json.dumps(dict(status='PASS',restoration='PASS',board='KASLI04',dna='0x006c440674704854',retained_restoration='FAIL',external_rx=dict(restoration='PASS'))))
+            p['artifacts'][2]['sha256']=hashlib.sha256(proof.read_bytes()).hexdigest()
+            with self.assertRaises(ValueError):validate(p,{})
+
     def test_default_only_preflights_and_execute_requires_restoration_pass(self):
         from types import SimpleNamespace
         from unittest.mock import patch

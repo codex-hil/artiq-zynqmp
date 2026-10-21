@@ -1,0 +1,194 @@
+{
+  "schema": 2,
+  "qualification": "kasli04-basic-native-dma",
+  "scope": "KASLI04 DNA006c440674704854 SFP1 to Genesys210383B7F02DA; laboratory direct destination1; basic native DMA",
+  "argv": [
+    "{artifacts}/venv/bin/python",
+    "{repo}/scripts/test_kasli03_netboot_hw.py",
+    "--board",
+    "KASLI04",
+    "--build",
+    "{artifacts}/build/kasli04-no-eem-mux-2026-10-21",
+    "--qualification",
+    "{artifacts}/build/kasli04-no-eem-mux-2026-10-21/qualification.json",
+    "--sha256",
+    "80f2d7872aa885ff2bfff8a5f957a620b1d1c11529ee019ef4fd23e10b12fe90",
+    "--usb-topology",
+    "1-11.1",
+    "--uart",
+    "/dev/serial/by-path/pci-0000:00:14.0-usb-0:11.1:1.2-port0",
+    "--network-interface",
+    "enp2s0",
+    "--download-runtime",
+    "{artifacts}/build/kasli04-no-eem-mux-2026-10-21/generated/genesys_drtio_master_v11/software/runtime/runtime.bin",
+    "--runtime-sha256",
+    "7bcb4b070427968ca55077a4a4ced44e0706b8d0943e71cad8f9bec5c91a4e83",
+    "--output",
+    "{output}/session",
+    "--execute-runtime",
+    "--management-client",
+    "--counter-experiment",
+    "--clock-plan",
+    "{repo}/evidence/kasli04-clock-plan-2026-10-21/plan.json",
+    "--clock-baseline",
+    "{repo}/evidence/kasli04-clock-cpu-2026-10-21/results.json",
+    "--clock-validation",
+    "{repo}/evidence/kasli04-clock-restore-2026-10-21/results.json",
+    "--network-readiness-seconds",
+    "40",
+    "--genesys-observer",
+    "{output}/observer.json"
+  ],
+  "observer": {
+    "server": "tcp:172.17.0.3:3121",
+    "port": "/dev/serial/by-id/usb-Digilent_Digilent_Adept_USB_Device_210383B7F02D-if01-port0",
+    "ps_export": "{artifacts}/build-vivado/dma-ps-2025.2",
+    "bitstream": "{artifacts}/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/top.bit",
+    "csr_map": "{artifacts}/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/csr-map.json",
+    "restore_bitstream": "{artifacts}/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+    "worker": "{artifacts}/build/kernel-worker-dma-final",
+    "cpu0": "{artifacts}/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+    "device_db": "{repo}/examples/device_db_genesys.py",
+    "artiq_python": "{artifacts}/venvs/artiq-host/bin/python",
+    "artiq_run": "{home}/.local/bin/artiq_run",
+    "network_interface": "enp2s0",
+    "mode": "external-tsc-down",
+    "firmware": "{artifacts}/build/native-ddma-rejected-cleanup-firmware-2026-10-17/aux-firmware.elf",
+    "reset_test": true,
+    "dio_test": true,
+    "stability_test": false,
+    "recovery_test": false,
+    "snapshot_test": true,
+    "native_ddma_mode": "playback",
+    "ddma_idle_qualification": "{repo}/evidence/kasli04-external-idle-2026-10-21/session/results.json"
+  },
+  "pass_proofs": [
+    "{repo}/evidence/kasli04-external-idle-2026-10-21/session/results.json",
+    "{repo}/evidence/kasli04-native-ddma-2026-10-21/session/results.json",
+    "{repo}/evidence/kasli04-ddma-lifecycle-2026-10-21/session/results.json",
+    "{repo}/evidence/kasli04-ddma-fragment-2026-10-21/session/results.json",
+    "{repo}/evidence/kasli04-link-stability-2026-10-21/session/results.json"
+  ],
+  "artifacts": [
+    {
+      "path": "{artifacts}/build/kasli04-no-eem-mux-2026-10-21/generated/genesys_drtio_master_v11/software/runtime/runtime.bin",
+      "sha256": "7bcb4b070427968ca55077a4a4ced44e0706b8d0943e71cad8f9bec5c91a4e83"
+    },
+    {
+      "path": "{artifacts}/build/kasli04-no-eem-mux-2026-10-21/generated/genesys_drtio_master_v11/gateware/top.bit",
+      "sha256": "80f2d7872aa885ff2bfff8a5f957a620b1d1c11529ee019ef4fd23e10b12fe90"
+    },
+    {
+      "path": "{artifacts}/build/kasli04-no-eem-mux-2026-10-21/qualification.json",
+      "sha256": "4a0ef48713d607baa28d57cae9c0c11a059a4b5f8012999e23d7e45c96c1d356"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-external-idle-2026-10-21/session/results.json",
+      "sha256": "3d952e7f00719cbc05535165b8fc07c84e4d79b4da3cd8f2b8c87a08bbd4dfab"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-native-ddma-2026-10-21/session/results.json",
+      "sha256": "beb06d4fe7f624032b82266ed1e9fba61c286857fd25487f25b62f9602bc61d1"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-ddma-lifecycle-2026-10-21/session/results.json",
+      "sha256": "23e553d57816c722d87ebcdc040558bbaa66c1c0a803bde9fcae5e7c04b29a45"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-ddma-fragment-2026-10-21/session/results.json",
+      "sha256": "a5dbf1685b1d63208e13191fe2b56c31bc549776c5562c8ba0ea76145bd63da3"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-link-stability-2026-10-21/session/results.json",
+      "sha256": "12d28e44cec389af47d3be7798f6c804823127205cbf3ac3d367bac6531c4a81"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-clock-plan-2026-10-21/plan.json",
+      "sha256": "f654c120d927f7822daf1ebb811c3ac95b98e15aa50f1c8a71f6b952a187cedc"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-clock-cpu-2026-10-21/results.json",
+      "sha256": "0f9ae2f45fd11fdb02c0c3d85a000f75c1692fcf05d078cc5bba9ab512e83ebe"
+    },
+    {
+      "path": "{repo}/evidence/kasli04-clock-restore-2026-10-21/results.json",
+      "sha256": "0cf2b9919e54b35ba4318ed6fdb6b9f09bf71e02c0a2fdc67b3bbd91352858e6"
+    },
+    {
+      "path": "{artifacts}/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/top.bit",
+      "sha256": "21c187cbeaf98543153b126bda5fd32ee079f1b4345a8aa9ec057863b5af24a8"
+    },
+    {
+      "path": "{artifacts}/build-vivado/satellite-dma-abort-handoff-route-2026-10-16/csr-map.json",
+      "sha256": "7e9713129e8324928b1222112e9cef5aaa216790e840654e6807a8cd70c14065"
+    },
+    {
+      "path": "{artifacts}/build/native-ddma-rejected-cleanup-firmware-2026-10-17/aux-firmware.elf",
+      "sha256": "18a99107897c68393a68306d7b4f026784422ed6aeb866a5480cfc475836391b"
+    },
+    {
+      "path": "{artifacts}/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+      "sha256": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582"
+    },
+    {
+      "path": "{artifacts}/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    {
+      "path": "{repo}/examples/device_db_genesys.py",
+      "sha256": "a4b56b9c91f4c1a6e4db0163f77df030c4fad7e12f8a0599c7b20fa14699bfff"
+    },
+    {
+      "path": "{artifacts}/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    },
+    {
+      "path": "{artifacts}/build/kernel-worker-dma-final/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    {
+      "path": "{artifacts}/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    {
+      "path": "{artifacts}/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    {
+      "path": "{artifacts}/build-vivado/dma-ps-2025.2/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+    },
+    {
+      "path": "{home}/kasli-secure-link/build/sfp-identity-trace-reviewed-public-lab/kasli-sfp-identity-trace.bit",
+      "sha256": "66a52c71b4dfe6f987f219f85951a2b9abf931fb19ada3b4ce90da5b80d1e1ac"
+    },
+    {
+      "path": "{home}/rng-rpi/kasli/artifacts/kasli-full-checker/gateware/kasli_diag.bit",
+      "sha256": "3db1e9398338e5f91d02a06a5b9f2a8923eb12d6f10c694708c0ce2c93894a15"
+    },
+    {
+      "path": "{repo}/scripts/test_kasli03_netboot_hw.py",
+      "sha256": "13962084381ce26b569bb253f1d0794df4116e464ecfb080685d623e633ff846"
+    },
+    {
+      "path": "{repo}/scripts/netboot_readiness.py",
+      "sha256": "91d9d847e3751fc4386ed788719113fc684456c5b4901919d94851eff8c6cbae"
+    },
+    {
+      "path": "{repo}/scripts/kasli_board_identity.py",
+      "sha256": "5ee22d06bd6de6494356b5d4de417894081debf9900f4385387f25d5b4e56659"
+    },
+    {
+      "path": "{repo}/scripts/test_kasli04_clock_restore_hw.py",
+      "sha256": "e02d3829082321f024ebfb0c1391a051dcb736e97f111456b5a38ea912df9a37"
+    },
+    {
+      "path": "{repo}/diagnostics/kasli-master/runtime_startup.py",
+      "sha256": "6591d32c530a8c7c8f2c1a50613537c60ae9b7e39d2596c6f683595debd85d24"
+    },
+    {
+      "path": "{repo}/diagnostics/kasli-master/removed_eem_mux.py",
+      "sha256": "4b1cba91622fd39567a1da9c01bbe666d11d31b17929b60931dc7b180ebdd69f"
+    }
+  ]
+}

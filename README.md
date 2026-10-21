@@ -4,6 +4,13 @@ This project continues [Piotr Jedyk’s `artiq-new`](https://github.com/pjedyk/a
 
 **The physical Genesys ZU-5EV runs kernels uploaded over Ethernet, basic RPC, local RTIO, TTL input/output and CoreDMA.** This is an experimental port, not an official M-Labs release or a production-qualified platform.
 
+Current external-link checkpoint: **KASLI04 SFP1 → Genesys** passes standard
+ARTIQ DIO, native distributed DMA, replacement/erase/replay, two-fragment
+uploads and forced-link recovery. [Reproducer and limits](diagnostics/drtio/KASLI04.md).
+Kasli01/03 currently belong to the separate secure-link project; do not use
+the historical Kasli03 hardware profile on those boards.
+
+
 The execution path is:
 
 `artiq_run` → AMD/lwIP on CPU0 (AArch64) → M-Labs loader on CPU1 (AArch32) → kernel execution, RPC and FPGA RTIO.

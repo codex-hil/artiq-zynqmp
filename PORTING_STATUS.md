@@ -2880,3 +2880,15 @@ proof. BothrestoresPASS (04clock/route/mode10;GenesysnormalCoreDMA/debug/
 Ethernet192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites.
 Evidence `evidence/kasli04-link-stability-2026-10-21`. Nextconsolidatereproducer
 profile andremainingboundedDMAqualification; labactivefault separatelygated.
+
+
+KASLI04 consolidatedprofile (2026-10-21,offline): newexplicit schema2basic
+nativeDMAprofile with30pinnedartifacts and5physicalPASSproofs. Exact04identity/
+retained+bothboardrestoration required; expandedscenarios rejected. Historical
+schema1catch/cursorrequirements anddefault03profileunchanged.4runner tests
+PASS, realmake review-drtio-qualifiedPASSwithoutHW. Evidence
+`evidence/kasli04-profile-offline-2026-10-21`; instructions
+`diagnostics/drtio/KASLI04.md`, READMEcurrentboardallocationupdated.
+NewentrypointphysicalexecutionNOT_RUN; priorindividualscenariosqualified.
+Next executeconsolidatedprofile once, thenlongfragmentedDMA lifecycle and
+separatelyadmittedfaulttests. NoHWaccess/boardstatechanges thischeckpoint.
