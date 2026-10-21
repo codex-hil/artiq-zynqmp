@@ -2714,3 +2714,15 @@ secure-link remains unresolved; runtime blocked until board-specific clock
 snapshot/restoration and retained baseline are qualified. Do not reuse01/03
 clock data or overwrite04 mode10 with generic restoration. Next offline CPU
 qualification; Kasli01/03 untouched.
+
+
+KASLI04 EEM correction (2026-10-21): user confirms repaired electrical fault;
+only EEMmux physically removed. Historical0x70NACK is expected absence. Pinned
+Si5324 init unnecessarily selects0x70 before clockmux0x71; explicit opt-in
+preparation overlay omits only that statement, preserves0x71/Si identity/ACK
+checks. Oneoffline testPASS; isolated correctedCPU build launched, pending
+qualification. NoHWaccess thischeckpoint: FTDI helper import stopped on missing
+pyftdi before any access. Next fixed04-only snapshot via0x71 with routing
+restore, then clock/retained-SRAM restoration qualification. Evidence
+`evidence/kasli04-no-eem-mux-2026-10-21`. Prior absent-mux blocker superseded
+by user correction; no missing-device waiver for0x71/Si5324.

@@ -18,6 +18,7 @@ def main():
     parser.add_argument('--dma-record-result', action='store_true',help='Return upload outcome to ksupport and raise structured DMAError')
     parser.add_argument('--dma-start-result', action='store_true',help='Return remote start result after safely draining local DMA')
     parser.add_argument('--mac',help='Explicit volatile local-unicast MAC; omitted retains historical KASLI03 identity')
+    parser.add_argument('--eem-mux-removed', action='store_true', help='Board modification: omit only absent EEM mux0x70; keep clock mux0x71 and Si5324 checks')
     args = parser.parse_args()
     if args.mac:
         from lab_mac import literal
@@ -33,6 +34,10 @@ def main():
         from lab_mac import apply as apply_mac
         settings=args.output/'artiq/firmware/libboard_misoc/net_settings.rs'
         settings.write_text(apply_mac(settings.read_text(),args.mac))
+    if args.eem_mux_removed:
+        from removed_eem_mux import apply
+        driver = args.output/'artiq/firmware/libboard_artiq/si5324.rs'
+        driver.write_text(apply(driver.read_text()))
     build = args.output / 'artiq/build_soc.py'
     text = replace_once(build.read_text(),
                         '        builder.software_packages = [p for p in builder.software_packages if p[0] == "bootloader"]\n', '')
