@@ -1,7 +1,7 @@
 """Board-bound clock restore admission, no hardware. LGPL-3.0-or-later."""
 import hashlib,json,re
 from pathlib import Path
-DNA={'KASLI01':0x007865085f704854,'KASLI03':0x0048458a64b04854}
+DNA={'KASLI01':0x007865085f704854,'KASLI03':0x0048458a64b04854,'KASLI04':0x006c440674704854}
 
 
 def validate(board,plan,baseline_file,source):

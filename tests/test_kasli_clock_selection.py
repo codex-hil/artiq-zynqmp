@@ -30,3 +30,19 @@ class ClockSelectionTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate('KASLI03',plan,baseline,source)
         bad=copy.deepcopy(plan);bad['configuration_to_compare_then_restore'][0]['value']^=1
         with self.assertRaises(ValueError):validate('KASLI01',bad,baseline,source)
+
+    def test_kasli04_plan_binds_actual_baseline(self):
+        import copy
+        sys.path.insert(0,str(ROOT/'scripts'))
+        from kasli_clock_binding import validate
+        baseline=ROOT/'evidence/kasli04-clock-cpu-2026-10-21/results.json'
+        planfile=ROOT/'evidence/kasli04-clock-plan-2026-10-21/plan.json'
+        sourcefile=Path('/srv/codex-hil-data/artiq-zynqmp/reference/artiq/artiq/firmware/libboard_artiq/si5324.rs')
+        if not sourcefile.exists():self.skipTest('Pinned driver source absent')
+        plan=json.loads(planfile.read_text());source=sourcefile.read_text()
+        self.assertEqual(validate('KASLI04',plan,baseline,source)['dna'],'0x006c440674704854')
+        self.assertEqual(plan['mux_addresses'],[0x71])
+        self.assertEqual(plan['runtime_locks'],['genesys-210383B7F02DA','kasli-KASLI04'])
+        with self.assertRaises(ValueError):validate('KASLI01',plan,baseline,source)
+        bad=copy.deepcopy(plan);bad['configuration_to_compare_then_restore'][0]['value']^=1
+        with self.assertRaises(ValueError):validate('KASLI04',bad,baseline,source)

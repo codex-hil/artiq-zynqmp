@@ -2737,3 +2737,14 @@ Vivado buildSTARTED exec47085. Evidence `evidence/kasli04-clock-cpu-2026-10-21`.
 Next FPGAqualification and04-specific volatile clock+retained-mode10 restore
 qualification before runtime. Current clock access is working; historical
 removed-EEMmux NACK is not a blocker.
+
+
+KASLI04 clock plan (2026-10-21): existing planner and baseline binding extended
+to exact04DNA/snapshot; complete23-register replay, status/command excluded,
+onlymux71, runtimeleases Genesys+04. Sixoffline clocktestsPASS, including04
+actualbaseline/wrongboard/changedprofile controls. Plan remainsOFFLINE ONLY,
+not physically exercised. Capture/runtime wrappers still refuse04 pending
+exact retained-mode10 and volatileclock restoration wrapper. Vivado synthesis
+ongoing exec47085; noHWaccess thischeckpoint. Evidence
+`evidence/kasli04-clock-plan-2026-10-21`. Next bounded04restoration qualification
+and completeFPGA checks before netboot/runtime/DRTIO.
