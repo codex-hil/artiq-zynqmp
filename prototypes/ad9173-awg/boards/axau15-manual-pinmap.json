@@ -1,0 +1,214 @@
+{
+  "board": "ALINX AXAU15",
+  "status": "MANUAL_DERIVED_NOT_HARDWARE_VALIDATED",
+  "manual": {
+    "name": "AXAU15_User Manual_V1.0.pdf",
+    "sha256": "23fa861740903add3042ba0ab378c91d37c905946d126da18a90323e369bf1b3",
+    "pages": "29-34 FMC; 37-40 expansion headers",
+    "public_reference": "https://www.alinx.com.cn/public/upload/file/AXAU15_UG.pdf",
+    "warning": "Attached 44-page manual differs from older online 39-page manuals; cross-check board revision and schematic. Several prose sections incorrectly say AXU25.",
+    "local_attachment": "/tmp/codex-remote-attachments/01a134eb-7ffb-7270-9edc-5898ecdf5990/552b148b-9fd9-4cea-aa8d-da975384b8f7/1-AXAU15_User-Manual_V1.0.pdf"
+  },
+  "gth_count": 12,
+  "fmc_gt_count": 8,
+  "pcie_gt_count": 4,
+  "fmc_gpio_vcco": 1.8,
+  "gth_max_gbps_manual": 16.3,
+  "arm_a53": false,
+  "hard_sfp_connector": false,
+  "clocks": {
+    "system_200mhz": {
+      "p": "T24",
+      "n": "U24"
+    },
+    "onboard_gt_156_25mhz": {
+      "p": "T7",
+      "n": "T6",
+      "bank": 225,
+      "input": 1
+    },
+    "fmc_gbtclk0": {
+      "p": "V7",
+      "n": "V6",
+      "bank": 225,
+      "input": 0
+    },
+    "fmc_gbtclk1": {
+      "p": "P7",
+      "n": "P6",
+      "bank": 226,
+      "input": 0
+    }
+  },
+  "fmc_tx_lanes": [
+    {
+      "dp": 0,
+      "bank": 225,
+      "channel_in_bank": 0,
+      "tx_p": "AA5",
+      "tx_n": "AA4",
+      "rx_p": "Y2",
+      "rx_n": "Y1",
+      "ad9173_physical_lane": 7
+    },
+    {
+      "dp": 1,
+      "bank": 225,
+      "channel_in_bank": 1,
+      "tx_p": "W5",
+      "tx_n": "W4",
+      "rx_p": "V2",
+      "rx_n": "V1",
+      "ad9173_physical_lane": 6
+    },
+    {
+      "dp": 2,
+      "bank": 225,
+      "channel_in_bank": 2,
+      "tx_p": "U5",
+      "tx_n": "U4",
+      "rx_p": "T2",
+      "rx_n": "T1",
+      "ad9173_physical_lane": 5
+    },
+    {
+      "dp": 3,
+      "bank": 225,
+      "channel_in_bank": 3,
+      "tx_p": "R5",
+      "tx_n": "R4",
+      "rx_p": "P2",
+      "rx_n": "P1",
+      "ad9173_physical_lane": 4
+    },
+    {
+      "dp": 4,
+      "bank": 226,
+      "channel_in_bank": 0,
+      "tx_p": "N5",
+      "tx_n": "N4",
+      "rx_p": "M2",
+      "rx_n": "M1",
+      "ad9173_physical_lane": 3
+    },
+    {
+      "dp": 5,
+      "bank": 226,
+      "channel_in_bank": 1,
+      "tx_p": "L5",
+      "tx_n": "L4",
+      "rx_p": "K2",
+      "rx_n": "K1",
+      "ad9173_physical_lane": 2
+    },
+    {
+      "dp": 6,
+      "bank": 226,
+      "channel_in_bank": 2,
+      "tx_p": "J5",
+      "tx_n": "J4",
+      "rx_p": "H2",
+      "rx_n": "H1",
+      "ad9173_physical_lane": 1
+    },
+    {
+      "dp": 7,
+      "bank": 226,
+      "channel_in_bank": 3,
+      "tx_p": "G5",
+      "tx_n": "G4",
+      "rx_p": "F2",
+      "rx_n": "F1",
+      "ad9173_physical_lane": 0
+    }
+  ],
+  "ad9173_spi_and_sync_candidate": {
+    "fabric_ref_la00": {
+      "p": "V23",
+      "n": "W23"
+    },
+    "sync0_la01": {
+      "p": "V24",
+      "n": "W24"
+    },
+    "sync1_la02": {
+      "p": "N24",
+      "n": "P24"
+    },
+    "sck_la03_p": {
+      "pin": "N21"
+    },
+    "mosi_la03_n": {
+      "pin": "N22"
+    },
+    "miso_la04_p": {
+      "pin": "R25"
+    },
+    "cs_dac_la04_n": {
+      "pin": "R26"
+    },
+    "cs_hmc_la05_p": {
+      "pin": "P25"
+    },
+    "spi_en_la05_n": {
+      "pin": "P26",
+      "direction": "INPUT_HIZ_PIC_OWNS_SELECTOR"
+    },
+    "txen0_la06_p": {
+      "pin": "N23"
+    },
+    "txen1_la06_n": {
+      "pin": "P23"
+    },
+    "pe_ctrl_la07_p": {
+      "pin": "P20"
+    }
+  },
+  "pcie_tx": [
+    {
+      "p": "AC5",
+      "n": "AC4"
+    },
+    {
+      "p": "AD7",
+      "n": "AD6"
+    },
+    {
+      "p": "AE9",
+      "n": "AE8"
+    },
+    {
+      "p": "AF7",
+      "n": "AF6"
+    }
+  ],
+  "expansion_headers": {
+    "J33": "3.3V, banks84/85",
+    "J34": "3.3V, banks84/85/86",
+    "drtio_lvds_status": "NOT_QUALIFIED_DO_NOT_ASSUME_NATIVE_LVDS_SERDES_SUPPORT_ON_HDIO"
+  },
+  "candidate_jesd_profile": {
+    "mode": 3,
+    "dual_link": true,
+    "L_per_link": 2,
+    "M_per_link": 2,
+    "N": 16,
+    "NP": 16,
+    "F": 2,
+    "S": 1,
+    "K": 32,
+    "HD": 1,
+    "subclass": 0,
+    "lane_rate_bps": 6144000000,
+    "dac_rate_hz": 4915200000,
+    "main_interpolation": 8,
+    "channel_interpolation": 2,
+    "complex_rate_per_dac_hz": 307200000,
+    "parallel_samples_per_clock": 2,
+    "jesd_clock_hz": 153600000,
+    "gt_reference_hz": 245760000,
+    "physical_validation": "TRENZ_ONLY_NOT_AXAU15"
+  },
+  "fpga_ordering_code": "XCAU15P-2FFVB676I",
+  "vivado_part": "DISCOVER_WITH_GET_PARTS"
+}

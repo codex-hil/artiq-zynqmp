@@ -1,0 +1,23 @@
+{
+ "status":"SCHEMATIC_PIN_BY_PIN_VERIFIED_NOT_ALL_HARDWARE_TESTED",
+ "warning":"Supersedes earlier carrier-bank-name-based GPIO mapping; use B2B pin numbers, not matching bank/net names.",
+ "module":"TE0803-02-04EV-1EA",
+ "carrier":"TEBF0808-04",
+ "signals":{
+  "fabric_ref_p":{"fmc":"G6/LA00_P","J4":128,"module_net":"B64_L11_P","fpga":"AF7"},
+  "fabric_ref_n":{"fmc":"G7/LA00_N","J4":126,"module_net":"B64_L11_N","fpga":"AF6"},
+  "sync0_p":{"fmc":"D8/LA01_P","J4":78,"module_net":"B64_L12_P","fpga":"AE5"},
+  "sync0_n":{"fmc":"D9/LA01_N","J4":80,"module_net":"B64_L12_N","fpga":"AF5"},
+  "sync1_p":{"fmc":"H7/LA02_P","J4":152,"module_net":"B64_L3_P","fpga":"AB8"},
+  "sync1_n":{"fmc":"H8/LA02_N","J4":150,"module_net":"B64_L3_N","fpga":"AC8"},
+  "sck":{"fmc":"G9/LA03_P","J4":146,"module_net":"B64_L1_P","fpga":"AC9"},
+  "mosi":{"fmc":"G10/LA03_N","J4":144,"module_net":"B64_L1_N","fpga":"AD9"},
+  "miso":{"fmc":"H10/LA04_P","J4":134,"module_net":"B64_L2_P","fpga":"AE9"},
+  "cs_dac":{"fmc":"H11/LA04_N","J4":132,"module_net":"B64_L2_N","fpga":"AE8"},
+  "cs_clock":{"fmc":"D11/LA05_P","J4":122,"module_net":"B64_L7_P","fpga":"AG9"},
+  "spi_en":{"fmc":"D12/LA05_N","J4":120,"module_net":"B64_L7_N","fpga":"AH9","direction":"INPUT_HIGH_Z_PIC_OWNS_SELECTOR"},
+  "txen0":{"fmc":"C10/LA06_P","J4":140,"module_net":"B64_L4_P","fpga":"AD7"},
+  "txen1":{"fmc":"C11/LA06_N","J4":138,"module_net":"B64_L4_N","fpga":"AE7"},
+  "pe_ctrl":{"fmc":"H13/LA07_P","J4":110,"module_net":"B64_L9_P","fpga":"AH8"}
+ }
+}

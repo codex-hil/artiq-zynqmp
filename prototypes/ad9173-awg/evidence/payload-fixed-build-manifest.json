@@ -1,0 +1,18 @@
+{
+  "status": "BUILD_PASS_SIMULATION_7_PASS_HARDWARE_RF_PASS",
+  "sha256": {
+    "fabric_spi_slow6144.bit": "2a3bdd790e7befd69bffdb228b6fc07d9c32b6b736e3817eea45f9a246c4e0be",
+    "fabric_jesd_tx.v": "96383e98e0af67ebf6dbe48db42a7e86ef3e33f859c7b801e3335195fcc5386c",
+    "generate-link.py": "3393416f3551724a3bcc3da493a5c3199fff3ad1a2e417f7e38286d9abab0e05",
+    "generate-fabric.py": "13551aa9d04c29cbda161ab22f3396d622fd010dede40c2175c5ec2e3c58a4a4",
+    "spi-console.v": "3efd6e327a0210ffcb67031a820930f9559f26f7be3b24ffc26520e660737213",
+    "build-slow6144.tcl": "15a4b0e0229b74802e0ae338953efbe682909db68da275e694fa28d768dcaa8c",
+    "test_mode3.py": "d537e21369da8545fd9fb97b75eaca084d8c00cf1a0d08a0afc087a5ef799477",
+    "bringup-jesd0.py": "266549058d9d0cfeb875a038d747912655c0002ffc55926b6c0ed8ffcc2b644e",
+    "validate-running-payload.py": "841367cfd6f057463ea5db53eb7e0decd027e4b05d39c16f65ab3860b3a93391"
+  },
+  "build_log": "slow6144-debug-build.log",
+  "regression_negative_control": "PASS_OLD_PARENT_CORE_SINK_WIRING_REJECTED",
+  "evidence": "payload-rf-pass-2026-10-21.json",
+  "qualification_limits": "One successful diagnostic build and bounded live RF validation; an earlier payload-fixed build failed link startup. Restart repeatability is not qualified."
+}

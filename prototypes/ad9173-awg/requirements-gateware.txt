@@ -1,0 +1,5 @@
+migen @ git+https://github.com/m-labs/migen@e19524c963a8342952840983047557707fbe0b6a
+litex @ git+https://github.com/enjoy-digital/litex.git@8c01073afb71aa0a0709f02f8e24247589e8f5e4
+liteiclink @ git+https://github.com/enjoy-digital/liteiclink.git@cb6cd0cf52a38cf303fc5fa02dfcceef1b7e67cf
+litejesd204 @ git+https://github.com/enjoy-digital/litejesd204b.git@a1d0cbf27f5e386bfcad2190c82677024fc949bd
+pytest>=8,<10

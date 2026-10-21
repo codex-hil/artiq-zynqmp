@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+*.bit
+*.dcp
+*.jou
+*.log
+*.rpt
+*.init
+.Xil/
+gateware/fabric_jesd_tx.v
+gateware/fabric-qpll-config.json
+remote-results/

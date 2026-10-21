@@ -1,0 +1,125 @@
+Implement the budget ARTIQ AWG satellite on ALINX AXAU15 in this separate thread.
+
+Repository: https://github.com/codex-hil/artiq-zynqmp
+Branch: bringup/alinx-axau15
+Scope root: prototypes/ad9173-awg
+Read root AGENTS.md, this directory's README.rst and dependencies.json first.
+The parent Genesys port is a reference, not the board to program for this task.
+Keep work on the ALINX branch and in separate build/output directories.
+
+USER GOAL
+A low-cost Sinara-like AWG: Kasli DRTIO -> scheduled RTIO parameters/profiles ->
+local FPGA I/Q generator -> JESD204B -> AD9173-FMC-EBZ RevC, two RF outputs.
+The user already owns AXAU15, AD9173 and a PCIe-to-SFP adapter. Its exact adapter
+model/wiring is still unknown; establish whether it is a passive breakout or
+an active PCIe NIC. Continue useful offline implementation while this is pending.
+This is a parallel ALINX implementation. Do not interrupt the Trenz thread.
+
+ARCHITECTURE
+AXAU15 is Artix UltraScale+ XCAU15P-2FFVB676I, NOT a Zynq SoC and has no A53.
+The user values fast local computation, but the budget variant cannot inherit
+A53 kernel binaries. Start with a Kasli-controlled satellite and a softcore for
+AUX/satellite management if needed. Keep local subkernel/PCIe-host computation
+as explicit extensions, not as an already working feature. Reuse maintained
+DRTIOSatellite/SyncRTIO/PhaserMTDDS design concepts; do not invent a custom
+packet protocol where the upstream DRTIO interface is suitable.
+
+HARDWARE REFERENCE (TRENZ ONLY)
+Sources and real scope evidence are in this directory. Working profile:
+4 TX GTH at6.144 Gb/s, two links, mode3 subclass0 HD1, L2 M2 N16 NP16 F2 S1 K32;
+FsDAC4.9152 GS/s, main interp8, channel interp2;307.2 MS/s complex per DAC,
+2 samples/153.6MHz cycle. Current generator transmits constant I and Q=0;
+main DAC NCOs perform upconversion. Real variable I/Q streaming is NOT_RUN.
+USB is unplugged on FMC. FPGA FMC SPI DAC reads/writes and HMC writes work.
+Latest Trenz tones149/151MHz, payload0x7FFF; leave those outputs untouched.
+Read evidence/payload-rf-pass-2026-10-21.json and two-tone-149-151-2026-10-21.json.
+The prior fixed-payload build failed startup; current diagnostic build passed.
+Startup repeatability, raw PHY PRBS/BER, deterministic phase and clock jitter
+are NOT qualified. Preserve these limitations in reports.
+
+IMPORTANT SOURCE DETAILS
+- gateware/generate-link.py patches the ILAS HD bit to configuration octet10
+  bit7 and computes the corresponding checksum. Preserve it.
+- Drive DualLink converter_inputs, NOT core.sink directly: the latter was
+  overwritten by the wrapper and transmitted zeros. Seven simulations and
+  tools/check-old-wiring-regression.py cover this regression.
+- Native GTHE4 8b10b: TXDATA32, TXCTRL2 charisk, TXCTRL0/1=0.
+- Channel NCO0x130 bit6 must be enabled for interpolation>1, zero FTW for
+  no channel shift; main NCO0x112 bit3 enabled for complex interpolation.
+- Internal DC injection must be off when proving FPGA-sourced samples.
+- Reference USER2 SPI console is stable-mailbox based. FMC SPI_EN is an INPUT,
+  high impedance: the PIC owns that selector. Do not drive it.
+- Reference slow-profile payload bit15 selects native PRBS7. This is a lab
+  shortcut, NOT a valid arbitrary signed sample interface. Separate diagnostic
+  PRBS control from waveform data before implementing arbitrary I/Q streams.
+- reference/trenz_lab host scripts are historical and target Trenz explicitly.
+  DO NOT RUN them against either board from this new thread. Refactor portable
+  register operations separately from board/cable/runtime selection.
+
+AXAU15 MANUAL
+boards/axau15-manual-pinmap.json contains the candidate pins from the user's
+44-page AXAU15_User Manual_V1.0.pdf SHA256
+23fa861740903add3042ba0ab378c91d37c905946d126da18a90323e369bf1b3.
+Read manual.local_attachment in the pinmap for the exact local PDF path.
+The PDF is not redistributed in Git; do not publish the vendor PDF.
+There are8 full-duplex FMC GTH lanes:DP0..3 bank225, DP4..7 bank226, plus4 PCIe.
+Dedicated references GBTCLK0 V7/V6 and GBTCLK1 P7/P6; onboard156.25MHz T7/T6.
+FMC GPIO1.8V. Expansion headers J33/J34 are3.3V banks84/85/86; do not assume
+native LVDS SERDES there. Cross-check actual revision/schematic and primitive
+support, especially where the manual has AXU25 copy/paste errors.
+
+DRTIO OPTIONS
+Prefer the user's passive PCIe-to-SFP breakout IF confirmed suitable. Use raw
+GT DRTIO, not PCIe endpoint traffic. Trace real reference clock connectivity,
+AC coupling, TX/RX direction and SFP control signals. Dedicated clock routing
+must be legal; do not copy the experimental Trenz fabric GTGREFCLK route as a
+production solution. Alternatively DRTIO-over-EEM/LVDS is supported upstream,
+but existing eem_serdes uses 7-series primitives and needs an UltraScale+ port
+and a suitable physical interface. A local source reference is
+artiq/gateware/targets/phaser.py and drtio/transceiver/eem_serdes.py in the pinned
+ARTIQ tree. Shared RTIO/DSP/JESD clocking and deterministic update epochs matter;
+an asynchronous FIFO alone does not establish repeatable RF phase.
+
+IMPLEMENTATION ORDER
+1. Establish reproducible AXAU15 target: exact Vivado part, IO/GT pinmap,
+   tool/license availability, clock/reset design. Compile and simulate offline.
+2. Extract board-independent AD9173/HMC profile and SPI engine from reference.
+   Add identity guards and board-specific cable/lease configuration.
+3. Bring up dedicated-reference JESD, DAC IDs/PLL/DLL and both output tones.
+   Verify payload amplitude/zero/recovery and a nonsymmetric sample word.
+4. Implement programmable complex DDS/IQ source, first one oscillator per RF
+   output; signed samples, phase, amplitude, mute and atomic parameter updates.
+   Then extend to multiple tones/profiles with explicit headroom/saturation.
+5. Connect upstream RTIO PHY to timestamped parameter/profile commits; keep the
+   time-critical sample path in PL. Establish legal shared clocks and epoch.
+6. DRTIO PHY/management and actual Kasli integration after adapter identification;
+   test timestamped output changes, link loss/recovery and measured RF timing.
+7. Optional waveform BRAM/DDR and PCIe host processing. Do not promise an A53
+   equivalent or raw ADC feedback until interfaces and performance are measured.
+
+BUILD SERVER AND COORDINATION
+Heavy Vivado builds run on Dell192.168.2.7, SSH codex-hil, key
+/home/codex-hil/.ssh/dell_build (never copy private key). Read
+prototypes/ad9173-awg/docs/vivado-remote-handoff.md and current shared tool notes.
+Use a new /srv/nvme-fast-1/vivado-work/alinx-awg-<unique> directory and global
+/srv/nvme-fast-1/vivado-work/.vivado-build.lock; start with one heavy build at a
+time. HDL/dependency generation may stay on the lab host. Do not overwrite
+sources in an active remote job. Retrieve logs, reports, hashes and bitstream.
+No hardware programming from Dell. Leave local installation and hw_servers alone.
+
+Identify the ALINX JTAG adapter and use its OWN shared lease before hardware
+operations; never guess another board's serial. Do not access Trenz cable
+2516330027B9A or its lease except read-only coordination metadata. Do not reset,
+program, use UART, change network runtime or touch Genesys/Kasli hardware owned
+by other threads. The Genesys lease is not an ALINX lease. Arrange coordinated
+Kasli tests only after identifying the intended board and its existing lease.
+Do not touch SDWire, card/mux, flash, EEPROM, OTP or eFUSE in this bringup.
+Do not spawn other agents merely because this is called a parallel thread.
+
+REPORTING
+Distinguish OFFLINE/SIMULATION/BUILD from physical PASS. Save exact source and
+artifact hashes, board identity, clocks, pinout, lock coverage and final state.
+Publish ALINX changes on this branch with a focused commit/PR; do not change the
+Genesys runtime or shared dependency clones to make the new target work.
+Start work autonomously; ask only for genuinely missing adapter/board wiring
+information while continuing independent offline tasks.

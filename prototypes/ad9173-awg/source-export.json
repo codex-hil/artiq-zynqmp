@@ -1,0 +1,24 @@
+{
+  "source_directory": "/home/codex-hil/trenz-bringup",
+  "date": "2026-10-21",
+  "source_sha256_before_portable_tcl_edit": {
+    "jesd/generate-link.py": "3393416f3551724a3bcc3da493a5c3199fff3ad1a2e417f7e38286d9abab0e05",
+    "jesd/generate-fabric.py": "13551aa9d04c29cbda161ab22f3396d622fd010dede40c2175c5ec2e3c58a4a4",
+    "jesd/spi-console.v": "3efd6e327a0210ffcb67031a820930f9559f26f7be3b24ffc26520e660737213",
+    "jesd/test_mode3.py": "d537e21369da8545fd9fb97b75eaca084d8c00cf1a0d08a0afc087a5ef799477",
+    "jesd/build-slow6144.tcl": "15a4b0e0229b74802e0ae338953efbe682909db68da275e694fa28d768dcaa8c",
+    "jesd/fabric-clock-constraints.tcl": "b65dd43713ad527a21ac0413052e229be35c71cc2c0309ab5378e13b9defc652",
+    "jesd/bringup-jesd0.py": "266549058d9d0cfeb875a038d747912655c0002ffc55926b6c0ed8ffcc2b644e",
+    "jesd/jtag_spi.py": "c84c286bc113728cb86f080dbc257c9c54e3b5fd02da8f2e9fc731527dac86d3",
+    "jesd/rf_measure.py": "e33febf604a013d03f8e1bbd8d7c146c67140d64c75a6901b4ba289a8af3b393",
+    "jesd/set-two-tone-149-151.py": "c08212cb41192bba2731f92d9a52df1a968b4877c19add821d5e05316cdcc68c",
+    "jesd/validate-running-payload.py": "841367cfd6f057463ea5db53eb7e0decd027e4b05d39c16f65ab3860b3a93391",
+    "jesd/transport_probe.py": "21279bdf0e57f78fcc2158e3f6de3bc924feeab8014428324d7fc145201b48a1"
+  },
+  "notes": [
+    "Original laboratory files remain unchanged.",
+    "Reference Tcl root now uses script directory and 8 Vivado threads.",
+    "No vendor manuals, bitstreams, checkpoints, credentials or venvs copied.",
+    "Evidence manifest hashes describe the original laboratory build, not the newly exported tree."
+  ]
+}

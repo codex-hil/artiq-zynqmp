@@ -1,0 +1,34 @@
+{
+  "git_dependencies": [
+    {
+      "name": "migen",
+      "url": "https://github.com/m-labs/migen",
+      "commit": "e19524c963a8342952840983047557707fbe0b6a",
+      "tracked_diff": "",
+      "local_reference": "/home/codex-hil/kasli-diot-switch/reference/migen"
+    },
+    {
+      "name": "litex",
+      "url": "https://github.com/enjoy-digital/litex.git",
+      "commit": "8c01073afb71aa0a0709f02f8e24247589e8f5e4",
+      "tracked_diff": "",
+      "local_reference": "/home/codex-hil/ccd-hdl-review/reference/litex"
+    },
+    {
+      "name": "liteiclink",
+      "url": "https://github.com/enjoy-digital/liteiclink.git",
+      "commit": "cb6cd0cf52a38cf303fc5fa02dfcceef1b7e67cf",
+      "tracked_diff": "",
+      "local_reference": "/home/codex-hil/trenz-bringup/reference/liteiclink"
+    },
+    {
+      "name": "litejesd204",
+      "url": "https://github.com/enjoy-digital/litejesd204b.git",
+      "commit": "a1d0cbf27f5e386bfcad2190c82677024fc949bd",
+      "tracked_diff": "",
+      "local_reference": "/home/codex-hil/trenz-bringup/reference/litejesd204b"
+    }
+  ],
+  "artiq_port_base": "3455b74",
+  "hardware_measurements_dependency": "codex-hil/lab-instruments@659d1ab; NumPy and SciPy required by rf_measure.py"
+}

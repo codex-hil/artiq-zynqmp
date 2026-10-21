@@ -1,0 +1,14 @@
+{
+  "status": "PASS_OFFLINE_ONLY",
+  "tests": {
+    "mode3_simulations": 7,
+    "old_wiring_negative_control": "PASS_REJECTED_OLD_BUG",
+    "trenz_reference_hdl_generation": "PASS",
+    "build_package_generation": "PASS",
+    "build_package_input_hashes": "PASS"
+  },
+  "vivado_synthesis_for_axau15": "NOT_RUN",
+  "axau15_hardware": "NOT_RUN",
+  "trenz_hardware_actions_during_export": "NONE",
+  "note": "Historical Trenz physical evidence is included separately. This export did not program any hardware."
+}
