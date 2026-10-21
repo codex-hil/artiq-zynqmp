@@ -374,3 +374,14 @@ test-drtio-lab-idle-probe:
 .PHONY: test-drtio-lab-fault-session
 test-drtio-lab-fault-session:
 	PYTHONPATH="$(CURDIR)/diagnostics/drtio" $(PYTHON) -m unittest discover -s diagnostics/drtio -p 'test_lab_fault_session.py' -v
+
+.PHONY: package-local-candidate test-candidate-package
+CANDIDATE_MANIFEST ?= $(CURDIR)/evidence/candidate-jtag-plan-2026-10-21/inputs.json
+CANDIDATE_PROOF ?= $(CURDIR)/evidence/candidate-extended-hardware-2026-10-21/results.json
+package-local-candidate:
+	$(if $(SD_BRIDGE),,$(error Specify SD_BRIDGE= matching CPU1 boot ELF))
+	$(if $(SD_BRIDGE_SHA256),,$(error Specify SD_BRIDGE_SHA256= exact selected hash))
+	$(PYTHON) scripts/package_local_candidate.py --manifest="$(CANDIDATE_MANIFEST)" --proof="$(CANDIDATE_PROOF)" --sd-bridge="$(SD_BRIDGE)" --sd-bridge-sha256="$(SD_BRIDGE_SHA256)" --output="$(abspath $(O))/qualified-local-sd"
+
+test-candidate-package:
+	$(PYTHON) -m unittest discover -s tests -p 'test_candidate_package.py' -v

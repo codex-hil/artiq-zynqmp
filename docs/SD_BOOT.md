@@ -83,3 +83,28 @@ backup, then follow the card-preservation procedure above.
 After cold boot, capture UART and the actual DHCP address, run management
 log retrieval, normal DMA loopback, and `make test-hw-rtio-debug` using the
 correct device database. Count repeated cold-power cycles separately.
+
+## Coherent extended-JTAG-tested candidate — 2026-10-21
+
+`/srv/codex-hil-data/artiq-zynqmp/build/qualified-local-sd-2026-10-21/BOOT.BIN`
+now packages the exact Dell PL, CPU0 and rebuilt PMU/FSBL used in the successful
+extended candidate JTAG session. Its SD bridge embeds the exact tested CPU1 load
+payload. Bootgen packaging and partition-header readback PASS. No card write or
+cold boot was performed. The SD bridge startup remains separately unqualified.
+
+The reusable packager binds the physical PASS/restoration proof to the exact
+candidate manifest and rejects changed inputs or a mismatched embedded worker:
+
+```sh
+make package-local-candidate \
+  SD_BRIDGE=/path/to/worker-boot.elf \
+  SD_BRIDGE_SHA256=EXACT_SELECTED_SHA256 \
+  O=/path/to/fresh-package-parent
+```
+
+Defaults select the recorded candidate/extended proof; override
+`CANDIDATE_MANIFEST` and `CANDIDATE_PROOF` together for another qualified set.
+Evidence: `evidence/qualified-sd-package-2026-10-21`. BOOT.BIN SHA-256:
+`da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029`.
+This is a package of JTAG-tested inputs, not a new cold-boot PASS or permission
+to overwrite any existing card. Board runtime remains the restored old baseline.

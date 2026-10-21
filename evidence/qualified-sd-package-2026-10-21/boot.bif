@@ -1,0 +1,8 @@
+the_ROM_image:
+{
+  [bootloader, destination_cpu=a53-0] "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/build/zynqmp_fsbl.elf"
+  [pmufw_image] "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-app/build/zynqmp_pmufw.elf"
+  [destination_device=pl] "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z/top.bit"
+  [destination_cpu=a53-1, exception_level=el-3] "/srv/codex-hil-data/artiq-zynqmp/build/release-sd-bridge-2026-10-21/worker-boot.elf"
+  [destination_cpu=a53-0, exception_level=el-3] "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/build/lwip_echo_server.elf"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PACKAGED_JTAG_QUALIFIED_INPUTS_COLD_BOOT_NOT_RUN",
+  "hardware_executed": false,
+  "cold_boot": "NOT_RUN",
+  "manifest_sha256": "19a9c2b336fa526833abd279242b98904305151cfd03e5a40f029b81a48fe5dd",
+  "extended_jtag_proof_sha256": "949a603c7e3eb624ae0e30c2f651a200f28f0e4b517016b3ad8949212c05c829",
+  "sd_bridge_sha256": "3b26bd2bd17f29a50b6bb915c82e0b3a37b34fa83bb41e533282edd70ec8a104",
+  "worker_embedding": {
+    "status": "EXACT_TESTED_WORKER_PAYLOAD",
+    "address": "0x20200000",
+    "bytes": 86024,
+    "sha256": "354cd5a3b4fa24c87bedd41518eedfe40fb025226ad9dcaacee1c46e4b85e3bf"
+  },
+  "boot_bin_sha256": "da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029",
+  "limits": "Input proof/hash binding only; this is not signed provenance or a cold SD boot test. Original PS/PL source provenance remains separately documented."
+}

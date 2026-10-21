@@ -1,0 +1,28 @@
+{
+  "kind": "packaged-artifacts-not-boot-proof",
+  "artifacts": {
+    "fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/build/zynqmp_fsbl.elf",
+      "sha256": "c6d4a3447a218f1b92730543f82f79ac333021598f7e76174597efd438b3f4b2"
+    },
+    "bitstream": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z/top.bit",
+      "sha256": "1dc6364737e322022819a22c6561257fe8d10e9a24f436fda70571fcbd96e243"
+    },
+    "application": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/build/lwip_echo_server.elf",
+      "sha256": "b31af046c9ac42249537590933e7a3782ce9a1630fae07b4854eda0399944f37"
+    },
+    "pmufw": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "214086f65bec0f2a2d90b00df603a2f345a7257ea36cc98c538efaacc7d3e8f9"
+    },
+    "worker_boot": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-sd-bridge-2026-10-21/worker-boot.elf",
+      "sha256": "3b26bd2bd17f29a50b6bb915c82e0b3a37b34fa83bb41e533282edd70ec8a104"
+    },
+    "boot.bin": {
+      "sha256": "da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029"
+    }
+  }
+}

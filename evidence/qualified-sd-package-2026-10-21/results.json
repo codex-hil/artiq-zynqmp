@@ -1,0 +1,8 @@
+{
+  "status": "PACKAGING_PASS_COLD_BOOT_NOT_RUN",
+  "hardware_executed": false,
+  "package": "/srv/codex-hil-data/artiq-zynqmp/build/qualified-local-sd-2026-10-21/BOOT.BIN",
+  "tests": 2,
+  "worker_payload": "EXACT_JTAG_TESTED",
+  "scope": "New coherent SD candidate from exact JTAG-qualified roles; SD bridge startup/cold boot not hardware qualified"
+}

@@ -575,3 +575,7 @@ scripts/remote_rtio_build.py
 tests/test_remote_submission.py
 evidence/remote-submission-2026-10-21/run.sh
 evidence/remote-submission-2026-10-21/normalize.tcl
+scripts/package_local_candidate.py
+tests/test_candidate_package.py
+evidence/remote-submission-2026-10-21/ps-synth-retry/run.sh
+evidence/remote-submission-2026-10-21/ps-synth-retry/normalize.tcl
