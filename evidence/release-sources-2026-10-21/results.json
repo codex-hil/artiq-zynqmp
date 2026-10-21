@@ -1,0 +1,45 @@
+{
+  "status": "CURRENT_INPUTS_CAPTURED",
+  "historical_source_proof": "PARTIAL",
+  "hardware_executed": false,
+  "manifest_sha256": "67cc70c7135e651f3f27a2006d65e8befe9093b0b2f0386537e13a34958b7ad3",
+  "archive_sha256": "191ee45ad0f11bab73258407ec2da4873d69d7c9ddbf6e18f285d5750c9b8076",
+  "git": {
+    "port": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/release-repro-2026-10-21",
+      "commit": "58f1e9367f10477e9a25255a2924e906f7e77be8",
+      "tracked_status": "",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "untracked_files": "excluded; use --tree for a complete directory snapshot"
+    },
+    "artiq": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq",
+      "commit": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+      "tracked_status": "",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "untracked_files": "excluded; use --tree for a complete directory snapshot"
+    },
+    "migen": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen",
+      "commit": "44e5627d367c528b3ce5e686b6f305a9dfc56f2a",
+      "tracked_status": "",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "untracked_files": "excluded; use --tree for a complete directory snapshot"
+    }
+  },
+  "trees": {
+    "amd-embeddedsw": {
+      "path": "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/embeddedsw",
+      "inventory_sha256": "229017c0acd6c1fef93fa9cc8af4d028b6220d9a7ac5b84789cf331634965fa9",
+      "entries": 91399,
+      "files": 84410,
+      "file_bytes": 1438248478
+    }
+  },
+  "limitations": [
+    "Captures present installed sources only",
+    "Does not retroactively establish the state used for original PS/PL or PMU/FSBL builds",
+    "Git untracked files excluded explicitly",
+    "Package cold boot remains NOT_RUN"
+  ]
+}

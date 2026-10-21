@@ -125,3 +125,35 @@ produce identical loaded bytes. It did not change the tracked kernel recipe;
 see `evidence/kernel-codegen-repro-2026-10-21`. Byte reproducibility remains
 an open release-quality item and does not invalidate earlier physical results
 for the separately pinned qualified baseline.
+
+
+## Source inventory
+
+`evidence/release-sources-2026-10-21/manifest.json.gz` contains the current
+installed AMD `embeddedsw` inventory: 84,410 files, 1,438,248,478 bytes, plus
+symlink/directory entries. It also records clean Git identities for the CPU0
+source worktree, initialized ARTIQ and Migen checkouts. Summary and archive
+checksums are in the adjacent `results.json`.
+
+To capture another source state without building or touching hardware:
+
+```sh
+python3 scripts/capture_release_sources.py \
+  --git port=/path/to/clean-source \
+  --git artiq=/path/to/initialized/artiq \
+  --git migen=/path/to/initialized/migen \
+  --tree amd-embeddedsw=/path/to/installed/embeddedsw \
+  --output /path/to/fresh-source-manifest.json
+```
+
+Tree entries include content hashes, sizes and modes; symlinks are recorded
+without following their targets. Git entries identify commits and hash tracked
+patches; untracked files are explicitly excluded. Capture external untracked
+inputs as separate `--tree` arguments. Ordinary concurrent modification of a
+file during hashing is rejected, but the command is not an atomic filesystem
+snapshot: keep source trees idle throughout capture.
+
+This closes the present-day installed-source inventory gap. It does not prove
+that these files were unchanged during an older build. Rebuilding old PS/PL and
+boot firmware against a captured source state is still required for a complete
+release provenance chain. The existing hardware baseline remains unchanged.

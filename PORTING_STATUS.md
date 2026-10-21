@@ -3071,3 +3071,14 @@ FSBL DDR source equals tracked board source. Provenance remains PARTIAL for
 original FPGA/installed AMD source state. Single-codegen-unit scratch builds
 also differ; tracked recipe unchanged. No hardware/card/flash/OTP access.
 See docs/CLEAN_BUILD.md and release-package/kernel-codegen-repro evidence.
+
+
+## Current installed source inventory — 2026-10-21
+
+Offline snapshot records clean port/ARTIQ/Migen revisions and all 84,410 regular
+files (1,438,248,478 bytes) in installed AMD embeddedsw, plus links/directories.
+Compressed inventory and checksums: evidence/release-sources-2026-10-21.
+Three snapshot tests PASS. Present-day inventory is complete for the selected
+roots; historical PS/PL/PMU/FSBL build provenance remains PARTIAL. No hardware
+access or baseline changes. Full release recipe still requires rebuilding reused
+components against captured sources; see docs/CLEAN_BUILD.md.
