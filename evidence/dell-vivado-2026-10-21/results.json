@@ -1,5 +1,5 @@
 {
-  "status": "QUEUED_ON_SHARED_BUILD_LOCK",
+  "status": "IMPLEMENTATION_COMPLETE_INPUT_MUTATION_DETECTED",
   "hardware_executed": false,
   "job": {
     "job": "artiq-genesys-debug-20261021T171820Z",
@@ -12,6 +12,9 @@
   "input_files": 16,
   "tool": "Vivado 2025.2",
   "lock": "/srv/nvme-fast-1/vivado-work/.vivado-build.lock",
-  "build_result": "PENDING",
-  "scope": "Preserved generated HDL rebuild; no fresh HDL generation, bitstream or hardware PASS yet"
+  "build_result": "NOT_QUALIFIED",
+  "scope": "Preserved generated HDL rebuild; no fresh HDL generation, bitstream or hardware PASS yet",
+  "reason": "Vivado upgrade_ip changed six disabled SD0 delay parameters and XCI checksum",
+  "implementation_reports": "PASS",
+  "followup": "evidence/dell-vivado-2026-10-21/pinned-ip-rebuild/results.json"
 }

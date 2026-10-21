@@ -51,3 +51,38 @@ JTAG, resets, UART and all hardware tests stay on Optiplex under existing board
 leases. The remote container has no USB/network hardware access. Do not copy
 lock files or use the remote build lock as a board lease. Existing hw_server
 containers and qualified board images remain untouched.
+
+
+The offline local-RTIO checker is:
+
+```sh
+python3 scripts/check_remote_rtio_build.py \
+  --build /path/to/retrieved-job \
+  --inputs evidence/dell-vivado-2026-10-21/inputs.json \
+  --output /path/to/fresh-build-report.json
+```
+
+It requires zero Vivado exit status, unchanged pinned inputs, a new nonempty
+bitstream, setup/hold/pulse-width closure, no unclocked or unconstrained internal
+endpoints, complete routing and no log errors/critical warnings. The only
+accepted DRC warning is the existing `RTSTAT-10`; unexpected violations require
+review. Missing external input/output delays are reported explicitly, preserving
+the baseline's physical I/O qualification limits. Hardware is never accessed.
+
+
+## First Dell implementation and explicit IP retry
+
+The first remote job completed with Vivado exit0, setup1.900ns, hold0.016ns,
+pulse-width2.500ns, complete routing and the existing RTSTAT-10 warning only.
+All28 retrieved files matched their remote SHA-256 values. The strict input
+check nevertheless rejected the build: `upgrade_ip` rewrote six SD0 delay
+parameters and the XCI checksum. SD0 is disabled (`PSU__SD0__PERIPHERAL__ENABLE=0`);
+SD1 remains enabled and its settings did not change. This is recorded in
+`evidence/dell-vivado-2026-10-21/ip-upgrade.diff`, not silently accepted.
+
+Implementation reports are qualified separately as reports-only; the combined
+input/build result remains NOT_QUALIFIED. A fresh follow-up job pins the exact
+post-upgrade XCI before launching Vivado. Its directory/unit and pinned inputs
+are in `evidence/dell-vivado-2026-10-21/pinned-ip-rebuild`. The same strict checker
+must pass without further input mutation. No qualified hardware profile or
+board image was replaced. Both jobs use the same shared build lock.

@@ -1,0 +1,26 @@
+{
+  "status": "IMPLEMENTATION_REPORTS_PASS_INPUTS_NOT_CHECKED",
+  "hardware_executed": false,
+  "slack_ns": {
+    "setup": 1.9,
+    "hold": 0.016,
+    "pulse_width": 2.5
+  },
+  "timing_coverage": {
+    "no_clock": 0,
+    "unconstrained_internal_endpoints": 0,
+    "no_input_delay": 1,
+    "no_output_delay": 5
+  },
+  "drc_warnings": [
+    "RTSTAT-10"
+  ],
+  "scope": "Preserved HDL local RTIO/CoreDMA/analyzer/MonInj build; external I/O delays remain as reported, no physical test",
+  "sha256": {
+    "top.bit": "cf543a7e3398e277c9c0c52ab9bfe5dd7f0a89c5bc578aceeabe8cf1d28f18bc",
+    "top_timing.rpt": "e9c74d1d9f8884e86db18b5611fc14bf8af4e41e05238810c49e503c1f254d7d",
+    "top_drc.rpt": "1f8f381489751a73d987c88f0aaea5dd2f4d2376f56b53641ddcb447494183bc",
+    "top_route_status.rpt": "075ae97477ab9a99566248783651511bc6f28c2fcc868b110ac1128a876c2e65",
+    "console.log": "fc7c55de04f42a0a941c165869e3e3659072c7e6eb60cd08ff3a4451b729a46b"
+  }
+}

@@ -3093,3 +3093,14 @@ qualified ELFs; no hardware-equivalence claim. New freshboot candidate packaging
 and partition-header readback PASS, coldboot NOT_RUN. Existing-output refusal
 added to build script and checked offline. Evidence boot-firmware-rebuild-
 2026-10-21; no hardware/card/flash/OTP access or baseline replacement.
+
+
+## Dell remote rebuild — 2026-10-21
+
+First remote Vivado run completed exit0; routed implementation reports PASS:
+setup1.900ns/hold0.016ns/pulse2.500ns, no internal unconstrained endpoints,
+complete routing, known RTSTAT-10 only. Existing external IO delay limitations
+remain. Retrieved28files hash-exact. Combined strict result NOT_QUALIFIED because
+upgrade_ip changed six disabled SD0 delay parameters/XCI checksum. Exact diff
+saved; fresh retry pins post-upgrade XCI explicitly. Four checker tests PASS.
+Evidence dell-vivado-2026-10-21; no board access or qualified baseline changes.
