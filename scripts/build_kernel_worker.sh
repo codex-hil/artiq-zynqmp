@@ -13,7 +13,7 @@ export CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS='-C target-cpu=corte
 # Opt in when comparing independent checkout/output paths. Qualified historical
 # binaries retain their original recipe unless explicitly requested.
 if [ "${KERNEL_REMAP_PATHS:-0}" = 1 ]; then
-    export CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS="$CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS --remap-path-prefix=$repo=/artiq-zynqmp --remap-path-prefix=$out=/artiq-build"
+    export CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS="$CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS -C metadata=genesys-repro-v1 --remap-path-prefix=$repo=/artiq-zynqmp --remap-path-prefix=$out=/artiq-build"
 fi
 python3 - "$csr" "$out/rtio_csr.h" <<'PY'
 import json,sys
