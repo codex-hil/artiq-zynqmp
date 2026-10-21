@@ -2870,3 +2870,13 @@ TSC/reset/DIOrepeatPASS. BothrestoresPASS (04clock/route/mode10;Genesysnormal
 CoreDMA/debug/Ethernet192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSi
 writes. Evidence `evidence/kasli04-ddma-fragment-2026-10-21`. Scopeone
 twofragmenttrace, notmaxcapacity/throughput. Nextstability/forcedlinkrecovery.
+
+
+KASLI04 stability/recovery (2026-10-21): physicalPASS4096edges/2048pulses
+256batches,4width/periodsets,256emptyreads,8nativeRTIOresets.2forcedGenesys
+GTHresetcycles eachDOWN→reinit/TSCACK→UP→physicalDIOPASS. No newchecked
+master/satellitefaults. Notphase/jitter/deterministiclatency orcontinuousBER
+proof. BothrestoresPASS (04clock/route/mode10;GenesysnormalCoreDMA/debug/
+Ethernet192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites.
+Evidence `evidence/kasli04-link-stability-2026-10-21`. Nextconsolidatereproducer
+profile andremainingboundedDMAqualification; labactivefault separatelygated.
