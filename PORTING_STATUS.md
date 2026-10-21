@@ -2703,3 +2703,14 @@ restoration PASS (Genesys192.168.2.3), leases released, no flash/OTP/SD/GenesysS
 writes, Kasli03/04 untouched. Evidence `evidence/kasli01-external-status-2026-10-20`.
 Next requires physical confirmation of KASLI01 SFP1-to-Genesys SFP path/modules;
 no identical retry or RX-up bypass until checked. External TSC/DIO/DMA pending.
+
+
+KASLI04 preparation (2026-10-21): user selects04/SFP1 for Genesys. Read-only
+JTAG under04 lease confirmsDNA006c440674704854 USB1-11.1/001:036; no FPGA/
+reset/UART/I2C/clock/flash access, mode10 unchanged. Isolated pinned master
+source prepared with MAC02:4b:04:70:48:54; CPU build started, unqualified.
+Evidence `evidence/kasli04-preparation-2026-10-21`. Known04mux70 NACK from
+secure-link remains unresolved; runtime blocked until board-specific clock
+snapshot/restoration and retained baseline are qualified. Do not reuse01/03
+clock data or overwrite04 mode10 with generic restoration. Next offline CPU
+qualification; Kasli01/03 untouched.
