@@ -2783,3 +2783,13 @@ Diagnostic+retainedmode10restorePASS; clocksunchanged,04+Genesysleasesreleased,
 Genesys/01/03untouched,noFlash/OTP/SDwrites. Evidence
 `evidence/kasli04-boot-network-2026-10-21`. Next physical network check:04SFP0
 to host/switch;04SFP1 remainsDRTIOtoGenesys. No identicalretry until checked.
+
+
+KASLI04 network recheck (2026-10-21): userconfirms switchlink. Physicalboot
+PASSagain; netbootTCP timeout beforepayload, runtimeNOT_RUN. Hostcache
+duringleasedsession showed ownIPv6LL/MAC REACHABLE; not a proved disconnected
+cable. Mode10restorationPASS, clocksunchanged, bothleasesreleased, noGenesys/
+otherboard/Flashaccess. Evidence `evidence/kasli04-network-recheck-2026-10-21`.
+Added next-trial TCPstage/errorneighbor capture before restoration;15offline
+tests+compilePASS. Next bounded instrumented network-only trial; no hardware
+request needed yet, no identical blind reload.

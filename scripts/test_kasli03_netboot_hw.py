@@ -217,8 +217,11 @@ def main():
                 for index, (request, evidence) in enumerate(actions):
                     with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as connection:
                         connection.settimeout(5)
+                        result['network_stage']=f'negative-{index}:connect'
                         connection.connect((result['netboot_ipv6_link_local'], 4269, 0, scope))
+                        result['network_stage']=f'negative-{index}:send'
                         connection.sendall(request)
+                        result['network_stage']=f'negative-{index}:receive-close'
                         if connection.recv(1) != b'':
                             raise RuntimeError('Malformed netboot command did not close connection')
                     deadline = time.monotonic() + 3
@@ -329,6 +332,14 @@ def main():
         result.update(status='BUSY', error='Another thread holds a shared Kasli lock; no hardware access')
     except Exception as error:
         result['error'] = str(error)
+        # Host cache only, while affected-board leases still cover the session.
+        if changed and args.network_interface:
+            try:
+                neighbor_dump=subprocess.check_output(['ip','-j','-6','neigh','show','dev',args.network_interface],text=True,timeout=3)
+                (args.output/'ipv6-neighbors-on-error.json').write_text(neighbor_dump)
+                result['neighbor_on_error']=[row for row in json.loads(neighbor_dump) if row.get('dst')==board['link_local']]
+            except Exception as capture_error:
+                result['neighbor_capture_error']=str(capture_error)
     finally:
         if changed:
             try:
