@@ -1,0 +1,45 @@
+{
+  "status": "RELEVANT_TRACKED_SOURCES_IDENTICAL",
+  "hardware_executed": false,
+  "current_commit": "e2571abbc2759a6c0c038f4992b28a7752dbdeed",
+  "components": {
+    "cpu0": {
+      "reference_commit": "58f1e9367f10477e9a25255a2924e906f7e77be8",
+      "paths": [
+        "boards/genesys_zu-5ev/2_firmware_a53",
+        "scripts/build_debug_services.sh",
+        "scripts/build_a53_services.sh",
+        "scripts/build_ethernet_firmware.sh",
+        "scripts/patch_ethernet_sources.py",
+        "scripts/attach_a53_services.py",
+        "scripts/attach_rtio_debug.py"
+      ],
+      "changed_files": [],
+      "tracked_dirty": "",
+      "git_tree_listing_sha256": "1abf26f78d0be341c8bcb62b364cb179a49830131115375d5d22178a88182c4e"
+    },
+    "cpu1": {
+      "reference_commit": "35518ffebea722a178bd33e61b30d2b6d711876a",
+      "paths": [
+        "boards/genesys_zu-5ev/3_kernel",
+        "prototypes/kernel-abi/upstream-dyld",
+        "scripts/build_kernel_worker.sh"
+      ],
+      "changed_files": [],
+      "tracked_dirty": "",
+      "git_tree_listing_sha256": "e7301fc30d05557f4c7bf2c495296399e4eb496b12fe52c649b0d2d91ee04b57"
+    },
+    "board_boot_sources": {
+      "reference_commit": "58f1e9367f10477e9a25255a2924e906f7e77be8",
+      "paths": [
+        "boards/genesys_zu-5ev/3_bootable",
+        "scripts/generate_sdt.tcl",
+        "scripts/build_sd_worker.sh"
+      ],
+      "changed_files": [],
+      "tracked_dirty": "",
+      "git_tree_listing_sha256": "7c8f7cc9835e73a11ccc1e9d86a71799ee532f57ba90ba1fca6976dcbd47b793"
+    }
+  },
+  "limits": "Source-tree equivalence only; not byte-reproducibility or empty-host build proof. Installed dependencies and generated inputs remain separately pinned."
+}

@@ -1,0 +1,28 @@
+{
+  "mode": "build",
+  "job": "artiq-source-build-20261021",
+  "remote": "/srv/nvme-fast-1/vivado-work/artiq-source-build-20261021",
+  "host": "codex-hil@192.168.2.7",
+  "unit": "artiq-source-build-20261021.service",
+  "upload_sha256": {
+    "top.v": "ede20cf1089979d4e49f723bc66d1635e0f15054b749ea808aa1073f1b448805",
+    "top.xdc": "54b6126caa79dc1e305623c2ba74ef021c682ad5cbb16a92d2774280cbc052f2",
+    "top.tcl": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a",
+    "top_route.tcl": "885970caf0834ce626e4dc5b4655d1c99a93cfef00309378b0554cee92bf9274",
+    "top_bitstream.tcl": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a",
+    "csr-map.json": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049",
+    "en_replaces_rom.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_1.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_2.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_3.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_4.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_5.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_6.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_7.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "latency_compensation.init": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead",
+    "ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci": "1712fe0fe3f57bddb295133cf851956939ceda3391a96e160d3687004a2f304d",
+    "generation.json": "031f2b45767201f624ea0415b1c059edd9f1a3178987147a92811cec38c587c8",
+    "inputs.json": "5b9ed267e0eb5a1196bffddf7717f65933acf854cf01cd4e998bebdb0d1e0a5f",
+    "run.sh": "f66b67cf15ee2c5d5966168b76c8ec2409a821c3fc9f8095b55ad77ff7d638e4"
+  }
+}

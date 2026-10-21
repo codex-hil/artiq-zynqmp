@@ -3,8 +3,10 @@
 On 2026-10-21 the CPU1 kernel worker was built successfully in two separate
 clean detached worktrees and fresh output directories, using the installed
 open-source toolchains. This validates this component's build recipe on this
-host. It does not establish a complete clean-host build, bit-identical output,
-a new bootable image, or hardware qualification of the rebuilt workers.
+host. It does not establish a complete clean-host build or bit-identical worker output.
+The later assembled candidate passed initial and extended JTAG hardware suites;
+a coherent SD image is packaged, with cold boot still NOT_RUN. See CANDIDATE_JTAG.md
+and SD_BOOT.md for those separate checkpoints.
 
 ## CPU1 recipe
 
@@ -196,3 +198,11 @@ Original PS/PL build provenance and CPU1 byte reproducibility remain open.
 The [combined source build recipe](BUILD_RECIPE.md) now links fresh HDL generation,
 remote Vivado, firmware and qualification, with remaining automation explicitly
 identified. Clean-source HDL/init/CSR regeneration passed without Vivado.
+
+
+`evidence/source-release-chain-2026-10-21/component-sources.json` confirms the
+relevant tracked CPU0, CPU1 and board boot sources still match their evaluated
+reference commits. Paths and Git tree-listing hashes are recorded. This avoids
+an unnecessary rebuild of unchanged firmware; installed dependencies, generated
+inputs and compiler identities remain separately scoped. The later fresh-source
+remote PL build is still a separate pending result at this checkpoint.

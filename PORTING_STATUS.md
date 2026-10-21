@@ -3184,3 +3184,15 @@ match exact file-backed ELF bytes. Three corruption/chain/CPU controls PASS.
 BSS initialization, FSBL/PMU/PL equality and coldboot remain outside thischeck.
 makepackagecandidate now includes CPU payload verification. PS-IP-synth job still
 waitssharedDelllock; no bypass/noHWaccess. Evidence qualified-sd-package-2026-10-21.
+
+
+## Source PS normalization and full remote source build — 2026-10-21
+
+PS-IP-synth normalization PASS, exact byte-match to JTAG-qualified XCI1712fe0f...
+4a2f304d, explicitly selected. Full clean-generated source job artiq-source-build-
+20261021 submitted/transferPASS and RUNNING; all16effectiveinputs equal prior
+qualified Delljob. Relevant tracked CPU0/CPU1/boardboot sources still match
+referencebuildcommits. Prior two Dell.bit files rawconfig3202404B identical,
+metadata timestamps differ; two .bit parser controls PASS. Newbuild finalresult
+and payloadcomparison PENDING. NoHWaccess/baselinechanges. Evidence source-
+release-chain-2026-10-21 and remote-submission/ps-synth-retry.

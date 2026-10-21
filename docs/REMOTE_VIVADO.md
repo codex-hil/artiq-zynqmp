@@ -150,3 +150,20 @@ diff is retained; that output was not automatically selected for a full build.
 Normalization now includes the PS IP synthesis run (bounded by Vivado's run
 completion/progress check) before returning for review. A fresh PS-synthesis
 normalization retry is queued; see `remote-submission-2026-10-21/ps-synth-retry`.
+
+
+## Fresh-source pipeline checkpoint
+
+The PS-synthesis normalization retry completed with the exact XCI bytes from
+the JTAG-qualified build (`1712fe0f...4a2f304d`); the byte comparison and explicit
+selection are recorded in `remote-submission-2026-10-21/ps-synth-retry/review.json`.
+The reusable job tool then submitted `artiq-source-build-20261021` from the
+clean generated HDL. All16 effective inputs are byte-identical to the prior
+qualified Dell job. Its first recorded state is RUNNING; final report/payload
+comparison remains pending in `source-release-chain-2026-10-21/remote-build`.
+
+`scripts/compare_bitstreams.py` separates x4k .bit metadata from raw FPGA
+configuration bytes. It rejects malformed/truncated headers and reports exact
+payload equality independently of timestamps. The earlier two Dell bitstreams
+have identical3,202,404byte configuration payloads despite different header
+times; this does not automatically qualify a future or different payload.

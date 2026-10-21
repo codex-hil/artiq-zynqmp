@@ -1,7 +1,8 @@
 {
-  "status": "PS_IP_SYNTHESIS_QUEUED",
+  "status": "PS_IP_SYNTHESIS_REVIEW_PASS",
   "hardware_executed": false,
   "job": "/srv/codex-hil-data/artiq-zynqmp/build/artiq-source-normalize-synth-20261021",
   "remote": "/srv/nvme-fast-1/vivado-work/artiq-source-normalize-synth-20261021",
-  "scope": "PS IP synthesis only to complete normalization; no top-level PL synthesis or hardware action"
+  "scope": "PS IP synthesis only to complete normalization; no top-level PL synthesis or hardware action",
+  "result": "Identical to JTAG-qualified XCI"
 }

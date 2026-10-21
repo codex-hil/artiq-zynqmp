@@ -581,3 +581,6 @@ evidence/remote-submission-2026-10-21/ps-synth-retry/run.sh
 evidence/remote-submission-2026-10-21/ps-synth-retry/normalize.tcl
 scripts/verify_boot_payloads.py
 tests/test_boot_payloads.py
+scripts/compare_bitstreams.py
+tests/test_compare_bitstreams.py
+evidence/source-release-chain-2026-10-21/remote-build/run.sh

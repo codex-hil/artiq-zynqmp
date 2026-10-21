@@ -1,0 +1,126 @@
+{
+  "status": "HDL_GENERATED_NOT_SYNTHESIZED",
+  "hardware_executed": false,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "max_threads": 8,
+  "cdc_first_stage_registers": 42,
+  "dependencies": [
+    {
+      "module": "gateware",
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/hdl-clean-release-2026-10-21/boards/genesys_zu-5ev/1_gateware/gateware.py",
+      "sha256": "0dda3b3d8cf6903974aa2ecfdbf23060d42a619e5a70ed7feb0b154a9746b084",
+      "git_root": "/srv/codex-hil-data/artiq-zynqmp/work/hdl-clean-release-2026-10-21",
+      "commit": "24e04e4ebf1195d1bf8884326aefdfedee55d50e",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "diag_gateware",
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/hdl-clean-release-2026-10-21/diagnostics/drtio/diag_gateware.py",
+      "sha256": "b691a1f13f53cb45b01db2f191ea94e7c7a837a22400f4056bbc9c7c663b4c24",
+      "git_root": "/srv/codex-hil-data/artiq-zynqmp/work/hdl-clean-release-2026-10-21",
+      "commit": "24e04e4ebf1195d1bf8884326aefdfedee55d50e",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "migen",
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen/migen/__init__.py",
+      "sha256": "1ba80fc447159b81c6ca772a5407b740bbab196fb9f136b5d87e5ebfdb6c13d0",
+      "git_root": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/migen",
+      "commit": "44e5627d367c528b3ce5e686b6f305a9dfc56f2a",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "artiq",
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq/artiq/__init__.py",
+      "sha256": "c60ad0a52bf6385a5c13cbdbb8d3b42c17618a59c5d89a5faa5e041e27650c85",
+      "git_root": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/common/artiq",
+      "commit": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "misoc",
+      "path": "/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current/misoc/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_root": "/srv/codex-hil-data/artiq-zynqmp/reference/misoc-current",
+      "commit": "8a909c8b638fbec584048d6929d0c577f6be182d",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "litex",
+      "path": "/srv/codex-hil-data/artiq-zynqmp/reference/litex/litex/__init__.py",
+      "sha256": "b32181eac8ac7127950b79bb019fac9e10d224101d3221abfcae737722c1e783",
+      "git_root": "/srv/codex-hil-data/artiq-zynqmp/reference/litex",
+      "commit": "8c01073afb71aa0a0709f02f8e24247589e8f5e4",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ps_ip_sources": {
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/vivado-proj/platform.srcs/sources_1/imports/src/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci": "162892168f538e5dc0f10342ae639e2eac765c3829f23f096dea12284fd048fe"
+  },
+  "files": [
+    {
+      "path": "top.v",
+      "sha256": "ede20cf1089979d4e49f723bc66d1635e0f15054b749ea808aa1073f1b448805"
+    },
+    {
+      "path": "top.xdc",
+      "sha256": "54b6126caa79dc1e305623c2ba74ef021c682ad5cbb16a92d2774280cbc052f2"
+    },
+    {
+      "path": "top.tcl",
+      "sha256": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a"
+    },
+    {
+      "path": "top_route.tcl",
+      "sha256": "885970caf0834ce626e4dc5b4655d1c99a93cfef00309378b0554cee92bf9274"
+    },
+    {
+      "path": "top_bitstream.tcl",
+      "sha256": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a"
+    },
+    {
+      "path": "csr-map.json",
+      "sha256": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049"
+    },
+    {
+      "path": "en_replaces_rom.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_1.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_2.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_3.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_4.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_5.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_6.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_7.init",
+      "sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "latency_compensation.init",
+      "sha256": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead"
+    },
+    {
+      "path": "ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci",
+      "sha256": "a0cc4f0c0c3f36e21e365652a91bd8c1f9b3d0e78fb7fc5ece254c17b79f7019"
+    }
+  ]
+}
