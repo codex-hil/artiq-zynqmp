@@ -417,3 +417,6 @@ Validated Kasli/Genesys checkpoint and recovery archive: [2026-10-19 public rele
 
 New heavy FPGA builds use the [shared Dell Vivado server](docs/REMOTE_VIVADO.md);
 hardware access remains on the Optiplex under the existing board locks.
+
+Use the [combined source build recipe](docs/BUILD_RECIPE.md) for the current
+component workflow, source pins and remaining release automation gaps.

@@ -192,3 +192,7 @@ The normal qualified profile deliberately still selects the older PMU/FSBL.
 Its consistency verifier should reject this new candidate against those old
 roles. Do not weaken that check or replace the profile before hardware validation.
 Original PS/PL build provenance and CPU1 byte reproducibility remain open.
+
+The [combined source build recipe](BUILD_RECIPE.md) now links fresh HDL generation,
+remote Vivado, firmware and qualification, with remaining automation explicitly
+identified. Clean-source HDL/init/CSR regeneration passed without Vivado.

@@ -1,0 +1,26 @@
+{
+  "kind": "genesys-local-source-set-not-rolling-latest",
+  "port_commit": "24e04e4ebf1195d1bf8884326aefdfedee55d50e",
+  "dependencies": {
+    "artiq": {
+      "commit": "1461cf90953ed9972c040b263e5a11c9ebc9e41a",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "migen": {
+      "commit": "44e5627d367c528b3ce5e686b6f305a9dfc56f2a",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "misoc": {
+      "commit": "8a909c8b638fbec584048d6929d0c577f6be182d",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "litex": {
+      "commit": "8c01073afb71aa0a0709f02f8e24247589e8f5e4",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "external_ps_inputs": {
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/genesys-rtio-dma/vivado-proj/platform.srcs/sources_1/imports/src/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci": "162892168f538e5dc0f10342ae639e2eac765c3829f23f096dea12284fd048fe"
+  },
+  "scope": "Fresh HDL source set; PS export and installed toolchains remain explicit inputs. Candidate CPU ABI uses separate documented NAC3/host pins."
+}

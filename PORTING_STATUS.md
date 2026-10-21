@@ -3140,3 +3140,14 @@ lease174.637s thenreleased. NoKasli/Si/card/flash/OTP. Evidence candidate-extend
 hardware-2026-10-21. Coldboot/DDRsoak/remoteDRTIO/clockphase remainoutside thissuite.
 Next consolidate source-to-artifact recipe; no further repeatedHWregression needed
 without a new implementation change or concrete concern.
+
+
+## Fresh source HDL generation — 2026-10-21
+
+build_rtio_debug.sh now supports --generate-only and explicit ARTiq/Migen/MiSoC/
+LiteX source paths, threads1..16. Clean checkout24e04e4 regenerates exact baseline
+HDL/XDC/CSR/init bytes without invoking Vivado;42first-stageCDC regs. Tclonly
+maxThreads2->8 differs. XCI componentvaluesunchanged but metadata changes recorded,
+not accepted as identical upgradebehavior. Source pins/generation hashes captured.
+Combined recipe docs/BUILD_RECIPE.md; remote submission/normalization automation
+and original PS/emptyhost provenance remain open. NoHW access or new FPGA build.
