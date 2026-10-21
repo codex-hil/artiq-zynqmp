@@ -2828,3 +2828,15 @@ clockrestore27.508s. Both04/Genesysleasesreleased,Genesysnotaccessed, no01/03/
 Flash/OTP/SDwrites. Evidence `evidence/kasli04-runtime-hardware-2026-10-21`.
 No externalDRTIO/TSC/DIO/DMAclaim yet. Next external04SFP1toGenesys idle
 link/TSC/reset/DIOqualification with existingtwo-boardrestoration.
+
+
+KASLI04 externalDRTIO/DIO (2026-10-21): physicalPASS KASLI04SFP1→Genesys.
+AUXecho/masterlinkinit/TSCloadACK+4monotonicsnapshotsPASS,2nativecore.reset
+kernels/resetACKPASS,2standardDIOkernels×8pulses remoteJB1→jumperedJB2 PASS
+spacing100000mu,8nsphysicalresolution. FirmwareRX/senderrors0. Directleaf
+destination1 laboratorysatellite only; phase/jitter/deterministiclatencyNOT
+MEASURED,DMAnotplayed. BothboardrestorationPASS (04clock+route+mode10,
+GenesysnormalCoreDMA/debug/Ethernet192.168.2.3),sortedleasesreleased. No01/03/
+Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-external-idle-2026-10-21`. Next exact-proof nativeDDMA
+playback and thenstability/recovery; labactivefault remainsseparatelygated.
