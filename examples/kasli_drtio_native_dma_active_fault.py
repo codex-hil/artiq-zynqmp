@@ -45,7 +45,9 @@ class KasliNativeDDMAActiveFault(EnvExperiment):
             self.ttl_out.off()
         # Upload is complete before the guarded parent is asked to arm.
         self.arm()
-        start=(self.core.get_rtio_counter_mu()+int64(1500000)) & int64(-8)
+        # Measured admission transit consumed1.38ms on KASLI04. Keep the
+        # backend1ms minimum and lab2ms hold; actual fault evidence still required.
+        start=(self.core.get_rtio_counter_mu()+int64(3000000)) & int64(-8)
         at_mu(start)
         caught=False
         try:

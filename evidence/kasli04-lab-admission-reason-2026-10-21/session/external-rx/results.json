@@ -1,0 +1,77 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+  "remote_drtio": "direct-leaf physical TTL PASS; remaining satellite services incomplete",
+  "firmware_sha256": "dc2cd9eb6d712aa66af40eea3347c26672a6250176c9db54cedd78f3683766f8",
+  "bit_sha256": "81551ca13468af5f462c1fe4a7fe6f86981c1926f5f64ee536c30baa310dcdc6",
+  "reset_handshake": "PASS",
+  "reset_completed_load_counts": [
+    "1",
+    "1"
+  ],
+  "reset_ack_replies": 2,
+  "master_reset_errors_before": 0,
+  "master_reset_errors_after": 0,
+  "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+  "dio_loopback": "PASS",
+  "dio_runs": 2,
+  "pulses_per_run": 8,
+  "rising_edge_spacing_mu": 100000,
+  "remote_rtio": "physical TTL output/input PASS",
+  "dio_scope": "Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED",
+  "lab_active_fault": "FAIL",
+  "lab_failure_samples": [
+    {
+      "ready": 1,
+      "epoch": 1,
+      "active": 0,
+      "pending": 0,
+      "armed": 1,
+      "holding": 0,
+      "triggers": 0,
+      "rejected": 0,
+      "arm_rejected": 0,
+      "faulted": 0,
+      "ar": 0,
+      "rlast": 0,
+      "edges": 32,
+      "accepted": 0,
+      "completed": 0,
+      "raw": 0
+    },
+    {
+      "ready": 1,
+      "epoch": 1,
+      "active": 0,
+      "pending": 0,
+      "armed": 1,
+      "holding": 0,
+      "triggers": 0,
+      "rejected": 0,
+      "arm_rejected": 0,
+      "faulted": 0,
+      "ar": 0,
+      "rlast": 0,
+      "edges": 32,
+      "accepted": 0,
+      "completed": 0,
+      "raw": 0
+    }
+  ],
+  "lab_failure_samples_stable": true,
+  "lab_failure_scope": "read-only post-failure state; not admission-time decision or active-fault PASS",
+  "startup_failure_status": {
+    "registers": {
+      "monitor_magic": 1146246192,
+      "monitor_reset": 0,
+      "monitor_tx_enable": 1,
+      "monitor_loopback": 0,
+      "monitor_status": 0,
+      "aux_in_reset": 0,
+      "aux_rx_up": 1
+    },
+    "scope": "post-failure sequential read-only sample; not exact failing poll or link qualification"
+  },
+  "restored_ip": "192.168.2.3"
+}

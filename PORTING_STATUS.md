@@ -2994,3 +2994,14 @@ BothrestoresPASS (04clock/route/mode10;GenesyslocalCoreDMA/debug/Ethernet
 192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-lab-admission-idle-2026-10-21`. Nextoneactiveattempt
 withthisexactproof torecordadmissionreason;no loweredchecks/reuse.
+
+
+KASLI04 exactactiveadmissionreason (2026-10-21): intendedfaulttestFAIL,
+ready1/timeOK/step2firsttimecheck;now47553449704,requested47553567008,
+remaining117304mu < unchanged1000000minimum. Initial1.5ms leadlost1.382696ms
+beforeadmission. Postfailure2samplesarmed1/active0/accepted0/trigger0/AR0/
+RLAST0/edges32stable, noactiveunderflowproved. BothrestoresPASS,leasesreleased,
+no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-lab-admission-reason-2026-10-21`. Experimentinitiallead now
+3ms;backendminimum1ms/hardwarehold2ms unchanged. Nextboundedtrialmustprove
+admission/activehold/drain/nativefault/TTLsilence; no outcomeassumed.
