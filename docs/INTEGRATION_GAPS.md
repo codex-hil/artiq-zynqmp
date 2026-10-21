@@ -41,3 +41,8 @@ accessed. Flash, OTP and SD writes are outside these test profiles.
 
 A [clean-checkout CPU1 build checkpoint](CLEAN_BUILD.md) now records successful
 compilation and the remaining byte-reproducibility failure.
+
+A fresh candidate assembled from rebuilt PMU/FSBL, the Dell PL rebuild and clean
+CPU0/CPU1 builds passed one bounded JTAG physical session; baseline restoration
+also passed. See [candidate qualification](CANDIDATE_JTAG.md). Its cold SD boot
+remains untested; this result does not close the broader DDR/DRTIO/clock gaps.

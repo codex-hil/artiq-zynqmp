@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "restoration": "PASS",
+  "lease_released": true,
+  "elapsed_seconds": 124.298,
+  "candidate_ip": "192.168.2.3",
+  "restored_ip": "192.168.2.3",
+  "cold_boot": "NOT_RUN",
+  "scope": "One bounded volatile JTAG candidate and restoration session; local RTIO/CoreDMA/analyzer/MonInj and Ethernet",
+  "wrapper_sha256": "b634f3079904fac4e2edaafe80bdfdb05482909c612e5baad9fa6d65bcdd246d",
+  "inputs_manifest_sha256": "19a9c2b336fa526833abd279242b98904305151cfd03e5a40f029b81a48fe5dd",
+  "unit_tests": 6,
+  "forbidden_writes": "No Kasli/Si/SD/flash/OTP access"
+}

@@ -3115,3 +3115,15 @@ Bitstream SHA1dc6364737e322022819a22c6561257fe8d10e9a24f436fda70571fcbd96e243.
 Candidate and separate restoration files staged with hashes; bounded JTAG plan
 in docs/CANDIDATE_JTAG.md, hardware execution NOT_RUN. No board access/baseline
 change. Evidence dell-vivado-2026-10-21/pinned-ip-rebuild and candidate-jtag-plan.
+
+
+## Fresh candidate JTAG hardware PASS — 2026-10-21
+
+New rebuilt PMU/FSBL + strict Dell PL + clean-built CPU0/CPU1 loaded physically.
+DHCP192.168.2.3, CoreDMA physical TTL loopback/analyzer/MonInj (nine debug/DMA
+scenarios including ring wrap) and Ethernet20/20ICMP+1,129,210byteTCPecho PASS.
+Old pinned baseline restored and same physical/debug/network checks PASS.
+Genesys lease held124.298s across entire session; released after restoration.
+Six wrapper lifecycle/lease/timeout tests and offline preflight PASS. NoKasli/
+Si/SD/flash/OTP access; normal profile unchanged. Cold SD boot still NOT_RUN.
+Evidence candidate-runtime-hardware-2026-10-21; docs/CANDIDATE_JTAG.md reproducer.
