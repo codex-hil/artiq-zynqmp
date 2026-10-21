@@ -5,7 +5,7 @@ parent owns exclusive UART and all leases, and always restores both boards.
 """
 import os,re,runpy,time
 from pathlib import Path
-from lab_idle_probe import probe as idle_probe,post_fault
+from lab_idle_probe import probe as idle_probe,post_fault,failure_snapshot
 from lab_fault_process import run as run_child
 from active_dma_fault_evidence import validate_logged_metrics
 ROOT=Path(__file__).resolve().parents[2]
@@ -22,11 +22,21 @@ def probe(session,master_host,uart,raw):
     db['core_dma']={'type':'local','module':'artiq.coredevice.dma','class':'CoreDMA'}
     path=out/'lab-active-device-db.py';path.write_text('device_db = '+repr(db)+'\n')
     env=os.environ.copy();env['PYTHONPATH']=c['dma_cursor_overlay']
-    log=run_child([c['artiq_python'],'-m','artiq.frontend.artiq_run','--device-db='+str(path),
-        '--dataset-db='+str(out/'lab-active-datasets.mdb'),
-        str(ROOT/'examples/kasli_drtio_native_dma_active_fault.py')],
-        directory=out/'lab-arm-handshake',log=out/'lab-active-kernel.log',uart=uart,raw=raw,
-        lease_fd=session.lease_fd,timeout=60,env=env,cwd=ROOT)
+    try:
+        log=run_child([c['artiq_python'],'-m','artiq.frontend.artiq_run','--device-db='+str(path),
+            '--dataset-db='+str(out/'lab-active-datasets.mdb'),
+            str(ROOT/'examples/kasli_drtio_native_dma_active_fault.py')],
+            directory=out/'lab-arm-handshake',log=out/'lab-active-kernel.log',uart=uart,raw=raw,
+            lease_fd=session.lease_fd,timeout=60,env=env,cwd=ROOT)
+    except Exception:
+        # Same exclusive UART/leases; preserve original child failure and do not
+        # retry playback, arm, reset, clear or erase before outer restoration.
+        session.result['lab_active_fault']='FAIL'
+        try:
+            session.result.update(failure_snapshot(uart,raw))
+        except Exception as sample_error:
+            session.result['lab_failure_sample_error']=str(sample_error)
+        raise
     deadline=time.monotonic()+.1
     while time.monotonic()<deadline:raw.extend(uart.read(uart.in_waiting or 1))
     post=post_fault(uart,raw,before)

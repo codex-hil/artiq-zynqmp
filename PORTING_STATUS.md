@@ -2964,3 +2964,13 @@ Ethernet192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites.
 Evidence `evidence/kasli04-lab-active-rejected-2026-10-21`. Nextofflineexact
 admission-reason/read-onlypostrejectioncountertelemetry;no loweredchecks
 oridenticalblindactive retry.
+
+
+Activefaultfailurecountercapture (2026-10-21,offline): onchildfailure existing
+leasedUARTnowreads2boundedreadonlyIsamples beforeouterrestoration, records
+allDMA/arm/AXI/TTL/statefields andstabilityflag withoutrequiringidleorclaiming
+PASS. Originalchildexceptionpreserved ifsamplingfails; noreset/clear/erase/
+retry/play/armwrites.3session+3idleprobetestsPASS,compile/diffPASS. Normal
+firmware/PL/baselinesunchanged,noHWaccess. Exactadmissioncause stillunknown;
+nextisolatedlab-onlycallback telemetry forready/time/lastadmissionstep,
+keepingnormalbackendimplementationandchecksunchanged. No blindHWretry.

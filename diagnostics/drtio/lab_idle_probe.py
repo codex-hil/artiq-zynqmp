@@ -57,3 +57,13 @@ def post_fault(uart,raw,before,timeout=2,settle=.05):
     if any(row[k]!=v for k,v in expected.items()) or not row['ar'] or row['ar']!=row['rlast']:
         raise ValueError('Fault latch/epoch/TTL silence/AXI drain qualification failed')
     return dict(lab_fault_poststate='PASS',lab_fault_post_samples=rows)
+
+
+def failure_snapshot(uart,raw,timeout=2,settle=.05):
+    """Read-only after rejected/failed child; no ready/idle/fault waiver."""
+    text=read_pair(uart,raw,timeout,settle)
+    rows=[dict(zip(FIELDS,map(int,m.groups()))) for m in re.finditer(PATTERN,text,re.M)]
+    if len(rows)!=2 or any(v>=2**32 for row in rows for v in row.values()):
+        raise ValueError('Incomplete/invalid failure samples')
+    return dict(lab_failure_samples=rows,lab_failure_samples_stable=rows[0]==rows[1],
+                lab_failure_scope='read-only post-failure state; not admission-time decision or active-fault PASS')

@@ -30,6 +30,21 @@ class SessionTests(unittest.TestCase):
             self.assertEqual(session.result['lab_active_fault'],'PASS')
             self.assertNotIn('restoration',session.result)
             self.assertEqual(session.result['lab_active_evidence']['restoration'],'PARENT_MUST_VERIFY')
+    def test_child_failure_samples_read_only_and_preserves_original(self):
+        with tempfile.TemporaryDirectory() as name:
+            out=Path(name);(out/'dio-device-db.py').write_text('device_db = {}\n')
+            session=SimpleNamespace(lab_fault_mode='active',lease_fd=1,output=out,result={},
+                config=dict(artiq_python='python3',dma_cursor_overlay='/synthetic-overlay'))
+            for sample_error in (False,True):
+                with patch('lab_fault_session.idle_probe',return_value={'lab_idle_samples':[{'epoch':7,'edges':6}]}), \
+                     patch('lab_fault_session.run_child',side_effect=RuntimeError('original admission failure')), \
+                     patch('lab_fault_session.failure_snapshot',side_effect=ValueError('sample unavailable') if sample_error else None,return_value={'lab_failure_samples':[{'armed':1,'accepted':0}]}) as read:
+                    with self.assertRaisesRegex(RuntimeError,'original admission failure'):
+                        probe(session,'host',UART(),bytearray())
+                    read.assert_called_once()
+                self.assertEqual(session.result['lab_active_fault'],'FAIL')
+                self.assertNotIn('restoration',session.result)
+
     def test_requires_active_parent_lease_context(self):
         for session in [SimpleNamespace(config={},output=Path('.'),lab_fault_mode='idle'),
                         SimpleNamespace(config={},output=Path('.'),lab_fault_mode='active')]:
