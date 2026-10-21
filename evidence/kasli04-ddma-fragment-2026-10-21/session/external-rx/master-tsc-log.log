@@ -1,0 +1,55 @@
+[     0.000006s]  INFO(runtime): ARTIQ runtime starting...
+[     0.003830s]  INFO(runtime): software ident 10.0+unknown.beta;genesys_drtio_master_v11
+[     0.011741s]  INFO(runtime): gateware ident 10.0+unknown.beta;genesys_drtio_master_v11
+[     0.019632s]  INFO(runtime): log level set to INFO by default
+[     0.025363s]  INFO(runtime): UART log level set to INFO by default
+[     0.031734s]  WARN(runtime::rtio_clocking): rtio_clock setting not supported. Falling back to default
+[     0.040733s]  INFO(runtime::rtio_clocking): clocking has already been set up
+[     0.047781s]  INFO(runtime): network addresses: MAC=02-4b-04-70-48-54 IPv4=use_dhcp IPv4-default-route=no configured address IPv6-LL=fe80::4b:4ff:fe70:4854/10 IPv6=no configured address IPv6-default-route=no configured address 
+[     0.067911s]  INFO(runtime): will try to acquire an IPv4 address with DHCP
+[     0.075215s]  INFO(board_artiq::drtio_routing): could not read routing table from configuration, using default
+[     0.084799s]  INFO(board_artiq::drtio_routing): routing table: RoutingTable { 0: 0; 1: 1 0; 2: 2 0; }
+[     0.095194s]  WARN(runtime::rtio_mgt): error reading device map (flash memory is not present), device names will not be available in RTIO error messages
+[     0.107595s]  INFO(runtime::rtio_mgt): SED spreading disabled by default
+[     0.114554s]  INFO(runtime::rtio_mgt::drtio): [DEST#0] destination is up
+[     0.121957s]  INFO(runtime::mgmt): management interface active
+[     0.132662s]  INFO(runtime::session): accepting network sessions
+[     0.137355s]  INFO(runtime::session): running startup kernel
+[     0.142994s]  INFO(runtime::session): no connection, starting idle kernel
+[     0.159856s]  INFO(runtime::dhcp): acquired DHCP config IP address: None -> 192.168.2.18/24 default route: None -> 192.168.2.1
+[     1.834467s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:44958
+[     2.291455s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:39790
+[     2.743818s]  INFO(runtime::session): new connection from fe80::fdfa:f6e9:b78b:1da4:35806
+[     2.803487s]  INFO(runtime::kern_hwreq): resetting RTIO
+[     2.812383s]  INFO(runtime::session): no connection, starting idle kernel
+[     3.246551s]  INFO(runtime::session): new connection from fe80::fdfa:f6e9:b78b:1da4:35808
+[     3.306036s]  INFO(runtime::kern_hwreq): resetting RTIO
+[     3.314393s]  INFO(runtime::session): no connection, starting idle kernel
+[     7.736023s]  INFO(runtime::rtio_mgt::drtio): [LINK#0] link RX became up, pinging
+[     7.944011s]  INFO(runtime::rtio_mgt::drtio): [LINK#0] remote replied after 1 packets
+[     8.885069s]  INFO(runtime::rtio_mgt::drtio): [LINK#0] link initialization completed
+[     8.892605s]  INFO(runtime::rtio_mgt::drtio): [DEST#1] destination is up
+[     8.898175s]  INFO(runtime::rtio_mgt::drtio): [DEST#1] buffer space is 128
+[    10.644420s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:39800
+[    32.547476s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:42608
+[    32.996750s]  INFO(runtime::session): new connection from fe80::fdfa:f6e9:b78b:1da4:34210
+[    33.057030s]  INFO(runtime::kern_hwreq): resetting RTIO
+[    33.066600s]  INFO(runtime::session): no connection, starting idle kernel
+[    34.650631s]  INFO(runtime::session): new connection from fe80::fdfa:f6e9:b78b:1da4:34226
+[    34.710669s]  INFO(runtime::kern_hwreq): resetting RTIO
+[    34.720681s]  INFO(runtime::session): no connection, starting idle kernel
+[    36.048450s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:42612
+[    36.242460s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:42624
+[    36.723032s]  INFO(runtime::session): new connection from fe80::fdfa:f6e9:b78b:1da4:34240
+[    36.785243s]  INFO(runtime::kern_hwreq): resetting RTIO
+[    36.807674s]  INFO(runtime::session): no connection, starting idle kernel
+[    38.366189s]  INFO(runtime::session): new connection from fe80::fdfa:f6e9:b78b:1da4:34248
+[    38.427457s]  INFO(runtime::kern_hwreq): resetting RTIO
+[    38.449582s]  INFO(runtime::session): no connection, starting idle kernel
+[    39.678465s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:42632
+[    39.875500s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:42646
+[    40.370549s]  INFO(runtime::session): new connection from fe80::fdfa:f6e9:b78b:1da4:34256
+[    40.432680s]  INFO(runtime::kern_hwreq): resetting RTIO
+[    40.558413s]  INFO(runtime::session): no connection, starting idle kernel
+[    41.889499s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:55182
+[    43.093473s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:55194

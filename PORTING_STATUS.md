@@ -2861,3 +2861,12 @@ GenesysnormalCoreDMA/debug/Ethernet192.168.2.3),leasesreleased,no01/03/Flash/
 OTP/SD/GenesysSiwrites. Evidence `evidence/kasli04-ddma-lifecycle-2026-10-21`.
 Nextmultifragmentupload thenstability/linkrecovery; no sustainedthroughput/
 phaseproof.
+
+
+KASLI04 fragmentednativeDMA (2026-10-21): physicalPASS, twoAUXuploadfragments
+1010/10bytes/sametraceID thenplay/status/erasePASS.58physicalTTLedges width
+8000mu period16000mu firstdelta1000120mu, no newservice/masterfaults.
+TSC/reset/DIOrepeatPASS. BothrestoresPASS (04clock/route/mode10;Genesysnormal
+CoreDMA/debug/Ethernet192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSi
+writes. Evidence `evidence/kasli04-ddma-fragment-2026-10-21`. Scopeone
+twofragmenttrace, notmaxcapacity/throughput. Nextstability/forcedlinkrecovery.
