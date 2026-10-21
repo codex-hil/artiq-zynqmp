@@ -2921,3 +2921,13 @@ BothrestoresPASS (04clock/route/mode10;GenesyslocalCoreDMA/debug/Ethernet
 192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-ddma-expired-2026-10-21`. Nextsamekerneluploadrejection/
 cleanup/recovery;activefaultrequiresseparateidle-counterproof.
+
+
+KASLI04 rejecteduploadcatch (2026-10-21): physicalPASS,malformedfragmented
+uploadNACK beforeplayback,caughtDMAError,cleanupACK then same-namevalid170B
+record/play in samekernelwithoutreset/restart.8physicaledgesPASS;exactAUX
+lengths/IDs/sequence/cleanupvalidated,no newfaults. BothrestoresPASS,04clock/
+route/mode10,GenesyslocalCoreDMA/debug/Ethernet192.168.2.3;leasesreleased,
+no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-ddma-catch-2026-10-21`. Nexttimelinecursor success/exception
+restoration usingexistingisolatedhostoverlay;activefaultlabstillgated.
