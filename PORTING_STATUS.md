@@ -2793,3 +2793,14 @@ otherboard/Flashaccess. Evidence `evidence/kasli04-network-recheck-2026-10-21`.
 Added next-trial TCPstage/errorneighbor capture before restoration;15offline
 tests+compilePASS. Next bounded instrumented network-only trial; no hardware
 request needed yet, no identical blind reload.
+
+
+KASLI04 instrumented TCP trials (2026-10-21): network-only trialPASS, three
+TCPnegative/recovery connections and1756088B RAMdownload acknowledged;
+bootcommandNOTsent/runtimeNOT_RUN. Subsequentruntime-intendedtrialFAIL at
+firstTCPconnect (`negative-0:connect`), beforecommands/payload; ownIPv6neighbor
+DELAYaterror. Bothmode10restorationsPASS,leasesreleased,clockprofileunchanged,
+noGenesys/otherKasli/Flashaccess. Evidence
+`evidence/kasli04-netboot-stage-2026-10-21`. IntermittentpostprogrammingTCP
+readiness established, causeunknown. Next boundedtime-to-first-connect probe;
+switch/linkstartup delay onlyhypothesis, no switchconfigurationchanges.
