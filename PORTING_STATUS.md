@@ -3174,3 +3174,13 @@ Remote generate-only PS normalization completed but retains six disabledSD0tap
 values differing from knownpostbuildXCI. Noautoacceptance; PS-IP-synthesis stage
 added and freshretry queued under sharedDelllock. Full top-level sourcebuild
 not yet launched. No HW access; normalbaseline unchanged.
+
+
+## Serialized SD CPU payload check — 2026-10-21
+
+BOOT.BIN sameSHAda5874c3...; five PHT checksums/bounds/chain PASS. Serialized
+CPU1bridge120B@0x20000000, worker86024B@0x20200000, CPU0application416264B@0x0
+match exact file-backed ELF bytes. Three corruption/chain/CPU controls PASS.
+BSS initialization, FSBL/PMU/PL equality and coldboot remain outside thischeck.
+makepackagecandidate now includes CPU payload verification. PS-IP-synth job still
+waitssharedDelllock; no bypass/noHWaccess. Evidence qualified-sd-package-2026-10-21.

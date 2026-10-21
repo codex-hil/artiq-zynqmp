@@ -1,0 +1,9 @@
+{
+  "source": "/srv/codex-hil-data/artiq-zynqmp/reference/amd-bootgen",
+  "commit": "d93c3fa6e6ef8aa1d4fb4532c58ed4a5efa8804e",
+  "sha256": {
+    "zynqmp/include/bootheader-zynqmp.h": "3dbc5bb234dd4466dce8ab99480875f0de8391b1ea9aadf4e25765782349ca4f",
+    "zynqmp/include/partitionheadertable-zynqmp.h": "aac4f695beeb0dbca6673a8bb964138ded131083d2fd1cd6aee4c784d0bdf95f"
+  },
+  "scope": "Primary layout references for the plain-image decoder, not a claim that this checkout built the installed bootgen binary"
+}

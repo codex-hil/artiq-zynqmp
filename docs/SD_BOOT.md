@@ -108,3 +108,25 @@ Evidence: `evidence/qualified-sd-package-2026-10-21`. BOOT.BIN SHA-256:
 `da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029`.
 This is a package of JTAG-tested inputs, not a new cold-boot PASS or permission
 to overwrite any existing card. Board runtime remains the restored old baseline.
+
+
+The package target also verifies the serialized CPU payloads after bootgen.
+Standalone verification:
+
+```sh
+python3 scripts/verify_boot_payloads.py \
+  --package /path/to/qualified-local-sd --output /path/to/fresh-payload-report.json
+```
+
+On the current package, five linked PHT headers have valid checksums/bounds.
+File-backed segments match exactly: CPU1 bridge120bytes at0x20000000,
+worker86,024bytes at0x20200000, CPU0 application416,264bytes at0x0. CPU0's
+separate BSS-only segment is not a stored payload and is not validated by this
+comparison. Decoder layout references and hashes are recorded in
+`evidence/qualified-sd-package-2026-10-21/layout-source.json`; the reference is
+AMD's archived bootgen source, not guessed from report text.
+
+The decoder supports this plain, unauthenticated image format and rejects
+unsupported encryption/checksum layouts, corrupt chains and mismatched CPU data.
+It does not establish FSBL/PMU/PL payload equality or startup behavior. Evidence:
+`serialized-payloads.json`. Cold SD boot remains NOT_RUN.

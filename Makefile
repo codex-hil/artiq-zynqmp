@@ -382,6 +382,7 @@ package-local-candidate:
 	$(if $(SD_BRIDGE),,$(error Specify SD_BRIDGE= matching CPU1 boot ELF))
 	$(if $(SD_BRIDGE_SHA256),,$(error Specify SD_BRIDGE_SHA256= exact selected hash))
 	$(PYTHON) scripts/package_local_candidate.py --manifest="$(CANDIDATE_MANIFEST)" --proof="$(CANDIDATE_PROOF)" --sd-bridge="$(SD_BRIDGE)" --sd-bridge-sha256="$(SD_BRIDGE_SHA256)" --output="$(abspath $(O))/qualified-local-sd"
+	$(PYTHON) scripts/verify_boot_payloads.py --package="$(abspath $(O))/qualified-local-sd" --output="$(abspath $(O))/qualified-local-sd/serialized-payloads.json"
 
 test-candidate-package:
 	$(PYTHON) -m unittest discover -s tests -p 'test_candidate_package.py' -v
