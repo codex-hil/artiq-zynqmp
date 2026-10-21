@@ -1,0 +1,1602 @@
+INFO: [Hsi 55-2053] elapsed time for repository (/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/embeddedsw) loading 0 seconds
+hsi::open_hw_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 614.957 ; gain = 154.789 ; free physical = 7324 ; free virtual = 16654
+[INFO]: Initializing repositories
+[INFO]: Successfully set the EmbeddedSW path, refer .repo.yaml for more details.
+[INFO]: Validating inputs
+[INFO]: Starting domain creation
+[INFO]: Generating Domain-specific DTS for psu_cortexa53_0
+[INFO]: Generating required metadata from domain specific DT
+CMake Warning at libsrc/xilsecure/src/CMakeLists.txt:31 (message):
+  XilSecure library requires xilmailbox library in client mode.
+
+
+[INFO]: Successfully created Domain at /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp
+[INFO]: Validating inputs
+[INFO]: Generating Linker script for zynqmp_fsbl
+[INFO]: Successfully Created Application sources at /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src
+[INFO]: Starting Application build process
+CMake Warning at libsrc/xilsecure/src/CMakeLists.txt:31 (message):
+  XilSecure library requires xilmailbox library in client mode.
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/build_configs/gen_bsp
+[INFO]: Building BSP
+[1/191] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_g.c.obj
+[2/191] ========== BSP Build Information ==========
+
+Compiler PATH: /srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc
+
+Compiler FLAGS:   -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-
+firmware-2026-10-21/bsp/Xilinx.spec -Os -flto -ffat-lto-objects -DARMA53_64 -I/srv/codex-hil-data/ar
+tiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include -Os -flto -ffat-lto-objects -DA
+RMA53_64  -O2 -g -Wall -Wextra -fno-tree-loop-distribute-patterns -DNDEBUG
+
+===========================================
+** The above flags are BSP level flags. Increase verbosity to see component specific flags **
+===========================================
+[3/191] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_sinit.c.obj
+[4/191] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_selftest.c.obj
+[5/191] Building C object libsrc/coresightps_dcc/src/CMakeFiles/coresightps_dcc.dir/xcoresightpsdcc.c.obj
+[6/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_g.c.obj
+[7/191] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu_g.c.obj
+[8/191] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu_sinit.c.obj
+[9/191] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_g.c.obj
+[10/191] Linking C static library libsrc/coresightps_dcc/src/libcoresightps_dcc.a
+[11/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_sinit.c.obj
+[12/191] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_sinit.c.obj
+[13/191] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu.c.obj
+[14/191] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_selftest.c.obj
+[15/191] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_g.c.obj
+[16/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_sinit.c.obj
+[17/191] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_intr.c.obj
+[18/191] Linking C static library libsrc/ddrcpsu/src/libddrcpsu.a
+[19/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_fixedfactor.c.obj
+[20/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_hw.c.obj
+[21/191] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_selftest.c.obj
+[22/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_pcs.c.obj
+[23/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_g.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/emacps/src/xemacps_g.c:16:9: warning: missing initializer for field 'S1GDiv0' of 'XEmacPs_Config' [-Wmissing-field-initializers]
+   16 |         },
+      |         ^
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/emacps/src/xemacps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/emacps/src/xemacps.h:540:13: note: 'S1GDiv0' declared here
+  540 |         u16 S1GDiv0;    /**< 1Gbps Clock Divider 0 */
+      |             ^~~~~~~
+[24/191] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_sinit.c.obj
+[25/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_gate.c.obj
+[26/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_g.c.obj
+[27/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_pll.c.obj
+[28/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps.c.obj
+[29/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_intr.c.obj
+[30/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_mux.c.obj
+[31/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_divider.c.obj
+[32/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_bdring.c.obj
+[33/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_selftest.c.obj
+[34/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_intr.c.obj
+[35/191] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_g.c.obj
+[36/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_hw.c.obj
+[37/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_sinit.c.obj
+[38/191] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_control.c.obj
+[39/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps.c.obj
+[40/191] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma.c.obj
+[41/191] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_sinit.c.obj
+[42/191] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_buf.c.obj
+[43/191] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_g.c.obj
+[44/191] Linking C static library libsrc/csudma/src/libcsudma.a
+[45/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_slave.c.obj
+[46/191] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu.c.obj
+[47/191] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_sinit.c.obj
+[48/191] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_intr.c.obj
+[49/191] Linking C static library libsrc/emacps/src/libemacps.a
+[50/191] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps_g.c.obj
+[51/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_master.c.obj
+[52/191] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_helper.c.obj
+[53/191] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_hw.c.obj
+[54/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_xfer.c.obj
+[55/191] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps.c.obj
+[56/191] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps.c.obj
+[57/191] Linking C static library libsrc/ipipsu/src/libipipsu.a
+[58/191] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_g.c.obj
+[59/191] Linking C static library libsrc/clockps/src/libclockps.a
+[60/191] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_xfer.c.obj
+[61/191] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_sinit.c.obj
+[62/191] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_options.c.obj
+[63/191] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps_sinit.c.obj
+[64/191] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_g.c.obj
+[65/191] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops.c.obj
+[66/191] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_intr.c.obj
+[67/191] Linking C static library libsrc/iicps/src/libiicps.a
+[68/191] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_selftest.c.obj
+[69/191] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_sinit.c.obj
+[70/191] Linking C static library libsrc/resetps/src/libresetps.a
+[71/191] Linking C static library libsrc/gpiops/src/libgpiops.a
+[72/191] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_options.c.obj
+[73/191] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_sinit.c.obj
+[74/191] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_g.c.obj
+[75/191] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_g.c.obj
+[76/191] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_selftest.c.obj
+[77/191] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_sinit.c.obj
+[78/191] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_control.c.obj
+[79/191] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_g.c.obj
+[80/191] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_hw.c.obj
+[81/191] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_selftest.c.obj
+[82/191] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_g.c.obj
+[83/191] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_options.c.obj
+[84/191] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_selftest.c.obj
+[85/191] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_selftest.c.obj
+[86/191] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_intr.c.obj
+[87/191] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_intr.c.obj
+[88/191] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu.c.obj
+[89/191] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu.c.obj
+[90/191] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps.c.obj
+[91/191] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_intr.c.obj
+[92/191] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_sinit.c.obj
+[93/191] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps.c.obj
+[94/191] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_sinit.c.obj
+[95/191] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_selftest.c.obj
+[96/191] Linking C static library libsrc/rtcpsu/src/librtcpsu.a
+[97/191] Linking C static library libsrc/ttcps/src/libttcps.a
+[98/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testcache.c.obj
+[99/191] Linking C static library libsrc/qspipsu/src/libqspipsu.a
+[100/191] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_hw.c.obj
+[101/191] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_intr.c.obj
+[102/191] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_sinit.c.obj
+[103/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/print.c.obj
+[104/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_assert.c.obj
+[105/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testio.c.obj
+[106/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_mem.c.obj
+[107/191] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic.c.obj
+[108/191] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_g.c.obj
+[109/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xpm_init.c.obj
+[110/191] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_card.c.obj
+[111/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/inbyte.c.obj
+[112/191] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_options.c.obj
+[113/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/outbyte.c.obj
+[114/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/xarmv8_g.c.obj
+[115/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/read.c.obj
+[116/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/fcntl.c.obj
+[117/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/_exit.c.obj
+[118/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/_sbrk.c.obj
+[119/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/sbrk.c.obj
+[120/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/unlink.c.obj
+[121/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/open.c.obj
+[122/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testmem.c.obj
+[123/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/cpputest_time.c.obj
+[124/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/isatty.c.obj
+[125/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/fstat.c.obj
+[126/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/_open.c.obj
+[127/191] Building C object libsrc/scugic/src/CMakeFiles/scugic.dir/xscugic_hw.c.obj
+[128/191] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_options.c.obj
+[129/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/kill.c.obj
+[130/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/abort.c.obj
+[131/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/getpid.c.obj
+[132/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/lseek.c.obj
+[133/191] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps.c.obj
+[134/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/write.c.obj
+[135/191] Linking C static library libsrc/scugic/src/libscugic.a
+[136/191] Linking C static library libsrc/uartps/src/libuartps.a
+[137/191] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/xil-crt0.S.obj
+[138/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/time.c.obj
+[139/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/errno.c.obj
+[140/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/close.c.obj
+[141/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/vectors.c.obj
+[142/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/putnum.c.obj
+[143/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/initialise_monitor_handles.c.obj
+[144/191] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/boot.S.obj
+[145/191] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/gcc/asm_vectors.S.obj
+[146/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/xil_smc.c.obj
+[147/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_util.c.obj
+[148/191] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/platform/ZynqMP/gcc/translation_table.S.obj
+[149/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/xil_mmu.c.obj
+[150/191] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon.c.obj
+[151/191] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_host.c.obj
+[152/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/xpm_counter.c.obj
+[153/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xplatform_info.c.obj
+[154/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/xil_exception.c.obj
+[155/191] Building C object libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffsystem.c.obj
+[156/191] Building C object libsrc/xilffs/src/CMakeFiles/xilffs.dir/ffunicode.c.obj
+[157/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/getentropy.c.obj
+[158/191] Linking C static library libsrc/axipmon/src/libaxipmon.a
+[159/191] Building C object libsrc/xiltimer/src/CMakeFiles/xiltimer.dir/xiltimer.c.obj
+[160/191] Building C object libsrc/xilffs/src/CMakeFiles/xilffs.dir/diskio.c.obj
+[161/191] Linking C static library libsrc/sdps/src/libsdps.a
+[162/191] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma.c.obj
+[163/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_cryptochk.c.obj
+[164/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/gcc/gettimeofday.c.obj
+[165/191] Building C object libsrc/xilpm/src/CMakeFiles/xilpm.dir/zynqmp/client/common/pm_cfg_obj.c.obj
+[166/191] Building C object libsrc/xilpm/src/CMakeFiles/xilpm.dir/zynqmp/client/common/pm_callbacks.c.obj
+[167/191] Building C object libsrc/xilpm/src/CMakeFiles/xilpm.dir/zynqmp/client/apu/pm_client.c.obj
+[168/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_utils.c.obj[INFO]: Copying headers and built archives
+[INFO]: Successfully built BSP. Generated libxilsecure.a, libxilffs.a, libxilstandalone.a, libxil.a, libxiltimer.a, libxilpm.a
+[INFO]: Building Application
+
+[169/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_sss.c.obj
+[170/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_printf.c.obj
+[171/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/common/xil_spinlock.c.obj
+[172/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/arm/ARMv8/64bit/xil_cache.c.obj
+[173/191] Linking C static library libsrc/zdma/src/libzdma.a
+[174/191] Building C object libsrc/xiltimer/src/CMakeFiles/xiltimer.dir/core/default_timer/globaltimer_sleep.c.obj
+[175/191] Linking C static library libsrc/xiltimer/src/libxiltimer.a
+[176/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_aes.c.obj
+[177/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_rsa.c.obj
+[178/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_sha.c.obj
+[179/191] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_sutil.c.obj
+[180/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_rsa_core.c.obj
+[181/191] Building C object libsrc/xilpm/src/CMakeFiles/xilpm.dir/zynqmp/client/common/pm_clock.c.obj
+[182/191] Linking C static library libsrc/standalone/src/libxilstandalone.a
+[183/191] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure.c.obj
+[184/191] Linking C static library libsrc/xilsecure/src/libxilsecure.a
+[185/191] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/sysmonpsu/src/xsysmonpsu.c:66:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/build_configs/gen_bsp/include/xbasic_types.h:102:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+  102 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/build_configs/gen_bsp/include/xbasic_types.h:103:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+  103 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+[186/191] Linking C static library libsrc/sysmonpsu/src/libsysmonpsu.a
+[187/191] Archiving C static library libsrc/build_configs/gen_bsp/libxil.a
+[188/191] Building C object libsrc/xilpm/src/CMakeFiles/xilpm.dir/zynqmp/client/common/pm_api_sys.c.obj
+[189/191] Linking C static library libsrc/xilpm/src/libxilpm.a
+[190/191] Building C object libsrc/xilffs/src/CMakeFiles/xilffs.dir/ff.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/xilffs/src/ff.c: In function 'get_ldnumber':
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/xilffs/src/ff.c:4000:13: warning: unused variable 'vol' [-Wunused-variable]
+ 4000 |         int vol = -1;
+      |             ^~~
+[191/191] Linking C static library libsrc/xilffs/src/libxilffs.a
+[1/27] ==========Application Build Information ==========
+
+Compiler Flags:  -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-f
+irmware-2026-10-21/bsp/Xilinx.spec -Os -flto -ffat-lto-objects -DARMA53_64 -I/srv/codex-hil-data/art
+iq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include -Os -flto -ffat-lto-objects -DAR
+MA53_64  
+
+Linker Flags:       -Os -flto -ffat-lto-objects -Wl,--gc-sections -n -T"/srv/codex-hil-data/artiq-zy
+nqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/lscript_a53.ld" -L"/srv/codex-hil-data/ar
+tiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/lib/" -L"/" -Wl,--start-group,-lxilpm,-
+lxil,-lxiltimer,-lxilffs,-lxilsecure,-lxilstandalone,-lxiltimer,-lxilffs,-lxilsecure,-lxilpm,-lgcc,-
+lc -Wl,--end-group
+
+===========================================
+[2/27] Building ASM object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_exit.S.obj
+[3/27] Building ASM object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_translation_table_a53_64.S.obj
+[4/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_hooks.c.obj
+[5/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_board.c.obj
+[6/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_nand.c.obj
+[7/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_dfu_util.c.obj
+[8/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_tpm.c.obj
+[9/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_tpm_util.c.obj
+[10/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_authentication.c.obj
+[11/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_usb.c.obj
+[12/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_csu_dma.c.obj
+[13/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_rsa_sha.c.obj
+[14/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_misc_drivers.c.obj
+[15/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_initialization.c.obj
+[16/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_main.c.obj
+[17/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_bs.c.obj
+[18/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_sd.c.obj
+[19/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_handoff.c.obj
+[20/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_qspi.c.obj
+[21/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_image_header.c.obj
+[22/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_misc.c.obj
+[23/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_plpartition_valid.c.obj
+[24/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_partition_load.c.obj
+[25/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/psu_init.c.obj
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/psu_init.c:17267: warning: "CRL_APB_RST_LPD_TOP" redefined
+17267 | #define CRL_APB_RST_LPD_TOP    ((CRL_APB_BASEADDR) + 0X0000023CU)
+      | 
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/psu_init.h:1,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/psu_init.c:17:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/xfsbl_hw.h:264: note: this is the location of the previous definition
+  264 | #define CRL_APB_RST_LPD_TOP    ( ( CRL_APB_BASEADDR ) + 0X0000023CU )
+      | 
+[26/27] Building C object CMakeFiles/zynqmp_fsbl.elf.dir/xfsbl_ddr_init.c.obj
+[27/27] Linking C executable zynqmp_fsbl.elf
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+/srv/codex-hil-data/artiq-zynqmp/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/13.2.1/../../../../aarch64-none-elf/bin/ld: warning: zynqmp_fsbl.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 125845	   3752	  88688	 218285	  354ad	zynqmp_fsbl.elf
+[INFO]: Validating inputs
+[INFO]: Starting domain creation
+[INFO]: Generating Domain-specific DTS for psu_pmu_0
+[INFO]: Generating required metadata from domain specific DT
+CMake Warning at libsrc/xilsecure/src/CMakeLists.txt:31 (message):
+  XilSecure library requires xilmailbox library in client mode.
+
+
+STATUS: No Value specified, assigning default values.
+[INFO]: Successfully created Domain at /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp
+[INFO]: Validating inputs
+[INFO]: Generating Hardware Metadata for zynqmp_pmufw
+[INFO]: Generating Linker script for zynqmp_pmufw
+[INFO]: Successfully Created Application sources at /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-app/src
+[INFO]: Starting Application build process
+CMake Warning at libsrc/xilsecure/src/CMakeLists.txt:31 (message):
+  XilSecure library requires xilmailbox library in client mode.
+
+
+STATUS: No Value specified, assigning default values.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp
+[INFO]: Building BSP
+[1/157] ========== BSP Build Information ==========
+
+Compiler PATH: /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc
+
+Compiler FLAGS:  -O2  -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mxl-reorder -mxl-soft-
+mul -mxl-soft-div -O2 -pipe -g -feliminate-unused-debug-types -Os -flto -ffat-lto-objects -DPSU_PMU=
+1U -mcpu=v9.2 -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firm
+ware-2026-10-21/pmu-bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-fir
+mware-2026-10-21/pmu-bsp/include  -g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loo
+p-distribute-patterns -DNDEBUG
+
+===========================================
+** The above flags are BSP level flags. Increase verbosity to see component specific flags **
+===========================================
+[2/157] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ddrcpsu/src/xddrcpsu.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ddrcpsu/src/xddrcpsu_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[3/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[4/157] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_hw.h:45,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma.h:67,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[5/157] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon.h:253,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[6/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.h:327,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_g.c:16:9: warning: missing initializer for field 'S1GDiv0' of 'XEmacPs_Config' [-Wmissing-field-initializers]
+   16 |         },
+      |         ^
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.h:540:13: note: 'S1GDiv0' declared here
+  540 |         u16 S1GDiv0;    /**< 1Gbps Clock Divider 0 */
+      |             ^~~~~~~
+[7/157] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_hw.h:45,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma.h:67,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_sinit.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[8/157] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ddrcpsu/src/xddrcpsu.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ddrcpsu/src/xddrcpsu_sinit.c:27:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[9/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps_sinit.c:27:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[10/157] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_hw.h:45,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma.h:67,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_selftest.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[11/157] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon.h:253,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon_selftest.c:37:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[12/157] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon.h:253,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon_sinit.c:36:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[13/157] Building C object libsrc/ddrcpsu/src/CMakeFiles/ddrcpsu.dir/xddrcpsu.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ddrcpsu/src/xddrcpsu.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ddrcpsu/src/xddrcpsu.c:30:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[14/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_hw.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_hw.h:52,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_hw.c:30:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[15/157] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_hw.h:45,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma.h:67,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_intr.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[16/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_gate.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps_gate.c:26:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[17/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.h:327,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_sinit.c:30:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[18/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_fixedfactor.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps_fixedfactor.c:26:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[19/157] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops.h:147,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops_sinit.c:35:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[20/157] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops.h:147,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[21/157] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops_selftest.c:36:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[22/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_divider.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps_divider.c:27:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[23/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_pcs.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.h:327,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_pcs.h:34,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_pcs.c:27:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[24/157] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_hw.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops_hw.h:41,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops_hw.c:36:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[25/157] Building C object libsrc/csudma/src/CMakeFiles/csudma.dir/xcsudma.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma_hw.h:45,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma.h:67,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/csudma/src/xcsudma.c:54:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[26/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.h:327,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.c:42:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[27/157] Linking C static library libsrc/ddrcpsu/src/libddrcpsu.a
+[28/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_pll.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps_pll.c:26:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[29/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_selftest.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[30/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_intr.c:30:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[31/157] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops.h:147,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops.c:49:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[32/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_control.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.h:327,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_control.c:35:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[33/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps.h:327,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_intr.c:42:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[34/157] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu.h:63,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[35/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[36/157] Building C object libsrc/clockps/src/CMakeFiles/clockps.dir/xclockps_mux.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/clockps/src/xclockps_mux.c:26:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[37/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_hw.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_hw.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[38/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.c:43:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[39/157] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu_sinit.c:29:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[40/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[41/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_sinit.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[42/157] Linking C static library libsrc/csudma/src/libcsudma.a
+[43/157] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_helper.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu.h:63,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu_helper.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[44/157] Building C object libsrc/emacps/src/CMakeFiles/emacps.dir/xemacps_bdring.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/emacps/src/xemacps_bdring.c:43:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[45/157] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu.h:146,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[46/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_slave.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_slave.c:38:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[47/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_xfer.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_xfer.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[48/157] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_sinit.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[49/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_options.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_options.c:43:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[50/157] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu_buf.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu.h:63,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu_buf.c:30:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[51/157] Building C object libsrc/gpiops/src/CMakeFiles/gpiops.dir/xgpiops_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops.h:147,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/gpiops/src/xgpiops_intr.c:46:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[52/157] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/resetps/src/xresetps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/resetps/src/xresetps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[53/157] Building C object libsrc/ipipsu/src/CMakeFiles/ipipsu.dir/xipipsu.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu.h:63,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ipipsu/src/xipipsu.c:48:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[54/157] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[55/157] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/resetps/src/xresetps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/resetps/src/xresetps_sinit.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[56/157] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_xfer.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu.h:146,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_xfer.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[57/157] Linking C static library libsrc/clockps/src/libclockps.a
+[58/157] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu_sinit.c:40:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[59/157] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_options.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu.h:146,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_control.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_options.c:61:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[60/157] Linking C static library libsrc/emacps/src/libemacps.a
+[61/157] Building C object libsrc/iicps/src/CMakeFiles/iicps.dir/xiicps_master.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps.h:88,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/iicps/src/xiicps_master.c:63:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[62/157] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu_intr.c:38:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[63/157] Building C object libsrc/resetps/src/CMakeFiles/resetps.dir/xresetps.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/resetps/src/xresetps.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/resetps/src/xresetps.c:33:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[64/157] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu_selftest.c:35:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[65/157] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_printf.h:16,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[66/157] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_sinit.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[67/157] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu.h:182,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu_sinit.c:33:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[68/157] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_control.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu.h:146,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_control.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_control.c:38:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[69/157] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu.h:182,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[70/157] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu.h:182,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu_selftest.c:36:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[71/157] Linking C static library libsrc/ipipsu/src/libipipsu.a
+[72/157] Building C object libsrc/rtcpsu/src/CMakeFiles/rtcpsu.dir/xrtcpsu.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/rtcpsu/src/xrtcpsu.c:55:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[73/157] Linking C static library libsrc/gpiops/src/libgpiops.a
+[74/157] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu.h:182,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu_intr.c:26:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[75/157] Linking C static library libsrc/iicps/src/libiicps.a
+[76/157] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_printf.h:16,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_core.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps.c:102:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[77/157] Linking C static library libsrc/resetps/src/libresetps.a
+[78/157] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_hw.h:42,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps.h:168,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[79/157] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_options.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_hw.h:42,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps.h:168,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_options.c:34:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[80/157] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu.h:146,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu.c:96:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[81/157] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_hw.h:42,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps.h:168,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_sinit.c:29:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[82/157] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps.h:167,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[83/157] Building C object libsrc/qspipsu/src/CMakeFiles/qspipsu.dir/xqspipsu_hw.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu.h:146,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/qspipsu/src/xqspipsu_hw.c:39:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[84/157] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_hw.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps_hw.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps_hw.c:29:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[85/157] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps.h:167,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps_intr.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[86/157] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps_sinit.c:30:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[87/157] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_options.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_printf.h:16,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_core.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_options.c:74:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[88/157] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_intr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_hw.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma.h:131,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_intr.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[89/157] Building C object libsrc/axipmon/src/CMakeFiles/axipmon.dir/xaxipmon.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon.h:253,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/axipmon/src/xaxipmon.c:107:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[90/157] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_sinit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_hw.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma.h:131,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_sinit.c:27:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[91/157] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_card.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_printf.h:16,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_core.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_card.c:49:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[92/157] Building C object libsrc/sdps/src/CMakeFiles/sdps.dir/xsdps_host.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_printf.h:16,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps.h:119,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_core.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sdps/src/xsdps_host.c:50:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[93/157] Linking C static library libsrc/rtcpsu/src/librtcpsu.a
+[94/157] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_hw.h:42,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps.h:168,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_selftest.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[95/157] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps_selftest.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[96/157] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_hw.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma.h:131,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[97/157] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma_selftest.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_hw.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma.h:131,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_selftest.c:28:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[98/157] Building C object libsrc/xiltimer/src/CMakeFiles/xiltimer.dir/core/default_timer/microblaze_sleep.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xiltimer.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xiltimer/src/core/default_timer/microblaze_sleep.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[99/157] Generating microblaze_interrupt_handler.o
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xil_exception.h:40,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_interrupt_handler.c:28:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[100/157] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps.c:36:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[101/157] Linking C static library libsrc/axipmon/src/libaxipmon.a
+[102/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_cryptochk.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_cryptochk.h:34,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_cryptochk.c:26:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[103/157] Building C object libsrc/xiltimer/src/CMakeFiles/xiltimer.dir/xiltimer.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xiltimer/src/xiltimer.c:35:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[104/157] Linking C static library libsrc/qspipsu/src/libqspipsu.a
+[105/157] Linking C static library libsrc/sdps/src/libsdps.a
+[106/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_utils.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_utils.h:52,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_utils.c:39:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[107/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_sss.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_sss.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_sss.c:28:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[108/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/print.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_printf.h:16,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/print.c:18:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[109/157] Building C object libsrc/xilfpga/src/CMakeFiles/xilfpga.dir/xilfpga.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilfpga/src/xilfpga.h:103,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilfpga/src/xilfpga.c:83:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilfpga/src/xilfpga.h:263:9: note: '#pragma message: From 2023.1 release onwards the XilFPGA BSP user configuration  flags ‘reg_readback_en’ and  ‘data_readback_en’ will be disabled by default but users can still be able to enable these flags as needed'
+  263 | #pragma message ("From 2023.1 release onwards the XilFPGA BSP user configuration  flags ‘reg_readback_en’ and  ‘data_readback_en’ will be disabled by default but users can still be able to enable these flags as needed")
+      |         ^~~~~~~
+[110/157] Building C object libsrc/uartps/src/CMakeFiles/uartps.dir/xuartps_options.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps.h:167,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/uartps/src/xuartps_options.c:33:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[111/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_assert.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_assert.c:30:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[112/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_rsa.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_utils.h:52,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_rsa_core.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_rsa.h:86,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_rsa.c:67:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[113/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testcache.c.obj
+[114/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_mem.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_mem.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[115/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_sha.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xcsudma_hw.h:45,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xcsudma.h:67,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_sha.h:71,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_sha.c:64:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[116/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testmem.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_testmem.h:109,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_testmem.c:50:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[117/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_rsa_core.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_utils.h:52,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_rsa_core.h:43,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_rsa_core.c:47:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[118/157] Building C object libsrc/zdma/src/CMakeFiles/zdma.dir/xzdma.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma_hw.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma.h:131,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/zdma/src/xzdma.c:42:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[119/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xplatform_info.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xplatform_info.c:63:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[120/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/xmicroblaze_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xmicroblaze.h:14,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/xmicroblaze_g.c:1:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[121/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/inbyte.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/inbyte.c:7:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[122/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xpm_init.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xpm_init.c:28:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[123/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_testio.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_testio.h:44,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_testio.c:28:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[124/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/outbyte.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/outbyte.c:7:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[125/157] Linking C static library libsrc/uartps/src/libuartps.a
+[126/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_printf.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_printf.h:16,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_printf.c:13:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[127/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/errno.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/errno.c:10:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[128/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/_exit.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/_exit.c:9:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[129/157] Building C object libsrc/sysmonpsu/src/CMakeFiles/sysmonpsu.dir/xsysmonpsu.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xstatus.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu.h:182,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu.c:65:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/sysmonpsu/src/xsysmonpsu.c:66:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xbasic_types.h:102:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+  102 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xbasic_types.h:103:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+  103 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+[130/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_util.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_util.h:85,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_util.c:103:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[131/157] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/hw_exception_handler.S.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/hw_exception_handler.S:18:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[132/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/microblaze_exception_handler.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_exceptions_i.h:33,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_exception_handler.c:32:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[133/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/microblaze_interrupts_g.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_interrupts_i.h:37,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_interrupts_g.c:24:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[134/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/pvr.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/pvr.h:39,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/pvr.c:16:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[135/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/fcntl.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/fcntl.c:8:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[136/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xcsudma_hw.h:45,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xcsudma.h:67,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure.h:58,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure.c:76:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[137/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/xio.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xio.h:73,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xio.c:37:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[138/157] Linking C static library libsrc/zdma/src/libzdma.a
+[139/157] Building C object libsrc/xilskey/src/CMakeFiles/xilskey.dir/xilskey_utils.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilskey/src/xilskey_utils.c:75:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[140/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/xil_exception.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xil_exception.c:35:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[141/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/common/xil_sutil.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_sutil.h:46,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/common/xil_sutil.c:42:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[142/157] Building C object libsrc/xilsecure/src/CMakeFiles/xilsecure.dir/server/zynqmp/xsecure_aes.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_aes_hw.h:38,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_aes.h:89,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilsecure/src/server/zynqmp/xsecure_aes.c:73:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[143/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/xil_cache.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/mb_interface.h:31,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.h:54,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c:37:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[144/157] Building ASM object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/microblaze_scrub.S.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_scrub.S:25:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[145/157] Linking C static library libsrc/sysmonpsu/src/libsysmonpsu.a
+[146/157] Building C object libsrc/ttcps/src/CMakeFiles/ttcps.dir/xttcps.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps_hw.h:42,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps.h:168,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/ttcps/src/xttcps.c:63:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[147/157] Building C object libsrc/xilfpga/src/CMakeFiles/xilfpga.dir/interface/zynqmp/xilfpga_pcap.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_io.h:50,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xilfpga.h:103,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilfpga/src/interface/zynqmp/xilfpga_pcap.c:140:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xilfpga.h:263:9: note: '#pragma message: From 2023.1 release onwards the XilFPGA BSP user configuration  flags ‘reg_readback_en’ and  ‘data_readback_en’ will be disabled by default but users can still be able to enable these flags as needed'
+  263 | #pragma message ("From 2023.1 release onwards the XilFPGA BSP user configuration  flags ‘reg_readback_en’ and  ‘data_readback_en’ will be disabled by default but users can still be able to enable these flags as needed")
+      |         ^~~~~~~
+[148/157] Linking C static library libsrc/xilsecure/src/libxilsecure.a
+[149/157] Linking C static library libsrc/xiltimer/src/libxiltimer.a
+[150/157] Building C object libsrc/standalone/src/CMakeFiles/xilstandalone.dir/microblaze/xil_misc_psreset_api.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xil_types.h:53,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xil_misc_psreset_api.h:38,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/standalone/src/microblaze/xil_misc_psreset_api.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[151/157] Linking C static library libsrc/xilfpga/src/libxilfpga.a
+[152/157] Linking C static library libsrc/ttcps/src/libttcps.a
+[153/157] Building C object libsrc/xilskey/src/CMakeFiles/xilskey.dir/xilskey_eps_zynqmp.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xilskey_utils.h:96,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xilskey_eps_zynqmp.h:66,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilskey/src/xilskey_eps_zynqmp.c:102:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined[INFO]: Copying headers and built archives
+[INFO]: Successfully built BSP. Generated libxilskey.a, libxilsecure.a, libxilstandalone.a, libxilfpga.a, libxil.a, libxiltimer.a
+[INFO]: Building Application
+
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[154/157] Linking C static library libsrc/standalone/src/libxilstandalone.a
+[155/157] Building C object libsrc/xilskey/src/CMakeFiles/xilskey.dir/xilskey_eps_zynqmp_puf.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xilskey_utils.h:96,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xilskey_eps_zynqmp.h:66,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/xilskey_eps_zynqmp_puf.h:44,
+                 from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/xilskey/src/xilskey_eps_zynqmp_puf.c:60:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/libsrc/build_configs/gen_bsp/include/bspconfig.h:26: warning: "PSU_PMU" redefined
+   26 | #define PSU_PMU 1
+      | 
+<command-line>: note: this is the location of the previous definition
+[156/157] Archiving C static library libsrc/build_configs/gen_bsp/libxil.a
+[157/157] Linking C static library libsrc/xilskey/src/libxilskey.a
+[1/62] ==========Application Build Information ==========
+
+Compiler Flags:  -O2  -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mxl-reorder -mxl-soft-
+mul -mxl-soft-div -O2 -pipe -g -feliminate-unused-debug-types -Os -flto -ffat-lto-objects -DPSU_PMU=
+1U -mcpu=v9.2 -DSDT  -MMD -MP -specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firm
+ware-2026-10-21/pmu-bsp/Xilinx.spec -I/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-fir
+mware-2026-10-21/pmu-bsp/include  
+
+Linker Flags:       -Wl,--no-relax -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v9.2
+ -mxl-soft-mul -Os -flto -ffat-lto-objects -Wl,--gc-sections -nostartfiles -T"/srv/codex-hil-data/ar
+tiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-app/src/lscript.ld" -L"/srv/codex-hil-d
+ata/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/lib/" -L"/" -Wl,--start-group
+,-lxilstandalone,-lxiltimer,-lxilfpga,-lxilsecure,-lxilskey,-lxil,-lxiltimer,-lxilsecure,-lxilfpga,-
+lxilskey,-lgcc,-lc -Wl,--end-group
+
+===========================================
+[2/62] Building ASM object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_start.S.obj
+[3/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_ioctl.c.obj
+[4/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_node_reset.c.obj
+[5/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_callbacks.c.obj
+[6/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/idle_hooks.c.obj
+[7/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_csudma.c.obj
+[8/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_hooks.c.obj
+[9/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_gic_proxy.c.obj
+[10/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_extern.c.obj
+[11/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_node.c.obj
+[12/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_mmio_access.c.obj
+[13/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_binding.c.obj
+[14/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_notifier.c.obj
+[15/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_periph.c.obj
+[16/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_config.c.obj
+[17/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_pll.c.obj
+[18/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_qspi.c.obj
+[19/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_aib.c.obj
+[20/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_master.c.obj
+[21/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_error_manager.c.obj
+[22/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_core.c.obj
+[23/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_main.c.obj
+[24/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_usb.c.obj
+[25/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_common.c.obj
+[26/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_extwdt.c.obj
+[27/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_requirement.c.obj
+[28/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_events.c.obj
+[29/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_clock.c.obj
+[30/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_sram.c.obj
+[31/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_legacy.c.obj
+[32/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_ipi_manager.c.obj
+[33/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_dap.c.obj
+[34/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_overtemp.c.obj
+[35/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_reset.c.obj
+[36/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_rpu.c.obj
+[37/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_em.c.obj
+[38/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_system.c.obj
+[39/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_power.c.obj
+[40/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_slave.c.obj
+[41/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_pm.c.obj
+[42/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_rtc.c.obj
+[43/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_interrupts.c.obj
+[44/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_stl.c.obj
+[45/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_ultra96.c.obj
+[46/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_gpp.c.obj
+[47/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_sched.c.obj
+[48/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_mod_wdt.c.obj
+[49/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_rom_interface.c.obj
+[50/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_platform.c.obj
+[51/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_user_startup.c.obj
+[52/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_module.c.obj
+[53/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_core.c.obj
+In file included from /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-app/src/pm_core.c:31:
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-bsp/include/xilfpga.h:263:9: note: '#pragma message: From 2023.1 release onwards the XilFPGA BSP user configuration  flags ‘reg_readback_en’ and  ‘data_readback_en’ will be disabled by default but users can still be able to enable these flags as needed'
+  263 | #pragma message ("From 2023.1 release onwards the XilFPGA BSP user configuration  flags ‘reg_readback_en’ and  ‘data_readback_en’ will be disabled by default but users can still be able to enable these flags as needed")
+      |         ^~~~~~~
+[54/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_resets.c.obj
+[55/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_ddr.c.obj
+[56/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_proc.c.obj
+[57/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_util.c.obj
+[58/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/pm_pinctrl.c.obj
+[59/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_restart.c.obj
+[60/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_xpu.c.obj
+[61/62] Building C object CMakeFiles/zynqmp_pmufw.elf.dir/xpfw_scheduler.c.obj
+[62/62] Linking C executable zynqmp_pmufw.elf
+lto-wrapper.real: warning: using serial compilation of 2 LTRANS jobs
+lto-wrapper.real: note: see the '-flto' option documentation for more information
+   text	   data	    bss	    dec	    hex	filename
+  80012	  20532	  19816	 120360	  1d628	zynqmp_pmufw.elf

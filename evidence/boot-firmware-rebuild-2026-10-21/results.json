@@ -1,0 +1,32 @@
+{
+  "status": "BUILD_PASS_NOT_HARDWARE_QUALIFIED",
+  "hardware_executed": false,
+  "cold_boot": "NOT_RUN",
+  "source_commit": "58f1e9367f10477e9a25255a2924e906f7e77be8",
+  "xsa_sha256": "5c1fb3a472f5f7d878722bac43d26f3bc0020de15b9117de490aa74eeb494390",
+  "artifacts": {
+    "fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/build/zynqmp_fsbl.elf",
+      "sha256": "c6d4a3447a218f1b92730543f82f79ac333021598f7e76174597efd438b3f4b2",
+      "machine": 183,
+      "entry": "0xfffc0000",
+      "matches_old_qualified": false
+    },
+    "pmufw": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "214086f65bec0f2a2d90b00df603a2f345a7257ea36cc98c538efaacc7d3e8f9",
+      "machine": 189,
+      "entry": "0xffdc0050",
+      "matches_old_qualified": false
+    }
+  },
+  "source_snapshot": "evidence/release-sources-2026-10-21/manifest.json.gz",
+  "source_recheck": "source-recheck.json",
+  "qualified_baseline_unchanged": true,
+  "packaging": "PASS",
+  "package_path": "/srv/codex-hil-data/artiq-zynqmp/build/release-sd-freshboot-2026-10-21/boot.bin",
+  "package_sha256": "da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029",
+  "source_postcheck": "PASS",
+  "old_baseline_guard": "EXPECTED_REJECTION_PASS",
+  "existing_output_refusal": "PASS"
+}

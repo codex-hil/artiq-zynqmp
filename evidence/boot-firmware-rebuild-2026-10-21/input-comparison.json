@@ -1,0 +1,38 @@
+[
+  {
+    "path": "sdt/system-top.dts",
+    "original_sha256": "09ab201942f3f2281cf90bf78ea3ca71bd436b39817695a1e02b33d827f3da15",
+    "rebuilt_sha256": "09ab201942f3f2281cf90bf78ea3ca71bd436b39817695a1e02b33d827f3da15",
+    "equal": true
+  },
+  {
+    "path": "sdt/pcw.dtsi",
+    "original_sha256": "9e47bf76fe63f8caacaa973349e62713d5a1ac879fffc1707edd8517928aa613",
+    "rebuilt_sha256": "9e47bf76fe63f8caacaa973349e62713d5a1ac879fffc1707edd8517928aa613",
+    "equal": true
+  },
+  {
+    "path": "sdt/psu_init.c",
+    "original_sha256": "c10aaf17082b24bcc4b696da0b7061a408d423c7420676c9e804621897081f94",
+    "rebuilt_sha256": "c10aaf17082b24bcc4b696da0b7061a408d423c7420676c9e804621897081f94",
+    "equal": true
+  },
+  {
+    "path": "sdt/psu_init.h",
+    "original_sha256": "26022f6c19159297fc1e807c54e99f501be65c221fbe32b75861f638337070c5",
+    "rebuilt_sha256": "26022f6c19159297fc1e807c54e99f501be65c221fbe32b75861f638337070c5",
+    "equal": true
+  },
+  {
+    "path": "sdt/psu_init.tcl",
+    "original_sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+    "rebuilt_sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+    "equal": true
+  },
+  {
+    "path": "app/src/xfsbl_ddr_init.c",
+    "original_sha256": "ae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5",
+    "rebuilt_sha256": "ae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5",
+    "equal": true
+  }
+]

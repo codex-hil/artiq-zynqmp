@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "scope": "Expected rejection of new unqualified FSBL against older qualified roles",
+  "returncode": 1,
+  "reason": "Reused baseline input is not pinned: fsbl"
+}

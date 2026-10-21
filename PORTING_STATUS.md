@@ -3082,3 +3082,14 @@ Three snapshot tests PASS. Present-day inventory is complete for the selected
 roots; historical PS/PL/PMU/FSBL build provenance remains PARTIAL. No hardware
 access or baseline changes. Full release recipe still requires rebuilding reused
 components against captured sources; see docs/CLEAN_BUILD.md.
+
+
+## PMU/FSBL rebuild — 2026-10-21
+
+Clean-source boot-firmware build PASS using inventoried AMD sources and original
+PS XSA. Generated SDT/PS init and board DDR source equal the old inputs. New FSBL
+(AArch64 entry0xfffc0000) and PMU (MicroBlaze entry0xffdc0050) differ from the old
+qualified ELFs; no hardware-equivalence claim. New freshboot candidate packaging
+and partition-header readback PASS, coldboot NOT_RUN. Existing-output refusal
+added to build script and checked offline. Evidence boot-firmware-rebuild-
+2026-10-21; no hardware/card/flash/OTP access or baseline replacement.

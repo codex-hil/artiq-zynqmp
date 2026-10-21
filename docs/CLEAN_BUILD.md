@@ -157,3 +157,38 @@ This closes the present-day installed-source inventory gap. It does not prove
 that these files were unchanged during an older build. Rebuilding old PS/PL and
 boot firmware against a captured source state is still required for a complete
 release provenance chain. The existing hardware baseline remains unchanged.
+
+
+## Rebuilt PMU/FSBL checkpoint — 2026-10-21
+
+Both boot-firmware components now compile from clean source `58f1e93` using
+Vivado 2025.2 SDT/empyro, installed AMD sources inventoried above, GNU Arm 13.2
+and the bundled MicroBlaze compiler. Piotr's board DDR source is copied unchanged.
+
+```sh
+vivado-container shell /path/to/clean-source/scripts/build_boot_firmware.sh \
+  /path/to/genesys-rtio-dma/platform.xsa \
+  /path/to/fresh-boot-firmware \
+  /path/to/aarch64-gnu-toolchain
+```
+
+The script now refuses an existing output path before invoking AMD tools.
+Existing-output refusal and shell syntax checks passed offline.
+
+Generated `system-top.dts`, `pcw.dtsi`, `psu_init.c`, `psu_init.h`, `psu_init.tcl`
+and the copied board DDR source match the older set byte for byte. Fresh FSBL
+is AArch64, entry `0xfffc0000`; PMU firmware is MicroBlaze, entry `0xffdc0050`.
+Their ELF hashes differ from the older qualified binaries. This is successful
+compilation, not hardware qualification or evidence of behavioral equivalence.
+
+Evidence: `evidence/boot-firmware-rebuild-2026-10-21`. Its `results.json` binds
+the source commit, PS XSA, input comparisons, source rechecks and output hashes.
+A separate candidate image was packaged at
+`build/release-sd-freshboot-2026-10-21/boot.bin` under the shared artifact root.
+It reuses the debug PL and previously rebuilt CPU0/CPU1. Partition-header
+readback passed; no card was written and cold boot remains NOT_RUN.
+
+The normal qualified profile deliberately still selects the older PMU/FSBL.
+Its consistency verifier should reject this new candidate against those old
+roles. Do not weaken that check or replace the profile before hardware validation.
+Original PS/PL build provenance and CPU1 byte reproducibility remain open.
