@@ -18,7 +18,7 @@ def render(value,variables):
 
 
 def validate(profile,variables):
-    if profile.get('schema') not in (1,2):raise ValueError('Unsupported qualification profile')
+    if profile.get('schema') not in (1,2,3):raise ValueError('Unsupported qualification profile')
     data=render(profile,variables)
     expected_wrapper=str(REPO/'scripts/test_kasli03_netboot_hw.py')
     if len(data.get('argv',[]))<2 or data['argv'][1]!=expected_wrapper:
@@ -45,6 +45,8 @@ def validate(profile,variables):
         required += [str(Path(data['observer']['dma_cursor_overlay'])/'results.json')]
     else:
         required += [option(k) for k in ('--clock-plan','--clock-baseline','--clock-validation')]
+    if data['schema']==3:
+        required += [str(Path(data['observer']['dma_cursor_overlay'])/'results.json'),str(REPO/'examples/kasli_drtio_native_dma_active_fault.py')]
     if any(str(Path(v).resolve()) not in pinned for v in required):
         raise ValueError('Wrapper/observer references an unpinned artifact')
     if pinned[str(Path(runtime).resolve())]!=option('--runtime-sha256') or pinned[str(Path(kasli_bit).resolve())]!=option('--sha256'):
@@ -58,11 +60,16 @@ def validate(profile,variables):
         if not (observer.get('native_ddma_catch') and observer.get('native_ddma_cursor')):
             raise ValueError('This profile must retain the qualified catch/cursor test')
     else:
-        if data.get('qualification')!='kasli04-basic-native-dma' or option('--board')!='KASLI04':
-            raise ValueError('Schema2 is restricted to qualified KASLI04 basic native DMA')
+        expected='kasli04-basic-native-dma' if data['schema']==2 else 'kasli04-controlled-active-underflow'
+        if data.get('qualification')!=expected or option('--board')!='KASLI04':
+            raise ValueError('Profile must retain its exact qualified KASLI04 scenario')
         if observer.get('native_ddma_mode')!='playback' or any(v for k,v in observer.items() if k.startswith('native_ddma_') and k!='native_ddma_mode'):
-            raise ValueError('KASLI04 profile must retain basic native DMA only')
-        idle=observer['ddma_idle_qualification']
+            raise ValueError('KASLI04 profile cannot enable additional native DMA scenarios')
+        if data['schema']==2 and observer.get('lab_fault_mode'):
+            raise ValueError('Normal profile cannot enable fault injection')
+        if data['schema']==3 and (observer.get('lab_fault_mode')!='active' or observer.get('lab_fault_ack')!='native-underflow-no-reuse'):
+            raise ValueError('Explicit qualified active fault mode required')
+        idle=observer['ddma_idle_qualification' if data['schema']==2 else 'lab_idle_qualification']
         if str(Path(idle).resolve()) not in pinned:
             raise ValueError('KASLI04 exact idle proof must be pinned')
         for name in data.get('pass_proofs',[]):
@@ -70,6 +77,8 @@ def validate(profile,variables):
             if (proof.get('board')!='KASLI04' or proof.get('dna')!='0x006c440674704854' or
                 proof.get('retained_restoration')!='PASS' or ext.get('restoration')!='PASS'):
                 raise ValueError('KASLI04 proof lacks exact identity/both-board restoration')
+        if data['schema']==3 and not any(json.loads(Path(n).read_text()).get('external_rx',{}).get('lab_active_fault')=='PASS' for n in data.get('pass_proofs',[])):
+            raise ValueError('Prior active fault PASS proof required')
         if not data.get('pass_proofs') or idle not in data['pass_proofs']:
             raise ValueError('KASLI04 idle proof must be a PASS proof')
     return data,verified
@@ -107,8 +116,10 @@ def main():
     if child.returncode==0:
         report=json.loads((output/'session/results.json').read_text())
         passed=report.get('status')=='PASS' and report.get('restoration')=='PASS'
-        if data['schema']==2:
+        if data['schema'] in (2,3):
             passed=passed and report.get('retained_restoration')=='PASS' and report.get('external_rx',{}).get('restoration')=='PASS'
+    if passed and data['schema']==3:
+        passed=report.get('external_rx',{}).get('lab_active_fault')=='PASS' and report.get('external_rx',{}).get('lab_fault_poststate')=='PASS'
     result.update(status='WRAPPER_PASS' if passed else 'WRAPPER_FAIL',
                   hardware_executed=True,returncode=child.returncode)
     (output/'review.json').write_text(json.dumps(result,indent=2)+'\n')

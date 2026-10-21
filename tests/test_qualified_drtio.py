@@ -59,6 +59,26 @@ class QualifiedTests(unittest.TestCase):
             p['artifacts'][2]['sha256']=hashlib.sha256(proof.read_bytes()).hexdigest()
             with self.assertRaises(ValueError):validate(p,{})
 
+    def test_active_profile_requires_explicit_ack_and_prior_fault_proof(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p=self.fixture(tmp);p.update(schema=3,qualification='kasli04-controlled-active-underflow')
+            proof=Path(tmp)/'proof.json'
+            def write_proof(active):
+                proof.write_text(json.dumps(dict(status='PASS',restoration='PASS',board='KASLI04',dna='0x006c440674704854',retained_restoration='PASS',external_rx=dict(restoration='PASS',lab_active_fault=active))))
+                p['artifacts'][2]['sha256']=hashlib.sha256(proof.read_bytes()).hexdigest()
+            write_proof('PASS')
+            p['argv']+=['--board','KASLI04','--clock-plan',str(proof),'--clock-baseline',str(proof),'--clock-validation',str(proof)]
+            for key in ('native_ddma_catch','native_ddma_cursor'):p['observer'].pop(key)
+            p['observer'].update(native_ddma_mode='playback',lab_idle_qualification=str(proof),lab_fault_mode='active',lab_fault_ack='native-underflow-no-reuse')
+            example=ROOT/'examples/kasli_drtio_native_dma_active_fault.py'
+            p['artifacts'].append(dict(path=str(example),sha256=hashlib.sha256(example.read_bytes()).hexdigest()))
+            validate(p,{})
+            for key,value in (('lab_fault_ack',''),('lab_fault_mode','idle'),('native_ddma_catch',True)):
+                bad=copy.deepcopy(p);bad['observer'][key]=value
+                with self.subTest(key=key),self.assertRaises(ValueError):validate(bad,{})
+            write_proof('NOT_RUN')
+            with self.assertRaises(ValueError):validate(p,{})
+
     def test_default_only_preflights_and_execute_requires_restoration_pass(self):
         from types import SimpleNamespace
         from unittest.mock import patch

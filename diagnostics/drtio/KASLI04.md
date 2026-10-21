@@ -72,3 +72,24 @@ new TTL edges. Post-fault DMA remains blocked until outer restoration.
 The ordinary profile does not enable this lab path. Reproduction requires
 exact dedicated firmware/PL, the matching new lab-idle proof and the bounded
 parent arm handshake; never add an arm command to an ordinary experiment.
+
+
+### Pinned active-fault profile (offline review by default)
+
+```sh
+make review-drtio-qualified \
+  DRTIO_PROFILE=diagnostics/drtio/profiles/kasli04-genesys-active-underflow.json \
+  O=/tmp/genesys-active-review-fresh
+```
+
+The schema3 profile pins the dedicated PL/firmware, exact lab-idle and physical
+active-fault proofs, host overlay metadata and experiment. It requires explicit
+`active` mode and `native-underflow-no-reuse` acknowledgement. The ordinary
+schema2 profile rejects fault injection. The new profile entry point has passed
+offline preflight only; the underlying physical session passed separately.
+
+After checking current cabling, UART path and filtered hw_server address, the
+same profile can run through `make test-hw-drtio-qualified` with a fresh `O`.
+The existing wrapper acquires both board leases and restores both boards.
+Success additionally requires the active-fault and blocked-poststate checks.
+Never bypass its arm handshake or attempt DMA reuse before restoration.
