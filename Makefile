@@ -386,3 +386,12 @@ package-local-candidate:
 
 test-candidate-package:
 	$(PYTHON) -m unittest discover -s tests -p 'test_candidate_package.py' -v
+
+.PHONY: verify-local-release test-local-release
+verify-local-release:
+	$(if $(RELEASE_CONFIG),,$(error Specify RELEASE_CONFIG= selected local release JSON))
+	$(if $(RELEASE_REPORT),,$(error Specify RELEASE_REPORT= fresh output JSON))
+	$(PYTHON) scripts/verify_local_release.py --config="$(RELEASE_CONFIG)" --output="$(RELEASE_REPORT)"
+
+test-local-release:
+	$(PYTHON) -m unittest discover -s tests -p 'test_local_release.py' -v

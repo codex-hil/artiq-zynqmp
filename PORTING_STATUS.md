@@ -17,6 +17,17 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Combined offline release verification — 2026-10-21
+
+`make verify-local-release` now rechecks candidate/proof binding, unchanged PL
+build inputs/reports, exact qualified FPGA payload equivalence, package role
+hashes, worker embedding and serialized CPU partitions in one command.
+Retained release PASS; three negative admission controls and five existing
+package/payload tests PASS. Evidence:
+`evidence/source-release-chain-2026-10-21/combined-verification.json`.
+No hardware access or baseline changes. Latest package cold boot remains NOT_RUN;
+see `docs/BUILD_RECIPE.md` for the command and verification limits.
+
 ## Fresh-source PL release chain — 2026-10-21
 
 Clean source HDL generation, explicit PS IP normalization and full Dell Vivado

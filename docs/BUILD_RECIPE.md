@@ -115,3 +115,28 @@ The final artifact assembly now has `make package-local-candidate`, binding
 JTAG-qualified input hashes and the SD worker payload; see SD_BOOT.md. This
 closes candidate packaging automation, while end-to-end source orchestration
 and cold-boot qualification remain distinct open steps.
+
+## Offline verification in one command
+
+For the retained2026-10-21 artifacts on this host:
+
+```sh
+make verify-local-release PYTHON=python3 \
+  RELEASE_CONFIG=diagnostics/release/qualified-local-2026-10-21.json \
+  RELEASE_REPORT=/path/to/fresh/release-verification.json
+```
+
+The configuration contains explicit host-local paths; select matching retained
+artifacts when using another host. No Vivado, network, board access or bootgen
+is invoked. The command rechecks the extended hardware proof's binding to all
+candidate/restoration artifacts, strict source-build inputs/timing/DRC/routing,
+raw configuration equivalence, package role hashes, embedded tested worker,
+BOOT.BIN hash and serialized CPU0/CPU1 partition payloads. Any failed check
+prevents a PASS report. Existing reports are never overwritten.
+
+`LOCAL_RELEASE_CHAIN_PASS_COLD_BOOT_NOT_RUN` confirms offline consistency.
+It does not establish signed provenance, an empty-host build, fresh hardware
+execution, serialized FSBL/PMU/PL equality, BSS initialization or cold boot.
+The recorded configuration and report live under
+`evidence/source-release-chain-2026-10-21/combined-verification.json`.
+Run `make test-local-release` for negative proof/role/configuration controls.
