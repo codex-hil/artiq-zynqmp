@@ -1,0 +1,14 @@
+{
+  "status": "CODE_AUDIT_AND_MANAGEMENT_UNIT_TESTS_PASS",
+  "hardware_executed": false,
+  "tests_passed": 6,
+  "firmware_cross_build": "NOT_RUN",
+  "deployment": "NOT_RUN",
+  "scope": "Pinned protocol boundary audit and startup-log source correction only",
+  "sha256": {
+    "boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c": "c0da107f4b2f2806e4b179b8605c9a9dddbd2795d9e1426447bd02e484200666",
+    "boards/genesys_zu-5ev/2_firmware_a53/src/lib.rs": "d9f6751b5841298f78fbd36cd340b21fe816f1f0bf3902e6f07d9f23add4e3bb",
+    "boards/genesys_zu-5ev/3_kernel/src/lib.rs": "eed3546a4c960669e83b5cc2cd464ab08684b02e010706f4800d18f5339ed9be",
+    "common/artiq/artiq/coredevice/comm_kernel.py": "f043db865c8d4ba36bed5d7d1760ae05ffd17a1a8d806bca9b4a3a7ed878db4e"
+  }
+}

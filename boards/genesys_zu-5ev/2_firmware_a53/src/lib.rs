@@ -1,6 +1,6 @@
 //! A53 services using Piotr's C BSP -> Rust staticlib architecture.
 //! Management wire ABI follows the pinned current ARTIQ CommMgmt client.
-//! This is an initial management layer, not the ARTIQ kernel/RPC runtime.
+//! Kernel transport and CPU1 worker are separate C/Rust components.
 #![no_std]
 
 use core::cell::UnsafeCell;
@@ -173,7 +173,7 @@ pub unsafe extern "C" fn artiq_runtime_kernel_ready() {
     let runtime = &mut *RUNTIME.0.get();
     runtime.kernel_ready = true;
     runtime.log_len = 0;
-    runtime.append(b"Genesys ZU-5EV: kernel-bringup; real CPU1 load/run and scalar RPC.\nTTL exports disabled; exceptions/unwind and complex RPC returns pending.\n");
+    runtime.append(b"Genesys ZU-5EV: kernel-bringup; CPU1 load/run and scalar RPC.\nRTIO/DMA and exception capabilities depend on the loaded worker and gateware.\nComplex RPC returns and subkernels are unsupported.\n");
 }
 
 #[no_mangle]

@@ -55,3 +55,7 @@ artiq_run invocations. Post-error debug/network and old-baseline restoration
 passed. See `evidence/candidate-extended-hardware-2026-10-21`; this closes the
 candidate's extended local-regression checkpoint, not the excluded boot/DDR/
 remote-link qualifications. The source build/release recipe is now documented; see SOURCE_REPLAY.md.
+
+The [runtime protocol audit](RUNTIME_PROTOCOL.md) records the scalar-only RPC
+return path, unsupported subkernels and the next host-testable framing step.
+The corrected startup-log source has not been deployed.
