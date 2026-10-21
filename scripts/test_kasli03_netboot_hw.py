@@ -23,7 +23,7 @@ RNG = Path('/home/codex-hil/rng-rpi')
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--board',choices=['KASLI01','KASLI03'],default='KASLI03')
+    parser.add_argument('--board',choices=['KASLI01','KASLI03','KASLI04'],default='KASLI03')
     parser.add_argument('--build', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sha256', required=True)
@@ -44,8 +44,8 @@ def main():
     args = parser.parse_args()
     from kasli_board_identity import identity,locks as board_locks
     board=identity(args.board);dna=board['dna'];mac=board['mac']
-    if args.board=='KASLI01' and (args.usb_topology=='1-6.2' or args.uart==UART):
-        raise SystemExit('KASLI01 requires explicit verified USB topology and UART')
+    if args.board in ('KASLI01','KASLI04') and (args.usb_topology=='1-6.2' or args.uart==UART):
+        raise SystemExit('Explicit verified USB topology and UART required')
     observer = None
     if args.genesys_observer:
         if not args.execute_runtime: raise SystemExit('External RX requires runtime and both-board leases')
@@ -56,12 +56,18 @@ def main():
         if not all((args.download_runtime, args.clock_plan, args.clock_baseline, args.clock_validation)):
             raise SystemExit('Execution requires payload and reviewed clock baseline/plan/physical validation')
         validation = json.loads(args.clock_validation.read_text())
+        if args.board=='KASLI04':
+            if validation.get('restoration')!='PASS' or validation.get('routing_restoration')!='PASS':
+                raise SystemExit('KASLI04 retained-image/clock restore not qualified')
+            validation={**validation,**validation.get('clock_restore',{})}
         if not validation.get('restoration_profile_validated') or validation.get('status') != 'PASS':
             raise SystemExit('Clock restoration not physically validated')
         plan = json.loads(args.clock_plan.read_text())
         baseline_bytes = args.clock_baseline.read_bytes()
         baseline = json.loads(baseline_bytes)
-        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256'] or int(validation['dna'], 16) != dna or validation['si_source_sha256'] != baseline['si_source_sha256']:
+        if args.board=='KASLI04' and validation.get('fresh_registers')!=baseline['registers']:
+            raise SystemExit('KASLI04 restore qualification does not match fresh baseline')
+        if hashlib.sha256(baseline_bytes).hexdigest() != plan['snapshot_sha256'] or int(validation['dna'], 16) != dna or validation.get('si_source_sha256',baseline['si_source_sha256'] if args.board=='KASLI04' else None) != baseline['si_source_sha256']:
             raise SystemExit('Clock baseline/validation identity mismatch')
         if int(baseline.get('dna','0'),16)!=dna or any(d.get('board')!=args.board for d in (validation,baseline,plan)):
             raise SystemExit('Clock inputs belong to another board')
@@ -85,7 +91,7 @@ def main():
             qualification.get('bit_sha256')) != ('BUILD_PASS_HARDWARE_NOT_RUN',
                                                   'network-only', args.sha256):
         raise SystemExit('Reviewed netboot-only build qualification required')
-    if args.board=='KASLI01' and qualification.get('volatile_mac')!=mac:
+    if args.board in ('KASLI01','KASLI04') and qualification.get('volatile_mac')!=mac:
         raise SystemExit('KASLI01 requires its own qualified bootloader MAC')
     if qualification.get('bram_boot', {}).get('cpu_reset_address') != 0:
         raise SystemExit('Qualification lacks embedded bootloader at reset address zero')
@@ -102,6 +108,14 @@ def main():
     backups=(RNG/'kasli/evidence'/args.board).glob('*/flash-summary.json')
     if not any((summary:=json.loads(path.read_text())).get('result')=='PASS' and summary.get('sha256_read_1')==summary.get('sha256_read_2') for path in backups):
         raise SystemExit('Verified existing flash-backup evidence required by restoration tool')
+    mode10 = None
+    if args.board=='KASLI04':
+        from test_kasli04_clock_restore_hw import MODE10,MODE10_SHA
+        mode10=MODE10
+        if hashlib.sha256(mode10.read_bytes()).hexdigest()!=MODE10_SHA:
+            raise SystemExit('KASLI04 retained-image restore hash mismatch')
+        if args.execute_runtime and (plan.get('mux_addresses')!=[0x71] or not plan.get('absent_eem_mux')):
+            raise SystemExit('KASLI04 requires removed-EEM board routing')
     # Caller must review the netboot overlay and this hash before execution.
     if args.dry_run:
         print(json.dumps({'status': 'PREFLIGHT_PASS_NO_HARDWARE_ACCESS',
@@ -161,6 +175,15 @@ def main():
         tty = Path(args.uart).resolve().name
         if f'{args.usb_topology}:1.2' not in (Path('/sys/class/tty') / tty / 'device').resolve().parts:
             raise RuntimeError('UART does not belong to selected USB topology/channel C')
+        if args.board=='KASLI04':
+            sys.path.insert(0,'/home/codex-hil/kasli-secure-link/scripts/hil')
+            from run_paired_control_restore import Hardware
+            from run_sfp_identity_trace import snapshot
+            retained_hw=Hardware(args.output)
+            retained_board=dict(name='KASLI04',dna=hex(dna),usb=args.usb_topology)
+            result['retained_before']=snapshot(retained_hw,retained_board)
+            if (result['retained_before']['version'],result['retained_before']['mode'],result['retained_before']['i2c_busy'])!=(0x1000c,10,0):
+                raise RuntimeError('KASLI04 retained idle mode10 required')
         if observer:
             lease = next(h for h in handles if 'genesys-' in h.name)
             result['genesys_accessed'] = True
@@ -340,23 +363,41 @@ def main():
                         from litex.tools.remote.csr_builder import CSRBuilder
                         CSRBuilder.__init__(comm, comm=comm, csr_csv=str(RNG / 'kasli/artifacts/kasli-full-checker/csr.csv'))
                         try:
-                            for address in (0x70, 0x71):
+                            for address in ((0x71,) if args.board=='KASLI04' else (0x70,0x71)):
                                 bus.start()
                                 try:
                                     if not bus.put((address << 1) | 1): raise RuntimeError('Mux read NACK')
                                     prior_mux[address] = bus.get(last=True)
                                 finally: bus.stop()
-                            bus.select_mux(0x70, 0); bus.select_mux(0x71, 8)
+                            if args.board!='KASLI04': bus.select_mux(0x70,0)
+                            bus.select_mux(0x71,8)
                             result['clock_profile_written'] = True
                             result['clock_restore'] = {}
                             exercise(comm, bus, json.loads(baseline_bytes)['registers'], plan, result['clock_restore'])
                         finally:
-                            for address, value in prior_mux.items(): bus.select_mux(address, value)
+                            for address, value in prior_mux.items():
+                                target=json.loads(baseline_bytes)['prior_mux71'] if args.board=='KASLI04' else value
+                                bus.select_mux(address,target)
+                                if args.board=='KASLI04':
+                                    bus.start()
+                                    try:
+                                        if not bus.put((address<<1)|1) or bus.get(last=True)!=target: raise RuntimeError('KASLI04 mux restore mismatch')
+                                    finally: bus.stop()
                             comm.write(addresses['i2c_w'], [prior_csr])
                 finally:
                     comm.close()
             except Exception as error:
                 result.update(status='FAIL', restoration='FAIL', restore_error=str(error))
+        if changed and args.board=='KASLI04':
+            try:
+                if hashlib.sha256(mode10.read_bytes()).hexdigest()!=MODE10_SHA: raise RuntimeError('Retained image changed')
+                command(base+['--write-sram',str(mode10)],'restore-mode10.log')
+                result['retained_after']=snapshot(retained_hw,retained_board)
+                if (result['retained_after']['version'],result['retained_after']['mode'],result['retained_after']['i2c_busy'])!=(0x1000c,10,0):
+                    raise RuntimeError('KASLI04 retained-image restoration failed')
+                result['retained_restoration']='PASS'
+            except Exception as error:
+                result.update(status='FAIL',retained_restoration='FAIL',retained_restore_error=str(error))
         if observer and observer.touched:
             try:
                 observer.restore()

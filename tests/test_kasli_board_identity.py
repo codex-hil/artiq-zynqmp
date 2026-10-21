@@ -13,4 +13,10 @@ class BoardTests(unittest.TestCase):
         self.assertNotEqual(identity('KASLI01')['mac'],identity('KASLI03')['mac'])
     def test_legacy_scope_preserved_unknown_board_refused(self):
         self.assertEqual(len(locks('KASLI03',True)),4)
-        with self.assertRaises(ValueError):locks('KASLI04',True)
+        with self.assertRaises(ValueError):locks('KASLI02',True)
+
+    def test_kasli04_exact_scope(self):
+        self.assertEqual(identity('KASLI04')['dna'],0x006c440674704854)
+        self.assertEqual(locks('KASLI04',True),[
+            '/home/codex-hil/.cache/genesys-210383B7F02DA.lock',
+            '/home/codex-hil/.cache/kasli-KASLI04.lock'])

@@ -2761,3 +2761,16 @@ Lease released. NoFlash/OTP/SD/Genesys/otherKasli access. Evidence
 `scripts/test_kasli04_clock_restore_hw.py` defaultoffline. Vivadoimplementation
 stillrunning. Next qualifyFPGA and integrate04-specific restore into netboot
 wrapper before masterruntime/DRTIO.
+
+
+KASLI04 parent integration (2026-10-21, offline): guarded netboot wrapper
+now selects04DNA/MAC/LL with only04+Genesys leases, explicit USB/UART; checks
+retained idlemode10 before programming. Runtime preflight binds physical
+clockexercise freshregisters to04baseline and requires restorePASS, mux71-only
+plan. Runtime cleanup uses existing checked diagnostic/clock exercise, restores
+original04mux71routing withreadback, then reprograms hash-pinned retainedmode10
+and checks version/mode/idle. Errors preserveFAIL while outerGenesysrestore
+stillruns. Old01/03 selections unchanged.15Kaslioffline testsPASS, py_compile/
+diffcheckPASS; full04preflight/HW NOT_RUN awaitingFPGA. Vivadorouting ongoing.
+Next qualifycompleteFPGA and run04netboot/runtime with restoredmode10, then
+externalDRTIO. NoHWaccess thischeckpoint.
