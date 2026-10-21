@@ -1,0 +1,36 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "optical_tx": "upstream ARTIQ RT/AUX; readiness-gated direct destination1 leaf",
+  "remote_drtio": "direct-leaf physical TTL PASS; remaining satellite services incomplete",
+  "firmware_sha256": "b59189886d9239aab5b0e61f7641d4546531957eea11f8989b4ab4fa71f582f3",
+  "bit_sha256": "81551ca13468af5f462c1fe4a7fe6f86981c1926f5f64ee536c30baa310dcdc6",
+  "reset_handshake": "PASS",
+  "reset_completed_load_counts": [
+    "1",
+    "1"
+  ],
+  "reset_ack_replies": 2,
+  "master_reset_errors_before": 0,
+  "master_reset_errors_after": 0,
+  "reset_scope": "two native core.reset kernels; queue reset preserves PHY; no remote TTL or timing-offset proof",
+  "dio_loopback": "PASS",
+  "dio_runs": 2,
+  "pulses_per_run": 8,
+  "rising_edge_spacing_mu": 100000,
+  "remote_rtio": "physical TTL output/input PASS",
+  "dio_scope": "Kasli standard kernel through external DRTIO to Genesys JB1/JB2; fine3 timestamps,8ns physical resolution; absolute phase/jitter NOT_MEASURED",
+  "startup_failure_status": {
+    "registers": {
+      "monitor_magic": 1146246192,
+      "monitor_reset": 0,
+      "monitor_tx_enable": 1,
+      "monitor_loopback": 0,
+      "monitor_status": 0,
+      "aux_in_reset": 0,
+      "aux_rx_up": 1
+    },
+    "scope": "post-failure sequential read-only sample; not exact failing poll or link qualification"
+  },
+  "restored_ip": "192.168.2.3"
+}

@@ -1,0 +1,42 @@
+Core Device Traceback:
+Traceback (most recent call first):
+  File "ksupport/lib.rs", line 495, column 13, in (Rust function)
+    <unknown>
+                ^
+  File "<artiq>/coredevice/dma.py", line 120, column 18, in artiq.coredevice.dma.CoreDMA.playback.0 (RA=+0x78c)
+    delay_mu(advance_mu)
+             ^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/kasli_drtio_native_dma_active_fault.py", line 52, column 35, in artiq_run_kasli_drtio_native_dma_active_fault.KasliNativeDDMAActiveFault.run.0 (RA=+0x460)
+    self.core_dma.playback('genesys_lab_fault')
+                          ^
+  File "<nac3_internal>", line 2, column 13, in __modinit__ (RA=+0x1b8)
+    <unknown>
+                ^
+artiq.coredevice.exceptions.DMAError(0): Failed to start distributed DMA playback
+
+End of Core Device Traceback
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/frontend/artiq_run.py", line 227, in <module>
+    main()
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/frontend/artiq_run.py", line 223, in main
+    return run(with_file=True)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/frontend/artiq_run.py", line 205, in run
+    raise exn
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/frontend/artiq_run.py", line 199, in run
+    exp_inst.run()
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/language/core.py", line 92, in run_on_core
+    return self.core.run(fake_method, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/coredevice/core.py", line 290, in run
+    self._run_compiled(kernel_library, debug_object, embedding_map)
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/coredevice/core.py", line 305, in _run_compiled
+    self.comm.serve(embedding_map, symbolizer)
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/coredevice/comm_kernel.py", line 935, in serve
+    self._serve_exception(embedding_map, symbolizer)
+  File "/srv/codex-hil-data/artiq-zynqmp/build/dma-cursor-host-overlay-2026-10-17/artiq/coredevice/comm_kernel.py", line 917, in _serve_exception
+    raise python_exn
+artiq.coredevice.exceptions.DMAError: Failed to start distributed DMA playback

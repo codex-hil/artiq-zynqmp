@@ -2952,3 +2952,15 @@ released,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-lab-idle-2026-10-21`. Nextofflineactiveadmission withthis
 exactproof/PL/firmware andvalidatedhostoverlay, thenoneboundedfaulttrial;
 activeunderflowNOT_RUN andpostfaultDMAreuseforbiddenbeforefullrestore.
+
+
+KASLI04 activefaultattempt (2026-10-21): intendedunderflowqualificationFAIL.
+Exactlabidle/artifactsadmitted,freshidlePASS,34BtraceuploadACK,oneshotarm
+250000cyclesACK;startNACK/DMAError, noRTIOUnderflowmarker. Active/trigger/drain
+notproved. NoDMAretry/reset/erase/reuse beforefullrestore. Genericstatus
+PLcorrect/reset0/RXup1,admissioncauseunknown;1msminmargin vs1.5msrequestonly
+hypothesis. BothrestoresPASS (04clock/route/mode10;GenesyslocalCoreDMA/debug/
+Ethernet192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites.
+Evidence `evidence/kasli04-lab-active-rejected-2026-10-21`. Nextofflineexact
+admission-reason/read-onlypostrejectioncountertelemetry;no loweredchecks
+oridenticalblindactive retry.
