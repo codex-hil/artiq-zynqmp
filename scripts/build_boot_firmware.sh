@@ -11,6 +11,7 @@ output=$(realpath -m "$2")
 arm=$(realpath "$3")
 amd=${AMD_ROOT:-/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2}
 export PATH="$arm/bin:$amd/tps/lnx64/cmake-3.24.2/bin:$amd/gnu/microblaze/lin/bin:$PATH"
+if [ -e "$output" ]; then echo "Use a fresh output directory: $output" >&2; exit 2; fi
 mkdir -p "$output"
 cd "$output"
 "$amd/Vivado/bin/sdtgen" "$repo/scripts/generate_sdt.tcl" "$xsa" "$output/sdt" "$repo/boards/genesys_zu-5ev/3_bootable/system-user.dtsi"
