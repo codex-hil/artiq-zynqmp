@@ -1,9 +1,10 @@
 {
-  "status": "NORMALIZATION_QUEUED_ON_SHARED_LOCK",
+  "status": "GENERATE_ONLY_NORMALIZATION_REVIEWED_INSUFFICIENT",
   "hardware_executed": false,
   "job": "/srv/codex-hil-data/artiq-zynqmp/build/artiq-source-normalize-20261021",
   "remote": "/srv/nvme-fast-1/vivado-work/artiq-source-normalize-20261021",
   "tests": 6,
   "transfer": "PASS",
-  "normalization_result": "PENDING"
+  "normalization_result": "Six disabled SD0 taps differ from JTAG-qualified post-build XCI",
+  "next": "ps-synth-retry/results.json"
 }

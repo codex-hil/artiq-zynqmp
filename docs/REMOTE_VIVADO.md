@@ -115,8 +115,8 @@ python3 scripts/remote_rtio_build.py collect \
   --job /path/to/fresh-normalize-job --output /path/to/fresh-normalize-result
 ```
 
-Normalization runs only PS IP read/upgrade/generation, without synthesis, under
-the same common build lock. The result is `NORMALIZED_REVIEW_REQUIRED`, with
+Normalization runs PS IP read/upgrade/generation and PS IP synthesis only,
+under the same common build lock. It does not synthesize the top-level RTIO HDL. The result is `NORMALIZED_REVIEW_REQUIRED`, with
 `xci.diff` and the output XCI SHA-256. Inspect the exact changes; collection does
 not approve them or launch a build. If the changed file is selected deliberately,
 prepare a new build with its exact expected digest:
@@ -142,3 +142,11 @@ First tool-driven source normalization was submitted with transfer hash PASS;
 job details are in `evidence/remote-submission-2026-10-21`. At the recorded
 checkpoint it waits for another build's shared lock. This is submission evidence,
 not a completed normalization or synthesis result.
+
+
+First tool-driven normalization completed generation successfully but retained
+six disabled SD0 tap values at0x00, unlike the known post-build XCI. Its exact
+diff is retained; that output was not automatically selected for a full build.
+Normalization now includes the PS IP synthesis run (bounded by Vivado's run
+completion/progress check) before returning for review. A fresh PS-synthesis
+normalization retry is queued; see `remote-submission-2026-10-21/ps-synth-retry`.

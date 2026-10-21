@@ -102,3 +102,8 @@ submission/normalization/collection now has a reusable tool, with its first
 source normalization queued for validation. The source HDL regeneration result closes the
 fresh HDL checkpoint; original PS generation and empty-host provisioning remain
 explicit dependencies rather than implied successes.
+
+The final artifact assembly now has `make package-local-candidate`, binding
+JTAG-qualified input hashes and the SD worker payload; see SD_BOOT.md. This
+closes candidate packaging automation, while end-to-end source orchestration
+and cold-boot qualification remain distinct open steps.

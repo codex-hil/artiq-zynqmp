@@ -1,0 +1,42 @@
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Wed Oct 21 19:02:12 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source normalize.tcl
+# create_project -in_memory -part xczu5ev-sfvc784-1-e
+# read_ip {ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci}
+WARNING: [Vivado 12-25524] IP file '/srv/nvme-fast-1/vivado-work/artiq-source-normalize-20261021/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci' was created in a subcore context and may not behave as expected when used in a standalone context.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/ip'.
+WARNING: [IP_Flow 19-12246] XCI file '/srv/nvme-fast-1/vivado-work/artiq-source-normalize-20261021/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci' contents have changed since it was last written.
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+WARNING: [Vivado 12-13650] The IP file '/srv/nvme-fast-1/vivado-work/artiq-source-normalize-20261021/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci' has been moved from its original location, as a result the outputs for this IP will now be generated in '/srv/nvme-fast-1/vivado-work/artiq-source-normalize-20261021/ip/platform_zynq_ultra_ps_e_0_0'. Alternatively a copy of the IP can be imported into the project using one of the 'import_ip' or 'import_files' commands.
+read_ip: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1785.172 ; gain = 215.062 ; free physical = 5604 ; free virtual = 63404
+# upgrade_ip [get_ips platform_zynq_ultra_ps_e_0_0]
+WARNING: [Coretcl 2-1042] No IP was identified for upgrade.
+# generate_target all [get_ips platform_zynq_ultra_ps_e_0_0]
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [xilinx.com:ip:zynq_ultra_ps_e:3.5-0] platform_zynq_ultra_ps_e_0_0: 
+Changes in your design (including the PCW configuration settings) are not automatically exported from Vivado to Amd's SDK, Petalinux or Yocto.
+This is by design to avoid disrupting existing embedded development efforts. To have any changes of your design taking effect in the embedded software flow please export your
+design by going through Vivado's main menu, click on File, then Export finally select Export Hardware, please ensure you click on the Include BitStream option.
+The auto-generated HDF file is all you need to import in Amd's SDK, Petalinux or Yocto for your changes to be reflected in the Embedded Software Flow.
+For more information, please consult PG201, section: Exporting PCW Settings to Embedded Software Flows
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_HPM0_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HP0_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-1686] Generating 'Miscellaneous' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'zynq_ultra_ps_e_0'...
+INFO: [IP_Flow 19-1686] Generating 'Hardware Handoff' target for IP 'zynq_ultra_ps_e_0'...
+generate_target: Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1816.172 ; gain = 31.000 ; free physical = 5588 ; free virtual = 63408
+# quit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 21 19:02:45 2026...

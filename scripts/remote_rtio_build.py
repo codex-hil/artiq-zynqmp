@@ -50,7 +50,7 @@ def prepare(source,job,mode,normalized=None,expected=None):
     shutil.copyfile(source/'generation.json',job/'generation.json')
     write(job/'inputs.json',dict(files=rows,scope='Generated local RTIO build inputs',selected_normalized_xci_sha256=expected))
     if mode=='normalize':
-        (job/'normalize.tcl').write_text('create_project -in_memory -part xczu5ev-sfvc784-1-e\nread_ip {'+XCI+'}\nupgrade_ip [get_ips platform_zynq_ultra_ps_e_0_0]\ngenerate_target all [get_ips platform_zynq_ultra_ps_e_0_0]\nquit\n')
+        (job/'normalize.tcl').write_text('create_project -force -name normalize -part xczu5ev-sfvc784-1-e\nread_ip {'+XCI+'}\nupgrade_ip [get_ips platform_zynq_ultra_ps_e_0_0]\ngenerate_target all [get_ips platform_zynq_ultra_ps_e_0_0]\ncreate_ip_run [get_ips platform_zynq_ultra_ps_e_0_0]\nlaunch_runs platform_zynq_ultra_ps_e_0_0_synth_1 -jobs 2\nwait_on_run platform_zynq_ultra_ps_e_0_0_synth_1\nif {[get_property PROGRESS [get_runs platform_zynq_ultra_ps_e_0_0_synth_1]] ne \"100%\"} {error \"PS IP synthesis failed\"}\nquit\n')
     remote=REMOTE_ROOT+'/'+job.name;entry='normalize.tcl' if mode=='normalize' else 'top.tcl'
     final='NORMALIZED_REVIEW_REQUIRED' if mode=='normalize' else 'FINISHED_CHECK_REPORTS'
     (job/'run.sh').write_text('''#!/bin/bash

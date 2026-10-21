@@ -3162,3 +3162,15 @@ SixofflinecontrolsPASS. First freshsource normalization submitted/hashtransferPA
 but waits behind another shared-lock build; normalization/synthesis resultPENDING.
 NoHWaccess. Evidence remote-submission-2026-10-21. Next collect/diff normalization,
 then explicitly pin selectedIP for full source-generated build.
+
+
+## Qualified-input SD package and normalization review — 2026-10-21
+
+Exact extended-JTAG-qualified roles packaged with byte-matched CPU1 SD payload:
+BOOT.BIN da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029.
+Packaging/readback and two guard tests PASS; coldboot/SDbridge startup NOT_RUN.
+No card write. Reusable make package-local-candidate added.
+Remote generate-only PS normalization completed but retains six disabledSD0tap
+values differing from knownpostbuildXCI. Noautoacceptance; PS-IP-synthesis stage
+added and freshretry queued under sharedDelllock. Full top-level sourcebuild
+not yet launched. No HW access; normalbaseline unchanged.
