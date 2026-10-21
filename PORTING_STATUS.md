@@ -2985,3 +2985,12 @@ PASS; oldlabimagesnowrefused byhashguard. Normal04profilepreflightPASS. NoHW
 access. Evidence `evidence/kasli04-lab-admission-offline-2026-10-21`. Next
 newphysicalidlecounter/DIO/snapshot/restoration forchangedELF beforeactive
 attempt;oldidleproofcannotqualifythisELF,minimumstartmargin unchanged.
+
+
+Newlabadmissionfirmwareidle (2026-10-21): physicalPASS TSC/reset/DIO and
+2readonlyidle samples ready1/epoch1,allDMA/arm/fault/counters/AR/RLAST0,
+edges32stable. Noarm/playback. ExactnewELFboundtoidleproof;oldproofnotreused.
+BothrestoresPASS (04clock/route/mode10;GenesyslocalCoreDMA/debug/Ethernet
+192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-lab-admission-idle-2026-10-21`. Nextoneactiveattempt
+withthisexactproof torecordadmissionreason;no loweredchecks/reuse.
