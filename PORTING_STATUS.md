@@ -2840,3 +2840,14 @@ GenesysnormalCoreDMA/debug/Ethernet192.168.2.3),sortedleasesreleased. No01/03/
 Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-external-idle-2026-10-21`. Next exact-proof nativeDDMA
 playback and thenstability/recovery; labactivefault remainsseparatelygated.
+
+
+KASLI04 nativeDDMA (2026-10-21): physicalPASS viaexternalDRTIO; exactidle
+proof/PL/firmware admission checked. NativeAUXupload/play/status/erase IDs
+matched, completionerror0,physical8edges width8000mu period80000mu firstdelta
+1000120mu. Localruntime/management/counter andexternalTSC/reset/DIOrepeatPASS.
+BothboardrestorePASS (04clock/route/mode10,GenesysnormalCoreDMA/debug/Ethernet
+192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-native-ddma-2026-10-21`. ScopeonebasicnativeDMAplayback;
+fragmentation/lifecycle/fault/phaseproofpending. Next boundedlifecycle or
+fragmentation and linkstability/recovery, labactivefault separatelygated.
