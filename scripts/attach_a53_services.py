@@ -39,6 +39,7 @@ def main():
 ''')
     if o.kernel:
         shutil.copyfile(repo / 'boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c', source / 'kernel_lwip.c')
+        shutil.copyfile(repo / 'boards/genesys_zu-5ev/2_firmware_a53/c/rpc_reply.h', source / 'rpc_reply.h')
         text = text.replace('extern int genesys_management_start(const unsigned char *, size_t);',
             'extern int genesys_management_start(const unsigned char *, size_t);\nextern int genesys_kernel_start(void);\nextern void genesys_kernel_poll(void);')
         anchor = '\t/* start the application (web server, rxtest, txtest, etc..) */'

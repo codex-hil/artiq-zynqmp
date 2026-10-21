@@ -6,6 +6,7 @@
 #include "lwip/tcp.h"
 #include "xil_cache.h"
 #include "xil_printf.h"
+#include "rpc_reply.h"
 #define MAILBOX 0x200ff000UL
 #define INPUT 0x21000000UL
 #define KERNEL_MAX_INPUT (1024u*1024u)
@@ -20,7 +21,8 @@ static int mode,closing,loaded,busy,dead,recovering;
 int genesys_kernel_running(void) { return busy != 0 || dead || recovering; }
 static size_t count,total;
 static uint32_t length;
-static uint8_t operation,return_tag;
+static uint8_t operation;
+static struct genesys_rpc_reply rpc_reply;
 static uint64_t started;
 static const char magic[]="ARTIQ coredev\n";
 extern void artiq_runtime_kernel_ready(void);
@@ -65,7 +67,7 @@ static err_t abort_owner(void) {struct tcp_pcb *p=owner;failed(NULL,ERR_ABRT);tc
 static err_t acknowledged(void *arg,struct tcp_pcb *p,u16_t n) {(void)arg;(void)p;(void)n;return flush();}
 static err_t poll(void *arg,struct tcp_pcb *p) {(void)arg;(void)p;return flush();}
 /* modes: greeting0, sync1, request2, length3, data4, worker-wait5,
- * RPC return length6, RPC return tag7, RPC return value8 */
+ * scalar RPC reply body6, RPC exception body9 */
 static int byte(uint8_t b) {
  if(mode==0) {if(b!=(uint8_t)magic[count++])return -1;if(count==sizeof(magic)-1){append("e",1);count=0;mode=1;}return 0;}
  if(mode==1) {count=b==0x5a?count+1:0;if(count==4){mode=2;count=0;}return 0;}
@@ -76,16 +78,15 @@ static int byte(uint8_t b) {
   else if(b==6) {
    if(!loaded||busy||dead){header(8);closing=1;}else{busy=2;mode=5;command(2,0);}
   } else if(b==8&&busy==3) {total=48;count=0;mode=9;}
-  else if(b==7&&busy==3) {length=0;count=0;mode=6;}
+  else if(b==7&&busy==3) {genesys_rpc_reply_init(&rpc_reply);mode=6;}
   else return -1;
   return 0;
  }
- if(mode==3||mode==6) {
+ if(mode==3) {
   length|=(uint32_t)b<<(count++*8);
   if(count==4) {
    count=0;
-   if(mode==3) {if(length==0||length>KERNEL_MAX_INPUT){error_load("kernel upload exceeds 1 MiB or is empty");closing=1;return 0;}mode=4;}
-   else {if(length!=1)return -1;mode=7;}
+   if(length==0||length>KERNEL_MAX_INPUT){error_load("kernel upload exceeds 1 MiB or is empty");closing=1;return 0;}mode=4;
   }return 0;
  }
  if(mode==4) {
@@ -93,21 +94,18 @@ static int byte(uint8_t b) {
   if(count==length){count=0;mode=5;if(dead||recovering){error_load("CPU1 unavailable; restart worker");mode=1;}else{busy=1;command(1,length);}}
   return 0;
  }
- if(mode==7) {
-  return_tag=b;
-  if(b=='n')total=0;else if(b=='b')total=1;else if(b=='i'||b=='u')total=4;else if(b=='I'||b=='U'||b=='f')total=8;else return -1;
-  mode=8;count=0;
-  if(!total){command(4,0);busy=2;mode=5;}
+ if(mode==6) {
+  int result=genesys_rpc_reply_byte(&rpc_reply,b);
+  if(result<0)return -1;
+  if(result>0) {
+   memcpy((void *)INPUT,rpc_reply.payload,rpc_reply.expected);
+   command(4,rpc_reply.expected);busy=2;mode=5;
+  }
   return 0;
  }
  if(mode==9) {
   ((uint8_t *)INPUT)[count++]=b;
   if(count==total){command(7,total);busy=2;mode=5;count=0;}
-  return 0;
- }
- if(mode==8) {
-  ((uint8_t *)INPUT)[count++]=b;
-  if(count==total){command(4,total);busy=2;mode=5;count=0;}
   return 0;
  }
  return -1;

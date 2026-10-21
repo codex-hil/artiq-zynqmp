@@ -1,0 +1,13 @@
+{
+  "status": "HOST_SERIALIZER_PARSER_AND_AARCH64_COMPILE_PASS",
+  "hardware_executed": false,
+  "tests": 2,
+  "host_scalar_cases": 9,
+  "full_firmware_link": "NOT_RUN",
+  "deployment": "NOT_RUN",
+  "sha256": {
+    "boards/genesys_zu-5ev/2_firmware_a53/c/rpc_reply.h": "2683e819fcc042e9020e615797b8b085dc195ca19ab3413cd47b51d1d50c371b",
+    "boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c": "c53daa7732b0e011c6b7b6c6cd9f544fba8c5b38813eaef01ffe32994d0c5449",
+    "common/artiq/artiq/coredevice/comm_kernel.py": "f043db865c8d4ba36bed5d7d1760ae05ffd17a1a8d806bca9b4a3a7ed878db4e"
+  }
+}

@@ -11,7 +11,7 @@ CPU1 worker; it is not the complete upstream AArch64 runtime.
 | Kernel loading | LoadKernel/LoadCompleted/LoadFailed, maximum1MiB ELF upload | CPU1 must be available; oversized/empty uploads are rejected |
 | Execution | RunKernel, worker completion and native exception events | One owner; worker death/recovery is distinct from a normal caught exception |
 | RPC arguments | Preserved M-Labs serializer, event body limited to4096bytes | This is not a promise that every host object fits or is supported |
-| RPC results | One return tag: `n`, `b`, `i`, `I`, `u`, `U`, `f` | CPU0 and CPU1 both restrict replies to scalars; list/tuple/array/string results are not implemented |
+| RPC results | Transport/worker accept `n`, `b`, `i`, `I`, `u`, `U`, `f`; pinned host emits `n`, `b`, `i`, `I`, `f` | CPU0 and CPU1 both restrict replies to scalars; list/tuple/array/string results are not implemented |
 | Host RPC exception | Fixed48-byte ARM-layout bridge to CPU1 native unwinder | Does not establish arbitrary exception payload compatibility |
 | Subkernels | No CPU0 SubkernelUpload branch | Unsupported; adding host acceptance alone would be incorrect |
 | Management | GetLog, ClearLog and selected read-only metadata | Remote management destination, config writes and other commands are rejected |
@@ -47,3 +47,34 @@ component and exercise real pinned host byte streams, fragmentation, incorrect
 lengths/tags and abort/recovery. Then select a bounded result type and update the
 CPU1 allocation/ownership path. Keep the currently qualified runtime available
 for restoration and qualify changed binaries separately.
+
+## Extracted scalar parser checkpoint
+
+`2_firmware_a53/c/rpc_reply.h` now owns the bounded scalar reply-body parser.
+CPU0 uses it directly; `attach_a53_services.py` copies the header with the
+transport source. It parses the four-byte little-endian tag-descriptor length,
+requires exactly one supported scalar tag and accepts at most8payload bytes.
+No worker command is issued until the reply is complete. Invalid input remains
+invalid until initialization; network recovery/ownership remains in the existing
+transport. This does not add complex results or authenticate a peer.
+
+`tests/test_rpc_reply.py` compiles this same header with host C and obtains
+wire bodies through the checked-out `CommKernel._write_bytes` and
+`_send_rpc_value`. Nine real scalar cases cover signed limits, bool, None and
+floating point; every truncated prefix remains incomplete. Wrong tag lengths,
+unsupported tags and bytes after completion are rejected. These are parser
+controls, not an end-to-end TCP/worker recovery test. Run with the ARTIQ host
+Python environment:
+
+```sh
+/path/to/artiq-host/bin/python -m unittest discover -s tests -p test_rpc_reply.py
+```
+
+Both tests PASS. The updated complete transport translation unit also compiles
+for AArch64 using the retained qualified BSP include/compile flags and a fresh
+object output. Evidence: `evidence/rpc-reply-parser-2026-10-22/`.
+No full firmware link, deployment or hardware qualification has occurred.
+The source has changed; old source-equivalence statements and qualified binary
+hashes describe their original checkpoints, not this newly edited transport.
+Next validate transport callbacks/abort behavior and build the full CPU0 image
+before a bounded hardware qualification of the changed source.
