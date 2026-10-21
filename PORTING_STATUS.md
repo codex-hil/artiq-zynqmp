@@ -2851,3 +2851,13 @@ BothboardrestorePASS (04clock/route/mode10,GenesysnormalCoreDMA/debug/Ethernet
 `evidence/kasli04-native-ddma-2026-10-21`. ScopeonebasicnativeDMAplayback;
 fragmentation/lifecycle/fault/phaseproofpending. Next boundedlifecycle or
 fragmentation and linkstability/recovery, labactivefault separatelygated.
+
+
+KASLI04 nativeDMAlifecycle (2026-10-21): physicalPASS,3uploads/versions,9plays
+(6viahandle),replacement+erase/reupload;72physicaledges with threeexpected
+width/periodsets. NativeAUXsequence/traceIDs/completionchecksPASS,no newfaults.
+TSC/reset/DIOrepeatPASS. BothboardrestorationPASS (04clock/route/mode10,
+GenesysnormalCoreDMA/debug/Ethernet192.168.2.3),leasesreleased,no01/03/Flash/
+OTP/SD/GenesysSiwrites. Evidence `evidence/kasli04-ddma-lifecycle-2026-10-21`.
+Nextmultifragmentupload thenstability/linkrecovery; no sustainedthroughput/
+phaseproof.
