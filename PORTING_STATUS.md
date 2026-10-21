@@ -2911,3 +2911,13 @@ mode10;GenesysnormalCoreDMA/debug/Ethernet192.168.2.3),leasesreleased,no01/03/
 Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-ddma-long-lifecycle-2026-10-21`. NextnativeDMAerrorreporting/
 recoveryon04;active-delaylabrequiresseparateidle-counterproof.
+
+
+KASLI04 expiredDMAstart (2026-10-21): physicalPASS; valid170Btraceuploaded,
+starttimestamp8 NACK/caughtDMAError; samekernel futureplaybackwithoutreset/
+reuploadPASS8physicaledges, thenstatus0/eraseACK. ExactAUXsequence/IDchecked,
+no newkernel/session/servicefaults. Admissionrejectiononly,notactiveunderflow.
+BothrestoresPASS (04clock/route/mode10;GenesyslocalCoreDMA/debug/Ethernet
+192.168.2.3),leasesreleased,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-ddma-expired-2026-10-21`. Nextsamekerneluploadrejection/
+cleanup/recovery;activefaultrequiresseparateidle-counterproof.

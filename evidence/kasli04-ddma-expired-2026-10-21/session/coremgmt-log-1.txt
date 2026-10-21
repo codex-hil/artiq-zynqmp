@@ -1,0 +1,21 @@
+[     0.000005s]  INFO(runtime): ARTIQ runtime starting...
+[     0.003831s]  INFO(runtime): software ident 10.0+unknown.beta;genesys_drtio_master_v11
+[     0.011742s]  INFO(runtime): gateware ident 10.0+unknown.beta;genesys_drtio_master_v11
+[     0.019633s]  INFO(runtime): log level set to INFO by default
+[     0.025364s]  INFO(runtime): UART log level set to INFO by default
+[     0.031735s]  WARN(runtime::rtio_clocking): rtio_clock setting not supported. Falling back to default
+[     0.040734s]  INFO(runtime::rtio_clocking): clocking has already been set up
+[     0.047781s]  INFO(runtime): network addresses: MAC=02-4b-04-70-48-54 IPv4=use_dhcp IPv4-default-route=no configured address IPv6-LL=fe80::4b:4ff:fe70:4854/10 IPv6=no configured address IPv6-default-route=no configured address 
+[     0.067912s]  INFO(runtime): will try to acquire an IPv4 address with DHCP
+[     0.075216s]  INFO(board_artiq::drtio_routing): could not read routing table from configuration, using default
+[     0.084799s]  INFO(board_artiq::drtio_routing): routing table: RoutingTable { 0: 0; 1: 1 0; 2: 2 0; }
+[     0.095195s]  WARN(runtime::rtio_mgt): error reading device map (flash memory is not present), device names will not be available in RTIO error messages
+[     0.107595s]  INFO(runtime::rtio_mgt): SED spreading disabled by default
+[     0.114555s]  INFO(runtime::rtio_mgt::drtio): [DEST#0] destination is up
+[     0.122013s]  INFO(runtime::mgmt): management interface active
+[     0.132656s]  INFO(runtime::session): accepting network sessions
+[     0.137348s]  INFO(runtime::session): running startup kernel
+[     0.142987s]  INFO(runtime::session): no connection, starting idle kernel
+[     0.159682s]  INFO(runtime::dhcp): acquired DHCP config IP address: None -> 192.168.2.18/24 default route: None -> 192.168.2.1
+[     1.804461s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:49178
+[     2.255431s]  INFO(runtime::mgmt): new connection from fe80::fdfa:f6e9:b78b:1da4:49186
