@@ -68,3 +68,29 @@ This is one JTAG qualification session. It does not establish cold SD boot,
 DDR soak, remote DRTIO operation, reproducible bytes or clock phase/jitter.
 The normal profile continues to select the restored old baseline. No Kasli,
 Si, SD, flash or OTP was written.
+
+
+## Extended candidate suite
+
+`--extended` adds three cycles each of the existing full CoreDMA and native
+exception suites on the candidate before restoration. CoreDMA covers named and
+handle playback, tight64ns pulses, errors, persistence,32-slot/64KiB limits and
+successful playback after a typed missing-trace error. The exception suite
+checks catch/reraise/finally, overflow, uncaught kernel/RPC/RTIO errors and fresh
+kernel load/RPC immediately after each error, while the RTIO counter advances.
+
+Each extended child has a480second timeout. A final candidate debug/physical
+loopback check follows the exception suite. The old baseline is then reloaded
+and checked with the original debug/Ethernet suite; restoration is unchanged.
+The default command retains the shorter qualification scope. Extended results
+must be recorded separately from the initial124.298second session.
+
+
+Extended physical checkpoint: `evidence/candidate-extended-hardware-2026-10-21`.
+All3CoreDMA cycles passed (21artiq_run invocations,216pulses/432edges), including
+64ns tight pulses, native DMAError reporting and successful subsequent playback.
+All3exception cycles passed (30artiq_run invocations), with RTIO counter advancing
+from5,800,591,559 to8,264,718,883 across catch/recovery checks. Candidate post-error
+physical debug/Ethernet checks and separate old-baseline restoration checks also
+passed. Lease held174.637seconds and released afterward; DHCP192.168.2.3.
+Cold boot and the other excluded qualification areas remain untested here.

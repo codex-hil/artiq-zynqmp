@@ -80,6 +80,7 @@ def main():
     p.add_argument('--manifest',type=Path,default=REPO/'evidence/candidate-jtag-plan-2026-10-21/inputs.json')
     p.add_argument('--output',type=Path,required=True);p.add_argument('--execute',action='store_true')
     p.add_argument('--server');p.add_argument('--port');p.add_argument('--interface')
+    p.add_argument('--extended',action='store_true',help='Candidate only: three cycles each of full CoreDMA and exception suites')
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
     a=p.parse_args();files=preflight(json.loads(a.manifest.read_text()))
@@ -122,6 +123,14 @@ def main():
             if count!=1:raise ValueError('Expected one core address in copied database')
             db.write_text(text)
             run(prefix+'-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),'--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,'--output',str(out/(prefix+'-debug'))],240)
+            if prefix=='candidate' and a.extended:
+                run('candidate-core-dma',[a.artiq_python,str(REPO/'scripts/test_core_dma_hw.py'),
+                    '--ip',ip,'--cycles','3','--output',str(out/'candidate-core-dma')],480)
+                run('candidate-exceptions',[a.artiq_python,str(REPO/'scripts/test_kernel_exceptions_hw.py'),
+                    '--ip',ip,'--cycles','3','--output',str(out/'candidate-exceptions')],480)
+                run('candidate-post-errors-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),
+                    '--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,
+                    '--output',str(out/'candidate-post-errors-debug')],240)
             run(prefix+'-ethernet',[sys.executable,str(REPO/'scripts/test_ethernet_hw.py'),'--ip',ip,'--interface',a.interface,'--output',str(out/(prefix+'-ethernet.json'))],90)
             return ip
         # Convert external termination to an exception so restoration is attempted.
@@ -129,7 +138,7 @@ def main():
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,
+                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest())
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
