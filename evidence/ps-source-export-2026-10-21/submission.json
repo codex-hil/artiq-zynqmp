@@ -1,0 +1,15 @@
+{
+  "job": "ps-source-export-20261021",
+  "remote": "/srv/nvme-fast-1/vivado-work/ps-source-export-20261021",
+  "host": "codex-hil@192.168.2.7",
+  "unit": "ps-source-export-20261021.service",
+  "source_commit": "81735862c28452d13b8ecbbdbb6e27190d0e7653",
+  "variant": "local-rtio-dma",
+  "hardware_executed": false,
+  "upload_sha256": {
+    "migen_integration.tcl": "3820ed76d7ec676bcca19bf4bfbfd9e72577b5fb06d11c8c2f05e21a718a9de8",
+    "run.sh": "08b5c4f9c80fcb71636f3ca914bedf6745289ce39c7c7ac070e0e0ddc5dae58b",
+    "vivado_script.tcl": "4e6b1a9a15b264827a9a8a45a6581bc81fd8d2596e76af47828c9295490689ac",
+    "zynq_ultra_ps_e_0.properties.tcl": "944d303e9cee626d043a1aeb9531922fbf3e06ed6110e0866aeeec7fcac1128c"
+  }
+}

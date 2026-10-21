@@ -20,6 +20,9 @@ those commits and the existing Python environment. The host compiler/NAC3 and
 firmware Rust toolchains have their own documented pins in ARTIQ_HOST.md and
 CLEAN_BUILD.md; do not update them implicitly when generating gateware.
 
+For reconstruction of the external PS export from Piotr's Tcl sources, see
+[PS_EXPORT.md](PS_EXPORT.md). Acceptance is separate from successful export.
+
 ## 2. Generate HDL on Optiplex
 
 ```sh
