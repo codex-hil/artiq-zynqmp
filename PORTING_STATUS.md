@@ -2748,3 +2748,16 @@ exact retained-mode10 and volatileclock restoration wrapper. Vivado synthesis
 ongoing exec47085; noHWaccess thischeckpoint. Evidence
 `evidence/kasli04-clock-plan-2026-10-21`. Next bounded04restoration qualification
 and completeFPGA checks before netboot/runtime/DRTIO.
+
+
+KASLI04 clock/SRAM restore hardware (2026-10-21): PASS85.061s under04lease,
+exactDNA/idle-mode10/hash-pinned images; temporary full-checker outputsoff,
+fresh28registerdoublebaseline exact beforeSiwrites. Existingboundedsoftreset/
+23registerprofile/ICAL/readback/ID/PLL/coarsefrequencyPASS,0retries,26.604s.
+Onlymux71 addressed; mux70 absent, neveraccessed. Routing/bus restoredPASS,
+mode10reloaded/UARTversion+mode+idlePASS; countersrestart, no oldone-shot replay.
+Lease released. NoFlash/OTP/SD/Genesys/otherKasli access. Evidence
+`evidence/kasli04-clock-restore-2026-10-21`; reproducer
+`scripts/test_kasli04_clock_restore_hw.py` defaultoffline. Vivadoimplementation
+stillrunning. Next qualifyFPGA and integrate04-specific restore into netboot
+wrapper before masterruntime/DRTIO.

@@ -1,0 +1,88 @@
+write to ram
+Can't read iSerialNumber field from FTDI: considered as empty string
+Jtag frequency : requested 1.00MHz    -> real 1.00MHz   
+Open file /home/codex-hil/rng-rpi/kasli/artifacts/kasli-full-checker/gateware/kasli_diag.bit DONE
+Parse file DONE
+load program
+
+Load SRAM: [=                                                 ] 2.00%
+
+Load SRAM: [===                                               ] 6.00%
+
+Load SRAM: [=====                                             ] 10.00%
+
+Load SRAM: [=======                                           ] 14.00%
+
+Load SRAM: [=========                                         ] 18.00%
+
+Load SRAM: [===========                                       ] 22.00%
+
+Load SRAM: [=============                                     ] 26.00%
+
+Load SRAM: [===============                                   ] 30.00%
+
+Load SRAM: [=================                                 ] 34.00%
+
+Load SRAM: [===================                               ] 38.00%
+
+Load SRAM: [=====================                             ] 42.00%
+
+Load SRAM: [=======================                           ] 46.00%
+
+Load SRAM: [=========================                         ] 50.00%
+
+Load SRAM: [===========================                       ] 54.00%
+
+Load SRAM: [=============================                     ] 58.00%
+
+Load SRAM: [===============================                   ] 62.00%
+
+Load SRAM: [=================================                 ] 66.00%
+
+Load SRAM: [===================================               ] 70.00%
+
+Load SRAM: [=====================================             ] 74.00%
+
+Load SRAM: [=======================================           ] 78.00%
+
+Load SRAM: [=========================================         ] 82.00%
+
+Load SRAM: [===========================================       ] 86.00%
+
+Load SRAM: [=============================================     ] 90.00%
+
+Load SRAM: [===============================================   ] 94.00%
+
+Load SRAM: [================================================= ] 98.00%
+
+Load SRAM: [===================================================] 100.00%
+
+Done
+Shift IR 35
+ir: 1 isc_done 1 isc_ena 0 init 1 done 1
+write to ram
+Can't read iSerialNumber field from FTDI: considered as empty string
+Jtag frequency : requested 1.00MHz    -> real 1.00MHz   
+Open file /home/codex-hil/kasli-secure-link/build/sfp-identity-trace-reviewed-public-lab/kasli-sfp-identity-trace.bit DONE
+Parse file DONE
+load program
+
+Load SRAM: [======                                            ] 11.00%
+
+Load SRAM: [============                                      ] 24.00%
+
+Load SRAM: [===================                               ] 37.00%
+
+Load SRAM: [=========================                         ] 50.00%
+
+Load SRAM: [================================                  ] 62.99%
+
+Load SRAM: [======================================            ] 75.99%
+
+Load SRAM: [=============================================     ] 88.99%
+
+Load SRAM: [==================================================] 100.00%
+
+Done
+Shift IR 35
+ir: 1 isc_done 1 isc_ena 0 init 1 done 1
