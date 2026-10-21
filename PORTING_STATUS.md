@@ -2817,3 +2817,14 @@ Added opt-in<=45s/15attempts connect-only readiness retainingactualsocket;
 2new+15existingtestsPASS. Extended same readiness to postclock-reboot second
 upload (HW NOT_RUN), preservespanic/2bootlimits. Next onebounded extended
 runtime test; no switchchanges/rootcauseclaim.
+
+
+KASLI04 full runtime hardware (2026-10-21): PASS after boundedretainedTCP
+readiness at initialboot and postclock-switch reboot. Bothuploads/bootcommands
+complete; runtime/servicesPASS,2standardcoremgmtlogsPASS,2standardartiq_run
+counter/RPCkernelsPASS (noTTLwrites). Temporarydiagnostic+clockexactprofile/
+readback/PLL/coarsefrequency+originalmux71route+retainedmode10restorePASS,
+clockrestore27.508s. Both04/Genesysleasesreleased,Genesysnotaccessed, no01/03/
+Flash/OTP/SDwrites. Evidence `evidence/kasli04-runtime-hardware-2026-10-21`.
+No externalDRTIO/TSC/DIO/DMAclaim yet. Next external04SFP1toGenesys idle
+link/TSC/reset/DIOqualification with existingtwo-boardrestoration.

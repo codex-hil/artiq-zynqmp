@@ -1,0 +1,354 @@
+{
+  "status": "PASS",
+  "board": "KASLI04",
+  "bit_sha256": "80f2d7872aa885ff2bfff8a5f957a620b1d1c11529ee019ef4fd23e10b12fe90",
+  "flash_written": false,
+  "runtime_uploaded": true,
+  "genesys_accessed": false,
+  "clock_profile_written": true,
+  "usb_busdev": "001:036",
+  "usb_topology": "1-11.1",
+  "uart": "/dev/serial/by-path/pci-0000:00:14.0-usb-0:11.1:1.2-port0",
+  "dna": "0x006c440674704854",
+  "retained_before": {
+    "version": 65548,
+    "mode": 10,
+    "link0": 1,
+    "link1": 1,
+    "phy0": 191,
+    "phy1": 191,
+    "sfp_inputs": 0,
+    "sys_cycles": 1308776413,
+    "port0_tx_half_cycles": 654385236,
+    "port0_rx_half_cycles": 656860173,
+    "port1_tx_half_cycles": 654385239,
+    "port1_rx_half_cycles": 654421291,
+    "i2c_busy": 0,
+    "i2c_done": 0,
+    "i2c_valid": 0,
+    "i2c_error": 0,
+    "i2c_generation": 0,
+    "i2c_changed": 0,
+    "i2c_restored": 0,
+    "i2c_bytes_read": 0,
+    "i2c_failed_step": 255,
+    "eeprom0": 0,
+    "eeprom1": 0,
+    "eeprom2": 0,
+    "eeprom3": 0,
+    "eeprom4": 0,
+    "eeprom5": 0,
+    "eeprom6": 0,
+    "eeprom7": 0,
+    "eeprom8": 0,
+    "eeprom9": 0,
+    "eeprom10": 0,
+    "eeprom11": 0,
+    "eeprom12": 0,
+    "eeprom13": 0,
+    "eeprom14": 0,
+    "eeprom15": 0,
+    "eeprom16": 0,
+    "eeprom17": 0,
+    "eeprom18": 0,
+    "eeprom19": 0,
+    "eeprom20": 0,
+    "eeprom21": 0,
+    "eeprom22": 0,
+    "eeprom23": 0
+  },
+  "prior_flash_runtime_started": false,
+  "bootloader_test": "PASS",
+  "dhcp_lease": "NOT_IMPLEMENTED_BY_BOOTLOADER",
+  "netboot_ipv6_link_local": "fe80::4b:4ff:fe70:4854",
+  "network_stage": "negative-1:receive-close",
+  "network_readiness": {
+    "status": "PASS",
+    "elapsed_seconds": 4.003348078986164,
+    "attempts": [
+      {
+        "elapsed_seconds": 3.00260156999866,
+        "error": "timed out"
+      },
+      {
+        "elapsed_seconds": 4.003345932986122,
+        "status": "CONNECTED"
+      }
+    ]
+  },
+  "netboot_network": {
+    "status": "PASS",
+    "interface": "enp2s0",
+    "tcp_connections": 3,
+    "unknown_command_rejected": true,
+    "boot_without_firmware_rejected": true,
+    "listener_recovery": true,
+    "neighbor_mac": "02:4b:04:70:48:54"
+  },
+  "runtime_execute_attempted": true,
+  "runtime_boot_commands": 2,
+  "clock_switch_reboot_observed": true,
+  "runtime_startup_stage": "clock-reboot:download",
+  "clock_reboot_readiness": {
+    "status": "PASS",
+    "elapsed_seconds": 4.003852353998809,
+    "attempts": [
+      {
+        "elapsed_seconds": 3.0029396140016615,
+        "error": "timed out"
+      },
+      {
+        "elapsed_seconds": 4.0038496580091305,
+        "status": "CONNECTED"
+      }
+    ]
+  },
+  "runtime_startup": "PASS",
+  "runtime_executed": true,
+  "ram_download": {
+    "status": "PASS",
+    "bytes": 1756088,
+    "source_sha256": "7bcb4b070427968ca55077a4a4ced44e0706b8d0943e71cad8f9bec5c91a4e83",
+    "boot_command_sent": true,
+    "memory_readback": "NOT_RUN"
+  },
+  "management_client": {
+    "status": "PASS",
+    "client": "standard artiq_coremgmt log",
+    "independent_connections": 2,
+    "log_characters": [
+      1778,
+      1989
+    ]
+  },
+  "counter_experiment": {
+    "status": "PASS",
+    "standard_artiq_run": true,
+    "runs": [
+      {
+        "before_mu": 9354636784,
+        "after_mu": 9355761616
+      },
+      {
+        "before_mu": 9930659248,
+        "after_mu": 9931783504
+      }
+    ],
+    "ref_period": 1e-09,
+    "ttl_writes": false,
+    "source_sha256": "33699c75bd99b17e5c1adb8151aa6d7566ded7df48522d8d32146849f984ecf0"
+  },
+  "restoration": "PASS",
+  "clock_restore": {
+    "writes": [
+      {
+        "register": 136,
+        "value": 128,
+        "value_ack": false
+      },
+      {
+        "register": 0,
+        "value": 84,
+        "value_ack": true
+      },
+      {
+        "register": 2,
+        "value": 66,
+        "value_ack": true
+      },
+      {
+        "register": 3,
+        "value": 85,
+        "value_ack": true
+      },
+      {
+        "register": 4,
+        "value": 18,
+        "value_ack": true
+      },
+      {
+        "register": 6,
+        "value": 63,
+        "value_ack": true
+      },
+      {
+        "register": 21,
+        "value": 254,
+        "value_ack": true
+      },
+      {
+        "register": 25,
+        "value": 192,
+        "value_ack": true
+      },
+      {
+        "register": 31,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 32,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 33,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 34,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 35,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 36,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 40,
+        "value": 192,
+        "value_ack": true
+      },
+      {
+        "register": 41,
+        "value": 78,
+        "value_ack": true
+      },
+      {
+        "register": 42,
+        "value": 3,
+        "value_ack": true
+      },
+      {
+        "register": 43,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 44,
+        "value": 17,
+        "value_ack": true
+      },
+      {
+        "register": 45,
+        "value": 212,
+        "value_ack": true
+      },
+      {
+        "register": 46,
+        "value": 0,
+        "value_ack": true
+      },
+      {
+        "register": 47,
+        "value": 17,
+        "value_ack": true
+      },
+      {
+        "register": 48,
+        "value": 212,
+        "value_ack": true
+      },
+      {
+        "register": 137,
+        "value": 1,
+        "value_ack": true
+      },
+      {
+        "register": 136,
+        "value": 64,
+        "value_ack": true
+      }
+    ],
+    "restore_retries": [],
+    "profile_restoration": "PASS",
+    "clock_configuration_written": true,
+    "post_configuration": {
+      "0": 84,
+      "2": 66,
+      "3": 85,
+      "4": 18,
+      "6": 63,
+      "21": 254,
+      "25": 192,
+      "31": 0,
+      "32": 0,
+      "33": 3,
+      "34": 0,
+      "35": 0,
+      "36": 3,
+      "40": 192,
+      "41": 78,
+      "42": 3,
+      "43": 0,
+      "44": 17,
+      "45": 212,
+      "46": 0,
+      "47": 17,
+      "48": 212,
+      "137": 1
+    },
+    "output_hz_against_host": [
+      125008082.20805888,
+      125013670.8442765,
+      125011810.11137123
+    ],
+    "restoration_profile_validated": true,
+    "restore_test_seconds": 27.508
+  },
+  "retained_after": {
+    "version": 65548,
+    "mode": 10,
+    "link0": 0,
+    "link1": 0,
+    "phy0": 191,
+    "phy1": 191,
+    "sfp_inputs": 0,
+    "sys_cycles": 2234477,
+    "port0_tx_half_cycles": 1114265,
+    "port0_rx_half_cycles": 1150350,
+    "port1_tx_half_cycles": 1114268,
+    "port1_rx_half_cycles": 1150326,
+    "i2c_busy": 0,
+    "i2c_done": 0,
+    "i2c_valid": 0,
+    "i2c_error": 0,
+    "i2c_generation": 0,
+    "i2c_changed": 0,
+    "i2c_restored": 0,
+    "i2c_bytes_read": 0,
+    "i2c_failed_step": 255,
+    "eeprom0": 0,
+    "eeprom1": 0,
+    "eeprom2": 0,
+    "eeprom3": 0,
+    "eeprom4": 0,
+    "eeprom5": 0,
+    "eeprom6": 0,
+    "eeprom7": 0,
+    "eeprom8": 0,
+    "eeprom9": 0,
+    "eeprom10": 0,
+    "eeprom11": 0,
+    "eeprom12": 0,
+    "eeprom13": 0,
+    "eeprom14": 0,
+    "eeprom15": 0,
+    "eeprom16": 0,
+    "eeprom17": 0,
+    "eeprom18": 0,
+    "eeprom19": 0,
+    "eeprom20": 0,
+    "eeprom21": 0,
+    "eeprom22": 0,
+    "eeprom23": 0
+  },
+  "retained_restoration": "PASS"
+}
