@@ -13,6 +13,9 @@ Kasli01/03 currently belong to the separate secure-link project; do not use
 the historical Kasli03 hardware profile on those boards.
 
 
+The [clean-checkout build checkpoint](docs/CLEAN_BUILD.md) records component
+recipes and their current reproducibility limits.
+
 The execution path is:
 
 `artiq_run` → AMD/lwIP on CPU0 (AArch64) → M-Labs loader on CPU1 (AArch32) → kernel execution, RPC and FPGA RTIO.

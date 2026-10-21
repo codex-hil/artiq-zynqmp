@@ -3037,3 +3037,15 @@ BothrestoresPASS,04clock/route/mode10,GenesyslocalCoreDMA/debug/Ethernet
 `evidence/kasli04-active-underflow-2026-10-21`. Singlecontrolledfaultproof,
 notarbitraryfaultrecovery/phase/jitter. Nextconsolidatelabreproducer/status
 andremainingintegrationgaps;normalpinnedprofileunchanged.
+
+
+## Clean-checkout CPU1 build — 2026-10-21
+
+Two clean detached worktrees and fresh output directories compile CPU1
+successfully with the committed Cargo lockfile and shared verified toolchains.
+Optional Rust path remapping removes checkout paths, but ELF PT_LOAD comparison
+still differs by 62 bytes. Fixed-metadata experiment also failed and was reverted.
+Build PASS, bit-identical reproducibility FAIL; no rebuilt image was loaded.
+Qualified worker and both boards remain unchanged. See docs/CLEAN_BUILD.md and
+evidence/kernel-clean-build-2026-10-21. Next: binary-difference diagnosis and
+clean-checkout CPU0/SD bridge builds; end-to-end release/cold boot remain pending.

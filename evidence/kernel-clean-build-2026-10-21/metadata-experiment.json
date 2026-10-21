@@ -1,0 +1,46 @@
+{
+  "status": "BUILD_PASS_REPRODUCIBILITY_FAIL",
+  "hardware_executed": false,
+  "source_commit": "58f1e93",
+  "scope": "Two clean detached worktrees, fresh output directories; shared installed toolchains and Cargo cache; not a fresh-host test",
+  "binaries": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-canonical-c-2026-10-21/worker32.elf",
+      "sha256": "feb6817aad39def7f37b80d7b1567829ee9c1f52681fc61c9e85ac85ba5c6b4b",
+      "load_segments": [
+        {
+          "vaddr": 538968064,
+          "paddr": 538968064,
+          "filesz": 86024,
+          "memsz": 1141590,
+          "flags": 7,
+          "sha256": "8c76d07f920154eb647fffd89e3cd18e3fc47fcfe185f01f34cec35ccbadd25c"
+        }
+      ]
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-canonical-d-2026-10-21/worker32.elf",
+      "sha256": "fcef38e80a932712efb321f4ef7d0d8aec1db9100220c2f9f6dafab2934b7eb6",
+      "load_segments": [
+        {
+          "vaddr": 538968064,
+          "paddr": 538968064,
+          "filesz": 86024,
+          "memsz": 1141590,
+          "flags": 7,
+          "sha256": "4251472d84c4551f4dd364d6bfaccbb267ec87269456c4e3aa7708e247de6e6f"
+        }
+      ]
+    }
+  ],
+  "load_segments_equal": false,
+  "load_differing_bytes": 2191,
+  "tool_manifest_sha256": "147e6de38561a795c2f8e31f07e77066a036ada2bda87e58a59f6dcd1b2f223f",
+  "cargo_lock_sha256": "452842b82ce41db54a568de6ca4e19136444b7774d94235e600749c31f0fe98c",
+  "csr_sha256": "b481e69823f7704b92c5222ab79de48b1505a2cb180a0845dd6f988a4d5ddad5",
+  "environment": {
+    "RUSTUP_HOME": "/srv/codex-hil-data/artiq-zynqmp/rustup",
+    "KERNEL_REMAP_PATHS": "1"
+  },
+  "retained_qualified_worker_sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+}

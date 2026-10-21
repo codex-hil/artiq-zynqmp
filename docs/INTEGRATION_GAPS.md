@@ -38,3 +38,6 @@ Hardware revalidation must retain shared board leases through restoration.
 KASLI01/03 belong to the separate secure-link project. Current qualified remote
 identity is KASLI04 DNA `0x006c440674704854`; its removed EEM mux must never be
 accessed. Flash, OTP and SD writes are outside these test profiles.
+
+A [clean-checkout CPU1 build checkpoint](CLEAN_BUILD.md) now records successful
+compilation and the remaining byte-reproducibility failure.
