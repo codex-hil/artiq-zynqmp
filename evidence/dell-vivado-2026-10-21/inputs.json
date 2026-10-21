@@ -1,0 +1,87 @@
+{
+  "scope": "Rebuild preserved generated local RTIO/CoreDMA/analyzer/MonInj input; not fresh HDL generation or hardware proof",
+  "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-debug-fixed-2026-10-09",
+  "change": "general.maxThreads 2 to 8 only",
+  "files": [
+    {
+      "path": "top.v",
+      "source_sha256": "ede20cf1089979d4e49f723bc66d1635e0f15054b749ea808aa1073f1b448805",
+      "build_sha256": "ede20cf1089979d4e49f723bc66d1635e0f15054b749ea808aa1073f1b448805"
+    },
+    {
+      "path": "top.xdc",
+      "source_sha256": "54b6126caa79dc1e305623c2ba74ef021c682ad5cbb16a92d2774280cbc052f2",
+      "build_sha256": "54b6126caa79dc1e305623c2ba74ef021c682ad5cbb16a92d2774280cbc052f2"
+    },
+    {
+      "path": "top.tcl",
+      "source_sha256": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a",
+      "build_sha256": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a"
+    },
+    {
+      "path": "top_route.tcl",
+      "source_sha256": "3ad81eb74b33f80086e614b7d06bcfff147b8b4593b5a0192d0594a2658de46d",
+      "build_sha256": "885970caf0834ce626e4dc5b4655d1c99a93cfef00309378b0554cee92bf9274"
+    },
+    {
+      "path": "top_bitstream.tcl",
+      "source_sha256": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a",
+      "build_sha256": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a"
+    },
+    {
+      "path": "csr-map.json",
+      "source_sha256": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049",
+      "build_sha256": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049"
+    },
+    {
+      "path": "en_replaces_rom.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_1.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_2.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_3.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_4.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_5.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_6.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "en_replaces_rom_7.init",
+      "source_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+      "build_sha256": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+    },
+    {
+      "path": "latency_compensation.init",
+      "source_sha256": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead",
+      "build_sha256": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead"
+    },
+    {
+      "path": "ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci",
+      "source_sha256": "6db91f5620dca1ec608f7726fa694acfd698ec082ee9ff413ff94e8ee1d78775",
+      "build_sha256": "6db91f5620dca1ec608f7726fa694acfd698ec082ee9ff413ff94e8ee1d78775"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "QUEUED_ON_SHARED_BUILD_LOCK",
+  "hardware_executed": false,
+  "job": {
+    "job": "artiq-genesys-debug-20261021T171820Z",
+    "local": "/srv/codex-hil-data/artiq-zynqmp/build/artiq-genesys-debug-20261021T171820Z",
+    "remote": "/srv/nvme-fast-1/vivado-work/artiq-genesys-debug-20261021T171820Z"
+  },
+  "host": "codex-hil@192.168.2.7",
+  "unit": "artiq-genesys-debug-20261021T171820Z.service",
+  "transfer": "TRANSFER_HASHES_PASS",
+  "input_files": 16,
+  "tool": "Vivado 2025.2",
+  "lock": "/srv/nvme-fast-1/vivado-work/.vivado-build.lock",
+  "build_result": "PENDING",
+  "scope": "Preserved generated HDL rebuild; no fresh HDL generation, bitstream or hardware PASS yet"
+}

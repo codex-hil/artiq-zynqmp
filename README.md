@@ -414,3 +414,6 @@ normal playback, expired-start rejection/recovery and upload-error/cursor recove
 The expired-start case is admission rejection, not active playback fault injection.
 
 Validated Kasli/Genesys checkpoint and recovery archive: [2026-10-19 public release](https://github.com/codex-hil/artiq-zynqmp/releases/tag/kasli-handoff-2026-10-19). Includes pinned images, source and physical test evidence; prepared-host toolchains are separate dependencies.
+
+New heavy FPGA builds use the [shared Dell Vivado server](docs/REMOTE_VIVADO.md);
+hardware access remains on the Optiplex under the existing board locks.
