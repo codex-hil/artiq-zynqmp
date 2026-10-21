@@ -2941,3 +2941,14 @@ checked,no newfaults. Defaulthostinstallationunchanged. BothrestoresPASS
 released,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
 `evidence/kasli04-ddma-cursor-2026-10-21`. Nextlabidleindependentcounter
 qualification beforeactiveunderflow injection; normalidleproofinsufficient.
+
+
+KASLI04 labidlecounterqualification (2026-10-21): physicalPASS usingseparate
+delay/metricsPL+labfirmware. TSC/reset/DIOPASS;2readonlyUARTsamplesready1/
+epoch1,active/pending/armed/holding/fault/raw0,accepted/completed/trigger/
+rejected0,AR/RLAST0,edges32stable. Noarmcommand/playback. BothrestoresPASS
+(04clock/route/mode10;GenesyslocalCoreDMA/debug/Ethernet192.168.2.3),leases
+released,no01/03/Flash/OTP/SD/GenesysSiwrites. Evidence
+`evidence/kasli04-lab-idle-2026-10-21`. Nextofflineactiveadmission withthis
+exactproof/PL/firmware andvalidatedhostoverlay, thenoneboundedfaulttrial;
+activeunderflowNOT_RUN andpostfaultDMAreuseforbiddenbeforefullrestore.
