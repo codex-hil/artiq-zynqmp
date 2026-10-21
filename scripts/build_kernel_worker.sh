@@ -10,6 +10,11 @@ export TMPDIR=${TMPDIR:-/srv/codex-hil-data/toolchains/amd/shared/tmp}
 export PATH="$tools/root/usr/bin:$tools/root/usr/lib/llvm-19/bin:$PATH"
 export LD_LIBRARY_PATH="$tools/root/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS='-C target-cpu=cortex-a9 -C relocation-model=static -C force-unwind-tables=yes'
+# Opt in when comparing independent checkout/output paths. Qualified historical
+# binaries retain their original recipe unless explicitly requested.
+if [ "${KERNEL_REMAP_PATHS:-0}" = 1 ]; then
+    export CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS="$CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUSTFLAGS --remap-path-prefix=$repo=/artiq-zynqmp --remap-path-prefix=$out=/artiq-build"
+fi
 python3 - "$csr" "$out/rtio_csr.h" <<'PY'
 import json,sys
 from pathlib import Path
