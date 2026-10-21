@@ -1,0 +1,27 @@
+{
+  "status": "SERIALIZED_BOOT_COMPONENTS_PASS",
+  "hardware_executed": false,
+  "cold_boot": "NOT_RUN",
+  "pmufw": {
+    "image_offset": 10240,
+    "bytes": 129760,
+    "elf_load_base": "0xffdc0000",
+    "elf_entry": "0xffdc0050",
+    "sha256": "2686c56d652f42f929dfeb6cc3684820fd671d416d27dce4c5da0e31905bf1bc"
+  },
+  "fsbl": {
+    "image_offset": 140000,
+    "bytes": 155864,
+    "elf_load_base": "0xfffc0000",
+    "elf_entry": "0xfffc0000",
+    "sha256": "04ee306e7131bcdd366c15fbb3dc8d150a563575eb3c0ec66844ece78425fe41"
+  },
+  "pl": {
+    "image_offset": 295872,
+    "bytes": 3202404,
+    "transformation": "Reverse bytes within each 32-bit .bit payload word",
+    "sha256": "01586dd36a7d08627e4a27fead1735cd4aa2502b5cbfc014af741377ba46b1a8"
+  },
+  "scope": "Exact serialized file-backed bytes with bootgen gap/padding/byte-order rules. Not BSS initialization, execution, secure boot or cold boot.",
+  "boot_bin_sha256": "da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029"
+}

@@ -1,0 +1,11 @@
+{
+  "source": "/srv/codex-hil-data/artiq-zynqmp/reference/amd-bootgen",
+  "commit": "d93c3fa6e6ef8aa1d4fb4532c58ed4a5efa8804e",
+  "sha256": {
+    "common/src/imageheadertable.cpp": "34b06b6613765e1696a3bde334957f648b998691e70c67d9a1595766e35c0205",
+    "zynqmp/src/imageheadertable-zynqmp.cpp": "e84bc1406fc88ecb1c06871d429f1d4823fbc333c830d30bc6420cd898436801",
+    "zynqmp/src/bootheader-zynqmp.cpp": "81525f16fc623f95bb457f12804229a96d7a5c7c55058c2d90decd5c0983a015",
+    "common/src/bitutils.cpp": "6f10d9625b2f0c181c3a57481690fa94d59647581281fc2a2cbba49a01d6d33b"
+  },
+  "scope": "Primary AMD layout/combination references; installed bootgen binary provenance remains separate."
+}

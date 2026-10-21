@@ -1,0 +1,126 @@
+{
+  "status": "LOCAL_RELEASE_CHAIN_PASS_COLD_BOOT_NOT_RUN",
+  "hardware_executed": false,
+  "cold_boot": "NOT_RUN",
+  "manifest_sha256": "19a9c2b336fa526833abd279242b98904305151cfd03e5a40f029b81a48fe5dd",
+  "hardware_proof_sha256": "949a603c7e3eb624ae0e30c2f651a200f28f0e4b517016b3ad8949212c05c829",
+  "build_inputs_sha256": "5b9ed267e0eb5a1196bffddf7717f65933acf854cf01cd4e998bebdb0d1e0a5f",
+  "fpga": {
+    "status": "FPGA_BUILD_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "slack_ns": {
+      "setup": 1.9,
+      "hold": 0.016,
+      "pulse_width": 2.5
+    },
+    "timing_coverage": {
+      "no_clock": 0,
+      "unconstrained_internal_endpoints": 0,
+      "no_input_delay": 1,
+      "no_output_delay": 5
+    },
+    "drc_warnings": [
+      "RTSTAT-10"
+    ],
+    "scope": "Preserved HDL local RTIO/CoreDMA/analyzer/MonInj build; external I/O delays remain as reported, no physical test",
+    "sha256": {
+      "top.bit": "11bed1180281b4111c324fd6fd5317dc963d862451a40c2e12b8f164705f2648",
+      "top_timing.rpt": "b6556a62cab5939f83132ceecf22f8bc45ed003ffc56a3bc7eed324d3584e625",
+      "top_drc.rpt": "273ef54465043b86186d800ca985d5a2fb4f52cf2db9e02bc92d4bf810a88707",
+      "top_route_status.rpt": "075ae97477ab9a99566248783651511bc6f28c2fcc868b110ac1128a876c2e65",
+      "console.log": "eb5c45a0a40e12354bd6aafa24c179131e05c294db4c328749b9788d381864a5"
+    }
+  },
+  "configuration_equivalence": {
+    "status": "CONFIGURATION_BYTES_IDENTICAL",
+    "hardware_executed": false,
+    "full_files_identical": false,
+    "metadata": {
+      "left": {
+        "design": "top;UserID=0XFFFFFFFF;COMPRESS=TRUE;Version=2025.2;SW_CRC=3300ee41",
+        "device": "xczu5ev-sfvc784-1-e",
+        "date": "2026/10/21",
+        "time": "17:43:15"
+      },
+      "right": {
+        "design": "top;UserID=0XFFFFFFFF;COMPRESS=TRUE;Version=2025.2;SW_CRC=3300ee41",
+        "device": "xczu5ev-sfvc784-1-e",
+        "date": "2026/10/21",
+        "time": "19:42:24"
+      }
+    },
+    "payload_bytes": {
+      "left": 3202404,
+      "right": 3202404
+    },
+    "payload_sha256": {
+      "left": "57ce1a7974b9ff1d8a6bd9e65bdc514e4ea61498b567211f11a8e8fc457194a2",
+      "right": "57ce1a7974b9ff1d8a6bd9e65bdc514e4ea61498b567211f11a8e8fc457194a2"
+    },
+    "scope": "Exact raw FPGA configuration bytes; header metadata reported separately. No new physical test."
+  },
+  "package": {
+    "boot_bin_sha256": "da5874c3dd15150353bd43ff2ac52420c0a357955a08ac506b7f04d8ad13e029",
+    "worker_embedding": {
+      "status": "EXACT_TESTED_WORKER_PAYLOAD",
+      "address": "0x20200000",
+      "bytes": 86024,
+      "sha256": "354cd5a3b4fa24c87bedd41518eedfe40fb025226ad9dcaacee1c46e4b85e3bf"
+    },
+    "boot_components": {
+      "status": "SERIALIZED_BOOT_COMPONENTS_PASS",
+      "hardware_executed": false,
+      "cold_boot": "NOT_RUN",
+      "pmufw": {
+        "image_offset": 10240,
+        "bytes": 129760,
+        "elf_load_base": "0xffdc0000",
+        "elf_entry": "0xffdc0050",
+        "sha256": "2686c56d652f42f929dfeb6cc3684820fd671d416d27dce4c5da0e31905bf1bc"
+      },
+      "fsbl": {
+        "image_offset": 140000,
+        "bytes": 155864,
+        "elf_load_base": "0xfffc0000",
+        "elf_entry": "0xfffc0000",
+        "sha256": "04ee306e7131bcdd366c15fbb3dc8d150a563575eb3c0ec66844ece78425fe41"
+      },
+      "pl": {
+        "image_offset": 295872,
+        "bytes": 3202404,
+        "transformation": "Reverse bytes within each 32-bit .bit payload word",
+        "sha256": "01586dd36a7d08627e4a27fead1735cd4aa2502b5cbfc014af741377ba46b1a8"
+      },
+      "scope": "Exact serialized file-backed bytes with bootgen gap/padding/byte-order rules. Not BSS initialization, execution, secure boot or cold boot."
+    },
+    "partition_headers_checked": 5,
+    "cpu_payloads": [
+      {
+        "label": "worker_boot",
+        "address": "0x20000000",
+        "bytes": 120,
+        "partition_number": 2,
+        "image_offset": 3498304,
+        "sha256": "e69877b24170ce9916e03f7e454ba9974f1643d706125d6a7bf2aa1bb5445ecc"
+      },
+      {
+        "label": "worker_boot",
+        "address": "0x20200000",
+        "bytes": 86024,
+        "partition_number": 3,
+        "image_offset": 3498432,
+        "sha256": "354cd5a3b4fa24c87bedd41518eedfe40fb025226ad9dcaacee1c46e4b85e3bf"
+      },
+      {
+        "label": "application",
+        "address": "0x0",
+        "bytes": 416264,
+        "partition_number": 4,
+        "image_offset": 3584512,
+        "sha256": "e961ea420fef923a3e54b48d64f82b31ed3336e7c5aba036c4c16ff2564a1855"
+      }
+    ]
+  },
+  "limits": "Offline consistency of selected artifacts and recorded hardware proof; not signed provenance, fresh hardware execution, complete source bootstrap, BSS initialization or cold boot.",
+  "config_sha256": "8d377c410be45856269b93c54b30e2a65e0510e0272a169b2fe78aea10a0b61c"
+}

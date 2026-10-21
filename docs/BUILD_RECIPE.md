@@ -136,7 +136,17 @@ prevents a PASS report. Existing reports are never overwritten.
 
 `LOCAL_RELEASE_CHAIN_PASS_COLD_BOOT_NOT_RUN` confirms offline consistency.
 It does not establish signed provenance, an empty-host build, fresh hardware
-execution, serialized FSBL/PMU/PL equality, BSS initialization or cold boot.
+execution, BSS initialization or cold boot.
 The recorded configuration and report live under
 `evidence/source-release-chain-2026-10-21/combined-verification.json`.
 Run `make test-local-release` for negative proof/role/configuration controls.
+
+The extended check now also verifies the boot-header checksum and serialized
+PMU/FSBL/PL payloads: PMU followed by FSBL in the first partition, ELF address
+gaps filled with zero bytes, and the PL .bit payload with each32-bit word byte
+reversed. Exact firmware lengths, FSBL entry/load address and partition offsets
+must agree. Evidence: `qualified-sd-package-2026-10-21/serialized-boot-components.json`
+and `source-release-chain-2026-10-21/combined-all-payloads.json` under `evidence/`.
+This extends the earlier CPU-only report; it does not establish execution.
+Run `python3 -m unittest discover -s tests -p 'test_boot_components.py'` for
+corruption controls covering PMU, FSBL, PL, header checksum and ELF overlap.

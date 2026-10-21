@@ -17,6 +17,16 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Serialized PMU/FSBL/PL verification — 2026-10-21
+
+Boot-header checksum/layout and exact serialized PMU129,760B, FSBL155,864B,
+PL3,202,404B payloads PASS. The combined offline verifier includes these checks.
+Two new tests cover each component/header corruption, wrong PL bytes and
+ELF gaps/overlaps; three existing release admission tests PASS. Reports:
+`evidence/qualified-sd-package-2026-10-21/serialized-boot-components.json` and
+`evidence/source-release-chain-2026-10-21/combined-all-payloads.json`.
+No board access or image changes. BSS/execution/latest cold boot remain unproven.
+
 ## Combined offline release verification — 2026-10-21
 
 `make verify-local-release` now rechecks candidate/proof binding, unchanged PL

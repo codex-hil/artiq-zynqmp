@@ -6,6 +6,7 @@ from check_remote_rtio_build import check,sha
 from compare_bitstreams import compare
 from package_local_candidate import verify_proof,match_worker,loads
 from verify_boot_payloads import partitions,match
+from verify_boot_components import verify as verify_components
 
 
 def bind_package(package,manifest,proof,files):
@@ -31,7 +32,8 @@ def bind_package(package,manifest,proof,files):
         machine,entry,segments=loads(Path(artifacts[role]['path']).read_bytes())
         if machine!=183:raise ValueError('Unexpected CPU ELF architecture')
         payloads+=match(parts,segments,cpu,role)
-    return dict(boot_bin_sha256=release['boot_bin_sha256'],worker_embedding=embedded,
+    components=verify_components(image,*(Path(artifacts[role]['path']).read_bytes() for role in ('fsbl','pmufw','bitstream')))
+    return dict(boot_bin_sha256=release['boot_bin_sha256'],worker_embedding=embedded,boot_components=components,
                 partition_headers_checked=len(parts),cpu_payloads=payloads)
 
 
@@ -46,7 +48,7 @@ def verify(config):
     return dict(status='LOCAL_RELEASE_CHAIN_PASS_COLD_BOOT_NOT_RUN',hardware_executed=False,cold_boot='NOT_RUN',
                 manifest_sha256=sha(manifest),hardware_proof_sha256=sha(proof),build_inputs_sha256=sha(inputs),
                 fpga=fpga,configuration_equivalence=equivalence,package=package,
-                limits='Offline consistency of selected artifacts and recorded hardware proof; not signed provenance, fresh hardware execution, complete source bootstrap, FSBL/PMU/PL serialized payload verification or cold boot.')
+                limits='Offline consistency of selected artifacts and recorded hardware proof; not signed provenance, fresh hardware execution, complete source bootstrap, BSS initialization or cold boot.')
 
 
 def main():

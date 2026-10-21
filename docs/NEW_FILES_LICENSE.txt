@@ -587,3 +587,5 @@ evidence/source-release-chain-2026-10-21/remote-build/run.sh
 scripts/verify_local_release.py
 tests/test_local_release.py
 diagnostics/release/qualified-local-2026-10-21.json
+scripts/verify_boot_components.py
+tests/test_boot_components.py
