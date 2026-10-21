@@ -1,0 +1,13 @@
+{
+  "mode": "ps-export",
+  "job": "ps-replay-prepared-20261021",
+  "remote": "/srv/nvme-fast-1/vivado-work/ps-replay-prepared-20261021",
+  "host": "codex-hil@192.168.2.7",
+  "unit": "ps-replay-prepared-20261021.service",
+  "upload_sha256": {
+    "vivado_script.tcl": "4e6b1a9a15b264827a9a8a45a6581bc81fd8d2596e76af47828c9295490689ac",
+    "migen_integration.tcl": "3820ed76d7ec676bcca19bf4bfbfd9e72577b5fb06d11c8c2f05e21a718a9de8",
+    "zynq_ultra_ps_e_0.properties.tcl": "944d303e9cee626d043a1aeb9531922fbf3e06ed6110e0866aeeec7fcac1128c",
+    "run.sh": "a0074225485600f333adc66e2d6e3e94921e781f08b985cc82f5f76f640ac3bb"
+  }
+}

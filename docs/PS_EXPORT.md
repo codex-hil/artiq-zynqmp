@@ -88,3 +88,30 @@ input equivalence, not a new tool or hardware run. Existing package manifests
 still pin the original qualified binary artifacts. Complete empty-host tool
 bootstrap, firmware binary reproducibility and latest-package cold boot remain
 open independently.
+
+## Reusable remote export commands
+
+The existing remote job tool now stages PS exports without a manual upload:
+
+```sh
+python3 scripts/remote_rtio_build.py prepare-ps \
+  --source boards/genesys_zu-5ev/0_platform --job /path/to/fresh-ps-job
+python3 scripts/remote_rtio_build.py submit --job /path/to/fresh-ps-job
+python3 scripts/remote_rtio_build.py status --job /path/to/fresh-ps-job
+python3 scripts/remote_rtio_build.py collect --job /path/to/fresh-ps-job \
+  --output /path/to/fresh-collected-export
+```
+
+Preparation is offline and pins only the three Tcl sources and runner. Submission
+rechecks those hashes before transfer and uses the shared Dell build lock.
+Collection requires a completed job, downloads all regular output files except
+`.Xil` cache files, verifies their hashes and preserves failed-job logs.
+Successful export still reports `PS_EXPORTED_REVIEW_REQUIRED`; it does not
+waive the parameter/HDL/SDT comparisons above. Absolute importer paths remain
+unchanged in the downloaded evidence: relocate only a separate copied import
+view, preserving the original and recording the change.
+
+The new collector was exercised against the existing completed source export:
+168files verified, no duplicate Vivado run. Evidence:
+`evidence/ps-export-automation-2026-10-21/`. Three new controls cover offline
+preparation/changed input rejection, missing/linked inputs and incomplete outputs.

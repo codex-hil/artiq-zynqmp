@@ -72,10 +72,42 @@ exit "$result"
     return metadata
 
 
+def prepare_ps(source,job):
+    """Stage only Piotr's three PS Tcl inputs; no source checkout mutation."""
+    source=source.resolve();job=job.resolve()
+    if job.exists():raise ValueError('Use a fresh job directory')
+    if not re.fullmatch('[A-Za-z0-9_-]+',job.name):raise ValueError('Unsafe job name')
+    names=['vivado_script.tcl','migen_integration.tcl','zynq_ultra_ps_e_0.properties.tcl']
+    for name in names:
+        path=source/name
+        if not path.is_file() or path.resolve()!=source/name:raise ValueError('Missing/linked PS source: '+name)
+    job.mkdir(parents=True)
+    for name in names:shutil.copyfile(source/name,job/name)
+    remote=REMOTE_ROOT+'/'+job.name
+    runner = '#!/bin/bash\n# PS source export; LGPL-3.0-or-later.\nset -u\ncd '+shlex.quote(remote)+' || exit 2\n'
+    runner += "printf 'WAITING_FOR_BUILD_LOCK\\n' > state.txt\nexec 9>"+REMOTE_ROOT+"/.vivado-build.lock\nflock 9 || exit 3\nprintf 'RUNNING\\n' > state.txt\n"
+    runner += '/home/codex-hil/.local/bin/vivado -mode batch -nojournal -log vivado.log -source vivado_script.tcl -tclargs local-rtio-dma > console.log 2>&1\nresult=$?\n'
+    runner += "printf '{\"returncode\":%d}\\n' \"$result\" > exit.json\nif [ \"$result\" = 0 ]; then printf 'EXPORTED_REVIEW_REQUIRED\\n' > state.txt; else printf 'FAILED\\n' > state.txt; fi\nexit \"$result\"\n"
+    (job/'run.sh').write_text(runner)
+    names+=['run.sh']
+    m=dict(mode='ps-export',job=job.name,remote=remote,host=HOST,unit=job.name+'.service',upload_sha256={n:sha(job/n) for n in names})
+    write(job/'submission.json',m)
+    return m
+
+
+def export_hashes(m):
+    code='import hashlib,json\nfrom pathlib import Path\nr=Path('+repr(m['remote'])+')\n'
+    code+='assert isinstance(json.loads((r/"exit.json").read_text())["returncode"],int),"Job unfinished"\n'
+    code+='print(json.dumps({str(p.relative_to(r)):hashlib.sha256(p.read_bytes()).hexdigest() for p in r.rglob("*") if p.is_file() and not p.is_symlink() and ".Xil" not in p.parts}))\n'
+    hashes=json.loads(ssh('python3 -',script=code).stdout)
+    for name in hashes:relative(name)
+    return hashes
+
+
 def metadata(job):
     m=json.loads((job/'submission.json').read_text())
     if not re.fullmatch('[A-Za-z0-9_-]+',m['job']) or m['remote']!=REMOTE_ROOT+'/'+m['job'] or m['host']!=HOST or m['unit']!=m['job']+'.service':raise ValueError('Invalid remote job metadata')
-    if m['mode'] not in ('normalize','build'):raise ValueError('Invalid job mode')
+    if m['mode'] not in ('normalize','build','ps-export'):raise ValueError('Invalid job mode')
     for name in m['upload_sha256']:relative(name)
     return m
 
@@ -109,7 +141,8 @@ def collect(job,output):
     if output.exists():raise ValueError('Use a fresh result directory')
     names=list(m['upload_sha256'])+['exit.json','state.txt','console.log','vivado.log']
     if m['mode']=='build':names+=['top.bit','top_timing.rpt','top_drc.rpt','top_route_status.rpt']
-    hashes=remote_hashes(m,names,True);output.mkdir(parents=True)
+    hashes=export_hashes(m) if m['mode']=='ps-export' else remote_hashes(m,names,True)
+    output.mkdir(parents=True)
     subprocess.run(['rsync','-a','--files-from=-','-e','ssh -i '+shlex.quote(str(KEY))+' -o BatchMode=yes',HOST+':'+m['remote']+'/',str(output.resolve())+'/'],input='\n'.join(hashes)+'\n',text=True,check=True,timeout=120)
     for name,digest in hashes.items():
         if sha(output/name)!=digest:raise ValueError('Downloaded hash mismatch: '+name)
@@ -119,7 +152,19 @@ def collect(job,output):
         result=dict(status='REMOTE_VIVADO_FAILED',hardware_executed=False,vivado_returncode=code)
     else:
         try:
-            if m['mode']=='build':
+            if m['mode']=='ps-export':
+                if any(hashes.get(n)!=h for n,h in m['upload_sha256'].items()):raise ValueError('PS export changed source input')
+                required=['platform.xsa','mi_part.txt','mi_bd_cells.txt','mi_xci_files.txt','zynq_ultra_ps_e_0/pins.txt','zynq_ultra_ps_e_0/intf_pins.txt','zynq_ultra_ps_e_0/addr_segs.txt','zynq_ultra_ps_e_0/properties.txt']
+                if any(n not in hashes or not (output/n).stat().st_size for n in required):raise ValueError('Incomplete PS export')
+                refs=(output/'mi_xci_files.txt').read_text().splitlines()
+                if not refs:raise ValueError('Missing exported IP references')
+                for ref in refs:
+                    prefix=m['remote']+'/'
+                    if not ref.startswith(prefix):raise ValueError('External exported IP reference')
+                    name=str(relative(ref[len(prefix):]))
+                    if name not in hashes or not name.endswith('.xci'):raise ValueError('Missing exported IP file')
+                result=dict(status='PS_EXPORTED_REVIEW_REQUIRED',hardware_executed=False,files_verified=len(hashes),scope='Export/transfer/input hashes only; parameter/HDL/SDT comparison required')
+            elif m['mode']=='build':
                 result=check(output,json.loads((job/'inputs.json').read_text()))
             else:
                 changed=[name for name,old in m['upload_sha256'].items() if hashes[name]!=old]
@@ -135,11 +180,13 @@ def collect(job,output):
 def main():
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='command',required=True)
     q=sub.add_parser('prepare');q.add_argument('--source',type=Path,required=True);q.add_argument('--job',type=Path,required=True);q.add_argument('--mode',choices=['normalize','build'],required=True);q.add_argument('--normalized-xci',type=Path);q.add_argument('--expected-xci-sha256')
+    q=sub.add_parser('prepare-ps');q.add_argument('--source',type=Path,required=True);q.add_argument('--job',type=Path,required=True)
     q=sub.add_parser('submit');q.add_argument('--job',type=Path,required=True)
     q=sub.add_parser('status');q.add_argument('--job',type=Path,required=True)
     q=sub.add_parser('collect');q.add_argument('--job',type=Path,required=True);q.add_argument('--output',type=Path,required=True)
     a=p.parse_args()
     if a.command=='prepare':print(json.dumps(prepare(a.source,a.job,a.mode,a.normalized_xci,a.expected_xci_sha256),indent=2))
+    elif a.command=='prepare-ps':print(json.dumps(prepare_ps(a.source,a.job),indent=2))
     elif a.command=='submit':submit(a.job);print('SUBMITTED_NOT_BUILD_PROOF')
     elif a.command=='status':
         m=metadata(a.job);print(ssh('cd '+shlex.quote(m['remote'])+' && cat state.txt').stdout,end='')
