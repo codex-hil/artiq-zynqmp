@@ -641,3 +641,24 @@ Source hashes/line anchors: `evidence/trained-ddr-handoff-audit-2026-10-22`.
 Concrete observer-first contract: `diagnostics/ddr/TRAINED_OCM_HANDOFF.md`.
 Next implement stackless EL3 entry observation and layout verification, with no
 DDR loads/stores; trained handoff and destructive testing remain NOT_RUN.
+
+## Register-only EL3 observer built offline —2026-10-22
+
+Separate `diagnostics/ddr/el3_observer` image builds with Arm GNU13.2.Rel1.
+Exactly64RX bytes at0xfffc0000; no stack/data/BSS, memory loads/stores, UART,
+cache operations or control-register writes. CurrentEL checked before EL3 reads.
+At terminal PC0xfffc0034, x0=CurrentEL, x1=SCTLR_EL3, x2=SCR_EL3,
+x3=SCTLR_EL2, x4=SCTLR_EL1, x5=HCR_EL2, x6=DAIF, x7=MPIDR_EL1,
+x8=entrySP, x9=entryPC, x15=0x33. WrongEL branches to0xfffc003c with
+x15=0xee; other captured fields invalid. Interrupt state is observed, unchanged;
+loader must establish masked entry before execution. Unexpected faults are not
+handled by this tiny observer and must fail the bounded parent lifecycle.
+
+The contract's initial UART observation is narrowed to debugger register reads:
+this avoids UART/MMIO/data-mapping assumptions and records values without memory
+writes. Exact instruction-word gate validates all16instructions/branches and
+single RX segment. Three tests PASS: accepted image, injected store rejection,
+layout/permission/entry mutations rejected. Evidence:
+`evidence/el3-register-observer-build-2026-10-22`. Static proof only, HW NOT_RUN.
+Next implement bounded trained-FSBL terminal-PC/EL/cache admission and read-only
+observer loading/capture with mandatory normal restoration. No DDR test admitted.

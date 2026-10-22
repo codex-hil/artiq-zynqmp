@@ -1,0 +1,27 @@
+
+/home/codex-hil/.local/state/artiq-builds/el3-register-observer-20261022/observer.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000fffc0000 <_start>:
+    fffc0000:	d5384240 	mrs	x0, currentel
+    fffc0004:	f100301f 	cmp	x0, #0xc
+    fffc0008:	54000181 	b.ne	fffc0038 <observer_wrong_el>  // b.any
+    fffc000c:	d53e1001 	mrs	x1, sctlr_el3
+    fffc0010:	d53e1102 	mrs	x2, scr_el3
+    fffc0014:	d53c1003 	mrs	x3, sctlr_el2
+    fffc0018:	d5381004 	mrs	x4, sctlr_el1
+    fffc001c:	d53c1105 	mrs	x5, hcr_el2
+    fffc0020:	d53b4226 	mrs	x6, daif
+    fffc0024:	d53800a7 	mrs	x7, mpidr_el1
+    fffc0028:	910003e8 	mov	x8, sp
+    fffc002c:	10fffea9 	adr	x9, fffc0000 <_start>
+    fffc0030:	d280066f 	mov	x15, #0x33                  	// #51
+
+00000000fffc0034 <observer_el3_done>:
+    fffc0034:	14000000 	b	fffc0034 <observer_el3_done>
+
+00000000fffc0038 <observer_wrong_el>:
+    fffc0038:	d2801dcf 	mov	x15, #0xee                  	// #238
+    fffc003c:	14000000 	b	fffc003c <observer_wrong_el+0x4>

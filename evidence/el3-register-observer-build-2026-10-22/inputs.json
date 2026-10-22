@@ -1,0 +1,13 @@
+{
+  "hardware_executed": false,
+  "files": {
+    "diagnostics/ddr/el3_observer/entry.S": "42663b761ea3ae0a01983dcf9cad795d9c2b4a412fd82d630514a4a341810801",
+    "diagnostics/ddr/el3_observer/link.ld": "2820ae110cfcf30313d6213b29bc8bc95eb36db435b7d09722b66447ff2c6b6f",
+    "scripts/build_el3_observer.sh": "8135885e4c1a337d97dcb17209b93929d6a96dae49e17f4d0127315ab01c9e72",
+    "scripts/check_el3_observer.py": "e2714e065f7da0b5fac2bde4d15515bf7e47b922e30fb8b79a6ab6b45c09e22f",
+    "tests/test_el3_observer.py": "fb7c8d696eee6820f8f959c460ca89e246ec1d931c263fe1898d749c3eff62d4",
+    "/home/codex-hil/.local/state/artiq-builds/el3-register-observer-20261022/observer.elf": "8fef1e1c38b017f5914968cb4cc54972ddabb5a40d6b860dd61973a5696c5fde"
+  },
+  "compiler": "Arm GNU 13.2.Rel1 aarch64-none-elf",
+  "status": "BUILD_AND_STATIC_CHECK_PASS"
+}
