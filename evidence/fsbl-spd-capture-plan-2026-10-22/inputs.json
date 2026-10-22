@@ -1,0 +1,98 @@
+{
+  "status": "DIAGNOSTIC_FSBL_SPD_CAPTURE_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "cable": "210383B7F02DA",
+  "lease": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "files": {
+    "candidate_pl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z/top.bit",
+      "sha256": "1dc6364737e322022819a22c6561257fe8d10e9a24f436fda70571fcbd96e243"
+    },
+    "candidate_csr": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/dell-results-artiq-genesys-pinned-ip-20261021T173309Z/csr-map.json",
+      "sha256": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049"
+    },
+    "candidate_cpu0": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21/amd/app/build/lwip_echo_server.elf",
+      "sha256": "b31af046c9ac42249537590933e7a3782ce9a1630fae07b4854eda0399944f37"
+    },
+    "candidate_worker": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-canonical-a-2026-10-21/worker32.elf",
+      "sha256": "57b9e26a6ec9c92b62118f0899ca8e90dca6c1aa8cb99d34266d82ae9739a9ac"
+    },
+    "candidate_bridge": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/release-worker-canonical-a-2026-10-21/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    "candidate_fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/app/build/zynqmp_fsbl.elf",
+      "sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5"
+    },
+    "candidate_pmu": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "9f5c58c5985c0c9dd628e7b74a9bff1bb769dfe8d807c48915fe863e3baa2709"
+    },
+    "candidate_ps_init": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+    },
+    "restore_pl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+      "sha256": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582"
+    },
+    "restore_cpu0": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    "restore_worker": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    },
+    "restore_bridge": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    "restore_fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    "restore_pmu": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    "restore_ps_init": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+    }
+  },
+  "required_wrapper": "Nonblocking Genesys lease through load, tests, restoration and restored tests; not yet executed",
+  "server": "Rediscover exact Genesys-filtered hw_server before execution",
+  "tests": [
+    "UART FSBL and kernel transport/DHCP startup",
+    "physical TTL loopback",
+    "CoreDMA and analyzer/MonInj through standard debug test",
+    "Ethernet ping and byte-exact echo"
+  ],
+  "forbidden": [
+    "SD/flash/OTP writes",
+    "Si writes",
+    "Kasli reconfiguration",
+    "release before restoration"
+  ],
+  "fsbl_spd": {
+    "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+    "script_sha256": {
+      "scripts/check_ddr4_spd_crc.py": "08ae46ae11373d7d14bcfdf1eee5038501501c2821d9354df79a5be6749800c9",
+      "scripts/decode_ddr4_spd.py": "a7839ec7bcd8d48c34ee11767d03ffdd1618391878be062a9f05c944a8b066b4",
+      "scripts/decode_fsbl_spd_log.py": "ee6b93ac91bfc574aca6f256d0b938813b2f1478905d8d25c2f578bfa18d22a9",
+      "scripts/load_rtio_runtime.py": "d4dbdc2ae49a642780ac19380dfd5eb01a1c6d7b8b61d64a94b36ebeeb25c3dd",
+      "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+      "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+      "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+      "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+      "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+      "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+      "scripts/test_candidate_runtime_hw.py": "b14687dfcc52e4c344456361971057259caea5cc6dfb05b52e8e0e1f6d1bd31d"
+    }
+  }
+}

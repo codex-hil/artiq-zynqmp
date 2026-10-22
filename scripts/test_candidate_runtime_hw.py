@@ -52,6 +52,22 @@ def ocm_preflight(path,files):
     return data
 
 
+SPD_SCRIPTS={'scripts/test_candidate_runtime_hw.py','scripts/load_rtio_runtime.py',
+ 'scripts/reset_genesys_ps.tcl','scripts/run_boot_firmware.tcl','scripts/prepare_local_rtio.tcl',
+ 'scripts/run_kernel_worker.tcl','scripts/run_a53_runtime.tcl','scripts/program_genesys_pl.tcl',
+ 'scripts/decode_fsbl_spd_log.py','scripts/check_ddr4_spd_crc.py','scripts/decode_ddr4_spd.py'}
+def spd_preflight(manifest,files):
+    info=manifest.get('fsbl_spd',{})
+    if info.get('fsbl_sha256')!=files['candidate_fsbl']['sha256']:
+        raise ValueError('Missing or inconsistent diagnostic FSBL pin')
+    if set(info.get('script_sha256',{}))!=SPD_SCRIPTS:raise ValueError('Missing SPD script pins')
+    for name,digest in info['script_sha256'].items():
+        if hashlib.sha256((REPO/name).read_bytes()).hexdigest()!=digest:raise ValueError('Changed SPD execution/parser script: '+name)
+    if b'SPD_BASE_BEGIN bytes=128' not in Path(files['candidate_fsbl']['path']).read_bytes():
+        raise ValueError('Selected FSBL lacks diagnostic SPD marker')
+    return info
+
+
 @contextlib.contextmanager
 def lease(path=LOCK):
     path.parent.mkdir(parents=True,exist_ok=True)
@@ -96,6 +112,7 @@ def main():
     p.add_argument('--manifest',type=Path,default=REPO/'evidence/candidate-jtag-plan-2026-10-21/inputs.json')
     p.add_argument('--output',type=Path,required=True);p.add_argument('--execute',action='store_true')
     p.add_argument('--server');p.add_argument('--port');p.add_argument('--interface')
+    p.add_argument('--fsbl-spd',action='store_true',help='Require pinned diagnostic FSBL and strict UART SPD/CRC capture before runtime tests')
     p.add_argument('--ocm-manifest',type=Path,help='OCM observation instead of normal candidate runtime; always restores normal baseline')
     p.add_argument('--expect-kernel-state',action='store_true',help='Assert new candidate idle/waiting-rpc/restart-required; requires one fault case')
     p.add_argument('--rpc-fault-case',choices=['zero_descriptor_length','unsupported_return_tag','partial_float_eof'],help='One destructive RPC case; candidate immediately restored, never reused')
@@ -103,6 +120,8 @@ def main():
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
     a=p.parse_args();files=preflight(json.loads(a.manifest.read_text()))
+    if a.fsbl_spd and (a.ocm_manifest or a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('FSBL SPD mode excludes OCM/extended/fault modes')
+    if a.fsbl_spd:spd_preflight(json.loads(a.manifest.read_text()),files)
     if a.ocm_manifest and (a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('OCM mode excludes runtime/fault suites')
     ocm=ocm_preflight(a.ocm_manifest,files) if a.ocm_manifest else None
     if a.expect_kernel_state and not a.rpc_fault_case:p.error('--expect-kernel-state requires --rpc-fault-case')
@@ -118,6 +137,7 @@ def main():
         # Recheck after obtaining ownership, before touching hardware.
         preflight(json.loads(a.manifest.read_text()))
         if a.ocm_manifest:ocm_preflight(a.ocm_manifest,files)
+        if a.fsbl_spd:spd_preflight(json.loads(a.manifest.read_text()),files)
         started=time.monotonic();stages={}
         env=os.environ.copy();env.pop('PYTHONPATH',None);env['GENESYS_LEASE_FD']=str(held.fileno())
         def run(stage,command,timeout):
@@ -148,6 +168,9 @@ def main():
                 '--bitstream',path('pl'),'--worker',str(worker),'--cpu0',path('cpu0'),'--output',str(load)],240)
             loaded=json.loads((load/'results.json').read_text())
             if loaded.get('status')!='PASS':raise RuntimeError('Loader did not report PASS')
+            if prefix=='candidate' and a.fsbl_spd:
+                run('candidate-fsbl-spd',[sys.executable,str(REPO/'scripts/decode_fsbl_spd_log.py'),
+                    '--log',str(load/'uart.log'),'--output',str(out/'candidate-fsbl-spd')],30)
             ip=loaded['ip'];db=out/(prefix+'-device-db.py')
             text=(REPO/'examples/device_db_genesys.py').read_text()
             text,count=re.subn(r'([\"\']host[\"\']\s*:\s*[\"\'])\d+\.\d+\.\d+\.\d+([\"\'])',lambda m:m[1]+ip+m[2],text)
@@ -180,7 +203,7 @@ def main():
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,
+                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest())
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

@@ -1,0 +1,7 @@
+{
+  "status": "OFFLINE_CONTROLS_PASS",
+  "hardware_executed": false,
+  "wrapper_pin_and_parser_restoration_tests": 3,
+  "existing_lifecycle_tests": 6,
+  "scope": "Real diagnostic FSBL pin/marker; changed/missing parser pins reject; parse failure restores. Shared lease/timeout controls preserved."
+}
