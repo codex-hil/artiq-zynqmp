@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## OCM v4 system reset reached / L2 reset blocks load —2026-10-22
+
+Initial parking/system reset completed; subsequent stop rejected APU L2 held in
+reset. OCM execution/MMU/cache/DDR test NOT_RUN. Full normal restoration/physical
+RTIO/debug/Ethernet PASS192.168.2.3, exclusive lease74.670s. Evidence:
+`evidence/ocm-observation-v4-hardware-2026-10-22`. Piotr/AMD FSBL contains explicit
+APU power/clock/reset handoff; selected PSU peripheral blocks do not. Next offline
+review this complete existing sequence; no reset-error waiver.
+
 ## OCM v3 debugger-source failure / restoration PASS —2026-10-22
 
 Initial core parking failed inside XSDB source-line lookup before system reset.

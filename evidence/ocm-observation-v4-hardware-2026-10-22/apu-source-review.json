@@ -1,0 +1,22 @@
+{
+  "status": "SOURCE_REVIEW_ONLY_NOT_NEW_HARDWARE_PROOF",
+  "embeddedsw_revision": "f3587c0c8a15e5c6daee84e37b6ee11294ed2476",
+  "source_sha256": {
+    "lib/sw_apps/zynqmp_fsbl/src/xfsbl_handoff.c": "fdcb573a74dee36c5267e08ec24fb31c2b976893941d69f203e0fd556b4ee695",
+    "lib/sw_apps/zynqmp_fsbl/src/xfsbl_hw.h": "fad784ba728d639a83e647933a8821d4ec99c87d23115334400615943fb32f9b"
+  },
+  "observed_source_sequence": [
+    "XFsbl_PowerUpIsland with ACPU0/FP/L2 power masks; checked status",
+    "optional AArch32 execution-state selection",
+    "enable ACPU full/half clocks",
+    "clear ACPU0 reset, L2 reset, ACPU0 power-on-reset in CRF_APB_RST_FPD_APU"
+  ],
+  "register": "CRF_APB_RST_FPD_APU 0xfd1a0104",
+  "masks": {
+    "cpu0_reset": "0x1",
+    "l2_reset": "0x100",
+    "cpu0_poweron_reset": "0x400"
+  },
+  "generated_psu_init_review": "psu_resetout_init_data only PCIe ATTR_25 fix; init_peripheral only SMMU interrupt enable. Neither is an APU power-up/reset release sequence.",
+  "next": "Review full supported power-up/debug/AArch64 flow before implementing or deploying any release; do not merely clear L2 reset or bypass stop error."
+}

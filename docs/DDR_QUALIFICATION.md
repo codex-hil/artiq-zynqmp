@@ -257,3 +257,21 @@ is local to the short-lived XSDB interpreter. Two reset-flow/two core-state/two
 OCM controls PASS, including the exact sole allowed configuration and ordering.
 V4 pins: `evidence/ocm-observation-plan-v4-2026-10-22`. V4 hardware NOT_RUN;
 next one bounded observation/restoration. Full DDR test still NOT_RUN.
+
+### Fourth attempt: APU L2 held in reset after system reset —2026-10-22
+
+Initial parking and PS system reset completed. Subsequent parking failed
+`APU L2 cache is held in reset`. Peripheral initialization, OCM download and
+execution were not reached; MMU/cache/DDR test NOT_RUN. Full normal restoration/
+physical RTIO/debug/Ethernet PASS192.168.2.3 under74.670s exclusive lease.
+Evidence: `evidence/ocm-observation-v4-hardware-2026-10-22`.
+
+Piotr's pinned AMD embeddedsw FSBL `xfsbl_handoff.c` has an explicit A53 power-up
+sequence: checked power-island activation, execution-state handling, ACPU clocks,
+then CPU0/L2/power-on reset release. The selected generated `psu_resetout` block
+only fixes PCIe defaults; `init_peripheral` only writes the SMMU interrupt mask.
+They do not replace APU power-up. Source revision/hashes/masks retained in
+`apu-source-review.json`. Next offline review the complete supported debug/
+power-up/AArch64 flow before implementing the OCM path. Do not simply suppress
+L2 reset errors or write reset masks without the power/clock/entry requirements.
+No new reset-release code or cache/protection bypass added in this checkpoint.
