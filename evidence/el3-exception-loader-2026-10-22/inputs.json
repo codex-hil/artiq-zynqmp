@@ -1,0 +1,12 @@
+{
+  "status": "TCL_MODEL_ONLY_PASS",
+  "hardware_executed": false,
+  "sha256": {
+    "scripts/load_el3_exception_observer.tcl": "59a21b26fc9c8e297157e51b79d73a80b342bb60c8e25fdc0e5c5ec277328269",
+    "scripts/collect_fsbl_entry.tcl": "f65f8fa3c5ceeb6c7d835d517876416dec2d71e2630d69003aa8817d88bf9f33",
+    "scripts/check_el3_exception_observer.py": "95b26be8f92a6ae6ff97f9903992775718637c8ee8a642f37b9ba8880cfba584",
+    "tests/test_exception_observer_loader.py": "de7f7b366c6e2812ad71a858d3f77c00d0a0787bf800ecee3bfeca1855f278b0"
+  },
+  "xsdb_rwr_review": "Installed XSDB2025.2 rwr implementation uses final argument as value and preceding arguments as register path; sys 12 vbar_el3 path from physical metadata. Actual write/readback hardware NOT_RUN.",
+  "limits": "Library requires pinned parent lifecycle, shared lease and ELF check; no standalone connect/execution provided."
+}

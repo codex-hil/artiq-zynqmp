@@ -868,3 +868,31 @@ No hardware access; existing observer/mask admission remains unchanged.
 Next implement separately pinned loader policy with VBAR readback/EL3/raw-state
 checks and modeled failure paths before any bounded normal/fault-probe HW run.
 This does not prove asynchronous SError delivery, master quiescence or DDR integrity.
+
+## Exception-aware observer loader modeled offline —2026-10-22
+
+New library `load_el3_exception_observer.tcl` requires parent's shared lease,
+selected/halted CPU0, pinned ELF and FSBL terminal. No automatic connect/reset.
+Two identical raw states required: EL3h, M/C/I clear, D/I/F already masked,
+CPU0 affinity. A is preserved as observed; this separate policy requires verified
+exception vectors before continue and does not change old observer admission.
+Records oldVBAR/PSTATE, uses normal synchronized download, checks entry PC and
+unchanged PSTATE/SCTLR/affinity, writes sys12vbar_el3 and verifies twice.
+Any failed readback aborts before continue. No cache-sync bypass, DAIF write,
+pending-fault clearing, DDR data access or reset after training.
+
+Normal entry and deliberate BRK entry supported separately. After bounded
+execution/positive halt, captures success/fault registers. Fault terminal always
+throws EXCEPTION_CAPTURED, including deliberate BRK; parent must retain raw fault
+and restore. A future explicit fault-test verifier may qualify the expected BRK
+only; this library never reports fault as normal observer success. No eret/reuse.
+
+Four Tcl model groups PASS: normal A-preservation/vector ordering, bad VBAR
+readback/no-continue, deliberate exception/fault-register capture/no-normal-PASS,
+wrongEL/cache/masks/terminal rejected before download. Evidence:
+`evidence/el3-exception-loader-2026-10-22`. Installed XSDB rwr source path/value
+semantics reviewed; real VBAR writes/readback/exception behavior NOT_RUN.
+Next integrate separately pinned child with existing mandatory-restoration
+lifecycle, verify ELF and loader hashes before/under lease, model failure cleanup
+and expected-BRK validation before bounded hardware qualification. No HW this
+checkpoint; normal runtime remains at last validated192.168.2.3 baseline.
