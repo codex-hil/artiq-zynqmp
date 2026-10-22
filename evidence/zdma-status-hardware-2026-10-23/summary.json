@@ -1,0 +1,14 @@
+{
+  "status": "READ_ONLY_ZDMA_SNAPSHOT_COMPLETE",
+  "hardware_executed": true,
+  "cable": "210383B7F02DA",
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "channels": 16,
+  "snapshots": 2,
+  "reads": 64,
+  "all_status_and_control2_zero": true,
+  "input_sha256": "65f5c988028c0af171539def816e4b886d83eadc44b98c51319bc2ccde32c4d2",
+  "raw_sha256": "93ed49abd072eb7a8170b7c339d139720f5c4b55ec9c47710b1259e684cab891",
+  "scope": "DAP AP0 fixed register reads only. No CPU stop/reset/UART/network/register writes/force-memory access; lease released. Baseline configuration unchanged, no new runtime/network requalification claimed.",
+  "limits": "Momentary quiet fields only. No exclusive ownership/HP0 drain/other masters or destructive DDR admission."
+}

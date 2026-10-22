@@ -1,5 +1,30 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## Read-only live ZDMA64-read capture complete —2026-10-23
+
+New wrapper defaults offline, pins register plan/vendor inputs/execution helpers,
+rechecks under shared Genesys lease and enforces45s process-group bound. Fixed
+Tcl reads only CH_STS/CH_CTRL2 for16channels twice via exact-cable PSU/AP0.
+No stop/reset/UART/network/register writes, ISR clears or force-access mode.
+Parser requires exact64ordered unique address/name/channel/sample rows within
+one complete frame. Timeout retains partial raw log and releases lease.
+Five Tcl/parser/stale-pin/timeout controls PASS; actual preflight PASS.
+Evidence/pins: `evidence/zdma-capture-plan-2026-10-23`.
+
+Physical capture COMPLETE under shared lease: all16channels CH_STS=0 and
+CTRL2=0 in both samples. No hardware configuration change or baseline reset;
+lease released. No fresh Ethernet/runtime test was performed or claimed.
+Raw64reads and provenance: `evidence/zdma-status-hardware-2026-10-23`.
+Enclosing capture marks hardware=true; pure decoder hardware=false intentionally.
+Quiet fields do not establish transaction-owner exclusivity, PL HP0 drain,
+secondary-core/PMU/CSU/GEM/SD ownership or destructive DDR admission.
+
+Next offline extend reviewed status inventory to CSU DMA and relevant PS
+peripheral masters, plus positive secondary/R5 state capture. Bind future
+observations to the diagnostic window rather than assuming this running-runtime
+snapshot applies after a later reset. No Si/SD/flash/OTP/Kasli changes.
+
+
 ## Reset source audit and32-register ZDMA read plan —2026-10-23
 
 Offline audit pins actual reset/boot/prepare/gateware/generated-FSBL sources.

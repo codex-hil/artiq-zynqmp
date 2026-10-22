@@ -1,0 +1,10 @@
+test_complete_frame_never_admits_writes (test_zdma_capture.CaptureTests.test_complete_frame_never_admits_writes) ... ok
+test_incomplete_duplicate_bad_address_order_rejected (test_zdma_capture.CaptureTests.test_incomplete_duplicate_bad_address_order_rejected) ... ok
+test_real_tcl_script_only_reads_fixed_addresses (test_zdma_capture.CaptureTests.test_real_tcl_script_only_reads_fixed_addresses) ... ok
+test_stale_execution_pin_rejected (test_zdma_capture.CaptureTests.test_stale_execution_pin_rejected) ... ok
+test_timeout_retains_partial_log_and_releases_lease (test_zdma_capture.CaptureTests.test_timeout_retains_partial_log_and_releases_lease) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.009s
+
+OK

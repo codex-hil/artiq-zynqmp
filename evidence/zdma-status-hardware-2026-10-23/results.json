@@ -1,0 +1,336 @@
+{
+  "status": "READ_ONLY_CAPTURE_COMPLETE",
+  "hardware_executed": true,
+  "decoded": {
+    "status": "SUPPLIED_ZDMA_FIELDS_DECODED_NOT_OWNERSHIP",
+    "hardware_executed": false,
+    "channels": [
+      {
+        "channel": 0,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 1,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 2,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 3,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 4,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 5,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 6,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 7,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 8,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 9,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 10,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 11,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 12,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 13,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 14,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      },
+      {
+        "channel": 15,
+        "status_raw": [
+          0,
+          0
+        ],
+        "control2_raw": [
+          0,
+          0
+        ],
+        "state": [
+          0,
+          0
+        ],
+        "enabled": [
+          false,
+          false
+        ],
+        "quiet_fields_observed": true
+      }
+    ],
+    "all_quiet_fields": true,
+    "destructive_test_allowed": false,
+    "limits": "Supplied-data interpretation only. Sampling quiet/disabled fields does not establish bus drain, reset ordering, exclusive ownership or physical-device provenance."
+  },
+  "cable": "210383B7F02DA",
+  "input_sha256": "65f5c988028c0af171539def816e4b886d83eadc44b98c51319bc2ccde32c4d2",
+  "raw_sha256": "93ed49abd072eb7a8170b7c339d139720f5c4b55ec9c47710b1259e684cab891"
+}
