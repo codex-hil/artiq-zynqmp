@@ -203,3 +203,21 @@ manifest/evidence preserved; revised pinned manifest:
 `evidence/ocm-observation-plan-v2-2026-10-22/inputs.json`. Next one bounded
 observation with full normal restoration. Live MMU/cache and DDR qualification
 remain NOT_RUN; no automatic destructive DDR authorization.
+
+### Second bounded OCM attempt —2026-10-22
+
+Reset-state admission physically PASS: two cores stopped, two exact POR errors
+confirmed twice; CPU0 suspended after processor reset. Download FAIL at
+0xfffc0000: `Cannot flush CPU cache. Cannot read register hcr. Cannot set
+privileged PE mode`. OCM program did not execute; partial-write extent is not
+established. No UART MMU/cache observation or DDR test. Full normal restoration,
+physical RTIO/debug and Ethernet PASS192.168.2.3 under72.713s exclusive lease.
+Evidence: `evidence/ocm-observation-v2-hardware-2026-10-22`.
+
+Installed XSDB `dow` supports `-bypass-cache-sync`, but it was not used: bypass
+without proving the execution/cache state would undermine this diagnostic.
+Next offline review processor-only reset versus existing qualified system-reset/
+alternate-JTAG flow and explicit AArch64/exception-level initialization. Existing
+`reset_genesys_ps.tcl` documents SD BootROM races and the need for alternate JTAG
+before system reset. Do not assume that explains this failure without evidence.
+No automatic force-memory/cache-sync bypass or destructive DDR test.

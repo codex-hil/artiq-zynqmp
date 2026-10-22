@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## OCM v2 download failure / restoration PASS —2026-10-22
+
+Reset-state core admission now physically PASS. XSDB download subsequently FAIL
+at0xfffc0000: cache flush/HCR/privileged PE mode unavailable. Diagnostic did not
+execute; MMU/cache observation and DDR test NOT_RUN. Normal runtime restored
+192.168.2.3, physical RTIO/debug and Ethernet PASS, exclusive lease72.713s.
+Evidence: `evidence/ocm-observation-v2-hardware-2026-10-22`. Next offline review
+known reset/boot-mode/AArch64 entry flow; no blind cache-sync bypass.
+
 ## OCM observation attempt / baseline restored —2026-10-22
 
 OCM loader FAIL before download: one A53 core held in power-on-reset rejected
