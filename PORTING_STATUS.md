@@ -1,6 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## OCM v5 CPU0 activation PASS / secondary admission FAIL —2026-10-22
+
+Native CPU0 A64 reset and suspension PASS. CPU1 held in ordinary reset rejected
+by POR-only gate; OCM download/execution/MMU/cache/DDR test NOT_RUN. Full normal
+restore/physical RTIO/debug/Ethernet PASS192.168.2.3, lease77.911s. Evidence:
+`evidence/ocm-observation-v5-hardware-2026-10-22`. V6 prepares exact repeated
+ordinary-reset admission only for parked cores; CPU0 and L2 checks retained.
+
 ## OCM v4 system reset reached / L2 reset blocks load —2026-10-22
 
 Initial parking/system reset completed; subsequent stop rejected APU L2 held in

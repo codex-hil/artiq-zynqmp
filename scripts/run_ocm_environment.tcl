@@ -14,21 +14,25 @@ proc select_genesys_target {name} {
     if {[llength $matches] != 1} {error "Target $name on $cable_serial not uniquely identified"}
     targets -set [lindex $matches 0]
 }
-# XSDB stop sends suspend even when a core is already stopped/reset. Only the
-# exact backend POR error, repeated on the same selected target, admits reset.
-# CPU0 after processor reset must be suspended, never admitted via POR.
-proc admit_core {allow_por} {
+# XSDB stop sends suspend even when a core is already stopped/reset. Only exact
+# backend core-reset errors, repeated on the same selected target, admit reset.
+# CPU0 after processor reset must be suspended, never admitted via reset errors.
+proc admit_core {allow_reset} {
     set props [lindex [targets -target-properties -filter {is_current == 1}] 0]
     if {![dict exists $props suspended]} {error "Missing core suspension state"}
     if {[dict get $props suspended]} {puts "CORE_ADMISSION SUSPENDED"; return}
     if {[catch {stop} message options]} {
-        if {!$allow_por || $message ne "The core is held in power-on-reset"} {
+        if {!$allow_reset || $message ni {"The core is held in power-on-reset" "The core is held in reset"}} {
             return -options $options $message
         }
         if {![catch {stop} repeated] || $repeated ne $message} {
-            error "Power-on-reset state changed during admission"
+            error "Core reset state changed during admission"
         }
-        puts "CORE_ADMISSION HELD_POWER_ON_RESET_CONFIRMED"
+        if {$message eq "The core is held in power-on-reset"} {
+            puts "CORE_ADMISSION HELD_POWER_ON_RESET_CONFIRMED"
+        } else {
+            puts "CORE_ADMISSION HELD_RESET_CONFIRMED"
+        }
         return
     }
     set props [lindex [targets -target-properties -filter {is_current == 1}] 0]

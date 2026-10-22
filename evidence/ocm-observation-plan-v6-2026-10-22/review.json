@@ -1,0 +1,17 @@
+{
+  "status": "OFFLINE_CONTROLS_PASS_HARDWARE_NOT_RUN",
+  "change": "Allow only exact core held in reset or power-on-reset errors repeated identically twice for initial/secondary parking; CPU0 post-reset requires suspended",
+  "rejected": [
+    "CPU0 in either reset state",
+    "reset changes between confirmations",
+    "APU L2 reset",
+    "transport error",
+    "missing state",
+    "stop without suspension"
+  ],
+  "tests": {
+    "core_admission": 2,
+    "reset_flow": 2,
+    "ocm_observation": 2
+  }
+}

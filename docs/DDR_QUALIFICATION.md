@@ -299,3 +299,20 @@ OCM tests PASS; v5 preflight and source hashes retained in
 `evidence/ocm-observation-plan-v5-2026-10-22`. Hardware behavior NOT_RUN. Next one
 bounded attempt with full restoration; native activation may still fail and that
 failure must be retained, not waived.
+
+### Fifth attempt: CPU0 activation PASS, secondary reset admission FAIL —2026-10-22
+
+PS reset, PSU initialization and native CPU0 reset `-stop -isa A64
+-clear-registers` completed; CPU0 suspension confirmed. Secondary CPU1 stop
+returned exact `The core is held in reset`, outside v5's POR-only allowance.
+Download/execution/MMU-cache observation/DDR test NOT_RUN. Full normal restore,
+physical RTIO/debug and Ethernet PASS192.168.2.3 under77.911s lease. Evidence:
+`evidence/ocm-observation-v5-hardware-2026-10-22`.
+
+V6 admits either exact core-reset error only after two identical responses on
+the same selected target. CPU0 post-reset still requires suspended; APU L2 reset
+is rejected, as are changing state/transport errors/missing state. Two core-state
+controls (expanded scenarios), two reset-flow and two OCM tests PASS; new pins:
+`evidence/ocm-observation-plan-v6-2026-10-22`. No new HW attempt for v6. This
+change releases no secondary resets and does not disable cache synchronization.
+Next bounded OCM load/observation with mandatory normal restoration.
