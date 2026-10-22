@@ -610,3 +610,21 @@ This validates the diagnostic FSBL handoff, not full DDR integrity, high-window
 alias freedom or a promoted boot release. No Kasli/Si/SD/flash/OTP writes.
 Next offline work: define trained-DDR OCM handoff, cache/master ownership and
 explicit disjoint low/high test intervals before destructive-test admission.
+
+## Sparse DDR alias plan prepared offline —2026-10-22
+
+`scripts/plan_ddr_alias_probes.py --output /path/to/fresh-plan.json` enumerates
+64-byte probes at logical address-bit offsets6..31 plus low/high boundaries.
+Logical capacity offsets map explicitly into `[0,0x80000000)` and
+`[0x800000000,0x880000000)`; no probe touches the intervening MMIO gap.
+Distinct tags must be written across all probes before any verification, then
+repeated with complements: an immediate write/read of each location would miss
+aliasing. These are sparse logical-address checks, not full DRAM wiring coverage
+or an integrity/stress test. Three boundary/bit-coverage/rejection controls PASS.
+Evidence: `evidence/ddr-alias-plan-2026-10-22`. No hardware accessed.
+
+Execution remains NOT_ADMITTED. The existing cold OCM loader skips DDR training
+and cannot be reused unchanged. Next prepare a trained-DDR OCM handoff with
+explicit EL3/EL1 cache policy and other-core/PS-DMA/PL-master ownership evidence.
+Physical SPD and controller agreement do not substitute for these conditions.
+Normal runtime remains at the last validated192.168.2.3 baseline.

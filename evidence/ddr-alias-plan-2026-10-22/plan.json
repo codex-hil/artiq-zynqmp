@@ -1,0 +1,362 @@
+{
+  "status": "OFFLINE_SPARSE_ALIAS_PLAN_NOT_ADMITTED",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "configured_windows": [
+    {
+      "start": "0x0",
+      "end_exclusive": "0x80000000"
+    },
+    {
+      "start": "0x800000000",
+      "end_exclusive": "0x880000000"
+    }
+  ],
+  "configured_bytes": 4294967296,
+  "probes": [
+    {
+      "logical_offset": "0x0",
+      "physical_start": "0x0",
+      "end_exclusive": "0x40",
+      "bytes": 64,
+      "tag_index": 0
+    },
+    {
+      "logical_offset": "0x40",
+      "physical_start": "0x40",
+      "end_exclusive": "0x80",
+      "bytes": 64,
+      "tag_index": 1
+    },
+    {
+      "logical_offset": "0x80",
+      "physical_start": "0x80",
+      "end_exclusive": "0xc0",
+      "bytes": 64,
+      "tag_index": 2
+    },
+    {
+      "logical_offset": "0x100",
+      "physical_start": "0x100",
+      "end_exclusive": "0x140",
+      "bytes": 64,
+      "tag_index": 3
+    },
+    {
+      "logical_offset": "0x200",
+      "physical_start": "0x200",
+      "end_exclusive": "0x240",
+      "bytes": 64,
+      "tag_index": 4
+    },
+    {
+      "logical_offset": "0x400",
+      "physical_start": "0x400",
+      "end_exclusive": "0x440",
+      "bytes": 64,
+      "tag_index": 5
+    },
+    {
+      "logical_offset": "0x800",
+      "physical_start": "0x800",
+      "end_exclusive": "0x840",
+      "bytes": 64,
+      "tag_index": 6
+    },
+    {
+      "logical_offset": "0x1000",
+      "physical_start": "0x1000",
+      "end_exclusive": "0x1040",
+      "bytes": 64,
+      "tag_index": 7
+    },
+    {
+      "logical_offset": "0x2000",
+      "physical_start": "0x2000",
+      "end_exclusive": "0x2040",
+      "bytes": 64,
+      "tag_index": 8
+    },
+    {
+      "logical_offset": "0x4000",
+      "physical_start": "0x4000",
+      "end_exclusive": "0x4040",
+      "bytes": 64,
+      "tag_index": 9
+    },
+    {
+      "logical_offset": "0x8000",
+      "physical_start": "0x8000",
+      "end_exclusive": "0x8040",
+      "bytes": 64,
+      "tag_index": 10
+    },
+    {
+      "logical_offset": "0x10000",
+      "physical_start": "0x10000",
+      "end_exclusive": "0x10040",
+      "bytes": 64,
+      "tag_index": 11
+    },
+    {
+      "logical_offset": "0x20000",
+      "physical_start": "0x20000",
+      "end_exclusive": "0x20040",
+      "bytes": 64,
+      "tag_index": 12
+    },
+    {
+      "logical_offset": "0x40000",
+      "physical_start": "0x40000",
+      "end_exclusive": "0x40040",
+      "bytes": 64,
+      "tag_index": 13
+    },
+    {
+      "logical_offset": "0x80000",
+      "physical_start": "0x80000",
+      "end_exclusive": "0x80040",
+      "bytes": 64,
+      "tag_index": 14
+    },
+    {
+      "logical_offset": "0x100000",
+      "physical_start": "0x100000",
+      "end_exclusive": "0x100040",
+      "bytes": 64,
+      "tag_index": 15
+    },
+    {
+      "logical_offset": "0x200000",
+      "physical_start": "0x200000",
+      "end_exclusive": "0x200040",
+      "bytes": 64,
+      "tag_index": 16
+    },
+    {
+      "logical_offset": "0x400000",
+      "physical_start": "0x400000",
+      "end_exclusive": "0x400040",
+      "bytes": 64,
+      "tag_index": 17
+    },
+    {
+      "logical_offset": "0x800000",
+      "physical_start": "0x800000",
+      "end_exclusive": "0x800040",
+      "bytes": 64,
+      "tag_index": 18
+    },
+    {
+      "logical_offset": "0x1000000",
+      "physical_start": "0x1000000",
+      "end_exclusive": "0x1000040",
+      "bytes": 64,
+      "tag_index": 19
+    },
+    {
+      "logical_offset": "0x2000000",
+      "physical_start": "0x2000000",
+      "end_exclusive": "0x2000040",
+      "bytes": 64,
+      "tag_index": 20
+    },
+    {
+      "logical_offset": "0x4000000",
+      "physical_start": "0x4000000",
+      "end_exclusive": "0x4000040",
+      "bytes": 64,
+      "tag_index": 21
+    },
+    {
+      "logical_offset": "0x8000000",
+      "physical_start": "0x8000000",
+      "end_exclusive": "0x8000040",
+      "bytes": 64,
+      "tag_index": 22
+    },
+    {
+      "logical_offset": "0x10000000",
+      "physical_start": "0x10000000",
+      "end_exclusive": "0x10000040",
+      "bytes": 64,
+      "tag_index": 23
+    },
+    {
+      "logical_offset": "0x20000000",
+      "physical_start": "0x20000000",
+      "end_exclusive": "0x20000040",
+      "bytes": 64,
+      "tag_index": 24
+    },
+    {
+      "logical_offset": "0x40000000",
+      "physical_start": "0x40000000",
+      "end_exclusive": "0x40000040",
+      "bytes": 64,
+      "tag_index": 25
+    },
+    {
+      "logical_offset": "0x7fffffc0",
+      "physical_start": "0x7fffffc0",
+      "end_exclusive": "0x80000000",
+      "bytes": 64,
+      "tag_index": 26
+    },
+    {
+      "logical_offset": "0x80000000",
+      "physical_start": "0x800000000",
+      "end_exclusive": "0x800000040",
+      "bytes": 64,
+      "tag_index": 27
+    },
+    {
+      "logical_offset": "0xffffffc0",
+      "physical_start": "0x87fffffc0",
+      "end_exclusive": "0x880000000",
+      "bytes": 64,
+      "tag_index": 28
+    }
+  ],
+  "logical_address_bit_pairs": [
+    {
+      "bit": 6,
+      "anchor": "0x0",
+      "peer": "0x40"
+    },
+    {
+      "bit": 7,
+      "anchor": "0x0",
+      "peer": "0x80"
+    },
+    {
+      "bit": 8,
+      "anchor": "0x0",
+      "peer": "0x100"
+    },
+    {
+      "bit": 9,
+      "anchor": "0x0",
+      "peer": "0x200"
+    },
+    {
+      "bit": 10,
+      "anchor": "0x0",
+      "peer": "0x400"
+    },
+    {
+      "bit": 11,
+      "anchor": "0x0",
+      "peer": "0x800"
+    },
+    {
+      "bit": 12,
+      "anchor": "0x0",
+      "peer": "0x1000"
+    },
+    {
+      "bit": 13,
+      "anchor": "0x0",
+      "peer": "0x2000"
+    },
+    {
+      "bit": 14,
+      "anchor": "0x0",
+      "peer": "0x4000"
+    },
+    {
+      "bit": 15,
+      "anchor": "0x0",
+      "peer": "0x8000"
+    },
+    {
+      "bit": 16,
+      "anchor": "0x0",
+      "peer": "0x10000"
+    },
+    {
+      "bit": 17,
+      "anchor": "0x0",
+      "peer": "0x20000"
+    },
+    {
+      "bit": 18,
+      "anchor": "0x0",
+      "peer": "0x40000"
+    },
+    {
+      "bit": 19,
+      "anchor": "0x0",
+      "peer": "0x80000"
+    },
+    {
+      "bit": 20,
+      "anchor": "0x0",
+      "peer": "0x100000"
+    },
+    {
+      "bit": 21,
+      "anchor": "0x0",
+      "peer": "0x200000"
+    },
+    {
+      "bit": 22,
+      "anchor": "0x0",
+      "peer": "0x400000"
+    },
+    {
+      "bit": 23,
+      "anchor": "0x0",
+      "peer": "0x800000"
+    },
+    {
+      "bit": 24,
+      "anchor": "0x0",
+      "peer": "0x1000000"
+    },
+    {
+      "bit": 25,
+      "anchor": "0x0",
+      "peer": "0x2000000"
+    },
+    {
+      "bit": 26,
+      "anchor": "0x0",
+      "peer": "0x4000000"
+    },
+    {
+      "bit": 27,
+      "anchor": "0x0",
+      "peer": "0x8000000"
+    },
+    {
+      "bit": 28,
+      "anchor": "0x0",
+      "peer": "0x10000000"
+    },
+    {
+      "bit": 29,
+      "anchor": "0x0",
+      "peer": "0x20000000"
+    },
+    {
+      "bit": 30,
+      "anchor": "0x0",
+      "peer": "0x40000000"
+    },
+    {
+      "bit": 31,
+      "anchor": "0x0",
+      "peer": "0x80000000"
+    }
+  ],
+  "execution_requirements": [
+    "Preserve Piotr SPD-based DDR training before OCM handoff; cold OCM peripheral-only init is insufficient.",
+    "Verify OCM code, vectors, stack and data; no DDR-resident execution or allocations.",
+    "Establish EL3 and EL1 cache maintenance/control and physical mapping; EL1 SCTLR alone is insufficient.",
+    "Prove other A53/R5 cores, PL AXI masters and PS DMA/peripheral masters cannot access tested DDR.",
+    "Use distinct address-derived tags across every probe, barrier, then verify every probe; repeat complemented.",
+    "Bound every stage and always restore and validate the normal runtime under the shared Genesys lease."
+  ],
+  "limits": "Sparse logical-address probes only. Physical high-window translation, DRAM address wiring, complete capacity and sustained integrity remain unproven. No executable loader or memory writes provided."
+}
