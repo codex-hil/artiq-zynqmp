@@ -1,0 +1,23 @@
+{
+  "status": "OFFLINE_CONTROLS_PASS",
+  "hardware_executed": false,
+  "core_admission_scenarios": {
+    "accepted": [
+      "already suspended",
+      "running then confirmed suspended",
+      "same exact POR error twice"
+    ],
+    "rejected": [
+      "missing suspension state",
+      "transport error",
+      "POR changed between attempts",
+      "stop without suspension",
+      "POR after CPU0 reset"
+    ]
+  },
+  "tests": {
+    "test_ocm_core_admission": 2,
+    "test_ocm_observation": 2,
+    "test_candidate_runtime": 6
+  }
+}

@@ -185,3 +185,21 @@ Next inspect target state semantics and explicitly distinguish cores held in
 power-on-reset from running/stopped cores. Do not broadly ignore stop errors.
 Re-pin any changed loader and test the state admission before another bounded
 OCM attempt. No Kasli/Si/card/flash/OTP writes in this window.
+
+### Reset-aware OCM admission prepared offline —2026-10-22
+
+Installed XSDB2025.2 `stop` implementation always sends RunControl suspend; its
+documented error return includes already stopped/cannot stop. `targets` exposes
+`suspended`. Loader now accepts an already suspended core, otherwise stops and
+requires a fresh suspended state. Initial core parking additionally accepts only
+two identical exact backend `The core is held in power-on-reset` errors on the
+same selected target. No reset is released for that exception. CPU0 after its
+processor reset must be suspended; POR cannot admit it. Other errors propagate.
+This observes a point in time, not a guarantee against independent reset agents.
+
+Eight modeled scenarios in2tests PASS;2OCM admission/restore controls and6existing
+lifecycle tests PASS. No hardware access for this revision. Original failed
+manifest/evidence preserved; revised pinned manifest:
+`evidence/ocm-observation-plan-v2-2026-10-22/inputs.json`. Next one bounded
+observation with full normal restoration. Live MMU/cache and DDR qualification
+remain NOT_RUN; no automatic destructive DDR authorization.

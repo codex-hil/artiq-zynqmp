@@ -1,5 +1,5 @@
 # Dedicated OCM observation loader; LGPL-3.0-or-later.
-# Derived from the existing OCM bring-up flow; exact cable and strict core stops.
+# Derived from the existing OCM bring-up flow; exact cable and checked core states.
 if {[llength $argv] != 4} {error "Require SERVER_URL ELF PSU_INIT_TCL CABLE_SERIAL"}
 lassign $argv server elf psu_init cable_serial
 if {$cable_serial ne "210383B7F02DA"} {error "Wrong Genesys cable"}
@@ -14,10 +14,33 @@ proc select_genesys_target {name} {
     if {[llength $matches] != 1} {error "Target $name on $cable_serial not uniquely identified"}
     targets -set [lindex $matches 0]
 }
+# XSDB stop sends suspend even when a core is already stopped/reset. Only the
+# exact backend POR error, repeated on the same selected target, admits reset.
+# CPU0 after processor reset must be suspended, never admitted via POR.
+proc admit_core {allow_por} {
+    set props [lindex [targets -target-properties -filter {is_current == 1}] 0]
+    if {![dict exists $props suspended]} {error "Missing core suspension state"}
+    if {[dict get $props suspended]} {puts "CORE_ADMISSION SUSPENDED"; return}
+    if {[catch {stop} message options]} {
+        if {!$allow_por || $message ne "The core is held in power-on-reset"} {
+            return -options $options $message
+        }
+        if {![catch {stop} repeated] || $repeated ne $message} {
+            error "Power-on-reset state changed during admission"
+        }
+        puts "CORE_ADMISSION HELD_POWER_ON_RESET_CONFIRMED"
+        return
+    }
+    set props [lindex [targets -target-properties -filter {is_current == 1}] 0]
+    if {![dict exists $props suspended] || ![dict get $props suspended]} {
+        error "Core did not become suspended"
+    }
+    puts "CORE_ADMISSION STOPPED_CONFIRMED"
+}
 connect -url $server
 for {set i 0} {$i < 4} {incr i} {
  select_genesys_target "Cortex-A53 #$i"
- stop
+ admit_core 1
 }
 select_genesys_target PSU
 source $psu_init
@@ -27,7 +50,7 @@ init_peripheral
 puts "PS_UART_CLOCK_INIT_DONE_NO_DDR"
 select_genesys_target "Cortex-A53 #0"
 rst -processor -clear-registers
-stop
+admit_core 0
 dow $elf
 con
 puts "OCM_DIAGNOSTIC_STARTED"
