@@ -155,3 +155,19 @@ one case, supply the existing filtered server/UART/interface, and use `--execute
 Without that flag, the wrapper performs offline preflight only. Each subsequent
 case must be a new wrapper invocation/output directory after successful baseline
 restoration. Do not call the child injector directly or reuse a faulted worker.
+
+## First live fault admission —2026-10-22
+
+The zero-descriptor attempt did **not** inject a malformed reply: the first RPC
+failed the strict expected-request check. Candidate load and physical debug PASS;
+the outer wrapper restored the old runtime and physical debug/Ethernet PASS.
+The lease covered132.104seconds and was released/reacquired for verification.
+Evidence: `evidence/rpc-zero-admission-2026-10-22/`. This is not a malformed-RPC
+hardware PASS. Worker cancellation progress remains NOT_PROVEN.
+
+The injector now records argument count/types, keyword names, return-tag bytes
+and service name before admission; it does not execute an unexpected service.
+Three injector controls PASS. The pinned compiler quotes bound-method receivers
+separately (`compiler/embedding.py`), making receiver shape a concrete diagnosis
+target, but this run did not capture the shape. Keep admission strict until that
+shape is established; do not silently skip unknown RPCs or infer test success.

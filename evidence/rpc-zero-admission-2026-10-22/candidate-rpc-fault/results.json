@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "hardware_executed": true,
+  "case": {
+    "name": "zero_descriptor_length",
+    "body_hex": "00000000",
+    "half_close": false,
+    "expected": "transport_abort_cancel_worker"
+  },
+  "worker_cancellation_progress": "NOT_PROVEN",
+  "reuse_after_fault": false,
+  "error": "Unexpected RPC request; no injection performed"
+}

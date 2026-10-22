@@ -1,0 +1,34 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "error": "candidate-rpc-fault failed: {\n  \"status\": \"FAIL\",\n  \"hardware_executed\": true,\n  \"case\": {\n    \"name\": \"zero_descriptor_length\",\n    \"body_hex\": \"00000000\",\n    \"half_close\": false,\n    \"expected\": \"transport_abort_cancel_worker\"\n  },\n  \"worker_cancellation_progress\": \"NOT_PROVEN\",\n  \"reuse_after_fault\": false,\n  \"error\": \"Unexpected RPC request; no injection performed\"\n}\n",
+  "restored_ip": "192.168.2.3",
+  "kind": "candidate-runtime-hardware",
+  "hardware_executed": true,
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "cable": "210383B7F02DA",
+  "elapsed_seconds": 132.104,
+  "stages": {
+    "candidate-load": {
+      "returncode": 0
+    },
+    "candidate-debug": {
+      "returncode": 0
+    },
+    "candidate-rpc-fault": {
+      "returncode": 1
+    },
+    "restore-load": {
+      "returncode": 0
+    },
+    "restore-debug": {
+      "returncode": 0
+    },
+    "restore-ethernet": {
+      "returncode": 0
+    }
+  },
+  "extended": false,
+  "rpc_fault_case": "zero_descriptor_length",
+  "manifest_sha256": "4d9cf4b1405eacdb951a5a3db9964bf36d576dee520d54f99612b54d1f537db8"
+}

@@ -26,7 +26,9 @@ class FaultInjection(unittest.TestCase):
 
     def test_unexpected_request_sends_nothing(self):
         comm=self.comm();comm._read_bytes.return_value=b'i'
-        with self.assertRaises(ValueError):inject(comm,None,cases()[0],{})
+        report={}
+        with self.assertRaises(ValueError):inject(comm,None,cases()[0],report)
+        self.assertEqual(report['observed_request']['return_tags_hex'],'69')
         comm._write_header.assert_not_called();comm._flush.assert_not_called()
 
     def test_timeout_or_wrong_data_cannot_pass_and_restores(self):

@@ -1,0 +1,12 @@
+{
+  "status": "INJECTION_NOT_RUN_UNEXPECTED_RPC_RESTORED",
+  "hardware_executed": true,
+  "injection_sent": false,
+  "restoration": "PASS",
+  "restored_ip": "192.168.2.3",
+  "elapsed_seconds": 132.104,
+  "lease": "RELEASED_REACQUIRE_CHECK_PASS",
+  "finding": "First RPC did not match three-argument expectation; newly added metadata records types/count/service without executing unexpected RPC",
+  "possible_cause": "Pinned compiler embedding.py quotes bound method self separately; receiver shape not yet captured on device",
+  "next": "Diagnose request shape before changing admission; preserve one-shot and full-restoration rules"
+}

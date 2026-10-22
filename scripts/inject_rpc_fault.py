@@ -24,6 +24,12 @@ def inject(comm,embedding,case,report):
     from artiq.coredevice.comm_kernel import Request
     asynchronous=comm._read_bool();service=comm._read_int32()
     args,kwargs=comm._receive_rpc_args(embedding);tags=comm._read_bytes()
+    report['observed_request']=dict(asynchronous=asynchronous,service_id=service,
+        argument_count=len(args),argument_types=[type(arg).__name__ for arg in args],
+        keyword_names=sorted(kwargs),return_tags_hex=bytes(tags).hex())
+    if embedding is not None and service:
+        target=embedding.retrieve_object(service)
+        report['observed_request']['service_name']=getattr(target,'__qualname__',type(target).__name__)
     if asynchronous or not service or kwargs or tags!=b'f' or len(args)!=3 or args[0]!=0x1234567887654321 or args[1]<=0 or args[2]!=1.25:
         raise ValueError('Unexpected RPC request; no injection performed')
     report.update(request_verified=True,return_tags=tags.decode(),service_id=service)
@@ -49,7 +55,7 @@ def main():
     from artiq.coredevice.comm_kernel import CommKernel
     from artiq.coredevice.comm_mgmt import CommMgmt
     selected=next(c for c in cases() if c['name']==a.case)
-    report=dict(status='FAIL',hardware_executed=True,case=selected,worker_cancellation_progress='NOT_PROVEN',reuse_after_fault=False)
+    report=dict(status='FAIL',hardware_executed=True,case=selected,injection_sent=False,worker_cancellation_progress='NOT_PROVEN',reuse_after_fault=False)
     original=CommKernel._serve_rpc;injected=False
     def hook(comm,embedding):
         nonlocal injected
