@@ -193,7 +193,7 @@ def main():
                     '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else []),180)
                 observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                 if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
-                return 'TRAINED_OCM_REGISTERS_ONLY'
+                return 'TRAINED_FSBL_METADATA_ONLY' if observer.get('definitions_only') else 'TRAINED_OCM_REGISTERS_ONLY'
             if prefix=='candidate' and ocm is not None:
                 run('candidate-ocm',[sys.executable,str(REPO/'scripts/run_ocm_environment.py'),
                     '--server',a.server,'--port',a.port,'--elf',ocm['elf']['path'],

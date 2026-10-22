@@ -756,3 +756,19 @@ manifest/preflight prepared; post-FSBL metadata hardware NOT_RUN. Next one
 bounded definitions-only window, then review actual PSTATE/system-register
 paths and test decoder before re-enabling observer execution. Original FAIL
 and admission rules remain intact; no automatic alias guessing or cache bypass.
+
+## FSBL root register metadata hardware PASS —2026-10-22
+
+Definitions-only window85.652s under shared Genesys lease PASS, with normal
+restoration/physical TTL/CoreDMA/analyzer/MonInj/Ethernet PASS192.168.2.3.
+Post-FSBL stopped terminal exposes r0..r30,sp,pc,cpsr plus sys group. This
+differs from the running AArch32 view, but supplies no live EL/cache proof.
+No observer download/execution or DDR test; no Kasli/Si/SD/flash/OTP changes.
+Evidence: `evidence/fsbl-definitions-hardware-2026-10-22`; original currentel
+FAIL retained. Lease released.
+
+Prepared expanded definitions-only capture: `rrd -defs sys` plus raw cpsr.
+No field interpretation/alias guessing. Four Tcl model controls PASS, actual
+artifact/script-pin preflight PASS. New next-sys-definitions-inputs manifest
+is separate from historical proof. Next bounded metadata window, then review
+backend system-register paths before observer admission.

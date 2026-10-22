@@ -1,0 +1,130 @@
+{
+  "status": "FSBL_ROOT_DEFINITIONS_AND_RESTORATION_PASS",
+  "hardware_executed": true,
+  "seconds": 85.652,
+  "raw_output": "/home/codex-hil/.local/state/artiq-builds/fsbl-definitions-hardware-20261022",
+  "raw_files": {
+    "restore-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "restore-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "candidate-trained-observer.log": {
+      "sha256": "6b9f1c3268d5ecf26b8371219430716a40bc37b656883ea0dc96bba7d6b14d99",
+      "bytes": 443
+    },
+    "restore-ethernet.log": {
+      "sha256": "7c63da36de27af1d50adf4670898026fb0c9e1d0ba19eba816fc4405744db5da",
+      "bytes": 2019
+    },
+    "restore-debug.log": {
+      "sha256": "92ee4cba32c0f13b44ed5144479eb7a5d1dbde0848606d89ea61eac4bd2c8c52",
+      "bytes": 1899
+    },
+    "restore-ethernet.json": {
+      "sha256": "7c63da36de27af1d50adf4670898026fb0c9e1d0ba19eba816fc4405744db5da",
+      "bytes": 2019
+    },
+    "results.json": {
+      "sha256": "3a6dcdcbf7d28da47b784eb1a66c64c1ee955de07ea2cb42c230d8074b1dce52",
+      "bytes": 2405
+    },
+    "restore-load/uart.log": {
+      "sha256": "82a2774ed1af13224f1874718b256a5210003b16ad3294f18e8164da669542fa",
+      "bytes": 1056
+    },
+    "restore-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "restore-load/prepare.log": {
+      "sha256": "19afe48a38592649bec5d0d625aecab301953436eb20d37adbdcbb9130ba1970",
+      "bytes": 64
+    },
+    "restore-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "restore-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "restore-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "restore-load/pl.log": {
+      "sha256": "c46ceb35fe8cd4c53582c96ab3cdd639b12861528da6d9bb08f98f5f5a941004",
+      "bytes": 1918
+    },
+    "restore-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "restore-debug/wrap-dma-5.log": {
+      "sha256": "be52837ae5bc35cbf5a5505f2b9c60d02510b8c803ead01a6f4815a602ada542",
+      "bytes": 210
+    },
+    "restore-debug/dma.log": {
+      "sha256": "b079ec6e538adb146eb9b9ebfcb775e25c472b033392cfe898e03535fda015ba",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-6.log": {
+      "sha256": "4fe64093ac9f6f5a5325b99a75de8bf4278d60e4417d082bdeb3c1faef038bdf",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-0.log": {
+      "sha256": "809d24d2ab59301f0f02d1d793cec04ca7f06be1c6e67cc93cb442ca751822b4",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-2.log": {
+      "sha256": "f1e334bf3ddd74b51f1b5298768cf0da15185f921eb3369c445cbf6a5c84f94a",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-3.log": {
+      "sha256": "40e1eba2f6444904628f9a9c00c5ade275e8e3357aa7bbde878e5f5333b53702",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-7.log": {
+      "sha256": "e7c32e4e7740974ab6ec4bb9328a3117072d273c6c3d726b630130038d75eee2",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-1.log": {
+      "sha256": "d0e160b693d49b86ea75e76e1fec274a57b23e3f1391c31b5aee5f7e1f225cbe",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-4.log": {
+      "sha256": "22b7f820481174f613a8cb2b7ffe4ce4078e2e3c7f9c6539e87786d81925c069",
+      "bytes": 210
+    },
+    "restore-debug/results.json": {
+      "sha256": "1f14adf615923c8f169ec8d63a77e9cd20e51b6a1969968b9267772e9351b6ed",
+      "bytes": 1692
+    },
+    "candidate-trained-observer/uart.log": {
+      "sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b",
+      "bytes": 840
+    },
+    "candidate-trained-observer/observer.log": {
+      "sha256": "0501254bece3a976cf4c56c4ef4abae7d9854deacf4da8d9617a5fe273ec9aa4",
+      "bytes": 663
+    },
+    "candidate-trained-observer/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "candidate-trained-observer/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "candidate-trained-observer/results.json": {
+      "sha256": "6b9f1c3268d5ecf26b8371219430716a40bc37b656883ea0dc96bba7d6b14d99",
+      "bytes": 443
+    }
+  },
+  "observed": "FSBL terminal target exposes r0..r30/sp/pc/cpsr and sys group",
+  "limits": "Metadata only. No observer download/execution, no EL3/SCTLR value proof or DDR memory test. Baseline restored192.168.2.3 with physical debug/Ethernet PASS."
+}

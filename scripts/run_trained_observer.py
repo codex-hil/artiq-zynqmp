@@ -61,7 +61,7 @@ def main():
             else: raise RuntimeError('FSBL UART completion timeout')
             text=xs('observer','run_trained_observer.tcl',a.server,a.elf,desc['terminal_pcs'][0],'210383B7F02DA','definitions' if a.definitions_only else 'observe')
             if a.definitions_only:
-                if text.count('FSBL_REGISTER_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_REGISTER_DEFINITIONS_END')!=1:
+                if text.count('FSBL_REGISTER_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_REGISTER_DEFINITIONS_END')!=1 or text.count('FSBL_SYS_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_SYS_DEFINITIONS_END')!=1 or len(re.findall(r'^FSBL_CPSR_RAW [0-9]+$',text,re.M))!=1:
                     raise ValueError('Incomplete FSBL definitions')
                 result.update(status='PASS',scope='FSBL_BACKEND_DEFINITIONS_ONLY_NO_OBSERVER_EXECUTION',fsbl_descriptor=desc)
             else: result.update(status='PASS',registers=decode(text),fsbl_descriptor=desc)

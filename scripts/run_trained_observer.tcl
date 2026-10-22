@@ -40,6 +40,10 @@ if {$mode eq "definitions"} {
     puts "FSBL_REGISTER_DEFINITIONS_BEGIN"
     puts [rrd -defs]
     puts "FSBL_REGISTER_DEFINITIONS_END"
+    puts "FSBL_SYS_DEFINITIONS_BEGIN"
+    puts [rrd -defs sys]
+    puts "FSBL_SYS_DEFINITIONS_END"
+    puts "FSBL_CPSR_RAW [fsbl_entry::register cpsr]"
     fsbl_entry::selected_halted
     disconnect
     return
