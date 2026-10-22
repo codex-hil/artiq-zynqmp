@@ -9,10 +9,13 @@ class CoreAdmission(unittest.TestCase):
     def run_gate(self,scenario,allow=1):
         model='''
 set calls 0
+set observations 0
+proc after {args} {}
 proc targets {args} {
- global scenario calls
+ global scenario calls observations
+ incr observations
  if {$scenario eq "missing"} {return [list [dict create]]}
- set suspended [expr {$scenario eq "stopped" || ($scenario eq "running" && $calls > 0)}]
+ set suspended [expr {$scenario eq "stopped" || ($scenario eq "running" && $calls > 0) || ($scenario eq "delayed" && $calls > 0 && $observations >= 4)}]
  return [list [dict create suspended $suspended]]
 }
 proc stop {} {
@@ -27,7 +30,7 @@ proc stop {} {
         text=f'set scenario {scenario}\n'+model+PROC+f'\nif {{[catch {{admit_core {allow}}} message]}} {{puts stderr $message;exit 1}}\nputs "CALLS $calls"\n'
         return subprocess.run(['tclsh'],input=text,capture_output=True,text=True,timeout=3)
     def test_suspended_running_and_confirmed_por(self):
-        for scenario,marker,calls in [('stopped','SUSPENDED',0),('running','STOPPED_CONFIRMED',1),('por','HELD_POWER_ON_RESET_CONFIRMED',2),('reset','HELD_RESET_CONFIRMED',2)]:
+        for scenario,marker,calls in [('stopped','SUSPENDED',0),('running','STOPPED_CONFIRMED',1),('delayed','STOPPED_CONFIRMED polls=2',1),('por','HELD_POWER_ON_RESET_CONFIRMED',2),('reset','HELD_RESET_CONFIRMED',2)]:
             with self.subTest(scenario=scenario):
                 r=self.run_gate(scenario);self.assertEqual(r.returncode,0,r.stderr)
                 self.assertIn(marker,r.stdout);self.assertIn(f'CALLS {calls}',r.stdout)

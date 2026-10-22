@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## OCM v6 unconfirmed initial halt / restoration PASS —2026-10-22
+
+Initial core stop returned without positive suspended state; gate rejected.
+System reset/OCM/MMU/cache/DDR test NOT_RUN. Full normal restore/physical RTIO/
+debug/Ethernet PASS192.168.2.3, lease71.912s. Evidence:
+`evidence/ocm-observation-v6-hardware-2026-10-22`. XSDB source confirms stop
+wait may expire silently. V7 logs target identity and adds bounded positive-state
+confirmation, preserving failure on missing/never-suspended state; offline PASS.
+
 ## OCM v5 CPU0 activation PASS / secondary admission FAIL —2026-10-22
 
 Native CPU0 A64 reset and suspension PASS. CPU1 held in ordinary reset rejected

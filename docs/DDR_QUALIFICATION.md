@@ -316,3 +316,21 @@ controls (expanded scenarios), two reset-flow and two OCM tests PASS; new pins:
 `evidence/ocm-observation-plan-v6-2026-10-22`. No new HW attempt for v6. This
 change releases no secondary resets and does not disable cache synchronization.
 Next bounded OCM load/observation with mandatory normal restoration.
+
+### Sixth attempt: unconfirmed initial stop —2026-10-22
+
+Initial parking failed: `stop` returned but the following target properties did
+not confirm suspension. System reset/OCM load/execution/MMU-cache/DDR test
+NOT_RUN. V6 logs do not identify the failing core, so no core number is inferred.
+Full normal restore/physical RTIO/debug/Ethernet PASS192.168.2.3 under71.912s
+lease. Evidence: `evidence/ocm-observation-v6-hardware-2026-10-22`.
+
+Installed XSDB `wait_for_event` exits its timed loop without raising timeout;
+`stop` therefore cannot itself prove a halt. V7 logs selected target name/id and
+polls positive suspension up to21observations/20x50ms after successful stop,
+then dumps final properties and fails. Missing state fails immediately; no stop
+retry and no acceptance of an unconfirmed halt. This permits bounded state
+propagation but does not claim stale state caused v6. Existing outer timeout
+remains120s. Two core-state tests include delayed confirmation and bounded
+non-suspension; two reset-flow/two OCM tests PASS. V7 artifact preflight/pins:
+`evidence/ocm-observation-plan-v7-2026-10-22`. Next bounded observation/restoration.

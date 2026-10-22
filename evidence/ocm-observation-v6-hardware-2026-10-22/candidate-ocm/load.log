@@ -1,0 +1,14 @@
+CORE_ADMISSION STOPPED_CONFIRMED
+Core did not become suspended
+    while executing
+"error "Core did not become suspended""
+    (procedure "admit_core" line 21)
+    invoked from within
+"admit_core 1"
+    ("for" body line 3)
+    invoked from within
+"for {set i 0} {$i < 4} {incr i} {
+ select_genesys_target "Cortex-A53 #$i"
+ admit_core 1
+}"
+    (file "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/run_ocm_environment.tcl" line 48)

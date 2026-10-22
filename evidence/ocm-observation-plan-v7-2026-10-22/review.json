@@ -1,0 +1,16 @@
+{
+  "status": "OFFLINE_CONTROLS_PASS_HARDWARE_NOT_RUN",
+  "xsdb_source_sha256": "0b5f6b92455330b3ef2491984f327f49d2e49dea79bd5387c8ed14249247ff09",
+  "source_finding": "wait_for_event exits timed loop without timeout exception; stop can return without positive suspension",
+  "change": [
+    "log selected target name/id",
+    "after successful stop poll suspended up to 21 observations with 20x50ms delays",
+    "dump last properties and fail on unconfirmed stop; missing state fails immediately"
+  ],
+  "nonclaim": "Does not prove stale state caused v6 failure; never repeats stop or admits unconfirmed halt",
+  "tests": {
+    "core_admission_including_delayed_confirmation_and_timeout": 2,
+    "reset_flow": 2,
+    "ocm_observation": 2
+  }
+}

@@ -13,6 +13,7 @@ proc select_genesys_target {name} {
     }
     if {[llength $matches] != 1} {error "Target $name on $cable_serial not uniquely identified"}
     targets -set [lindex $matches 0]
+    puts "CORE_TARGET name=$name id=[lindex $matches 0]"
 }
 # XSDB stop sends suspend even when a core is already stopped/reset. Only exact
 # backend core-reset errors, repeated on the same selected target, admit reset.
@@ -35,11 +36,19 @@ proc admit_core {allow_reset} {
         }
         return
     }
-    set props [lindex [targets -target-properties -filter {is_current == 1}] 0]
-    if {![dict exists $props suspended] || ![dict get $props suspended]} {
-        error "Core did not become suspended"
+    # XSDB wait_for_event can time out without raising. Require positive
+    # suspension evidence, allowing a bounded 1s for target-state propagation.
+    for {set attempt 0} {$attempt <= 20} {incr attempt} {
+        set props [lindex [targets -target-properties -filter {is_current == 1}] 0]
+        if {![dict exists $props suspended]} {error "Missing post-stop suspension state"}
+        if {[dict get $props suspended]} {
+            puts "CORE_ADMISSION STOPPED_CONFIRMED polls=$attempt"
+            return
+        }
+        if {$attempt < 20} {after 50}
     }
-    puts "CORE_ADMISSION STOPPED_CONFIRMED"
+    puts "CORE_ADMISSION_UNCONFIRMED properties=$props"
+    error "Core did not become suspended within bounded confirmation window"
 }
 connect -url $server
 # Debugger presentation only: avoid source lookup racing the stop event.
