@@ -583,3 +583,14 @@ Five storage tests/six lifecycle/three SPD wrapper tests PASS. Evidence:
 retained separately. Check is point-in-time, not reservation/concurrent-growth
 protection. Next safe own-build relocation/inventory and offline DDR ownership/
 window planning. Normal ARTIQ remains restored192.168.2.3.
+
+### Own completed builds relocated; storage/pins PASS —2026-10-22
+
+Six completed project outputs moved to root storage after22517entries verified
+(hash/mode/symlink/source-unchanged checks). Original artifact paths retained
+through symlinks; normal and diagnostic manifest artifact/layout preflights PASS.
+Three preservation/failure/rollback tests PASS. Available shared space roughly
+89→604MiB, current storage gate PASS. No hardware or shared-toolchain changes.
+Evidence: `evidence/completed-build-relocation-2026-10-22`. Next bounded full
+FSBL-SPD candidate/CRC/runtime/restoration attempt under usual rechecked storage
+and hardware lease; original failed lifecycle remains retained.

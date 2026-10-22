@@ -1,0 +1,44 @@
+{
+  "status": "STORAGE_ADMISSION_PASS",
+  "hardware_executed": false,
+  "minimum_available_bytes": 536870912,
+  "minimum_available_inodes": 1024,
+  "entries": [
+    {
+      "role": "output",
+      "path": "/home/codex-hil/.local/state/artiq-builds/future-window",
+      "probe_path": "/home/codex-hil/.local/state/artiq-builds",
+      "available_bytes": 41954439168,
+      "available_inodes": 13710504
+    },
+    {
+      "role": "working_directory",
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+      "probe_path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+      "available_bytes": 631611392,
+      "available_inodes": 11188186
+    },
+    {
+      "role": "amd_home",
+      "path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+      "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+      "available_bytes": 631611392,
+      "available_inodes": 11188186
+    },
+    {
+      "role": "amd_tmp",
+      "path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+      "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+      "available_bytes": 631611392,
+      "available_inodes": 11188186
+    },
+    {
+      "role": "host_tmp",
+      "path": "/tmp",
+      "probe_path": "/tmp",
+      "available_bytes": 41954439168,
+      "available_inodes": 13710504
+    }
+  ],
+  "limits": "Point-in-time headroom check, not reservation or protection against concurrent disk consumption."
+}

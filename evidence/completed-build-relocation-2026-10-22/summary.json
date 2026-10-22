@@ -1,0 +1,50 @@
+{
+  "status": "SIX_OWN_COMPLETED_BUILDS_RELOCATED_VERIFIED_PINS_AND_STORAGE_PASS",
+  "hardware_executed": false,
+  "records": [
+    {
+      "destination": "/home/codex-hil/.local/state/artiq-builds/kernel-health-cpu0-20261022",
+      "entries": 3512,
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/kernel-health-cpu0-20261022",
+      "status": "RELOCATED_VERIFIED_ORIGINAL_PATH_RETAINED"
+    },
+    {
+      "destination": "/home/codex-hil/.local/state/artiq-builds/rpc-parser-cpu0-20261022",
+      "entries": 3512,
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rpc-parser-cpu0-20261022",
+      "status": "RELOCATED_VERIFIED_ORIGINAL_PATH_RETAINED"
+    },
+    {
+      "destination": "/home/codex-hil/.local/state/artiq-builds/release-boot-firmware-2026-10-21",
+      "entries": 4282,
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21",
+      "status": "RELOCATED_VERIFIED_ORIGINAL_PATH_RETAINED"
+    },
+    {
+      "destination": "/home/codex-hil/.local/state/artiq-builds/release-cpu0-2026-10-21",
+      "entries": 3511,
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-cpu0-2026-10-21",
+      "status": "RELOCATED_VERIFIED_ORIGINAL_PATH_RETAINED"
+    },
+    {
+      "destination": "/home/codex-hil/.local/state/artiq-builds/ethernet-reproduced",
+      "entries": 3414,
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/ethernet-reproduced",
+      "status": "RELOCATED_VERIFIED_ORIGINAL_PATH_RETAINED"
+    },
+    {
+      "destination": "/home/codex-hil/.local/state/artiq-builds/fsbl-reproduced",
+      "entries": 4286,
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-reproduced",
+      "status": "RELOCATED_VERIFIED_ORIGINAL_PATH_RETAINED"
+    }
+  ],
+  "total_inventory_entries": 22517,
+  "artifact_preflights": {
+    "normal": "ARTIFACT_PINS_AND_LAYOUT_PASS",
+    "diagnostic": "ARTIFACT_PINS_AND_LAYOUT_PASS"
+  },
+  "tests": "3 relocation controls PASS: byte/link/mode fidelity, corrupt-copy preservation, failed-link rollback",
+  "scope": "Only six allowlisted completed project outputs. No installers, shared daemon, other projects, hardware or original source checkouts changed.",
+  "space_limit": "Point-in-time result only, no guarantee against other writers."
+}

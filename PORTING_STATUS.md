@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## Own build relocation restores storage admission —2026-10-22
+
+Six completed builds relocated byte/mode/link-verified (22517entries), original
+paths retained by symlink. Normal/diagnostic artifact preflights and current
+512MiB/inode storage gate PASS; shared free space about604MiB at measurement.
+No HW access. Evidence: `evidence/completed-build-relocation-2026-10-22`.
+Next bounded full diagnostic SPD/runtime/restoration window to close earlier
+disk-full failure; every attempt still rechecks space and the shared lease.
+
 ## Storage gate blocks new HW until sufficient headroom —2026-10-22
 
 Pre-reset byte/inode admission added to candidate wrapper and direct runtime

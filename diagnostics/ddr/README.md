@@ -396,3 +396,28 @@ Its artifact-only offline preflight PASS is intentionally separate from storage
 admission. Historical manifest/evidence remain unchanged. Next inventory/relocate
 only this thread's completed build outputs with byte verification and retained
 paths, then recheck storage. DDR master/window planning can continue offline.
+
+## Completed-build storage relocation —2026-10-22
+
+Six explicitly allowlisted completed outputs were copied to root-disk
+`/home/codex-hil/.local/state/artiq-builds`. The tool inventories hashes, modes
+and symlink targets, copies without dereferencing links, checks both unchanged
+source and destination, publishes a verification report, then retains original
+paths through symlinks. A failed link publication rolls the original directory
+back; a bad copy never removes the original. New output/report paths are required.
+No other project, shared toolchain, original checkout or device was changed.
+
+22517inventory entries verified. Old selected normal/diagnostic artifact hashes
+and layouts still PASS through original paths. Shared disk free space increased
+from approximately89MiB to604MiB and the512MiB/inode storage gate now PASSes.
+This remains a point-in-time result; every hardware window must recheck it.
+Evidence and full compressed inventories:
+`evidence/completed-build-relocation-2026-10-22`. Three controls cover exact
+byte/link/mode preservation, corrupt-copy rejection and link-publication rollback.
+
+The relocation tool defaults to plan-only and accepts only the six reviewed
+build names; it is not a generic shared-workspace cleanup tool. Already moved
+symlink paths reject a second relocation. Hardware was not accessed. Next one
+bounded diagnostic FSBL SPD window using the v2 manifest can confirm the
+complete candidate/parse/debug/Ethernet/restoration sequence after the earlier
+disk-full failure; all existing shared-lease and storage checks still apply.
