@@ -1,0 +1,9 @@
+REGISTER_DEFINITIONS_BEGIN
+      r0: (RW)        r1: (RW)        r2: (RW)        r3: (RW)        r4: (RW)
+      r5: (RW)        r6: (RW)        r7: (RW)        r8: (RW)        r9: (RW)
+     r10: (RW)       r11: (RW)       r12: (RW)        sp: (RW)        lr: (RW)
+      pc: (RW)      cpsr: (RW)       usr             fiq             irq      
+     abt             und             svc             mon             hyp      
+     vfp            cp15             dbg         Jazelle        acpu_gic      
+
+REGISTER_DEFINITIONS_END

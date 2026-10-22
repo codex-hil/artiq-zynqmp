@@ -1,5 +1,24 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## Backend register definitions and FSBL-only metadata mode —2026-10-22
+
+Read-only XSDB metadata capture under shared Genesys lease PASS, no stop/reset/
+download/memory/register writes. Current running-target view exposes AArch32
+r0..r12/cpsr/cp15, not currentel. This is not the post-FSBL EL3 view; do not
+substitute its names or infer current EL/cache state from metadata. Runtime
+left unchanged; no network test needed for this metadata-only observation.
+Evidence: `evidence/a53-register-definitions-2026-10-22`.
+
+New explicit definitions_only manifest mode uses existing PMU/FSBL lifecycle,
+positively halts CPU0 at selected ELF terminal, reads `rrd -defs`, returns
+without observer download/continue and always restores baseline. Four Tcl-model
+groups PASS including proof that definitions-only never downloads. New pinned
+manifest/preflight prepared; post-FSBL metadata hardware NOT_RUN. Next one
+bounded definitions-only window, then review actual PSTATE/system-register
+paths and test decoder before re-enabling observer execution. Original FAIL
+and admission rules remain intact; no automatic alias guessing or cache bypass.
+
+
 ## First trained-observer HW attempt FAIL; restoration PASS —2026-10-22
 
 Initial storage admission blocked before HW (shared45MiB). Eight own completed

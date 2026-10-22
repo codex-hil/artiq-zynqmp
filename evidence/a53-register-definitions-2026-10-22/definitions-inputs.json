@@ -1,0 +1,29 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/el3-register-observer-20261022/observer.elf",
+    "sha256": "8fef1e1c38b017f5914968cb4cc54972ddabb5a40d6b860dd61973a5696c5fde"
+  },
+  "symbols": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/fsbl-observer-entry-2026-10-22/fsbl-symbols.txt",
+    "sha256": "df05d210ee11bc87243d1cc571ac9024a58d73c5e520fd9472dfe51fd0bd4c53"
+  },
+  "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+  "script_sha256": {
+    "scripts/check_el3_observer.py": "e2714e065f7da0b5fac2bde4d15515bf7e47b922e30fb8b79a6ab6b45c09e22f",
+    "scripts/check_fsbl_observer_entry.py": "26da021aadbdfed5417aa43a2d303273aba5167a6e1f67cea1db07836395343f",
+    "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+    "scripts/collect_fsbl_entry.tcl": "3326e6b83a8d1cf3527fa1649f250450b38abd282cce655218bfdf7fab5166bc",
+    "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+    "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+    "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+    "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+    "scripts/run_trained_observer.py": "64ba8c4adc335ec74e48971f584cd9f7f67e01a056fd5c440a6f650328c44606",
+    "scripts/run_trained_observer.tcl": "dd6069985d51706bcca36c1988f4d2ad6ea61fdb22fb143a9c4b09db1485acee",
+    "scripts/test_candidate_runtime_hw.py": "8bac9ac379050fb0ee02507df22ee5f91e93b74d00fd4855945a58b8e52591cd"
+  },
+  "definitions_only": true
+}

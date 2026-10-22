@@ -48,6 +48,12 @@ class TrainedTests(unittest.TestCase):
  def test_admission_failure_never_downloads(self):
   text=self.run_model('set bad 1')
   self.assertIn('REJECT',text);self.assertNotIn('DOWNLOAD',text)
+ def test_definitions_only_does_not_download(self):
+  mock=MOCK.replace('proc rrd {option name}', 'proc rrd {option {name {}}}').replace('210383B7F02DA]','210383B7F02DA definitions]',1).replace('global phase bad', 'global phase bad; if {$option eq "-defs"} {return {cpsr EL3_group}}')
+  body=mock+'\nif {[catch {source {'+str(ROOT/'scripts/run_trained_observer.tcl')+'}} msg]} {puts "REJECT $msg"}\n'
+  r=subprocess.run(['tclsh'],input=body,text=True,capture_output=True,timeout=5)
+  self.assertFalse(r.stderr);self.assertIn('FSBL_REGISTER_DEFINITIONS_END',r.stdout)
+  self.assertNotIn('DOWNLOAD',r.stdout);self.assertNotIn('REJECT',r.stdout)
  def test_bad_result_rejected(self):
   text=self.run_model()
   for changed in [text.replace('OBSERVER_REGISTER x15 51','OBSERVER_REGISTER x15 0'),text+ 'OBSERVER_PC 4294705204\n',text.replace('OBSERVER_REGISTER x0 12','OBSERVER_REGISTER x0 4')]:

@@ -1,7 +1,9 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 # Called only by inherited-lease Python child, after FSBL UART completion.
-if {[llength $argv] != 4} {error "Require SERVER ELF TERMINAL CABLE"}
-lassign $argv server elf terminal cable
+if {[llength $argv] ni {4 5}} {error "Require SERVER ELF TERMINAL CABLE"}
+lassign $argv server elf terminal cable mode
+if {$mode eq ""} {set mode observe}
+if {$mode ni {observe definitions}} {error "Unknown observer mode"}
 if {$cable ne "210383B7F02DA"} {error "Wrong cable"}
 source [file join [file dirname [info script]] collect_fsbl_entry.tcl]
 proc select_cpu0 {} {
@@ -32,6 +34,16 @@ connect -url $server
 configparams source-line-view 0
 select_cpu0
 halt_checked
+if {$mode eq "definitions"} {
+    set pc [fsbl_entry::register pc]
+    if {$pc != $terminal && $pc != $terminal+4} {error "Outside FSBL terminal"}
+    puts "FSBL_REGISTER_DEFINITIONS_BEGIN"
+    puts [rrd -defs]
+    puts "FSBL_REGISTER_DEFINITIONS_END"
+    fsbl_entry::selected_halted
+    disconnect
+    return
+}
 set samples [fsbl_entry::collect $terminal]
 foreach s $samples {puts "TRAINED_ENTRY $s"}
 # No reset after training. Normal XSDB cache synchronization remains enabled.
