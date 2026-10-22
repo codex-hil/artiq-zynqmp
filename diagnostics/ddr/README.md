@@ -212,3 +212,32 @@ poisoning is unchanged. Actual query lifecycle (including zero received bytes
 left pending after protocol NACK), route/device evidence, page selection/
 confirmation, GIC restoration, CRC and physical wrapper remain open. Next bind
 a bounded dedicated query lifecycle rather than adding a global NACK exception.
+
+## Bounded dedicated page operations candidate
+
+`spd_page_transfer.h` uses actual AMD nonblocking send/receive/ISR for query0x36
+or one zero-byte selection at0x36/37. Zero-initialize the operation object once;
+failed/active objects refuse another begin. Caller must retain it (callback
+reference) until completion or outer restoration. Each operation has100ms/10000
+poll budget and rejects clock reversal/overflow. Exclusive/no-GIC and independent
+identity remain external evidence, required before any write/callback change.
+
+For the exact admitted page1 query only, zero-byte address-NACK can be retired
+after idle/empty FIFO/clear ISR/no HOLD and exact residual hardware count1.
+Peripheral IRQs are disabled, unused transfer count set0 and read back, software
+receive counters retired. No abort/reset/FIFO clear/retry or generic NACK waiver.
+Other failures retain active state and require outer restoration. A selection
+ACK only proves transmission completion: page remains UNKNOWN until a later
+query confirms the requested/saved page.
+
+Actual AMD model passes query/select0/query/restore/query for initial pages0and1,
+plus8fault scenarios (no events, arbitration, mixed completion/NACK, wrong
+remaining count, failed count retirement, ignored selection despite ACK, select
+NACK and stuck RXDV). Missing identity rejects before writes; failed objects
+refuse reuse. Existing capture/state controls retained. ASan/UBSan and real-BSP
+AArch64 header compile PASS. Evidence: `evidence/spd-page-lifecycle-2026-10-22`.
+
+This still does not combine page lifecycle, data reader and controller snapshot
+into one recovery transaction or establish physical identity/GIC exclusion/CRC.
+Next offline compose that lifecycle and test restoration on every exit before
+creating a physical wrapper. Hardware remains NOT_ADMITTED.

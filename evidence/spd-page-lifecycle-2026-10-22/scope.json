@@ -1,0 +1,29 @@
+{
+  "status": "BOUNDED_PAGE_LIFECYCLE_MODEL_AND_AARCH64_COMPILE_PASS",
+  "hardware_executed": false,
+  "hardware_admitted": false,
+  "object_sha256": "4d7389c67c50cd9830c542ad95d56af95badb80209ef7663f32266b6a682076e",
+  "success_scenarios": [
+    "savedpage0 query/select0/query/select0/query restores0",
+    "savedpage1 query/select0/query/select1/query restores1"
+  ],
+  "fault_scenarios": [
+    "no receive event ->deadline",
+    "arbitration lost",
+    "completion plus NACK",
+    "unexpected transfer-size value",
+    "write-zero transfer-size readback fails",
+    "page-select ACK but ignored -> later query disagrees",
+    "page-select NACK terminal",
+    "stuck RXDV terminal"
+  ],
+  "protocol_nack_retirement": "Only exact independently admitted page1 query, idle/empty/status-clear/HOLD-clear, residual hardware count1; disable peripheral IRQ, write transfer-size0/readback, retire software receive count. No abort/reset/FIFO clear/retry. Other NACK remains terminal.",
+  "pending": [
+    "real route/device identity evidence",
+    "GIC hardware admission",
+    "capture orchestration combining page lifecycle with controller snapshot and data reader",
+    "SPD CRC",
+    "linked executable and bounded hardware wrapper"
+  ],
+  "preconditions": "Zero-init operation object once, retain until outer restoration; exclusive ownership/no-GIC and independent identity flags are caller evidence, not established by this code. Failed/active object refuses begin."
+}

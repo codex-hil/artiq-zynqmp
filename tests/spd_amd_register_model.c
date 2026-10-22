@@ -7,6 +7,7 @@
 static u32 regs[64];static unsigned scenario,transactions,reads,tx_bytes,read_number;
 static int receiving;
 static int page_query,query_page;
+static int page_control_model,receiving_query,page_fault;
 static unsigned transfer_limit;
 static u32 query_events;
 static void query_callback(void *ref,u32 events) {(void)ref;query_events|=events;}
@@ -17,7 +18,8 @@ static u32 mmio_read(UINTPTR base,u32 off) {
  assert(base==0xff030000U && off/4<64);
  if(off==XIICPS_SR_OFFSET) {
   if(!receiving)return 0;
-  if(page_query)return !query_page && reads<1?XIICPS_SR_RXDV_MASK:0;
+  if(receiving_query && page_fault==8)return XIICPS_SR_RXDV_MASK;
+  if(receiving_query)return !query_page && reads<1?XIICPS_SR_RXDV_MASK:0;
   if(scenario==3)return XIICPS_SR_RXDV_MASK; /* stuck FIFO indication */
   unsigned limit=scenario==2?64U:(scenario==1 || scenario==4 || scenario==5)?0U:128U;
   return reads<limit?XIICPS_SR_RXDV_MASK:0;
@@ -27,6 +29,7 @@ static u32 mmio_read(UINTPTR base,u32 off) {
 static void mmio_write(UINTPTR base,u32 off,u32 value) {
  assert(base==0xff030000U && off/4<64);
  writes++;
+ if(page_fault==5 && off==XIICPS_TRANS_SIZE_OFFSET && value==0)return;
  if(corrupt_restore && off==XIICPS_TIME_OUT_OFFSET)return;
  if(off==XIICPS_ISR_OFFSET) {regs[off/4]&=~value;return;}
  if(off==XIICPS_IER_OFFSET) {regs[XIICPS_IMR_OFFSET/4]&=~value;return;}
@@ -39,10 +42,14 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
  if(off==XIICPS_ADDR_OFFSET) {
   transactions++;receiving=(regs[XIICPS_CR_OFFSET/4]&XIICPS_CR_RD_WR_MASK)!=0;reads=0;
   if(receiving) {
-   read_number++;transfer_limit=regs[XIICPS_TRANS_SIZE_OFFSET/4];
+   read_number++;receiving_query=page_query;transfer_limit=regs[XIICPS_TRANS_SIZE_OFFSET/4];
    if(page_query) {
     assert(value==0x36 && transfer_limit==1);
     regs[XIICPS_ISR_OFFSET/4]=query_page?XIICPS_IXR_NACK_MASK:XIICPS_IXR_COMP_MASK;
+    if(page_fault==1)regs[XIICPS_ISR_OFFSET/4]=0;
+    if(page_fault==2)regs[XIICPS_ISR_OFFSET/4]=XIICPS_IXR_ARB_LOST_MASK;
+    if(page_fault==3)regs[XIICPS_ISR_OFFSET/4]=XIICPS_IXR_COMP_MASK|XIICPS_IXR_NACK_MASK;
+    if(page_fault==4)regs[XIICPS_TRANS_SIZE_OFFSET/4]=2;
     return;
    }
    assert(value==0x51 && transfer_limit==128);
@@ -50,8 +57,9 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
     scenario==5?XIICPS_IXR_TO_MASK:(XIICPS_IXR_DATA_MASK|XIICPS_IXR_COMP_MASK);
    if(scenario==6)regs[XIICPS_ISR_OFFSET/4]|=XIICPS_IXR_NACK_MASK;
   } else {
-   assert((value==0x36 || value==0x51) && tx_bytes==1);
-   regs[XIICPS_ISR_OFFSET/4]=XIICPS_IXR_COMP_MASK;
+   assert((value==0x36 || value==0x37 || value==0x51) && tx_bytes==1);
+   if(page_control_model && page_fault!=6 && page_fault!=7 && (value==0x36 || value==0x37))query_page=value==0x37;
+   regs[XIICPS_ISR_OFFSET/4]=page_fault==7?XIICPS_IXR_NACK_MASK:XIICPS_IXR_COMP_MASK;
   }
  }
 }
@@ -76,6 +84,7 @@ void Xil_Assert(const char8 *file,s32 line) {(void)file;(void)line;assert(!"Vend
 u32 Xil_AssertStatus;
 #include "spd_xiicps_state.h"
 #include "spd_page.h"
+#include "spd_page_transfer.h"
 #include "vendor_functions.inc"
 int main(void) {
  for(scenario=0;scenario<8;scenario++) {
@@ -148,5 +157,45 @@ int main(void) {
   reply.independent_spd_identity_proven=0;
   assert(spd_classify_page(reply)==SPD_PAGE_UNKNOWN);
  }
- puts("ADAPTER_READER_AMD_MODEL_AND_PAGE_QUERY_CLASSIFICATION_PASS");
+ /* Bounded page operation sequence, including restoration of original page1. */
+ for(int original=0;original<2;original++) {
+  XIicPs dev={0};struct spd_page_transfer q={0};
+  memset(regs,0,sizeof(regs));receiving=0;scenario=0;page_control_model=1;
+  dev.Config.BaseAddress=0xff030000U;dev.IsReady=XIL_COMPONENT_IS_READY;query_page=original;
+  enum spd_page_operation ops[]={SPD_QUERY_PAGE,SPD_SELECT_ZERO,SPD_QUERY_PAGE,
+                                original?SPD_SELECT_ONE:SPD_SELECT_ZERO,SPD_QUERY_PAGE};
+  for(unsigned n=0;n<5;n++) {
+   page_query=ops[n]==SPD_QUERY_PAGE;
+   assert(spd_page_begin(&q,&dev,ops[n],0,1,1)==0);
+   for(unsigned k=1;k<10002 && !q.stopped;k++)spd_page_tick(&q,k*10U);
+   assert(q.stopped && !q.failed && !q.active && spd_amd_quiet(&dev));
+   if(n==0 || n==4)assert((int)q.page==original);
+   if(n==2)assert(q.page==SPD_PAGE_ZERO);
+   if(!page_query)assert(q.page==SPD_PAGE_UNKNOWN);
+  }
+  assert(query_page==original);
+  unsigned before=writes;
+  assert(spd_page_begin(&q,&dev,SPD_QUERY_PAGE,0,1,0)==-1 && writes==before);
+ }
+ for(page_fault=1;page_fault<=8;page_fault++) {
+  XIicPs dev={0};struct spd_page_transfer q={0};memset(regs,0,sizeof(regs));
+  receiving=0;query_page=page_fault==4 || page_fault==5;page_query=page_fault!=6 && page_fault!=7;
+  dev.Config.BaseAddress=0xff030000U;dev.IsReady=XIL_COMPONENT_IS_READY;
+  enum spd_page_operation op=page_query?SPD_QUERY_PAGE:SPD_SELECT_ONE;
+  assert(spd_page_begin(&q,&dev,op,0,1,1)==0);
+  for(unsigned k=1;k<10002 && !q.stopped;k++)spd_page_tick(&q,k*10U);
+  assert(q.stopped);
+  if(page_fault==6) {
+   assert(!q.failed && q.page==SPD_PAGE_UNKNOWN && query_page==0);
+   page_fault=0;page_query=1;
+   assert(spd_page_begin(&q,&dev,SPD_QUERY_PAGE,0,1,1)==0);
+   spd_page_tick(&q,10);assert(!q.failed && q.page!=SPD_PAGE_ONE);
+   page_fault=6;
+  } else {
+   assert(q.failed && q.active && q.page==SPD_PAGE_UNKNOWN);
+   unsigned before=writes;
+   assert(spd_page_begin(&q,&dev,SPD_QUERY_PAGE,0,1,1)==-1 && writes==before);
+  }
+ }
+ puts("ADAPTER_READER_AMD_MODEL_PAGE_LIFECYCLE_AND_8_FAULTS_PASS");
 }

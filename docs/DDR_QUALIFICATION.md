@@ -491,3 +491,19 @@ No hardware or generic adapter change. Page writes/restoration are NOT_RUN and
 not implemented by this classifier. Next bounded dedicated query lifecycle/
 post-select confirmation, source of route/device proof and pending-count cleanup
 after protocol NACK; then GIC/CRC before physical admission.
+
+### Bounded dedicated page operation lifecycle model PASS —2026-10-22
+
+New query/select operation has100ms/10000poll bounds, exact protocol response
+classification and active/failure reuse refusal. Exact admitted page1 query
+retires unused receive count only after idle/empty/clear-status proof and checks
+transfer-size0readback; no abort/reset/FIFO clear/retry. Other errors remain
+terminal. Selection transmission success requires a later matching query before
+page restoration can be claimed. Generic data adapter NACK policy unchanged.
+
+Actual AMD model restores both saved pages via five-operation sequences;8fault
+scenarios reject or expose post-select mismatch. Missing identity refusal and
+failed-object reuse checks PASS with ASan/UBSan; AArch64 header compile PASS.
+Evidence: `evidence/spd-page-lifecycle-2026-10-22`. No HW access. Next compose
+page/data/controller lifecycle with all-exit restoration, then identity/GIC/CRC/
+linked bounded wrapper before physical admission.
