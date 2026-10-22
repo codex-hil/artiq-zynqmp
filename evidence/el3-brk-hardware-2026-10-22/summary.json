@@ -1,0 +1,146 @@
+{
+  "status": "DELIBERATE_BRK_AND_NORMAL_RESTORATION_PASS",
+  "hardware_executed": true,
+  "lease_seconds": 88.522,
+  "runtime_manifest_sha256": "8e50cc625b8147aec223724a2c06d1b1f53e2ca9e522c45b8f6010aa58fad9e6",
+  "observer_manifest_sha256": "3cf691db966285d47c049f07655c3a9167b85d708261332a866304a49ffc656f",
+  "raw_files": {
+    "restore-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "restore-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "candidate-trained-observer.log": {
+      "sha256": "f3df3f2ad39fa65fb3c30bb46d98b5ecd793d8cbbd3e2489c654b8612466717c",
+      "bytes": 1361
+    },
+    "restore-ethernet.log": {
+      "sha256": "eab4710c55358bddd3487b3cee0c3e064dd86fb3f79c6bee9058b97d971ea979",
+      "bytes": 2020
+    },
+    "restore-debug.log": {
+      "sha256": "83be7c0b02faf6223b4618551bba69275174927da6ba88aad699a2476593371d",
+      "bytes": 1899
+    },
+    "restore-ethernet.json": {
+      "sha256": "eab4710c55358bddd3487b3cee0c3e064dd86fb3f79c6bee9058b97d971ea979",
+      "bytes": 2020
+    },
+    "results.json": {
+      "sha256": "01fe5b9a98cbd65b3ef72d1d094b4a9472ec46e7272f78289a3f0ff3458bccb4",
+      "bytes": 2526
+    },
+    "restore-load/uart.log": {
+      "sha256": "293b850faed96db8fae5d1c86a51a77c7d7c5881b194ac49cb6d687dc3b47136",
+      "bytes": 1068
+    },
+    "restore-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "restore-load/prepare.log": {
+      "sha256": "ed0268a3a26614e91df1779412a21b964789ea8cabb449c933effbf238b6fa4c",
+      "bytes": 64
+    },
+    "restore-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "restore-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "restore-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "restore-load/pl.log": {
+      "sha256": "23bf542fcc098afc44bdc4db037f8e02dd939dbc64c62cc4cae6dc37147358ce",
+      "bytes": 1918
+    },
+    "restore-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "restore-debug/wrap-dma-5.log": {
+      "sha256": "726c43099afdc654a428f9983ead3779d5febd929c8cce58f6f76fe0109adc9b",
+      "bytes": 210
+    },
+    "restore-debug/dma.log": {
+      "sha256": "229687d9e82d5db6906c4460fd36765c0cbc6c6dee9ce52e8b9e313cabb6010d",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-6.log": {
+      "sha256": "e015b1c863a656ee05f38fef11fc69e714274824d0db2dbd581725b838f99790",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-0.log": {
+      "sha256": "04f2c4043e71e39eaee58304c6b659405a8c164b96d1132809cbebf3cef3878f",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-2.log": {
+      "sha256": "f8509cc296cc9620769ca567bd68fbb8e370b477874664d0e46a3ac49d077d32",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-3.log": {
+      "sha256": "8f6735c6fb665475cd02ed3292e5ce3b9583b529e669fd24f649e8925d7704bc",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-7.log": {
+      "sha256": "ea56566ca61bddea627e26c6ea85180fa5cb41e5e6e3d41971e15eab08f05bc7",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-1.log": {
+      "sha256": "52182c9dbf58e70732db20abae60b7215b8e319716b94f2a965b723f8c89f63f",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-4.log": {
+      "sha256": "8b73b198032b32605726fe3403a8a0287adcab70d7e67a4743346f747f4220ea",
+      "bytes": 210
+    },
+    "restore-debug/results.json": {
+      "sha256": "a170f68d6c8bb3d0fb29f604d139deed5547864cd701c490eea5c6f152165bc9",
+      "bytes": 1692
+    },
+    "candidate-trained-observer/uart.log": {
+      "sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b",
+      "bytes": 840
+    },
+    "candidate-trained-observer/observer.log": {
+      "sha256": "63734377b4680e30bbff481080ad6eeea80d6f0084a489adf6ae0ed6391e1894",
+      "bytes": 1174
+    },
+    "candidate-trained-observer/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "candidate-trained-observer/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "candidate-trained-observer/results.json": {
+      "sha256": "f3df3f2ad39fa65fb3c30bb46d98b5ecd793d8cbbd3e2489c654b8612466717c",
+      "bytes": 1361
+    }
+  },
+  "expected_fault": {
+    "vector_slot": 4,
+    "marker": "0xf3",
+    "currentel": 12,
+    "esr_el3": "0xf2000053",
+    "elr_el3": "0xfffc884c",
+    "spsr_el3": "0x600002cd",
+    "handler_daif": "0x3c0",
+    "initial_daif": "0x2c0"
+  },
+  "normal_runtime_restored": "192.168.2.3",
+  "limits": [
+    "Synchronous deliberate BRK only; not asynchronous SError qualification.",
+    "FAR is raw/architecturally inapplicable as a BRK fault address; no interpretation.",
+    "Pure parsed-brk hardware_executed:false intentional; enclosing lease/runtime/manifest/raw-log evidence supplies physical provenance.",
+    "No DDR stress/alias/pattern test or other-master quiescence proof; no Kasli/Si/SD/flash/OTP writes."
+  ]
+}

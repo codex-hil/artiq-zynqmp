@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "hardware_executed": true,
+  "ddr_test": "NOT_RUN",
+  "fault_test": {
+    "status": "EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED",
+    "hardware_executed": false,
+    "registers": {
+      "x0": 12,
+      "x1": 0,
+      "x2": 0,
+      "x3": 255,
+      "x4": 255,
+      "x5": 12584984,
+      "x6": 4101,
+      "x7": 12047,
+      "x8": 0,
+      "x9": 4294967240,
+      "x14": 4,
+      "x15": 243,
+      "x16": 12,
+      "x17": 4060086355,
+      "x18": 579839089591715072,
+      "x19": 4294740044,
+      "x20": 1610613453,
+      "x21": 960
+    },
+    "entry_state": {
+      "pc": 4294708216,
+      "currentel": 12,
+      "sctlr_el3": 12584984,
+      "daif": 704,
+      "mpidr_el1": 2147483648,
+      "cpsr": 1610613453
+    },
+    "normal_observation_pass": false,
+    "destructive_test_allowed": false,
+    "limits": "Supplied synchronous BRK result only, not provenance, completed restoration, asynchronous SError or DDR integrity. FAR is raw, not a valid BRK fault address claim."
+  },
+  "scope": "DELIBERATE_BRK_CAPTURE_REQUIRES_RESTORATION",
+  "fsbl_descriptor": {
+    "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+    "symbols_sha256": "df05d210ee11bc87243d1cc571ac9024a58d73c5e520fd9472dfe51fd0bd4c53",
+    "terminal_pcs": [
+      4294708212,
+      4294708216
+    ],
+    "hardware_executed": false
+  }
+}

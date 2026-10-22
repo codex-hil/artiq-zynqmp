@@ -999,3 +999,26 @@ PASS, no hardware in this checkpoint. Evidence/manifests:
 `evidence/el3-brk-integration-2026-10-22`. Next one bounded deliberate-BRK window
 under shared lease with full baseline restoration. This will validate a
 synchronous exception path only, not asynchronous SError or DDR integrity.
+
+## Deliberate EL3 BRK hardware and restoration PASS —2026-10-22
+
+Bounded shared Genesys lease88.522s, observer_probe=brk. Exact pinned image,
+trained FSBL entry and vector readback checked; original DAIF0x2c0 preserved.
+Physical BRK0x53 reached current-EL-SPx synchronous slot4 and fault terminal
+0xfffc8878. x15f3/CurrentEL12/ESR0xf2000053/ELR0xfffc884c/SPSR0x600002cd
+match verifier. Handler DAIF0x3c0 retained as raw exception-entry state. FAR raw
+not interpreted as a BRK memory address. Dedicated result is expected fault,
+never normal observer completion. No eret or reuse of faulted core.
+
+Mandatory normal restoration plus physical TTL/CoreDMA/analyzer/MonInj/Ethernet
+PASS192.168.2.3; shared lease released. Evidence and both manifest bindings:
+`evidence/el3-brk-hardware-2026-10-22`. Pure parser hardware flag stays false;
+enclosing raw logs/lease/manifest summary establishes physical provenance.
+No DDR patterns/alias/stress test or Kasli/Si/SD/flash/OTP writes. This proves
+only the deliberate synchronous exception path, not asynchronous SError.
+
+Next offline inventory of remaining A53/R5 cores, active PMU firmware, PS DMA/
+peripheral and PL DDR masters, with pinned source/configuration evidence and
+explicit read-only status/reset/ownership checks before any destructive DDR
+admission. CPU0 OCM layout/cache/exception evidence does not substitute for
+exclusive ownership of the low/high DDR windows.
