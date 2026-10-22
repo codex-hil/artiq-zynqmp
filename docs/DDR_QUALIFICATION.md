@@ -676,3 +676,18 @@ Evidence: `evidence/fsbl-observer-entry-2026-10-22`. No hardware accessed.
 This checker does not establish provenance, lease, other-master inactivity or
 DDR write authorization. Next implement bounded XSDB collection/observer load
 inside the existing mandatory-restoration lifecycle; do not reset after training.
+
+## XSDB entry collector library offline PASS —2026-10-22
+
+`collect_fsbl_entry.tcl` reads two identical snapshots of uniquely current,
+halted Genesys CPU0 at the selected FSBL terminal. Checks CurrentEL before
+EL3 register reads, cache/MMU/masks/core-affinity before returning. No connect,
+stop, reset, target-selection, download or continue operation is in this library.
+Parent must provide the shared lease and positive terminal halt. XSDB2025.2
+source confirms `rrd -nvlist` name/hex-value dictionary format; actual backend
+register availability remains untested and missing names fail closed.
+Three Tcl-host test groups PASS including nine rejected states and wrong-EL
+privileged-read exclusion. Evidence: `evidence/fsbl-entry-collector-2026-10-22`.
+No hardware access or baseline changes. Next compose this library with trained
+FSBL boot/checked halt and observer download in mandatory-restoration lifecycle;
+this component alone neither loads the observer nor authorizes DDR writes.

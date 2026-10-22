@@ -1,0 +1,10 @@
+{
+  "hardware_executed": false,
+  "sha256": {
+    "scripts/collect_fsbl_entry.tcl": "3326e6b83a8d1cf3527fa1649f250450b38abd282cce655218bfdf7fab5166bc",
+    "tests/test_fsbl_entry_collector.py": "d8edbc1736edfcb099fea56e556f7286df9b4cad2a93f6d3685854c0b462c158",
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/xsdb/xsdb/xsdb.tcl": "0b5f6b92455330b3ef2491984f327f49d2e49dea79bd5387c8ed14249247ff09"
+  },
+  "xsdb_source_review": "rrd -nvlist returns name/hex-value dict; print_regs lines2789..2796 and pc consumer line4602",
+  "limits": "Mocks establish collector behavior only; backend register names/currentel availability and live entry state remain NOT_RUN."
+}

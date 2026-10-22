@@ -1,5 +1,21 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## XSDB entry collector library offline PASS —2026-10-22
+
+`collect_fsbl_entry.tcl` reads two identical snapshots of uniquely current,
+halted Genesys CPU0 at the selected FSBL terminal. Checks CurrentEL before
+EL3 register reads, cache/MMU/masks/core-affinity before returning. No connect,
+stop, reset, target-selection, download or continue operation is in this library.
+Parent must provide the shared lease and positive terminal halt. XSDB2025.2
+source confirms `rrd -nvlist` name/hex-value dictionary format; actual backend
+register availability remains untested and missing names fail closed.
+Three Tcl-host test groups PASS including nine rejected states and wrong-EL
+privileged-read exclusion. Evidence: `evidence/fsbl-entry-collector-2026-10-22`.
+No hardware access or baseline changes. Next compose this library with trained
+FSBL boot/checked halt and observer download in mandatory-restoration lifecycle;
+this component alone neither loads the observer nor authorizes DDR writes.
+
+
 ## FSBL terminal entry validation offline —2026-10-22
 
 `check_fsbl_observer_entry.py` binds a unique XFsbl_Loop symbol to actual
