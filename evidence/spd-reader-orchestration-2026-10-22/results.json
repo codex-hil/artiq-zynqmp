@@ -1,0 +1,29 @@
+{
+  "status": "OFFLINE_TRANSPORT_MODEL_PASS",
+  "hardware_executed": false,
+  "amd_adapter": "NOT_IMPLEMENTED_NOT_ADMITTED",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_master.c": "6e002edfd94b80b0dfdd54215c0a536e5fbe06380d7a40f0418b6e52066e3b10",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_xfer.c": "628414e27016be423ca950af493d522556587e4e04f1eef0e1ce7b10ecffbc1f"
+  },
+  "finding": "XIicPs_MasterRecvPolled calls XIicPs_MasterPolledRead; its receive wait has no local deadline. Polled send completion has timeout but not every earlier wait is bounded.",
+  "controls": [
+    "refused admission without known lower page/exclusive bus",
+    "fixed addresses and one-byte offset/page writes only",
+    "two equal or differing128-byte captures",
+    "all six begin failures",
+    "all six completion failures",
+    "elapsed100ms limit",
+    "10000-poll limit",
+    "cleanup failure reported",
+    "busy bus refuses cleanup"
+  ],
+  "compiler": "cc -std=c11 -Wall -Wextra -Werror -fsanitize=undefined,address",
+  "model_result": "PASS",
+  "limitations": [
+    "no actual SPD bytes/CRC",
+    "no wall-clock guarantee for unimplemented callbacks",
+    "no AMD driver/hardware execution",
+    "known lower-page baseline must be established; existing FSBL leaves upper page"
+  ]
+}

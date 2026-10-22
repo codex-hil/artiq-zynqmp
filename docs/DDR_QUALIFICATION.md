@@ -384,3 +384,21 @@ Three controls PASS (synthetic match, valid smaller/two-rank disagreement,
 malformed input), plus two existing SPD/C parity controls PASS. Retained example
 is explicitly SYNTHETIC, not a physical SPD dump. Next implement bounded base-SPD
 acquisition using AMD code before any hardware attempt.
+
+### Bounded SPD orchestration controls PASS —2026-10-22
+
+New `diagnostics/ddr/spd_reader.h` fixed transaction state machine performs two
+base128-byte reads, compares them and attempts one lower-page cleanup only when
+transport confirms bus/driver quiescence. Admission requires exclusive ownership
+and a known lower-page baseline; current FSBL leaves upper page, so no automatic
+post-FSBL admission.100ms/stage plus10000poll limit; busy/unknown bus forbids
+cleanup, failure remains explicit. Callback implementation is not yet supplied.
+
+AMD source audit found MasterRecvPolled→MasterPolledRead unbounded receive wait;
+therefore do not use those APIs as supposedly bounded callbacks. Future adapter
+must use audited nonblocking AMD APIs. No controller rewrite. Host fake-transport
+C controls PASS with ASan/UBSan: exact operations, each begin/completion failure,
+mismatch, elapsed/poll deadlines and cleanup failure/busy refusal. Evidence:
+`evidence/spd-reader-orchestration-2026-10-22`. README includes limitations and
+reproducer. No HW/I2C access, no physical SPD/CRC/DDR qualification. Next offline
+audit/build/test actual AMD adapter and page-state establishment before deployment.
