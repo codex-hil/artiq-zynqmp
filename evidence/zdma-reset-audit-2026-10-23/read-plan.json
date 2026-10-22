@@ -1,0 +1,204 @@
+{
+  "status": "OFFLINE_ZDMA_READ_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "registers": [
+    {
+      "channel": 0,
+      "register": "status",
+      "address": "0xfd50011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 0,
+      "register": "control2",
+      "address": "0xfd500200",
+      "width_bits": 32
+    },
+    {
+      "channel": 1,
+      "register": "status",
+      "address": "0xfd51011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 1,
+      "register": "control2",
+      "address": "0xfd510200",
+      "width_bits": 32
+    },
+    {
+      "channel": 2,
+      "register": "status",
+      "address": "0xfd52011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 2,
+      "register": "control2",
+      "address": "0xfd520200",
+      "width_bits": 32
+    },
+    {
+      "channel": 3,
+      "register": "status",
+      "address": "0xfd53011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 3,
+      "register": "control2",
+      "address": "0xfd530200",
+      "width_bits": 32
+    },
+    {
+      "channel": 4,
+      "register": "status",
+      "address": "0xfd54011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 4,
+      "register": "control2",
+      "address": "0xfd540200",
+      "width_bits": 32
+    },
+    {
+      "channel": 5,
+      "register": "status",
+      "address": "0xfd55011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 5,
+      "register": "control2",
+      "address": "0xfd550200",
+      "width_bits": 32
+    },
+    {
+      "channel": 6,
+      "register": "status",
+      "address": "0xfd56011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 6,
+      "register": "control2",
+      "address": "0xfd560200",
+      "width_bits": 32
+    },
+    {
+      "channel": 7,
+      "register": "status",
+      "address": "0xfd57011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 7,
+      "register": "control2",
+      "address": "0xfd570200",
+      "width_bits": 32
+    },
+    {
+      "channel": 8,
+      "register": "status",
+      "address": "0xffa8011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 8,
+      "register": "control2",
+      "address": "0xffa80200",
+      "width_bits": 32
+    },
+    {
+      "channel": 9,
+      "register": "status",
+      "address": "0xffa9011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 9,
+      "register": "control2",
+      "address": "0xffa90200",
+      "width_bits": 32
+    },
+    {
+      "channel": 10,
+      "register": "status",
+      "address": "0xffaa011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 10,
+      "register": "control2",
+      "address": "0xffaa0200",
+      "width_bits": 32
+    },
+    {
+      "channel": 11,
+      "register": "status",
+      "address": "0xffab011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 11,
+      "register": "control2",
+      "address": "0xffab0200",
+      "width_bits": 32
+    },
+    {
+      "channel": 12,
+      "register": "status",
+      "address": "0xffac011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 12,
+      "register": "control2",
+      "address": "0xffac0200",
+      "width_bits": 32
+    },
+    {
+      "channel": 13,
+      "register": "status",
+      "address": "0xffad011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 13,
+      "register": "control2",
+      "address": "0xffad0200",
+      "width_bits": 32
+    },
+    {
+      "channel": 14,
+      "register": "status",
+      "address": "0xffae011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 14,
+      "register": "control2",
+      "address": "0xffae0200",
+      "width_bits": 32
+    },
+    {
+      "channel": 15,
+      "register": "status",
+      "address": "0xffaf011c",
+      "width_bits": 32
+    },
+    {
+      "channel": 15,
+      "register": "control2",
+      "address": "0xffaf0200",
+      "width_bits": 32
+    }
+  ],
+  "destructive_test_allowed": false,
+  "limits": "CH_STS and CH_CTRL2 only; no ISR/interrupt/descriptor/control writes. No proof of accessibility, current ownership or other masters. Even quiet fields do not admit DDR tests.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xparameters.h": "73b981904d0110cbb72db630738a16e84a2cd95420e6fbccb169d92ccfbc1b6b",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xzdma_hw.h": "3680a465ab92e72f0346eab773795b84e3c57df15804436d8c5646c088a656cc"
+  }
+}

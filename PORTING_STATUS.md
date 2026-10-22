@@ -1,5 +1,31 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## Reset source audit and32-register ZDMA read plan —2026-10-23
+
+Offline audit pins actual reset/boot/prepare/gateware/generated-FSBL sources.
+Bootstrap does PS system reset before PMU/FSBL; FSBL can call generated PL
+isolation/removal/reset operations when PL DONE; normal preparation calls PL
+reset configuration again after bitstream load. Sys-domain reset derives from
+negated PS pl_resetn0. Generated reset helper mentions GPIO Bank5/EMIO; the
+complete exported wiring and HP0 transaction-owner reset timing are not yet
+proven. Do not equate logical reset/status0 with drained AXI ownership. Existing
+bootstrap catch-stop loops are not positive admission of all secondary cores.
+
+`plan_zdma_snapshot.py` verifies all16canonical channel bases and vendor header
+offsets/masks; emits32CH_STS/CH_CTRL2 reads only. No ISR/descriptor/interrupt
+registers or writes. Decoder requires two exact complete32-bit observations;
+busy/paused/error/enabled/reset-like control or changing state is not quiet.
+Even all quiet fields stay NOT_OWNERSHIP/destructive_test_allowed=false.
+Four source-drift/allowlist/decoder controls PASS, actual BSP plan generated.
+Evidence: `evidence/zdma-reset-audit-2026-10-23`.
+
+No HW/JTAG/UART/network/reset operations. Next implement a bounded shared-lease
+read-only snapshot wrapper with exact address allowlist and raw provenance, then
+review actual PL reset wiring/HP0 semantics and expand CSU/peripheral/core
+ownership independently. No complete DDR write-test admission from this plan.
+Normal baseline remains last validated192.168.2.3.
+
+
 ## Actual RTL DMA drain simulation and reset counterexample —2026-10-23
 
 24normal-completion scenarios PASS with exact build-pinned clean Migen44e5627/
