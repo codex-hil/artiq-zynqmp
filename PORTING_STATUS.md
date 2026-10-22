@@ -1,6 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## SPD base CRC gate offline PASS —2026-10-22
+
+Required base-block CRC checker integrated with geometry decoder/comparison.
+Nine test methods PASS including1024single-bit corruptions; fixtures synthetic.
+Evidence: `evidence/spd-base-crc-2026-10-22`. Physical SPD acquisition/CRC remains
+NOT_RUN; route/device/GIC admission and linked bounded wrapper still open.
+
 ## SPD capture/restoration composition offline PASS —2026-10-22
 
 Piotr/AMD-based SPD reader, bounded page operations and controller/callback

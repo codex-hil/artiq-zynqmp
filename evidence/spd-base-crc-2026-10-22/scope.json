@@ -1,0 +1,24 @@
+{
+  "status": "BASE_CRC_AND_REQUIRED_DOWNSTREAM_GATES_OFFLINE_PASS",
+  "hardware_executed": false,
+  "physical_spd": "NOT_RUN",
+  "source_reference": "https://kernel.googlesource.com/pub/scm/utils/i2c-tools/i2c-tools/+/refs/heads/master/eeprom/decode-dimms",
+  "reference_blob": "76823459da4693fe5a7ecf5b6e3aa092f280918a",
+  "implementation": "Python standard-library binascii.crc_hqx, initial0/poly1021; bytes0..125, stored126..127 little-endian",
+  "scope": "Supported DDR4 base-block profile only; byte0 bit7 set rejected instead of applying DDR3 shortened coverage. No module-block CRC.",
+  "tests": [
+    "CRC primitive123456789=31c3 and synthetic basef18d",
+    "all1024single-bit corruptions rejected or invalid",
+    "truncated/type/unsupported-bit/CRC byte order/late base corruption",
+    "bytes beyond127 deliberately outside base CRC",
+    "required geometry decoder/comparison reject invalid CRC",
+    "CLI invalid CRC exit1 and retained FAIL report",
+    "2previousSPD/C parity +3geometry controls PASS"
+  ],
+  "total_test_methods": 9,
+  "limits": [
+    "valid CRC is not identity/acquisition proof or authenticity",
+    "no physical geometry/high-window/master/cache or DDR integrity proof",
+    "C session READS_RESTORED still means transport/restoration only; host must require CRC"
+  ]
+}

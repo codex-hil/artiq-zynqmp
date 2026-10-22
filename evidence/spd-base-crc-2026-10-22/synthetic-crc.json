@@ -1,0 +1,16 @@
+{
+  "status": "DDR4_BASE_CRC_VALID",
+  "valid": true,
+  "covered_start": 0,
+  "covered_bytes": 126,
+  "stored": "0xf18d",
+  "computed": "0xf18d",
+  "polynomial": "0x1021",
+  "initial": "0x0",
+  "stored_byte_order": "little",
+  "hardware_executed": false,
+  "spd_sha256": "45af1d56da8107a0db6c2608c0598a5b135520269df1a78a782d3d4da729cf40",
+  "destructive_test_allowed": false,
+  "limits": "Checks supplied DDR4 base bytes only. Does not establish EEPROM origin, full SPD semantics, module-block CRC, memory geometry or integrity.",
+  "input_origin": "SYNTHETIC_TEST_FIXTURE_NOT_PHYSICAL_SPD"
+}

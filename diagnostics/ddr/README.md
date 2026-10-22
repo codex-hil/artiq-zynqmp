@@ -269,3 +269,32 @@ controller restoration.
 Next CRC validation and a concrete independent route/device/GIC admission before
 linking a diagnostic and preparing the bounded hardware wrapper. No physical
 SPD/CRC/DDR test or hardware admission is claimed by these models.
+
+## Base-block CRC validation
+
+Host `check_ddr4_spd_crc.py` uses the standard-library CRC primitive, initial0/
+polynomial0x1021, covering bytes0..125 and comparing little-endian126..127.
+Reference: [i2c-tools decode-dimms](https://kernel.googlesource.com/pub/scm/utils/i2c-tools/i2c-tools/+/refs/heads/master/eeprom/decode-dimms),
+reviewed blob76823459da4693fe5a7ecf5b6e3aa092f280918a. Supported DDR4 profile
+requires byte0 bit7 clear; other coverage profiles reject rather than silently
+using DDR3 shortened coverage. This does not validate module-block CRC.
+
+```sh
+python3 scripts/check_ddr4_spd_crc.py --spd CAPTURE.bin --output FRESH-crc.json
+python3 scripts/decode_ddr4_spd.py --require-crc \
+  --spd CAPTURE.bin --output FRESH-geometry.json
+python3 scripts/compare_ddr_geometry.py --require-crc --spd CAPTURE.bin \
+  --snapshot DDRC-SNAPSHOT.log --output FRESH-comparison.json
+```
+
+Bad CRC emits FAIL/exit1 from checker; required decoder/comparison raises and
+rejects. Legacy exploratory mode without `--require-crc` remains explicitly
+NOT_VERIFIED; it is not an acquisition acceptance path. A physical wrapper must
+require CRC after matching captures and verified restoration. The C session's
+READS_RESTORED flag still certifies transport/restoration only.
+
+Four new test methods cover known primitive vector, all1024single-bit base
+corruptions, endian/coverage/profile failures and downstream/CLI rejection;
+five existing SPD/geometry controls PASS. Synthetic fixtures/results remain
+explicitly identified in `evidence/spd-base-crc-2026-10-22`. No actual SPD dump
+or physical memory capacity/integrity evidence is created by CRC tests.

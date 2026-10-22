@@ -522,3 +522,18 @@ profiles) PASS with ASan/UBSan; AArch64 header compile PASS. Prior component
 controls retained. Evidence: `evidence/spd-composed-session-2026-10-22`. No HW
 access/shared BSP changes; physical SPD/CRC/DDR tests NOT_RUN. Next CRC and
 concrete independent route/device/GIC admission before linked diagnostic/wrapper.
+
+### Base SPD CRC validation/gates offline PASS —2026-10-22
+
+Checker validates supported DDR4 bytes0..125 against little-endian126..127 using
+Python standard-library CRC. Unsupported byte0 high-bit profile rejects; no
+module-block CRC claim. Decoder/comparison `--require-crc` rejects mismatch.
+Legacy no-CRC exploratory mode remains marked NOT_VERIFIED, never physical
+acceptance. C transport/restoration status alone does not validate CRC.
+
+Nine test methods PASS, including1024single-bit corruptions, primitive check
+vector, late base byte/endian/profile/truncation and required downstream/CLI
+rejection. Evidence `evidence/spd-base-crc-2026-10-22` uses only synthetic SPD.
+Reference primary i2c-tools source linked in DDR README. Physical SPD/CRC/DDR
+NOT_RUN. Next concrete route/device/GIC evidence and linked bounded capture
+wrapper; CRC validity alone does not establish identity or fitted capacity.
