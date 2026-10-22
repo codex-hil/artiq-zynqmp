@@ -80,6 +80,7 @@ def main():
     p.add_argument('--manifest',type=Path,default=REPO/'evidence/candidate-jtag-plan-2026-10-21/inputs.json')
     p.add_argument('--output',type=Path,required=True);p.add_argument('--execute',action='store_true')
     p.add_argument('--server');p.add_argument('--port');p.add_argument('--interface')
+    p.add_argument('--rpc-fault-case',choices=['zero_descriptor_length','unsupported_return_tag','partial_float_eof'],help='One destructive RPC case; candidate immediately restored, never reused')
     p.add_argument('--extended',action='store_true',help='Candidate only: three cycles each of full CoreDMA and exception suites')
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
@@ -131,6 +132,14 @@ def main():
                 run('candidate-post-errors-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),
                     '--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,
                     '--output',str(out/'candidate-post-errors-debug')],240)
+            if prefix=='candidate' and a.rpc_fault_case:
+                fault=out/'candidate-rpc-fault'
+                run('candidate-rpc-fault',[a.artiq_python,str(REPO/'scripts/inject_rpc_fault.py'),
+                    '--case',a.rpc_fault_case,'--ip',ip,'--device-db',str(db),'--output',str(fault)],90)
+                observed=json.loads((fault/'results.json').read_text())
+                if observed.get('status')!='FAULT_TERMINATION_OBSERVED_RESTORE_REQUIRED':
+                    raise RuntimeError('RPC fault observation incomplete')
+                return ip  # No additional kernels or tests on the faulted worker.
             run(prefix+'-ethernet',[sys.executable,str(REPO/'scripts/test_ethernet_hw.py'),'--ip',ip,'--interface',a.interface,'--output',str(out/(prefix+'-ethernet.json'))],90)
             return ip
         # Convert external termination to an exception so restoration is attempted.
@@ -138,7 +147,7 @@ def main():
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,
+                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest())
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

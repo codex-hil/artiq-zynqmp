@@ -604,3 +604,5 @@ tests/test_rpc_reply.py
 tests/test_kernel_disconnect.py
 diagnostics/release/qualified-rpc-parser-2026-10-22.json
 scripts/prepare_rpc_fault_plan.py
+scripts/inject_rpc_fault.py
+tests/test_rpc_fault_injection.py

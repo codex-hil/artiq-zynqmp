@@ -133,3 +133,25 @@ Socket closure and management liveness are necessary observations; they do not
 by themselves prove that CPU1 processed cancellation. The executor must record
 that distinction and preserve full restoration even when an observation fails.
 No prepared case has been injected on hardware yet.
+
+## Single-case executor checkpoint
+
+The candidate wrapper accepts one `--rpc-fault-case` from the prepared set.
+Its child injector requires the inherited named Genesys lease, verifies the
+first synchronous float RPC's tags/arguments, then sends the selected body once.
+The partial-result case half-closes the socket. A five-second peer-close deadline
+and the outer90-second child bound prevent indefinite observation. Management
+identity/log reads are allowed afterwards; the worker is never used for another
+kernel. The candidate cycle returns directly to outer baseline restoration.
+
+Offline validation:3new injector controls and6existing lifecycle/lease/timeout
+controls PASS; candidate preflight PASS. Tests use fake sockets, including timeout
+and unexpected-peer-data cases, and verify that failed observations still enter
+restoration. Actual hardware injection is NOT_RUN. Closure/liveness observations
+remain distinct from CPU1 cancellation progress, explicitly NOT_PROVEN.
+
+The future hardware command must select the RPC-parser candidate manifest and
+one case, supply the existing filtered server/UART/interface, and use `--execute`.
+Without that flag, the wrapper performs offline preflight only. Each subsequent
+case must be a new wrapper invocation/output directory after successful baseline
+restoration. Do not call the child injector directly or reuse a faulted worker.
