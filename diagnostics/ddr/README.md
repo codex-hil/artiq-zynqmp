@@ -130,3 +130,30 @@ linked firmware. Evidence/diff/source+object hashes:
 `evidence/spd-vendor-bounds-2026-10-22`. Adapter+patched ISR integration and
 restoration remain untested; hardware remains NOT_ADMITTED. These bounds do not
 guarantee return from a physically stalled MMIO access.
+
+## Reader + adapter + actual AMD function integration
+
+Eight host register-model scenarios now execute the state machine, adapter and
+11extracted AMD functions, including actual MasterSend/Recv, SetupMaster, FIFO
+fill, callback installation, bus-idle check and patched receive ISR path. No
+mocked begin/completion APIs in this integration model. MMIO, platform response
+and FIFO availability remain modeled. The model can expose a complete payload
+in one ISR call; this is deliberately not a physical FIFO/timing simulation.
+
+Two matching128-byte reads and cleanup PASS. NACK, hardware timeout, stuck RXDV
+and completion+NACK poison the adapter; partial/no completion reaches bounded
+deadline with active adapter refusing cleanup/reuse. Different blocks return
+MISMATCH with cleanup. All8scenarios PASS with ASan/UBSan. Source-copy manifest
+hashes are checked before compilation; originals remain untouched.
+
+```sh
+python3 scripts/test_spd_amd_integration.py --bsp "$BSP" \
+  --patched-root "$FRESH_COPY" --output /tmp/FRESH-integration.json
+```
+
+Evidence: `evidence/spd-amd-integration-2026-10-22`. Hardware remains
+NOT_ADMITTED pending page-baseline establishment, independent controller/GIC/
+callback snapshot and restore, CRC validation and a bounded physical wrapper.
+Next implement/test the state lifecycle offline. Do not infer that a mocked
+ownership assertion proves actual IRQ exclusion or that lower-page cleanup
+restores an unknown initial SPD page.

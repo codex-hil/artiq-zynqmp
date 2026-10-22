@@ -1,0 +1,25 @@
+{
+  "scenarios": [
+    "two equal 128-byte reads + lower-page cleanup",
+    "NACK prevents cleanup/reuse",
+    "partial completion reaches bounded deadline, no cleanup while active",
+    "stuck RXDV flagged ERROR with no overread",
+    "no receive events reaches bounded deadline",
+    "hardware timeout flagged terminal",
+    "completion plus NACK rejected",
+    "two differing captures rejected with cleanup"
+  ],
+  "actually_executed": "11 extracted AMD functions, actual BSP macros, adapter and transaction state machine",
+  "model_assumptions": [
+    "known lower-page/exclusive-no-GIC preconditions asserted in model",
+    "all FIFO payload can be available in one modeled ISR call",
+    "register behavior deliberately simplified; not an electrical/timing model"
+  ],
+  "not_proven": [
+    "physical SPD origin or CRC",
+    "real GIC dispatch/ownership",
+    "controller/IRQ/callback snapshot restoration",
+    "actual hardware timeout timing or MMIO fault tolerance"
+  ],
+  "hardware_admitted": false
+}

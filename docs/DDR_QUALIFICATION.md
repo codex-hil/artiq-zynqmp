@@ -448,3 +448,17 @@ No linked firmware, no hardware execution. Evidence/diff/manifests:
 `evidence/spd-vendor-bounds-2026-10-22`. Next adapter+patched ISR integration
 model, then page/controller/IRQ/callback restoration. SPD acquisition remains
 NOT_ADMITTED; no physical DDR qualification follows from model bounds.
+
+### Reader/adapter/actual AMD integration model PASS —2026-10-22
+
+Eight scenarios execute the reader, adapter and11extracted AMD functions with
+actual BSP macros and modeled MMIO: correct dual read/cleanup, NACK, partial,
+stuck RXDV, no events, hardware timeout, completion+NACK, mismatch. ASan/UBSan
+PASS; terminal errors and active timeouts forbid new transactions/cleanup;
+valid captures require matching bytes and cleanup. Copy/source hashes verified.
+Evidence: `evidence/spd-amd-integration-2026-10-22`.
+
+Not a physical FIFO/timing/IRQ test; lower-page/no-GIC ownership are model
+preconditions. No hardware access, source/BSP unchanged. Hardware remains
+NOT_ADMITTED pending page identity, controller/GIC/callback state lifecycle, CRC
+and bounded physical capture/restoration wrapper. Next offline lifecycle controls.
