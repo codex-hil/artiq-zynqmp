@@ -1,5 +1,20 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## FSBL terminal entry validation offline —2026-10-22
+
+`check_fsbl_observer_entry.py` binds a unique XFsbl_Loop symbol to actual
+AArch64 ELF executable bytes (exact WFE/back-branch). Real diagnostic FSBL
+terminal0xfffc0bf4/0xfffc0bf8 verified offline; hash retained in descriptor.
+Supplied-capture validation requires two identical CPU0/cable/suspended samples,
+EL3, masked DAIF and SCTLR_EL3 M/C/I clear. It rejects wrong image, state drift,
+wrong EL/target, cache/MMU enabled, missing masks and malformed fields. Three
+test methods PASS (synthetic observations); no physical observations supplied.
+Evidence: `evidence/fsbl-observer-entry-2026-10-22`. No hardware accessed.
+This checker does not establish provenance, lease, other-master inactivity or
+DDR write authorization. Next implement bounded XSDB collection/observer load
+inside the existing mandatory-restoration lifecycle; do not reset after training.
+
+
 ## Register-only EL3 observer built offline —2026-10-22
 
 Separate `diagnostics/ddr/el3_observer` image builds with Arm GNU13.2.Rel1.
