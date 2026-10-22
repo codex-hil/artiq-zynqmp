@@ -101,6 +101,7 @@ impl Session {
                     b"mac" => b"02:38:3b:7f:02:0d",
                     b"board" => b"genesys_zu-5ev",
                     b"runtime_mode" => if runtime.kernel_ready { b"kernel-bringup" } else { b"management-only" },
+                    b"kernel_state" => kernel_state_name(runtime.kernel_ready, kernel_state()),
                     b"rtio_counter" => {
                         if !rtio_available() { out[0] = 6; return Ok(1); }
                         let mut digits = [0u8; 20];
@@ -128,6 +129,26 @@ fn data_reply(kind: u8, data: &[u8], out: &mut [u8]) -> usize {
     out[5..5 + data.len()].copy_from_slice(data);
     5 + data.len()
 }
+
+// Transport health is independent from runtime_mode and is not CPU1 liveness proof.
+fn kernel_state_name(enabled: bool, state: i32) -> &'static [u8] {
+    if !enabled { return b"unavailable"; }
+    match state {
+        0 => b"idle",
+        1 => b"loading",
+        2 => b"running",
+        3 => b"waiting-rpc",
+        4 => b"recovering",
+        5 => b"restart-required",
+        _ => b"unavailable",
+    }
+}
+#[cfg(not(test))]
+fn kernel_state() -> i32 {
+    extern "C" { fn genesys_kernel_state() -> i32; }
+    unsafe { genesys_kernel_state() }
+}
+#[cfg(test)] fn kernel_state() -> i32 { 0 }
 
 #[cfg(not(test))]
 fn rtio_available() -> bool {
@@ -219,6 +240,16 @@ mod tests {
         let (mut s, mut r) = (Session::new(), Runtime::new());
         assert!(feed(&mut s, &mut r, b"ARTIQ manage").unwrap().is_empty());
         assert_eq!(feed(&mut s, &mut r, b"ment\n\0\x02\x01").unwrap(), b"e\x01\x02\0\0\0\0");
+    }
+    #[test] fn transport_health_metadata_does_not_imply_worker_recovery() {
+        let (mut s, mut r) = (Session::new(), Runtime::new()); open(&mut s, &mut r);
+        let request = b"\x0c\x0c\0\0\0kernel_state";
+        assert_eq!(&feed(&mut s, &mut r, request).unwrap()[5..], b"unavailable");
+        r.kernel_ready = true;
+        assert_eq!(&feed(&mut s, &mut r, request).unwrap()[5..], b"idle");
+        assert_eq!(kernel_state_name(true, 5), b"restart-required");
+        assert_eq!(kernel_state_name(true, 4), b"recovering");
+        assert_eq!(kernel_state_name(true, -1), b"unavailable");
     }
     #[test] fn actual_log_read_and_clear() {
         let (mut s, mut r) = (Session::new(), Runtime::new()); open(&mut s, &mut r);

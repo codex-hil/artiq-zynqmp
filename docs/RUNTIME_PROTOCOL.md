@@ -271,3 +271,20 @@ restored. No Kasli/Si/SD/flash/OTP writes. Evidence:
 This is still fail-stop, not clean unwind, full DMA/RTIO quiescence or safe reuse.
 The child socket observation's NOT_PROVEN field remains correct for its narrower
 scope; the separate outer DAP report provides this new CPU1-path evidence.
+
+## Read-only management `kernel_state`
+
+New CPU0 source adds a selected `config_read("kernel_state")` metadata value:
+`unavailable`, `idle`, `loading`, `running`, `waiting-rpc`, `recovering` or
+`restart-required`. It reports foreground CPU0 transport state; it does not read
+RTIO/mailbox, change state, acknowledge cancellation or prove CPU1 heartbeat.
+Dead state takes priority over recovering/busy. Management-only builds return
+unavailable through a weak fallback; the kernel build links the strong state
+getter. `runtime_mode` remains a feature mode and is not repurposed as health.
+
+Seven Rust tests and the actual C callback-state harness PASS. Full CPU0/debug
+firmware builds and links; strong state symbol confirmed. Separate candidate
+preflight PASS. No deployment or hardware health check has occurred. Reports:
+`evidence/kernel-health-build-2026-10-22/`. Existing qualified binaries/package
+and restored running baseline remain unchanged. Next qualification should observe
+idle, waiting-rpc and restart-required during one bounded fault/restoration window.

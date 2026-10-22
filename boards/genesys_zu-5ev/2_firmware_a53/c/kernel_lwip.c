@@ -19,6 +19,15 @@ static uint32_t cmd_seq,seen_event;
 static int mode,closing,loaded,busy,dead,recovering;
 /* Prevent CPU0 diagnostic access to the shared RTIO counter latch while CPU1 runs. */
 int genesys_kernel_running(void) { return busy != 0 || dead || recovering; }
+/* CPU0 transport view only; no mailbox/RTIO accesses or state transitions. */
+int genesys_kernel_state(void) {
+ if(dead)return 5;
+ if(recovering)return 4;
+ if(busy==1)return 1;
+ if(busy==2)return 2;
+ if(busy==3)return 3;
+ return 0;
+}
 static size_t count,total;
 static uint32_t length;
 static uint8_t operation;

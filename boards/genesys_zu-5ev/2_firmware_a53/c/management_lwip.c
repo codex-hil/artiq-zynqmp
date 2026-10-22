@@ -15,6 +15,7 @@ extern int32_t artiq_session_closing(const void *);
 extern void artiq_runtime_ready(const uint8_t *, size_t);
 
 __attribute__((weak)) int genesys_kernel_running(void) { return 0; }
+__attribute__((weak)) int genesys_kernel_state(void) { return -1; }
 
 uint64_t genesys_rtio_counter(void) {
     *(volatile uint32_t *)(uintptr_t)RTIO_COUNTER_UPDATE = 1;

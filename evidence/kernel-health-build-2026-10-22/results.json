@@ -1,0 +1,22 @@
+{
+  "status": "READ_ONLY_KERNEL_STATE_BUILD_AND_UNIT_TESTS_PASS",
+  "hardware_executed": false,
+  "rust_tests": 7,
+  "c_callback_test": "PASS includes idle/loading/running/waiting/recovering/restart-required priorities",
+  "firmware": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/kernel-health-cpu0-20261022/amd/app/build/lwip_echo_server.elf",
+    "sha256": "297fc016eb5478a83fb4ceb4474a361f664373c9b4c3fc7be11f609e8affacaf"
+  },
+  "linked_state_symbol": "000000000000179c T genesys_kernel_state",
+  "build_log": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-health-cpu0-20261022.log",
+    "sha256": "469097791219c3600061d5c8e25e7a43ad0e0964c9fc822d6bd65027e6908e2f"
+  },
+  "source_sha256": {
+    "boards/genesys_zu-5ev/2_firmware_a53/src/lib.rs": "4b22ab93de985e36241536a874f39738d2922245798d3def728a112697ae36a7",
+    "boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c": "57c9d2eb4438f4a92f63ce477b2444866ad1a8a781d1a455b6cdc7d0b83c4cac",
+    "boards/genesys_zu-5ev/2_firmware_a53/c/management_lwip.c": "589548dcf099944135866eac09176ec4f6108f4a5a67d47818c238345fb44b2c"
+  },
+  "deployment": "NOT_RUN",
+  "scope": "CPU0 transport state metadata, not a CPU1 heartbeat or automatic recovery"
+}

@@ -66,9 +66,13 @@ int main(void) {
  m=mmap((void *)0x21000000,0x1000,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED_NOREPLACE,-1,0);
  assert(m==(void *)0x21000000);
  uint8_t reply[]={1,0,0,0,'i',42,0,0,0};
- setup();assert(input(reply,6,ERR_OK)==ERR_OK);assert(cmd_seq==0&&busy==3);
+ setup();assert(genesys_kernel_state()==3);
+ busy=1;assert(genesys_kernel_state()==1);busy=2;assert(genesys_kernel_state()==2);
+ busy=0;assert(genesys_kernel_state()==0);recovering=1;assert(genesys_kernel_state()==4);
+ dead=1;assert(genesys_kernel_state()==5);setup();
+ assert(input(reply,6,ERR_OK)==ERR_OK);assert(cmd_seq==0&&busy==3);
  assert(receive(NULL,&fixture,NULL,ERR_OK)==ERR_OK);
- assert(read_mb(4)==5&&dead&&busy==0&&owner==NULL&&closes==1);
+ assert(read_mb(4)==5&&dead&&busy==0&&owner==NULL&&closes==1&&genesys_kernel_state()==5);
  setup();assert(input(reply,6,ERR_MEM)==ERR_ABRT);
  assert(read_mb(4)==5&&dead&&busy==0&&owner==NULL&&aborts==1&&frees==1);
  setup();uint8_t bad[]={0,0,0,0};assert(input(bad,4,ERR_OK)==ERR_ABRT);
