@@ -1,0 +1,19 @@
+{
+  "elf": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build/ocm-environment-20261022/aarch64-unknown-none/release/genesys-a53-bringup",
+    "sha256": "d92e94fb755e08e9b07dc5a9bbbe27fa7bd9d3eb46acbcd59b22f89f214dce35"
+  },
+  "symbols": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/ocm-environment-build-2026-10-22/symbols.txt",
+    "sha256": "b615bba75b129cc29876eb8c87e775645ef2ae59656bfbfb5c018511f747d946"
+  },
+  "ps_init": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/sdt/psu_init.tcl",
+    "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+  },
+  "script_sha256": {
+    "scripts/run_ocm_environment.py": "60cdc78ec6515597118b9ae4360d08cd71cd91629c5efec069b41f2cec6ed805",
+    "scripts/run_ocm_environment.tcl": "146d8b1ac01f55b1591acfc2a68d4d5b76b7684a9a5015e447283217ab122912"
+  },
+  "scope": "OCM UART/control-register observation only; no DDR test. Normal baseline restored and physically validated by outer wrapper."
+}

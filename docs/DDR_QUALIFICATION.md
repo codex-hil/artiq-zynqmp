@@ -148,3 +148,26 @@ run or live register observation has occurred at this checkpoint.
 Next prepare an exclusive OCM load/UART capture/restoration wrapper. It must
 preserve the DDR training dependency and restore the documented normal runtime,
 while preventing any claim that the new image has already tested DDR.
+
+## Exclusive OCM observation wrapper prepared
+
+The existing candidate lifecycle now supports `--ocm-manifest`. It verifies the
+OCM ELF/symbol hashes and layout, exact qualified PS setup and pinned loader/UART
+scripts, both before and after acquiring the shared Genesys lease. OCM mode
+excludes kernel/fault/extended-runtime suites. It runs the OCM-only image and
+captures UART/control-register observations, then always executes the normal
+baseline restore plus physical TTL/DMA/debug/Ethernet checks before releasing
+the lease. Timeouts/interrupts retain the existing bounded-child/restoration flow.
+
+The separate loader requires the exact cable and strict A53 core stops. It
+reuses the old OCM peripheral initialization flow, explicitly excluding DDR init;
+this is a volatile diagnostic load, not a full-range DDR test. The child requires
+an inherited lease, verifies the layout before UART access, retains partial logs,
+and requires the explicit DDR NOT_RUN marker. Artifact/loader manifest:
+`evidence/ocm-observation-plan-2026-10-22/inputs.json`.
+
+Two OCM-specific admission/loader-failure controls plus6existing lifecycle
+controls and actual artifact preflight PASS. Hardware execution is NOT_RUN.
+Next use one bounded `--execute` window with the verified server/UART/interface,
+preserve the measured EL1/cache results and validate restoration. MMU/cache bits
+remain observations, never an automatic authorization to write DDR.

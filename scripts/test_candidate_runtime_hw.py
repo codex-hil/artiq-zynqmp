@@ -36,6 +36,22 @@ def preflight(manifest):
     return files
 
 
+def ocm_preflight(path,files):
+    from check_ocm_image import check as check_ocm
+    data=json.loads(path.read_text())
+    for key in ('elf','symbols','ps_init'):
+        item=data[key]
+        if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:
+            raise ValueError('Changed OCM input: '+key)
+    if data['ps_init']!=files['candidate_ps_init']:raise ValueError('OCM PS setup differs from selected candidate')
+    required_scripts={'scripts/run_ocm_environment.py','scripts/run_ocm_environment.tcl'}
+    if set(data.get('script_sha256',{}))!=required_scripts:raise ValueError('Missing OCM script pins')
+    for name,digest in data['script_sha256'].items():
+        if hashlib.sha256((REPO/name).read_bytes()).hexdigest()!=digest:raise ValueError('Changed OCM loader/capture script')
+    check_ocm(Path(data['elf']['path']).read_bytes(),Path(data['symbols']['path']).read_text())
+    return data
+
+
 @contextlib.contextmanager
 def lease(path=LOCK):
     path.parent.mkdir(parents=True,exist_ok=True)
@@ -80,12 +96,15 @@ def main():
     p.add_argument('--manifest',type=Path,default=REPO/'evidence/candidate-jtag-plan-2026-10-21/inputs.json')
     p.add_argument('--output',type=Path,required=True);p.add_argument('--execute',action='store_true')
     p.add_argument('--server');p.add_argument('--port');p.add_argument('--interface')
+    p.add_argument('--ocm-manifest',type=Path,help='OCM observation instead of normal candidate runtime; always restores normal baseline')
     p.add_argument('--expect-kernel-state',action='store_true',help='Assert new candidate idle/waiting-rpc/restart-required; requires one fault case')
     p.add_argument('--rpc-fault-case',choices=['zero_descriptor_length','unsupported_return_tag','partial_float_eof'],help='One destructive RPC case; candidate immediately restored, never reused')
     p.add_argument('--extended',action='store_true',help='Candidate only: three cycles each of full CoreDMA and exception suites')
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
     a=p.parse_args();files=preflight(json.loads(a.manifest.read_text()))
+    if a.ocm_manifest and (a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('OCM mode excludes runtime/fault suites')
+    ocm=ocm_preflight(a.ocm_manifest,files) if a.ocm_manifest else None
     if a.expect_kernel_state and not a.rpc_fault_case:p.error('--expect-kernel-state requires --rpc-fault-case')
     out=a.output.resolve()
     if out.exists():raise ValueError('Use a fresh output directory')
@@ -98,6 +117,7 @@ def main():
     with lease() as held:
         # Recheck after obtaining ownership, before touching hardware.
         preflight(json.loads(a.manifest.read_text()))
+        if a.ocm_manifest:ocm_preflight(a.ocm_manifest,files)
         started=time.monotonic();stages={}
         env=os.environ.copy();env.pop('PYTHONPATH',None);env['GENESYS_LEASE_FD']=str(held.fileno())
         def run(stage,command,timeout):
@@ -112,6 +132,14 @@ def main():
             if code:raise RuntimeError(stage+' failed: '+text[-1500:])
             print(stage+' PASS',flush=True)
         def cycle(prefix):
+            if prefix=='candidate' and ocm is not None:
+                run('candidate-ocm',[sys.executable,str(REPO/'scripts/run_ocm_environment.py'),
+                    '--server',a.server,'--port',a.port,'--elf',ocm['elf']['path'],
+                    '--symbols',ocm['symbols']['path'],'--ps-init',ocm['ps_init']['path'],
+                    '--output',str(out/'candidate-ocm')],120)
+                observed=json.loads((out/'candidate-ocm/results.json').read_text())
+                if observed.get('status')!='PASS':raise RuntimeError('OCM observation did not pass')
+                return 'OCM_UART_ONLY_NO_NETWORK'
             def path(name):return files[prefix+'_'+name]['path']
             ps=Path(path('fsbl')).parents[2];worker=Path(path('worker')).parent
             load=out/(prefix+'-load')
@@ -152,7 +180,7 @@ def main():
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,
+                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest())
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
