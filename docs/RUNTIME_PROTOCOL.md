@@ -288,3 +288,20 @@ preflight PASS. No deployment or hardware health check has occurred. Reports:
 `evidence/kernel-health-build-2026-10-22/`. Existing qualified binaries/package
 and restored running baseline remain unchanged. Next qualification should observe
 idle, waiting-rpc and restart-required during one bounded fault/restoration window.
+
+## Management state hardware qualification —2026-10-22
+
+The new CPU0 candidate passed physical debug and the single fault test with
+mandatory health observations: `idle` before compilation/run, `waiting-rpc`
+after exact method admission but before injection, then `restart-required`
+after malformed reply termination. The read-only DAP terminal-event check PASS.
+Full old-baseline restoration and physical TTL/DMA/debug/Ethernet PASS,
+192.168.2.3; shared lease139.925s released/reacquirechecked. Evidence:
+`evidence/kernel-health-hardware-2026-10-22/`.
+
+The injector's state checks are opt-in through wrapper `--expect-kernel-state`,
+which requires a fault case and passes the checks to the child. Unexpected
+waiting state prevents sending fault bytes.5injector and6lifecycle controls PASS.
+Other state names have unit/C-harness coverage, not individual hardware proof.
+No Kasli/Si/SD/flash/OTP writes or default-image/package promotion. This run is
+not the extended regression required by the existing packaging proof gate.

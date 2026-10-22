@@ -51,6 +51,13 @@ class FaultInjection(unittest.TestCase):
         self.assertEqual(report['observed_request']['argument_count'],4)
         embedding.retrieve_object.assert_called_once_with(1)
 
+    def test_health_failure_prevents_injection(self):
+        comm=self.comm();report={}
+        def wrong_health():raise RuntimeError('Unexpected worker state')
+        with self.assertRaisesRegex(RuntimeError,'worker state'):
+            inject(comm,self.embedding(),cases()[0],report,wrong_health)
+        comm._write_header.assert_not_called();self.assertNotIn('injection_sent',report)
+
     def test_unexpected_request_sends_nothing(self):
         comm=self.comm();comm._read_bytes.return_value=b'i'
         report={}

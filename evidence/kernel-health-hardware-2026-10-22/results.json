@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "restoration": "PASS",
+  "candidate_ip": "192.168.2.3",
+  "restored_ip": "192.168.2.3",
+  "kind": "candidate-runtime-hardware",
+  "hardware_executed": true,
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "cable": "210383B7F02DA",
+  "elapsed_seconds": 139.925,
+  "stages": {
+    "candidate-load": {
+      "returncode": 0
+    },
+    "candidate-debug": {
+      "returncode": 0
+    },
+    "candidate-rpc-fault": {
+      "returncode": 0
+    },
+    "candidate-rpc-terminal-event": {
+      "returncode": 0
+    },
+    "restore-load": {
+      "returncode": 0
+    },
+    "restore-debug": {
+      "returncode": 0
+    },
+    "restore-ethernet": {
+      "returncode": 0
+    }
+  },
+  "extended": false,
+  "rpc_fault_case": "zero_descriptor_length",
+  "expect_kernel_state": true,
+  "manifest_sha256": "2442b6f79caa25b98361ef552f89b31c7451f1140a64c5a6a5a753be93ef4df0"
+}

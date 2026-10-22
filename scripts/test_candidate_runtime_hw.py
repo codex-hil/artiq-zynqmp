@@ -80,11 +80,13 @@ def main():
     p.add_argument('--manifest',type=Path,default=REPO/'evidence/candidate-jtag-plan-2026-10-21/inputs.json')
     p.add_argument('--output',type=Path,required=True);p.add_argument('--execute',action='store_true')
     p.add_argument('--server');p.add_argument('--port');p.add_argument('--interface')
+    p.add_argument('--expect-kernel-state',action='store_true',help='Assert new candidate idle/waiting-rpc/restart-required; requires one fault case')
     p.add_argument('--rpc-fault-case',choices=['zero_descriptor_length','unsupported_return_tag','partial_float_eof'],help='One destructive RPC case; candidate immediately restored, never reused')
     p.add_argument('--extended',action='store_true',help='Candidate only: three cycles each of full CoreDMA and exception suites')
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
     a=p.parse_args();files=preflight(json.loads(a.manifest.read_text()))
+    if a.expect_kernel_state and not a.rpc_fault_case:p.error('--expect-kernel-state requires --rpc-fault-case')
     out=a.output.resolve()
     if out.exists():raise ValueError('Use a fresh output directory')
     if a.execute and not all((a.server,a.port,a.interface)):p.error('Execution requires --server --port --interface')
@@ -135,7 +137,7 @@ def main():
             if prefix=='candidate' and a.rpc_fault_case:
                 fault=out/'candidate-rpc-fault'
                 run('candidate-rpc-fault',[a.artiq_python,str(REPO/'scripts/inject_rpc_fault.py'),
-                    '--case',a.rpc_fault_case,'--ip',ip,'--device-db',str(db),'--output',str(fault)],90)
+                    '--case',a.rpc_fault_case,'--ip',ip,'--device-db',str(db),'--output',str(fault)]+(['--require-kernel-state'] if a.expect_kernel_state else []),90)
                 observed=json.loads((fault/'results.json').read_text())
                 if observed.get('status')!='FAULT_TERMINATION_OBSERVED_RESTORE_REQUIRED':
                     raise RuntimeError('RPC fault observation incomplete')
@@ -150,7 +152,7 @@ def main():
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,
+                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest())
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

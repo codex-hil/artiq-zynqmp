@@ -1,0 +1,16 @@
+{
+  "status": "READ_ONLY_KERNEL_STATE_HARDWARE_AND_RESTORATION_PASS",
+  "hardware_executed": true,
+  "states": [
+    "idle",
+    "waiting-rpc",
+    "restart-required"
+  ],
+  "cpu1_terminal_event": "PASS",
+  "lease_seconds": 139.925,
+  "restoration": "PASS",
+  "restored_ip": "192.168.2.3",
+  "lease": "RELEASED_REACQUIRE_CHECK_PASS",
+  "limits": "CPU0 transport health and terminal-event observation; loading/running/recovering states not individually qualified on hardware; no clean unwind or automatic recovery",
+  "extended": false
+}

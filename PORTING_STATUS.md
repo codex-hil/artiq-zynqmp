@@ -17,6 +17,15 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Read-only kernel_state hardware checkpoint —2026-10-22
+
+New CPU0 reports idle→waiting-rpc→restart-required during a controlled RPC fault.
+Expected method verified, DAP terminal event PASS. Old-baseline restore and
+physical TTL/DMA/debug/Ethernet PASS at192.168.2.3; lease139.925s released.
+Evidence: `evidence/kernel-health-hardware-2026-10-22/`.
+No default-image promotion, automatic recovery or clean-unwind claim. Other
+health states remain unit/C-harness tested. No Kasli/Si/SD/flash/OTP writes.
+
 ## CPU1 terminal cancellation path observed —2026-10-22
 
 Read-only DAP after malformed RPC confirms command5, terminal event7/sequence49

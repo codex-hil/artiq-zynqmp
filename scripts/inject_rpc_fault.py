@@ -20,7 +20,7 @@ def require_lease():
     return fd
 
 
-def inject(comm,embedding,case,report):
+def inject(comm,embedding,case,report,before_send=None):
     from artiq.coredevice.comm_kernel import Request
     asynchronous=comm._read_bool();service=comm._read_int32()
     args,kwargs=comm._receive_rpc_args(embedding);tags=comm._read_bytes()
@@ -40,6 +40,7 @@ def inject(comm,embedding,case,report):
     if asynchronous or not method_ok or kwargs or tags!=b'f' or args[1]!=0x1234567887654321 or args[2]<=0 or args[3]!=1.25:
         raise ValueError('Unexpected RPC request; no injection performed')
     report.update(request_verified=True,return_tags=tags.decode(),service_id=service)
+    if before_send is not None:before_send()
     comm.socket.settimeout(5)
     comm._write_header(Request.RPCReply);comm._write_chunk(bytes.fromhex(case['body_hex']));comm._flush()
     report['injection_sent']=True
@@ -51,9 +52,21 @@ def inject(comm,embedding,case,report):
     raise Injected()
 
 
+def expect_state(ip,expected,report):
+    from artiq.coredevice.comm_mgmt import CommMgmt
+    m=CommMgmt(ip)
+    try:
+        m.open();m.socket.settimeout(5)
+        value=m.config_read('kernel_state').decode('ascii')
+    finally:m.close()
+    report.setdefault('kernel_states',[]).append(value)
+    if value!=expected:raise RuntimeError('Expected kernel_state '+expected+', got '+value)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--case',choices=[c['name'] for c in cases()],required=True)
+    parser.add_argument('--require-kernel-state',action='store_true')
     parser.add_argument('--ip',required=True);parser.add_argument('--device-db',required=True,type=Path)
     parser.add_argument('--output',required=True,type=Path);a=parser.parse_args()
     require_lease()
@@ -67,10 +80,13 @@ def main():
     def hook(comm,embedding):
         nonlocal injected
         if injected:raise RuntimeError('Only one injection allowed')
-        injected=True;inject(comm,embedding,selected,report)
+        injected=True
+        before=(lambda:expect_state(a.ip,'waiting-rpc',report)) if a.require_kernel_state else None
+        inject(comm,embedding,selected,report,before)
     CommKernel._serve_rpc=hook
     saved=sys.argv[:]
     try:
+        if a.require_kernel_state:expect_state(a.ip,'idle',report)
         sys.argv=['artiq_run','--device-db',str(a.device_db),'--dataset-db',str(a.output/'datasets.mdb'),str(Path(__file__).resolve().parents[1]/'examples/genesys_network_probe.py')]
         try:runpy.run_module('artiq.frontend.artiq_run',run_name='__main__')
         except Injected:pass
@@ -81,6 +97,7 @@ def main():
             if m.config_read('board')!=b'genesys_zu-5ev':raise RuntimeError('Wrong management identity')
             report['management_log']=m.get_log();report['management_alive']=True
         finally:m.close()
+        if a.require_kernel_state:expect_state(a.ip,'restart-required',report)
         report['status']='FAULT_TERMINATION_OBSERVED_RESTORE_REQUIRED'
     except Exception as error:report['error']=str(error)
     finally:
