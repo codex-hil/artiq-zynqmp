@@ -17,6 +17,15 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Programmed DDR ADDRMAP decoded —2026-10-22
+
+Captured controller map has16row/10column/2bank/1bank-group bits, single rank,
+64-bit data bus and29continuous unique HIF bits: programmed4GiB. Matches total
+SDT configured size. Three ADDRMAP and two decoder tests PASS. Evidence:
+`evidence/ddr-addrmap-2026-10-22/`. Offline inversion only; fitted SPD capacity,
+CPU high-window remapping, alias freedom and full DDR integrity remain unproven.
+No writes or new hardware access; destructive testing remains disabled.
+
 ## Read-only live DDR controller capture —2026-10-22
 
 14DDRC configuration registers read under Genesys lease: DDR4, one active rank,

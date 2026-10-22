@@ -1,0 +1,14 @@
+{
+  "source": "boards/genesys_zu-5ev/3_bootable/xfsbl_ddr_init.c",
+  "sha256": "ae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5",
+  "functions": [
+    "XFsbl_DdrCalcHifAddrMemMap",
+    "XFsbl_DdrCalcBankAddr",
+    "XFsbl_DdrCalcBgAddr",
+    "XFsbl_DdrCalcColAddr",
+    "XFsbl_DdrCalcRowAddr",
+    "XFsbl_DdrCalcAddrMap"
+  ],
+  "bus_width_rule": "DDR_DATA_BUS_WIDTH =6-log2(PDimm.BusWidth); full width0 therefore64bits",
+  "scope": "Limited inverse of captured single-rank full-width DDR4 configuration; source code preserved"
+}

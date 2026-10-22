@@ -84,3 +84,29 @@ correct high-bank decoding or error-free storage. Physical capacity remains
 NOT_ESTABLISHED. Next decode the ADDRMAP fields against Piotr/AMD's dynamic
 mapping algorithm and obtain independent geometry evidence before choosing full
 DDR test limits. The restored normal runtime was left in place.
+
+## Captured ADDRMAP inversion —2026-10-22
+
+`decode_ddr_addrmap.py` implements a limited inverse of Piotr/AMD's dynamic
+address-map packing. It accepts the captured DDR4/single-rank/full-width mode
+with individually mapped row2..10, and rejects unsupported modes, bit collisions,
+noncontiguous DRAM bit indices and HIF holes. No controller changes are made.
+
+The captured map decodes to16row bits,10column bits,2bank bits and1bank-group
+bit. HIF bits0..28 are unique and continuous. Full-width mode is64bits under
+FSBL's `6-log2(BusWidth)` encoding, so the programmed geometry is4GiB. HIF3
+selects bank-group0; bits11/12 select bank0/1; bits13..28 select row0..15.
+This is consistent with the SDT's total configured capacity. It does not verify
+SPD capacity, CPU high-bank remapping, absence of physical aliasing or integrity.
+
+```sh
+python3 scripts/decode_ddr_addrmap.py \
+  --snapshot evidence/ddrc-snapshot-2026-10-22/snapshot.log \
+  --output /path/to/fresh-geometry.json
+```
+
+Evidence and source-function references: `evidence/ddr-addrmap-2026-10-22/`.
+Three ADDRMAP tests and two controller decoder tests PASS. A disabled highest row
+is tested as a valid smaller map, while an internal missing row is rejected.
+The decoder never marks destructive testing as allowed. Next obtain independent
+SPD geometry and explicitly establish OCM execution/cache state before any test.
