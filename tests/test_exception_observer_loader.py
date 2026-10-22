@@ -75,6 +75,7 @@ class LoaderTests(unittest.TestCase):
   out=self.run_model()
   self.assertIn('EXCEPTION_OBSERVER_NORMAL_COMPLETE',out)
   self.assertNotIn('FAIL',out)
+  self.assertEqual(out.count('EXCEPTION_RESUME_STATE '),10)
   self.assertIn('daif 704',out)
   self.assertIn('WRITES {sys 12 vbar_el3 0xfffc8000}',out)
  def test_vbar_readback_failure_prevents_continue(self):

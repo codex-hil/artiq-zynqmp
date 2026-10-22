@@ -1,0 +1,133 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "hardware_executed": true,
+  "seconds": 87.366,
+  "observed_stop_pc": "0xfffc8800",
+  "expected_success_pc": "0xfffc8834",
+  "vbar_write_readback": "PASS",
+  "observer_execution": "NOT_ESTABLISHED",
+  "raw_files": {
+    "restore-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "restore-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "candidate-trained-observer.log": {
+      "sha256": "bf6ff487ea7521976fac25a7d5b62e7c5afc2fb3a87e9eab4affc1540737bfd5",
+      "bytes": 107
+    },
+    "restore-ethernet.log": {
+      "sha256": "85267a4c7f8458523c26e6a4eeb3a010ec98cd2a36844b6de2f382cbe34b6fec",
+      "bytes": 2020
+    },
+    "restore-debug.log": {
+      "sha256": "1f615cbb8f0a9dc26d1dfc5e7494d307a2e97e6962d42b4f9e02255f3df62f75",
+      "bytes": 1899
+    },
+    "restore-ethernet.json": {
+      "sha256": "85267a4c7f8458523c26e6a4eeb3a010ec98cd2a36844b6de2f382cbe34b6fec",
+      "bytes": 2020
+    },
+    "results.json": {
+      "sha256": "28444fe5ca8efdf55e08f62dfb98ff494b597d95cc748293749ed3780f1925eb",
+      "bytes": 2549
+    },
+    "restore-load/uart.log": {
+      "sha256": "293b850faed96db8fae5d1c86a51a77c7d7c5881b194ac49cb6d687dc3b47136",
+      "bytes": 1068
+    },
+    "restore-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "restore-load/prepare.log": {
+      "sha256": "0e46f241b827650847b5cf034f8cfb80f182e692e59aa25e2da39bf3eba9d41d",
+      "bytes": 65
+    },
+    "restore-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "restore-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "restore-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "restore-load/pl.log": {
+      "sha256": "b9beb893e715c23410445d24059cd640ead58e0b1c552a27ba927005f4b048a6",
+      "bytes": 1918
+    },
+    "restore-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "restore-debug/wrap-dma-5.log": {
+      "sha256": "8a370ab130aad30a86cbf8926440e916877c030d49314814a8b3fd8b6505b4bc",
+      "bytes": 210
+    },
+    "restore-debug/dma.log": {
+      "sha256": "38b37e222cbedc04356a37b12b4c7d7b40fcd9ac4b0b039d96e04e0c3e56a61d",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-6.log": {
+      "sha256": "5bfa09f7170dfa1ba8ab37a74755cede0a2256e3aa40c7e582b7ffa29291884f",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-0.log": {
+      "sha256": "e812414e32c64e2665700a9b602f133784132bb97c0f89823bf029ee77df2852",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-2.log": {
+      "sha256": "ce7468bb8af9a1cde3b106db3771a4e46300b61b7cc59472b2db610720af9dc1",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-3.log": {
+      "sha256": "815f418d7042d37776710430ce329e110c986223e574df21f2ed9fbde24b6350",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-7.log": {
+      "sha256": "2ce1e9f7a3988e3b582c2e6137d5ade18aee1cf6113223617067ccc00202e6b2",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-1.log": {
+      "sha256": "1914ef6989da3349a6d032e20d602b9271285b1a5b4f20490ee89586aeb8d9bb",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-4.log": {
+      "sha256": "1ebeb224f625f09955c12f6994142194f08ea6f42ff127af692df6fa100ac1eb",
+      "bytes": 210
+    },
+    "restore-debug/results.json": {
+      "sha256": "6fff264fba23a954e9ec5b6a6fb2c609656a488dd5ef61e01bddeb739b05c622",
+      "bytes": 1692
+    },
+    "candidate-trained-observer/uart.log": {
+      "sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b",
+      "bytes": 840
+    },
+    "candidate-trained-observer/observer.log": {
+      "sha256": "371f3e3faddf2e362b17882ad5da3a4c334ff84d957ab963a990b8ccfab55cba",
+      "bytes": 1189
+    },
+    "candidate-trained-observer/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "candidate-trained-observer/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "candidate-trained-observer/results.json": {
+      "sha256": "bf6ff487ea7521976fac25a7d5b62e7c5afc2fb3a87e9eab4affc1540737bfd5",
+      "bytes": 107
+    }
+  },
+  "limits": "PC remained entry and registers did not match observer. No claim of cause, SError handling or DDR test. Full physical normal debug/Ethernet restored192.168.2.3."
+}

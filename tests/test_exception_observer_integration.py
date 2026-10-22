@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from run_trained_observer import decode_exception
 from test_candidate_runtime_hw import observer_preflight,lifecycle
-PLAN=ROOT/'evidence/el3-exception-integration-2026-10-22/inputs.json'
+PLAN=ROOT/'evidence/el3-exception-observer-hardware-2026-10-22/resume-trace-inputs.json'
 
 
 class IntegrationTests(unittest.TestCase):

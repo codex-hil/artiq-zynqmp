@@ -53,7 +53,22 @@ namespace eval exception_observer {
         unchanged_controls $before
         puts "EXCEPTION_ARMED_VBAR 4294737920"
         con
-        after 20
+        # Observe backend resume state for a bounded 1s, rather than assuming
+        # a 20ms host delay proves execution. Final register markers still decide.
+        for {set tick 0} {$tick < 10} {incr tick} {
+            after 100
+            set rows [targets -target-properties -filter {is_current == 1}]
+            if {[llength $rows] != 1} {error "Resume target not unique"}
+            set state [lindex $rows 0]
+            foreach key {name jtag_cable_serial suspended} {
+                if {![dict exists $state $key]} {error "Missing resume state $key"}
+            }
+            if {[dict get $state name] ne "Cortex-A53 #0" ||
+                [dict get $state jtag_cable_serial] ne "210383B7F02DA"} {
+                error "Resume target identity changed"
+            }
+            puts "EXCEPTION_RESUME_STATE tick=$tick suspended=[dict get $state suspended]"
+        }
         halt
         set pc [fsbl_entry::register pc]
         puts "EXCEPTION_STOP_PC $pc"

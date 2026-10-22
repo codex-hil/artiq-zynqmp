@@ -931,3 +931,23 @@ restoration is mandatory. Deliberate BRK is not exposed by this parent mode;
 future separate verifier must qualify a matching deliberate fault without
 converting arbitrary exceptions into success. No DDR test/Si/SD/flash/OTP/Kasli
 changes in this checkpoint; baseline remains last validated192.168.2.3.
+
+## First exception-aware observer hardware FAIL; restoration PASS —2026-10-22
+
+Shared Genesys lease87.366s. FSBL terminal/EL3/cache checks and synchronized
+2172B OCM download passed; VBAR_EL3 write/readback passed before con, A unchanged.
+After20ms host delay and checked stop, PC remained0xfffc8800 (entry), registers
+did not show normal/fault marker. Execution NOT_ESTABLISHED, candidate FAIL.
+Do not infer a cause, successful exception handling or a memory fault from this.
+Full normal restoration/physical TTL/CoreDMA/analyzer/MonInj/Ethernet PASS
+192.168.2.3; shared lease released. No DDR test/Kasli/Si/SD/flash/OTP writes.
+Evidence: `evidence/el3-exception-observer-hardware-2026-10-22`.
+
+Installed XSDB con source invokes resume-mode0; default does not block until
+execution/stop. A short host delay is insufficient evidence of actual progress.
+Prepared bounded10x100ms backend state trace with exact target identity and
+suspended-state presence checks, then positive halt and unchanged terminal/
+register verdict. This is diagnostic instrumentation, not a proven fix. Four
+loader models plus4integration tests PASS; fresh pinned artifact preflight PASS.
+Next one bounded trace window to distinguish resume behavior; preserve original
+FAIL. No step/forced PC/cache-sync bypass/extra post-training reset introduced.
