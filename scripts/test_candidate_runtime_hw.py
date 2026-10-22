@@ -53,6 +53,32 @@ def ocm_preflight(path,files):
     return data
 
 
+OBSERVER_SCRIPTS={'scripts/test_candidate_runtime_hw.py','scripts/run_trained_observer.py',
+ 'scripts/run_trained_observer.tcl','scripts/collect_fsbl_entry.tcl','scripts/check_el3_observer.py',
+ 'scripts/check_fsbl_observer_entry.py','scripts/package_local_candidate.py','scripts/check_hw_storage.py',
+ 'scripts/reset_genesys_ps.tcl','scripts/run_boot_firmware.tcl','scripts/load_rtio_runtime.py',
+ 'scripts/prepare_local_rtio.tcl','scripts/run_kernel_worker.tcl','scripts/run_a53_runtime.tcl',
+ 'scripts/program_genesys_pl.tcl'}
+def observer_preflight(path,files):
+    from check_el3_observer import check as check_observer
+    from check_fsbl_observer_entry import descriptor
+    info=json.loads(path.read_text())
+    for name in ('elf','symbols'):
+        item=info[name]
+        if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:
+            raise ValueError('Changed observer input: '+name)
+    if info['fsbl_sha256']!=files['candidate_fsbl']['sha256']:
+        raise ValueError('Observer FSBL pin mismatch')
+    if set(info.get('script_sha256',{}))!=OBSERVER_SCRIPTS:
+        raise ValueError('Missing observer execution pins')
+    for name,digest in info['script_sha256'].items():
+        if hashlib.sha256((REPO/name).read_bytes()).hexdigest()!=digest:
+            raise ValueError('Changed observer execution dependency: '+name)
+    check_observer(Path(info['elf']['path']).read_bytes())
+    descriptor(Path(files['candidate_fsbl']['path']).read_bytes(),Path(info['symbols']['path']).read_text())
+    return info
+
+
 SPD_SCRIPTS={'scripts/check_hw_storage.py','scripts/test_candidate_runtime_hw.py','scripts/load_rtio_runtime.py',
  'scripts/reset_genesys_ps.tcl','scripts/run_boot_firmware.tcl','scripts/prepare_local_rtio.tcl',
  'scripts/run_kernel_worker.tcl','scripts/run_a53_runtime.tcl','scripts/program_genesys_pl.tcl',
@@ -114,6 +140,7 @@ def main():
     p.add_argument('--output',type=Path,required=True);p.add_argument('--execute',action='store_true')
     p.add_argument('--server');p.add_argument('--port');p.add_argument('--interface')
     p.add_argument('--fsbl-spd',action='store_true',help='Require pinned diagnostic FSBL and strict UART SPD/CRC capture before runtime tests')
+    p.add_argument('--trained-observer-manifest',type=Path,help='FSBL-trained register-only observation, then mandatory normal restoration')
     p.add_argument('--ocm-manifest',type=Path,help='OCM observation instead of normal candidate runtime; always restores normal baseline')
     p.add_argument('--expect-kernel-state',action='store_true',help='Assert new candidate idle/waiting-rpc/restart-required; requires one fault case')
     p.add_argument('--rpc-fault-case',choices=['zero_descriptor_length','unsupported_return_tag','partial_float_eof'],help='One destructive RPC case; candidate immediately restored, never reused')
@@ -121,6 +148,8 @@ def main():
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
     a=p.parse_args();files=preflight(json.loads(a.manifest.read_text()))
+    if a.trained_observer_manifest and (a.fsbl_spd or a.ocm_manifest or a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('Trained observer excludes other candidate modes')
+    observer=observer_preflight(a.trained_observer_manifest,files) if a.trained_observer_manifest else None
     if a.fsbl_spd and (a.ocm_manifest or a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('FSBL SPD mode excludes OCM/extended/fault modes')
     if a.fsbl_spd:spd_preflight(json.loads(a.manifest.read_text()),files)
     if a.ocm_manifest and (a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('OCM mode excludes runtime/fault suites')
@@ -140,6 +169,7 @@ def main():
         storage=require_runtime_space(out,REPO)
         preflight(json.loads(a.manifest.read_text()))
         if a.ocm_manifest:ocm_preflight(a.ocm_manifest,files)
+        if observer:observer_preflight(a.trained_observer_manifest,files)
         if a.fsbl_spd:spd_preflight(json.loads(a.manifest.read_text()),files)
         started=time.monotonic();stages={}
         env=os.environ.copy();env.pop('PYTHONPATH',None);env['GENESYS_LEASE_FD']=str(held.fileno())
@@ -155,6 +185,14 @@ def main():
             if code:raise RuntimeError(stage+' failed: '+text[-1500:])
             print(stage+' PASS',flush=True)
         def cycle(prefix):
+            if prefix=='candidate' and observer is not None:
+                run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
+                    '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
+                    '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
+                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')],180)
+                observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
+                if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
+                return 'TRAINED_OCM_REGISTERS_ONLY'
             if prefix=='candidate' and ocm is not None:
                 run('candidate-ocm',[sys.executable,str(REPO/'scripts/run_ocm_environment.py'),
                     '--server',a.server,'--port',a.port,'--elf',ocm['elf']['path'],
@@ -206,7 +244,7 @@ def main():
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,
+                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,trained_observer=observer is not None,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),storage_admission=storage)
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

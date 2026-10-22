@@ -1,5 +1,37 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## Trained observer integrated, offline preflight PASS —2026-10-22
+
+Candidate wrapper now accepts `--trained-observer-manifest` as an exclusive
+observation mode. It pins observer ELF/FSBL symbols and execution/restoration
+scripts, verifies inputs before and under the shared lease, and always runs
+normal baseline restoration/debug/Ethernet through the existing lifecycle.
+Child requires inherited lease and storage admission, resets once before
+PMU/FSBL, waits bounded UART completion, then positively halts CPU0 and checks
+its terminal twice. No reset follows training. Standard XSDB download retains
+cache synchronization, checks entry PC, runs the64-byte observer and halts for
+terminal/register validation. Missing backend register names or any unexpected
+state fail; no cache-sync bypass or register-name fallback. No DDR test writes.
+
+Three new model groups and six lifecycle regression groups PASS. Actual artifact
+and script-pin preflight PASS without hardware access. No observer hardware
+run or trained handoff state is claimed. Evidence/manifests:
+`evidence/trained-observer-integration-2026-10-22`. Historical SPD v2 execution
+pins deliberately remain unchanged; use the new observer manifest for this mode.
+
+Offline reproducer (omit --execute):
+```sh
+python3 scripts/test_candidate_runtime_hw.py \
+  --manifest evidence/trained-observer-integration-2026-10-22/runtime-inputs.json \
+  --trained-observer-manifest evidence/trained-observer-integration-2026-10-22/observer-inputs.json \
+  --output /path/to/fresh-preflight
+```
+Next review script pins and current HW allocation/storage, then one bounded
+`--execute --server SERVER --port UART --interface NIC` observation/restoration
+window. Backend currentel/DAIF names and live post-FSBL masks remain unqualified;
+refusal means retain failure evidence and restore, not force admission.
+
+
 ## XSDB entry collector library offline PASS —2026-10-22
 
 `collect_fsbl_entry.tcl` reads two identical snapshots of uniquely current,
