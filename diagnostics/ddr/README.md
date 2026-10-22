@@ -157,3 +157,30 @@ callback snapshot and restore, CRC validation and a bounded physical wrapper.
 Next implement/test the state lifecycle offline. Do not infer that a mocked
 ownership assertion proves actual IRQ exclusion or that lower-page cleanup
 restores an unknown initial SPD page.
+
+## Peripheral/software state lifecycle candidate
+
+`spd_xiicps_state.h` takes a read-only snapshot only after caller ownership/no-GIC
+assertion plus quiet controller/empty FIFO/zero transfer/zero IRQ status/no HOLD
+or clear-FIFO command/zero driver byte counts. It saves CR, timeout, peripheral
+interrupt mask and the full XIicPs instance including callback/ref. Restore
+requires inactive/non-poisoned adapter and quiet controller, disables peripheral
+IRQs, restores registers/software, restores peripheral mask and independently
+checks register readback/quiet state. Snapshot and adapter are consumed after
+restore; mismatched readback poisons. There is no reset/FIFO-clear workaround.
+
+Integration model restores original non-null callback/ref and registers after
+success or mismatch. Error/pending states refuse restore without writes. Seven
+dirty/unowned snapshot refusals, wrong readback and double restore controls PASS
+with ASan/UBSan. AArch64 header compile against real BSP PASS. Evidence:
+`evidence/spd-state-lifecycle-2026-10-22`. This does not snapshot or restore GIC
+routing, prove ownership, restore unknown SPD page or guarantee cleanup after
+peripheral failure. Those remain prerequisites for a physical wrapper.
+
+For page discovery, [Linux EE1004 source](https://kernel.googlesource.com/pub/scm/linux/kernel/git/netdev/net/+/761c6d7ec820f123b931e7b8ef7ec7c8564e450f/drivers/misc/eeprom/ee1004.c)
+uses a dedicated read of the page-select address: ACK/page0 versus address-NACK/
+page1, with other errors propagated. This is protocol-specific behavior, not
+permission to reinterpret generic EEPROM/controller NACK. Current adapter still
+poisons on all NACK. Next isolate page-query classification and restoration with
+independent route/device admission and exact error events, then model the whole
+lifecycle before hardware. No source from Linux is copied into firmware here.

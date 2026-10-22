@@ -462,3 +462,17 @@ Not a physical FIFO/timing/IRQ test; lower-page/no-GIC ownership are model
 preconditions. No hardware access, source/BSP unchanged. Hardware remains
 NOT_ADMITTED pending page identity, controller/GIC/callback state lifecycle, CRC
 and bounded physical capture/restoration wrapper. Next offline lifecycle controls.
+
+### Peripheral/driver snapshot restoration model PASS —2026-10-22
+
+New spd_xiicps_state saves full driver/callback and CR/timeout/peripheral mask
+only on quiet/empty/zero-status controller with external ownership/no-GIC
+assertion. Restore refuses active/poisoned/dirty state before writes; checks
+register readback, consumes snapshot/adapter, poisons mismatches. Integrated
+model restores original non-null callback/ref, tests seven refused snapshots,
+all failed/pending capture states, bad readback and double restore. ASan/UBSan
+and real-BSP AArch64 header compile PASS. Evidence:
+`evidence/spd-state-lifecycle-2026-10-22`. No HW access. GIC ownership/routing
+and SPD page remain unimplemented; no physical admission. Next dedicated EE1004
+page query classification/restore with exact protocol event semantics. Current
+adapter retains generic NACK poisoning; Linux primary source referenced in README.

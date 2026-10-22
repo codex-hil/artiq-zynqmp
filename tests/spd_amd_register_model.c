@@ -6,6 +6,9 @@
 #include "xplatform_info.h"
 static u32 regs[64];static unsigned scenario,transactions,reads,tx_bytes,read_number;
 static int receiving;
+static unsigned writes;
+static void original_callback(void *ref,u32 events) {(void)ref;(void)events;assert(!"Old callback during diagnostic");}
+static int corrupt_restore;
 static u32 mmio_read(UINTPTR base,u32 off) {
  assert(base==0xff030000U && off/4<64);
  if(off==XIICPS_SR_OFFSET) {
@@ -18,6 +21,8 @@ static u32 mmio_read(UINTPTR base,u32 off) {
 }
 static void mmio_write(UINTPTR base,u32 off,u32 value) {
  assert(base==0xff030000U && off/4<64);
+ writes++;
+ if(corrupt_restore && off==XIICPS_TIME_OUT_OFFSET)return;
  if(off==XIICPS_ISR_OFFSET) {regs[off/4]&=~value;return;}
  if(off==XIICPS_IER_OFFSET) {regs[XIICPS_IMR_OFFSET/4]&=~value;return;}
  if(off==XIICPS_IDR_OFFSET) {regs[XIICPS_IMR_OFFSET/4]|=value;return;}
@@ -41,7 +46,7 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
 }
 static u32 data_read(UINTPTR address) {
  assert(address==0xff030000U+XIICPS_DATA_OFFSET && reads<128);
- unsigned value=reads++;return value+(scenario==7 && read_number==2);
+ unsigned value=reads++;regs[XIICPS_TRANS_SIZE_OFFSET/4]=128-reads;return value+(scenario==7 && read_number==2);
 }
 static void data_write(UINTPTR address,u32 value) {
  assert(address==0xff030000U+XIICPS_DATA_OFFSET && value==0);tx_bytes++;
@@ -58,13 +63,16 @@ static void data_write(UINTPTR address,u32 value) {
 u32 XGetPlatform_Info(void) {return XPLAT_ZYNQ_ULTRA_MP;}
 void Xil_Assert(const char8 *file,s32 line) {(void)file;(void)line;assert(!"Vendor assertion");}
 u32 Xil_AssertStatus;
-#include "spd_xiicps.h"
+#include "spd_xiicps_state.h"
 #include "vendor_functions.inc"
 int main(void) {
  for(scenario=0;scenario<8;scenario++) {
-  XIicPs dev={0};struct spd_xiicps a;struct spd_transport t;struct spd_reader r;
+  XIicPs dev={0};struct spd_xiicps a;struct spd_transport t;struct spd_reader r;struct spd_amd_snapshot saved;
   memset(regs,0,sizeof(regs));transactions=reads=tx_bytes=read_number=0;receiving=0;
   dev.Config.BaseAddress=0xff030000U;dev.IsReady=XIL_COMPONENT_IS_READY;
+  dev.StatusHandler=original_callback;dev.CallBackRef=&dev;
+  regs[XIICPS_TIME_OUT_OFFSET/4]=17;
+  assert(spd_amd_snapshot(&saved,&dev,1)==0);
   assert(spd_amd_bind(&a,&dev,1,&t)==0);
   spd_reader_init(&r,t,0,1);
   for(unsigned i=1;i<40000 && !r.stopped;i++)spd_reader_tick(&r,i*10U);
@@ -78,6 +86,38 @@ int main(void) {
    uint8_t zero=0;
    assert(t.begin(t.ctx,SPD_LOWER_PAGE,0x36,&zero,1)==-1 && transactions==3);
   }
+  if(scenario==0 || scenario==7) {
+   regs[XIICPS_TIME_OUT_OFFSET/4]=99;
+   assert(spd_amd_restore(&saved,&a,1)==0);
+   assert(regs[XIICPS_TIME_OUT_OFFSET/4]==17 && dev.StatusHandler==original_callback && dev.CallBackRef==&dev);
+   assert(a.dev==NULL && !saved.valid);
+   assert(spd_amd_restore(&saved,&a,1)==-1);
+  } else {
+   unsigned before=writes;
+   assert(spd_amd_restore(&saved,&a,1)==-1 && writes==before);
+  }
  }
- puts("ADAPTER_READER_ACTUAL_AMD_MMIO_MODEL_8_SCENARIOS_PASS");
+ /* Snapshot refusal is read-only; restoration verifies register readback. */
+ {
+  XIicPs dev={0};struct spd_xiicps a;struct spd_transport t;struct spd_amd_snapshot saved;
+  memset(regs,0,sizeof(regs));receiving=0;scenario=0;
+  dev.Config.BaseAddress=0xff030000U;dev.IsReady=XIL_COMPONENT_IS_READY;
+  for(unsigned fault=0;fault<7;fault++) {
+   memset(regs,0,sizeof(regs));dev.SendByteCount=dev.RecvByteCount=0;
+   if(fault==4)dev.SendByteCount=1;
+   if(fault==5)dev.RecvByteCount=1;
+   if(fault==6)regs[XIICPS_CR_OFFSET/4]=XIICPS_CR_CLR_FIFO_MASK;
+   if(fault==1)regs[XIICPS_ISR_OFFSET/4]=XIICPS_IXR_COMP_MASK;
+   if(fault==2)regs[XIICPS_TRANS_SIZE_OFFSET/4]=1;
+   if(fault==3)regs[XIICPS_CR_OFFSET/4]=XIICPS_CR_HOLD_MASK;
+   unsigned before=writes;
+   assert(spd_amd_snapshot(&saved,&dev,fault!=0)==-1 && writes==before);
+  }
+  memset(regs,0,sizeof(regs));regs[XIICPS_TIME_OUT_OFFSET/4]=17;
+  assert(spd_amd_snapshot(&saved,&dev,1)==0);
+  assert(spd_amd_bind(&a,&dev,1,&t)==0);
+  regs[XIICPS_TIME_OUT_OFFSET/4]=99;corrupt_restore=1;
+  assert(spd_amd_restore(&saved,&a,1)==-1 && a.poisoned && !saved.valid);
+ }
+ puts("ADAPTER_READER_AMD_MODEL_8_SCENARIOS_AND_STATE_LIFECYCLE_PASS");
 }

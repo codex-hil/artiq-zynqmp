@@ -1,0 +1,31 @@
+{
+  "status": "PERIPHERAL_AND_DRIVER_STATE_MODEL_AND_AARCH64_COMPILE_PASS",
+  "hardware_executed": false,
+  "compile_object_sha256": "8d4a329b794ba4d709a487954c9161075c398821549587a8ea596299599b9d55",
+  "implemented": [
+    "read-only snapshot admission: ownership/no-GIC assertion, idle/empty FIFO/zero transfer/zero ISR/no HOLD/no reset-in-progress/zero driver counts",
+    "saved full XIicPs software structure including callback/ref",
+    "saved CR/TIMEOUT/peripheral IMR",
+    "restore only non-active/non-poisoned quiet adapter, readback all saved hardware values",
+    "consume snapshot/adapter after restore; poison on readback failure"
+  ],
+  "controls": [
+    "8 existing integrated scenarios",
+    "successful/mismatched capture restores original callback/ref/registers",
+    "all terminal/pending failures refuse restore before writes",
+    "7 dirty/unowned snapshot refusals before writes",
+    "wrong timeout readback rejects and poisons",
+    "second restore rejected"
+  ],
+  "not_implemented": [
+    "actual GIC routing/ownership proof and restore",
+    "SPD page discovery/restore",
+    "physical linked executable/CRC"
+  ],
+  "page_protocol_review": {
+    "source": "https://kernel.googlesource.com/pub/scm/linux/kernel/git/netdev/net/+/761c6d7ec820f123b931e7b8ef7ec7c8564e450f/drivers/misc/eeprom/ee1004.c",
+    "finding": "EE1004 current-page query reads page-select address 0x36: ACK denotes page0, address NACK denotes page1; unrelated errors fail. Page writes may require subsequent page confirmation.",
+    "scope": "Protocol evidence only, no identity proof for current module, no adapter NACK exception implemented. Never classify generic NACK as page1."
+  },
+  "hardware_admitted": false
+}
