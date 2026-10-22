@@ -402,3 +402,19 @@ mismatch, elapsed/poll deadlines and cleanup failure/busy refusal. Evidence:
 `evidence/spd-reader-orchestration-2026-10-22`. README includes limitations and
 reproducer. No HW/I2C access, no physical SPD/CRC/DDR qualification. Next offline
 audit/build/test actual AMD adapter and page-state establishment before deployment.
+
+### AMD nonblocking adapter candidate compiled —2026-10-22
+
+`spd_xiicps.h` now binds orchestration to AMD MasterSend/MasterRecv plus manually
+serviced master ISR. Candidate requires ZynqMP/initialized I2C1/non-repeated-start/
+seven-bit/idle and exclusive no-GIC caller preconditions. Completion requires
+expected event, zero residual bytes and idle bus; errors poison and prohibit
+cleanup/reuse. Compile against real BSP AArch64 headers PASS (-Werror), mocked
+API controls PASS with ASan/UBSan. Not linked or run on hardware; vendor ISR
+not executed by these controls. Evidence: `evidence/spd-amd-adapter-2026-10-22`.
+
+Remaining before hardware: actual AMD ISR/call-graph/register-model checks, page
+baseline, controller/IRQ/callback snapshot/restore and bounded executable wrapper.
+Adapter bind replaces callback; ownership integer is a caller precondition, not
+a hardware GIC proof. Do not rebind after fault before outer restoration. No HW
+access in this checkpoint. README contains reproducer and exact limitations.

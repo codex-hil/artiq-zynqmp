@@ -1,18 +1,18 @@
 # Bounded base-SPD reader preparation
 
-Status: **offline orchestration controls PASS; AMD adapter, build and hardware NOT_RUN**.
+Status: **offline orchestration controls PASS; AMD adapter candidate compiles; vendor-ISR integration and hardware NOT_RUN**.
 No deployment command is provided yet. This does not qualify DDR.
 
 `spd_reader.h` is transaction orchestration, not an I2C controller driver.
-The future adapter must reuse maintained AMD XIicPs, with nonblocking begin/poll
-callbacks. The current vendor `MasterRecvPolled` calls `MasterPolledRead`, whose
+The candidate `spd_xiicps.h` reuses AMD XIicPs nonblocking begin/master ISR
+callbacks; integration admission is still pending. The current vendor `MasterRecvPolled` calls `MasterPolledRead`, whose
 receive wait has no local deadline. A caller-side deadline cannot interrupt a
 blocked vendor call. Do not bind that API to these callbacks.
 
 The caller must prove exclusive I2C1 ownership and a **known lower-page baseline**
 before admission. The existing FSBL reader leaves the upper page selected; simply
 calling this reader after FSBL is therefore not admitted. Page identity/state
-establishment and the exact AMD adapter remain open. No unknown page is silently
+establishment and adapter integration remain open. No unknown page is silently
 assumed or called restored.
 
 The fixed sequence is lower-page select (`0x36`, one zero byte), SPD offset zero
@@ -43,3 +43,34 @@ limits and busy-bus cleanup refusal. They do not test an AMD driver or timing on
 silicon. Next audit nonblocking AMD entry/handler paths, bind the callbacks,
 compile against the existing BSP and test adapter failure handling before any
 bounded physical acquisition with mandatory normal ARTIQ restoration.
+
+## AMD adapter candidate
+
+`spd_xiicps.h` uses `XIicPs_MasterSend/MasterRecv` and manually services
+`XIicPs_MasterInterruptHandler`; no concurrent GIC dispatch is permitted. Bind
+requires a caller assertion of exclusive/no-GIC ownership, initialized I2C1
+0xff030000, platformZynqMP, seven-bit/non-repeated-start mode and idle bus. This
+assertion is a precondition, not independently verified IRQ routing. Callbacks
+are replaced; controller/GIC/callback snapshot/restoration is not implemented.
+No repeated bind/reuse after error/timeout before outer restoration.
+
+Unexpected events (including completion+NACK), residual byte counts or an error
+poison the adapter. While pending, active state prevents cleanup even if hardware
+bus busy clears. Completion requires correct event, zero residual count and idle
+bus, then disables peripheral IRQs. Outer timeout/recovery remains necessary.
+Source review distinguishes the legacy Zynq FIFO-wait branch from ZynqMP. This
+is not yet a complete call-graph/timing proof of the actual AMD ISR.
+
+Host adapter controls (mocked AMD APIs; vendor ISR not executed):
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined \
+  -Itests/spd_stubs tests/test_spd_xiicps.c -o /tmp/artiq-test-spd-adapter
+/tmp/artiq-test-spd-adapter
+```
+
+A translation unit including the adapter and calling `spd_amd_bind` compiled
+with ARM GNU13.2 `aarch64-none-elf-gcc`, real qualified BSP includes, C11 and
+`-Wall -Wextra -Werror`. This is compilation only, not a linked executable.
+Next test the actual vendor ISR/call graph against a register model and complete
+page/controller/IRQ/callback restoration before creating a physical wrapper.
