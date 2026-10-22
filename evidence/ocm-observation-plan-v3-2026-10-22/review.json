@@ -1,0 +1,24 @@
+{
+  "status": "OFFLINE_RESET_FLOW_CONTROLS_PASS",
+  "hardware_executed": false,
+  "hypothesis": "Processor-only reset retains an unsuitable debug/execution context; system reset may resolve it. Not established causally.",
+  "reference": "scripts/reset_genesys_ps.tcl",
+  "reference_sha256": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+  "changes": [
+    "alternate JTAG BOOT_MODE_USER volatile register before PS system reset",
+    "wait 3000ms and repeat checked A53 parking before peripheral init"
+  ],
+  "unchanged": [
+    "ELF",
+    "PS init artifact",
+    "no DDR initialization",
+    "no cache-sync bypass",
+    "no force-memory access",
+    "mandatory baseline restoration"
+  ],
+  "tests": {
+    "test_ocm_core_admission": 2,
+    "test_ocm_reset_flow": 2,
+    "test_ocm_observation": 2
+  }
+}

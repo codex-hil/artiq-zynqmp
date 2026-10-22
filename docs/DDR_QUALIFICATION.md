@@ -221,3 +221,21 @@ alternate-JTAG flow and explicit AArch64/exception-level initialization. Existin
 `reset_genesys_ps.tcl` documents SD BootROM races and the need for alternate JTAG
 before system reset. Do not assume that explains this failure without evidence.
 No automatic force-memory/cache-sync bypass or destructive DDR test.
+
+### System-reset OCM variant prepared offline —2026-10-22
+
+Review found normal qualified loading performs a PS system reset in alternate
+JTAG mode before PMU/FSBL, whereas failed OCM loading used only processor reset
+from an active runtime. The OCM loader now reuses the exact volatile
+BOOT_MODE_USER0xff5e0200=0x10e/system-reset/3000ms sequence from
+`reset_genesys_ps.tcl`, then repeats checked core parking before generated
+peripheral setup. It still skips DDR initialization and does not load FSBL or
+PMU firmware. ELF and PS-init artifacts unchanged. No cache-sync bypass, forced
+memory access or new SCTLR writes. This is a hypothesis-driven diagnostic
+change, not proof of the HCR failure cause.
+
+Two full Tcl reset-flow model tests PASS: correct ordering and no peripheral
+init/download after reset failure. Two core-state and two OCM admission tests
+PASS. Revised pins/review: `evidence/ocm-observation-plan-v3-2026-10-22`. No HW
+access for this revision. Next one exclusive bounded OCM observation, followed
+by full normal restoration/debug/Ethernet regardless of candidate outcome.

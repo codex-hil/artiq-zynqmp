@@ -42,6 +42,18 @@ for {set i 0} {$i < 4} {incr i} {
  select_genesys_target "Cortex-A53 #$i"
  admit_core 1
 }
+# Reuse the qualified normal-runtime reset sequence BEFORE peripheral setup.
+# Alternate JTAG prevents SD BootROM from restarting a competing runtime.
+select_genesys_target PSU
+mwr 0xFF5E0200 0x10E
+select_genesys_target "Cortex-A53 #0"
+rst -system
+after 3000
+puts "OCM_PS_SYSTEM_RESET_DONE"
+for {set i 0} {$i < 4} {incr i} {
+ select_genesys_target "Cortex-A53 #$i"
+ admit_core 1
+}
 select_genesys_target PSU
 source $psu_init
 # Reuse generated AMD MIO/clock/peripheral setup, explicitly exclude DDR.
