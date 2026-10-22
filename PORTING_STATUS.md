@@ -1,6 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## OCM observation attempt / baseline restored —2026-10-22
+
+OCM loader FAIL before download: one A53 core held in power-on-reset rejected
+strict XSDB stop. MMU/cache observation and DDR test NOT_RUN. Mandatory normal
+restoration, physical RTIO/debug and Ethernet PASS; runtime192.168.2.3. Exclusive
+Genesys lease71.827s. Evidence: `evidence/ocm-observation-hardware-2026-10-22`.
+Next explicit reset-state admission in loader, no blanket stop-error waiver.
+
 ## Current checkpoint — 2026-10-21
 
 Local kernel upload/run, scalar RPC, TTL loopback, CoreDMA, analyzer and MonInj

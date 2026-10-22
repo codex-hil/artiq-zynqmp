@@ -171,3 +171,17 @@ controls and actual artifact preflight PASS. Hardware execution is NOT_RUN.
 Next use one bounded `--execute` window with the verified server/UART/interface,
 preserve the measured EL1/cache results and validate restoration. MMU/cache bits
 remain observations, never an automatic authorization to write DDR.
+
+### First bounded OCM attempt —2026-10-22
+
+Hardware attempt FAIL before OCM download: XSDB `stop` returned
+`The core is held in power-on-reset` while visiting the A53 cores. No OCM
+register observation or DDR test occurred. Existing lifecycle restoration PASS:
+normal runtime192.168.2.3, physical RTIO/debug and Ethernet checks PASS. Shared
+Genesys lease covered the complete71.827s window. Evidence:
+`evidence/ocm-observation-hardware-2026-10-22`.
+
+Next inspect target state semantics and explicitly distinguish cores held in
+power-on-reset from running/stopped cores. Do not broadly ignore stop errors.
+Re-pin any changed loader and test the state admission before another bounded
+OCM attempt. No Kasli/Si/card/flash/OTP writes in this window.
