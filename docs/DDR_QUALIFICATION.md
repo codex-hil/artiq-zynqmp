@@ -418,3 +418,20 @@ baseline, controller/IRQ/callback snapshot/restore and bounded executable wrappe
 Adapter bind replaces callback; ownership integer is a caller precondition, not
 a hardware GIC proof. Do not rebind after fault before outer restoration. No HW
 access in this checkpoint. README contains reproducer and exact limitations.
+
+### Actual AMD receive ISR model: fault guard required —2026-10-22
+
+Host model executes four unmodified extracted AMD functions through the receive
+ISR path with actual BSP macros and substituted MMIO. Six controls executed
+with ASan/UBSan: no event,128-byte success, partial completion, NACK, hardware
+timeout, stuck RXDV. In the last scenario, `MasterRead` attempts a129th read
+after a128-byte buffer is exhausted. Model intercepts it before invalid store.
+This is injected model evidence, not a physical Genesys defect.
+
+Current adapter remains NOT_ADMITTED: a callback deadline cannot preempt this
+ISR loop. Preserve original-negative case. Next minimal patch in isolated copied
+AMD source: bound receive count and fail on residual RXDV; test original and
+patched behavior. Shared BSP/original sources remain unchanged. No hardware
+access or adapter deployment. Evidence:
+`evidence/spd-vendor-isr-model-2026-10-22/results.json`. Full driver/send-path
+integration, page/IRQ/callback restoration and CRC still open.

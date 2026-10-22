@@ -74,3 +74,34 @@ with ARM GNU13.2 `aarch64-none-elf-gcc`, real qualified BSP includes, C11 and
 `-Wall -Wextra -Werror`. This is compilation only, not a linked executable.
 Next test the actual vendor ISR/call graph against a register model and complete
 page/controller/IRQ/callback restoration before creating a physical wrapper.
+
+## Actual AMD receive-path model
+
+The host model now executes unmodified extracted `MasterInterruptHandler`,
+`MasterIntrRead`, `MasterIntrSend` and `MasterRead` with the actual BSP macros,
+replacing MMIO with a register model. It is not the complete vendor build or
+full adapter integration. Send continuation is excluded; the receive path and
+ZynqMP branch are exercised. Six scenarios: no event, full/partial receive,
+NACK, hardware timeout and stuck RX-data-valid.
+
+The stuck-RXDV scenario detects an attempted129th read into a128-byte receive
+buffer. A host guard intercepts the attempt before the out-of-buffer store;
+this is an injected model fault, not an observed physical board failure.
+AMD `MasterRead` loops on RX-data-valid without checking remaining receive
+count. Consequently the current adapter is **NOT admitted to hardware** even
+though its API-only controls and AArch64 compilation passed. Preserve the
+negative result. Next add a minimal auditable change to a copied vendor
+source that bounds receive count and rejects residual RX data, then test both
+original-negative and patched-positive paths. Do not edit the shared BSP or
+claim a caller deadline interrupts an unbounded ISR.
+
+```sh
+python3 scripts/test_spd_vendor_receive.py \
+  --bsp /srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp \
+  --output /tmp/FRESH-spd-vendor-model.json
+```
+
+Source/header hashes and scope are retained in
+`evidence/spd-vendor-isr-model-2026-10-22/results.json`. The reported model
+controls PASS includes detection of the known negative scenario; it does not
+mean the vendor code passed stuck-peripheral robustness.
