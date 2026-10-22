@@ -1,26 +1,29 @@
 AXAU15 candidate target — offline handoff, 2026-10-21
 =================================================
 
-Status: HDL_GENERATED, SIMULATION_PASS, VIVADO_DEVICE_SUPPORT_MISSING.
+Status: HDL_GENERATED, SIMULATION_PASS, VIVADO_SYNTHESIS_PASS.
 No ALINX, Trenz, Genesys, Kasli or SDWire hardware operations were performed.
 This is an incomplete port, not a programming-ready image.
 
-Tool/device gate
-----------------
+Tool/device gate — resolved 2026-10-22
+------------------------------------
 
-Dell Vivado 2025.2 returns an empty ``get_parts -quiet *xcau15p*`` result.
-See ``../evidence/axau15/part-enumeration.txt``. Artix UltraScale+ support
-is absent. The exact-part synthesis/license probe was withdrawn from the
-shared build-lock queue after this result; no other job was interrupted.
-License availability is UNKNOWN, not a confirmed license failure.
+Artix UltraScale+ support was added to Dell Vivado 2025.2 using the official
+installer's Add operation and the SMB archive. Exact part
+``xcau15p-ffvb676-2-i`` matches XCAU15P-2FFVB676I: FFVB676, speed -2,
+industrial temperature grade, 12 GTHE4 and IDCODE0x04ac2093. The Synthesis/device
+license checkout and exact-part probe passed with no warnings or errors.
+The SPI-only and JESD candidates also passed synthesis. The final shared-TX
+clock candidate removes all six critical CDC groups seen with separate lane
+TX clocks (114 endpoints). This is not full CDC sign-off: the USER2 TCK/mailbox
+constraints are still absent. These are not routed implementation results or
+physical validation. See ``../evidence/axau15/vivado-20261022/status.json``.
 
-The expected spelling ``xcau15p-ffvb676-2-i`` remains a candidate until
-``get_parts`` and package/speed/temperature properties validate it.
-``check-part.tcl`` provides the exact-part enumeration/synthesis probe after
-installation. Existing payload directories contain dangling links to an absent
-installer cache. No usable local/Dell family package was found. Restore access
-to the official installer source before adding Artix UltraScale+ on Dell;
-do not modify an installation while other builds are using it.
+The earlier empty enumeration in ``../evidence/axau15/part-enumeration.txt`` is
+historical. Installation evidence is in
+``/home/codex-hil/artifacts/axau15-vivado-install-20261021``; the installation
+itself is on Dell at ``/srv/nvme-fast-2/toolchains/amd/Xilinx``.
+The Optiplex installation was not modified.
 
 Pin and clock review
 --------------------
@@ -29,7 +32,8 @@ The local 44-page manual SHA-256 matches the recorded pinmap. Pages 29–34
 confirm the supplied FMC GPIO, eight GT lanes, bank225 DP0–3, bank226 DP4–7,
 GBTCLK0 V7/V6 and GBTCLK1 P7/P6. The 200 MHz input is T24/U24. GPIO is 1.8 V.
 This checks the document; physical module/carrier revisions remain unconfirmed.
-Vivado package-pin/function cross-check is blocked by missing device data.
+Vivado package-pin/function cross-check passed for every target pin, including
+MGTREFCLK0 V7/V6 and the four TX channels of bank225.
 
 A locally available AD917x schematic at
 ``/home/codex-hil/trenz-bringup/reference/dac.pdf`` has drawing revision D
@@ -59,7 +63,9 @@ Trenz's default stays 0x2000, AXAU15 selects zero.
 
 The JESD candidate uses IBUFDS_GTE4 and one quad PLL: reference245.76MHz,
 QPLL1 N100/M2/D2, VCO12.288GHz, lane6.144Gb/s and user clock153.6MHz.
-This is a mathematical/dependency calculation, not a routed PLL qualification.
+The synthesized Vivado clock report derives these clocks. Routing and
+physical PLL qualification remain pending. All four lanes share lane0 TX user
+clock; the original independent-clock candidate is superseded.
 Four TX ports map to FMC DP0–3 / DAC physical lanes7–4. Two links reuse the
 verified HD/checksum fix and wrapper converter-input wiring.
 
@@ -76,8 +82,7 @@ through the portable SPI profile API. HMC readback/identity over FMC is not
 assumed: the reference path supports HMC writes only.
 
 ``build.tcl`` deliberately stops at synthesis/reports/checkpoint. It has no
-bitstream or hardware-manager command. Full implementation must follow exact
-part/pin validation and completion of CDC/IO timing constraints; do not bypass
+bitstream or hardware-manager command. Full implementation must follow completion of CDC/IO timing constraints; do not bypass
 DRC or add blanket false paths just to produce a bitstream.
 
 Portable profile

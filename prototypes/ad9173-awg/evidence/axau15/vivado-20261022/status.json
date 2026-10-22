@@ -1,0 +1,142 @@
+{
+  "hardware": false,
+  "part": "xcau15p-ffvb676-2-i",
+  "installation_and_license": "PASS",
+  "variants": {
+    "spi": {
+      "synthesis": "PASS",
+      "critical_cdc_groups": 0,
+      "artifact_sha256": {
+        "axau15-synth.dcp": "5724a1a86e320cfd086e7f1e994bc9ee7062429c6542df7f84af9f20fb33608a",
+        "build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "cdc.rpt": "018cfa54a9248769e5ada3ceda6dbcda9c1fd801f1d01223113f2d241238b993",
+        "clocks.rpt": "0ac01de75199031466163477c24224656e004451a14c46157b8d6afd1b53b350",
+        "console.log": "d333d143150ab505d227fe9d0420e3cbf62aa297ec44a2d6fb97946ee241a42c",
+        "drc.rpt": "4ba8a098cfa295a652bf77ec2bbf33df12257618053004851b5075e5103fd3c2",
+        "io.rpt": "f51cc33dfae0c0002a4cd9d90ffe024c950a44870aa62a400d9013d3d900029d",
+        "manifest.json": "d37e88c282e31ff2658055c91780ce28bc9d40f20d8256ea01c9abe1cc89bc4e",
+        "package-pins.txt": "52ed7e8a4c516e76a9c3c9ba38f661898eb7ffdbebf7da4a9cbc06dbe1ef4770",
+        "utilization.rpt": "37b7e98174087ef3e2985252815721e52aa220b821639300d7798f83001c6387",
+        "vivado.log": "409ae8964d6d2d98946fae96943ff9cb8998a9e6fadf0210dbc966130e9a5996"
+      },
+      "inputs": {
+        "axau15_awg.v": "6ae25e76755f2d7732ae6b2511e7d5612690a9c5b477e4d1146fad5cf3ed9a14",
+        "build.tcl": "0cd127283d6e4a122454d784823590e752741d56c6c954162042b59db86de185",
+        "constraints.tcl": "72cf9ffa937f4c0b2758dd51e588f2959809325e2d1c03241340aa37aba74e19",
+        "spi-console.v": "781de849a0ec3a3995f2eb73bdb99c974b404b335c90a26ec274635d4ea183f4",
+        "target.json": "0205ba014ed819ed2ea7baf452b6a7e21e8238d9c12bf8932cd0289e35b9f810"
+      }
+    },
+    "jesd": {
+      "synthesis": "PASS",
+      "critical_cdc_groups": 6,
+      "artifact_sha256": {
+        "axau15-synth.dcp": "9f617ecf427516aa80c19d3b3836886bddad68007ef0e0a73757d29506dd32dd",
+        "build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "cdc.rpt": "d150c8b1e938003f5cb51dbeb96a94054a2e0676421fba8116cac0ea392ea5b0",
+        "clocks.rpt": "9690c7d7c6642cd81b4f7154461204c0552b568994c3827d223bda7e88cadf9e",
+        "console.log": "17844539f77b9ece5626a40e4eba7f93ce243bdb40353060a6b3dab5f1e5b618",
+        "drc.rpt": "c9a881e457f589efbd2ba39adb4bb0a144967aeece3daf1cb704c1e6dcc5bb57",
+        "io.rpt": "9b686af4cd0c870c045a77bd27c0270c7d7027f3f2850d9f1994c776ce4856be",
+        "manifest.json": "c0af126ee0bae0b872249ce64b9eab9b0e3831aebc61793adb0037b258968944",
+        "package-pins.txt": "52ed7e8a4c516e76a9c3c9ba38f661898eb7ffdbebf7da4a9cbc06dbe1ef4770",
+        "utilization.rpt": "551b593864ac7d7fde837cfaca27626226a7171b126a21e2e447a0a9e85f0c60",
+        "vivado.log": "58a8ab25b0cb84450aaa24ba209a8e167c1e279567977e3909cf50631be9c48e"
+      },
+      "inputs": {
+        "axau15_awg.v": "ad24347653c4b8d72104469fb63db95f2a393e458bf26ed2969f2869a922d58b",
+        "build.tcl": "0cd127283d6e4a122454d784823590e752741d56c6c954162042b59db86de185",
+        "constraints.tcl": "72cf9ffa937f4c0b2758dd51e588f2959809325e2d1c03241340aa37aba74e19",
+        "ctrl_lut.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "ctrl_lut_1.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "ctrl_lut_2.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "ctrl_lut_3.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "data_lut.init": "ae3d211f483765c3842194a52e761a53f1b71872ae227141bc58c6d432e7c307",
+        "data_lut_1.init": "71c86d6ab464c922305159d8e3d079f78d9a29415237fa1621bc4d13b660eb5c",
+        "data_lut_2.init": "c623bfbeda06a71c5582f328a063a91a232d0e3d1faea7ef2e1309273da15781",
+        "data_lut_3.init": "fe1fe03083cebf1effef120501a8e9bcacfec97593c9d81e5f3f1ce4b8d5e900",
+        "mem_6b5b.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_1.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_10.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_11.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_12.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_13.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_14.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_15.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_2.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_3.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_4.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_5.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_6.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_7.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_8.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_9.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "spi-console.v": "781de849a0ec3a3995f2eb73bdb99c974b404b335c90a26ec274635d4ea183f4",
+        "target.json": "c69fdbf3b59e2369324a4af1d49ed3c17563c17b4edf5275e9a1b78506197983"
+      }
+    },
+    "jesd-shared-tx": {
+      "synthesis": "PASS",
+      "critical_cdc_groups": 0,
+      "artifact_sha256": {
+        "axau15-synth.dcp": "cebabdfda36108265b072f90c0b7c7a8af15a11712aab7f840c898d816fb7f65",
+        "build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "cdc.rpt": "0732799dd0e629464dfa1435e747b34a48a6289303daf9fb25552c8e74a826e9",
+        "clocks.rpt": "c122701b12a648126d3e423ddb276f35ee0318363b86a564f47292ae987336cd",
+        "console.log": "63caf759981e48dc4a7017654db361a58964da953b3d4d2588f9f1aca01f0de1",
+        "drc.rpt": "fea611af233f57479a27875a262b34840f86489ff1ea2ef1826e3fbcf2077760",
+        "io.rpt": "7970ecb62058fb6b6e2f43debea01b9e4c5810ad8abb99cd899d21d5ec9c8760",
+        "manifest.json": "995016c1c8f3fe5fbeaef6877ffae31bf74d796e68c4936f014c39935bb9a5c8",
+        "package-pins.txt": "52ed7e8a4c516e76a9c3c9ba38f661898eb7ffdbebf7da4a9cbc06dbe1ef4770",
+        "utilization.rpt": "0077f63fbfdb5d98bb05998fbcf0c1d5283a98aafd6e08a8ffee6e240be57dcc",
+        "vivado.log": "8c5d999296b1c2623edbcc9d60e423202c2fcce5e492d179800cdf909fac0491"
+      },
+      "inputs": {
+        "axau15_awg.v": "c1b3066014b964f5b919fb99bb3414bd9db2622603ae6dc318b986425efd01e7",
+        "build.tcl": "0cd127283d6e4a122454d784823590e752741d56c6c954162042b59db86de185",
+        "constraints.tcl": "72cf9ffa937f4c0b2758dd51e588f2959809325e2d1c03241340aa37aba74e19",
+        "ctrl_lut.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "ctrl_lut_1.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "ctrl_lut_2.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "ctrl_lut_3.init": "e0b9ca0692fdf9d16fd14a68c1bf6e36974a03854757b316f7a5949ce1a4209b",
+        "data_lut.init": "ae3d211f483765c3842194a52e761a53f1b71872ae227141bc58c6d432e7c307",
+        "data_lut_1.init": "71c86d6ab464c922305159d8e3d079f78d9a29415237fa1621bc4d13b660eb5c",
+        "data_lut_2.init": "c623bfbeda06a71c5582f328a063a91a232d0e3d1faea7ef2e1309273da15781",
+        "data_lut_3.init": "fe1fe03083cebf1effef120501a8e9bcacfec97593c9d81e5f3f1ce4b8d5e900",
+        "mem_6b5b.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_1.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_10.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_11.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_12.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_13.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_14.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_15.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_2.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_3.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_4.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_5.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_6.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_7.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_8.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "mem_6b5b_9.init": "79a132eb3410c1758df31c119f756be17619f2c8812c0057c21518498a0d9ef8",
+        "spi-console.v": "781de849a0ec3a3995f2eb73bdb99c974b404b335c90a26ec274635d4ea183f4",
+        "target.json": "c69fdbf3b59e2369324a4af1d49ed3c17563c17b4edf5275e9a1b78506197983"
+      }
+    }
+  },
+  "current_jesd": "jesd-shared-tx",
+  "cdc_limit": "Only clocked domains analyzed; USER2 TCK and mailbox timing not yet constrained. This is not full CDC sign-off.",
+  "implementation": "NOT_RUN",
+  "bitstream": "NOT_GENERATED",
+  "source_sha256": {
+    "axau15/generate.py": "48e7d05b4b43dcf628f387b798c3024ce0dfe7debe5bb7788a3996d048500d01",
+    "axau15/test_target.py": "82b61e048b398b99aa11f893fc309a9490365d02cf884df7b5d7a5aa1d7a3753",
+    "axau15/constraints.tcl": "72cf9ffa937f4c0b2758dd51e588f2959809325e2d1c03241340aa37aba74e19",
+    "axau15/build.tcl": "0cd127283d6e4a122454d784823590e752741d56c6c954162042b59db86de185",
+    "gateware/spi-console.v": "781de849a0ec3a3995f2eb73bdb99c974b404b335c90a26ec274635d4ea183f4"
+  },
+  "retrieval": {
+    "status": "PASS_SHA256",
+    "files": 33
+  }
+}

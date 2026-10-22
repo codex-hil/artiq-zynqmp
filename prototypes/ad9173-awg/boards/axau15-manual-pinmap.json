@@ -210,5 +210,13 @@
     "physical_validation": "TRENZ_ONLY_NOT_AXAU15"
   },
   "fpga_ordering_code": "XCAU15P-2FFVB676I",
-  "vivado_part": "DISCOVER_WITH_GET_PARTS"
+  "vivado_part": "xcau15p-ffvb676-2-i",
+  "vivado_verification": {
+    "date": "2026-10-22",
+    "host": "Dell",
+    "version": "2025.2",
+    "part_and_synthesis_license": "PASS",
+    "package_pin_function_audit": "PASS_FOR_TARGET_PINS",
+    "physical_board": "NOT_RUN"
+  }
 }

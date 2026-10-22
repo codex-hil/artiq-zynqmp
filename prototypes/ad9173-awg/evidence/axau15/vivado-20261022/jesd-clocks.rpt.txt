@@ -1,0 +1,124 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Thu Oct 22 19:15:15 2026
+| Host              : d650095b32ad running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_clocks -file clocks.rpt
+| Design            : axau15_awg
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Synthesized
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Clock Report
+
+
+Attributes
+  P: Propagated
+  G: Generated
+  A: Auto-derived
+  R: Renamed
+  V: Virtual
+  I: Inverted
+  S: Pin phase-shifted with Latency mode
+
+Clock                      Period(ns)  Waveform(ns)   Attributes  Sources
+mgt_reference              4.069       {0.000 2.034}  P           {ref_p}
+system_200                 5.000       {0.000 2.500}  P           {sys_p}
+axau15_gth40_rxoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL/RXOUTCLK}
+axau15_gth40_txoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL/TXOUTCLK}
+axau15_gth41_rxoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL_1/RXOUTCLK}
+axau15_gth41_txoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL_1/TXOUTCLK}
+axau15_gth42_rxoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL_2/RXOUTCLK}
+axau15_gth42_txoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL_2/TXOUTCLK}
+axau15_gth43_rxoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL_3/RXOUTCLK}
+axau15_gth43_txoutclk      6.510       {0.000 3.255}  P,G,A       {GTHE4_CHANNEL_3/TXOUTCLK}
+axau15_gth4quadpll_clk     0.163       {0.000 0.081}  P,G,A       {GTHE4_COMMON/QPLL1OUTCLK}
+axau15_gth4quadpll_refclk  4.069       {0.000 2.034}  P,G,A       {GTHE4_COMMON/QPLL1OUTREFCLK}
+sys_clk                    10.000      {0.000 5.000}  P,G,A       {BUFGCE_DIV/O}
+
+
+====================================================
+Generated Clocks
+====================================================
+
+Generated Clock     : axau15_gth40_rxoutclk
+Master Source       : GTHE4_CHANNEL/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL/RXOUTCLK}
+
+Generated Clock     : axau15_gth40_txoutclk
+Master Source       : GTHE4_CHANNEL/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL/TXOUTCLK}
+
+Generated Clock     : axau15_gth41_rxoutclk
+Master Source       : GTHE4_CHANNEL_1/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL_1/RXOUTCLK}
+
+Generated Clock     : axau15_gth41_txoutclk
+Master Source       : GTHE4_CHANNEL_1/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL_1/TXOUTCLK}
+
+Generated Clock     : axau15_gth42_rxoutclk
+Master Source       : GTHE4_CHANNEL_2/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL_2/RXOUTCLK}
+
+Generated Clock     : axau15_gth42_txoutclk
+Master Source       : GTHE4_CHANNEL_2/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL_2/TXOUTCLK}
+
+Generated Clock     : axau15_gth43_rxoutclk
+Master Source       : GTHE4_CHANNEL_3/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL_3/RXOUTCLK}
+
+Generated Clock     : axau15_gth43_txoutclk
+Master Source       : GTHE4_CHANNEL_3/QPLL1CLK
+Master Clock        : axau15_gth4quadpll_clk
+Divide By           : 40
+Generated Sources   : {GTHE4_CHANNEL_3/TXOUTCLK}
+
+Generated Clock     : axau15_gth4quadpll_clk
+Master Source       : GTHE4_COMMON/GTREFCLK01
+Master Clock        : mgt_reference
+Multiply By         : 25
+Generated Sources   : {GTHE4_COMMON/QPLL1OUTCLK}
+
+Generated Clock     : axau15_gth4quadpll_refclk
+Master Source       : GTHE4_COMMON/GTREFCLK01
+Master Clock        : mgt_reference
+Multiply By         : 1
+Generated Sources   : {GTHE4_COMMON/QPLL1OUTREFCLK}
+
+Generated Clock     : sys_clk
+Master Source       : BUFGCE_DIV/I
+Master Clock        : system_200
+Divide By           : 2
+Generated Sources   : {BUFGCE_DIV/O}
+
+
+
+====================================================
+User Uncertainty
+====================================================
+
+
+
+====================================================
+User Jitter
+====================================================
+
+

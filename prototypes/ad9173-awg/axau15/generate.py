@@ -53,7 +53,9 @@ class AXAU15(Module):
         for n in range(4):
             tx = Record([('p', 1), ('n', 1)], name=f'tx{n}')
             rx = Record([('p', 1), ('n', 1)])
+            # One TX user clock for all four lanes and the JESD link.
             gth = GTH4(qpll, tx, rx, 100e6, data_width=40,
+                       tx_clk=None if n == 0 else phys[0].cd_tx.clk,
                        tx_buffer_enable=True, rx_buffer_enable=True,
                        clock_aligner=False, pll_master=n == 0)
             gth.n = n

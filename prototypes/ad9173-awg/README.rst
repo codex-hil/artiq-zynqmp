@@ -97,5 +97,6 @@ AXAU15 offline continuation (2026-10-21)
 variant, pin constraints, synthesis/package scripts and offline tests.
 ``control/ad9173_profile.py`` separates warm-clock DAC/HMC operations from the
 Trenz session. See ``axau15/README.rst`` for exact limitations and reproduction.
-Dell lacks Artix UltraScale+ device support; licensing, implementation and
-physical AXAU15 validation remain pending. This is not a programming-ready port.
+As of 2026-10-22, Dell Artix UltraScale+ support, exact-part licensing and
+SPI/JESD synthesis pass. Implementation and physical AXAU15 validation remain
+pending. This is not a programming-ready port.

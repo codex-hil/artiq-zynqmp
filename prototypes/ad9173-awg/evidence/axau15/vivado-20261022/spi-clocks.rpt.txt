@@ -1,0 +1,53 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Thu Oct 22 19:14:09 2026
+| Host              : 995a9544bce7 running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_clocks -file clocks.rpt
+| Design            : axau15_awg
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Synthesized
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Clock Report
+
+
+Attributes
+  P: Propagated
+  G: Generated
+  A: Auto-derived
+  R: Renamed
+  V: Virtual
+  I: Inverted
+  S: Pin phase-shifted with Latency mode
+
+Clock       Period(ns)  Waveform(ns)   Attributes  Sources
+system_200  5.000       {0.000 2.500}  P           {sys_p}
+sys_clk     10.000      {0.000 5.000}  P,G,A       {BUFGCE_DIV/O}
+
+
+====================================================
+Generated Clocks
+====================================================
+
+Generated Clock     : sys_clk
+Master Source       : BUFGCE_DIV/I
+Master Clock        : system_200
+Divide By           : 2
+Generated Sources   : {BUFGCE_DIV/O}
+
+
+
+====================================================
+User Uncertainty
+====================================================
+
+
+
+====================================================
+User Jitter
+====================================================
+
+

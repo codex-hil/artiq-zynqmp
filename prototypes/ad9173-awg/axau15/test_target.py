@@ -87,6 +87,7 @@ def test_generated_dedicated_ref_and_sample_sign(tmp_path, monkeypatch):
     from litex.build.xilinx.common import xilinx_special_overrides
     dut = module.AXAU15()
     assert dut.pll_config['linerate'] == 6_144_000_000
+    assert all(getattr(dut, f'gt{i}').cd_tx.clk is dut.gt0.cd_tx.clk for i in range(4))
     text = str(verilog.convert(dut, ios=dut.ios, name='axau15_awg',
                               special_overrides=xilinx_special_overrides))
     assert 'IBUFDS_GTE4' in text

@@ -1,0 +1,37 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Thu Oct 22 19:15:28 2026
+| Host              : d650095b32ad running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_cdc -file cdc.rpt
+| Design            : axau15_awg
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Synthesized
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+Severity  Source Clock           Destination Clock      CDC Type                 Exceptions  Endpoints  Safe  Unsafe  Unknown  No ASYNC_REG
+--------  ---------------------  ---------------------  -----------------------  ----------  ---------  ----  ------  -------  ------------
+Critical  axau15_gth41_txoutclk  axau15_gth40_txoutclk  No Common Node           None                1     0       1        0             0
+Critical  axau15_gth42_txoutclk  axau15_gth40_txoutclk  No Common Node           None                1     0       1        0             0
+Critical  axau15_gth43_txoutclk  axau15_gth40_txoutclk  No Common Node           None                1     0       1        0             0
+Critical  axau15_gth40_txoutclk  axau15_gth41_txoutclk  No Common Node           None               37     0      37        0             0
+Critical  axau15_gth40_txoutclk  axau15_gth42_txoutclk  No Common Node           None               37     0      37        0             0
+Critical  axau15_gth40_txoutclk  axau15_gth43_txoutclk  No Common Node           None               37     0      37        0             0
+Warning   sys_clk                axau15_gth40_txoutclk  No Common Primary Clock  None               22    22       0        0             0
+Warning   axau15_gth40_rxoutclk  sys_clk                No Common Primary Clock  None               32    32       0        0             0
+Warning   axau15_gth41_rxoutclk  sys_clk                No Common Primary Clock  None               32    32       0        0             0
+Warning   axau15_gth42_rxoutclk  sys_clk                No Common Primary Clock  None               32    32       0        0             0
+Warning   axau15_gth43_rxoutclk  sys_clk                No Common Primary Clock  None               32    32       0        0             0
+Info      axau15_gth40_txoutclk  axau15_gth40_rxoutclk  No Common Node           None                1     1       0        0             0
+Info      axau15_gth41_txoutclk  axau15_gth41_rxoutclk  No Common Node           None                1     1       0        0             0
+Info      sys_clk                axau15_gth41_txoutclk  No Common Primary Clock  None                1     1       0        0             0
+Info      axau15_gth42_txoutclk  axau15_gth42_rxoutclk  No Common Node           None                1     1       0        0             0
+Info      sys_clk                axau15_gth42_txoutclk  No Common Primary Clock  None                1     1       0        0             0
+Info      axau15_gth43_txoutclk  axau15_gth43_rxoutclk  No Common Node           None                1     1       0        0             0
+Info      sys_clk                axau15_gth43_txoutclk  No Common Primary Clock  None                1     1       0        0             0
+Info      axau15_gth40_txoutclk  sys_clk                No Common Primary Clock  None                1     1       0        0             0
+
