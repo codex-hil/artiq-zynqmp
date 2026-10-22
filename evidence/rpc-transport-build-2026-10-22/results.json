@@ -1,0 +1,27 @@
+{
+  "status": "CPU0_FULL_BUILD_AND_STUBBED_CALLBACK_TEST_PASS",
+  "hardware_executed": false,
+  "firmware": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rpc-parser-cpu0-20261022/amd/app/build/lwip_echo_server.elf",
+    "sha256": "0931df9f86f2c45faf1254ed8239c1af07336e5e138e3478d1d04f8850404d3a"
+  },
+  "build_log": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build/rpc-parser-cpu0-20261022.log",
+    "sha256": "9f069d035454bfd47c0c3a32238ce5328ddfdb45f8dd3f26d0b5e9fe9dcd1e86"
+  },
+  "source_commit": "9f67324",
+  "inputs": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-sdt-20261021/system-top.dts": "09ab201942f3f2281cf90bf78ea3ca71bd436b39817695a1e02b33d827f3da15",
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-verified-import-hdl-20261021/csr-map.json": "c0087cdef7a48888c476affb679ec06b4817f0530d898e0139abdd957a297049",
+    "boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c": "c53daa7732b0e011c6b7b6c6cd9f544fba8c5b38813eaef01ffe32994d0c5449",
+    "boards/genesys_zu-5ev/2_firmware_a53/c/rpc_reply.h": "2683e819fcc042e9020e615797b8b085dc195ca19ab3413cd47b51d1d50c371b"
+  },
+  "tests": {
+    "management": 6,
+    "transport_callback_scenarios": 4,
+    "callback_model": "Actual C byte/receive/failed/command/flush functions; host-only lwIP/cache/timer/architecture stubs, no actual network or CPU1"
+  },
+  "warnings": "Build retains unused-parameter and RWX LOAD segment warnings; not a security qualification",
+  "deployment": "NOT_RUN",
+  "scope": "Full new CPU0 ELF and offline callback control; existing qualified artifacts/profiles unchanged"
+}

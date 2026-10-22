@@ -78,3 +78,24 @@ The source has changed; old source-equivalence statements and qualified binary
 hashes describe their original checkpoints, not this newly edited transport.
 Next validate transport callbacks/abort behavior and build the full CPU0 image
 before a bounded hardware qualification of the changed source.
+
+## Full CPU0 build and callback controls —2026-10-22
+
+The full debug-services CPU0 ELF now builds/links successfully from source
+commit9f67324, reconstructed-XSA SDT and verified local CSR map. The attached
+transport/header bytes match the repository inputs; the candidate ELF/hash and
+build log hash are recorded in `evidence/rpc-transport-build-2026-10-22/`.
+Six management unit tests passed during the build. Existing unused-parameter and
+RWX LOAD-segment linker warnings remain; this is not a security qualification.
+
+`tests/test_kernel_disconnect.py` exercises the actual C transport callbacks with
+explicit host-only lwIP/cache/timer/architecture stubs and mapped scratch memory.
+Four scenarios pass: partial-reply EOF, receive error, invalid descriptor length
+and a valid reply split across two callbacks. The first three send cancellation,
+mark the worker dead and release the owner; the valid reply issues exactly one
+scalar-return command after all payload bytes arrive. This does not simulate
+a live TCP stack, real cache coherency or CPU1 cancellation progress.
+
+No candidate deployment or hardware run has occurred. Next prepare a separate
+candidate manifest/preflight for bounded qualification of this CPU0 while retaining
+the previously qualified PL/CPU1/boot artifacts and full baseline restoration.
