@@ -275,3 +275,27 @@ They do not replace APU power-up. Source revision/hashes/masks retained in
 power-up/AArch64 flow before implementing the OCM path. Do not simply suppress
 L2 reset errors or write reset masks without the power/clock/entry requirements.
 No new reset-release code or cache/protection bypass added in this checkpoint.
+
+### Native debugger activation ordering prepared offline —2026-10-22
+
+Closer review corrects the earlier FSBL shorthand: the reviewed
+`XFsbl_SetCpuPwrSettings` power/clock/reset sequence is inside its
+`XFSBL_CPU_SWRST` branch. `XFsbl_PowerUpIsland` polls without a local timeout and
+returns its initialized success after the status clears. We do not transplant
+that loop or manually clear L2/CPU reset masks.
+
+Installed AMD XSDB `rst -processor` supports and forwards `-stop`, `-isa A64`
+and `-clear-registers` to its capability-checked XilinxReset service. Its separate
+SVF A53 reference resets CPU/L2 with an OCM bootloop and RVBAR before stopping;
+this reference does not prove the active hw_server implementation.
+
+V5 removes A53 suspension between system reset and PSU/DAP clock/peripheral
+setup. It then calls native `rst -processor -stop -isa A64 -clear-registers`,
+requires CPU0 suspended, checks secondary cores, reselects/rechecks CPU0 and
+only then downloads. No manual power/reset implementation, DDR-init, cache bypass
+or forced access added. A model now rejects suspension queries while still in
+the post-system/pre-processor-reset state. Two reset-flow/two core-admission/two
+OCM tests PASS; v5 preflight and source hashes retained in
+`evidence/ocm-observation-plan-v5-2026-10-22`. Hardware behavior NOT_RUN. Next one
+bounded attempt with full restoration; native activation may still fail and that
+failure must be retained, not waived.

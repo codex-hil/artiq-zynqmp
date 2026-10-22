@@ -1,0 +1,19 @@
+{
+  "status": "OFFLINE_FLOW_CONTROLS_PASS_HARDWARE_NOT_RUN",
+  "source_sha256": {
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/xsct/xsdb/xsdb.tcl": "0b5f6b92455330b3ef2491984f327f49d2e49dea79bd5387c8ed14249247ff09",
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/xsct/xsdb/svf.tcl": "dc34491068ab0673b7723c13a0997341ec083e8407b47e26036107b9d47be01a"
+  },
+  "amd_debugger_findings": [
+    "rst -processor supports -stop, -isa A64 and -clear-registers and forwards checked capabilities to XilinxReset service",
+    "SVF A53 reset reference writes an OCM bootloop, configures RVBAR, asserts/releases CPU+L2 resets then stops; SVF implementation is not proof of current hw_server internals"
+  ],
+  "piotr_fsbl_correction": "XFsbl_SetCpuPwrSettings sequence reviewed is within XFSBL_CPU_SWRST branch; XFsbl_PowerUpIsland loop has no local timeout and returns initialized success after status clears. Not reused/reimplemented.",
+  "change": "No A53 stop after system reset until PSU clock/peripheral setup and native AMD processor reset -stop -isa A64 -clear-registers; then checked CPU0 and secondary admission",
+  "nonclaims": [
+    "native service hardware activation outcome not yet observed",
+    "no DDR physical qualification",
+    "no manual reset-mask/power-island implementation"
+  ],
+  "controls": "2 reset flow +2 core admission +2 OCM tests PASS; model rejects any suspension query between system reset and native processor activation"
+}

@@ -10,6 +10,7 @@ class ResetFlow(unittest.TestCase):
             ps.write_text('\n'.join('set '+name+' {}' for name in ('psu_mio_init_data','psu_peripherals_pre_init_data','psu_pll_init_data','psu_clock_init_data','psu_peripherals_init_data','psu_resetin_init_data','psu_resetout_init_data')))
             model='''
 set selected 0
+set reset_stage initial
 proc connect {args} {}
 proc disconnect {} {}
 proc configparams {name value} {
@@ -18,9 +19,12 @@ proc configparams {name value} {
 }
 proc after {args} {}
 proc targets {args} {
- global selected
+ global selected reset_stage
  if {[lindex $args 0] eq "-set"} {set selected [lindex $args 1];return}
- if {[lindex $args end] eq "is_current == 1"} {return [list [dict create suspended 1]]}
+ if {[lindex $args end] eq "is_current == 1"} {
+  if {$reset_stage eq "system"} {error "Forbidden suspend before native processor activation"}
+  return [list [dict create suspended 1]]
+ }
  return [list [dict create target_id 1 jtag_cable_serial 210383B7F02DA]]
 }
 proc mwr {address value} {
@@ -28,8 +32,13 @@ proc mwr {address value} {
  puts ALT_JTAG
 }
 proc rst {args} {
- global fail
+ global fail reset_stage
  puts "RESET $args"
+ if {[lindex $args 0] eq "-system"} {set reset_stage system}
+ if {[lindex $args 0] eq "-processor"} {
+  if {$args ne "-processor -stop -isa A64 -clear-registers"} {error "Missing native reset/ISA/stop options"}
+  set reset_stage processor
+ }
  if {$fail && [lindex $args 0] eq "-system"} {error "Reset failed"}
 }
 proc init_ps {args} {puts INIT_PS}
@@ -42,7 +51,7 @@ proc stop {} {error "Already suspended: must not call stop"}
             return subprocess.run(['tclsh'],input=text,capture_output=True,text=True,timeout=3)
     def test_reset_before_setup_download_without_cache_bypass(self):
         r=self.run_flow();self.assertEqual(r.returncode,0,r.stderr)
-        markers=['SOURCE_VIEW_DISABLED','ALT_JTAG','RESET -system','INIT_PS','INIT_PERIPHERAL','RESET -processor -clear-registers','DOWNLOAD','CONTINUE']
+        markers=['SOURCE_VIEW_DISABLED','ALT_JTAG','RESET -system','INIT_PS','INIT_PERIPHERAL','RESET -processor -stop -isa A64 -clear-registers','DOWNLOAD','CONTINUE']
         offsets=[r.stdout.index(m) for m in markers];self.assertEqual(offsets,sorted(offsets))
         source=(REPO/'scripts/run_ocm_environment.tcl').read_text();self.assertNotIn('bypass-cache-sync',source);self.assertNotIn('psu_ddr_init_data',source)
     def test_failed_system_reset_prevents_init_and_download(self):

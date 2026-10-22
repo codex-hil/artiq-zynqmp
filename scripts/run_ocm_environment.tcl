@@ -53,10 +53,8 @@ select_genesys_target "Cortex-A53 #0"
 rst -system
 after 3000
 puts "OCM_PS_SYSTEM_RESET_DONE"
-for {set i 0} {$i < 4} {incr i} {
- select_genesys_target "Cortex-A53 #$i"
- admit_core 1
-}
+# Do not suspend A53 while the cluster/L2 is still reset. Initialize clocks
+# through PSU/DAP, then let AMD's processor-reset service activate CPU0.
 select_genesys_target PSU
 source $psu_init
 # Reuse generated AMD MIO/clock/peripheral setup, explicitly exclude DDR.
@@ -64,7 +62,13 @@ init_ps [subst {$psu_mio_init_data $psu_peripherals_pre_init_data $psu_pll_init_
 init_peripheral
 puts "PS_UART_CLOCK_INIT_DONE_NO_DDR"
 select_genesys_target "Cortex-A53 #0"
-rst -processor -clear-registers
+rst -processor -stop -isa A64 -clear-registers
+admit_core 0
+for {set i 1} {$i < 4} {incr i} {
+ select_genesys_target "Cortex-A53 #$i"
+ admit_core 1
+}
+select_genesys_target "Cortex-A53 #0"
 admit_core 0
 dow $elf
 con
