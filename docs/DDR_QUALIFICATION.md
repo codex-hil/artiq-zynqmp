@@ -50,3 +50,21 @@ No SPD/controller capture, new diagnostic image or full DDR hardware test was
 performed at this checkpoint. The existing runtime is unchanged. Next work is
 an offline bounded capture/geometry decoder and a review of the OCM diagnostic's
 EL/cache assumptions before choosing writable test intervals.
+
+## Read-only controller capture prepared
+
+`capture_ddr_config.py` is offline by default. `--execute --server SERVER`
+acquires the shared Genesys lease and runs the fixed, cable-selected DAP Tcl
+snapshot under a45-second bound. It does not stop CPUs or reset/write registers.
+Its14allowlisted MSTR/ECCCFG0/ADDRMAP addresses were checked against the retained
+AMD `psu_init.h`; no error/status-clear or control writes are included.
+`decode_ddr_config.py` reports programmed rank mask, device width, bus-width
+proportion and ECC mode while preserving raw ADDRMAP words. It explicitly does
+not reconstruct capacity from those words or authorize a memory sweep.
+Two decoder and two capture-admission tests PASS. Capture hardware is NOT_RUN.
+
+The OCM assembly audit found that direct EL1 entry does not initialize SCTLR_EL1.
+Skipping DDR-based MMU setup is not proof of disabled MMU/cache: a dedicated
+tester must explicitly establish and report its execution/cache state under a
+reviewed bootstrap. No existing diagnostic was changed or executed here.
+Evidence: `evidence/ddr-config-preparation-2026-10-22/`.

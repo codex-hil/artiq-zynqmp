@@ -1,0 +1,25 @@
+{
+  "status": "READ_ONLY_CAPTURE_PREPARED_HEADER_OFFSETS_VERIFIED",
+  "hardware_executed": false,
+  "registers": {
+    "MSTR": 4245094400,
+    "ECCCFG0": 4245094512,
+    "ADDRMAP0": 4245094912,
+    "ADDRMAP1": 4245094916,
+    "ADDRMAP2": 4245094920,
+    "ADDRMAP3": 4245094924,
+    "ADDRMAP4": 4245094928,
+    "ADDRMAP5": 4245094932,
+    "ADDRMAP6": 4245094936,
+    "ADDRMAP7": 4245094940,
+    "ADDRMAP8": 4245094944,
+    "ADDRMAP9": 4245094948,
+    "ADDRMAP10": 4245094952,
+    "ADDRMAP11": 4245094956
+  },
+  "decoder_tests": 2,
+  "reference_header": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/psu_init.h",
+  "reference_sha256": "d96b3527beedaeae8877f05304580aebfd864401c2b4e855853dad59871af30f",
+  "ocm_finding": "Direct EL1 entry does not explicitly initialize SCTLR_EL1; no uncached/MMU-off assumption allowed",
+  "physical_capacity": "NOT_ESTABLISHED"
+}

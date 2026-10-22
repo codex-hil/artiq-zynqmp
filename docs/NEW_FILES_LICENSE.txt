@@ -611,3 +611,8 @@ tests/test_rpc_failstop_probe.py
 scripts/plan_ddr_diagnostic.py
 tests/test_ddr_plan.py
 docs/DDR_QUALIFICATION.md
+scripts/probe_ddr_config.tcl
+scripts/decode_ddr_config.py
+scripts/capture_ddr_config.py
+tests/test_ddr_config.py
+tests/test_ddr_capture.py
