@@ -1,0 +1,218 @@
+{
+  "status": "PASS",
+  "hardware_executed": true,
+  "source_output": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-complete-window-20261022",
+  "cable": "210383B7F02DA",
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "lease_seconds": 138.067,
+  "spd_sha256": "ab0343bdadbb16c6dbf91e7066817f67fcaaae28ec03be36c088e5481fb2bf83",
+  "matches_first_physical_capture": true,
+  "base_crc": "0x2e87",
+  "module_bytes": 4294967296,
+  "normal_runtime_restored": "192.168.2.3",
+  "raw_files": {
+    "candidate-debug/dma.log": {
+      "sha256": "f6e88d5b5a4b6e0e71ce82a52074bdb4dfc6d2118a28f6bfe5ef9fe311b5b7ee",
+      "bytes": 210
+    },
+    "candidate-debug/results.json": {
+      "sha256": "41c8249598b2653cb1625dba296d689a8fae786201dffc7e60e87dfbdf0001cb",
+      "bytes": 1692
+    },
+    "candidate-debug/wrap-dma-0.log": {
+      "sha256": "443636632487a62d0f8185e508346365357dc82b7ffdf4e824c91e5aa1683385",
+      "bytes": 210
+    },
+    "candidate-debug/wrap-dma-1.log": {
+      "sha256": "cc061c6cd1823f98eae71db05bde4f7042dfa53dbecd2f5d9d3370c214bc3e71",
+      "bytes": 210
+    },
+    "candidate-debug/wrap-dma-2.log": {
+      "sha256": "2ab96ea43e6cef3c9494893c3b072ac2f2520ea3a9f0bdd539b6e55239ce0de4",
+      "bytes": 210
+    },
+    "candidate-debug/wrap-dma-3.log": {
+      "sha256": "227c13da084509c05c0d12e0989fe8f0b9d2944260e26b455289939d27570576",
+      "bytes": 210
+    },
+    "candidate-debug/wrap-dma-4.log": {
+      "sha256": "1232934bd420e5f1c43bf32ed7c60091b3a5e14d72c85bd8064adf76f84dc1dc",
+      "bytes": 210
+    },
+    "candidate-debug/wrap-dma-5.log": {
+      "sha256": "3753a9b5a7ff99cd2c51461192860bd9e4a6467b2de274da1c597ab42e740a62",
+      "bytes": 210
+    },
+    "candidate-debug/wrap-dma-6.log": {
+      "sha256": "010fd05dff0aa6ee7b5df647c33156b79fb1e9c5a626ec94d6db15e4cf51e116",
+      "bytes": 210
+    },
+    "candidate-debug/wrap-dma-7.log": {
+      "sha256": "b9f4da6d24ec3738bf0fc0e50d31caed744897781c1e05da39d5e303360ab4ef",
+      "bytes": 210
+    },
+    "candidate-debug.log": {
+      "sha256": "1d52c2558a26df26ebefa0be71ddaaa0ca7c6d0651d1cfcadf5b51c5cbeca6e4",
+      "bytes": 1899
+    },
+    "candidate-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "candidate-ethernet.json": {
+      "sha256": "ab53260ab0f371eaea289e87f10f264b6ab1fa2a46d33804f841c63110ee2f64",
+      "bytes": 2020
+    },
+    "candidate-ethernet.log": {
+      "sha256": "ab53260ab0f371eaea289e87f10f264b6ab1fa2a46d33804f841c63110ee2f64",
+      "bytes": 2020
+    },
+    "candidate-fsbl-spd/results.json": {
+      "sha256": "c251a2fd0b66cfb815515ebd7cf8d1d1be61eb37ffcafcca093aa4ba47453247",
+      "bytes": 1989
+    },
+    "candidate-fsbl-spd.log": {
+      "sha256": "c251a2fd0b66cfb815515ebd7cf8d1d1be61eb37ffcafcca093aa4ba47453247",
+      "bytes": 1989
+    },
+    "candidate-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "candidate-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "candidate-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "candidate-load/pl.log": {
+      "sha256": "784ea0364bf8c5d241bda83956ca7d100e26430a72c4d1c733a41989c414ccc9",
+      "bytes": 1918
+    },
+    "candidate-load/prepare.log": {
+      "sha256": "d43b11b77991530f607e0806d355a38328583d217561bd04e2d8b2324f3ed000",
+      "bytes": 65
+    },
+    "candidate-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "candidate-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "candidate-load/uart.log": {
+      "sha256": "b45a5326edde48a9824aa130ad89d10cec53affa96bae80d51ee632497a0e4de",
+      "bytes": 1467
+    },
+    "candidate-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "restore-debug/dma.log": {
+      "sha256": "b1d6c640b42b6540fdda4365981a59449a68be8f6de9a8b660c6182f65600520",
+      "bytes": 210
+    },
+    "restore-debug/results.json": {
+      "sha256": "d9c26ee09794809dfcd03bbd1782a2701286f7c5ae686bf51d5aff72cdc250f6",
+      "bytes": 1692
+    },
+    "restore-debug/wrap-dma-0.log": {
+      "sha256": "048e580a3c521235d47737cd892ccbd6b08d5f1c42eca2f0f15f922387bc9069",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-1.log": {
+      "sha256": "f06c0a06852b8852382cb4eb0226cf73f93ea1e1d65a2afdb74156e666cc2cec",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-2.log": {
+      "sha256": "68471c3f9d949c621c8760a6cd01bd1cf7c7a7760c474f7183c7980f053c7b45",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-3.log": {
+      "sha256": "9bfc903f681d8675cf37cdc7e4eb83be64fcd5d198f4c3121366412dc06b9557",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-4.log": {
+      "sha256": "db795c390935314d9d9220977a50caeb28b7fc8fe32c55c36eff7b03a36f385d",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-5.log": {
+      "sha256": "1a53e7f0a79156ce98b5e38a2b9ef4aed64687fbd8c93d84cda463ddb31c2927",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-6.log": {
+      "sha256": "e94391591aeae7cf1c65ce45b1d4b67dcf75ad1c67b07eb1455bba1e10ec3100",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-7.log": {
+      "sha256": "1cd31f307c2e197e5f25f524a2200effaf8c547c19c099363d0687ef5639a874",
+      "bytes": 210
+    },
+    "restore-debug.log": {
+      "sha256": "35cc6f4a98e3ea15af6627b37ad5ea6ba1ff033b1bec37fa703780a86ba8a892",
+      "bytes": 1899
+    },
+    "restore-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "restore-ethernet.json": {
+      "sha256": "600b7678eda38adc5fe2d1c2ed3bbbace3de9cf6e269ef421282ccbca6fd279e",
+      "bytes": 2019
+    },
+    "restore-ethernet.log": {
+      "sha256": "600b7678eda38adc5fe2d1c2ed3bbbace3de9cf6e269ef421282ccbca6fd279e",
+      "bytes": 2019
+    },
+    "restore-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "restore-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "restore-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "restore-load/pl.log": {
+      "sha256": "a67d37666e330f8b8d501c58fbdcb9536ad1dde5e9e42843c882a2a7ff7e55fa",
+      "bytes": 1918
+    },
+    "restore-load/prepare.log": {
+      "sha256": "df1e0003abc5b42b53dee938a80c16320eb2a255c47f4f93305cd988c6e6762c",
+      "bytes": 65
+    },
+    "restore-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "restore-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "restore-load/uart.log": {
+      "sha256": "293b850faed96db8fae5d1c86a51a77c7d7c5881b194ac49cb6d687dc3b47136",
+      "bytes": 1068
+    },
+    "restore-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "results.json": {
+      "sha256": "e141db8b1c2e1aaf4824cb0b6032aea208c31deda0f3247f55f2f4d6fe331fcc",
+      "bytes": 2516
+    }
+  },
+  "limits": [
+    "Pure decoder hardware_executed:false is intentional; physical provenance is supplied by this enclosing locked lifecycle.",
+    "Earlier DDRC seven-field agreement is time-separated, not a simultaneous snapshot.",
+    "No full DDR stress, alias or high-window memory test; no release promotion.",
+    "Earlier disk-full failed lifecycle retained in fsbl-spd-capture-hardware-2026-10-22.",
+    "No Kasli/Si/SD/flash/OTP writes."
+  ]
+}

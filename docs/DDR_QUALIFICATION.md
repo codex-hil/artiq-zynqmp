@@ -594,3 +594,19 @@ Three preservation/failure/rollback tests PASS. Available shared space roughly
 Evidence: `evidence/completed-build-relocation-2026-10-22`. Next bounded full
 FSBL-SPD candidate/CRC/runtime/restoration attempt under usual rechecked storage
 and hardware lease; original failed lifecycle remains retained.
+
+### Complete diagnostic FSBL SPD/runtime window PASS —2026-10-22
+
+The v2 pinned candidate completed under the shared Genesys lease (138.067s),
+with storage admission before reset. Physical SPD base bytes exactly repeat the
+first capture: SHA256 ab0343bdadbb16c6dbf91e7066817f67fcaaae28ec03be36c088e5481fb2bf83,
+stored/computed CRC 0x2e87, reported 4GiB/one rank/64-bit bus/x16 devices.
+Candidate and restored normal runtime both passed physical TTL/CoreDMA, standard
+analyzer/MonInj clients, analyzer ring wrap, 20/20 ICMP and five byte-exact TCP
+echo connections. Normal runtime restored at192.168.2.3; lease released.
+Evidence: `evidence/fsbl-spd-complete-hardware-2026-10-22` (raw logs compressed;
+summary records original raw hashes). Earlier disk-full FAIL remains preserved.
+This validates the diagnostic FSBL handoff, not full DDR integrity, high-window
+alias freedom or a promoted boot release. No Kasli/Si/SD/flash/OTP writes.
+Next offline work: define trained-DDR OCM handoff, cache/master ownership and
+explicit disjoint low/high test intervals before destructive-test admission.
