@@ -1,0 +1,72 @@
+{
+  "status": "OFFLINE_FAULT_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "manifest": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/rpc-parser-candidate-2026-10-22/inputs.json",
+  "manifest_sha256": "4d9cf4b1405eacdb951a5a3db9964bf36d576dee520d54f99612b54d1f537db8",
+  "cable": "210383B7F02DA",
+  "lease": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "steps": [
+    {
+      "case": {
+        "name": "zero_descriptor_length",
+        "body_hex": "00000000",
+        "half_close": false,
+        "expected": "transport_abort_cancel_worker"
+      },
+      "sequence": [
+        "acquire_shared_genesys_lease",
+        "verify_all_candidate_restore_hashes",
+        "load_candidate_and_verify_identity",
+        "run_one_kernel_until_synchronous_float_rpc",
+        "inject_once",
+        "require_connection_termination_and_management_alive",
+        "restore_old_baseline_even_on_failure",
+        "validate_restored_physical_debug_and_ethernet",
+        "release_lease"
+      ],
+      "reuse_after_fault": false
+    },
+    {
+      "case": {
+        "name": "unsupported_return_tag",
+        "body_hex": "010000003f",
+        "half_close": false,
+        "expected": "transport_abort_cancel_worker"
+      },
+      "sequence": [
+        "acquire_shared_genesys_lease",
+        "verify_all_candidate_restore_hashes",
+        "load_candidate_and_verify_identity",
+        "run_one_kernel_until_synchronous_float_rpc",
+        "inject_once",
+        "require_connection_termination_and_management_alive",
+        "restore_old_baseline_even_on_failure",
+        "validate_restored_physical_debug_and_ethernet",
+        "release_lease"
+      ],
+      "reuse_after_fault": false
+    },
+    {
+      "case": {
+        "name": "partial_float_eof",
+        "body_hex": "0100000066000000",
+        "half_close": true,
+        "expected": "peer_eof_cancel_worker"
+      },
+      "sequence": [
+        "acquire_shared_genesys_lease",
+        "verify_all_candidate_restore_hashes",
+        "load_candidate_and_verify_identity",
+        "run_one_kernel_until_synchronous_float_rpc",
+        "inject_once",
+        "require_connection_termination_and_management_alive",
+        "restore_old_baseline_even_on_failure",
+        "validate_restored_physical_debug_and_ethernet",
+        "release_lease"
+      ],
+      "reuse_after_fault": false
+    }
+  ],
+  "gate": "No hardware executor in this tool. Each case needs a separate outer restoration window; do not reuse faulted worker.",
+  "limits": "Socket close/management liveness alone do not prove CPU1 cancellation progress. Record that separately or leave NOT_PROVEN."
+}

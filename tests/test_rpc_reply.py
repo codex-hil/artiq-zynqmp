@@ -4,6 +4,8 @@ from pathlib import Path
 REPO=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(REPO/'common/artiq'))
 from artiq.coredevice.comm_kernel import CommKernel
+sys.path.insert(0,str(REPO/"scripts"))
+from prepare_rpc_fault_plan import cases
 
 
 class ReplyParser(unittest.TestCase):
@@ -41,6 +43,12 @@ int main(void) {
                 self.assertEqual(self.parse(data),'1:'+data[5:].hex())
                 for end in range(len(data)):self.assertEqual(self.parse(data[:end]),'0:')
                 self.assertEqual(self.parse(data+b'extra'),'-1:')
+
+    def test_prepared_fault_cases_match_actual_parser_behavior(self):
+        for case in cases():
+            expected='0:' if case['half_close'] else '-1:'
+            with self.subTest(case=case['name']):
+                self.assertEqual(self.parse(bytes.fromhex(case['body_hex'])),expected)
 
     def test_bad_length_tags_and_explicit_reset(self):
         for n in (0,2,0xffffffff,0x80000001):self.assertEqual(self.parse(struct.pack('<I',n)+b'i'),'-1:')

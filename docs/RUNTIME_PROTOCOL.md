@@ -116,3 +116,20 @@ This qualifies the candidate's tested local path. Physical malformed-RPC socket
 cancellation remains untested; offline callback controls do not establish CPU1
 cancellation progress. The old runtime is running again; normal release/package
 manifests have not been repointed. Latest SD cold boot remains NOT_RUN.
+
+## Prepared malformed-RPC qualification cases
+
+`prepare_rpc_fault_plan.py` performs offline candidate/restoration preflight and
+writes an immutable plan. It has no network or hardware executor. The selected
+plan is `evidence/rpc-fault-plan-2026-10-22/plan.json`, bound to the qualified
+RPC-parser CPU0 manifest. Its cases are zero tag-descriptor length, unsupported
+return tag and a partial float payload followed by client half-close.
+
+Each body is fed to the same C parser in `test_rpc_reply.py`: the first two
+are rejected and the partial reply stays incomplete. Three parser tests PASS.
+In a future live test, each case requires a separate candidate load and outer
+restoration window. Never use the same faulted worker for another experiment.
+Socket closure and management liveness are necessary observations; they do not
+by themselves prove that CPU1 processed cancellation. The executor must record
+that distinction and preserve full restoration even when an observation fails.
+No prepared case has been injected on hardware yet.
