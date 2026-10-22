@@ -608,3 +608,6 @@ scripts/inject_rpc_fault.py
 tests/test_rpc_fault_injection.py
 scripts/probe_rpc_failstop.tcl
 tests/test_rpc_failstop_probe.py
+scripts/plan_ddr_diagnostic.py
+tests/test_ddr_plan.py
+docs/DDR_QUALIFICATION.md

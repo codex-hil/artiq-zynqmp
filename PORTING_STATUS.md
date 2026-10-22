@@ -17,6 +17,15 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## DDR qualification map audit —2026-10-22
+
+Offline SDT/ELF inventory identifies configured low2GiB and high2GiB windows,
+keeps their address gap, and records CPU0/CPU1 load/BSS ranges. Fitted DDR
+capacity remains unverified; no destructive interval is authorized by the map.
+Two parser controls PASS. Existing physical DDR evidence remains128KiB scratch
+plus runtime workloads, not a full-range test. See `docs/DDR_QUALIFICATION.md`
+and `evidence/ddr-map-audit-2026-10-22/inventory.json`. No hardware changes.
+
 ## Read-only kernel_state hardware checkpoint —2026-10-22
 
 New CPU0 reports idle→waiting-rpc→restart-required during a controlled RPC fault.

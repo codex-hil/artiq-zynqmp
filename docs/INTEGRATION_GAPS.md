@@ -59,3 +59,7 @@ remote-link qualifications. The source build/release recipe is now documented; s
 The [runtime protocol audit](RUNTIME_PROTOCOL.md) records the scalar-only RPC
 return path, unsupported subkernels and the next host-testable framing step.
 The corrected startup-log source has not been deployed.
+
+The [DDR qualification plan](DDR_QUALIFICATION.md) distinguishes configured
+address windows from physical SODIMM geometry and requires a separate OCM
+diagnostic; no destructive background test is authorized by an ELF map alone.

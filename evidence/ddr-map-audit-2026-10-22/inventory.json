@@ -1,0 +1,80 @@
+{
+  "status": "OFFLINE_DDR_MAP_INVENTORY_NOT_EXECUTABLE",
+  "hardware_executed": false,
+  "configured_banks": [
+    {
+      "start": "0x0",
+      "end_exclusive": "0x80000000",
+      "bytes": 2147483648
+    },
+    {
+      "start": "0x800000000",
+      "end_exclusive": "0x880000000",
+      "bytes": 2147483648
+    }
+  ],
+  "configured_bytes": 4294967296,
+  "physical_capacity": "NOT_VERIFIED_FROM_SPD_OR_CONTROLLER",
+  "occupied_elf_segments": [
+    {
+      "role": "candidate_cpu0",
+      "machine": 183,
+      "entry": "0x0",
+      "start": "0x0",
+      "end_exclusive": "0x65a40",
+      "file_bytes": 416264,
+      "memory_bytes": 416320
+    },
+    {
+      "role": "candidate_cpu0",
+      "machine": 183,
+      "entry": "0x0",
+      "start": "0x200000",
+      "end_exclusive": "0xa15d40",
+      "file_bytes": 0,
+      "memory_bytes": 8478016
+    },
+    {
+      "role": "candidate_worker",
+      "machine": 40,
+      "entry": "0x20200000",
+      "start": "0x20200000",
+      "end_exclusive": "0x20316b56",
+      "file_bytes": 86024,
+      "memory_bytes": 1141590
+    },
+    {
+      "role": "candidate_bridge",
+      "machine": 183,
+      "entry": "0x20000000",
+      "start": "0x20000000",
+      "end_exclusive": "0x20000058",
+      "file_bytes": 88,
+      "memory_bytes": 88
+    }
+  ],
+  "additional_runtime_use": [
+    "CPU0 upload/RPC input at0x21000000 up to1MiB",
+    "DMA trace storage and kernel/runtime heaps",
+    "PS/PL AXI DMA and other active masters"
+  ],
+  "destructive_test_allowed": false,
+  "requirements": [
+    "Verify actual SPD/controller address map under shared Genesys lease",
+    "Use exclusive OCM-resident diagnostic with verified ELF/stack/page tables outside tested DDR",
+    "Park other CPUs/R5 and disable PL/peripheral DDR masters using a reviewed load/restoration flow",
+    "Verify cache/MMU attributes; do not let cache-only reads pass as DDR",
+    "Bound UART progress and test duration; restore baseline and validate after every window"
+  ],
+  "proposed_stages": [
+    "small uncached interval/address-data tests",
+    "bounded chunk sweep with address-derived/complement patterns",
+    "cross-bank alias/address-line controls",
+    "separate cache-maintained sustained workload"
+  ],
+  "limits": "Configured windows are not fitted memory proof. ELF inventory does not enumerate all live allocations or prove any range safe while runtime is active.",
+  "input_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-sdt-20261021/pcw.dtsi": "9e47bf76fe63f8caacaa973349e62713d5a1ac879fffc1707edd8517928aa613",
+    "evidence/kernel-health-build-2026-10-22/candidate-inputs.json": "2442b6f79caa25b98361ef552f89b31c7451f1140a64c5a6a5a753be93ef4df0"
+  }
+}
