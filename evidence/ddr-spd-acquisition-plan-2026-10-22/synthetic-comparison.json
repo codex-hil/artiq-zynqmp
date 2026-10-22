@@ -1,0 +1,49 @@
+{
+  "status": "GEOMETRY_MATCH_CRC_AND_ACQUISITION_NOT_VERIFIED",
+  "geometry_matches": true,
+  "fields": {
+    "row_bits": {
+      "spd": 16,
+      "controller": 16,
+      "equal": true
+    },
+    "column_bits": {
+      "spd": 10,
+      "controller": 10,
+      "equal": true
+    },
+    "bank_bits": {
+      "spd": 2,
+      "controller": 2,
+      "equal": true
+    },
+    "bank_group_bits": {
+      "spd": 1,
+      "controller": 1,
+      "equal": true
+    },
+    "ranks": {
+      "spd": 1,
+      "controller": 1,
+      "equal": true
+    },
+    "primary_bus_bits": {
+      "spd": 64,
+      "controller": 64,
+      "equal": true
+    },
+    "module_bytes": {
+      "spd": 4294967296,
+      "controller": 4294967296,
+      "equal": true
+    }
+  },
+  "hardware_executed": false,
+  "crc": "NOT_VERIFIED",
+  "spd_sha256": "c1c9ac92b21226b67b28400d512688f761d4672a4b3e20147e73539056abb4b8",
+  "snapshot_sha256": "34d083385ed15fe23ab892be7b09d417e71f94ae36a4cce4e2d5cf6821248807",
+  "physical_capacity": "NOT_VERIFIED",
+  "destructive_test_allowed": false,
+  "limits": "Compares provided inputs only, including synthetic inputs. Does not prove EEPROM origin/CRC, CPU address windows, alias freedom, quiescence or memory integrity.",
+  "spd_origin": "SYNTHETIC_FIXTURE_NOT_HARDWARE"
+}

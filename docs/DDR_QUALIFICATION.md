@@ -358,3 +358,29 @@ master/reset-state admission inventory. OCM EL1 state alone does not authorize
 destructive DDR writes. Physical capacity/CRC, high-window alias checks and
 other-master/cache ownership still require explicit evidence. Preserve this
 known working OCM manifest for subsequent diagnostic extensions.
+
+### Independent SPD acquisition preparation —2026-10-22
+
+Qualified build's `app/src/xfsbl_ddr_init.c` is byte-identical to Piotr's port
+source (SHAae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5).
+Read function uses AMD XIicPs I2C1/100kHz, SPD0x51 and page controls0x36/0x37.
+Mux0x75 is defined but unused in this function: do not infer a routing write.
+Four send results are ignored, receive/idle statuses checked; full512-byte read
+leaves the upper page selected, with no base CRC verification. Preserve this
+understanding before adapting the reader. No I2C/HW access in this checkpoint.
+
+Acquisition plan requires checked status/deadlines at every step, no scanning/
+retry/bus clear, raw repeated captures, explicit page-state handling on all exits
+and independent CRC. Reuse maintained AMD XIicPs/BSP. Exact plan, source hash and
+remaining master/cache/window/test-interval gates:
+`evidence/ddr-spd-acquisition-plan-2026-10-22/source-review-and-plan.json`.
+Actual EEPROM acquisition/CRC remain NOT_RUN.
+
+`compare_ddr_geometry.py --spd BYTES --snapshot LOG --output FRESH` compares row,
+column, bank/group, ranks, bus width and total bytes against the existing
+controller decoder. Mismatch exits nonzero; malformed inputs reject. Even a
+match remains CRC/acquisition NOT_VERIFIED and cannot authorize DDR writes.
+Three controls PASS (synthetic match, valid smaller/two-rank disagreement,
+malformed input), plus two existing SPD/C parity controls PASS. Retained example
+is explicitly SYNTHETIC, not a physical SPD dump. Next implement bounded base-SPD
+acquisition using AMD code before any hardware attempt.

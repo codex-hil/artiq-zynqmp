@@ -1,0 +1,52 @@
+{
+  "status": "SOURCE_AUDIT_AND_OFFLINE_PLAN_ONLY",
+  "hardware_executed": false,
+  "source": "boards/genesys_zu-5ev/3_bootable/xfsbl_ddr_init.c",
+  "source_sha256": "ae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5",
+  "build_source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/xfsbl_ddr_init.c",
+  "build_source_byte_identical": true,
+  "observed_source_route": {
+    "controller": "I2C1",
+    "sclk_hz": 100000,
+    "spd_address": "0x51",
+    "lower_page_control": "0x36",
+    "upper_page_control": "0x37",
+    "mux_constant": "0x75",
+    "mux_constant_used_in_read_function": false
+  },
+  "findings": [
+    "four XIicPs_MasterSendPolled results ignored (page-select and offset writes)",
+    "receive and bus-idle waits checked",
+    "function reads 512 bytes then leaves upper page selected",
+    "no SPD CRC verification in the read function",
+    "source match alone is not fitted module identity proof"
+  ],
+  "proposed_acquisition": {
+    "state": "NOT_IMPLEMENTED_NOT_ADMITTED",
+    "reuse": "AMD XIicPs with existing qualified BSP, not a new Rust controller",
+    "required_steps": [
+      "exact Genesys lease for load/I2C/UART/restoration",
+      "confirm bus identity and preserve/restore relevant controller/page state",
+      "select only lower page, check every send status, no retry/bus scan/clear",
+      "read at least 128 bytes including base CRC; check receive and idle deadlines",
+      "attempt known lower-page restoration on every exit; record failure explicitly",
+      "capture bytes twice and require equality, retain raw bytes/hashes",
+      "independently validate SPD base CRC before claiming geometry qualification",
+      "compare with separately captured DDRC, preserve any discrepancy"
+    ],
+    "forbidden": [
+      "mux writes based solely on unused constant",
+      "EEPROM data programming",
+      "Si5342 changes",
+      "silent NACK waiver",
+      "DDR training or destructive test from this plan"
+    ]
+  },
+  "ddr_execution_gates_remaining": [
+    "independent SPD acquisition and CRC",
+    "CPU high-window mapping/alias plan",
+    "other masters/reset/cache ownership admission",
+    "explicit tested interval and bounded workload",
+    "mandatory restore and physical RTIO/Ethernet checks"
+  ]
+}
