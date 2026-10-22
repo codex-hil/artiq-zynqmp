@@ -212,3 +212,21 @@ management liveness and restoration. CPU1 cancellation progress remains
 NOT_PROVEN; no general automatic worker recovery is claimed. The earlier failed
 admission remains separately recorded. Next cases are unsupported tag and
 partial-float EOF, each in its own load/restoration window.
+
+## Three-case live fault observation complete —2026-10-22
+
+Unsupported return tag and partial-float EOF each PASS in separate wrapper
+windows,131.712s and132.461s respectively. Each fresh load passed physical
+debug first; one injected fault produced connection termination with management
+alive, then immediate baseline restoration and physical debug/Ethernet PASS.
+No kernel ran again on either faulted worker. Final old-baseline IP192.168.2.3;
+lease released and nonblocking reacquisition checked. No Kasli/Si/SD/flash/OTP.
+
+Together with the zero-descriptor result, all three prepared cases now have
+physical observation and independent restoration evidence. Reports:
+`evidence/rpc-tag-hardware-2026-10-22/`,
+`evidence/rpc-partial-hardware-2026-10-22/` and
+`evidence/rpc-fault-suite-2026-10-22/summary.json`.
+CPU1 cancellation progress remains NOT_PROVEN. The current worker's `rpc_recv`
+rejects a non-return/non-exception command via `fail`; connection termination
+is not evidence of a clean unwind or reusable worker. Keep outer restoration.

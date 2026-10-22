@@ -17,6 +17,16 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Three malformed RPC/EOF cases physically observed —2026-10-22
+
+Zero descriptor, unknown return tag and partial-float EOF each caused connection
+termination with management alive. Every case used a fresh candidate load and
+independent full old-baseline restoration; restored physical debug/Ethernet PASS.
+Final192.168.2.3, lease released/reacquirechecked. No faulted-worker reuse.
+Summary: `evidence/rpc-fault-suite-2026-10-22/summary.json`.
+CPU1 cancellation progress/clean unwind NOT_PROVEN; outer restoration remains
+required. No Kasli/Si/SD/flash/OTP writes or latest SD cold-boot claim.
+
 ## Malformed RPC zero-descriptor observation —2026-10-22
 
 One real zero-length RPC reply descriptor caused connection termination while

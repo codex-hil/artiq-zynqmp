@@ -1,0 +1,26 @@
+{
+  "status": "THREE_CASE_OBSERVATION_AND_SEPARATE_RESTORATION_PASS",
+  "hardware_executed": true,
+  "zero_descriptor_evidence": "evidence/rpc-zero-hardware-2026-10-22",
+  "additional_cases": [
+    {
+      "case": "unsupported_return_tag",
+      "status": "OBSERVATION_AND_RESTORATION_PASS",
+      "elapsed_seconds": 131.712,
+      "restored_ip": "192.168.2.3",
+      "worker_cancellation_progress": "NOT_PROVEN"
+    },
+    {
+      "case": "partial_float_eof",
+      "status": "OBSERVATION_AND_RESTORATION_PASS",
+      "elapsed_seconds": 132.461,
+      "restored_ip": "192.168.2.3",
+      "worker_cancellation_progress": "NOT_PROVEN"
+    }
+  ],
+  "worker_cancellation_progress": "NOT_PROVEN",
+  "reuse_after_fault": false,
+  "final_ip": "192.168.2.3",
+  "lease": "RELEASED_REACQUIRE_CHECK_PASS",
+  "scope": "One malformed reply/EOF per fresh load and restoration; no general worker recovery or coldboot proof"
+}
