@@ -812,3 +812,29 @@ Next implement reviewed explicit backend paths and PSTATE decoding in the
 collector, with offline tests; then read-only control-state capture. Resolve
 entry exception policy explicitly before any observer execution. Destructive
 DDR tests still require cache/master ownership and remain NOT_ADMITTED.
+
+## Post-FSBL live EL3 control observation PASS —2026-10-22
+
+Explicit XSDB paths now used (sys 1 sctlr_el3/sys 0 mpidr_el1, GP rN). Live
+cpsr supplies AArch64 EL/DAIF; only EL3t/h accepted before privileged reads.
+Separate controls-only path reads two identical states without applying or
+waiving execution admission. Nine collector/composition tests and six existing
+lifecycle controls PASS; observed unmasked A is returned, execution still rejects.
+
+Hardware shared lease89.255s PASS: CPU0 pc0xfffc0bf8, CurrentEL12,
+SCTLR_EL30xc00818 with M/C/I all0; DAIF0x2c0, cpsr0x600002cd,
+MPIDR0x80000000. No observer download/execution or DDR test. Mandatory normal
+restoration/physical TTL/CoreDMA/analyzer/MonInj/Ethernet PASS192.168.2.3; lease
+released. No Kasli device/Si/SD/flash/OTP writes. Evidence:
+`evidence/fsbl-controls-hardware-2026-10-22`, pins fsbl-controls-plan-2026-10-22.
+
+Storage gate initially rejected~387MiB before HW. Own completed Oct8Kasli
+master build moved byte/mode/link-verified to root, original path retained;
+shared free1943453696B at admission. Full inventory retained with evidence.
+No installed toolchain/source/other-project cleanup.
+
+Observer remains NOT_ADMITTED because A is unmasked. Next offline design
+exception-aware OCM observation with explicit fault reporting and reviewed entry
+policy; do not hide pending faults by blindly masking A or weakening the gate.
+Other-core/R5/PL/PS-DMA ownership and lower-EL cache proof still pending; this
+CPU0 snapshot does not authorize destructive DDR testing.

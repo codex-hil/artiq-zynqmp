@@ -34,7 +34,9 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('server','port','elf','fsbl','pmu','symbols','output'):
         p.add_argument('--'+name, required=True)
-    p.add_argument('--definitions-only',action='store_true')
+    group=p.add_mutually_exclusive_group()
+    group.add_argument('--definitions-only',action='store_true')
+    group.add_argument('--controls-only',action='store_true')
     a=p.parse_args(); require_lease()
     check(Path(a.elf).read_bytes())
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
@@ -59,13 +61,17 @@ def main():
                 raw.extend(uart.read(uart.in_waiting or 1))
                 if b'Exit from FSBL' in raw: break
             else: raise RuntimeError('FSBL UART completion timeout')
-            text=xs('observer','run_trained_observer.tcl',a.server,a.elf,desc['terminal_pcs'][0],'210383B7F02DA','definitions' if a.definitions_only else 'observe')
+            text=xs('observer','run_trained_observer.tcl',a.server,a.elf,desc['terminal_pcs'][0],'210383B7F02DA','definitions' if a.definitions_only else ('controls' if a.controls_only else 'observe'))
             if a.definitions_only:
                 if text.count('FSBL_REGISTER_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_REGISTER_DEFINITIONS_END')!=1 or text.count('FSBL_SYS_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_SYS_DEFINITIONS_END')!=1 or len(re.findall(r'^FSBL_CPSR_RAW [0-9]+$',text,re.M))!=1:
                     raise ValueError('Incomplete FSBL definitions')
                 if re.findall(r'^FSBL_SYS_CHILD_END (\d+)$',text,re.M)!=[str(i) for i in range(16)]:
                     raise ValueError('Incomplete system-register child definitions')
                 result.update(status='PASS',scope='FSBL_BACKEND_DEFINITIONS_ONLY_NO_OBSERVER_EXECUTION',fsbl_descriptor=desc)
+            elif a.controls_only:
+                if text.count('FSBL_CONTROL_STATE ')!=2 or text.count('FSBL_CONTROL_OBSERVATION_ONLY')!=1:
+                    raise ValueError('Incomplete control observation')
+                result.update(status='PASS',scope='CONTROL_OBSERVATION_ONLY_NO_EXECUTION_ADMISSION',fsbl_descriptor=desc)
             else: result.update(status='PASS',registers=decode(text),fsbl_descriptor=desc)
     except Exception as error: result['error']=str(error)
     finally:

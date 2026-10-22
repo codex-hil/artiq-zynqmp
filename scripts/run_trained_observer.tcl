@@ -3,7 +3,7 @@
 if {[llength $argv] ni {4 5}} {error "Require SERVER ELF TERMINAL CABLE"}
 lassign $argv server elf terminal cable mode
 if {$mode eq ""} {set mode observe}
-if {$mode ni {observe definitions}} {error "Unknown observer mode"}
+if {$mode ni {observe definitions controls}} {error "Unknown observer mode"}
 if {$cable ne "210383B7F02DA"} {error "Wrong cable"}
 source [file join [file dirname [info script]] collect_fsbl_entry.tcl]
 proc select_cpu0 {} {
@@ -50,6 +50,12 @@ if {$mode eq "definitions"} {
     }
     puts "FSBL_CPSR_RAW [fsbl_entry::register cpsr]"
     fsbl_entry::selected_halted
+    disconnect
+    return
+}
+if {$mode eq "controls"} {
+    foreach sample [fsbl_entry::observe_pair $terminal] {puts "FSBL_CONTROL_STATE $sample"}
+    puts "FSBL_CONTROL_OBSERVATION_ONLY"
     disconnect
     return
 }

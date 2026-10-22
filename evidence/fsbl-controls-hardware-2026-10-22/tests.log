@@ -1,0 +1,30 @@
+test_hex_and_two_snapshots (test_fsbl_entry_collector.CollectorTests.test_hex_and_two_snapshots) ... ok
+test_observation_is_not_admission (test_fsbl_entry_collector.CollectorTests.test_observation_is_not_admission) ... ok
+test_rejections (test_fsbl_entry_collector.CollectorTests.test_rejections) ... ok
+test_wrong_el_skips_privileged_reads (test_fsbl_entry_collector.CollectorTests.test_wrong_el_skips_privileged_reads) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.121s
+
+OK
+test_admission_failure_never_downloads (test_trained_observer.TrainedTests.test_admission_failure_never_downloads) ... ok
+test_bad_result_rejected (test_trained_observer.TrainedTests.test_bad_result_rejected) ... ok
+test_controls_only_preserves_unmasked_state (test_trained_observer.TrainedTests.test_controls_only_preserves_unmasked_state) ... ok
+test_definitions_only_does_not_download (test_trained_observer.TrainedTests.test_definitions_only_does_not_download) ... ok
+test_success (test_trained_observer.TrainedTests.test_success) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.024s
+
+OK
+test_busy_prevents_body_and_lease_released (test_candidate_runtime.CandidateTests.test_busy_prevents_body_and_lease_released) ... ok
+test_interrupt_still_restores (test_candidate_runtime.CandidateTests.test_interrupt_still_restores) ... ok
+test_restore_failure_never_passes (test_candidate_runtime.CandidateTests.test_restore_failure_never_passes) ... ok
+test_stale_artifact_rejected_before_report_check (test_candidate_runtime.CandidateTests.test_stale_artifact_rejected_before_report_check) ... ok
+test_success_restores_and_failure_restores (test_candidate_runtime.CandidateTests.test_success_restores_and_failure_restores) ... ok
+test_timeout_child_killed_and_lock_retained (test_candidate_runtime.CandidateTests.test_timeout_child_killed_and_lock_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.114s
+
+OK

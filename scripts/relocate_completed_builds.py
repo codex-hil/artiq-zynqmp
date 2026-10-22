@@ -13,6 +13,11 @@ ALLOWED=('kernel-health-cpu0-20261022','rpc-parser-cpu0-20261022',
          'satellite-dma-credit4-route-2026-10-16','satellite-dma-route-v3-2026-10-16',
          'genesys-delay-metrics-route-2026-10-20','ethernet-2025.2')
 
+EXTRA_BUILD_NAMES=('kasli-v2.1-master-2026-10-08',)
+
+def source_path(name):
+    return SOURCE.parent/('build' if name in EXTRA_BUILD_NAMES else 'build-vivado')/name
+
 def inventory(root):
     result={}
     for p in root.rglob('*'):
@@ -47,15 +52,15 @@ def relocate(source,destination,report):
     return {k:v for k,v in data.items() if k!='inventory'}
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--name',choices=ALLOWED,action='append',required=True);p.add_argument('--execute',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--name',choices=ALLOWED+EXTRA_BUILD_NAMES,action='append',required=True);p.add_argument('--execute',action='store_true');a=p.parse_args()
     if len(set(a.name))!=len(a.name):p.error('Duplicate build name')
     if not a.execute:
-        print(json.dumps(dict(status='PLAN_ONLY',builds=[dict(source=str(SOURCE/n),destination=str(DESTINATION/n)) for n in a.name]),indent=2));return
+        print(json.dumps(dict(status='PLAN_ONLY',builds=[dict(source=str(source_path(n)),destination=str(DESTINATION/n)) for n in a.name]),indent=2));return
     lock=Path.home()/'.cache/artiq-build-relocation.lock';lock.parent.mkdir(parents=True,exist_ok=True)
     with lock.open('a') as held:
         fcntl.flock(held,fcntl.LOCK_EX|fcntl.LOCK_NB)
         for name in a.name:
             print(name+' COPY_VERIFY_START',flush=True)
-            result=relocate(SOURCE/name,DESTINATION/name,DESTINATION/(name+'.relocation.json.gz'))
+            result=relocate(source_path(name),DESTINATION/name,DESTINATION/(name+'.relocation.json.gz'))
             print(json.dumps(result),flush=True)
 if __name__=='__main__':main()

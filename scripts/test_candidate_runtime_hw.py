@@ -67,6 +67,7 @@ def observer_preflight(path,files):
         item=info[name]
         if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:
             raise ValueError('Changed observer input: '+name)
+    if type(info.get('controls_only',False)) is not bool or (info.get('controls_only') and info.get('definitions_only')):raise ValueError('Invalid observation mode')
     if type(info.get('definitions_only',False)) is not bool:raise ValueError('Invalid definitions-only mode')
     if info['fsbl_sha256']!=files['candidate_fsbl']['sha256']:
         raise ValueError('Observer FSBL pin mismatch')
@@ -190,10 +191,10 @@ def main():
                 run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
                     '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
                     '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else []),180)
+                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else [])),180)
                 observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                 if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
-                return 'TRAINED_FSBL_METADATA_ONLY' if observer.get('definitions_only') else 'TRAINED_OCM_REGISTERS_ONLY'
+                return 'TRAINED_FSBL_OBSERVATION_ONLY' if observer.get('definitions_only') or observer.get('controls_only') else 'TRAINED_OCM_REGISTERS_ONLY'
             if prefix=='candidate' and ocm is not None:
                 run('candidate-ocm',[sys.executable,str(REPO/'scripts/run_ocm_environment.py'),
                     '--server',a.server,'--port',a.port,'--elf',ocm['elf']['path'],
