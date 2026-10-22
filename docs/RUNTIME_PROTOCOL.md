@@ -230,3 +230,28 @@ physical observation and independent restoration evidence. Reports:
 CPU1 cancellation progress remains NOT_PROVEN. The current worker's `rpc_recv`
 rejects a non-return/non-exception command via `fail`; connection termination
 is not evidence of a clean unwind or reusable worker. Keep outer restoration.
+
+## CPU1 cancellation audit and read-only terminal observer
+
+During synchronous RPC, CPU0 transport cancellation publishes command5 and marks
+the worker dead. CPU1 `rpc_recv` accepts command4 (return) or7 (host exception);
+command5 enters `fail("RPC reply command invalid")`. `fail` emits terminal
+status7 and waits forever. It does not unwind the kernel, drop its library,
+reset its allocators or call `dma::abort_recording`. That recording helper only
+clears the software recording slot; it is not a hardware DMA-stop primitive.
+A kernel in computation or playback may not be polling the command mailbox at
+all. The current30-second CPU0 watchdog likewise is not CPU1 preemption.
+
+Thus peer closure is consistent with a terminal worker, not automatic recovery.
+The three physical fault experiments used a synchronous no-output RPC fixture;
+they do not qualify cancellation of active DMA or pending RTIO events.
+Outer full restoration remains mandatory. No reuse feature has been added.
+
+The new `probe_rpc_failstop.tcl` selects only the named Genesys PSU and reads
+AP0 mailbox command/event/body. It requires command5, stable terminal status7
+and the exact failure message. It never stops CPUs or writes memory/reset/PL.
+The existing fault wrapper now invokes this bounded observer under the same
+lease before restoration. Observation failure still invokes restoration.
+Two Tcl-model tests plus6existing lifecycle tests PASS; the new DAP observation
+has not yet been executed on hardware. It can establish that CPU1 reached its
+terminal path, but not clean unwind, complete DMA/RTIO quiescence or safe reuse.

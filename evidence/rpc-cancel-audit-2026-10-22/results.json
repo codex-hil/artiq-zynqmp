@@ -1,0 +1,19 @@
+{
+  "status": "SOURCE_AUDIT_AND_OBSERVER_MODEL_TESTS_PASS",
+  "hardware_executed": false,
+  "observer_tests": 2,
+  "lifecycle_tests": 6,
+  "findings": [
+    "CPU0 cancel5/dead is not an acknowledgement",
+    "CPU1 synchronous RPC cancel5 enters fail/status7/permanent wait",
+    "No clean unwind or general active-DMA/RTIO stop on this path"
+  ],
+  "observer_hardware": "NOT_RUN",
+  "worker_reuse": "FORBIDDEN_BEFORE_RESTORATION",
+  "sha256": {
+    "boards/genesys_zu-5ev/3_kernel/src/lib.rs": "eed3546a4c960669e83b5cc2cd464ab08684b02e010706f4800d18f5339ed9be",
+    "boards/genesys_zu-5ev/3_kernel/src/dma.rs": "c1decd7ee55270b1a32a9da824743c0923b9b5b395338b8628b593bc15351d93",
+    "boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c": "c53daa7732b0e011c6b7b6c6cd9f544fba8c5b38813eaef01ffe32994d0c5449",
+    "scripts/probe_rpc_failstop.tcl": "e93f105ec12932463df322f5668937712a2e9329bd8fb4e999e26da12c96dd10"
+  }
+}

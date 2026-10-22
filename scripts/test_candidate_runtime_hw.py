@@ -139,7 +139,10 @@ def main():
                 observed=json.loads((fault/'results.json').read_text())
                 if observed.get('status')!='FAULT_TERMINATION_OBSERVED_RESTORE_REQUIRED':
                     raise RuntimeError('RPC fault observation incomplete')
-                return ip  # No additional kernels or tests on the faulted worker.
+                run('candidate-rpc-terminal-event',['vivado-container','shell','-c','exec "$@"','bash',
+                    '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
+                    str(REPO/'scripts/probe_rpc_failstop.tcl'),a.server,CABLE],30)
+                return ip  # Read-only observation only; no kernel reuse before restoration.
             run(prefix+'-ethernet',[sys.executable,str(REPO/'scripts/test_ethernet_hw.py'),'--ip',ip,'--interface',a.interface,'--output',str(out/(prefix+'-ethernet.json'))],90)
             return ip
         # Convert external termination to an exception so restoration is attempted.
