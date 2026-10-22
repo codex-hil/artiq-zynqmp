@@ -1,0 +1,28 @@
+{
+  "status": "OFFLINE_CONFIG_AND_PRIMARY_SOURCE_AUDIT_NOT_LIVE_STATE",
+  "hardware_executed": false,
+  "board_reference": "https://digilent.com/reference/programmable-logic/genesys-zu/reference-manual",
+  "route": "SPD directly on MIO8 SCL/MIO9 SDA via PS I2C1; matches Piotr PS config",
+  "controller_base": "0xff030000",
+  "source_spd_address": "0x51",
+  "encoded_irq": "0x4012",
+  "amd_wrapper_decode": "ID=(encoded &0xfff)+32 for SPI =>50",
+  "gic_distributor": "0xf9010000",
+  "read_only_admission_candidates": {
+    "enable_word": "0xf9010104",
+    "pending_word": "0xf9010204",
+    "active_word": "0xf9010304",
+    "bit": "18"
+  },
+  "live_gic_state": "NOT_CAPTURED",
+  "fsbl_path": "SDT dynamic-DDR config1 defines XPAR_DYNAMIC_DDR_ENABLED; FSBL calls XFsbl_DdrInit and fails initialization on non-success. New diagnostic emits base bytes only after original IIC reader returns success.",
+  "not_proven": "Source routing/call proof is not an actual physical SPD dump or module capacity proof. New adapter remains offline; first physical acquisition will reuse existing FSBL transactions.",
+  "input_sha256": {
+    "boards/genesys_zu-5ev/0_platform/zynq_ultra_ps_e_0.properties.tcl": "944d303e9cee626d043a1aeb9531922fbf3e06ed6110e0866aeeec7fcac1128c",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include/xparameters.h": "92db8b6d7878f7906a3e7f49c8269bfa14a92752e9188df747c7e5ead026ceac",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/xfsbl_initialization.c": "270ea261a9b338f4850b3206f17c6525e13681f10f9174b7ae81fe86c5469c6b",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/app/src/xfsbl_hw.h": "f8dc576e02f3f8678600e210eda7ee7b7a6713c15b112078da88036d6cb5d1f7",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/standalone/src/common/intr/xinterrupt_wrap.h": "42c06f65032da227a1b05a97b722e749ebf312d2f93cf4366aa08daabc9e8d87",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/standalone/src/common/intr/xinterrupt_wrap.c": "325e442711f37b511dbf5cd85a38cc9d6cf5d66cadd22c20c228c17ee9ab2f0f"
+  }
+}

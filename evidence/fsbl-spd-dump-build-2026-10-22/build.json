@@ -1,0 +1,31 @@
+{
+  "status": "DIAGNOSTIC_FSBL_PMU_BUILD_PASS",
+  "hardware_executed": false,
+  "output": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022",
+  "files": {
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/app/build/zynqmp_fsbl.elf": {
+      "sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+      "bytes": 686120
+    },
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-app/build/zynqmp_pmufw.elf": {
+      "sha256": "9f5c58c5985c0c9dd628e7b74a9bff1bb769dfe8d807c48915fe863e3baa2709",
+      "bytes": 911296
+    },
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/sdt/psu_init.tcl": {
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+      "bytes": 691607
+    },
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-export-result-20261021/platform.xsa": {
+      "sha256": "5444a2b1a5c56a4ea7a2f96a64c1d643748adbd27b0574d4eb67eaa8bde27420",
+      "bytes": 570918
+    }
+  },
+  "source_equals_instrumented_copy": true,
+  "build_exit": 0,
+  "tests": "3 FSBL source/emitter/parser controls PASS; synthetic C emitter, not hardware",
+  "dynamic_ddr_call_in_linked_elf": [
+    "fffd3bd0:\t97ffc348 \tbl\tfffc48f0 <XFsbl_DdrInit>"
+  ],
+  "boot_flash_sd_writes": false,
+  "next": "add bounded runtime wrapper parsing candidate FSBL UART and mandatory baseline restoration; do not deploy as normal release"
+}

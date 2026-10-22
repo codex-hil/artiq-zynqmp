@@ -1,0 +1,23 @@
+--- piotr/xfsbl_ddr_init.c
++++ diagnostic/xfsbl_ddr_init.c
+@@ -5601,6 +5601,20 @@
+ 		goto END;
+ 	}
+ 
++
++    /* Diagnostic UART only: preserve Piotr/AMD SPD transactions and training. */
++    XFsbl_Printf(DEBUG_GENERAL, "SPD_BASE_BEGIN bytes=128\r\n");
++    for (u32 SpdDumpIndex = 0U; SpdDumpIndex < 128U; SpdDumpIndex++) {
++        if ((SpdDumpIndex % 16U) == 0U) {
++            XFsbl_Printf(DEBUG_GENERAL, "SPD_BASE %03u ", (unsigned int)SpdDumpIndex);
++        }
++        XFsbl_Printf(DEBUG_GENERAL, "%02x", (unsigned int)SpdData[SpdDumpIndex]);
++        if ((SpdDumpIndex % 16U) == 15U) {
++            XFsbl_Printf(DEBUG_GENERAL, "\r\n");
++        }
++    }
++    XFsbl_Printf(DEBUG_GENERAL, "SPD_BASE_END\r\n");
++
+ 	/* ZCU102, ZCU106 and ZCU111, ZCU216, ZCU208 and ZCU670 Boards have
+ 	 * support only for DDR4 DIMMs. Skip checking for DDR type for these
+ 	 * boards.

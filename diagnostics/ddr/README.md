@@ -298,3 +298,39 @@ corruptions, endian/coverage/profile failures and downstream/CLI rejection;
 five existing SPD/geometry controls PASS. Synthetic fixtures/results remain
 explicitly identified in `evidence/spd-base-crc-2026-10-22`. No actual SPD dump
 or physical memory capacity/integrity evidence is created by CRC tests.
+
+## First physical SPD acquisition: instrument Piotr's existing FSBL
+
+The [Digilent manual](https://digilent.com/reference/programmable-logic/genesys-zu/reference-manual)
+confirms SPD directly on MIO8/9 via I2C1, matching Piotr's PS settings. BSP
+I2C1 base0xff030000 and encoded interrupt0x4012 decode via AMD wrapper to SPI50.
+This is configuration/source evidence; live IRQ state is not inferred.
+
+For the first physical dump, reuse Piotr's existing FSBL reader/training rather
+than waiting for deployment of the new standalone reader. The diagnostic FSBL
+adds only UART logging after original SPD read success. It makes no extra I2C
+transactions and preserves page selection/training behavior. This route does
+not require installing the candidate manual-ISR adapter or changing its GIC
+ownership rules. The adapter remains offline for independent diagnostics.
+
+Build an isolated diagnostic (default boot build remains unchanged):
+
+```sh
+FSBL_SPD_DUMP=1 scripts/build_boot_firmware.sh XSA FRESH_OUTPUT ARM_GNU_PREFIX
+```
+
+Run inside the existing Vivado container as for the normal firmware build.
+Instrumentation refuses changed Piotr source by hash and writes fresh source,
+unified diff and manifest. No original checkout/shared qualified BSP is edited.
+FSBL/PMU build PASS in `build-vivado/fsbl-spd-dump-20261022`; linked ELF contains
+the dynamic DDR call. Source diff/hashes/compressed build log in
+`evidence/fsbl-spd-dump-build-2026-10-22`.
+
+`decode_fsbl_spd_log.py --log UART --output FRESH` requires exactly one complete
+128-byte frame/eight ordered rows, later FSBL completion, valid base CRC and
+supported geometry. It writes raw bytes plus report. Three controls compile the
+actual injected C emitter and decode synthetic data, reject malformed/truncated/
+CRC-bad/no-completion frames, and reject changed original source. No physical
+SPD dump yet. Next add the diagnostic FSBL to a bounded candidate runtime window
+with strict UART parsing and full normal restoration; do not package it as the
+normal SD release or flash it.

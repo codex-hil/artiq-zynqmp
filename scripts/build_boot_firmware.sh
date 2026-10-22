@@ -20,6 +20,10 @@ esw="$amd/Vivado/bin/empyro"
 "$esw" create_bsp -w "$output/bsp" -s "$output/sdt/system-top.dts" -p psu_cortexa53_0 -t zynqmp_fsbl -r "$output/.repo.yaml"
 "$esw" create_app -d "$output/bsp" -t zynqmp_fsbl -w "$output/app" -r "$output/.repo.yaml"
 cp "$repo/boards/genesys_zu-5ev/3_bootable/xfsbl_ddr_init.c" "$output/app/src/xfsbl_ddr_init.c"
+if [ "${FSBL_SPD_DUMP:-0}" = 1 ]; then
+    python3 "$repo/scripts/instrument_fsbl_spd.py" --output "$output/spd-instrumented.c"
+    cp "$output/spd-instrumented.c" "$output/app/src/xfsbl_ddr_init.c"
+fi
 python3 - "$output/app/src/xfsbl_debug.h" <<'PYTHON'
 from pathlib import Path
 import sys

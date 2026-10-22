@@ -537,3 +537,20 @@ rejection. Evidence `evidence/spd-base-crc-2026-10-22` uses only synthetic SPD.
 Reference primary i2c-tools source linked in DDR README. Physical SPD/CRC/DDR
 NOT_RUN. Next concrete route/device/GIC evidence and linked bounded capture
 wrapper; CRC validity alone does not establish identity or fitted capacity.
+
+### Concrete route/IRQ audit; existing FSBL dump built —2026-10-22
+
+Digilent primary manual confirms I2C1/MIO8SCL/MIO9SDA, matching Piotr config.
+BSP0xff030000/encodedIRQ4012 plus AMD SPI offset gives IRQ50; proposed live
+read-only GIC words recorded, not read here. Linked diagnostic FSBL confirms
+dynamic DDR call; source enables SPD-based initialization in SDT flow.
+
+First capture path now instruments existing Piotr FSBL after successful SPD
+read: UART-only base128B dump, no new I2C or changed training/page operations.
+FSBL/PMU build PASS in fresh output, originals/shared BSP untouched. Three
+source/emitter/parser tests PASS, including actual injected C formatting. Parser
+requires ordered complete frame, CRC and subsequent FSBL completion. Evidence:
+`evidence/fsbl-spd-dump-build-2026-10-22`. Physical dump NOT_RUN. Next bounded
+candidate loader window with strict UART parsing/full normal restoration.
+Standalone adapter/GIC admission work remains offline and is not required for
+this existing FSBL-based acquisition path. No HW access/card/flash writes.
