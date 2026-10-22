@@ -1,5 +1,27 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## Exception-aware EL3 normal execution hardware PASS —2026-10-22
+
+Bounded resume-trace window91.308s under shared Genesys lease PASS.
+Post-FSBL training preserved; OCM-only2172B observer loaded, VBAR_EL3 written/
+read back before continue, original A unmasked retained (DAIF0x2c0). Ten backend
+samples suspended=0, then checked halt at0xfffc8834 withx0=12/x9=0xfffc8800/
+x15=0x33; complete normal snapshot PASS. Original20ms no-progress FAIL retained;
+this does not conclusively explain its root cause.
+
+Live CPU0 SCTLR snapshots: EL3=0xc00818, EL2=0x30c50838, EL1=0xc52838;
+M/C/I all0 in each. CPU0-only observation, not other-core cache or DMA-master
+quiescence. No DDR pattern access/test. No deliberate BRK or asynchronous
+SError delivery tested; vector installation plus normal execution is not fault
+handling qualification. Next explicit bounded BRK-test verifier and restoration
+controls before physical deliberate-exception validation.
+
+Mandatory normal restoration/physical TTL/CoreDMA/analyzer/MonInj/Ethernet PASS
+192.168.2.3; shared lease released. No Kasli/Si/SD/flash/OTP writes. Evidence:
+`evidence/el3-resume-trace-hardware-2026-10-22`, raw compressed logs with original
+hashes retained. Existing full-DDR/cache/master ownership requirements stay open.
+
+
 ## First exception-aware observer hardware FAIL; restoration PASS —2026-10-22
 
 Shared Genesys lease87.366s. FSBL terminal/EL3/cache checks and synchronized

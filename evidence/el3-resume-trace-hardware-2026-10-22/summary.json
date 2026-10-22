@@ -1,0 +1,175 @@
+{
+  "status": "NORMAL_EXCEPTION_AWARE_OBSERVER_AND_RESTORATION_PASS",
+  "hardware_executed": true,
+  "lease_seconds": 91.308,
+  "registers": {
+    "x0": 12,
+    "x1": 12584984,
+    "x2": 3086,
+    "x3": 818219064,
+    "x4": 12920888,
+    "x5": 2,
+    "x6": 704,
+    "x7": 2147483648,
+    "x8": 4294860112,
+    "x9": 4294739968,
+    "x14": 1,
+    "x15": 51,
+    "x16": 0,
+    "x17": 0,
+    "x18": 7,
+    "x19": 0,
+    "x20": 4294836224,
+    "x21": 4294840712
+  },
+  "cpu0_control_snapshot": {
+    "EL3": {
+      "raw": "0xc00818",
+      "M": false,
+      "C": false,
+      "I": false
+    },
+    "EL2": {
+      "raw": "0x30c50838",
+      "M": false,
+      "C": false,
+      "I": false
+    },
+    "EL1": {
+      "raw": "0xc52838",
+      "M": false,
+      "C": false,
+      "I": false
+    }
+  },
+  "daif": "0x2c0",
+  "normal_ip": "192.168.2.3",
+  "raw_files": {
+    "restore-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "restore-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "candidate-trained-observer.log": {
+      "sha256": "83354aa199dd0db67173b175311375a4b80b9e63e9c358e3e01d83d71bdf6ed3",
+      "bytes": 769
+    },
+    "restore-ethernet.log": {
+      "sha256": "8be8eb2fac373adbc2136383fcbf246304e3e5a2b54ae75293a01dfbf9bc5e8d",
+      "bytes": 2019
+    },
+    "restore-debug.log": {
+      "sha256": "ce8d164e92ecad0fcd6f94294879b2c64f7007fa56e70da2796e488a34c7fe48",
+      "bytes": 1899
+    },
+    "restore-ethernet.json": {
+      "sha256": "8be8eb2fac373adbc2136383fcbf246304e3e5a2b54ae75293a01dfbf9bc5e8d",
+      "bytes": 2019
+    },
+    "results.json": {
+      "sha256": "623cdea5d371561b8302fc3a3e5391427c3e8a42c457d8a6f266e7b64df49b20",
+      "bytes": 2408
+    },
+    "restore-load/uart.log": {
+      "sha256": "293b850faed96db8fae5d1c86a51a77c7d7c5881b194ac49cb6d687dc3b47136",
+      "bytes": 1068
+    },
+    "restore-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "restore-load/prepare.log": {
+      "sha256": "8cd76ed25fbd35cfd9eb69edccd88362755dc7fa6af0527c0606ca1d63569812",
+      "bytes": 65
+    },
+    "restore-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "restore-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "restore-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "restore-load/pl.log": {
+      "sha256": "eff21e2464edf386be4827be15c693fb1f3799a05e246fbb4e185ec9b9c042ac",
+      "bytes": 1918
+    },
+    "restore-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "restore-debug/wrap-dma-5.log": {
+      "sha256": "f782693c8ddad0a451a157c6ffd695a032e7cfc70a0b2e89a8ce22aaef55b1af",
+      "bytes": 210
+    },
+    "restore-debug/dma.log": {
+      "sha256": "d6b1919cc61c3c5be26a056d68755374c88ea1706ad5b06734c18a9e3fc64de1",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-6.log": {
+      "sha256": "500a0543821632d6eee5f66c545965bc9690ea93f39d90f2dfa15b2dab7ef013",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-0.log": {
+      "sha256": "475dea30cd11ecb465f73974d6209f0809ccc6d41eb78100775cd361b33be536",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-2.log": {
+      "sha256": "cb06187478ccee62512ff5e50b1551a9114e34add114cff693082e22dcd51817",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-3.log": {
+      "sha256": "df28f57c403b282047168c25d600d75ae67de0b22142fe5b3977644cd9ea7258",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-7.log": {
+      "sha256": "cd29356b6fe8139c5eeea3b45c3b8249e384db66c302ff617c2503ff3bd8f810",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-1.log": {
+      "sha256": "27f9d4a2bf111a9276d7787285eca4b39e9ecb670a9db64791258b70ef1b18b6",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-4.log": {
+      "sha256": "8df105977bde590e0e261e63ca6563f675268ac73abe43054d94ce78225e06b8",
+      "bytes": 210
+    },
+    "restore-debug/results.json": {
+      "sha256": "7daeeca76e17144ff0b6a03764393771a856b5e986c8c968c4af3802bf55d89f",
+      "bytes": 1692
+    },
+    "candidate-trained-observer/uart.log": {
+      "sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b",
+      "bytes": 840
+    },
+    "candidate-trained-observer/observer.log": {
+      "sha256": "213df801bbd8526bd4c0b48161a45141da7a815d03cb43b3fdfab4e73fe28d5d",
+      "bytes": 1174
+    },
+    "candidate-trained-observer/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "candidate-trained-observer/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "candidate-trained-observer/results.json": {
+      "sha256": "83354aa199dd0db67173b175311375a4b80b9e63e9c358e3e01d83d71bdf6ed3",
+      "bytes": 769
+    }
+  },
+  "limits": [
+    "Normal execution only; deliberate BRK, asynchronous SError and vector-delivery qualification NOT_RUN.",
+    "First20ms attempt remains FAIL; observed success with bounded resume trace does not establish first failure root cause.",
+    "CPU0 control snapshot does not prove other-core/R5/PL/PS-DMA quiescence, physical DDR mapping or integrity.",
+    "No test-pattern DDR writes, Kasli/Si/SD/flash/OTP writes."
+  ]
+}
