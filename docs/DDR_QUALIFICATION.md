@@ -628,3 +628,16 @@ and cannot be reused unchanged. Next prepare a trained-DDR OCM handoff with
 explicit EL3/EL1 cache policy and other-core/PS-DMA/PL-master ownership evidence.
 Physical SPD and controller agreement do not substitute for these conditions.
 Normal runtime remains at the last validated192.168.2.3 baseline.
+
+## Trained-DDR handoff source audit —2026-10-22
+
+Pinned generated FSBL handoff/exit/cache sources and OCM startup/loader reviewed.
+FSBL disables data cache, exit masks EL3 M/C/I, but UART completion precedes
+assembly exit. Current OCM startup re-enables EL3 C/I (0x1006), and cold loader
+skips DDR training. Neither can be reused unchanged as the DDR tester. FSBL
+also conditionally removes PL isolation when DONE is present: PL master
+quiescence cannot be inferred from no new bitstream. No hardware accessed.
+Source hashes/line anchors: `evidence/trained-ddr-handoff-audit-2026-10-22`.
+Concrete observer-first contract: `diagnostics/ddr/TRAINED_OCM_HANDOFF.md`.
+Next implement stackless EL3 entry observation and layout verification, with no
+DDR loads/stores; trained handoff and destructive testing remain NOT_RUN.

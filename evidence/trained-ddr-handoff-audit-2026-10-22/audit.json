@@ -1,0 +1,85 @@
+{
+  "status": "SOURCE_AUDIT_ONLY_HANDOFF_NOT_EXECUTABLE",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "inputs": [
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_handoff.c",
+      "sha256": "161ffc06037594fd14be856dce29ec6643eb97c8dcbe2872abc414b8c4d5d80a",
+      "matches": [
+        {
+          "needle": "Xil_DCacheDisable();",
+          "lines": [
+            759
+          ]
+        },
+        {
+          "needle": "XFSBL_JTAG_BOOT_MODE",
+          "lines": [
+            785
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_exit.S",
+      "sha256": "6d000a5befe74a6af555fc8908bb127886c9eb0329484309d14c92725c852661",
+      "matches": [
+        {
+          "needle": "mov x6, #0x1005",
+          "lines": [
+            98,
+            208
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_main.c",
+      "sha256": "1338efdd5dfb3854a2a96abf62b7e3c3c7139ca9a15fcfbdf9715b3763bb9a7b",
+      "matches": []
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/bsp/libsrc/standalone/src/arm/ARMv8/64bit/xil_cache.c",
+      "sha256": "17c1b9fa7f78b164693705d854c6fbff8c573494354549b12d3fbc92a7a72fa0",
+      "matches": []
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/a53/src/start-ocm.S",
+      "sha256": "c62f6a3837afca494222b7823ee9ca77bf181e4f0338df2303ee44d4c334deb8",
+      "matches": [
+        {
+          "needle": "mov     x0, #0x1006",
+          "lines": [
+            144
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/run_ocm_environment.tcl",
+      "sha256": "8c057956a883d9911c002089cc1bd6f2140025b958ecc220e7864c294ea07283",
+      "matches": [
+        {
+          "needle": "PS_UART_CLOCK_INIT_DONE_NO_DDR",
+          "lines": [
+            76
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/run_boot_firmware.tcl",
+      "sha256": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+      "matches": []
+    }
+  ],
+  "findings": [
+    "FSBL JTAG handoff invokes Xil_DCacheDisable before PM initialization/protection and JTAG exit. Later operations mean this call alone is not final live-state proof.",
+    "AArch64 exit masks SCTLR_EL3 bits 0x1005 then takes WFE for no-handoff; exit UART marker precedes assembly exit, so marker alone does not prove terminal PC/state.",
+    "Existing OCM startup initializes data/BSS before its EL3 control setup and subsequently enables EL3 C/I with 0x1006. It must not be treated as an uncached diagnostic entry.",
+    "Existing cold OCM loader performs system reset and explicitly excludes DDR initialization. Reusing it after FSBL would discard the intended trained-state sequence.",
+    "FSBL may remove PS/PL isolation when PL DONE is present; no-new-bitstream does not establish PL DDR-master quiescence."
+  ],
+  "next": "Implement a separate stackless EL3 entry observer and static OCM layout check; capture before control writes, no DDR loads/stores. Loader must verify FSBL terminal state before replacing overlapping OCM."
+}
