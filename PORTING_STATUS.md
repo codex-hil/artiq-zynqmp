@@ -17,6 +17,15 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Read-only live DDR controller capture —2026-10-22
+
+14DDRC configuration registers read under Genesys lease: DDR4, one active rank,
+x16 devices, full bus-width proportion, ECC mode0; raw ADDRMAP0..11 retained.
+No CPU stop/reset/register or DDR writes. Lease released/reacquirechecked,
+normal runtime unchanged. Evidence: `evidence/ddrc-snapshot-2026-10-22/`.
+Physical capacity/high-bank decoding and full-range memory integrity remain
+unproven; no destructive interval has been authorized from this capture.
+
 ## DDR qualification map audit —2026-10-22
 
 Offline SDT/ELF inventory identifies configured low2GiB and high2GiB windows,

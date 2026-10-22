@@ -68,3 +68,19 @@ Skipping DDR-based MMU setup is not proof of disabled MMU/cache: a dedicated
 tester must explicitly establish and report its execution/cache state under a
 reviewed bootstrap. No existing diagnostic was changed or executed here.
 Evidence: `evidence/ddr-config-preparation-2026-10-22/`.
+
+## Live controller configuration capture —2026-10-22
+
+The14-register snapshot completed under the Genesys lease, using the uniquely
+selected PSU/DAP target. MSTR=`0x81040010`: DDR4, active rank mask1(one rank),
+x16 devices, full bus-width proportion. ECCCFG0 reports mode0. All12ADDRMAP
+words are retained in `evidence/ddrc-snapshot-2026-10-22/`. The lock was released
+and nonblocking reacquisition verified. No CPU stop, reset, DDR writes, runtime
+replacement, Kasli/Si/SD/flash/OTP actions or extra network tests occurred.
+
+These are live programmed values rather than static SDT assumptions. They do
+not by themselves prove installed density, the complete CPU physical mapping,
+correct high-bank decoding or error-free storage. Physical capacity remains
+NOT_ESTABLISHED. Next decode the ADDRMAP fields against Piotr/AMD's dynamic
+mapping algorithm and obtain independent geometry evidence before choosing full
+DDR test limits. The restored normal runtime was left in place.

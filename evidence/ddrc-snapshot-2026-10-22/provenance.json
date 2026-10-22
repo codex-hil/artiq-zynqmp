@@ -1,0 +1,16 @@
+{
+  "status": "READ_ONLY_DDRC_CAPTURE_PASS",
+  "hardware_executed": true,
+  "board": "Genesys210383B7F02DA",
+  "lease": "RELEASED_REACQUIRE_CHECK_PASS",
+  "writes": "NONE",
+  "cpu_stop_reset": "NONE",
+  "ddr_memory_test": "NOT_RUN",
+  "physical_capacity": "NOT_ESTABLISHED",
+  "sha256": {
+    "scripts/probe_ddr_config.tcl": "f5309d1ad5ba0d7bacbd7df622fa77124af734dacf661fbf2decc7cf956c584c",
+    "scripts/capture_ddr_config.py": "d6c761cb6a3c54b42f4d188653e2126eb24e7657af9e7c73db09f2f188b01a3f",
+    "scripts/decode_ddr_config.py": "0ad3a9c28644d93c32469ffce1d044f9b48e32a1a384d2b64e721f957ab91997",
+    "/srv/codex-hil-data/artiq-zynqmp/build/ddrc-snapshot-20261022/snapshot.log": "34d083385ed15fe23ab892be7b09d417e71f94ae36a4cce4e2d5cf6821248807"
+  }
+}

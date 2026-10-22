@@ -1,0 +1,30 @@
+{
+  "status": "CONTROLLER_CONFIGURATION_DECODED_NOT_CAPACITY_PROOF",
+  "hardware_executed": true,
+  "ddr4": true,
+  "active_rank_mask": 1,
+  "active_ranks": 1,
+  "device_dq_bits": 16,
+  "bus_width_proportion": "full",
+  "ecc_mode": 0,
+  "registers": {
+    "MSTR": "0x81040010",
+    "ECCCFG0": "0x0",
+    "ADDRMAP0": "0x1f",
+    "ADDRMAP1": "0x1f0909",
+    "ADDRMAP2": "0x1010100",
+    "ADDRMAP3": "0x1010101",
+    "ADDRMAP4": "0xf0f",
+    "ADDRMAP5": "0x70f0707",
+    "ADDRMAP6": "0x7070707",
+    "ADDRMAP7": "0xf0f",
+    "ADDRMAP8": "0x1f01",
+    "ADDRMAP9": "0x7070707",
+    "ADDRMAP10": "0x7070707",
+    "ADDRMAP11": "0x7"
+  },
+  "physical_capacity": "NOT_ESTABLISHED",
+  "limits": "DDRC programmed fields only; no SPD capture, full address-map reconstruction, physical alias test or writable DDR interval authorization.",
+  "cable": "210383B7F02DA",
+  "scope": "Read-only configuration snapshot; no register write, CPU stop, reset or DDR memory test"
+}
