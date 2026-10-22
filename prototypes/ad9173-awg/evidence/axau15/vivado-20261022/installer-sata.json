@@ -1,0 +1,33 @@
+{
+  "download": {
+    "status": "PASS_SHA256",
+    "bytes": 102739568640,
+    "total_bytes": 102739568640,
+    "destination": "/srv/backup-local/installers/amd/FPGAs_AdaptiveSoCs_Unified_SDI_2025.2_1114_2157_1.tar",
+    "expected_sha256": "cd1021b04166e43c0d59cbbded7b1687dda5e9dad890b82492f872b2fe32a725",
+    "elapsed_seconds": 2325.9
+  },
+  "local_payload_test": {
+    "status": "PASS",
+    "entries": 5461,
+    "samples": [
+      {
+        "name": "data_0546_2025.2_1114_2157.xz",
+        "bytes": 356,
+        "sha256": "19103a17f5fa54e10b20bc098dfdb735d63f0e419071e7b4cfc7bc2643c98c94"
+      },
+      {
+        "name": "data_2961_2025.2_1114_2157_encrypt.xz",
+        "bytes": 731,
+        "sha256": "1af6e83ce36dfe1e0bbb31faa728da8be9b2ac5dc17d6a2ce8e94f5eb5a7dae5"
+      },
+      {
+        "name": "data_1069_2025.2_1114_2157.xz",
+        "bytes": 1005,
+        "sha256": "9ad05e9155ce19e04718e9987f083d89c51621e88099402b1a7be5c20dc1b766"
+      }
+    ]
+  },
+  "host": "Dell 192.168.2.7",
+  "storage": "Kingston SA400S37240G SATA, /dev/sda1, /srv/backup-local"
+}

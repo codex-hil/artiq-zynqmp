@@ -140,3 +140,13 @@ Physical acceptance still pending
    PCIe–SFP adapter wiring and external clock synchronization.
 
 No flash, EEPROM, OTP, eFUSE, SD or other-board writes are part of this plan.
+
+Offline installer retained on Dell SATA
+--------------------------------------
+
+The complete Vivado 2025.2 installer (102739568640 bytes) is stored under
+``/srv/backup-local/installers/amd/`` on Dell, with verified SHA-256 and
+``REUSE.rst`` instructions for local read-only payload access without SMB.
+See ``../evidence/axau15/vivado-20261022/installer-sata.json`` for the exact
+filename, checksum and payload readback evidence. The Optiplex installation
+and installers remain unchanged.
