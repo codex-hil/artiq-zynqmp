@@ -59,7 +59,7 @@ OBSERVER_SCRIPTS={'scripts/test_candidate_runtime_hw.py','scripts/run_trained_ob
  'scripts/reset_genesys_ps.tcl','scripts/run_boot_firmware.tcl','scripts/load_rtio_runtime.py',
  'scripts/prepare_local_rtio.tcl','scripts/run_kernel_worker.tcl','scripts/run_a53_runtime.tcl',
  'scripts/program_genesys_pl.tcl'}
-EXCEPTION_OBSERVER_EXTRA={'scripts/load_el3_exception_observer.tcl','scripts/check_el3_exception_observer.py','scripts/inject_rpc_fault.py'}
+EXCEPTION_OBSERVER_EXTRA={'scripts/load_el3_exception_observer.tcl','scripts/check_el3_exception_observer.py','scripts/inject_rpc_fault.py','scripts/verify_el3_brk_capture.py'}
 def observer_preflight(path,files):
     from check_el3_observer import check as check_observer
     from check_fsbl_observer_entry import descriptor
@@ -68,6 +68,7 @@ def observer_preflight(path,files):
         item=info[name]
         if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:
             raise ValueError('Changed observer input: '+name)
+    if type(info.get('exception_brk',False)) is not bool or (info.get('exception_brk') and not info.get('exception_observer')):raise ValueError('BRK requires exception-aware observer')
     if type(info.get('exception_observer',False)) is not bool or (info.get('exception_observer') and (info.get('controls_only') or info.get('definitions_only'))):raise ValueError('Invalid exception observer mode')
     if type(info.get('controls_only',False)) is not bool or (info.get('controls_only') and info.get('definitions_only')):raise ValueError('Invalid observation mode')
     if type(info.get('definitions_only',False)) is not bool:raise ValueError('Invalid definitions-only mode')
@@ -196,9 +197,10 @@ def main():
                 run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
                     '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
                     '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-observer'] if observer.get('exception_observer') else []))),180)
+                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
                 observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                 if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
+                if observer.get('exception_brk'):return 'EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED'
                 return 'TRAINED_FSBL_OBSERVATION_ONLY' if observer.get('definitions_only') or observer.get('controls_only') else 'TRAINED_OCM_REGISTERS_ONLY'
             if prefix=='candidate' and ocm is not None:
                 run('candidate-ocm',[sys.executable,str(REPO/'scripts/run_ocm_environment.py'),
@@ -251,7 +253,7 @@ def main():
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,trained_observer=observer is not None,
+                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,trained_observer=observer is not None,observer_probe=('brk' if observer.get('exception_brk') else 'normal') if observer else None,observer_manifest_sha256=hashlib.sha256(a.trained_observer_manifest.read_bytes()).hexdigest() if observer else None,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),storage_admission=storage)
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

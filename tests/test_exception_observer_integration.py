@@ -11,11 +11,11 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from run_trained_observer import decode_exception
 from test_candidate_runtime_hw import observer_preflight,lifecycle
-PLAN=ROOT/'evidence/el3-exception-observer-hardware-2026-10-22/resume-trace-inputs.json'
+PLAN=ROOT/'evidence/el3-brk-integration-2026-10-22/inputs.json'
 
 
 class IntegrationTests(unittest.TestCase):
- def output(self,fault=False):
+ def output(self,fault=False,brk=False):
   setup='''
 set argv {server observer.elf 0xfffc0bf4 210383B7F02DA exception}
 proc connect {args} {}
@@ -27,6 +27,7 @@ proc targets {args} {
  return [list [dict create name {Cortex-A53 #0} jtag_cable_serial 210383B7F02DA suspended $halted target_id 1]]
 }
 '''
+  if brk:setup=setup.replace('210383B7F02DA exception}', '210383B7F02DA exception-brk}')
   script=MOCK+setup+('set fault 1\n' if fault else '')+'if {[catch {source {'+str(ROOT/'scripts/run_trained_observer.tcl')+'}} msg]} {puts "ERROR $msg"}\n'
   p=subprocess.run(['tclsh'],input=script,text=True,capture_output=True,timeout=5)
   self.assertFalse(p.stderr,p.stderr);self.assertEqual(p.returncode,0)

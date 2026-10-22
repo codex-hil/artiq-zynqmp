@@ -1,0 +1,13 @@
+test_each_wrong_fault_field_rejects (test_el3_brk_capture.BrkTests.test_each_wrong_fault_field_rejects) ... ok
+test_expected_fault_never_waives_restore (test_el3_brk_capture.BrkTests.test_expected_fault_never_waives_restore) ... ok
+test_normal_duplicate_and_incomplete_reject (test_el3_brk_capture.BrkTests.test_normal_duplicate_and_incomplete_reject) ... ok
+test_tcl_dispatch_and_exact_fault (test_el3_brk_capture.BrkTests.test_tcl_dispatch_and_exact_fault) ... ok
+test_actual_preflight_and_pin_rejections (test_exception_observer_integration.IntegrationTests.test_actual_preflight_and_pin_rejections) ... ok
+test_corrupt_or_duplicate_result_rejected (test_exception_observer_integration.IntegrationTests.test_corrupt_or_duplicate_result_rejected) ... ok
+test_fault_decode_failure_still_restores (test_exception_observer_integration.IntegrationTests.test_fault_decode_failure_still_restores) ... ok
+test_full_normal_dispatch (test_exception_observer_integration.IntegrationTests.test_full_normal_dispatch) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.048s
+
+OK

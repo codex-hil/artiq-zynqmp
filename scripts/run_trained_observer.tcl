@@ -3,7 +3,7 @@
 if {[llength $argv] ni {4 5}} {error "Require SERVER ELF TERMINAL CABLE"}
 lassign $argv server elf terminal cable mode
 if {$mode eq ""} {set mode observe}
-if {$mode ni {observe definitions controls exception}} {error "Unknown observer mode"}
+if {$mode ni {observe definitions controls exception exception-brk}} {error "Unknown observer mode"}
 if {$cable ne "210383B7F02DA"} {error "Wrong cable"}
 source [file join [file dirname [info script]] collect_fsbl_entry.tcl]
 proc select_cpu0 {} {
@@ -34,9 +34,18 @@ connect -url $server
 configparams source-line-view 0
 select_cpu0
 halt_checked
-if {$mode eq "exception"} {
+if {$mode in {exception exception-brk}} {
     source [file join [file dirname [info script]] load_el3_exception_observer.tcl]
-    exception_observer::run $elf $terminal normal
+    if {$mode eq "exception-brk"} {
+        if {![catch {exception_observer::run $elf $terminal brk} message options]} {
+            error "BRK probe unexpectedly returned normally"
+        }
+        if {[dict get $options -errorcode] ne {OBSERVER FAULT_CAPTURED}} {
+            return -options $options $message
+        }
+        # Transport marker only; Python must verify exact BRK/vector/ELR/PSTATE.
+        puts "EXPECTED_BRK_TRANSPORT_CAPTURED"
+    } else {exception_observer::run $elf $terminal normal}
     disconnect
     return
 }

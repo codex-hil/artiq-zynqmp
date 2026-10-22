@@ -57,8 +57,9 @@ def main():
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
     group.add_argument('--exception-observer',action='store_true')
+    group.add_argument('--exception-brk',action='store_true')
     a=p.parse_args(); require_lease()
-    if a.exception_observer:
+    if a.exception_observer or a.exception_brk:
         from check_el3_exception_observer import check as image_check
     else: image_check=check
     image_check(Path(a.elf).read_bytes())
@@ -84,7 +85,7 @@ def main():
                 raw.extend(uart.read(uart.in_waiting or 1))
                 if b'Exit from FSBL' in raw: break
             else: raise RuntimeError('FSBL UART completion timeout')
-            text=xs('observer','run_trained_observer.tcl',a.server,a.elf,desc['terminal_pcs'][0],'210383B7F02DA','definitions' if a.definitions_only else ('controls' if a.controls_only else ('exception' if a.exception_observer else 'observe')))
+            text=xs('observer','run_trained_observer.tcl',a.server,a.elf,desc['terminal_pcs'][0],'210383B7F02DA','definitions' if a.definitions_only else ('controls' if a.controls_only else ('exception-brk' if a.exception_brk else ('exception' if a.exception_observer else 'observe'))))
             if a.definitions_only:
                 if text.count('FSBL_REGISTER_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_REGISTER_DEFINITIONS_END')!=1 or text.count('FSBL_SYS_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_SYS_DEFINITIONS_END')!=1 or len(re.findall(r'^FSBL_CPSR_RAW [0-9]+$',text,re.M))!=1:
                     raise ValueError('Incomplete FSBL definitions')
@@ -95,6 +96,9 @@ def main():
                 if text.count('FSBL_CONTROL_STATE ')!=2 or text.count('FSBL_CONTROL_OBSERVATION_ONLY')!=1:
                     raise ValueError('Incomplete control observation')
                 result.update(status='PASS',scope='CONTROL_OBSERVATION_ONLY_NO_EXECUTION_ADMISSION',fsbl_descriptor=desc)
+            elif a.exception_brk:
+                from verify_el3_brk_capture import verify
+                result.update(status='PASS',fault_test=verify(text),scope='DELIBERATE_BRK_CAPTURE_REQUIRES_RESTORATION',fsbl_descriptor=desc)
             elif a.exception_observer: result.update(status='PASS',registers=decode_exception(text),scope='EXCEPTION_AWARE_EL3_OBSERVER_NO_DDR_TEST',fsbl_descriptor=desc)
             else: result.update(status='PASS',registers=decode(text),fsbl_descriptor=desc)
     except Exception as error: result['error']=str(error)

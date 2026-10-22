@@ -972,3 +972,30 @@ Mandatory normal restoration/physical TTL/CoreDMA/analyzer/MonInj/Ethernet PASS
 192.168.2.3; shared lease released. No Kasli/Si/SD/flash/OTP writes. Evidence:
 `evidence/el3-resume-trace-hardware-2026-10-22`, raw compressed logs with original
 hashes retained. Existing full-DDR/cache/master ownership requirements stay open.
+
+## Deliberate BRK verifier and lifecycle mode offline PASS —2026-10-22
+
+Explicit exception_brk manifest flag requires exception_observer=true, excludes
+metadata/control modes, selects --exception-brk and the already checked
+exception-aware image. Original normal mode still treats every exception as
+failure. Tcl loader raises typed OBSERVER/FAULT_CAPTURED only at fault terminal.
+BRK dispatcher accepts that transport outcome only, then Python independently
+requires exact complete unique capture: slot4/current-EL-SPx synchronous vector,
+x15f3/EL3, ESR0xf2000053 for BRK0x53, ELR0xfffc884c, faultPC0xfffc8878,
+armedVBAR0xfffc8000 and saved EL3h/DAIF matching original state. FAR retained
+raw without a valid BRK address claim. No retry/eret/faulted-core reuse.
+
+Verifier returns EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED, never normal observation
+PASS. Parent may qualify this deliberate test only after mandatory complete
+normal restoration/debug/Ethernet; it records observer_probe and observer
+manifest SHA separately from runtime artifact manifest. Expected capture cannot
+waive restore failure. Unknown exception, untyped Tcl error, wrong syndrome/ELR/
+vector/PSTATE or missing/duplicate result remains FAIL. New verifier is pinned.
+
+Four new BRK groups plus4integration regressions PASS, including all wrong-fault
+fields, duplicate/normal/incomplete result rejection, actual Tcl dispatch and
+failed-restoration refusal;4loader controls PASS. Real artifact/script preflight
+PASS, no hardware in this checkpoint. Evidence/manifests:
+`evidence/el3-brk-integration-2026-10-22`. Next one bounded deliberate-BRK window
+under shared lease with full baseline restoration. This will validate a
+synchronous exception path only, not asynchronous SError or DDR integrity.

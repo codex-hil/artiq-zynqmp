@@ -76,7 +76,7 @@ namespace eval exception_observer {
             puts "EXCEPTION_REGISTER $name [fsbl_entry::register $name]"
         }
         if {$pc == 0xfffc8878} {
-            error "EXCEPTION_CAPTURED: mandatory restoration, never normal observation PASS"
+            return -code error -errorcode {OBSERVER FAULT_CAPTURED} "EXCEPTION_CAPTURED: mandatory restoration, never normal observation PASS"
         }
         if {$mode ne "normal" || $pc != 0xfffc8834 || [fsbl_entry::register x15] != 0x33} {
             error "Unexpected observer outcome"
