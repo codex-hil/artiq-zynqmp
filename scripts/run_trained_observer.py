@@ -30,6 +30,25 @@ def decode(text):
     return regs
 
 
+def decode_exception(text):
+    names={'x'+str(i) for i in range(10)}|{'x'+str(i) for i in range(14,22)}
+    pairs=re.findall(r'^EXCEPTION_REGISTER (x\d+) (\d+)$',text,re.M)
+    if len(pairs)!=len(names) or {k for k,v in pairs}!=names:
+        raise ValueError('Incomplete/duplicate exception-observer registers')
+    regs={k:int(v) for k,v in pairs}
+    if (regs['x0'],regs['x9'],regs['x15'])!=(12,0xfffc8800,0x33):
+        raise ValueError('Fault/wrong EL/entry marker; never normal PASS')
+    if regs['x1']&0x1005 or regs['x6']&0x2c0!=0x2c0 or regs['x7']&255:
+        raise ValueError('Unexpected observed controls')
+    markers={'EXCEPTION_ARMED_VBAR':0xfffc8000,'EXCEPTION_STOP_PC':0xfffc8834}
+    for name,value in markers.items():
+        if re.findall(r'^'+name+r' (\d+)$',text,re.M)!=[str(value)]:
+            raise ValueError('Missing/duplicate/wrong '+name)
+    if text.splitlines().count('EXCEPTION_OBSERVER_NORMAL_COMPLETE')!=1:
+        raise ValueError('Normal completion missing or duplicated')
+    return regs
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('server','port','elf','fsbl','pmu','symbols','output'):
@@ -37,8 +56,12 @@ def main():
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
+    group.add_argument('--exception-observer',action='store_true')
     a=p.parse_args(); require_lease()
-    check(Path(a.elf).read_bytes())
+    if a.exception_observer:
+        from check_el3_exception_observer import check as image_check
+    else: image_check=check
+    image_check(Path(a.elf).read_bytes())
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -61,7 +84,7 @@ def main():
                 raw.extend(uart.read(uart.in_waiting or 1))
                 if b'Exit from FSBL' in raw: break
             else: raise RuntimeError('FSBL UART completion timeout')
-            text=xs('observer','run_trained_observer.tcl',a.server,a.elf,desc['terminal_pcs'][0],'210383B7F02DA','definitions' if a.definitions_only else ('controls' if a.controls_only else 'observe'))
+            text=xs('observer','run_trained_observer.tcl',a.server,a.elf,desc['terminal_pcs'][0],'210383B7F02DA','definitions' if a.definitions_only else ('controls' if a.controls_only else ('exception' if a.exception_observer else 'observe')))
             if a.definitions_only:
                 if text.count('FSBL_REGISTER_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_REGISTER_DEFINITIONS_END')!=1 or text.count('FSBL_SYS_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_SYS_DEFINITIONS_END')!=1 or len(re.findall(r'^FSBL_CPSR_RAW [0-9]+$',text,re.M))!=1:
                     raise ValueError('Incomplete FSBL definitions')
@@ -72,6 +95,7 @@ def main():
                 if text.count('FSBL_CONTROL_STATE ')!=2 or text.count('FSBL_CONTROL_OBSERVATION_ONLY')!=1:
                     raise ValueError('Incomplete control observation')
                 result.update(status='PASS',scope='CONTROL_OBSERVATION_ONLY_NO_EXECUTION_ADMISSION',fsbl_descriptor=desc)
+            elif a.exception_observer: result.update(status='PASS',registers=decode_exception(text),scope='EXCEPTION_AWARE_EL3_OBSERVER_NO_DDR_TEST',fsbl_descriptor=desc)
             else: result.update(status='PASS',registers=decode(text),fsbl_descriptor=desc)
     except Exception as error: result['error']=str(error)
     finally:

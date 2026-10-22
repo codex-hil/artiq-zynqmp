@@ -1,0 +1,34 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/el3-exception-observer-v2-20261022/observer.elf",
+    "sha256": "ab5946b613c0075af7c2129bdb66dc094fff6b684a384cf576cebc7bbd5cb6d6"
+  },
+  "symbols": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/fsbl-observer-entry-2026-10-22/fsbl-symbols.txt",
+    "sha256": "df05d210ee11bc87243d1cc571ac9024a58d73c5e520fd9472dfe51fd0bd4c53"
+  },
+  "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+  "script_sha256": {
+    "scripts/check_el3_exception_observer.py": "95b26be8f92a6ae6ff97f9903992775718637c8ee8a642f37b9ba8880cfba584",
+    "scripts/check_el3_observer.py": "e2714e065f7da0b5fac2bde4d15515bf7e47b922e30fb8b79a6ab6b45c09e22f",
+    "scripts/check_fsbl_observer_entry.py": "26da021aadbdfed5417aa43a2d303273aba5167a6e1f67cea1db07836395343f",
+    "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+    "scripts/collect_fsbl_entry.tcl": "f65f8fa3c5ceeb6c7d835d517876416dec2d71e2630d69003aa8817d88bf9f33",
+    "scripts/inject_rpc_fault.py": "a1ba73b66eacf470d6ff80ecf70856975b21f90bce3b1d4cc7462bde7991b839",
+    "scripts/load_el3_exception_observer.tcl": "59a21b26fc9c8e297157e51b79d73a80b342bb60c8e25fdc0e5c5ec277328269",
+    "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+    "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+    "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+    "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+    "scripts/run_trained_observer.py": "4b608ddcebf35522cd2c7e06c44ff939c2209d47cc3d7fc5f1e0c8a03d779da1",
+    "scripts/run_trained_observer.tcl": "3aab41af29efc6ca804d45f1c9b5dbf31d601be795de8c8fbdbcda312369f726",
+    "scripts/test_candidate_runtime_hw.py": "a1797f0b39eb6ba3734a56ed14a9e9bb33d54326672788ec8d915c477142c8d6"
+  },
+  "definitions_only": false,
+  "controls_only": false,
+  "exception_observer": true
+}

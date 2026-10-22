@@ -59,6 +59,7 @@ OBSERVER_SCRIPTS={'scripts/test_candidate_runtime_hw.py','scripts/run_trained_ob
  'scripts/reset_genesys_ps.tcl','scripts/run_boot_firmware.tcl','scripts/load_rtio_runtime.py',
  'scripts/prepare_local_rtio.tcl','scripts/run_kernel_worker.tcl','scripts/run_a53_runtime.tcl',
  'scripts/program_genesys_pl.tcl'}
+EXCEPTION_OBSERVER_EXTRA={'scripts/load_el3_exception_observer.tcl','scripts/check_el3_exception_observer.py','scripts/inject_rpc_fault.py'}
 def observer_preflight(path,files):
     from check_el3_observer import check as check_observer
     from check_fsbl_observer_entry import descriptor
@@ -67,15 +68,19 @@ def observer_preflight(path,files):
         item=info[name]
         if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:
             raise ValueError('Changed observer input: '+name)
+    if type(info.get('exception_observer',False)) is not bool or (info.get('exception_observer') and (info.get('controls_only') or info.get('definitions_only'))):raise ValueError('Invalid exception observer mode')
     if type(info.get('controls_only',False)) is not bool or (info.get('controls_only') and info.get('definitions_only')):raise ValueError('Invalid observation mode')
     if type(info.get('definitions_only',False)) is not bool:raise ValueError('Invalid definitions-only mode')
     if info['fsbl_sha256']!=files['candidate_fsbl']['sha256']:
         raise ValueError('Observer FSBL pin mismatch')
-    if set(info.get('script_sha256',{}))!=OBSERVER_SCRIPTS:
+    required_scripts=OBSERVER_SCRIPTS|(EXCEPTION_OBSERVER_EXTRA if info.get('exception_observer') else set())
+    if set(info.get('script_sha256',{}))!=required_scripts:
         raise ValueError('Missing observer execution pins')
     for name,digest in info['script_sha256'].items():
         if hashlib.sha256((REPO/name).read_bytes()).hexdigest()!=digest:
             raise ValueError('Changed observer execution dependency: '+name)
+    if info.get('exception_observer'):
+        from check_el3_exception_observer import check as check_observer
     check_observer(Path(info['elf']['path']).read_bytes())
     descriptor(Path(files['candidate_fsbl']['path']).read_bytes(),Path(info['symbols']['path']).read_text())
     return info
@@ -191,7 +196,7 @@ def main():
                 run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
                     '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
                     '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else [])),180)
+                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-observer'] if observer.get('exception_observer') else []))),180)
                 observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                 if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
                 return 'TRAINED_FSBL_OBSERVATION_ONLY' if observer.get('definitions_only') or observer.get('controls_only') else 'TRAINED_OCM_REGISTERS_ONLY'

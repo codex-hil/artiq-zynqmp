@@ -3,7 +3,7 @@
 if {[llength $argv] ni {4 5}} {error "Require SERVER ELF TERMINAL CABLE"}
 lassign $argv server elf terminal cable mode
 if {$mode eq ""} {set mode observe}
-if {$mode ni {observe definitions controls}} {error "Unknown observer mode"}
+if {$mode ni {observe definitions controls exception}} {error "Unknown observer mode"}
 if {$cable ne "210383B7F02DA"} {error "Wrong cable"}
 source [file join [file dirname [info script]] collect_fsbl_entry.tcl]
 proc select_cpu0 {} {
@@ -34,6 +34,12 @@ connect -url $server
 configparams source-line-view 0
 select_cpu0
 halt_checked
+if {$mode eq "exception"} {
+    source [file join [file dirname [info script]] load_el3_exception_observer.tcl]
+    exception_observer::run $elf $terminal normal
+    disconnect
+    return
+}
 if {$mode eq "definitions"} {
     set pc [fsbl_entry::register pc]
     if {$pc != $terminal && $pc != $terminal+4} {error "Outside FSBL terminal"}

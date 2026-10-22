@@ -896,3 +896,38 @@ Next integrate separately pinned child with existing mandatory-restoration
 lifecycle, verify ELF and loader hashes before/under lease, model failure cleanup
 and expected-BRK validation before bounded hardware qualification. No HW this
 checkpoint; normal runtime remains at last validated192.168.2.3 baseline.
+
+## Exception observer integrated with mandatory restoration —2026-10-22
+
+The existing trained observer parent now accepts a separately pinned manifest
+with exception_observer=true. Modes remain mutually exclusive; exact exception
+image gate replaces the legacy64-byte image gate only in this new mode. New
+loader/checker and inherited-lease helper are mandatory hashed dependencies.
+Parent repeats pins under the shared lease, child requires inherited lease and
+checks image/storage before UART/reset. Existing bounded lifecycle always
+restores the normal runtime and physical debug/Ethernet tests after success,
+failure, interrupt or timeout. No exception fault becomes normal observation PASS.
+
+Tcl dispatch installs and reads VBAR before continue without changing DAIF;
+normal completion parser requires exact terminal, armed-vector marker and unique
+complete register set. Fault marker/wrong entry/missing/duplicate result rejects.
+Four new integration groups PASS: complete real Tcl dispatch model, fault decode
+and restoration, malformed/duplicate results, real-artifact preflight with
+stale/missing pins and mixed-mode rejection. Six lifecycle regressions and five
+legacy observer models PASS. Final actual pinned artifact/script preflight PASS.
+Hardware, real VBAR write/readback and fault handling remain NOT_RUN. Evidence:
+`evidence/el3-exception-integration-2026-10-22`.
+
+Offline command (default, no hardware):
+```sh
+python3 scripts/test_candidate_runtime_hw.py \
+  --manifest evidence/trained-observer-integration-2026-10-22/runtime-inputs.json \
+  --trained-observer-manifest evidence/el3-exception-integration-2026-10-22/inputs.json \
+  --output /path/to/fresh-output
+```
+Next review current coordination/storage/server/UART, then one bounded normal
+exception-aware observation with --execute/--server/--port/--interface. Full
+restoration is mandatory. Deliberate BRK is not exposed by this parent mode;
+future separate verifier must qualify a matching deliberate fault without
+converting arbitrary exceptions into success. No DDR test/Si/SD/flash/OTP/Kasli
+changes in this checkpoint; baseline remains last validated192.168.2.3.
