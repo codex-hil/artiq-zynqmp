@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## SPD capture/restoration composition offline PASS —2026-10-22
+
+Piotr/AMD-based SPD reader, bounded page operations and controller/callback
+restore composed;14actual-AMD/register-model normal/fault cases PASS, AArch64
+header compile PASS. Distinct restored versus outer-recovery-required failures.
+Evidence: `evidence/spd-composed-session-2026-10-22`. No physical SPD/CRC/DDR
+qualification yet; identity/GIC admission, CRC, linking and HW wrapper remain.
+Normal ARTIQ baseline unchanged192.168.2.3.
+
 ## OCM EL1 observation physically PASS —2026-10-22
 
 OCM image executed; UART PING/PONG, timer poll and timer IRQ PASS. EL1

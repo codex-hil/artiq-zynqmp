@@ -1,0 +1,32 @@
+{
+  "status": "COMPOSED_SPD_SESSION_MODEL_AND_AARCH64_COMPILE_PASS",
+  "hardware_executed": false,
+  "hardware_admitted": false,
+  "object_sha256": "426a01217d2e29bc8b30ae44231972056830dd24cf6f8d26a1ffd69089f19e81",
+  "sequence": [
+    "quiet controller/software snapshot",
+    "query saved page",
+    "select and confirm lower page",
+    "two128byte reads and comparison",
+    "select and confirm saved page",
+    "restore controller/software/callback with register readback"
+  ],
+  "results": [
+    "READS_RESTORED: matching bytes, page and controller restored, CRC still not checked",
+    "FAILED_RESTORED: mismatch or refused lower-page confirmation, original page/controller restored",
+    "OUTER_RESTORE_REQUIRED: active/poisoned bus/query, deadline, unconfirmed saved page or failed controller readback",
+    "NOT_ADMITTED: absent evidence or failed initial quiet snapshot"
+  ],
+  "composed_cases": "2 initial pages x7 profiles =14: normal, mismatched payload, data NACK, wrong controller readback, ignored restoration selection, ignored lower-page selection, initial-query arbitration",
+  "bounds": "3s/200000poll session; existing per-operation deadlines and poll bounds retained",
+  "preconditions": [
+    "zero-init once and retain callback storage through outer recovery",
+    "exclusive/no-GIC and independent device identity are caller evidence; not established by model"
+  ],
+  "remaining": [
+    "SPD CRC",
+    "real route/identity/GIC admission",
+    "linked firmware and bounded physical wrapper"
+  ],
+  "no_hardware_or_shared_bsp_changes": true
+}

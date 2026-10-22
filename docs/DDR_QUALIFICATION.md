@@ -507,3 +507,18 @@ failed-object reuse checks PASS with ASan/UBSan; AArch64 header compile PASS.
 Evidence: `evidence/spd-page-lifecycle-2026-10-22`. No HW access. Next compose
 page/data/controller lifecycle with all-exit restoration, then identity/GIC/CRC/
 linked bounded wrapper before physical admission.
+
+### Composed SPD session/restoration offline PASS —2026-10-22
+
+New spd_session composes controller snapshot, page discovery/selection/query,
+dual read, saved-page confirmation and controller/callback restoration. Distinct
+READS_RESTORED, FAILED_RESTORED and OUTER_RESTORE_REQUIRED outcomes prevent a
+matching payload or successful controller restore from masking a page failure.
+Overall3s/200000poll bound, per-stage limits retained; active/faulted operations
+are not force-cleaned or reused.
+
+Fourteen actual-AMD/MMIO-model composed cases (both saved pages x7normal/fault
+profiles) PASS with ASan/UBSan; AArch64 header compile PASS. Prior component
+controls retained. Evidence: `evidence/spd-composed-session-2026-10-22`. No HW
+access/shared BSP changes; physical SPD/CRC/DDR tests NOT_RUN. Next CRC and
+concrete independent route/device/GIC admission before linked diagnostic/wrapper.

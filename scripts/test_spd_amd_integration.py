@@ -26,7 +26,7 @@ def main():
         subprocess.run(['cc','-std=c11','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-I'+str(a.bsp/'include'),'-I'+str(REPO/'diagnostics/ddr'),'-I'+str(d),str(REPO/'tests/spd_amd_register_model.c'),'-o',str(binary)],check=True)
         result=subprocess.run([str(binary)],capture_output=True,text=True,timeout=5)
         if result.returncode:raise RuntimeError(result.stderr+result.stdout)
-    files=[*paths.values(),REPO/'tests/spd_amd_register_model.c',REPO/'diagnostics/ddr/spd_reader.h',REPO/'diagnostics/ddr/spd_xiicps.h',REPO/'diagnostics/ddr/spd_xiicps_state.h',REPO/'diagnostics/ddr/spd_page.h',REPO/'diagnostics/ddr/spd_page_transfer.h']
+    files=[*paths.values(),REPO/'tests/spd_amd_register_model.c',REPO/'diagnostics/ddr/spd_reader.h',REPO/'diagnostics/ddr/spd_xiicps.h',REPO/'diagnostics/ddr/spd_xiicps_state.h',REPO/'diagnostics/ddr/spd_page.h',REPO/'diagnostics/ddr/spd_page_transfer.h',REPO/'diagnostics/ddr/spd_session.h']
     report=dict(status='READER_ADAPTER_PATCHED_AMD_REGISTER_MODEL_PASS',hardware_executed=False,hardware_admitted=False,functions=names,stdout=result.stdout,source_sha256={str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in files},limits='Extracted functions with actual BSP macros and substituted MMIO; no physical bus timing/IRQ/page baseline/restoration/CRC proof.')
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(report,indent=2)+'\n');print(result.stdout,end='')
 if __name__=='__main__':main()

@@ -8,7 +8,7 @@ static u32 regs[64];static unsigned scenario,transactions,reads,tx_bytes,read_nu
 static int receiving;
 static int page_query,query_page;
 static int page_control_model,receiving_query,page_fault;
-static unsigned transfer_limit;
+static unsigned transfer_limit,data_reads;
 static u32 query_events;
 static void query_callback(void *ref,u32 events) {(void)ref;query_events|=events;}
 static unsigned writes;
@@ -42,8 +42,8 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
  if(off==XIICPS_ADDR_OFFSET) {
   transactions++;receiving=(regs[XIICPS_CR_OFFSET/4]&XIICPS_CR_RD_WR_MASK)!=0;reads=0;
   if(receiving) {
-   read_number++;receiving_query=page_query;transfer_limit=regs[XIICPS_TRANS_SIZE_OFFSET/4];
-   if(page_query) {
+   read_number++;transfer_limit=regs[XIICPS_TRANS_SIZE_OFFSET/4];receiving_query=value==0x36 && transfer_limit==1;
+   if(receiving_query) {
     assert(value==0x36 && transfer_limit==1);
     regs[XIICPS_ISR_OFFSET/4]=query_page?XIICPS_IXR_NACK_MASK:XIICPS_IXR_COMP_MASK;
     if(page_fault==1)regs[XIICPS_ISR_OFFSET/4]=0;
@@ -52,7 +52,7 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
     if(page_fault==4)regs[XIICPS_TRANS_SIZE_OFFSET/4]=2;
     return;
    }
-   assert(value==0x51 && transfer_limit==128);
+   assert(value==0x51 && transfer_limit==128);data_reads++;
    regs[XIICPS_ISR_OFFSET/4]=scenario==1?XIICPS_IXR_NACK_MASK:scenario==4?0:
     scenario==5?XIICPS_IXR_TO_MASK:(XIICPS_IXR_DATA_MASK|XIICPS_IXR_COMP_MASK);
    if(scenario==6)regs[XIICPS_ISR_OFFSET/4]|=XIICPS_IXR_NACK_MASK;
@@ -65,7 +65,7 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
 }
 static u32 data_read(UINTPTR address) {
  assert(address==0xff030000U+XIICPS_DATA_OFFSET && reads<128);
- unsigned value=reads++;regs[XIICPS_TRANS_SIZE_OFFSET/4]=transfer_limit-reads;return value+(scenario==7 && read_number==2);
+ unsigned value=reads++;regs[XIICPS_TRANS_SIZE_OFFSET/4]=transfer_limit-reads;return value+(scenario==7 && data_reads==2);
 }
 static void data_write(UINTPTR address,u32 value) {
  assert(address==0xff030000U+XIICPS_DATA_OFFSET && value==0);tx_bytes++;
@@ -85,11 +85,12 @@ u32 Xil_AssertStatus;
 #include "spd_xiicps_state.h"
 #include "spd_page.h"
 #include "spd_page_transfer.h"
+#include "spd_session.h"
 #include "vendor_functions.inc"
 int main(void) {
  for(scenario=0;scenario<8;scenario++) {
   XIicPs dev={0};struct spd_xiicps a;struct spd_transport t;struct spd_reader r;struct spd_amd_snapshot saved;
-  memset(regs,0,sizeof(regs));transactions=reads=tx_bytes=read_number=0;receiving=0;
+  memset(regs,0,sizeof(regs));transactions=reads=tx_bytes=read_number=data_reads=0;receiving=0;
   dev.Config.BaseAddress=0xff030000U;dev.IsReady=XIL_COMPONENT_IS_READY;
   dev.StatusHandler=original_callback;dev.CallBackRef=&dev;
   regs[XIICPS_TIME_OUT_OFFSET/4]=17;
@@ -197,5 +198,42 @@ int main(void) {
    assert(spd_page_begin(&q,&dev,SPD_QUERY_PAGE,0,1,1)==-1 && writes==before);
   }
  }
- puts("ADAPTER_READER_AMD_MODEL_PAGE_LIFECYCLE_AND_8_FAULTS_PASS");
+ /* Compose page, data and controller lifecycles, retaining failure states. */
+ page_fault=0;corrupt_restore=0;page_control_model=1;
+ for(int initial=0;initial<2;initial++)for(unsigned fault=0;fault<7;fault++) {
+  XIicPs dev={0};struct spd_session s={0};memset(regs,0,sizeof(regs));
+  receiving=0;query_page=initial;scenario=0;data_reads=0;
+  page_fault=fault==5?6:fault==6?2:0;
+  dev.Config.BaseAddress=0xff030000U;dev.IsReady=XIL_COMPONENT_IS_READY;
+  dev.StatusHandler=original_callback;dev.CallBackRef=&dev;
+  regs[XIICPS_TIME_OUT_OFFSET/4]=17;
+  assert(spd_session_begin(&s,&dev,0,1,1)==0);
+  int injected=0;
+  for(unsigned tick=1;tick<100000 && !s.stopped;tick++) {
+   if(s.phase==3 && !injected) {
+    if(fault==1)scenario=7; /* differing second payload */
+    if(fault==2)scenario=1; /* NACK on second read */
+    if(fault==3)corrupt_restore=1; /* controller readback fails */
+    if(fault==4)page_fault=6; /* ignore restoration page write */
+    injected=1;
+   }
+   if(s.phase==5 && fault==3)regs[XIICPS_TIME_OUT_OFFSET/4]=99;
+   spd_session_tick(&s,tick*10U);
+  }
+  assert(s.stopped);
+  if(fault==0 || ((fault==4 || fault==5) && initial==0)) {
+   assert(s.result==SPD_SESSION_READS_RESTORED && s.page_restored && s.controller_restored);
+   assert(query_page==initial && dev.StatusHandler==original_callback && dev.CallBackRef==&dev);
+  } else if(fault==1 || (fault==5 && initial==1)) {
+   assert(s.result==SPD_SESSION_FAILED_RESTORED && s.page_restored && s.controller_restored);
+  } else assert(s.result==SPD_SESSION_OUTER_RESTORE_REQUIRED);
+  unsigned before=writes;
+  assert(spd_session_begin(&s,&dev,0,1,1)==-1 && writes==before);
+  page_fault=0;corrupt_restore=0;
+ }
+ {
+  XIicPs dev={0};struct spd_session s={0};unsigned before=writes;
+  assert(spd_session_begin(&s,&dev,0,1,0)==-1 && s.result==SPD_SESSION_NOT_ADMITTED && writes==before);
+ }
+ puts("AMD_SPD_COMPOSED_SESSION_AND_PRIOR_CONTROLS_PASS");
 }

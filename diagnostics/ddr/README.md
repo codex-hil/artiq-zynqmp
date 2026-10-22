@@ -241,3 +241,31 @@ This still does not combine page lifecycle, data reader and controller snapshot
 into one recovery transaction or establish physical identity/GIC exclusion/CRC.
 Next offline compose that lifecycle and test restoration on every exit before
 creating a physical wrapper. Hardware remains NOT_ADMITTED.
+
+## Composed capture/restoration session candidate
+
+`spd_session.h` composes snapshot→saved-page query→lower-page select/query→
+dual128-byte read→saved-page select/query→controller/software restore.
+A session is zero-initialized once, cannot be reused and must remain alive until
+outer recovery because callbacks reference its storage. Overall bound3s/200000
+polls supplements per-operation bounds; callbacks/MMIO still require platform
+progress. External identity/ownership/no-GIC preconditions remain mandatory.
+
+Results distinguish matching `READS_RESTORED` (still no CRC),
+`FAILED_RESTORED` for a mismatch/failed lower-page confirmation with verified
+restoration, and `OUTER_RESTORE_REQUIRED` for active/poisoned operations or
+unconfirmed page/controller restoration. It does not force cleanup onto a failed
+bus. A dirty initial snapshot/missing evidence is NOT_ADMITTED. No automatic retry.
+
+Actual AMD MMIO model passes14composed cases (both original pages times normal,
+payload mismatch, data NACK, controller readback failure, ignored restore select,
+ignored lower-page select and initial-query arbitration), preserving earlier
+component controls. ASan/UBSan and actual-BSP AArch64 header compilation PASS.
+Evidence: `evidence/spd-composed-session-2026-10-22`. A select ignored while the
+requested page is already selected is harmless only when the later query proves
+the required state. Wrong saved-page confirmation is never hidden by successful
+controller restoration.
+
+Next CRC validation and a concrete independent route/device/GIC admission before
+linking a diagnostic and preparing the bounded hardware wrapper. No physical
+SPD/CRC/DDR test or hardware admission is claimed by these models.
