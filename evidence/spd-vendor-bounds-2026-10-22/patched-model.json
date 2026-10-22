@@ -1,0 +1,27 @@
+{
+  "status": "PATCHED_VENDOR_ISR_MODEL_BOUNDS_PASS",
+  "hardware_executed": false,
+  "hardware_admitted": false,
+  "stdout": "PATCHED_VENDOR_ISR_BOUNDS_PASS\n",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/spd-vendor-bounds-20261022/xiicps_master.c": "d6bbaf1165866ab7eda576847587663cbcd33ece65ed35660af1c0f763541475",
+    "/srv/codex-hil-data/artiq-zynqmp/build/spd-vendor-bounds-20261022/xiicps_xfer.c": "628414e27016be423ca950af493d522556587e4e04f1eef0e1ce7b10ecffbc1f",
+    "/srv/codex-hil-data/artiq-zynqmp/build/spd-vendor-bounds-20261022/xiicps_hw.c": "a39a12cecc6e91212eb174480725b3e8088bff8fe80a63df6f22cf1175de3e11",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include/xiicps.h": "41742b8eb025363119a572547ded912a92448d4630826548ba2785f65f4bf9ba",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include/xiicps_xfer.h": "94a72a32a8c1e1a18a0506c998de88c69e9e1cb612da483cec91bccc7ef64a0b",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include/xiicps_hw.h": "0013bcfc147a4c7fc1e60bba7368b5742b638661afb7fdf7efb8dab3223b3d9a"
+  },
+  "functions": {
+    "xiicps_master.c": [
+      "XIicPs_MasterInterruptHandler"
+    ],
+    "xiicps_xfer.c": [
+      "XIicPs_MasterIntrSend",
+      "XIicPs_MasterIntrRead"
+    ],
+    "xiicps_hw.c": [
+      "XIicPs_MasterRead"
+    ]
+  },
+  "limits": "Extracted vendor functions and actual BSP macros; host MMIO model only. Original or isolated patched sources selected explicitly. Not physical timing/full-driver/restoration proof."
+}

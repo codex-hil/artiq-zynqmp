@@ -1,0 +1,15 @@
+{
+  "status": "ORIGINAL_NEGATIVE_PATCHED_BOUNDS_AND_AARCH64_COMPILE_PASS",
+  "hardware_executed": false,
+  "linked_executable": false,
+  "original_bsp_modified": false,
+  "original_model": "6 scenarios; stuck RXDV attempted overread detected before store",
+  "patched_model": "7 scenarios; stuck RXDV/exhausted buffer terminate with ERROR and no extra reads",
+  "additional_tests": "2 source-drift/idempotence controls PASS",
+  "remaining": [
+    "actual adapter+patched ISR integration",
+    "controller/page/IRQ/callback ownership/restoration",
+    "SPD CRC",
+    "hardware admission wrapper"
+  ]
+}

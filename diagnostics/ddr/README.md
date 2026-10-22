@@ -105,3 +105,28 @@ Source/header hashes and scope are retained in
 `evidence/spd-vendor-isr-model-2026-10-22/results.json`. The reported model
 controls PASS includes detection of the known negative scenario; it does not
 mean the vendor code passed stuck-peripheral robustness.
+
+## Isolated AMD receive-bounds patch
+
+`prepare_spd_vendor.py --bsp BSP --output FRESH` copies three vendor C files,
+retains their hashes and emits a unified patch. Originals/shared BSP are never
+modified. Exact missing/duplicate edit anchors and second application reject.
+Only two functions change: `MasterRead` requires remaining bytes before reading
+FIFO; master ISR adds ERROR when receive count is exhausted but RXDV remains.
+The adapter must treat completion+ERROR as failure (never accept partial success).
+No bus-clear/reset workaround or replacement controller driver is introduced.
+
+```sh
+python3 scripts/prepare_spd_vendor.py --bsp "$BSP" --output "$FRESH_COPY"
+python3 scripts/test_spd_vendor_receive.py --bsp "$BSP" \
+  --patched-root "$FRESH_COPY" --output /tmp/FRESH-patched-model.json
+```
+
+Original6-scenario negative model retained; patched7-scenario model includes
+stuck RXDV and zero remaining bytes on entry, both returning ERROR without an
+extra read. ASan/UBSan controls PASS. All three full copied source files compile
+to AArch64 objects with actual BSP headers and `-Wall -Wextra -Werror`; not a
+linked firmware. Evidence/diff/source+object hashes:
+`evidence/spd-vendor-bounds-2026-10-22`. Adapter+patched ISR integration and
+restoration remain untested; hardware remains NOT_ADMITTED. These bounds do not
+guarantee return from a physically stalled MMIO access.

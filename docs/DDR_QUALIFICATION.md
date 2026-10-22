@@ -435,3 +435,16 @@ patched behavior. Shared BSP/original sources remain unchanged. No hardware
 access or adapter deployment. Evidence:
 `evidence/spd-vendor-isr-model-2026-10-22/results.json`. Full driver/send-path
 integration, page/IRQ/callback restoration and CRC still open.
+
+### Isolated AMD receive-bounds patch validated offline —2026-10-22
+
+Two-function patch in fresh copied sources: count guard in MasterRead, and
+ERROR for exhausted buffer with residual RXDV in master ISR. No shared BSP
+changes. Original6-scenario negative proof retained; patched7-scenario model
+(stuck RXDV and zero remaining count included) returns ERROR without extra
+reads. ASan/UBSan controls PASS; two source-drift/idempotence tests PASS.
+Three full C files compile as AArch64 objects against real BSP (-Werror).
+No linked firmware, no hardware execution. Evidence/diff/manifests:
+`evidence/spd-vendor-bounds-2026-10-22`. Next adapter+patched ISR integration
+model, then page/controller/IRQ/callback restoration. SPD acquisition remains
+NOT_ADMITTED; no physical DDR qualification follows from model bounds.

@@ -1,0 +1,20 @@
+{
+  "status": "COPIED_SOURCE_PREPARED_NOT_HARDWARE_ADMISSION",
+  "files": {
+    "xiicps_hw.c": {
+      "input_path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_hw.c",
+      "input_sha256": "7235dae9f790b4eefeccce421426fba63d8f7a72363ac4f06828ba860f49bc2c",
+      "output_sha256": "a39a12cecc6e91212eb174480725b3e8088bff8fe80a63df6f22cf1175de3e11"
+    },
+    "xiicps_master.c": {
+      "input_path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_master.c",
+      "input_sha256": "6e002edfd94b80b0dfdd54215c0a536e5fbe06380d7a40f0418b6e52066e3b10",
+      "output_sha256": "d6bbaf1165866ab7eda576847587663cbcd33ece65ed35660af1c0f763541475"
+    },
+    "xiicps_xfer.c": {
+      "input_path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_xfer.c",
+      "input_sha256": "628414e27016be423ca950af493d522556587e4e04f1eef0e1ce7b10ecffbc1f",
+      "output_sha256": "628414e27016be423ca950af493d522556587e4e04f1eef0e1ce7b10ecffbc1f"
+    }
+  }
+}

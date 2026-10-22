@@ -1,0 +1,27 @@
+{
+  "status": "VENDOR_ISR_MODEL_PASS_WITH_KNOWN_OVERREAD_DEFECT",
+  "hardware_executed": false,
+  "hardware_admitted": false,
+  "stdout": "STUCK_RXDV_OVERREAD_ATTEMPT_DETECTED\nVENDOR_ISR_MODEL_CONTROLS_PASS_KNOWN_STUCK_RXDV_DEFECT_RETAINED\n",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_master.c": "6e002edfd94b80b0dfdd54215c0a536e5fbe06380d7a40f0418b6e52066e3b10",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_xfer.c": "628414e27016be423ca950af493d522556587e4e04f1eef0e1ce7b10ecffbc1f",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_hw.c": "7235dae9f790b4eefeccce421426fba63d8f7a72363ac4f06828ba860f49bc2c",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include/xiicps.h": "41742b8eb025363119a572547ded912a92448d4630826548ba2785f65f4bf9ba",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include/xiicps_xfer.h": "94a72a32a8c1e1a18a0506c998de88c69e9e1cb612da483cec91bccc7ef64a0b",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/include/xiicps_hw.h": "0013bcfc147a4c7fc1e60bba7368b5742b638661afb7fdf7efb8dab3223b3d9a"
+  },
+  "functions": {
+    "xiicps_master.c": [
+      "XIicPs_MasterInterruptHandler"
+    ],
+    "xiicps_xfer.c": [
+      "XIicPs_MasterIntrSend",
+      "XIicPs_MasterIntrRead"
+    ],
+    "xiicps_hw.c": [
+      "XIicPs_MasterRead"
+    ]
+  },
+  "limits": "Extracted vendor functions and actual BSP macros; host MMIO model only. Original or isolated patched sources selected explicitly. Not physical timing/full-driver/restoration proof."
+}

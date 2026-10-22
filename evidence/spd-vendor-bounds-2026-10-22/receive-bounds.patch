@@ -1,0 +1,27 @@
+--- original/xiicps_hw.c
++++ local/xiicps_hw.c
+@@ -151,7 +151,8 @@
+ 	Platform = XGetPlatform_Info();
+ 	BaseAddr = InstancePtr->Config.BaseAddress;
+ 
+-	while ((XIicPs_RxDataValid(InstancePtr)) != 0U) {
++	while ((InstancePtr->RecvByteCount > 0) &&
++	       ((XIicPs_RxDataValid(InstancePtr)) != 0U)) {
+ 
+ 			XIicPs_RecvByte(InstancePtr);
+ 			(*ByteCntPtr)--;
+--- original/xiicps_master.c
++++ local/xiicps_master.c
+@@ -755,6 +755,12 @@
+ 	 */
+ 	XIicPs_MasterIntrRead(InstancePtr, &IntrStatusReg, IsHold);
+ 
++	/* Local SPD diagnostic guard: exhausted buffer with residual FIFO data. */
++	if ((InstancePtr->IsSend == 0) && (InstancePtr->RecvByteCount == 0) &&
++	    ((XIicPs_ReadReg(BaseAddr, XIICPS_SR_OFFSET) & XIICPS_SR_RXDV_MASK) != 0U)) {
++		StatusEvent |= XIICPS_EVENT_ERROR;
++	}
++
+ 	if ((InstancePtr->IsSend == 0) &&
+ 		(0U != (IntrStatusReg & XIICPS_IXR_COMP_MASK))) {
+ 		/*
