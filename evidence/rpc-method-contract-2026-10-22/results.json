@@ -1,0 +1,19 @@
+{
+  "status": "NAC3_METHOD_RECEIVER_CONTRACT_OFFLINE_PASS",
+  "hardware_executed": false,
+  "compiled_kernel": "/srv/codex-hil-data/artiq-zynqmp/build/rpc-embedding-offline-20261022/probe.elf",
+  "compiled_kernel_sha256": "385372807559e014d7d67906423e0bb166d6de1a27e7e92a7c4a150b2cc0449c",
+  "rpc_tag": "OIIf:f",
+  "tag_offset": 1732,
+  "nac3_source_commit": "322b7bd2537e176d7997f816ae2fb6ab9e029939",
+  "tests_passed": 4,
+  "service_lookup": "Actual NAC3 host EmbeddingMap.retrieve_function; receiver is first object argument",
+  "admission": "Exact source file/function identity and receiver class method identity plus scalar values, synchronous f result",
+  "sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py": "f36669e15f45af18394aa9a5234498f830f317d59f3228e2e99bde76c64c0845",
+    "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py": "97a36aad4fc2c94603e08103cc3888bfa7a7be603319ef1a07e9f033189824ae",
+    "/srv/codex-hil-data/artiq-zynqmp/work/nac3-abi/nac3artiq/src/codegen.rs": "ec71e97fbc037f9c2b58c34a121b671f0da67309d3af75862567a7f465c43c69",
+    "examples/genesys_network_probe.py": "7ab7de88bf8c5269612375b049a41ea1d4b8a1665f4cad8d362a3cc6183340f0"
+  },
+  "limits": "Offline compilation/decode proof. Earlier hardware request metadata was absent; no new hardware injection performed."
+}

@@ -171,3 +171,27 @@ Three injector controls PASS. The pinned compiler quotes bound-method receivers
 separately (`compiler/embedding.py`), making receiver shape a concrete diagnosis
 target, but this run did not capture the shape. Keep admission strict until that
 shape is established; do not silently skip unknown RPCs or infer test success.
+
+## Actual NAC3 host contract —2026-10-22
+
+The laboratory's deployed Python environment uses NAC3; it is distinct from
+`common/artiq` at the earlier upstream audit revision. Its RPC dispatcher uses
+`EmbeddingMap.retrieve_function`, while `retrieve_object` decodes object
+arguments. Earlier statements about the checked-out client's missing `u/U`
+writer describe that checkout, not this NAC3 host, which supports unsigned tags.
+The software/version matrix must preserve this distinction.
+
+Offline compilation of the actual `genesys_network_probe.py` with the installed
+NAC3 host yields the RPC tag `OIIf:f`: receiver object, two int64 arguments,
+float argument and float result. Its function map contains
+`GenesysNetworkProbe.report`. NAC3 `rpc_codegen_callback_fn` explicitly prepends
+an `O` tag when a method receiver exists. The old three-argument admission was
+therefore incompatible with the compiled method call.
+
+The injector now resolves the function through the NAC3 function map, requires
+its exact source file and `GenesysNetworkProbe.report` identity, verifies that
+it is the receiver class's method, then checks the three scalar values and `f`
+result. Unknown RPCs are not skipped. The actual host decoder reconstructs all
+four arguments in an offline wire test;4injector controls PASS. The existing
+failed hardware attempt remains failed/no-injection; no new live result is
+inferred from this fix. Evidence: `evidence/rpc-method-contract-2026-10-22/`.

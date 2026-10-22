@@ -3,7 +3,7 @@
 
 Only called inside test_candidate_runtime_hw.py's restoration window.
 """
-import argparse,fcntl,json,os,runpy,socket,sys
+import argparse,fcntl,inspect,json,os,runpy,socket,sys
 from pathlib import Path
 from prepare_rpc_fault_plan import cases
 
@@ -28,9 +28,16 @@ def inject(comm,embedding,case,report):
         argument_count=len(args),argument_types=[type(arg).__name__ for arg in args],
         keyword_names=sorted(kwargs),return_tags_hex=bytes(tags).hex())
     if embedding is not None and service:
-        target=embedding.retrieve_object(service)
+        target=embedding.retrieve_function(service)
         report['observed_request']['service_name']=getattr(target,'__qualname__',type(target).__name__)
-    if asynchronous or not service or kwargs or tags!=b'f' or len(args)!=3 or args[0]!=0x1234567887654321 or args[1]<=0 or args[2]!=1.25:
+    expected_file=Path(__file__).resolve().parents[1]/'examples/genesys_network_probe.py'
+    method_ok=False
+    if embedding is not None and service and len(args)==4:
+        target=embedding.retrieve_function(service);receiver=args[0]
+        method_ok=(getattr(target,'__qualname__','')=='GenesysNetworkProbe.report'
+            and getattr(type(receiver),'report',None) is target
+            and Path(inspect.getsourcefile(target) or '').resolve()==expected_file)
+    if asynchronous or not method_ok or kwargs or tags!=b'f' or args[1]!=0x1234567887654321 or args[2]<=0 or args[3]!=1.25:
         raise ValueError('Unexpected RPC request; no injection performed')
     report.update(request_verified=True,return_tags=tags.decode(),service_id=service)
     comm.socket.settimeout(5)
