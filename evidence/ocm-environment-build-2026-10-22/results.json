@@ -1,0 +1,24 @@
+{
+  "status": "OCM_CONTROL_REGISTER_REPORT_BUILD_LAYOUT_AND_DECODER_PASS",
+  "hardware_executed": false,
+  "elf": "/srv/codex-hil-data/artiq-zynqmp/build/ocm-environment-20261022/aarch64-unknown-none/release/genesys-a53-bringup",
+  "elf_sha256": "d92e94fb755e08e9b07dc5a9bbbe27fa7bd9d3eb46acbcd59b22f89f214dce35",
+  "source_sha256": "b0f94e1a453d9510a8d2f9c7518e24ffa74f8157fd00148e37e7320d72397b3b",
+  "decoder_tests": 2,
+  "layout_tests": 2,
+  "reads": [
+    "CurrentEL",
+    "SCTLR_EL1",
+    "TCR_EL1",
+    "TTBR0_EL1",
+    "TTBR1_EL1",
+    "MAIR_EL1",
+    "VBAR_EL1",
+    "SP",
+    "PC"
+  ],
+  "register_writes_added": false,
+  "ddr_test": "NOT_RUN",
+  "deployment": "NOT_RUN",
+  "compatibility": "UART uses embedded_io::Write, not core::fmt::Write; full AArch64 compile passed"
+}

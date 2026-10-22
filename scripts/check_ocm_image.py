@@ -20,7 +20,7 @@ def check(data,symbol_text):
         raise ValueError('Unexpected OCM vector/BSS/16KiB-stack layout')
     if not any(s['address']<=stack_start and stack_end<=s['address']+s['memsz'] for s in segments):raise ValueError('Stack absent from ELF memory extent')
     return dict(status='OCM_IMAGE_LAYOUT_PASS_EXECUTION_STATE_NOT_PROVEN',hardware_executed=False,
-        entry=hex(entry),load_segments=[dict(start=hex(s['address']),end_exclusive=hex(s['address']+s['memsz']),file_bytes=s['filesz']) for s in segments],
+        entry=hex(entry),load_segments=[dict(start=hex(s['address']),end_exclusive=hex(s['address']+s['memsz']),file_bytes=s['filesz'],flags=s['flags']) for s in segments],
         stack=dict(start=hex(stack_start),end_exclusive=hex(stack_end)),
         mmu_cache_state='NOT_PROVEN',destructive_ddr_test_allowed=False,
         limits='Checks selected linker symbol/layout convention only. Does not establish live EL/SCTLR/cache state, stack use, parked cores, DMA masters or valid DDR intervals.')

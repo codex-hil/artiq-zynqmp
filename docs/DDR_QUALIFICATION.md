@@ -130,3 +130,21 @@ Next add explicit EL1 control-register reporting to the OCM diagnostic and verif
 that image offline before a bounded exclusive boot/restoration run. Retain the
 separate SPD acquisition/CRC gap; static layout and programmed4GiB are not a
 license to start a destructive full-range sweep.
+
+## OCM control-register reporting image
+
+The OCM-only diagnostic now reads EL1 SCTLR/TCR/TTBR0/TTBR1/MAIR/VBAR plus
+SP and PC after startup. It prints raw values and SCTLR M/C/I bits; it does not
+change those registers or access DDR. Unexpected execution level reports
+NOT_RUN. The new AArch64 image builds and passes the OCM ELF/vector/BSS/stack
+layout gate. Evidence: `evidence/ocm-environment-build-2026-10-22/`.
+
+`decode_ocm_environment.py` validates one EL1 report, all8register fields and
+live PC/vector placement in executable OCM file extents plus the checked stack.
+Two synthetic decoder tests and two ELF boundary tests PASS. Neither a decoded
+report nor disabled local MMU/cache enables destructive DDR testing. No physical
+run or live register observation has occurred at this checkpoint.
+
+Next prepare an exclusive OCM load/UART capture/restoration wrapper. It must
+preserve the DDR training dependency and restore the documented normal runtime,
+while preventing any claim that the new image has already tested DDR.

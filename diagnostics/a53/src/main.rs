@@ -107,6 +107,29 @@ fn halt() -> ! {
     }
 }
 
+#[cfg(feature = "ocm")]
+fn report_ocm_environment(uart: &mut impl Write) {
+    if CurrentEL.get() != 4 {
+        writeln!(uart, "OCM_ENV NOT_RUN expected_EL1\r").unwrap();
+        return;
+    }
+    let (sctlr, tcr, ttbr0, ttbr1, mair, vbar, sp, pc): (u64,u64,u64,u64,u64,u64,u64,u64);
+    unsafe {
+        asm!("mrs {0}, sctlr_el1", out(reg) sctlr, options(nomem, nostack, preserves_flags));
+        asm!("mrs {0}, tcr_el1", out(reg) tcr, options(nomem, nostack, preserves_flags));
+        asm!("mrs {0}, ttbr0_el1", out(reg) ttbr0, options(nomem, nostack, preserves_flags));
+        asm!("mrs {0}, ttbr1_el1", out(reg) ttbr1, options(nomem, nostack, preserves_flags));
+        asm!("mrs {0}, mair_el1", out(reg) mair, options(nomem, nostack, preserves_flags));
+        asm!("mrs {0}, vbar_el1", out(reg) vbar, options(nomem, nostack, preserves_flags));
+        asm!("mov {0}, sp", out(reg) sp, options(nomem, nostack, preserves_flags));
+        asm!("adr {0}, .", out(reg) pc, options(nomem, nostack, preserves_flags));
+    }
+    writeln!(uart, "REG_EL1 SCTLR={:#x} TCR={:#x} TTBR0={:#x} TTBR1={:#x}\r", sctlr,tcr,ttbr0,ttbr1).unwrap();
+    writeln!(uart, "REG_EL1 MAIR={:#x} VBAR={:#x} SP={:#x} PC={:#x}\r", mair,vbar,sp,pc).unwrap();
+    writeln!(uart, "OCM_ENV_OBSERVED mmu={} dcache={} icache={}\r", sctlr&1,(sctlr>>2)&1,(sctlr>>12)&1).unwrap();
+    writeln!(uart, "OCM_DDR_ACCESS NOT_AUTHORIZED\r").unwrap();
+}
+
 fn bringup() {
     let mut uart = unsafe { adacore_zynqmp::uart::uart0() };
     writeln!(uart, "GENESYS-ZU A53 bringup; diagnostic, not ARTIQ\r").unwrap();
@@ -118,6 +141,8 @@ fn bringup() {
         CNTFRQ_EL0.get()
     )
     .unwrap();
+    #[cfg(feature = "ocm")]
+    report_ocm_environment(&mut uart);
     let before = CNTPCT_EL0.get();
     for _ in 0..100000 {
         core::hint::spin_loop();
