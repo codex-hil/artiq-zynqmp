@@ -1,6 +1,16 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## Physical SPD base CRC/geometry observed; normal recovery PASS —2026-10-22
+
+Piotr FSBL UART yielded physical128B SPD, CRC2e87valid, reports4GiB/1rank/64bit/
+x16 with geometry matching earlier DDRC snapshot. Initial load/restoration FAIL
+from full shared disk retained. Own build relocated byte-verified; separate
+normal restore/physical RTIO/debug/Ethernet PASS192.168.2.3. Evidence:
+`evidence/fsbl-spd-capture-hardware-2026-10-22`. Diagnostic FSBL not promoted;
+full DDR stress/alias/high-window tests remain NOT_RUN. Next pre-reset disk-space
+admission, then DDR test ownership/window planning.
+
 ## SPD base CRC gate offline PASS —2026-10-22
 
 Required base-block CRC checker integrated with geometry decoder/comparison.

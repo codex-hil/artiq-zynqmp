@@ -1,0 +1,52 @@
+{
+  "status": "FSBL_SPD_FRAME_CRC_VALID_ACQUISITION_NOT_PROVEN",
+  "hardware_executed": false,
+  "log_sha256": "d16a0ac3c7eccdf79275fc5fd8bdc46a172a2881219f4e00f866d1cc4797a3d0",
+  "crc": {
+    "status": "DDR4_BASE_CRC_VALID",
+    "valid": true,
+    "covered_start": 0,
+    "covered_bytes": 126,
+    "stored": "0x2e87",
+    "computed": "0x2e87",
+    "polynomial": "0x1021",
+    "initial": "0x0",
+    "stored_byte_order": "little",
+    "hardware_executed": false,
+    "spd_sha256": "ab0343bdadbb16c6dbf91e7066817f67fcaaae28ec03be36c088e5481fb2bf83",
+    "destructive_test_allowed": false,
+    "limits": "Checks supplied DDR4 base bytes only. Does not establish EEPROM origin, full SPD semantics, module-block CRC, memory geometry or integrity."
+  },
+  "geometry": {
+    "status": "SPD_GEOMETRY_DECODED_BASE_CRC_VALID",
+    "hardware_executed": false,
+    "primary_bus_bits": 64,
+    "device_dq_bits": 16,
+    "ranks": 1,
+    "row_bits": 16,
+    "column_bits": 10,
+    "bank_bits": 2,
+    "bank_group_bits": 1,
+    "rank_bytes": 4294967296,
+    "module_bytes": 4294967296,
+    "crc": "BASE_VALID",
+    "crc_report": {
+      "status": "DDR4_BASE_CRC_VALID",
+      "valid": true,
+      "covered_start": 0,
+      "covered_bytes": 126,
+      "stored": "0x2e87",
+      "computed": "0x2e87",
+      "polynomial": "0x1021",
+      "initial": "0x0",
+      "stored_byte_order": "little",
+      "hardware_executed": false,
+      "spd_sha256": "ab0343bdadbb16c6dbf91e7066817f67fcaaae28ec03be36c088e5481fb2bf83",
+      "destructive_test_allowed": false,
+      "limits": "Checks supplied DDR4 base bytes only. Does not establish EEPROM origin, full SPD semantics, module-block CRC, memory geometry or integrity."
+    },
+    "destructive_test_allowed": false,
+    "limits": "Limited symmetric monolithic UDIMM/SODIMM geometry. No EEPROM acquisition, module-block CRC, controller agreement or physical memory proof. Base CRC checked only when explicitly required."
+  },
+  "destructive_test_allowed": false
+}

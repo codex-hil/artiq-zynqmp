@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "hardware_executed": true,
+  "scope": "Normal baseline recovery after data filesystem full",
+  "stages": {
+    "load": {
+      "returncode": 0
+    },
+    "debug": {
+      "returncode": 0
+    },
+    "ethernet": {
+      "returncode": 0
+    }
+  },
+  "ip": "192.168.2.3",
+  "elapsed_seconds": 68.091
+}

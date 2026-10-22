@@ -554,3 +554,21 @@ requires ordered complete frame, CRC and subsequent FSBL completion. Evidence:
 candidate loader window with strict UART parsing/full normal restoration.
 Standalone adapter/GIC admission work remains offline and is not required for
 this existing FSBL-based acquisition path. No HW access/card/flash writes.
+
+### Physical base SPD/CRC capture; initial window FAIL, recovery PASS —2026-10-22
+
+Diagnostic Piotr FSBL produced128base bytes on physical Genesys under exclusive
+lease. CRC stored/computed2e87; SPD reports4GiB,1rank,64-bit bus,x16devices,
+16row/10column/2bank/1group bits. Seven fields agree with earlier DDRC capture,
+not a new simultaneous register snapshot. Raw UART and pins establish provenance;
+pure parser flags remain false by design. Physical acquisition is now observed,
+not synthetic; memory alias freedom/high-window mapping/stress still NOT_RUN.
+
+Initial43.309s lifecycle FAIL: shared data disk full, cs_server/PL load and
+restoration .Xil creation failed. Preserve FAIL. Relocated only own completed
+diagnostic build to root storage after verifying4285entries, retained original
+paths via symlink. Separate68.091s exclusive recovery PASS: normal runtime
+192.168.2.3, physical RTIO/debug and Ethernet PASS. No diagnostic release
+promotion or SD/flash/Si/OTP writes. Evidence:
+`evidence/fsbl-spd-capture-hardware-2026-10-22`. Next free-space admission before
+any reset, then remaining DDR master/cache/window/interval requirements offline.

@@ -334,3 +334,33 @@ CRC-bad/no-completion frames, and reject changed original source. No physical
 SPD dump yet. Next add the diagnostic FSBL to a bounded candidate runtime window
 with strict UART parsing and full normal restoration; do not package it as the
 normal SD release or flash it.
+
+## Diagnostic FSBL wrapper and first physical capture
+
+```sh
+python3 scripts/test_candidate_runtime_hw.py --fsbl-spd \
+  --manifest evidence/fsbl-spd-capture-plan-2026-10-22/inputs.json \
+  --output FRESH_OUTPUT
+```
+
+Default is offline preflight. Execution additionally needs `--execute`, verified
+server/UART/interface and the shared Genesys lease (enforced by wrapper).
+FSBL, PMU, PS setup and execution/parser scripts are pinned. OCM/extended/fault
+modes cannot be combined with this diagnostic mode. Strict SPD extraction/CRC
+runs after candidate load and before normal debug/Ethernet checks; failures
+always enter baseline restoration under the same lease. Do not run with
+insufficient disk space; an explicit space admission check is the next fix.
+
+First physical window captured128bytes with valid CRC0x2e87:4GiB, single rank,
+64-bit bus, x16devices,16row/10column/2bank/1group bits. All7geometry fields
+match the earlier DDRC snapshot. Data hex/raw UART/provenance:
+`evidence/fsbl-spd-capture-hardware-2026-10-22`. This is not a full memory test.
+
+Initial window remains FAIL: shared data disk filled, Vivado could not launch
+cs_server/create .Xil, and its first restoration attempt failed. Only this
+thread's completed diagnostic build was relocated to root storage with verified
+copy and original-path symlink (4285entries preserved). A separate exclusive
+recovery window restored normal ARTIQ192.168.2.3; physical RTIO/debug/Ethernet
+PASS. Diagnostic FSBL is not release-qualified or selected as normal default.
+No SD/flash/OTP/Si changes. Next offline add pre-reset free-space admission, then
+continue DDR master/window/test-interval planning using the physical SPD evidence.

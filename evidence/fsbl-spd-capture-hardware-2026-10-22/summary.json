@@ -1,0 +1,44 @@
+{
+  "status": "PHYSICAL_BASE_SPD_CRC_VALID_INITIAL_WINDOW_FAIL_SEPARATE_RECOVERY_PASS",
+  "hardware_executed": true,
+  "cable": "210383B7F02DA",
+  "lease": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "initial_window_seconds": 43.309,
+  "initial_candidate": "FAIL after completed FSBL, at Vivado cs_server startup",
+  "initial_restoration": "FAIL due ENOSPC/.Xil directory creation",
+  "physical_spd": {
+    "producer": "UART from pinned diagnostic Piotr FSBL after original reader success, later FSBL completion",
+    "bytes": 128,
+    "sha256": "ab0343bdadbb16c6dbf91e7066817f67fcaaae28ec03be36c088e5481fb2bf83",
+    "base_crc": "0x2e87 stored=computed",
+    "row_bits": 16,
+    "column_bits": 10,
+    "bank_bits": 2,
+    "bank_group_bits": 1,
+    "ranks": 1,
+    "primary_bus_bits": 64,
+    "device_dq_bits": 16,
+    "reported_bytes": 4294967296
+  },
+  "controller_agreement": "7 fields match previously captured DDRC snapshot, not a simultaneous new DDRC observation",
+  "decoder_flags_note": "Nested hardware_executed=false refers to pure offline parsers. Physical provenance is this explicit hardware window, exact cable/lease/input pins and raw UART/boot logs.",
+  "space_recovery": "Relocated only own completed diagnostic build to root filesystem, verified4285entries, preserved original paths through symlink; inventory retained. No shared install/other project deletions.",
+  "separate_normal_recovery": {
+    "status": "PASS",
+    "elapsed_seconds": 68.091,
+    "ip": "192.168.2.3",
+    "physical_rtio_debug": "PASS",
+    "ethernet": "PASS"
+  },
+  "candidate_release_qualified": false,
+  "ddr_stress": "NOT_RUN",
+  "destructive_ddr_test_allowed": false,
+  "limits": [
+    "base SPD data only, not full module identity/manufacturing section",
+    "SPD reported geometry is not tested alias freedom or memory integrity",
+    "initial lifecycle remains FAIL; no diagnostic FSBL promotion to normal release"
+  ],
+  "input_manifest_sha256": "ca74c1aaa43383a1ae3dc49d6bcd4a76d042f3b88696309925db80a81cf1241d",
+  "raw_source_directory": "/srv/codex-hil-data/artiq-zynqmp/build/fsbl-spd-capture-hardware-20261022",
+  "raw_uart_sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b"
+}

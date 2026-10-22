@@ -1,0 +1,15 @@
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Oct 22 14:50:52 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/program_genesys_pl.tcl
+# if {[llength $argv] != 3} {error "Require SERVER CABLE BITSTREAM"}
+# lassign $argv server cable bitstream
+# open_hw_manager
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 22 14:50:54 2026...
+ERROR: [Common 17-1294] Unable to create directory [/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/.Xil/Vivado-55-9347efe8ff02].
