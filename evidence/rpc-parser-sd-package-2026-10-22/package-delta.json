@@ -1,0 +1,51 @@
+{
+  "status": "ONLY_CPU0_PARTITION_PAYLOAD_CHANGED",
+  "hardware_executed": false,
+  "partitions": [
+    {
+      "partition_number": 0,
+      "cpu": 1,
+      "device": 1,
+      "address": "0xfffc0000",
+      "payload_identical": true,
+      "old_bytes": 285624,
+      "new_bytes": 285624
+    },
+    {
+      "partition_number": 1,
+      "cpu": 0,
+      "device": 2,
+      "address": "0xffffffff",
+      "payload_identical": true,
+      "old_bytes": 3202404,
+      "new_bytes": 3202404
+    },
+    {
+      "partition_number": 2,
+      "cpu": 2,
+      "device": 1,
+      "address": "0x20000000",
+      "payload_identical": true,
+      "old_bytes": 120,
+      "new_bytes": 120
+    },
+    {
+      "partition_number": 3,
+      "cpu": 2,
+      "device": 1,
+      "address": "0x20200000",
+      "payload_identical": true,
+      "old_bytes": 86024,
+      "new_bytes": 86024
+    },
+    {
+      "partition_number": 4,
+      "cpu": 1,
+      "device": 1,
+      "address": "0x0",
+      "payload_identical": false,
+      "old_bytes": 416264,
+      "new_bytes": 416264
+    }
+  ]
+}

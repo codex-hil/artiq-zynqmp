@@ -1,0 +1,34 @@
+{
+  "status": "SERIALIZED_CPU_PAYLOADS_PASS",
+  "hardware_executed": false,
+  "cold_boot": "NOT_RUN",
+  "boot_bin_sha256": "e72b80c68cf980182be3d89a3c9f7a83c1d85b9e287ba21fe6b63e92631250a4",
+  "partition_headers_checked": 5,
+  "cpu_payloads": [
+    {
+      "label": "worker_boot",
+      "address": "0x20000000",
+      "bytes": 120,
+      "partition_number": 2,
+      "image_offset": 3498304,
+      "sha256": "e69877b24170ce9916e03f7e454ba9974f1643d706125d6a7bf2aa1bb5445ecc"
+    },
+    {
+      "label": "worker_boot",
+      "address": "0x20200000",
+      "bytes": 86024,
+      "partition_number": 3,
+      "image_offset": 3498432,
+      "sha256": "354cd5a3b4fa24c87bedd41518eedfe40fb025226ad9dcaacee1c46e4b85e3bf"
+    },
+    {
+      "label": "application",
+      "address": "0x0",
+      "bytes": 416264,
+      "partition_number": 4,
+      "image_offset": 3584512,
+      "sha256": "7ac381974a4fc244351f135998c89b2f4edcc8dd0d665f77f876e1760982da70"
+    }
+  ],
+  "scope": "PHT chain/checksums/bounds and file-backed CPU0/CPU1 payloads only. FSBL/PMU/PL payload equality, BSS initialization and execution are not established."
+}

@@ -17,6 +17,14 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## RPC-parser qualified-input SD package —2026-10-22
+
+Separate BOOT.BIN packaged from the newly JTAG-qualified CPU0; combined source/
+artifact/serialized-payload checks PASS. Only CPU0 partition payload differs
+from the prior package; all other payloads and destination/entry addresses match.
+Evidence: `evidence/rpc-parser-sd-package-2026-10-22/`.
+Old package preserved; no card write or cold boot. Board remains restored baseline.
+
 ## RPC-parser CPU0 candidate hardware qualification —2026-10-22
 
 New CPU0 with extracted scalar RPC parser and corrected startup diagnostics

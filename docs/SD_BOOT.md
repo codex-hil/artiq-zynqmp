@@ -130,3 +130,27 @@ The decoder supports this plain, unauthenticated image format and rejects
 unsupported encryption/checksum layouts, corrupt chains and mismatched CPU data.
 It does not establish FSBL/PMU/PL payload equality or startup behavior. Evidence:
 `serialized-payloads.json`. Cold SD boot remains NOT_RUN.
+
+## RPC-parser candidate package —2026-10-22
+
+A separate BOOT.BIN now contains the CPU0 candidate that passed extended local
+JTAG qualification and complete baseline restoration. Other roles remain the
+previously qualified PL, PMU/FSBL, CPU1 and exact embedded SD worker bridge.
+Artifact: `/srv/codex-hil-data/artiq-zynqmp/build/qualified-rpc-parser-sd-20261022/BOOT.BIN`.
+SHA-256: `e72b80c68cf980182be3d89a3c9f7a83c1d85b9e287ba21fe6b63e92631250a4`.
+
+The old package remains intact. Partition comparison confirms that only the
+CPU0 payload changed; the four other partition payloads and all destination/
+entry addresses match. Combined release verification, serialized CPU payloads
+and boot-header/PMU/FSBL/PL byte checks PASS. Reports and BIF:
+`evidence/rpc-parser-sd-package-2026-10-22/`.
+
+```sh
+make verify-local-release PYTHON=python3 \
+  RELEASE_CONFIG=diagnostics/release/qualified-rpc-parser-2026-10-22.json \
+  RELEASE_REPORT=/path/to/fresh-rpc-parser-release-report.json
+```
+
+No card write or cold boot has occurred. The board still runs the restored
+older baseline; this package is not the default deployed image. Qualified
+JTAG execution is not a substitute for testing FSBL's SD CPU1 startup bridge.
