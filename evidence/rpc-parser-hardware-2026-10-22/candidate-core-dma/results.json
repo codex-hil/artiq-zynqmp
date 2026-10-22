@@ -1,0 +1,145 @@
+{
+  "kind": "hardware",
+  "scope": "Standard ARTIQ CoreDMA API, DDR FPGA playback and physical JB1\u2192JB2 edges.",
+  "status": "PASS",
+  "ip": "192.168.2.3",
+  "cycles": 3,
+  "runs": [
+    {
+      "source": "genesys_dma.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 4020160744 4021410759 1350000 -1\nCOREDMA_LOOPBACK_PASS 4020160744 4021410759 1350000 -1\nCOREDMA_RESULT 8 4028481363 4029731378 1350000 -1\nCOREDMA_LOOPBACK_PASS 4028481363 4029731378 1350000 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_tight.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 48 4101541959 4102791974 1250384 -1\nCOREDMA_TIGHT_PASS 4101541959 4102791974 1250384 -1\nCOREDMA_RESULT 48 4109888714 4111138729 1250384 -1\nCOREDMA_TIGHT_PASS 4109888714 4111138729 1250384 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_errors.py",
+      "returncode": 0,
+      "stdout": "COREDMA_ERRORS_RESULT 255\nCOREDMA_ERRORS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_persistence.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 4266727528 4267977543 1350000 -1\nCOREDMA_LOOPBACK_PASS 4266727528 4267977543 1350000 -1\nCOREDMA_RESULT 8 4297574870 4298824885 1350000 -1\nCOREDMA_LOOPBACK_PASS 4297574870 4298824885 1350000 -1\nCOREDMA_PERSISTENCE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_store_limits.py",
+      "returncode": 0,
+      "stdout": "COREDMA_LIMITS_RESULT 15\nCOREDMA_LIMITS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_missing.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"src/dma.rs\", line 191, column 5, in (Rust function)\n    <unknown>\n        ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x28c)\n    <unknown>\n                ^\nartiq.coredevice.exceptions.DMAError(0): DMA trace not found\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nartiq.coredevice.exceptions.DMAError: DMA trace not found\n"
+    },
+    {
+      "source": "genesys_dma.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 4492134558 4493384573 1350000 -1\nCOREDMA_LOOPBACK_PASS 4492134558 4493384573 1350000 -1\nCOREDMA_RESULT 8 4500436750 4501686765 1350000 -1\nCOREDMA_LOOPBACK_PASS 4500436750 4501686765 1350000 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 4573329922 4574579937 1350000 -1\nCOREDMA_LOOPBACK_PASS 4573329922 4574579937 1350000 -1\nCOREDMA_RESULT 8 4581644182 4582894197 1350000 -1\nCOREDMA_LOOPBACK_PASS 4581644182 4582894197 1350000 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_tight.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 48 4654203516 4655453531 1250384 -1\nCOREDMA_TIGHT_PASS 4654203516 4655453531 1250384 -1\nCOREDMA_RESULT 48 4662512373 4663762388 1250384 -1\nCOREDMA_TIGHT_PASS 4662512373 4663762388 1250384 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_errors.py",
+      "returncode": 0,
+      "stdout": "COREDMA_ERRORS_RESULT 255\nCOREDMA_ERRORS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_persistence.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 4816448835 4817698850 1350000 -1\nCOREDMA_LOOPBACK_PASS 4816448835 4817698850 1350000 -1\nCOREDMA_RESULT 8 4846542702 4847792717 1350000 -1\nCOREDMA_LOOPBACK_PASS 4846542702 4847792717 1350000 -1\nCOREDMA_PERSISTENCE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_store_limits.py",
+      "returncode": 0,
+      "stdout": "COREDMA_LIMITS_RESULT 15\nCOREDMA_LIMITS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_missing.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"src/dma.rs\", line 191, column 5, in (Rust function)\n    <unknown>\n        ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x28c)\n    <unknown>\n                ^\nartiq.coredevice.exceptions.DMAError(0): DMA trace not found\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nartiq.coredevice.exceptions.DMAError: DMA trace not found\n"
+    },
+    {
+      "source": "genesys_dma.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 5044766413 5046016428 1350000 -1\nCOREDMA_LOOPBACK_PASS 5044766413 5046016428 1350000 -1\nCOREDMA_RESULT 8 5053090394 5054340409 1350000 -1\nCOREDMA_LOOPBACK_PASS 5053090394 5054340409 1350000 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 5125588947 5126838962 1350000 -1\nCOREDMA_LOOPBACK_PASS 5125588947 5126838962 1350000 -1\nCOREDMA_RESULT 8 5133915001 5135165016 1350000 -1\nCOREDMA_LOOPBACK_PASS 5133915001 5135165016 1350000 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_tight.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 48 5206742405 5207992420 1250384 -1\nCOREDMA_TIGHT_PASS 5206742405 5207992420 1250384 -1\nCOREDMA_RESULT 48 5215080252 5216330267 1250384 -1\nCOREDMA_TIGHT_PASS 5215080252 5216330267 1250384 -1\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_errors.py",
+      "returncode": 0,
+      "stdout": "COREDMA_ERRORS_RESULT 255\nCOREDMA_ERRORS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_persistence.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 5372301653 5373551668 1350000 -1\nCOREDMA_LOOPBACK_PASS 5372301653 5373551668 1350000 -1\nCOREDMA_RESULT 8 5402851884 5404101899 1350000 -1\nCOREDMA_LOOPBACK_PASS 5402851884 5404101899 1350000 -1\nCOREDMA_PERSISTENCE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_store_limits.py",
+      "returncode": 0,
+      "stdout": "COREDMA_LIMITS_RESULT 15\nCOREDMA_LIMITS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "source": "genesys_dma_missing.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Core Device Traceback:\nTraceback (most recent call first):\n  File \"src/dma.rs\", line 191, column 5, in (Rust function)\n    <unknown>\n        ^\n  File \"<nac3_internal>\", line 2, column 13, in __modinit__ (RA=+0x28c)\n    <unknown>\n                ^\nartiq.coredevice.exceptions.DMAError(0): DMA trace not found\n\nEnd of Core Device Traceback\n\nTraceback (most recent call last):\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run\", line 6, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 223, in main\n    return run(with_file=True)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 205, in run\n    raise exn\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py\", line 199, in run\n    exp_inst.run()\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py\", line 92, in run_on_core\n    return self.core.run(fake_method, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 290, in run\n    self._run_compiled(kernel_library, debug_object, embedding_map)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py\", line 305, in _run_compiled\n    self.comm.serve(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 935, in serve\n    self._serve_exception(embedding_map, symbolizer)\n  File \"/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py\", line 917, in _serve_exception\n    raise python_exn\nartiq.coredevice.exceptions.DMAError: DMA trace not found\n"
+    },
+    {
+      "source": "genesys_dma.py",
+      "returncode": 0,
+      "stdout": "COREDMA_RESULT 8 5597484761 5598734776 1350000 -1\nCOREDMA_LOOPBACK_PASS 5597484761 5598734776 1350000 -1\nCOREDMA_RESULT 8 5605834403 5607084418 1350000 -1\nCOREDMA_LOOPBACK_PASS 5605834403 5607084418 1350000 -1\n",
+      "stderr": ""
+    }
+  ],
+  "counter_before": 3962494754,
+  "counter_after": 5650001765,
+  "validated_pulses": 216,
+  "validated_edges": 432,
+  "width_mu": 12500,
+  "tight_width_mu": 8,
+  "input_latency_mu": 15,
+  "record_slot_limit": 32,
+  "slot_bytes": 65536,
+  "name_bytes_limit": 64
+}

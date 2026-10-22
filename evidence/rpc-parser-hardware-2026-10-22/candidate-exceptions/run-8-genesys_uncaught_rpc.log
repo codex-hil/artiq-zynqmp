@@ -1,0 +1,34 @@
+Core Device Traceback:
+Traceback (most recent call first):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/examples/genesys_uncaught_rpc.py", line 13, in broken
+    raise ValueError("intentional uncaught RPC failure")
+  File "<nac3_internal>", line 2, column 13, in __modinit__ (RA=+0x1a4)
+    <unknown>
+                ^
+ValueError(0): intentional uncaught RPC failure
+
+End of Core Device Traceback
+
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/artiq_run", line 6, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py", line 223, in main
+    return run(with_file=True)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py", line 205, in run
+    raise exn
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/frontend/artiq_run.py", line 199, in run
+    exp_inst.run()
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/language/core.py", line 92, in run_on_core
+    return self.core.run(fake_method, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py", line 290, in run
+    self._run_compiled(kernel_library, debug_object, embedding_map)
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/core.py", line 305, in _run_compiled
+    self.comm.serve(embedding_map, symbolizer)
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py", line 935, in serve
+    self._serve_exception(embedding_map, symbolizer)
+  File "/srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/lib/python3.12/site-packages/artiq/coredevice/comm_kernel.py", line 917, in _serve_exception
+    raise python_exn
+ValueError: intentional uncaught RPC failure

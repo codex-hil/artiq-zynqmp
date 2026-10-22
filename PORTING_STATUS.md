@@ -17,6 +17,17 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## RPC-parser CPU0 candidate hardware qualification —2026-10-22
+
+New CPU0 with extracted scalar RPC parser and corrected startup diagnostics
+passes extended JTAG qualification. Only CPU0 changed in the candidate manifest.
+Lease176.266s covers load, physical TTL/CoreDMA/analyzer/MonInj, three cycles
+full CoreDMA and native exceptions, post-error debug/Ethernet, and old-baseline
+restoration with physical debug/Ethernet PASS. Restored192.168.2.3, lease released.
+Evidence: `evidence/rpc-parser-hardware-2026-10-22/`. No Kasli/Si/SD/flash/OTP
+writes. No promotion of normal image/package. Physical malformed-RPC cancellation
+and latest cold SD boot remain untested.
+
 ## Combined source-input binding — 2026-10-21
 
 The one-command release verifier now requires a hash-pinned source-input manifest

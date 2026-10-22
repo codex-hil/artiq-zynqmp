@@ -99,3 +99,20 @@ a live TCP stack, real cache coherency or CPU1 cancellation progress.
 No candidate deployment or hardware run has occurred. Next prepare a separate
 candidate manifest/preflight for bounded qualification of this CPU0 while retaining
 the previously qualified PL/CPU1/boot artifacts and full baseline restoration.
+
+## RPC-parser candidate JTAG qualification —2026-10-22
+
+A separate15-role manifest changed only CPU0 relative to the previous candidate.
+The existing bounded wrapper held the Genesys lease176.266seconds across load,
+extended local tests and complete old-baseline restoration. Candidate and
+restored IP:192.168.2.3. All stages PASS: physical TTL/CoreDMA/analyzer/MonInj,
+three cycles each of full CoreDMA and native exception/RPC recovery, post-error
+debug and Ethernet; restored-baseline physical debug and Ethernet also PASS.
+
+Evidence: `evidence/rpc-parser-candidate-2026-10-22/inputs.json` and
+`evidence/rpc-parser-hardware-2026-10-22/`. The lease was released and nonblocking
+reacquisition checked. No Kasli, Si profile, SD, flash or OTP writes occurred.
+This qualifies the candidate's tested local path. Physical malformed-RPC socket
+cancellation remains untested; offline callback controls do not establish CPU1
+cancellation progress. The old runtime is running again; normal release/package
+manifests have not been repointed. Latest SD cold boot remains NOT_RUN.
