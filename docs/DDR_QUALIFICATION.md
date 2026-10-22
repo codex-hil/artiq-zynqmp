@@ -1053,3 +1053,23 @@ Inventory never admits destructive DDR tests. Next offline DMA completion model
 and reviewed read-only PS/secondary-core status allowlist. Existing normal
 runtime remains at last validated192.168.2.3; no UART/JTAG/network/reset/Si/SD/
 flash/OTP/Kasli activity in this checkpoint.
+
+## Actual RTL DMA drain simulation and reset counterexample —2026-10-23
+
+24normal-completion scenarios PASS with exact build-pinned clean Migen44e5627/
+ARTIQ1461cf9/MiSoC8a909c8/LiteX8c01073 imports. Independent accepted AR/RLAST
+monitor shows zero outstanding bursts at completed status0, peak13;2628R and
+12300AR stalled cycles. OKAY/SLVERR, response/CRI delays and trigger0/1 covered.
+SLVERR still drains: bus-error status must be checked separately. Finite
+simulation, not formal proof or current bitstream/reset qualification.
+
+Negative actual-RTL ResetInserter test CONFIRMS COUNTEREXAMPLE: isolated PL reset
+returns IDLE while2accepted PS-side bursts remain outstanding. This does not
+claim actual board reset ordering is wrong, but rules out IDLE-alone admission
+after unknown reset ownership. Source hashes/revisions/raw per-case metrics:
+`evidence/dma-drain-model-2026-10-23`; reproducer/requirements:
+`diagnostics/ddr/DMA_DRAIN.md`. No production gateware modifications or HW access.
+
+Next audit actual PS/PL/HP0 reset sequence and make read-only PS-master/core
+status allowlist. Preserve trained DDR and establish all reset/transaction
+owners before destructive-test admission. Last normal baseline192.168.2.3.

@@ -1,0 +1,17 @@
+{
+  "status": "COUNTEREXAMPLE_CONFIRMED",
+  "hardware_executed": false,
+  "counterexample": {
+    "idle": true,
+    "accepted_bursts": 2,
+    "returned_bursts": 0,
+    "isolated_pl_reset": true,
+    "ps_transaction_owner_reset": false,
+    "conclusion": "IDLE alone is not quiescence after independent PL reset"
+  },
+  "source_sha256": {
+    "tests/test_dma_reset_ownership.py": "9498bc4075bcf0588c24e4c6f486557b5a6c71020bc36fb53d86e3b354a993d9",
+    "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py": "673d0a713ccbec2b7b81914145b854449470fab6678a5c39b4dba8bee70e0f43"
+  },
+  "limits": "Modeled independent PL logic reset while valid PS AXI transaction delayed. Not proof that the current board sequence performs this reset ordering."
+}
