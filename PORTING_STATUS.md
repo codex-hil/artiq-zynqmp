@@ -1,5 +1,30 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## FSBL system-register paths captured; mask gate remains closed —2026-10-22
+
+All16sys child definition groups captured under shared Genesys lease, status
+and mandatory normal restoration PASS. Physical TTL/CoreDMA/analyzer/MonInj/
+Ethernet PASS192.168.2.3. No observer/DDR test/Kasli/Si/SD/flash/OTP writes.
+Paths now evidenced: sys 1 sctlr_el3, sys 0 mpidr_el1; GP registers r0..r30.
+CurrentEL/DAIF are not separately named in these definitions. Evidence:
+`evidence/fsbl-sys-children-hardware-2026-10-22`. Lease released.
+
+New pure supplied-data PSTATE decoder accepts only valid AArch64 modes. Three
+test groups cover all32mode encodings, all16DAIF combinations and malformed
+values. Captured debug cpsr0x600002cd decodes EL3h, DAIF0x2c0: A unmasked,
+D/I/F masked. The existing all-four-mask observer gate therefore remains closed;
+no control writes or weakened gate were applied. No live SCTLR capture yet.
+Field reference: ARM-software/u-boot arch/arm/include/asm/system.h, SPSR_EL_*
+and SPSR_EXCEPTION_MASK definitions:
+https://github.com/ARM-software/u-boot/blob/master/arch/arm/include/asm/system.h
+Saved SPSR_EL3 is not substituted for live debug CPSR/PSTATE.
+
+Next implement reviewed explicit backend paths and PSTATE decoding in the
+collector, with offline tests; then read-only control-state capture. Resolve
+entry exception policy explicitly before any observer execution. Destructive
+DDR tests still require cache/master ownership and remain NOT_ADMITTED.
+
+
 ## FSBL sys-root/cpsr metadata hardware PASS —2026-10-22
 
 Initial storage admission rejected478MiB before HW. Four completed own route/

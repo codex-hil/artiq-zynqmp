@@ -1,0 +1,21 @@
+{
+  "kind": "hardware",
+  "time": 1792698164.1912596,
+  "ip": "192.168.2.3",
+  "mac": "02:38:3b:7f:02:0d",
+  "scope": "AMD lwIP/GEM diagnostic, not ARTIQ management/RPC",
+  "tests": {
+    "icmp": "PASS",
+    "identity": "PASS",
+    "tcp_echo": "PASS"
+  },
+  "ping_log": "PING 192.168.2.3 (192.168.2.3) from 192.168.2.107 enp2s0: 56(84) bytes of data.\n64 bytes from 192.168.2.3: icmp_seq=1 ttl=255 time=0.064 ms\n64 bytes from 192.168.2.3: icmp_seq=2 ttl=255 time=0.101 ms\n64 bytes from 192.168.2.3: icmp_seq=3 ttl=255 time=0.101 ms\n64 bytes from 192.168.2.3: icmp_seq=4 ttl=255 time=0.102 ms\n64 bytes from 192.168.2.3: icmp_seq=5 ttl=255 time=0.102 ms\n64 bytes from 192.168.2.3: icmp_seq=6 ttl=255 time=0.103 ms\n64 bytes from 192.168.2.3: icmp_seq=7 ttl=255 time=0.101 ms\n64 bytes from 192.168.2.3: icmp_seq=8 ttl=255 time=0.086 ms\n64 bytes from 192.168.2.3: icmp_seq=9 ttl=255 time=0.088 ms\n64 bytes from 192.168.2.3: icmp_seq=10 ttl=255 time=0.078 ms\n64 bytes from 192.168.2.3: icmp_seq=11 ttl=255 time=0.060 ms\n64 bytes from 192.168.2.3: icmp_seq=12 ttl=255 time=0.122 ms\n64 bytes from 192.168.2.3: icmp_seq=13 ttl=255 time=0.073 ms\n64 bytes from 192.168.2.3: icmp_seq=14 ttl=255 time=0.128 ms\n64 bytes from 192.168.2.3: icmp_seq=15 ttl=255 time=0.111 ms\n64 bytes from 192.168.2.3: icmp_seq=16 ttl=255 time=0.080 ms\n64 bytes from 192.168.2.3: icmp_seq=17 ttl=255 time=0.060 ms\n64 bytes from 192.168.2.3: icmp_seq=18 ttl=255 time=0.130 ms\n64 bytes from 192.168.2.3: icmp_seq=19 ttl=255 time=0.126 ms\n64 bytes from 192.168.2.3: icmp_seq=20 ttl=255 time=0.131 ms\n\n--- 192.168.2.3 ping statistics ---\n20 packets transmitted, 20 received, 0% packet loss, time 1978ms\nrtt min/avg/max/mdev = 0.060/0.097/0.131/0.022 ms\n",
+  "neighbor": "192.168.2.3 lladdr 02:38:3b:7f:02:0d REACHABLE \n",
+  "tcp": {
+    "connections": 5,
+    "exchanges": 1080,
+    "verified_bytes": 1129210,
+    "sha256": "a92d4161983aa5596046786eb23f8205b41e2f9ea252f32123ac910a4a368d69",
+    "elapsed_s": 1.0117798410065006
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "SUPPLIED_AARCH64_PSTATE_DECODED",
+  "hardware_executed": false,
+  "raw": "0x600002cd",
+  "mode": "EL3h",
+  "currentel_encoding": 12,
+  "daif": "0x2c0",
+  "masked": {
+    "D": true,
+    "A": false,
+    "I": true,
+    "F": true
+  },
+  "required_observer_masks_present": false,
+  "destructive_test_allowed": false,
+  "limits": "Supplied debug CPSR/PSTATE data, not SPSR_EL3. No debugger provenance/cache/ownership or execution admission."
+}
