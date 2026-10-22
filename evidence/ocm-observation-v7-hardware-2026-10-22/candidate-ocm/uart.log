@@ -1,0 +1,14 @@
+GENESYS-ZU A53 bringup; diagnostic, not ARTIQ
+TEST uart PASS (TX only; host must verify RX)
+REG CurrentEL=0x4 CNTFRQ=99999000
+REG_EL1 SCTLR=0xc52838 TCR=0x0 TTBR0=0x8085c57010a50200 TTBR1=0x21040400014020
+REG_EL1 MAIR=0x44e048e000098aa4 VBAR=0xfffc0000 SP=0xfffc8d70 PC=0xfffc09ac
+OCM_ENV_OBSERVED mmu=0 dcache=0 icache=0
+OCM_DDR_ACCESS NOT_AUTHORIZED
+TEST timer PASS delta=432991 (polling only)
+TEST ddr NOT_RUN OCM-only diagnostic
+TEST interrupts PASS count=1 id=30 other=0
+UART ECHO READY
+PONG
+TEST uart_rx PASS
+BRINGUP COMPLETE: Ethernet/ARTIQ pending

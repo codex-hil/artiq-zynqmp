@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## OCM EL1 observation physically PASS —2026-10-22
+
+OCM image executed; UART PING/PONG, timer poll and timer IRQ PASS. EL1
+SCTLR0xc52838: MMU/D-cache/I-cache OFF; PC/SP/vector within checked OCM layout.
+DDR test NOT_RUN; no whole-system cache/master or physical capacity proof.
+Normal ARTIQ restored192.168.2.3 with physical RTIO/debug/Ethernet PASS under
+76.350s shared lease. Evidence: `evidence/ocm-observation-v7-hardware-2026-10-22`.
+Next offline independent geometry/SPD and master/reset-state admission planning.
+
 ## OCM v6 unconfirmed initial halt / restoration PASS —2026-10-22
 
 Initial core stop returned without positive suspended state; gate rejected.

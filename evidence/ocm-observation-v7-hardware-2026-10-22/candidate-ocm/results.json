@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "hardware_executed": true,
+  "ddr_test": "NOT_RUN",
+  "environment": {
+    "status": "OCM_EL1_STATE_OBSERVED_NOT_DDR_AUTHORIZATION",
+    "hardware_executed": false,
+    "mmu": false,
+    "dcache": false,
+    "icache": false,
+    "registers": {
+      "SCTLR": "0xc52838",
+      "TCR": "0x0",
+      "TTBR0": "0x8085c57010a50200",
+      "TTBR1": "0x21040400014020",
+      "MAIR": "0x44e048e000098aa4",
+      "VBAR": "0xfffc0000",
+      "SP": "0xfffc8d70",
+      "PC": "0xfffc09ac"
+    },
+    "destructive_ddr_test_allowed": false,
+    "limits": "Measured local CPU state only. Does not prove physical DDR geometry, parked other cores, inactive masters or whole-system cache quiescence."
+  }
+}

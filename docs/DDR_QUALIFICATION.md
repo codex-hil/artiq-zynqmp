@@ -334,3 +334,27 @@ propagation but does not claim stale state caused v6. Existing outer timeout
 remains120s. Two core-state tests include delayed confirmation and bounded
 non-suspension; two reset-flow/two OCM tests PASS. V7 artifact preflight/pins:
 `evidence/ocm-observation-plan-v7-2026-10-22`. Next bounded observation/restoration.
+
+### OCM observation physically PASS —2026-10-22
+
+V7 reached OCM entry, ran at EL1 and completed UART capture. SCTLR_EL1=0xc52838:
+M/C/I bits all0 (MMU, EL1 D-cache and I-cache disabled). PC0xfffc09ac and
+SP0xfffc8d70 fit the checked OCM executable/stack ranges; VBAR0xfffc0000.
+UART PING/PONG, timer polling and one timer IRQ(id30,other0) reported PASS.
+CPU1 held reset; CPU2/3 held power-on-reset, each confirmed via identical exact
+backend errors twice. This run required no delayed post-stop polls.
+
+DDR explicitly NOT_RUN; no DDR initialization was requested by this OCM path.
+Do not generalize EL1 M/C/I to EL3 cache state or whole-system quiescence. Raw
+TTBR/MAIR values retained, not interpreted as valid mappings while M=0.
+Normal ARTIQ restored192.168.2.3; physical RTIO/debug and Ethernet PASS.
+Exclusive lease covered76.350s. No Kasli/Si/card/flash/OTP writes. Evidence:
+`evidence/ocm-observation-v7-hardware-2026-10-22`. Nested decoder flag
+`environment.hardware_executed=false` describes the pure decoder; the enclosing
+capture's flag is true and raw UART establishes this physical observation.
+
+Next offline define independent DDR geometry/SPD acquisition and a read-only
+master/reset-state admission inventory. OCM EL1 state alone does not authorize
+destructive DDR writes. Physical capacity/CRC, high-window alias checks and
+other-master/cache ownership still require explicit evidence. Preserve this
+known working OCM manifest for subsequent diagnostic extensions.
