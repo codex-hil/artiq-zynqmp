@@ -1,0 +1,12 @@
+{
+  "status": "EXCEPTION_OBSERVER_STATIC_PASS",
+  "hardware_executed": false,
+  "vectors": "0xfffc8000",
+  "entry": "0xfffc8800",
+  "bytes": 2172,
+  "fault_probe": "0xfffc8840",
+  "success_terminal": "0xfffc8834",
+  "fault_terminal": "0xfffc8878",
+  "destructive_test_allowed": false,
+  "limits": "Static only. Loader must install/read back VBAR_EL3 before continue; existing admission remains unchanged. No hardware fault/SError/DDR proof."
+}

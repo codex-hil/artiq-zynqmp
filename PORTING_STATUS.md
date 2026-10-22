@@ -1,5 +1,36 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## Exception-aware EL3 observer built offline —2026-10-22
+
+Separate `diagnostics/ddr/el3_exception_observer` image:2172RX-only bytes
+at0xfffc8000, entry0xfffc8800. Sixteen128-byte vector slots record slot inx14
+and branch to a common EL3-checking fault terminal. Fault captures CurrentELx16,
+ESR_EL3x17,FAR_EL3x18,ELR_EL3x19,SPSR_EL3x20,DAIFx21; x15=0xf3,
+PC0xfffc8878. FAR/ESR validity depends on exception class; raw values do not
+imply a valid fault address for every exception. No eret/retry/fault clearing.
+Normal entry preserves DAIF and captures original fields, successx15=0x33/
+PC0xfffc8834. Separate deliberate BRK0x53 entry0xfffc8840 for later controlled
+synchronous fault validation; normal entry never reaches it. No data memory/
+stack/UART/cache/control writes in the executable.
+
+Debugger loader must install/read back VBAR_EL3=0xfffc8000 while positively
+halted BEFORE any continue, recording old VBAR and original PSTATE. This is a
+future explicit control-register write, not implemented/admitted here. Changing
+VBAR after starting would leave an unsafe exception window. No silent masking A
+or reliance on partially overwritten FSBL vectors is allowed. Any fault terminal
+must FAIL the observation and force full baseline restoration, never PASS.
+
+Exact payload/layout gate and3tests PASS: all16vector branches reach handler,
+vector/opcode/BRK drift rejected, injected masking/store/writable segment rejected.
+Initial ELF load extended to0xfffc0000 through linker headers; checker rejected
+it. Fresh v2 uses explicit PHDRS and passes exact0xfffc8000..0xfffc887c extent.
+Evidence and rejected initial layout: `evidence/el3-exception-observer-build-2026-10-22`.
+No hardware access; existing observer/mask admission remains unchanged.
+Next implement separately pinned loader policy with VBAR readback/EL3/raw-state
+checks and modeled failure paths before any bounded normal/fault-probe HW run.
+This does not prove asynchronous SError delivery, master quiescence or DDR integrity.
+
+
 ## Post-FSBL live EL3 control observation PASS —2026-10-22
 
 Explicit XSDB paths now used (sys 1 sctlr_el3/sys 0 mpidr_el1, GP rN). Live

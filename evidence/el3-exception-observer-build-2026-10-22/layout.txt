@@ -1,0 +1,59 @@
+
+Elf file type is EXEC (Executable file)
+Entry point 0xfffc8800
+There is 1 program header, starting at offset 64
+
+Program Headers:
+  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align
+  LOAD           0x008000 0x00000000fffc8000 0x00000000fffc8000 0x00087c 0x00087c R E 0x10000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text 
+
+Symbol table '.symtab' contains 44 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000fffc8000     0 SECTION LOCAL  DEFAULT    1 .text
+     2: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS ccndUog7.o
+     3: 0000000000000010     0 NOTYPE  LOCAL  DEFAULT  ABS vector_slot
+     4: 00000000fffc8000     0 NOTYPE  LOCAL  DEFAULT    1 $x
+     5: 00000000fffc8008     0 NOTYPE  LOCAL  DEFAULT    1 $d
+     6: 00000000fffc8080     0 NOTYPE  LOCAL  DEFAULT    1 $x
+     7: 00000000fffc8088     0 NOTYPE  LOCAL  DEFAULT    1 $d
+     8: 00000000fffc8100     0 NOTYPE  LOCAL  DEFAULT    1 $x
+     9: 00000000fffc8108     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    10: 00000000fffc8180     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    11: 00000000fffc8188     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    12: 00000000fffc8200     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    13: 00000000fffc8208     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    14: 00000000fffc8280     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    15: 00000000fffc8288     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    16: 00000000fffc8300     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    17: 00000000fffc8308     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    18: 00000000fffc8380     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    19: 00000000fffc8388     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    20: 00000000fffc8400     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    21: 00000000fffc8408     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    22: 00000000fffc8480     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    23: 00000000fffc8488     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    24: 00000000fffc8500     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    25: 00000000fffc8508     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    26: 00000000fffc8580     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    27: 00000000fffc8588     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    28: 00000000fffc8600     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    29: 00000000fffc8608     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    30: 00000000fffc8680     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    31: 00000000fffc8688     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    32: 00000000fffc8700     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    33: 00000000fffc8708     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    34: 00000000fffc8780     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    35: 00000000fffc8788     0 NOTYPE  LOCAL  DEFAULT    1 $d
+    36: 00000000fffc8800     0 NOTYPE  LOCAL  DEFAULT    1 $x
+    37: 00000000fffc8840     0 NOTYPE  GLOBAL DEFAULT    1 observer_fault_probe
+    38: 00000000fffc8878     0 NOTYPE  GLOBAL DEFAULT    1 observer_fault_done
+    39: 00000000fffc8800     0 NOTYPE  GLOBAL DEFAULT    1 _start
+    40: 00000000fffc8834     0 NOTYPE  GLOBAL DEFAULT    1 observer_done
+    41: 00000000fffc8838     0 NOTYPE  GLOBAL DEFAULT    1 observer_wrong_el
+    42: 00000000fffc8000     0 NOTYPE  GLOBAL DEFAULT    1 observer_vectors
+    43: 00000000fffc8854     0 NOTYPE  GLOBAL DEFAULT    1 observer_exception

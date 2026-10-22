@@ -693,3 +693,8 @@ tests/test_trained_observer.py — LGPL-3.0-or-later
 scripts/probe_a53_register_definitions.tcl — LGPL-3.0-or-later
 scripts/decode_a64_debug_pstate.py — LGPL-3.0-or-later
 tests/test_a64_debug_pstate.py — LGPL-3.0-or-later
+diagnostics/ddr/el3_exception_observer/entry.S — LGPL-3.0-or-later
+diagnostics/ddr/el3_exception_observer/link.ld — LGPL-3.0-or-later
+scripts/build_el3_exception_observer.sh — LGPL-3.0-or-later
+scripts/check_el3_exception_observer.py — LGPL-3.0-or-later
+tests/test_el3_exception_observer.py — LGPL-3.0-or-later

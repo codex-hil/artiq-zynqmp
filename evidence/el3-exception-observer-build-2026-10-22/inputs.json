@@ -1,0 +1,14 @@
+{
+  "status": "BUILD_AND_EXACT_STATIC_CHECK_PASS",
+  "hardware_executed": false,
+  "files": {
+    "diagnostics/ddr/el3_exception_observer/entry.S": "4b7bb538e753accc17fdeff9cd2ae4dc5b6e4649e8689354fa63a48ca22d2e38",
+    "diagnostics/ddr/el3_exception_observer/link.ld": "4d7e272f9058b1a197087871efc60782d9a1eb0ecd518d58061b548c210c3986",
+    "scripts/build_el3_exception_observer.sh": "c5bd7203bedee7459535a0d4eb93c2097d7964294cadf9fe502f989e0461c91d",
+    "scripts/check_el3_exception_observer.py": "95b26be8f92a6ae6ff97f9903992775718637c8ee8a642f37b9ba8880cfba584",
+    "scripts/check_el3_observer.py": "e2714e065f7da0b5fac2bde4d15515bf7e47b922e30fb8b79a6ab6b45c09e22f",
+    "tests/test_el3_exception_observer.py": "daac625c8338ba6e59cad4e474b34abc9609fe31914daebdd209c8aebdd709bc",
+    "/home/codex-hil/.local/state/artiq-builds/el3-exception-observer-v2-20261022/observer.elf": "ab5946b613c0075af7c2129bdb66dc094fff6b684a384cf576cebc7bbd5cb6d6"
+  },
+  "initial_build": "Rejected load segment0xfffc0000 includes ELF headers/padding; explicit PHDRS fixed fresh v2 without relaxing checker. Initial build retained."
+}

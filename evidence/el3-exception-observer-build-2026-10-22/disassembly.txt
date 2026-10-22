@@ -1,0 +1,98 @@
+
+/home/codex-hil/.local/state/artiq-builds/el3-exception-observer-v2-20261022/observer.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000fffc8000 <observer_vectors>:
+    fffc8000:	d280000e 	mov	x14, #0x0                   	// #0
+    fffc8004:	14000214 	b	fffc8854 <observer_exception>
+	...
+    fffc8080:	d280002e 	mov	x14, #0x1                   	// #1
+    fffc8084:	140001f4 	b	fffc8854 <observer_exception>
+	...
+    fffc8100:	d280004e 	mov	x14, #0x2                   	// #2
+    fffc8104:	140001d4 	b	fffc8854 <observer_exception>
+	...
+    fffc8180:	d280006e 	mov	x14, #0x3                   	// #3
+    fffc8184:	140001b4 	b	fffc8854 <observer_exception>
+	...
+    fffc8200:	d280008e 	mov	x14, #0x4                   	// #4
+    fffc8204:	14000194 	b	fffc8854 <observer_exception>
+	...
+    fffc8280:	d28000ae 	mov	x14, #0x5                   	// #5
+    fffc8284:	14000174 	b	fffc8854 <observer_exception>
+	...
+    fffc8300:	d28000ce 	mov	x14, #0x6                   	// #6
+    fffc8304:	14000154 	b	fffc8854 <observer_exception>
+	...
+    fffc8380:	d28000ee 	mov	x14, #0x7                   	// #7
+    fffc8384:	14000134 	b	fffc8854 <observer_exception>
+	...
+    fffc8400:	d280010e 	mov	x14, #0x8                   	// #8
+    fffc8404:	14000114 	b	fffc8854 <observer_exception>
+	...
+    fffc8480:	d280012e 	mov	x14, #0x9                   	// #9
+    fffc8484:	140000f4 	b	fffc8854 <observer_exception>
+	...
+    fffc8500:	d280014e 	mov	x14, #0xa                   	// #10
+    fffc8504:	140000d4 	b	fffc8854 <observer_exception>
+	...
+    fffc8580:	d280016e 	mov	x14, #0xb                   	// #11
+    fffc8584:	140000b4 	b	fffc8854 <observer_exception>
+	...
+    fffc8600:	d280018e 	mov	x14, #0xc                   	// #12
+    fffc8604:	14000094 	b	fffc8854 <observer_exception>
+	...
+    fffc8680:	d28001ae 	mov	x14, #0xd                   	// #13
+    fffc8684:	14000074 	b	fffc8854 <observer_exception>
+	...
+    fffc8700:	d28001ce 	mov	x14, #0xe                   	// #14
+    fffc8704:	14000054 	b	fffc8854 <observer_exception>
+	...
+    fffc8780:	d28001ee 	mov	x14, #0xf                   	// #15
+    fffc8784:	14000034 	b	fffc8854 <observer_exception>
+	...
+
+00000000fffc8800 <_start>:
+    fffc8800:	d5384240 	mrs	x0, currentel
+    fffc8804:	f100301f 	cmp	x0, #0xc
+    fffc8808:	54000181 	b.ne	fffc8838 <observer_wrong_el>  // b.any
+    fffc880c:	d53e1001 	mrs	x1, sctlr_el3
+    fffc8810:	d53e1102 	mrs	x2, scr_el3
+    fffc8814:	d53c1003 	mrs	x3, sctlr_el2
+    fffc8818:	d5381004 	mrs	x4, sctlr_el1
+    fffc881c:	d53c1105 	mrs	x5, hcr_el2
+    fffc8820:	d53b4226 	mrs	x6, daif
+    fffc8824:	d53800a7 	mrs	x7, mpidr_el1
+    fffc8828:	910003e8 	mov	x8, sp
+    fffc882c:	10fffea9 	adr	x9, fffc8800 <_start>
+    fffc8830:	d280066f 	mov	x15, #0x33                  	// #51
+
+00000000fffc8834 <observer_done>:
+    fffc8834:	14000000 	b	fffc8834 <observer_done>
+
+00000000fffc8838 <observer_wrong_el>:
+    fffc8838:	d2801dcf 	mov	x15, #0xee                  	// #238
+    fffc883c:	14000000 	b	fffc883c <observer_wrong_el+0x4>
+
+00000000fffc8840 <observer_fault_probe>:
+    fffc8840:	d5384240 	mrs	x0, currentel
+    fffc8844:	f100301f 	cmp	x0, #0xc
+    fffc8848:	54ffff81 	b.ne	fffc8838 <observer_wrong_el>  // b.any
+    fffc884c:	d4200a60 	brk	#0x53
+    fffc8850:	17fffffa 	b	fffc8838 <observer_wrong_el>
+
+00000000fffc8854 <observer_exception>:
+    fffc8854:	d5384250 	mrs	x16, currentel
+    fffc8858:	f100321f 	cmp	x16, #0xc
+    fffc885c:	54fffee1 	b.ne	fffc8838 <observer_wrong_el>  // b.any
+    fffc8860:	d53e5211 	mrs	x17, esr_el3
+    fffc8864:	d53e6012 	mrs	x18, far_el3
+    fffc8868:	d53e4033 	mrs	x19, elr_el3
+    fffc886c:	d53e4014 	mrs	x20, spsr_el3
+    fffc8870:	d53b4235 	mrs	x21, daif
+    fffc8874:	d2801e6f 	mov	x15, #0xf3                  	// #243
+
+00000000fffc8878 <observer_fault_done>:
+    fffc8878:	14000000 	b	fffc8878 <observer_fault_done>
