@@ -17,6 +17,15 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## CPU1 terminal cancellation path observed —2026-10-22
+
+Read-only DAP after malformed RPC confirms command5, terminal event7/sequence49
+and exact `RPC reply command invalid` message. CPU1 reached fail-stop; this
+closes the narrow terminal-path observation gap, not clean unwind or DMA/RTIO
+quiescence/reuse. Full old-baseline restoration and physical debug/Ethernet PASS,
+192.168.2.3. Lease135.965s released/reacquirechecked. Evidence:
+`evidence/rpc-terminal-hardware-2026-10-22/`. No Kasli/Si/SD/flash/OTP writes.
+
 ## Three malformed RPC/EOF cases physically observed —2026-10-22
 
 Zero descriptor, unknown return tag and partial-float EOF each caused connection

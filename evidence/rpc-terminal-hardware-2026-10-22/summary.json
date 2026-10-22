@@ -1,0 +1,16 @@
+{
+  "status": "CPU1_RPC_CANCEL_TERMINAL_EVENT_AND_RESTORATION_PASS",
+  "hardware_executed": true,
+  "command": 5,
+  "event_status": 7,
+  "event_sequence": 49,
+  "message": "RPC reply command invalid",
+  "cpu1_reached_terminal_path": true,
+  "clean_unwind": "NOT_PROVEN",
+  "dma_rtio_quiescence": "NOT_PROVEN",
+  "worker_reuse": "NOT_ALLOWED",
+  "restoration": "PASS",
+  "restored_ip": "192.168.2.3",
+  "elapsed_seconds": 135.965,
+  "lease": "RELEASED_REACQUIRE_CHECK_PASS"
+}

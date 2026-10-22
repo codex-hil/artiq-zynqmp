@@ -1,0 +1,33 @@
+{
+  "status": "FAULT_TERMINATION_OBSERVED_RESTORE_REQUIRED",
+  "hardware_executed": true,
+  "case": {
+    "name": "zero_descriptor_length",
+    "body_hex": "00000000",
+    "half_close": false,
+    "expected": "transport_abort_cancel_worker"
+  },
+  "injection_sent": true,
+  "worker_cancellation_progress": "NOT_PROVEN",
+  "reuse_after_fault": false,
+  "observed_request": {
+    "asynchronous": false,
+    "service_id": 173,
+    "argument_count": 4,
+    "argument_types": [
+      "GenesysNetworkProbe",
+      "int64",
+      "int64",
+      "float"
+    ],
+    "keyword_names": [],
+    "return_tags_hex": "66",
+    "service_name": "GenesysNetworkProbe.report"
+  },
+  "request_verified": true,
+  "return_tags": "f",
+  "service_id": 173,
+  "connection_terminated": true,
+  "management_log": "PC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nManagement TCP connection accepted.\nManagement configuration read.\n",
+  "management_alive": true
+}

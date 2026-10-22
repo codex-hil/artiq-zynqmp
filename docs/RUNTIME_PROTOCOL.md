@@ -255,3 +255,19 @@ lease before restoration. Observation failure still invokes restoration.
 Two Tcl-model tests plus6existing lifecycle tests PASS; the new DAP observation
 has not yet been executed on hardware. It can establish that CPU1 reached its
 terminal path, but not clean unwind, complete DMA/RTIO quiescence or safe reuse.
+
+## CPU1 terminal event physically observed —2026-10-22
+
+The new DAP observer PASS after one malformed descriptor: AP0 mailbox command5,
+stable status7/event sequence49, exact body `RPC reply command invalid`.
+This establishes that the CPU1 synchronous-RPC path reached its terminal failure
+publication, beyond the earlier socket-only observations. No CPU stop, memory
+write or reset was issued by the observer. The outer wrapper then performed
+the documented full restoration and physical TTL/DMA/debug/Ethernet PASS.
+
+Shared lease135.965seconds, released/reacquirechecked; old baseline192.168.2.3
+restored. No Kasli/Si/SD/flash/OTP writes. Evidence:
+`evidence/rpc-terminal-hardware-2026-10-22/`.
+This is still fail-stop, not clean unwind, full DMA/RTIO quiescence or safe reuse.
+The child socket observation's NOT_PROVEN field remains correct for its narrower
+scope; the separate outer DAP report provides this new CPU1-path evidence.
