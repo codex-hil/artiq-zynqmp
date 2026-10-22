@@ -6,7 +6,10 @@ SOURCE=Path('/srv/codex-hil-data/artiq-zynqmp/build-vivado')
 DESTINATION=Path('/home/codex-hil/.local/state/artiq-builds')
 ALLOWED=('kernel-health-cpu0-20261022','rpc-parser-cpu0-20261022',
          'release-boot-firmware-2026-10-21','release-cpu0-2026-10-21',
-         'ethernet-reproduced','fsbl-reproduced')
+         'ethernet-reproduced','fsbl-reproduced',
+         'runtime-services-2025.2','eh-kernel-services','network-kernel-services',
+         'network-kernel-services-final','rtio-kernel-services','services-reproduced',
+         'runtime-ps-2025.2','fsbl-2025.2')
 
 def inventory(root):
     result={}

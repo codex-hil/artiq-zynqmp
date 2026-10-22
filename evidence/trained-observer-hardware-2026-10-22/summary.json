@@ -1,0 +1,133 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "hardware_executed": true,
+  "lease_seconds": 86.724,
+  "raw_output": "/home/codex-hil/.local/state/artiq-builds/trained-observer-hardware-20261022",
+  "raw_files": {
+    "restore-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "restore-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "candidate-trained-observer.log": {
+      "sha256": "bf6ff487ea7521976fac25a7d5b62e7c5afc2fb3a87e9eab4affc1540737bfd5",
+      "bytes": 107
+    },
+    "restore-ethernet.log": {
+      "sha256": "78a63e4bd32d4f293cdc8487d3072fcc72e9fff442ac3c3b849140b483c7aca7",
+      "bytes": 2018
+    },
+    "restore-debug.log": {
+      "sha256": "6f48fd0b81730dac5186a4880f66fb0c61e7762e3256d793b5d9f2c4477c114d",
+      "bytes": 1899
+    },
+    "restore-ethernet.json": {
+      "sha256": "78a63e4bd32d4f293cdc8487d3072fcc72e9fff442ac3c3b849140b483c7aca7",
+      "bytes": 2018
+    },
+    "results.json": {
+      "sha256": "bd31a273bb74ff3b67c5b041112e3c641a29c623e0fbaae5002af960531bbd30",
+      "bytes": 2534
+    },
+    "restore-load/uart.log": {
+      "sha256": "74271f5d0571cdb0d414c056997b2ba94797005dcf55bca01a1c25d9985f652f",
+      "bytes": 1046
+    },
+    "restore-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "restore-load/prepare.log": {
+      "sha256": "b73849ff9c276e433e253829f4ec5f6f5c257578dbd82a82a3fa9c7624404e5d",
+      "bytes": 65
+    },
+    "restore-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "restore-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "restore-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "restore-load/pl.log": {
+      "sha256": "f16a9f12ed6066c1f9864d0fac2a57eb60dfaa2f8bfc4ac9021ebab8673dbd21",
+      "bytes": 1918
+    },
+    "restore-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "restore-debug/wrap-dma-5.log": {
+      "sha256": "d17e5d4d8c8bb1cbe0fdc09e692b8b22244e824e815f8a831e152e2ed364c222",
+      "bytes": 210
+    },
+    "restore-debug/dma.log": {
+      "sha256": "32b95d1579433a1defaad0a5216ef770ea1c74ba378555b902b2aa6ef6a94826",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-6.log": {
+      "sha256": "d19a033c19491b3229c7d7d49c2db936ee1ec3ffcb09915721fb65a3c9c8c5c9",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-0.log": {
+      "sha256": "b903b2b307bb08641520c01744c0f57ae4ceb5ecfd85563815f5dbddb25ed363",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-2.log": {
+      "sha256": "24dbd0a678572a07812788ac1dd3e8545bde86dbe8bd3f4397ce6c036f0a6672",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-3.log": {
+      "sha256": "29ec68d11b924e690a4bd953fe8debb7c72b06c6a1d1c7323d0ed7a259372fcc",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-7.log": {
+      "sha256": "10d8bc3c4a0aa45c9a27daf164eef5f6949c6c3d62acf158f4eb45518aa85067",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-1.log": {
+      "sha256": "56f802a154d5ee949a8aa4a4e852ebb1ed8f980afc7263741b8ebef0fd2ca7a7",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-4.log": {
+      "sha256": "f8c184fcb9ecc3bee9deb77ce45e84b9c802cc0f0227e26f0ef580c823511301",
+      "bytes": 210
+    },
+    "restore-debug/results.json": {
+      "sha256": "fae4d3d379b9ed7e9f94949dfc853bf6f98c39d144b0eeb2cbb9b42bdc648b01",
+      "bytes": 1692
+    },
+    "candidate-trained-observer/uart.log": {
+      "sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b",
+      "bytes": 840
+    },
+    "candidate-trained-observer/observer.log": {
+      "sha256": "09df548d6e892e81fc89b47d3d945be1bab12dc598ac7d4da121986777d06593",
+      "bytes": 811
+    },
+    "candidate-trained-observer/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "candidate-trained-observer/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "candidate-trained-observer/results.json": {
+      "sha256": "bf6ff487ea7521976fac25a7d5b62e7c5afc2fb3a87e9eab4affc1540737bfd5",
+      "bytes": 107
+    }
+  },
+  "failure": "XSDB no register match: currentel; before observer download",
+  "ddr_test": "NOT_RUN",
+  "normal_runtime": "192.168.2.3",
+  "limits": "No observer execution; no cache bypass/reset-after-training/DDR pattern writes. Normal physical debug and Ethernet restoration PASS."
+}

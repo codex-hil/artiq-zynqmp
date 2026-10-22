@@ -121,3 +121,19 @@ Next review script pins and current HW allocation/storage, then one bounded
 `--execute --server SERVER --port UART --interface NIC` observation/restoration
 window. Backend currentel/DAIF names and live post-FSBL masks remain unqualified;
 refusal means retain failure evidence and restore, not force admission.
+
+## First trained-observer HW attempt FAIL; restoration PASS —2026-10-22
+
+Initial storage admission blocked before HW (shared45MiB). Eight own completed
+Oct7/8builds relocated to root with29568entries byte/mode/link verified, old
+paths retained; three relocation controls PASS. Shared free space749752320B
+at admitted window. Evidence: `evidence/older-build-relocation-2026-10-22`.
+
+Bounded shared Genesys lease86.724s: PMU/FSBL and halt reached collector, but
+XSDB returned `no register match: currentel`. Attempt FAIL before observer
+download; no observer execution or DDR test. No fallback/cache bypass used.
+Normal restore/physical TTL/CoreDMA/analyzer/MonInj/Ethernet PASS192.168.2.3;
+lease released. No Kasli/Si/SD/flash/OTP writes. Raw evidence and failure retained:
+`evidence/trained-observer-hardware-2026-10-22`. Next inspect backend register
+definitions and explicitly map live PSTATE/EL fields, test offline then re-pin
+before another bounded attempt. Existing hardware entry state remains unproven.
