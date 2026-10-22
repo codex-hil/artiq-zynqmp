@@ -364,3 +364,35 @@ recovery window restored normal ARTIQ192.168.2.3; physical RTIO/debug/Ethernet
 PASS. Diagnostic FSBL is not release-qualified or selected as normal default.
 No SD/flash/OTP/Si changes. Next offline add pre-reset free-space admission, then
 continue DDR master/window/test-interval planning using the physical SPD evidence.
+
+## Storage admission before any new runtime load
+
+Following the observed ENOSPC incident, candidate wrapper checks free bytes and
+inodes before creating execution output/claiming HW, then rechecks under the
+Genesys lease. Direct runtime loader checks before opening UART/resetting.
+Roles: output directory, working directory (.Xil), launcher-bound AMD home/tmp
+and host/tmp. The launcher explicitly uses shared AMD TMPDIR, so moving output
+alone does not move all temporary writes. Symlinks/future directories resolve to
+the existing backing filesystem ancestor.
+
+Operational headroom policy: at least512MiB available and1024available inodes on
+every relevant filesystem. This is an engineering admission budget, not a
+reservation or guarantee against another process consuming disk after the check.
+No force/bypass switch or cleanup/deletion is part of admission. If space shrinks
+after hardware mutation, restoration can still fail and must be reported.
+
+```sh
+python3 scripts/check_hw_storage.py --output-directory FUTURE_OUTPUT
+```
+
+Metadata only, no hardware lease/device access required. Current shared disk
+fails admission; normal ARTIQ remains unchanged. Five storage/order controls plus
+six lifecycle/three SPD wrapper controls PASS. Read-only actual filesystem report:
+`evidence/hw-storage-admission-2026-10-22`.
+
+Execution/parser pins changed; use the new diagnostic manifest
+`evidence/fsbl-spd-capture-plan-v2-2026-10-22/inputs.json` for future attempts.
+Its artifact-only offline preflight PASS is intentionally separate from storage
+admission. Historical manifest/evidence remain unchanged. Next inventory/relocate
+only this thread's completed build outputs with byte verification and retained
+paths, then recheck storage. DDR master/window planning can continue offline.

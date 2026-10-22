@@ -1,0 +1,16 @@
+{
+  "status": "OFFLINE_STORAGE_ORDERING_CONTROLS_PASS",
+  "hardware_executed": false,
+  "storage_test_methods": 5,
+  "existing_lifecycle_test_methods": 6,
+  "fsbl_pin_wrapper_test_methods": 3,
+  "controls": [
+    "exact threshold accepts",
+    "symlink/future directory uses actual ancestor filesystem",
+    "low bytes/inodes/one low role reject",
+    "reject before output/lease/subprocess",
+    "under-lease recheck rejects before subprocess",
+    "direct loader rejects before serial open"
+  ],
+  "limits": "Point-in-time headroom, not disk reservation or concurrent-growth guarantee."
+}

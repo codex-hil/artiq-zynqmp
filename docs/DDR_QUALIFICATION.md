@@ -572,3 +572,14 @@ paths via symlink. Separate68.091s exclusive recovery PASS: normal runtime
 promotion or SD/flash/Si/OTP writes. Evidence:
 `evidence/fsbl-spd-capture-hardware-2026-10-22`. Next free-space admission before
 any reset, then remaining DDR master/cache/window/interval requirements offline.
+
+### Pre-reset storage admission implemented —2026-10-22
+
+Candidate execution now requires512MiB+1024inodes at output/work/.Xil/shared AMD
+home+TMPDIR/hosttmp, before lease and again under it. Direct loader checks before
+UART/reset. Real shared filesystem currently FAILs; no new hardware attempted.
+Five storage tests/six lifecycle/three SPD wrapper tests PASS. Evidence:
+`evidence/hw-storage-admission-2026-10-22`. New diagnostic v2 pins/preflight
+retained separately. Check is point-in-time, not reservation/concurrent-growth
+protection. Next safe own-build relocation/inventory and offline DDR ownership/
+window planning. Normal ARTIQ remains restored192.168.2.3.

@@ -7,6 +7,7 @@ Genesys lease for every load/UART/network/test/restoration operation.
 import argparse,contextlib,fcntl,hashlib,json,os,re,signal,subprocess,sys,time
 from pathlib import Path
 from check_remote_rtio_build import check
+from check_hw_storage import require_runtime_space
 REPO=Path(__file__).resolve().parents[1]
 BASE=Path('/srv/codex-hil-data/artiq-zynqmp')
 CABLE='210383B7F02DA'
@@ -52,7 +53,7 @@ def ocm_preflight(path,files):
     return data
 
 
-SPD_SCRIPTS={'scripts/test_candidate_runtime_hw.py','scripts/load_rtio_runtime.py',
+SPD_SCRIPTS={'scripts/check_hw_storage.py','scripts/test_candidate_runtime_hw.py','scripts/load_rtio_runtime.py',
  'scripts/reset_genesys_ps.tcl','scripts/run_boot_firmware.tcl','scripts/prepare_local_rtio.tcl',
  'scripts/run_kernel_worker.tcl','scripts/run_a53_runtime.tcl','scripts/program_genesys_pl.tcl',
  'scripts/decode_fsbl_spd_log.py','scripts/check_ddr4_spd_crc.py','scripts/decode_ddr4_spd.py'}
@@ -128,6 +129,7 @@ def main():
     out=a.output.resolve()
     if out.exists():raise ValueError('Use a fresh output directory')
     if a.execute and not all((a.server,a.port,a.interface)):p.error('Execution requires --server --port --interface')
+    storage=require_runtime_space(out,REPO) if a.execute else None
     out.mkdir(parents=True)
     if not a.execute:
         (out/'results.json').write_text(json.dumps(dict(status='PREFLIGHT_PASS_NO_HARDWARE_ACCESS',hardware_executed=False),indent=2)+'\n')
@@ -135,6 +137,7 @@ def main():
     # No device opens, network accesses or subprocess hardware operations above.
     with lease() as held:
         # Recheck after obtaining ownership, before touching hardware.
+        storage=require_runtime_space(out,REPO)
         preflight(json.loads(a.manifest.read_text()))
         if a.ocm_manifest:ocm_preflight(a.ocm_manifest,files)
         if a.fsbl_spd:spd_preflight(json.loads(a.manifest.read_text()),files)
@@ -204,7 +207,7 @@ def main():
         finally:signal.signal(signal.SIGTERM,old_handler)
         result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
                       elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,
-                      manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest())
+                      manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),storage_admission=storage)
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
     return 0 if result['status']=='PASS' and result['restoration']=='PASS' else 1

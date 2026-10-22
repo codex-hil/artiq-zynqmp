@@ -6,12 +6,13 @@ Volatile JTAG only; no card/flash changes. Captures FSBL and runtime UART.
 import argparse,subprocess,time,json,re
 from pathlib import Path
 import serial
+from check_hw_storage import require_runtime_space
 REPO=Path(__file__).resolve().parent.parent
 XSDB='/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb'
 def main():
  p=argparse.ArgumentParser(description=__doc__)
  for k in ('server','cable','port','ps-export','bitstream','worker','cpu0','output'):p.add_argument('--'+k,required=True)
- a=p.parse_args();out=Path(a.output);out.mkdir(parents=True,exist_ok=True)
+ a=p.parse_args();out=Path(a.output);require_runtime_space(out,REPO);out.mkdir(parents=True,exist_ok=True)
  ps=Path(a.ps_export);w=Path(a.worker);raw=bytearray();logs={};result={'kind':'hardware-runtime-load','status':'FAIL'}
  def run(name,args):
   r=subprocess.run(args,capture_output=True,text=True,timeout=60);logs[name]=r.stdout+r.stderr;(out/(name+'.log')).write_text(logs[name])

@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## Storage gate blocks new HW until sufficient headroom —2026-10-22
+
+Pre-reset byte/inode admission added to candidate wrapper and direct runtime
+loader; checks launcher shared home/tmp as well as .Xil/output.14test methods
+PASS; actual shared disk currently FAILs admission, no HW access. Evidence:
+`evidence/hw-storage-admission-2026-10-22`. New SPD v2 pins/preflight retained.
+Normal runtime remains restored192.168.2.3; continue safe own-build storage
+relocation/inventory and offline DDR test planning.
+
 ## Physical SPD base CRC/geometry observed; normal recovery PASS —2026-10-22
 
 Piotr FSBL UART yielded physical128B SPD, CRC2e87valid, reports4GiB/1rank/64bit/
