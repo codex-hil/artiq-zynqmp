@@ -17,6 +17,15 @@ See [current integration gaps](docs/INTEGRATION_GAPS.md) and
 contain the detailed evidence. The following October 8 table is historical,
 not the current aggregate status.
 
+## Malformed RPC zero-descriptor observation —2026-10-22
+
+One real zero-length RPC reply descriptor caused connection termination while
+management remained alive. Expected NAC3 method/receiver/args verified first;
+no faulted-worker reuse. Full old-baseline restoration and physical debug/
+Ethernet PASS at192.168.2.3. Lease132.905s released/reacquirechecked.
+Evidence: `evidence/rpc-zero-hardware-2026-10-22/`.
+CPU1 cancellation progress NOT_PROVEN; unsupported-tag/partial-EOF cases pending.
+
 ## RPC-parser qualified-input SD package —2026-10-22
 
 Separate BOOT.BIN packaged from the newly JTAG-qualified CPU0; combined source/

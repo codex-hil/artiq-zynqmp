@@ -195,3 +195,20 @@ result. Unknown RPCs are not skipped. The actual host decoder reconstructs all
 four arguments in an offline wire test;4injector controls PASS. The existing
 failed hardware attempt remains failed/no-injection; no new live result is
 inferred from this fix. Evidence: `evidence/rpc-method-contract-2026-10-22/`.
+
+## Zero-descriptor live rejection and restoration —2026-10-22
+
+The corrected single-case retry PASS: actual RPC service173 resolved to
+`GenesysNetworkProbe.report`, with the expected receiver, two int64 arguments,
+float argument and `f` result. One zero-length descriptor was sent; the kernel
+connection terminated and management identity/log access remained alive.
+No further kernel was attempted on the faulted worker.
+
+The outer wrapper then restored the old baseline and physical TTL/DMA/debug/
+Ethernet checks PASS at192.168.2.3. Shared lease132.905seconds, released and
+nonblocking reacquisition checked. No Kasli/Si/SD/flash/OTP writes. Evidence:
+`evidence/rpc-zero-hardware-2026-10-22/`. This establishes observed rejection,
+management liveness and restoration. CPU1 cancellation progress remains
+NOT_PROVEN; no general automatic worker recovery is claimed. The earlier failed
+admission remains separately recorded. Next cases are unsupported tag and
+partial-float EOF, each in its own load/restoration window.
