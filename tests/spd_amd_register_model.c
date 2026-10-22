@@ -6,6 +6,10 @@
 #include "xplatform_info.h"
 static u32 regs[64];static unsigned scenario,transactions,reads,tx_bytes,read_number;
 static int receiving;
+static int page_query,query_page;
+static unsigned transfer_limit;
+static u32 query_events;
+static void query_callback(void *ref,u32 events) {(void)ref;query_events|=events;}
 static unsigned writes;
 static void original_callback(void *ref,u32 events) {(void)ref;(void)events;assert(!"Old callback during diagnostic");}
 static int corrupt_restore;
@@ -13,6 +17,7 @@ static u32 mmio_read(UINTPTR base,u32 off) {
  assert(base==0xff030000U && off/4<64);
  if(off==XIICPS_SR_OFFSET) {
   if(!receiving)return 0;
+  if(page_query)return !query_page && reads<1?XIICPS_SR_RXDV_MASK:0;
   if(scenario==3)return XIICPS_SR_RXDV_MASK; /* stuck FIFO indication */
   unsigned limit=scenario==2?64U:(scenario==1 || scenario==4 || scenario==5)?0U:128U;
   return reads<limit?XIICPS_SR_RXDV_MASK:0;
@@ -34,7 +39,13 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
  if(off==XIICPS_ADDR_OFFSET) {
   transactions++;receiving=(regs[XIICPS_CR_OFFSET/4]&XIICPS_CR_RD_WR_MASK)!=0;reads=0;
   if(receiving) {
-   read_number++;assert(value==0x51 && regs[XIICPS_TRANS_SIZE_OFFSET/4]==128);
+   read_number++;transfer_limit=regs[XIICPS_TRANS_SIZE_OFFSET/4];
+   if(page_query) {
+    assert(value==0x36 && transfer_limit==1);
+    regs[XIICPS_ISR_OFFSET/4]=query_page?XIICPS_IXR_NACK_MASK:XIICPS_IXR_COMP_MASK;
+    return;
+   }
+   assert(value==0x51 && transfer_limit==128);
    regs[XIICPS_ISR_OFFSET/4]=scenario==1?XIICPS_IXR_NACK_MASK:scenario==4?0:
     scenario==5?XIICPS_IXR_TO_MASK:(XIICPS_IXR_DATA_MASK|XIICPS_IXR_COMP_MASK);
    if(scenario==6)regs[XIICPS_ISR_OFFSET/4]|=XIICPS_IXR_NACK_MASK;
@@ -46,7 +57,7 @@ static void mmio_write(UINTPTR base,u32 off,u32 value) {
 }
 static u32 data_read(UINTPTR address) {
  assert(address==0xff030000U+XIICPS_DATA_OFFSET && reads<128);
- unsigned value=reads++;regs[XIICPS_TRANS_SIZE_OFFSET/4]=128-reads;return value+(scenario==7 && read_number==2);
+ unsigned value=reads++;regs[XIICPS_TRANS_SIZE_OFFSET/4]=transfer_limit-reads;return value+(scenario==7 && read_number==2);
 }
 static void data_write(UINTPTR address,u32 value) {
  assert(address==0xff030000U+XIICPS_DATA_OFFSET && value==0);tx_bytes++;
@@ -64,6 +75,7 @@ u32 XGetPlatform_Info(void) {return XPLAT_ZYNQ_ULTRA_MP;}
 void Xil_Assert(const char8 *file,s32 line) {(void)file;(void)line;assert(!"Vendor assertion");}
 u32 Xil_AssertStatus;
 #include "spd_xiicps_state.h"
+#include "spd_page.h"
 #include "vendor_functions.inc"
 int main(void) {
  for(scenario=0;scenario<8;scenario++) {
@@ -119,5 +131,22 @@ int main(void) {
   regs[XIICPS_TIME_OUT_OFFSET/4]=99;corrupt_restore=1;
   assert(spd_amd_restore(&saved,&a,1)==-1 && a.poisoned && !saved.valid);
  }
- puts("ADAPTER_READER_AMD_MODEL_8_SCENARIOS_AND_STATE_LIFECYCLE_PASS");
+ /* Dedicated page query only; does not change generic adapter NACK policy. */
+ page_query=1;corrupt_restore=0;
+ for(query_page=0;query_page<2;query_page++) {
+  XIicPs dev={0};u8 byte=0;memset(regs,0,sizeof(regs));reads=query_events=0;
+  dev.Config.BaseAddress=0xff030000U;dev.IsReady=XIL_COMPONENT_IS_READY;
+  XIicPs_SetStatusHandler(&dev,NULL,query_callback);
+  XIicPs_MasterRecv(&dev,&byte,1,0x36);
+  u32 raw=regs[XIICPS_ISR_OFFSET/4];
+  XIicPs_MasterInterruptHandler(&dev);
+  struct spd_page_reply reply={.address=0x36,.requested=1,.received=1-dev.RecvByteCount,
+   .raw_irq=raw,.events=query_events,.exclusive_route_proven=1,
+   .independent_spd_identity_proven=1,.bus_idle=1,.fifo_empty=(mmio_read(0xff030000U,XIICPS_SR_OFFSET)&XIICPS_SR_RXDV_MASK)==0};
+  assert((int)spd_classify_page(reply)==query_page);
+  assert(spd_page_restore_confirmed((enum spd_page)query_page,reply));
+  reply.independent_spd_identity_proven=0;
+  assert(spd_classify_page(reply)==SPD_PAGE_UNKNOWN);
+ }
+ puts("ADAPTER_READER_AMD_MODEL_AND_PAGE_QUERY_CLASSIFICATION_PASS");
 }

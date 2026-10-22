@@ -1,0 +1,42 @@
+{
+  "status": "READER_ADAPTER_PATCHED_AMD_REGISTER_MODEL_PASS",
+  "hardware_executed": false,
+  "hardware_admitted": false,
+  "functions": {
+    "xiicps_master.c": [
+      "XIicPs_MasterSend",
+      "XIicPs_MasterRecv",
+      "XIicPs_MasterInterruptHandler"
+    ],
+    "xiicps_xfer.c": [
+      "XIicPs_SetupMaster",
+      "MasterSendData",
+      "XIicPs_MasterIntrSend",
+      "XIicPs_MasterIntrRead"
+    ],
+    "xiicps_hw.c": [
+      "XIicPs_MasterRead"
+    ],
+    "xiicps.c": [
+      "XIicPs_BusIsBusy",
+      "TransmitFifoFill"
+    ],
+    "xiicps_intr.c": [
+      "XIicPs_SetStatusHandler"
+    ]
+  },
+  "stdout": "ADAPTER_READER_AMD_MODEL_AND_PAGE_QUERY_CLASSIFICATION_PASS\n",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/spd-vendor-bounds-20261022/xiicps_master.c": "d6bbaf1165866ab7eda576847587663cbcd33ece65ed35660af1c0f763541475",
+    "/srv/codex-hil-data/artiq-zynqmp/build/spd-vendor-bounds-20261022/xiicps_xfer.c": "628414e27016be423ca950af493d522556587e4e04f1eef0e1ce7b10ecffbc1f",
+    "/srv/codex-hil-data/artiq-zynqmp/build/spd-vendor-bounds-20261022/xiicps_hw.c": "a39a12cecc6e91212eb174480725b3e8088bff8fe80a63df6f22cf1175de3e11",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps.c": "af58e4e720ce7b987cb64f2d67b12cfeb0b55ca075ec0abfb9c45fac150ba617",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/release-boot-firmware-2026-10-21/bsp/libsrc/iicps/src/xiicps_intr.c": "aa6ebdbff42f2bd6632a27f0d78f63ae651cda5ef266e1f8a2da1987026e2e8a",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/tests/spd_amd_register_model.c": "449f91e03127e674784af88c4bf9cd9dd6e70c9d013a789bd2e4ac67edfe6d15",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/spd_reader.h": "a1398928934684ebf04243ba432f2149fbd7ceda18cdcb1c324e0617dcd2011f",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/spd_xiicps.h": "3d4171b97aba3fc74333ff509aa7c079269fd9798af4328524dcbb0d896b6e7d",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/spd_xiicps_state.h": "4b91cd7d041f9e25745984433989b2137d2c802696b5138097600ca4699d2fab",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/spd_page.h": "9ede8ab293e3dbb4cb6eabb3536a4134cca7a200186260cbb06d69daa3a1f1af"
+  },
+  "limits": "Extracted functions with actual BSP macros and substituted MMIO; no physical bus timing/IRQ/page baseline/restoration/CRC proof."
+}

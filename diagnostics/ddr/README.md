@@ -184,3 +184,31 @@ permission to reinterpret generic EEPROM/controller NACK. Current adapter still
 poisons on all NACK. Next isolate page-query classification and restoration with
 independent route/device admission and exact error events, then model the whole
 lifecycle before hardware. No source from Linux is copied into firmware here.
+
+## Dedicated EE1004 page classifier (offline)
+
+`spd_page.h` classifies only a one-byte read at0x36, requiring external exclusive
+route and independent SPD identity evidence. Page0 requires exactly successful
+receive with allowed raw completion/data IRQs and one byte. Page1 requires zero
+bytes, exact raw address-NACK and AMD NACK|ERROR events. Busy/FIFO data, timeout,
+arbitration, mixed completion/NACK, wrong address/count or absent identity
+return UNKNOWN. The returned byte value does not encode the page.
+
+Saved page0/1 proposes select address0x36/37; UNKNOWN refuses. Restoration may
+only be confirmed when a later independently classified response equals the
+saved page. This does **not** implement selection or actual restoration. The
+model executes actual AMD MasterRecv+ISR for both page responses, with ownership/
+identity explicitly asserted by the fixture. Pure C controls reject11uncertain
+responses; ASan/UBSan and AArch64 test-object compile PASS.
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined \
+  -I"$BSP/include" tests/test_spd_page.c -o /tmp/artiq-test-spd-page
+/tmp/artiq-test-spd-page
+```
+
+Evidence: `evidence/spd-page-classification-2026-10-22`. General adapter NACK
+poisoning is unchanged. Actual query lifecycle (including zero received bytes
+left pending after protocol NACK), route/device evidence, page selection/
+confirmation, GIC restoration, CRC and physical wrapper remain open. Next bind
+a bounded dedicated query lifecycle rather than adding a global NACK exception.

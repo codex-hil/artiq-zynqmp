@@ -476,3 +476,18 @@ and real-BSP AArch64 header compile PASS. Evidence:
 and SPD page remain unimplemented; no physical admission. Next dedicated EE1004
 page query classification/restore with exact protocol event semantics. Current
 adapter retains generic NACK poisoning; Linux primary source referenced in README.
+
+### Exact EE1004 page-query classifier/model PASS —2026-10-22
+
+Dedicated pure classifier accepts only0x36/one-byte query with external route/
+independent SPD identity evidence, idle/empty bus and exact ACK or address-NACK
+events. Eleven uncertain/error variants reject. Saved-page selector/confirmation
+logic tested: unknown and mismatched page refuse restoration claim. Actual AMD
+MasterRecv+patched ISR generate both page responses in MMIO model; identity is
+a fixture assertion, not physical proof. ASan/UBSan and AArch64 test-object
+compile PASS. Evidence: `evidence/spd-page-classification-2026-10-22`.
+
+No hardware or generic adapter change. Page writes/restoration are NOT_RUN and
+not implemented by this classifier. Next bounded dedicated query lifecycle/
+post-select confirmation, source of route/device proof and pending-count cleanup
+after protocol NACK; then GIC/CRC before physical admission.

@@ -1,0 +1,31 @@
+{
+  "status": "EE1004_PAGE_CLASSIFIER_AND_VENDOR_QUERY_MODEL_PASS",
+  "hardware_executed": false,
+  "hardware_admitted": false,
+  "test_object_sha256": "8dec22e45ff8b39949db9c272353884365578b846155281e64c438c2b2585722",
+  "implemented": [
+    "pure exact0x36/1-byte page-query response classification",
+    "page0 only exact successful receive and allowed raw completion/data bits",
+    "page1 only zero-byte address-NACK plus AMD error event with no other IRQ bits",
+    "require external exclusive route and independent identity evidence",
+    "saved-page0/1 maps0x36/37; unknown refuses",
+    "readback page must equal saved page"
+  ],
+  "tested": [
+    "ACK/page0 and NACK/page1 from actual AMD MasterRecv+ISR in MMIO model",
+    "11 invalid/uncertain query rejections in pure C controls",
+    "restore target address and confirmation mismatch checks",
+    "existing8 capture scenarios and peripheral state lifecycle preserved",
+    "ASan/UBSan and AArch64 test-source compile-Werror"
+  ],
+  "not_implemented": [
+    "physical page discovery",
+    "runtime source of independent identity/route evidence",
+    "page-select transaction and post-select confirmation wrapper",
+    "bounded query lifecycle/error cleanup",
+    "GIC hardware ownership/restore",
+    "CRC"
+  ],
+  "source": "https://kernel.googlesource.com/pub/scm/linux/kernel/git/netdev/net/+/761c6d7ec820f123b931e7b8ef7ec7c8564e450f/drivers/misc/eeprom/ee1004.c",
+  "note": "Generic adapter remains unchanged and poisons every NACK. Special query is modeled separately; no generic NACK waiver."
+}
