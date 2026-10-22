@@ -110,3 +110,23 @@ Three ADDRMAP tests and two controller decoder tests PASS. A disabled highest ro
 is tested as a valid smaller map, while an internal missing row is rejected.
 The decoder never marks destructive testing as allowed. Next obtain independent
 SPD geometry and explicitly establish OCM execution/cache state before any test.
+
+## SPD decoder and OCM layout gates
+
+`decode_ddr4_spd.py` decodes a captured DDR4 base block only for symmetric
+monolithic UDIMM/SODIMM, one/two ranks and supported width/density codes. It
+cross-checks density-derived bytes against row/column/bank geometry and reports
+CRC NOT_VERIFIED. It does not read EEPROM or authorize testing. Two synthetic
+controls PASS, including parity with the original AMD rank-size C function.
+No physical SPD dump has been acquired; unsupported stacked packages are rejected.
+
+`check_ocm_image.py` checks all ELF load/memory segments, AArch64 executable entry,
+vector alignment, BSS and this diagnostic's16KiB-stack symbol convention. The
+retained OCM ELF PASS: entry0xfffc0388, stack0xfffc5000..0xfffc9000, no DDR loads.
+Two boundary controls PASS. Evidence: `evidence/spd-ocm-preparation-2026-10-22/`.
+This is static layout, not proof of live MMU/cache/EL state or other-master quiescence.
+
+Next add explicit EL1 control-register reporting to the OCM diagnostic and verify
+that image offline before a bounded exclusive boot/restoration run. Retain the
+separate SPD acquisition/CRC gap; static layout and programmed4GiB are not a
+license to start a destructive full-range sweep.

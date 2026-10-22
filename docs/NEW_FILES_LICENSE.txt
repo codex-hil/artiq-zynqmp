@@ -618,3 +618,7 @@ tests/test_ddr_config.py
 tests/test_ddr_capture.py
 scripts/decode_ddr_addrmap.py
 tests/test_ddr_addrmap.py
+scripts/decode_ddr4_spd.py
+scripts/check_ocm_image.py
+tests/test_ddr4_spd.py
+tests/test_ocm_image.py

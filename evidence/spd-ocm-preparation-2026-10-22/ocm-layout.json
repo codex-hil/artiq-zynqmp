@@ -1,0 +1,33 @@
+{
+  "status": "OCM_IMAGE_LAYOUT_PASS_EXECUTION_STATE_NOT_PROVEN",
+  "hardware_executed": false,
+  "entry": "0xfffc0388",
+  "load_segments": [
+    {
+      "start": "0xfffc0000",
+      "end_exclusive": "0xfffc36e4",
+      "file_bytes": 14052
+    },
+    {
+      "start": "0xfffc4000",
+      "end_exclusive": "0xfffc4a08",
+      "file_bytes": 2568
+    },
+    {
+      "start": "0xfffc4a08",
+      "end_exclusive": "0xfffc9000",
+      "file_bytes": 8
+    }
+  ],
+  "stack": {
+    "start": "0xfffc5000",
+    "end_exclusive": "0xfffc9000"
+  },
+  "mmu_cache_state": "NOT_PROVEN",
+  "destructive_ddr_test_allowed": false,
+  "limits": "Checks selected linker symbol/layout convention only. Does not establish live EL/SCTLR/cache state, stack use, parked cores, DMA masters or valid DDR intervals.",
+  "input_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/a53-ocm/aarch64-unknown-none/release/genesys-a53-bringup": "a3697defca242c8827139209913ac7c5e65fc31c4ba72296e117f3e2aa9e8be4",
+    "evidence/spd-ocm-preparation-2026-10-22/ocm-symbols.txt": "054fdfc6528c6927f3c03765df38dabf168dc37af02407f94619c1930b3640f7"
+  }
+}

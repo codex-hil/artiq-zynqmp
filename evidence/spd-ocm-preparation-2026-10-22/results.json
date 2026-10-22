@@ -1,0 +1,13 @@
+{
+  "status": "LIMITED_SPD_DECODER_AND_OCM_LAYOUT_CONTROLS_PASS",
+  "hardware_executed": false,
+  "spd_tests": 2,
+  "ocm_tests": 2,
+  "spd_fixture": "Synthetic DDR4 SODIMM single-rank full64/x16 geometry; no physical SPD data",
+  "source_rank_size_parity": "Original XFsbl_ComputeDdr4RankSize compiled as host C and matched synthetic fixture",
+  "crc": "NOT_VERIFIED",
+  "ocm_layout": "Retained actual OCM ELF checked, including vectors/BSS/stack extent",
+  "mmu_cache_state": "NOT_PROVEN",
+  "destructive_ddr_test_allowed": false,
+  "fsbl_source_sha256": "ae48bfe6f1c478fd91bb16088d311ea5f8916e1ab43045184a614af868cd60a5"
+}
