@@ -1022,3 +1022,34 @@ peripheral and PL DDR masters, with pinned source/configuration evidence and
 explicit read-only status/reset/ownership checks before any destructive DDR
 admission. CPU0 OCM layout/cache/exception evidence does not substitute for
 exclusive ownership of the low/high DDR windows.
+
+## DDR-master static inventory and DMA trigger audit —2026-10-22
+
+`audit_ddr_masters.py` reads the single PS module's direct PARAMETERS container
+in the selected pinned XSA/HWH, not conditional source Tcl or bus-interface
+parameters. It rejects missing/duplicate PS/required nonboolean ports. Optional
+preset/QoS entries can omit VALUE without pretending a missing required port is
+disabled. Four schema/port controls and actual XSA inventory PASS. No HW access.
+Evidence: `evidence/ddr-master-audit-2026-10-22`. XSA5444a2b1... matches earlier
+FSBL build input; this alone does not identify the currently restored PL image.
+
+Configured M_AXI_GP0 and S_AXI_GP2 enabled; other inspected GP/ACE/ACP disabled.
+Gateware wires GP2/HP0 FPD to RTIO DMA AXIReader. XSA USE_ADMA/GDMA=0 is not
+live reset/idle proof. ENET0/SD1/QSPI enabled (plus non-DMA peripherals); every
+PS memory-master group remains runtime ownership NOT_PROVEN. A53 secondary/R5
+positive parked/reset checks and active PMU firmware audit remain required.
+
+DMA source audit: inflight_cnt counts accepted AR bursts minus accepted final
+R beats, internal rather than separate CSR. DMA.enable is CSR trigger; every
+write event, INCLUDING ZERO, can start playback. Do not write0 as a stop action.
+FSM waits FLUSH/WAIT_EOP/WAIT_CRI_MASTER before IDLE; readable enable.w defaults
+zero in IDLE. Next model the complete IDLE/EOP/no-outstanding invariant and
+reset/flow-control/error cases before accepting that status as bus-drain proof
+or deciding whether additional instrumentation is necessary. No claim that
+absence of a dedicated counter CSR makes proof impossible. Bind the eventual
+rule to exact loaded source/bitstream and prevent new trigger writers.
+
+Inventory never admits destructive DDR tests. Next offline DMA completion model
+and reviewed read-only PS/secondary-core status allowlist. Existing normal
+runtime remains at last validated192.168.2.3; no UART/JTAG/network/reset/Si/SD/
+flash/OTP/Kasli activity in this checkpoint.

@@ -1,0 +1,64 @@
+{
+  "hardware_executed": false,
+  "files": {
+    "boards/genesys_zu-5ev/1_gateware/gateware.py": "0dda3b3d8cf6903974aa2ecfdbf23060d42a619e5a70ed7feb0b154a9746b084",
+    "boards/genesys_zu-5ev/1_gateware/local_rtio.py": "77c5acabc23c0ca9ac7e1cc7b35aa73a8de09ef7cb0919ea9ab125ace93597b5",
+    "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py": "673d0a713ccbec2b7b81914145b854449470fab6678a5c39b4dba8bee70e0f43",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/audit_ddr_masters.py": "f7a86c8efaba67882c843e9d5907a26e193af03fbb88a8db7a0867e1c1bb1720",
+    "tests/test_ddr_master_inventory.py": "b7d74a699f404d3dae08ddacfc1c3a531f6b7578bb88308b157a0795fda0c717"
+  },
+  "findings": [
+    {
+      "path": "boards/genesys_zu-5ev/1_gateware/gateware.py",
+      "needle": "saxihp0_fpd_aclk",
+      "lines": [
+        57
+      ],
+      "finding": "S_AXI_GP2 maps to HP0 FPD clock; PL DMA bus wired into PS."
+    },
+    {
+      "path": "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py",
+      "needle": "inflight_cnt = Signal",
+      "lines": [
+        54
+      ],
+      "finding": "Outstanding-burst counter is internal; no dedicated CSR in this source."
+    },
+    {
+      "path": "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py",
+      "needle": "self.enable = CSR()",
+      "lines": [
+        119
+      ],
+      "finding": "Trigger CSR, not writable enable latch: writing zero is not a stop command."
+    },
+    {
+      "path": "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py",
+      "needle": "If(self.enable.re",
+      "lines": [
+        138
+      ],
+      "finding": "A write event launches FLOWING independent of payload."
+    },
+    {
+      "path": "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py",
+      "needle": "fsm.act(\"WAIT_EOP\"",
+      "lines": [
+        152
+      ],
+      "finding": "Completion path waits for final data EOP then CRI-master drain; sufficiency for idle/drain must be modeled."
+    },
+    {
+      "path": "scripts/run_boot_firmware.tcl",
+      "needle": "catch {stop}",
+      "lines": [
+        16,
+        25,
+        31
+      ],
+      "finding": "Boot helper stop errors ignored; cannot establish all-core ownership from this helper alone."
+    }
+  ],
+  "limits": "Tracked source plus selected XSA only; no active restored bitstream/source identity binding, runtime quiescence or drain invariant proof."
+}

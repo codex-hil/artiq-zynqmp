@@ -1,0 +1,70 @@
+{
+  "status": "OFFLINE_DDR_MASTER_INVENTORY_NOT_ADMITTED",
+  "hardware_executed": false,
+  "xsa_sha256": "5444a2b1a5c56a4ea7a2f96a64c1d643748adbd27b0574d4eb67eaa8bde27420",
+  "hwh_sha256": "8e5586fa60d2167020a202c8b9a2ee02730358ae10d0b817f64138d3ee91c43f",
+  "configured_ports": {
+    "PSU__USE__M_AXI_GP0": true,
+    "PSU__USE__M_AXI_GP1": false,
+    "PSU__USE__M_AXI_GP2": false,
+    "PSU__USE__S_AXI_GP0": false,
+    "PSU__USE__S_AXI_GP1": false,
+    "PSU__USE__S_AXI_GP2": true,
+    "PSU__USE__S_AXI_GP3": false,
+    "PSU__USE__S_AXI_GP4": false,
+    "PSU__USE__S_AXI_GP5": false,
+    "PSU__USE__S_AXI_GP6": false,
+    "PSU__USE__S_AXI_ACE": false,
+    "PSU__USE__S_AXI_ACP": false,
+    "PSU__USE__ADMA": false,
+    "PSU__USE__GDMA": false
+  },
+  "enabled_peripherals": {
+    "PSU__ENET0__PERIPHERAL__ENABLE": "1",
+    "PSU__I2C0__PERIPHERAL__ENABLE": "1",
+    "PSU__I2C1__PERIPHERAL__ENABLE": "1",
+    "PSU__QSPI__PERIPHERAL__ENABLE": "1",
+    "PSU__SD1__PERIPHERAL__ENABLE": "1",
+    "PSU__TTC0__PERIPHERAL__ENABLE": "1",
+    "PSU__UART0__PERIPHERAL__ENABLE": "1"
+  },
+  "required_runtime_ownership": [
+    {
+      "master": "A53 CPU1/2/3",
+      "status": "NOT_PROVEN",
+      "required": "Positive stopped/reset states after FSBL, cache/coherency ownership; catch stop is not proof."
+    },
+    {
+      "master": "R5 CPU0/1",
+      "status": "NOT_PROVEN",
+      "required": "Verified held-reset/idle policy and no PMU release during test."
+    },
+    {
+      "master": "PMU firmware",
+      "status": "ACTIVE_NOT_AUDITED",
+      "required": "Audit linked firmware callbacks/DDR accesses; cannot treat running MicroBlaze as absent."
+    },
+    {
+      "master": "PS ADMA/GDMA",
+      "status": "NOT_PROVEN",
+      "required": "Per-channel enable/state and ownership proof. XSA USE=0 does not establish physical reset/quiescence."
+    },
+    {
+      "master": "CSU/PCAP DMA",
+      "status": "NOT_PROVEN",
+      "required": "Completion/drain state and exclusive owner; no ISR-clear substitutes."
+    },
+    {
+      "master": "PS GEM/SD/USB/SATA/PCIe",
+      "status": "NOT_PROVEN",
+      "required": "Inventory enabled blocks; runtime/reset/traffic ownership before destructive writes."
+    },
+    {
+      "master": "PL HP0 RTIO DMA reader",
+      "status": "NOT_PROVEN",
+      "required": "Bind active bitstream to source; prevent new requests AND prove outstanding reads drained, not just enable=0."
+    }
+  ],
+  "destructive_test_allowed": false,
+  "limits": "Selected static XSA only, not current live configuration, active bitstream binding, disabled hardware, bus drain or writable DDR ownership."
+}
