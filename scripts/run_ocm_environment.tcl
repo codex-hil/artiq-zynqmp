@@ -38,6 +38,9 @@ proc admit_core {allow_por} {
     puts "CORE_ADMISSION STOPPED_CONFIRMED"
 }
 connect -url $server
+# Debugger presentation only: avoid source lookup racing the stop event.
+# Cache synchronization, memory protection and checked suspension stay enabled.
+configparams source-line-view 0
 for {set i 0} {$i < 4} {incr i} {
  select_genesys_target "Cortex-A53 #$i"
  admit_core 1

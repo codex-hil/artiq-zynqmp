@@ -1,0 +1,17 @@
+{
+  "status": "OFFLINE_CONTROLS_PASS_HARDWARE_NOT_RUN",
+  "xsdb_source_sha256": "0b5f6b92455330b3ef2491984f327f49d2e49dea79bd5387c8ed14249247ff09",
+  "source_reference": "installed xsdb.tcl get_source_line_info guard, get/set_source_line_view, configparams source-line-view",
+  "change": "Disable debugger source-line presentation before checked core parking",
+  "unchanged": [
+    "memory access protection",
+    "cache synchronization",
+    "core suspension confirmation",
+    "mandatory full restoration"
+  ],
+  "tests": {
+    "test_ocm_reset_flow": 2,
+    "test_ocm_core_admission": 2,
+    "test_ocm_observation": 2
+  }
+}

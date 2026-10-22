@@ -239,3 +239,21 @@ init/download after reset failure. Two core-state and two OCM admission tests
 PASS. Revised pins/review: `evidence/ocm-observation-plan-v3-2026-10-22`. No HW
 access for this revision. Next one exclusive bounded OCM observation, followed
 by full normal restoration/debug/Ethernet regardless of candidate outcome.
+
+### Third attempt: debugger source lookup race —2026-10-22
+
+Initial A53 parking FAIL before alternate-JTAG write/system reset. XSDB
+`stop`/`wait_for_event` called `process_targets_state`/`get_source_line_info`,
+which failed `Execution context is running`. Thus v3 did not test the system
+reset hypothesis or reach OCM download. Full normal restore/physical RTIO/debug/
+Ethernet PASS192.168.2.3, exclusive lease74.393s. Raw failure preserved in
+`evidence/ocm-observation-v3-hardware-2026-10-22`.
+
+Installed XSDB exposes `configparams source-line-view 0`; its
+`get_source_line_info` returns immediately when disabled. V4 sets this debugger
+presentation option after connect, before parking. No stop errors are ignored;
+no cache synchronization, protection or state confirmation disabled. The setting
+is local to the short-lived XSDB interpreter. Two reset-flow/two core-state/two
+OCM controls PASS, including the exact sole allowed configuration and ordering.
+V4 pins: `evidence/ocm-observation-plan-v4-2026-10-22`. V4 hardware NOT_RUN;
+next one bounded observation/restoration. Full DDR test still NOT_RUN.

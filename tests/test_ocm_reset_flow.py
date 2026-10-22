@@ -12,6 +12,10 @@ class ResetFlow(unittest.TestCase):
 set selected 0
 proc connect {args} {}
 proc disconnect {} {}
+proc configparams {name value} {
+ if {$name ne "source-line-view" || $value != 0} {error "Unexpected debugger configuration"}
+ puts SOURCE_VIEW_DISABLED
+}
 proc after {args} {}
 proc targets {args} {
  global selected
@@ -38,7 +42,7 @@ proc stop {} {error "Already suspended: must not call stop"}
             return subprocess.run(['tclsh'],input=text,capture_output=True,text=True,timeout=3)
     def test_reset_before_setup_download_without_cache_bypass(self):
         r=self.run_flow();self.assertEqual(r.returncode,0,r.stderr)
-        markers=['ALT_JTAG','RESET -system','INIT_PS','INIT_PERIPHERAL','RESET -processor -clear-registers','DOWNLOAD','CONTINUE']
+        markers=['SOURCE_VIEW_DISABLED','ALT_JTAG','RESET -system','INIT_PS','INIT_PERIPHERAL','RESET -processor -clear-registers','DOWNLOAD','CONTINUE']
         offsets=[r.stdout.index(m) for m in markers];self.assertEqual(offsets,sorted(offsets))
         source=(REPO/'scripts/run_ocm_environment.tcl').read_text();self.assertNotIn('bypass-cache-sync',source);self.assertNotIn('psu_ddr_init_data',source)
     def test_failed_system_reset_prevents_init_and_download(self):

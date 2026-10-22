@@ -1,0 +1,32 @@
+CORE_ADMISSION STOPPED_CONFIRMED
+Execution context is running
+    invoked from within
+"::tcf::eval -progress ::xsdb::no_print_progress {::tcf::cache_enter tcfchan#0 {tcf_cache_eval {process_tcf_actions_cache_client ::tcfclient#0::arg}}}"
+    (procedure "::tcf::cache_eval_with_progress" line 2)
+    invoked from within
+"::tcf::cache_eval_with_progress [dict get $arg chan]  [list process_tcf_actions_cache_client $argvar] $progress"
+    (procedure "process_tcf_actions" line 1)
+    invoked from within
+"process_tcf_actions $arg"
+    (procedure "get_source_line_info" line 99)
+    invoked from within
+"get_source_line_info $curchan $ctx"
+    (procedure "process_targets_state" line 160)
+    invoked from within
+"process_targets_state $et"
+    (procedure "wait_for_event" line 24)
+    invoked from within
+"wait_for_event $chan $ctx 1 $params(timeout)"
+    (procedure "stop" line 15)
+    invoked from within
+"stop"
+    (procedure "admit_core" line 1)
+    invoked from within
+"admit_core 1"
+    ("for" body line 3)
+    invoked from within
+"for {set i 0} {$i < 4} {incr i} {
+ select_genesys_target "Cortex-A53 #$i"
+ admit_core 1
+}"
+    (file "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/run_ocm_environment.tcl" line 41)

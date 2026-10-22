@@ -1,6 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## OCM v3 debugger-source failure / restoration PASS —2026-10-22
+
+Initial core parking failed inside XSDB source-line lookup before system reset.
+OCM execution/MMU/cache/DDR test NOT_RUN. Full normal restore/physical RTIO/debug/
+Ethernet PASS192.168.2.3 under74.393s exclusive lease. Evidence:
+`evidence/ocm-observation-v3-hardware-2026-10-22`. V4 disables only debugger
+source-line presentation, preserving cache/protection/state checks;6offline
+controls PASS, new manifest prepared. System-reset hypothesis not yet tested.
+
 ## OCM v2 download failure / restoration PASS —2026-10-22
 
 Reset-state core admission now physically PASS. XSDB download subsequently FAIL
