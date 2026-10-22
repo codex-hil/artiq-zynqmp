@@ -63,6 +63,8 @@ def main():
             if a.definitions_only:
                 if text.count('FSBL_REGISTER_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_REGISTER_DEFINITIONS_END')!=1 or text.count('FSBL_SYS_DEFINITIONS_BEGIN')!=1 or text.count('FSBL_SYS_DEFINITIONS_END')!=1 or len(re.findall(r'^FSBL_CPSR_RAW [0-9]+$',text,re.M))!=1:
                     raise ValueError('Incomplete FSBL definitions')
+                if re.findall(r'^FSBL_SYS_CHILD_END (\d+)$',text,re.M)!=[str(i) for i in range(16)]:
+                    raise ValueError('Incomplete system-register child definitions')
                 result.update(status='PASS',scope='FSBL_BACKEND_DEFINITIONS_ONLY_NO_OBSERVER_EXECUTION',fsbl_descriptor=desc)
             else: result.update(status='PASS',registers=decode(text),fsbl_descriptor=desc)
     except Exception as error: result['error']=str(error)

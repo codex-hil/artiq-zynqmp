@@ -1,5 +1,22 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## FSBL sys-root/cpsr metadata hardware PASS —2026-10-22
+
+Initial storage admission rejected478MiB before HW. Four completed own route/
+Ethernet builds relocated with full inventory verification and original-path
+symlinks; no other project/toolchain deletions. Admitted free space798588928B.
+Bounded shared lease86.997s: FSBL terminal sys-root metadata/cpsr capture PASS,
+normal restore/TTL/CoreDMA/analyzer/MonInj/Ethernet PASS192.168.2.3. Shared lease
+released; no observer/DDR test/Kasli/Si/SD/flash/OTP writes.
+
+Backend sys root has numeric children0..15; raw cpsr1610613453 (0x600002cd).
+No speculative field decoding or system-register name substitution used.
+Evidence/inventories: `evidence/fsbl-sys-definitions-hardware-2026-10-22`.
+Next capture definitions of all16advertised sys children in the same bounded
+metadata mode; new pins/artifact preflight and four Tcl controls PASS. Unknown
+register mapping still blocks observer admission, not normal runtime operation.
+
+
 ## FSBL root register metadata hardware PASS —2026-10-22
 
 Definitions-only window85.652s under shared Genesys lease PASS, with normal

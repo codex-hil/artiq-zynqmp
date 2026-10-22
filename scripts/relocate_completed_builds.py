@@ -9,7 +9,9 @@ ALLOWED=('kernel-health-cpu0-20261022','rpc-parser-cpu0-20261022',
          'ethernet-reproduced','fsbl-reproduced',
          'runtime-services-2025.2','eh-kernel-services','network-kernel-services',
          'network-kernel-services-final','rtio-kernel-services','services-reproduced',
-         'runtime-ps-2025.2','fsbl-2025.2')
+         'runtime-ps-2025.2','fsbl-2025.2',
+         'satellite-dma-credit4-route-2026-10-16','satellite-dma-route-v3-2026-10-16',
+         'genesys-delay-metrics-route-2026-10-20','ethernet-2025.2')
 
 def inventory(root):
     result={}

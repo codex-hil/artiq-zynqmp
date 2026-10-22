@@ -1,0 +1,149 @@
+{
+  "status": "SYS_ROOT_METADATA_AND_RESTORATION_PASS",
+  "hardware_executed": true,
+  "seconds": 86.997,
+  "raw_files": {
+    "restore-device-db.py": {
+      "sha256": "820d69240248963d0e9406939d91c4b2c501c841a0b73e785446dbd6816dd4f1",
+      "bytes": 879
+    },
+    "restore-load.log": {
+      "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+      "bytes": 87
+    },
+    "candidate-trained-observer.log": {
+      "sha256": "6b9f1c3268d5ecf26b8371219430716a40bc37b656883ea0dc96bba7d6b14d99",
+      "bytes": 443
+    },
+    "restore-ethernet.log": {
+      "sha256": "63216c3228b9d5090b2bd2ada0eb88c571a0015215a569162f5b7cc105d50cc9",
+      "bytes": 2020
+    },
+    "restore-debug.log": {
+      "sha256": "fdf24bef98fa906ac494edd177ed61bd8c4f37a5915dc784d2483399bfb0438e",
+      "bytes": 1899
+    },
+    "restore-ethernet.json": {
+      "sha256": "63216c3228b9d5090b2bd2ada0eb88c571a0015215a569162f5b7cc105d50cc9",
+      "bytes": 2020
+    },
+    "results.json": {
+      "sha256": "c48cb47dffdba4842ef446fe9c17e65862ddc24cb528de9d941e58cfb4d41444",
+      "bytes": 2413
+    },
+    "restore-load/uart.log": {
+      "sha256": "293b850faed96db8fae5d1c86a51a77c7d7c5881b194ac49cb6d687dc3b47136",
+      "bytes": 1068
+    },
+    "restore-load/cpu1.log": {
+      "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+      "bytes": 28
+    },
+    "restore-load/prepare.log": {
+      "sha256": "83a762d9b723edafe59a3eb80808f84b7f09c97fbd905f7dc7fcbadb755b0608",
+      "bytes": 65
+    },
+    "restore-load/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "restore-load/cpu0.log": {
+      "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+      "bytes": 96
+    },
+    "restore-load/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "restore-load/pl.log": {
+      "sha256": "fa209d55189779100f9d568450c7b836cf33d3e554982471293bde5ba3bb0283",
+      "bytes": 1918
+    },
+    "restore-load/results.json": {
+      "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+      "bytes": 81
+    },
+    "restore-debug/wrap-dma-5.log": {
+      "sha256": "a0ee49f403bac03a49fafe6ac107ec1d5dcfaa5813f06517b054c467fa2bea45",
+      "bytes": 210
+    },
+    "restore-debug/dma.log": {
+      "sha256": "175a1d8dd7a847e5dbe174215a00ee8a7541878fd590c7dc40740fb886103e76",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-6.log": {
+      "sha256": "3ae2cba79b365fbdebc5c00d2f9dace0ea9cbb0d407358dd4859f02be9ca4364",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-0.log": {
+      "sha256": "30ffb1d580e6457c833058f6f5136e94b95c4d4e51097aac0a827c3227038dc4",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-2.log": {
+      "sha256": "7afd83de4e465a74b8aa39e8cb7086439718b1216ae7309319ef87956b2c6a74",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-3.log": {
+      "sha256": "06661c002238aa0c75990d8f38f29fc26b79a733088e082d9fb6ffff841461a8",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-7.log": {
+      "sha256": "3f7d3e9ac3db757095ba2ff071a666c5580a02cd8103b46b066841b6fd1facbc",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-1.log": {
+      "sha256": "0e5d694e01c7d3021e09babdd6fc27ac9aa3935ecdf093e9f7e57b2be4ffae37",
+      "bytes": 210
+    },
+    "restore-debug/wrap-dma-4.log": {
+      "sha256": "64d5d554bc5e9070ece2125ad65011d680cebd7de59e61252325db327fa82cdf",
+      "bytes": 210
+    },
+    "restore-debug/results.json": {
+      "sha256": "2b72b38591f83375285634499fc1c5f5ecd30ce6474b732cd3282dbf7f9e913e",
+      "bytes": 1692
+    },
+    "candidate-trained-observer/uart.log": {
+      "sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b",
+      "bytes": 840
+    },
+    "candidate-trained-observer/observer.log": {
+      "sha256": "a59d170bb226bfe3cf7a54a038eaab7cff769a9b2af5df37964e1515d0e9897a",
+      "bytes": 804
+    },
+    "candidate-trained-observer/boot.log": {
+      "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+      "bytes": 58
+    },
+    "candidate-trained-observer/reset.log": {
+      "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+      "bytes": 21
+    },
+    "candidate-trained-observer/results.json": {
+      "sha256": "6b9f1c3268d5ecf26b8371219430716a40bc37b656883ea0dc96bba7d6b14d99",
+      "bytes": 443
+    }
+  },
+  "cpsr_raw": 1610613453,
+  "cpsr_hex": "0x600002cd",
+  "sys_children": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "normal_runtime": "192.168.2.3",
+  "limits": "Metadata and raw cpsr only; no decoded EL/cache admission, no observer or DDR test."
+}
