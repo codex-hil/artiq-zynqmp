@@ -1,4 +1,5 @@
 """Exception observer full Tcl dispatch/pins/restore controls. LGPL-3.0-or-later."""
+import hashlib
 import copy
 import json
 import subprocess
@@ -52,7 +53,12 @@ proc targets {args} {
  def test_actual_preflight_and_pin_rejections(self):
   info=json.loads(PLAN.read_text())
   files=json.loads((ROOT/'evidence/trained-observer-integration-2026-10-22/runtime-inputs.json').read_text())['files']
-  self.assertTrue(observer_preflight(PLAN,files)['exception_observer'])
+  # Historical evidence pins must stay immutable; generate current execution pins.
+  for n in info['script_sha256']:
+   info['script_sha256'][n]=hashlib.sha256((ROOT/n).read_bytes()).hexdigest()
+  with tempfile.TemporaryDirectory() as tmp:
+   current=Path(tmp)/'current.json';current.write_text(json.dumps(info))
+   self.assertTrue(observer_preflight(current,files)['exception_observer'])
   variants=[]
   stale=copy.deepcopy(info);stale['script_sha256']['scripts/load_el3_exception_observer.tcl']='0'*64;variants.append(stale)
   missing=copy.deepcopy(info);del missing['script_sha256']['scripts/inject_rpc_fault.py'];variants.append(missing)

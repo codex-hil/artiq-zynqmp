@@ -1,0 +1,46 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/el3-exception-observer-v2-20261022/observer.elf",
+    "sha256": "ab5946b613c0075af7c2129bdb66dc094fff6b684a384cf576cebc7bbd5cb6d6"
+  },
+  "symbols": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/fsbl-observer-entry-2026-10-22/fsbl-symbols.txt",
+    "sha256": "df05d210ee11bc87243d1cc571ac9024a58d73c5e520fd9472dfe51fd0bd4c53"
+  },
+  "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+  "script_sha256": {
+    "scripts/capture_peripheral_dma_state.py": "8228490918e73aa8eea675ebbc595972f83f4e8895aedc9f3502cc4fb8403b7c",
+    "scripts/check_boot_peripheral_window.py": "3f56d1b6cde199a23b591980724abd589af2d9b065a2267238e07cc6947f0ee9",
+    "scripts/check_el3_exception_observer.py": "95b26be8f92a6ae6ff97f9903992775718637c8ee8a642f37b9ba8880cfba584",
+    "scripts/check_el3_observer.py": "e2714e065f7da0b5fac2bde4d15515bf7e47b922e30fb8b79a6ab6b45c09e22f",
+    "scripts/check_fsbl_observer_entry.py": "26da021aadbdfed5417aa43a2d303273aba5167a6e1f67cea1db07836395343f",
+    "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+    "scripts/check_remote_rtio_build.py": "650ac8d41a90154bed6a4139a78f33c4f99539b835bd43e1eb2d355843495ad3",
+    "scripts/collect_fsbl_entry.tcl": "f65f8fa3c5ceeb6c7d835d517876416dec2d71e2630d69003aa8817d88bf9f33",
+    "scripts/inject_rpc_fault.py": "a1ba73b66eacf470d6ff80ecf70856975b21f90bce3b1d4cc7462bde7991b839",
+    "scripts/load_el3_exception_observer.tcl": "f2b90c698d7df46a0c6c45c5a33209f24a57223c32f18dbddd7d12e134449a6a",
+    "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/plan_peripheral_dma_snapshot.py": "251983a5cb01a69e46675edd4f4f6726c0711d4aaadae76068d21c4a4bff01c4",
+    "scripts/plan_zdma_snapshot.py": "0474d06449ef6831bf8977344ecb2a127ff9d91ed735045983a2bbb3523a35f2",
+    "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+    "scripts/probe_peripheral_dma_state.tcl": "2088e40ebecc84f625a38dd9db17b85778e8d2c4a3d792907d9414b3667c442b",
+    "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+    "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+    "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+    "scripts/run_trained_observer.py": "0cf0fe3fdc553368a69f372ab9ac4f2e05038a72d0c9c111648c68ef0f712b9e",
+    "scripts/run_trained_observer.tcl": "4a6caf0eb482cd112a058dcb1c2b82314474baa86ad6895389ca9252f52b3a6c",
+    "scripts/test_candidate_runtime_hw.py": "a6886294b8dcfddf4d728cc5c54d67b2db5344c8b795b1077a46e6fea25a42ba",
+    "scripts/verify_el3_brk_capture.py": "c5ad0235a04b7e72f223152a48911649b40d0e2260401b465dbfa9df2252d25a"
+  },
+  "definitions_only": false,
+  "controls_only": false,
+  "exception_observer": true,
+  "exception_brk": false,
+  "peripheral_inputs": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/boot-peripheral-integration-2026-10-23/peripheral-inputs.json",
+    "sha256": "79f2f6e3baae4e1177a4f3986195e46648df878e606b4354f467cafd9bb3c5bd"
+  }
+}

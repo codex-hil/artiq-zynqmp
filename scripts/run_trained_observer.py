@@ -53,6 +53,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('server','port','elf','fsbl','pmu','symbols','output'):
         p.add_argument('--'+name, required=True)
+    p.add_argument('--peripheral-inputs',type=Path)
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
@@ -63,6 +64,10 @@ def main():
         from check_el3_exception_observer import check as image_check
     else: image_check=check
     image_check(Path(a.elf).read_bytes())
+    if a.peripheral_inputs:
+        if not a.exception_observer or a.exception_brk:raise ValueError('Require normal exception observer')
+        from capture_peripheral_dma_state import preflight as peripheral_preflight, parse as peripheral_parse
+        peripheral_preflight(a.peripheral_inputs)
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -101,7 +106,15 @@ def main():
                 result.update(status='PASS',fault_test=verify(text),scope='DELIBERATE_BRK_CAPTURE_REQUIRES_RESTORATION',fsbl_descriptor=desc)
             elif a.exception_observer: result.update(status='PASS',registers=decode_exception(text),scope='EXCEPTION_AWARE_EL3_OBSERVER_NO_DDR_TEST',fsbl_descriptor=desc)
             else: result.update(status='PASS',registers=decode(text),fsbl_descriptor=desc)
-    except Exception as error: result['error']=str(error)
+            if a.peripheral_inputs:
+                peripheral_preflight(a.peripheral_inputs)
+                snapshot=xs('peripheral-window','probe_peripheral_dma_state.tcl',a.server,'210383B7F02DA')
+                fields=peripheral_parse(snapshot)
+                from check_boot_peripheral_window import check
+                result['peripheral_window']=check(fields)
+                if not result['peripheral_window']['necessary_fields_pass']:
+                    raise ValueError('Boot-window peripheral fields not quiet; restore without DDR writes')
+    except Exception as error: result.update(status='FAIL',error=str(error))
     finally:
         (out/'uart.log').write_bytes(raw)
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')

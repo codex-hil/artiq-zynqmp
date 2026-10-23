@@ -43,3 +43,14 @@ No physical boot-window peripheral capture or full DDR writer ran in this audit.
 The next implementation step is to add read-only observation frames to the
 existing trained-observer child, with parent-pinned scripts and offline negative
 controls, while keeping the DDR write gate closed.
+
+
+## Integrated peripheral capture (offline checked)
+
+Use `evidence/boot-peripheral-integration-2026-10-23/inputs.json` as the trained
+observer manifest with the existing runtime restoration manifest. It requests
+normal exception-observer execution followed by a fixed read-only peripheral
+frame. The parent pins nested input manifest, vendor headers and all execution
+helpers before and under its lease. Failure rejects the candidate and restores
+normal runtime; a quiet result remains observation-only, never DDR admission.
+Physical execution remains NOT_RUN at this checkpoint.

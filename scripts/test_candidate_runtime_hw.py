@@ -75,6 +75,15 @@ def observer_preflight(path,files):
     if info['fsbl_sha256']!=files['candidate_fsbl']['sha256']:
         raise ValueError('Observer FSBL pin mismatch')
     required_scripts=OBSERVER_SCRIPTS|(EXCEPTION_OBSERVER_EXTRA if info.get('exception_observer') else set())
+    if info.get('peripheral_inputs'):
+        if not info.get('exception_observer') or info.get('exception_brk'):
+            raise ValueError('Peripheral window requires normal exception observer')
+        from capture_peripheral_dma_state import SCRIPTS, preflight
+        item=info['peripheral_inputs']
+        if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:
+            raise ValueError('Changed peripheral window inputs')
+        preflight(Path(item['path']))
+        required_scripts |= SCRIPTS | {'scripts/check_boot_peripheral_window.py'}
     if set(info.get('script_sha256',{}))!=required_scripts:
         raise ValueError('Missing observer execution pins')
     for name,digest in info['script_sha256'].items():
@@ -197,7 +206,7 @@ def main():
                 run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
                     '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
                     '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
+                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
                 observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                 if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
                 if observer.get('exception_brk'):return 'EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED'

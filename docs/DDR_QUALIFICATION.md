@@ -1228,3 +1228,22 @@ added. `diagnostics/ddr/BOOT_WINDOW_OWNERSHIP.md` defines required in-window
 observations, reject/restore policy and still-closed DDR write admission.
 No hardware access. Next integrate existing read-only peripheral/master frames
 into the trained-observer lifecycle, before network runtime/CPU1 worker startup.
+
+
+### 2026-10-23 — Same-boot peripheral observation integrated (offline)
+
+Optional peripheral_inputs manifest now binds the existing source-checked
+GEM/SD/QSPI read plan and every parser/helper script into observer preflight,
+repeated under the parent Genesys lease. Normal exception-aware OCM observer
+runs first; its child then reads the three registers twice before any normal
+network runtime/CPU1 worker starts. Active RX/TX, SD transfer/inhibit, QSPI
+busy/outstanding/FIFO/unknown or unstable samples fail the candidate; parent
+restoration lifecycle remains mandatory. No auto-stop/reset/drain workaround.
+Fixed child exception handling to replace any earlier PASS with FAIL when a
+later observation fails. Necessary quiet fields never authorize DDR writes.
+Three new test groups (field/unstable/missing controls, nested pin/mode rejection,
+parent restoration) and four exception-observer regression tests PASS. Fresh
+manifests and offline preflight: `evidence/boot-peripheral-integration-2026-10-23`.
+Historical evidence pins retained; regression test generates temporary current
+pins. Hardware NOT_RUN. Next bounded physical observer/read/restore window,
+then extend same-window coverage to remaining CSU/ZDMA/RPU/core/PL owners.
