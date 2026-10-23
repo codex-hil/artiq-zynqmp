@@ -1945,3 +1945,23 @@ No linked firmware/deployment/HW access or quiescence claim. Next isolated full
 PMU link with unchanged AMD BSP/boot services, inspect local-memory capacity/
 placement, and select a proven non-disruptive telemetry route. No private AP0
 retry/alias guessing. Normal baseline unchanged; DDR NOT_RUN/NOT_ADMITTED.
+
+
+
+## 2026-10-23 — Full diagnostic PMU telemetry firmware linked (offline)
+
+Replayed actual existing AMD compile/link recipe in fresh isolated application
+copy, adding only telemetry define; existing BSP/libraries/PM boot services
+retained. All application units rebuilt, full ELF links. Local layout checker:
+MicroBlazeentryffdc0050, telemetry32B zero-init RAMffdd7cf4, stackffddc2bc..
+ffddd2c0,9248bytes before extension table. Total sections120440bytes. LegacyRWE
+segment flags preserved/reported. Two actual-image controls PASS, including
+corrupt-size and DDR-segment rejection. Source/recipe/BSP hashes and link/layout/
+size reports `evidence/pmu-boundary-link-2026-10-23`. ELF286fb256...46e56b1;
+no hardware/boot/telemetry access/coherence/quiescence claim. ACK always0.
+
+Next review PMU debug-target read-only address-space access without halting,
+resetting or retrying failed AP0privateaddress; telemetry transport remains
+unqualified. Only after explicit new-image boot/restore integration and read
+qualification consider one diagnostic cycle. Full DDR NOT_RUN/NOT_ADMITTED;
+normal runtime unchanged. No firmware/Si/SD/flash/OTP/Kasli writes.

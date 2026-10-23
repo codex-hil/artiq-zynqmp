@@ -1,0 +1,10 @@
+{
+  "status": "ISOLATED_SOURCE_STAGED_NOT_FIRMWARE",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "original_sha256": "f0645af86831a588e3d07b8c381ac051da42c6a455b7f476164b139f54135ee7",
+  "patched_sha256": "87c1f2bd8d5574457dd4c0b780c9f788e960da20ac13e7b76cff39b02524a9ce",
+  "telemetry_sha256": "329c2af79e41b0ca748bc27131f1309b588717b4f82e1f48d0e3987c7eb42eb8",
+  "compile_define": "ARTIQ_PMU_BOUNDARY_TELEMETRY=1",
+  "limits": "Observation-only loop boundary. No request transport, ACK, interrupt mask, PMU park, ROM exclusion or DDR ownership. No linked firmware artifact."
+}
