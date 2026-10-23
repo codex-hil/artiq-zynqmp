@@ -1,0 +1,20 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/ddr-ocm-brk-model-20261023/model.elf",
+    "sha256": "82539741f571e8b374b9ec349ddcef9d98941ea1b64a4bec8e001a66cb13c7c9"
+  },
+  "symbols": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/ddr-ocm-brk-model-20261023/symbols.txt",
+    "sha256": "1b64cba6484438b2048b0b6b7ebc7b2201a61988e280cc974d68884aed7e4c81"
+  },
+  "mode": "brk",
+  "script_sha256": {
+    "scripts/collect_fsbl_entry.tcl": "f65f8fa3c5ceeb6c7d835d517876416dec2d71e2630d69003aa8817d88bf9f33",
+    "scripts/check_ocm_image.py": "b5d7c9d41bea8e712bb81b3213f17a01de77c3be7f58a72c4bbb9fc993ca71c7",
+    "scripts/load_ddr_ocm_model.tcl": "7e956abb1897ec90dd33f29cd519481caf2b114b4b16cd2678b4853384578e0a",
+    "scripts/check_ddr_ocm_model.py": "1943d33f2cd133dcaf43e7d481565b65bfa972f46bf1f3d6d08310d35425670d",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/run_ddr_ocm_model.tcl": "e993f1b4559650740f641d01f699df46d991e2917f7783954c78a74642e75f00",
+    "scripts/load_el3_exception_observer.tcl": "f2b90c698d7df46a0c6c45c5a33209f24a57223c32f18dbddd7d12e134449a6a"
+  }
+}

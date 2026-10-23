@@ -151,7 +151,7 @@ def main():
             if model:
                 model_preflight(a.model_inputs,REPO)
                 captured=xs('ocm-model','run_ddr_ocm_model.tcl',a.server,model['elf']['path'],'210383B7F02DA')
-                result['ocm_model']=model_parse(captured)
+                result['ocm_model']=model_parse(captured,model.get('mode','normal'))
     except Exception as error: result.update(status='FAIL',error=str(error))
     finally:
         (out/'uart.log').write_bytes(raw)

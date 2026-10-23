@@ -49,7 +49,13 @@ __ocm_start:
  str xzr,[x1],#8
  b 1b
 2:
+.global model_fault_probe
+model_fault_probe:
+#ifdef OCM_MODEL_BRK
+ brk #0x53
+#else
  bl ocm_model_main
+#endif
  cbnz x0,model_rejected
  mov x15,#0x33
 model_done:

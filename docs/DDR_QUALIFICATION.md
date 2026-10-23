@@ -1866,3 +1866,25 @@ lease released. Evidence `evidence/ddr-model-boot-hardware-2026-10-23`.
 No Si/SD/flash/OTP/Kasli writes. Full DDR NOT_RUN/NOT_ADMITTED. Next offline
 model exception-injection qualification and explicit PMU/core/history ownership
 policy before any physical DDR backend; no repeated unchanged model success run.
+
+
+
+## 2026-10-23 — OCM model deliberate BRK physical capture PASS/restored
+
+Added separately selected OCM_MODEL_BRK build: same layout, BRK#0x53 replaces
+model call atfffc8880 after BSS initialization, before callbacks. Preflight
+checks actual opcode d4200a60 for BRK mode and BL opcode class for normal mode;
+BRK image cannot masquerade as normal. Decoder requires exact faultterminal/
+vector4/EL3/ESRf2000053/ELRfffc8880/PSTATE/DAIF and zero report, distinct expected
+fault status. Four offline loader/mode/negative controls PASS; fresh pins in
+`evidence/ddr-model-brk-integration-2026-10-23`.
+
+Physical cycle135.411s under shared Genesys lease PASS: exact deliberate
+synchronous BRK captured, callbacks not reached. This does not qualify data abort,
+SError or an unresponsive AXI transaction. Normal192.168.2.3 restored physical
+TTL/CoreDMA/analyzerwrap/MonInj/EthernetPASS; lease released. No physical DDR
+backend/DDRwrites,Si/SD/flash/OTP/Kaslichanges. Evidence/raw byte hashes:
+`evidence/ddr-model-brk-hardware-2026-10-23`.
+Next offline close explicit PMU/core/history ownership policy and define a bounded
+physical-memory backend only once admission is justified. Do not repeat unchanged
+model/BRK run; full DDR NOT_RUN/NOT_ADMITTED.

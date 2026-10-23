@@ -60,3 +60,10 @@ The four apparent DDR addresses are lookup keys into four OCM model cells.
 There is no pointer cast or physical DDR callback. Model PASS means the engine
 and local callbacks agree, never that physical DDR was exercised. Host execution
 and link layout are tested; this image has NOT run on A53 or QEMU.
+
+
+2026-10-23: normal OCM model and separately selected `OCM_MODEL_BRK=1` image
+both executed on physical A53 under bounded mandatory-restoration wrappers.
+Model PASS covers OCM cells only; expected BRK PASS covers exact synchronous
+exception capture, not data abort/SError/stalled AXI. Physical DDR remains
+NOT_ADMITTED. See latest PORTING_STATUS and ddr-model-brk-hardware evidence.

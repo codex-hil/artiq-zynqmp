@@ -53,7 +53,7 @@ if {$reads != 13} {error wrong-count}
   for text in [r.stdout+r.stdout,r.stdout.replace('DDR_MODEL_END',''),r.stdout.replace('DDR_MODEL_RESULT 0x00000000','DDR_MODEL_RESULT 0x00000001'),r.stdout.replace(str(0xfffc888c),str(0xfffc88b4))]:
    with self.assertRaises(ValueError):parse(text)
  def test_actual_image_and_stale_pin(self):
-  path=ROOT/'evidence/ddr-model-boot-integration-2026-10-23/model-inputs.json';preflight(path,ROOT)
+  path=ROOT/'evidence/ddr-model-brk-integration-2026-10-23/model-inputs.json';preflight(path,ROOT)
   m=json.loads(path.read_text());m['elf']['sha256']='0'*64
   with tempfile.TemporaryDirectory() as tmp:
    p=Path(tmp)/'bad.json';p.write_text(json.dumps(m))
