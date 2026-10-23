@@ -1,0 +1,23 @@
+{
+  "stage": "IMPLEMENTATION_ONLY",
+  "hardware": "NOT_RUN",
+  "simulation": "NOT_RUN_FOR_NEW_TOP",
+  "part": "xcau15p-ffvb676-2-i",
+  "vivado": "2025.2",
+  "job": "/srv/nvme-fast-1/vivado-work/alinx-refclk-probe-20261023b",
+  "exit_code": 0,
+  "wns_ns": 6.749,
+  "whs_ns": 0.046,
+  "bus_skew_slack_ns": 7.201,
+  "cdc_safe_bits": 32,
+  "cdc_unsafe_bits": 0,
+  "drc_errors": 0,
+  "unconstrained_internal_endpoints": 0,
+  "no_clock": 0,
+  "partial_input_delay": 2,
+  "partial_input_delay_reason": "asynchronous MISO and SPI_EN max-delay-only input budgets; see clock-setup",
+  "bit_sha256": "fac81bec05e4abea36ef0c9c07fab7d0d2fe3cd5c52b1dc42ca3ba0374feda14",
+  "blocker": "Actual AXAU15/ACAU15 revision FMC GBTCLK0 series AC coupling unconfirmed",
+  "superseded_build": "20261023a used undivided ODIV2; not accepted for /2 diagnostic, never programmed",
+  "physical_actions_this_stage": false
+}

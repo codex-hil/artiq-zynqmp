@@ -20,7 +20,7 @@ Contents
   They contain a fixed Trenz cable identity, local tool paths and shared leases.
   They are archived as reference, not portable programming commands.
 * ``evidence/``: real Trenz scope/JESD evidence and an earlier startup failure.
-  There is NO physical AXAU15 evidence here.
+  AXAU15 identification, SPI and DAC clock evidence is under evidence/axau15/.
 * ``dependencies.json``: exact clean dependency revisions used for the export.
 * ``docs/vivado-remote-handoff.md``: build server and shared build lease.
 
@@ -122,3 +122,14 @@ material above remains the preserved Trenz reference. Immediate scope is basic
 devkit bringup; the DRTIO-first comparison sequence is deferred. Do not use the
 AD9173 identity guard or claim its warm-clock profile qualifies AD9172. Physical
 revision, attachment, identity and clock configuration of the new kit are pending.
+
+AXAU15 / AD9172 physical progress (2026-10-23)
+--------------------------------------------
+
+JTAG xcau15p identification, system-clock activity, AD9172 SPI identity and
+scratch restoration, and DAC PLL/DLL lock have physical PASS evidence under
+``evidence/axau15/``. Exact-part implementation/bitstreams passed on Dell.
+The DAC is muted; JESD, sample transport and RF output remain NOT_RUN.
+``axau15/refclk-probe/`` prepares dedicated FMC clock activity diagnostics;
+actual AXAU15/ACAU15 GBTCLK0 AC coupling remains an electrical prerequisite.
+These results supersede earlier no-hardware statements, not the Trenz results.
