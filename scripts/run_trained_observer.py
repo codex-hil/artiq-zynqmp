@@ -55,6 +55,7 @@ def main():
         p.add_argument('--'+name, required=True)
     p.add_argument('--peripheral-inputs',type=Path)
     p.add_argument('--master-inputs',type=Path)
+    p.add_argument('--no-master-inputs',type=Path)
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
@@ -73,6 +74,11 @@ def main():
         if not a.peripheral_inputs:raise ValueError('Master window requires peripheral window')
         from collect_boot_masters import preflight as master_preflight, collect as collect_masters
         master_preflight(a.master_inputs)
+    no_master=None
+    if a.no_master_inputs:
+        if not a.exception_observer or not a.master_inputs:raise ValueError('Require complete normal observer')
+        from no_master_candidate import preflight as no_master_preflight
+        no_master=no_master_preflight(a.no_master_inputs,REPO)
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -111,6 +117,16 @@ def main():
                 result.update(status='PASS',fault_test=verify(text),scope='DELIBERATE_BRK_CAPTURE_REQUIRES_RESTORATION',fsbl_descriptor=desc)
             elif a.exception_observer: result.update(status='PASS',registers=decode_exception(text),scope='EXCEPTION_AWARE_EL3_OBSERVER_NO_DDR_TEST',fsbl_descriptor=desc)
             else: result.update(status='PASS',registers=decode(text),fsbl_descriptor=desc)
+            if no_master:
+                # CPU0 is already positively stopped at the OCM observer terminal.
+                # No normal RTIO preparation: this image has no CSR window.
+                no_master_preflight(a.no_master_inputs,REPO)
+                command=['vivado','-mode','batch','-source',str(REPO/'scripts/program_genesys_pl.tcl'),'-tclargs',a.server.removeprefix('tcp:'),'210383B7F02DA',no_master['bitstream']['path']]
+                r=subprocess.run(command,capture_output=True,text=True,timeout=60)
+                (out/'no-master-pl.log').write_text(r.stdout+r.stderr)
+                if r.returncode:raise RuntimeError('No-master PL load failed')
+                result['no_master_pl_loaded']=True
+                result['no_master_bitstream_sha256']=no_master['bitstream']['sha256']
             if a.peripheral_inputs:
                 peripheral_preflight(a.peripheral_inputs)
                 snapshot=xs('peripheral-window','probe_peripheral_dma_state.tcl',a.server,'210383B7F02DA')
@@ -121,6 +137,9 @@ def main():
                     raise ValueError('Boot-window peripheral fields not quiet; restore without DDR writes')
             if a.master_inputs:
                 result['master_window']=collect_masters(a.master_inputs,xs,a.server)
+                if no_master:
+                    from no_master_candidate import verify_configuration
+                    result['no_master_configuration']=verify_configuration(result['master_window'])
                 if not result['master_window']['necessary_dma_fields_pass']:
                     raise ValueError('Master DMA fields not quiet; restore without DDR writes')
     except Exception as error: result.update(status='FAIL',error=str(error))

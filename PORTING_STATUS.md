@@ -1,6 +1,28 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — No-master PL trained-window hardware PASS; normal restore PASS
+
+Explicit new-build/image/helper gate added to trained observer only. Strict
+build input/timing/netlist verification rerun before and under lease. CPU0 first
+reaches positively stopped normal OCM observer terminal; diagnostic PL then
+loaded without normal RTIO CSR preparation or AFI/AIB configuration changes.
+PCAP same-boot context requires stable PL_DONE1 after load; all existing necessary
+peripheral/master fields checked. No CPU1 worker/network runtime started in
+candidate. Two gate controls plus five existing observer lifecycle controls PASS.
+Fresh nested pins `evidence/no-master-boot-integration-2026-10-23`.
+
+Physical full cycle132.586s under shared Genesys lease PASS, bitdf35fe96...58912d
+loaded and PL_DONE observed. Candidate remains no-DDR-write observation only;
+constant requests do not prove disposal of older PS transactions or PMU ownership.
+Full DDR NOT_RUN/NOT_ADMITTED. Mandatory normal runtime restored192.168.2.3,
+TTL/CoreDMA/analyzer ring-wrap/MonInj/Ethernet PASS; lease released. No Si/SD/
+flash/OTP/Kasli changes. Raw evidence `evidence/no-master-boot-hardware-2026-10-23`.
+Next offline design bounded OCM DDR diagnostic and explicit PMU/core/history
+admission policy; do not repeat unchanged no-master load or bypass unresolved
+ownership. No automatic destructive-test permission from this successful cycle.
+
+
 ## 2026-10-23 — No-master diagnostic Dell build PASS (not hardware)
 
 Same jobartiq-no-ddr-master-20261023 completed exit0 in3min21s; session21743

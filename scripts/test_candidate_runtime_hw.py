@@ -96,6 +96,14 @@ def observer_preflight(path,files):
             raise ValueError('Changed master window inputs')
         master_preflight(Path(item['path']))
         required_scripts |= MASTER_SCRIPTS
+    if info.get('no_master_inputs'):
+        if not info.get('exception_observer') or info.get('exception_brk') or not info.get('master_inputs'):
+            raise ValueError('No-master image requires complete normal observer window')
+        from no_master_candidate import preflight as no_master_preflight, SCRIPTS as NO_MASTER_SCRIPTS
+        item=info['no_master_inputs']
+        if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Changed no-master inputs')
+        no_master_preflight(Path(item['path']),REPO)
+        required_scripts |= NO_MASTER_SCRIPTS
     if set(info.get('script_sha256',{}))!=required_scripts:
         raise ValueError('Missing observer execution pins')
     for name,digest in info['script_sha256'].items():
@@ -224,7 +232,7 @@ def main():
                 run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
                     '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
                     '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
+                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--no-master-inputs',observer['no_master_inputs']['path']] if observer.get('no_master_inputs') else [])+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
                 observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                 if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
                 if observer.get('exception_brk'):return 'EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED'

@@ -1,0 +1,17 @@
+{
+  "bitstream": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/no-ddr-master-result-20261023/top.bit",
+    "sha256": "df35fe96f15249a8afd7de516c8112bbe3230c4227488c5493105a3fbf58912d"
+  },
+  "build_inputs": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/no-ddr-master-dell-build-2026-10-23/inputs.json",
+    "sha256": "dc9836490fd94d2e04184d263f73569880bf7eb11ce2674939f37df96519ae26"
+  },
+  "script_sha256": {
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/no_master_candidate.py": "d69f25c9102f61568041f73944b474ed0b03624a35fb7efa99528d3071326ba4",
+    "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+    "scripts/run_trained_observer.py": "fd4af6bf2705a5625712c7d5390ef09cc1996c9a59454bf50b7f4d77a4c0783a",
+    "scripts/test_candidate_runtime_hw.py": "05e67a47afe288354f7e52ce34015758dcfa330d36a8fe1f5ee9fab0c01b4e05"
+  }
+}
