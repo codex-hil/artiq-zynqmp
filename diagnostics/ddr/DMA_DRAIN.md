@@ -283,3 +283,20 @@ Separately added full AXI->CSR simulation showing writes0xffffffff to both
 observer status addresses cannot change counter/epoch/quiet; PASS0.742s.
 No hardware access; baseline unchanged. Next inspect interruption coordination
 before any resubmission; safe offline candidate-probe lifecycle work remains.
+
+
+### 2026-10-23 — Dell observer implementation PASS; hardware NOT_RUN
+
+Same session-held job finished exit0; retrieved files match remote SHA-256.
+Strict input/IP/timing/DRC/route checker PASS. Setup1.728ns, hold0.003ns,
+pulse2.5ns; internal no_clock/unconstrained endpoints0. Existing external I/O
+coverage limitations no_input_delay1/no_output_delay5 remain; DRC only reviewed
+RTSTAT-10 warning. BitSHA9649c982dc8353fc6f9b83f5397707143ff1dc4526fc104292aa1512cc2cafca.
+Evidence/reports: `evidence/dma-observer-build-pass-2026-10-23`.
+Staged candidate inventory combines this optional diagnostic PL/map with known
+normal baseline firmware. Inventory is NOT executable yet: current parent hardcodes
+prior release build-input binding. Next add explicit hash-bound build receipt and
+read-only observer before/after runtime qualification, negative preflight tests,
+then bounded physical candidate/restore cycle. Do not bypass current gate by
+replacing the prior-release evidence manifest. No board access; normal runtime
+unchanged. No DDR write admission, epoch qualification tied0.
