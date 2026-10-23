@@ -1,0 +1,30 @@
+{
+  "xfsbl_handoff.c": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_handoff.c",
+    "sha256": "161ffc06037594fd14be856dce29ec6643eb97c8dcbe2872abc414b8c4d5d80a",
+    "anchors": {
+      "Status = XFsbl_PmInit();": [
+        763
+      ],
+      "Status = XFsbl_ProtectionConfig();": [
+        771
+      ]
+    }
+  },
+  "xfsbl_misc_drivers.c": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_misc_drivers.c",
+    "sha256": "e776b26c6f39f9b2c58614519fdb593e460e8ff32fd85521955d10f0e8dd9f39",
+    "anchors": {
+      "#ifdef XPAR_XILPM_ENABLED": [
+        57,
+        289
+      ],
+      "Status = XPm_InitXilpm(&IpiInstance);": [
+        338
+      ],
+      "Status = XPm_SetConfiguration(CfgCmd);": [
+        344
+      ]
+    }
+  }
+}

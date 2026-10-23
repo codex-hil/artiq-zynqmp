@@ -1,0 +1,84 @@
+{
+  "status": "PMU_OPTION_PREPROCESS_REVIEW_ONLY",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "profiles": {
+    "baseline": {
+      "defines": {},
+      "enabled_service_macros": [
+        "ENABLE_FPGA_LOAD",
+        "ENABLE_FPGA_READ_CONFIG_DATA",
+        "ENABLE_FPGA_READ_CONFIG_REG",
+        "ENABLE_MEM_RANGE",
+        "ENABLE_MEM_RANGE_CRYPTO_REQUEST",
+        "ENABLE_MEM_RANGE_EFUSE_ACCESS",
+        "ENABLE_MEM_RANGE_PM_FPGA_READ_BACK",
+        "ENABLE_MEM_RANGE_SECURE_IMAGE_LOAD",
+        "ENABLE_PM",
+        "ENABLE_SCHEDULER",
+        "ENABLE_SECURE",
+        "ENABLE_SECURE_FLAG",
+        "ENABLE_UNUSED_RPU_PWR_DWN"
+      ],
+      "sleep_when_idle": true,
+      "macro_sha256": "ce93d73ce3e82c2bd63394dd11a240c8dbc8839aa5ff31599d1e66b681c12158"
+    },
+    "pm_disabled": {
+      "defines": {
+        "ENABLE_PM_VAL": 0
+      },
+      "enabled_service_macros": [
+        "ENABLE_FPGA_LOAD",
+        "ENABLE_FPGA_READ_CONFIG_DATA",
+        "ENABLE_FPGA_READ_CONFIG_REG",
+        "ENABLE_MEM_RANGE",
+        "ENABLE_MEM_RANGE_CRYPTO_REQUEST",
+        "ENABLE_MEM_RANGE_EFUSE_ACCESS",
+        "ENABLE_MEM_RANGE_PM_FPGA_READ_BACK",
+        "ENABLE_MEM_RANGE_SECURE_IMAGE_LOAD",
+        "ENABLE_SCHEDULER",
+        "ENABLE_SECURE",
+        "ENABLE_SECURE_FLAG",
+        "ENABLE_UNUSED_RPU_PWR_DWN"
+      ],
+      "sleep_when_idle": true,
+      "macro_sha256": "49c52009dcfdda6deae1022c42cc71e3d6857d86f71d8d04910fa40dcc501d33"
+    },
+    "service_reduced": {
+      "defines": {
+        "ENABLE_PM_VAL": 0,
+        "ENABLE_SCHEDULER_VAL": 0,
+        "ENABLE_FPGA_LOAD_VAL": 0,
+        "ENABLE_FPGA_READ_CONFIG_REG_VAL": 0,
+        "ENABLE_FPGA_READ_CONFIG_DATA_VAL": 0,
+        "ENABLE_SECURE_VAL": 0,
+        "ENABLE_MEM_RANGE_VAL": 0,
+        "ENABLE_SECURE_FLAG_VAL": 0,
+        "ENABLE_EM_VAL": 0
+      },
+      "enabled_service_macros": [
+        "ENABLE_MEM_RANGE_CRYPTO_REQUEST",
+        "ENABLE_MEM_RANGE_EFUSE_ACCESS",
+        "ENABLE_MEM_RANGE_PM_FPGA_READ_BACK",
+        "ENABLE_MEM_RANGE_SECURE_IMAGE_LOAD",
+        "ENABLE_UNUSED_RPU_PWR_DWN"
+      ],
+      "sleep_when_idle": true,
+      "macro_sha256": "390c66337bc42cc60d6869d169536caa39b360361089b954cf0103823818b0df"
+    }
+  },
+  "compiler_version": "microblaze-xilinx-elf-gcc.real (GCC) 13.3.0",
+  "inputs": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_config.h": "3492a335d09d202a9d6a09cce7dffe2ef69ac0ead84d746ccf332350fef90b93",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xparameters.h": "73b981904d0110cbb72db630738a16e84a2cd95420e6fbccb169d92ccfbc1b6b",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/bspconfig.h": "9bbbbc30ee3c895196bab3445fcf128083ce82a341dc6491bda5baa604776cc5",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/build/compile_commands.json": "0dc862fb4d9b39b093fa7d812ed61f63bd3c17f6860304f8d7f28725f841bb12"
+  },
+  "limitations": [
+    "Actual target preprocessor with SDT/PSU_PMU defines and BSP includes, not linked-image equivalence.",
+    "Disabling PM alone leaves other services; even reduced macros do not prove ROM/interrupt/DDR inactivity.",
+    "Existing FSBL has conditional XFsbl_PmInit -> XPm_SetConfiguration path; no-PM is not admitted as drop-in replacement.",
+    "No PMU firmware built/loaded or PMU stop/event mask/ROM modification performed."
+  ],
+  "decision": "Do not deploy no-PM during existing trained boot. Next evaluate boot-compatible explicit post-handoff quiescence/telemetry with acknowledgments, or dedicated diagnostic boot matching reduced PMU; preserve AMD implementation."
+}

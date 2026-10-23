@@ -18,7 +18,19 @@ change hardware policy. Paths and hashes are in
 | PCAP | Trained-boot reads `0xA0000A46`: read_idle1/write_idle0, PL_DONE0; profile rejected and runtime restored | Reset/enable/direction interpretation and exclusive ownership unresolved; no active-transfer inference |
 | Restore | Normal baseline at192.168.2.3, TTL/CoreDMA/analyzer/MonInj/Ethernet passed after latest cycle | Restoration ends the diagnostic ownership window |
 
-## Three gaps to resolve
+## Current checkpoint (supersedes older PCAP/PL rows above)
+
+Normal OCM model and exact BRK run physically PASS; normal runtime restored.
+No-master diagnostic PL routed PS request constants and same-boot load PASS.
+PCAP reset/control/direction and PL_DONE context now captured; status-only
+interpretation gap narrowed, exclusive ownership remains unproven. Main remaining
+work is PMU/secondary-core exclusion and historical PS transaction ownership.
+Actual target preprocessing confirms disabling PM alone leaves other facilities;
+FSBL may depend on PM configuration. Do not deploy reduced PMU blindly. Next
+review explicit post-handoff quiescence acknowledgment while preserving boot,
+rather than repeating momentary captures. See pmu-profiles-review-2026-10-23.
+
+## Three original gaps to resolve
 
 1. **PMU authority:** inspect maintained AMD diagnostic build options and effective
    request/event paths. Prefer an explicit, reviewed diagnostic configuration or

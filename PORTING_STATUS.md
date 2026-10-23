@@ -1,6 +1,26 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Actual target PMU configuration profiles reviewed offline
+
+Used installed MicroBlaze GCC13.3 target preprocessor withSDT/PSU_PMU and actual
+BSP headers, preserving firmware sources. Baseline enables PM, scheduler, FPGA
+load/readback and secure services. ENABLE_PM_VAL0 removes PM but leaves the
+other service macros. Broader explicit service-reduced profile removes those
+four top-level facilities; remaining subfeature macros are NOT proof services
+are compiled/active or PMU dormant. SLEEP_WHEN_IDLE persists in all profiles.
+Actual-header profile assertions and fresh-output rejection PASS. Inputs/macros/
+hashes in `evidence/pmu-profiles-review-2026-10-23`.
+
+FSBL source anchors show conditional XFsbl_PmInit->XPm_InitXilpm/
+XPm_SetConfiguration path with error exit, so do not install no-PM as a drop-in
+replacement in existing trained boot. This review builds no firmware and grants
+no PMU stop/mask/DDR admission. Next prefer boot-compatible post-handoff PMU
+quiescence/telemetry acknowledgment design, or a matched dedicated boot profile;
+retain AMD platform code. No hardware access, normal runtime unchanged. Full
+DDR NOT_RUN/NOT_ADMITTED; core/history exclusion remains explicit.
+
+
 ## 2026-10-23 — OCM model deliberate BRK physical capture PASS/restored
 
 Added separately selected OCM_MODEL_BRK build: same layout, BRK#0x53 replaces
