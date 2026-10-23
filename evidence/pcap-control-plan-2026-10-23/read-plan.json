@@ -1,0 +1,17 @@
+{
+  "status": "OFFLINE_PCAP_CONTEXT_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "registers": {
+    "status": "0xffca3010",
+    "reset": "0xffca300c",
+    "control": "0xffca3008",
+    "direction": "0xffca3004"
+  },
+  "samples": 2,
+  "width_bits": 32,
+  "destructive_test_allowed": false,
+  "limits": "Read-only control/status context; no reset/mode/direction writes. Sampled reset control is not exclusive ownership; no automatic DDR admission.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xilfpga_pcap.h": "49fd48aeae7be196b0d963e2e085eb42b65c3e5791eb7abde35b562f4bbb6660"
+  }
+}

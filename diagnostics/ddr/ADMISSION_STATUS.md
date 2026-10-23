@@ -44,3 +44,12 @@ for. Keep the low/high DDR windows separate; never sweep the MMIO gap.
 The successful short active-DMA cycle is in
 [`dma-observer-short-hardware-2026-10-23`](../../evidence/dma-observer-short-hardware-2026-10-23/).
 The failed long workload and failed PMU access remain independent failure evidence.
+
+
+### PCAP context review — 2026-10-23
+
+AMD initialization releases PCAP reset before transfers; FSBL later asserts it
+after configuration. WR_IDLE/RD_IDLE polling belongs to transfer-specific paths.
+The earlier status-only capture lacks reset/mode/direction context and remains a
+failed conservative criterion, not an active-transfer proof. A four-register
+read-only context plan is prepared; it is NOT_RUN and does not admit DDR writes.

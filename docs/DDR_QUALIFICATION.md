@@ -1615,3 +1615,19 @@ Ethernet PASS; lease released. No Si/SD/flash/OTP/Kasli writes. Evidence
 `evidence/boot-pcap-hardware-2026-10-23`. Full DDR remains NOT_RUN/NOT_ADMITTED.
 Next offline inspect AMD PCAP reset/control/direction sequencing and status
 meaning before changing any criterion; no blind retry or register mutation.
+
+
+### 2026-10-23 — PCAP status requires reset/mode context (offline)
+
+AMD XFpga_PcapInit releases reset/selects PCAP/write direction before transfer;
+write-completion waits WR_IDLE, readback waits RD_IDLE. FSBL bitstream path
+asserts PCAP reset after transfer. These source paths show why status alone
+cannot distinguish reset/disabled context from incomplete transfer; no reset/
+mode/direction values were captured in prior failed run. Do not retrospectively
+mark that run PASS or infer ongoing transfer. Added read-only four-register plan
+(status/reset/control/direction) checked against actual xilfpga header. Two
+field-independence/invalid-sample tests PASS; source hashes/line anchors in
+`evidence/pcap-control-plan-2026-10-23`. No hardware access or criterion change.
+Next integrate contextual read-only capture, report observation-only rather than
+inventing a transfer-completion rule; retain prior criterion failure and PMU gap.
+DDR write admission remains closed; no controller write/reset/reconfiguration.

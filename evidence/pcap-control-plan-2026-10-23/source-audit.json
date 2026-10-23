@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/libsrc/xilfpga/src/interface/zynqmp/xilfpga_pcap.c",
+    "sha256": "c061149914b308ec3e037cd3e82a2044f7ca00396bfceef140048d1d6435852d",
+    "anchors": {
+      "static u32 XFpga_PcapInit(u32 Flags)": [
+        215,
+        676
+      ],
+      "RegVal &= (~CSU_PCAP_RESET_RESET_MASK);": [
+        683,
+        2161
+      ],
+      "Xil_Out32(CSU_PCAP_RDWR, 0x0U);": [
+        689,
+        748
+      ],
+      "static u32 XFpga_PcapWaitForDone(void)": [
+        213,
+        717
+      ],
+      "static u32 XFpga_PcapWaitForidle(void)": [
+        235,
+        779
+      ]
+    }
+  },
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_bs.c",
+    "sha256": "3cbf55ed5befd2e7b3793bff0a0c47b3ddca9759addc1f32522366e7a8af24fe",
+    "anchors": {
+      "/* Reset PCAP after data transfer */": [
+        233,
+        358
+      ],
+      "RegVal = RegVal | CSU_PCAP_RESET_RESET_MASK;": [
+        235,
+        360
+      ]
+    }
+  }
+]
