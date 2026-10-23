@@ -1,0 +1,32 @@
+test_insufficient_headroom_allocates_nothing (test_restore_reserve.Tests.test_insufficient_headroom_allocates_nothing) ... ok
+test_parent_reservation_failure_prevents_hardware_subprocess (test_restore_reserve.Tests.test_parent_reservation_failure_prevents_hardware_subprocess) ... ok
+test_partial_allocation_failure_cleans_all_descriptors (test_restore_reserve.Tests.test_partial_allocation_failure_cleans_all_descriptors) ... ok
+test_real_blocks_unlinked_deduplicated_and_released (test_restore_reserve.Tests.test_real_blocks_unlinked_deduplicated_and_released) ... ok
+test_release_failure_still_attempts_restore (test_restore_reserve.Tests.test_release_failure_still_attempts_restore) ... ok
+test_reserve_released_before_restoration_after_interrupt (test_restore_reserve.Tests.test_reserve_released_before_restoration_after_interrupt) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.034s
+
+OK
+test_busy_prevents_body_and_lease_released (test_candidate_runtime.CandidateTests.test_busy_prevents_body_and_lease_released) ... ok
+test_interrupt_still_restores (test_candidate_runtime.CandidateTests.test_interrupt_still_restores) ... ok
+test_restore_failure_never_passes (test_candidate_runtime.CandidateTests.test_restore_failure_never_passes) ... ok
+test_stale_artifact_rejected_before_report_check (test_candidate_runtime.CandidateTests.test_stale_artifact_rejected_before_report_check) ... ok
+test_success_restores_and_failure_restores (test_candidate_runtime.CandidateTests.test_success_restores_and_failure_restores) ... ok
+test_timeout_child_killed_and_lock_retained (test_candidate_runtime.CandidateTests.test_timeout_child_killed_and_lock_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.113s
+
+OK
+test_boundary_and_symlink_missing_output_ancestor (test_hw_storage.Storage.test_boundary_and_symlink_missing_output_ancestor) ... ok
+test_candidate_refuses_before_lease_subprocess_or_output_creation (test_hw_storage.Storage.test_candidate_refuses_before_lease_subprocess_or_output_creation) ... ok
+test_direct_loader_refuses_before_uart (test_hw_storage.Storage.test_direct_loader_refuses_before_uart) ... ok
+test_low_bytes_inodes_or_one_low_role_refused (test_hw_storage.Storage.test_low_bytes_inodes_or_one_low_role_refused) ... ok
+test_recheck_under_lease_still_prevents_hardware (test_hw_storage.Storage.test_recheck_under_lease_still_prevents_hardware) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
+
+OK

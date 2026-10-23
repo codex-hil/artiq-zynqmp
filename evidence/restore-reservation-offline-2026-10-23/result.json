@@ -1,0 +1,37 @@
+{
+  "status": "RESTORE_RESERVE_OFFLINE_FILESYSTEM_AND_LIFECYCLE_PASS",
+  "hardware_executed": false,
+  "allocated": {
+    "status": "ALLOCATED",
+    "entries": [
+      {
+        "role": "root_state",
+        "path": "/home/codex-hil/.local/state/artiq-builds",
+        "device": 66306,
+        "bytes": 805306368,
+        "allocated_bytes": 805310464
+      }
+    ],
+    "limits": "Allocated unlinked blocks released before restore; not protection against concurrent consumption after release, inode exhaustion, quotas, I/O faults or SIGKILL during restoration."
+  },
+  "released": {
+    "status": "RELEASED_FOR_RESTORATION",
+    "entries": [
+      {
+        "role": "root_state",
+        "path": "/home/codex-hil/.local/state/artiq-builds",
+        "device": 66306,
+        "bytes": 805306368,
+        "allocated_bytes": 805310464
+      }
+    ],
+    "limits": "Allocated unlinked blocks released before restore; not protection against concurrent consumption after release, inode exhaustion, quotas, I/O faults or SIGKILL during restoration."
+  },
+  "tests": 17,
+  "source_sha256": {
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb",
+    "scripts/test_candidate_runtime_hw.py": "b258b5f4d2f58b319298b0bff2aad36e415ce4dbb3d553841109b1224efd3cd8",
+    "tests/test_restore_reserve.py": "da13b7889be6fa3fe4281ef4f0ab9ef1083e73c3f8ceb4ba6cf5b99b2fb62bed"
+  },
+  "limits": "768MiB allocation/release on root filesystem physically block-checked; no board access or complete candidate/restore HW cycle. Old helper pins intentionally remain historical."
+}

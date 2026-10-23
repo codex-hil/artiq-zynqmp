@@ -1,6 +1,30 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Allocated restoration reserve integrated/tested offline
+
+Parent now allocates768MiB real blocks on each distinct runtime filesystem under
+board lease BEFORE candidate access. posix_fallocate+fsync+st_blocks check;
+files immediately unlinked, FDs parent-only (not inherited by children), so no
+orphan reserve paths after process exit. Requires reserve+existing512MiB headroom,
+then reruns unchanged storage admission. Deduplicates same-filesystem roles.
+Lifecycle releases blocks BEFORE restoration after success/error/interrupt;
+release failure recordsFAIL but still attempts restore. Context cleans partial
+allocation/preflight failures. Results record allocation/release metadata.
+
+Seventeen allocation/lifecycle/storage controls PASS, including parent refuses
+before HW subprocess, actual blocks/no visible file, partial allocation cleanup,
+KeyboardInterrupt, and release-error recovery. Actual default768MiB allocation/
+release on root filesystem verified. No board access/HW-cycle claim. Evidence
+`evidence/restore-reservation-offline-2026-10-23`. Does not guarantee against other
+writers consuming space AFTER release, inode/quota/I/O faults or SIGKILL during
+restore. No storage gate lowered/bypassed. Old helper-pinned manifests remain
+historical and require fresh reviewed pins for future stages.
+Next offline enough-space inventory and fresh guarded integration preflight,
+then resume PMU IRQ/ROM exclusion work, not unchanged request replay. Normal
+ARTIQ remains restored192.168.2.3; full DDR NOT_RUN/NOT_ADMITTED.
+
+
 ## 2026-10-23 — PMU session echo PASS; storage blocked restore; separate recovery PASS
 
 Integrated separate request-image gate into no-master trained boot. Exact symbol/

@@ -7,7 +7,7 @@ Genesys lease for every load/UART/network/test/restoration operation.
 import argparse,contextlib,fcntl,hashlib,json,os,re,signal,subprocess,sys,time
 from pathlib import Path
 from check_remote_rtio_build import check
-from check_hw_storage import require_runtime_space
+from check_hw_storage import require_runtime_space,RestoreReserve,runtime_paths
 REPO=Path(__file__).resolve().parents[1]
 BASE=Path('/srv/codex-hil-data/artiq-zynqmp')
 CABLE='210383B7F02DA'
@@ -162,12 +162,15 @@ def lease(path=LOCK):
         yield fd
 
 
-def lifecycle(cycle):
+def lifecycle(cycle,before_restore=None):
     result=dict(status='FAIL',restoration='NOT_RUN')
     try:
         result['candidate_ip']=cycle('candidate');result['status']='PASS'
     except BaseException as error:result['error']=str(error) or type(error).__name__
     finally:
+        if before_restore is not None:
+            try:before_restore()
+            except BaseException as error:result.update(status='FAIL',reserve_release_error=str(error))
         try:result['restored_ip']=cycle('restore');result['restoration']='PASS'
         except Exception as error:
             result.update(status='FAIL',restoration='FAIL',restoration_error=str(error))
@@ -234,97 +237,99 @@ def main():
         if a.ocm_manifest:ocm_preflight(a.ocm_manifest,files)
         if observer:observer_preflight(a.trained_observer_manifest,files)
         if a.fsbl_spd:spd_preflight(json.loads(a.manifest.read_text()),files)
-        started=time.monotonic();stages={}
-        env=os.environ.copy();env.pop('PYTHONPATH',None);env['GENESYS_LEASE_FD']=str(held.fileno())
-        def run(stage,command,timeout):
-            print(stage+' START',flush=True)
-            try:code,text=bounded(command,timeout,env,held.fileno())
-            except subprocess.TimeoutExpired as error:
-                text=error.output or ""
-                if isinstance(text,bytes):text=text.decode(errors="replace")
-                (out/(stage+".log")).write_text(text)
-                stages[stage]=dict(status='TIMEOUT');raise
-            (out/(stage+'.log')).write_text(text);stages[stage]=dict(returncode=code)
-            if code:raise RuntimeError(stage+' failed: '+text[-1500:])
-            print(stage+' PASS',flush=True)
-            return text
-        def cycle(prefix):
-            if prefix=='candidate' and observer is not None:
-                run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
-                    '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
-                    '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--pmu-request-inputs',observer['pmu_request_inputs']['path']] if observer.get('pmu_request_inputs') else [])+(['--pmu-boundary-inputs',observer['pmu_boundary_inputs']['path']] if observer.get('pmu_boundary_inputs') else [])+(['--model-inputs',observer['model_inputs']['path']] if observer.get('model_inputs') else [])+(['--no-master-inputs',observer['no_master_inputs']['path']] if observer.get('no_master_inputs') else [])+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
-                observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
-                if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
-                if observer.get('exception_brk'):return 'EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED'
-                return 'TRAINED_FSBL_OBSERVATION_ONLY' if observer.get('definitions_only') or observer.get('controls_only') else 'TRAINED_OCM_REGISTERS_ONLY'
-            if prefix=='candidate' and ocm is not None:
-                run('candidate-ocm',[sys.executable,str(REPO/'scripts/run_ocm_environment.py'),
-                    '--server',a.server,'--port',a.port,'--elf',ocm['elf']['path'],
-                    '--symbols',ocm['symbols']['path'],'--ps-init',ocm['ps_init']['path'],
-                    '--output',str(out/'candidate-ocm')],120)
-                observed=json.loads((out/'candidate-ocm/results.json').read_text())
-                if observed.get('status')!='PASS':raise RuntimeError('OCM observation did not pass')
-                return 'OCM_UART_ONLY_NO_NETWORK'
-            def path(name):return files[prefix+'_'+name]['path']
-            ps=Path(path('fsbl')).parents[2];worker=Path(path('worker')).parent
-            load=out/(prefix+'-load')
-            run(prefix+'-load',[sys.executable,str(REPO/'scripts/load_rtio_runtime.py'),
-                '--server',a.server,'--cable',CABLE,'--port',a.port,'--ps-export',str(ps),
-                '--bitstream',path('pl'),'--worker',str(worker),'--cpu0',path('cpu0'),'--output',str(load)],240)
-            loaded=json.loads((load/'results.json').read_text())
-            if loaded.get('status')!='PASS':raise RuntimeError('Loader did not report PASS')
-            def observer_read(phase):
-                from dma_observer_candidate import verify_snapshot
-                text=run('candidate-observer-'+phase,['vivado-container','shell','-c','exec "$@"','bash',
-                    '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
-                    str(REPO/'scripts/probe_dma_observer.tcl'),a.server,CABLE],45)
-                decoded=verify_snapshot(text)
-                (out/('candidate-observer-'+phase+'.json')).write_text(json.dumps(decoded,indent=2)+'\n')
-            if prefix=='candidate' and dma_observer:observer_read('before')
-            if prefix=='candidate' and a.fsbl_spd:
-                run('candidate-fsbl-spd',[sys.executable,str(REPO/'scripts/decode_fsbl_spd_log.py'),
-                    '--log',str(load/'uart.log'),'--output',str(out/'candidate-fsbl-spd')],30)
-            ip=loaded['ip'];db=out/(prefix+'-device-db.py')
-            text=(REPO/'examples/device_db_genesys.py').read_text()
-            text,count=re.subn(r'([\"\']host[\"\']\s*:\s*[\"\'])\d+\.\d+\.\d+\.\d+([\"\'])',lambda m:m[1]+ip+m[2],text)
-            if count!=1:raise ValueError('Expected one core address in copied database')
-            db.write_text(text)
-            if prefix=='candidate' and a.observer_active:
-                run('candidate-observer-active',[sys.executable,str(REPO/'scripts/run_dma_observer_active.py'),
-                    '--server',a.server,'--device-db',str(db),'--artiq-run',a.artiq_run,
-                    '--output',str(out/'candidate-observer-active')],110)
-            run(prefix+'-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),'--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,'--output',str(out/(prefix+'-debug'))],240)
-            if prefix=='candidate' and a.extended:
-                run('candidate-core-dma',[a.artiq_python,str(REPO/'scripts/test_core_dma_hw.py'),
-                    '--ip',ip,'--cycles','3','--output',str(out/'candidate-core-dma')],480)
-                run('candidate-exceptions',[a.artiq_python,str(REPO/'scripts/test_kernel_exceptions_hw.py'),
-                    '--ip',ip,'--cycles','3','--output',str(out/'candidate-exceptions')],480)
-                run('candidate-post-errors-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),
-                    '--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,
-                    '--output',str(out/'candidate-post-errors-debug')],240)
-            if prefix=='candidate' and a.rpc_fault_case:
-                fault=out/'candidate-rpc-fault'
-                run('candidate-rpc-fault',[a.artiq_python,str(REPO/'scripts/inject_rpc_fault.py'),
-                    '--case',a.rpc_fault_case,'--ip',ip,'--device-db',str(db),'--output',str(fault)]+(['--require-kernel-state'] if a.expect_kernel_state else []),90)
-                observed=json.loads((fault/'results.json').read_text())
-                if observed.get('status')!='FAULT_TERMINATION_OBSERVED_RESTORE_REQUIRED':
-                    raise RuntimeError('RPC fault observation incomplete')
-                run('candidate-rpc-terminal-event',['vivado-container','shell','-c','exec "$@"','bash',
-                    '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
-                    str(REPO/'scripts/probe_rpc_failstop.tcl'),a.server,CABLE],30)
-                return ip  # Read-only observation only; no kernel reuse before restoration.
-            run(prefix+'-ethernet',[sys.executable,str(REPO/'scripts/test_ethernet_hw.py'),'--ip',ip,'--interface',a.interface,'--output',str(out/(prefix+'-ethernet.json'))],90)
-            if prefix=='candidate' and dma_observer:observer_read('after')
-            return ip
-        # Convert external termination to an exception so restoration is attempted.
-        old_handler=signal.signal(signal.SIGTERM,lambda *_:(_ for _ in ()).throw(RuntimeError('Termination requested')))
-        try:result=lifecycle(cycle)
-        finally:signal.signal(signal.SIGTERM,old_handler)
-        result.update(dma_observer=dma_observer,dma_observer_active=a.observer_active,kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
-                      elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,trained_observer=observer is not None,observer_probe=('brk' if observer.get('exception_brk') else 'normal') if observer else None,observer_manifest_sha256=hashlib.sha256(a.trained_observer_manifest.read_bytes()).hexdigest() if observer else None,
-                      manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),storage_admission=storage)
-        (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
+        with RestoreReserve(runtime_paths(out,REPO)) as reserve:
+            require_runtime_space(out,REPO)
+            started=time.monotonic();stages={}
+            env=os.environ.copy();env.pop('PYTHONPATH',None);env['GENESYS_LEASE_FD']=str(held.fileno())
+            def run(stage,command,timeout):
+                print(stage+' START',flush=True)
+                try:code,text=bounded(command,timeout,env,held.fileno())
+                except subprocess.TimeoutExpired as error:
+                    text=error.output or ""
+                    if isinstance(text,bytes):text=text.decode(errors="replace")
+                    (out/(stage+".log")).write_text(text)
+                    stages[stage]=dict(status='TIMEOUT');raise
+                (out/(stage+'.log')).write_text(text);stages[stage]=dict(returncode=code)
+                if code:raise RuntimeError(stage+' failed: '+text[-1500:])
+                print(stage+' PASS',flush=True)
+                return text
+            def cycle(prefix):
+                if prefix=='candidate' and observer is not None:
+                    run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
+                        '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
+                        '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
+                        '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--pmu-request-inputs',observer['pmu_request_inputs']['path']] if observer.get('pmu_request_inputs') else [])+(['--pmu-boundary-inputs',observer['pmu_boundary_inputs']['path']] if observer.get('pmu_boundary_inputs') else [])+(['--model-inputs',observer['model_inputs']['path']] if observer.get('model_inputs') else [])+(['--no-master-inputs',observer['no_master_inputs']['path']] if observer.get('no_master_inputs') else [])+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
+                    observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
+                    if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
+                    if observer.get('exception_brk'):return 'EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED'
+                    return 'TRAINED_FSBL_OBSERVATION_ONLY' if observer.get('definitions_only') or observer.get('controls_only') else 'TRAINED_OCM_REGISTERS_ONLY'
+                if prefix=='candidate' and ocm is not None:
+                    run('candidate-ocm',[sys.executable,str(REPO/'scripts/run_ocm_environment.py'),
+                        '--server',a.server,'--port',a.port,'--elf',ocm['elf']['path'],
+                        '--symbols',ocm['symbols']['path'],'--ps-init',ocm['ps_init']['path'],
+                        '--output',str(out/'candidate-ocm')],120)
+                    observed=json.loads((out/'candidate-ocm/results.json').read_text())
+                    if observed.get('status')!='PASS':raise RuntimeError('OCM observation did not pass')
+                    return 'OCM_UART_ONLY_NO_NETWORK'
+                def path(name):return files[prefix+'_'+name]['path']
+                ps=Path(path('fsbl')).parents[2];worker=Path(path('worker')).parent
+                load=out/(prefix+'-load')
+                run(prefix+'-load',[sys.executable,str(REPO/'scripts/load_rtio_runtime.py'),
+                    '--server',a.server,'--cable',CABLE,'--port',a.port,'--ps-export',str(ps),
+                    '--bitstream',path('pl'),'--worker',str(worker),'--cpu0',path('cpu0'),'--output',str(load)],240)
+                loaded=json.loads((load/'results.json').read_text())
+                if loaded.get('status')!='PASS':raise RuntimeError('Loader did not report PASS')
+                def observer_read(phase):
+                    from dma_observer_candidate import verify_snapshot
+                    text=run('candidate-observer-'+phase,['vivado-container','shell','-c','exec "$@"','bash',
+                        '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
+                        str(REPO/'scripts/probe_dma_observer.tcl'),a.server,CABLE],45)
+                    decoded=verify_snapshot(text)
+                    (out/('candidate-observer-'+phase+'.json')).write_text(json.dumps(decoded,indent=2)+'\n')
+                if prefix=='candidate' and dma_observer:observer_read('before')
+                if prefix=='candidate' and a.fsbl_spd:
+                    run('candidate-fsbl-spd',[sys.executable,str(REPO/'scripts/decode_fsbl_spd_log.py'),
+                        '--log',str(load/'uart.log'),'--output',str(out/'candidate-fsbl-spd')],30)
+                ip=loaded['ip'];db=out/(prefix+'-device-db.py')
+                text=(REPO/'examples/device_db_genesys.py').read_text()
+                text,count=re.subn(r'([\"\']host[\"\']\s*:\s*[\"\'])\d+\.\d+\.\d+\.\d+([\"\'])',lambda m:m[1]+ip+m[2],text)
+                if count!=1:raise ValueError('Expected one core address in copied database')
+                db.write_text(text)
+                if prefix=='candidate' and a.observer_active:
+                    run('candidate-observer-active',[sys.executable,str(REPO/'scripts/run_dma_observer_active.py'),
+                        '--server',a.server,'--device-db',str(db),'--artiq-run',a.artiq_run,
+                        '--output',str(out/'candidate-observer-active')],110)
+                run(prefix+'-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),'--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,'--output',str(out/(prefix+'-debug'))],240)
+                if prefix=='candidate' and a.extended:
+                    run('candidate-core-dma',[a.artiq_python,str(REPO/'scripts/test_core_dma_hw.py'),
+                        '--ip',ip,'--cycles','3','--output',str(out/'candidate-core-dma')],480)
+                    run('candidate-exceptions',[a.artiq_python,str(REPO/'scripts/test_kernel_exceptions_hw.py'),
+                        '--ip',ip,'--cycles','3','--output',str(out/'candidate-exceptions')],480)
+                    run('candidate-post-errors-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),
+                        '--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,
+                        '--output',str(out/'candidate-post-errors-debug')],240)
+                if prefix=='candidate' and a.rpc_fault_case:
+                    fault=out/'candidate-rpc-fault'
+                    run('candidate-rpc-fault',[a.artiq_python,str(REPO/'scripts/inject_rpc_fault.py'),
+                        '--case',a.rpc_fault_case,'--ip',ip,'--device-db',str(db),'--output',str(fault)]+(['--require-kernel-state'] if a.expect_kernel_state else []),90)
+                    observed=json.loads((fault/'results.json').read_text())
+                    if observed.get('status')!='FAULT_TERMINATION_OBSERVED_RESTORE_REQUIRED':
+                        raise RuntimeError('RPC fault observation incomplete')
+                    run('candidate-rpc-terminal-event',['vivado-container','shell','-c','exec "$@"','bash',
+                        '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
+                        str(REPO/'scripts/probe_rpc_failstop.tcl'),a.server,CABLE],30)
+                    return ip  # Read-only observation only; no kernel reuse before restoration.
+                run(prefix+'-ethernet',[sys.executable,str(REPO/'scripts/test_ethernet_hw.py'),'--ip',ip,'--interface',a.interface,'--output',str(out/(prefix+'-ethernet.json'))],90)
+                if prefix=='candidate' and dma_observer:observer_read('after')
+                return ip
+            # Convert external termination to an exception so restoration is attempted.
+            old_handler=signal.signal(signal.SIGTERM,lambda *_:(_ for _ in ()).throw(RuntimeError('Termination requested')))
+            try:result=lifecycle(cycle,before_restore=reserve.release)
+            finally:signal.signal(signal.SIGTERM,old_handler)
+            result.update(dma_observer=dma_observer,dma_observer_active=a.observer_active,kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
+                          elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,trained_observer=observer is not None,observer_probe=('brk' if observer.get('exception_brk') else 'normal') if observer else None,observer_manifest_sha256=hashlib.sha256(a.trained_observer_manifest.read_bytes()).hexdigest() if observer else None,
+                          manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),storage_admission=storage,storage_reservation=reserve.report())
+            (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
     return 0 if result['status']=='PASS' and result['restoration']=='PASS' else 1
 
