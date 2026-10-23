@@ -5188,3 +5188,10 @@ referencebuildcommits. Prior two Dell.bit files rawconfig3202404B identical,
 metadata timestamps differ; two .bit parser controls PASS. Newbuild finalresult
 and payloadcomparison PENDING. NoHWaccess/baselinechanges. Evidence source-
 release-chain-2026-10-21 and remote-submission/ps-synth-retry.
+
+
+Evidence preservation fix2026-10-23: Git text normalization altered one CRLF
+byte in newly committed guard-restoration analyzer.bin. Original working/output
+bytes and raw-inventory hash remained intact. Mark *.bin binary and recommit
+exact original1200bytes/SHAf90cf774...18781; prior commit preserved, not rewritten.
+No hardware/test rerun or altered physical result.
