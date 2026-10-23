@@ -2011,3 +2011,26 @@ lease released. No Si/SD/flash/OTP/Kasli changes. Raw byte hashes and restoratio
 Next offline exact-session request channel/ordering and IRQ/ROM exclusion design
 at qualified boundary before any ACK/park implementation; no unchanged telemetry
 run. Full DDR NOT_RUN/NOT_ADMITTED; telemetry is not a write-test permit.
+
+
+
+## 2026-10-23 — Session request/echo command compiled, observation-only (offline)
+
+Added PMU-local request/echo32B records. Only kind1 OBSERVE accepted; nonce64,
+monotonic sequence64, nonzero even generation, zero reserved, XOR corruption
+check and repeated generation read. Publication clears echo generation first,
+writes payload/statusOBSERVED/ACK0 then commits generation after mbar1. Four
+mbar1 instructions verified in actual linked MicroBlaze disassembly. No park,
+interrupt mask, resume or quiescence command. Three actual-C/source controls PASS:
+partial publication, stale generation/sequence, bad checksum and kind2 rejected;
+valid echo cannot assert ACK. Cooperative publication protocol, not authentication
+or protection from malicious concurrent writers; no hardware transport exercised.
+
+Fresh full firmware links; local-layout checkerPASS, telemetry nowffdd7e40,
+requestffdd7e20/echoffdd7df4;8896bytes before table. Old hardcoded telemetry gate
+rejects changed address and must not be reused. ELF8ae05823...810d9. IRQ/exception/
+ECC/power source review retains unresolved exclusions. Evidence
+`evidence/pmu-request-offline-2026-10-23`. No firmware/HW writes,baseline unchanged.
+Next explicit new-image/symbol-derived fixed request publication/readback gate,
+then bounded observational echo/mandatory restore test; no IRQ/ROM exclusion or
+DDR admission inferred. Full DDR NOT_RUN/NOT_ADMITTED.

@@ -27,3 +27,20 @@ services, then inspect PMU-local section placement and total capacity. Resolve a
 read-only, non-disruptive observation transport before considering deployment.
 Do not reuse the failed AP0 private-memory read or guess aliases. A live boundary
 snapshot would still be telemetry, never a destructive DDR-test permit.
+
+
+2026-10-23 request/echo extension (offline): only kind1 OBSERVE. Request and echo
+are separate32B local BSS records. Host must set request generation0, write the
+payload/checksum, verify readback/order, then publish a new nonzero even generation.
+Payload is nonce64+monotonic sequence64+kind1+reserved0. XOR checksum detects some
+accidental corruption; it is not authentication or a concurrency primitive.
+Firmware checks generation before/after payload and rejects stale sequence or
+reused last accepted generation. Echo commits generation last after target mbar1;
+status1 means OBSERVED, ack remains0. No quiescence/resume command exists.
+Host nonce identifies a cooperating session, not an independently verified boot
+identity. BSS zeroing clears state on boot, but reset/boot binding needs separate
+proof. IRQ/ROM/exception/ECC paths remain active and unexcluded.
+
+New symbol layout differs from first physical telemetry image: existing fixed
+read gate correctly rejects it. New transport/image pins and bounded live echo
+qualification are required; no physical request writes have occurred.

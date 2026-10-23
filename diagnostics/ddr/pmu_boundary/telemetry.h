@@ -2,6 +2,7 @@
 #ifndef ARTIQ_PMU_BOUNDARY_TELEMETRY_H
 #define ARTIQ_PMU_BOUNDARY_TELEMETRY_H
 #include <stdint.h>
+#include "request.h"
 /* PMU-local BSS only. No transport/host address assigned; NOT a quiescence ACK. */
 struct artiq_pmu_boundary_record {
  uint32_t sequence, magic, version, loop_count;
@@ -9,6 +10,7 @@ struct artiq_pmu_boundary_record {
 };
 static volatile struct artiq_pmu_boundary_record artiq_pmu_boundary;
 static inline void artiq_pmu_observe_boundary(void) {
+ artiq_pmu_poll_request();
  artiq_pmu_boundary.sequence++;
  artiq_pmu_boundary.magic=UINT32_C(0x504d5542);
  artiq_pmu_boundary.version=1;

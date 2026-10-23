@@ -14,9 +14,10 @@ def stage(build,out):
  original=build/'pmu-app/src';out.mkdir(parents=True);shutil.copytree(original,out/'src',symlinks=True)
  before=(original/'xpfw_core.c').read_text();(out/'src/xpfw_core.c').write_text(transform(before))
  header=REPO/'diagnostics/ddr/pmu_boundary/telemetry.h';shutil.copyfile(header,out/'src/artiq_pmu_boundary.h')
+ shutil.copyfile(header.with_name('request.h'),out/'src/request.h')
  sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
  if sha(original/'xpfw_core.c')!=hashlib.sha256(before.encode()).hexdigest():raise ValueError('Original changed during staging')
- report={'status':'ISOLATED_SOURCE_STAGED_NOT_FIRMWARE','hardware_executed':False,'destructive_test_allowed':False,'original_sha256':sha(original/'xpfw_core.c'),'patched_sha256':sha(out/'src/xpfw_core.c'),'telemetry_sha256':sha(header),'compile_define':'ARTIQ_PMU_BOUNDARY_TELEMETRY=1','limits':'Observation-only loop boundary. No request transport, ACK, interrupt mask, PMU park, ROM exclusion or DDR ownership. No linked firmware artifact.'}
+ report={'status':'ISOLATED_SOURCE_STAGED_NOT_FIRMWARE','hardware_executed':False,'destructive_test_allowed':False,'original_sha256':sha(original/'xpfw_core.c'),'patched_sha256':sha(out/'src/xpfw_core.c'),'telemetry_sha256':sha(header),'request_sha256':sha(header.with_name('request.h')),'compile_define':'ARTIQ_PMU_BOUNDARY_TELEMETRY=1','limits':'Observation-only loop boundary. No request transport, ACK, interrupt mask, PMU park, ROM exclusion or DDR ownership. No linked firmware artifact.'}
  (out/'stage.json').write_text(json.dumps(report,indent=2)+'\n');return report
 if __name__=='__main__':
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--build',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();print(json.dumps(stage(a.build,a.output),indent=2))

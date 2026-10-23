@@ -1,0 +1,36 @@
+{
+  "xpfw_start.S": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_start.S",
+    "sha256": "98fb81769ec13fd0b9e54816e9afcc4209ecbcb9863576109b055cb4317684ee",
+    "anchors": {
+      "brai\tXPfw_InterruptHandler": [
+        19
+      ],
+      "brai\tXPfw_Exception_Handler": [
+        24
+      ],
+      "/* Clear BSS */": [
+        49
+      ]
+    }
+  },
+  "xpfw_interrupts.c": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_interrupts.c",
+    "sha256": "87fac5ab29a629b4d5210646e710fe590bdc76ce4260a2a3fb46cdf2fb459323",
+    "anchors": {
+      "Xil_ExceptionDisable();": [
+        249
+      ],
+      "Xil_ExceptionEnable();": [
+        257
+      ],
+      "PMU_IOMODULE_IRQ_PENDING_CORRECTABLE_ECC_MASK": [
+        226
+      ],
+      "PMU_IOMODULE_IRQ_PENDING_PWR_UP_REQ_MASK": [
+        231
+      ]
+    }
+  },
+  "conclusion": "Existing IRQ/hardware-exception/ECC/power paths remain; observe echo does not exclude ROM/NMI or interrupt delivery. No mask/park action added."
+}
