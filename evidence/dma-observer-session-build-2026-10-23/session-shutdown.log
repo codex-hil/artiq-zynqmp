@@ -1,0 +1,13 @@
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Closed systemd-ask-password.socket - Query the User Interactively for a Password.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Closed gpg-agent-ssh.socket - GnuPG cryptographic agent (ssh-agent emulation).
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Closed gpg-agent.socket - GnuPG cryptographic agent and passphrase cache.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Closed gcr-ssh-agent.socket - GCR ssh-agent wrapper.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Stopping ssh-agent.socket - OpenSSH Agent socket...
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Closed ssh-agent.socket - OpenSSH Agent socket.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Removed slice app.slice - User Application Slice.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: app.slice: Consumed 1.676s CPU time over 26min 38.833s wall clock time, 53.1M memory peak.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Reached target shutdown.target - Shutdown.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Finished systemd-exit.service - Exit the Session.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Reached target exit.target - Exit the Session.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series (sd-pam)[319359]: pam_unix(systemd-user:session): session closed for user codex-hil
+Linger=no

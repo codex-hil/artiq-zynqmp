@@ -167,3 +167,15 @@ configuration bytes. It rejects malformed/truncated headers and reports exact
 payload equality independently of timestamps. The earlier two Dell bitstreams
 have identical3,202,404byte configuration payloads despite different header
 times; this does not automatically qualify a future or different payload.
+
+
+## Hosts without user lingering
+
+When `loginctl show-user codex-hil -p Linger` reports `no`, an unobserved user
+service can be terminated when the final login session closes. Use
+`remote_rtio_build.py submit --job JOB --wait` to retain the SSH login until the
+service finishes. This opt-in mode applies a3-hour service limit, does not change
+lingering/daemon settings, and preserves the existing common build lock.
+Keep/poll the local execution session; do not duplicate submissions. A terminated
+SSH session is not completion evidence. `status` cross-checks service state and
+exit.json; stale RUNNING without an active service is incomplete, never PASS.

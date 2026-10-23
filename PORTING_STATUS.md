@@ -1,6 +1,22 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Dell logout interruption identified; session-held retry queued
+
+User journal shows entire user-manager shutdown/exit at09:41:18, including the
+observer service; loginctl Linger=no. Evidence supports session shutdown causing
+SIGTERM, not a synthesis failure; external trigger of logout remains unknown.
+No explicit project stop instruction found in coordination. Added opt-in submit
+--wait: persistent SSH waits for bounded systemd user service(RuntimeMaxSec10800),
+no lingering/daemon/host-setting change. Two status/command tests PASS.
+Fresh job artiq-dma-observer-session-20261023 submitted; exact generated inputs
+identical to interrupted job, checked by manifest equality. Service active,
+WAITING_FOR_BUILD_LOCK; original artifacts preserved. Live local exec session96801
+must be polled, not duplicated. Evidence `evidence/dma-observer-session-build-2026-10-23`.
+No hardware access/buildPASS. Next collect same retry after completion, inspect
+reports/hash invariance; do not resubmit while this service remains active.
+
+
 ## 2026-10-23 — Dell observer service interrupted; stale status corrected
 
 Same job artiq-dma-observer-20261023 has no exit.json. Systemd journal records

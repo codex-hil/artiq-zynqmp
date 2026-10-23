@@ -123,7 +123,13 @@ def remote_hashes(m,names,terminal=False):
     return json.loads(ssh('python3 -',script=code).stdout)
 
 
-def submit(job):
+def service_command(m,wait=False):
+    command=['systemd-run','--user','--unit='+m['job']]
+    if wait:command+=['--wait','--property=RuntimeMaxSec=10800']
+    return command+['/bin/bash',m['remote']+'/run.sh']
+
+
+def submit(job,wait=False):
     m=metadata(job)
     for name,digest in m['upload_sha256'].items():
         if sha(job/name)!=digest:raise ValueError('Prepared job changed: '+name)
@@ -132,8 +138,15 @@ def submit(job):
     names='\n'.join(m['upload_sha256'])+'\n'
     subprocess.run(['rsync','-a','--files-from=-','-e','ssh -i '+shlex.quote(str(KEY))+' -o BatchMode=yes',str(job.resolve())+'/',HOST+':'+m['remote']+'/'],input=names,text=True,check=True,timeout=120)
     if remote_hashes(m,list(m['upload_sha256']))!=m['upload_sha256']:raise ValueError('Transfer hash mismatch')
-    result=ssh(shlex.join(['systemd-run','--user','--unit='+m['job'],'/bin/bash',m['remote']+'/run.sh']))
-    write(job/'submitted.json',dict(status='SUBMITTED_NOT_BUILD_PROOF',remote=m['remote'],transfer='PASS',service=result.stderr.strip()))
+    command=shlex.join(service_command(m,wait))
+    if wait:
+        write(job/'submitted.json',dict(status='SUBMIT_WAIT_CONNECTION_OPEN_NOT_BUILD_PROOF',remote=m['remote'],transfer='PASS',runtime_limit_seconds=10800))
+        # Keep an SSH login open while user service runs when Linger=no.
+        # No lingering setting/daemon change; remote service is bounded.
+        subprocess.run(['ssh','-i',str(KEY),'-o','BatchMode=yes','-o','ConnectTimeout=10',HOST,command],check=True,timeout=10920)
+    else:
+        result=ssh(command)
+        write(job/'submitted.json',dict(status='SUBMITTED_NOT_BUILD_PROOF',remote=m['remote'],transfer='PASS',service=result.stderr.strip()))
 
 
 
@@ -204,13 +217,13 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='command',required=True)
     q=sub.add_parser('prepare');q.add_argument('--source',type=Path,required=True);q.add_argument('--job',type=Path,required=True);q.add_argument('--mode',choices=['normalize','build'],required=True);q.add_argument('--normalized-xci',type=Path);q.add_argument('--expected-xci-sha256')
     q=sub.add_parser('prepare-ps');q.add_argument('--source',type=Path,required=True);q.add_argument('--job',type=Path,required=True)
-    q=sub.add_parser('submit');q.add_argument('--job',type=Path,required=True)
+    q=sub.add_parser('submit');q.add_argument('--job',type=Path,required=True);q.add_argument('--wait',action='store_true',help='Keep SSH session open; bounded user service for hosts with Linger=no')
     q=sub.add_parser('status');q.add_argument('--job',type=Path,required=True)
     q=sub.add_parser('collect');q.add_argument('--job',type=Path,required=True);q.add_argument('--output',type=Path,required=True)
     a=p.parse_args()
     if a.command=='prepare':print(json.dumps(prepare(a.source,a.job,a.mode,a.normalized_xci,a.expected_xci_sha256),indent=2))
     elif a.command=='prepare-ps':print(json.dumps(prepare_ps(a.source,a.job),indent=2))
-    elif a.command=='submit':submit(a.job);print('SUBMITTED_NOT_BUILD_PROOF')
+    elif a.command=='submit':submit(a.job,a.wait);print('SUBMITTED_NOT_BUILD_PROOF')
     elif a.command=='status':
         print(json.dumps(status(a.job),indent=2))
     else:
