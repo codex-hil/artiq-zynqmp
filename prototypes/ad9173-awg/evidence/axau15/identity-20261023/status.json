@@ -1,0 +1,57 @@
+{
+  "status": "BLOCKED_AXAU15_JTAG_NOT_IDENTIFIED",
+  "hardware_action": "Read-only isolated JTAG enumeration; no programming/reset/configuration writes",
+  "host": "greg-OptiPlex-3070",
+  "lock": "/home/codex-hil/.cache/xilinx-platform-1-11.4.4.lock",
+  "usb_path": "1-11.4.4",
+  "cable": "00001863685301",
+  "observed_part": "xc7s15",
+  "idcode": "0x03620093",
+  "expected_part": "xcau15p",
+  "expected_idcode": "0x04ac2093",
+  "server": "temporary server with only USB node 001/062 mounted; stopped after enumeration",
+  "first_attempt": "Requested 1MHz cable rate unsupported; stopped before opening target. Retry retained supported 6MHz default.",
+  "user_report": {
+    "carrier": "AXAU15 connected to Optiplex USB/Ethernet",
+    "dac": "AD9172 fitted",
+    "vadj_volts": 1.8,
+    "vadj_measurement": "USER_MULTIMETER",
+    "vadj_jumper": "REMOVED",
+    "scope_target_channels": [
+      3,
+      4
+    ],
+    "protected_trenz_ad9173_channels": [
+      1,
+      2
+    ]
+  },
+  "scope_access": "NONE",
+  "adi_usb": "NOT_ENUMERATED",
+  "artifacts": {
+    "run.py": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-identify-20261023/run.py",
+      "sha256": "70cbb3c8152fb613bd8941202114c48b2daaf20fc01f4df15fbe684f918afcf6"
+    },
+    "identify.tcl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-identify-20261023/identify.tcl",
+      "sha256": "914934a55d2b9b8990cd35c74c82f91255814f53f1c718f3ed103e621fa38ff2"
+    },
+    "identify.log": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-identify-20261023/identify.log",
+      "sha256": "a07015f892aa46bbd453a8342735e7469b52e07d8a1f521074f9d83defeebbed"
+    },
+    "console.txt": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-identify-20261023/console.txt",
+      "sha256": "1564798dc3674e725ab20de8f947b7744189b4315533d6697da2814892e2d0be"
+    },
+    "attempt1.txt": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-identify-20261023/attempt1.txt",
+      "sha256": "ee6cf09f874210241f66ea474176f4939e63f76fc3984783dae4860f59f153cc"
+    },
+    "server.log": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-identify-20261023/server.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
