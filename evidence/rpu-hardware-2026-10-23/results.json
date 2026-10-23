@@ -1,0 +1,73 @@
+{
+  "status": "READ_ONLY_CAPTURE_COMPLETE",
+  "hardware_executed": true,
+  "decoded": {
+    "status": "SUPPLIED_RPU_FIELDS_DECODED",
+    "hardware_executed": false,
+    "stable": true,
+    "samples": [
+      {
+        "split_bit": false,
+        "core_clock_enable_bit": true,
+        "peripheral_clock_enable_bit": true,
+        "amba_reset_bit": false,
+        "cores": [
+          {
+            "ncpuhalt_bit": false,
+            "nvalreset_bit": true,
+            "reset_control_bit": false
+          },
+          {
+            "ncpuhalt_bit": false,
+            "nvalreset_bit": true,
+            "reset_control_bit": false
+          }
+        ]
+      },
+      {
+        "split_bit": false,
+        "core_clock_enable_bit": true,
+        "peripheral_clock_enable_bit": true,
+        "amba_reset_bit": false,
+        "cores": [
+          {
+            "ncpuhalt_bit": false,
+            "nvalreset_bit": true,
+            "reset_control_bit": false
+          },
+          {
+            "ncpuhalt_bit": false,
+            "nvalreset_bit": true,
+            "reset_control_bit": false
+          }
+        ]
+      }
+    ],
+    "raw": [
+      {
+        "global_control": 80,
+        "r50_config": 4,
+        "r50_status": 63,
+        "r51_config": 4,
+        "r51_status": 56,
+        "clock_control": 50332418,
+        "reset_control": 4032
+      },
+      {
+        "global_control": 80,
+        "r50_config": 4,
+        "r50_status": 63,
+        "r51_config": 4,
+        "r51_status": 56,
+        "clock_control": 50332418,
+        "reset_control": 4032
+      }
+    ],
+    "ownership": "NOT_PROVEN",
+    "destructive_test_allowed": false
+  },
+  "cable": "210383B7F02DA",
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "inputs_sha256": "5e548fb75f2f75db4778ceb4574a948959087bb36cadea63f602dca7c3148900",
+  "raw_sha256": "aaa6e539cb08e5df8ff72137edddb0375f1480a9d96cf762dec26847c15866dd"
+}

@@ -1,0 +1,14 @@
+{
+  "plan": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/rpu-plan-2026-10-23/read-plan.json",
+    "sha256": "6181b1012ed10c007332e8411a0e04a4fd4826f77c2ade10797e1d16bd457168"
+  },
+  "script_sha256": {
+    "scripts/capture_rpu_state.py": "e7827391c20d56b3d0e495278361f973fb02d11543720a620a0d7c9a25ba433f",
+    "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+    "scripts/check_remote_rtio_build.py": "650ac8d41a90154bed6a4139a78f33c4f99539b835bd43e1eb2d355843495ad3",
+    "scripts/plan_rpu_snapshot.py": "c6a402a031e1d3a864e7bb9c7b1e23ee2f42dc58e5f845496ccea12241c83d36",
+    "scripts/probe_rpu_state.tcl": "c5397fe57452c3f55c0fa1d72563997a290d95ceb52395f16542e0d228abf24d",
+    "scripts/test_candidate_runtime_hw.py": "19cf76817546a106b438c9c252d7271088fb553979836101be129efeaed8123f"
+  }
+}

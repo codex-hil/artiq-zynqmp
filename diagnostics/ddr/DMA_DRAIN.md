@@ -131,3 +131,17 @@ rejection controls PASS. This is offline only; no board fields were read.
 NCPUHALT, NVALRESET, reset controls and clock enables are reported separately;
 none establishes completed AXI drain, R5 cache ownership or destructive DDR
 admission. Next implement leased, bounded DAP capture without writes or core stops.
+
+
+### Live RPU observation — 2026-10-23
+
+`capture_rpu_state.py` defaults offline, validates vendor/plan/helper SHA-256
+before and under the shared Genesys lease, then permits only fourteen fixed
+DAP reads under a 45-second process-group bound. It never stops or resets cores.
+Physical capture COMPLETE, both samples identical: global0x50, configs0x4/0x4,
+statuses0x3f/0x38, clock0x03000302, reset0xfc0. Split bit=0; both
+NCPUHALT=0/NVALRESET=1, R50/R51/AMBA reset bits=0. These observations do not
+show cores held in reset or establish cache/AXI drain. Evidence is in
+`evidence/rpu-hardware-2026-10-23`. No baseline change or fresh Ethernet test.
+Full DDR writes remain NOT_ADMITTED. Next review other active PS DMA masters
+and collect qualifying observations within the eventual diagnostic window.

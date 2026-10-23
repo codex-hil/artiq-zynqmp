@@ -1,6 +1,25 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Read-only RPU hardware capture complete
+
+Source-pinned wrapper under the shared Genesys lease read the seven fixed
+RPU/CRL registers twice (14 reads, 20 ms between samples). Both samples agree:
+global control0x50, R50/R51 config0x4, status0x3f/0x38,
+clock control0x03000302, LPD reset control0xfc0. SLSPLIT=0;
+NCPUHALT=0 for both cores, NVALRESET=1 for both; R50/R51/AMBA reset
+control bits=0; both reviewed clock enable bits=1. This is not held-reset proof.
+No core selection/stop/reset, register write, UART/network or force-access fallback.
+Lease released; baseline configuration unchanged, no new runtime qualification.
+Evidence: `evidence/rpu-hardware-2026-10-23`; raw SHA-256
+`aaa6e539cb08e5df8ff72137edddb0375f1480a9d96cf762dec26847c15866dd`.
+Four offline unit tests PASS, including execution of the real Tcl with mocked
+read-only commands and rejection of incorrect/incomplete/duplicate capture frames.
+RPU cache state, outstanding transactions and ownership remain NOT_PROVEN;
+full DDR destructive testing remains NOT_ADMITTED. Next audit active PS peripheral
+DMA sources and bind quiescence observations to the actual diagnostic window.
+
+
 ## 2026-10-23 — RPU register observation plan (offline)
 
 Added a seven-register RPU/CRL read allowlist checked against the actual AMD PMU
