@@ -1,0 +1,78 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "error": "candidate-trained-observer failed:    \"hardware_executed\": false,\n      \"stable\": true,\n      \"raw\": [\n        {\n          \"gem0_network_control\": 0,\n          \"sd1_present_state\": 32964608,\n          \"qspi_dma_status\": 0\n        },\n        {\n          \"gem0_network_control\": 0,\n          \"sd1_present_state\": 32964608,\n          \"qspi_dma_status\": 0\n        }\n      ],\n      \"samples\": [\n        {\n          \"gem_rx_enabled\": false,\n          \"gem_tx_enabled\": false,\n          \"sd_command_inhibit\": false,\n          \"sd_data_inhibit\": false,\n          \"sd_data_active\": false,\n          \"sd_write_active\": false,\n          \"sd_read_active\": false,\n          \"qspi_dma_busy\": false,\n          \"qspi_dma_outstanding\": 0,\n          \"qspi_dma_fifo_level\": 0,\n          \"qspi_dma_unacknowledged_done\": 0,\n          \"qspi_dma_unknown_bits\": 0\n        },\n        {\n          \"gem_rx_enabled\": false,\n          \"gem_tx_enabled\": false,\n          \"sd_command_inhibit\": false,\n          \"sd_data_inhibit\": false,\n          \"sd_data_active\": false,\n          \"sd_write_active\": false,\n          \"sd_read_active\": false,\n          \"qspi_dma_busy\": false,\n          \"qspi_dma_outstanding\": 0,\n          \"qspi_dma_fifo_level\": 0,\n          \"qspi_dma_unacknowledged_done\": 0,\n          \"qspi_dma_unknown_bits\": 0\n        }\n      ],\n      \"ownership\": \"NOT_PROVEN\",\n      \"destructive_test_allowed\": false\n    },\n    \"limits\": \"Necessary fields only; no core/PMU/PL/PCAP ownership or transaction-drain proof.\"\n  },\n  \"error\": \"master-pmu failed\"\n}\n",
+  "restored_ip": "192.168.2.3",
+  "kind": "candidate-runtime-hardware",
+  "hardware_executed": true,
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "cable": "210383B7F02DA",
+  "elapsed_seconds": 115.36,
+  "stages": {
+    "candidate-trained-observer": {
+      "returncode": 1
+    },
+    "restore-load": {
+      "returncode": 0
+    },
+    "restore-debug": {
+      "returncode": 0
+    },
+    "restore-ethernet": {
+      "returncode": 0
+    }
+  },
+  "extended": false,
+  "rpc_fault_case": null,
+  "expect_kernel_state": false,
+  "ocm_observation": false,
+  "fsbl_spd": false,
+  "trained_observer": true,
+  "observer_probe": "normal",
+  "observer_manifest_sha256": "cc4c2199db26282476c0b0c374bc1c7a7aa43855da08e47a6985ab709a156ae8",
+  "manifest_sha256": "8e50cc625b8147aec223724a2c06d1b1f53e2ca9e522c45b8f6010aa58fad9e6",
+  "storage_admission": {
+    "status": "STORAGE_ADMISSION_PASS",
+    "hardware_executed": false,
+    "minimum_available_bytes": 536870912,
+    "minimum_available_inodes": 1024,
+    "entries": [
+      {
+        "role": "output",
+        "path": "/home/codex-hil/.local/state/artiq-builds/boot-pmu-hardware-20261023",
+        "probe_path": "/home/codex-hil/.local/state/artiq-builds/boot-pmu-hardware-20261023",
+        "available_bytes": 43359756288,
+        "available_inodes": 13759118
+      },
+      {
+        "role": "working_directory",
+        "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+        "probe_path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+        "available_bytes": 1469554688,
+        "available_inodes": 11215556
+      },
+      {
+        "role": "amd_home",
+        "path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+        "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+        "available_bytes": 1469554688,
+        "available_inodes": 11215556
+      },
+      {
+        "role": "amd_tmp",
+        "path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+        "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+        "available_bytes": 1469554688,
+        "available_inodes": 11215556
+      },
+      {
+        "role": "host_tmp",
+        "path": "/tmp",
+        "probe_path": "/tmp",
+        "available_bytes": 43359756288,
+        "available_inodes": 13759118
+      }
+    ],
+    "limits": "Point-in-time headroom check, not reservation or protection against concurrent disk consumption."
+  }
+}

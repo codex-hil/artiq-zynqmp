@@ -1,6 +1,22 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — PMU AP0 read rejected; normal restoration PASS
+
+Physical combined diagnostic under shared Genesys lease: candidate FAIL at first
+PMU read0xffd40024, AXI AP transaction error, DAP status0x30000021. No PMU
+sample obtained; no repeated/force-access/read-alias workaround. Known PMU-local
+header addresses are not proven AP0-accessible. Do not infer a board defect or
+PMU values from this failure. Earlier raw master frames retained but enclosing
+combined candidate remains FAIL. Full cycle115.36s; mandatory normal restore,
+physical TTL/CoreDMA/analyzer ring-wrap/MonInj/Ethernet PASS at192.168.2.3.
+Lease released. No Si/SD/flash/OTP/Kasli writes. DDR test NOT_RUN/NOT_ADMITTED.
+Evidence: `evidence/boot-pmu-hardware-2026-10-23`, raw failure and restoration logs.
+Next offline inspect PMU-local address visibility and maintained AMD interfaces;
+do not repeat the failed AP0 read without a reviewed change. Independent PL HP0
+reset/drain source audit remains safe and authorized while PMU access is unresolved.
+
+
 ## 2026-10-23 — Same-boot PMU event capture integrated (offline)
 
 Added fixed Tcl12reads (six reviewed PMU registers twice), strict frame parser,

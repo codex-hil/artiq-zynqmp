@@ -1,0 +1,91 @@
+{
+  "status": "FAIL",
+  "hardware_executed": true,
+  "ddr_test": "NOT_RUN",
+  "registers": {
+    "x0": 12,
+    "x1": 12584984,
+    "x2": 3086,
+    "x3": 818219064,
+    "x4": 12920888,
+    "x5": 2,
+    "x6": 704,
+    "x7": 2147483648,
+    "x8": 4294860112,
+    "x9": 4294739968,
+    "x14": 1,
+    "x15": 51,
+    "x16": 0,
+    "x17": 0,
+    "x18": 7,
+    "x19": 0,
+    "x20": 4294836224,
+    "x21": 4294840712
+  },
+  "scope": "EXCEPTION_AWARE_EL3_OBSERVER_NO_DDR_TEST",
+  "fsbl_descriptor": {
+    "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+    "symbols_sha256": "df05d210ee11bc87243d1cc571ac9024a58d73c5e520fd9472dfe51fd0bd4c53",
+    "terminal_pcs": [
+      4294708212,
+      4294708216
+    ],
+    "hardware_executed": false
+  },
+  "peripheral_window": {
+    "necessary_fields_pass": true,
+    "destructive_test_allowed": false,
+    "ownership": "NOT_PROVEN",
+    "observations": {
+      "status": "SUPPLIED_PERIPHERAL_FIELDS_DECODED",
+      "hardware_executed": false,
+      "stable": true,
+      "raw": [
+        {
+          "gem0_network_control": 0,
+          "sd1_present_state": 32964608,
+          "qspi_dma_status": 0
+        },
+        {
+          "gem0_network_control": 0,
+          "sd1_present_state": 32964608,
+          "qspi_dma_status": 0
+        }
+      ],
+      "samples": [
+        {
+          "gem_rx_enabled": false,
+          "gem_tx_enabled": false,
+          "sd_command_inhibit": false,
+          "sd_data_inhibit": false,
+          "sd_data_active": false,
+          "sd_write_active": false,
+          "sd_read_active": false,
+          "qspi_dma_busy": false,
+          "qspi_dma_outstanding": 0,
+          "qspi_dma_fifo_level": 0,
+          "qspi_dma_unacknowledged_done": 0,
+          "qspi_dma_unknown_bits": 0
+        },
+        {
+          "gem_rx_enabled": false,
+          "gem_tx_enabled": false,
+          "sd_command_inhibit": false,
+          "sd_data_inhibit": false,
+          "sd_data_active": false,
+          "sd_write_active": false,
+          "sd_read_active": false,
+          "qspi_dma_busy": false,
+          "qspi_dma_outstanding": 0,
+          "qspi_dma_fifo_level": 0,
+          "qspi_dma_unacknowledged_done": 0,
+          "qspi_dma_unknown_bits": 0
+        }
+      ],
+      "ownership": "NOT_PROVEN",
+      "destructive_test_allowed": false
+    },
+    "limits": "Necessary fields only; no core/PMU/PL/PCAP ownership or transaction-drain proof."
+  },
+  "error": "master-pmu failed"
+}
