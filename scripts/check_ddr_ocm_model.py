@@ -3,7 +3,7 @@
 import hashlib,json,re
 from pathlib import Path
 from check_ocm_image import check
-SCRIPTS={'scripts/check_ddr_ocm_model.py','scripts/check_ocm_image.py','scripts/package_local_candidate.py','scripts/load_ddr_ocm_model.tcl','scripts/load_el3_exception_observer.tcl','scripts/collect_fsbl_entry.tcl'}
+SCRIPTS={'scripts/check_ddr_ocm_model.py','scripts/check_ocm_image.py','scripts/package_local_candidate.py','scripts/load_ddr_ocm_model.tcl','scripts/run_ddr_ocm_model.tcl','scripts/load_el3_exception_observer.tcl','scripts/collect_fsbl_entry.tcl'}
 SYMBOLS={'__vectors':0xfffc8000,'_start':0xfffc8800,'model_done':0xfffc888c,'model_fault_done':0xfffc88b4,'model_report':0xfffc8cf0,'model_result':0xfffc8d20,'__stack0_end':0xfffe4000}
 def preflight(path,repo):
  m=json.loads(Path(path).read_text())

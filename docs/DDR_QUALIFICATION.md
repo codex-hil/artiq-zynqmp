@@ -1840,3 +1840,29 @@ Next integrate optional source-pinned model stage AFTER same-boot no-master
 capture into inherited-lease child and mandatory normal restoration; prepare
 fresh nested manifests/negative controls, then one bounded no-DDR physical run.
 Full DDR NOT_RUN/NOT_ADMITTED; PMU/core/history requirements unchanged.
+
+
+
+## 2026-10-23 — OCM model executes physically on A53; restore PASS
+
+Integrated optional model stage AFTER trained OCM observer/no-master PL and
+same-boot necessary master/peripheral checks. Parent requires no-master window,
+exact nested ELF/layout/helper pins, reruns before/under shared lease. Child
+selects exact CPU0 and requires halted predecessor terminal; captures fixed OCM
+report. Seven offline loader/observer controls PASS. Fresh complete manifest
+`evidence/ddr-model-boot-integration-2026-10-23`.
+
+Initial attempt rejected by storage gate BEFORE hardware (<512MiB on sharedSSD).
+Own completed2026-10-05 abi-acceptance build moved to root state disk:1578files/
+551043483bytes SHA-verified plus symlink targets before old location replaced by
+symlink. No tools/installers/other-thread files removed; relocation receipt kept.
+Then physical cycle137.22s under shared Genesys lease PASS. Actual A53 reaches
+model_done0xfffc888c/x15=0x33/x0=0; OCM report16writes/16reads/phase3/error0,
+exact final address/tag/data matches, model_result0. These are OCM MODEL cells,
+not physical DDR transactions. No injected exception/SError proof in this run.
+Normal runtime restored192.168.2.3 TTL/CoreDMA/analyzerwrap/MonInj/EthernetPASS;
+lease released. Evidence `evidence/ddr-model-boot-hardware-2026-10-23`.
+
+No Si/SD/flash/OTP/Kasli writes. Full DDR NOT_RUN/NOT_ADMITTED. Next offline
+model exception-injection qualification and explicit PMU/core/history ownership
+policy before any physical DDR backend; no repeated unchanged model success run.

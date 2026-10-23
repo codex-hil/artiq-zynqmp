@@ -56,6 +56,7 @@ def main():
     p.add_argument('--peripheral-inputs',type=Path)
     p.add_argument('--master-inputs',type=Path)
     p.add_argument('--no-master-inputs',type=Path)
+    p.add_argument('--model-inputs',type=Path)
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
@@ -79,6 +80,11 @@ def main():
         if not a.exception_observer or not a.master_inputs:raise ValueError('Require complete normal observer')
         from no_master_candidate import preflight as no_master_preflight
         no_master=no_master_preflight(a.no_master_inputs,REPO)
+    model=None
+    if a.model_inputs:
+        if not no_master:raise ValueError('Model requires qualified no-master window')
+        from check_ddr_ocm_model import preflight as model_preflight, parse as model_parse
+        model=model_preflight(a.model_inputs,REPO)
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -142,6 +148,10 @@ def main():
                     result['no_master_configuration']=verify_configuration(result['master_window'])
                 if not result['master_window']['necessary_dma_fields_pass']:
                     raise ValueError('Master DMA fields not quiet; restore without DDR writes')
+            if model:
+                model_preflight(a.model_inputs,REPO)
+                captured=xs('ocm-model','run_ddr_ocm_model.tcl',a.server,model['elf']['path'],'210383B7F02DA')
+                result['ocm_model']=model_parse(captured)
     except Exception as error: result.update(status='FAIL',error=str(error))
     finally:
         (out/'uart.log').write_bytes(raw)
