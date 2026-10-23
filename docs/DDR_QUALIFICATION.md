@@ -1780,3 +1780,23 @@ flash/OTP/Kasli changes. Raw evidence `evidence/no-master-boot-hardware-2026-10-
 Next offline design bounded OCM DDR diagnostic and explicit PMU/core/history
 admission policy; do not repeat unchanged no-master load or bypass unresolved
 ownership. No automatic destructive-test permission from this successful cycle.
+
+
+
+## 2026-10-23 — Bounded DDR pattern engine host/AArch64 object PASS (offline)
+
+Added freestanding C engine with callback-only memory I/O, no physical backend
+or loader. Complete unique/aligned address list validated before first I/O:
+max8192words, both actual configured windows, MMIO gap excluded. Four phases
+zero/ones/address tags/complement; write-all/barrier/read-all detects aliases.
+First fault/mismatch returns phase/address/expected/actual and completed counts.
+Four actual-C host-model controls PASS including alias/fault injection and invalid
+range no-I/O. Freestanding AArch64 relocatable object compiles with warnings as
+errors; no undefined runtime symbols. This is NOT an executable OCM image.
+Evidence `evidence/ddr-pattern-offline-2026-10-23`; source/reproducer/limitations
+in `diagnostics/ddr/bounded_test/README.md`. No hardware access, baseline unchanged.
+
+Next OCM code/stack/address-list/report placement and existing exception capture
+integration, plus explicit ownership admission. Callback timeout cannot interrupt
+stalled physical AXI by itself. PMU/core/history ownership unresolved; full DDR
+NOT_RUN/NOT_ADMITTED. No deployment command provided or physical stores executed.
