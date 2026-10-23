@@ -1639,3 +1639,11 @@ candidate and restoration loaders. No board change; baseline not reverified.
 See evidence/boot-pcap-context-unavailable-2026-10-23/assessment.json and fresh
 boot-pcap-context-integration-2026-10-23 inputs. Reconnect exact board USB before
 continuation. DDR admission remains closed; no completion inferred from reset.
+
+
+2026-10-23 physical PCAP context PASS: two identical status0xa0000a46,
+reset1/control1/direction0 observations. Reset control asserted is context,
+not completion/exclusive ownership proof. Normal runtime192.168.2.3 restored
+TTL/CoreDMA/analyzer/MonInj/EthernetPASS. USB blockage superseded. Full DDR
+NOT_RUN/NOT_ADMITTED; PMU and PLHP0/reset epoch remain unresolved. Evidence
+boot-pcap-context-hardware-2026-10-23; no repeat unchanged capture needed.

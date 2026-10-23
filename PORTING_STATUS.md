@@ -1,6 +1,26 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Physical PCAP context captured; normal runtime restored PASS
+
+Single shared Genesys lease113.849s: trained FSBL/exception-aware OCM observer
+and same-boot peripheral/master context PASS. Two identical PCAP samples:
+status0xa0000a46, reset0x00000001, control0x00000001, direction0x00000000.
+Reset control is asserted, PCAP selected, write direction selected. This
+provides the missing context for prior status-only WR_IDLE0; it does not prove
+an active transfer, completed transfer, permanent reset or exclusive ownership.
+Previous failed idle criterion remains preserved. PMU ownership and PL/PS reset
+and drain epoch remain unresolved; full DDR NOT_RUN/NOT_ADMITTED.
+
+Normal runtime192.168.2.3 restored; physical TTL/CoreDMA/analyzer ring-wrap/
+MonInj and Ethernet checks PASS. Lease released. No PCAP control writes, private
+PMU retry, Si/SD/flash/OTP/Kasli changes. Evidence:
+`evidence/boot-pcap-context-hardware-2026-10-23` (raw UART gzip plus byte hashes).
+Next offline review PLHP0/reset epoch and owner exclusion before any DDR sweep;
+no repeated unchanged capture required. USB absence/permission failures remain
+historical; this successful run supersedes their current blockage.
+
+
 ## 2026-10-23 — PCAP context integration ready; physical capture blocked by absent USB
 
 Fixed read-only AP0 capture now samples status/reset/control/direction twice
