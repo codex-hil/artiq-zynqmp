@@ -1,0 +1,10 @@
+{
+  "status": "BLOCKED_USB_ABSENT",
+  "cable": "210383B7F02DA",
+  "candidate_reset_executed": false,
+  "restoration_reset_executed": false,
+  "evidence": "Both loaders failed opening exact UART before first reset/XSDB call; no alternate device selected. Generic child hardware_executed=true marks attempted lifecycle, not successful hardware access.",
+  "baseline_currently_verified": false,
+  "destructive_test_allowed": false,
+  "next": "Reconnect Genesys USB on owning debug station, verify exact cable/port then rerun fresh bounded capture and restoration."
+}

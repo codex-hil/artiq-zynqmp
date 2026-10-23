@@ -1,0 +1,37 @@
+test_real_tcl_two_reads (test_pcap_capture.CaptureTests.test_real_tcl_two_reads) ... ok
+test_missing_invalid_unstable (test_pcap_controls.Tests.test_missing_invalid_unstable) ... ok
+test_reset_and_idle_are_independent_no_admission (test_pcap_controls.Tests.test_reset_and_idle_are_independent_no_admission) ... ok
+test_real_tcl_eight_reads (test_pcap_controls_capture.CaptureTests.test_real_tcl_eight_reads) ... ok
+test_invalid_and_unstable (test_pcap_plan.Tests.test_invalid_and_unstable) ... ok
+test_read_write_idle_are_distinct (test_pcap_plan.Tests.test_read_write_idle_are_distinct) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.009s
+
+OK
+test_exact_inventory_and_pins (test_boot_master_window.MasterTests.test_exact_inventory_and_pins) ... ok
+test_malformed_capture_aborts (test_boot_master_window.MasterTests.test_malformed_capture_aborts) ... ok
+test_order_and_no_admission_even_when_quiet (test_boot_master_window.MasterTests.test_order_and_no_admission_even_when_quiet) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.083s
+
+OK
+test_admission_failure_never_downloads (test_trained_observer.TrainedTests.test_admission_failure_never_downloads) ... ok
+test_bad_result_rejected (test_trained_observer.TrainedTests.test_bad_result_rejected) ... ok
+test_controls_only_preserves_unmasked_state (test_trained_observer.TrainedTests.test_controls_only_preserves_unmasked_state) ... ok
+test_definitions_only_does_not_download (test_trained_observer.TrainedTests.test_definitions_only_does_not_download) ... ok
+test_success (test_trained_observer.TrainedTests.test_success) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.024s
+
+OK
+test_exact_inventory_and_pins (test_boot_master_window.MasterTests.test_exact_inventory_and_pins) ... ok
+test_malformed_capture_aborts (test_boot_master_window.MasterTests.test_malformed_capture_aborts) ... ok
+test_order_and_no_admission_even_when_quiet (test_boot_master_window.MasterTests.test_order_and_no_admission_even_when_quiet) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.085s
+
+OK

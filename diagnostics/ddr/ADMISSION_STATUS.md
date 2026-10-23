@@ -53,3 +53,11 @@ after configuration. WR_IDLE/RD_IDLE polling belongs to transfer-specific paths.
 The earlier status-only capture lacks reset/mode/direction context and remains a
 failed conservative criterion, not an active-transfer proof. A four-register
 read-only context plan is prepared; it is NOT_RUN and does not admit DDR writes.
+
+
+2026-10-23: PCAP context eight-read capture integrated/tested offline. Physical
+attempt blocked by absent exact Genesys USB UART, before reset/JTAG in both
+candidate and restoration loaders. No board change; baseline not reverified.
+See evidence/boot-pcap-context-unavailable-2026-10-23/assessment.json and fresh
+boot-pcap-context-integration-2026-10-23 inputs. Reconnect exact board USB before
+continuation. DDR admission remains closed; no completion inferred from reset.

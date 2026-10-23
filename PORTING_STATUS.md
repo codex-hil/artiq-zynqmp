@@ -1,6 +1,26 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — PCAP context integration ready; physical capture blocked by absent USB
+
+Fixed read-only AP0 capture now samples status/reset/control/direction twice
+(eight reads), validates order/address/framing and pins vendor header plus all
+execution dependencies. Separate `pcap_context_observation_only` profile preserves
+the prior failed status-only criterion; no completion or DDR ownership inferred.
+Fourteen offline tests PASS, including actual Tcl allowlist, nested manifest/ELF
+preflight and lifecycle controls. Fresh inputs:
+`evidence/boot-pcap-context-integration-2026-10-23`.
+
+Bounded shared-lease attempt stopped opening the exact Genesys UART: USB serial
+210383B7F02DA is absent. Candidate and automatic restoration both failed BEFORE
+first reset/JTAG call; no board mutation occurred. Generic wrapper FAIL/restoration
+FAIL retained, not replaced by PASS; current baseline cannot be reverified.
+Evidence `evidence/boot-pcap-context-unavailable-2026-10-23/assessment.json`.
+Reconnect Genesys USB to owning station, then verify exact identity and rerun
+capture/restoration. No alternate UART/board, PMU retry, Si/SD/flash/OTP write.
+DDR NOT_RUN/NOT_ADMITTED.
+
+
 ## 2026-10-23 — PCAP status requires reset/mode context (offline)
 
 AMD XFpga_PcapInit releases reset/selects PCAP/write direction before transfer;

@@ -1631,3 +1631,11 @@ field-independence/invalid-sample tests PASS; source hashes/line anchors in
 Next integrate contextual read-only capture, report observation-only rather than
 inventing a transfer-completion rule; retain prior criterion failure and PMU gap.
 DDR write admission remains closed; no controller write/reset/reconfiguration.
+
+
+2026-10-23: PCAP context eight-read capture integrated/tested offline. Physical
+attempt blocked by absent exact Genesys USB UART, before reset/JTAG in both
+candidate and restoration loaders. No board change; baseline not reverified.
+See evidence/boot-pcap-context-unavailable-2026-10-23/assessment.json and fresh
+boot-pcap-context-integration-2026-10-23 inputs. Reconnect exact board USB before
+continuation. DDR admission remains closed; no completion inferred from reset.
