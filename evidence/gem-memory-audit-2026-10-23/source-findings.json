@@ -1,0 +1,52 @@
+{
+  "hardware_executed": false,
+  "sources": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/emacps/src/xemacps.c",
+      "sha256": "91588c4108a28a8f90a0a5e3ac8cc1c508ef1fa1cd3fe32d62df8dc61b02087f",
+      "anchors": {
+        "void XEmacPs_Stop": [
+          265
+        ],
+        "InstancePtr->IsStarted = 0U;": [
+          285
+        ],
+        "Any frames in the": [
+          306
+        ]
+      }
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_dma.c",
+      "sha256": "e9dd04983c5e0d9bd13b5ebaf8b807dd17eacec24e0f3b90423be730c515e2cc",
+      "anchors": {
+        "u8_t emac_bd_space[0x200000]": [
+          122
+        ],
+        "XEmacPs_BdSetAddressTx(txbd, (UINTPTR)q->payload);": [
+          372
+        ],
+        "p = pbuf_alloc(PBUF_RAW, XEMACPS_MAX_FRAME_SIZE, PBUF_POOL);": [
+          444,
+          753
+        ],
+        "bd_space_index += 0x10000;": [
+          678,
+          681,
+          685,
+          688
+        ]
+      }
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/lscript.ld",
+      "sha256": "dd2fa4ae6e8af2488b93f9d67b01b9f2b014a7b07bc596712ff4e269d8859e75",
+      "anchors": {
+        "psu_ddr_0_memory_0 : ORIGIN": [
+          16
+        ]
+      }
+    }
+  ],
+  "limit": "Source tree adjacent to qualified ELF; not a reproducible rebuild/source-to-binary equivalence proof."
+}

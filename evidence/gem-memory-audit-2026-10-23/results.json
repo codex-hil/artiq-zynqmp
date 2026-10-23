@@ -1,0 +1,37 @@
+{
+  "status": "OFFLINE_LINKED_GEM_MEMORY_NOT_OWNERSHIP",
+  "hardware_executed": false,
+  "elf": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+    "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+  },
+  "linked_allocations": {
+    "ram_heap": {
+      "start": 2157648,
+      "size": 131263,
+      "end_exclusive": 2288911
+    },
+    "memp_memory_PBUF_POOL_base": {
+      "start": 2289312,
+      "size": 3670079,
+      "end_exclusive": 5959391
+    },
+    "tx_pbufs_storage": {
+      "start": 6291456,
+      "size": 2048,
+      "end_exclusive": 6293504
+    },
+    "rx_pbufs_storage": {
+      "start": 6293504,
+      "size": 2048,
+      "end_exclusive": 6295552
+    },
+    "emac_bd_space": {
+      "start": 8388608,
+      "size": 2097152,
+      "end_exclusive": 10485760
+    }
+  },
+  "destructive_test_allowed": false,
+  "limits": "Static ELF allocations only, not live queue pointers or pbuf chains. TX can reference other pools or application payloads; excluding these five ranges alone cannot authorize a DDR write test."
+}

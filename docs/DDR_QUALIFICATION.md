@@ -1195,3 +1195,22 @@ bits and QSPI busy/outstanding/FIFO are0. No device writes or baseline changes.
 Four offline tests PASS; raw evidence `evidence/peripheral-dma-hardware-2026-10-23`.
 Momentary fields are not ownership/drain proof. Next audit active GEM rings/buffers
 and diagnostic-window policy; no destructive DDR admission follows this snapshot.
+
+
+### 2026-10-23 — Qualified runtime GEM memory audit (offline)
+
+Audited the normal CPU0 ELF, SHA29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3.
+Linked emac_bd_space is [0x800000,0xa00000), TX/RX pbuf pointer tables
+[0x600000,0x600800)/[0x600800,0x601000). PBUF_POOL and lwIP heap are also
+in low DDR; exact half-open symbol ranges in `evidence/gem-memory-audit-2026-10-23`.
+Adjacent AMD source writes q->payload into TX descriptors, allocates RX pbufs
+from PBUF_POOL and reserves64KiB per RX/TX descriptor area. Thus descriptor
+exclusion alone cannot protect Ethernet payloads. XEmacPs_Stop disables
+interrupts and RX/TX but contains no DMA-drain polling. Reset documentation
+also warns descriptor lists survive reset. Source hashes/line anchors retained;
+this is not a reproducible source-to-binary equivalence proof or live pointer dump.
+Two audit test groups PASS (missing/duplicate/overlap/type/address controls).
+No hardware access or changes. Destructive DDR remains NOT_ADMITTED.
+Next inspect the diagnostic FSBL/PMU boot path to establish whether GEM is
+started there at all, then define a boot-window ownership gate instead of
+assuming that stopping a running networked CPU stops the Ethernet master.
