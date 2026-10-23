@@ -1,0 +1,57 @@
+{
+  "status": "PHYSICAL_AD9172_PLL_DLL_PASS",
+  "bit_sha256": "6889865bf8145f25b2718dfd23bcc53c9d28a620a1b2bb50a96af73cc9bf4fe1",
+  "cable": "210512180081",
+  "scope_access": false,
+  "dac_access": true,
+  "final_state": "volatile_dual_spi_probe_running_dac_muted_PLL_DLL_configured",
+  "nominal_dac_fs_hz": 4915200000,
+  "measured_absolute_frequency": false,
+  "dac_pll_samples": [
+    3,
+    3,
+    3
+  ],
+  "dac_dll_samples": [
+    1,
+    1,
+    1
+  ],
+  "mute_register": 0,
+  "digital_clock_powerdown": 1,
+  "hmc_identity": "NOT_READ",
+  "hmc_pll_status": "NOT_READ",
+  "hmc_commanded_outputs": [
+    2
+  ],
+  "mgt_reference": "DISABLED_NOT_QUALIFIED",
+  "jesd": "NOT_RUN",
+  "rf": "NOT_RUN",
+  "build": {
+    "wns_ns": 17.241,
+    "whs_ns": 0.037,
+    "drc_checks": 0,
+    "partial_input_delays": 2,
+    "unconstrained_internal_endpoints": 0
+  },
+  "source_hashes": {
+    "top.v": "46027baf58e4e09e845e1311f6e13fde2cc04040f127349e31e2ea0ccf119ad4",
+    "transport.tcl": "88aecab2a0a9c9b537a914fdee0ca9f1b036e68c71fc6cbe12c7e3e0f1cfe5ef",
+    "test_host.tcl": "39d19cebcd49921878f66ea09444850bb513c3f81c57d5234f142b1e6e3d1a75",
+    "read.tcl": "c5fbbaa8bd82cb30c61612c2378b2e4e2bcd19430fa56e795a55c01da8945ae5",
+    "run_hardware.py": "27bf07f26639bafde11366a613ee120b45e3679de5e03e4b5db4804b0d1ebc3a",
+    "core.v": "10a0981289b8d08e6fdde5ca78fee118b02bfa422f32b4806dc206a73355563f",
+    "build.tcl": "2fbaf962144d81fc61519491082bc430ecd47bc9cec532ed2b8e93e39b9fa373",
+    "tb.v": "bab684fa5a8d501fed7a50e6ea5ac22287233db0fb96db63b330c1483e230118",
+    "README.rst": "931be343fbefb5e32e4f73244136b806fb1d44ad27bc3f62b6ad3d4fdb3ec799"
+  },
+  "artifact_hashes": {
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-setup-20261023a/spi_probe.bit": "6889865bf8145f25b2718dfd23bcc53c9d28a620a1b2bb50a96af73cc9bf4fe1",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-setup-20261023a/timing.rpt": "120a2e06eeea4189387fb70a1050195da33daea2f90d362c5a3beddd8ed8f2bd",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-setup-20261023a/drc.rpt": "0f797279b810520d995f30b741e5dfce7293c24efdc28bc72b46131d9be4c2b8",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-setup-20261023a/vivado.log": "93786ba4a5be0fce36eae5030e57820799216f47680730cb6ecef7c3da019493",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-setup-hardware-20261023a/read.txt": "3679c07da4bf683ee93d8ef9abc60853c543b9da3bd3e40dc27168f6f9643647",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-setup-hardware-20261023b/read.txt": "cea559903cfe70f4160dea1844f992cab6341d42de4a324491d5e1e9d6e308f0"
+  },
+  "initial_failure": "Full-byte compare of reserved bit4 at0x094 failed; corrected to documented divider mask3; both original lock samples retained."
+}

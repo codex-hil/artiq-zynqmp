@@ -168,3 +168,12 @@ Physical AD9172 ID0x9172/revision2 and scratch write/read/restore passed after
 factory boot loading. The final volatile FPGA image is this SPI probe, replacing
 the clock probe. No HMC clock configuration, JESD or RF validation yet.
 See ``spi-probe/README.rst`` and its explicit asynchronous-input timing limits.
+
+Physical AD9172 clock baseline (2026-10-23)
+-----------------------------------------
+
+``clock-setup/`` replaces the SPI-only diagnostic with a versioned dual-chip SPI
+bridge. Onboard HMC output2 profile was written; AD9172 PLL/DLL lock and nominal
+4.9152GS/s divider readback physically passed. HMC readback/ID and absolute
+frequency were not measured. DAC remains muted; dedicated FMC reference,
+JESD and RF remain unqualified. See its README and clock-setup evidence.
