@@ -1,6 +1,30 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Fresh reserve-aware preflight and maintained IRQ-mask review
+
+Regenerated complete nested helper pins against new allocated-reserve parent;
+actual offline parent preflight PASS in
+`evidence/restore-guarded-request-preflight-2026-10-23`. No unchanged request
+execution. Offline sharedSSD checkpoint969580544bytes is BELOW1342177280
+(reserve768MiB+normal512MiB), so hardware would not be admitted. Space must be
+rechecked/reserved before next load; no threshold reduction or override.
+
+Compiled maintained MicroBlaze interrupt/exception disable assembly using actual
+BSP includes. Objects show IE-only clear0x2 versus EE clear0x100 via fallback
+mfs/andi/mts. Canonical XPAR_MICROBLAZE_USE_MSR_INSTR is not assumed present;
+no incorrect msrclr claim. Source Xil_ExceptionDisable conditionally calls both
+helpers, so future laboratory guard should preserve exception diagnostics using
+interrupt-only helper and explicit MSR readback. Actual object/mask/flow controls
+PASS; `evidence/pmu-irq-policy-2026-10-23` contains commands/source/object hashes
+and disassembly. No linked guard or target execution. IE0 is not ROM/NMI/error/
+DDR exclusion; scheduler/history/secondary-core obligations remain.
+Next isolated, default-disabled laboratory guard source design at qualified
+boundary with no return to scheduler/no resume, ACK0 until remaining ownership
+is established. Review whole control flow before any target attempt. No hardware
+access; normal baseline unchanged; full DDR NOT_RUN/NOT_ADMITTED.
+
+
 ## 2026-10-23 — Allocated restoration reserve integrated/tested offline
 
 Parent now allocates768MiB real blocks on each distinct runtime filesystem under

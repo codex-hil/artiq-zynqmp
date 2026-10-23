@@ -47,3 +47,13 @@ These tests validate protocol rules, not that the obligations can yet be met.
 Next implement source-only hook/module/transport integration in an isolated AMD
 source copy, preserving the current firmware and normal boot services. Do not load
 it before memory footprint, ROM/NMI/error exclusions and restoration are reviewed.
+
+
+2026-10-23 IRQ-mask policy review: direct maintained
+`microblaze_disable_interrupts()` clears IE0x2, while exception-disable clears
+EE0x100 and Xil_ExceptionDisable may call both. Keep hardware exception reporting
+available in a proposed laboratory guard; do not use broad exception-disable as
+quiescence proof. Compile/disassembly evidence is in pmu-irq-policy-2026-10-23.
+A default-disabled guard could enter an instruction-only PMU-local loop after
+IE readback, without scheduler/resume/DDR callbacks; this has not been built or
+run. It would still carry ACK0 with ROM/NMI/error/history/core exclusions unresolved.

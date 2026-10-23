@@ -1,0 +1,45 @@
+{
+  "status": "MICROBLAZE_MASK_HELPERS_COMPILED_OFFLINE_NOT_EXECUTED",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "helpers": {
+    "microblaze_disable_interrupts": {
+      "cleared_msr_mask": "0x2",
+      "source_sha256": "57a1895dc1a44d33925f351a59d9591f38a8dee315b88eb7fb29e37f9b06fa95",
+      "object_sha256": "3960874b7e2cf6cd1c90dd02179358c0bf94f93b51d22ec5a22c04b417ad4d9c",
+      "command": [
+        "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+        "-c",
+        "-mlittle-endian",
+        "-mcpu=v9.2",
+        "-I/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include",
+        "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_disable_interrupts.S",
+        "-o",
+        "/home/codex-hil/.local/state/artiq-builds/pmu-irq-review-final-20261023/microblaze_disable_interrupts.o"
+      ]
+    },
+    "microblaze_disable_exceptions": {
+      "cleared_msr_mask": "0x100",
+      "source_sha256": "5082b24768007fba118be325bc6a60fac203dcf340242fe9163e7d0a0beabe9e",
+      "object_sha256": "29118a2b9394129bcc5129fceba37415c09897b3c9f568834448f55ca0f81747",
+      "command": [
+        "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+        "-c",
+        "-mlittle-endian",
+        "-mcpu=v9.2",
+        "-I/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include",
+        "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_disable_exceptions.S",
+        "-o",
+        "/home/codex-hil/.local/state/artiq-builds/pmu-irq-review-final-20261023/microblaze_disable_exceptions.o"
+      ]
+    }
+  },
+  "exception_api_sha256": "dd5de8679218f5fb10b7c87f8e6f1d81e369eca94f8767b42de4810bf8f30759",
+  "decision": "Future laboratory guard should use maintained interrupt-only helper with MSR readback, preserving exception reporting; not a DDR ownership permit.",
+  "remaining": [
+    "Hardware exception/ROM/NMI/error paths remain unexcluded.",
+    "No scheduler processing after entering guard must be established in complete target control flow.",
+    "PMU-originated outstanding transactions and secondary-core releases remain separate obligations."
+  ],
+  "limits": "Actual objects for explicit command/BSP includes, not proof of original library build equivalence, linked guard or live MSR. Undefined canonical XPAR_MICROBLAZE_USE_MSR_INSTR selects fallback instructions here; do not assert msrclr was used."
+}

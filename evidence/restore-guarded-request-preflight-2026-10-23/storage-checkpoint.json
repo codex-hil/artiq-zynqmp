@@ -1,0 +1,8 @@
+{
+  "status": "OFFLINE_CAPACITY_CHECK_NOT_EXECUTION",
+  "hardware_executed": false,
+  "shared_available_bytes": 969580544,
+  "required_before_reservation_bytes": 1342177280,
+  "enough_at_checkpoint": false,
+  "next": "If insufficient, relocate only own completed verified artifacts preserving paths before any future load. No storage gate override or unchanged request rerun."
+}

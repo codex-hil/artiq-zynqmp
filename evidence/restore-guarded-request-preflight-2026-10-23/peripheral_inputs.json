@@ -1,0 +1,15 @@
+{
+  "plan": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/peripheral-dma-plan-2026-10-23/read-plan.json",
+    "sha256": "1c75e8ae72b251bd0662be9a7c9f8e14eadc607a28a6652522a765b5d919e65d"
+  },
+  "script_sha256": {
+    "scripts/capture_peripheral_dma_state.py": "8228490918e73aa8eea675ebbc595972f83f4e8895aedc9f3502cc4fb8403b7c",
+    "scripts/test_candidate_runtime_hw.py": "b258b5f4d2f58b319298b0bff2aad36e415ce4dbb3d553841109b1224efd3cd8",
+    "scripts/plan_peripheral_dma_snapshot.py": "251983a5cb01a69e46675edd4f4f6726c0711d4aaadae76068d21c4a4bff01c4",
+    "scripts/plan_zdma_snapshot.py": "0474d06449ef6831bf8977344ecb2a127ff9d91ed735045983a2bbb3523a35f2",
+    "scripts/probe_peripheral_dma_state.tcl": "2088e40ebecc84f625a38dd9db17b85778e8d2c4a3d792907d9414b3667c442b",
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb"
+  }
+}

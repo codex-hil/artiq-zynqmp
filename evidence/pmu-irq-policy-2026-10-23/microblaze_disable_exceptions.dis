@@ -1,0 +1,12 @@
+
+/home/codex-hil/.local/state/artiq-builds/pmu-irq-review-final-20261023/microblaze_disable_exceptions.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <microblaze_disable_exceptions>:
+   0:	94808001 	mfs	r4, rmsr
+   4:	a484feff 	andi	r4, r4, -257
+   8:	9404c001 	mts	rmsr, r4
+   c:	b60f0008 	rtsd	r15, 8
+  10:	80000000 	or	r0, r0, r0

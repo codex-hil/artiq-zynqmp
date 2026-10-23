@@ -1,0 +1,12 @@
+
+/home/codex-hil/.local/state/artiq-builds/pmu-irq-review-final-20261023/microblaze_disable_interrupts.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <microblaze_disable_interrupts>:
+   0:	95808001 	mfs	r12, rmsr
+   4:	a58cfffd 	andi	r12, r12, -3
+   8:	940cc001 	mts	rmsr, r12
+   c:	b60f0008 	rtsd	r15, 8
+  10:	80000000 	or	r0, r0, r0
