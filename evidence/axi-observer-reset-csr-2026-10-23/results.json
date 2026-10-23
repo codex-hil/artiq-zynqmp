@@ -1,0 +1,11 @@
+{
+  "status": "SIMULATION_ONLY_PASS",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "source_sha256": {
+    "diagnostics/ddr/axi_read_observer_csr.py": "1a0656d9abe736833ca89c32fba82c8d3ca21b122ec4f045d9295a537fa5955b",
+    "tests/test_axi_observer_reset_csr.py": "7ddc1dbc814dac3019edeabdd3da4b140c7d6e492d69fc3aa8b7089f77671117",
+    "diagnostics/ddr/axi_read_observer.py": "f2d67d31da30a46a3c6eea5d7dcb63b941cf5d4e3fe84de79edbfcdf4ca8bb6c"
+  },
+  "limits": "No production integration/address allocation; epoch qualification tied0. Reset loses accounting history and cannot imply PS drain."
+}

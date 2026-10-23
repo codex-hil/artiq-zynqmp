@@ -1437,3 +1437,19 @@ No hardware access or FPGA build; PMU AP0 access remains unresolved.
 Next define observer CSR/reset epoch wiring and verify monitor-reset loss of
 history against an independent owner model before planning a Dell build.
 DDR writes remain NOT_ADMITTED; simulation quiet is not physical drain proof.
+
+
+### 2026-10-23 — Observer reset-history test and status CSR prototype PASS
+
+Added two read-only CSRStatus objects: outstanding and flags(accounting_error,
+response_error,quiet,epoch_qualified). Qualification deliberately tied0; no host
+arm/clear CSR, no allocated addresses, no production wiring/FPGA build.
+Independent PS-side scoreboard retains accepted bursts while ResetInserter resets
+the monitor: localcount0 does not certify drain, quiet/epoch remain0. Late RLAST
+sets accounting error. Two simulation/CSR/RTL inspection test groups PASS.
+Initial testbench manual count expected one request while ARVALID stayed high
+for two cycles; replaced it with an independent per-handshake scoreboard.
+Evidence `evidence/axi-observer-reset-csr-2026-10-23`. No hardware access.
+Next integrate status-only observer into optional diagnostic gateware, preserving
+normal CSR ABI; review reset/clock scope and generate HDL offline before a Dell
+build. No epoch qualification mechanism or DDR write admission implemented.
