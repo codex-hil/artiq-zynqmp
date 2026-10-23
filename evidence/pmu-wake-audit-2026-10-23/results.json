@@ -1,0 +1,111 @@
+{
+  "status": "OFFLINE_PMU_WAKE_AUTHORITY_PRESENT",
+  "hardware_executed": false,
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/build/zynqmp_pmufw.elf",
+    "sha256": "9f5c58c5985c0c9dd628e7b74a9bff1bb769dfe8d807c48915fe863e3baa2709"
+  },
+  "linked_required_symbols": [
+    "PmIpiHandler",
+    "PmMasterWake",
+    "PmProcFsm",
+    "PmProcWake"
+  ],
+  "sources": [
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_mod_pm.c",
+      "sha256": "b38dd571d775f09fffa68fa9ea250856b8026e042aba760ebe807ac8f6bce844",
+      "anchors": {
+        "static void PmIpiHandler(": [
+          25
+        ],
+        "XPfw_PmIpiHandler(SrcMask,": [
+          36
+        ],
+        "static void PmEventHandler(": [
+          67
+        ],
+        "XPfw_PmWakeHandler(RegValue)": [
+          75
+        ],
+        "XPFW_EV_ACPU_1_WAKE": [
+          100,
+          103
+        ],
+        "XPFW_EV_R5_0_WAKE": [
+          116,
+          119
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pm_core.c",
+      "sha256": "c21f66ac4ebb1a6124d3dceee27b15a0b2f79afaf5da93348939d52780907a21",
+      "anchors": {
+        "static void PmRequestWakeup(": [
+          501
+        ],
+        "PmMasterCanRequestWake(": [
+          533
+        ],
+        "status = PmMasterWakeProc(proc);": [
+          554
+        ],
+        "case PM_API(PM_REQUEST_WAKEUP):": [
+          2347,
+          2526
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pm_master.c",
+      "sha256": "6af59653a39aecc82fcce2f2c93be7b6cd513bd6e07cf6314feb79639f04ab3b",
+      "anchors": {
+        "s32 PmMasterWakeProc(": [
+          703
+        ],
+        "PmProcFsm(proc, PM_PROC_EVENT_WAKE)": [
+          717
+        ],
+        "s32 PmWakeMasterBySlave(": [
+          677
+        ],
+        "status = PmMasterWake(mst);": [
+          687
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pm_proc.c",
+      "sha256": "b91759f7da858d7c149c0252f4415a7c2ce71268a44ca24b5e9cf410cd53ffda",
+      "anchors": {
+        "static s32 PmProcWake(": [
+          357
+        ],
+        "status = proc->wake();": [
+          375
+        ],
+        "case PM_PROC_EVENT_WAKE:": [
+          638
+        ],
+        "return (s32)XpbrACPU1WakeHandler();": [
+          265
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_config.h",
+      "sha256": "3492a335d09d202a9d6a09cce7dffe2ef69ac0ead84d746ccf332350fef90b93",
+      "anchors": {
+        "#define SLEEP_WHEN_IDLE": [
+          82
+        ],
+        "#define ENABLE_PM": [
+          420
+        ]
+      }
+    }
+  ],
+  "destructive_test_allowed": false,
+  "limits": "Routes and symbols establish capability, not executed event history, current permissions/masks or a source-to-binary equivalence proof. SLEEP_WHEN_IDLE is not disabled PM service."
+}

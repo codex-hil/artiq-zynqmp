@@ -1,6 +1,24 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — PMU wake authority routes audited (offline)
+
+Pinned current PMU ELF9f5c58c5 contains PmIpiHandler/PmProcFsm/PmProcWake/
+PmMasterWake. Adjacent source routes: PM IPI handler -> PM_REQUEST_WAKEUP ->
+permission checks -> PmMasterWakeProc -> PM_PROC_EVENT_WAKE -> processor wake
+callback; hardware GPI wake handler is registered for A53/R5 wake events; slave
+wake can call PmMasterWake. APU callback delegates to ROM; RPU callback sets
+NCPUHALT after ROM reset handler. SLEEP_WHEN_IDLE does not disable PM service.
+This is capability evidence, not proof an event occurred or is currently enabled.
+Source hashes/line anchors and linked symbol checks reproduced by
+`scripts/audit_pmu_wake_routes.py`; evidence `evidence/pmu-wake-audit-2026-10-23`.
+Positive anchor/hash and missing-anchor rejection controls PASS. No hardware access.
+Cannot close future-wake exclusion from two sampled reset values. Do not stop
+PMU or change event masks without a separately reviewed, restorable policy.
+Next offline identify non-destructive wake mask/status register observations and
+inspect PL HP0 reset/drain coverage. DDR write admission remains closed.
+
+
 ## 2026-10-23 — Same-boot APU reset controls physical PASS
 
 110.194s diagnostic/restore/validation cycle under shared Genesys lease PASS.
