@@ -145,3 +145,15 @@ show cores held in reset or establish cache/AXI drain. Evidence is in
 `evidence/rpu-hardware-2026-10-23`. No baseline change or fresh Ethernet test.
 Full DDR writes remain NOT_ADMITTED. Next review other active PS DMA masters
 and collect qualifying observations within the eventual diagnostic window.
+
+
+### PS peripheral observation plan — 2026-10-23
+
+`plan_peripheral_dma_snapshot.py` checks actual BSP base/offset/field definitions
+for GEM0 NWCTRL, SD1 present state and QSPI DMA STS. Plan/provenance and three
+passing unit groups: `evidence/peripheral-dma-plan-2026-10-23`. Hardware NOT_RUN.
+Only32-bit configuration/present-state/DMA-status reads are planned; no FIFO,
+interrupt acknowledgement, transfer trigger or reset access. Enable bits do not
+prove descriptor drain; QSPI done count is unacknowledged completion count.
+No DDR admission or other PS master ownership follows. Next implement bounded
+leased capture, then account for GEM rings/buffers in the diagnostic handoff.

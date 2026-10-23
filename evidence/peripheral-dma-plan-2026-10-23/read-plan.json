@@ -1,0 +1,19 @@
+{
+  "status": "OFFLINE_PERIPHERAL_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "registers": {
+    "gem0_network_control": "0xff0b0000",
+    "sd1_present_state": "0xff170024",
+    "qspi_dma_status": "0xff0f0708"
+  },
+  "samples": 2,
+  "width_bits": 32,
+  "destructive_test_allowed": false,
+  "limits": "Only GEM NWCTRL, SD present-state, QSPI DMA STS. No FIFO/data/interrupt-status reads, triggers, reset or writes. GEM enable bits are not idle proof; excludes uninstantiated PS peripherals and PCAP ownership.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xemacps_hw.h": "975741a16d951e591ef383416db6f560f77dc5328211023863a8bb3b8ca071d7",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xsdps_hw.h": "c56f51aafcb918da345c27fbd5f1fd02366d9f31ddda40bbe26d98b5e4c80901",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xqspipsu_hw.h": "a46bfb3eaa7ff68db1d7ff6ec7a6afeb1b53e2483ef0c07ba8128228eb5447f7",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xparameters.h": "73b981904d0110cbb72db630738a16e84a2cd95420e6fbccb169d92ccfbc1b6b"
+  }
+}

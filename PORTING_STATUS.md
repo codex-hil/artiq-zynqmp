@@ -1,6 +1,24 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — PS peripheral DMA observation plan (offline)
+
+Added source-checked register allowlist for instantiated GEM0 network control
+(0xff0b0000), SD1 present state (0xff170024), QSPI DMA destination status
+(0xff0f0708), all32-bit. Validated exact base addresses and17 offset/field
+macros against four actual PMU BSP headers; SHA-256 provenance is in
+`evidence/peripheral-dma-plan-2026-10-23/read-plan.json`. Three unit groups PASS,
+including mutation of every expected definition and malformed-sample rejection.
+No hardware access. Planned observations intentionally omit interrupt/status
+acknowledgements, FIFOs/data ports and triggers. QSPI done count means
+unacknowledged completions, not successful transfer proof. GEM RX/TX enables
+cannot establish idle or drained descriptor rings. SD command/data activity
+fields do not establish exclusive ownership. USB/SATA/PCIe/PCAP and PMU/core/PL
+owners are not covered by this allowlist. Full DDR writes remain NOT_ADMITTED.
+Next add source-pinned bounded read-only capture under the shared Genesys lease,
+then audit active-runtime GEM descriptor/buffer ownership for the diagnostic handoff.
+
+
 ## 2026-10-23 — Read-only RPU hardware capture complete
 
 Source-pinned wrapper under the shared Genesys lease read the seven fixed
