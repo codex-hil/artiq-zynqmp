@@ -1,6 +1,24 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — OCM model loader/report gate tested (offline)
+
+Added library loader for exact positively halted predecessor observer terminal,
+EL3/noMCI/DIF/CPU0 admission, checked download controls, VBAR readback, bounded
+100ms run then confirmed halt. Fixed13word reads only model report/result inOCM;
+no physical DDR addresses accessed by capture. Gate pins ELF/symbols/helpers,
+reruns OCM layout and exact entry/report/terminal addresses. Parser requires
+successPC/x0/x15,16writes/16reads,phase3/error0,exact final address/complement tag
+and matching data; faults/malformed/missing/duplicate frames reject.
+Two actual-Tcl/real-image/stale-pin controls PASS, report/model MMIO allowlist
+mocked. Evidence `evidence/ddr-ocm-loader-offline-2026-10-23`. No hardware access
+or A53 model execution claimed; library not yet called by parent lifecycle.
+Next integrate optional source-pinned model stage AFTER same-boot no-master
+capture into inherited-lease child and mandatory normal restoration; prepare
+fresh nested manifests/negative controls, then one bounded no-DDR physical run.
+Full DDR NOT_RUN/NOT_ADMITTED; PMU/core/history requirements unchanged.
+
+
 ## 2026-10-23 — OCM-resident model image linked/checked (offline)
 
 Integrated bounded engine with OCM-only model callbacks, startup and16-slot

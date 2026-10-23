@@ -1,0 +1,18 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/ddr-ocm-model-v2-20261023/model.elf",
+    "sha256": "264a4a29364cd2a12aa8fe5a572b080b63814815312299915bdf268170affbdd"
+  },
+  "symbols": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/ddr-ocm-model-v2-20261023/symbols.txt",
+    "sha256": "0d1821ec733d2023dbd2b983366d938dbea0090602f3eb25769de8375ebe1eb0"
+  },
+  "script_sha256": {
+    "scripts/load_ddr_ocm_model.tcl": "7e956abb1897ec90dd33f29cd519481caf2b114b4b16cd2678b4853384578e0a",
+    "scripts/load_el3_exception_observer.tcl": "f2b90c698d7df46a0c6c45c5a33209f24a57223c32f18dbddd7d12e134449a6a",
+    "scripts/check_ocm_image.py": "b5d7c9d41bea8e712bb81b3213f17a01de77c3be7f58a72c4bbb9fc993ca71c7",
+    "scripts/check_ddr_ocm_model.py": "9fe0d7d17d3ac878f1158c3bbe2eea8de82cd6ff13033dd7c9df9a62bc9d4f6d",
+    "scripts/collect_fsbl_entry.tcl": "f65f8fa3c5ceeb6c7d835d517876416dec2d71e2630d69003aa8817d88bf9f33",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c"
+  }
+}
