@@ -1,6 +1,25 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Physical active observer/workload/final-zero cycle PASS
+
+Single shorter-workload cycle156.565s under shared Genesys lease PASS.
+Workload128traces completed phase1+phase2/exit0 in8.536s. Sampling interval
+0.403..6.460s stayed fully within workload:128/128nonzero counts, peak27,
+all flags0. Initial/final pairs outstanding0/flags0. Physical active-accounting
+and sampled return-to-zero demonstrated, not full AXI conservation or historical
+PS drain proof; epoch qualification remains0. Shortened workload resolves observed
+failure in this run without increasing firmware30s command timeout; previous
+failed long-workload evidence retained. Candidate TTL/CoreDMA/analyzer ring-wrap/
+MonInj/Ethernet PASS, then normal bit/runtime restored192.168.2.3 and same tests
+PASS. Lease released. No Si/SD/flash/OTP/Kasli writes. Evidence
+`evidence/dma-observer-short-hardware-2026-10-23` includes overlap timings and
+raw samples/workload/restore qualification. No further unchanged active retries.
+Next offline consolidate precise DDR admission gaps: PMU/private register access,
+PL/PS reset epoch and PCAP ownership; use this observer as diagnostic evidence,
+not an automatic write-test permit. DDR writer still NOT_RUN/NOT_ADMITTED.
+
+
 ## 2026-10-23 — Long workload conflicts with kernel command watchdog (offline)
 
 Adjacent qualified CPU0 kernel_lwip.c sets started=ticks on commands and when
