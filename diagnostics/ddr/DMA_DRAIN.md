@@ -354,3 +354,21 @@ build-pin/restoration controls PASS; real offline preflight PASS. Evidence
 `evidence/dma-observer-active-integration-2026-10-23`. No board access this step.
 Next one bounded physical active cycle; preserve allzero as INCONCLUSIVE, no
 stress/retry loop. Normal baseline unchanged; no full DDR write admission.
+
+
+### 2026-10-23 — Physical active observer detected bursts; workload FAIL/restored
+
+One bounded active cycle under shared Genesys lease167.043s. Candidate loaded,
+initial outstanding0/flags0. Workload phase1 observed, complete128pair sample
+frame:128nonzero count samples, peak27, all flags0. This is physical positive
+active-accounting observation, not conservation/drain proof. Workload then exited
+with host protocol error KernelStartupFailed(expected KernelFinished), phase2
+missing. Entire candidate FAIL; no successful final idle/drain qualification.
+No blind retry or increased stress. Raw workload/sampling logs and separately
+decoded sampling in `evidence/dma-observer-active-hardware-2026-10-23`.
+Mandatory normal runtime restoration PASS192.168.2.3; physical TTL/CoreDMA/
+analyzer ring-wrap/MonInj/Ethernet PASS. Lease released. No Si/SD/flash/OTP/Kasli
+writes. Root cause of long-workload kernel/protocol failure NOT_PROVEN.
+Next offline inspect worker/protocol failure paths and workload timing/return
+handling; preserve decoded sampling if later workload completion fails. No repeat
+hardware before a specific reviewed change. DDR write admission stays closed.

@@ -1,0 +1,20 @@
+{
+  "status": "OBSERVER_READS_DECODED_NOT_DRAIN",
+  "hardware_executed": false,
+  "samples": [
+    {
+      "outstanding": 0,
+      "flags": 0
+    },
+    {
+      "outstanding": 0,
+      "flags": 0
+    }
+  ],
+  "stable": true,
+  "error_observed": false,
+  "zero_count_observed": true,
+  "epoch_qualified": false,
+  "destructive_test_allowed": false,
+  "limits": "Zero local count is not historical PS drain or core/PMU ownership proof."
+}
