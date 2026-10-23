@@ -1,6 +1,21 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — PCAP trained-boot profile integrated (offline)
+
+Added source-pinned PCAP parser/preflight and fixed two-read AP0 Tcl0xffca3010.
+Collector now accepts only two explicit inventories: historical private-PMU
+attempt, or ZDMA/CSU/RPU/APU/PCAP without failed private-PMU probe. New profile
+reports not_observed=['pmu'] and pmu_ownership=NOT_PROVEN; no suppress-as-PASS.
+Necessary PCAP read/write-idle fields participate in candidate rejection, not
+DDR admission. Nine offline tests PASS including real Tcl two-addressed reads,
+missing/malformed frames, nested pins and mandatory restoration. Fresh manifest
+`evidence/boot-pcap-integration-2026-10-23`. No hardware access.
+Next single bounded trained-boot PCAP capture/normal-restore/validation; retain
+PMU access failure and unresolved ownership. No PCAP reset/program/status writes.
+DDR write admission remains closed.
+
+
 ## 2026-10-23 — AMD PCAP status and PMU option review (offline)
 
 Existing AMD XFpga_PcapStatus returns Xil_In32(CSU_PCAP_STATUS); maintained driver
