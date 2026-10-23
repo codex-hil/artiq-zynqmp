@@ -1,0 +1,15 @@
+{
+  "plan": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/pmu-event-plan-2026-10-23/read-plan.json",
+    "sha256": "dbdb2fa99c66eec35c2a9379e1311c9900ce35a2afa21a19865c8b1d689e252d"
+  },
+  "script_sha256": {
+    "scripts/capture_pmu_events_state.py": "11385d41eda58b9141ae5e9325e8d48d8fa750238caad4358f0697a3f72ceed5",
+    "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+    "scripts/check_remote_rtio_build.py": "650ac8d41a90154bed6a4139a78f33c4f99539b835bd43e1eb2d355843495ad3",
+    "scripts/plan_pmu_events_snapshot.py": "7d1e01a1702e89ef4166e282006b958da6013f875fb7ce2b45c3ae6b6d11d690",
+    "scripts/plan_rpu_snapshot.py": "c6a402a031e1d3a864e7bb9c7b1e23ee2f42dc58e5f845496ccea12241c83d36",
+    "scripts/probe_pmu_events_state.tcl": "57a1a02afd09979360146d983153c6fde5247ac6580b0c0b164a296a89abd58a",
+    "scripts/test_candidate_runtime_hw.py": "03cd9492edf897d59013f0cc8894efcb5a101cc1093a8318d461462a86c682b0"
+  }
+}

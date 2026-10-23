@@ -178,3 +178,17 @@ and decoder controls: `evidence/pmu-event-plan-2026-10-23`. Two tests and change
 address rejection PASS. No hardware access. Next integrate fixed leased capture
 with existing same-boot lifecycle and test strict frame/timeout behavior offline;
 PMU future-wake and DDR ownership remain unresolved. No DDR write admission.
+
+
+### 2026-10-23 — Same-boot PMU event capture integrated (offline)
+
+Added fixed Tcl12reads (six reviewed PMU registers twice), strict frame parser,
+vendor/plan/helper preflight and same-boot collector integration. Exact cable PSU
+selection, inherited shared Genesys lease and parent restoration preserved.
+No ACK/event/mask writes or force-access fallback. Pending/signal/enable fields
+remain observations only; PMU future-wake exclusion and DDR admission unresolved.
+Nine offline tests PASS including real Tcl exact read addresses/order/count,
+malformed frames, nested pin rejection and parent restoration controls. Complete
+fresh nested manifests: `evidence/boot-pmu-integration-2026-10-23`.
+Physical DAP accessibility NOT_RUN. Next bounded diagnostic/read/restore cycle;
+if access fails, retain error and restore without a force-access retry. No DDR writer.

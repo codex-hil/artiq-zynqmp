@@ -1,0 +1,11 @@
+test_exact_inventory_and_pins (test_boot_master_window.MasterTests.test_exact_inventory_and_pins) ... ok
+test_malformed_capture_aborts (test_boot_master_window.MasterTests.test_malformed_capture_aborts) ... ok
+test_order_and_no_admission_even_when_quiet (test_boot_master_window.MasterTests.test_order_and_no_admission_even_when_quiet) ... ok
+test_each_active_master_and_unstable_reject (test_boot_peripheral_window.WindowTests.test_each_active_master_and_unstable_reject) ... ok
+test_parent_nested_pins_and_failure_restore (test_boot_peripheral_window.WindowTests.test_parent_nested_pins_and_failure_restore) ... ok
+test_zero_is_necessary_not_sufficient (test_boot_peripheral_window.WindowTests.test_zero_is_necessary_not_sufficient) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.160s
+
+OK
