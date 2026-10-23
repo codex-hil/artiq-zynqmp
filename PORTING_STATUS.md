@@ -1,5 +1,16 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-23 — sleep guard compiled and qualified offline
+
+Fresh enabled/default-disabled PMU builds PASS. Guard now publishes with barrier,
+then sleep at0xffdc4738/backbranch; wakeup re-enters sleep without scheduler.
+Linked checker rejects former nop loop, missing barrier, helper mutation/escape.
+Three host/static test cases PASS; no physical sleep or DDR admission claim.
+Old artifacts/manifests preserved. Existing hardware gate rejects changed terminal;
+fresh sleep-specific manifest/gate and wake residency review are next. No HW access.
+Evidence `evidence/pmu-sleep-guard-offline-2026-10-23`.
+
+
 ## 2026-10-23 — PMU RAM arbitration requirement identified offline
 
 Official UG1085 v2.5 p113 requires sleeping PMU for external APB RAM access;

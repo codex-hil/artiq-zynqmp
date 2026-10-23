@@ -6,11 +6,14 @@
 #include "mb_interface.h"
 #define ARTIQ_GUARD_MSR() ((uint32_t)mfmsr())
 #define ARTIQ_GUARD_DISABLE_IRQ() microblaze_disable_interrupts()
+#define ARTIQ_GUARD_SLEEP() mb_sleep()
 #elif defined(ARTIQ_PMU_GUARD_HOST_TEST)
 extern uint32_t artiq_guard_test_msr(void);
 extern void artiq_guard_test_disable_irq(void);
 #define ARTIQ_GUARD_MSR() artiq_guard_test_msr()
 #define ARTIQ_GUARD_DISABLE_IRQ() artiq_guard_test_disable_irq()
+/* Host backend only models non-return; it cannot model PMU sleep/wakeup. */
+#define ARTIQ_GUARD_SLEEP() __asm__ volatile("nop")
 #else
 #error "Laboratory guard requires MicroBlaze or explicit offline host-test backend"
 #endif
@@ -35,7 +38,10 @@ static __attribute__((noinline,noreturn)) void artiq_pmu_enter_lab_guard(
  artiq_pmu_guard.kind=2;
  for (unsigned i=0;i<5;i++) artiq_pmu_guard.reserved[i]=0;
  artiq_pmu_order();artiq_pmu_guard.generation=gen;
- /* No scheduler, request dispatch, memory load/store, sleep, return or resume. */
- for (;;) __asm__ volatile("nop");
+ /* UG1085 PMU RAM arbitration requires sleep for external APB access.
+  * Wakeup resumes here and must re-enter sleep without dispatch or return.
+  * Sleep residency/wake wiring remain a physical qualification obligation. */
+ artiq_pmu_order();
+ for (;;) ARTIQ_GUARD_SLEEP();
 }
 #endif

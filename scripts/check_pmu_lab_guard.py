@@ -29,9 +29,10 @@ def check(elf,symbols,disassembly):
   if not instruction.startswith('b') or index==i or index==len(rows)-1:continue
   target=re.search(r'// ([0-9a-f]+)\s*$',instruction)
   if not instruction.startswith('beqid') or not target or not start<=int(target[1],16)<start+size:raise ValueError('Unexpected guard branch')
- # The final two instructions are a pure nop/backward branch loop.
- if rows[-2][1]!=0x80000000 or rows[-1][1]!=0xb800fffc:raise ValueError('Guard terminal not instruction-only loop')
- return dict(status='LINKED_LAB_GUARD_FLOW_PASS_NOT_HARDWARE',hardware_executed=False,guard_start=hex(start),guard_bytes=size,record_start=hex(record),terminal_pc=hex(rows[-2][0]),interrupt_helper=hex(helper),destructive_test_allowed=False,limits='Actual static flow and local layout only; live MSR/ROM/NMI/history/core exclusion unproven. Host backend tests do not substitute for PMU execution.')
+ # Require publication barrier followed by sleep/backward branch. Wake resumes
+ # only at the branch back to sleep; no memory operation lies in that loop.
+ if [r[1] for r in rows[-3:]]!=[0xb8220004,0xba020004,0xb800fffc]:raise ValueError('Guard terminal not ordered sleep loop')
+ return dict(status='LINKED_LAB_GUARD_FLOW_PASS_NOT_HARDWARE',hardware_executed=False,guard_start=hex(start),guard_bytes=size,record_start=hex(record),terminal_pc=hex(rows[-2][0]),terminal_mode='sleep-reentry',interrupt_helper=hex(helper),destructive_test_allowed=False,limits='Actual static flow and local layout only; live MSR/ROM/NMI/history/core exclusion unproven. Host backend tests do not substitute for PMU execution.')
 if __name__=='__main__':
  p=argparse.ArgumentParser(description=__doc__)
  for n in ['elf','symbols','disassembly','output']:p.add_argument('--'+n,type=Path,required=True)
