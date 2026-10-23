@@ -1,0 +1,20 @@
+{
+  "status": "OFFLINE_PMU_EVENT_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "registers": {
+    "gpi1": "0xffd40024",
+    "gpi2": "0xffd40028",
+    "irq_pending": "0xffd40034",
+    "irq_enable": "0xffd40038",
+    "gpi1_enable": "0xffd60224",
+    "gpi2_enable": "0xffd60228"
+  },
+  "width_bits": 32,
+  "samples": 2,
+  "destructive_test_allowed": false,
+  "limits": "Read-only observations; omit IRQ_ACK, IPI ISR acknowledgements, enables/disables and event writes. DAP access not proven; no force-access fallback. Zero pending is not future-wake exclusion.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pmu_iomodule.h": "1507dcf6c834879e26bed5c6a581263de03ee5fc6f809156f79d33cd246f17e9",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pmu_local.h": "4a901e9fb0698defbad05511c0a86612bb955806691b2f99a2032c0657763e8c"
+  }
+}

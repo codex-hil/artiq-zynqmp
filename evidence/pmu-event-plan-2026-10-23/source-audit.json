@@ -1,0 +1,57 @@
+[
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_events.c",
+    "sha256": "51c5ed0ea3f1fe58f7a1d3d25492c1e1745861af30d0ee0890e2ed23f1ef0d35",
+    "anchors": {
+      "XPfw_RMW32(PMU_LOCAL_GPI1_ENABLE": [
+        142,
+        197
+      ],
+      "XPfw_Read32(PMU_LOCAL_GPI1_ENABLE)": [
+        199
+      ]
+    }
+  },
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_interrupts.c",
+    "sha256": "87fac5ab29a629b4d5210646e710fe590bdc76ce4260a2a3fb46cdf2fb459323",
+    "anchors": {
+      "XPfw_Read32(PMU_IOMODULE_GPI1)": [
+        84
+      ],
+      "XPfw_Read32(PMU_IOMODULE_GPI2)": [
+        105
+      ],
+      "PMU_IOMODULE_IRQ_PENDING": [
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        267
+      ],
+      "PMU_IOMODULE_IRQ_ACK": [
+        250,
+        277,
+        291
+      ]
+    }
+  }
+]

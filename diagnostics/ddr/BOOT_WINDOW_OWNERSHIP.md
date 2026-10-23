@@ -164,3 +164,17 @@ DDR. Static source capability alone must not cause hardware writes or blanket
 PMU shutdown. Candidate approaches require further review: a maintained AMD PMU
 configuration for a bounded diagnostic image, or a documented reversible event
 policy with readback and restoration. Neither was implemented or run here.
+
+
+### 2026-10-23 — PMU event observation allowlist (offline)
+
+Source-checked six-register plan: IOMODULE GPI1/GPI2/IRQ_PENDING/IRQ_ENABLE
+0xffd40024/28/34/38; LOCAL GPI1_ENABLE/GPI2_ENABLE0xffd60224/228. Two samples,
+32-bit reads only. Processor wake signal/enable bits decoded separately; masked
+signal is only a current observation. Excludes IRQ_ACK, IPI acknowledgements,
+enable/disable writes and event clearing. Actual DAP accessibility NOT_RUN;
+no force-access fallback permitted. Vendor headers, source read/ack line anchors
+and decoder controls: `evidence/pmu-event-plan-2026-10-23`. Two tests and changed
+address rejection PASS. No hardware access. Next integrate fixed leased capture
+with existing same-boot lifecycle and test strict frame/timeout behavior offline;
+PMU future-wake and DDR ownership remain unresolved. No DDR write admission.
