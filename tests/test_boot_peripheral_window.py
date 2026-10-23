@@ -27,7 +27,7 @@ class WindowTests(unittest.TestCase):
  def test_parent_nested_pins_and_failure_restore(self):
   from test_candidate_runtime_hw import observer_preflight,lifecycle
   root=Path(__file__).resolve().parents[1]
-  path=root/'evidence/boot-master-integration-2026-10-23/inputs.json'
+  path=root/'evidence/boot-apu-integration-2026-10-23/inputs.json'
   info=json.loads(path.read_text())
   files=json.loads((root/'evidence/trained-observer-integration-2026-10-22/runtime-inputs.json').read_text())['files']
   self.assertTrue(observer_preflight(path,files)['peripheral_inputs'])

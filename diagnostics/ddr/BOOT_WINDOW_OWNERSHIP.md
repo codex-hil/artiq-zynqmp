@@ -109,3 +109,17 @@ Evidence `evidence/apu-reset-plan-2026-10-23` pins header and PMU source/anchors
 No hardware access. Next integrate two fixed APU reset-control reads into the
 same-boot observation, then review PMU request/event paths and PL HP0 drain.
 DDR writes remain NOT_ADMITTED; no policy to stop PMU or mutate core resets added.
+
+
+### 2026-10-23 — APU reset-control same-boot integration (offline)
+
+Added fixed read-only Tcl for two32-bit CRF RST_FPD_APU reads0xfd1a0104,
+plus strict ordered-frame parser and vendor-header/plan/helper preflight. Extended
+the existing same-boot collector with APU controls after ZDMA/CSU/RPU. Exact
+cable/PSU selection, parent shared lease and mandatory restoration remain intact.
+Soft/POR/L2 reset controls and unknown bits are observations, not automatic DDR
+admission or PMU-release exclusion proof. Fresh complete nested pins in
+`evidence/boot-apu-integration-2026-10-23`. Nine offline tests PASS including
+real Tcl read-address/count controls, malformed frames, stale pins and restoration.
+Hardware NOT_RUN. Next bounded combined hardware capture/restore/qualification,
+then PMU request/event authority and PL HP0 reset/drain audit. No DDR writer.
