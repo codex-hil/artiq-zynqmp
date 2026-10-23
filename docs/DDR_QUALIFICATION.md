@@ -2215,3 +2215,14 @@ including first record-read timeout unwind without retry/alias. No HW access.
 Next bounded leased capture with storage reserves and explicit PMU restoration;
 wake residency and coherent live record remain unproven. DDR NOT_ADMITTED.
 Evidence `evidence/pmu-sleep-guard-integration-2026-10-23`.
+
+## 2026-10-23 — physical sleep guard capture and restoration PASS
+
+Single Genesys lease143.994s, changed sleep image7a82b8f2...f51c4. Four coherent
+nonce-bound records: MSR80000106->80000104, IEonly cleared; state2/ACK0/unresolved7f.
+No timeout/retry. Explicit PMUdebug bootstrap and normal reset/load/TTL/CoreDMA/
+analyzerwrap/MonInj/Ethernet restorationPASS192.168.2.3. TwoFS768MiB reserves
+released before restore; lease released. No Si/SD/flash/OTP/Kasli changes.
+Sampled record is not continuous PC/sleep/ROM-NMI/all-core exclusion proof;
+full DDR NOT_ADMITTED. Next offline remaining exclusion obligations, no unchanged
+repeat. Evidence `evidence/pmu-sleep-guard-hardware-2026-10-23`.
