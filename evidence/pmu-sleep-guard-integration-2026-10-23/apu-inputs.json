@@ -1,0 +1,15 @@
+{
+  "plan": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/apu-reset-plan-2026-10-23/read-plan.json",
+    "sha256": "2b6b73c8ac2c7022c1774f8fbbdba303336eccbddb2bae4c4d985f1c1dca6e4d"
+  },
+  "script_sha256": {
+    "scripts/plan_rpu_snapshot.py": "c6a402a031e1d3a864e7bb9c7b1e23ee2f42dc58e5f845496ccea12241c83d36",
+    "scripts/plan_apu_reset_snapshot.py": "b45af1f2a0c11a204f8ccb04407aacf6fd4a677d3cdbeece2ce477fa241213e2",
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb",
+    "scripts/probe_apu_reset_state.tcl": "f98765ac685fc42b029c3ac909266775f3c5789f96693ca0fd201f14b74e645c",
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/capture_apu_reset_state.py": "b0074cd2793b208611bbe0712d1a64706d8f46f9e8bc86923b15ec51e32bf5cf",
+    "scripts/test_candidate_runtime_hw.py": "e0251bb673f1a29090e746f00a49925ffa1febcda4e6e6645f6d513c7af2999c"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/el3-exception-observer-v2-20261022/observer.elf",
+    "sha256": "ab5946b613c0075af7c2129bdb66dc094fff6b684a384cf576cebc7bbd5cb6d6"
+  },
+  "symbols": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/fsbl-observer-entry-2026-10-22/fsbl-symbols.txt",
+    "sha256": "df05d210ee11bc87243d1cc571ac9024a58d73c5e520fd9472dfe51fd0bd4c53"
+  },
+  "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+  "script_sha256": {
+    "scripts/collect_boot_masters.py": "ed5c98ff5b315a8d5d0a288c0548f530a5b1c69df9b4e43466fdb7a93b613efe",
+    "scripts/plan_pcap_snapshot.py": "e27fa46f3b29d7bacba86936978afc6af61576cddcc30137c605bf87a3cf3d21",
+    "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+    "scripts/test_candidate_runtime_hw.py": "e0251bb673f1a29090e746f00a49925ffa1febcda4e6e6645f6d513c7af2999c",
+    "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+    "scripts/probe_peripheral_dma_state.tcl": "2088e40ebecc84f625a38dd9db17b85778e8d2c4a3d792907d9414b3667c442b",
+    "scripts/verify_el3_brk_capture.py": "c5ad0235a04b7e72f223152a48911649b40d0e2260401b465dbfa9df2252d25a",
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb",
+    "scripts/capture_csu_core_state.py": "8ebe5a39f326d98a101d34c05ef9f02d6e4ccfd10cbc308fdc6859ec4a28596e",
+    "scripts/check_pmu_boundary_image.py": "f142e614da217212b9c278b9782ead83e299db80e0fe2e5fe71dfda5aec46f69",
+    "scripts/plan_zdma_snapshot.py": "0474d06449ef6831bf8977344ecb2a127ff9d91ed735045983a2bbb3523a35f2",
+    "scripts/probe_pcap_controls.tcl": "b95b9aa0709d8d5d3242d876820527051ef7785d71baed132ab8e1058725cf92",
+    "scripts/load_el3_exception_observer.tcl": "f2b90c698d7df46a0c6c45c5a33209f24a57223c32f18dbddd7d12e134449a6a",
+    "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/collect_fsbl_entry.tcl": "f65f8fa3c5ceeb6c7d835d517876416dec2d71e2630d69003aa8817d88bf9f33",
+    "scripts/capture_apu_reset_state.py": "b0074cd2793b208611bbe0712d1a64706d8f46f9e8bc86923b15ec51e32bf5cf",
+    "scripts/test_rtio_debug_hw.py": "3612fb933fe3c9f1ddd0b64aedb926162f7d667d8621ef72eb79b572f7cf4a1a",
+    "scripts/capture_rpu_state.py": "e7827391c20d56b3d0e495278361f973fb02d11543720a620a0d7c9a25ba433f",
+    "scripts/check_el3_observer.py": "e2714e065f7da0b5fac2bde4d15515bf7e47b922e30fb8b79a6ab6b45c09e22f",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/capture_pcap_state.py": "fb5b5e43ba7ed2976ca45e393e7435c2500673ca856a07243e1b743a4935d9d8",
+    "scripts/probe_apu_reset_state.tcl": "f98765ac685fc42b029c3ac909266775f3c5789f96693ca0fd201f14b74e645c",
+    "scripts/capture_zdma_status.py": "8ee5153669e0ce23fa62e5e6d9c1bbfc43c012bf73c8d37e90121148691318bc",
+    "scripts/inject_rpc_fault.py": "a1ba73b66eacf470d6ff80ecf70856975b21f90bce3b1d4cc7462bde7991b839",
+    "scripts/capture_peripheral_dma_state.py": "8228490918e73aa8eea675ebbc595972f83f4e8895aedc9f3502cc4fb8403b7c",
+    "scripts/no_master_candidate.py": "d69f25c9102f61568041f73944b474ed0b03624a35fb7efa99528d3071326ba4",
+    "scripts/pmu_guard_candidate.py": "16b837784a721773e51678ed6fe0fa51fa89523c8105c16949e9cac2b00038d6",
+    "scripts/probe_csu_core_state.tcl": "0b3d79a516a7ae1c6452600ade19433c2d29263a2d85145fa53698903af88b18",
+    "scripts/capture_pmu_events_state.py": "11385d41eda58b9141ae5e9325e8d48d8fa750238caad4358f0697a3f72ceed5",
+    "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+    "scripts/test_ethernet_hw.py": "75325e938dc14ad9380450d94e58375f39d6aa0e9e0c5a8ca3796b261b2d71b5",
+    "scripts/run_trained_observer.tcl": "4a6caf0eb482cd112a058dcb1c2b82314474baa86ad6895389ca9252f52b3a6c",
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/check_el3_exception_observer.py": "95b26be8f92a6ae6ff97f9903992775718637c8ee8a642f37b9ba8880cfba584",
+    "scripts/check_boot_peripheral_window.py": "3f56d1b6cde199a23b591980724abd589af2d9b065a2267238e07cc6947f0ee9",
+    "scripts/capture_pcap_controls.py": "1d0c3d2ad944f576d1a94abf20ae333ca14b503b53fc8a77505d2935fb03040d",
+    "scripts/plan_peripheral_dma_snapshot.py": "251983a5cb01a69e46675edd4f4f6726c0711d4aaadae76068d21c4a4bff01c4",
+    "scripts/plan_csu_dma_snapshot.py": "e993d0df6049bac627c8f112d5602f1325d93c689f63b5376a18b27fcd308cf9",
+    "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+    "scripts/probe_pcap_state.tcl": "343abc14d836013ea8efc5e1d2fd1ab42f828850d855f146bc202a487832858f",
+    "scripts/plan_rpu_snapshot.py": "c6a402a031e1d3a864e7bb9c7b1e23ee2f42dc58e5f845496ccea12241c83d36",
+    "scripts/plan_apu_reset_snapshot.py": "b45af1f2a0c11a204f8ccb04407aacf6fd4a677d3cdbeece2ce477fa241213e2",
+    "scripts/probe_zdma_status.tcl": "6c153deb2967b98d261f91ef7194972d376728a0a77b6698b22d4050c1ab33c6",
+    "scripts/run_trained_observer.py": "1de9e3f841dd26b0a4395fc1acffb8e989b4130a5219155dc8fe365e7bf11cb2",
+    "scripts/probe_pmu_lab_guard.tcl": "b46526a320e755b46a9d1d54616a990388b1993bdf95a1e34400a38156dfd4cf",
+    "scripts/probe_rpu_state.tcl": "c5397fe57452c3f55c0fa1d72563997a290d95ceb52395f16542e0d228abf24d",
+    "scripts/check_pmu_lab_guard.py": "50ec2db016c5db93bfaf8d0998682c588e26807c22834f46442f31e660d0cf75",
+    "scripts/restart_pmu_for_restore.tcl": "4ede9ac7f9a5d1e14da00d130ac7ac0df3a198fd2e41de14fd84df9a4e3da9a0",
+    "scripts/plan_pcap_controls.py": "5ee28e6ee59b819d53354940fa5137a41a9759946d1eedcf3529d1bc80244e61",
+    "scripts/probe_pmu_events_state.tcl": "57a1a02afd09979360146d983153c6fde5247ac6580b0c0b164a296a89abd58a",
+    "scripts/plan_pmu_events_snapshot.py": "7d1e01a1702e89ef4166e282006b958da6013f875fb7ce2b45c3ae6b6d11d690",
+    "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+    "scripts/check_fsbl_observer_entry.py": "26da021aadbdfed5417aa43a2d303273aba5167a6e1f67cea1db07836395343f"
+  },
+  "definitions_only": false,
+  "controls_only": false,
+  "exception_observer": true,
+  "exception_brk": false,
+  "peripheral_inputs": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/pmu-sleep-guard-integration-2026-10-23/peripheral_inputs.json",
+    "sha256": "e3f15776387bd3b3c3bd3d20e2d9967908ea7f1efc5d5dda99d7b438142290e4"
+  },
+  "master_inputs": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/pmu-sleep-guard-integration-2026-10-23/master-inputs.json",
+    "sha256": "afd3501ef464029e6700fac5a555450535b4d7dcd0f7a0f9e9befca0c11f6c2c"
+  },
+  "no_master_inputs": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/pmu-sleep-guard-integration-2026-10-23/no_master_inputs.json",
+    "sha256": "cf16118faff0dabc8c4e5cc9f855562b2f6d30522a178e679f7d98b65806baa9"
+  },
+  "pmu_guard_inputs": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/pmu-sleep-guard-integration-2026-10-23/guard-inputs.json",
+    "sha256": "f77881ec58540f66182f9eecabeff67f4a2ba9c36a2be601c1eec419d4ee0210"
+  }
+}

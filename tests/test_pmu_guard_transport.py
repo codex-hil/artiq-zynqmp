@@ -48,6 +48,13 @@ proc mrd {args} {
   script+='source {'+str(ROOT/'scripts/probe_pmu_lab_guard.tcl')+'}\nif {$writes != 9} {error write-count}\n'
   r=subprocess.run(['tclsh'],input=script,text=True,capture_output=True,timeout=5)
   self.assertEqual(r.returncode,0);self.assertFalse(r.stderr,r.stderr)
+  # A first post-publication read timeout must unwind, with no retry or alias.
+  failing=script.replace('global mem committed\n','global mem committed\n if {$committed && [lindex $args 3]==0xffdd7f68} {incr ::post_reads;error "AP transaction timeout"}\n')
+  failing=failing[:failing.index('source {')]+('set post_reads 0\n'
+   'set caught [catch {source {'+str(ROOT/'scripts/probe_pmu_lab_guard.tcl')+'}} reason]\n'
+   'if {!$caught || $reason ne "AP transaction timeout" || $post_reads != 1} {error retry-control}\n')
+  failure=subprocess.run(['tclsh'],input=failing,text=True,capture_output=True,timeout=5)
+  self.assertEqual(failure.returncode,0);self.assertFalse(failure.stderr,failure.stderr)
   nonce=123|(456<<32);self.assertFalse(parse(r.stdout,nonce)['destructive_test_allowed'])
   for bad in [r.stdout+r.stdout,r.stdout.replace('word8 0x00000000','word8 0x00000001'),r.stdout.replace('word1 0x00000002','word1 0x00000003'),r.stdout.replace('word7 0x00000100','word7 0x00000000'),r.stdout.replace('PMU_GUARD_END','')]:
    with self.assertRaises(ValueError):parse(bad,nonce)

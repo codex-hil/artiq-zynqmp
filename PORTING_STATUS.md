@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-23 — fresh sleep guard integration preflight PASS offline
+
+Exact sleep terminal/image gate and fresh nested manifests prepared; historical
+manifests preserved/rejected. Full parent preflight PASS. Eight guard tests PASS,
+including first record-read timeout unwind without retry/alias. No HW access.
+Next bounded leased capture with storage reserves and explicit PMU restoration;
+wake residency and coherent live record remain unproven. DDR NOT_ADMITTED.
+Evidence `evidence/pmu-sleep-guard-integration-2026-10-23`.
+
+
 ## 2026-10-23 — sleep guard compiled and qualified offline
 
 Fresh enabled/default-disabled PMU builds PASS. Guard now publishes with barrier,

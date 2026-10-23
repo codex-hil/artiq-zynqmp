@@ -2206,3 +2206,12 @@ Three host/static test cases PASS; no physical sleep or DDR admission claim.
 Old artifacts/manifests preserved. Existing hardware gate rejects changed terminal;
 fresh sleep-specific manifest/gate and wake residency review are next. No HW access.
 Evidence `evidence/pmu-sleep-guard-offline-2026-10-23`.
+
+## 2026-10-23 — fresh sleep guard integration preflight PASS offline
+
+Exact sleep terminal/image gate and fresh nested manifests prepared; historical
+manifests preserved/rejected. Full parent preflight PASS. Eight guard tests PASS,
+including first record-read timeout unwind without retry/alias. No HW access.
+Next bounded leased capture with storage reserves and explicit PMU restoration;
+wake residency and coherent live record remain unproven. DDR NOT_ADMITTED.
+Evidence `evidence/pmu-sleep-guard-integration-2026-10-23`.

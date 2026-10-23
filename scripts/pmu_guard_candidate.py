@@ -16,7 +16,7 @@ def preflight(path,repo):
  if subprocess.check_output([str(TOOL/'mb-nm'),'-n','-S',str(elf)],text=True,timeout=15)!=symbols:raise ValueError('Symbol file differs from ELF')
  if subprocess.check_output([str(TOOL/'mb-objdump'),'-d',str(elf)],text=True,timeout=15)!=dis:raise ValueError('Disassembly differs from ELF')
  result=check(elf.read_bytes(),symbols,dis)
- if result['terminal_pc']!='0xffdc4734':raise ValueError('Changed guard terminal')
+ if result['terminal_pc']!='0xffdc4738' or result.get('terminal_mode')!='sleep-reentry':raise ValueError('Expected exact sleep guard terminal')
  for name,addr,size in [('artiq_pmu_request',0xffdd7f20,32),('artiq_pmu_guard',0xffdd7f68,64)]:
   matches=re.findall(r'^([0-9a-f]+) '+f'{size:08x}'+r' b '+name+'$',symbols,re.M)
   if matches!=[f'{addr:08x}']:raise ValueError('Changed fixed guard records')
