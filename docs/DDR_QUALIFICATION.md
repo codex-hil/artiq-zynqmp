@@ -1662,3 +1662,19 @@ Normal runtime remains last physically restored192.168.2.3. DDR NOT_ADMITTED.
 Next inspect PS IP reset coverage/PS interconnect, then design a positively
 qualified epoch or separately qualified no-PL diagnostic boot; never qualify
 from reset+delay+zero alone. PMU future-owner exclusion also remains unresolved.
+
+
+
+## 2026-10-23 — AFIFM2 reset differs from fabric reset (offline)
+
+Pinned AMD source review: AFIFM2 has separate RST_FPD_TOP control mask0x200;
+PMU generic handler asserts/releases controls. Generated psu_afi_config releases
+AFI0..5 reset with mask0x1f80. This is not proof of HP0 outstanding completion
+or disposal, and pl_resetn0 reset alone does not establish this PS reset action.
+AMD UG1087 RDISSUE specifies configured maximum outstanding commands: field0
+means one command, not zero pending transactions. Do not use RDISSUE/QoS limits
+as an idle counter. Source anchors/hashes and reference URLs retained in
+`evidence/afi-reset-audit-2026-10-23`; two audit controls PASS. No HW access/reset.
+Next review isolation/quiesce acknowledgment semantics before a fixed read-only
+observation plan. No AFI writes or arbitrary drain delay. Normal runtime remains
+last restored192.168.2.3; full DDR NOT_RUN/NOT_ADMITTED, PMU ownership unresolved.

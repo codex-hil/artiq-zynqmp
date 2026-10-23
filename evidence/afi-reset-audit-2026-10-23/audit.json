@@ -1,0 +1,74 @@
+{
+  "status": "OFFLINE_AFI_RESET_SOURCE_REVIEW",
+  "hardware_executed": false,
+  "sources": {
+    "pm_reset.c": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pm_reset.c",
+      "sha256": "8bff735755702f360ca44e10c201b95e2b8cb17063cf469806ab4f50541dc5b8",
+      "anchors": {
+        "static PmResetGeneric pmResetAfiFm2 = {": [
+          568
+        ],
+        ".mask = CRF_APB_RST_FPD_TOP_AFI_FM2_RESET_MASK,": [
+          575
+        ],
+        ".resetAssert = &PmResetAssertGen,": [
+          445
+        ],
+        "XPfw_RMW32(ctrlAddr, mask, 0U);": [
+          125,
+          157
+        ],
+        "XPfw_RMW32(ctrlAddr, mask, mask);": [
+          127,
+          156
+        ]
+      }
+    },
+    "crf_apb.h": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/crf_apb.h",
+      "sha256": "0b44229040abc93ba1420286074cacfcb813c9a41e00e61514af903abce6b84c",
+      "anchors": {
+        "#define CRF_APB_RST_FPD_TOP ": [
+          784
+        ],
+        "#define CRF_APB_RST_FPD_TOP_AFI_FM2_RESET_MASK    ((u32)0X00000200U)": [
+          820
+        ]
+      }
+    },
+    "afi.h": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/afi.h",
+      "sha256": "08593f38ce09700024af5e73f2a92e2bba648bf88f759d359b1ed95c7550a753",
+      "anchors": {
+        "#define AFI_FM2_BASEADDR                        ((u32)0xFD380000U)": [
+          42
+        ]
+      }
+    },
+    "psu_init.tcl": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+      "anchors": {
+        "set psu_afi_config {": [
+          13744
+        ],
+        "mask_write 0XFD1A0100 0x00001F80 0x00000000": [
+          13768
+        ]
+      }
+    }
+  },
+  "findings": [
+    "AFIFM2 has separate generic reset control mask0x200 in RST_FPD_TOP; not PL fabric reset.",
+    "Generated psu_afi_config releases AFI0..5 reset controls using mask0x1f80.",
+    "PMU generic reset operations manipulate control bits; inspected anchors are not an interconnect drain certificate."
+  ],
+  "not_proven": [
+    "HP0 pending-transaction disposal/completion across AFI reset",
+    "AFI reset automatically follows fabric reset",
+    "Reset cannot be released by PMU later"
+  ],
+  "destructive_test_allowed": false,
+  "next": "Review isolation/quiesce acknowledgment protocol and read-only observations; no AFI reset write or inferred drain delay."
+}

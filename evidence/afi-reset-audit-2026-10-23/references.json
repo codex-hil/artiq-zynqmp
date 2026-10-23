@@ -1,0 +1,14 @@
+{
+  "reviewed": "2026-10-23",
+  "sources": [
+    {
+      "url": "https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/RDISSUE-AFIFM-Register",
+      "claim": "CAPABILITY is configured maximum outstanding commands minus one, not current pending count; zero means one command."
+    },
+    {
+      "url": "https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/688128001/Traffic+Shaping+of+HP+Ports+on+Zynq+UltraScale",
+      "claim": "HP0 AFIFM base0xfd380000; QoS outstanding regulation is configuration, not a drain certificate."
+    }
+  ],
+  "hardware_executed": false
+}
