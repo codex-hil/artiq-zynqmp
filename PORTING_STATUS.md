@@ -1,6 +1,24 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Combined same-boot master hardware observations PASS
+
+104.687s full reset/trained-FSBL/EL3-OCM/peripheral/master/restoration cycle PASS
+under shared Genesys lease. Sequential same-boot observations: all16 ZDMA
+channels STS/CTRL2=0 twice; both CSU STS=0 twice; GEM RX/TXdisabled,
+SD transfer/inhibit fields0, QSPI DMA STS0. RPU global0x50, configs0x4/0x4,
+statuses0x3f/0x38, clock0x03000302, reset0xfc0, stable. Metadata CPU0suspended1,
+CPU1Reset/suspended0, CPU2/3PowerOnReset/suspended0, R50Halted/suspended0,
+R51LockStepMode/suspended0. Metadata labels do not establish held-reset/cache
+ownership. Positive core/reset and PMU/PL/PCAP/drain requirements still unresolved;
+DDR writer NOT_RUN and NOT_ADMITTED. Normal runtime restored192.168.2.3;
+physical TTL/CoreDMA/analyzer ring-wrap/MonInj and Ethernet PASS. Lease released.
+No Si/SD/flash/OTP/Kasli writes. Raw logs/hashes and physical restoration evidence:
+`evidence/boot-master-hardware-2026-10-23`. Next offline audit PMU/core reset
+control and PL HP0 reset/ownership, then prepare necessary register observations;
+do not repeat unchanged combined capture without new coverage.
+
+
 ## 2026-10-23 — Same-boot ZDMA/CSU/RPU/core observation integrated (offline)
 
 Extended normal trained exception-observer child with optional master_inputs:
