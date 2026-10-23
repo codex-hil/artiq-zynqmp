@@ -54,6 +54,7 @@ def main():
     for name in ('server','port','elf','fsbl','pmu','symbols','output'):
         p.add_argument('--'+name, required=True)
     p.add_argument('--peripheral-inputs',type=Path)
+    p.add_argument('--master-inputs',type=Path)
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
@@ -68,6 +69,10 @@ def main():
         if not a.exception_observer or a.exception_brk:raise ValueError('Require normal exception observer')
         from capture_peripheral_dma_state import preflight as peripheral_preflight, parse as peripheral_parse
         peripheral_preflight(a.peripheral_inputs)
+    if a.master_inputs:
+        if not a.peripheral_inputs:raise ValueError('Master window requires peripheral window')
+        from collect_boot_masters import preflight as master_preflight, collect as collect_masters
+        master_preflight(a.master_inputs)
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -114,6 +119,10 @@ def main():
                 result['peripheral_window']=check(fields)
                 if not result['peripheral_window']['necessary_fields_pass']:
                     raise ValueError('Boot-window peripheral fields not quiet; restore without DDR writes')
+            if a.master_inputs:
+                result['master_window']=collect_masters(a.master_inputs,xs,a.server)
+                if not result['master_window']['necessary_dma_fields_pass']:
+                    raise ValueError('Master DMA fields not quiet; restore without DDR writes')
     except Exception as error: result.update(status='FAIL',error=str(error))
     finally:
         (out/'uart.log').write_bytes(raw)

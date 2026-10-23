@@ -65,3 +65,12 @@ Ethernet requalification at192.168.2.3. Lease released. Raw evidence is in
 `evidence/boot-peripheral-hardware-2026-10-23`. This establishes necessary
 peripheral observations in this boot only; remaining owner/drain conditions
 above are unresolved, and no DDR writer ran. Next extend same-window coverage.
+
+
+## Combined master observation (offline checked)
+
+`evidence/boot-master-integration-2026-10-23/inputs.json` extends the observer
+with source-pinned ZDMA, CSU/core metadata and RPU captures in the same boot.
+Reads are sequential, not atomic. Nonquiet DMA fields reject; RPU/core metadata
+remain unknown ownership. Parent lifecycle still restores and qualifies normal
+runtime. Physical execution NOT_RUN at this checkpoint; DDR writer remains closed.

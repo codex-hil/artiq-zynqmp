@@ -1262,3 +1262,19 @@ MonInj and Ethernet tests PASS. Lease released. No Si/SD/flash/OTP/Kasli writes.
 Evidence: `evidence/boot-peripheral-hardware-2026-10-23` includes raw logs/hashes,
 observer results and restoration qualification. Next extend in-window observation
 to existing ZDMA/CSU/RPU/core inventory without admitting DDR writes.
+
+
+### 2026-10-23 — Same-boot ZDMA/CSU/RPU/core observation integrated (offline)
+
+Extended normal trained exception-observer child with optional master_inputs:
+ZDMA64reads, CSU4reads plus six core metadata queries, RPU14reads. Existing
+fixed Tcl/parsers are reused, sequentially after peripheral observation and before
+normal runtime startup. Parent pins nested manifests, vendor inputs and complete
+execution dependencies before and under shared lease. Child rechecks inputs;
+nonquiet ZDMA/CSU fields fail candidate and require normal restoration. RPU/core
+states stay observations only, never a DDR write admission. No new register writes.
+Six boot-window test groups and four observer regression tests PASS; malformed
+frames/stale nested pins reject. Fresh execution manifests and test logs in
+`evidence/boot-master-integration-2026-10-23`. Hardware NOT_RUN at this checkpoint.
+Next physical bounded combined observation/restore/validation cycle; remaining
+PMU/PL/PCAP ownership and transaction-drain proof still unresolved.
