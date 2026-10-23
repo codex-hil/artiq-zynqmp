@@ -1,0 +1,18 @@
+{
+  "status": "OFFLINE_COMPILE_AND_SAMPLER_PASS",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "source_sha256": {
+    "examples/genesys_dma_observer_load.py": "980dd29cc6dc13986b99e92e288c505065ec0fd68c92826c38d75677c7aff63c",
+    "scripts/probe_dma_observer_active.tcl": "98a1dd42f65677b4dbd37749aa8f0f631d39ea0212e3ccf36c8288ed168a1d80",
+    "scripts/check_dma_observer_active.py": "9919df5b1f23b8d7861d0d0bbc37b87306bbe2d41c8520f65933e62ec8211bb0"
+  },
+  "compiled_elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/observer-active-compile-20261023/load-final.elf",
+    "sha256": "4374a66a314611bc8b2e9abf621abb59c928c1fd9651ffa021191bad9f69b93c"
+  },
+  "pulses_per_trace": 128,
+  "playbacks": 512,
+  "sample_count": 128,
+  "limits": "Not executed. External TTL workload; not physical input/timing verification. Sampler zeros remain inconclusive."
+}

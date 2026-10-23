@@ -1,6 +1,22 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Active DMA workload/sampler prepared (offline)
+
+Added bounded diagnostic experiment128pulses/trace,512handle playbacks,
+trace duration3200000mu, final wait_until_mu before completion report. Actual
+ARTIQ static compilation PASS; kernel ELF hash retained. Added fixed256read Tcl
+(128pairs,10ms intersample delay) and strict parser: unknown bits/errors/epoch
+assertion fail, allzero counts explicitly INCONCLUSIVE_NO_NONZERO_SAMPLE.
+Two parser/real-Tcl address-count test groups PASS. Evidence
+`evidence/dma-observer-active-offline-2026-10-23`. No hardware access.
+Next integrate simultaneous bounded workload/sampling under existing inherited
+Genesys lease, require both workload phase markers and final zero/error-free
+probe, always restore baseline. Do not claim physical active counting if no
+nonzero sample is observed; no retry loop or increased stress without review.
+DDR write admission stays closed; existing diagnostic bit can be reused.
+
+
 ## 2026-10-23 — Optional observer runtime hardware PASS / baseline restored
 
 Integrated explicit observer-build input hash and source-helper pins into existing
