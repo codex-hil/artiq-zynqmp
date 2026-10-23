@@ -1,6 +1,20 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Dell observer build running; offline probe prepared
+
+Existing job artiq-dma-observer-20261023 now RUNNING, no duplicate submission.
+Prepared fixed four-read AP0 diagnostic CSR Tcl plus strict ordered-frame/map
+validator. Exact address/order/count Tcl mock PASS; incomplete/duplicate/wrong
+address/unexpected quiet or epoch assertions reject. Zero local count is decoded
+only, never PS drain admission. Script intended only for verified observer image
+under parent Genesys lease through mandatory normal restoration. No board access;
+current normal runtime has no observer CSR bank and must not be probed with it.
+Evidence `evidence/dma-observer-probe-offline-2026-10-23`. Next collect SAME Dell
+job and verify reports/IP hashes, then integrate bounded candidate probe lifecycle.
+DDR writes remain closed; full observer build/hardware still NOT_QUALIFIED.
+
+
 ## 2026-10-23 — Full observer PS/PL HDL generated; Dell build queued
 
 Extended build_rtio_debug.sh with validated DMA_OBSERVER=0/1 environment option;

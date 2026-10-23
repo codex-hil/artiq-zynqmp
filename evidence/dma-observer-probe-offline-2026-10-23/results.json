@@ -1,0 +1,10 @@
+{
+  "status": "OFFLINE_PROBE_CONTROLS_PASS",
+  "hardware_executed": false,
+  "source_sha256": {
+    "scripts/check_dma_observer_snapshot.py": "5f16683685eba704c786238ddcbf5859c9f461c80e6d59d00a3e2af2a26c619f",
+    "scripts/probe_dma_observer.tcl": "64505e27f74e74566848c317e8453ae273be3cd476181d8e379be91ce16eeed2",
+    "tests/test_dma_observer_snapshot.py": "cf29e794497859173f91c0228d6f6327fd5d8e383a8149585f9f48bcc7c2ebd0"
+  },
+  "destructive_test_allowed": false
+}
