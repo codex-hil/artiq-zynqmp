@@ -150,3 +150,12 @@ The complete Vivado 2025.2 installer (102739568640 bytes) is stored under
 See ``../evidence/axau15/vivado-20261022/installer-sata.json`` for the exact
 filename, checksum and payload readback evidence. The Optiplex installation
 and installers remain unchanged.
+
+Physical AXAU15 clock baseline (2026-10-23)
+-----------------------------------------
+
+``clock-probe/`` now has a separate routed and physically validated clock-only
+image. JTAG-HS1 cable210512180081 identifies XCAU15P IDCODE04AC2093. Volatile
+SRAM programming and three advancing counter readbacks passed. Final image
+has no FMC outputs or DAC/JESD path. This does not qualify the SPI/JESD candidate
+above; AD9172 identity and RF remain pending. See ``clock-probe/README.rst``.

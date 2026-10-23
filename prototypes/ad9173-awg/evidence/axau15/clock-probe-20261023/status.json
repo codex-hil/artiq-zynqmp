@@ -1,0 +1,32 @@
+{
+  "status": "PHYSICAL_CLOCK_ACTIVITY_PASS",
+  "bit_sha256": "49d80255b40494d29082debe9ea5c3da8c680bb60903cf47ac37b4a406885dc2",
+  "cable": "210512180081",
+  "scope_access": false,
+  "dac_access": false,
+  "final_state": "volatile_clock_probe_running",
+  "build": "ROUTED_BITSTREAM_PASS",
+  "wns_ns": 8.548,
+  "whs_ns": 0.046,
+  "unconstrained_internal_endpoints": 0,
+  "drc_checks": 0,
+  "cdc_safe": 32,
+  "cdc_unsafe": 0,
+  "limitations": [
+    "Clock activity only, not calibrated frequency",
+    "No DAC SPI, JESD or RF validation",
+    "No scope access; Trenz unchanged"
+  ],
+  "build_host": "Dell",
+  "hardware_host": "Optiplex",
+  "artifact_hashes": {
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-probe-20261023c/clock_probe.bit": "49d80255b40494d29082debe9ea5c3da8c680bb60903cf47ac37b4a406885dc2",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-probe-20261023c/timing.rpt": "3747ed83cb62a64fe5568eb1d691548c7acbc66f9a492426711021cc7c120c37",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-probe-20261023c/cdc.rpt": "6210ce39a57508e3110341adca3f41a5b103ca995223f633fa45050050d73f3e",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-probe-20261023c/skew.rpt": "a2c4ac7b5724356df0d8a71acc07f084c4f108afabe6ba16fad1731e4450bded",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-probe-20261023c/drc.rpt": "0c40dc5c341a05743fe5ef4cb9325770cfd32161ac589f726395a1c70a7204b6",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-probe-20261023c/vivado.log": "5e64e2730fd3db1f393ecf9e6b990b444a93ebcac3a49bbdd3528f7ce024095a",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-hardware-20261023a/program.txt": "d533ed1fc2b2aba141722473af49c2f37281be4935030c1b5b593645488f33d7",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-clock-hardware-20261023a/read.txt": "fb1b6ebab5347fec4f31123049e6d09f432c685ac11b8d29c9ec0613d7d15c99"
+  }
+}
