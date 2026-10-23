@@ -1736,3 +1736,24 @@ Evidence `evidence/no-ddr-master-dell-build-2026-10-23`; source/artifact pins
 retained. No build PASS/bitstream/hardware claim yet. No board access, baseline
 unchanged; DDR NOT_ADMITTED. Next collect SAME job and review actual pin mapping,
 timing/DRC/IP provenance; never relax a failed constant proof without inspection.
+
+
+
+## 2026-10-23 — No-master diagnostic Dell build PASS (not hardware)
+
+Same jobartiq-no-ddr-master-20261023 completed exit0 in3min21s; session21743
+finished. Collected files SHA-verified and strict input/IP/timing/DRC/routing
+checks PASS. Post-route PS8 SAXIGP2ARVALID/AWVALID/WVALID each unique and
+connected to GROUND; exact netlist proof report retained. Setup2.776ns,
+hold0.055ns,pulse2.5ns; internal missing clocks/unconstrained endpoints0,
+DRC violations0. Four output-delay omissions remain for blinking LED outputs.
+BitSHAdf35fe96f15249a8afd7de516c8112bbe3230c4227488c5493105a3fbf58912d.
+PSXCI unchanged selected1712fe0f...304d. Evidence/reports:
+`evidence/no-ddr-master-build-pass-2026-10-23`; artifact inventory explicitly
+not an executable hardware manifest. No hardware access, baseline unchanged.
+
+Next integrate explicit new-build preflight and no-write trained-boot PL load
+into mandatory candidate/normal-restore lifecycle; preserve fresh helper pins,
+negative controls and old failure evidence. No automatic reuse of normal-runtime
+CSR qualification against a no-CSR image. Full DDR NOT_RUN/NOT_ADMITTED; prior
+transaction history/PMU ownership still separate from constant request netlist.

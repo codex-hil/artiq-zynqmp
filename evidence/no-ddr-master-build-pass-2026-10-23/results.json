@@ -1,0 +1,25 @@
+{
+  "status": "FPGA_BUILD_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "slack_ns": {
+    "setup": 2.776,
+    "hold": 0.055,
+    "pulse_width": 2.5
+  },
+  "timing_coverage": {
+    "no_clock": 0,
+    "unconstrained_internal_endpoints": 0,
+    "no_input_delay": 0,
+    "no_output_delay": 4
+  },
+  "drc_warnings": [],
+  "scope": "No-DDR-master diagnostic PL; constant request netlist checked, no historical drain/DDR ownership or hardware proof",
+  "sha256": {
+    "top.bit": "df35fe96f15249a8afd7de516c8112bbe3230c4227488c5493105a3fbf58912d",
+    "top_timing.rpt": "968d400878021e408c13673f8142e295c824441ee5c49c34b3a583775f312d82",
+    "top_drc.rpt": "651901a1d533688155edbbe918f4132cb6c1d00010f30df79747fb9b0deb32c8",
+    "top_route_status.rpt": "eedabf544d6621cc4028c5fc238e636482d8e6e455ec1c1a24d4d8e097518fd2",
+    "console.log": "05570c4d8a838c25e787f1da3f59307cf9a8d6da4f5426153aaa2cbce309f0fc"
+  },
+  "no_ddr_master_netlist_sha256": "91d135062d107afde0220894e0d6a29e6f0b9a6aa0c3807a56fe47eee214d1f9"
+}
