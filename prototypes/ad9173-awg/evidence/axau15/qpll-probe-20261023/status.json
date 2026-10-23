@@ -1,0 +1,28 @@
+{
+  "implementation": "PASS",
+  "hardware": "NOT_RUN",
+  "simulation": "LOGIC_ONLY_PASS",
+  "part": "xcau15p-ffvb676-2-i",
+  "vivado": "2025.2",
+  "job": "/srv/nvme-fast-1/vivado-work/alinx-qpll-probe-20261023b",
+  "exit_code": 0,
+  "wns_ns": 6.732,
+  "whs_ns": 0.046,
+  "bus_skew_slack_ns": 7.233,
+  "gray_cdc_safe_bits": 32,
+  "drc_errors": 0,
+  "unconstrained_internal_endpoints": 0,
+  "partial_input_delay": 2,
+  "partial_input_delay_reason": "asynchronous MISO and SPI_EN max-delay budgets, see clock-setup",
+  "bit_sha256": "3b11544a0ae242cf7e9fbce19ddf9d8d05325ec870620a91875831cf51558ab7",
+  "qpll": {
+    "n": 100,
+    "m": 2,
+    "vco_hz": 12288000000,
+    "ref_hz": 245760000
+  },
+  "gth_channels": 0,
+  "blocker": "Physical FMC GBTCLK0 AC coupling remains unconfirmed; no HMC output12 enable",
+  "physical_actions": false,
+  "required_site": "GTHE4_COMMON_X0Y1"
+}

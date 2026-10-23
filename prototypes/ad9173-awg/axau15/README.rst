@@ -177,3 +177,13 @@ bridge. Onboard HMC output2 profile was written; AD9172 PLL/DLL lock and nominal
 4.9152GS/s divider readback physically passed. HMC readback/ID and absolute
 frequency were not measured. DAC remains muted; dedicated FMC reference,
 JESD and RF remain unqualified. See its README and clock-setup evidence.
+
+Dedicated-reference diagnostics (2026-10-23)
+-------------------------------------------
+
+``refclk-probe/`` adds a dedicated V7/V6 clock counter. ``qpll-probe/`` adds
+QPLL1 N100/M2 and independent system-clock reset/lock readout, explicitly
+placed in bank225. Both retain the qualified slow GPIO SPIv2 console.
+These are separate diagnostics, not JESD/sample/RF qualification. Physical
+use remains gated on actual carrier/module FMC GBTCLK0 AC coupling; see
+their README files and evidence/axau15 for build/simulation distinctions.

@@ -1,0 +1,19 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Fri Oct 23 17:21:32 2026
+| Host              : 107d9adfd3de running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_cdc -file cdc.rpt
+| Design            : spi_probe
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Routed
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+Severity  Source Clock  Destination Clock  CDC Type                 Exceptions               Endpoints  Safe  Unsafe  Unknown  No ASYNC_REG  
+--------  ------------  -----------------  -----------------------  -----------------------  ---------  ----  ------  -------  ------------  
+Warning   ref_div       probe_jtag10       No Common Primary Clock  Max Delay Datapath Only         32    32       0        0             0  
+

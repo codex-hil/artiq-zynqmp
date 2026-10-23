@@ -1,0 +1,139 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Fri Oct 23 17:21:32 2026
+| Host              : 107d9adfd3de running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_bus_skew -file skew.rpt
+| Design            : spi_probe
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Routed
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+Table of Contents
+-----------------
+1. Bus Skew Report Summary
+2. Bus Skew Report Per Constraint
+
+1. Bus Skew Report Summary
+--------------------------
+
+Id  Position  From                            To                              Corner  Requirement(ns)  Actual(ns)  Slack(ns)
+--  --------  ------------------------------  ------------------------------  ------  ---------------  ----------  ---------
+1   10        [get_cells -hier -regexp {^gray_reg\[[0-9]+\]}]
+                                              [get_cells -hier -regexp {^meta_reg\[[0-9]+\]}]
+                                                                              Slow              8.138       0.905      7.233
+
+
+2. Bus Skew Report Per Constraint
+---------------------------------
+
+Id: 1
+set_bus_skew -from [get_cells -hier -regexp {^gray_reg\[[0-9]+\]}] -to [get_cells -hier -regexp {^meta_reg\[[0-9]+\]}] 8.138
+Requirement: 8.138ns
+Endpoints: 32
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+ref_div               probe_jtag10          meta_reg[19]/D                  meta_reg[12]/D                  Slow         0.905      7.233
+
+
+Slack (MET) :             7.233ns  (requirement - actual skew)
+  Endpoint Source:        gray_reg[19]/C
+                            (rising edge-triggered cell FDRE clocked by ref_div)
+  Endpoint Destination:   meta_reg[19]/D
+                            (rising edge-triggered cell FDRE clocked by probe_jtag10)
+  Reference Source:       gray_reg[12]/C
+                            (rising edge-triggered cell FDRE clocked by ref_div)
+  Reference Destination:  meta_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by probe_jtag10)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            8.138ns
+  Endpoint Relative Delay:   -1.368ns
+  Reference Relative Delay:  -6.983ns
+  Relative CRPR:              4.711ns
+  Actual Bus Skew:            0.905ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ref_div rise edge)    0.000     0.000 r  
+    GTHE4_COMMON_X0Y1                                 0.000     0.000 r  ref_p (IN)
+                         net (fo=0)                   0.000     0.000    ref_p
+    GTHE4_COMMON_X0Y1    IBUFDS_GTE4 (Prop_IBUFDS0_GTHE4_GTHE4_COMMON_I_ODIV2)
+                                                      0.327     0.327 r  ref_ib/ODIV2
+                         net (fo=2, routed)           0.114     0.441    ref_div
+    BUFG_GT_X0Y43        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.571 r  ref_buf/O
+    X1Y1 (CLOCK_ROOT)    net (fo=64, routed)          0.573     1.144    ref_clk
+    SLICE_X43Y105        FDRE                                         r  gray_reg[19]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X43Y105        FDRE (Prop_DFF2_SLICEL_C_Q)
+                                                      0.081     1.225 r  gray_reg[19]/Q
+                         net (fo=1, routed)           0.738     1.963    gray[19]
+    SLICE_X43Y106        FDRE                                         r  meta_reg[19]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock probe_jtag10 rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  probe_bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      0.465     0.465 r  probe_bs/TCK
+                         net (fo=1, routed)           1.094     1.559    probe_tck
+    BUFGCE_X0Y65         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     1.583 r  probe_tck_BUFG_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=130, routed)         1.724     3.307    probe_tck_BUFG
+    SLICE_X43Y106        FDRE                                         r  meta_reg[19]/C
+                         clock pessimism              0.000     3.307    
+    SLICE_X43Y106        FDRE (Setup_DFF2_SLICEL_C_D)
+                                                      0.025     3.332    meta_reg[19]
+  -------------------------------------------------------------------
+                         data arrival                           1.963    
+                         clock arrival                          3.332    
+  -------------------------------------------------------------------
+                         relative delay                        -1.368    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ref_div rise edge)    0.000     0.000 r  
+    GTHE4_COMMON_X0Y1                                 0.000     0.000 r  ref_p (IN)
+                         net (fo=0)                   0.000     0.000    ref_p
+    GTHE4_COMMON_X0Y1    IBUFDS_GTE4 (Prop_IBUFDS0_GTHE4_GTHE4_COMMON_I_ODIV2)
+                                                      0.120     0.120 r  ref_ib/ODIV2
+                         net (fo=2, routed)           0.099     0.219    ref_div
+    BUFG_GT_X0Y43        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     0.333 r  ref_buf/O
+    X1Y1 (CLOCK_ROOT)    net (fo=64, routed)          0.483     0.816    ref_clk
+    SLICE_X44Y100        FDRE                                         r  gray_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X44Y100        FDRE (Prop_HFF_SLICEM_C_Q)
+                                                      0.058     0.874 r  gray_reg[12]/Q
+                         net (fo=1, routed)           0.072     0.946    gray[12]
+    SLICE_X45Y100        FDRE                                         r  meta_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock probe_jtag10 rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  probe_bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      4.300     4.300 r  probe_bs/TCK
+                         net (fo=1, routed)           1.590     5.890    probe_tck
+    BUFGCE_X0Y65         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     5.918 r  probe_tck_BUFG_inst/O
+    X1Y1 (CLOCK_ROOT)    net (fo=130, routed)         1.949     7.867    probe_tck_BUFG
+    SLICE_X45Y100        FDRE                                         r  meta_reg[12]/C
+                         clock pessimism              0.000     7.867    
+    SLICE_X45Y100        FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.062     7.929    meta_reg[12]
+  -------------------------------------------------------------------
+                         data arrival                           0.946    
+                         clock arrival                          7.929    
+  -------------------------------------------------------------------
+                         relative delay                        -6.983    
+
+
+
