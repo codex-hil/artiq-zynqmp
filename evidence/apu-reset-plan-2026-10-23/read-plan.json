@@ -1,0 +1,12 @@
+{
+  "status": "OFFLINE_APU_RESET_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "address": "0xfd1a0104",
+  "samples": 2,
+  "width_bits": 32,
+  "destructive_test_allowed": false,
+  "limits": "Reset control read only. No reset writes, no cache/transaction-drain or PMU release exclusion proof.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/crf_apb.h": "0b44229040abc93ba1420286074cacfcb813c9a41e00e61514af903abce6b84c"
+  }
+}

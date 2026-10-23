@@ -1,0 +1,27 @@
+{
+  "hardware_executed": false,
+  "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pm_proc.c",
+  "sha256": "b91759f7da858d7c149c0252f4415a7c2ce71268a44ca24b5e9cf410cd53ffda",
+  "anchors": {
+    "static s32 PmProcRpu0Sleep(void)": [
+      204
+    ],
+    "static s32 PmProcRpu0Wake(void)": [
+      290
+    ],
+    "static s32 PmProcApu1Wake(void)": [
+      263
+    ],
+    "XPfw_AibEnable(XPFW_AIB_RPU0_TO_LPD);": [
+      206
+    ],
+    "RPU_RPU_0_CFG_NCPUHALT_MASK,": [
+      213,
+      299
+    ],
+    "return (s32)XpbrACPU1WakeHandler();": [
+      265
+    ]
+  },
+  "limits": "Adjacent PMU source, not proof a callback executed or cannot execute. No ROM internals audited."
+}

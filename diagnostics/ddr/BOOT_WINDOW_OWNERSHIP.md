@@ -92,3 +92,20 @@ No Si/SD/flash/OTP/Kasli writes. Raw logs/hashes and physical restoration eviden
 `evidence/boot-master-hardware-2026-10-23`. Next offline audit PMU/core reset
 control and PL HP0 reset/ownership, then prepare necessary register observations;
 do not repeat unchanged combined capture without new coverage.
+
+
+### 2026-10-23 — APU reset plan and PMU core-control source audit (offline)
+
+Reviewed PMU pm_proc.c: RPU0 sleep enables AIB isolation, asserts reset,
+clears NCPUHALT, deasserts reset, disables isolation. Wake calls ROM R50 reset
+handler then sets NCPUHALT. APU wake delegates to ROM. This source sequence is
+consistent with observed RPU reset0/NCPUHALT0, but does not prove execution or
+exclude future PMU wake. Do not require held-reset as the only possible RPU
+idle model, or silently invoke sleep/wake callbacks during observation.
+Added source-checked CRF APU reset-control plan at0xfd1a0104: four soft-reset,
+four POR bits and L2 reset decoded separately, unknown bits retained. Two decoder
+tests and two changed-header controls PASS; actual vendor header validation PASS.
+Evidence `evidence/apu-reset-plan-2026-10-23` pins header and PMU source/anchors.
+No hardware access. Next integrate two fixed APU reset-control reads into the
+same-boot observation, then review PMU request/event paths and PL HP0 drain.
+DDR writes remain NOT_ADMITTED; no policy to stop PMU or mutate core resets added.
