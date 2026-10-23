@@ -1,5 +1,9 @@
 """Actual Migen DMA completion under AXI/CRI backpressure. LGPL-3.0-or-later."""
 import unittest
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"diagnostics/ddr"))
+from axi_read_observer import AXIReadObserver
 from migen import Module, passive, run_simulation
 from litex.soc.interconnect.axi import AXIInterface
 from test_zynqmp_dma import dma, encode_sequence, reverse_word
@@ -12,6 +16,7 @@ class DrainTB(Module):
  def __init__(self):
   self.bus=AXIInterface(data_width=64,address_width=49,id_width=6)
   self.submodules.dut=dma.DMA(self.bus)
+  self.submodules.observer=AXIReadObserver(self.bus)
 
 
 class DrainTests(unittest.TestCase):
@@ -52,6 +57,8 @@ class DrainTests(unittest.TestCase):
   @passive
   def monitor():
    while True:
+    self.assertEqual((yield tb.observer.outstanding),stats["ar"]-stats["last"])
+    self.assertEqual((yield tb.observer.accounting_error),0)
     if (yield bus.ar.valid) and (yield bus.ar.ready):stats['ar']+=1
     if (yield bus.r.valid) and (yield bus.r.ready) and (yield bus.r.last):stats['last']+=1
     if (yield bus.r.valid) and not (yield bus.r.ready):stats['r_stall']+=1
@@ -61,6 +68,7 @@ class DrainTests(unittest.TestCase):
     stats['peak']=max(stats['peak'],outstanding)
     yield
   def stimulus():
+   yield tb.observer.epoch_qualified.eq(1)  # Testbench starts with an empty PS queue.
    yield from dut.dma.base_address.write(0)
    yield from dut.enable.write(trigger)
    yield
@@ -73,6 +81,9 @@ class DrainTests(unittest.TestCase):
      self.assertEqual((yield bus.ar.valid),0)
      self.assertEqual((yield bus.r.valid),0)
      self.assertEqual((yield dut.dma.wb_reader.bus_error.status),int(response!=0))
+     self.assertEqual((yield tb.observer.outstanding),0)
+     self.assertEqual((yield tb.observer.response_error),int(response!=0))
+     self.assertEqual((yield tb.observer.quiet),int(response==0))
      stats['completed']=True
      # No trigger writer: IDLE must stay quiet after the completed run.
      prior=stats['ar']

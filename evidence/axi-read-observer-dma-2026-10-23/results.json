@@ -1,0 +1,40 @@
+{
+  "status": "SIMULATION_PASS",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "dma_cases": 24,
+  "delay": [
+    0,
+    3,
+    17
+  ],
+  "cri_delay": [
+    0,
+    31
+  ],
+  "response": [
+    0,
+    2
+  ],
+  "trigger": [
+    0,
+    1
+  ],
+  "assertions": [
+    "Every-cycle observer outstanding equals independent accepted AR minus accepted RLAST",
+    "No accounting error in legal DMA runs",
+    "Completed DMA has outstanding0; SLVERR remains sticky and prevents quiet",
+    "Isolated DMA reset leaves independent observer outstanding nonzero and quiet0"
+  ],
+  "execution_seconds": {
+    "dma_matrix": 21.202,
+    "reset_negative": 0.023
+  },
+  "source_sha256": {
+    "tests/test_dma_drain.py": "3a7bc3d1e06b33ece635ea82aa938cd8ddd2a0e32aa2401d9fadf22918dc2747",
+    "tests/test_dma_reset_ownership.py": "dae2ca507867145238873b0ca6b93f98f434e78194bc1df1d244dfbecf0029a1",
+    "diagnostics/ddr/axi_read_observer.py": "f2d67d31da30a46a3c6eea5d7dcb63b941cf5d4e3fe84de79edbfcdf4ca8bb6c",
+    "boards/genesys_zu-5ev/1_gateware/zynqmp_dma.py": "673d0a713ccbec2b7b81914145b854449470fab6678a5c39b4dba8bee70e0f43"
+  },
+  "limits": "Software Migen simulation only. Observer is not in production bitstream. Independent monitor reset/epoch qualification, PMU/PS/PL reset ordering and full DDR admission unresolved."
+}

@@ -1,6 +1,23 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Passive observer with actual DMA simulation PASS
+
+Extended existing real-DMA backpressure bench with passive observer and independent
+AR/RLAST scoreboard comparison every cycle. All24 combinations of AXI delay0/3/17,
+CRI stall0/31, responseOKAY/SLVERR and trigger0/1 PASS. No legal-run accounting
+errors; completion drains to zero; SLVERR sets sticky observer response error and
+prevents quiet even after drain. Negative isolated-DMA-reset test also PASS:
+DMA IDLE does not clear the independently running observer's outstanding count,
+which stays nonzero with quiet0 when PS responses are withheld. Production DMA
+source/gateware unchanged. Evidence summary/pins:
+`evidence/axi-read-observer-dma-2026-10-23/results.json`.
+No hardware access or FPGA build; PMU AP0 access remains unresolved.
+Next define observer CSR/reset epoch wiring and verify monitor-reset loss of
+history against an independent owner model before planning a Dell build.
+DDR writes remain NOT_ADMITTED; simulation quiet is not physical drain proof.
+
+
 ## 2026-10-23 — Passive PL AXI read observer prototype (simulation only)
 
 Added standalone diagnostic Migen prototype counting accepted AR versus accepted
