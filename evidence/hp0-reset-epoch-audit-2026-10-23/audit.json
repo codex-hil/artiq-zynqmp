@@ -1,0 +1,94 @@
+{
+  "status": "OFFLINE_SOURCE_TOPOLOGY_AUDIT",
+  "hardware_executed": false,
+  "sources": {
+    "top.v": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/observer-build-result-20261023/top.v",
+      "sha256": "795e385c57463002a5d64540a3a4e1a2f78e6b76386eced310330eece724b54f",
+      "anchors": {
+        "assign async_reset = (~pl_resetn0__SHIFTED);": [
+          5152
+        ],
+        "assign saxihp0_fpd_aclk__SHIFTED = sys_clk;": [
+          2097
+        ],
+        "assign epoch_qualified = 1'd0;": [
+          3841
+        ],
+        ".PRE(async_reset)": [
+          8795,
+          8805
+        ],
+        ".Q(sys_rst)": [
+          8806
+        ],
+        "if (sys_rst) begin": [
+          8303
+        ],
+        ".saxihp0_fpd_aclk(saxihp0_fpd_aclk)": [
+          8467
+        ],
+        ".pl_resetn0(pl_resetn0)": [
+          8498
+        ]
+      }
+    },
+    "gateware.py": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware/gateware.py",
+      "sha256": "2b7193d4fda8dad7dadac101b67c148a00aaede462b5cf77361380cbd0985188",
+      "anchors": {
+        "self.cd_sys, ~self.zynq_ultra_ps_e_0.outputs[\"pl_resetn0\"]": [
+          42
+        ],
+        "ps.inputs[\"saxihp0_fpd_aclk\"].eq(self.cd_sys.clk)": [
+          59
+        ]
+      }
+    },
+    "observer.py": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/axi_read_observer.py",
+      "sha256": "f2d67d31da30a46a3c6eea5d7dcb63b941cf5d4e3fe84de79edbfcdf4ca8bb6c",
+      "anchors": {
+        "self.epoch_qualified=Signal()": [
+          11
+        ],
+        "self.outstanding=Signal(max=capacity+1)": [
+          12
+        ],
+        "self.sync += [": [
+          22
+        ]
+      }
+    },
+    "psu_init.tcl": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+      "anchors": {
+        "set psu_ps_pl_reset_config_data {": [
+          13809
+        ],
+        "mask_write 0XFF0A0054 0xFFFFFFFF 0x00000000": [
+          13853
+        ],
+        "mask_write 0XFF0A0054 0xFFFFFFFF 0x80000000": [
+          13843,
+          13863
+        ]
+      }
+    }
+  },
+  "established": [
+    "Generated PS pl_resetn0 drives asynchronous assert/two-flop sys reset release.",
+    "HP0 interface clock uses sys clock; observer epoch qualification tied zero.",
+    "Observer state uses sys synchronous reset and loses prior accounting history.",
+    "Generated PS initialization toggles GPIO bank5 high/low/high; internal PS mapping not proven here."
+  ],
+  "not_proven": [
+    "HP0 PS endpoint/FIFO reset coverage and completion",
+    "No accepted PS transactions survive PL accounting reset",
+    "PMU cannot release or initiate another DDR owner",
+    "Generated source equivalence to trained-boot PL state"
+  ],
+  "required_next": "Review PS IP implementation/register reset coverage and establish a single qualified epoch or use separately qualified no-PL boot; do not arm epoch from a delay or sampled zero.",
+  "destructive_test_allowed": false
+}

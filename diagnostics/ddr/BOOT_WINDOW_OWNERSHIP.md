@@ -224,3 +224,18 @@ Ethernet PASS; lease released. No Si/SD/flash/OTP/Kasli writes. Evidence
 `evidence/boot-pcap-hardware-2026-10-23`. Full DDR remains NOT_RUN/NOT_ADMITTED.
 Next offline inspect AMD PCAP reset/control/direction sequencing and status
 meaning before changing any criterion; no blind retry or register mutation.
+
+
+
+## 2026-10-23 — Generated HP0/reset topology audited (offline)
+
+Reproducible anchor/hash audit confirms generated pl_resetn0 -> asynchronous
+assert/two-flop sys_rst release, HP0 clock=sys_clk, sys-domain observer and
+qualification tied0. Reset erases observer accounting; source and reset/CSR
+simulation controls PASS. Generated GPIO bank5 toggle is visible, but this audit
+does not establish PS-internal mapping or HP0 FIFO/reset/drain semantics.
+Evidence `evidence/hp0-reset-epoch-audit-2026-10-23`; no hardware access.
+Normal runtime remains last physically restored192.168.2.3. DDR NOT_ADMITTED.
+Next inspect PS IP reset coverage/PS interconnect, then design a positively
+qualified epoch or separately qualified no-PL diagnostic boot; never qualify
+from reset+delay+zero alone. PMU future-owner exclusion also remains unresolved.

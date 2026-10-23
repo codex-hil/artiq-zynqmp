@@ -1647,3 +1647,18 @@ not completion/exclusive ownership proof. Normal runtime192.168.2.3 restored
 TTL/CoreDMA/analyzer/MonInj/EthernetPASS. USB blockage superseded. Full DDR
 NOT_RUN/NOT_ADMITTED; PMU and PLHP0/reset epoch remain unresolved. Evidence
 boot-pcap-context-hardware-2026-10-23; no repeat unchanged capture needed.
+
+
+
+## 2026-10-23 — Generated HP0/reset topology audited (offline)
+
+Reproducible anchor/hash audit confirms generated pl_resetn0 -> asynchronous
+assert/two-flop sys_rst release, HP0 clock=sys_clk, sys-domain observer and
+qualification tied0. Reset erases observer accounting; source and reset/CSR
+simulation controls PASS. Generated GPIO bank5 toggle is visible, but this audit
+does not establish PS-internal mapping or HP0 FIFO/reset/drain semantics.
+Evidence `evidence/hp0-reset-epoch-audit-2026-10-23`; no hardware access.
+Normal runtime remains last physically restored192.168.2.3. DDR NOT_ADMITTED.
+Next inspect PS IP reset coverage/PS interconnect, then design a positively
+qualified epoch or separately qualified no-PL diagnostic boot; never qualify
+from reset+delay+zero alone. PMU future-owner exclusion also remains unresolved.
