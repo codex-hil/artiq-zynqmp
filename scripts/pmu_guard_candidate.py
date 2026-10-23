@@ -3,7 +3,7 @@ import hashlib,json,re,subprocess
 from pathlib import Path
 from check_pmu_lab_guard import check
 TOOL=Path('/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin')
-SCRIPTS={'scripts/pmu_guard_candidate.py','scripts/check_pmu_lab_guard.py','scripts/check_pmu_boundary_image.py','scripts/package_local_candidate.py','scripts/probe_pmu_lab_guard.tcl','scripts/restart_pmu_for_restore.tcl','scripts/test_candidate_runtime_hw.py','scripts/run_trained_observer.py','scripts/run_boot_firmware.tcl'}
+SCRIPTS={'scripts/pmu_guard_candidate.py','scripts/check_pmu_lab_guard.py','scripts/check_pmu_boundary_image.py','scripts/package_local_candidate.py','scripts/probe_pmu_lab_guard.tcl','scripts/restart_pmu_for_restore.tcl','scripts/test_candidate_runtime_hw.py','scripts/run_trained_observer.py','scripts/run_boot_firmware.tcl','scripts/check_hw_storage.py','scripts/load_rtio_runtime.py','scripts/test_rtio_debug_hw.py','scripts/test_ethernet_hw.py'}
 def preflight(path,repo):
  m=json.loads(Path(path).read_text())
  if set(m)!={'elf','symbols','disassembly','script_sha256'} or set(m['script_sha256'])!=SCRIPTS:raise ValueError('Exact guard gate required')

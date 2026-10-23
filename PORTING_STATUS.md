@@ -1,6 +1,33 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — PMU lab-guard attempt FAIL; reserved-space/debug recovery PASS
+
+Integrated explicit guard image gate and separate no-master trained child mode.
+Parent restoration for this mode first positively halts exact PMU via debugger,
+downloads/resumes original pinned PMU, then normal full reset/boot/debug/Ethernet;
+missing bootstrap marker rejects recovery. Real block reserve held before target
+access/released before restore. Sixteen offline gate/reserve/lifecycle controls
+PASS. Fresh pins `evidence/pmu-guard-boot-integration-2026-10-23`. Enough room
+obtained by relocating own completed2026-10-17 Kasli result:1334files862500246B
+SHAverified, absolute/internal symlinks checked, old path preserved. No KasliHW.
+
+Single physical cycle143.959s under Genesys lease: requestkind2 published, FIRST
+guard-recordAP0readffdd7f68 failed APtransactiontimeout. No guard/MSR record, so
+entry/IEclear NOT_PROVEN. No retry/force/alias/alternative-address read. Whole
+candidateFAIL preserved. Exact PMUdebug halt/download/resume bootstrapPASS;
+normal192.168.2.3 restored TTL/CoreDMA/analyzerwrap/MonInj/EthernetPASS. Two
+filesystems768MiB real block reservations allocated/released; no storage failure.
+Lease released. Evidence/rawbytehashes
+`evidence/pmu-guard-boot-hardware-2026-10-23`. No Si/SD/flash/OTP/Kasli changes.
+
+CauseUNDETERMINED: tight RAM instruction-fetch arbitration or interrupt-related
+access dependencies are only hypotheses, not board fault diagnosis. Next offline
+review PMU RAM/debug/arbitration and linked terminal before a specifically changed
+candidate. No unchanged guard retry, no treating timeout as successful quiescence.
+Full DDR NOT_RUN/NOT_ADMITTED; normal baseline restored and usable.
+
+
 ## 2026-10-23 — Guard image/request gates and explicit recovery Tcl (offline)
 
 New exact guard gate reruns local layout/flow checks and regenerates nm/objdump

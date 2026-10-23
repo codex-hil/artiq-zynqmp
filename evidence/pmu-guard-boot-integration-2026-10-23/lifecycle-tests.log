@@ -1,0 +1,11 @@
+test_busy_prevents_body_and_lease_released (test_candidate_runtime.CandidateTests.test_busy_prevents_body_and_lease_released) ... ok
+test_interrupt_still_restores (test_candidate_runtime.CandidateTests.test_interrupt_still_restores) ... ok
+test_restore_failure_never_passes (test_candidate_runtime.CandidateTests.test_restore_failure_never_passes) ... ok
+test_stale_artifact_rejected_before_report_check (test_candidate_runtime.CandidateTests.test_stale_artifact_rejected_before_report_check) ... ok
+test_success_restores_and_failure_restores (test_candidate_runtime.CandidateTests.test_success_restores_and_failure_restores) ... ok
+test_timeout_child_killed_and_lock_retained (test_candidate_runtime.CandidateTests.test_timeout_child_killed_and_lock_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.114s
+
+OK

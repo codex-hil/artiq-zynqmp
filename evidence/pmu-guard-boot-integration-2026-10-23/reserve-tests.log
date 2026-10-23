@@ -1,0 +1,11 @@
+test_insufficient_headroom_allocates_nothing (test_restore_reserve.Tests.test_insufficient_headroom_allocates_nothing) ... ok
+test_parent_reservation_failure_prevents_hardware_subprocess (test_restore_reserve.Tests.test_parent_reservation_failure_prevents_hardware_subprocess) ... ok
+test_partial_allocation_failure_cleans_all_descriptors (test_restore_reserve.Tests.test_partial_allocation_failure_cleans_all_descriptors) ... ok
+test_real_blocks_unlinked_deduplicated_and_released (test_restore_reserve.Tests.test_real_blocks_unlinked_deduplicated_and_released) ... ok
+test_release_failure_still_attempts_restore (test_restore_reserve.Tests.test_release_failure_still_attempts_restore) ... ok
+test_reserve_released_before_restoration_after_interrupt (test_restore_reserve.Tests.test_reserve_released_before_restoration_after_interrupt) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.027s
+
+OK

@@ -59,6 +59,7 @@ def main():
     p.add_argument('--model-inputs',type=Path)
     p.add_argument('--pmu-boundary-inputs',type=Path)
     p.add_argument('--pmu-request-inputs',type=Path)
+    p.add_argument('--pmu-guard-inputs',type=Path)
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
@@ -97,6 +98,11 @@ def main():
         if not no_master or model or pmu_diagnostic:raise ValueError('Request requires separate no-master window')
         from pmu_request_candidate import preflight as request_preflight, parse as request_parse
         request=request_preflight(a.pmu_request_inputs,REPO)
+    guard=None
+    if a.pmu_guard_inputs:
+        if not no_master or model or pmu_diagnostic or request:raise ValueError('Guard requires separate no-master window')
+        from pmu_guard_candidate import preflight as guard_preflight, parse as guard_parse
+        guard=guard_preflight(a.pmu_guard_inputs,REPO)
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -115,7 +121,8 @@ def main():
             xs('reset','reset_genesys_ps.tcl',a.server,'210383B7F02DA')
             if pmu_diagnostic:pmu_preflight(a.pmu_boundary_inputs,REPO)
             if request:request_preflight(a.pmu_request_inputs,REPO)
-            selected_pmu=request['elf']['path'] if request else (pmu_diagnostic['elf']['path'] if pmu_diagnostic else a.pmu)
+            if guard:guard_preflight(a.pmu_guard_inputs,REPO)
+            selected_pmu=guard['elf']['path'] if guard else (request['elf']['path'] if request else (pmu_diagnostic['elf']['path'] if pmu_diagnostic else a.pmu))
             xs('boot','run_boot_firmware.tcl',a.server,selected_pmu,a.fsbl,'210383B7F02DA')
             deadline=time.monotonic()+30
             while time.monotonic()<deadline:
@@ -173,6 +180,14 @@ def main():
                 result['pmu_request_sha256']=request['elf']['sha256']
                 result['pmu_request_nonce']=hex(nonce)
                 result['pmu_request']=request_parse(xs('pmu-request','probe_pmu_observe_request.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32),nonce)
+            if guard:
+                import secrets
+                nonce=secrets.randbits(64) or 1
+                guard_preflight(a.pmu_guard_inputs,REPO)
+                result['pmu_guard_sha256']=guard['elf']['sha256']
+                result['pmu_guard_nonce']=hex(nonce)
+                result['pmu_guard_request_attempted']=True
+                result['pmu_guard']=guard_parse(xs('pmu-guard','probe_pmu_lab_guard.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32),nonce)
             if model:
                 model_preflight(a.model_inputs,REPO)
                 captured=xs('ocm-model','run_ddr_ocm_model.tcl',a.server,model['elf']['path'],'210383B7F02DA')

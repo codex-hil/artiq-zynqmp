@@ -125,6 +125,13 @@ def observer_preflight(path,files):
         if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Changed request inputs')
         request_preflight(Path(item['path']),REPO)
         required_scripts |= REQUEST_SCRIPTS
+    if info.get('pmu_guard_inputs'):
+        if not info.get('no_master_inputs') or any(info.get(n) for n in ('model_inputs','pmu_request_inputs','pmu_boundary_inputs')):raise ValueError('Guard requires separate no-master window')
+        from pmu_guard_candidate import preflight as guard_preflight, SCRIPTS as GUARD_SCRIPTS
+        item=info['pmu_guard_inputs']
+        if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Changed guard inputs')
+        guard_preflight(Path(item['path']),REPO)
+        required_scripts |= GUARD_SCRIPTS
     if set(info.get('script_sha256',{}))!=required_scripts:
         raise ValueError('Missing observer execution pins')
     for name,digest in info['script_sha256'].items():
@@ -258,7 +265,7 @@ def main():
                     run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
                         '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
                         '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                        '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--pmu-request-inputs',observer['pmu_request_inputs']['path']] if observer.get('pmu_request_inputs') else [])+(['--pmu-boundary-inputs',observer['pmu_boundary_inputs']['path']] if observer.get('pmu_boundary_inputs') else [])+(['--model-inputs',observer['model_inputs']['path']] if observer.get('model_inputs') else [])+(['--no-master-inputs',observer['no_master_inputs']['path']] if observer.get('no_master_inputs') else [])+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
+                        '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--pmu-guard-inputs',observer['pmu_guard_inputs']['path']] if observer.get('pmu_guard_inputs') else [])+(['--pmu-request-inputs',observer['pmu_request_inputs']['path']] if observer.get('pmu_request_inputs') else [])+(['--pmu-boundary-inputs',observer['pmu_boundary_inputs']['path']] if observer.get('pmu_boundary_inputs') else [])+(['--model-inputs',observer['model_inputs']['path']] if observer.get('model_inputs') else [])+(['--no-master-inputs',observer['no_master_inputs']['path']] if observer.get('no_master_inputs') else [])+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
                     observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                     if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
                     if observer.get('exception_brk'):return 'EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED'
@@ -271,6 +278,12 @@ def main():
                     observed=json.loads((out/'candidate-ocm/results.json').read_text())
                     if observed.get('status')!='PASS':raise RuntimeError('OCM observation did not pass')
                     return 'OCM_UART_ONLY_NO_NETWORK'
+                if prefix=='restore' and observer is not None and observer.get('pmu_guard_inputs'):
+                    text=run('restore-pmu-bootstrap',['vivado-container','shell','-c','exec "$@"','bash',
+                        '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
+                        str(REPO/'scripts/restart_pmu_for_restore.tcl'),a.server,files['restore_pmu']['path'],CABLE],60)
+                    if text.splitlines().count('PMU_RESTORE_BOOTSTRAP_STARTED')!=1:
+                        raise RuntimeError('PMU bootstrap not confirmed; do not assume system-reset recovery')
                 def path(name):return files[prefix+'_'+name]['path']
                 ps=Path(path('fsbl')).parents[2];worker=Path(path('worker')).parent
                 load=out/(prefix+'-load')

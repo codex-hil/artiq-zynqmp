@@ -1,0 +1,17 @@
+PMU_GUARD_BEGIN
+Memory read error at 0xFFDD7F68. AP transaction timeout
+    invoked from within
+"::tcf::eval -progress {apply {{msg} {puts $msg}}} {tcf_send_command tcfchan#0 Memory get siiii {Bea{o{msg o{} A}}} {{JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0.AP0} 4292706152 4 4 3}}"
+    (procedure "::tcf::send_command" line 4)
+    invoked from within
+"::tcf::send_command $chan Memory get "siiii" "Bea{o{msg o{} A}}" [list $ctx $start_addr $size $nbytes $mode]"
+    (procedure "mrd" line 87)
+    invoked from within
+"mrd -address-space AP0 -value 0xffdd7f68"
+    ("for" body line 3)
+    invoked from within
+"for {set sample 0} {$sample < 4} {incr sample} {
+ after 100
+ set before [mrd -address-space AP0 -value 0xffdd7f68]
+ set words [mrd -address-space AP0 ..."
+    (file "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/probe_pmu_lab_guard.tcl" line 38)

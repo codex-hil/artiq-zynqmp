@@ -1,0 +1,103 @@
+{
+  "status": "FAIL",
+  "restoration": "PASS",
+  "error": "candidate-trained-observer failed: : [\n              true,\n              true\n            ]\n          },\n          \"other_status_bits\": [\n            2684366800,\n            2684366800\n          ],\n          \"sampled_read_write_idle\": false,\n          \"ownership\": \"NOT_PROVEN\",\n          \"destructive_test_allowed\": false\n        },\n        \"reset_control_bits\": [\n          true,\n          true\n        ],\n        \"pcap_mode_bits\": [\n          true,\n          true\n        ],\n        \"direction_bits\": [\n          0,\n          0\n        ],\n        \"ownership\": \"NOT_PROVEN\",\n        \"destructive_test_allowed\": false,\n        \"limits\": \"Direction/reset context only. No inferred completion, held-reset permanence, outstanding memory drain or DDR admission.\"\n      }\n    },\n    \"necessary_dma_fields_pass\": true,\n    \"profile\": \"pcap_context_observation_only\",\n    \"pcap_completion\": \"NOT_PROVEN\",\n    \"pmu_ownership\": \"NOT_PROVEN\",\n    \"not_observed\": [\n      \"pcap\",\n      \"pmu\"\n    ],\n    \"destructive_test_allowed\": false,\n    \"ownership\": \"NOT_PROVEN\",\n    \"limits\": \"Sequential snapshots in one boot, not atomic or exclusive/drain proof; core metadata and RPU bits remain observations.\"\n  },\n  \"no_master_configuration\": {\n    \"status\": \"NO_MASTER_PL_CONFIGURED_OBSERVATION_ONLY\",\n    \"destructive_test_allowed\": false\n  },\n  \"pmu_guard_sha256\": \"7b094fd251646c6d6541bd7901700bd9fa5fbcdf77efdcefbe3a50d5b886197d\",\n  \"pmu_guard_nonce\": \"0x40d947eed2a8db9f\",\n  \"pmu_guard_request_attempted\": true,\n  \"error\": \"pmu-guard failed\"\n}\n",
+  "restored_ip": "192.168.2.3",
+  "dma_observer": false,
+  "dma_observer_active": false,
+  "kind": "candidate-runtime-hardware",
+  "hardware_executed": true,
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "cable": "210383B7F02DA",
+  "elapsed_seconds": 143.959,
+  "stages": {
+    "candidate-trained-observer": {
+      "returncode": 1
+    },
+    "restore-pmu-bootstrap": {
+      "returncode": 0
+    },
+    "restore-load": {
+      "returncode": 0
+    },
+    "restore-debug": {
+      "returncode": 0
+    },
+    "restore-ethernet": {
+      "returncode": 0
+    }
+  },
+  "extended": false,
+  "rpc_fault_case": null,
+  "expect_kernel_state": false,
+  "ocm_observation": false,
+  "fsbl_spd": false,
+  "trained_observer": true,
+  "observer_probe": "normal",
+  "observer_manifest_sha256": "0c4fe259b1bc8efd743833078e2d37c1a56e43ff22be43cfbf8b507f6ae96dae",
+  "manifest_sha256": "8e50cc625b8147aec223724a2c06d1b1f53e2ca9e522c45b8f6010aa58fad9e6",
+  "storage_admission": {
+    "status": "STORAGE_ADMISSION_PASS",
+    "hardware_executed": false,
+    "minimum_available_bytes": 536870912,
+    "minimum_available_inodes": 1024,
+    "entries": [
+      {
+        "role": "output",
+        "path": "/home/codex-hil/.local/state/artiq-builds/pmu-guard-boot-live-20261023",
+        "probe_path": "/home/codex-hil/.local/state/artiq-builds/pmu-guard-boot-live-20261023",
+        "available_bytes": 36417196032,
+        "available_inodes": 13672913
+      },
+      {
+        "role": "working_directory",
+        "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+        "probe_path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+        "available_bytes": 1657217024,
+        "available_inodes": 11210923
+      },
+      {
+        "role": "amd_home",
+        "path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+        "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+        "available_bytes": 1657217024,
+        "available_inodes": 11210923
+      },
+      {
+        "role": "amd_tmp",
+        "path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+        "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+        "available_bytes": 1657217024,
+        "available_inodes": 11210923
+      },
+      {
+        "role": "host_tmp",
+        "path": "/tmp",
+        "probe_path": "/tmp",
+        "available_bytes": 36417196032,
+        "available_inodes": 13672913
+      }
+    ],
+    "limits": "Point-in-time headroom check, not reservation or protection against concurrent disk consumption."
+  },
+  "storage_reservation": {
+    "status": "RELEASED_FOR_RESTORATION",
+    "entries": [
+      {
+        "role": "output",
+        "path": "/home/codex-hil/.local/state/artiq-builds/pmu-guard-boot-live-20261023",
+        "device": 66306,
+        "bytes": 805306368,
+        "allocated_bytes": 805310464
+      },
+      {
+        "role": "working_directory",
+        "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+        "device": 2049,
+        "bytes": 805306368,
+        "allocated_bytes": 805310464
+      }
+    ],
+    "limits": "Allocated unlinked blocks released before restore; not protection against concurrent consumption after release, inode exhaustion, quotas, I/O faults or SIGKILL during restoration."
+  }
+}

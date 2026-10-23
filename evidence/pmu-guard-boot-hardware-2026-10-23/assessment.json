@@ -1,0 +1,12 @@
+{
+  "status": "GUARD_CANDIDATE_FAIL_RESTORATION_PASS",
+  "hardware_executed": true,
+  "destructive_test_allowed": false,
+  "reason": "First guard-record read0xffdd7f68 AP transaction timeout after request publication; no record/MSR captured.",
+  "guard_entry_proven": false,
+  "cause": "UNDETERMINED; instruction-fetch/RAM arbitration or interrupt-path dependencies are hypotheses only.",
+  "unchanged_retry_performed": false,
+  "baseline_recovery": "Exact PMU debugger halt/download/resume bootstrap succeeded, then normal reset/boot/physical TTL-CoreDMA-analyzer-MonInj-Ethernet PASS192.168.2.3",
+  "reservation": "768MiB real blocks on each of two filesystems allocated before candidate and released before restore",
+  "next": "Offline investigate source/linked terminal and PMU RAM access/arbitration semantics before any changed trial. Never treat timeout as guard success or force access."
+}
