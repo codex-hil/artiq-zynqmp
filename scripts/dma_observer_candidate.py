@@ -10,7 +10,9 @@ SCRIPTS={
  'scripts/run_boot_firmware.tcl','scripts/prepare_local_rtio.tcl',
  'scripts/run_kernel_worker.tcl','scripts/run_a53_runtime.tcl',
  'scripts/program_genesys_pl.tcl','scripts/test_rtio_debug_hw.py',
- 'scripts/test_ethernet_hw.py'}
+ 'scripts/test_ethernet_hw.py','scripts/run_dma_observer_active.py',
+ 'scripts/check_dma_observer_active.py','scripts/probe_dma_observer_active.tcl',
+ 'scripts/inject_rpc_fault.py','examples/genesys_dma_observer_load.py'}
 
 
 def preflight(info,files,repo):

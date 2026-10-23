@@ -1,0 +1,128 @@
+{
+  "status": "OBSERVER_RUNTIME_GATE_OFFLINE_PASS",
+  "hardware_executed": false,
+  "cable": "210383B7F02DA",
+  "lease": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "files": {
+    "candidate_pl": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/observer-build-result-20261023/top.bit",
+      "sha256": "9649c982dc8353fc6f9b83f5397707143ff1dc4526fc104292aa1512cc2cafca"
+    },
+    "candidate_csr": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/observer-build-result-20261023/csr-map.json",
+      "sha256": "e50162378cf04b1484b1e3f09e6ec7e6f8ae2838fe275fcfe7f7f682578e3586"
+    },
+    "candidate_cpu0": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    "candidate_worker": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    },
+    "candidate_bridge": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    "candidate_fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    "candidate_pmu": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    "candidate_ps_init": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+    },
+    "restore_pl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/rtio-debug-fixed-2026-10-09/top.bit",
+      "sha256": "6066ca354ded235964ea44c757038a778d77468d5baa1caec34618edb4b70582"
+    },
+    "restore_cpu0": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+      "sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3"
+    },
+    "restore_worker": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/worker32.elf",
+      "sha256": "393fea490a45f3f3140de1a078313ad963bb3c429c32f6fe16012bf29cd305e7"
+    },
+    "restore_bridge": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build/kernel-worker-dma-final/start64.elf",
+      "sha256": "3691159b5298bec6ccce2edb4b264a1a0e5238e5573940fc968c0d16b7d0544d"
+    },
+    "restore_fsbl": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/app/build/zynqmp_fsbl.elf",
+      "sha256": "eb2fb34c0bd318540c4ecc9bc044762ff27c562f8a3334d288be9b012f808ae0"
+    },
+    "restore_pmu": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e"
+    },
+    "restore_ps_init": {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/dma-ps-2025.2/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a"
+    }
+  },
+  "required_wrapper": "Nonblocking Genesys lease through load, tests, restoration and restored tests; not yet executed",
+  "server": "Rediscover exact Genesys-filtered hw_server before execution",
+  "tests": [
+    "UART FSBL and kernel transport/DHCP startup",
+    "physical TTL loopback",
+    "CoreDMA and analyzer/MonInj through standard debug test",
+    "Ethernet ping and byte-exact echo"
+  ],
+  "forbidden": [
+    "SD/flash/OTP writes",
+    "Si writes",
+    "Kasli reconfiguration",
+    "release before restoration"
+  ],
+  "fsbl_spd": {
+    "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+    "script_sha256": {
+      "scripts/check_ddr4_spd_crc.py": "08ae46ae11373d7d14bcfdf1eee5038501501c2821d9354df79a5be6749800c9",
+      "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+      "scripts/decode_ddr4_spd.py": "a7839ec7bcd8d48c34ee11767d03ffdd1618391878be062a9f05c944a8b066b4",
+      "scripts/decode_fsbl_spd_log.py": "ee6b93ac91bfc574aca6f256d0b938813b2f1478905d8d25c2f578bfa18d22a9",
+      "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+      "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+      "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+      "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+      "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+      "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+      "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+      "scripts/test_candidate_runtime_hw.py": "2515c1b9a78695559e5ca8c01ddfffaba80d96827146777b2aec1ccd6071ac1c"
+    }
+  },
+  "limits": "Runtime observer read/qualification only; no DDR admission. Mandatory baseline restoration.",
+  "dma_observer": {
+    "build_inputs": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/observer-build-result-20261023/inputs.json",
+      "sha256": "cc3cc87a9c00ef79c4aaefa4c480cd2b102a6fd3df9ec24204897f55472973b2"
+    },
+    "script_sha256": {
+      "examples/genesys_dma_observer_load.py": "980dd29cc6dc13986b99e92e288c505065ec0fd68c92826c38d75677c7aff63c",
+      "scripts/check_dma_observer_active.py": "9919df5b1f23b8d7861d0d0bbc37b87306bbe2d41c8520f65933e62ec8211bb0",
+      "scripts/check_dma_observer_snapshot.py": "5f16683685eba704c786238ddcbf5859c9f461c80e6d59d00a3e2af2a26c619f",
+      "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+      "scripts/check_remote_rtio_build.py": "650ac8d41a90154bed6a4139a78f33c4f99539b835bd43e1eb2d355843495ad3",
+      "scripts/dma_observer_candidate.py": "9dd153b776d2ea916a0d468059f9d4c1aa517064daa1ca72ced327b8e0f768a8",
+      "scripts/inject_rpc_fault.py": "a1ba73b66eacf470d6ff80ecf70856975b21f90bce3b1d4cc7462bde7991b839",
+      "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+      "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+      "scripts/probe_dma_observer.tcl": "64505e27f74e74566848c317e8453ae273be3cd476181d8e379be91ce16eeed2",
+      "scripts/probe_dma_observer_active.tcl": "98a1dd42f65677b4dbd37749aa8f0f631d39ea0212e3ccf36c8288ed168a1d80",
+      "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+      "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+      "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+      "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+      "scripts/run_dma_observer_active.py": "c170719fafd1fdd879ef306d7a9194a41cecbb3ceb193274028228f91a7f65f5",
+      "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+      "scripts/test_candidate_runtime_hw.py": "19a4d426beba0359b2dad1e0f3f255a7394c5580559abd338dfe4484a880f0b6",
+      "scripts/test_ethernet_hw.py": "75325e938dc14ad9380450d94e58375f39d6aa0e9e0c5a8ca3796b261b2d71b5",
+      "scripts/test_rtio_debug_hw.py": "3612fb933fe3c9f1ddd0b64aedb926162f7d667d8621ef72eb79b572f7cf4a1a"
+    }
+  }
+}

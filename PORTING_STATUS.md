@@ -1,6 +1,23 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Active workload/sampling lifecycle integrated (offline)
+
+Added inherited-Genesys-lease child: starts compiled ARTIQ workload, waits for
+phase1 (20s bound), samples fixed128pairs via bounded45s XSDB, waits for exact
+phase2 and workload exit (90s total). Records whether workload stayed active
+through sample end. Cleans complete workload process group on every exit;
+SIGTERM converted to failure so cleanup/restoration can proceed. Parent mode
+--observer-active requires pinned diagnostic observer manifest, excludes boot/
+fault/extended modes, runs before normal debug/Ethernet and final idle read,
+then always restores baseline. All source helpers/workload explicitly pinned.
+Three concurrency/start-timeout/marker/error-cleanup tests and two candidate
+build-pin/restoration controls PASS; real offline preflight PASS. Evidence
+`evidence/dma-observer-active-integration-2026-10-23`. No board access this step.
+Next one bounded physical active cycle; preserve allzero as INCONCLUSIVE, no
+stress/retry loop. Normal baseline unchanged; no full DDR write admission.
+
+
 ## 2026-10-23 — Active DMA workload/sampler prepared (offline)
 
 Added bounded diagnostic experiment128pulses/trace,512handle playbacks,

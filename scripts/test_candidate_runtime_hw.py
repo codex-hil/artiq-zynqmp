@@ -173,11 +173,13 @@ def main():
     p.add_argument('--ocm-manifest',type=Path,help='OCM observation instead of normal candidate runtime; always restores normal baseline')
     p.add_argument('--expect-kernel-state',action='store_true',help='Assert new candidate idle/waiting-rpc/restart-required; requires one fault case')
     p.add_argument('--rpc-fault-case',choices=['zero_descriptor_length','unsupported_return_tag','partial_float_eof'],help='One destructive RPC case; candidate immediately restored, never reused')
+    p.add_argument('--observer-active',action='store_true',help='Bounded concurrent CoreDMA workload/observer sampling; requires diagnostic observer manifest')
     p.add_argument('--extended',action='store_true',help='Candidate only: three cycles each of full CoreDMA and exception suites')
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
     a=p.parse_args();manifest=json.loads(a.manifest.read_text());files=preflight(manifest)
     dma_observer=bool(manifest.get('dma_observer'))
+    if a.observer_active and (not dma_observer or a.extended):p.error('Active observer requires diagnostic observer manifest and excludes extended suite')
     if dma_observer and (a.trained_observer_manifest or a.ocm_manifest or a.fsbl_spd or a.rpc_fault_case):
         p.error('Diagnostic DMA observer excludes boot/OCM/fault modes')
     if a.trained_observer_manifest and (a.fsbl_spd or a.ocm_manifest or a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('Trained observer excludes other candidate modes')
@@ -259,6 +261,10 @@ def main():
             text,count=re.subn(r'([\"\']host[\"\']\s*:\s*[\"\'])\d+\.\d+\.\d+\.\d+([\"\'])',lambda m:m[1]+ip+m[2],text)
             if count!=1:raise ValueError('Expected one core address in copied database')
             db.write_text(text)
+            if prefix=='candidate' and a.observer_active:
+                run('candidate-observer-active',[sys.executable,str(REPO/'scripts/run_dma_observer_active.py'),
+                    '--server',a.server,'--device-db',str(db),'--artiq-run',a.artiq_run,
+                    '--output',str(out/'candidate-observer-active')],110)
             run(prefix+'-debug',[a.artiq_python,str(REPO/'scripts/test_rtio_debug_hw.py'),'--ip',ip,'--device-db',str(db),'--artiq-run',a.artiq_run,'--output',str(out/(prefix+'-debug'))],240)
             if prefix=='candidate' and a.extended:
                 run('candidate-core-dma',[a.artiq_python,str(REPO/'scripts/test_core_dma_hw.py'),
@@ -286,7 +292,7 @@ def main():
         old_handler=signal.signal(signal.SIGTERM,lambda *_:(_ for _ in ()).throw(RuntimeError('Termination requested')))
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
-        result.update(dma_observer=dma_observer,kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
+        result.update(dma_observer=dma_observer,dma_observer_active=a.observer_active,kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
                       elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,trained_observer=observer is not None,observer_probe=('brk' if observer.get('exception_brk') else 'normal') if observer else None,observer_manifest_sha256=hashlib.sha256(a.trained_observer_manifest.read_bytes()).hexdigest() if observer else None,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),storage_admission=storage)
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
