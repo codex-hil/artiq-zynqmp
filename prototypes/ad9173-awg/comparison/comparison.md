@@ -1,5 +1,12 @@
 # RF A/B comparison — NOT_RUN
 
+> Scope correction, 2026-10-23: the user confirmed the NEW devkit is AD9172.
+> First priority is basic devkit bringup; DRTIO/Phaser comparison is deferred.
+> AD9173 rates, register IDs and physical PASS below describe the preserved
+> Trenz reference only, not qualification of the new AD9172. No target rate
+> (including 12.6 GS/s) has been configured or verified.
+
+
 No spectrum traces or comparison numbers have been acquired. Historical Trenz
 oscilloscope fits are not baseline A or target B spectrum measurements.
 

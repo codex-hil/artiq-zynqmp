@@ -1,7 +1,7 @@
 date: '2026-10-23'
 scope: M0_read_only_no_hardware_access
-selected_dac: AD9173-FMC-EBZ_RevC
-selection_evidence: User clarified use existing hardware; attachment AD9172/12.6GSPS premise superseded.
+selected_dac: AD9172_new_devkit_user_confirmed
+selection_evidence: User corrected on 2026-10-23 that the new devkit is AD9172; exact revision and physical identity remain unverified.
 alinx:
   board: AXAU15
   module: ACAU15
@@ -32,7 +32,7 @@ adapter:
   passive_raw_gt_routing: BLOCKED
   refclk_and_power_and_ac_coupling: BLOCKED
   note: A PCIe Ethernet NIC cannot substitute for a passive raw-GT breakout.
-dac:
+trenz_reference_dac:
   identity_evidence: ../evidence/two-tone-149-151-2026-10-21.json
   recorded_id_registers: {'0x004': '0x73', '0x005': '0x91'}
   dac_rate_hz: 4915200000
@@ -56,3 +56,11 @@ measurement:
   common_10mhz_reference: UNVERIFIED
   path_attenuation_and_compression: UNVERIFIED
   note: Scope evidence cannot qualify spectral SFDR/IMD comparison.
+
+new_devkit:
+  dac: AD9172
+  revision: UNVERIFIED
+  physical_identity: NOT_READ
+  sample_rate: NOT_CONFIGURED
+  usb_adi_interface: NOT_ENUMERATED_ON_EITHER_DEBUG_STATION_2026_10_23
+  priority: basic_devkit_bringup_before_DRTIO_comparison

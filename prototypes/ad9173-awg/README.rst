@@ -113,3 +113,12 @@ golden Trenz artifact hashes, interface semantics and measurement prerequisites
 are recorded under ``comparison/``. Do not attach the DDS/JESD path before M1
 passes. This milestone ordering supersedes the older JESD-before-DRTIO plan in
 ``HANDOFF_ALINX.txt`` for the comparison task.
+
+Target correction (2026-10-23)
+-----------------------------
+
+The user subsequently confirmed that the NEW DAC devkit is AD9172. The AD9173
+material above remains the preserved Trenz reference. Immediate scope is basic
+devkit bringup; the DRTIO-first comparison sequence is deferred. Do not use the
+AD9173 identity guard or claim its warm-clock profile qualifies AD9172. Physical
+revision, attachment, identity and clock configuration of the new kit are pending.

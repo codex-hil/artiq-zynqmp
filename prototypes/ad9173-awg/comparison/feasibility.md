@@ -1,5 +1,12 @@
 # ALINX / stock Phaser RF comparison — M0, 2026-10-23
 
+> Scope correction, 2026-10-23: the user confirmed the NEW devkit is AD9172.
+> First priority is basic devkit bringup; DRTIO/Phaser comparison is deferred.
+> AD9173 rates, register IDs and physical PASS below describe the preserved
+> Trenz reference only, not qualification of the new AD9172. No target rate
+> (including 12.6 GS/s) has been configured or verified.
+
+
 **M0 is partial; M1 is BLOCKED. M2–M5 are NOT_RUN.** The user's clarification
 selects existing AD9173-FMC-EBZ RevC, not the attachment's AD9172/12.6 GS/s.
 No physical device was accessed. Existing AXAU15 synthesis is not a satellite
