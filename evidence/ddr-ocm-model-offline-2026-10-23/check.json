@@ -1,0 +1,30 @@
+{
+  "status": "OCM_IMAGE_LAYOUT_PASS_EXECUTION_STATE_NOT_PROVEN",
+  "hardware_executed": false,
+  "entry": "0xfffc8800",
+  "load_segments": [
+    {
+      "start": "0xfffc8000",
+      "end_exclusive": "0xfffc8cf0",
+      "file_bytes": 3312,
+      "flags": 5
+    },
+    {
+      "start": "0xfffc8cf0",
+      "end_exclusive": "0xfffe4000",
+      "file_bytes": 0,
+      "flags": 6
+    }
+  ],
+  "stack": {
+    "start": "0xfffe0000",
+    "end_exclusive": "0xfffe4000"
+  },
+  "mmu_cache_state": "NOT_PROVEN",
+  "destructive_ddr_test_allowed": false,
+  "limits": "Checks selected linker symbol/layout convention only. Does not establish live EL/SCTLR/cache state, stack use, parked cores, DMA masters or valid DDR intervals.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/ddr-ocm-model-v2-20261023/model.elf": "264a4a29364cd2a12aa8fe5a572b080b63814815312299915bdf268170affbdd",
+    "/home/codex-hil/.local/state/artiq-builds/ddr-ocm-model-v2-20261023/symbols.txt": "0d1821ec733d2023dbd2b983366d938dbea0090602f3eb25769de8375ebe1eb0"
+  }
+}

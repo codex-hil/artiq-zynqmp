@@ -1,0 +1,16 @@
+{
+  "status": "OFFLINE_OCM_MODEL_IMAGE_BUILT_NOT_EXECUTED_ON_A53",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "elf_sha256": "264a4a29364cd2a12aa8fe5a572b080b63814815312299915bdf268170affbdd",
+  "source_sha256": {
+    "diagnostics/ddr/bounded_test/entry.S": "febe5decc19d5fa070bbccad413f7fbc524737c01ccfc173ec914100617ab9ed",
+    "diagnostics/ddr/bounded_test/ocm_model.c": "005a21b05e2167121ec4c84e3c19beeeaae66d83adb6e07528ed62e53223b125",
+    "diagnostics/ddr/bounded_test/link.ld": "0cc8167faf86787bad30bf7b3c3efd43a77cc45232b6fa3c068ee702cecab1bc",
+    "scripts/build_ddr_ocm_model.sh": "d129536b7cd7ee37bee6e6ed6dffcc4507f34a66ffa9b56311cba907f924b793",
+    "tests/test_ddr_ocm_model.py": "300a59c9197d9e152acbb43d1d9a298d7f095883e73d2183515385da519ad217"
+  },
+  "undefined_symbols": "",
+  "limits": "Host model execution and ELF layout only. No A53 execution, live cache/EL proof, exception injection, physical DDR backend or loader.",
+  "compatibility_fix": "AArch64 AND immediate0x2c0 is not encodable; load mask into register then AND. First failed build preserved in root state directory."
+}

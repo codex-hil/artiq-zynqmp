@@ -1800,3 +1800,24 @@ Next OCM code/stack/address-list/report placement and existing exception capture
 integration, plus explicit ownership admission. Callback timeout cannot interrupt
 stalled physical AXI by itself. PMU/core/history ownership unresolved; full DDR
 NOT_RUN/NOT_ADMITTED. No deployment command provided or physical stores executed.
+
+
+
+## 2026-10-23 — OCM-resident model image linked/checked (offline)
+
+Integrated bounded engine with OCM-only model callbacks, startup and16-slot
+exception vectors. Physical DDR addresses are lookup tags into four OCM cells;
+no DDR backend or deployment loader. AArch64 ELF vectorsfffc8000/entryfffc8800,
+code3312bytes, all memory extents inOCM, stackfffe0000..fffe4000. Startup rejects
+wrongEL/cacheMMU/DIF state, installs/readbacksVBAR, clearsOCMBSS, runsmodel;
+exception terminal retains diagnostic registers. No cache/interrupt-mask changes.
+Two tests PASS: actual model C executes on host; actual cross-linked ELF layout,
+missing-runtime symbols and invalid-stack rejection. Existing layout checker
+returns execution-stateNOT_PROVEN. No A53/QEMU execution/exception injection.
+First assembler immediate-mask incompatibility fixed; failed output preserved.
+Evidence `evidence/ddr-ocm-model-offline-2026-10-23` includes source/ELF hashes.
+
+No hardware access, normal baseline unchanged. Full DDR NOT_RUN/NOT_ADMITTED.
+Next dedicated OCM model entry/exception capture loader with explicit image and
+layout pins, then no-DDR hardware qualification under mandatory restore. PMU/
+secondary-core/history ownership must close separately before physical backend.
