@@ -1,6 +1,23 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Live GEM/SD/QSPI observation complete
+
+Source-pinned bounded wrapper acquired shared Genesys lease and read three
+fixed32-bit registers twice,20ms sample interval. Both samples identical:
+GEM0 NWCTRL0x1c (RX/TX enabled), SD1 present-state0x1f70000 (reviewed command/data
+inhibit and read/write/data-active bits all0), QSPI DMA STS0 (busy/outstanding/
+FIFO/done/unknown bits0). Running Ethernet is an active potential DDR master;
+these observations do not establish descriptor ownership or transaction drain.
+Evidence: `evidence/peripheral-dma-hardware-2026-10-23`, raw SHA-256
+`159485c06787b707b52e0efb7cc18ba5d1ae28d9a0f827576a8990d2a389c189`. Four offline test groups PASS, including
+execution of actual Tcl against a strict read-address mock and malformed-frame
+rejection. No stop/reset/write/FIFO/interrupt-ack/force-access/UART/network tests.
+Lease released; baseline configuration unchanged; no fresh network qualification.
+Full DDR destructive testing stays NOT_ADMITTED. Next audit linked GEM descriptor
+and receive-buffer allocation plus a diagnostic-window shutdown/ownership policy.
+
+
 ## 2026-10-23 — PS peripheral DMA observation plan (offline)
 
 Added source-checked register allowlist for instantiated GEM0 network control

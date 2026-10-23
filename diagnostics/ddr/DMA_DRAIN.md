@@ -157,3 +157,15 @@ interrupt acknowledgement, transfer trigger or reset access. Enable bits do not
 prove descriptor drain; QSPI done count is unacknowledged completion count.
 No DDR admission or other PS master ownership follows. Next implement bounded
 leased capture, then account for GEM rings/buffers in the diagnostic handoff.
+
+
+### Peripheral hardware snapshot — 2026-10-23
+
+`capture_peripheral_dma_state.py` completed six read-only DAP reads under the
+shared Genesys lease, with vendor/plan/helper hashes checked before and inside
+the lease and45s process-group limit. Both samples: GEM0 NWCTRL0x1c,
+SD1 present-state0x1f70000, QSPI DMA STS0. RX/TX remain enabled; SD transfer/inhibit
+bits and QSPI busy/outstanding/FIFO are0. No device writes or baseline changes.
+Four offline tests PASS; raw evidence `evidence/peripheral-dma-hardware-2026-10-23`.
+Momentary fields are not ownership/drain proof. Next audit active GEM rings/buffers
+and diagnostic-window policy; no destructive DDR admission follows this snapshot.

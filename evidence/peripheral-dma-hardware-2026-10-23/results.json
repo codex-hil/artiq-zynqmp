@@ -1,0 +1,57 @@
+{
+  "status": "READ_ONLY_CAPTURE_COMPLETE",
+  "hardware_executed": true,
+  "decoded": {
+    "status": "SUPPLIED_PERIPHERAL_FIELDS_DECODED",
+    "hardware_executed": false,
+    "stable": true,
+    "raw": [
+      {
+        "gem0_network_control": 28,
+        "sd1_present_state": 32964608,
+        "qspi_dma_status": 0
+      },
+      {
+        "gem0_network_control": 28,
+        "sd1_present_state": 32964608,
+        "qspi_dma_status": 0
+      }
+    ],
+    "samples": [
+      {
+        "gem_rx_enabled": true,
+        "gem_tx_enabled": true,
+        "sd_command_inhibit": false,
+        "sd_data_inhibit": false,
+        "sd_data_active": false,
+        "sd_write_active": false,
+        "sd_read_active": false,
+        "qspi_dma_busy": false,
+        "qspi_dma_outstanding": 0,
+        "qspi_dma_fifo_level": 0,
+        "qspi_dma_unacknowledged_done": 0,
+        "qspi_dma_unknown_bits": 0
+      },
+      {
+        "gem_rx_enabled": true,
+        "gem_tx_enabled": true,
+        "sd_command_inhibit": false,
+        "sd_data_inhibit": false,
+        "sd_data_active": false,
+        "sd_write_active": false,
+        "sd_read_active": false,
+        "qspi_dma_busy": false,
+        "qspi_dma_outstanding": 0,
+        "qspi_dma_fifo_level": 0,
+        "qspi_dma_unacknowledged_done": 0,
+        "qspi_dma_unknown_bits": 0
+      }
+    ],
+    "ownership": "NOT_PROVEN",
+    "destructive_test_allowed": false
+  },
+  "cable": "210383B7F02DA",
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "inputs_sha256": "8d9abe37fdce3fb7615a530b1219f92c3b1edb965a8c9d2fdd8065936429943a",
+  "raw_sha256": "159485c06787b707b52e0efb7cc18ba5d1ae28d9a0f827576a8990d2a389c189"
+}
