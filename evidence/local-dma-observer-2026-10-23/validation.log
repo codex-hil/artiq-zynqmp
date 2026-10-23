@@ -1,0 +1,5 @@
+PASS optional CSR map preserves existing register addresses/sizes
+PASS observer requires DMA bus
+PASS standalone LocalRTIO Verilog generation
+PASS existing AXI CSR counter and scheduled TTL regression (4.002s)
+NOT_RUN Vivado/full PS top/hardware

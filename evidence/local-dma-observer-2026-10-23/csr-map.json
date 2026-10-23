@@ -1,0 +1,320 @@
+{
+  "kind": "gateware-map-not-hardware-evidence",
+  "csr_base": 2684354560,
+  "csr_data_width": 32,
+  "channels": {
+    "ttl_out": 0,
+    "ttl_in": 1
+  },
+  "fine_ts_width": 0,
+  "registers": {
+    "cri_con_selected": {
+      "address": 2684362752,
+      "words": 1,
+      "bits": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "dma_observer_outstanding": {
+      "address": 2684366848,
+      "words": 1,
+      "bits": 7,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "dma_observer_flags": {
+      "address": 2684366852,
+      "words": 1,
+      "bits": 4,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_target": {
+      "address": 2684354560,
+      "words": 1,
+      "bits": 32,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_now": {
+      "address": 2684354564,
+      "words": 2,
+      "bits": 64,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_o_data": {
+      "address": 2684354572,
+      "words": 16,
+      "bits": 512,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_o_status": {
+      "address": 2684354636,
+      "words": 1,
+      "bits": 3,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_i_timeout": {
+      "address": 2684354640,
+      "words": 2,
+      "bits": 64,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_i_data": {
+      "address": 2684354648,
+      "words": 1,
+      "bits": 32,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_i_timestamp": {
+      "address": 2684354652,
+      "words": 2,
+      "bits": 64,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_i_status": {
+      "address": 2684354660,
+      "words": 1,
+      "bits": 4,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_counter": {
+      "address": 2684354664,
+      "words": 2,
+      "bits": 64,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_counter_update": {
+      "address": 2684354672,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_enable": {
+      "address": 2684364800,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_clear": {
+      "address": 2684364804,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_count": {
+      "address": 2684364808,
+      "words": 2,
+      "bits": 64,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_read_index": {
+      "address": 2684364816,
+      "words": 1,
+      "bits": 8,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_read_update": {
+      "address": 2684364820,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_data": {
+      "address": 2684364824,
+      "words": 8,
+      "bits": 256,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_depth": {
+      "address": 2684364856,
+      "words": 1,
+      "bits": 32,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_encoder_overflow": {
+      "address": 2684364860,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_analyzer_encoder_overflow_reset": {
+      "address": 2684364864,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_core_reset": {
+      "address": 2684356608,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_core_reset_phy": {
+      "address": 2684356612,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_core_sed_spread_enable": {
+      "address": 2684356616,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_core_async_error": {
+      "address": 2684356620,
+      "words": 1,
+      "bits": 3,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_core_collision_channel": {
+      "address": 2684356624,
+      "words": 1,
+      "bits": 16,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_core_busy_channel": {
+      "address": 2684356628,
+      "words": 1,
+      "bits": 16,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_core_sequence_error_channel": {
+      "address": 2684356632,
+      "words": 1,
+      "bits": 16,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_enable": {
+      "address": 2684360704,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_wb_reader_bus_error": {
+      "address": 2684360708,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_base_address": {
+      "address": 2684360712,
+      "words": 2,
+      "bits": 49,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_time_offset": {
+      "address": 2684360720,
+      "words": 2,
+      "bits": 64,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_error": {
+      "address": 2684360728,
+      "words": 1,
+      "bits": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_error_channel": {
+      "address": 2684360732,
+      "words": 1,
+      "bits": 24,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_error_timestamp": {
+      "address": 2684360736,
+      "words": 2,
+      "bits": 64,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_dma_error_address": {
+      "address": 2684360744,
+      "words": 1,
+      "bits": 16,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_moninj_mon_chan_sel": {
+      "address": 2684358656,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_moninj_mon_probe_sel": {
+      "address": 2684358660,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_moninj_mon_value_update": {
+      "address": 2684358664,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_moninj_mon_value": {
+      "address": 2684358668,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_moninj_inj_chan_sel": {
+      "address": 2684358672,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_moninj_inj_override_sel": {
+      "address": 2684358676,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "rtio_moninj_inj_value": {
+      "address": 2684358680,
+      "words": 1,
+      "bits": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    }
+  }
+}

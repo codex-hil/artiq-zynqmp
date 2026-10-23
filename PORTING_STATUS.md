@@ -1,6 +1,22 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Optional diagnostic DMA observer integration, HDL PASS
+
+Added --dma-observer only for local-rtio-dma. Default Top/LocalRTIO constructors
+retain prior behavior. Optional read-only bank6 exports outstanding0xa0003000
+and flags0xa0003004; existing register map including analyzer unchanged by test.
+Epoch qualification tied0, no arm/clear write CSR. Monitor shares sys clock/reset
+with local RTIO: reset history loss remains explicit, not PS drain proof.
+Two optional integration/map/invalid-mode tests PASS; existing physical-interface
+AXI->CSR->RTIO/TTL simulation regression PASS. Standalone LocalRTIO Verilog
+elaboration PASS; no full PS top or Vivado run/hardware programming.
+Evidence/map/artifact hashes: `evidence/local-dma-observer-2026-10-23`.
+Next inspect full generated PS-top HDL and explicit source bundle, then build
+optional diagnostic on Dell under shared build lease. Do not replace normal
+runtime or infer DDR admission from this instrumentation. PMU AP0 unresolved.
+
+
 ## 2026-10-23 — Observer reset-history test and status CSR prototype PASS
 
 Added two read-only CSRStatus objects: outstanding and flags(accounting_error,

@@ -5,6 +5,7 @@ Optional upstream DMA uses PS HP0 DDR; the optional BRAM analyzer reuses
 ARTIQ MessageEncoder. DRTIO remains separate.
 """
 import json
+import sys
 from pathlib import Path
 
 from migen import Module, Signal
@@ -19,7 +20,9 @@ BANKS = {"rtio": 0, "rtio_core": 1, "rtio_moninj": 2}
 
 
 class LocalRTIO(Module):
-    def __init__(self, output_pad, input_pad, dma_bus=None, analyzer=False):
+    def __init__(self, output_pad, input_pad, dma_bus=None, analyzer=False, dma_observer=False):
+        if dma_observer and dma_bus is None:
+            raise ValueError('DMA observer requires DMA bus')
         self.submodules.ttl_out = ttl_simple.Output(output_pad)
         self.submodules.ttl_in = ttl_simple.Input(input_pad)
         self.ttl_in.probes = [self.ttl_in.input_state]
@@ -35,6 +38,15 @@ class LocalRTIO(Module):
             self.submodules.rtio_dma = DMA(dma_bus)
             self.submodules.cri_con = CRISwitch(
                 [self.rtio.cri, self.rtio_dma.cri], self.rtio_core.cri)
+        if dma_observer:
+            # Diagnostic sources are explicitly optional, never required by default.
+            diagnostic_path = str(Path(__file__).resolve().parents[3] / "diagnostics/ddr")
+            sys.path.insert(0, diagnostic_path)
+            try:
+                from axi_read_observer_csr import AXIReadObserverCSR
+            finally:
+                sys.path.remove(diagnostic_path)
+            self.submodules.dma_observer = AXIReadObserverCSR(dma_bus)
         self.submodules.rtio_moninj = rtio.MonInj(channels)
         if analyzer:
             from analyzer_bram import AnalyzerBRAM
@@ -51,7 +63,7 @@ class LocalRTIO(Module):
             self.axi, self.wb2csr.wishbone, base_address=CSR_BASE
         )
         self.submodules.banks = csr_bus.CSRBankArray(
-            self, lambda name, memory: dict(BANKS, rtio_dma=3, cri_con=4, rtio_analyzer=5).get(name) if memory is None else None,
+            self, lambda name, memory: dict(BANKS, rtio_dma=3, cri_con=4, rtio_analyzer=5, dma_observer=6).get(name) if memory is None else None,
             data_width=32, address_width=14
         )
         self.submodules.csr_interconnect = csr_bus.Interconnect(

@@ -1,0 +1,17 @@
+{
+  "status": "HDL_GENERATION_ONLY_PASS",
+  "hardware_executed": false,
+  "vivado_executed": false,
+  "destructive_test_allowed": false,
+  "artifacts": {
+    "/home/codex-hil/.local/state/artiq-builds/local-dma-observer-hdl-20261023/local_rtio.v": {
+      "bytes": 446472,
+      "sha256": "336d4565d1971852c57c127f347573652cc3cd3e395970016b849f4ec2aeafb8"
+    },
+    "/home/codex-hil/.local/state/artiq-builds/local-dma-observer-hdl-20261023/csr-map.json": {
+      "bytes": 6836,
+      "sha256": "e50162378cf04b1484b1e3f09e6ec7e6f8ae2838fe275fcfe7f7f682578e3586"
+    }
+  },
+  "limits": "Standalone LocalRTIO elaboration, not full PS top/Vivado timing/bitstream qualification. Observer shares sys reset and cannot prove earlier PS transaction drain."
+}
