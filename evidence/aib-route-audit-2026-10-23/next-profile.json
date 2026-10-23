@@ -1,0 +1,14 @@
+{
+  "kind": "OFFLINE_DESIGN_REQUIREMENTS_NOT_EXECUTABLE",
+  "hardware_executed": false,
+  "profile": "DDR diagnostic PL without masters",
+  "requirements": [
+    "All enabled PS slave AXI interfaces: ARVALID/AWVALID/WVALID tied zero in generated HDL and verified netlist, not just inactive CSR.",
+    "No runtime CPU0 networking or CPU1 worker started in trained test window.",
+    "New PS/PL boot epoch must establish no outstanding transaction history from previous configuration.",
+    "Keep OCM code/vectors and split low/high DDR address windows.",
+    "Resolve PMU and secondary-core DDR ownership separately.",
+    "Preserve exact-image pins and mandatory normal runtime restoration/physical validation."
+  ],
+  "destructive_test_allowed": false
+}

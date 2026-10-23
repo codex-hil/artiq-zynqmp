@@ -1,0 +1,75 @@
+{
+  "status": "OFFLINE_AIB_SCOPE_REVIEW",
+  "hardware_executed": false,
+  "sources": {
+    "xpfw_aib.c": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_aib.c",
+      "sha256": "86c86ecdd0b663260beb3c3df723234a4b543dfd148e447d8024946008654940",
+      "anchors": {
+        "void XPfw_AibEnable(enum XPfwAib AibId)": [
+          34
+        ],
+        "LPD_SLCR_ISO_AIBAXI_REQ_AFIFS0_MASK,": [
+          25
+        ],
+        "Status = XPfw_Read32(LPD_SLCR_ISO_AIBAXI_ACK) & AibMask[AibId];": [
+          54
+        ],
+        "} while (TimeOutCount > 0U);": [
+          60
+        ],
+        "if (Status == 0U) {": [
+          62
+        ],
+        "No AIB#%d ack": [
+          63
+        ]
+      }
+    },
+    "xpfw_aib.h": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_aib.h",
+      "sha256": "6cc34ab9eb28c2fd0473f680a139fc9e2b4912bde391701314445bd135dfca4c",
+      "anchors": {
+        "XPFW_AIB_FPD_TO_AFI_FS0,": [
+          31
+        ],
+        "XPFW_AIB_FPD_TO_AFI_FS1,": [
+          32
+        ],
+        "XPFW_AIB_LPD_TO_AFI_FS2,": [
+          28
+        ],
+        "void XPfw_AibEnable(enum XPfwAib AibId);": [
+          42
+        ]
+      }
+    },
+    "psu_init.tcl": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/sdt/psu_init.tcl",
+      "sha256": "9e783154718b20e9e1c60eaa815716f71b51cdddfee2e4ec58a6f8ea3f9db22a",
+      "anchors": {
+        "set psu_ps_pl_isolation_removal_data {": [
+          13716
+        ],
+        "mask_write 0XFFD80120 0x00800000 0x00800000": [
+          13735
+        ],
+        "mask_poll 0XFFD80110 0x00800000 0x00000000": [
+          13741
+        ]
+      }
+    }
+  },
+  "findings": [
+    "Named AFI_FS routes originate in PS FPD/LPD; no AFIFM2/HP0 PL-to-DDR isolation certificate established.",
+    "XPfw_AibEnable polls ACK with bounded retries, logs missing ACK, returns void; call completion is not ACK success.",
+    "Generated isolation-removal helper requests PL power-up and polls PMU power status; not HP0 outstanding count."
+  ],
+  "rejected_shortcuts": [
+    "AFI_FS ACK interpreted as HP0 PL-master drain",
+    "Void helper return interpreted as successful isolation",
+    "PL power-up status interpreted as DDR ownership"
+  ],
+  "destructive_test_allowed": false,
+  "next": "Prefer an explicit no-PL-master diagnostic image plus continuous AXI epoch tracking; separately resolve PMU/secondary-core ownership. No AIB writes from this audit."
+}

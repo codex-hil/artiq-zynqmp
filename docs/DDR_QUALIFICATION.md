@@ -1678,3 +1678,19 @@ as an idle counter. Source anchors/hashes and reference URLs retained in
 Next review isolation/quiesce acknowledgment semantics before a fixed read-only
 observation plan. No AFI writes or arbitrary drain delay. Normal runtime remains
 last restored192.168.2.3; full DDR NOT_RUN/NOT_ADMITTED, PMU ownership unresolved.
+
+
+
+## 2026-10-23 — AIB route scope excludes an inferred HP0 drain certificate
+
+Pinned AMD xpfw_aib source/header review: AFI_FS0/1 routes are named FPD->AFI_FS,
+FS2 LPD->AFI_FS. No PL->AFIFM2->DDR exclusion established from these routes.
+XPfw_AibEnable returns void after bounded ACK polling; a missing ACK only logs
+and returns. Call completion must not be interpreted as isolation success.
+Generated psu_ps_pl_isolation_removal_data requests PL power-up and polls power
+status; that is not an HP0 outstanding counter. Two audit controls PASS, including
+changed-route rejection; evidence `evidence/aib-route-audit-2026-10-23`.
+No hardware access/AIB write, normal baseline unchanged, DDR NOT_ADMITTED.
+Next prepare an explicit diagnostic PL profile without any DDR master and verify
+its generated AXI outputs; qualify a new reset epoch separately rather than
+repurposing reverse-direction isolation bits. PMU/core ownership remains open.
