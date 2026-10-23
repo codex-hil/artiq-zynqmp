@@ -13,7 +13,7 @@ def validate_workload(text):
         raise ValueError('Missing/duplicate/reordered workload phases')
 
 
-def run_workload(command,log,sampler,ready_timeout=20,total_timeout=90):
+def run_workload(command,log,sampler,ready_timeout=20,total_timeout=90,progress=None):
     start=time.monotonic();proc=None
     try:
         with log.open('w') as output:
@@ -31,9 +31,14 @@ def run_workload(command,log,sampler,ready_timeout=20,total_timeout=90):
             decoded=sampler()
             sample_end=time.monotonic()-start
             fully_overlapped=proc.poll() is None and 'DMA_OBSERVER_LOAD 2\n' not in log.read_text()
+            if progress is not None:
+                progress.update(sampling=decoded,sample_start_seconds=sample_start,sample_end_seconds=sample_end,
+                                workload_active_through_sample_end=fully_overlapped)
             remaining=total_timeout-(time.monotonic()-start)
             if remaining<=0:raise TimeoutError('Workload total timeout')
-            if proc.wait(timeout=remaining)!=0:raise ValueError('Workload failed')
+            code=proc.wait(timeout=remaining)
+            if progress is not None:progress['workload_returncode']=code
+            if code!=0:raise ValueError('Workload failed')
             validate_workload(log.read_text())
             return dict(status='WORKLOAD_AND_SAMPLING_COMPLETE',sampling=decoded,
                         sample_start_seconds=sample_start,sample_end_seconds=sample_end,
@@ -72,13 +77,16 @@ def main():
                 (out/'sampling.log').write_text(text);raise
             (out/'sampling.log').write_text(text)
             if code:raise RuntimeError('Active sampler failed')
-            return parse(text)
+            decoded=parse(text)
+            (out/'sampling.json').write_text(json.dumps(decoded,indent=2)+'\n')
+            return decoded
         command=[a.artiq_run,'--device-db',a.device_db,'--dataset-db',str(out/'datasets.mdb'),str(REPO/'examples/genesys_dma_observer_load.py')]
-        result.update(run_workload(command,out/'workload.log',sampler))
+        result.update(run_workload(command,out/'workload.log',sampler,progress=result))
     except Exception as error:result.update(status='FAIL',error=str(error))
     finally:
         signal.signal(signal.SIGTERM,previous)
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps(result,indent=2))
     return 0 if result['status']=='WORKLOAD_AND_SAMPLING_COMPLETE' else 1
 
 if __name__=='__main__':raise SystemExit(main())

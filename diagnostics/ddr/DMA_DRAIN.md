@@ -372,3 +372,20 @@ writes. Root cause of long-workload kernel/protocol failure NOT_PROVEN.
 Next offline inspect worker/protocol failure paths and workload timing/return
 handling; preserve decoded sampling if later workload completion fails. No repeat
 hardware before a specific reviewed change. DDR write admission stays closed.
+
+
+### 2026-10-23 — Long workload conflicts with kernel command watchdog (offline)
+
+Adjacent qualified CPU0 kernel_lwip.c sets started=ticks on commands and when
+busy elapsed>frequency()*30 sets dead,clearsbusy,sends header8/close. Physical
+error KernelStartupFailed is consistent with this path. Old512playback nominal
+schedule38.7072s exceeds30s; this is a source-supported timing conflict, not a
+captured CPU timeout trace. Shortened only test workload to128playbacks nominal
+9.6768s; firmware timeout unchanged. Actual ARTIQ compilation PASS, new ELF hash
+and source anchors pinned in `evidence/dma-observer-short-workload-2026-10-23`.
+Also preserve decoded sampler JSON/timestamps/exit code when later workload fails,
+and print child result for parent error visibility. Four concurrency/partial-result
+controls and two candidate-pin/restoration controls PASS; fresh manifest preflight
+PASS. No hardware access. Next one bounded retry of shorter workload, require
+phase1+phase2 and finalzero with baseline restore; no guarantee on nominal timing.
+DDR admission unchanged/closed, previous failed run retained.

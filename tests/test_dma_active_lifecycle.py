@@ -14,6 +14,14 @@ class Tests(unittest.TestCase):
    with tempfile.TemporaryDirectory() as tmp:
     with self.assertRaises((ValueError,TimeoutError)):
      run_workload([sys.executable,'-u','-c',program],Path(tmp)/'log',sampler,ready_timeout=.1,total_timeout=1)
+ def test_completed_samples_survive_later_workload_failure(self):
+  progress={}
+  program='import time,sys;print("DMA_OBSERVER_LOAD 1",flush=True);time.sleep(.2);sys.exit(1)'
+  with tempfile.TemporaryDirectory() as tmp:
+   with self.assertRaises(ValueError):
+    run_workload([sys.executable,'-u','-c',program],Path(tmp)/'log',lambda:{'max_outstanding':27},progress=progress)
+  self.assertEqual(progress['sampling']['max_outstanding'],27)
+  self.assertEqual(progress['workload_returncode'],1)
  def test_phase_validation(self):
   for bad in ['', 'DMA_OBSERVER_LOAD 1\n', 'DMA_OBSERVER_LOAD 2\nDMA_OBSERVER_LOAD 1\n']:
    with self.assertRaises(ValueError):validate_workload(bad)

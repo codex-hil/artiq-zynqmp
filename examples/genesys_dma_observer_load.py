@@ -29,7 +29,7 @@ class GenesysDMAObserverLoad(EnvExperiment):
         if handle[1]!=int64(3200000):
             raise ValueError('Unexpected observer DMA trace duration')
         self.report(int32(1))
-        for repeat in range(512):
+        for repeat in range(128):
             start=self.core.get_rtio_counter_mu()+int64(6250000)
             at_mu(start)
             self.core_dma.playback_handle(handle)

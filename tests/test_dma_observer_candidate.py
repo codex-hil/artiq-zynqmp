@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from test_candidate_runtime_hw import preflight,lifecycle
 from dma_observer_candidate import verify_snapshot
-PLAN=ROOT/'evidence/dma-observer-active-integration-2026-10-23/inputs.json'
+PLAN=ROOT/'evidence/dma-observer-short-workload-2026-10-23/inputs.json'
 class Tests(unittest.TestCase):
  def test_actual_build_and_stale_pin_rejections(self):
   m=json.loads(PLAN.read_text());preflight(m)

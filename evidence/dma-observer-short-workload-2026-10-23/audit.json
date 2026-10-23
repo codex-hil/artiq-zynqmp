@@ -1,0 +1,26 @@
+{
+  "status": "OFFLINE_SHORTER_WORKLOAD_COMPILED",
+  "hardware_executed": false,
+  "source": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/kernel_lwip.c",
+    "sha256": "c0da107f4b2f2806e4b179b8605c9a9dddbd2795d9e1426447bd02e484200666",
+    "anchors": {
+      "started=ticks();": [
+        37
+      ],
+      "frequency()*30": [
+        145
+      ],
+      "header(8)": [
+        77,
+        141,
+        145
+      ]
+    }
+  },
+  "old_nominal_seconds": 38.7072,
+  "new_nominal_seconds": 9.6768,
+  "firmware_limit_seconds": 30,
+  "compiled_elf_sha256": "d9c0c378ba74b0774dfcbe9d67ee4803e7d15b47bd32c0c6572d62081ffe4ca5",
+  "limits": "Nominal scheduling budget, not measured completion or formal worst-case bound. Existing binary/source adjacency is not independent rebuild equivalence. Firmware limit unchanged; physical retry pending."
+}
