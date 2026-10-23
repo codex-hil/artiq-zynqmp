@@ -1,0 +1,16 @@
+{
+  "status": "LAB_GUARD_HOST_AND_LINKED_FLOW_PASS_NOT_DEPLOYED",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "source_sha256": {
+    "diagnostics/ddr/pmu_boundary/guard.h": "e540ff26785e17669867842c403af18c09d228160de8f6a0fea6e2582d259d28",
+    "diagnostics/ddr/pmu_boundary/request.h": "ba13f78d362beb2bfe96ec1ec72507ac060e8af0d6548ef28b52ffa4e7e0741d",
+    "scripts/build_pmu_boundary.py": "a42cb7f8c28198f65cbf8c2ed76f3c97d9ab9fffad504023a3fd03bd504baad4",
+    "scripts/stage_pmu_boundary.py": "7f5c7d356bb185531fcc4a52b5e641c66db21308c9bb8fdb5c6ad4fadc33536a",
+    "scripts/check_pmu_lab_guard.py": "7348069c53e5f15a5c318891ae1b5f56a601756495267ea73da9a6bf8b18b532",
+    "tests/test_pmu_lab_guard.py": "b5a902719f60f0cb37cd2f306e7eb651c4bfcd0eb9339c737371257ae8470888",
+    "tests/test_pmu_lab_guard_flow.py": "ad7dc6acb570d103403281fae495dd31910b39eaa3a2f9f9dd74ac71000fe065"
+  },
+  "defaults": "No guard function/record in ordinary image; kind2 remains rejected unless explicit --lab-guard build.",
+  "limits": "Only IE mask/PMU-local terminal proposed. No live target state, ROM/NMI/error/history/secondary-core exclusion or DDR permit."
+}

@@ -1,0 +1,11 @@
+{
+  "status": "LINKED_LAB_GUARD_FLOW_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "guard_start": "0xffdc4660",
+  "guard_bytes": 220,
+  "record_start": "0xffdd7f68",
+  "terminal_pc": "0xffdc4734",
+  "interrupt_helper": "0xffdccbbc",
+  "destructive_test_allowed": false,
+  "limits": "Actual static flow and local layout only; live MSR/ROM/NMI/history/core exclusion unproven. Host backend tests do not substitute for PMU execution."
+}

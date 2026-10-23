@@ -19,6 +19,9 @@ static inline void artiq_pmu_order(void) {
  __asm__ volatile("" ::: "memory");
 #endif
 }
+#ifdef ARTIQ_PMU_LAB_GUARD
+#include "guard.h"
+#endif
 static inline void artiq_pmu_poll_request(void) {
  uint32_t gen=artiq_pmu_request.generation;
  if (!gen || (gen&1) || gen==artiq_pmu_last_generation) return;
@@ -28,10 +31,14 @@ static inline void artiq_pmu_poll_request(void) {
  uint32_t kind=artiq_pmu_request.kind, sum=artiq_pmu_request.checksum;
  uint32_t reserved=artiq_pmu_request.reserved;
  artiq_pmu_order();
- if (gen!=artiq_pmu_request.generation || reserved || kind!=1 || !(nlo|nhi)) return;
+ if (gen!=artiq_pmu_request.generation || reserved || !(nlo|nhi)) return;
  if (sum!=(UINT32_C(0x504d5551)^gen^nlo^nhi^slo^shi^kind)) return;
  uint64_t seq=((uint64_t)shi<<32)|slo;
  if (!seq || seq<=artiq_pmu_last_sequence) return;
+#ifdef ARTIQ_PMU_LAB_GUARD
+ if (kind==2) artiq_pmu_enter_lab_guard(gen,nlo,nhi,slo,shi);
+#endif
+ if (kind!=1) return;
  artiq_pmu_echo.generation=0;
  artiq_pmu_order();
  artiq_pmu_echo.nonce_lo=nlo;artiq_pmu_echo.nonce_hi=nhi;

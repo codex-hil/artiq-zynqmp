@@ -44,3 +44,26 @@ proof. IRQ/ROM/exception/ECC paths remain active and unexcluded.
 New symbol layout differs from first physical telemetry image: existing fixed
 read gate correctly rejects it. New transport/image pins and bounded live echo
 qualification are required; no physical request writes have occurred.
+
+
+## Default-disabled laboratory guard (offline, 2026-10-23)
+
+Only `build_pmu_boundary.py --lab-guard` defines ARTIQ_PMU_LAB_GUARD. Kind2
+then enters a no-return guard after the normal generation/nonce/checksum/sequence
+validation. Ordinary firmware contains neither guard function nor its64B record
+and continues to reject kind2. Never reuse the old telemetry/request addresses
+against this new ELF: layout and image pins must be regenerated explicitly.
+
+Guard uses the maintained interrupt-only API, reads MSR before/after and reports
+state2 only for `after == (before & ~2)`. State3 means a failed state check.
+Both paths publish ACK0/unresolved7f then enter a pure nop/backward-branch loop.
+No scheduler, sleep, request dispatch or resume command runs after entry. A full
+platform reset/restoration is the only intended exit. Hardware exceptions remain
+available; ROM/NMI/error paths and old transactions are NOT excluded.
+
+Host backend tests run guard in a disposable child, inspect committed record,
+verify IE-clear/EE-preserved or rejected MSR, then kill ONLY that host-test child.
+These tests do not execute PMU instructions or authorize killing/resetting board
+processes. Actual linked MicroBlaze flow is checked for its single call to the
+interrupt-only helper, local64B record, absence of returns/unexpected branches,
+and final instruction-only loop. No physical guard entry has been attempted.

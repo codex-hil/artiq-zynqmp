@@ -1,6 +1,28 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Default-disabled lab guard compiled/flow checked (offline)
+
+Added explicit --lab-guard firmware variant; normal build has no guard function/
+record and kind2 remains rejected. Opt-in validated requestkind2 uses maintained
+interrupt-only helper, reads MSR before/after, reports state2 only for exact IE
+clear with other bits preserved (otherwise state3). Both commit ACK0/unresolved7f
+and enter no-return nop/backward-branch loop, no scheduler/sleep/resume dispatch.
+New64B recordPMU-localffdd7f68, terminalffdc4734. Static checker binds actual
+relative helper-call target, local layout, complete instructions, no return or
+external conditional branch and pure terminal loop. Four controls PASS: actual C
+host-child guard/failed-MSR, actual linked flow corruption rejection, no guard in
+default ELF, and default requestkind2 rejection. Both full MicroBlaze builds link.
+Evidence `evidence/pmu-lab-guard-offline-2026-10-23`; no target execution.
+
+No HW/interrupt-mask/firmware change on board; normal ARTIQ unchanged. This is a
+laboratory stop-loop candidate, NOT exclusive DDR ownership: exception/ROM/NMI/
+error paths, prior transactions and secondary cores remain unqualified. Next
+explicit image/layout/terminal observation gates and reserved-space restoration
+preflight before considering one bounded guard entry/recovery trial. Old request
+addresses/manifests must not be reused. Full DDR NOT_RUN/NOT_ADMITTED.
+
+
 ## 2026-10-23 — Fresh reserve-aware preflight and maintained IRQ-mask review
 
 Regenerated complete nested helper pins against new allocated-reserve parent;

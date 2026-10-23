@@ -865,3 +865,8 @@ tests/test_restore_reserve.py — LGPL-3.0-or-later
 
 scripts/review_pmu_irq_policy.py — LGPL-3.0-or-later
 tests/test_pmu_irq_policy.py — LGPL-3.0-or-later
+
+diagnostics/ddr/pmu_boundary/guard.h — LGPL-3.0-or-later
+scripts/check_pmu_lab_guard.py — LGPL-3.0-or-later
+tests/test_pmu_lab_guard.py — LGPL-3.0-or-later
+tests/test_pmu_lab_guard_flow.py — LGPL-3.0-or-later
