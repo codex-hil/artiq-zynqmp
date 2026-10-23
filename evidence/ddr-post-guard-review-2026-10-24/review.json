@@ -1,0 +1,61 @@
+{
+  "status": "NOT_ADMITTED",
+  "hardware_access_this_review": false,
+  "destructive_test_allowed": false,
+  "obligations": {
+    "boot_handoff_complete": {
+      "closed": false,
+      "assessment": "Sampled trained FSBL terminal and OCM observer passed in candidate boot; no independent persistent boot identity."
+    },
+    "no_handler_active": {
+      "closed": false,
+      "assessment": "Core-loop boundary entry and coherent publication observed; asynchronous exception/ROM paths remain unexcluded."
+    },
+    "scheduler_stopped": {
+      "closed": false,
+      "assessment": "Normal linked guard path never returns to scheduler; physical record proves entry, not all future control flow."
+    },
+    "interrupt_delivery_excluded": {
+      "closed": false,
+      "assessment": "MSR IE cleared with other bits preserved in four records; EE remains enabled, not all exception/reset sources excluded."
+    },
+    "other_core_release_excluded": {
+      "closed": false,
+      "assessment": "Prior APU reset/RPU samples are necessary observations, not prevention of later release."
+    },
+    "pmu_memory_access_excluded": {
+      "closed": false,
+      "assessment": "Normal terminal uses local instruction sleep/reentry; exception/MMIO/ROM transitive paths not closed."
+    },
+    "history_drained": {
+      "closed": false,
+      "assessment": "No-master PL suppresses new requests; prior accepted PS transactions and reset epochs not fully qualified."
+    }
+  },
+  "inputs": [
+    {
+      "path": "evidence/pmu-sleep-guard-hardware-2026-10-23/results.json",
+      "sha256": "d67aceb0acadddc95511502bfa1872236fc0153db5c499ca664b81c7995cc990"
+    },
+    {
+      "path": "evidence/pmu-sleep-guard-hardware-2026-10-23/candidate-trained-observer/results.json",
+      "sha256": "ac4a99846745bd791667f215b97b28656ac408911b5ae4f0b9536798bd1c4f68"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-sleep-guard-full-20261023/src/xpfw_core.c",
+      "sha256": "87c1f2bd8d5574457dd4c0b780c9f788e960da20ac13e7b76cff39b02524a9ce"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-sleep-guard-full-20261023/src/xpfw_start.S",
+      "sha256": "98fb81769ec13fd0b9e54816e9afcc4209ecbcb9863576109b055cb4317684ee"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-sleep-guard-full-20261023/disassembly.txt",
+      "sha256": "79003dec6c4c0990c93e912203470af715a47ec4cbfbccc79da5a4415abe5a06"
+    },
+    {
+      "path": "diagnostics/ddr/pmu_quiesce_model.py",
+      "sha256": "29c5dd849e51022f28345266237c5cb5d360676ea8a216d9df4033535c9d26be"
+    }
+  ]
+}

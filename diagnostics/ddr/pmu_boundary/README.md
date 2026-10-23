@@ -1,5 +1,11 @@
 # AMD PMU core-loop boundary telemetry — offline only
 
+Current checkpoint: explicit sleep/reentry guard was physically captured with
+ACK0 on2026-10-23; normal runtime restored. Earlier proposed/unselected/nop-loop
+statements below describe historical stages. See [current admission status](../ADMISSION_STATUS.md)
+and the2026-10-24 post-guard review; no full DDR admission exists.
+
+
 `stage_pmu_boundary.py` copies the existing PMU application source into a fresh
 output and patches only that copy. The upstream AMD header/license remains
 intact. It rejects changed/duplicate insertion anchors and a second patch.

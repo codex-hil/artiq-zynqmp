@@ -1,5 +1,28 @@
 # DDR write-test admission — 2026-10-23
 
+## 2026-10-24 authoritative checkpoint
+
+The dated rows below retain earlier checkpoints. The PMU row and old transport/
+USB blockage descriptions are superseded by this checkpoint.
+
+Physical sleep-guard capture PASS: four coherent nonce-bound records show
+MSR `0x80000106 -> 0x80000104` (IE only cleared), ACK0 and unresolved0x7f.
+Normal runtime restored with TTL/CoreDMA/analyzer/MonInj/Ethernet PASS at
+192.168.2.3; no fresh hardware check was performed in this review.
+See [capture](../../evidence/pmu-sleep-guard-hardware-2026-10-23/README.md).
+
+**DDR remains NOT_ADMITTED.** The seven obligations are individually assessed in
+[post-guard review](../../evidence/ddr-post-guard-review-2026-10-24/README.md).
+Normal guard flow excludes scheduler return, but EE remains enabled and exact
+candidate exception handlers have diagnostics/error MMIO and tight terminal
+loops. Continuous PC/sleep residency, ROM/reset paths, secondary-core future
+release and previously accepted PS transactions remain unproven.
+
+Next offline: linked exception-vector/helper/transitive footprint audit. Preserve
+exception reporting; no broad exception masking or repeated idle snapshots as a
+substitute for exclusion. No unchanged hardware capture retry is needed.
+
+
 **Not admitted.** Local ARTIQ runs successfully; a full DDR capacity/integrity
 sweep has not run. This table consolidates existing evidence and does not itself
 change hardware policy. Paths and hashes are in

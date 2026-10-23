@@ -1,5 +1,11 @@
 # PMU diagnostic quiescence — proposed, not deployed
 
+Current checkpoint: explicit sleep/reentry guard was physically captured with
+ACK0 on2026-10-23; normal runtime restored. Earlier proposed/unselected/nop-loop
+statements below describe historical stages. See [current admission status](ADMISSION_STATUS.md)
+and the2026-10-24 post-guard review; no full DDR admission exists.
+
+
 The existing AMD PMU services must remain functional during trained FSBL boot.
 A reduced firmware is not an approved replacement. The model in
 `pmu_quiesce_model.py` describes transition rules only; its receipts are explicitly

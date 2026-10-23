@@ -2226,3 +2226,13 @@ released before restore; lease released. No Si/SD/flash/OTP/Kasli changes.
 Sampled record is not continuous PC/sleep/ROM-NMI/all-core exclusion proof;
 full DDR NOT_ADMITTED. Next offline remaining exclusion obligations, no unchanged
 repeat. Evidence `evidence/pmu-sleep-guard-hardware-2026-10-23`.
+
+## 2026-10-24 — post-guard exclusion obligations audited offline
+
+Updated authoritative DDR admission status after physical sleep-guard PASS.
+Seven whole-system obligations remain qualified/unclosed. Exact candidate source
+shows preserved EE can reach hardware/software exception diagnostics/MMIO and
+non-sleep loops; ordinary guard flow alone is insufficient. No HW access.
+Next exact linked exception-vector/helper/transitive footprint audit, preserving
+exception reporting. No unchanged capture retry; DDR NOT_ADMITTED. Evidence
+`evidence/ddr-post-guard-review-2026-10-24`.

@@ -1,5 +1,16 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — post-guard exclusion obligations audited offline
+
+Updated authoritative DDR admission status after physical sleep-guard PASS.
+Seven whole-system obligations remain qualified/unclosed. Exact candidate source
+shows preserved EE can reach hardware/software exception diagnostics/MMIO and
+non-sleep loops; ordinary guard flow alone is insufficient. No HW access.
+Next exact linked exception-vector/helper/transitive footprint audit, preserving
+exception reporting. No unchanged capture retry; DDR NOT_ADMITTED. Evidence
+`evidence/ddr-post-guard-review-2026-10-24`.
+
+
 ## 2026-10-23 — physical sleep guard capture and restoration PASS
 
 Single Genesys lease143.994s, changed sleep image7a82b8f2...f51c4. Four coherent
