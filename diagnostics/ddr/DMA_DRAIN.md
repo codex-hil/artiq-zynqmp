@@ -268,3 +268,18 @@ current normal runtime has no observer CSR bank and must not be probed with it.
 Evidence `evidence/dma-observer-probe-offline-2026-10-23`. Next collect SAME Dell
 job and verify reports/IP hashes, then integrate bounded candidate probe lifecycle.
 DDR writes remain closed; full observer build/hardware still NOT_QUALIFIED.
+
+
+### 2026-10-23 — Dell observer service interrupted; stale status corrected
+
+Same job artiq-dma-observer-20261023 has no exit.json. Systemd journal records
+Stopping/Stopped at09:41:18 and container SIGTERM; service inactive. Cause/actor
+unknown, no automatic restart or duplicate job. Previous state.txt RUNNING was
+stale, not build progress. Added status query combining service activity with
+exit receipt; test rejects inactive RUNNING/WAITING, preserves terminal returncode.
+Live query now INCOMPLETE_SERVICE_INACTIVE. Raw partial console/journal in
+`evidence/dma-observer-build-interrupted-2026-10-23`; no build/timing/bitstream PASS.
+Separately added full AXI->CSR simulation showing writes0xffffffff to both
+observer status addresses cannot change counter/epoch/quiet; PASS0.742s.
+No hardware access; baseline unchanged. Next inspect interruption coordination
+before any resubmission; safe offline candidate-probe lifecycle work remains.

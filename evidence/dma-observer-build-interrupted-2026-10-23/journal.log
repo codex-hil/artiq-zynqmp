@@ -1,0 +1,24 @@
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]:   **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]:   **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]:   **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]:   **** Start of session at: Fri Oct 23 07:41:10 2026
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]:     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]:     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: 
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: source top.tcl
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: # source "top_route.tcl"
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: ## set_param general.maxThreads 8
+Oct 23 09:41:12 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: ## create_project -force -name top -part xczu5ev-sfvc784-1-e
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: ## set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: ## add_files {top.v}
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: ## set_property library work [get_files {top.v}]
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: ## read_ip {ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci}
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: WARNING: [Vivado 12-25524] IP file '/srv/nvme-fast-1/vivado-work/artiq-dma-observer-20261023/ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci' was created in a subcore context and may not behave as expected when used in a standalone context.
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: INFO: [IP_Flow 19-234] Refreshing IP repositories
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: INFO: [IP_Flow 19-1704] No user IP repositories specified
+Oct 23 09:41:14 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/ip'.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series eloquent_einstein[323985]: INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Stopping artiq-dma-observer-20261023.service - [systemd-run] /bin/bash /srv/nvme-fast-1/vivado-work/artiq-dma-observer-20261023/run.sh...
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series podman[324069]: 2026-10-23 09:41:18.605488054 +0200 CEST m=+0.035187411 container died 28b62c9e085f48bb489c8bb57fd501c5cbd513cf38143a100edaa4e1ddb6c81f (image=localhost/codex-vivado-runtime:ubuntu22.04, name=eloquent_einstein, org.opencontainers.image.version=22.04)
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series podman[324069]: 2026-10-23 09:41:18.650778854 +0200 CEST m=+0.080478173 container remove 28b62c9e085f48bb489c8bb57fd501c5cbd513cf38143a100edaa4e1ddb6c81f (image=localhost/codex-vivado-runtime:ubuntu22.04, name=eloquent_einstein, org.opencontainers.image.version=22.04)
+Oct 23 09:41:18 codex-hil-Precision-5820-Tower-X-Series systemd[319357]: Stopped artiq-dma-observer-20261023.service - [systemd-run] /bin/bash /srv/nvme-fast-1/vivado-work/artiq-dma-observer-20261023/run.sh.

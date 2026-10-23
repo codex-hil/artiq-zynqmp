@@ -136,6 +136,29 @@ def submit(job):
     write(job/'submitted.json',dict(status='SUBMITTED_NOT_BUILD_PROOF',remote=m['remote'],transfer='PASS',service=result.stderr.strip()))
 
 
+
+def classify_status(state,active,exit_code):
+    if exit_code is not None:
+        return dict(status='FINISHED' if exit_code==0 else 'FAILED',state_file=state,
+                    service_active=active,returncode=exit_code)
+    if active not in ('active','activating','reloading'):
+        return dict(status='INCOMPLETE_SERVICE_INACTIVE',state_file=state,
+                    service_active=active,returncode=None)
+    return dict(status=state,state_file=state,service_active=active,returncode=None)
+
+
+def status(job):
+    m=metadata(job)
+    code='import json,subprocess\nfrom pathlib import Path\n'
+    code+='r=Path('+repr(m['remote'])+')\n'
+    code+='state=(r/"state.txt").read_text().strip() if (r/"state.txt").exists() else "NO_STATE"\n'
+    code+='active=subprocess.run(["systemctl","--user","show",'+repr(m['unit'])+',"-p","ActiveState","--value"],capture_output=True,text=True).stdout.strip()\n'
+    code+='exit_code=json.loads((r/"exit.json").read_text())["returncode"] if (r/"exit.json").exists() else None\n'
+    code+='print(json.dumps(dict(state=state,active=active,exit_code=exit_code)))\n'
+    raw=json.loads(ssh('python3 -',script=code).stdout)
+    return classify_status(**raw)
+
+
 def collect(job,output):
     m=metadata(job)
     if output.exists():raise ValueError('Use a fresh result directory')
@@ -189,7 +212,7 @@ def main():
     elif a.command=='prepare-ps':print(json.dumps(prepare_ps(a.source,a.job),indent=2))
     elif a.command=='submit':submit(a.job);print('SUBMITTED_NOT_BUILD_PROOF')
     elif a.command=='status':
-        m=metadata(a.job);print(ssh('cd '+shlex.quote(m['remote'])+' && cat state.txt').stdout,end='')
+        print(json.dumps(status(a.job),indent=2))
     else:
         result=collect(a.job,a.output);print(json.dumps(result,indent=2))
         if result['status'] in ('REMOTE_VIVADO_FAILED','RESULT_CHECK_FAILED'):raise SystemExit(1)

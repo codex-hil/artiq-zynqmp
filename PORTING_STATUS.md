@@ -1,6 +1,21 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Dell observer service interrupted; stale status corrected
+
+Same job artiq-dma-observer-20261023 has no exit.json. Systemd journal records
+Stopping/Stopped at09:41:18 and container SIGTERM; service inactive. Cause/actor
+unknown, no automatic restart or duplicate job. Previous state.txt RUNNING was
+stale, not build progress. Added status query combining service activity with
+exit receipt; test rejects inactive RUNNING/WAITING, preserves terminal returncode.
+Live query now INCOMPLETE_SERVICE_INACTIVE. Raw partial console/journal in
+`evidence/dma-observer-build-interrupted-2026-10-23`; no build/timing/bitstream PASS.
+Separately added full AXI->CSR simulation showing writes0xffffffff to both
+observer status addresses cannot change counter/epoch/quiet; PASS0.742s.
+No hardware access; baseline unchanged. Next inspect interruption coordination
+before any resubmission; safe offline candidate-probe lifecycle work remains.
+
+
 ## 2026-10-23 — Dell observer build running; offline probe prepared
 
 Existing job artiq-dma-observer-20261023 now RUNNING, no duplicate submission.
