@@ -1,6 +1,25 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Documented external PMU RAM read physical PASS
+
+Reviewed AMDUG1085 PMU view: local register file is PMU-only, while PMU RAM/
+global registers have external32-bitAXI slave. This distinguishes failed private
+AP0addressffd40024 from documented RAMffdc0000..ffddffff; no alias guessing or
+private-register retry. XSDB2025.2 local mrd help confirms MEM-AP route. Dedicated
+fixed allowlist two readsffdc0050, source-Tcl controls PASS, matching current
+normal restore PMU ELF243e7751...eb31e (not diagnostic9f5c58 image).
+Under shared Genesys lease two AP0read valuesb000ffdd match immutable code word.
+No CPUtarget memory read/stop/reset/force/controlwrite or firmwareload. Raw logs/
+source/reference hashes `evidence/pmu-ram-transport-2026-10-23`; lease released.
+
+This closes access to this RAM code word only, not telemetry coherence or PMU
+quiescence. Normal runtime not changed; no new network regression claimed.
+Next integrate diagnostic PMU ELF with existing trained-boot/mandatory-restore
+flow and fixed RAM record capture with sequence/readback validation. No generic
+memorydump/privateMMIO probe; full DDR NOT_RUN/NOT_ADMITTED.
+
+
 ## 2026-10-23 — Full diagnostic PMU telemetry firmware linked (offline)
 
 Replayed actual existing AMD compile/link recipe in fresh isolated application

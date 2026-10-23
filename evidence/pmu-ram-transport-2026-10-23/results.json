@@ -1,0 +1,8 @@
+{
+  "status": "EXTERNAL_PMU_RAM_CODE_READ_PASS",
+  "hardware_executed": true,
+  "address": "0xffdc0050",
+  "word": "0xb000ffdd",
+  "destructive_test_allowed": false,
+  "limits": "AP0 reads immutable documented PMU RAM. No CPU debug memory read/stop; not telemetry coherence or PMU quiescence."
+}

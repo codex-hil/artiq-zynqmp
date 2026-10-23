@@ -1,0 +1,26 @@
+{
+  "status": "DOCUMENTED_EXTERNAL_PMU_RAM_ACCESS_NOT_PRIVATE_REGISTER_RETRY",
+  "hardware_executed": true,
+  "read_address": "0xffdc0050",
+  "qualified_baseline_pmu_sha256": "243e77513f8a3feef578937d9451943d46a3a34fd62ea93fbc441e8b819eb31e",
+  "previous_failed_private_register": "0xffd40024 (not accessed)",
+  "sources": [
+    {
+      "url": "https://docs.amd.com/api/khub/documents/xzMsp_c5sG9J6A3u7NkJYQ/content?Ft-Calling-App=ft",
+      "location": "UG1085 v2.5, Chapter6 PMU system view, p108",
+      "claim": "PMU RAM/global registers externally accessible via32-bit AXI slave; local registers PMU-only."
+    },
+    {
+      "url": "https://docs.amd.com/r/2025.2-English/ug984-vivado-microblaze-ref/Debug-Overview",
+      "claim": "General MicroBlaze debug capability is not a target-specific guarantee of nonhalting memory access."
+    }
+  ],
+  "local_xsdb_help": "XSDB2025.2 help mrd confirms -address-space AP0 selects MEM-AP access. No force option used.",
+  "source_sha256": {
+    "scripts/probe_pmu_ram_access.tcl": "2c64ddfcf891ced0d0cdfeb469fc60e2adda0e60d411d4567983bf8ec3d9cfc3",
+    "scripts/test_pmu_ram_access.py": "c5f6250ea43e2d9ad101f664a70692519712a72311687d9334e2405895d9c22c",
+    "tests/test_pmu_ram_transport.py": "f8b3d2063d62e82b88583806af38780b171d88e0315e5ee2c7c461a7bc93ce6b"
+  },
+  "destructive_test_allowed": false,
+  "limits": "Two immutable code-word reads only; no live telemetry/coherence/quiescence or current network regression claim. No CPU stop/reset/firmware writes."
+}
