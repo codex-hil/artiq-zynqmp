@@ -1,0 +1,110 @@
+{
+  "status": "READ_ONLY_CAPTURE_COMPLETE",
+  "hardware_executed": true,
+  "decoded": {
+    "csu": {
+      "status": "SUPPLIED_CSU_STATUS_DECODED_NOT_OWNERSHIP",
+      "hardware_executed": false,
+      "channels": [
+        {
+          "channel": 0,
+          "address": "0xffc80008",
+          "raw": [
+            0,
+            0
+          ],
+          "busy": [
+            false,
+            false
+          ],
+          "outstanding": [
+            0,
+            0
+          ],
+          "fifo_level": [
+            0,
+            0
+          ],
+          "unacknowledged_done": [
+            0,
+            0
+          ],
+          "unknown_bits": [
+            0,
+            0
+          ],
+          "quiet_fields_observed": true
+        },
+        {
+          "channel": 1,
+          "address": "0xffc80808",
+          "raw": [
+            0,
+            0
+          ],
+          "busy": [
+            false,
+            false
+          ],
+          "outstanding": [
+            0,
+            0
+          ],
+          "fifo_level": [
+            0,
+            0
+          ],
+          "unacknowledged_done": [
+            0,
+            0
+          ],
+          "unknown_bits": [
+            0,
+            0
+          ],
+          "quiet_fields_observed": true
+        }
+      ],
+      "all_quiet_fields": true,
+      "destructive_test_allowed": false,
+      "limits": "Momentary busy/outstanding/FIFO fields only. Done/interrupt flags not acknowledged; errors not cleared or fully diagnosed. No exclusive ownership or DDR admission."
+    },
+    "cores": [
+      {
+        "name": "Cortex-A53 #0",
+        "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A0} target_id 10 level 2 name {Cortex-A53 #0} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason Running is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+        "ownership": "NOT_PROVEN"
+      },
+      {
+        "name": "Cortex-A53 #1",
+        "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A1} target_id 11 level 2 name {Cortex-A53 #1} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason Running is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+        "ownership": "NOT_PROVEN"
+      },
+      {
+        "name": "Cortex-A53 #2",
+        "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A2} target_id 12 level 2 name {Cortex-A53 #2} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason {Power On Reset} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+        "ownership": "NOT_PROVEN"
+      },
+      {
+        "name": "Cortex-A53 #3",
+        "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A3} target_id 13 level 2 name {Cortex-A53 #3} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason {Power On Reset} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+        "ownership": "NOT_PROVEN"
+      },
+      {
+        "name": "Cortex-R5 #0",
+        "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R0} target_id 7 level 2 name {Cortex-R5 #0} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R} parent RPU state_reason Halted is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+        "ownership": "NOT_PROVEN"
+      },
+      {
+        "name": "Cortex-R5 #1",
+        "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R1} target_id 8 level 2 name {Cortex-R5 #1} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R} parent RPU state_reason {Lock Step Mode} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+        "ownership": "NOT_PROVEN"
+      }
+    ],
+    "destructive_test_allowed": false
+  },
+  "cable": "210383B7F02DA",
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "inputs_sha256": "70fc81e31edac55aec5e36ff9ecd0e178f74621ca1323f595a6261d6e32029ec",
+  "raw_sha256": "8c73143e4d8cfec7b20f90ff15fa345d456b566b2ddfcd4b042de71e1f56c9a0"
+}

@@ -1,0 +1,62 @@
+{
+  "status": "CSU_STATUS_AND_CORE_METADATA_CAPTURE_COMPLETE",
+  "hardware_executed": true,
+  "cable": "210383B7F02DA",
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "inputs_sha256": "70fc81e31edac55aec5e36ff9ecd0e178f74621ca1323f595a6261d6e32029ec",
+  "raw_sha256": "8c73143e4d8cfec7b20f90ff15fa345d456b566b2ddfcd4b042de71e1f56c9a0",
+  "csu_status_two_samples": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "core_metadata": [
+    {
+      "name": "Cortex-A53 #0",
+      "state_reason": "Running",
+      "suspended": 0,
+      "ownership": "NOT_PROVEN"
+    },
+    {
+      "name": "Cortex-A53 #1",
+      "state_reason": "Running",
+      "suspended": 0,
+      "ownership": "NOT_PROVEN"
+    },
+    {
+      "name": "Cortex-A53 #2",
+      "state_reason": "Power On Reset",
+      "suspended": 0,
+      "ownership": "NOT_PROVEN"
+    },
+    {
+      "name": "Cortex-A53 #3",
+      "state_reason": "Power On Reset",
+      "suspended": 0,
+      "ownership": "NOT_PROVEN"
+    },
+    {
+      "name": "Cortex-R5 #0",
+      "state_reason": "Halted",
+      "suspended": 0,
+      "ownership": "NOT_PROVEN"
+    },
+    {
+      "name": "Cortex-R5 #1",
+      "state_reason": "Lock Step Mode",
+      "suspended": 0,
+      "ownership": "NOT_PROVEN"
+    }
+  ],
+  "limits": [
+    "Read-only STS/target metadata, no force mode/CPU stop/reset/UART/network/register writes or flag acknowledgement.",
+    "R5 Halted/Lock Step Mode labels with suspended0 are not positive core/cache ownership.",
+    "Running-runtime observation, not a later exclusive diagnostic window; no destructive DDR admission or fresh Ethernet/runtime qualification.",
+    "Lease released; baseline configuration unchanged."
+  ]
+}

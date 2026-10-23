@@ -1,5 +1,30 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## CSU status and core metadata live capture complete —2026-10-23
+
+Vendor BSP-checked source/destination STS addresses0xffc80008/0xffc80808,
+fields busy/outstanding/FIFO/unacknowledged-done, no SIZE/trigger/interrupt
+acknowledgement writes. Fixed Tcl performs4STS reads plus six exact-cable
+core metadata queries. Leased wrapper defaults offline, pins plan/vendor/helper
+sources before and under lease,45s bounded process group, partial timeout log.
+Parser requires complete ordered4-row frame and exact six-core metadata rows.
+Four decoder/Tcl/strict-parser controls and actual preflight PASS.
+Evidence/pins: `evidence/csu-core-plan-2026-10-23`.
+
+Physical read-only capture COMPLETE: source/destination STS0 in both samples,
+busy/outstanding/FIFO/done all0. A53#0/#1 metadata Running; A53#2/#3 Power On
+Reset. R5#0 label Halted and R5#1 Lock Step Mode, but suspended0; these labels
+are NOT positive halted/reset/cache ownership. All core ownership stays unknown.
+Raw provenance: `evidence/csu-core-hardware-2026-10-23`. No stop/reset/force
+access/UART/network/register writes or error clears. Lease released, baseline
+configuration unchanged; no fresh runtime/network requalification claimed.
+
+Next offline RPU lockstep/reset/clock register allowlist and PS peripheral
+DMA activity review, then positive observations inside the actual diagnostic
+window. Momentary CSU/ZDMA status and debugger labels cannot authorize DDR
+destructive writes or establish PL HP0 drain. No Si/SD/flash/OTP/Kasli changes.
+
+
 ## Read-only live ZDMA64-read capture complete —2026-10-23
 
 New wrapper defaults offline, pins register plan/vendor inputs/execution helpers,

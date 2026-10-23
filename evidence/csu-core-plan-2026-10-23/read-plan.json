@@ -1,0 +1,16 @@
+{
+  "status": "OFFLINE_CSU_STATUS_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "addresses": [
+    "0xffc80008",
+    "0xffc80808"
+  ],
+  "samples": 2,
+  "width_bits": 32,
+  "destructive_test_allowed": false,
+  "limits": "STS only. No SIZE/start/reset/interrupt acknowledge writes. Done count is not an error-free-transfer claim; no live ownership proven.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xparameters.h": "73b981904d0110cbb72db630738a16e84a2cd95420e6fbccb169d92ccfbc1b6b",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xcsudma_hw.h": "39baa6d1e4be2a461653b549cb9e970ebd3b06ad7e0c9e75100b99a568278f62"
+  }
+}
