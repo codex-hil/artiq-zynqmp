@@ -1,0 +1,9 @@
+test_actual_guard_and_stale_disassembly_pin (test_pmu_guard_gate.Tests.test_actual_guard_and_stale_disassembly_pin) ... ok
+test_ordered_bootstrap (test_pmu_guard_recovery.Tests.test_ordered_bootstrap) ... ok
+test_unconfirmed_halt_never_downloads (test_pmu_guard_recovery.Tests.test_unconfirmed_halt_never_downloads) ... ok
+test_real_tcl_only_guard_request_writes (test_pmu_guard_transport.GuardTests.test_real_tcl_only_guard_request_writes) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.097s
+
+OK

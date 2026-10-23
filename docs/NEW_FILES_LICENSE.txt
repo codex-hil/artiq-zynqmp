@@ -870,3 +870,10 @@ diagnostics/ddr/pmu_boundary/guard.h — LGPL-3.0-or-later
 scripts/check_pmu_lab_guard.py — LGPL-3.0-or-later
 tests/test_pmu_lab_guard.py — LGPL-3.0-or-later
 tests/test_pmu_lab_guard_flow.py — LGPL-3.0-or-later
+
+scripts/pmu_guard_candidate.py — LGPL-3.0-or-later
+scripts/probe_pmu_lab_guard.tcl — LGPL-3.0-or-later
+scripts/restart_pmu_for_restore.tcl — LGPL-3.0-or-later
+tests/test_pmu_guard_gate.py — LGPL-3.0-or-later
+tests/test_pmu_guard_transport.py — LGPL-3.0-or-later
+tests/test_pmu_guard_recovery.py — LGPL-3.0-or-later

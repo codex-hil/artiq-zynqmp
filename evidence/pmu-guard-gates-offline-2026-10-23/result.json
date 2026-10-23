@@ -1,0 +1,21 @@
+{
+  "status": "GUARD_REQUEST_IMAGE_AND_RECOVERY_TCL_CONTROLS_PASS_OFFLINE",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "source_sha256": {
+    "scripts/pmu_guard_candidate.py": "32b0a6dee5daa2a36519aa18db5e734a88991c862bd3c35a95c46b72c82070e7",
+    "scripts/probe_pmu_lab_guard.tcl": "b46526a320e755b46a9d1d54616a990388b1993bdf95a1e34400a38156dfd4cf",
+    "scripts/restart_pmu_for_restore.tcl": "4ede9ac7f9a5d1e14da00d130ac7ac0df3a198fd2e41de14fd84df9a4e3da9a0",
+    "tests/test_pmu_guard_gate.py": "34fafed0f955d9875a19acef93eb34db3c480322ee74ed08c69399033df552c4",
+    "tests/test_pmu_guard_transport.py": "2ea66d325a073f6c7c2c214a6f9febbc59959a37411091042daaeb9d54e8e6d5",
+    "tests/test_pmu_guard_recovery.py": "3a5d30c14ff1c8882d0b013ac4eed2ab5db30b0978df7dc3e24c76c91bd15e74"
+  },
+  "tests": 4,
+  "restoration_requirement": "Explicit debugger PMU halt/download baseline/resume BEFORE normal full PS reset; bootstrap marker alone is not successful restoration.",
+  "not_yet_done": [
+    "Parent lifecycle integration and fresh nested helper pins",
+    "Enough space plus actual block reservation on all runtime filesystems",
+    "Physical guard entry/MSR capture and debug recovery validation"
+  ],
+  "limits": "Guard has no DDR ACK; ROM/NMI/error/history/core exclusion not proven. No physical kind2 request sent."
+}

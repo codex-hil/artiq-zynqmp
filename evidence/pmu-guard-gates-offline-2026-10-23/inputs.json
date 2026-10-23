@@ -1,0 +1,25 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-lab-guard-full-20261023/pmufw.elf",
+    "sha256": "7b094fd251646c6d6541bd7901700bd9fa5fbcdf77efdcefbe3a50d5b886197d"
+  },
+  "symbols": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-lab-guard-full-20261023/symbols.txt",
+    "sha256": "08c36c2130349b581e798d110533f6396b98ddb76e2cfca4b6ed5e4d38c60b4a"
+  },
+  "disassembly": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-lab-guard-full-20261023/disassembly.txt",
+    "sha256": "4dc5422d82eebbdc6a6c763149fdcc0130245bb133c6ef4bd5554738026254a8"
+  },
+  "script_sha256": {
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/check_pmu_boundary_image.py": "f142e614da217212b9c278b9782ead83e299db80e0fe2e5fe71dfda5aec46f69",
+    "scripts/pmu_guard_candidate.py": "32b0a6dee5daa2a36519aa18db5e734a88991c862bd3c35a95c46b72c82070e7",
+    "scripts/check_pmu_lab_guard.py": "7348069c53e5f15a5c318891ae1b5f56a601756495267ea73da9a6bf8b18b532",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/probe_pmu_lab_guard.tcl": "b46526a320e755b46a9d1d54616a990388b1993bdf95a1e34400a38156dfd4cf",
+    "scripts/run_trained_observer.py": "b4ff535be680d40eb57bf2b4bb105295f4deeccc1bbbf152603514c812027e10",
+    "scripts/test_candidate_runtime_hw.py": "b258b5f4d2f58b319298b0bff2aad36e415ce4dbb3d553841109b1224efd3cd8",
+    "scripts/restart_pmu_for_restore.tcl": "4ede9ac7f9a5d1e14da00d130ac7ac0df3a198fd2e41de14fd84df9a4e3da9a0"
+  }
+}

@@ -1,6 +1,28 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Guard image/request gates and explicit recovery Tcl (offline)
+
+New exact guard gate reruns local layout/flow checks and regenerates nm/objdump
+from selected ELF, comparing symbol/disassembly files. Fixed requestffdd7f20/
+guardffdd7f68,64B record, terminalffdc4734; no reuse old addresses. Kind2 request
+publisher checks fresh BSS, writes9bounded words only request32B, readback before
+commit. Four fixed16word record attempts; requires exact session/state2/IE1->0
+with all other MSR bits preserved/ACK0/unresolved7f, malformed/failure rejects.
+No targetPC/continuous-state or ROM exclusion inferred from record.
+
+Recovery must NOT depend on parked PMU servicing ordinary reset. Added exact
+MicroBlaze PMU debugger selection, explicit stop and bounded positive halt check,
+baseline download/resume BEFORE normal system reset/PMU-FSBL/ARTIQ restore.
+Unconfirmed halt never downloads; bootstrap marker is not restoration PASS.
+Four actual-Tcl/real-ELF/negative controls PASS; evidence
+`evidence/pmu-guard-gates-offline-2026-10-23`. No new-image load/guard entry or
+PMU stop on hardware. Next integrate this recovery step and guard capture in
+parent lifecycle under shared lease with real block reserve/fresh pins; enough
+space must precede any trial. Full DDR NOT_RUN/NOT_ADMITTED; normal baseline
+unchanged. ROM/NMI/error/history/core requirements remain unresolved.
+
+
 ## 2026-10-23 — Default-disabled lab guard compiled/flow checked (offline)
 
 Added explicit --lab-guard firmware variant; normal build has no guard function/
