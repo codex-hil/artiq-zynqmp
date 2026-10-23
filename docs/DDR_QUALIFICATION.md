@@ -1716,3 +1716,23 @@ inhibition does not resolve prior transactions or PMU/core ownership. Full DDR
 NOT_RUN/NOT_ADMITTED. Next prepare explicit Dell build receipt/constant-netlist
 checks for this variant, then bounded no-write boot/restore qualification before
 any DDR writer. No AIB/AFI reset writes, flash/OTP/SD changes.
+
+
+
+## 2026-10-23 — No-master diagnostic Dell build RUNNING
+
+Fresh job `artiq-no-ddr-master-20261023` submitted using existing bounded remote
+service/shared Dell build lock; host identity verified. SSH retained by submit
+--wait (local exec session21743; preserve/poll, do not duplicate). Status active/
+RUNNING at submission checkpoint. Explicit normalized PS XCI hash1712fe0f...304d
+selected from prior qualified result, no automatic IP approval. Separate profile
+allows no CSR map without changing local-RTIO required inputs. Post-route Tcl
+requires unique PS SAXIGP2ARVALID/AWVALID/WVALID pins and each net TYPE GROUND;
+missing pin or nonconstant net fails before bitstream. Result collector requires
+exact three-net proof and report hash. Thirteen remote lifecycle/input/report
+controls PASS including absent/changed constant-proof rejection.
+
+Evidence `evidence/no-ddr-master-dell-build-2026-10-23`; source/artifact pins
+retained. No build PASS/bitstream/hardware claim yet. No board access, baseline
+unchanged; DDR NOT_ADMITTED. Next collect SAME job and review actual pin mapping,
+timing/DRC/IP provenance; never relax a failed constant proof without inspection.

@@ -1,0 +1,18 @@
+test_incomplete_and_terminal (test_remote_job_status.Tests.test_incomplete_and_terminal) ... ok
+test_wait_keeps_session_and_bounds_service (test_remote_job_status.Tests.test_wait_keeps_session_and_bounds_service) ... ok
+test_bad_exit_input_timing_drc_route_and_log_rejected (test_remote_rtio_build.RemoteBuildTests.test_bad_exit_input_timing_drc_route_and_log_rejected) ... ok
+test_missing_bitstream_rejected (test_remote_rtio_build.RemoteBuildTests.test_missing_bitstream_rejected) ... ok
+test_no_master_requires_exact_netlist_proof (test_remote_rtio_build.RemoteBuildTests.test_no_master_requires_exact_netlist_proof) ... ok
+test_numeric_failure_coverage_and_incomplete_routing_rejected (test_remote_rtio_build.RemoteBuildTests.test_numeric_failure_coverage_and_incomplete_routing_rejected) ... ok
+test_valid_reports_retain_io_limitations (test_remote_rtio_build.RemoteBuildTests.test_valid_reports_retain_io_limitations) ... ok
+test_external_symlink_rejected (test_remote_submission.SubmissionTests.test_external_symlink_rejected) ... ok
+test_failed_remote_job_preserves_logs_without_bitstream (test_remote_submission.SubmissionTests.test_failed_remote_job_preserves_logs_without_bitstream) ... ok
+test_modified_job_rejected_before_ssh (test_remote_submission.SubmissionTests.test_modified_job_rejected_before_ssh) ... ok
+test_normalized_ip_requires_exact_selected_hash (test_remote_submission.SubmissionTests.test_normalized_ip_requires_exact_selected_hash) ... ok
+test_prepare_is_offline_and_normalization_separate (test_remote_submission.SubmissionTests.test_prepare_is_offline_and_normalization_separate) ... ok
+test_stale_source_and_path_escape_rejected (test_remote_submission.SubmissionTests.test_stale_source_and_path_escape_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.042s
+
+OK

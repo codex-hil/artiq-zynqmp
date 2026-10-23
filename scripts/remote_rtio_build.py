@@ -31,6 +31,7 @@ def prepare(source,job,mode,normalized=None,expected=None):
     if generated.get('status')!='HDL_GENERATED_NOT_SYNTHESIZED':raise ValueError('Expected generated HDL manifest')
     if bool(normalized)!=bool(expected):raise ValueError('Normalized XCI requires an explicit expected SHA-256')
     if normalized and mode!='build':raise ValueError('Normalization cannot use a preselected output')
+    diagnostic=generated.get('profile')=='no-ddr-master'
     rows=[];sources=[];seen=set()
     for entry in generated['files']:
         name=entry['path'];path=relative(name)
@@ -43,12 +44,12 @@ def prepare(source,job,mode,normalized=None,expected=None):
             if not re.fullmatch('[0-9a-f]{64}',expected) or sha(selected)!=expected:raise ValueError('Selected XCI hash mismatch')
             json.loads(selected.read_text())
         rows.append(dict(path=name,source_sha256=entry['sha256'],build_sha256=sha(selected)));sources.append(selected)
-    if not {XCI,'top.v','top.xdc','top.tcl','top_route.tcl','top_bitstream.tcl','csr-map.json'}.issubset(seen):raise ValueError('Incomplete source input set')
+    if not ({XCI,'top.v','top.xdc','top.tcl','top_route.tcl','top_bitstream.tcl'} | (set() if diagnostic else {'csr-map.json'})).issubset(seen):raise ValueError('Incomplete source input set')
     job.mkdir(parents=True)
     for row,src in zip(rows,sources):
         dest=job/row['path'];dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dest)
     shutil.copyfile(source/'generation.json',job/'generation.json')
-    write(job/'inputs.json',dict(files=rows,scope='Generated local RTIO build inputs',selected_normalized_xci_sha256=expected))
+    write(job/'inputs.json',dict(files=rows,scope='Generated local RTIO build inputs',profile=generated.get('profile','local-rtio'),selected_normalized_xci_sha256=expected))
     if mode=='normalize':
         (job/'normalize.tcl').write_text('create_project -force -name normalize -part xczu5ev-sfvc784-1-e\nread_ip {'+XCI+'}\nupgrade_ip [get_ips platform_zynq_ultra_ps_e_0_0]\ngenerate_target all [get_ips platform_zynq_ultra_ps_e_0_0]\ncreate_ip_run [get_ips platform_zynq_ultra_ps_e_0_0]\nlaunch_runs platform_zynq_ultra_ps_e_0_0_synth_1 -jobs 2\nwait_on_run platform_zynq_ultra_ps_e_0_0_synth_1\nif {[get_property PROGRESS [get_runs platform_zynq_ultra_ps_e_0_0_synth_1]] ne \"100%\"} {error \"PS IP synthesis failed\"}\nquit\n')
     remote=REMOTE_ROOT+'/'+job.name;entry='normalize.tcl' if mode=='normalize' else 'top.tcl'
@@ -177,6 +178,7 @@ def collect(job,output):
     if output.exists():raise ValueError('Use a fresh result directory')
     names=list(m['upload_sha256'])+['exit.json','state.txt','console.log','vivado.log']
     if m['mode']=='build':names+=['top.bit','top_timing.rpt','top_drc.rpt','top_route_status.rpt']
+    if m['mode']=='build' and json.loads((job/'generation.json').read_text()).get('profile')=='no-ddr-master':names+=['no_ddr_master_nets.rpt']
     hashes=export_hashes(m) if m['mode']=='ps-export' else remote_hashes(m,names,True)
     output.mkdir(parents=True)
     subprocess.run(['rsync','-a','--files-from=-','-e','ssh -i '+shlex.quote(str(KEY))+' -o BatchMode=yes',HOST+':'+m['remote']+'/',str(output.resolve())+'/'],input='\n'.join(hashes)+'\n',text=True,check=True,timeout=120)

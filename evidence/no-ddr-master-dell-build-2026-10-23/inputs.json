@@ -1,0 +1,37 @@
+{
+  "files": [
+    {
+      "path": "top.tcl",
+      "source_sha256": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a",
+      "build_sha256": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a"
+    },
+    {
+      "path": "top.xdc",
+      "source_sha256": "33216ad34d66aa735c358aacc48aa7ca333dd6e442e681de8c0eaac97fd699da",
+      "build_sha256": "33216ad34d66aa735c358aacc48aa7ca333dd6e442e681de8c0eaac97fd699da"
+    },
+    {
+      "path": "top_bitstream.tcl",
+      "source_sha256": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a",
+      "build_sha256": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a"
+    },
+    {
+      "path": "top.v",
+      "source_sha256": "420568ff9860da88263f680b18d4c5904caaae3efc6ad402f0c0d02254b155bf",
+      "build_sha256": "420568ff9860da88263f680b18d4c5904caaae3efc6ad402f0c0d02254b155bf"
+    },
+    {
+      "path": "top_route.tcl",
+      "source_sha256": "e0a0cb2f2db667e4ec9b1fb44470852e51edbf1162f0d7fb328181cb6b04cd86",
+      "build_sha256": "e0a0cb2f2db667e4ec9b1fb44470852e51edbf1162f0d7fb328181cb6b04cd86"
+    },
+    {
+      "path": "ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci",
+      "source_sha256": "a0cc4f0c0c3f36e21e365652a91bd8c1f9b3d0e78fb7fc5ece254c17b79f7019",
+      "build_sha256": "1712fe0fe3f57bddb295133cf851956939ceda3391a96e160d3687004a2f304d"
+    }
+  ],
+  "scope": "Generated local RTIO build inputs",
+  "profile": "no-ddr-master",
+  "selected_normalized_xci_sha256": "1712fe0fe3f57bddb295133cf851956939ceda3391a96e160d3687004a2f304d"
+}

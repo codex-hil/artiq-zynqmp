@@ -14,6 +14,16 @@ class RemoteBuildTests(unittest.TestCase):
         for k,v in files.items():(root/k).write_text(v)
         return dict(files=[dict(path='top.v',build_sha256=hashlib.sha256(b'pinned HDL').hexdigest())])
 
+    def test_no_master_requires_exact_netlist_proof(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);m=self.fixture(root);m['profile']='no-ddr-master'
+            with self.assertRaises(FileNotFoundError):check(root,m)
+            proof=root/'no_ddr_master_nets.rpt'
+            good='SAXIGP2ARVALID GROUND\nSAXIGP2AWVALID GROUND\nSAXIGP2WVALID GROUND\nNO_DDR_MASTER_NETLIST_PASS\n'
+            proof.write_text(good);self.assertIn('no_ddr_master_netlist_sha256',check(root,m))
+            proof.write_text(good.replace('GROUND','POWER',1))
+            with self.assertRaises(ValueError):check(root,m)
+
     def test_valid_reports_retain_io_limitations(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);m=self.fixture(root);r=check(root,m)

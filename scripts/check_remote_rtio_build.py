@@ -15,6 +15,12 @@ def check(build,manifest):
         if path.is_absolute() or '..' in path.parts:raise ValueError('Invalid input path')
         if sha(build/path)!=entry['build_sha256']:raise ValueError('Changed input: '+str(path))
     result=inspect_reports(build)
+    if manifest.get('profile')=='no-ddr-master':
+        proof=(build/'no_ddr_master_nets.rpt').read_text().splitlines()
+        expected=['SAXIGP2ARVALID GROUND','SAXIGP2AWVALID GROUND','SAXIGP2WVALID GROUND','NO_DDR_MASTER_NETLIST_PASS']
+        if proof!=expected:raise ValueError('Missing/invalid inactive request netlist proof')
+        result['no_ddr_master_netlist_sha256']=sha(build/'no_ddr_master_nets.rpt')
+        result['scope']='No-DDR-master diagnostic PL; constant request netlist checked, no historical drain/DDR ownership or hardware proof'
     result['status']='FPGA_BUILD_PASS_NOT_HARDWARE'
     return result
 
