@@ -1,0 +1,57 @@
+status: SOURCE_AUDIT_ONLY_NOT_IMPLEMENTED
+source_revision: artiq_486e8f897547d282d46a02c30463449c21e30cfe
+sources:
+  driver: artiq/coredevice/phaser.py
+  rtio_phy: artiq/gateware/rtio/phy/phaser.py
+  original_dds: misoc/cores/duc.py_MultiDDS
+  alternative: artiq/gateware/phaser/dds.py_MultiToneDDS
+operations:
+  oscillator_frequency:
+    api: PhaserOscillator.set_frequency_mu
+    target: '((channel_base + 1 + 2*rf_channel) << 8) | oscillator_index'
+    payload: signed_32bit_FTW
+    frequency_hz: 'FTW * 25000000 / 2**32'
+    existing_semantics: Direct RTIO register update; accumulator samples frequency at its TDM slot.
+    internal_candidate: local_DDS_frequency_register
+    limitation: Running the same FTW at 307.2MSPS changes frequency by 12.288; rate adaptation required.
+  oscillator_amplitude_phase_clear:
+    api: PhaserOscillator.set_amplitude_phase_mu
+    target: '((channel_base + 2 + 2*rf_channel) << 8) | oscillator_index'
+    payload: '(ASF & 0x7fff) | (clear << 15) | (POW << 16)'
+    internal_candidate: local_DDS_packed_amplitude_clear_phase_register
+    existing_semantics: Persistent accumulator clear; phase 16bit turns; amplitude 15bit unsigned.
+    limitation: Frequency/phase/amplitude latencies deterministic but unmatched; no invented atomic commit.
+  duc_frequency_phase:
+    api: PhaserChannel.set_duc_frequency_mu_and_set_duc_phase_mu
+    addresses: 'frequency 0x12+16*channel, phase 0x16+16*channel'
+    frequency_hz: 'FTW * 500000000 / 2**32'
+    phase: 16bit_turns
+    transport: stock_base_channel_byte_writes
+    internal_candidate: staged_frequency_phase_with_explicit_commit
+    limitation: AD9173_SPI_NCO_is_not_a_timed_replacement_for_stock_DUC
+  duc_commit:
+    api: Phaser.duc_stb
+    address: '0x08'
+    internal_candidate: local_shadow_register_commit
+    status: NOT_IMPLEMENTED
+  reset:
+    api: PhaserChannel.set_duc_cfg
+    address: '0x10+16*channel'
+    bits: 'clear bit0; clear_once bit1; source_select bits2:3'
+    limitation: DDS clear, DUC clear, DAC reset and JESD reset are distinct operations.
+  frame_timing:
+    api: Phaser.measure_frame_timestamp_and_get_next_frame_mu
+    existing_semantics: EEM frame timestamp/readback and 320_mu frame interval in inspected driver.
+    internal_candidate: explicit_local_update_epoch
+    limitation: No fabricated EEM timestamp; minimally adapted driver must document timing difference.
+  initialization_and_peripherals:
+    api: Phaser.init_DAC34H84_TRF_attenuator_SPI_readback
+    internal_candidate: separate_AD9173_HMC_initialization
+    limitation: Not register-compatible; do not fake DAC34H84 identity or successful readbacks.
+compatibility_decision:
+  stock_driver_unmodified: BLOCKED
+  stock_kasli_changes: NOT_AUTHORIZED_AND_NOT_PLANNED
+  shared_experiment: planned_small_adapter_for_frequency_amplitude_phase_and_mute
+  stock_driver_mu_words: preserve_only_if_reference_rate_and_encoding_explicitly_maintained
+  experimental_alternative: PhaserMTDDS_is_a_different_API_and_DAC34H84_driver_not_drop_in_EEM_compatibility
+  two_tones: two_simultaneous_tones_on_one_RF_output_for_IMD_not_one_tone_per_DAC

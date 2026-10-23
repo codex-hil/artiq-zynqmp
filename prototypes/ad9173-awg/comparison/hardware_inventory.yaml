@@ -1,0 +1,58 @@
+date: '2026-10-23'
+scope: M0_read_only_no_hardware_access
+selected_dac: AD9173-FMC-EBZ_RevC
+selection_evidence: User clarified use existing hardware; attachment AD9172/12.6GSPS premise superseded.
+alinx:
+  board: AXAU15
+  module: ACAU15
+  ordering_code: XCAU15P-2FFVB676I
+  vivado_part: xcau15p-ffvb676-2-i
+  family: Artix_UltraScale_Plus
+  status: VERIFIED_DOCUMENT_AND_VIVADO_ONLY
+  physical_revision: UNVERIFIED
+  jtag_serial_and_lease: BLOCKED_NOT_IDENTIFIED
+  gt: {primitive: GTHE4_CHANNEL, total: 12, fmc: 8, pcie: 4}
+  native_sfp: false
+  pinmap: ../boards/axau15-manual-pinmap.json
+  synthesis_evidence: ../evidence/axau15/vivado-20261022/status.json
+  clocks:
+    system: {frequency_hz: 200000000, pins: [T24, U24]}
+    gt_onboard: {frequency_hz: 156250000, pins: [T7, T6], bank: 225}
+    jesd_candidate: {frequency_hz: 245760000, pins: [V7, V6], bank: 225, input: MGTREFCLK0}
+    fmc_alternate: {pins: [P7, P6], bank: 226, population: UNVERIFIED}
+  pcie_candidate:
+    source: litex-boards@10debf146d433ce8ac8aedcac84e97d252ff4d5b
+    rx0: [AB2, AB1]
+    tx0: [AC5, AC4]
+    refclk: [AB7, AB6]
+    status: ASSUMED_UNTIL_OWN_REVISION_SCHEMATIC_AND_ADAPTER_TRACED
+adapter:
+  ownership: USER_REPORTED
+  model: UNKNOWN
+  passive_raw_gt_routing: BLOCKED
+  refclk_and_power_and_ac_coupling: BLOCKED
+  note: A PCIe Ethernet NIC cannot substitute for a passive raw-GT breakout.
+dac:
+  identity_evidence: ../evidence/two-tone-149-151-2026-10-21.json
+  recorded_id_registers: {'0x004': '0x73', '0x005': '0x91'}
+  dac_rate_hz: 4915200000
+  lanes: 4
+  lane_rate_bps: 6144000000
+  links: 2
+  complex_rate_hz: 307200000
+  samples_per_clock: 2
+  physical_status: HISTORICAL_TRENZ_PASS_NOT_ALINX
+  reference_route: HMC7044_CLKOUT12_to_GBTCLK0_candidate
+  route_limit: Local DAC schematic is revision D; physical RevC population/driver levels unverified.
+baseline:
+  kasli_stock_firmware_commit: UNVERIFIED
+  phaser_board_variant_and_serial: UNVERIFIED
+  phaser_stock_gateware_hash: UNVERIFIED
+  note: No Kasli or Phaser connection or modification performed.
+measurement:
+  historical_instrument: TEKTRONIX_MSO4104_C020817
+  historical_method: scope_waveform_sine_fit
+  calibrated_spectrum_analyzer: BLOCKED_NOT_IDENTIFIED
+  common_10mhz_reference: UNVERIFIED
+  path_attenuation_and_compression: UNVERIFIED
+  note: Scope evidence cannot qualify spectral SFDR/IMD comparison.

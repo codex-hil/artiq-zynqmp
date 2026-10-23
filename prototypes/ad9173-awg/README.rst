@@ -100,3 +100,16 @@ Trenz session. See ``axau15/README.rst`` for exact limitations and reproduction.
 As of 2026-10-22, Dell Artix UltraScale+ support, exact-part licensing and
 SPI/JESD synthesis pass. Implementation and physical AXAU15 validation remain
 pending. This is not a programming-ready port.
+
+Phaser A/B comparison inventory (2026-10-23)
+------------------------------------------
+
+``comparison/feasibility.md`` records the new milestone order: inventory,
+minimal DRTIO satellite, local Phaser-compatible DDS, JESD integration, measured
+A/B comparison. The user confirmed using existing AD9173 RevC hardware.
+M0 is partial and M1 blocked on physical SFP/clock/board identification;
+no stock Phaser, Kasli or ALINX hardware access is claimed. Source/license and
+golden Trenz artifact hashes, interface semantics and measurement prerequisites
+are recorded under ``comparison/``. Do not attach the DDS/JESD path before M1
+passes. This milestone ordering supersedes the older JESD-before-DRTIO plan in
+``HANDOFF_ALINX.txt`` for the comparison task.
