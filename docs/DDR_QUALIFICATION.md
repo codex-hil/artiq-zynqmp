@@ -1403,3 +1403,20 @@ Evidence: `evidence/boot-pmu-hardware-2026-10-23`, raw failure and restoration l
 Next offline inspect PMU-local address visibility and maintained AMD interfaces;
 do not repeat the failed AP0 read without a reviewed change. Independent PL HP0
 reset/drain source audit remains safe and authorized while PMU access is unresolved.
+
+
+### 2026-10-23 — Passive PL AXI read observer prototype (simulation only)
+
+Added standalone diagnostic Migen prototype counting accepted AR versus accepted
+RLAST, with saturating bounds, sticky accounting/response errors and quiet output
+requiring separate external epoch qualification. Newly reset monitor never asserts
+quiet without that qualification; zero local count cannot certify prior external
+transactions drained. It drives no AXI signals and is NOT integrated into current
+bitstream/CSR/reset tree. Three simulation groups PASS: stalls/handshakes, overflow/
+unmatched completion/error stickiness and unqualified fresh-reset state.
+Evidence `evidence/axi-read-observer-2026-10-23`. No hardware access or FPGA build.
+Not an AXI protocol checker: no per-ID or beat-length validation, no end-to-end
+PS drain proof. PMU AP0 access remains failed/unresolved; no retry performed.
+Next simulate observer alongside actual DMA and independent bus accounting,
+including completion/backpressure/reset cases, before any integration/build.
+DDR writes remain NOT_ADMITTED; production gateware unchanged.

@@ -188,3 +188,20 @@ No hardware access or changes. Destructive DDR remains NOT_ADMITTED.
 Next inspect the diagnostic FSBL/PMU boot path to establish whether GEM is
 started there at all, then define a boot-window ownership gate instead of
 assuming that stopping a running networked CPU stops the Ethernet master.
+
+
+### 2026-10-23 — Passive PL AXI read observer prototype (simulation only)
+
+Added standalone diagnostic Migen prototype counting accepted AR versus accepted
+RLAST, with saturating bounds, sticky accounting/response errors and quiet output
+requiring separate external epoch qualification. Newly reset monitor never asserts
+quiet without that qualification; zero local count cannot certify prior external
+transactions drained. It drives no AXI signals and is NOT integrated into current
+bitstream/CSR/reset tree. Three simulation groups PASS: stalls/handshakes, overflow/
+unmatched completion/error stickiness and unqualified fresh-reset state.
+Evidence `evidence/axi-read-observer-2026-10-23`. No hardware access or FPGA build.
+Not an AXI protocol checker: no per-ID or beat-length validation, no end-to-end
+PS drain proof. PMU AP0 access remains failed/unresolved; no retry performed.
+Next simulate observer alongside actual DMA and independent bus accounting,
+including completion/backpressure/reset cases, before any integration/build.
+DDR writes remain NOT_ADMITTED; production gateware unchanged.

@@ -1,0 +1,10 @@
+{
+  "status": "SIMULATION_ONLY_NOT_IN_BITSTREAM",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "source_sha256": {
+    "diagnostics/ddr/axi_read_observer.py": "f2d67d31da30a46a3c6eea5d7dcb63b941cf5d4e3fe84de79edbfcdf4ca8bb6c",
+    "tests/test_axi_read_observer.py": "5884d11b29a11dec6033955492367ef84d7e50aab069fab081691886c1dbb3b8"
+  },
+  "limits": "Counts bursts only, no AXI IDs/beat-length correctness check; external epoch qualification unresolved. Production PL/CSR/reset wiring unchanged."
+}
