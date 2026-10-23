@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "restoration": "PASS",
+  "candidate_ip": "TRAINED_OCM_REGISTERS_ONLY",
+  "restored_ip": "192.168.2.3",
+  "kind": "candidate-runtime-hardware",
+  "hardware_executed": true,
+  "lock": "/home/codex-hil/.cache/genesys-210383B7F02DA.lock",
+  "cable": "210383B7F02DA",
+  "elapsed_seconds": 110.194,
+  "stages": {
+    "candidate-trained-observer": {
+      "returncode": 0
+    },
+    "restore-load": {
+      "returncode": 0
+    },
+    "restore-debug": {
+      "returncode": 0
+    },
+    "restore-ethernet": {
+      "returncode": 0
+    }
+  },
+  "extended": false,
+  "rpc_fault_case": null,
+  "expect_kernel_state": false,
+  "ocm_observation": false,
+  "fsbl_spd": false,
+  "trained_observer": true,
+  "observer_probe": "normal",
+  "observer_manifest_sha256": "fc9e373d492e5f969148bad013636ae43d419b1825f57afdf1ee87132bd8207f",
+  "manifest_sha256": "8e50cc625b8147aec223724a2c06d1b1f53e2ca9e522c45b8f6010aa58fad9e6",
+  "storage_admission": {
+    "status": "STORAGE_ADMISSION_PASS",
+    "hardware_executed": false,
+    "minimum_available_bytes": 536870912,
+    "minimum_available_inodes": 1024,
+    "entries": [
+      {
+        "role": "output",
+        "path": "/home/codex-hil/.local/state/artiq-builds/boot-apu-hardware-20261023",
+        "probe_path": "/home/codex-hil/.local/state/artiq-builds/boot-apu-hardware-20261023",
+        "available_bytes": 38747504640,
+        "available_inodes": 13758499
+      },
+      {
+        "role": "working_directory",
+        "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+        "probe_path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip",
+        "available_bytes": 1537372160,
+        "available_inodes": 11216024
+      },
+      {
+        "role": "amd_home",
+        "path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+        "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+        "available_bytes": 1537372160,
+        "available_inodes": 11216024
+      },
+      {
+        "role": "amd_tmp",
+        "path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+        "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/tmp",
+        "available_bytes": 1537372160,
+        "available_inodes": 11216024
+      },
+      {
+        "role": "host_tmp",
+        "path": "/tmp",
+        "probe_path": "/tmp",
+        "available_bytes": 38747504640,
+        "available_inodes": 13758499
+      }
+    ],
+    "limits": "Point-in-time headroom check, not reservation or protection against concurrent disk consumption."
+  }
+}

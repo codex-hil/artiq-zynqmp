@@ -1,0 +1,16 @@
+RPU_BEGIN
+RPU 0 global_control 0xff9a0000 0x00000050
+RPU 0 r50_config 0xff9a0100 0x00000004
+RPU 0 r50_status 0xff9a0104 0x0000003f
+RPU 0 r51_config 0xff9a0200 0x00000004
+RPU 0 r51_status 0xff9a0204 0x00000038
+RPU 0 clock_control 0xff5e0090 0x03000302
+RPU 0 reset_control 0xff5e023c 0x00000fc0
+RPU 1 global_control 0xff9a0000 0x00000050
+RPU 1 r50_config 0xff9a0100 0x00000004
+RPU 1 r50_status 0xff9a0104 0x0000003f
+RPU 1 r51_config 0xff9a0200 0x00000004
+RPU 1 r51_status 0xff9a0204 0x00000038
+RPU 1 clock_control 0xff5e0090 0x03000302
+RPU 1 reset_control 0xff5e023c 0x00000fc0
+RPU_END

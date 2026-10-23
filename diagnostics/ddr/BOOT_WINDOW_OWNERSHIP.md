@@ -123,3 +123,17 @@ admission or PMU-release exclusion proof. Fresh complete nested pins in
 real Tcl read-address/count controls, malformed frames, stale pins and restoration.
 Hardware NOT_RUN. Next bounded combined hardware capture/restore/qualification,
 then PMU request/event authority and PL HP0 reset/drain audit. No DDR writer.
+
+
+### 2026-10-23 — Same-boot APU reset controls physical PASS
+
+110.194s diagnostic/restore/validation cycle under shared Genesys lease PASS.
+CRF RST_FPD_APU0xfd1a0104 read twice0x300e: CPU1/2/3 soft-reset controls1,
+CPU2/3 POR controls1, CPU0soft/POR0, CPU1POR0, L2reset0, unknown bits0.
+These are stable sampled controls, not proof that PMU cannot later release reset.
+Existing same-boot ZDMA/CSU/peripheral necessary fields also PASS; DDR test
+NOT_RUN/NOT_ADMITTED. Normal runtime restored192.168.2.3, physical TTL/CoreDMA/
+analyzer ring-wrap/MonInj/Ethernet PASS; lease released. No Si/SD/flash/OTP/Kasli
+writes. Raw logs/hashes and qualification: `evidence/boot-apu-hardware-2026-10-23`.
+Next offline PMU event/request and PL HP0 reset/drain audit; do not repeat this
+unchanged hardware cycle. Remaining PMU/PL/PCAP ownership unresolved.
