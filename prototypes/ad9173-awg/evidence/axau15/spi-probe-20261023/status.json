@@ -1,0 +1,65 @@
+{
+  "status": "PHYSICAL_AD9172_SPI_PASS",
+  "bit_sha256": "72fdfb5576a49a1a46a0cfc5465c3d85860a3cd89ac37be3f9b14d00995d9e19",
+  "cable": "210512180081",
+  "scope_access": false,
+  "dac_access": true,
+  "final_state": "volatile_spi_probe_running_cs_idle_fourwire_enabled_scratch_restored",
+  "identity": {
+    "product_id": "0x9172",
+    "chip_type": 4,
+    "revision": 2
+  },
+  "scratch": {
+    "original": 5,
+    "patterns": [
+      165,
+      90
+    ],
+    "restored": 5,
+    "status": "PASS"
+  },
+  "clock_registers": {
+    "0x0c3": 0,
+    "0x7b5": 2,
+    "0x281": 0
+  },
+  "clock_qualification": "PLL_DLL_NOT_LOCKED_HMC_NOT_CONFIGURED",
+  "jesd": "NOT_RUN",
+  "rf": "NOT_RUN",
+  "hardware_kind": "PHYSICAL",
+  "vivado": {
+    "status": "ROUTED_BITSTREAM_PASS",
+    "wns_ns": 17.108,
+    "whs_ns": 0.037,
+    "drc_checks": 0,
+    "unconstrained_internal_endpoints": 0,
+    "partial_input_delays": 2,
+    "partial_input_explanation": "Asynchronous MISO/SPI_EN inputs: max datapath budgets into 2-flop synchronizers, no synchronous input hold constraint; host paced scanning, not production SPI timing signoff"
+  },
+  "initial_attempt": "FAILED_ID_ZERO_BEFORE_FACTORY_LOADER; logs retained",
+  "factory_loader": "AD9172 Rev C Table49 volatile boot loading; no nonvolatile programming",
+  "tool_sources": {
+    "iverilog": "Ubuntu noble 12.0-2build2 amd64 .deb",
+    "iverilog_deb_sha256": "f19394cee05ad526e0eb3873bc6c17a5828f56df17fbe2db40cb66513a2d4667",
+    "simulation": "Core RTL PASS on Dell Icarus; XSim blocked by missing GCC in container"
+  },
+  "source_hashes": {
+    "build.tcl": "ef32aed82cb36c071198c8c7ccdc3adf3c26e8343ca9984f81b9903330ef4983",
+    "core.v": "5e52aad4a3d689c5442ff9432ffdfc928489909d158588217c21ca9688c93a10",
+    "read.tcl": "1211f7df004f1553e353bc7f38864cb1822e1ff301cfef9385da79df6d86bf00",
+    "run_hardware.py": "2322d1de8ff102c9d16e7b255b949b5a75ebcb1e0f455052c767e10e5262d29c",
+    "sim.tcl": "6218ffa4f2392f3c61113605d4ab2cd023186e11f1da826b920e510a9a797efb",
+    "tb.v": "6dde867367611663e9eb61effd19e70386965778d10f06fd2ca7417d7f09b7bd",
+    "test_host.tcl": "335b40be58e85face2d71c9e4ab1eca66ec68a5f78f87f931ef327ccae6777d4",
+    "top.v": "667a0132876292df252292a8e2a40d4474d43d50a187a1c9dc308e8cebd8cbc7"
+  },
+  "artifacts": {
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-spi-probe-20261023c/spi_probe.bit": "72fdfb5576a49a1a46a0cfc5465c3d85860a3cd89ac37be3f9b14d00995d9e19",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-spi-probe-20261023c/timing.rpt": "daee0590846efa4389461a998dae3f913a4523b8665c2be8bb22a609bbae7986",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-spi-probe-20261023c/drc.rpt": "c5415921b1e5ce88cb63967bfe411db2b9dc801d8916aea27a2c12914497ab7d",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-spi-probe-20261023c/vivado.log": "4a48b8276bfbb601711f5095a21543dcd527eefc8775cc6fb858653dc05c20a6",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-spi-hardware-20261023b/read.txt": "66fff3c2fcc0773363fdc2e00c2a80dda2651449806f369aeb4c884c7369ee87",
+    "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-spi-hardware-20261023a/read.txt": "56c51cd7039b7f26013f15ca0f45d48ef757f91e9377f13cb4ad8d62ac89f586"
+  }
+}

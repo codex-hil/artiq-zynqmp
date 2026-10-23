@@ -1,0 +1,17 @@
+DAC_READ 0x000 0x00
+DAC_READ 0x003 0x00
+DAC_READ 0x004 0x00
+DAC_READ 0x005 0x00
+DAC_READ 0x006 0x00
+DAC_WRITE 0x000 0x18
+DAC_READ 0x000 0x18
+DAC_READ 0x003 0x04
+DAC_READ 0x004 0x00
+DAC_READ 0x005 0x00
+DAC_READ 0x006 0x02
+AD9172 identity not established: intf=18 chip=04 id=0000
+    while executing
+"error $msg"
+    invoked from within
+"if {$rc} {error $msg}"
+    (file "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-spi-hardware-20261023a/read.tcl" line 83)
