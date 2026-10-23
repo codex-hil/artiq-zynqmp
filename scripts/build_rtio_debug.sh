@@ -7,6 +7,8 @@ fi
 threads=${VIVADO_THREADS:-2}
 case "$threads" in 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16) ;; *) echo 'VIVADO_THREADS must be 1..16' >&2; exit 2;; esac
 export VIVADO_THREADS="$threads"
+case "${DMA_OBSERVER:-0}" in 0|1) ;; *) echo "DMA_OBSERVER must be 0 or 1" >&2; exit 2;; esac
+export DMA_OBSERVER="${DMA_OBSERVER:-0}"
 repo=$(cd "$(dirname "$0")/.." && pwd)
 ps=$(realpath "$1");out=$(realpath -m "$2")
 [ ! -e "$out" ] || { echo 'Use a fresh output directory' >&2; exit 2; }
@@ -26,7 +28,8 @@ from pathlib import Path
 import sys,re,json,hashlib,subprocess,importlib,os
 from diag_gateware import DiagnosticPlatform
 from gateware import Top
-p=DiagnosticPlatform(Path(sys.argv[1]));top=Top(p,'local-rtio-dma',True)
+observer=os.environ['DMA_OBSERVER']=='1'
+p=DiagnosticPlatform(Path(sys.argv[1]));top=Top(p,'local-rtio-dma',True,dma_observer=observer)
 p.build(top,build_dir=sys.argv[2],run=False)
 top.local_rtio.write_map(Path(sys.argv[2])/'csr-map.json')
 out=Path(sys.argv[2]);s=(out/'top_route.tcl').read_text()
@@ -55,8 +58,8 @@ def source(module):
  return result
 files=[out/n for n in ('top.v','top.xdc','top.tcl','top_route.tcl','top_bitstream.tcl','csr-map.json')]+sorted(out.glob('*.init'))+sorted((out/'ip').rglob('*.xci'))
 record=dict(status='HDL_GENERATED_NOT_SYNTHESIZED',hardware_executed=False,python=sys.version,
- max_threads=int(os.environ['VIVADO_THREADS']),cdc_first_stage_registers=count,
- dependencies=[source(n) for n in ('gateware','diag_gateware','migen','artiq','misoc','litex')],
+ max_threads=int(os.environ['VIVADO_THREADS']),dma_observer=observer,cdc_first_stage_registers=count,
+ dependencies=[source(n) for n in (('gateware','local_rtio','zynqmp_dma','diag_gateware','migen','artiq','misoc','litex')+ (('axi_read_observer','axi_read_observer_csr') if observer else ()))],
  ps_ip_sources={str(path):sha(Path(path)) for path in p.ips},
  files=[dict(path=str(path.relative_to(out)),sha256=sha(path)) for path in files])
 (out/'generation.json').write_text(json.dumps(record,indent=2)+'\n')

@@ -1469,3 +1469,19 @@ Evidence/map/artifact hashes: `evidence/local-dma-observer-2026-10-23`.
 Next inspect full generated PS-top HDL and explicit source bundle, then build
 optional diagnostic on Dell under shared build lease. Do not replace normal
 runtime or infer DDR admission from this instrumentation. PMU AP0 unresolved.
+
+
+### 2026-10-23 — Full observer PS/PL HDL generated; Dell build queued
+
+Extended build_rtio_debug.sh with validated DMA_OBSERVER=0/1 environment option;
+default0 unchanged. Generation pins LocalRTIO/DMA and both observer modules,
+including tracked source patch identity. Full PS/top HDL plus CSR/init/Tcl/IP
+files generated without Vivado;42first-stage CDC registers, standalone CSR map
+byte-content equivalence PASS. Used verified PS export and explicitly selected
+prior normalized XCI SHA1712fe0fe3f57bddb295133cf851956939ceda3391a96e160d3687004a2f304d.
+Dell hostname verified; job artiq-dma-observer-20261023 submitted with transferred
+file hashes verified. State WAITING_FOR_BUILD_LOCK; no preemption. Evidence
+`evidence/dma-observer-full-build-2026-10-23`. No build PASS or new bitstream claim.
+No hardware access. Next collect same remote job, inspect timing/DRC/IP hashes,
+then design bounded optional diagnostic probe/restoration before board use.
+DDR write admission stays closed; observer epoch qualification remains0.

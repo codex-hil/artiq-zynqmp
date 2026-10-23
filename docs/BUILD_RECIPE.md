@@ -163,3 +163,13 @@ The configuration remains host-local; retained trees must exist to run the check
 This is byte-consistency evidence, not signed provenance or proof that a historical
 tool execution consumed these files. Latest report:
 `evidence/source-release-chain-2026-10-21/combined-source-inputs.json`.
+
+
+## Optional DMA read observer
+
+Set `DMA_OBSERVER=1` for `scripts/build_rtio_debug.sh ... --generate-only` to
+include status-only AXI accounting in bank6. Default0 preserves normal behavior.
+Generate locally, then use the isolated Dell backend for heavy Vivado builds.
+The generated manifest records this option and observer source hashes. This
+instrumentation cannot certify drain: epoch qualification stays0, and resetting
+the monitor loses history. No full DDR admission follows from zero outstanding.
