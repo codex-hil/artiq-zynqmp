@@ -1,0 +1,37 @@
+{
+  "status": "FULL_HDL_GENERATED_NOT_SYNTHESIZED",
+  "hardware_executed": false,
+  "requests": {
+    "saxigp2_arvalid": [
+      "assign saxigp2_arvalid__SHIFTED = 1'd0;",
+      "assign saxigp2_arvalid = saxigp2_arvalid__SHIFTED;"
+    ],
+    "saxigp2_awvalid": [
+      "assign saxigp2_awvalid__SHIFTED = 1'd0;",
+      "assign saxigp2_awvalid = saxigp2_awvalid__SHIFTED;"
+    ],
+    "saxigp2_wvalid": [
+      "assign saxigp2_wvalid__SHIFTED = 1'd0;",
+      "assign saxigp2_wvalid = saxigp2_wvalid__SHIFTED;"
+    ]
+  },
+  "destructive_test_allowed": false,
+  "limits": "Constant PL request outputs; not historical PS drain, netlist signoff or PMU/core ownership.",
+  "sources": {
+    "scripts/generate_no_ddr_master.py": "851c4fa5943ac6ad83f623b5b62c04dfcf3dea2edf2c999b8f179523c383f56b",
+    "boards/genesys_zu-5ev/1_gateware/gateware.py": "07bb7ac94a165274fb54b333cd9d089cf2e3370781973330e62eea5897d78f5d",
+    "diagnostics/ddr/no_ddr_master.py": "6a01ec2ba33b87a3b12d8094c38727f88a4f0e7a85bd3822f9cb08ccad4d82eb",
+    "diagnostics/drtio/diag_gateware.py": "b691a1f13f53cb45b01db2f191ea94e7c7a837a22400f4056bbc9c7c663b4c24"
+  },
+  "ps_inputs": {
+    "/srv/codex-hil-data/artiq-zynqmp/build/ps-source-export-import-20261021/vivado-proj/platform.srcs/sources_1/imports/src/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci": "162892168f538e5dc0f10342ae639e2eac765c3829f23f096dea12284fd048fe"
+  },
+  "files": {
+    "top.tcl": "c98ab6ecd445ef80f264b8e42648ad49e414c4ef37b35930a4232e8dfeab436a",
+    "top.xdc": "33216ad34d66aa735c358aacc48aa7ca333dd6e442e681de8c0eaac97fd699da",
+    "top_bitstream.tcl": "73de9ce07f5e2c465cab6cccebff8018a3f0ad0edae097ef2816944e3dd1ac9a",
+    "top.v": "420568ff9860da88263f680b18d4c5904caaae3efc6ad402f0c0d02254b155bf",
+    "top_route.tcl": "f11931679d92c9c57d2afb4f744a5fbb3877c4d8e1f932b7930b7eade5fdbbc0",
+    "ip/platform_zynq_ultra_ps_e_0_0/platform_zynq_ultra_ps_e_0_0.xci": "a0cc4f0c0c3f36e21e365652a91bd8c1f9b3d0e78fb7fc5ece254c17b79f7019"
+  }
+}

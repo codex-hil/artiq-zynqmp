@@ -42,6 +42,11 @@ class Top(Module):
             self.cd_sys, ~self.zynq_ultra_ps_e_0.outputs["pl_resetn0"]
         )
 
+        if variant == "ddr-diagnostic":
+            sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "diagnostics/ddr"))
+            from no_ddr_master import disable_pl_masters
+            self.disabled_ddr_requests = disable_pl_masters(self, self.zynq_ultra_ps_e_0)
+
         if variant in ("local-rtio", "local-rtio-dma"):
             from local_rtio import LocalRTIO, connect_ps_hpm0
             # Recovered from Piotr's original Genesys_ZU_revC.xdc, ec8c4a9.
@@ -93,7 +98,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     arg_parser.add_argument("-B", "--vivado-build-dir", default=".")
     arg_parser.add_argument("-M", "--migen-build-dir", default="migen-build")
     arg_parser.add_argument("-N", "--no-run", action="store_true")
-    arg_parser.add_argument("--variant", choices=["blinker", "local-rtio", "local-rtio-dma"], default="blinker")
+    arg_parser.add_argument("--variant", choices=["blinker", "local-rtio", "local-rtio-dma", "ddr-diagnostic"], default="blinker")
     arg_parser.add_argument("--analyzer", action="store_true")
     arg_parser.add_argument("--dma-observer", action="store_true", help="Read-only diagnostic AXI accounting; no DDR admission")
     p_args = arg_parser.parse_args(argv[1:])

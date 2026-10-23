@@ -1,6 +1,27 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — No-DDR-master diagnostic PL full HDL generated (offline)
+
+Added separate Top variant `ddr-diagnostic`; normal variant defaults unchanged.
+Enumerates exported PS slave AXI channels, rejects empty/incomplete/unreviewed
+VALID inventory, and explicitly ties ARVALID/AWVALID/WVALID inactive. No RTIO/DMA
+engine instantiated. Actual full PS/top generation confirms saxigp2 HP0 request
+constants through imported aliases. Two unit controls PASS (six mock requests,
+incomplete/unknown ports rejected). Reproducer `scripts/generate_no_ddr_master.py`
+pins source helpers, actual PS XCI and all generated outputs, requires fresh path,
+and invokes no Vivado. Evidence `evidence/no-ddr-master-hdl-2026-10-23`.
+Generated artifacts in root state directory; no synthesis/bitstream/netlist or
+physical validation claimed. Existing hardware manifests are historical pins,
+not permission to re-pin their old image proofs to changed gateware source.
+
+No hardware access; normal runtime remains last restored192.168.2.3. New request
+inhibition does not resolve prior transactions or PMU/core ownership. Full DDR
+NOT_RUN/NOT_ADMITTED. Next prepare explicit Dell build receipt/constant-netlist
+checks for this variant, then bounded no-write boot/restore qualification before
+any DDR writer. No AIB/AFI reset writes, flash/OTP/SD changes.
+
+
 ## 2026-10-23 — AIB route scope excludes an inferred HP0 drain certificate
 
 Pinned AMD xpfw_aib source/header review: AFI_FS0/1 routes are named FPD->AFI_FS,
