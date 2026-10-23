@@ -1,0 +1,41 @@
+{
+  "status": "DDR_WRITE_NOT_ADMITTED",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "evidence": {
+    "trained_boot": {
+      "path": "evidence/boot-apu-hardware-2026-10-23/results.json",
+      "sha256": "278e06a30e2ab09fe92909eacf43f7b60522076cce7f803121b0184c1e6b2975"
+    },
+    "trained_observations": {
+      "path": "evidence/boot-apu-hardware-2026-10-23/candidate-trained-observer/results.json",
+      "sha256": "1c678b92f440dc81fa4ed3b7c6def54d41e2a148b8a1c72e5e08846bd0272945"
+    },
+    "active_runtime": {
+      "path": "evidence/dma-observer-short-hardware-2026-10-23/results.json",
+      "sha256": "2e5892c42184ae835bb00b204f8d413adb33a8c9fc424176c1e02c39770d22f7"
+    },
+    "active_samples": {
+      "path": "evidence/dma-observer-short-hardware-2026-10-23/candidate-observer-active/results.json",
+      "sha256": "29cc93bb27f5ef7f2a8499d2c2f8b6f526030c31f9b7a33f0c6d18328d25dcf6"
+    },
+    "active_final": {
+      "path": "evidence/dma-observer-short-hardware-2026-10-23/candidate-observer-after.json",
+      "sha256": "99e8c29b31863f50cf0aff3c2f89fdb1e158bcbdf9afd71edfbd78f3b549f8ed"
+    },
+    "pmu_attempt": {
+      "path": "evidence/boot-pmu-hardware-2026-10-23/results.json",
+      "sha256": "f5b595cb2b08d282245470c46f9ae7dbf0ac47605c46a45dd4e1e5c85c3dcd0a"
+    }
+  },
+  "distinct_boot_manifests": {
+    "trained_boot": "8e50cc625b8147aec223724a2c06d1b1f53e2ca9e522c45b8f6010aa58fad9e6",
+    "active_runtime": "dda351e20d7e377984e8e005cbbd2fc22d1839e468fd3690c7de246b287059e3"
+  },
+  "unresolved": [
+    "PMU future wake/reset and DDR access authority",
+    "PL HP0/PS transaction reset epoch in the trained diagnostic boot",
+    "PCAP controller ownership and activity separate from CSU DMA"
+  ],
+  "limits": "Consolidation of existing evidence only. Distinct successful boots are not a shared ownership epoch; restoring runtime ends each diagnostic window."
+}

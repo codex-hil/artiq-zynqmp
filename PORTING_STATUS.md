@@ -1,6 +1,19 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Consolidated DDR admission gaps (offline)
+
+Published `diagnostics/ddr/ADMISSION_STATUS.md` with evidence-scoped requirement
+matrix and three unresolved groups: PMU wake/access authority, same-trained-boot
+PL/PS reset epoch, and PCAP controller ownership. Six existing JSON reports hashed
+in `evidence/ddr-admission-review-2026-10-23/review.json`; checked successful
+restorations, active128samples/finalzero, failed PMU attempt and different boot
+manifest hashes. No combining separate boots into admission. Linked current table
+from README and DDR guide, clarified historical checkpoint status. No hardware
+access/repeated tests. Next maintained AMD PMU diagnostic configuration/telemetry
+and PCAP status source review. Full DDR test remains NOT_RUN/NOT_ADMITTED.
+
+
 ## 2026-10-23 — Physical active observer/workload/final-zero cycle PASS
 
 Single shorter-workload cycle156.565s under shared Genesys lease PASS.

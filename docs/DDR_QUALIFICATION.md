@@ -1,5 +1,11 @@
 # DDR qualification plan
 
+Current admission and remaining gaps are summarized in
+[DDR admission status](../diagnostics/ddr/ADMISSION_STATUS.md). Earlier sections
+below retain their dated checkpoints; their NOT_RUN statements describe those
+checkpoints, not a replacement for the current evidence table. Full DDR writes
+remain NOT_ADMITTED.
+
 Current physical evidence covers a128KiB application-owned scratch test with
 four address-derived patterns and cache clean/invalidate, plus real runtime/
 kernel/DMA workloads. That is not a complete capacity or sustained DDR test.
