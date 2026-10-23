@@ -1566,3 +1566,21 @@ raw samples/workload/restore qualification. No further unchanged active retries.
 Next offline consolidate precise DDR admission gaps: PMU/private register access,
 PL/PS reset epoch and PCAP ownership; use this observer as diagnostic evidence,
 not an automatic write-test permit. DDR writer still NOT_RUN/NOT_ADMITTED.
+
+
+### 2026-10-23 — AMD PCAP status and PMU option review (offline)
+
+Existing AMD XFpga_PcapStatus returns Xil_In32(CSU_PCAP_STATUS); maintained driver
+waits separately on WR_IDLE/RD_IDLE. Source-checked status plan0xffca3010 decodes
+read/write idle, PL_INIT/PL_DONE independently, retains other status bits; no
+PROGRAM/RDWR/RESET/CTRL writes or configuration readback. Two decoder tests and
+changed-address rejection PASS. Actual header/source hashes and anchors in
+`evidence/pcap-status-plan-2026-10-23`. Hardware NOT_RUN.
+PMU maintained ENABLE_PM_VAL option gates PM module registration; disabled path
+ModPmInit is empty. This would remove those PM IPI/event handlers, not prove
+whole-PMU inactivity: other modules/ROM, FSBL PM setup dependencies, DDR callbacks
+and wake/reset effects must be reviewed before any diagnostic image. No option
+changed or image built. Next integrate bounded PCAP status observation into a
+trained-boot profile that explicitly excludes the known failed private-PMU AP0
+probe; keep PMU ownership unresolved, never suppress its failure as a PASS.
+DDR write admission remains closed. No hardware access.

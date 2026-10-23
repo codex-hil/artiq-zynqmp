@@ -1,0 +1,56 @@
+[
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/libsrc/xilfpga/src/interface/zynqmp/xilfpga_pcap.c",
+    "sha256": "c061149914b308ec3e037cd3e82a2044f7ca00396bfceef140048d1d6435852d",
+    "anchors": {
+      "static u32 XFpga_PcapStatus(void)": [
+        227,
+        2094
+      ],
+      "return Xil_In32(CSU_PCAP_STATUS);": [
+        2097
+      ],
+      "PCAP_STATUS_PCAP_WR_IDLE_MASK": [
+        722,
+        723
+      ],
+      "PCAP_STATUS_PCAP_RD_IDLE_MASK": [
+        784,
+        785
+      ]
+    }
+  },
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_config.h",
+    "sha256": "3492a335d09d202a9d6a09cce7dffe2ef69ac0ead84d746ccf332350fef90b93",
+    "anchors": {
+      "#ifndef ENABLE_PM_VAL": [
+        154
+      ],
+      "#define ENABLE_PM": [
+        420
+      ],
+      "#define SLEEP_WHEN_IDLE": [
+        82
+      ]
+    }
+  },
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_mod_pm.c",
+    "sha256": "b38dd571d775f09fffa68fa9ea250856b8026e042aba760ebe807ac8f6bce844",
+    "anchors": {
+      "#ifdef ENABLE_PM": [
+        20
+      ],
+      "XPfw_CoreSetIpiHandler": [
+        221
+      ],
+      "XPfw_CoreSetEventHandler": [
+        218
+      ],
+      "void ModPmInit(void) { }": [
+        228
+      ]
+    }
+  }
+]

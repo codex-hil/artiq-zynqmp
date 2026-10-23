@@ -1,0 +1,12 @@
+{
+  "status": "OFFLINE_PCAP_STATUS_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "address": "0xffca3010",
+  "samples": 2,
+  "width_bits": 32,
+  "destructive_test_allowed": false,
+  "limits": "Status read only. No PROGRAM/RDWR/RESET/CTRL/interrupt writes, no configuration readback. Idle is momentary, not exclusive ownership or PS drain.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/xilfpga_pcap.h": "49fd48aeae7be196b0d963e2e085eb42b65c3e5791eb7abde35b562f4bbb6660"
+  }
+}
