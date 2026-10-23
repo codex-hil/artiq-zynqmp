@@ -33,6 +33,9 @@ def preflight(manifest):
     # Re-run strict input/timing/DRC checks, not just a recorded PASS string.
     build=Path(files['candidate_pl']['path']).parent
     inputs=REPO/'evidence/dell-vivado-2026-10-21/pinned-ip-rebuild/inputs.json'
+    if manifest.get('dma_observer'):
+        from dma_observer_candidate import preflight as observer_candidate_preflight
+        inputs=observer_candidate_preflight(manifest['dma_observer'],files,REPO)
     check(build,json.loads(inputs.read_text()))
     return files
 
@@ -173,7 +176,10 @@ def main():
     p.add_argument('--extended',action='store_true',help='Candidate only: three cycles each of full CoreDMA and exception suites')
     p.add_argument('--artiq-python',default=str(BASE/'venvs/artiq-host/bin/python'))
     p.add_argument('--artiq-run',default=str(Path.home()/'.local/bin/artiq_run'))
-    a=p.parse_args();files=preflight(json.loads(a.manifest.read_text()))
+    a=p.parse_args();manifest=json.loads(a.manifest.read_text());files=preflight(manifest)
+    dma_observer=bool(manifest.get('dma_observer'))
+    if dma_observer and (a.trained_observer_manifest or a.ocm_manifest or a.fsbl_spd or a.rpc_fault_case):
+        p.error('Diagnostic DMA observer excludes boot/OCM/fault modes')
     if a.trained_observer_manifest and (a.fsbl_spd or a.ocm_manifest or a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('Trained observer excludes other candidate modes')
     observer=observer_preflight(a.trained_observer_manifest,files) if a.trained_observer_manifest else None
     if a.fsbl_spd and (a.ocm_manifest or a.extended or a.rpc_fault_case or a.expect_kernel_state):p.error('FSBL SPD mode excludes OCM/extended/fault modes')
@@ -210,6 +216,7 @@ def main():
             (out/(stage+'.log')).write_text(text);stages[stage]=dict(returncode=code)
             if code:raise RuntimeError(stage+' failed: '+text[-1500:])
             print(stage+' PASS',flush=True)
+            return text
         def cycle(prefix):
             if prefix=='candidate' and observer is not None:
                 run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
@@ -236,6 +243,14 @@ def main():
                 '--bitstream',path('pl'),'--worker',str(worker),'--cpu0',path('cpu0'),'--output',str(load)],240)
             loaded=json.loads((load/'results.json').read_text())
             if loaded.get('status')!='PASS':raise RuntimeError('Loader did not report PASS')
+            def observer_read(phase):
+                from dma_observer_candidate import verify_snapshot
+                text=run('candidate-observer-'+phase,['vivado-container','shell','-c','exec "$@"','bash',
+                    '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
+                    str(REPO/'scripts/probe_dma_observer.tcl'),a.server,CABLE],45)
+                decoded=verify_snapshot(text)
+                (out/('candidate-observer-'+phase+'.json')).write_text(json.dumps(decoded,indent=2)+'\n')
+            if prefix=='candidate' and dma_observer:observer_read('before')
             if prefix=='candidate' and a.fsbl_spd:
                 run('candidate-fsbl-spd',[sys.executable,str(REPO/'scripts/decode_fsbl_spd_log.py'),
                     '--log',str(load/'uart.log'),'--output',str(out/'candidate-fsbl-spd')],30)
@@ -265,12 +280,13 @@ def main():
                     str(REPO/'scripts/probe_rpc_failstop.tcl'),a.server,CABLE],30)
                 return ip  # Read-only observation only; no kernel reuse before restoration.
             run(prefix+'-ethernet',[sys.executable,str(REPO/'scripts/test_ethernet_hw.py'),'--ip',ip,'--interface',a.interface,'--output',str(out/(prefix+'-ethernet.json'))],90)
+            if prefix=='candidate' and dma_observer:observer_read('after')
             return ip
         # Convert external termination to an exception so restoration is attempted.
         old_handler=signal.signal(signal.SIGTERM,lambda *_:(_ for _ in ()).throw(RuntimeError('Termination requested')))
         try:result=lifecycle(cycle)
         finally:signal.signal(signal.SIGTERM,old_handler)
-        result.update(kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
+        result.update(dma_observer=dma_observer,kind='candidate-runtime-hardware',hardware_executed=True,lock=str(LOCK),cable=CABLE,
                       elapsed_seconds=round(time.monotonic()-started,3),stages=stages,extended=a.extended,rpc_fault_case=a.rpc_fault_case,expect_kernel_state=a.expect_kernel_state,ocm_observation=ocm is not None,fsbl_spd=a.fsbl_spd,trained_observer=observer is not None,observer_probe=('brk' if observer.get('exception_brk') else 'normal') if observer else None,observer_manifest_sha256=hashlib.sha256(a.trained_observer_manifest.read_bytes()).hexdigest() if observer else None,
                       manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),storage_admission=storage)
         (out/'results.json').write_text(json.dumps(result,indent=2)+'\n')

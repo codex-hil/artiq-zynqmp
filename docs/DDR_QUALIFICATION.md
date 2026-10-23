@@ -1502,3 +1502,24 @@ read-only observer before/after runtime qualification, negative preflight tests,
 then bounded physical candidate/restore cycle. Do not bypass current gate by
 replacing the prior-release evidence manifest. No board access; normal runtime
 unchanged. No DDR write admission, epoch qualification tied0.
+
+
+### 2026-10-23 — Optional observer runtime hardware PASS / baseline restored
+
+Integrated explicit observer-build input hash and source-helper pins into existing
+candidate parent; strict build input/timing/DRC checks rerun before and under lease.
+Observer candidate excludes boot/OCM/fault modes; four-read probes before/after
+normal debug/Ethernet tests validate stable zero count/error-free fields with
+quiet/epoch0. Two offline actual-build/stale-pin/restoration test groups PASS.
+Physical full candidate+normal-restore cycle152.61s under shared Genesys lease
+PASS. Diagnostic bit9649c982 loaded with known baseline firmware: before/after
+samples outstanding0,flags0. Physical TTL/CoreDMA/analyzer ring-wrap/MonInj/
+Ethernet PASS on candidate, then normal bit/runtime restored and same tests PASS,
+IP192.168.2.3. Lease released. No Si/SD/flash/OTP/Kasli writes.
+Evidence: `evidence/dma-observer-runtime-hardware-2026-10-23`; pinned manifest/tests
+`evidence/dma-observer-runtime-integration-2026-10-23`.
+Idle samples do not prove the observer counted real in-flight bursts physically;
+next prepare bounded active-workload observation to capture nonzero outstanding
+and return to zero, or safely bound sampling without a claim if too fast. Epoch
+qualification remains0; PMU access/ownership and DDR write admission unresolved.
+Do not leave diagnostic image as normal baseline; restoration completed.
