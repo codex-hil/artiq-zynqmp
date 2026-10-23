@@ -2034,3 +2034,30 @@ ECC/power source review retains unresolved exclusions. Evidence
 Next explicit new-image/symbol-derived fixed request publication/readback gate,
 then bounded observational echo/mandatory restore test; no IRQ/ROM exclusion or
 DDR admission inferred. Full DDR NOT_RUN/NOT_ADMITTED.
+
+
+
+## 2026-10-23 — PMU session echo PASS; storage blocked restore; separate recovery PASS
+
+Integrated separate request-image gate into no-master trained boot. Exact symbol/
+ELF/helper pins, kind1 only, fresh-zero request/echo records required. Fixed9word
+writes only to request32B: invalidate generation, payload, full readback then
+publishgeneration2/readback. Four fixed response snapshots bind nonce64/seq1/
+statusOBSERVED/ACK0/reserved0. Six transport/observer controls PASS. Fresh nested
+manifest `evidence/pmu-request-boot-integration-2026-10-23`.
+
+Physical request/echo PASS, all4snapshots match nonce2afa586f3b265f9b/seq1.
+PMU did NOT park/quiesce; no DDR backend. Automatic restoration then FAILED
+before reset: concurrent disk consumption dropped sharedSSD from579735552 to
+514957312bytes, below536870912minimum. Original FAIL/restorationFAIL retained,
+not relabeled fullcyclePASS. Did not repeat candidate/request. Reacquired shared
+Genesys lease for recovery; own completed2026-10-05 abi-suite copied/SHAverified
+and replaced by preserved-path symlink on rootstate disk. Recovery77.18s then
+restored originalPMU/ARTIQ192.168.2.3; physicalTTL/CoreDMA/analyzerwrap/MonInj/
+EthernetPASS. Both leases released. Exact recovery script/logs/relocation and
+assessment `evidence/pmu-request-boot-hardware-2026-10-23`.
+
+No Si/SD/flash/OTP/Kasli changes. Next offline disk reservation/recovery guard
+before more diagnostic loads: point-in-time headroom insufficient under concurrent
+writers. Then progress IRQ/ROM exclusion policy; no unchanged request retry or
+quiescence inference. Full DDR NOT_RUN/NOT_ADMITTED; normal baseline restored.

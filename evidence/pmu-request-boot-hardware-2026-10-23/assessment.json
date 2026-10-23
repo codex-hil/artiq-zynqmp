@@ -1,0 +1,12 @@
+{
+  "status": "REQUEST_ECHO_PASS_INITIAL_RESTORE_STORAGE_FAIL_LATER_RECOVERY_PASS",
+  "hardware_executed": true,
+  "destructive_test_allowed": false,
+  "initial_result_preserved": "attempt/results.json",
+  "subsequent_recovery": "recovery/results.json",
+  "request_repeated": false,
+  "echo_coherent_samples": 4,
+  "request_nonce": "0x2afa586f3b265f9b",
+  "normal_restored_ip": "192.168.2.3",
+  "next": "Prepare disk space reservation/recovery guard before further diagnostic image loads; no repeated unchanged request."
+}

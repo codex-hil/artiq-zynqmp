@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/load_rtio_runtime.py", line 49, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/load_rtio_runtime.py", line 15, in main
+    a=p.parse_args();out=Path(a.output);require_runtime_space(out,REPO);out.mkdir(parents=True,exist_ok=True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/check_hw_storage.py", line 30, in require_runtime_space
+    if report['status']!='STORAGE_ADMISSION_PASS':raise StorageAdmissionError(report)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+check_hw_storage.StorageAdmissionError: Storage admission refused before hardware: {"entries": [{"available_bytes": 37896884224, "available_inodes": 13679214, "path": "/home/codex-hil/.local/state/artiq-builds/pmu-request-boot-live-20261023/restore-load", "probe_path": "/home/codex-hil/.local/state/artiq-builds/pmu-request-boot-live-20261023", "role": "output"}, {"available_bytes": 514957312, "available_inodes": 11207865, "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip", "probe_path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip", "role": "working_directory"}, {"available_bytes": 514957312, "available_inodes": 11207865, "path": "/srv/codex-hil-data/toolchains/amd/shared/home", "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/home", "role": "amd_home"}, {"available_bytes": 514957312, "available_inodes": 11207865, "path": "/srv/codex-hil-data/toolchains/amd/shared/tmp", "probe_path": "/srv/codex-hil-data/toolchains/amd/shared/tmp", "role": "amd_tmp"}, {"available_bytes": 37896884224, "available_inodes": 13679214, "path": "/tmp", "probe_path": "/tmp", "role": "host_tmp"}], "hardware_executed": false, "limits": "Point-in-time headroom check, not reservation or protection against concurrent disk consumption.", "minimum_available_bytes": 536870912, "minimum_available_inodes": 1024, "status": "STORAGE_ADMISSION_FAIL"}

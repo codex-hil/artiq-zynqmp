@@ -118,6 +118,13 @@ def observer_preflight(path,files):
         if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Changed PMU diagnostic inputs')
         pmu_preflight(Path(item['path']),REPO)
         required_scripts |= PMU_SCRIPTS
+    if info.get('pmu_request_inputs'):
+        if not info.get('no_master_inputs') or info.get('model_inputs') or info.get('pmu_boundary_inputs'):raise ValueError('Request requires separate no-master window')
+        from pmu_request_candidate import preflight as request_preflight, SCRIPTS as REQUEST_SCRIPTS
+        item=info['pmu_request_inputs']
+        if hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Changed request inputs')
+        request_preflight(Path(item['path']),REPO)
+        required_scripts |= REQUEST_SCRIPTS
     if set(info.get('script_sha256',{}))!=required_scripts:
         raise ValueError('Missing observer execution pins')
     for name,digest in info['script_sha256'].items():
@@ -246,7 +253,7 @@ def main():
                 run('candidate-trained-observer',[sys.executable,str(REPO/'scripts/run_trained_observer.py'),
                     '--server',a.server,'--port',a.port,'--elf',observer['elf']['path'],
                     '--symbols',observer['symbols']['path'],'--fsbl',files['candidate_fsbl']['path'],
-                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--pmu-boundary-inputs',observer['pmu_boundary_inputs']['path']] if observer.get('pmu_boundary_inputs') else [])+(['--model-inputs',observer['model_inputs']['path']] if observer.get('model_inputs') else [])+(['--no-master-inputs',observer['no_master_inputs']['path']] if observer.get('no_master_inputs') else [])+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
+                    '--pmu',files['candidate_pmu']['path'],'--output',str(out/'candidate-trained-observer')]+(['--pmu-request-inputs',observer['pmu_request_inputs']['path']] if observer.get('pmu_request_inputs') else [])+(['--pmu-boundary-inputs',observer['pmu_boundary_inputs']['path']] if observer.get('pmu_boundary_inputs') else [])+(['--model-inputs',observer['model_inputs']['path']] if observer.get('model_inputs') else [])+(['--no-master-inputs',observer['no_master_inputs']['path']] if observer.get('no_master_inputs') else [])+(['--master-inputs',observer['master_inputs']['path']] if observer.get('master_inputs') else [])+(['--peripheral-inputs',observer['peripheral_inputs']['path']] if observer.get('peripheral_inputs') else [])+(['--definitions-only'] if observer.get('definitions_only') else (['--controls-only'] if observer.get('controls_only') else (['--exception-brk'] if observer.get('exception_brk') else (['--exception-observer'] if observer.get('exception_observer') else [])))),180)
                 observed=json.loads((out/'candidate-trained-observer/results.json').read_text())
                 if observed.get('status')!='PASS':raise RuntimeError('Trained observer failed')
                 if observer.get('exception_brk'):return 'EXPECTED_BRK_CAPTURE_RESTORE_REQUIRED'

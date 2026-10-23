@@ -58,6 +58,7 @@ def main():
     p.add_argument('--no-master-inputs',type=Path)
     p.add_argument('--model-inputs',type=Path)
     p.add_argument('--pmu-boundary-inputs',type=Path)
+    p.add_argument('--pmu-request-inputs',type=Path)
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
@@ -91,6 +92,11 @@ def main():
         if not no_master or model:raise ValueError('PMU diagnostic requires no-master window without model')
         from pmu_boundary_candidate import preflight as pmu_preflight, parse as pmu_parse
         pmu_diagnostic=pmu_preflight(a.pmu_boundary_inputs,REPO)
+    request=None
+    if a.pmu_request_inputs:
+        if not no_master or model or pmu_diagnostic:raise ValueError('Request requires separate no-master window')
+        from pmu_request_candidate import preflight as request_preflight, parse as request_parse
+        request=request_preflight(a.pmu_request_inputs,REPO)
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -108,7 +114,9 @@ def main():
             uart.reset_input_buffer()
             xs('reset','reset_genesys_ps.tcl',a.server,'210383B7F02DA')
             if pmu_diagnostic:pmu_preflight(a.pmu_boundary_inputs,REPO)
-            xs('boot','run_boot_firmware.tcl',a.server,pmu_diagnostic['elf']['path'] if pmu_diagnostic else a.pmu,a.fsbl,'210383B7F02DA')
+            if request:request_preflight(a.pmu_request_inputs,REPO)
+            selected_pmu=request['elf']['path'] if request else (pmu_diagnostic['elf']['path'] if pmu_diagnostic else a.pmu)
+            xs('boot','run_boot_firmware.tcl',a.server,selected_pmu,a.fsbl,'210383B7F02DA')
             deadline=time.monotonic()+30
             while time.monotonic()<deadline:
                 raw.extend(uart.read(uart.in_waiting or 1))
@@ -158,6 +166,13 @@ def main():
             if pmu_diagnostic:
                 result['pmu_diagnostic_sha256']=pmu_diagnostic['elf']['sha256']
                 result['pmu_boundary']=pmu_parse(xs('pmu-boundary','probe_pmu_boundary.tcl',a.server,'210383B7F02DA'))
+            if request:
+                import secrets
+                nonce=secrets.randbits(64) or 1
+                request_preflight(a.pmu_request_inputs,REPO)
+                result['pmu_request_sha256']=request['elf']['sha256']
+                result['pmu_request_nonce']=hex(nonce)
+                result['pmu_request']=request_parse(xs('pmu-request','probe_pmu_observe_request.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32),nonce)
             if model:
                 model_preflight(a.model_inputs,REPO)
                 captured=xs('ocm-model','run_ddr_ocm_model.tcl',a.server,model['elf']['path'],'210383B7F02DA')
