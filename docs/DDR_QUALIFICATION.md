@@ -1909,3 +1909,22 @@ no PMU stop/mask/DDR admission. Next prefer boot-compatible post-handoff PMU
 quiescence/telemetry acknowledgment design, or a matched dedicated boot profile;
 retain AMD platform code. No hardware access, normal runtime unchanged. Full
 DDR NOT_RUN/NOT_ADMITTED; core/history exclusion remains explicit.
+
+
+
+## 2026-10-23 — PMU post-handoff protocol rules modeled (offline)
+
+Defined boot/sequence-bound request->quiescence acknowledgment, only outside an
+active handler at a reviewed AMD core-loop boundary. Seven explicit obligations
+include scheduler/interrupt/core-release/PMU-memory exclusion and history drain;
+these remain evidence requirements, not trusted host claims. No automatic resume
+on timeout/disconnect after ACK: full PS restoration required. Four tests PASS,
+including all128condition combinations, stale epoch/sequence, malformed fields/
+clock rollback and timeout semantics. Receipts explicitly OFFLINE, never DDRpermit.
+Transport/mailbox/IPI command UNSELECTED: model ELF RW extent spans linker gap
+throughfffe4000; a mailbox placed there could be cleared by download. No private
+PMU AP0 retry/alias or device reads. Design `diagnostics/ddr/PMU_QUIESCE_PROTOCOL.md`,
+evidence `evidence/pmu-quiesce-protocol-offline-2026-10-23`.
+No runtime firmware/board change. Next isolated AMD module/hook/transport source
+integration and footprint/ROM-NMI/error review, before any deployment. Full DDR
+NOT_RUN/NOT_ADMITTED; unresolved obligations cannot be bypassed by a model ACK.

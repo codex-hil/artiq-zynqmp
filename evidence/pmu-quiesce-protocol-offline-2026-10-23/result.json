@@ -1,0 +1,15 @@
+{
+  "status": "OFFLINE_PROTOCOL_RULES_PASS_NOT_IMPLEMENTED_ON_PMU",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "condition_combinations": 128,
+  "source_sha256": {
+    "diagnostics/ddr/pmu_quiesce_model.py": "29c5dd849e51022f28345266237c5cb5d360676ea8a216d9df4033535c9d26be",
+    "tests/test_pmu_quiesce_model.py": "03ec453c7e87a4da2cf73ce3024c93fa37c915db3a54c33a13b09ef617894f66",
+    "diagnostics/ddr/PMU_QUIESCE_PROTOCOL.md": "d2e50420e7030d02f31d6cc89ebd0fb9fd12796cb5927493e6ec1cecfca61626"
+  },
+  "transport": "UNSELECTED",
+  "runtime_firmware_changed": false,
+  "critical_rule": "No automatic PMU resume after acknowledgment; reset/restoration required",
+  "remaining": "Seven conditions are implementation/evidence obligations, not host-provided admission booleans. ROM/NMI/error paths, transaction history and mailbox ownership unresolved."
+}
