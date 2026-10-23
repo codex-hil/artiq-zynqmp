@@ -57,6 +57,7 @@ def main():
     p.add_argument('--master-inputs',type=Path)
     p.add_argument('--no-master-inputs',type=Path)
     p.add_argument('--model-inputs',type=Path)
+    p.add_argument('--pmu-boundary-inputs',type=Path)
     group=p.add_mutually_exclusive_group()
     group.add_argument('--definitions-only',action='store_true')
     group.add_argument('--controls-only',action='store_true')
@@ -85,6 +86,11 @@ def main():
         if not no_master:raise ValueError('Model requires qualified no-master window')
         from check_ddr_ocm_model import preflight as model_preflight, parse as model_parse
         model=model_preflight(a.model_inputs,REPO)
+    pmu_diagnostic=None
+    if a.pmu_boundary_inputs:
+        if not no_master or model:raise ValueError('PMU diagnostic requires no-master window without model')
+        from pmu_boundary_candidate import preflight as pmu_preflight, parse as pmu_parse
+        pmu_diagnostic=pmu_preflight(a.pmu_boundary_inputs,REPO)
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -101,7 +107,8 @@ def main():
         with serial.Serial(a.port,115200,timeout=.2) as uart:
             uart.reset_input_buffer()
             xs('reset','reset_genesys_ps.tcl',a.server,'210383B7F02DA')
-            xs('boot','run_boot_firmware.tcl',a.server,a.pmu,a.fsbl,'210383B7F02DA')
+            if pmu_diagnostic:pmu_preflight(a.pmu_boundary_inputs,REPO)
+            xs('boot','run_boot_firmware.tcl',a.server,pmu_diagnostic['elf']['path'] if pmu_diagnostic else a.pmu,a.fsbl,'210383B7F02DA')
             deadline=time.monotonic()+30
             while time.monotonic()<deadline:
                 raw.extend(uart.read(uart.in_waiting or 1))
@@ -148,6 +155,9 @@ def main():
                     result['no_master_configuration']=verify_configuration(result['master_window'])
                 if not result['master_window']['necessary_dma_fields_pass']:
                     raise ValueError('Master DMA fields not quiet; restore without DDR writes')
+            if pmu_diagnostic:
+                result['pmu_diagnostic_sha256']=pmu_diagnostic['elf']['sha256']
+                result['pmu_boundary']=pmu_parse(xs('pmu-boundary','probe_pmu_boundary.tcl',a.server,'210383B7F02DA'))
             if model:
                 model_preflight(a.model_inputs,REPO)
                 captured=xs('ocm-model','run_ddr_ocm_model.tcl',a.server,model['elf']['path'],'210383B7F02DA')

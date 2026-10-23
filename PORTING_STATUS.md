@@ -1,6 +1,31 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Diagnostic PMU boot/live boundary RAM telemetry PASS/restored
+
+Optional PMU image override explicitly pinned/layout checked within normal
+trained-observer/no-master window, excluding model stage. Existing normal
+candidate/restore PMU pins unchanged. Dedicated fixed budget4samples: sequence,
+8word burst, sequence; parser retains torn samples, accepts only equal-even
+sequence plus magic/version/ACK0/unresolved7f/reserved0/nonzero count. Seven
+capture/observer controls PASS. Fresh nested manifest
+`evidence/pmu-boundary-boot-integration-2026-10-23`.
+
+Physical cycle138.659s under shared Genesys lease PASS. Diagnostic PMUELF
+286fb256...46e56b1 booted with trainedFSBL; two samples match sequence rule,
+loopcounts5412/5415. Two concurrent/torn samples5418/5421 explicitly rejected,
+no extra retries. This shows live boundary observation, not exclusion/coherence
+proof under all reorder/wrap scenarios; PMU remains running, ACK0/unresolved7f.
+No private register access, stop/mask/quiesce or physical DDR backend.
+Normal PMU/ARTIQ restored192.168.2.3 TTL/CoreDMA/analyzerwrap/MonInj/EthernetPASS;
+lease released. No Si/SD/flash/OTP/Kasli changes. Raw byte hashes and restoration:
+`evidence/pmu-boundary-boot-hardware-2026-10-23`.
+
+Next offline exact-session request channel/ordering and IRQ/ROM exclusion design
+at qualified boundary before any ACK/park implementation; no unchanged telemetry
+run. Full DDR NOT_RUN/NOT_ADMITTED; telemetry is not a write-test permit.
+
+
 ## 2026-10-23 — Documented external PMU RAM read physical PASS
 
 Reviewed AMDUG1085 PMU view: local register file is PMU-only, while PMU RAM/

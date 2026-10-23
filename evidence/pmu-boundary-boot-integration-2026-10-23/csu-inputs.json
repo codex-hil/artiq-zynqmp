@@ -1,0 +1,15 @@
+{
+  "plan": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/csu-core-plan-2026-10-23/read-plan.json",
+    "sha256": "51f0879e8f2d736c2e2287c2c51c0c053134612fdf961d05434f7c29ac63cdcc"
+  },
+  "script_sha256": {
+    "scripts/test_candidate_runtime_hw.py": "4bb29146fa7b9b24a00985934168b95b38c8a2851a057c889862104e0bcfb1d1",
+    "scripts/check_hw_storage.py": "6a55fba52919407511f5cfb2aeed8b84c61be83baf852a1b3988795823c56157",
+    "scripts/probe_csu_core_state.tcl": "0b3d79a516a7ae1c6452600ade19433c2d29263a2d85145fa53698903af88b18",
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/plan_zdma_snapshot.py": "0474d06449ef6831bf8977344ecb2a127ff9d91ed735045983a2bbb3523a35f2",
+    "scripts/capture_csu_core_state.py": "8ebe5a39f326d98a101d34c05ef9f02d6e4ccfd10cbc308fdc6859ec4a28596e",
+    "scripts/plan_csu_dma_snapshot.py": "e993d0df6049bac627c8f112d5602f1325d93c689f63b5376a18b27fcd308cf9"
+  }
+}

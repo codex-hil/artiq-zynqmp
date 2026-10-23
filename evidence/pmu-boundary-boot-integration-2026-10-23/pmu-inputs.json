@@ -1,0 +1,19 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-boundary-full-20261023/pmufw.elf",
+    "sha256": "286fb2563009ee1e117b4669b2050e9a3913fd3e6a5cd4747f2758ace46e56b1"
+  },
+  "symbols": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-boundary-full-20261023/symbols.txt",
+    "sha256": "bfe1c1c3ed3872fe630eca2e2c0e3053b50b07826615d52382a201e53bed7bf1"
+  },
+  "script_sha256": {
+    "scripts/test_candidate_runtime_hw.py": "4bb29146fa7b9b24a00985934168b95b38c8a2851a057c889862104e0bcfb1d1",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/probe_pmu_boundary.tcl": "8bb23349eac4ab8df1436aef28e881feb97a0159c5fc4fa0ee5c8cf62e48c98f",
+    "scripts/run_trained_observer.py": "19dbc42868a794cd7892e9b45cfd915ba9ea18c2c83d108395d5496c75a0bb2f",
+    "scripts/pmu_boundary_candidate.py": "11f6a231ba4d6aa4bd93976b964e036bc0f34717a54c983d36f2452d0b303b82",
+    "scripts/check_pmu_boundary_image.py": "f142e614da217212b9c278b9782ead83e299db80e0fe2e5fe71dfda5aec46f69",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe"
+  }
+}
