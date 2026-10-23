@@ -15,7 +15,7 @@ change hardware policy. Paths and hashes are in
 | GEM/SD/QSPI | Trained boot: GEM RX/TX off; SD transfer fields and QSPI DMA status zero | Other owners/reset epochs still unresolved |
 | PL HP0 DMA | Physical runtime workload completed; 128 nonzero observations, peak27, final zero/error-free | Different boot from trained OCM capture; monitor reset loses history; epoch qualification remains0 |
 | PMU | Linked IPI/hardware/slave wake capability audited | AP0 read of private0xffd40024 failed; no direct values obtained, no retry/force access |
-| PCAP | FPGA programming/restoration works | CSU DMA idle is not a PCAP controller activity/ownership proof |
+| PCAP | Trained-boot reads `0xA0000A46`: read_idle1/write_idle0, PL_DONE0; profile rejected and runtime restored | Reset/enable/direction interpretation and exclusive ownership unresolved; no active-transfer inference |
 | Restore | Normal baseline at192.168.2.3, TTL/CoreDMA/analyzer/MonInj/Ethernet passed after latest cycle | Restoration ends the diagnostic ownership window |
 
 ## Three gaps to resolve

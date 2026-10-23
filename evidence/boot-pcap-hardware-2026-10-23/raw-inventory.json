@@ -1,0 +1,187 @@
+[
+  {
+    "path": "candidate-trained-observer/boot.log",
+    "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+    "bytes": 58
+  },
+  {
+    "path": "candidate-trained-observer/master-apu.log",
+    "sha256": "62c36a2e9bb0d7d5c429ebf90dfb3f6cbf6adc595c3b8de5100fddf7f8855729",
+    "bytes": 74
+  },
+  {
+    "path": "candidate-trained-observer/master-csu.log",
+    "sha256": "58feb5518b00ed1e4e979fcc9685ecee4cd75b3bd0f2b6904b61a9de185e6bec",
+    "bytes": 3909
+  },
+  {
+    "path": "candidate-trained-observer/master-pcap.log",
+    "sha256": "979250add7a37ab84a18ace7d732fc94fa60535e057a25af8d313d8215b0875b",
+    "bytes": 78
+  },
+  {
+    "path": "candidate-trained-observer/master-rpu.log",
+    "sha256": "aaa6e539cb08e5df8ff72137edddb0375f1480a9d96cf762dec26847c15866dd",
+    "bytes": 584
+  },
+  {
+    "path": "candidate-trained-observer/master-zdma.log",
+    "sha256": "93ed49abd072eb7a8170b7c339d139720f5c4b55ec9c47710b1259e684cab891",
+    "bytes": 2540
+  },
+  {
+    "path": "candidate-trained-observer/observer.log",
+    "sha256": "213df801bbd8526bd4c0b48161a45141da7a815d03cb43b3fdfab4e73fe28d5d",
+    "bytes": 1174
+  },
+  {
+    "path": "candidate-trained-observer/peripheral-window.log",
+    "sha256": "10a24244fe035375b8ab8ea8b42adf7327e6c11d7f063d49fe4a67503b240cb5",
+    "bytes": 352
+  },
+  {
+    "path": "candidate-trained-observer/reset.log",
+    "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+    "bytes": 21
+  },
+  {
+    "path": "candidate-trained-observer/results.json",
+    "sha256": "7a5a50a179b33741fa964124ce59569abc27783b97771ba3167008d538f2673f",
+    "bytes": 19925
+  },
+  {
+    "path": "candidate-trained-observer/uart.log",
+    "sha256": "b9901d544b075f2c545161f7f74de629dafa405e7eb37bdab1ec76fb63f93c8b",
+    "bytes": 840
+  },
+  {
+    "path": "candidate-trained-observer.log",
+    "sha256": "7a5a50a179b33741fa964124ce59569abc27783b97771ba3167008d538f2673f",
+    "bytes": 19925
+  },
+  {
+    "path": "restore-debug/analyzer-wrapped.bin",
+    "sha256": "ea067fcde815acfb3d380d750cecbb539cd2d872df9aefd916a4c5d3d4ea5bb3",
+    "bytes": 8208
+  },
+  {
+    "path": "restore-debug/analyzer.bin",
+    "sha256": "c4f71fbdee518e0449c56c789ceaaeedccdc75d9d983c9179bc7c159b1546381",
+    "bytes": 1200
+  },
+  {
+    "path": "restore-debug/dma.log",
+    "sha256": "1f46998741ac2b3afefb1fb7cc3c7505cf5a2b8f36ab35ab56eb2afacde17b5b",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/results.json",
+    "sha256": "b378b360936e1ee5b910293adb38b5b15ce58a3707af6a789f5801bdcdcf9d7a",
+    "bytes": 1692
+  },
+  {
+    "path": "restore-debug/wrap-dma-0.log",
+    "sha256": "68cb2f929b0f09c68dd7a5a054344752c2d46a35f028c26e9c2b61397d7966ed",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/wrap-dma-1.log",
+    "sha256": "896aeae6ccdfb9a7c1e8cfd5b5fb61e125bcf63c7c849b9469783edc479a14bd",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/wrap-dma-2.log",
+    "sha256": "560a31b754cff1315b14e60ab7db0b0e4d995e64a0365bc14c60fbfdf290234c",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/wrap-dma-3.log",
+    "sha256": "8532b6fed3ab8228a486b4ed8905bf00a650704f73caa04a4f2d1e064aebf72a",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/wrap-dma-4.log",
+    "sha256": "31b97df6b2bfebf1e77a6211ceb51e0a5690aeaab99b45be01a2a14019a6f318",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/wrap-dma-5.log",
+    "sha256": "f8f5fae66eef21246f1732a61bce42899cd321fb104e095cf79832a9e85f9aef",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/wrap-dma-6.log",
+    "sha256": "d619853e2ef9e3dfea421ca83f70552b3e17858b36dbfa4a308058c676da945f",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug/wrap-dma-7.log",
+    "sha256": "d78766530028879f2d9c33ef9b2c2e64c9905fbedf24796b1cf7ba0ffbe259b0",
+    "bytes": 210
+  },
+  {
+    "path": "restore-debug.log",
+    "sha256": "9886b5767505898eb23725c7b5934580700fd2b6ae217f8362add672fc0ba9c0",
+    "bytes": 1899
+  },
+  {
+    "path": "restore-ethernet.json",
+    "sha256": "2eb24647c56fee4d87c2e65b7bf465da72fb450e83de930b18c5d5d86828ee79",
+    "bytes": 2018
+  },
+  {
+    "path": "restore-ethernet.log",
+    "sha256": "2eb24647c56fee4d87c2e65b7bf465da72fb450e83de930b18c5d5d86828ee79",
+    "bytes": 2018
+  },
+  {
+    "path": "restore-load/boot.log",
+    "sha256": "91ff9b70ebc01df8c185cd33db07e7482d447c36d23156ae1045496f37dfc1cd",
+    "bytes": 58
+  },
+  {
+    "path": "restore-load/cpu0.log",
+    "sha256": "33d7218632f53d984b5c936ec89e2e3555f44d9cb2616206997fcb678fa2f3e1",
+    "bytes": 96
+  },
+  {
+    "path": "restore-load/cpu1.log",
+    "sha256": "98a7d5e24a91d0dab3f8ea83c0b9f1a56f8582bb5408aa297d2124ff01fe8220",
+    "bytes": 28
+  },
+  {
+    "path": "restore-load/pl.log",
+    "sha256": "e033a55d5042daed6f59d97ddf6568e48f9e1827c572e26d85b1a62623708f02",
+    "bytes": 1918
+  },
+  {
+    "path": "restore-load/prepare.log",
+    "sha256": "2d38d16ca4d6389589920776bc1806fc0f8c004008d3f4a39769f70c1d3973ca",
+    "bytes": 65
+  },
+  {
+    "path": "restore-load/reset.log",
+    "sha256": "4ea50623db932005d8cae1e4e4666343e10b4ce71036c8850f75740c62b2eeb6",
+    "bytes": 21
+  },
+  {
+    "path": "restore-load/results.json",
+    "sha256": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+    "bytes": 81
+  },
+  {
+    "path": "restore-load/uart.log",
+    "sha256": "eda810abe889c21249891790f003b723e60732dc4315adc2fb530dbc1417e691",
+    "bytes": 1000
+  },
+  {
+    "path": "restore-load.log",
+    "sha256": "7b3e4e310c84ad46dd60926e486481a5b127fc40281a8cc588f3b00d1b1acc63",
+    "bytes": 87
+  },
+  {
+    "path": "results.json",
+    "sha256": "4f2ea6c782b8f04d5890d6a07251728892b9d3f6cbb74a809f60579b5fbe45f8",
+    "bytes": 4214
+  }
+]

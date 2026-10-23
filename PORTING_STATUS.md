@@ -1,6 +1,22 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — PCAP read complete, idle criterion FAIL; restored PASS
+
+Bounded trained-boot profile cycle114.904s under shared Genesys lease.
+Two physical PCAP status reads0xffca3010 identical0xa0000a46: read_idle1,
+write_idle0,PL_INIT1,PL_DONE0. AP0 access succeeded; conservative read+write-idle
+criterion not met, entire candidate FAIL. No controller write/status clear/reset
+or reprogramming used to force acceptance. This is not proof of active transfer:
+PCAP reset/enable/direction and unconfigured-PL status semantics remain to review.
+Other observations retained; PMU omitted explicitly/ownershipNOT_PROVEN.
+Normal runtime restored192.168.2.3 with TTL/CoreDMA/analyzer ring-wrap/MonInj/
+Ethernet PASS; lease released. No Si/SD/flash/OTP/Kasli writes. Evidence
+`evidence/boot-pcap-hardware-2026-10-23`. Full DDR remains NOT_RUN/NOT_ADMITTED.
+Next offline inspect AMD PCAP reset/control/direction sequencing and status
+meaning before changing any criterion; no blind retry or register mutation.
+
+
 ## 2026-10-23 — PCAP trained-boot profile integrated (offline)
 
 Added source-pinned PCAP parser/preflight and fixed two-read AP0 Tcl0xffca3010.

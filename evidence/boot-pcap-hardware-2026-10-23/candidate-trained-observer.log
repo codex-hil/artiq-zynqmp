@@ -1,0 +1,700 @@
+{
+  "status": "FAIL",
+  "hardware_executed": true,
+  "ddr_test": "NOT_RUN",
+  "registers": {
+    "x0": 12,
+    "x1": 12584984,
+    "x2": 3086,
+    "x3": 818219064,
+    "x4": 12920888,
+    "x5": 2,
+    "x6": 704,
+    "x7": 2147483648,
+    "x8": 4294860112,
+    "x9": 4294739968,
+    "x14": 1,
+    "x15": 51,
+    "x16": 0,
+    "x17": 0,
+    "x18": 7,
+    "x19": 0,
+    "x20": 4294836224,
+    "x21": 4294840712
+  },
+  "scope": "EXCEPTION_AWARE_EL3_OBSERVER_NO_DDR_TEST",
+  "fsbl_descriptor": {
+    "fsbl_sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+    "symbols_sha256": "df05d210ee11bc87243d1cc571ac9024a58d73c5e520fd9472dfe51fd0bd4c53",
+    "terminal_pcs": [
+      4294708212,
+      4294708216
+    ],
+    "hardware_executed": false
+  },
+  "peripheral_window": {
+    "necessary_fields_pass": true,
+    "destructive_test_allowed": false,
+    "ownership": "NOT_PROVEN",
+    "observations": {
+      "status": "SUPPLIED_PERIPHERAL_FIELDS_DECODED",
+      "hardware_executed": false,
+      "stable": true,
+      "raw": [
+        {
+          "gem0_network_control": 0,
+          "sd1_present_state": 32964608,
+          "qspi_dma_status": 0
+        },
+        {
+          "gem0_network_control": 0,
+          "sd1_present_state": 32964608,
+          "qspi_dma_status": 0
+        }
+      ],
+      "samples": [
+        {
+          "gem_rx_enabled": false,
+          "gem_tx_enabled": false,
+          "sd_command_inhibit": false,
+          "sd_data_inhibit": false,
+          "sd_data_active": false,
+          "sd_write_active": false,
+          "sd_read_active": false,
+          "qspi_dma_busy": false,
+          "qspi_dma_outstanding": 0,
+          "qspi_dma_fifo_level": 0,
+          "qspi_dma_unacknowledged_done": 0,
+          "qspi_dma_unknown_bits": 0
+        },
+        {
+          "gem_rx_enabled": false,
+          "gem_tx_enabled": false,
+          "sd_command_inhibit": false,
+          "sd_data_inhibit": false,
+          "sd_data_active": false,
+          "sd_write_active": false,
+          "sd_read_active": false,
+          "qspi_dma_busy": false,
+          "qspi_dma_outstanding": 0,
+          "qspi_dma_fifo_level": 0,
+          "qspi_dma_unacknowledged_done": 0,
+          "qspi_dma_unknown_bits": 0
+        }
+      ],
+      "ownership": "NOT_PROVEN",
+      "destructive_test_allowed": false
+    },
+    "limits": "Necessary fields only; no core/PMU/PL/PCAP ownership or transaction-drain proof."
+  },
+  "master_window": {
+    "status": "SAME_BOOT_MASTER_OBSERVATIONS_ONLY",
+    "observations": {
+      "zdma": {
+        "status": "SUPPLIED_ZDMA_FIELDS_DECODED_NOT_OWNERSHIP",
+        "hardware_executed": false,
+        "channels": [
+          {
+            "channel": 0,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 1,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 2,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 3,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 4,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 5,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 6,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 7,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 8,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 9,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 10,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 11,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 12,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 13,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 14,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          },
+          {
+            "channel": 15,
+            "status_raw": [
+              0,
+              0
+            ],
+            "control2_raw": [
+              0,
+              0
+            ],
+            "state": [
+              0,
+              0
+            ],
+            "enabled": [
+              false,
+              false
+            ],
+            "quiet_fields_observed": true
+          }
+        ],
+        "all_quiet_fields": true,
+        "destructive_test_allowed": false,
+        "limits": "Supplied-data interpretation only. Sampling quiet/disabled fields does not establish bus drain, reset ordering, exclusive ownership or physical-device provenance."
+      },
+      "csu": {
+        "csu": {
+          "status": "SUPPLIED_CSU_STATUS_DECODED_NOT_OWNERSHIP",
+          "hardware_executed": false,
+          "channels": [
+            {
+              "channel": 0,
+              "address": "0xffc80008",
+              "raw": [
+                0,
+                0
+              ],
+              "busy": [
+                false,
+                false
+              ],
+              "outstanding": [
+                0,
+                0
+              ],
+              "fifo_level": [
+                0,
+                0
+              ],
+              "unacknowledged_done": [
+                0,
+                0
+              ],
+              "unknown_bits": [
+                0,
+                0
+              ],
+              "quiet_fields_observed": true
+            },
+            {
+              "channel": 1,
+              "address": "0xffc80808",
+              "raw": [
+                0,
+                0
+              ],
+              "busy": [
+                false,
+                false
+              ],
+              "outstanding": [
+                0,
+                0
+              ],
+              "fifo_level": [
+                0,
+                0
+              ],
+              "unacknowledged_done": [
+                0,
+                0
+              ],
+              "unknown_bits": [
+                0,
+                0
+              ],
+              "quiet_fields_observed": true
+            }
+          ],
+          "all_quiet_fields": true,
+          "destructive_test_allowed": false,
+          "limits": "Momentary busy/outstanding/FIFO fields only. Done/interrupt flags not acknowledged; errors not cleared or fully diagnosed. No exclusive ownership or DDR admission."
+        },
+        "cores": [
+          {
+            "name": "Cortex-A53 #0",
+            "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A0} target_id 10 level 2 name {Cortex-A53 #0} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason {External Debug Request, EL3(S)/A64} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 1",
+            "ownership": "NOT_PROVEN"
+          },
+          {
+            "name": "Cortex-A53 #1",
+            "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A1} target_id 11 level 2 name {Cortex-A53 #1} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason Reset is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+            "ownership": "NOT_PROVEN"
+          },
+          {
+            "name": "Cortex-A53 #2",
+            "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A2} target_id 12 level 2 name {Cortex-A53 #2} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason {Power On Reset} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+            "ownership": "NOT_PROVEN"
+          },
+          {
+            "name": "Cortex-A53 #3",
+            "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A3} target_id 13 level 2 name {Cortex-A53 #3} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason {Power On Reset} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+            "ownership": "NOT_PROVEN"
+          },
+          {
+            "name": "Cortex-R5 #0",
+            "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R0} target_id 7 level 2 name {Cortex-R5 #0} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R} parent RPU state_reason Halted is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+            "ownership": "NOT_PROVEN"
+          },
+          {
+            "name": "Cortex-R5 #1",
+            "raw": "target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R1} target_id 8 level 2 name {Cortex-R5 #1} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R} parent RPU state_reason {Lock Step Mode} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0",
+            "ownership": "NOT_PROVEN"
+          }
+        ],
+        "destructive_test_allowed": false
+      },
+      "rpu": {
+        "status": "SUPPLIED_RPU_FIELDS_DECODED",
+        "hardware_executed": false,
+        "stable": true,
+        "samples": [
+          {
+            "split_bit": false,
+            "core_clock_enable_bit": true,
+            "peripheral_clock_enable_bit": true,
+            "amba_reset_bit": false,
+            "cores": [
+              {
+                "ncpuhalt_bit": false,
+                "nvalreset_bit": true,
+                "reset_control_bit": false
+              },
+              {
+                "ncpuhalt_bit": false,
+                "nvalreset_bit": true,
+                "reset_control_bit": false
+              }
+            ]
+          },
+          {
+            "split_bit": false,
+            "core_clock_enable_bit": true,
+            "peripheral_clock_enable_bit": true,
+            "amba_reset_bit": false,
+            "cores": [
+              {
+                "ncpuhalt_bit": false,
+                "nvalreset_bit": true,
+                "reset_control_bit": false
+              },
+              {
+                "ncpuhalt_bit": false,
+                "nvalreset_bit": true,
+                "reset_control_bit": false
+              }
+            ]
+          }
+        ],
+        "raw": [
+          {
+            "global_control": 80,
+            "r50_config": 4,
+            "r50_status": 63,
+            "r51_config": 4,
+            "r51_status": 56,
+            "clock_control": 50332418,
+            "reset_control": 4032
+          },
+          {
+            "global_control": 80,
+            "r50_config": 4,
+            "r50_status": 63,
+            "r51_config": 4,
+            "r51_status": 56,
+            "clock_control": 50332418,
+            "reset_control": 4032
+          }
+        ],
+        "ownership": "NOT_PROVEN",
+        "destructive_test_allowed": false
+      },
+      "apu": {
+        "status": "SUPPLIED_APU_RESET_CONTROLS_DECODED",
+        "hardware_executed": false,
+        "raw": [
+          12302,
+          12302
+        ],
+        "stable": true,
+        "cores": [
+          {
+            "core": 0,
+            "reset_control_bits": [
+              false,
+              false
+            ],
+            "power_on_reset_control_bits": [
+              false,
+              false
+            ]
+          },
+          {
+            "core": 1,
+            "reset_control_bits": [
+              true,
+              true
+            ],
+            "power_on_reset_control_bits": [
+              false,
+              false
+            ]
+          },
+          {
+            "core": 2,
+            "reset_control_bits": [
+              true,
+              true
+            ],
+            "power_on_reset_control_bits": [
+              true,
+              true
+            ]
+          },
+          {
+            "core": 3,
+            "reset_control_bits": [
+              true,
+              true
+            ],
+            "power_on_reset_control_bits": [
+              true,
+              true
+            ]
+          }
+        ],
+        "l2_reset_control_bits": [
+          false,
+          false
+        ],
+        "unknown_bits": [
+          0,
+          0
+        ],
+        "ownership": "NOT_PROVEN",
+        "destructive_test_allowed": false
+      },
+      "pcap": {
+        "status": "SUPPLIED_PCAP_STATUS_FIELDS",
+        "hardware_executed": false,
+        "raw": [
+          2684357190,
+          2684357190
+        ],
+        "stable": true,
+        "fields": {
+          "write_idle": [
+            false,
+            false
+          ],
+          "read_idle": [
+            true,
+            true
+          ],
+          "pl_init": [
+            true,
+            true
+          ],
+          "pl_done": [
+            false,
+            false
+          ]
+        },
+        "other_status_bits": [
+          2684357184,
+          2684357184
+        ],
+        "sampled_read_write_idle": false,
+        "ownership": "NOT_PROVEN",
+        "destructive_test_allowed": false
+      }
+    },
+    "necessary_dma_fields_pass": false,
+    "profile": "pcap_without_private_pmu",
+    "pmu_ownership": "NOT_PROVEN",
+    "not_observed": [
+      "pmu"
+    ],
+    "destructive_test_allowed": false,
+    "ownership": "NOT_PROVEN",
+    "limits": "Sequential snapshots in one boot, not atomic or exclusive/drain proof; core metadata and RPU bits remain observations."
+  },
+  "error": "Master DMA fields not quiet; restore without DDR writes"
+}
