@@ -1,0 +1,17 @@
+[
+  {
+    "control": "changed_address",
+    "rejected": true,
+    "reason": "Changed register definition RPU_RPU_0_STATUS"
+  },
+  {
+    "control": "changed_mask",
+    "rejected": true,
+    "reason": "Changed register definition RPU_RPU_0_STATUS_NVALRESET_MASK"
+  },
+  {
+    "control": "duplicate_macro",
+    "rejected": true,
+    "reason": "Missing/ambiguous macro RPU_BASEADDR"
+  }
+]

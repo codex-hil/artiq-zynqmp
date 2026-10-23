@@ -120,3 +120,14 @@ Next offline RPU lockstep/reset/clock register allowlist and PS peripheral
 DMA activity review, then positive observations inside the actual diagnostic
 window. Momentary CSU/ZDMA status and debugger labels cannot authorize DDR
 destructive writes or establish PL HP0 drain. No Si/SD/flash/OTP/Kasli changes.
+
+
+### RPU observation plan — 2026-10-23
+
+`scripts/plan_rpu_snapshot.py` validates seven register addresses and relevant
+masks against the AMD `rpu.h` and `crl_apb.h` used by the existing PMU build.
+Evidence: `evidence/rpu-plan-2026-10-23`. Three unit tests and three mutated-header
+rejection controls PASS. This is offline only; no board fields were read.
+NCPUHALT, NVALRESET, reset controls and clock enables are reported separately;
+none establishes completed AXI drain, R5 cache ownership or destructive DDR
+admission. Next implement leased, bounded DAP capture without writes or core stops.

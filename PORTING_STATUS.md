@@ -1,5 +1,18 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+
+## 2026-10-23 — RPU register observation plan (offline)
+
+Added a seven-register RPU/CRL read allowlist checked against the actual AMD PMU
+source headers: global mode, both R5 configuration/status registers, R5 clock
+control and LPD reset control. Header SHA-256 values and exact addresses are in
+`evidence/rpu-plan-2026-10-23/read-plan.json`. No hardware access in this step.
+Three decoder tests PASS; changed address, changed mask and duplicate-definition
+negative controls reject the plan. Raw active-low fields stay explicitly named;
+no inference of cache state, transaction drain or DDR write-test admission.
+Next: integrate this fixed plan into a bounded, source-pinned read-only DAP wrapper
+under the shared Genesys lease. Actual RPU fields remain NOT_RUN.
+
 ## CSU status and core metadata live capture complete —2026-10-23
 
 Vendor BSP-checked source/destination STS addresses0xffc80008/0xffc80808,

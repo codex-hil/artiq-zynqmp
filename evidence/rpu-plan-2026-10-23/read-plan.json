@@ -1,0 +1,21 @@
+{
+  "status": "OFFLINE_RPU_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "registers": {
+    "global_control": "0xff9a0000",
+    "r50_config": "0xff9a0100",
+    "r50_status": "0xff9a0104",
+    "r51_config": "0xff9a0200",
+    "r51_status": "0xff9a0204",
+    "clock_control": "0xff5e0090",
+    "reset_control": "0xff5e023c"
+  },
+  "samples": 2,
+  "destructive_test_allowed": false,
+  "ownership": "NOT_PROVEN",
+  "limits": "Read only; no halt/reset/start/clock writes. Control bits and active-low status are separate observations, not cache or transaction-drain proof.",
+  "input_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/rpu.h": "293dfc77a1239ef6be95b2774534c21d7671b42b2799b9883ba91b7a89383157",
+    "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/crl_apb.h": "dc101920ce993795b590a9cc480cd599f395cbae73640321446ab7075aa1edbf"
+  }
+}
