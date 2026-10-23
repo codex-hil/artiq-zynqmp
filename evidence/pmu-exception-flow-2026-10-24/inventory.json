@@ -1,0 +1,1407 @@
+{
+  "status": "OFFLINE_EXCEPTION_INVENTORY_NOT_EXCLUSION_PROOF",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "functions": [
+    {
+      "start": "0xffdc0008",
+      "name": "_vector_sw_exception"
+    },
+    {
+      "start": "0xffdc0020",
+      "name": "_vector_hw_exception"
+    },
+    {
+      "start": "0xffdc00bc",
+      "name": "XPfw_Exception"
+    },
+    {
+      "start": "0xffdc5b60",
+      "name": "XPfw_UtilRMW"
+    },
+    {
+      "start": "0xffdc89fc",
+      "name": "XPfw_Exception_Handler"
+    },
+    {
+      "start": "0xffdcba10",
+      "name": "getnum"
+    },
+    {
+      "start": "0xffdcbb38",
+      "name": "outbyte"
+    },
+    {
+      "start": "0xffdcbb60",
+      "name": "padding"
+    },
+    {
+      "start": "0xffdcc014",
+      "name": "outnum"
+    },
+    {
+      "start": "0xffdcc810",
+      "name": "xil_printf"
+    },
+    {
+      "start": "0xffdd1fd0",
+      "name": "strlen"
+    },
+    {
+      "start": "0xffdd211c",
+      "name": "__udivsi3"
+    },
+    {
+      "start": "0xffdd21c4",
+      "name": "__umodsi3"
+    }
+  ],
+  "direct_edges": [
+    {
+      "pc": "0xffdc0024",
+      "target": "0xffdc89fc",
+      "name": "XPfw_Exception_Handler",
+      "op": "brai"
+    },
+    {
+      "pc": "0xffdc8a20",
+      "target": "0xffdcc810",
+      "name": "xil_printf",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdc8a34",
+      "target": "0xffdc5b60",
+      "name": "XPfw_UtilRMW",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdc8a4c",
+      "target": "0xffdc5b60",
+      "name": "XPfw_UtilRMW",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdc8a64",
+      "target": "0xffdc5b60",
+      "name": "XPfw_UtilRMW",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc8cc",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc91c",
+      "target": "0xffdcba10",
+      "name": "getnum",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc960",
+      "target": "0xffdcba10",
+      "name": "getnum",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcca34",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcca44",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccab8",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccad8",
+      "target": "0xffdcc014",
+      "name": "outnum",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccb20",
+      "target": "0xffdcbb60",
+      "name": "padding",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccb34",
+      "target": "0xffdd1fd0",
+      "name": "strlen",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccb48",
+      "target": "0xffdcbb60",
+      "name": "padding",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccb6c",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccb80",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdccbb0",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcbbb0",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc0d4",
+      "target": "0xffdd21c4",
+      "name": "__umodsi3",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc0f8",
+      "target": "0xffdd211c",
+      "name": "__udivsi3",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc134",
+      "target": "0xffdd1fd0",
+      "name": "strlen",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc150",
+      "target": "0xffdcbb60",
+      "name": "padding",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc160",
+      "target": "0xffdcbb38",
+      "name": "outbyte",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdcc178",
+      "target": "0xffdcbb60",
+      "name": "padding",
+      "op": "brlid"
+    },
+    {
+      "pc": "0xffdc000c",
+      "target": "0xffdc00bc",
+      "name": "XPfw_Exception",
+      "op": "brai"
+    }
+  ],
+  "unresolved_control": [
+    {
+      "pc": "0xffdcc878",
+      "instruction": "beqid\tr28, 24\t\t// ffdcc890",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc888",
+      "instruction": "bneid\tr22, 64\t\t// ffdcc8c8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc8c8",
+      "instruction": "beqi\tr22, 16\t\t// ffdcc8d8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc910",
+      "instruction": "beqi\tr5, 104\t\t// ffdcc978",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc914",
+      "instruction": "beqid\tr22, 64\t\t// ffdcc954",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc930",
+      "instruction": "brid\t-60\t\t// ffdcc8f4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc940",
+      "instruction": "brid\t-72\t\t// ffdcc8f8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc94c",
+      "instruction": "brid\t-88\t\t// ffdcc8f4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc954",
+      "instruction": "bneid\tr3, 12\t\t// ffdcc960",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc970",
+      "instruction": "brid\t-72\t\t// ffdcc928",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc980",
+      "instruction": "bnei\tr4, 8\t\t// ffdcc988",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc98c",
+      "instruction": "bltid\tr18, 340\t\t// ffdccae0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc998",
+      "instruction": "bltid\tr18, 56\t\t// ffdcc9d0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9a4",
+      "instruction": "beqid\tr5, 184\t\t// ffdcca5c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9b0",
+      "instruction": "bltid\tr18, 64\t\t// ffdcc9f0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9b8",
+      "instruction": "beqid\tr4, 140\t\t// ffdcca44",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9c0",
+      "instruction": "beqid\tr3, 148\t\t// ffdcca54",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9c8",
+      "instruction": "brid\t280\t\t// ffdccae0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9d8",
+      "instruction": "bltid\tr18, -16\t\t// ffdcc9c8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9ec",
+      "instruction": "bra\tr3",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9f4",
+      "instruction": "beqid\tr4, 256\t\t// ffdccaf4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc9fc",
+      "instruction": "bneid\tr3, -52\t\t// ffdcc9c8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca14",
+      "instruction": "beqid\tr4, 412\t\t// ffdccbb0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca20",
+      "instruction": "bltid\tr18, 368\t\t// ffdccb90",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca28",
+      "instruction": "beqid\tr4, 376\t\t// ffdccba0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca30",
+      "instruction": "beqi\tr3, 376\t\t// ffdccba8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca3c",
+      "instruction": "brid\t-324\t\t// ffdcc8f8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca4c",
+      "instruction": "brid\t148\t\t// ffdccae0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca54",
+      "instruction": "brid\t-280\t\t// ffdcc93c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca68",
+      "instruction": "bnei\tr4, -304\t\t// ffdcc938",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca78",
+      "instruction": "bneid\tr3, -304\t\t// ffdcc948",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca90",
+      "instruction": "bgei\tr18, 16\t\t// ffdccaa0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcca9c",
+      "instruction": "bnei\tr3, 28\t\t// ffdccab8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccaa8",
+      "instruction": "beqid\tr3, 56\t\t// ffdccae0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccab0",
+      "instruction": "brid\t-444\t\t// ffdcc8f4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccaec",
+      "instruction": "brid\t-628\t\t// ffdcc878",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb04",
+      "instruction": "brid\t-44\t\t// ffdccad8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb14",
+      "instruction": "bneid\tr19, 28\t\t// ffdccb30",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb28",
+      "instruction": "brid\t-68\t\t// ffdccae4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb58",
+      "instruction": "beqid\tr3, -60\t\t// ffdccb1c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb60",
+      "instruction": "beqid\tr3, -68\t\t// ffdccb1c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb74",
+      "instruction": "brid\t-32\t\t// ffdccb54",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb88",
+      "instruction": "brid\t-164\t\t// ffdccae4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb94",
+      "instruction": "bnei\tr3, -352\t\t// ffdcca34",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccb98",
+      "instruction": "brid\t-356\t\t// ffdcca34",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccba0",
+      "instruction": "brid\t-364\t\t// ffdcca34",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccba8",
+      "instruction": "brid\t-372\t\t// ffdcca34",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdccbb8",
+      "instruction": "brid\t-388\t\t// ffdcca34",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcbb48",
+      "instruction": "bnei\tr3, -8\t\t// ffdcbb40",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcbb64",
+      "instruction": "beqi\tr3, 108\t\t// ffdcbbd0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcbb70",
+      "instruction": "beqi\tr5, 96\t\t// ffdcbbd0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcbb90",
+      "instruction": "bltid\tr18, 40\t\t// ffdcbbb8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcbbc0",
+      "instruction": "bltid\tr18, -20\t\t// ffdcbbac",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcbbc8",
+      "instruction": "brid\t-40\t\t// ffdcbba0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc08c",
+      "instruction": "bneid\tr3, -12\t\t// ffdcc080",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc098",
+      "instruction": "bneid\tr3, 40\t\t// ffdcc0c0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc0a8",
+      "instruction": "beqid\tr3, 28\t\t// ffdcc0c4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc0b0",
+      "instruction": "bgeid\tr22, 24\t\t// ffdcc0c8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc108",
+      "instruction": "bgeid\tr18, -68\t\t// ffdcc0c4",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc110",
+      "instruction": "beqid\tr25, 28\t\t// ffdcc12c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcc16c",
+      "instruction": "bneid\tr3, -16\t\t// ffdcc15c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd212c",
+      "instruction": "beqi\tr6, 128\t\t// ffdd21ac",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2130",
+      "instruction": "beqid\tr5, 124\t\t// ffdd21ac",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2140",
+      "instruction": "beqid\tr18, 112\t\t// ffdd21b0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd214c",
+      "instruction": "bgeid\tr18, 16\t\t// ffdd215c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2154",
+      "instruction": "blti\tr6, 92\t\t// ffdd21b0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2160",
+      "instruction": "blti\tr18, 80\t\t// ffdd21b0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2164",
+      "instruction": "bgti\tr6, 12\t\t// ffdd2170",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2168",
+      "instruction": "brid\t72\t\t// ffdd21b0",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2170",
+      "instruction": "blti\tr5, 16\t\t// ffdd2180",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2178",
+      "instruction": "bgtid\tr5, -4\t\t// ffdd2174",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd218c",
+      "instruction": "blti\tr31, 12\t\t// ffdd2198",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd219c",
+      "instruction": "beqi\tr29, 12\t\t// ffdd21a8",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd21d4",
+      "instruction": "beqi\tr6, 148\t\t// ffdd2268",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd21d8",
+      "instruction": "beqid\tr5, 144\t\t// ffdd2268",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd21ec",
+      "instruction": "beqi\tr18, 128\t\t// ffdd226c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd21f4",
+      "instruction": "bgeid\tr18, 16\t\t// ffdd2204",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd21fc",
+      "instruction": "blti\tr6, 112\t\t// ffdd226c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2208",
+      "instruction": "bgti\tr18, 100\t\t// ffdd226c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd220c",
+      "instruction": "bgtid\tr6, 32\t\t// ffdd222c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2224",
+      "instruction": "brid\t72\t\t// ffdd226c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd222c",
+      "instruction": "blti\tr5, 16\t\t// ffdd223c",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2234",
+      "instruction": "bgeid\tr5, -4\t\t// ffdd2230",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2248",
+      "instruction": "blti\tr31, 12\t\t// ffdd2254",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdd2258",
+      "instruction": "beqi\tr29, 12\t\t// ffdd2264",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcba14",
+      "instruction": "beqid\tr4, 68\t\t// ffdcba58",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcba34",
+      "instruction": "beqid\tr7, 36\t\t// ffdcba58",
+      "reason": "Unresolved register/unsupported branch"
+    },
+    {
+      "pc": "0xffdcba50",
+      "instruction": "brid\t-48\t\t// ffdcba20",
+      "reason": "Unresolved register/unsupported branch"
+    }
+  ],
+  "memory_operations": [
+    {
+      "pc": "0xffdc8a00",
+      "instruction": "swi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdc5b60",
+      "instruction": "lwi\tr3, r5, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdc5b70",
+      "instruction": "swi\tr7, r5, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc810",
+      "instruction": "swi\tr5, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc814",
+      "instruction": "swi\tr6, r1, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc818",
+      "instruction": "swi\tr7, r1, 12",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc81c",
+      "instruction": "swi\tr8, r1, 16",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc820",
+      "instruction": "swi\tr9, r1, 20",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc824",
+      "instruction": "swi\tr10, r1, 24",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc82c",
+      "instruction": "swi\tr28, r1, 88",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc834",
+      "instruction": "swi\tr19, r1, 60",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc838",
+      "instruction": "swi\tr23, r1, 68",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc83c",
+      "instruction": "swi\tr24, r1, 72",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc840",
+      "instruction": "swi\tr25, r1, 76",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc844",
+      "instruction": "swi\tr26, r1, 80",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc848",
+      "instruction": "swi\tr27, r1, 84",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc84c",
+      "instruction": "swi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc850",
+      "instruction": "swi\tr22, r1, 64",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc854",
+      "instruction": "swi\tr29, r1, 92",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc858",
+      "instruction": "swi\tr30, r1, 96",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc85c",
+      "instruction": "swi\tr31, r1, 100",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc87c",
+      "instruction": "swi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc880",
+      "instruction": "lbui\tr5, r28, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc890",
+      "instruction": "lwi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc894",
+      "instruction": "lwi\tr19, r1, 60",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc898",
+      "instruction": "lwi\tr22, r1, 64",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc89c",
+      "instruction": "lwi\tr23, r1, 68",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8a0",
+      "instruction": "lwi\tr24, r1, 72",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8a4",
+      "instruction": "lwi\tr25, r1, 76",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8a8",
+      "instruction": "lwi\tr26, r1, 80",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8ac",
+      "instruction": "lwi\tr27, r1, 84",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8b0",
+      "instruction": "lwi\tr28, r1, 88",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8b4",
+      "instruction": "lwi\tr29, r1, 92",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8b8",
+      "instruction": "lwi\tr30, r1, 96",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8bc",
+      "instruction": "lwi\tr31, r1, 100",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8d8",
+      "instruction": "swi\tr22, r1, 52",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8dc",
+      "instruction": "swi\tr22, r1, 48",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8e0",
+      "instruction": "swi\tr22, r1, 44",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8e4",
+      "instruction": "sbi\tr23, r1, 40",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8e8",
+      "instruction": "swi\tr24, r1, 36",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8ec",
+      "instruction": "swi\tr22, r1, 32",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8f0",
+      "instruction": "swi\tr22, r1, 28",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8f4",
+      "instruction": "lwi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc8fc",
+      "instruction": "swi\tr3, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc900",
+      "instruction": "lbui\tr3, r28, 1",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc908",
+      "instruction": "lbui\tr4, r3, 14453",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc924",
+      "instruction": "swi\tr3, r1, 36",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc928",
+      "instruction": "lwi\tr3, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc934",
+      "instruction": "swi\tr3, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc944",
+      "instruction": "lwi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc95c",
+      "instruction": "sbi\tr3, r1, 40",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc968",
+      "instruction": "swi\tr3, r1, 32",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc974",
+      "instruction": "swi\tr3, r1, 44",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc9e8",
+      "instruction": "lwi\tr3, r3, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca04",
+      "instruction": "lbui\tr5, r28, 2",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca08",
+      "instruction": "swi\tr3, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca40",
+      "instruction": "lwi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca58",
+      "instruction": "swi\tr3, r1, 48",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca5c",
+      "instruction": "lbui\tr4, r28, 2",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca6c",
+      "instruction": "lbui\tr3, r28, 3",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca80",
+      "instruction": "lwi\tr31, r19, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca84",
+      "instruction": "lwi\tr30, r19, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcca94",
+      "instruction": "lbu\tr5, r19, r30",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccaac",
+      "instruction": "swi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccac8",
+      "instruction": "swi\tr3, r1, 52",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccadc",
+      "instruction": "lwi\tr5, r19, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccae0",
+      "instruction": "lwi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccaf8",
+      "instruction": "swi\tr3, r1, 52",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb10",
+      "instruction": "lwi\tr19, r19, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb18",
+      "instruction": "lwi\tr22, r1, 48",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb2c",
+      "instruction": "lwi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb4c",
+      "instruction": "swi\tr3, r1, 28",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb50",
+      "instruction": "lbui\tr5, r19, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb5c",
+      "instruction": "lwi\tr3, r1, 36",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb68",
+      "instruction": "swi\tr3, r1, 36",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb78",
+      "instruction": "lbui\tr5, r19, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb7c",
+      "instruction": "lbui\tr5, r19, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdccb8c",
+      "instruction": "lwi\tr28, r1, 56",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb40",
+      "instruction": "lwi\tr3, r4, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb54",
+      "instruction": "swi\tr5, r0, 48",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb60",
+      "instruction": "lwi\tr3, r6, 16",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb78",
+      "instruction": "swi\tr22, r1, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb7c",
+      "instruction": "lwi\tr3, r6, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb80",
+      "instruction": "lwi\tr22, r6, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb84",
+      "instruction": "swi\tr19, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb88",
+      "instruction": "swi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb98",
+      "instruction": "lwi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbb9c",
+      "instruction": "lwi\tr19, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbba0",
+      "instruction": "lwi\tr22, r1, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbbac",
+      "instruction": "lbui\tr5, r19, 12",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbbb8",
+      "instruction": "lwi\tr3, r19, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbbc4",
+      "instruction": "lwi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcbbcc",
+      "instruction": "lwi\tr19, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc020",
+      "instruction": "swi\tr22, r1, 84",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc024",
+      "instruction": "lwi\tr4, r3, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc028",
+      "instruction": "swi\tr23, r1, 88",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc030",
+      "instruction": "swi\tr4, r1, 60",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc034",
+      "instruction": "lwi\tr4, r3, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc03c",
+      "instruction": "swi\tr24, r1, 92",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc040",
+      "instruction": "swi\tr4, r1, 64",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc044",
+      "instruction": "lwi\tr4, r3, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc04c",
+      "instruction": "swi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc050",
+      "instruction": "swi\tr4, r1, 68",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc054",
+      "instruction": "lwi\tr4, r3, 12",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc058",
+      "instruction": "lbui\tr3, r3, 16",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc05c",
+      "instruction": "swi\tr19, r1, 80",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc060",
+      "instruction": "swi\tr4, r1, 72",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc064",
+      "instruction": "sbi\tr3, r1, 76",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc068",
+      "instruction": "swi\tr25, r1, 96",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc06c",
+      "instruction": "swi\tr26, r1, 100",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc070",
+      "instruction": "swi\tr27, r1, 104",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc084",
+      "instruction": "sbi\tr6, r5, 28",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc094",
+      "instruction": "lwi\tr3, r23, 24",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc0e4",
+      "instruction": "lbui\tr3, r3, 32",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc0fc",
+      "instruction": "sbi\tr3, r4, 28",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc120",
+      "instruction": "sbi\tr3, r19, 28",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc138",
+      "instruction": "sbi\tr0, r3, 28",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc13c",
+      "instruction": "lwi\tr5, r23, 20",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc144",
+      "instruction": "swi\tr3, r23, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc15c",
+      "instruction": "lbui\tr5, r3, 28",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc17c",
+      "instruction": "lwi\tr5, r23, 20",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc180",
+      "instruction": "lwi\tr15, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc184",
+      "instruction": "lwi\tr19, r1, 80",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc188",
+      "instruction": "lwi\tr22, r1, 84",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc18c",
+      "instruction": "lwi\tr23, r1, 88",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc190",
+      "instruction": "lwi\tr24, r1, 92",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc194",
+      "instruction": "lwi\tr25, r1, 96",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc198",
+      "instruction": "lwi\tr26, r1, 100",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcc19c",
+      "instruction": "lwi\tr27, r1, 104",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd2120",
+      "instruction": "swi\tr29, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd2124",
+      "instruction": "swi\tr30, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd2128",
+      "instruction": "swi\tr31, r1, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd21b0",
+      "instruction": "lwi\tr29, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd21b4",
+      "instruction": "lwi\tr30, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd21b8",
+      "instruction": "lwi\tr31, r1, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd21c8",
+      "instruction": "swi\tr29, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd21cc",
+      "instruction": "swi\tr30, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd21d0",
+      "instruction": "swi\tr31, r1, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd226c",
+      "instruction": "lwi\tr29, r1, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd2270",
+      "instruction": "lwi\tr30, r1, 4",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdd2274",
+      "instruction": "lwi\tr31, r1, 8",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcba10",
+      "instruction": "lwi\tr4, r5, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcba20",
+      "instruction": "lbui\tr6, r4, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcba2c",
+      "instruction": "lbui\tr7, r7, 14453",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdcba5c",
+      "instruction": "swi\tr4, r5, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdc00c8",
+      "instruction": "swi\tr4, r3, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdc00d8",
+      "instruction": "swi\tr4, r3, 0",
+      "classification": "Address not proven by this inventory"
+    },
+    {
+      "pc": "0xffdc00ec",
+      "instruction": "swi\tr4, r3, 0",
+      "classification": "Address not proven by this inventory"
+    }
+  ],
+  "self_loops": [
+    "0xffdc8a6c",
+    "0xffdc00f0"
+  ],
+  "limits": "Function-level direct-edge overapproximation, not instruction reachability or register/dataflow analysis. Conditional targets, indirect calls, ROM/reset/NMI and stack bounds require separate proof. All memory effective addresses remain unresolved.",
+  "disassembly_sha256": "79003dec6c4c0990c93e912203470af715a47ec4cbfbccc79da5a4415abe5a06"
+}

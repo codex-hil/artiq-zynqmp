@@ -2236,3 +2236,12 @@ non-sleep loops; ordinary guard flow alone is insufficient. No HW access.
 Next exact linked exception-vector/helper/transitive footprint audit, preserving
 exception reporting. No unchanged capture retry; DDR NOT_ADMITTED. Evidence
 `evidence/ddr-post-guard-review-2026-10-24`.
+
+## 2026-10-24 — linked PMU exception inventory, exclusion still open
+
+Offline exact-image direct-edge audit:13function blocks/26edges/148memoryops,
+software/hardware exception selfloops verified. printf bra r3 atffdcc9ec remains
+unresolved; conditional/unsupported control retained, effective addresses unproven.
+Two decoder tests PASS. No HW or exception-policy changes. Next ELF-backed printf
+jump-table and memory-footprint review; DDR NOT_ADMITTED. Evidence
+`evidence/pmu-exception-flow-2026-10-24`.
