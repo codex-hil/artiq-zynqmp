@@ -1,0 +1,30 @@
+{
+  "hardware_access": false,
+  "inputs": [
+    {
+      "path": "diagnostics/ddr/pmu_boundary/guard.h",
+      "bytes": 1803,
+      "sha256": "e540ff26785e17669867842c403af18c09d228160de8f6a0fea6e2582d259d28"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-lab-guard-full-20261023/disassembly.txt",
+      "bytes": 694743,
+      "sha256": "4dc5422d82eebbdc6a6c763149fdcc0130245bb133c6ef4bd5554738026254a8"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include/mb_interface.h",
+      "bytes": 17435,
+      "sha256": "fd36f00ba55319f9b9057952fb641dd15cf1ad45a80de42303df95f6d230b9f2"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/xpfw_core.c",
+      "bytes": 12844,
+      "sha256": "f0645af86831a588e3d07b8c381ac051da42c6a455b7f476164b139f54135ee7"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/ug1085-review-20261023.pdf",
+      "bytes": 15240366,
+      "sha256": "2361241d80aae59015f4416ca9f39dc078c0396e935fc9620ce3251ab4270bbb"
+    }
+  ]
+}

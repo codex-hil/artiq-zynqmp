@@ -1,5 +1,17 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-23 — PMU RAM arbitration requirement identified offline
+
+Official UG1085 v2.5 p113 requires sleeping PMU for external APB RAM access;
+tight instruction fetch can starve external access. Failed guard ends in nop/
+backward branch, so its no-load/store property was insufficient. This is a
+documented test-design defect consistent with timeout, not proof of guard entry.
+UG984 sleep/wakeup semantics and installed BSP reviewed. No HW or image changes.
+Next: specifically changed default-off sleep terminal, linked-flow negative
+controls and fresh pins before any bounded leased trial. ACK remains0; full DDR
+NOT_ADMITTED. Evidence `evidence/pmu-guard-ram-review-2026-10-23`.
+
+
 
 ## 2026-10-23 — PMU lab-guard attempt FAIL; reserved-space/debug recovery PASS
 
