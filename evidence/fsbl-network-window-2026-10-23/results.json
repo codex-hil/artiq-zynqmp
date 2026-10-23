@@ -1,0 +1,253 @@
+{
+  "status": "OFFLINE_BOOT_WINDOW_AUDIT_NOT_ADMITTED",
+  "hardware_executed": false,
+  "sources": [
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_initialization.c",
+      "sha256": "270ea261a9b338f4850b3206f17c6525e13681f10f9174b7ae81fe86c5469c6b",
+      "anchors": {
+        "case XFSBL_JTAG_BOOT_MODE:": [
+          967
+        ],
+        "Status = XFSBL_STATUS_JTAG;": [
+          936,
+          970
+        ],
+        "FsblInstancePtr->DeviceOps.DeviceInit(BootMode)": [
+          1116
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/xfsbl_main.c",
+      "sha256": "1338efdd5dfb3854a2a96abf62b7e3c3c7139ca9a15fcfbdf9715b3763bb9a7b",
+      "anchors": {
+        "else if (XFSBL_STATUS_JTAG == FsblStatus)": [
+          156
+        ],
+        "Xil_Out32(XFSBL_R5_USAGE_STATUS_REG,": [
+          162,
+          181,
+          622,
+          626,
+          632
+        ],
+        "FsblStage = XFSBL_STAGE4;": [
+          170,
+          235,
+          255
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/src/psu_init.c",
+      "sha256": "c10aaf17082b24bcc4b696da0b7061a408d423c7420676c9e804621897081f94",
+      "anchors": {
+        "GEM 0 reset": [
+          14566
+        ],
+        "0x00000001U, 0x00000000U);": [
+          164,
+          342,
+          492,
+          645,
+          792,
+          1504,
+          1518,
+          1532,
+          4094,
+          14573,
+          14590
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/src/pm_reset.c",
+      "sha256": "8bff735755702f360ca44e10c201b95e2b8cb17063cf469806ab4f50541dc5b8",
+      "anchors": {
+        "static PmResetRom pmResetGem0": [
+          786
+        ],
+        ".pulseRom = &XpbrRstGem0Handler,": [
+          794
+        ]
+      }
+    }
+  ],
+  "images": {
+    "fsbl": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/app/build/zynqmp_fsbl.elf",
+      "sha256": "8eb8dddea80c93fe63395ca030ebc60c417e64d297dc4610827db8740f3f04a5",
+      "named_network_symbols": [],
+      "reset_related_symbols": [
+        "XSdPs_DllReset.constprop.0"
+      ]
+    },
+    "pmu": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-app/build/zynqmp_pmufw.elf",
+      "sha256": "9f5c58c5985c0c9dd628e7b74a9bff1bb769dfe8d807c48915fe863e3baa2709",
+      "named_network_symbols": [],
+      "reset_related_symbols": [
+        "PmConfigResetSectionHandler",
+        "PmExtReset",
+        "PmGetResetById",
+        "PmPllBypassAndReset.isra.0",
+        "PmResetAssertAdma",
+        "PmResetAssertCommon",
+        "PmResetAssertGen",
+        "PmResetAssertGpo",
+        "PmResetAssertInt",
+        "PmResetAssertPl",
+        "PmResetAssertRom",
+        "PmResetDoAssert",
+        "PmResetGetStatusGen",
+        "PmResetGetStatusGpioBankIOs",
+        "PmResetGetStatusGpo",
+        "PmResetGetStatusPl",
+        "PmResetGetStatusRom",
+        "PmResetPulseAdma",
+        "PmResetPulseFpd",
+        "PmResetPulseGen",
+        "PmResetPulseGpioBankIOs",
+        "PmResetPulseGpo",
+        "PmResetPulsePl",
+        "PmResetPulsePsOnly",
+        "PmResetPulseRom",
+        "PmResetPulseRpuLs",
+        "PmResetSlaveStates",
+        "XPfw_ResetPsOnly",
+        "XSecure_AesReset",
+        "pmAllResets",
+        "pmResetAcpu0",
+        "pmResetAcpu0Pwron",
+        "pmResetAcpu1",
+        "pmResetAcpu1Pwron",
+        "pmResetAcpu2",
+        "pmResetAcpu2Pwron",
+        "pmResetAcpu3",
+        "pmResetAcpu3Pwron",
+        "pmResetAdma",
+        "pmResetAfiFm0",
+        "pmResetAfiFm1",
+        "pmResetAfiFm2",
+        "pmResetAfiFm3",
+        "pmResetAfiFm4",
+        "pmResetAfiFm5",
+        "pmResetAfiFm6",
+        "pmResetApll",
+        "pmResetApmFpd",
+        "pmResetApmLpd",
+        "pmResetApuL2",
+        "pmResetCan0",
+        "pmResetCan1",
+        "pmResetDDR",
+        "pmResetDbgFpd",
+        "pmResetDbgLpd",
+        "pmResetDp",
+        "pmResetDpll",
+        "pmResetFpd",
+        "pmResetGdma",
+        "pmResetGem0",
+        "pmResetGem1",
+        "pmResetGem2",
+        "pmResetGem3",
+        "pmResetGpio",
+        "pmResetGpio5EMIO92",
+        "pmResetGpio5EMIO93",
+        "pmResetGpio5EMIO94",
+        "pmResetGpio5EMIO95",
+        "pmResetGpo3Pl0",
+        "pmResetGpo3Pl1",
+        "pmResetGpo3Pl10",
+        "pmResetGpo3Pl11",
+        "pmResetGpo3Pl12",
+        "pmResetGpo3Pl13",
+        "pmResetGpo3Pl14",
+        "pmResetGpo3Pl15",
+        "pmResetGpo3Pl16",
+        "pmResetGpo3Pl17",
+        "pmResetGpo3Pl18",
+        "pmResetGpo3Pl19",
+        "pmResetGpo3Pl2",
+        "pmResetGpo3Pl20",
+        "pmResetGpo3Pl21",
+        "pmResetGpo3Pl22",
+        "pmResetGpo3Pl23",
+        "pmResetGpo3Pl24",
+        "pmResetGpo3Pl25",
+        "pmResetGpo3Pl26",
+        "pmResetGpo3Pl27",
+        "pmResetGpo3Pl28",
+        "pmResetGpo3Pl29",
+        "pmResetGpo3Pl3",
+        "pmResetGpo3Pl30",
+        "pmResetGpo3Pl31",
+        "pmResetGpo3Pl4",
+        "pmResetGpo3Pl5",
+        "pmResetGpo3Pl6",
+        "pmResetGpo3Pl7",
+        "pmResetGpo3Pl8",
+        "pmResetGpo3Pl9",
+        "pmResetGpu",
+        "pmResetGpuPp0",
+        "pmResetGpuPp1",
+        "pmResetGt",
+        "pmResetI2C0",
+        "pmResetI2C1",
+        "pmResetIopll",
+        "pmResetIouCc",
+        "pmResetIpi",
+        "pmResetLpdSwdt",
+        "pmResetNand",
+        "pmResetOcm",
+        "pmResetOpsAdma",
+        "pmResetOpsGeneric",
+        "pmResetOpsGpioBankIO",
+        "pmResetOpsGpo",
+        "pmResetOpsNoAssert",
+        "pmResetOpsPl",
+        "pmResetOpsRom",
+        "pmResetPcieBridge",
+        "pmResetPcieCfg",
+        "pmResetPcieCtrl",
+        "pmResetPl",
+        "pmResetPsOnly",
+        "pmResetQspi",
+        "pmResetRpll",
+        "pmResetRpuAmba",
+        "pmResetRpuDbg0",
+        "pmResetRpuDbg1",
+        "pmResetRpuLs",
+        "pmResetRpuPge",
+        "pmResetRpuR50",
+        "pmResetRpuR51",
+        "pmResetRtc",
+        "pmResetSata",
+        "pmResetSdio0",
+        "pmResetSdio1",
+        "pmResetSoft",
+        "pmResetSpi0",
+        "pmResetSpi1",
+        "pmResetSwdtCrf",
+        "pmResetSwdtCrl",
+        "pmResetSysmon",
+        "pmResetTimestamp",
+        "pmResetTtc0",
+        "pmResetTtc1",
+        "pmResetTtc2",
+        "pmResetTtc3",
+        "pmResetUart0",
+        "pmResetUart1",
+        "pmResetUsb0Apb",
+        "pmResetUsb0Core",
+        "pmResetUsb0Hiber",
+        "pmResetUsb1Apb",
+        "pmResetUsb1Core",
+        "pmResetUsb1Hiber",
+        "pmResetVpll"
+      ]
+    }
+  },
+  "destructive_test_allowed": false,
+  "limits": "Missing network symbols are negative evidence only. Generic MMIO, ROM callbacks, boot-mode state and live transaction drain are not proven by symbol inspection."
+}

@@ -1214,3 +1214,17 @@ No hardware access or changes. Destructive DDR remains NOT_ADMITTED.
 Next inspect the diagnostic FSBL/PMU boot path to establish whether GEM is
 started there at all, then define a boot-window ownership gate instead of
 assuming that stopping a running networked CPU stops the Ethernet master.
+
+
+### 2026-10-23 — Diagnostic FSBL/PMU Ethernet boot-window audit (offline)
+
+Pinned diagnostic FSBL8eb8ddde/PMU9f5c58c5 match existing observer inputs;
+ELF symbol inventories have no named XEmacPs/lwIP/netif entry points. Source
+JTAG branch returns before DeviceInit and takes stage4/handoff; generated PS
+init releases GEM0 reset. PMU includes GEM reset/ROM callback definitions.
+These facts do not prove live DMA absence or PMU inactivity. Source hashes and
+line anchors: `evidence/fsbl-network-window-2026-10-23`; reproducible audit script
+added. `diagnostics/ddr/BOOT_WINDOW_OWNERSHIP.md` defines required in-window
+observations, reject/restore policy and still-closed DDR write admission.
+No hardware access. Next integrate existing read-only peripheral/master frames
+into the trained-observer lifecycle, before network runtime/CPU1 worker startup.
