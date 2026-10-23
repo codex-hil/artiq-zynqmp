@@ -54,3 +54,14 @@ frame. The parent pins nested input manifest, vendor headers and all execution
 helpers before and under its lease. Failure rejects the candidate and restores
 normal runtime; a quiet result remains observation-only, never DDR admission.
 Physical execution remains NOT_RUN at this checkpoint.
+
+
+## Physical peripheral window PASS — 2026-10-23
+
+Same-boot capture after trained exception-observer execution passed: GEM RX/TX
+both disabled, SD transfer/inhibit fields0, QSPI DMA STS0, stable two samples.
+Full cycle93.081s included normal-runtime restoration and physical debug/DMA/
+Ethernet requalification at192.168.2.3. Lease released. Raw evidence is in
+`evidence/boot-peripheral-hardware-2026-10-23`. This establishes necessary
+peripheral observations in this boot only; remaining owner/drain conditions
+above are unresolved, and no DDR writer ran. Next extend same-window coverage.

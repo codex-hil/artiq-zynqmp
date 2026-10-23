@@ -1,6 +1,21 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
 
+## 2026-10-23 — Physical same-boot peripheral observation PASS
+
+93.081s bounded diagnostic/restoration cycle under shared Genesys lease PASS.
+Trained FSBL -> exception-aware EL3 OCM observer -> two peripheral samples in
+same boot, before network runtime/CPU1 worker. GEM0 NWCTRL0 (RX/TX disabled),
+SD1 present-state0x1f70000; decoded transfer/inhibit bits0,
+QSPI DMA STS0. All necessary observed fields PASS; DDR test NOT_RUN and admission
+stays closed for remaining core/PMU/PL/PCAP/DMA ownership/drain requirements.
+Normal runtime restored192.168.2.3, physical TTL/CoreDMA/analyzer ring-wrap/
+MonInj and Ethernet tests PASS. Lease released. No Si/SD/flash/OTP/Kasli writes.
+Evidence: `evidence/boot-peripheral-hardware-2026-10-23` includes raw logs/hashes,
+observer results and restoration qualification. Next extend in-window observation
+to existing ZDMA/CSU/RPU/core inventory without admitting DDR writes.
+
+
 ## 2026-10-23 — Same-boot peripheral observation integrated (offline)
 
 Optional peripheral_inputs manifest now binds the existing source-checked
