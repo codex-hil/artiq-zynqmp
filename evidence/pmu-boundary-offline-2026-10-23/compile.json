@@ -1,0 +1,55 @@
+{
+  "status": "TARGET_CORE_OBJECTS_PASS_NOT_LINKED_FIRMWARE",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "variants": {
+    "False": {
+      "command": [
+        "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+        "-c",
+        "-O2",
+        "-Werror",
+        "-DSDT",
+        "-mlittle-endian",
+        "-mxl-barrel-shift",
+        "-mxl-pattern-compare",
+        "-mxl-soft-mul",
+        "-mxl-soft-div",
+        "-mcpu=v9.2",
+        "-I/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include",
+        "-I/home/codex-hil/.local/state/artiq-builds/pmu-boundary-stage-20261023/src",
+        "/home/codex-hil/.local/state/artiq-builds/pmu-boundary-stage-20261023/src/xpfw_core.c",
+        "-o",
+        "/home/codex-hil/.local/state/artiq-builds/pmu-boundary-stage-20261023/core-disabled.o"
+      ],
+      "object_sha256": "8b183f0a745934d55fa40e9f248320f812e794901d08662507ddd3945a08d339",
+      "telemetry_symbols": []
+    },
+    "True": {
+      "command": [
+        "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+        "-c",
+        "-O2",
+        "-Werror",
+        "-DSDT",
+        "-mlittle-endian",
+        "-mxl-barrel-shift",
+        "-mxl-pattern-compare",
+        "-mxl-soft-mul",
+        "-mxl-soft-div",
+        "-mcpu=v9.2",
+        "-I/home/codex-hil/.local/state/artiq-builds/fsbl-spd-dump-20261022/pmu-bsp/include",
+        "-I/home/codex-hil/.local/state/artiq-builds/pmu-boundary-stage-20261023/src",
+        "-DARTIQ_PMU_BOUNDARY_TELEMETRY=1",
+        "/home/codex-hil/.local/state/artiq-builds/pmu-boundary-stage-20261023/src/xpfw_core.c",
+        "-o",
+        "/home/codex-hil/.local/state/artiq-builds/pmu-boundary-stage-20261023/core-enabled.o"
+      ],
+      "object_sha256": "d8fac1a5b88670e05a13d5c1cf10487e128664d4bca97ddd5f7a5bba08429dde",
+      "telemetry_symbols": [
+        "00000000 00000020 b artiq_pmu_boundary"
+      ]
+    }
+  },
+  "limits": "32-byte local BSS record only, ack always0; no mailbox/transport/live snapshot/interrupt exclusion/PMU quiescence."
+}

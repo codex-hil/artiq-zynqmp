@@ -1,0 +1,29 @@
+# AMD PMU core-loop boundary telemetry — offline only
+
+`stage_pmu_boundary.py` copies the existing PMU application source into a fresh
+output and patches only that copy. The upstream AMD header/license remains
+intact. It rejects changed/duplicate insertion anchors and a second patch.
+
+The optional `ARTIQ_PMU_BOUNDARY_TELEMETRY=1` call is placed at the ordinary
+`XPfw_CoreLoop` boundary before sleep and scheduler processing. It records a
+32-byte static PMU-local BSS object. Without the define this object and call are
+absent. It neither disables interrupts nor changes scheduler/PM/secure services.
+
+This is **not quiescence**: interrupts may occur during or after an observation;
+reaching a main-loop boundary does not exclude ROM/NMI/error paths or DDR access.
+Every observation writes `ack=0` and `unresolved=0x7f`. The sequence/count fields
+wrap modulo2^32 and are only diagnostic. A future reader must use a reviewed
+coherent capture protocol; sequence parity is not proof of memory visibility or
+exclusive ownership. No host address, IPI command or read route is assigned.
+
+The actual patched AMD core compiles with MicroBlaze GCC13.3 and warnings as
+errors, both enabled and disabled. Target symbols show exactly32B local BSS only
+when enabled. Host C controls verify that observation clears even a forged ACK,
+keeps all seven obligations unresolved, and handles count wrap. These are object
+and host-model checks, not linked firmware or physical PMU evidence.
+
+Next link an isolated diagnostic firmware using the existing AMD BSP and boot
+services, then inspect PMU-local section placement and total capacity. Resolve a
+read-only, non-disruptive observation transport before considering deployment.
+Do not reuse the failed AP0 private-memory read or guess aliases. A live boundary
+snapshot would still be telemetry, never a destructive DDR-test permit.

@@ -1928,3 +1928,20 @@ evidence `evidence/pmu-quiesce-protocol-offline-2026-10-23`.
 No runtime firmware/board change. Next isolated AMD module/hook/transport source
 integration and footprint/ROM-NMI/error review, before any deployment. Full DDR
 NOT_RUN/NOT_ADMITTED; unresolved obligations cannot be bypassed by a model ACK.
+
+
+
+## 2026-10-23 — Isolated AMD PMU boundary telemetry objects compile (offline)
+
+Fresh source copy preserves original AMD PMU application. Exact-anchor patch
+adds optional ARTIQ_PMU_BOUNDARY_TELEMETRY call at core-loop boundary before
+sleep/scheduler. Header keeps32B static PMU-local BSS observation record;
+ack always0/unresolved7f, no transport/host address or interrupt/service changes.
+Actual patched AMD core compiles enabled/disabled with MicroBlazeGCC13.3/-Werror;
+record symbol32B BSS only when enabled. Two controls PASS: actual C observations
+cannot ACK even after counterwrap/forged field; changed/duplicate hook rejected.
+Evidence `evidence/pmu-boundary-offline-2026-10-23`; original source hash retained.
+No linked firmware/deployment/HW access or quiescence claim. Next isolated full
+PMU link with unchanged AMD BSP/boot services, inspect local-memory capacity/
+placement, and select a proven non-disruptive telemetry route. No private AP0
+retry/alias guessing. Normal baseline unchanged; DDR NOT_RUN/NOT_ADMITTED.
