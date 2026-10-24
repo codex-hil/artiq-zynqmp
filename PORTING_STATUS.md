@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — printf range/direct exception MMIO review offline
+
+CMPU/BLTID source semantics narrow surviving index to0..21 under prior CFG/callee
+assumptions;10boundary arithmetic controls PASS. Direct errorMMIO/UART addresses
+classified, notDDR; UARTpoll forward progress unbounded. Full format/ctype/varargs/
+stack/helper footprint remains open. No HW/firmwarechanges;DDR NOT_ADMITTED.
+Next exact format/ctype/varargs and exception-stack audit. Evidence
+`evidence/pmu-printf-range-memory-2026-10-24`.
+
+
 ## 2026-10-24 — printf delay-slot structural dominance PASS offline
 
 All printf instruction words bound to ELF. Contextual delay-slot graph shows

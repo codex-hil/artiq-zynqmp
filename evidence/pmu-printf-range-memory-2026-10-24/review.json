@@ -1,0 +1,96 @@
+{
+  "status": "CONDITIONAL_RANGE_AND_DIRECT_MMIO_REVIEW",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "elf_sha256": "7a82b8f2ac5beb2bff4cafaa3767b888c09461a7c66371f632332f7bd66f51c4",
+  "disassembly_sha256": "79003dec6c4c0990c93e912203470af715a47ec4cbfbccc79da5a4415abe5a06",
+  "structural_check": {
+    "status": "STRUCTURAL_DOMINANCE_PASS_CONDITIONAL_ON_CALL_RETURNS",
+    "hardware_executed": false,
+    "destructive_test_allowed": false,
+    "reachable_context_nodes": 257,
+    "dominates_indirect_jump": {
+      "0xffdcc99c": true,
+      "0xffdcc9d0": true,
+      "0xffdcc9d4": true,
+      "0xffdcc9d8": true,
+      "0xffdcc9dc": true,
+      "0xffdcc9e0": true,
+      "0xffdcc9e4": true,
+      "0xffdcc9e8": true
+    },
+    "limits": "Calls modeled as returning to their own continuation with ABI preserved; no callee corruption/nonlocal return proof. Branch outcomes overapproximated. Unsigned CMPU semantics and register value ranges require separate evidence. ROM/reset/NMI and memory exclusion not established."
+  },
+  "boundary_controls": [
+    {
+      "r3_before_subtract": "0x0",
+      "index": "0xffffff9d",
+      "reject_branch": true
+    },
+    {
+      "r3_before_subtract": "0x62",
+      "index": "0xffffffff",
+      "reject_branch": true
+    },
+    {
+      "r3_before_subtract": "0x63",
+      "index": "0x0",
+      "reject_branch": false
+    },
+    {
+      "r3_before_subtract": "0x64",
+      "index": "0x1",
+      "reject_branch": false
+    },
+    {
+      "r3_before_subtract": "0x77",
+      "index": "0x14",
+      "reject_branch": false
+    },
+    {
+      "r3_before_subtract": "0x78",
+      "index": "0x15",
+      "reject_branch": false
+    },
+    {
+      "r3_before_subtract": "0x79",
+      "index": "0x16",
+      "reject_branch": true
+    },
+    {
+      "r3_before_subtract": "0x7fffffff",
+      "index": "0x7fffff9c",
+      "reject_branch": true
+    },
+    {
+      "r3_before_subtract": "0x80000000",
+      "index": "0x7fffff9d",
+      "reject_branch": true
+    },
+    {
+      "r3_before_subtract": "0xffffffff",
+      "index": "0xffffff9c",
+      "reject_branch": true
+    }
+  ],
+  "direct_memory": {
+    "software_exception_stores": [
+      "0xffd80050",
+      "0xffd80054",
+      "0xffd6033c"
+    ],
+    "hardware_exception_rmw": [
+      "0xffd80064",
+      "0xffd6033c"
+    ],
+    "uart_status_read": "0xff00002c",
+    "uart_fifo_write": "0xff000030"
+  },
+  "open": [
+    "full reaching-definition/CFG decode soundness independent review",
+    "callee ABI and stack bounds",
+    "format string/ctype/varargs/helper effective addresses",
+    "ROM/reset/NMI and error side effects",
+    "secondary cores and prior PS transactions"
+  ]
+}

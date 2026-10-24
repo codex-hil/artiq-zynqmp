@@ -2261,3 +2261,12 @@ index-check instructions dominate indirect jump, assuming callees return normall
 Two tests PASS incl synthetic bypass/text mismatch rejection. Register-value/CMPU
 semantics, callee ABI and memory footprint remain unresolved; DDR NOT_ADMITTED.
 No HW/firmware changes. Evidence `evidence/pmu-printf-cfg-2026-10-24`.
+
+## 2026-10-24 — printf range/direct exception MMIO review offline
+
+CMPU/BLTID source semantics narrow surviving index to0..21 under prior CFG/callee
+assumptions;10boundary arithmetic controls PASS. Direct errorMMIO/UART addresses
+classified, notDDR; UARTpoll forward progress unbounded. Full format/ctype/varargs/
+stack/helper footprint remains open. No HW/firmwarechanges;DDR NOT_ADMITTED.
+Next exact format/ctype/varargs and exception-stack audit. Evidence
+`evidence/pmu-printf-range-memory-2026-10-24`.
