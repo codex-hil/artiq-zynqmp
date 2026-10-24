@@ -39,11 +39,12 @@ MAGIC=0x41585048
 class Phaser(Client):
  def identify(self):
   magic,abi,fs,tones=self.read(0,4)
-  if (magic,abi,fs,tones)!=(MAGIC,0x10000,FS,5):raise RuntimeError('Wrong Phaser endpoint/ABI')
+  if (magic,fs,tones)!=(MAGIC,FS,5) or abi not in (0x10000,0x10001):raise RuntimeError('Wrong Phaser endpoint/ABI')
   return {'magic':magic,'abi':abi,'sample_rate':fs,'tones':tones}
  def configure(self,channels,enable=3,rephase=True):
   """channels: two lists of up to five (Hz, amplitude[-1,1), phase turns)."""
-  self.identify()
+  identity=self.identify()
+  if identity['abi']>=0x10001 and self.read(0x20)[0]:raise RuntimeError('Envelope playback owns DDS configuration')
   if len(channels)!=2 or enable not in range(4):raise ValueError('Two channels and enable0..3 required')
   words=[]
   for channel in channels:

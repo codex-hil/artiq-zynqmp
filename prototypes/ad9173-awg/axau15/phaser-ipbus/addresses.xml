@@ -12,4 +12,13 @@
   <node id="commit" address="0x14" permission="w"/>
   <node id="shadow" address="0x100" permission="rw" mode="incremental" size="21"/>
   <node id="held" address="0x200" permission="r" mode="incremental" size="21"/>
+  <node id="capabilities" address="0x8" permission="r"/>
+  <node id="envelope_busy" address="0x20" permission="r"/>
+  <node id="envelope_state" address="0x21" permission="r"/>
+  <node id="envelope_commands" address="0x22" permission="r"/>
+  <node id="envelope_length" address="0x23" permission="rw"/>
+  <node id="envelope_repeats" address="0x24" permission="rw"/>
+  <node id="envelope_command" address="0x25" permission="w"/>
+  <node id="envelope_abort" address="0x26" permission="w"/>
+  <node id="envelope_ram" address="0x400" permission="rw" mode="incremental" size="1024"/>
 </node>

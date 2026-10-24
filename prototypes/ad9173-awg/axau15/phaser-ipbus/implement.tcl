@@ -72,6 +72,12 @@ set clr [get_cells -hier -filter {NAME =~ *generator_clear_reg*}]
 if {[llength $held]<643 || [llength $active]<642} {error "Incomplete DDS config banks"}
 set_max_delay -datapath_only 6.0 -from $held -to [concat $active $clr]
 set_bus_skew 6.0 -from $held -to [concat $active $clr]
+# Envelope command fields stay immutable from request until playback/drain ack.
+set envheld [get_cells -hier -filter {NAME =~ *registers_env_config_*reg*}]
+set envactive [get_cells -hier -filter {NAME =~ *envelope_active_config_reg*}]
+if {[llength $envheld]!=43 || [llength $envactive]!=43} {error "Envelope command bank shape changed"}
+set_max_delay -datapath_only 6.0 -from $envheld -to $envactive
+set_bus_skew 6.0 -from $envheld -to $envactive
 # Gray FIFO pointers: retain a skew constraint in addition to first-stage max delay.
 set groups [dict create]
 foreach src [get_cells -hier -regexp {.*graycounter[0-9]+_q_reg\[[0-9]+\]}] {

@@ -13,8 +13,8 @@ existing dedicated 245.76 MHz MGTREFCLK and QPLL1 configuration. The normal
 RF example uses DAC main NCOs at 150 MHz and FPGA offsets -1/+1 MHz.
 The generator FTW rate is 307.2 MHz, not the original Phaser 250 MHz.
 
-Status and evidence
--------------------
+Baseline CW status and evidence
+-------------------------------
 
 2026-10-24: simulation, implementation and physical Ethernet/RF tests PASS.
 Evidence: ``../../evidence/axau15/phaser-ipbus-20261024/acceptance.json``.
@@ -50,6 +50,16 @@ see ``normal-start.json`` in the evidence directory.
 Final state: one tone per channel, FPGA offsets-1/+1MHz, ASF32767,
 main DAC NCO150MHz on both. Scope settings restored/read back.
 
+
+Local envelope extension
+------------------------
+
+Current sources also provide a finite complex envelope sequencer over IPbus
+(ABI0x00010001):256 entries, independent I/Q gains on both channels,
+6.5104ns nominal steps, finite repeats and abort. See ``ENVELOPE.rst`` for
+its register map, CLI, validation and shared-board restoration procedure.
+The baseline CW evidence above belongs to ABI0x00010000, which remains the
+shared default image. The envelope client rejects older images explicitly.
 
 Interface
 ---------

@@ -1,0 +1,23 @@
+{
+  "status": "SIMULATION_PASS",
+  "observed_utc": "2026-10-24T19:20:33.635938+00:00",
+  "rtl_tests": 15,
+  "pytest_seconds": 57.08,
+  "localhost_udp": "PASS: dropped/stale replies, bounded reads, no write retries",
+  "synthetic_rf_analysis": "2 tests PASS: known levels/phase/Gaussian; incorrect phase rejected",
+  "physical_hardware_access": false,
+  "test_sources_sha256": {
+    "test_client.py": "1807a6f6e35090ca27a3b91b73cf02a62794ab9ee977e32b8fd1da338af7febb",
+    "test_dsp.py": "5ddcdbf2291bacbacdc0777f0e4d2c2707f151b387f9fa336a1e1de59f38d08b",
+    "test_envelope.py": "b3033592e65b25503f4e527b9c0f752b6e003dde25bd04a59b071f60a08ce915",
+    "test_envelope_fit.py": "fe41db3abe344ade59664d35b851abfb1a25c99630072fc38ad2cd9b576b724d",
+    "test_envelope_registers.py": "5fa0b42e7a9125b3494fba307d96360efb08283c30542ce17ae4239acfbc6777",
+    "test_fifo.py": "e2d23bd9caa96b58e845c75cb004f6267a452b4d9d15623e0fc9a1903444bba4"
+  },
+  "hdl_sources_sha256": {
+    "envelope.py": "3ceb354274657fa68873de0787133a2a6c0040586aa9bb676df4723979610d68",
+    "registers.py": "15688680a4ab111fe8ac9da435285a4aff685113a7659db49bee734bcba6a7f1",
+    "generate.py": "6adc9950c6180fee8126edfd4a454f57970044dca8544063482c2f1d4b686e0a",
+    "dsp.py": "a428161b9d39ef30a619aa588e3f153680fb29a41dc10bcdd1fa0533b2182f35"
+  }
+}

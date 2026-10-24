@@ -10,6 +10,7 @@ from litex.build.xilinx.common import xilinx_special_overrides
 from litex.soc.cores.clock import USPMMCM
 from liteeth.mac.core import LiteEthMACCore
 from dsp import Generator
+from envelope import EnvelopePlayer, EnvelopeStage
 from registers import Registers
 from rgmii import PHY
 HERE=Path(__file__).resolve().parent
@@ -18,7 +19,9 @@ class Top(base.AXAU15):
  def __init__(self):
   super().__init__(streaming=True)
   self.submodules.generator=dsp=Generator()
-  for inputs,samples in zip(self.link.converter_inputs,dsp.samples):
+  self.submodules.envelope=player=EnvelopePlayer()
+  self.submodules.envelope_stage=stage=EnvelopeStage(dsp.samples,player)
+  for inputs,samples in zip(self.link.converter_inputs,stage.samples):
    self.comb += [inputs[0].eq(Cat(*[iq[0] for iq in samples])),inputs[1].eq(Cat(*[iq[1] for iq in samples]))]
   self.clock_domains.cd_net=ClockDomain('net')
   self.submodules.net_cm=cm=USPMMCM(speedgrade=-2,name="net_cm_mmcm")
@@ -32,7 +35,7 @@ class Top(base.AXAU15):
   self.specials += Instance('IOBUF',i_I=pins[1],i_T=~pins[2],o_O=mdi,io_IO=pads.mdio)
   self.submodules.phy=phy=PHY(pads,self.cd_net.clk,ResetSignal('net'))
   self.submodules.mac=mac=ClockDomainsRenamer({'sys':'net'})(LiteEthMACCore(phy,dw=8,with_sys_datapath=True,with_store_and_forward=True))
-  self.submodules.registers=regs=ClockDomainsRenamer('net')(Registers(dsp))
+  self.submodules.registers=regs=ClockDomainsRenamer('net')(Registers(dsp,player))
   status=Signal(9);self.specials += MultiReg(self.jesd_status,status,'net');self.comb += regs.status.eq(status)
   rx,tx=mac.source,mac.sink;first=Signal(reset=1)
   self.sync.net += If(tx.valid&tx.ready,first.eq(tx.last))
@@ -61,5 +64,7 @@ if __name__=='__main__':
  # Real dual-clock BRAM for MAC CDC FIFOs; avoid distributed RAM data crossing.
  v.main_source,n=re.subn(r'(reg \[11:0\] storage_\d+\[0:31\];)',r'(* ram_style = "block" *) \1',v.main_source)
  if n!=2:raise RuntimeError('Expected two Ethernet CDC memories')
+ v.main_source,n=re.subn(r'(reg \[95:0\] envelope_ram\[0:255\];)',r'(* ram_style = "block" *) \1',v.main_source)
+ if n!=1:raise RuntimeError('Expected envelope RAM')
  v.write('axau15_jesd.v')
  Path('target.json').write_text(json.dumps({'device':'xcau15p-ffvb676-2-i','tones_per_channel':5,'sample_rate':307200000,'ip':'192.168.2.241','mac':'02:00:00:00:a1:15','physical':'NOT_RUN'},indent=2)+'\n')
