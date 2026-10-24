@@ -2279,3 +2279,12 @@ Four handler register arguments match linked printf spill/varargs offsets inside
 but are NOT runtime stack bound; entrySP/nesting/priorframes remain unresolved.
 No HW/firmwarechange;DDR NOT_ADMITTED. Next ordinaryguard-entry stack chain and
 exception-entry/nesting review. Evidence `evidence/pmu-format-stack-2026-10-24`.
+
+## 2026-10-24 — ordinary PMU guard stack chain identified offline
+
+ExactELF Init->Main->guard;CoreLoop/telemetry inlined. Retained64+28=92bytes,
+conditionalSPffddd504. Prior276frameinventory+92=368 is NOT runtime bound.
+Hardwareexception clearsEE/setsEIP perAMD;reset/nonmaskablebreak and actualcore
+faultconfiguration unresolved. No HW/firmwarechanges;DDRNOT_ADMITTED. Next linked
+breakvector/coreconfiguration/ROM review. Evidence
+`evidence/pmu-guard-stack-entry-2026-10-24`.

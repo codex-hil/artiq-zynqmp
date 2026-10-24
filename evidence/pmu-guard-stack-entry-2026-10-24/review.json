@@ -1,0 +1,32 @@
+{
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "status": "CONDITIONAL_ORDINARY_CHAIN_INVENTORY",
+  "elf_sha256": "7a82b8f2ac5beb2bff4cafaa3767b888c09461a7c66371f632332f7bd66f51c4",
+  "pinned_words": {
+    "0xffdc0054": "0x3020d560",
+    "0xffdc8ad8": "0x3021ffc0",
+    "0xffdc91cc": "0xb9f4b494",
+    "0xffdc4660": "0x3021ffe4"
+  },
+  "ordinary_chain": [
+    "XPfw_Init",
+    "XPfw_Main",
+    "artiq_pmu_enter_lab_guard"
+  ],
+  "retained_frames": [
+    64,
+    28
+  ],
+  "ordinary_guard_stack_bytes": 92,
+  "conditional_guard_sp": "0xffddd504",
+  "prior_exception_frames_static_sum_not_bound": 276,
+  "combined_static_sum_not_runtime_bound": 368,
+  "conditional_low_address": "0xffddd3f0",
+  "unknown": [
+    "pre-entry ABI correctness and live SP",
+    "fault/reset/break/ROM paths",
+    "dynamic helper memory and stack path completion",
+    "transaction-history and other masters"
+  ]
+}

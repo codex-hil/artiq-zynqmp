@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — ordinary PMU guard stack chain identified offline
+
+ExactELF Init->Main->guard;CoreLoop/telemetry inlined. Retained64+28=92bytes,
+conditionalSPffddd504. Prior276frameinventory+92=368 is NOT runtime bound.
+Hardwareexception clearsEE/setsEIP perAMD;reset/nonmaskablebreak and actualcore
+faultconfiguration unresolved. No HW/firmwarechanges;DDRNOT_ADMITTED. Next linked
+breakvector/coreconfiguration/ROM review. Evidence
+`evidence/pmu-guard-stack-entry-2026-10-24`.
+
+
 ## 2026-10-24 — exact exception format/varargs/frame inventory offline
 
 ELF format contains four%x integer fields, no%s/dynamic pointer formatting.
