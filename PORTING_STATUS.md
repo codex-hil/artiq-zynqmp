@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — fixed AIB readonly schema/decoder PASS offline
+
+TwoREQ/TYPE/ACK/REQsamples,8fixedAP0reads,no writes/reset/force. ActualTclmock+
+strictdecoder2testsPASS;changed/malformed/ownedstateshandled,no writepermit.
+ABA/nonatomicsnapshot/ownershiplimitations explicit. NoHW/standalonelauncher.
+Nextoptionalparentownedobserverintegration/freshpins;DDRNOT_ADMITTED. Evidence
+`evidence/aib-readonly-offline-2026-10-24`.
+
+
 ## 2026-10-24 — explicit AIB ACK/hold reference model PASS offline
 
 RPUmaster-onlymask30000;freshREQ/ACK,boot/sequence/type/requestchecks,finitepolls,

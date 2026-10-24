@@ -2368,3 +2368,11 @@ permit. Fourmodeltests+vendorbodytestPASS. OCM/LPDDDRothermasks rejected;control
 access/ownershipcoverageunproven. NoHW/MMIO/firmwareintegration. Nextfixedreadonly
 REQ/ACK/TYPEschema+decoder;DDRNOT_ADMITTED. Evidence
 `evidence/aib-ack-protocol-offline-2026-10-24`.
+
+## 2026-10-24 — fixed AIB readonly schema/decoder PASS offline
+
+TwoREQ/TYPE/ACK/REQsamples,8fixedAP0reads,no writes/reset/force. ActualTclmock+
+strictdecoder2testsPASS;changed/malformed/ownedstateshandled,no writepermit.
+ABA/nonatomicsnapshot/ownershiplimitations explicit. NoHW/standalonelauncher.
+Nextoptionalparentownedobserverintegration/freshpins;DDRNOT_ADMITTED. Evidence
+`evidence/aib-readonly-offline-2026-10-24`.

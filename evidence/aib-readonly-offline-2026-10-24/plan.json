@@ -1,0 +1,43 @@
+{
+  "status": "OFFLINE_FIXED_READ_PLAN_NOT_EXECUTED",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "isolation_write_allowed": false,
+  "cable": "210383B7F02DA",
+  "samples": 2,
+  "fields": [
+    {
+      "name": "request_before",
+      "address": "0xff413030"
+    },
+    {
+      "name": "type",
+      "address": "0xff413038"
+    },
+    {
+      "name": "ack",
+      "address": "0xff413040"
+    },
+    {
+      "name": "request_after",
+      "address": "0xff413030"
+    }
+  ],
+  "max_register_reads": 8,
+  "request_writes": 0,
+  "selected_rpu_master_mask": "0x30000",
+  "inputs": [
+    {
+      "path": "scripts/probe_aib_state.tcl",
+      "sha256": "3e327f12cacf87aa8820855870db4e97e72fee9e91d2d22b3be05c9524ca6812"
+    },
+    {
+      "path": "scripts/decode_aib_state.py",
+      "sha256": "b91ea4cc532ee8b51f237f6c834b4239fb41d5a98efd1dd964a7707d71dadec8"
+    },
+    {
+      "path": "tests/test_aib_snapshot.py",
+      "sha256": "239691649f7ba24687bff743c89bb3adb1f20470c8ab9bd51abd2831c5f362dc"
+    }
+  ]
+}
