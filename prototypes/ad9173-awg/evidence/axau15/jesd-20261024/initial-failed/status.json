@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "error": "Command '['docker', '-H', 'unix:///run/user/1001/docker-vivado.sock', 'exec', '8347daa3c4195acd26e6ee535db02374e25a1addd98f447438df7d93db90c68b', '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb', '/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-jesd-hardware-20261024a/read.tcl']' returned non-zero exit status 1.",
+  "bit_sha256": "6ac3a607bc150e038e599059cdf4c9d6d22dbcf94a028ac26b342f28ec0010ee",
+  "scope_access": false,
+  "final_state": "inspect program/read logs; GPIO cleanup attempted by Tcl"
+}

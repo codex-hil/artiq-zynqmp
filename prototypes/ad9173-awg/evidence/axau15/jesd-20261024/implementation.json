@@ -1,0 +1,20 @@
+{
+  "implementation": "PASS",
+  "vivado": "2025.2",
+  "part": "xcau15p-ffvb676-2-i",
+  "synthesis_job": "alinx-jesd-20261024a",
+  "implementation_job": "alinx-jesd-20261024b",
+  "wns_ns": 3.75,
+  "whs_ns": 0.023,
+  "drc_errors": 0,
+  "cdc_critical": 0,
+  "cdc_warning": 0,
+  "unconstrained_internal_endpoints": 0,
+  "partial_input_delay": 6,
+  "partial_input_delay_note": "Asynchronous SPI ownership/MISO and differential SYNC ports use max-delay-only budgets into synchronizers",
+  "bit_sha256": "6ac3a607bc150e038e599059cdf4c9d6d22dbcf94a028ac26b342f28ec0010ee",
+  "structure_audit": "4x GTHE4_CHANNEL_X0Y4..7, QPLL common/ref X0Y1, shared TXUSRCLK/2, width40 divider2",
+  "payload": "zero",
+  "jesd": "2 links subclass0 mode3",
+  "first_implementation_failure": "set_max_delay -datapath_only needed explicit source; corrected per-destination fanin in final script"
+}

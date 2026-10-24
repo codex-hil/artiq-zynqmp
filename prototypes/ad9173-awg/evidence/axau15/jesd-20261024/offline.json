@@ -1,0 +1,8 @@
+{
+ "transport_simulation": "7 tests PASS",
+ "old_zero_payload_wiring_negative_control": "PASS",
+ "host_plan_model": ["pass", "wrong-id no writes", "phy timeout cleanup", "bad link cleanup"],
+ "host_plan_model_status": "PASS_SIMULATION_ONLY",
+ "synthesis": "PASS",
+ "physical": "NOT_RUN_AT_OFFLINE_CHECKPOINT"
+}

@@ -1,0 +1,2769 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Sat Oct 24 17:06:15 2026
+| Host              : 62a6161a08ab running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_timing_summary -report_unconstrained -file timing.rpt
+| Design            : axau15_jesd
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Routed
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+No report available as report_methodology has not been run prior. Run report_methodology on the current design for the summary of methodology violations.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (0)
+6. checking no_output_delay (0)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (6)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (0)
+------------------------------
+ There are 0 input ports with no input delay specified.
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (0)
+-------------------------------
+ There are 0 ports with no output delay specified.
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (6)
+------------------------------------
+ There are 6 input ports with partial input delay specified. (HIGH)
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      3.750        0.000                      0                 1970        0.023        0.000                      0                 1941        0.537        0.000                       0                   886  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock                        Waveform(ns)           Period(ns)      Frequency(MHz)
+-----                        ------------           ----------      --------------
+mgt_reference                {0.000 2.034}          4.069           245.761         
+  axau15_gth4quadpll_clk     {0.000 0.081}          0.163           6144.016        
+    axau15_gth40_rxoutclk    {0.000 3.255}          6.510           153.600         
+    axau15_gth40_txoutclk    {0.000 3.255}          6.510           153.600         
+    axau15_gth41_rxoutclk    {0.000 3.255}          6.510           153.600         
+    axau15_gth42_rxoutclk    {0.000 3.255}          6.510           153.600         
+    axau15_gth43_rxoutclk    {0.000 3.255}          6.510           153.600         
+  axau15_gth4quadpll_refclk  {0.000 2.034}          4.069           245.761         
+spi_gpio_bs                  {0.000 50.000}         100.000         10.000          
+status_scan_bs               {0.000 50.000}         100.000         10.000          
+system_200                   {0.000 2.500}          5.000           200.000         
+  sys_clk                    {0.000 5.000}          10.000          100.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock                          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----                          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+    axau15_gth40_rxoutclk        4.987        0.000                      0                    4        0.074        0.000                      0                    4        0.564        0.000                       0                     7  
+    axau15_gth40_txoutclk        4.167        0.000                      0                 1198        0.034        0.000                      0                 1198        0.537        0.000                       0                   539  
+    axau15_gth41_rxoutclk        4.622        0.000                      0                    4        0.071        0.000                      0                    4        0.565        0.000                       0                     7  
+    axau15_gth42_rxoutclk        4.632        0.000                      0                    4        0.087        0.000                      0                    4        0.564        0.000                       0                     7  
+    axau15_gth43_rxoutclk        4.652        0.000                      0                    4        0.071        0.000                      0                    4        0.564        0.000                       0                     7  
+spi_gpio_bs                     39.650        0.000                      0                  200        0.029        0.000                      0                  200       49.725        0.000                       0                    73  
+status_scan_bs                  41.271        0.000                      0                  179        0.023        0.000                      0                  179       49.468        0.000                       0                    81  
+system_200                                                                                                                                                                   3.929        0.000                       0                     1  
+  sys_clk                        8.165        0.000                      0                  348        0.039        0.000                      0                  348        4.725        0.000                       0                   164  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock             To Clock                   WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------             --------                   -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+input port clock       axau15_gth40_txoutclk        3.750        0.000                      0                    2                                                                        
+sys_clk                axau15_gth40_txoutclk        5.989        0.000                      0                    4                                                                        
+input port clock       spi_gpio_bs                 16.307        0.000                      0                    2                                                                        
+                       status_scan_bs              19.341        0.000                      0                    1                                                                        
+input port clock       status_scan_bs              17.272        0.000                      0                    2                                                                        
+axau15_gth40_txoutclk  status_scan_bs              19.676        0.000                      0                    2                                                                        
+sys_clk                status_scan_bs              19.554        0.000                      0                    4                                                                        
+                       sys_clk                      5.924        0.000                      0                    8                                                                        
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group        From Clock        To Clock              WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------        ----------        --------              -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+**default**       input port clock                         22.628        0.000                      0                    4                                                                        
+**default**       spi_gpio_bs                              27.556        0.000                      0                    4                                                                        
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group             From Clock             To Clock             
+----------             ----------             --------             
+(none)                                                               
+(none)                 spi_gpio_bs                                   
+(none)                                        axau15_gth40_txoutclk  
+(none)                 axau15_gth40_txoutclk  axau15_gth40_txoutclk  
+(none)                 sys_clk                axau15_gth40_txoutclk  
+(none)                                        spi_gpio_bs            
+(none)                                        status_scan_bs         
+(none)                 axau15_gth40_txoutclk  status_scan_bs         
+(none)                 sys_clk                status_scan_bs         
+(none)                                        sys_clk                
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                      spi_gpio_bs   
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  axau15_gth40_rxoutclk
+  To Clock:  axau15_gth40_rxoutclk
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.987ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.074ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        0.564ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.987ns  (required time - arrival time)
+  Source:                 xilinxmultiregimpl41_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            GTHE4_CHANNEL/RXMCOMMAALIGNEN
+                            (rising edge-triggered cell GTHE4_CHANNEL clocked by axau15_gth40_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_rxoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.510ns  (axau15_gth40_rxoutclk rise@6.510ns - axau15_gth40_rxoutclk rise@0.000ns)
+  Data Path Delay:        1.181ns  (logic 0.201ns (17.025%)  route 0.980ns (82.975%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        -0.031ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.687ns = ( 7.197 - 6.510 ) 
+    Source Clock Delay      (SCD):    0.796ns
+    Clock Pessimism Removal (CPR):    0.078ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.554ns (routing 0.002ns, distribution 0.552ns)
+  Clock Net Delay (Destination): 0.475ns (routing 0.001ns, distribution 0.474ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth40_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/RXOUTCLK
+                         net (fo=2, routed)           0.112     0.112    axau15_gth40_rxoutclk
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.242 r  BUFG_GT_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.554     0.796    jesd_phy0_rx_clk
+    SLICE_X53Y71         FDRE                                         r  xilinxmultiregimpl41_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X53Y71         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.079     0.875 f  xilinxmultiregimpl41_reg[1]/Q
+                         net (fo=1, routed)           0.244     1.119    xilinxmultiregimpl41[1]
+    SLICE_X53Y71         LUT2 (Prop_D6LUT_SLICEM_I1_O)
+                                                      0.122     1.241 r  GTHE4_CHANNEL_i_1/O
+                         net (fo=2, routed)           0.736     1.977    RXMCOMMAALIGNEN0[0]
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                                r  GTHE4_CHANNEL/RXMCOMMAALIGNEN
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_rxoutclk rise edge)
+                                                      6.510     6.510 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     6.510 r  GTHE4_CHANNEL/RXOUTCLK
+                         net (fo=2, routed)           0.098     6.608    axau15_gth40_rxoutclk
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     6.722 r  BUFG_GT_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.475     7.197    jesd_phy0_rx_clk
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                                r  GTHE4_CHANNEL/RXUSRCLK2
+                         clock pessimism              0.078     7.276    
+                         clock uncertainty           -0.046     7.229    
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL (Setup_GTHE4_CHANNEL_RXUSRCLK2_RXMCOMMAALIGNEN)
+                                                     -0.266     6.963    GTHE4_CHANNEL
+  -------------------------------------------------------------------
+                         required time                          6.963    
+                         arrival time                          -1.977    
+  -------------------------------------------------------------------
+                         slack                                  4.987    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.074ns  (arrival time - required time)
+  Source:                 xilinxmultiregimpl40_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            xilinxmultiregimpl41_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_rxoutclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (axau15_gth40_rxoutclk rise@0.000ns - axau15_gth40_rxoutclk rise@0.000ns)
+  Data Path Delay:        0.127ns  (logic 0.039ns (30.709%)  route 0.088ns (69.291%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.525ns
+    Source Clock Delay      (SCD):    0.457ns
+    Clock Pessimism Removal (CPR):    0.062ns
+  Clock Net Delay (Source):      0.311ns (routing 0.001ns, distribution 0.310ns)
+  Clock Net Delay (Destination): 0.358ns (routing 0.001ns, distribution 0.357ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth40_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/RXOUTCLK
+                         net (fo=2, routed)           0.073     0.073    axau15_gth40_rxoutclk
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.073     0.146 r  BUFG_GT_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.311     0.457    jesd_phy0_rx_clk
+    SLICE_X53Y71         FDRE                                         r  xilinxmultiregimpl40_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X53Y71         FDRE (Prop_GFF2_SLICEM_C_Q)
+                                                      0.039     0.496 r  xilinxmultiregimpl40_reg[1]/Q
+                         net (fo=1, routed)           0.088     0.584    xilinxmultiregimpl40[1]
+    SLICE_X53Y71         FDRE                                         r  xilinxmultiregimpl41_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/RXOUTCLK
+                         net (fo=2, routed)           0.085     0.085    axau15_gth40_rxoutclk
+    BUFG_GT_X0Y45        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.082     0.167 r  BUFG_GT_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.358     0.525    jesd_phy0_rx_clk
+    SLICE_X53Y71         FDRE                                         r  xilinxmultiregimpl41_reg[1]/C
+                         clock pessimism             -0.062     0.463    
+    SLICE_X53Y71         FDRE (Hold_FFF2_SLICEM_C_D)
+                                                      0.047     0.510    xilinxmultiregimpl41_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -0.510    
+                         arrival time                           0.584    
+  -------------------------------------------------------------------
+                         slack                                  0.074    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         axau15_gth40_rxoutclk
+Waveform(ns):       { 0.000 3.255 }
+Period(ns):         6.510
+Sources:            { GTHE4_CHANNEL/RXOUTCLK }
+
+Check Type        Corner  Lib Pin                 Reference Pin            Required(ns)  Actual(ns)  Slack(ns)  Location            Pin
+Min Period        n/a     GTHE4_CHANNEL/RXUSRCLK  n/a                      1.954         6.510       4.556      GTHE4_CHANNEL_X0Y4  GTHE4_CHANNEL/RXUSRCLK
+Low Pulse Width   Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y4  GTHE4_CHANNEL/RXUSRCLK
+High Pulse Width  Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y4  GTHE4_CHANNEL/RXUSRCLK
+Max Skew          Slow    GTHE4_CHANNEL/RXUSRCLK  GTHE4_CHANNEL/RXUSRCLK2  0.585         0.021       0.564      GTHE4_CHANNEL_X0Y4  GTHE4_CHANNEL/RXUSRCLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  axau15_gth40_txoutclk
+  To Clock:  axau15_gth40_txoutclk
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.167ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.034ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        0.537ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.167ns  (required time - arrival time)
+  Source:                 memadr_23_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            GTHE4_CHANNEL_3/TXDATA[3]
+                            (rising edge-triggered cell GTHE4_CHANNEL clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.510ns  (axau15_gth40_txoutclk rise@6.510ns - axau15_gth40_txoutclk rise@0.000ns)
+  Data Path Delay:        1.967ns  (logic 0.230ns (11.696%)  route 1.737ns (88.304%))
+  Logic Levels:           1  (RAMD32=1)
+  Clock Path Skew:        -0.111ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.269ns = ( 7.779 - 6.510 ) 
+    Source Clock Delay      (SCD):    1.466ns
+    Clock Pessimism Removal (CPR):    0.086ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      1.223ns (routing 0.343ns, distribution 0.880ns)
+  Clock Net Delay (Destination): 1.056ns (routing 0.321ns, distribution 0.735ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.113     0.113    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.243 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         1.223     1.466    jesd_phy3_tx_clk
+    SLICE_X52Y115        FDRE                                         r  memadr_23_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X52Y115        FDRE (Prop_EFF2_SLICEL_C_Q)
+                                                      0.081     1.547 r  memadr_23_reg[0]/Q
+                         net (fo=42, routed)          1.008     2.555    storage_3_reg_0_3_0_13/ADDRB0
+    SLICE_X53Y117        RAMD32 (Prop_B6LUT_SLICEM_RADR0_O)
+                                                      0.149     2.704 r  storage_3_reg_0_3_0_13/RAMB_D1/O
+                         net (fo=1, routed)           0.729     3.433    axau15_gth43_sink_payload_data[3]
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_3/TXDATA[3]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      6.510     6.510 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     6.510 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.099     6.609    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     6.723 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         1.056     7.779    jesd_phy3_tx_clk
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_3/TXUSRCLK2
+                         clock pessimism              0.086     7.865    
+                         clock uncertainty           -0.046     7.819    
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL (Setup_GTHE4_CHANNEL_TXUSRCLK2_TXDATA[3])
+                                                     -0.219     7.600    GTHE4_CHANNEL_3
+  -------------------------------------------------------------------
+                         required time                          7.600    
+                         arrival time                          -3.433    
+  -------------------------------------------------------------------
+                         slack                                  4.167    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.034ns  (arrival time - required time)
+  Source:                 axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_state_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_source_data_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (axau15_gth40_txoutclk rise@0.000ns - axau15_gth40_txoutclk rise@0.000ns)
+  Data Path Delay:        0.282ns  (logic 0.124ns (43.905%)  route 0.158ns (56.095%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.188ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.521ns
+    Source Clock Delay      (SCD):    1.281ns
+    Clock Pessimism Removal (CPR):    0.052ns
+  Clock Net Delay (Source):      1.068ns (routing 0.321ns, distribution 0.747ns)
+  Clock Net Delay (Destination): 1.278ns (routing 0.343ns, distribution 0.935ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.099     0.099    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     0.213 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         1.068     1.281    jesd_phy3_tx_clk
+    SLICE_X51Y118        FDRE                                         r  axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_state_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X51Y118        FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.058     1.339 r  axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_state_reg[2]/Q
+                         net (fo=4, routed)           0.068     1.407    axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_full[34]
+    SLICE_X51Y120        LUT2 (Prop_D6LUT_SLICEM_I0_O)
+                                                      0.066     1.473 r  axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_source_data[12]_i_1/O
+                         net (fo=1, routed)           0.090     1.563    axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_full[20]
+    SLICE_X51Y120        FDRE                                         r  axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_source_data_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.113     0.113    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.243 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         1.278     1.521    jesd_phy3_tx_clk
+    SLICE_X51Y120        FDRE                                         r  axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_source_data_reg[12]/C
+                         clock pessimism             -0.052     1.469    
+    SLICE_X51Y120        FDRE (Hold_EFF_SLICEM_C_D)
+                                                      0.060     1.529    axau15_litejesd204bcoretx1_litejesd204blinktx3_scrambler_source_data_reg[12]
+  -------------------------------------------------------------------
+                         required time                         -1.529    
+                         arrival time                           1.563    
+  -------------------------------------------------------------------
+                         slack                                  0.034    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         axau15_gth40_txoutclk
+Waveform(ns):       { 0.000 3.255 }
+Period(ns):         6.510
+Sources:            { GTHE4_CHANNEL/TXOUTCLK }
+
+Check Type        Corner  Lib Pin                 Reference Pin            Required(ns)  Actual(ns)  Slack(ns)  Location            Pin
+Min Period        n/a     GTHE4_CHANNEL/TXUSRCLK  n/a                      1.954         6.510       4.556      GTHE4_CHANNEL_X0Y4  GTHE4_CHANNEL/TXUSRCLK
+Low Pulse Width   Slow    GTHE4_CHANNEL/TXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y4  GTHE4_CHANNEL/TXUSRCLK
+High Pulse Width  Slow    GTHE4_CHANNEL/TXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y4  GTHE4_CHANNEL/TXUSRCLK
+Max Skew          Slow    GTHE4_CHANNEL/TXUSRCLK  GTHE4_CHANNEL/TXUSRCLK2  0.563         0.026       0.537      GTHE4_CHANNEL_X0Y5  GTHE4_CHANNEL_1/TXUSRCLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  axau15_gth41_rxoutclk
+  To Clock:  axau15_gth41_rxoutclk
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.622ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.071ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        0.565ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.622ns  (required time - arrival time)
+  Source:                 xilinxmultiregimpl231_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth41_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            GTHE4_CHANNEL_1/RXPCOMMAALIGNEN
+                            (rising edge-triggered cell GTHE4_CHANNEL clocked by axau15_gth41_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth41_rxoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.510ns  (axau15_gth41_rxoutclk rise@6.510ns - axau15_gth41_rxoutclk rise@0.000ns)
+  Data Path Delay:        1.560ns  (logic 0.181ns (11.605%)  route 1.379ns (88.395%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        -0.034ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.672ns = ( 7.182 - 6.510 ) 
+    Source Clock Delay      (SCD):    0.783ns
+    Clock Pessimism Removal (CPR):    0.078ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.539ns (routing 0.002ns, distribution 0.537ns)
+  Clock Net Delay (Destination): 0.458ns (routing 0.001ns, distribution 0.457ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth41_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y5   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_1/RXOUTCLK
+                         net (fo=2, routed)           0.114     0.114    axau15_gth41_rxoutclk
+    BUFG_GT_X0Y25        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.244 r  BUFG_GT_2/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.539     0.783    jesd_phy1_rx_clk
+    SLICE_X53Y79         FDRE                                         r  xilinxmultiregimpl231_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X53Y79         FDRE (Prop_BFF2_SLICEM_C_Q)
+                                                      0.080     0.863 f  xilinxmultiregimpl231_reg[1]/Q
+                         net (fo=1, routed)           0.292     1.155    xilinxmultiregimpl231[1]
+    SLICE_X53Y79         LUT2 (Prop_H6LUT_SLICEM_I1_O)
+                                                      0.101     1.256 r  GTHE4_CHANNEL_1_i_1/O
+                         net (fo=2, routed)           1.087     2.343    GTHE4_CHANNEL_1_i_1_n_0
+    GTHE4_CHANNEL_X0Y5   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_1/RXPCOMMAALIGNEN
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth41_rxoutclk rise edge)
+                                                      6.510     6.510 r  
+    GTHE4_CHANNEL_X0Y5   GTHE4_CHANNEL                0.000     6.510 r  GTHE4_CHANNEL_1/RXOUTCLK
+                         net (fo=2, routed)           0.100     6.610    axau15_gth41_rxoutclk
+    BUFG_GT_X0Y25        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     6.724 r  BUFG_GT_2/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.458     7.182    jesd_phy1_rx_clk
+    GTHE4_CHANNEL_X0Y5   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_1/RXUSRCLK2
+                         clock pessimism              0.078     7.260    
+                         clock uncertainty           -0.046     7.213    
+    GTHE4_CHANNEL_X0Y5   GTHE4_CHANNEL (Setup_GTHE4_CHANNEL_RXUSRCLK2_RXPCOMMAALIGNEN)
+                                                     -0.249     6.964    GTHE4_CHANNEL_1
+  -------------------------------------------------------------------
+                         required time                          6.964    
+                         arrival time                          -2.343    
+  -------------------------------------------------------------------
+                         slack                                  4.622    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.071ns  (arrival time - required time)
+  Source:                 xilinxmultiregimpl230_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth41_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            xilinxmultiregimpl231_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth41_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth41_rxoutclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (axau15_gth41_rxoutclk rise@0.000ns - axau15_gth41_rxoutclk rise@0.000ns)
+  Data Path Delay:        0.124ns  (logic 0.041ns (33.065%)  route 0.083ns (66.935%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.519ns
+    Source Clock Delay      (SCD):    0.452ns
+    Clock Pessimism Removal (CPR):    0.061ns
+  Clock Net Delay (Source):      0.305ns (routing 0.001ns, distribution 0.304ns)
+  Clock Net Delay (Destination): 0.351ns (routing 0.001ns, distribution 0.350ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth41_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y5   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_1/RXOUTCLK
+                         net (fo=2, routed)           0.074     0.074    axau15_gth41_rxoutclk
+    BUFG_GT_X0Y25        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.073     0.147 r  BUFG_GT_2/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.305     0.452    jesd_phy1_rx_clk
+    SLICE_X53Y79         FDRE                                         r  xilinxmultiregimpl230_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X53Y79         FDRE (Prop_DFF2_SLICEM_C_Q)
+                                                      0.041     0.493 r  xilinxmultiregimpl230_reg[0]/Q
+                         net (fo=1, routed)           0.083     0.576    xilinxmultiregimpl230[0]
+    SLICE_X53Y79         FDRE                                         r  xilinxmultiregimpl231_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth41_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y5   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_1/RXOUTCLK
+                         net (fo=2, routed)           0.086     0.086    axau15_gth41_rxoutclk
+    BUFG_GT_X0Y25        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.082     0.168 r  BUFG_GT_2/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.351     0.519    jesd_phy1_rx_clk
+    SLICE_X53Y79         FDRE                                         r  xilinxmultiregimpl231_reg[0]/C
+                         clock pessimism             -0.061     0.458    
+    SLICE_X53Y79         FDRE (Hold_AFF2_SLICEM_C_D)
+                                                      0.047     0.505    xilinxmultiregimpl231_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -0.505    
+                         arrival time                           0.576    
+  -------------------------------------------------------------------
+                         slack                                  0.071    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         axau15_gth41_rxoutclk
+Waveform(ns):       { 0.000 3.255 }
+Period(ns):         6.510
+Sources:            { GTHE4_CHANNEL_1/RXOUTCLK }
+
+Check Type        Corner  Lib Pin                 Reference Pin            Required(ns)  Actual(ns)  Slack(ns)  Location            Pin
+Min Period        n/a     GTHE4_CHANNEL/RXUSRCLK  n/a                      1.954         6.510       4.556      GTHE4_CHANNEL_X0Y5  GTHE4_CHANNEL_1/RXUSRCLK
+Low Pulse Width   Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y5  GTHE4_CHANNEL_1/RXUSRCLK
+High Pulse Width  Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y5  GTHE4_CHANNEL_1/RXUSRCLK
+Max Skew          Slow    GTHE4_CHANNEL/RXUSRCLK  GTHE4_CHANNEL/RXUSRCLK2  0.585         0.020       0.565      GTHE4_CHANNEL_X0Y5  GTHE4_CHANNEL_1/RXUSRCLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  axau15_gth42_rxoutclk
+  To Clock:  axau15_gth42_rxoutclk
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.632ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.087ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        0.564ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.632ns  (required time - arrival time)
+  Source:                 xilinxmultiregimpl421_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth42_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            GTHE4_CHANNEL_2/RXMCOMMAALIGNEN
+                            (rising edge-triggered cell GTHE4_CHANNEL clocked by axau15_gth42_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth42_rxoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.510ns  (axau15_gth42_rxoutclk rise@6.510ns - axau15_gth42_rxoutclk rise@0.000ns)
+  Data Path Delay:        1.487ns  (logic 0.227ns (15.266%)  route 1.260ns (84.734%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        -0.079ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.675ns = ( 7.185 - 6.510 ) 
+    Source Clock Delay      (SCD):    0.784ns
+    Clock Pessimism Removal (CPR):    0.031ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.541ns (routing 0.002ns, distribution 0.539ns)
+  Clock Net Delay (Destination): 0.462ns (routing 0.001ns, distribution 0.461ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth42_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_2/RXOUTCLK
+                         net (fo=2, routed)           0.113     0.113    axau15_gth42_rxoutclk
+    BUFG_GT_X0Y46        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.243 r  BUFG_GT_3/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.541     0.784    jesd_phy2_rx_clk
+    SLICE_X52Y100        FDRE                                         r  xilinxmultiregimpl421_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X52Y100        FDRE (Prop_FFF2_SLICEL_C_Q)
+                                                      0.081     0.865 f  xilinxmultiregimpl421_reg[1]/Q
+                         net (fo=1, routed)           0.459     1.324    xilinxmultiregimpl421[1]
+    SLICE_X52Y100        LUT2 (Prop_C6LUT_SLICEL_I1_O)
+                                                      0.146     1.470 r  GTHE4_CHANNEL_2_i_1/O
+                         net (fo=2, routed)           0.801     2.271    GTHE4_CHANNEL_2_i_1_n_0
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_2/RXMCOMMAALIGNEN
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth42_rxoutclk rise edge)
+                                                      6.510     6.510 r  
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL                0.000     6.510 r  GTHE4_CHANNEL_2/RXOUTCLK
+                         net (fo=2, routed)           0.099     6.609    axau15_gth42_rxoutclk
+    BUFG_GT_X0Y46        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     6.723 r  BUFG_GT_3/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.462     7.185    jesd_phy2_rx_clk
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_2/RXUSRCLK2
+                         clock pessimism              0.031     7.216    
+                         clock uncertainty           -0.046     7.169    
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL (Setup_GTHE4_CHANNEL_RXUSRCLK2_RXMCOMMAALIGNEN)
+                                                     -0.266     6.903    GTHE4_CHANNEL_2
+  -------------------------------------------------------------------
+                         required time                          6.903    
+                         arrival time                          -2.271    
+  -------------------------------------------------------------------
+                         slack                                  4.632    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.087ns  (arrival time - required time)
+  Source:                 xilinxmultiregimpl420_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth42_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            xilinxmultiregimpl421_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth42_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth42_rxoutclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (axau15_gth42_rxoutclk rise@0.000ns - axau15_gth42_rxoutclk rise@0.000ns)
+  Data Path Delay:        0.140ns  (logic 0.039ns (27.857%)  route 0.101ns (72.143%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.518ns
+    Source Clock Delay      (SCD):    0.452ns
+    Clock Pessimism Removal (CPR):    0.060ns
+  Clock Net Delay (Source):      0.305ns (routing 0.001ns, distribution 0.304ns)
+  Clock Net Delay (Destination): 0.350ns (routing 0.001ns, distribution 0.349ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth42_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_2/RXOUTCLK
+                         net (fo=2, routed)           0.074     0.074    axau15_gth42_rxoutclk
+    BUFG_GT_X0Y46        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.073     0.147 r  BUFG_GT_3/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.305     0.452    jesd_phy2_rx_clk
+    SLICE_X52Y100        FDRE                                         r  xilinxmultiregimpl420_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X52Y100        FDRE (Prop_HFF2_SLICEL_C_Q)
+                                                      0.039     0.491 r  xilinxmultiregimpl420_reg[0]/Q
+                         net (fo=1, routed)           0.101     0.592    xilinxmultiregimpl420[0]
+    SLICE_X52Y100        FDRE                                         r  xilinxmultiregimpl421_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth42_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_2/RXOUTCLK
+                         net (fo=2, routed)           0.086     0.086    axau15_gth42_rxoutclk
+    BUFG_GT_X0Y46        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.082     0.168 r  BUFG_GT_3/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.350     0.518    jesd_phy2_rx_clk
+    SLICE_X52Y100        FDRE                                         r  xilinxmultiregimpl421_reg[0]/C
+                         clock pessimism             -0.060     0.458    
+    SLICE_X52Y100        FDRE (Hold_EFF2_SLICEL_C_D)
+                                                      0.047     0.505    xilinxmultiregimpl421_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -0.505    
+                         arrival time                           0.592    
+  -------------------------------------------------------------------
+                         slack                                  0.087    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         axau15_gth42_rxoutclk
+Waveform(ns):       { 0.000 3.255 }
+Period(ns):         6.510
+Sources:            { GTHE4_CHANNEL_2/RXOUTCLK }
+
+Check Type        Corner  Lib Pin                 Reference Pin            Required(ns)  Actual(ns)  Slack(ns)  Location            Pin
+Min Period        n/a     GTHE4_CHANNEL/RXUSRCLK  n/a                      1.954         6.510       4.556      GTHE4_CHANNEL_X0Y6  GTHE4_CHANNEL_2/RXUSRCLK
+Low Pulse Width   Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y6  GTHE4_CHANNEL_2/RXUSRCLK
+High Pulse Width  Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y6  GTHE4_CHANNEL_2/RXUSRCLK
+Max Skew          Slow    GTHE4_CHANNEL/RXUSRCLK  GTHE4_CHANNEL/RXUSRCLK2  0.585         0.021       0.564      GTHE4_CHANNEL_X0Y6  GTHE4_CHANNEL_2/RXUSRCLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  axau15_gth43_rxoutclk
+  To Clock:  axau15_gth43_rxoutclk
+
+Setup :            0  Failing Endpoints,  Worst Slack        4.652ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.071ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        0.564ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             4.652ns  (required time - arrival time)
+  Source:                 xilinxmultiregimpl611_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth43_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            GTHE4_CHANNEL_3/RXPCOMMAALIGNEN
+                            (rising edge-triggered cell GTHE4_CHANNEL clocked by axau15_gth43_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth43_rxoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.510ns  (axau15_gth43_rxoutclk rise@6.510ns - axau15_gth43_rxoutclk rise@0.000ns)
+  Data Path Delay:        1.534ns  (logic 0.232ns (15.127%)  route 1.302ns (84.873%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        -0.030ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.679ns = ( 7.189 - 6.510 ) 
+    Source Clock Delay      (SCD):    0.784ns
+    Clock Pessimism Removal (CPR):    0.075ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.541ns (routing 0.002ns, distribution 0.539ns)
+  Clock Net Delay (Destination): 0.466ns (routing 0.001ns, distribution 0.465ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth43_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_3/RXOUTCLK
+                         net (fo=2, routed)           0.113     0.113    axau15_gth43_rxoutclk
+    BUFG_GT_X0Y35        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.243 r  BUFG_GT_4/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.541     0.784    jesd_phy3_rx_clk
+    SLICE_X53Y109        FDRE                                         r  xilinxmultiregimpl611_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X53Y109        FDRE (Prop_AFF2_SLICEM_C_Q)
+                                                      0.080     0.864 f  xilinxmultiregimpl611_reg[0]/Q
+                         net (fo=1, routed)           0.398     1.262    xilinxmultiregimpl611[0]
+    SLICE_X53Y109        LUT2 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.152     1.414 r  GTHE4_CHANNEL_3_i_1/O
+                         net (fo=2, routed)           0.904     2.318    GTHE4_CHANNEL_3_i_1_n_0
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_3/RXPCOMMAALIGNEN
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth43_rxoutclk rise edge)
+                                                      6.510     6.510 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     6.510 r  GTHE4_CHANNEL_3/RXOUTCLK
+                         net (fo=2, routed)           0.099     6.609    axau15_gth43_rxoutclk
+    BUFG_GT_X0Y35        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     6.723 r  BUFG_GT_4/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.466     7.189    jesd_phy3_rx_clk
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                                r  GTHE4_CHANNEL_3/RXUSRCLK2
+                         clock pessimism              0.075     7.265    
+                         clock uncertainty           -0.046     7.218    
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL (Setup_GTHE4_CHANNEL_RXUSRCLK2_RXPCOMMAALIGNEN)
+                                                     -0.249     6.969    GTHE4_CHANNEL_3
+  -------------------------------------------------------------------
+                         required time                          6.969    
+                         arrival time                          -2.318    
+  -------------------------------------------------------------------
+                         slack                                  4.652    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.071ns  (arrival time - required time)
+  Source:                 xilinxmultiregimpl610_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth43_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            xilinxmultiregimpl611_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth43_rxoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth43_rxoutclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (axau15_gth43_rxoutclk rise@0.000ns - axau15_gth43_rxoutclk rise@0.000ns)
+  Data Path Delay:        0.124ns  (logic 0.041ns (33.065%)  route 0.083ns (66.935%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.006ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.518ns
+    Source Clock Delay      (SCD):    0.451ns
+    Clock Pessimism Removal (CPR):    0.061ns
+  Clock Net Delay (Source):      0.305ns (routing 0.001ns, distribution 0.304ns)
+  Clock Net Delay (Destination): 0.351ns (routing 0.001ns, distribution 0.350ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth43_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_3/RXOUTCLK
+                         net (fo=2, routed)           0.073     0.073    axau15_gth43_rxoutclk
+    BUFG_GT_X0Y35        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.073     0.146 r  BUFG_GT_4/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.305     0.451    jesd_phy3_rx_clk
+    SLICE_X53Y109        FDRE                                         r  xilinxmultiregimpl610_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X53Y109        FDRE (Prop_DFF2_SLICEM_C_Q)
+                                                      0.041     0.492 r  xilinxmultiregimpl610_reg[0]/Q
+                         net (fo=1, routed)           0.083     0.575    xilinxmultiregimpl610[0]
+    SLICE_X53Y109        FDRE                                         r  xilinxmultiregimpl611_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth43_rxoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y7   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_3/RXOUTCLK
+                         net (fo=2, routed)           0.085     0.085    axau15_gth43_rxoutclk
+    BUFG_GT_X0Y35        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.082     0.167 r  BUFG_GT_4/O
+    X1Y1 (CLOCK_ROOT)    net (fo=6, routed)           0.351     0.518    jesd_phy3_rx_clk
+    SLICE_X53Y109        FDRE                                         r  xilinxmultiregimpl611_reg[0]/C
+                         clock pessimism             -0.061     0.457    
+    SLICE_X53Y109        FDRE (Hold_AFF2_SLICEM_C_D)
+                                                      0.047     0.504    xilinxmultiregimpl611_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -0.504    
+                         arrival time                           0.575    
+  -------------------------------------------------------------------
+                         slack                                  0.071    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         axau15_gth43_rxoutclk
+Waveform(ns):       { 0.000 3.255 }
+Period(ns):         6.510
+Sources:            { GTHE4_CHANNEL_3/RXOUTCLK }
+
+Check Type        Corner  Lib Pin                 Reference Pin            Required(ns)  Actual(ns)  Slack(ns)  Location            Pin
+Min Period        n/a     GTHE4_CHANNEL/RXUSRCLK  n/a                      1.954         6.510       4.556      GTHE4_CHANNEL_X0Y7  GTHE4_CHANNEL_3/RXUSRCLK
+Low Pulse Width   Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y7  GTHE4_CHANNEL_3/RXUSRCLK
+High Pulse Width  Slow    GTHE4_CHANNEL/RXUSRCLK  n/a                      0.880         3.255       2.375      GTHE4_CHANNEL_X0Y7  GTHE4_CHANNEL_3/RXUSRCLK
+Max Skew          Slow    GTHE4_CHANNEL/RXUSRCLK  GTHE4_CHANNEL/RXUSRCLK2  0.585         0.021       0.564      GTHE4_CHANNEL_X0Y7  GTHE4_CHANNEL_3/RXUSRCLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  spi_gpio_bs
+  To Clock:  spi_gpio_bs
+
+Setup :            0  Failing Endpoints,  Worst Slack       39.650ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.029ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack       49.725ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             39.650ns  (required time - arrival time)
+  Source:                 spi_gpio/core/scan_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            spi_gpio/bs/TDO
+                            (falling edge-triggered cell BSCANE2 clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             spi_gpio_bs
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            50.000ns  (spi_gpio_bs fall@50.000ns - spi_gpio_bs rise@0.000ns)
+  Data Path Delay:        0.876ns  (logic 0.078ns (8.901%)  route 0.798ns (91.099%))
+  Logic Levels:           0  
+  Clock Path Skew:        -9.238ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.000ns = ( 50.000 - 50.000 ) 
+    Source Clock Delay      (SCD):    9.238ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.235ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Source):      1.572ns (routing 0.727ns, distribution 0.845ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock spi_gpio_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      5.900     5.900 r  spi_gpio/bs/TCK
+                         net (fo=1, routed)           1.738     7.638    spi_gpio_n_0
+    BUFGCE_X0Y16         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     7.666 r  pins_reg[3]_i_4/O
+    X0Y1 (CLOCK_ROOT)    net (fo=72, routed)          1.572     9.238    spi_gpio/core/tck
+    SLICE_X17Y104        FDRE                                         r  spi_gpio/core/scan_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y104        FDRE (Prop_DFF_SLICEM_C_Q)
+                                                      0.078     9.316 r  spi_gpio/core/scan_reg[0]/Q
+                         net (fo=2, routed)           0.798    10.114    spi_gpio/tdo
+    CONFIG_SITE_X0Y0     BSCANE2                                      r  spi_gpio/bs/TDO
+  -------------------------------------------------------------------    -------------------
+
+                         (clock spi_gpio_bs fall edge)
+                                                     50.000    50.000 f  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000    50.000 f  spi_gpio/bs/INTERNAL_TCK
+                         clock pessimism              0.000    50.000    
+                         clock uncertainty           -0.235    49.765    
+    CONFIG_SITE_X0Y0     BSCANE2 (Setup_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TDO)
+                                                      0.000    49.765    spi_gpio/bs
+  -------------------------------------------------------------------
+                         required time                         49.765    
+                         arrival time                         -10.114    
+  -------------------------------------------------------------------
+                         slack                                 39.650    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.029ns  (arrival time - required time)
+  Source:                 spi_gpio/core/scan_reg[8]/C
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            spi_gpio/core/scan_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             spi_gpio_bs
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (spi_gpio_bs rise@0.000ns - spi_gpio_bs rise@0.000ns)
+  Data Path Delay:        0.127ns  (logic 0.058ns (45.669%)  route 0.069ns (54.331%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.036ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    9.211ns
+    Source Clock Delay      (SCD):    3.051ns
+    Clock Pessimism Removal (CPR):    6.125ns
+  Clock Net Delay (Source):      1.360ns (routing 0.660ns, distribution 0.700ns)
+  Clock Net Delay (Destination): 1.545ns (routing 0.727ns, distribution 0.818ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock spi_gpio_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      0.465     0.465 r  spi_gpio/bs/TCK
+                         net (fo=1, routed)           1.202     1.667    spi_gpio_n_0
+    BUFGCE_X0Y16         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     1.691 r  pins_reg[3]_i_4/O
+    X0Y1 (CLOCK_ROOT)    net (fo=72, routed)          1.360     3.051    spi_gpio/core/tck
+    SLICE_X18Y105        FDRE                                         r  spi_gpio/core/scan_reg[8]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y105        FDRE (Prop_HFF_SLICEL_C_Q)
+                                                      0.058     3.109 r  spi_gpio/core/scan_reg[8]/Q
+                         net (fo=1, routed)           0.069     3.178    spi_gpio/core/scan[8]
+    SLICE_X18Y104        FDRE                                         r  spi_gpio/core/scan_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock spi_gpio_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      5.900     5.900 r  spi_gpio/bs/TCK
+                         net (fo=1, routed)           1.738     7.638    spi_gpio_n_0
+    BUFGCE_X0Y16         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     7.666 r  pins_reg[3]_i_4/O
+    X0Y1 (CLOCK_ROOT)    net (fo=72, routed)          1.545     9.211    spi_gpio/core/tck
+    SLICE_X18Y104        FDRE                                         r  spi_gpio/core/scan_reg[7]/C
+                         clock pessimism             -6.125     3.086    
+    SLICE_X18Y104        FDRE (Hold_EFF2_SLICEL_C_D)
+                                                      0.062     3.148    spi_gpio/core/scan_reg[7]
+  -------------------------------------------------------------------
+                         required time                         -3.148    
+                         arrival time                           3.178    
+  -------------------------------------------------------------------
+                         slack                                  0.029    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         spi_gpio_bs
+Waveform(ns):       { 0.000 50.000 }
+Period(ns):         100.000
+Sources:            { spi_gpio/bs/INTERNAL_TCK }
+
+Check Type        Corner  Lib Pin   Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location      Pin
+Min Period        n/a     BUFGCE/I  n/a            1.290         100.000     98.710     BUFGCE_X0Y16  pins_reg[3]_i_4/I
+Low Pulse Width   Slow    FDRE/C    n/a            0.275         50.000      49.725     SLICE_X7Y104  spi_gpio/core/miso_sync_reg[0]/C
+High Pulse Width  Slow    FDRE/C    n/a            0.275         50.000      49.725     SLICE_X7Y104  spi_gpio/core/miso_sync_reg[0]/C
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  status_scan_bs
+  To Clock:  status_scan_bs
+
+Setup :            0  Failing Endpoints,  Worst Slack       41.271ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.023ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack       49.468ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             41.271ns  (required time - arrival time)
+  Source:                 status_scan/scan_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            status_scan/bs/TDO
+                            (falling edge-triggered cell BSCANE2 clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             status_scan_bs
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            50.000ns  (status_scan_bs fall@50.000ns - status_scan_bs rise@0.000ns)
+  Data Path Delay:        0.807ns  (logic 0.078ns (9.665%)  route 0.729ns (90.335%))
+  Logic Levels:           0  
+  Clock Path Skew:        -7.687ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.000ns = ( 50.000 - 50.000 ) 
+    Source Clock Delay      (SCD):    7.687ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.235ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE + DCD
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+    Duty Cycle Distortion   (DCD):    0.200ns
+  Clock Net Delay (Source):      1.656ns (routing 0.817ns, distribution 0.839ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock status_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  status_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      4.300     4.300 r  status_scan/bs/TCK
+                         net (fo=1, routed)           1.703     6.003    status_scan_n_0
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     6.031 r  meta_reg[8]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=80, routed)          1.656     7.687    status_scan/tck
+    SLICE_X48Y98         FDRE                                         r  status_scan/scan_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y98         FDRE (Prop_DFF_SLICEM_C_Q)
+                                                      0.078     7.765 r  status_scan/scan_reg[0]/Q
+                         net (fo=1, routed)           0.729     8.494    status_scan/scan_reg_n_0_[0]
+    CONFIG_SITE_X0Y0     BSCANE2                                      r  status_scan/bs/TDO
+  -------------------------------------------------------------------    -------------------
+
+                         (clock status_scan_bs fall edge)
+                                                     50.000    50.000 f  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000    50.000 f  status_scan/bs/INTERNAL_TCK
+                         clock pessimism              0.000    50.000    
+                         clock uncertainty           -0.235    49.765    
+    CONFIG_SITE_X0Y0     BSCANE2 (Setup_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TDO)
+                                                      0.000    49.765    status_scan/bs
+  -------------------------------------------------------------------
+                         required time                         49.765    
+                         arrival time                          -8.494    
+  -------------------------------------------------------------------
+                         slack                                 41.271    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.023ns  (arrival time - required time)
+  Source:                 status_scan/scan_reg[55]/C
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            status_scan/scan_reg[54]/D
+                            (rising edge-triggered cell FDSE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             status_scan_bs
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (status_scan_bs rise@0.000ns - status_scan_bs rise@0.000ns)
+  Data Path Delay:        0.132ns  (logic 0.060ns (45.455%)  route 0.072ns (54.545%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.047ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    7.706ns
+    Source Clock Delay      (SCD):    3.129ns
+    Clock Pessimism Removal (CPR):    4.529ns
+  Clock Net Delay (Source):      1.470ns (routing 0.745ns, distribution 0.725ns)
+  Clock Net Delay (Destination): 1.675ns (routing 0.817ns, distribution 0.858ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock status_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  status_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      0.465     0.465 r  status_scan/bs/TCK
+                         net (fo=1, routed)           1.170     1.635    status_scan_n_0
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     1.659 r  meta_reg[8]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=80, routed)          1.470     3.129    status_scan/tck
+    SLICE_X45Y101        FDRE                                         r  status_scan/scan_reg[55]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X45Y101        FDRE (Prop_FFF2_SLICEL_C_Q)
+                                                      0.060     3.189 r  status_scan/scan_reg[55]/Q
+                         net (fo=1, routed)           0.072     3.261    status_scan/scan_reg_n_0_[55]
+    SLICE_X45Y100        FDSE                                         r  status_scan/scan_reg[54]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock status_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  status_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      4.300     4.300 r  status_scan/bs/TCK
+                         net (fo=1, routed)           1.703     6.003    status_scan_n_0
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     6.031 r  meta_reg[8]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=80, routed)          1.675     7.706    status_scan/tck
+    SLICE_X45Y100        FDSE                                         r  status_scan/scan_reg[54]/C
+                         clock pessimism             -4.529     3.177    
+    SLICE_X45Y100        FDSE (Hold_AFF2_SLICEL_C_D)
+                                                      0.062     3.239    status_scan/scan_reg[54]
+  -------------------------------------------------------------------
+                         required time                         -3.239    
+                         arrival time                           3.261    
+  -------------------------------------------------------------------
+                         slack                                  0.023    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         status_scan_bs
+Waveform(ns):       { 0.000 50.000 }
+Period(ns):         100.000
+Sources:            { status_scan/bs/INTERNAL_TCK }
+
+Check Type        Corner  Lib Pin      Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
+Min Period        n/a     BUFGCE/I     n/a            1.290         100.000     98.710     BUFGCE_X0Y3    meta_reg[8]_i_1/I
+Low Pulse Width   Slow    SRLC32E/CLK  n/a            0.532         50.000      49.468     SLICE_X44Y100  status_scan/scan_reg[11]_srl21___status_scan_scan_reg_r_19/CLK
+High Pulse Width  Slow    SRLC32E/CLK  n/a            0.532         50.000      49.468     SLICE_X44Y100  status_scan/scan_reg[11]_srl21___status_scan_scan_reg_r_19/CLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  system_200
+  To Clock:  system_200
+
+Setup :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+PW    :            0  Failing Endpoints,  Worst Slack        3.929ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         system_200
+Waveform(ns):       { 0.000 2.500 }
+Period(ns):         5.000
+Sources:            { sys_p }
+
+Check Type  Corner  Lib Pin       Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location         Pin
+Min Period  n/a     BUFGCE_DIV/I  n/a            1.071         5.000       3.929      BUFGCE_DIV_X0Y6  BUFGCE_DIV/I
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk
+  To Clock:  sys_clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        8.165ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.039ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        4.725ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             8.165ns  (required time - arrival time)
+  Source:                 FDPE_1/C
+                            (rising edge-triggered cell FDPE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            axau15_gth42_tx_init_pll_reset_timer_count_reg[3]/S
+                            (rising edge-triggered cell FDSE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk rise@10.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        1.663ns  (logic 0.179ns (10.765%)  route 1.484ns (89.235%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        -0.063ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.368ns = ( 12.368 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.717ns
+    Clock Pessimism Removal (CPR):    0.286ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      1.453ns (routing 0.618ns, distribution 0.835ns)
+  Clock Net Delay (Destination): 1.302ns (routing 0.564ns, distribution 0.738ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.100     0.100    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.629     0.729 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.779    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.779 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.334     1.113    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.151     1.264 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         1.453     2.717    sys_clk
+    SLICE_X43Y105        FDPE                                         r  FDPE_1/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X43Y105        FDPE (Prop_AFF2_SLICEL_C_Q)
+                                                      0.081     2.798 r  FDPE_1/Q
+                         net (fo=30, routed)          1.133     3.932    sys_rst
+    SLICE_X50Y93         LUT5 (Prop_C6LUT_SLICEM_I0_O)
+                                                      0.098     4.030 r  axau15_gth42_tx_init_pll_reset_timer_count[7]_i_1/O
+                         net (fo=8, routed)           0.350     4.380    axau15_gth42_tx_init_pll_reset_timer_count[7]_i_1_n_0
+    SLICE_X48Y94         FDSE                                         r  axau15_gth42_tx_init_pll_reset_timer_count_reg[3]/S
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)   10.000    10.000 r  
+    T24                                               0.000    10.000 r  sys_p (IN)
+                         net (fo=0)                   0.079    10.079    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.520    10.599 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040    10.639    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000    10.639 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.297    10.936    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.131    11.067 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         1.302    12.368    sys_clk
+    SLICE_X48Y94         FDSE                                         r  axau15_gth42_tx_init_pll_reset_timer_count_reg[3]/C
+                         clock pessimism              0.286    12.654    
+                         clock uncertainty           -0.035    12.619    
+    SLICE_X48Y94         FDSE (Setup_AFF_SLICEM_C_S)
+                                                     -0.074    12.545    axau15_gth42_tx_init_pll_reset_timer_count_reg[3]
+  -------------------------------------------------------------------
+                         required time                         12.545    
+                         arrival time                          -4.380    
+  -------------------------------------------------------------------
+                         slack                                  8.165    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.039ns  (arrival time - required time)
+  Source:                 axau15_gth41_tx_init_pll_reset_timer_count_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            axau15_gth41_tx_init_pll_reset_timer_count_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.141ns  (logic 0.061ns (43.252%)  route 0.080ns (56.748%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.056ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.744ns
+    Source Clock Delay      (SCD):    1.452ns
+    Clock Pessimism Removal (CPR):    0.236ns
+  Clock Net Delay (Source):      0.798ns (routing 0.341ns, distribution 0.457ns)
+  Clock Net Delay (Destination): 0.911ns (routing 0.376ns, distribution 0.535ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.079     0.079    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.296     0.375 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040     0.415    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.415 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.150     0.565    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.089     0.654 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         0.798     1.452    sys_clk
+    SLICE_X46Y91         FDRE                                         r  axau15_gth41_tx_init_pll_reset_timer_count_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X46Y91         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     1.491 r  axau15_gth41_tx_init_pll_reset_timer_count_reg[1]/Q
+                         net (fo=8, routed)           0.056     1.547    axau15_gth41_tx_init_pll_reset_timer_count_reg[1]
+    SLICE_X47Y91         LUT6 (Prop_C6LUT_SLICEM_I2_O)
+                                                      0.022     1.569 r  axau15_gth41_tx_init_pll_reset_timer_count[5]_i_1/O
+                         net (fo=1, routed)           0.024     1.593    axau15_gth41_tx_init_pll_reset_timer_count[5]_i_1_n_0
+    SLICE_X47Y91         FDRE                                         r  axau15_gth41_tx_init_pll_reset_timer_count_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.100     0.100    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.400     0.500 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.550    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.550 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.182     0.732    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.100     0.832 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         0.911     1.744    sys_clk
+    SLICE_X47Y91         FDRE                                         r  axau15_gth41_tx_init_pll_reset_timer_count_reg[5]/C
+                         clock pessimism             -0.236     1.508    
+    SLICE_X47Y91         FDRE (Hold_CFF_SLICEM_C_D)
+                                                      0.046     1.554    axau15_gth41_tx_init_pll_reset_timer_count_reg[5]
+  -------------------------------------------------------------------
+                         required time                         -1.554    
+                         arrival time                           1.593    
+  -------------------------------------------------------------------
+                         slack                                  0.039    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         sys_clk
+Waveform(ns):       { 0.000 5.000 }
+Period(ns):         10.000
+Sources:            { BUFGCE_DIV/O }
+
+Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
+Min Period        n/a     FDPE/C   n/a            0.550         10.000      9.450      SLICE_X43Y105  FDPE/C
+Low Pulse Width   Slow    FDPE/C   n/a            0.275         5.000       4.725      SLICE_X43Y105  FDPE/C
+High Pulse Width  Slow    FDPE/C   n/a            0.275         5.000       4.725      SLICE_X43Y105  FDPE/C
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  input port clock
+  To Clock:  axau15_gth40_txoutclk
+
+Setup :            0  Failing Endpoints,  Worst Slack        3.750ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             3.750ns  (required time - arrival time)
+  Source:                 sync1_p
+                            (input port)
+  Destination:            xilinxmultiregimpl770_reg/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.500ns  (MaxDelay Path 6.500ns)
+  Data Path Delay:        2.775ns  (logic 0.626ns (22.575%)  route 2.148ns (77.425%))
+  Logic Levels:           2  (DIFFINBUF=1 IBUFCTRL=1)
+  Timing Exception:       MaxDelay Path 6.500ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    N24                                               0.000     0.000 r  sync1_p (IN)
+                         net (fo=0)                   0.100     0.100    IBUFDS_2/I
+    HPIOBDIFFINBUF_X0Y38 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.626     0.726 r  IBUFDS_2/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.776    IBUFDS_2/OUT
+    N24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.776 r  IBUFDS_2/IBUFCTRL_INST/O
+                         net (fo=2, routed)           1.998     2.775    axau15_jsync2
+    SLICE_X50Y88         FDRE                                         r  xilinxmultiregimpl770_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.500     6.500    
+    SLICE_X50Y88         FDRE (Setup_CFF2_SLICEM_C_D)
+                                                      0.025     6.525    xilinxmultiregimpl770_reg
+  -------------------------------------------------------------------
+                         required time                          6.525    
+                         arrival time                          -2.775    
+  -------------------------------------------------------------------
+                         slack                                  3.750    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk
+  To Clock:  axau15_gth40_txoutclk
+
+Setup :            0  Failing Endpoints,  Worst Slack        5.989ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             5.989ns  (required time - arrival time)
+  Source:                 FSM_onehot_gthtxinit0_state_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            xilinxmultiregimpl780_reg/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.500ns  (MaxDelay Path 6.500ns)
+  Data Path Delay:        0.536ns  (logic 0.081ns (15.111%)  route 0.455ns (84.889%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.500ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X49Y90                                      0.000     0.000 r  FSM_onehot_gthtxinit0_state_reg[4]/C
+    SLICE_X49Y90         FDRE (Prop_FFF2_SLICEL_C_Q)
+                                                      0.081     0.081 r  FSM_onehot_gthtxinit0_state_reg[4]/Q
+                         net (fo=10, routed)          0.455     0.536    axau15_gth40_tx_ready
+    SLICE_X51Y91         FDRE                                         r  xilinxmultiregimpl780_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.500     6.500    
+    SLICE_X51Y91         FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.025     6.525    xilinxmultiregimpl780_reg
+  -------------------------------------------------------------------
+                         required time                          6.525    
+                         arrival time                          -0.536    
+  -------------------------------------------------------------------
+                         slack                                  5.989    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  input port clock
+  To Clock:  spi_gpio_bs
+
+Setup :            0  Failing Endpoints,  Worst Slack       16.307ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             16.307ns  (required time - arrival time)
+  Source:                 spi_en
+                            (input port)
+  Destination:            spi_gpio/core/owner_sync_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             spi_gpio_bs
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        3.718ns  (logic 0.518ns (13.939%)  route 3.200ns (86.061%))
+  Logic Levels:           2  (IBUFCTRL=1 INBUF=1)
+  Timing Exception:       MaxDelay Path 20.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    P26                                               0.000     0.000 r  spi_en (IN)
+                         net (fo=0)                   0.000     0.000    spi_en_IBUF_inst/I
+    P26                  INBUF (Prop_INBUF_HPIOB_S_PAD_O)
+                                                      0.518     0.518 r  spi_en_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.518    spi_en_IBUF_inst/OUT
+    P26                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_S_I_O)
+                                                      0.000     0.518 r  spi_en_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=5, routed)           3.200     3.718    spi_gpio/core/cs_clock_TRI
+    SLICE_X7Y104         FDRE                                         r  spi_gpio/core/owner_sync_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+    SLICE_X7Y104         FDRE (Setup_CFF2_SLICEM_C_D)
+                                                      0.025    20.025    spi_gpio/core/owner_sync_reg[0]
+  -------------------------------------------------------------------
+                         required time                         20.025    
+                         arrival time                          -3.718    
+  -------------------------------------------------------------------
+                         slack                                 16.307    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  
+  To Clock:  status_scan_bs
+
+Setup :            0  Failing Endpoints,  Worst Slack       19.341ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             19.341ns  (required time - arrival time)
+  Source:                 GTHE4_COMMON/QPLL1LOCK
+                            (internal pin)
+  Destination:            status_scan/meta_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             status_scan_bs
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        0.684ns  (logic 0.000ns (0.000%)  route 0.684ns (100.000%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 20.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    GTHE4_COMMON_X0Y1    GTHE4_COMMON                 0.000     0.000 r  GTHE4_COMMON/QPLL1LOCK
+                         net (fo=5, routed)           0.684     0.684    status_scan/status[0]
+    SLICE_X48Y98         FDRE                                         r  status_scan/meta_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+    SLICE_X48Y98         FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.025    20.025    status_scan/meta_reg[0]
+  -------------------------------------------------------------------
+                         required time                         20.025    
+                         arrival time                          -0.684    
+  -------------------------------------------------------------------
+                         slack                                 19.341    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  input port clock
+  To Clock:  status_scan_bs
+
+Setup :            0  Failing Endpoints,  Worst Slack       17.272ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             17.272ns  (required time - arrival time)
+  Source:                 sync0_p
+                            (input port)
+  Destination:            status_scan/meta_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             status_scan_bs
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        2.753ns  (logic 0.635ns (23.052%)  route 2.119ns (76.948%))
+  Logic Levels:           2  (DIFFINBUF=1 IBUFCTRL=1)
+  Timing Exception:       MaxDelay Path 20.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    V24                                               0.000     0.000 r  sync0_p (IN)
+                         net (fo=0)                   0.100     0.100    IBUFDS_1/I
+    HPIOBDIFFINBUF_X0Y35 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.635     0.735 r  IBUFDS_1/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.785    IBUFDS_1/OUT
+    V24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.785 r  IBUFDS_1/IBUFCTRL_INST/O
+                         net (fo=2, routed)           1.969     2.753    status_scan/status[5]
+    SLICE_X48Y91         FDRE                                         r  status_scan/meta_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+    SLICE_X48Y91         FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.025    20.025    status_scan/meta_reg[5]
+  -------------------------------------------------------------------
+                         required time                         20.025    
+                         arrival time                          -2.753    
+  -------------------------------------------------------------------
+                         slack                                 17.272    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  axau15_gth40_txoutclk
+  To Clock:  status_scan_bs
+
+Setup :            0  Failing Endpoints,  Worst Slack       19.676ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             19.676ns  (required time - arrival time)
+  Source:                 axau15_litejesd204bcoretx0_ready_reg/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            status_scan/meta_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             status_scan_bs
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        0.349ns  (logic 0.078ns (22.350%)  route 0.271ns (77.650%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 20.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y79                                      0.000     0.000 r  axau15_litejesd204bcoretx0_ready_reg/C
+    SLICE_X50Y79         FDRE (Prop_HFF2_SLICEM_C_Q)
+                                                      0.078     0.078 r  axau15_litejesd204bcoretx0_ready_reg/Q
+                         net (fo=1, routed)           0.271     0.349    status_scan/status[7]
+    SLICE_X50Y79         FDRE                                         r  status_scan/meta_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+    SLICE_X50Y79         FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.025    20.025    status_scan/meta_reg[7]
+  -------------------------------------------------------------------
+                         required time                         20.025    
+                         arrival time                          -0.349    
+  -------------------------------------------------------------------
+                         slack                                 19.676    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk
+  To Clock:  status_scan_bs
+
+Setup :            0  Failing Endpoints,  Worst Slack       19.554ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             19.554ns  (required time - arrival time)
+  Source:                 FSM_onehot_gthtxinit3_state_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            status_scan/meta_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             status_scan_bs
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        0.471ns  (logic 0.079ns (16.779%)  route 0.392ns (83.221%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 20.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X51Y96                                      0.000     0.000 r  FSM_onehot_gthtxinit3_state_reg[4]/C
+    SLICE_X51Y96         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  FSM_onehot_gthtxinit3_state_reg[4]/Q
+                         net (fo=9, routed)           0.392     0.471    status_scan/status[4]
+    SLICE_X49Y92         FDRE                                         r  status_scan/meta_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+    SLICE_X49Y92         FDRE (Setup_DFF2_SLICEL_C_D)
+                                                      0.025    20.025    status_scan/meta_reg[4]
+  -------------------------------------------------------------------
+                         required time                         20.025    
+                         arrival time                          -0.471    
+  -------------------------------------------------------------------
+                         slack                                 19.554    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  
+  To Clock:  sys_clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        5.924ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             5.924ns  (required time - arrival time)
+  Source:                 GTHE4_COMMON/QPLL1LOCK
+                            (internal pin)
+  Destination:            xilinxmultiregimpl260_reg/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.500ns  (MaxDelay Path 6.500ns)
+  Data Path Delay:        0.601ns  (logic 0.000ns (0.000%)  route 0.601ns (100.000%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.500ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    GTHE4_COMMON_X0Y1    GTHE4_COMMON                 0.000     0.000 r  GTHE4_COMMON/QPLL1LOCK
+                         net (fo=5, routed)           0.601     0.601    axau15_gth43_rx_init_plllock0
+    SLICE_X48Y89         FDRE                                         r  xilinxmultiregimpl260_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.500     6.500    
+    SLICE_X48Y89         FDRE (Setup_DFF2_SLICEM_C_D)
+                                                      0.025     6.525    xilinxmultiregimpl260_reg
+  -------------------------------------------------------------------
+                         required time                          6.525    
+                         arrival time                          -0.601    
+  -------------------------------------------------------------------
+                         slack                                  5.924    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+Path Group:  **default**
+From Clock:  input port clock
+  To Clock:  
+
+Setup :            0  Failing Endpoints,  Worst Slack       22.628ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             22.628ns  (required time - arrival time)
+  Source:                 spi_en
+                            (input port)
+  Destination:            sck
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            30.000ns  (MaxDelay Path 30.000ns)
+  Data Path Delay:        7.372ns  (logic 3.652ns (49.542%)  route 3.720ns (50.458%))
+  Logic Levels:           3  (IBUFCTRL=1 INBUF=1 OBUFT=1)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 30.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    P26                                               0.000     0.000 r  spi_en (IN)
+                         net (fo=0)                   0.000     0.000    spi_en_IBUF_inst/I
+    P26                  INBUF (Prop_INBUF_HPIOB_S_PAD_O)
+                                                      0.518     0.518 r  spi_en_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.518    spi_en_IBUF_inst/OUT
+    P26                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_S_I_O)
+                                                      0.000     0.518 r  spi_en_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=5, routed)           3.720     4.238    cs_clock_TRI
+    N21                  OBUFT (TriStatD_OUTBUF_HPIOB_M_T_O)
+                                                      3.134     7.372 r  sck_OBUFT_inst/O
+                         net (fo=0)                   0.000     7.372    sck
+    N21                                                               r  sck (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   30.000    30.000    
+                         output delay                -0.000    30.000    
+  -------------------------------------------------------------------
+                         required time                         30.000    
+                         arrival time                          -7.372    
+  -------------------------------------------------------------------
+                         slack                                 22.628    
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+Path Group:  **default**
+From Clock:  spi_gpio_bs
+  To Clock:  
+
+Setup :            0  Failing Endpoints,  Worst Slack       27.556ns,  Total Violation        0.000ns
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             27.556ns  (required time - arrival time)
+  Source:                 spi_gpio/core/pins_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            sck
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            30.000ns  (MaxDelay Path 30.000ns)
+  Data Path Delay:        2.444ns  (logic 0.896ns (36.659%)  route 1.548ns (63.341%))
+  Logic Levels:           1  (OBUFT=1)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 30.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y104                                     0.000     0.000 r  spi_gpio/core/pins_reg[0]/C
+    SLICE_X17Y104        FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  spi_gpio/core/pins_reg[0]/Q
+                         net (fo=2, routed)           1.548     1.627    sck_OBUF
+    N21                  OBUFT (Prop_OUTBUF_HPIOB_M_I_O)
+                                                      0.817     2.444 r  sck_OBUFT_inst/O
+                         net (fo=0)                   0.000     2.444    sck
+    N21                                                               r  sck (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   30.000    30.000    
+                         output delay                -0.000    30.000    
+  -------------------------------------------------------------------
+                         required time                         30.000    
+                         arrival time                          -2.444    
+  -------------------------------------------------------------------
+                         slack                                 27.556    
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay             0 Endpoints
+Min Delay             4 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 spi_en
+                            (input port)
+  Destination:            cs_dac
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.249ns  (logic 0.654ns (52.375%)  route 0.595ns (47.625%))
+  Logic Levels:           3  (IBUFCTRL=1 INBUF=1 OBUFT=1)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    P26                                               0.000     0.000 f  spi_en (IN)
+                         net (fo=0)                   0.000     0.000    spi_en_IBUF_inst/I
+    P26                  INBUF (Prop_INBUF_HPIOB_S_PAD_O)
+                                                      0.153     0.153 f  spi_en_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.153    spi_en_IBUF_inst/OUT
+    P26                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_S_I_O)
+                                                      0.000     0.153 f  spi_en_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=5, routed)           0.595     0.748    cs_clock_TRI
+    R26                  OBUFT (TriStatE_OUTBUF_HPIOB_S_T_O)
+                                                      0.501     1.249 r  cs_dac_OBUFT_inst/O
+                         net (fo=0)                   0.000     1.249    cs_dac
+    R26                                                               r  cs_dac (OUT)
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  spi_gpio_bs
+  To Clock:  
+
+Max Delay             0 Endpoints
+Min Delay             4 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 spi_gpio/core/pins_reg[2]/C
+                            (rising edge-triggered cell FDSE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            cs_dac
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.024ns  (logic 0.444ns (43.369%)  route 0.580ns (56.631%))
+  Logic Levels:           1  (OBUFT=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.863ns (routing 0.397ns, distribution 0.466ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock spi_gpio_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      0.465     0.465 r  spi_gpio/bs/TCK
+                         net (fo=1, routed)           0.911     1.376    spi_gpio_n_0
+    BUFGCE_X0Y16         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.017     1.393 r  pins_reg[3]_i_4/O
+    X0Y1 (CLOCK_ROOT)    net (fo=72, routed)          0.863     2.256    spi_gpio/core/tck
+    SLICE_X17Y104        FDSE                                         r  spi_gpio/core/pins_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y104        FDSE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.039     2.295 r  spi_gpio/core/pins_reg[2]/Q
+                         net (fo=2, routed)           0.580     2.874    cs_dac_OBUF
+    R26                  OBUFT (Prop_OUTBUF_HPIOB_S_I_O)
+                                                      0.405     3.279 r  cs_dac_OBUFT_inst/O
+                         net (fo=0)                   0.000     3.279    cs_dac
+    R26                                                               r  cs_dac (OUT)
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  axau15_gth40_txoutclk
+
+Max Delay             0 Endpoints
+Min Delay             2 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 sync0_n
+                            (input port)
+  Destination:            xilinxmultiregimpl760_reg/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        1.237ns  (logic 0.301ns (24.308%)  route 0.936ns (75.692%))
+  Logic Levels:           2  (DIFFINBUF=1 IBUFCTRL=1)
+  Clock Path Skew:        0.952ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.952ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Net Delay (Destination): 0.785ns (routing 0.247ns, distribution 0.538ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    W24                                               0.000     0.000 f  sync0_n (IN)
+                         net (fo=0)                   0.079     0.079    IBUFDS_1/IB
+    HPIOBDIFFINBUF_X0Y35 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_N_O)
+                                                      0.301     0.380 r  IBUFDS_1/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040     0.420    IBUFDS_1/OUT
+    V24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.420 r  IBUFDS_1/IBUFCTRL_INST/O
+                         net (fo=2, routed)           0.817     1.237    axau15_jsync1
+    SLICE_X48Y83         FDRE                                         r  xilinxmultiregimpl760_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.085     0.085    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.082     0.167 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         0.785     0.952    jesd_phy3_tx_clk
+    SLICE_X48Y83         FDRE                                         r  xilinxmultiregimpl760_reg/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  axau15_gth40_txoutclk
+  To Clock:  axau15_gth40_txoutclk
+
+Max Delay            16 Endpoints
+Min Delay            16 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 FDPE_3/C
+                            (rising edge-triggered cell FDPE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            FDPE_18/PRE
+                            (recovery check against rising-edge clock axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             (none)
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Data Path Delay:        0.971ns  (logic 0.079ns (8.134%)  route 0.892ns (91.866%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.146ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.269ns
+    Source Clock Delay      (SCD):    1.415ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      1.172ns (routing 0.343ns, distribution 0.829ns)
+  Clock Net Delay (Destination): 1.056ns (routing 0.321ns, distribution 0.735ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.113     0.113    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.243 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         1.172     1.415    jesd_phy3_tx_clk
+    SLICE_X51Y93         FDPE                                         r  FDPE_3/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X51Y93         FDPE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.079     1.494 f  FDPE_3/Q
+                         net (fo=20, routed)          0.892     2.386    jesd_phy0_tx_rst
+    SLICE_X53Y71         FDPE                                         f  FDPE_18/PRE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.099     0.099    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     0.213 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         1.056     1.269    jesd_phy3_tx_clk
+    SLICE_X53Y71         FDPE                                         r  FDPE_18/C
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 FDPE_11/C
+                            (rising edge-triggered cell FDPE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            FDPE_26/PRE
+                            (removal check against rising-edge clock axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             (none)
+  Path Type:              Removal (Min at Fast Process Corner)
+  Data Path Delay:        0.309ns  (logic 0.080ns (25.890%)  route 0.229ns (74.110%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.109ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.947ns
+    Source Clock Delay      (SCD):    0.838ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.692ns (routing 0.233ns, distribution 0.459ns)
+  Clock Net Delay (Destination): 0.780ns (routing 0.247ns, distribution 0.533ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.073     0.073    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.073     0.146 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         0.692     0.838    jesd_phy3_tx_clk
+    SLICE_X50Y92         FDPE                                         r  FDPE_11/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y92         FDPE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.039     0.877 f  FDPE_11/Q
+                         net (fo=1, routed)           0.050     0.927    jesd_phy2_tx_rst
+    SLICE_X50Y91         LUT2 (Prop_C5LUT_SLICEM_I1_O)
+                                                      0.041     0.968 f  FDPE_26_i_1/O
+                         net (fo=4, routed)           0.179     1.147    axau15_litejesd204bcoretx1_litejesd204btxcdc2_reset
+    SLICE_X51Y90         FDPE                                         f  FDPE_26/PRE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.085     0.085    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.082     0.167 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         0.780     0.947    jesd_phy3_tx_clk
+    SLICE_X51Y90         FDPE                                         r  FDPE_26/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  sys_clk
+  To Clock:  axau15_gth40_txoutclk
+
+Max Delay             8 Endpoints
+Min Delay            12 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 axau15_gth41_tx_reset_deglitched_reg/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            FDPE_6/PRE
+                            (recovery check against rising-edge clock axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             (none)
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Data Path Delay:        0.380ns  (logic 0.080ns (21.053%)  route 0.300ns (78.947%))
+  Logic Levels:           0  
+  Clock Path Skew:        -1.502ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.245ns
+    Source Clock Delay      (SCD):    2.747ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      1.483ns (routing 0.618ns, distribution 0.865ns)
+  Clock Net Delay (Destination): 1.032ns (routing 0.321ns, distribution 0.711ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.100     0.100    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.629     0.729 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.779    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.779 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.334     1.113    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.151     1.264 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         1.483     2.747    sys_clk
+    SLICE_X48Y88         FDRE                                         r  axau15_gth41_tx_reset_deglitched_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y88         FDRE (Prop_DFF2_SLICEM_C_Q)
+                                                      0.080     2.827 f  axau15_gth41_tx_reset_deglitched_reg/Q
+                         net (fo=2, routed)           0.300     3.127    axau15_gth41_tx_reset_deglitched
+    SLICE_X48Y90         FDPE                                         f  FDPE_6/PRE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.099     0.099    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     0.213 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         1.032     1.245    jesd_phy3_tx_clk
+    SLICE_X48Y90         FDPE                                         r  FDPE_6/C
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 FSM_onehot_gthtxinit2_state_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            xilinxmultiregimpl800_reg/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.108ns  (logic 0.040ns (36.912%)  route 0.068ns (63.088%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.519ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.941ns
+    Source Clock Delay      (SCD):    1.460ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.807ns (routing 0.341ns, distribution 0.466ns)
+  Clock Net Delay (Destination): 0.774ns (routing 0.247ns, distribution 0.527ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.079     0.079    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.296     0.375 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040     0.415    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.415 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.150     0.565    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.089     0.654 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         0.807     1.460    sys_clk
+    SLICE_X50Y93         FDRE                                         r  FSM_onehot_gthtxinit2_state_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y93         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.040     1.500 r  FSM_onehot_gthtxinit2_state_reg[4]/Q
+                         net (fo=9, routed)           0.068     1.568    axau15_gth42_tx_ready
+    SLICE_X49Y92         FDRE                                         r  xilinxmultiregimpl800_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.085     0.085    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.082     0.167 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         0.774     0.941    jesd_phy3_tx_clk
+    SLICE_X49Y92         FDRE                                         r  xilinxmultiregimpl800_reg/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  spi_gpio_bs
+
+Max Delay             0 Endpoints
+Min Delay             2 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 miso
+                            (input port)
+  Destination:            spi_gpio/core/miso_sync_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.618ns  (logic 0.141ns (22.837%)  route 0.477ns (77.163%))
+  Logic Levels:           2  (IBUFCTRL=1 INBUF=1)
+  Clock Path Skew:        8.113ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    8.113ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Net Delay (Destination): 0.985ns (routing 0.442ns, distribution 0.543ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    R25                                               0.000     0.000 r  miso (IN)
+                         net (fo=0)                   0.000     0.000    miso_IBUF_inst/I
+    R25                  INBUF (Prop_INBUF_HPIOB_M_PAD_O)
+                                                      0.141     0.141 r  miso_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.141    miso_IBUF_inst/OUT
+    R25                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.141 r  miso_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.477     0.618    spi_gpio/core/miso
+    SLICE_X7Y104         FDRE                                         r  spi_gpio/core/miso_sync_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock spi_gpio_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      5.900     5.900 r  spi_gpio/bs/TCK
+                         net (fo=1, routed)           1.209     7.109    spi_gpio_n_0
+    BUFGCE_X0Y16         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.019     7.128 r  pins_reg[3]_i_4/O
+    X0Y1 (CLOCK_ROOT)    net (fo=72, routed)          0.985     8.113    spi_gpio/core/tck
+    SLICE_X7Y104         FDRE                                         r  spi_gpio/core/miso_sync_reg[0]/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  status_scan_bs
+
+Max Delay             0 Endpoints
+Min Delay             3 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 GTHE4_COMMON/QPLL1LOCK
+                            (internal pin)
+  Destination:            status_scan/meta_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.328ns  (logic 0.000ns (0.000%)  route 0.328ns (100.000%))
+  Logic Levels:           0  
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Destination): 1.030ns (routing 0.496ns, distribution 0.534ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    GTHE4_COMMON_X0Y1    GTHE4_COMMON                 0.000     0.000 r  GTHE4_COMMON/QPLL1LOCK
+                         net (fo=5, routed)           0.328     0.328    status_scan/status[0]
+    SLICE_X48Y98         FDRE                                         r  status_scan/meta_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock status_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  status_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      4.300     4.300 r  status_scan/bs/TCK
+                         net (fo=1, routed)           1.183     5.483    status_scan_n_0
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.019     5.502 r  meta_reg[8]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=80, routed)          1.030     6.532    status_scan/tck
+    SLICE_X48Y98         FDRE                                         r  status_scan/meta_reg[0]/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  axau15_gth40_txoutclk
+  To Clock:  status_scan_bs
+
+Max Delay             0 Endpoints
+Min Delay             2 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 axau15_litejesd204bcoretx1_ready_reg/C
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Destination:            status_scan/meta_reg[8]/D
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.098ns  (logic 0.039ns (39.796%)  route 0.059ns (60.204%))
+  Logic Levels:           0  
+  Clock Path Skew:        5.685ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    6.523ns
+    Source Clock Delay      (SCD):    0.838ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.046ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.060ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.692ns (routing 0.233ns, distribution 0.459ns)
+  Clock Net Delay (Destination): 1.021ns (routing 0.496ns, distribution 0.525ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.073     0.073    axau15_gth40_txoutclk
+    BUFG_GT_X0Y28        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.073     0.146 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=538, routed)         0.692     0.838    jesd_phy3_tx_clk
+    SLICE_X50Y91         FDRE                                         r  axau15_litejesd204bcoretx1_ready_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X50Y91         FDRE (Prop_DFF_SLICEM_C_Q)
+                                                      0.039     0.877 r  axau15_litejesd204bcoretx1_ready_reg/Q
+                         net (fo=1, routed)           0.059     0.936    status_scan/status[8]
+    SLICE_X49Y91         FDRE                                         r  status_scan/meta_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock status_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  status_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      4.300     4.300 r  status_scan/bs/TCK
+                         net (fo=1, routed)           1.183     5.483    status_scan_n_0
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.019     5.502 r  meta_reg[8]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=80, routed)          1.021     6.523    status_scan/tck
+    SLICE_X49Y91         FDRE                                         r  status_scan/meta_reg[8]/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  sys_clk
+  To Clock:  status_scan_bs
+
+Max Delay             0 Endpoints
+Min Delay             4 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 FSM_onehot_gthtxinit1_state_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            status_scan/meta_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by status_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.166ns  (logic 0.040ns (24.142%)  route 0.126ns (75.858%))
+  Logic Levels:           0  
+  Clock Path Skew:        5.065ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    6.535ns
+    Source Clock Delay      (SCD):    1.470ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Source):      0.817ns (routing 0.341ns, distribution 0.476ns)
+  Clock Net Delay (Destination): 1.033ns (routing 0.496ns, distribution 0.537ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.079     0.079    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.296     0.375 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040     0.415    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.415 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.150     0.565    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.089     0.654 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         0.817     1.470    sys_clk
+    SLICE_X48Y89         FDRE                                         r  FSM_onehot_gthtxinit1_state_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y89         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.040     1.510 r  FSM_onehot_gthtxinit1_state_reg[4]/Q
+                         net (fo=9, routed)           0.126     1.636    status_scan/status[2]
+    SLICE_X48Y92         FDRE                                         r  status_scan/meta_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock status_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  status_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN1_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      4.300     4.300 r  status_scan/bs/TCK
+                         net (fo=1, routed)           1.183     5.483    status_scan_n_0
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.019     5.502 r  meta_reg[8]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=80, routed)          1.033     6.535    status_scan/tck
+    SLICE_X48Y92         FDRE                                         r  status_scan/meta_reg[2]/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  sys_clk
+
+Max Delay             2 Endpoints
+Min Delay            10 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 STARTUPE3/EOS
+                            (internal pin)
+  Destination:            FDPE/PRE
+                            (recovery check against rising-edge clock sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             (none)
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Data Path Delay:        0.615ns  (logic 0.000ns (0.000%)  route 0.615ns (100.000%))
+  Logic Levels:           0  
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Destination): 1.288ns (routing 0.564ns, distribution 0.724ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    CONFIG_SITE_X0Y0     STARTUPE3                    0.000     0.000 r  STARTUPE3/EOS
+                         net (fo=2, routed)           0.615     0.615    STARTUPE3_n_2
+    SLICE_X43Y105        FDPE                                         f  FDPE/PRE  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.079     0.079    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.520     0.599 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040     0.639    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.639 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.297     0.936    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.131     1.067 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         1.288     2.355    sys_clk
+    SLICE_X43Y105        FDPE                                         r  FDPE/C
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 GTHE4_CHANNEL_2/TXRESETDONE
+                            (internal pin)
+  Destination:            xilinxmultiregimpl460_reg/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.126ns  (logic 0.000ns (0.000%)  route 0.126ns (100.000%))
+  Logic Levels:           0  
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Destination): 0.914ns (routing 0.376ns, distribution 0.538ns)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    GTHE4_CHANNEL_X0Y6   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL_2/TXRESETDONE
+                         net (fo=1, routed)           0.126     0.126    axau15_gth42_tx_init_Xxresetdone0
+    SLICE_X50Y93         FDRE                                         r  xilinxmultiregimpl460_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    T24                                               0.000     0.000 r  sys_p (IN)
+                         net (fo=0)                   0.100     0.100    IBUFDS/I
+    HPIOBDIFFINBUF_X0Y36 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.400     0.500 r  IBUFDS/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.550    IBUFDS/OUT
+    T24                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.550 r  IBUFDS/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.182     0.732    axau15
+    BUFGCE_DIV_X0Y6      BUFGCE_DIV (Prop_BUFGCE_DIV_I_O)
+                                                      0.100     0.832 r  BUFGCE_DIV/O
+    X1Y1 (CLOCK_ROOT)    net (fo=166, routed)         0.914     1.747    sys_clk
+    SLICE_X50Y93         FDRE                                         r  xilinxmultiregimpl460_reg/C
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  spi_gpio_bs
+
+Max Delay             1 Endpoint
+Min Delay             1 Endpoint
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 spi_gpio/bs/INTERNAL_TDI
+                            (internal pin)
+  Destination:            spi_gpio/core/scan_reg[63]/D
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             (none)
+  Path Type:              Setup (Max at Slow Process Corner)
+  Data Path Delay:        6.840ns  (logic 5.900ns (86.257%)  route 0.940ns (13.743%))
+  Logic Levels:           1  (BSCANE2=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Destination): 1.384ns (routing 0.660ns, distribution 0.724ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TDI
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TDI_TDI)
+                                                      5.900     5.900 r  spi_gpio/bs/TDI
+                         net (fo=1, routed)           0.940     6.840    spi_gpio/core/tdi
+    SLICE_X17Y103        FDRE                                         r  spi_gpio/core/scan_reg[63]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock spi_gpio_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      0.465     0.465 r  spi_gpio/bs/TCK
+                         net (fo=1, routed)           1.202     1.667    spi_gpio_n_0
+    BUFGCE_X0Y16         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     1.691 r  pins_reg[3]_i_4/O
+    X0Y1 (CLOCK_ROOT)    net (fo=72, routed)          1.384     3.075    spi_gpio/core/tck
+    SLICE_X17Y103        FDRE                                         r  spi_gpio/core/scan_reg[63]/C
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 spi_gpio/bs/INTERNAL_TDI
+                            (internal pin)
+  Destination:            spi_gpio/core/scan_reg[63]/D
+                            (rising edge-triggered cell FDRE clocked by spi_gpio_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.924ns  (logic 0.465ns (50.325%)  route 0.459ns (49.675%))
+  Logic Levels:           1  (BSCANE2=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+  Clock Net Delay (Destination): 0.979ns (routing 0.442ns, distribution 0.537ns)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TDI
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TDI_TDI)
+                                                      0.465     0.465 r  spi_gpio/bs/TDI
+                         net (fo=1, routed)           0.459     0.924    spi_gpio/core/tdi
+    SLICE_X17Y103        FDRE                                         r  spi_gpio/core/scan_reg[63]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock spi_gpio_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  spi_gpio/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN2_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      5.900     5.900 r  spi_gpio/bs/TCK
+                         net (fo=1, routed)           1.209     7.109    spi_gpio_n_0
+    BUFGCE_X0Y16         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.019     7.128 r  pins_reg[3]_i_4/O
+    X0Y1 (CLOCK_ROOT)    net (fo=72, routed)          0.979     8.107    spi_gpio/core/tck
+    SLICE_X17Y103        FDRE                                         r  spi_gpio/core/scan_reg[63]/C
+
+
+
+
+

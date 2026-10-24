@@ -195,3 +195,16 @@ User-authorized HMC output12 LVDS trial passed on AXAU15: fresh QPLL lock,
 reference stop/restart and preserved AD9172 PLL/DLL. See qpll-lvds-lab and
 evidence/axau15/qpll-lvds-hardware-20261024. Earlier no-hardware/schematic-only
 stop statements for this diagnostic are superseded. No JESD/RF proof yet.
+
+2026-10-24: four-lane dual JESD physical PASS
+------------------------------------------
+
+``jesd-probe/`` implements safe GPIO SPIv2, four GTH6.144Gb/s, shared TX clock
+and two mode3 subclass0 links with fixed zero payload. Vivado setup3.750ns,
+hold0.023ns, DRC0; routed CDC has only safe synchronizers. Physical GTH ready,
+both links CGS/frame/ILAS/checksum and clean error flags pass three reads each.
+DAC PLL/DLL/SERDES PLL remain locked. DAC SPI TXEN is held low (0x596=4),
+0x03f=0x30 enables TXEN muting; HMC output12 remains enabled. No RF/payload
+amplitude proof yet. Evidence: evidence/axau15/jesd-20261024.
+Initial status reader accidentally disabled links by paging0x08/0x0c; corrected
+reader preserves LINK_EN using0x0b/0x0f, with a regression model.

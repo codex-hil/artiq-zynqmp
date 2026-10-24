@@ -1,0 +1,55 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Sat Oct 24 17:06:15 2026
+| Host              : 62a6161a08ab running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_cdc -details -file cdc.rpt
+| Design            : axau15_jesd
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Routed
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+ID     Severity  Count  Description
+-----  --------  -----  -------------------------------------------------------
+CDC-3  Info         10  1-bit synchronized with ASYNC_REG property
+CDC-9  Info          4  Asynchronous reset synchronized with ASYNC_REG property
+
+Source Clock: sys_clk
+Destination Clock: axau15_gth40_txoutclk
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                              Depth  Exception                Source (From)                           Destination (To)
+---  -----  --------  -------------------------------------------------------  -----  -----------------------  --------------------------------------  ---------------------------
+  1  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  False Path               axau15_gth42_tx_reset_deglitched_reg/C  FDPE_10/PRE
+  2  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  False Path               axau15_gth43_tx_reset_deglitched_reg/C  FDPE_14/PRE
+  3  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  False Path               axau15_gth40_tx_reset_deglitched_reg/C  FDPE_2/PRE
+  4  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  False Path               axau15_gth41_tx_reset_deglitched_reg/C  FDPE_6/PRE
+  5  CDC-3  Info      1-bit synchronized with ASYNC_REG property                   2  Max Delay Datapath Only  FSM_onehot_gthtxinit0_state_reg[4]/C    xilinxmultiregimpl780_reg/D
+  6  CDC-3  Info      1-bit synchronized with ASYNC_REG property                   2  Max Delay Datapath Only  FSM_onehot_gthtxinit1_state_reg[4]/C    xilinxmultiregimpl790_reg/D
+  7  CDC-3  Info      1-bit synchronized with ASYNC_REG property                   2  Max Delay Datapath Only  FSM_onehot_gthtxinit2_state_reg[4]/C    xilinxmultiregimpl800_reg/D
+  8  CDC-3  Info      1-bit synchronized with ASYNC_REG property                   2  Max Delay Datapath Only  FSM_onehot_gthtxinit3_state_reg[4]/C    xilinxmultiregimpl810_reg/D
+
+Source Clock: axau15_gth40_txoutclk
+Destination Clock: status_scan_bs
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                 Depth  Exception                Source (From)                           Destination (To)
+---  -----  --------  ------------------------------------------  -----  -----------------------  --------------------------------------  -------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  axau15_litejesd204bcoretx0_ready_reg/C  status_scan/meta_reg[7]/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  axau15_litejesd204bcoretx1_ready_reg/C  status_scan/meta_reg[8]/D
+
+Source Clock: sys_clk
+Destination Clock: status_scan_bs
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                 Depth  Exception                Source (From)                         Destination (To)
+---  -----  --------  ------------------------------------------  -----  -----------------------  ------------------------------------  -------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  FSM_onehot_gthtxinit0_state_reg[4]/C  status_scan/meta_reg[1]/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  FSM_onehot_gthtxinit1_state_reg[4]/C  status_scan/meta_reg[2]/D
+  3  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  FSM_onehot_gthtxinit2_state_reg[4]/C  status_scan/meta_reg[3]/D
+  4  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  FSM_onehot_gthtxinit3_state_reg[4]/C  status_scan/meta_reg[4]/D
+

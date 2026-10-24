@@ -1,0 +1,37 @@
+{
+  "status": "PHYSICAL_JESD_LINK_STARTUP_PASS",
+  "date": "2026-10-24",
+  "cable": "210512180081",
+  "part": "xcau15p-ffvb676-2-i",
+  "bit_sha256": "6ac3a607bc150e038e599059cdf4c9d6d22dbcf94a028ac26b342f28ec0010ee",
+  "lane_count": 4,
+  "nominal_lane_rate_bps": 6144000000,
+  "links": 2,
+  "subclass": 0,
+  "mode": 3,
+  "nominal_dac_fs_hz": 4915200000,
+  "fpga_status": "0x1ff QPLL, four TX ready, two SYNC high, two link ready",
+  "dac_link_status": {
+    "0x470": "0x03 CGS",
+    "0x471": "0x03 frame sync",
+    "0x472": "0x03 initial lane sync",
+    "0x473": "0x03 good checksum",
+    "0x46d": "0 bad disparity",
+    "0x46e": "0 not-in-table",
+    "0x46f": "0 unexpected control"
+  },
+  "consecutive_status_sets_per_link": 3,
+  "dac_clock_final": {
+    "0x7b5": "0x03",
+    "0xc3": "0x01",
+    "0x281": "0x03"
+  },
+  "final_state": "JESD zero-payload SRAM image, both links enabled, HMC output12 LVDS enabled, both DAC SPI TXEN low 0x596=4 with 0x03f=0x30",
+  "rf_amplitude_payload_proof": "NOT_RUN",
+  "scope_access": false,
+  "reference_loss_recovery": "NOT_QUALIFIED_FOR_JESD",
+  "startup_repeatability": "single corrected end-to-end run; first run had diagnostic paging bug",
+  "initial_failure": "status page writes0x08/0x0c disabled links; corrected0x0b/0x0f preserves LINK_EN",
+  "other_boards_access": false,
+  "persistent_writes": false
+}

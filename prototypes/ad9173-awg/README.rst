@@ -133,3 +133,13 @@ The DAC is muted; JESD, sample transport and RF output remain NOT_RUN.
 ``axau15/refclk-probe/`` prepares dedicated FMC clock activity diagnostics;
 actual AXAU15/ACAU15 GBTCLK0 AC coupling remains an electrical prerequisite.
 These results supersede earlier no-hardware statements, not the Trenz results.
+
+AXAU15 / AD9172 JESD physical milestone (2026-10-24)
+-------------------------------------------------
+
+Dedicated HMC LVDS -> FMC MGTREFCLK, QPLL1, four GTH at nominal6.144Gb/s and
+both JESD204B mode3 subclass0 links now have physical startup PASS. Three
+consecutive DAC status sets per link confirm CGS/frame/ILAS/checksum with
+no selected lane error flags. FPGA sends fixed zeros; DAC SPI TXEN remains
+low. RF tones and full/half/zero/recovery payload proof remain NOT_RUN.
+See ``axau15/jesd-probe/`` and ``evidence/axau15/jesd-20261024/``.
