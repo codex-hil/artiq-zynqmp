@@ -68,23 +68,37 @@ Input response::
 The response acknowledges command admission, not pulse completion. Observe
 IPbus busy/result for completion. The integration must consume these input
 responses; otherwise the RTIO input FIFO can overflow. ``artiq_envelope.py``
-provides kernel START/ABORT/QUERY methods and blocking ``read_response()``
-(raw byte) / ``check_response()`` (raise ValueError on rejection). Consume
+provides kernel START/ABORT/QUERY methods and blocking ``read_response(deadline_mu)``
+(raw byte) / ``check_response(deadline_mu)`` (raise ValueError on rejection). Consume
 exactly one response per admitted command, in FIFO order; do not mix these
 readers with another consumer on the same channel. Accepted responses retain
 bits4/5 describing the state before the command, not its completion.
 
-These readers use upstream ``rtio_input_data`` and have no timeout. A command
-dropped due to busy, timeline reset or link loss may never produce a response;
-do not blindly read after a known failed output. Recovery belongs to the
-satellite/runtime and must invalidate outstanding command/response pairing.
-Responses do not carry a command ID. After uncertain recovery, establish an
-empty input FIFO and a new ARM before resuming; never retry START implicitly.
+Both readers require an absolute RTIO ``deadline_mu`` in machine units,
+using upstream ``rtio_input_timestamped_data``. A missing response raises
+``ValueError('Envelope RTIO response timeout')``; transport exceptions propagate.
+A negative deadline is rejected before any input read. The deadline does not
+advance the output timeline. An already queued response may still be read
+with an expired deadline; this is a wait bound, not a reply-age filter.
+
+No HDL change is needed: upstream InputCollector returns timestamp0 for this
+untimestamped channel and uses the CRI deadline independently of timestamp
+storage. The firmware returns timestamp-1 on timeout. This relies on the
+satellite/runtime preserving the upstream CRI input-timeout semantics; it
+cannot bound a stalled runtime or stopped RTIO timebase.
+
+Timeout does not cancel a command and does not prove that START was rejected.
+A late response may remain in the FIFO. Responses do not carry a command ID:
+stop issuing commands after timeout, invalidate the old ARM and perform the
+satellite's coordinated reset/flush before rearming. Never retry START or
+read a late response as acknowledgement of a new command automatically.
 
 For a single command after a fresh ARM and with a ready bridge::
 
-  awg.start(arm_id)       # at the timestamp selected by the experiment
-  awg.check_response()   # admission only; may consume timeline slack
+  # Set the timestamp first; choose a budget suitable for the integrated link.
+  deadline_mu = now_mu() + core.seconds_to_mu(1e-3)
+  awg.start(arm_id)
+  awg.check_response(deadline_mu)  # admission only, not RF completion
   core.break_realtime()  # before scheduling a subsequent output
 
 Do not insert a blocking read into an uninterrupted timed output sequence.
@@ -95,7 +109,8 @@ codes, reserved/unknown values and propagation of transport exceptions::
   /srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/python \
     -m unittest -v test_artiq_envelope_host
 
-Five host tests PASS. This is not NAC3 compilation or kernel execution on a
+Eight host tests PASS, including missing response, invalid deadline and a
+deadline above32 bits. Timeout/recovery on a physical DRTIO link is NOT_RUN. This is not NAC3 compilation or kernel execution on a
 core; those remain pending with the satellite integration.
 
 Clock choices and reset

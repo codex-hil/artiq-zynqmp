@@ -34,17 +34,17 @@ class DriverTest(unittest.TestCase):
 
     def test_raw_responses_preserve_fifo_order(self):
         values = [0x10, 0x13, 0x20, 0x04]
-        with patch.object(driver, 'rtio_input_data', side_effect=values) as read:
-            self.assertEqual([self.call('read_response') for _ in values], values)
+        with patch.object(driver, 'rtio_input_timestamped_data', side_effect=[(0, value) for value in values]) as read:
+            self.assertEqual([self.call('read_response', 1000) for _ in values], values)
             self.assertEqual(read.call_count, len(values))
-            read.assert_called_with(7)
+            read.assert_called_with(1000, 7)
 
     def test_accepted_response_preserves_state(self):
         for response in (0, 0x10, 0x20, 0x30):
             with self.subTest(response=response):
-                with patch.object(driver, 'rtio_input_data', return_value=response) as read:
-                    self.assertEqual(self.call('check_response'), response)
-                    read.assert_called_once_with(7)
+                with patch.object(driver, 'rtio_input_timestamped_data', return_value=(0, response)) as read:
+                    self.assertEqual(self.call('check_response', 1000), response)
+                    read.assert_called_once_with(1000, 7)
 
     def test_rejections_and_malformed_responses_are_consumed_once(self):
         cases = [(1, 'command'), (2, 'not armed'), (3, 'Stale'),
@@ -53,17 +53,40 @@ class DriverTest(unittest.TestCase):
                  (0x100, 'Invalid')]
         for response, message in cases:
             with self.subTest(response=response):
-                with patch.object(driver, 'rtio_input_data', return_value=response) as read:
+                with patch.object(driver, 'rtio_input_timestamped_data', return_value=(0, response)) as read:
                     with self.assertRaisesRegex(ValueError, message):
-                        self.call('check_response')
-                    read.assert_called_once_with(7)
+                        self.call('check_response', 1000)
+                    read.assert_called_once_with(1000, 7)
+
+    def test_timeout_is_not_a_success_or_a_retry(self):
+        for method in ('read_response', 'check_response'):
+            with patch.object(driver, 'rtio_input_timestamped_data', return_value=(-1, 0)) as read:
+                with patch.object(driver, 'rtio_output') as output:
+                    with self.assertRaisesRegex(ValueError, 'response timeout'):
+                        self.call(method, 1000)
+                    read.assert_called_once_with(1000, 7)
+                    output.assert_not_called()
+
+    def test_invalid_deadline_does_not_consume_response(self):
+        for method in ('read_response', 'check_response'):
+            with patch.object(driver, 'rtio_input_timestamped_data') as read:
+                with self.assertRaisesRegex(ValueError, 'deadline'):
+                    self.call(method, -1)
+                read.assert_not_called()
+
+    def test_absolute_deadline_is_passed_without_truncation(self):
+        for deadline in (0, 2**40 + 123):
+            for method in ('read_response', 'check_response'):
+                with patch.object(driver, 'rtio_input_timestamped_data', return_value=(0, 0x10)) as read:
+                    self.assertEqual(self.call(method, deadline), 0x10)
+                    read.assert_called_once_with(deadline, 7)
 
     def test_transport_failure_is_not_hidden_or_retried(self):
         for method in ('read_response', 'check_response'):
-            with patch.object(driver, 'rtio_input_data', side_effect=RuntimeError('link')) as read:
+            with patch.object(driver, 'rtio_input_timestamped_data', side_effect=RuntimeError('link')) as read:
                 with self.assertRaisesRegex(RuntimeError, 'link'):
-                    self.call(method)
-                read.assert_called_once_with(7)
+                    self.call(method, 1000)
+                read.assert_called_once_with(1000, 7)
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ Use only with EnvelopeRTIO or EnvelopeRTIOBridge connected by the satellite
 integration. An IPbus-only image has no RTIO channel for this driver.
 """
 from artiq.language.core import kernel
-from artiq.coredevice.rtio import rtio_output, rtio_input_data
+from artiq.coredevice.rtio import rtio_output, rtio_input_timestamped_data
 
 
 class PhaserEnvelope:
@@ -32,23 +32,33 @@ class PhaserEnvelope:
         rtio_output(self.channel << 8, 0)
 
     @kernel
-    def read_response(self):
-        """Consume the oldest response, blocking until it arrives.
+    def read_response(self, deadline_mu):
+        """Consume one response by an absolute RTIO deadline (machine units).
 
-        Call exactly once per admitted command, in command order. This has
-        no timeout: a dropped/busy output or lost link can leave it waiting.
-        It does not advance the timeline or confirm playback completion.
+        Call once per admitted command, in FIFO order. A timeout does not
+        cancel playback or prove START was not executed. Late replies require
+        explicit recovery before another command; never retry automatically.
+        This does not advance the timeline or confirm playback completion.
         """
-        return rtio_input_data(self.channel)
+        if deadline_mu < 0:
+            raise ValueError('Invalid envelope response deadline')
+        timestamp, response = rtio_input_timestamped_data(deadline_mu, self.channel)
+        if timestamp == -1:
+            raise ValueError('Envelope RTIO response timeout')
+        return response
 
     @kernel
-    def check_response(self):
+    def check_response(self, deadline_mu):
         """Consume one response; raise on rejection, return state bits on success.
 
         The same blocking/ordering rules as read_response apply. This may
         consume timeline slack; replenish it before scheduling another output.
         """
-        response = rtio_input_data(self.channel)
+        if deadline_mu < 0:
+            raise ValueError('Invalid envelope response deadline')
+        timestamp, response = rtio_input_timestamped_data(deadline_mu, self.channel)
+        if timestamp == -1:
+            raise ValueError('Envelope RTIO response timeout')
         if response < 0 or response > 0x3f:
             raise ValueError('Invalid envelope RTIO response')
         result = response & 0xf
