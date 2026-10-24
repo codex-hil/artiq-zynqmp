@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — exact exception format/varargs/frame inventory offline
+
+ELF format contains four%x integer fields, no%s/dynamic pointer formatting.
+Four handler register arguments match linked printf spill/varargs offsets inside
+28byte callerframe. Ctype257bytes localPMU. Six negative frame adjustments sum276
+but are NOT runtime stack bound; entrySP/nesting/priorframes remain unresolved.
+No HW/firmwarechange;DDR NOT_ADMITTED. Next ordinaryguard-entry stack chain and
+exception-entry/nesting review. Evidence `evidence/pmu-format-stack-2026-10-24`.
+
+
 ## 2026-10-24 — printf range/direct exception MMIO review offline
 
 CMPU/BLTID source semantics narrow surviving index to0..21 under prior CFG/callee

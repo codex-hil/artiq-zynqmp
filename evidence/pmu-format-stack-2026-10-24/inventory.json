@@ -1,0 +1,37 @@
+{
+  "status": "OFFLINE_FORMAT_FRAME_INVENTORY_NOT_STACK_BOUND",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "elf_sha256": "7a82b8f2ac5beb2bff4cafaa3767b888c09461a7c66371f632332f7bd66f51c4",
+  "format_start": "0xffdd2314",
+  "format_ascii": "Received exception\r\nMSR: 0x%x, EAR: 0x%x, EDR: 0x%x, ESR: 0x%x\r\n",
+  "format_bytes_including_null": 65,
+  "ctype_start": "0xffdd3874",
+  "ctype_bytes": 257,
+  "ctype_sha256": "8b55a0d9c781d7001042c99e21523fef362440f572faef950e8e600fae5de813",
+  "negative_frame_adjustments": {
+    "XPfw_Exception_Handler": [
+      28
+    ],
+    "padding": [
+      12
+    ],
+    "outnum": [
+      108
+    ],
+    "xil_printf": [
+      104
+    ],
+    "__udivsi3": [
+      12
+    ],
+    "__umodsi3": [
+      12
+    ]
+  },
+  "static_sum_not_runtime_bound": 276,
+  "linker_stack_start": "0xffddc55c",
+  "linker_stack_top": "0xffddd560",
+  "linker_stack_bytes": 4100,
+  "limits": "No live entry SP/high-water, nesting, ABI corruption, dynamic instruction-path or repeated frame allocation proof. Static frame sum is not an admitted bound."
+}

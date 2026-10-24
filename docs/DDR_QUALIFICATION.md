@@ -2270,3 +2270,12 @@ classified, notDDR; UARTpoll forward progress unbounded. Full format/ctype/varar
 stack/helper footprint remains open. No HW/firmwarechanges;DDR NOT_ADMITTED.
 Next exact format/ctype/varargs and exception-stack audit. Evidence
 `evidence/pmu-printf-range-memory-2026-10-24`.
+
+## 2026-10-24 — exact exception format/varargs/frame inventory offline
+
+ELF format contains four%x integer fields, no%s/dynamic pointer formatting.
+Four handler register arguments match linked printf spill/varargs offsets inside
+28byte callerframe. Ctype257bytes localPMU. Six negative frame adjustments sum276
+but are NOT runtime stack bound; entrySP/nesting/priorframes remain unresolved.
+No HW/firmwarechange;DDR NOT_ADMITTED. Next ordinaryguard-entry stack chain and
+exception-entry/nesting review. Evidence `evidence/pmu-format-stack-2026-10-24`.
