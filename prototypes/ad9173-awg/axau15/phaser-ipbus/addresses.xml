@@ -21,4 +21,6 @@
   <node id="envelope_command" address="0x25" permission="w"/>
   <node id="envelope_abort" address="0x26" permission="w"/>
   <node id="envelope_ram" address="0x400" permission="rw" mode="incremental" size="1024"/>
+  <node id="envelope_armed" address="0x27" permission="r"/>
+  <node id="envelope_arm_id" address="0x28" permission="r"/>
 </node>

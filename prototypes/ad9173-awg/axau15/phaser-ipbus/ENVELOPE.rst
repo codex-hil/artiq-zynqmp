@@ -32,7 +32,9 @@ is represented by32767/32768, negative unity by-1.
 Register ABI
 ------------
 
-Envelope images report ABI0x00010001 and capabilities register0x008=1.
+The qualified envelope image reports ABI0x00010001 and capabilities0x008=1.
+Current ARM-capable sources report ABI0x00010002/capabilities3; see
+``RTIO_INTERFACE.rst``. The physical results below belong to ABI0x00010001.
 The previous CW image reports ABI0x00010000. The existing DDS client accepts
 both; the envelope client checks the new ABI before accessing these words.
 Addresses are32-bit word addresses, not byte addresses::

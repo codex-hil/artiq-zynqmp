@@ -22,11 +22,11 @@ class Registers(Module):
    self.env_repeats=Signal(32,reset=1,name='env_config_repeats')
    self.env_command=Signal(2,name='env_config_command')
    self.env_request=Signal();self.env_abort_request=Signal()
-   env_ack=Signal();abort_ack=Signal();env_mode=Signal();env_playing=Signal();env_result=Signal(2)
+   env_ack=Signal();abort_ack=Signal();env_mode=Signal();env_playing=Signal();env_armed=Signal();env_arm_id=Signal(30);env_result=Signal(2)
    env_previous=Signal();env_commands=Signal(32)
    self.specials += [MultiReg(envelope.ack,env_ack),MultiReg(envelope.abort_ack,abort_ack),
                      MultiReg(envelope.mode,env_mode),MultiReg(envelope.playing,env_playing),
-                     MultiReg(envelope.result,env_result)]
+                     MultiReg(envelope.result,env_result),MultiReg(envelope.armed_status,env_armed),MultiReg(envelope.arm_id,env_arm_id)]
    self.comb += [envelope.command.eq(self.env_command),envelope.length.eq(self.env_length),
                  envelope.repeats.eq(self.env_repeats),envelope.request.eq(self.env_request),
                  envelope.abort_request.eq(self.env_abort_request),
@@ -35,7 +35,7 @@ class Registers(Module):
    self.sync += [env_previous.eq(env_ack),If(env_previous!=env_ack,env_commands.eq(env_commands+1))]
   self.sync += uptime.eq(uptime+1)
   value=Signal(32);valid=Signal();writable=Signal();bad=Signal()
-  cases={0:[value.eq(MAGIC)],1:[value.eq(0x10001 if envelope is not None else 0x10000)],2:[value.eq(307200000)],3:[value.eq(5)],
+  cases={0:[value.eq(MAGIC)],1:[value.eq(0x10002 if envelope is not None else 0x10000)],2:[value.eq(307200000)],3:[value.eq(5)],
     4:[value.eq(scratch),writable.eq(1)],5:[value.eq(writes)],6:[value.eq(uptime[:32])],7:[value.eq(uptime[32:])],
     0x10:[value.eq(self.status)],0x11:[value.eq(self.busy)],0x12:[value.eq(self.commits)],
     0x13:[value.eq(self.mute),writable.eq(1),bad.eq(wd>1)],
@@ -43,13 +43,15 @@ class Registers(Module):
     0x18:[value.eq(self.rx_frames)],0x19:[value.eq(self.tx_frames)],0x1a:[value.eq(self.rx_errors)]}
   if envelope is not None:
    cases.update({
-    8:[value.eq(1)],
+    8:[value.eq(3)],
     0x20:[value.eq(envelope_busy)],
     0x21:[value.eq(Cat(env_mode,env_playing,Constant(0,2),env_result))],
     0x22:[value.eq(env_commands)],
     0x23:[value.eq(self.env_length),writable.eq(1),bad.eq(envelope_busy|(wd==0)|(wd>256))],
     0x24:[value.eq(self.env_repeats),writable.eq(1),bad.eq(envelope_busy|(wd==0))],
-    0x25:[value.eq(0),writable.eq(1),bad.eq(envelope_busy|self.busy|((wd!=1)&(wd!=2)))],
+    0x25:[value.eq(0),writable.eq(1),bad.eq(envelope_busy|self.busy|((wd!=1)&(wd!=2)&(wd!=3)))],
+    0x27:[value.eq(env_armed)],
+    0x28:[value.eq(env_arm_id)],
     0x26:[value.eq(self.env_abort_request!=abort_ack),writable.eq(1),bad.eq((wd!=1)|(self.env_abort_request!=abort_ack))],
    })
   for i,s in enumerate(self.shadow):

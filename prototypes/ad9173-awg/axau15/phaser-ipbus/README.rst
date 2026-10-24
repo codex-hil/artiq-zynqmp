@@ -54,7 +54,7 @@ main DAC NCO150MHz on both. Scope settings restored/read back.
 Local envelope extension
 ------------------------
 
-Current sources also provide a finite complex envelope sequencer over IPbus
+The qualified envelope image provides a finite complex sequencer over IPbus
 (ABI0x00010001):256 entries, independent I/Q gains on both channels,
 6.5104ns nominal steps, finite repeats and abort. See ``ENVELOPE.rst`` for
 its register map, CLI, validation and shared-board restoration procedure.
@@ -63,6 +63,15 @@ shared default image. The envelope client rejects older images explicitly. The e
 separate simulation, Vivado and physical RF PASS evidence in
 ``../../evidence/axau15/envelope-20261024/acceptance.json``. Its qualification
 runner restores the shared CW image after every bounded session.
+
+RTIO integration preparation
+----------------------------
+
+Current sources add ARM and a tagged RTLink START/ABORT endpoint (ABI0x00010002).
+See ``RTIO_INTERFACE.rst`` for the neighbouring DRTIO thread's integration
+contract, asynchronous-clock limitations, reset rules and host driver.
+The out-of-context build is separate from the physically qualified board
+image; no new RTIO/DRTIO hardware or absolute RF timing proof is implied.
 
 Interface
 ---------

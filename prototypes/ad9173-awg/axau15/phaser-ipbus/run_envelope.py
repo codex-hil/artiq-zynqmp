@@ -46,8 +46,9 @@ def validate_cw(capture):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('bit', type=Path);p.add_argument('--sha256', required=True)
-    p.add_argument('--output', type=Path, required=True);a = p.parse_args()
-    implementation = verify(a.bit.parent)
+    p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--profile', choices=['envelope','armed'], default='envelope');a = p.parse_args()
+    implementation = verify(a.bit.parent, a.profile)
     assert implementation['bit_sha256'] == a.sha256
     assert a.output.is_absolute()
     assert hashlib.sha256(a.bit.read_bytes()).hexdigest() == a.sha256
@@ -75,6 +76,7 @@ def main():
                     c = EnvelopePhaser()
                     try:
                         c.require_envelope()
+                        assert c.identify()["abi"] == (0x10002 if a.profile == "armed" else 0x10001)
                         ref = scope.capture('cw');validate_cw(ref);save(a.output/'scope-cw.json', ref)
                         programs = {
                             'levels':[(16, 0, 0), (16, .5, .5), (16, 0, 0), (16, 1, 1)],

@@ -1,0 +1,61 @@
+{
+  "status": "SIMULATION_AND_OOC_IMPLEMENTATION_PASS_HARDWARE_NOT_RUN",
+  "observed_utc": "2026-10-24T20:14:07.891494+00:00",
+  "simulation": {
+    "rtl_tests_passed": 23,
+    "seconds": 61.02,
+    "new_rtio_tests": 8,
+    "localhost_udp": "PASS",
+    "artiq_driver_host_import_and_encoding": "PASS",
+    "nac3_compile_and_kernel_execution": "NOT_RUN"
+  },
+  "implementation": {
+    "tool": "Vivado2025.2",
+    "part": "xcau15p-ffvb676-2-i",
+    "scope": "OOC: DDS + envelope + IPbus register frontend + RTLink asynchronous bridge; no GT/pins/bitstream",
+    "wns_ns": 2.893,
+    "whs_ns": 0.037,
+    "cdc_critical": 0,
+    "cdc_review": {
+      "CDC-15": {
+        "count": 756,
+        "reason": "held banks: DDS673 + envelope command43 + RTIO command32 + reply8; request/ack and6ns max delay/skew"
+      },
+      "CDC-6": {
+        "count": 2,
+        "reason": "2-bit result stable before completion ack;30-bit ARM ID stable before registered armed status"
+      }
+    },
+    "drc_errors": 0,
+    "drc_warnings": "40 DDS DPIP-2 pipeline +1 unused reserved held bits RTSTAT-10",
+    "bus_skew_slack_ns": [
+      4.879,
+      5.299,
+      5.587,
+      4.827
+    ],
+    "boundary_model": "net/rio_phy125MHz,jesd153.6MHz; input min0.2/max1ns; output min0/max1ns; parent must close these interfaces",
+    "artifact_directory": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-rtio-20261024d",
+    "routed_dcp_sha256": "7f6da7e7ad38f83d0081b72d884a3a20c19b2fdc0be370d51743b9b2d00742c3"
+  },
+  "source_binding": {
+    "regenerated_inputs_byte_identical": true,
+    "input_files": 13,
+    "rtlink_reference_commit": "486e8f897547d282d46a02c30463449c21e30cfe",
+    "source_sha256": {
+      "envelope.py": "7675a6ea378b99c2f9401ed6dd127f2cf5b4f791f85074d2acb68fd0c9eb53c2",
+      "registers.py": "22d05ee949ce86c09e50b20e4b656329753007342f71ea43b0cc8409475528c0",
+      "rtio_endpoint.py": "8576882d1fec6f1b7d0e38875f0e0a907d4dfe3901971c1eebb91283f51f3f9c",
+      "rtio_cdc.py": "e5fcc9972db8b4c58f14f07127015e380c779eb3925da5750026692bf37538cc",
+      "dsp.py": "a428161b9d39ef30a619aa588e3f153680fb29a41dc10bcdd1fa0533b2182f35",
+      "prepare_rtio.py": "39363c2f3f31d4faaa86c9e7786b4f52893bff9ba4589ed3ef8b9235743bdbd4",
+      "rtio_constraints.tcl": "04bb69b586b1c71611e8ba7ff88454f2d50dd03c0a68762da7a8fc27fc10692d",
+      "artiq_envelope.py": "a1d155c2dfc65e58f131cacaa58fc6331c1ec1421f05da83a39753a94d14f4ed",
+      "test_rtio.py": "4fbaef38662170e7c2792f2c51bf4cebc033889d43b5e7fca0cb52f2f8ff0ac7"
+    }
+  },
+  "hardware_access": false,
+  "drtio_link_integration": "PENDING_OTHER_THREAD",
+  "rf_timestamp_latency": "NOT_QUALIFIED; asynchronous bridge latency varies",
+  "board_state": "No accesses or changes by this task; existing shared lease remains authoritative"
+}

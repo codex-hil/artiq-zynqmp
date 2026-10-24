@@ -11,7 +11,7 @@ from migen.genlib.cdc import MultiReg
 from misoc.cores.duc import ComplexMultiplier, saturate
 
 DEPTH = 256
-START, BYPASS = 1, 2
+START, BYPASS, ARM = 1, 2, 3
 OK, ABORTED, INVALID = 0, 1, 2
 
 class EnvelopePlayer(Module):
@@ -32,6 +32,16 @@ class EnvelopePlayer(Module):
         self.result = Signal(2)
         self.gains = [Signal(32) for _ in range(2)]
         self.index = Signal(8)
+        # Synchronous JESD-domain interface for a scheduled-event endpoint.
+        self.trigger = Signal()
+        self.cancel = Signal()
+        self.armed = Signal()
+        self.armed_status = Signal()
+        self.armed_status.attr.add("dont_touch")
+        self.arm_id = Signal(30, reset_less=True)
+        self.started = Signal()
+        self.trigger_rejected = Signal()
+        self.trigger_ready = Signal()
         request, abort = Signal(), Signal()
         self.specials += [MultiReg(self.request, request, 'jesd'),
                           MultiReg(self.abort_request, abort, 'jesd')]
@@ -46,8 +56,9 @@ class EnvelopePlayer(Module):
                                    1 << self.write_address[:2], 0)),
                       self.read_data.eq(Array([wp.dat_r[:32], wp.dat_r[32:64],
                                                wp.dat_r[64:], Constant(0, 32)])[self.write_address[:2]])]
-        idle, dispatch, check_fetch, check_read, prime0, prime1, play, drain = range(8)
-        state = Signal(3)
+        idle, dispatch, check_fetch, check_read, prime0, prime1, play, drain, waiting = range(9)
+        state = Signal(4)
+        first_entry = Signal(96)
         self.active_config = Signal(43, name="envelope_active_config")
         self.active_config.attr.add("dont_touch")
         self.active_config.attr.add(("extract_enable", "yes"))
@@ -59,6 +70,8 @@ class EnvelopePlayer(Module):
         check_index = Signal(8); drain_count = Signal(4)
         next_index, ahead = Signal(8), Signal(8)
         self.comb += [
+            self.armed.eq(state == waiting),
+            self.trigger_ready.eq((state == waiting) & (abort == self.abort_ack) & ~aborting & ~self.cancel),
             next_index.eq(Mux(self.index == length-1, 0, self.index+1)),
             ahead.eq(Mux(next_index == length-1, 0, next_index+1)),
             rp.adr.eq(0),
@@ -66,28 +79,33 @@ class EnvelopePlayer(Module):
                 check_fetch: rp.adr.eq(check_index),
                 check_read: rp.adr.eq(check_index),
                 prime1: rp.adr.eq(Mux(length == 1, 0, 1)),
+                waiting: rp.adr.eq(Mux(length == 1, 0, 1)),
                 play: rp.adr.eq(Mux(remaining == 0, ahead, next_index)),
             })]
         capture = Signal(name="envelope_capture")
         capture.attr.add(("direct_enable", "yes"))
         capture.attr.add("keep")
         self.comb += capture.eq((state == idle) & (request != self.ack) &
-                                ~((abort != self.abort_ack) & ~aborting))
+                                ~(((abort != self.abort_ack) | self.cancel) & ~aborting))
         self.sync.jesd += If(capture,
             self.active_config.eq(Cat(self.command, self.length, self.repeats)))
-        self.sync.jesd += If((abort != self.abort_ack) & ~aborting,
+        self.sync.jesd += self.armed_status.eq(self.armed)
+        self.sync.jesd += [self.started.eq(0),
+                           self.trigger_rejected.eq(self.trigger & (~self.armed | self.cancel | (abort != self.abort_ack)))]
+        self.sync.jesd += If(((abort != self.abort_ack) | self.cancel) & ~aborting,
             aborting.eq(1), abort_token.eq(abort), serving.eq(request),
-            If(request != self.ack, self.mode.eq(1)),
+            If((request != self.ack) | self.cancel, self.mode.eq(1)),
             self.playing.eq(0), self.gains[0].eq(0), self.gains[1].eq(0),
             self.result.eq(ABORTED), drain_count.eq(8), state.eq(drain)
         ).Else(Case(state, {
             idle: If(request != self.ack,
                 serving.eq(request), state.eq(dispatch)),
             dispatch: [self.result.eq(OK), self.playing.eq(0),
+                If(command == ARM, self.arm_id.eq(self.arm_id+1)),
                 self.gains[0].eq(0), self.gains[1].eq(0),
                 If(command == BYPASS,
                     self.mode.eq(0), drain_count.eq(8), state.eq(drain)
-                ).Elif((command != START) | (config_length == 0) |
+                ).Elif(((command != START) & (command != ARM)) | (config_length == 0) |
                        (config_length > DEPTH) | (config_repeats == 0),
                     self.result.eq(INVALID), self.mode.eq(1),
                     drain_count.eq(8), state.eq(drain)
@@ -100,8 +118,14 @@ class EnvelopePlayer(Module):
             ).Else(check_index.eq(check_index+1), state.eq(check_fetch)),
             prime0: state.eq(prime1),
             prime1: [self.index.eq(0), remaining.eq(rp.dat_r[:32]-1),
-                     self.gains[0].eq(rp.dat_r[32:64]), self.gains[1].eq(rp.dat_r[64:]),
-                     self.playing.eq(1), state.eq(play)],
+                     If(command == ARM,
+                         first_entry.eq(rp.dat_r), state.eq(waiting)
+                     ).Else(
+                         self.gains[0].eq(rp.dat_r[32:64]), self.gains[1].eq(rp.dat_r[64:]),
+                         self.playing.eq(1), self.started.eq(1), state.eq(play))],
+            waiting: If(self.trigger,
+                self.gains[0].eq(first_entry[32:64]), self.gains[1].eq(first_entry[64:]),
+                self.playing.eq(1), self.started.eq(1), state.eq(play)),
             play: If(remaining != 0, remaining.eq(remaining-1)).Else(
                 If((self.index == length-1) & (repeats == 1),
                     self.playing.eq(0), self.gains[0].eq(0), self.gains[1].eq(0),

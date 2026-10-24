@@ -28,8 +28,8 @@ def access(r, addr, value=None, error=False):
 def test_memory_ownership_abort_and_bypass():
     d = DUT(); r = d.regs
     def test():
-        assert (yield from access(r, 1)) == 0x10001
-        assert (yield from access(r, 8)) == 1
+        assert (yield from access(r, 1)) == 0x10002
+        assert (yield from access(r, 8)) == 3
         for address in [0x400, 0x7fc]:
             for offset, value in enumerate([1000000, 0x12345678, 0x87654321, 0]):
                 yield from access(r, address+offset, value)
@@ -38,7 +38,7 @@ def test_memory_ownership_abort_and_bypass():
         yield from access(r, 0x23, 0, True)
         yield from access(r, 0x23, 257, True)
         yield from access(r, 0x24, 0, True)
-        yield from access(r, 0x25, 3, True)
+        yield from access(r, 0x25, 4, True)
         yield from access(r, 0x24, 0xffffffff)
         assert (yield from access(r, 0x24)) == 0xffffffff
         yield from access(r, 0x25, 1)

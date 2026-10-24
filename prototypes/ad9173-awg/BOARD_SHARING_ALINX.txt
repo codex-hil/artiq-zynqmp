@@ -206,3 +206,16 @@ Bitstream w artifacts/alinx-envelope-20261024f/phaser_ipbus.bit, SHA256:
 NIE jest to zmiana domyślnego obrazu przekazania: nadal obowiązuje CW z pkt3.
 Nowy run_envelope.py po próbie przywraca stary obraz149/151MHz pod tą samą
 blokadą, wraz z pomiarem RF i odtworzeniem ustawień scope. Bez cold boot/DRTIO.
+
+9. INTERFEJS DO WĄTKU DRTIO — PRZYGOTOWANY OFFLINE
+
+Kontrakt v1:axau15/phaser-ipbus/RTIO_INTERFACE.rst.
+Aktualne źródła ABI00010002:ARM przez IPbus,30-bitowy identyfikator uzbrojenia,
+START/ABORT/QUERY przez natywny RTLink, opcjonalny most rio_phy->jesd.
+Wątek DRTIO dostarcza kanał SED, zegar i timeline-valid/reset. Most asynchroniczny
+nie gwarantuje jeszcze deterministycznego czasu/fazy RF względem TSC.
+23 testy RTL PASS; OOC Vivado PASS (WNS+2.893ns/WHS+0.037ns), brak krytycznego
+CDC/błędów DRC. To blok bez pinów/GTH/bitstreamu, z jawnymi budżetami granic.
+Pełny build satelity, wykonanie kernela i pomiary DRTIO->RF pozostają NOT_RUN.
+Ta sesja NIE dotykała sprzętu ani stanu lease. Złote obrazy z pkt3 i pkt8
+pozostają bez zmian. Dowody:evidence/axau15/rtio-interface-20261024/.

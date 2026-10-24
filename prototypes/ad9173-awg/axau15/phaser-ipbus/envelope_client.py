@@ -30,7 +30,7 @@ def encode_program(entries):
 class EnvelopePhaser(Phaser):
     def require_envelope(self):
         identity = self.identify()
-        if identity['abi'] != 0x10001 or self.read(8)[0] != 1:
+        if identity['abi'] not in (0x10001, 0x10002) or not (self.read(8)[0]&1):
             raise RuntimeError('This image does not implement envelope playback')
 
     def playback_status(self):
@@ -54,6 +54,22 @@ class EnvelopePhaser(Phaser):
         if self.read(0x20)[0] or self.read(0x11)[0]:raise RuntimeError('Generator busy')
         self.write(0x24, [repeats])
         self.write(0x25, [1])  # Never retry an uncertain start response.
+
+    def arm(self, repeats=1, timeout=2):
+        """Reserve validated program until one RTIO START, completion or ABORT."""
+        self.require_envelope()
+        if self.identify()['abi'] != 0x10002 or not self.read(8)[0]&2:
+            raise RuntimeError('Image has no scheduled-start interface')
+        if isinstance(repeats, bool) or not isinstance(repeats, int) or not 1 <= repeats <= 0xffffffff:
+            raise ValueError('Repeat count must be1..2^32-1')
+        if self.read(0x20)[0] or self.read(0x11)[0]:raise RuntimeError('Generator busy')
+        self.write(0x24, [repeats]);self.write(0x25, [3])
+        deadline = time.monotonic()+timeout
+        while time.monotonic() < deadline:
+            if self.read(0x27)[0]:return self.read(0x28)[0]
+            if not self.playback_status()['busy']:raise RuntimeError('ARM rejected or cancelled')
+            time.sleep(.001)
+        raise TimeoutError('ARM pending; no automatic retry')
 
     def wait(self, timeout=2, allow_abort=False):
         deadline = time.monotonic()+timeout
