@@ -2332,3 +2332,12 @@ EthernetrestorePASS192.168.2.3;twoFS768MiBreservesreleased/leasefree. NoSi/SD/
 flash/OTP/Kasli. ROMeventbehavior/futuremap stillopen;DDRNOT_ADMITTED. Nextoffline
 independentcore/historyexclusion, no unchangedrepeat. Evidence
 `evidence/pmu-vector-snapshot-hardware-2026-10-24`.
+
+## 2026-10-24 — core/history ordering gap and observe-dispatch fix offline
+
+Master/core snapshots precede PMUguard;no-masterPL suppressesnewrequests only,
+notearlierPSdrain/globalepoch. No newHWcapture selected. Nextresetdomain/FSBL
+release audit. Fixed observe-onlybranch accidentallyusingguardprofileargs;actual
+ASTbranchPASSguardNone,priorbugnegativecontrolrejected. LastHWguard unaffected.
+Changedhelperhash invalidatesolddeploymanifests;no repinninghistoricalproofs.
+DDRNOT_ADMITTED. Evidence `evidence/ddr-core-history-review-2026-10-24`.

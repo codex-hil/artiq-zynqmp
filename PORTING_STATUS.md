@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — core/history ordering gap and observe-dispatch fix offline
+
+Master/core snapshots precede PMUguard;no-masterPL suppressesnewrequests only,
+notearlierPSdrain/globalepoch. No newHWcapture selected. Nextresetdomain/FSBL
+release audit. Fixed observe-onlybranch accidentallyusingguardprofileargs;actual
+ASTbranchPASSguardNone,priorbugnegativecontrolrejected. LastHWguard unaffected.
+Changedhelperhash invalidatesolddeploymanifests;no repinninghistoricalproofs.
+DDRNOT_ADMITTED. Evidence `evidence/ddr-core-history-review-2026-10-24`.
+
+
 ## 2026-10-24 — physical PMU-local GPO0 snapshot PASS, normal restored
 
 Singlelease147.988s. Version1/rawGPO0=0 captured once byPMU, fourcoherentrecord

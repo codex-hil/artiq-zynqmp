@@ -179,7 +179,7 @@ def main():
                 request_preflight(a.pmu_request_inputs,REPO)
                 result['pmu_request_sha256']=request['elf']['sha256']
                 result['pmu_request_nonce']=hex(nonce)
-                result['pmu_request']=request_parse(xs('pmu-request','probe_pmu_observe_request.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32,guard.get('profile','sleep')),nonce,guard.get('profile','sleep'))
+                result['pmu_request']=request_parse(xs('pmu-request','probe_pmu_observe_request.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32),nonce)
             if guard:
                 import secrets
                 nonce=secrets.randbits(64) or 1

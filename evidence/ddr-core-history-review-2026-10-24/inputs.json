@@ -1,0 +1,26 @@
+[
+  {
+    "path": "scripts/run_trained_observer.py",
+    "sha256": "6fa0c448f979f5d8f0d51c643733b7b1392c23dc988114381067fb45a7519e7d"
+  },
+  {
+    "path": "scripts/reset_genesys_ps.tcl",
+    "sha256": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b"
+  },
+  {
+    "path": "scripts/run_boot_firmware.tcl",
+    "sha256": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe"
+  },
+  {
+    "path": "diagnostics/ddr/no_ddr_master.py",
+    "sha256": "6a01ec2ba33b87a3b12d8094c38727f88a4f0e7a85bd3822f9cb08ccad4d82eb"
+  },
+  {
+    "path": "evidence/pmu-vector-snapshot-hardware-2026-10-24/candidate-trained-observer/master-apu.log",
+    "sha256": "62c36a2e9bb0d7d5c429ebf90dfb3f6cbf6adc595c3b8de5100fddf7f8855729"
+  },
+  {
+    "path": "evidence/pmu-vector-snapshot-hardware-2026-10-24/candidate-trained-observer/master-rpu.log",
+    "sha256": "aaa6e539cb08e5df8ff72137edddb0375f1480a9d96cf762dec26847c15866dd"
+  }
+]
