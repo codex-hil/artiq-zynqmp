@@ -1,5 +1,10 @@
 # DDR write-test admission — 2026-10-23
 
+CURRENT HEALTH: 2026-10-24 PMU restoration download FAILED. Normal runtime
+NOT_RESTORED/UNKNOWN; physical power cycle then leased recovery required before
+further use. See [failure evidence](../../evidence/aib-after-guard-hardware-2026-10-24/README.md).
+
+
 2026-10-24 physical snapshot: PMU-local GPO0=0, RAM-vector remap disabled at
 sample. Four coherent reads of one published sample; normal runtime restored.
 ROM behavior still unproven. See [physical evidence](../../evidence/pmu-vector-snapshot-hardware-2026-10-24/README.md).

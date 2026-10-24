@@ -1,0 +1,10 @@
+AIB_BEGIN
+AIB 0 request_before 0xff413030 0x00c00000
+AIB 0 type 0xff413038 0x19cf000f
+AIB 0 ack 0xff413040 0x00c00000
+AIB 0 request_after 0xff413030 0x00c00000
+AIB 1 request_before 0xff413030 0x00c00000
+AIB 1 type 0xff413038 0x19cf000f
+AIB 1 ack 0xff413040 0x00c00000
+AIB 1 request_after 0xff413030 0x00c00000
+AIB_END

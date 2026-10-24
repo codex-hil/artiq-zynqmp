@@ -2384,3 +2384,13 @@ leasechild. Eightreadsafterguard,nowrites,retryornewfirmware. Fullpreflight+
 11integration/transport/dispatch/lifecycletestsPASS. Freshmanifests preservehistory.
 NoHW. Nextboundedchangedobservation+reservedrestoration;DDRNOT_ADMITTED. Evidence
 `evidence/aib-guard-integration-2026-10-24`.
+
+## 2026-10-24 — AIB readonly capture PASS; PMU restore download FAIL
+
+PostguardREQ/ACK00c00000/TYPE19cf000f twice;selectedRPUMbits30000clear,notglobalzero.
+OverallFAIL/restorationFAIL:positivePMUdebughalt thenbaselineELFdowffdc0000 error
+MicroBlazedataregisterread. No normalreset/load/debug/Ethernet;currentbaseline
+NOT_RESTORED/UNKNOWN. No unchangedretry/force/resetbypass. Lease released;board
+requiresphysicalpowercycle thenleasednormalrecovery beforeotheruse. Storage
+reservesworked;earlierpreHWspaceblock+verifiedownartifactrelocationpreserved.
+DDRNOT_ADMITTED. Evidence `evidence/aib-after-guard-hardware-2026-10-24`.
