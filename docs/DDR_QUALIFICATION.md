@@ -2359,3 +2359,12 @@ Actualvendorfunction hostmockPASS:missingACK15pollsreturnsnormally,immediateACK
 1poll. ThusRPU successNOTdrainreceipt. NoHW/firmwarechange. NextdiagnosticACK
 protocol+pathcoverage/controlaccessreview beforeanyisolationcandidate;DDRNOT_ADMITTED.
 Evidence `evidence/pmu-rpu-aib-review-2026-10-24`.
+
+## 2026-10-24 — explicit AIB ACK/hold reference model PASS offline
+
+RPUmaster-onlymask30000;freshREQ/ACK,boot/sequence/type/requestchecks,finitepolls,
+allbitsACK required. Partial/timeout=>FAILED_HELD,noautorelease;successstillnotDDR
+permit. Fourmodeltests+vendorbodytestPASS. OCM/LPDDDRothermasks rejected;control
+access/ownershipcoverageunproven. NoHW/MMIO/firmwareintegration. Nextfixedreadonly
+REQ/ACK/TYPEschema+decoder;DDRNOT_ADMITTED. Evidence
+`evidence/aib-ack-protocol-offline-2026-10-24`.
