@@ -1,5 +1,10 @@
 # DDR write-test admission — 2026-10-23
 
+2026-10-24 physical snapshot: PMU-local GPO0=0, RAM-vector remap disabled at
+sample. Four coherent reads of one published sample; normal runtime restored.
+ROM behavior still unproven. See [physical evidence](../../evidence/pmu-vector-snapshot-hardware-2026-10-24/README.md).
+
+
 2026-10-24 mapping qualification: GPO0[0] can remap the64-byte vector region
 from ROM to RAM. No live value was captured, so configured base alone does not
 establish ROM entry. See [remap review](../../evidence/pmu-vector-remap-review-2026-10-24/README.md).

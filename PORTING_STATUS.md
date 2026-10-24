@@ -1,5 +1,16 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — physical PMU-local GPO0 snapshot PASS, normal restored
+
+Singlelease147.988s. Version1/rawGPO0=0 captured once byPMU, fourcoherentrecord
+reads;bit0clear=>defaultROMvectors atsample. No remapwrite/ROMread/privatealias.
+ACK0/IEcheckPASS. ExplicitPMUbootstrap/fullnormalTTL/CoreDMA/analyzer/MonInj/
+EthernetrestorePASS192.168.2.3;twoFS768MiBreservesreleased/leasefree. NoSi/SD/
+flash/OTP/Kasli. ROMeventbehavior/futuremap stillopen;DDRNOT_ADMITTED. Nextoffline
+independentcore/historyexclusion, no unchangedrepeat. Evidence
+`evidence/pmu-vector-snapshot-hardware-2026-10-24`.
+
+
 ## 2026-10-24 — vector-v1 read-address/parser/integration gates PASS offline
 
 Strict singleGPO0read+version/store checks;newliteraladdress transport and parser
