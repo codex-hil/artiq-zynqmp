@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — opt-in PMU-local GPO0 snapshot built offline
+
+--vector-snapshot requires labguard;localreadonlyXil_In32 GPO0,version1/rawfield
+in reservedrecordwords,ACK0/sleep preserved. ActualELF layout/guardPASS;read
+ffdc4738 fromffd40010,terminalffdc474c. C host good/badMSR with/withoutflagPASS.
+NoHW;oldparser/layoutpinsrejectnewformat. Next strictreadmutationchecker and
+versionedtransport/freshgates;DDRNOT_ADMITTED. Evidence
+`evidence/pmu-vector-snapshot-offline-2026-10-24`.
+
+
 ## 2026-10-24 — vector mapping depends on uncaptured GPO0 remap
 
 UG1085p119 and exactheader define GPO0bit0 ROM/RAM64bytevector remap. Thus prior

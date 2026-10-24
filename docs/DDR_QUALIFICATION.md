@@ -2305,3 +2305,12 @@ baseaddress alone does NOT establish liveROMentry; mappingUNKNOWN. ROMextension
 table mechanism found but not general exception/break forwarding proof. NoHW or
 remapwrites. Next linkedstartup/BSP audit then bounded PMUlocal readonlytelemetry
 plan ifneeded;DDRNOT_ADMITTED. Evidence `evidence/pmu-vector-remap-review-2026-10-24`.
+
+## 2026-10-24 — opt-in PMU-local GPO0 snapshot built offline
+
+--vector-snapshot requires labguard;localreadonlyXil_In32 GPO0,version1/rawfield
+in reservedrecordwords,ACK0/sleep preserved. ActualELF layout/guardPASS;read
+ffdc4738 fromffd40010,terminalffdc474c. C host good/badMSR with/withoutflagPASS.
+NoHW;oldparser/layoutpinsrejectnewformat. Next strictreadmutationchecker and
+versionedtransport/freshgates;DDRNOT_ADMITTED. Evidence
+`evidence/pmu-vector-snapshot-offline-2026-10-24`.

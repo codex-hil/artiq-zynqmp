@@ -17,6 +17,7 @@ static uint32_t fake_msr=0x102;
 static int bad;
 uint32_t artiq_guard_test_msr(void) {return fake_msr;}
 void artiq_guard_test_disable_irq(void) {fake_msr=bad ? 0 : 0x100;}
+uint32_t artiq_guard_test_gpo0(void) {return 0x12340001;}
 int main(int argc,char **argv) {
  (void)argv;bad=argc>1;
  pid_t child=fork();if(child<0)return 10;
@@ -41,12 +42,20 @@ int main(int argc,char **argv) {
  if(snapshot.state!=(bad?3U:2U) || snapshot.ack || snapshot.unresolved!=0x7f)return 13;
  if(snapshot.msr_before!=0x102 || snapshot.msr_after!=(bad?0U:0x100U))return 14;
  if(snapshot.nonce_lo!=123 || snapshot.nonce_hi!=456 || snapshot.sequence_lo!=1 || snapshot.kind!=2)return 15;
+#ifdef ARTIQ_PMU_VECTOR_SNAPSHOT
+ if(snapshot.reserved[0]!=1 || snapshot.reserved[1]!=0x12340001)return 16;
+#else
+ if(snapshot.reserved[0] || snapshot.reserved[1])return 17;
+#endif
  return 0;
 }
 '''
   with tempfile.TemporaryDirectory() as tmp:
    p=Path(tmp)/'test.c';p.write_text(source);exe=Path(tmp)/'test'
    subprocess.run(['gcc','-std=c11','-O2','-Wall','-Wextra','-Werror','-I'+str(ROOT/'diagnostics/ddr/pmu_boundary'),str(p),'-o',str(exe)],check=True)
+   subprocess.run([str(exe)],check=True,timeout=5)
+   subprocess.run([str(exe),'bad-msr'],check=True,timeout=5)
+   subprocess.run(['gcc','-std=c11','-O2','-Wall','-Wextra','-Werror','-DARTIQ_PMU_VECTOR_SNAPSHOT=1','-I'+str(ROOT/'diagnostics/ddr/pmu_boundary'),str(p),'-o',str(exe)],check=True)
    subprocess.run([str(exe)],check=True,timeout=5)
    subprocess.run([str(exe),'bad-msr'],check=True,timeout=5)
 if __name__=='__main__':unittest.main()

@@ -7,9 +7,18 @@
 #define ARTIQ_GUARD_MSR() ((uint32_t)mfmsr())
 #define ARTIQ_GUARD_DISABLE_IRQ() microblaze_disable_interrupts()
 #define ARTIQ_GUARD_SLEEP() mb_sleep()
+#ifdef ARTIQ_PMU_VECTOR_SNAPSHOT
+#include "pmu_iomodule.h"
+#include "xil_io.h"
+#define ARTIQ_GUARD_GPO0() Xil_In32(PMU_IOMODULE_GPO0)
+#endif
 #elif defined(ARTIQ_PMU_GUARD_HOST_TEST)
 extern uint32_t artiq_guard_test_msr(void);
 extern void artiq_guard_test_disable_irq(void);
+#ifdef ARTIQ_PMU_VECTOR_SNAPSHOT
+extern uint32_t artiq_guard_test_gpo0(void);
+#define ARTIQ_GUARD_GPO0() artiq_guard_test_gpo0()
+#endif
 #define ARTIQ_GUARD_MSR() artiq_guard_test_msr()
 #define ARTIQ_GUARD_DISABLE_IRQ() artiq_guard_test_disable_irq()
 /* Host backend only models non-return; it cannot model PMU sleep/wakeup. */
@@ -37,6 +46,12 @@ static __attribute__((noinline,noreturn)) void artiq_pmu_enter_lab_guard(
  artiq_pmu_guard.ack=0;artiq_pmu_guard.unresolved=0x7f;
  artiq_pmu_guard.kind=2;
  for (unsigned i=0;i<5;i++) artiq_pmu_guard.reserved[i]=0;
+#ifdef ARTIQ_PMU_VECTOR_SNAPSHOT
+ /* Read only from PMU itself, never an external private-register alias.
+  * Versioned reserved fields deliberately fail the old host parser. */
+ artiq_pmu_guard.reserved[0]=1;
+ artiq_pmu_guard.reserved[1]=ARTIQ_GUARD_GPO0();
+#endif
  artiq_pmu_order();artiq_pmu_guard.generation=gen;
  /* UG1085 PMU RAM arbitration requires sleep for external APB access.
   * Wakeup resumes here and must re-enter sleep without dispatch or return.

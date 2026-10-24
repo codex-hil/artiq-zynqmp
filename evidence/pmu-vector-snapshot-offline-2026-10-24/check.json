@@ -1,0 +1,15 @@
+{
+  "status": "LINKED_LAB_GUARD_FLOW_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "guard_start": "0xffdc4660",
+  "guard_bytes": 244,
+  "record_start": "0xffdd7f88",
+  "terminal_pc": "0xffdc474c",
+  "terminal_mode": "sleep-reentry",
+  "interrupt_helper": "0xffdccbd4",
+  "destructive_test_allowed": false,
+  "limits": "Actual static flow and local layout only; live MSR/ROM/NMI/history/core exclusion unproven. Host backend tests do not substitute for PMU execution.",
+  "gpo0_local_read_pc": "0xffdc4738",
+  "gpo0_address": "0xffd40010",
+  "record_version": 1
+}

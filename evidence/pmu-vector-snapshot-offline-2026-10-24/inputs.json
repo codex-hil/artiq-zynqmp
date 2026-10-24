@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/pmufw.elf",
+    "sha256": "346527868dc27f6d9de0d90a3a1aecb9031572a7ec5d6e69df20dd2154b6764b"
+  },
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/symbols.txt",
+    "sha256": "b70c4814540de5811391046a8a1d2d9f6c32d22600b8dce5e44ddd8ed89ab48e"
+  },
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/disassembly.txt",
+    "sha256": "372f0abe0216ee64aea8d99be95e45eb3653a6bc9b195448982efa3ce7dbb6bb"
+  },
+  {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/build.json",
+    "sha256": "50456d962cc7ad19b7fe9f2d8f6043a712608f49499fd4f4399338c999a9fdf6"
+  },
+  {
+    "path": "diagnostics/ddr/pmu_boundary/guard.h",
+    "sha256": "f5141db2ce08d2eb3b1118064be53f1cafafc84f231d2176122a18608d461fdc"
+  },
+  {
+    "path": "scripts/build_pmu_boundary.py",
+    "sha256": "c614604437ebd8a0a8e1dce7bb3c8458616147f2504ea1e9b99ab3e4007f284d"
+  },
+  {
+    "path": "tests/test_pmu_lab_guard.py",
+    "sha256": "e21f9639aba89868c67155a883b0623bd8e28078726ec2825b3337427f75ef0d"
+  }
+]
