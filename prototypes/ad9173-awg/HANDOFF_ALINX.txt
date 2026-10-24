@@ -1,3 +1,11 @@
+CURRENT PHYSICAL STATE (2026-10-24, supersedes historical AD9173 plan below)
+ALINX now hosts AD9172 ID9172 revision2. Dual JESD and FPGA payload RF scaling,
+zero/recovery and149/151MHz nominal tones PASS on MSO4104 CH3/4. Running volatile
+payload imagec23b923be1a0fa25ee6fcc181687d023431f9e40c5ed5148af9013327c7e09d3,
+I=0x7fff,Q=0, internal DC off, SPI TXEN on. Trenz/AD9173 remains untouched.
+Read evidence/axau15/payload-rf-20261024/acceptance.json and
+axau15/jesd-probe/README.rst. Next local complex DDS/IQ and RTIO; no DRTIO yet.
+
 Implement the budget ARTIQ AWG satellite on ALINX AXAU15 in this separate thread.
 
 Repository: https://github.com/codex-hil/artiq-zynqmp

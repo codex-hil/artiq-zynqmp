@@ -1,0 +1,138 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Sat Oct 24 17:41:29 2026
+| Host              : a11f22a06285 running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_bus_skew -file payload-skew.rpt
+| Design            : axau15_jesd
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Routed
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+Table of Contents
+-----------------
+1. Bus Skew Report Summary
+2. Bus Skew Report Per Constraint
+
+1. Bus Skew Report Summary
+--------------------------
+
+Id  Position  From                            To                              Corner  Requirement(ns)  Actual(ns)  Slack(ns)
+--  --------  ------------------------------  ------------------------------  ------  ---------------  ----------  ---------
+1   197       [get_cells -quiet -hier -regexp {^payload_scan/core/held_reg\[[0-9]+\]}]
+                                              [get_cells -hier -regexp {^payload_scan/core/amplitude_reg\[[0-9]+\]}]
+                                                                              Slow              6.000       0.617      5.383
+
+
+2. Bus Skew Report Per Constraint
+---------------------------------
+
+Id: 1
+set_bus_skew -from [get_cells -quiet -hier -regexp {^payload_scan/core/held_reg\[[0-9]+\]}] -to [get_cells -hier -regexp {^payload_scan/core/amplitude_reg\[[0-9]+\]}] 6.000
+Requirement: 6.000ns
+Endpoints: 16
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+payload_scan_bs       axau15_gth40_txoutclk
+                                            payload_scan/core/amplitude_reg[5]/D
+                                                                            payload_scan/core/amplitude_reg[14]/D
+                                                                                                            Slow         0.617      5.383
+
+
+Slack (MET) :             5.383ns  (requirement - actual skew)
+  Endpoint Source:        payload_scan/core/held_reg[5]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs)
+  Endpoint Destination:   payload_scan/core/amplitude_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk)
+  Reference Source:       payload_scan/core/held_reg[14]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs)
+  Reference Destination:  payload_scan/core/amplitude_reg[14]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            6.000ns
+  Endpoint Relative Delay:    8.878ns
+  Reference Relative Delay:   2.065ns
+  Relative CRPR:              6.196ns
+  Actual Bus Skew:            0.617ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock payload_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  payload_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN3_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      5.900     5.900 r  payload_scan/bs/TCK
+                         net (fo=1, routed)           1.828     7.728    payload_scan_n_64
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     7.756 r  ack_sync_reg[1]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=83, routed)          1.658     9.414    payload_scan/core/CLK
+    SLICE_X48Y92         FDRE                                         r  payload_scan/core/held_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92         FDRE (Prop_GFF2_SLICEM_C_Q)
+                                                      0.079     9.493 r  payload_scan/core/held_reg[5]/Q
+                         net (fo=2, routed)           0.498     9.992    payload_scan/core/held[5]
+    SLICE_X50Y92         FDRE                                         r  payload_scan/core/amplitude_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.099     0.099    axau15_gth40_txoutclk
+    BUFG_GT_X0Y36        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.114     0.213 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=557, routed)         0.876     1.089    payload_scan/core/jesd_phy3_tx_clk
+    SLICE_X50Y92         FDRE                                         r  payload_scan/core/amplitude_reg[5]/C
+                         clock pessimism              0.000     1.089    
+    SLICE_X50Y92         FDRE (Setup_FFF2_SLICEM_C_D)
+                                                      0.025     1.114    payload_scan/core/amplitude_reg[5]
+  -------------------------------------------------------------------
+                         data arrival                           9.992    
+                         clock arrival                          1.114    
+  -------------------------------------------------------------------
+                         relative delay                         8.878    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock payload_scan_bs rise edge)
+                                                      0.000     0.000 r  
+    CONFIG_SITE_X0Y0     BSCANE2                      0.000     0.000 r  payload_scan/bs/INTERNAL_TCK
+    CONFIG_SITE_X0Y0     BSCANE2 (Prop_BSCAN3_CONFIG_SITE_INTERNAL_TCK_TCK)
+                                                      0.465     0.465 r  payload_scan/bs/TCK
+                         net (fo=1, routed)           1.262     1.727    payload_scan_n_64
+    BUFGCE_X0Y3          BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     1.751 r  ack_sync_reg[1]_i_1/O
+    X1Y1 (CLOCK_ROOT)    net (fo=83, routed)          1.464     3.215    payload_scan/core/CLK
+    SLICE_X47Y92         FDRE                                         r  payload_scan/core/held_reg[14]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y92         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.060     3.275 r  payload_scan/core/held_reg[14]/Q
+                         net (fo=2, routed)           0.116     3.390    payload_scan/core/held[14]
+    SLICE_X49Y91         FDRE                                         r  payload_scan/core/amplitude_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axau15_gth40_txoutclk rise edge)
+                                                      0.000     0.000 r  
+    GTHE4_CHANNEL_X0Y4   GTHE4_CHANNEL                0.000     0.000 r  GTHE4_CHANNEL/TXOUTCLK
+                         net (fo=2, routed)           0.113     0.113    axau15_gth40_txoutclk
+    BUFG_GT_X0Y36        BUFG_GT (Prop_BUFG_GT_I_O)
+                                                      0.130     0.243 r  BUFG_GT/O
+    X1Y1 (CLOCK_ROOT)    net (fo=557, routed)         1.020     1.263    payload_scan/core/jesd_phy3_tx_clk
+    SLICE_X49Y91         FDRE                                         r  payload_scan/core/amplitude_reg[14]/C
+                         clock pessimism              0.000     1.263    
+    SLICE_X49Y91         FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.062     1.325    payload_scan/core/amplitude_reg[14]
+  -------------------------------------------------------------------
+                         data arrival                           3.390    
+                         clock arrival                          1.325    
+  -------------------------------------------------------------------
+                         relative delay                         2.065    
+
+
+

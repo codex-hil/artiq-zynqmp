@@ -31,6 +31,21 @@ foreach {port target} {miso spi_gpio/core/miso_sync_reg[0]/D spi_en spi_gpio/cor
 set status [get_cells -hier -regexp {^status_scan/meta_reg\[[0-9]+\]}]
 if {[llength $status]!=9} {error "Status synchronizer count"}
 bound_async [get_pins -of_objects $status -filter {REF_PIN_NAME == D}] 20
+# Optional USER3 acknowledged bundled-data mailbox. Held sample cannot change
+# until returned acknowledgement. Destination samples after two request stages.
+set held [get_cells -quiet -hier -regexp {^payload_scan/core/held_reg\[[0-9]+\]}]
+if {[llength $held]} {
+ if {[llength $held]!=16} {error "Payload held width"}
+ set amp [get_cells -hier -regexp {^payload_scan/core/amplitude_reg\[[0-9]+\]}]
+ if {[llength $amp]!=16} {error "Payload destination width"}
+ set_max_delay -datapath_only 6.0 -from $held -to $amp
+ set_bus_skew 6.0 -from $held -to $amp
+ foreach name {req_sync ack_sync} {
+  set d [get_pins [format {payload_scan/core/%s_reg[0]/D} $name]]
+  if {[llength $d]!=1} {error "Payload handshake synchronizer missing"}
+  bound_async $d 6.0
+ }
+}
 set outputs [get_ports {sck mosi cs_dac cs_clock}]
 set pinregs [get_cells -hier -filter {NAME =~ spi_gpio/core/pins_reg*}]
 if {[llength $pinregs]!=4} {error "GPIO register count"}

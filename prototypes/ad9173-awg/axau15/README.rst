@@ -208,3 +208,30 @@ DAC PLL/DLL/SERDES PLL remain locked. DAC SPI TXEN is held low (0x596=4),
 amplitude proof yet. Evidence: evidence/axau15/jesd-20261024.
 Initial status reader accidentally disabled links by paging0x08/0x0c; corrected
 reader preserves LINK_EN using0x0b/0x0f, with a regression model.
+
+
+AXAU15 / AD9172 physical RF milestone — 2026-10-24
+------------------------------------------------
+The currently installed ALINX FMC is AD9172 (ID9172, revision2), not the
+AD9173 attached to the separate Trenz. Four6.144Gb/s GTH lanes and two mode3
+JESD links now deliver FPGA-sourced I samples, Q=0, with main DAC NCOs at
+nominal149/151MHz. Internal DAC DC injection is disabled. Full/half/zero/
+recovery plus nonsymmetric0x5a82 payload passed on MSO4104 CH3/4. Full levels
+were0.4755/0.4830Vpp, half0.2353/0.2385Vpp; fitted residual near the expected
+tones at zero was0.309/0.265mVpp. Recovered full levels0.4755/0.4830Vpp.
+Final measured tones148.9967/150.9970MHz; clock reference is free-running,
+not a calibrated frequency/phase/jitter result. Both JESD links stayed clean.
+
+Running bit SHA256c23b923be1a0fa25ee6fcc181687d023431f9e40c5ed5148af9013327c7e09d3,
+USER1 signature0x41585031. Final FPGA I=0x7fff on both links, SPI TXEN enabled;
+HMC output12 LVDS remains on. Only ALINX volatile SRAM/registers were written.
+Scope CH1/2 and global acquisition/trigger/horizontal settings were unchanged;
+CH3/4 vertical and waveform-transfer settings were restored. Trenz untouched.
+
+Evidence: evidence/axau15/payload-rf-20261024/acceptance.json and hardware/.
+Reproducer: axau15/jesd-probe/run_payload.py (exact bit SHA and new output path).
+Implementation: WNS3.890ns/WHS0.023ns, DRC0errors; sixteen reviewed CDC-15
+bundled-data paths with request/ack handshake and6ns timing budget.
+Next: local signed complex DDS/IQ with atomic parameter updates, then RTIO.
+Cold start, reference-loss watchdog, deterministic phase, long BER and DRTIO
+remain unqualified; no claim of production ARTIQ AWG integration.

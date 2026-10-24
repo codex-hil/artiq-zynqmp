@@ -1,0 +1,498 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Sat Oct 24 17:41:28 2026
+| Host              : a11f22a06285 running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_timing -from [get_cells -hier -regexp {^payload_scan/core/held_reg\[[0-9]+\]}] -to [get_cells -hier -regexp {^payload_scan/core/amplitude_reg\[[0-9]+\]}] -max_paths 16 -file payload-timing.rpt
+| Design            : axau15_jesd
+| Device            : xcau15p-ffvb676
+| Speed File        : -2  PRODUCTION 1.30 03-14-2023
+| Design State      : Routed
+| Temperature Grade : I
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             5.433ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[11]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[11]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.592ns  (logic 0.079ns (13.342%)  route 0.513ns (86.658%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y93                                      0.000     0.000 r  payload_scan/core/held_reg[11]/C
+    SLICE_X48Y93         FDRE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[11]/Q
+                         net (fo=2, routed)           0.513     0.592    payload_scan/core/held[11]
+    SLICE_X48Y91         FDRE                                         r  payload_scan/core/amplitude_reg[11]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X48Y91         FDRE (Setup_FFF_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[11]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.592    
+  -------------------------------------------------------------------
+                         slack                                  5.433    
+
+Slack (MET) :             5.448ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[5]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.577ns  (logic 0.079ns (13.685%)  route 0.498ns (86.315%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[5]/C
+    SLICE_X48Y92         FDRE (Prop_GFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[5]/Q
+                         net (fo=2, routed)           0.498     0.577    payload_scan/core/held[5]
+    SLICE_X50Y92         FDRE                                         r  payload_scan/core/amplitude_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X50Y92         FDRE (Setup_FFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[5]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.577    
+  -------------------------------------------------------------------
+                         slack                                  5.448    
+
+Slack (MET) :             5.507ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.518ns  (logic 0.079ns (15.251%)  route 0.439ns (84.749%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[3]/C
+    SLICE_X48Y92         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[3]/Q
+                         net (fo=2, routed)           0.439     0.518    payload_scan/core/held[3]
+    SLICE_X50Y92         FDRE                                         r  payload_scan/core/amplitude_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X50Y92         FDRE (Setup_GFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[3]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.518    
+  -------------------------------------------------------------------
+                         slack                                  5.507    
+
+Slack (MET) :             5.548ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[12]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.477ns  (logic 0.078ns (16.352%)  route 0.399ns (83.648%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y92                                      0.000     0.000 r  payload_scan/core/held_reg[12]/C
+    SLICE_X47Y92         FDRE (Prop_HFF2_SLICEM_C_Q)
+                                                      0.078     0.078 r  payload_scan/core/held_reg[12]/Q
+                         net (fo=2, routed)           0.399     0.477    payload_scan/core/held[12]
+    SLICE_X48Y91         FDRE                                         r  payload_scan/core/amplitude_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X48Y91         FDRE (Setup_FFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[12]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.477    
+  -------------------------------------------------------------------
+                         slack                                  5.548    
+
+Slack (MET) :             5.564ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[9]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[9]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.461ns  (logic 0.079ns (17.135%)  route 0.382ns (82.865%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y93                                      0.000     0.000 r  payload_scan/core/held_reg[9]/C
+    SLICE_X48Y93         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[9]/Q
+                         net (fo=2, routed)           0.382     0.461    payload_scan/core/held[9]
+    SLICE_X49Y93         FDRE                                         r  payload_scan/core/amplitude_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X49Y93         FDRE (Setup_FFF_SLICEL_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[9]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.461    
+  -------------------------------------------------------------------
+                         slack                                  5.564    
+
+Slack (MET) :             5.587ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[15]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.438ns  (logic 0.079ns (18.025%)  route 0.359ns (81.975%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y92                                      0.000     0.000 r  payload_scan/core/held_reg[15]/C
+    SLICE_X47Y92         FDRE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[15]/Q
+                         net (fo=2, routed)           0.359     0.438    payload_scan/core/held[15]
+    SLICE_X49Y91         FDRE                                         r  payload_scan/core/amplitude_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X49Y91         FDRE (Setup_GFF2_SLICEL_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[15]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.438    
+  -------------------------------------------------------------------
+                         slack                                  5.587    
+
+Slack (MET) :             5.604ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[6]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[6]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.421ns  (logic 0.079ns (18.782%)  route 0.342ns (81.218%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[6]/C
+    SLICE_X48Y92         FDRE (Prop_HFF_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[6]/Q
+                         net (fo=2, routed)           0.342     0.421    payload_scan/core/held[6]
+    SLICE_X50Y92         FDRE                                         r  payload_scan/core/amplitude_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X50Y92         FDRE (Setup_EFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[6]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.421    
+  -------------------------------------------------------------------
+                         slack                                  5.604    
+
+Slack (MET) :             5.606ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[13]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[13]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.419ns  (logic 0.079ns (18.842%)  route 0.340ns (81.158%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y92                                      0.000     0.000 r  payload_scan/core/held_reg[13]/C
+    SLICE_X47Y92         FDRE (Prop_GFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[13]/Q
+                         net (fo=2, routed)           0.340     0.419    payload_scan/core/held[13]
+    SLICE_X48Y91         FDRE                                         r  payload_scan/core/amplitude_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X48Y91         FDRE (Setup_GFF_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[13]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.419    
+  -------------------------------------------------------------------
+                         slack                                  5.606    
+
+Slack (MET) :             5.636ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[7]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.389ns  (logic 0.078ns (20.075%)  route 0.311ns (79.925%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[7]/C
+    SLICE_X48Y92         FDRE (Prop_HFF2_SLICEM_C_Q)
+                                                      0.078     0.078 r  payload_scan/core/held_reg[7]/Q
+                         net (fo=2, routed)           0.311     0.389    payload_scan/core/held[7]
+    SLICE_X48Y91         FDRE                                         r  payload_scan/core/amplitude_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X48Y91         FDRE (Setup_HFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[7]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.389    
+  -------------------------------------------------------------------
+                         slack                                  5.636    
+
+Slack (MET) :             5.657ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.368ns  (logic 0.079ns (21.489%)  route 0.289ns (78.511%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[1]/C
+    SLICE_X48Y92         FDRE (Prop_EFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[1]/Q
+                         net (fo=2, routed)           0.289     0.368    payload_scan/core/held[1]
+    SLICE_X48Y91         FDRE                                         r  payload_scan/core/amplitude_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X48Y91         FDRE (Setup_GFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[1]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.368    
+  -------------------------------------------------------------------
+                         slack                                  5.657    
+
+Slack (MET) :             5.669ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[10]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[10]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.356ns  (logic 0.076ns (21.378%)  route 0.280ns (78.622%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y93                                      0.000     0.000 r  payload_scan/core/held_reg[10]/C
+    SLICE_X48Y93         FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.076     0.076 r  payload_scan/core/held_reg[10]/Q
+                         net (fo=2, routed)           0.280     0.356    payload_scan/core/held[10]
+    SLICE_X49Y93         FDRE                                         r  payload_scan/core/amplitude_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X49Y93         FDRE (Setup_EFF_SLICEL_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[10]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.356    
+  -------------------------------------------------------------------
+                         slack                                  5.669    
+
+Slack (MET) :             5.673ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[8]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[8]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.352ns  (logic 0.076ns (21.591%)  route 0.276ns (78.409%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y93                                      0.000     0.000 r  payload_scan/core/held_reg[8]/C
+    SLICE_X48Y93         FDRE (Prop_FFF_SLICEM_C_Q)
+                                                      0.076     0.076 r  payload_scan/core/held_reg[8]/Q
+                         net (fo=2, routed)           0.276     0.352    payload_scan/core/held[8]
+    SLICE_X49Y93         FDRE                                         r  payload_scan/core/amplitude_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X49Y93         FDRE (Setup_EFF2_SLICEL_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[8]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.352    
+  -------------------------------------------------------------------
+                         slack                                  5.673    
+
+Slack (MET) :             5.730ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.295ns  (logic 0.076ns (25.737%)  route 0.219ns (74.263%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[2]/C
+    SLICE_X48Y92         FDRE (Prop_FFF_SLICEM_C_Q)
+                                                      0.076     0.076 r  payload_scan/core/held_reg[2]/Q
+                         net (fo=2, routed)           0.219     0.295    payload_scan/core/held[2]
+    SLICE_X50Y92         FDRE                                         r  payload_scan/core/amplitude_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X50Y92         FDRE (Setup_HFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[2]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.295    
+  -------------------------------------------------------------------
+                         slack                                  5.730    
+
+Slack (MET) :             5.736ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[14]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[14]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.289ns  (logic 0.079ns (27.309%)  route 0.210ns (72.691%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y92                                      0.000     0.000 r  payload_scan/core/held_reg[14]/C
+    SLICE_X47Y92         FDRE (Prop_FFF2_SLICEM_C_Q)
+                                                      0.079     0.079 r  payload_scan/core/held_reg[14]/Q
+                         net (fo=2, routed)           0.210     0.289    payload_scan/core/held[14]
+    SLICE_X49Y91         FDRE                                         r  payload_scan/core/amplitude_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X49Y91         FDRE (Setup_HFF2_SLICEL_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[14]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.289    
+  -------------------------------------------------------------------
+                         slack                                  5.736    
+
+Slack (MET) :             5.765ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.260ns  (logic 0.078ns (29.996%)  route 0.182ns (70.004%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[4]/C
+    SLICE_X48Y92         FDRE (Prop_GFF_SLICEM_C_Q)
+                                                      0.078     0.078 r  payload_scan/core/held_reg[4]/Q
+                         net (fo=2, routed)           0.182     0.260    payload_scan/core/held[4]
+    SLICE_X48Y91         FDRE                                         r  payload_scan/core/amplitude_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X48Y91         FDRE (Setup_HFF_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[4]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.260    
+  -------------------------------------------------------------------
+                         slack                                  5.765    
+
+Slack (MET) :             5.772ns  (required time - arrival time)
+  Source:                 payload_scan/core/held_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by payload_scan_bs  {rise@0.000ns fall@50.000ns period=100.000ns})
+  Destination:            payload_scan/core/amplitude_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by axau15_gth40_txoutclk  {rise@0.000ns fall@3.255ns period=6.510ns})
+  Path Group:             axau15_gth40_txoutclk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            6.000ns  (MaxDelay Path 6.000ns)
+  Data Path Delay:        0.253ns  (logic 0.076ns (30.033%)  route 0.177ns (69.967%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 6.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y92                                      0.000     0.000 r  payload_scan/core/held_reg[0]/C
+    SLICE_X48Y92         FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.076     0.076 r  payload_scan/core/held_reg[0]/Q
+                         net (fo=2, routed)           0.177     0.253    payload_scan/core/held[0]
+    SLICE_X48Y91         FDRE                                         r  payload_scan/core/amplitude_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                    6.000     6.000    
+    SLICE_X48Y91         FDRE (Setup_EFF2_SLICEM_C_D)
+                                                      0.025     6.025    payload_scan/core/amplitude_reg[0]
+  -------------------------------------------------------------------
+                         required time                          6.025    
+                         arrival time                          -0.253    
+  -------------------------------------------------------------------
+                         slack                                  5.772    
+
+
+
+

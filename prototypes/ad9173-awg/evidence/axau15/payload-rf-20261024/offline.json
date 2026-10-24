@@ -1,0 +1,21 @@
+{
+  "physical": false,
+  "rtl_mailbox": "PASS",
+  "rtl_engine": "Icarus Verilog12.0 extracted Ubuntu package",
+  "jesd_transport_simulations": 7,
+  "old_wiring_negative": "PASS",
+  "host_payload_cases": [
+    "pass",
+    "wrong-id",
+    "nco-fail",
+    "scope-abort"
+  ],
+  "host_startup_cases": [
+    "pass",
+    "wrong-id",
+    "phy-timeout",
+    "bad-link"
+  ],
+  "initial_xsim_attempts": "NOT_RUN: timescale flag then missing GCC in runtime; RTL tested with Icarus",
+  "iverilog_deb_sha256": "f19394cee05ad526e0eb3873bc6c17a5828f56df17fbe2db40cb66513a2d4667"
+}

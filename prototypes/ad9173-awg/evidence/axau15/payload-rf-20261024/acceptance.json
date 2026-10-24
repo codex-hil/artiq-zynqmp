@@ -1,0 +1,180 @@
+{
+  "status": "PHYSICAL_PASS_FPGA_SAMPLES_TO_DUAL_RF",
+  "recorded_utc": "2026-10-24T17:37:12.204033+00:00",
+  "board": "ALINX AXAU15/ACAU15 XCAU15P-2FFVB676I",
+  "cable": "210512180081",
+  "fpga_dna": "40020000016069493C626185",
+  "dac": "AD9172 ID9172 revision2",
+  "scope": "Tektronix MSO4104 C020817 CH3/4 50ohm",
+  "bit_sha256": "c23b923be1a0fa25ee6fcc181687d023431f9e40c5ed5148af9013327c7e09d3",
+  "leases": [
+    "/home/codex-hil/.cache/alinx-210512180081.lock",
+    "/home/codex-hil/.cache/mso4104-C020817.lock"
+  ],
+  "lane_rate_nominal_bps": 6144000000,
+  "dac_sample_rate_nominal_hz": 4915200000,
+  "nominal_tones_hz": [
+    149000000,
+    151000000
+  ],
+  "payload_source": "FPGA signed constant I samples, Q=0, main DAC NCO upconversion; internal DC disabled",
+  "sequence_words": {
+    "baseline": 0,
+    "full": 32767,
+    "half": 16384,
+    "zero": 0,
+    "recovered": 32767,
+    "asymmetric": 23170,
+    "final": 32767
+  },
+  "measurements": {
+    "recovered": {
+      "3": {
+        "fit_hz": 148996908.8856909,
+        "fit_vpp": 0.4755020795957976,
+        "residual_rms": 0.0038654242115310367,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.492
+      },
+      "4": {
+        "fit_hz": 150996995.37013894,
+        "fit_vpp": 0.48299494933738574,
+        "residual_rms": 0.003564185013639171,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5
+      }
+    },
+    "half": {
+      "3": {
+        "fit_hz": 148997092.54125634,
+        "fit_vpp": 0.23530498585422283,
+        "residual_rms": 0.0038364074167762273,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.256
+      },
+      "4": {
+        "fit_hz": 150996808.57428402,
+        "fit_vpp": 0.23849578749156683,
+        "residual_rms": 0.0035384769439010685,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.26
+      }
+    },
+    "final": {
+      "3": {
+        "fit_hz": 148996703.14060643,
+        "fit_vpp": 0.47533898283761694,
+        "residual_rms": 0.003845336993982019,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.496
+      },
+      "4": {
+        "fit_hz": 150997046.91062975,
+        "fit_vpp": 0.4828036585505806,
+        "residual_rms": 0.0035606244301412972,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5
+      }
+    },
+    "zero": {
+      "3": {
+        "fit_hz": 149512495.6732432,
+        "fit_vpp": 0.00030891510179508933,
+        "residual_rms": 0.0034651692624892813,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.02
+      },
+      "4": {
+        "fit_hz": 151441622.96467263,
+        "fit_vpp": 0.0002650165553058695,
+        "residual_rms": 0.0030815931875819796,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.02
+      }
+    },
+    "asymmetric": {
+      "3": {
+        "fit_hz": 148996670.95241395,
+        "fit_vpp": 0.3341935671148157,
+        "residual_rms": 0.0038354403591754948,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.356
+      },
+      "4": {
+        "fit_hz": 150996478.06356123,
+        "fit_vpp": 0.3393917357334991,
+        "residual_rms": 0.0035530077307347942,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.356
+      }
+    },
+    "baseline": {
+      "3": {
+        "fit_hz": 148559773.25984967,
+        "fit_vpp": 0.0003216495907808054,
+        "residual_rms": 0.003566768067686063,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.024
+      },
+      "4": {
+        "fit_hz": 150623289.51963297,
+        "fit_vpp": 0.00017516883173041004,
+        "residual_rms": 0.00307030823959235,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.02
+      }
+    },
+    "full": {
+      "3": {
+        "fit_hz": 148996823.1324321,
+        "fit_vpp": 0.4755008077666331,
+        "residual_rms": 0.003838456782466082,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.492
+      },
+      "4": {
+        "fit_hz": 150996919.7476468,
+        "fit_vpp": 0.48299278478925034,
+        "residual_rms": 0.003606838930022312,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5
+      }
+    }
+  },
+  "jesd_status": "Both links 0x470..473=3, 0x46d..46f=0 after each sample command and at final check; PLL/DLL/SERDES locked",
+  "scope_configuration": "CH1/2, horizontal, trigger and acquisition unchanged; CH3/4 vertical and waveform transfer settings restored",
+  "final_state": "Running volatile image, I=0x7fff Q=0 both links, TXEN enabled, DAC0 nominal149MHz DAC1 nominal151MHz",
+  "untouched": [
+    "Trenz FPGA and AD9173",
+    "Genesys",
+    "Kasli",
+    "SDWire",
+    "flash",
+    "EEPROM",
+    "OTP",
+    "eFUSE"
+  ],
+  "limitations": [
+    "Warm clock startup only, no cold power-cycle qualification",
+    "No calibrated frequency/jitter measurement; free-running reference ~20ppm nominal deviation",
+    "No deterministic latency/phase qualification",
+    "No reference-loss watchdog/recovery qualification",
+    "No local FPGA DDS/IQ waveform or RTIO integration yet",
+    "No long-duration BER qualification",
+    "FMC PCB revision and physical AC coupling not measured"
+  ]
+}

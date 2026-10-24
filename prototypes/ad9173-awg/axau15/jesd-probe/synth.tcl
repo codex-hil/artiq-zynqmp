@@ -1,6 +1,6 @@
 set_param general.maxThreads 4
 create_project -in_memory -part xcau15p-ffvb676-2-i
-read_verilog {axau15_jesd.v core.v spi_gpio.v status_scan.v}
+read_verilog {axau15_jesd.v core.v spi_gpio.v status_scan.v payload_scan.v}
 synth_design -top axau15_jesd -part xcau15p-ffvb676-2-i
 source constraints.tcl
 set_property LOC GTHE4_COMMON_X0Y1 [get_cells -hier -filter {REF_NAME == GTHE4_COMMON}]

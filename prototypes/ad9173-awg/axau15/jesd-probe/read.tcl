@@ -21,14 +21,15 @@ proc hw {a v} {
  transfer [expr {($a<<8)|$v}] 1
  puts [format "HMC_WRITE_UNVERIFIED 0x%03x 0x%02x" $a $v]
 }
+if {![info exists image_magic]} {set image_magic 0x41584a31}
 proc fpga {} {
- global sq
+ global sq image_magic
  $sq clear
  $sq irshift -state IDLE -integer 6 2
  $sq drshift -state IDLE -capture -tdi 0 64
  set h [lindex [$sq run -hex] 0]
  binary scan [binary format H* $h] i2 w
- if {[lindex $w 1]!=0x41584a31} {error "JESD image signature mismatch"}
+ if {[lindex $w 1]!=$image_magic} {error "JESD image signature mismatch"}
  return [expr {[lindex $w 0]&511}]
 }
 proc waitfpga {mask} {

@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT / 'gateware'))
 DualLink = import_module('generate-link').DualLink
 
 class AXAU15(Module):
-    def __init__(self, spi_only=False):
+    def __init__(self, spi_only=False, payload=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         sys_p, sys_n = Signal(name='sys_p'), Signal(name='sys_n')
         raw, eos = Signal(), Signal()
@@ -38,7 +38,8 @@ class AXAU15(Module):
         amplitude = Signal(16)
         self.specials += Instance('spi_gpio', i_spi_en=spi['spi_en'], i_miso=spi['miso'],
             o_sck=spi['sck'], o_mosi=spi['mosi'], o_cs_dac=spi['cs_dac'], o_cs_clock=spi['cs_clock'])
-        self.comb += amplitude.eq(0)
+        if not payload:
+            self.comb += amplitude.eq(0)
         self.pll_config = None
         if spi_only:
             return
@@ -81,24 +82,27 @@ class AXAU15(Module):
             self.specials += Instance('IBUFDS', p_DIFF_TERM='TRUE',
                 i_I=pads.p, i_IB=pads.n, o_O=link.jsync[n])
             self.ios.update(pads.flatten())
+        if payload:
+            self.specials += Instance("payload_scan", i_clk=self.cd_jesd.clk, o_amplitude=amplitude)
         link.drive_payload(amplitude, self)
         # Independent status bits; host reads repeatedly, no coherent bus promise.
         status = Signal(9)
         self.comb += status.eq(Cat(qpll.lock, *[g.tx_ready for g in phys], link.jsync, link.ready))
-        self.specials += Instance('status_scan', i_status=status)
+        self.specials += Instance('status_scan', p_MAGIC=0x41585031 if payload else 0x41584a31, i_status=status)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--spi-only', action='store_true')
+    parser.add_argument('--payload', action='store_true')
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=True)
     os.chdir(out)  # Migen memory initialization files must accompany Verilog.
-    dut = AXAU15(args.spi_only)
+    dut = AXAU15(args.spi_only, args.payload)
     verilog.convert(dut, ios=dut.ios, name='axau15_jesd',
                     special_overrides=xilinx_special_overrides).write('axau15_jesd.v')
     (out / 'target.json').write_text(json.dumps({
         'board': 'AXAU15', 'ordering_code': 'XCAU15P-2FFVB676I',
-        'candidate_part': 'xcau15p-ffvb676-2-i', 'spi_only': args.spi_only,
+        'candidate_part': 'xcau15p-ffvb676-2-i', 'spi_only': args.spi_only, 'payload_mailbox': args.payload,
         'qpll': dut.pll_config, 'physical_validation': 'NOT_RUN'}, indent=2)+'\n')
