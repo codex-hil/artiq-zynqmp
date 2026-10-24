@@ -56,6 +56,16 @@ proc mrd {args} {
   failure=subprocess.run(['tclsh'],input=failing,text=True,capture_output=True,timeout=5)
   self.assertEqual(failure.returncode,0);self.assertFalse(failure.stderr,failure.stderr)
   nonce=123|(456<<32);self.assertFalse(parse(r.stdout,nonce)['destructive_test_allowed'])
+  vector=script.replace('server 210383B7F02DA 123 456','server 210383B7F02DA 123 456 vector-v1')
+  for old,new in [('0xffdd7f20','0xffdd7f40'),('0xffdd7f3c','0xffdd7f5c'),('0xffdd7f68','0xffdd7f88'),(str(0xffdd7f20),str(0xffdd7f40)),(str(0xffdd7f68),str(0xffdd7f88))]:vector=vector.replace(old,new)
+  vector=vector.replace('0x7f 2 0 0 0 0 0','0x7f 2 1 1 0 0 0')
+  vr=subprocess.run(['tclsh'],input=vector,text=True,capture_output=True,timeout=5)
+  self.assertEqual(vr.returncode,0);self.assertFalse(vr.stderr,vr.stderr)
+  parsed=parse(vr.stdout,nonce,'vector-v1');self.assertTrue(parsed['samples'][0]['vector_snapshot']['ram_vector_remap'])
+  with self.assertRaises(ValueError):parse(vr.stdout.replace('word12 0x00000001','word12 0x00000000',1),nonce,'vector-v1')
+  with self.assertRaises(ValueError):parse(vr.stdout,nonce)
+  with self.assertRaises(ValueError):parse(r.stdout,nonce,'vector-v1')
+
   for bad in [r.stdout+r.stdout,r.stdout.replace('word8 0x00000000','word8 0x00000001'),r.stdout.replace('word1 0x00000002','word1 0x00000003'),r.stdout.replace('word7 0x00000100','word7 0x00000000'),r.stdout.replace('PMU_GUARD_END','')]:
    with self.assertRaises(ValueError):parse(bad,nonce)
   with self.assertRaises(ValueError):parse(r.stdout,nonce+1)

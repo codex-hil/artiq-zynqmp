@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — vector-v1 read-address/parser/integration gates PASS offline
+
+Strict singleGPO0read+version/store checks;newliteraladdress transport and parser
+rejectlegacy/mismatched/unstable records. Nineguardtests+fullparentpreflightPASS.
+Freshnestedmanifests preservehistoricproofs. NoHW. Nextboundedleasedsnapshot+
+reservednormalrestoration;bit0samplewillnotadmitDDR. Evidence
+`evidence/pmu-vector-snapshot-integration-2026-10-24`.
+
+
 ## 2026-10-24 — opt-in PMU-local GPO0 snapshot built offline
 
 --vector-snapshot requires labguard;localreadonlyXil_In32 GPO0,version1/rawfield

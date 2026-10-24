@@ -179,7 +179,7 @@ def main():
                 request_preflight(a.pmu_request_inputs,REPO)
                 result['pmu_request_sha256']=request['elf']['sha256']
                 result['pmu_request_nonce']=hex(nonce)
-                result['pmu_request']=request_parse(xs('pmu-request','probe_pmu_observe_request.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32),nonce)
+                result['pmu_request']=request_parse(xs('pmu-request','probe_pmu_observe_request.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32,guard.get('profile','sleep')),nonce,guard.get('profile','sleep'))
             if guard:
                 import secrets
                 nonce=secrets.randbits(64) or 1
@@ -187,7 +187,7 @@ def main():
                 result['pmu_guard_sha256']=guard['elf']['sha256']
                 result['pmu_guard_nonce']=hex(nonce)
                 result['pmu_guard_request_attempted']=True
-                result['pmu_guard']=guard_parse(xs('pmu-guard','probe_pmu_lab_guard.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32),nonce)
+                result['pmu_guard']=guard_parse(xs('pmu-guard','probe_pmu_lab_guard.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32,guard.get('profile','sleep')),nonce,guard.get('profile','sleep'))
             if model:
                 model_preflight(a.model_inputs,REPO)
                 captured=xs('ocm-model','run_ddr_ocm_model.tcl',a.server,model['elf']['path'],'210383B7F02DA')

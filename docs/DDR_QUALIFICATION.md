@@ -2314,3 +2314,11 @@ ffdc4738 fromffd40010,terminalffdc474c. C host good/badMSR with/withoutflagPASS.
 NoHW;oldparser/layoutpinsrejectnewformat. Next strictreadmutationchecker and
 versionedtransport/freshgates;DDRNOT_ADMITTED. Evidence
 `evidence/pmu-vector-snapshot-offline-2026-10-24`.
+
+## 2026-10-24 — vector-v1 read-address/parser/integration gates PASS offline
+
+Strict singleGPO0read+version/store checks;newliteraladdress transport and parser
+rejectlegacy/mismatched/unstable records. Nineguardtests+fullparentpreflightPASS.
+Freshnestedmanifests preservehistoricproofs. NoHW. Nextboundedleasedsnapshot+
+reservednormalrestoration;bit0samplewillnotadmitDDR. Evidence
+`evidence/pmu-vector-snapshot-integration-2026-10-24`.

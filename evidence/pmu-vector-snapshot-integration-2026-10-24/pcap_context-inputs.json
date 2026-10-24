@@ -1,0 +1,16 @@
+{
+  "plan": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/pcap-control-plan-2026-10-23/read-plan.json",
+    "sha256": "e230f42ffec99fe1de7d67b6063e8e87752503116ff704c9262990940bf00944"
+  },
+  "script_sha256": {
+    "scripts/plan_rpu_snapshot.py": "c6a402a031e1d3a864e7bb9c7b1e23ee2f42dc58e5f845496ccea12241c83d36",
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/plan_pcap_snapshot.py": "e27fa46f3b29d7bacba86936978afc6af61576cddcc30137c605bf87a3cf3d21",
+    "scripts/test_candidate_runtime_hw.py": "e0251bb673f1a29090e746f00a49925ffa1febcda4e6e6645f6d513c7af2999c",
+    "scripts/capture_pcap_controls.py": "1d0c3d2ad944f576d1a94abf20ae333ca14b503b53fc8a77505d2935fb03040d",
+    "scripts/plan_pcap_controls.py": "5ee28e6ee59b819d53354940fa5137a41a9759946d1eedcf3529d1bc80244e61",
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb",
+    "scripts/probe_pcap_controls.tcl": "b95b9aa0709d8d5d3242d876820527051ef7785d71baed132ab8e1058725cf92"
+  }
+}

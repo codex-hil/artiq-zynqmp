@@ -2,13 +2,18 @@
 import sys,json,tempfile,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
-from pmu_guard_candidate import preflight
+from pmu_guard_candidate import preflight,check_vector_read
 class Tests(unittest.TestCase):
+ def test_vector_read_mutations(self):
+  text=Path('/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/disassembly.txt').read_text()
+  self.assertEqual(check_vector_read(text)['address'],'0xffd40010')
+  for old,new in [('b000ffd4','b000ffdc'),('e8800010','e8800014'),('f8830030','f8830034'),('30800001','30800002')]:
+   with self.assertRaises(ValueError):check_vector_read(text.replace(old,new))
  def test_historical_guard_rejected(self):
   with self.assertRaises(ValueError):
    preflight(ROOT/'evidence/pmu-guard-boot-integration-2026-10-23/guard-inputs.json',ROOT)
  def test_actual_guard_and_stale_disassembly_pin(self):
-  path=ROOT/'evidence/pmu-sleep-guard-integration-2026-10-23/guard-inputs.json';preflight(path,ROOT)
+  path=ROOT/'evidence/pmu-vector-snapshot-integration-2026-10-24/guard-inputs.json';preflight(path,ROOT)
   m=json.loads(path.read_text());m['disassembly']['sha256']='0'*64
   with tempfile.TemporaryDirectory() as tmp:
    p=Path(tmp)/'bad.json';p.write_text(json.dumps(m))
