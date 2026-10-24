@@ -47,3 +47,15 @@ hold0.046ns, bus-skew slack7.201ns, DRC0 errors,32 safe CDC bits and no
 unconstrained internal endpoints. Evidence: ../../evidence/axau15/refclk-probe-20261023.
 Simulation of this new top and physical reference activity remain NOT_RUN.
 Earlier job20261023a had ODIV2 undivided; it is superseded and never programmed.
+
+2026-10-24 physical continuation
+--------------------------------
+
+The user explicitly authorized a bounded LVDS trial on the existing assembly.
+``../qpll-lvds-lab/`` and ``../../evidence/axau15/qpll-lvds-hardware-20261024/``
+record physical dedicated-reference activity/QPLL lock and off/on recovery PASS.
+This supersedes the earlier schematic prerequisite as a stop for this lab
+bringup. Actual coupling population, common-mode and jitter remain unmeasured.
+DAC PLL/DLL preserved with channel12-only writes; do not restart global HMC
+dividers after establishing DAC lock. QPLL LOCK remains high during reference
+loss; a running-clock watchdog is required. JESD and RF remain NOT_RUN.

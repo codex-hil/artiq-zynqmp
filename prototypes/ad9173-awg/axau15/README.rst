@@ -187,3 +187,11 @@ placed in bank225. Both retain the qualified slow GPIO SPIv2 console.
 These are separate diagnostics, not JESD/sample/RF qualification. Physical
 use remains gated on actual carrier/module FMC GBTCLK0 AC coupling; see
 their README files and evidence/axau15 for build/simulation distinctions.
+
+2026-10-24: dedicated-reference physical PASS
+-------------------------------------------
+
+User-authorized HMC output12 LVDS trial passed on AXAU15: fresh QPLL lock,
+reference stop/restart and preserved AD9172 PLL/DLL. See qpll-lvds-lab and
+evidence/axau15/qpll-lvds-hardware-20261024. Earlier no-hardware/schematic-only
+stop statements for this diagnostic are superseded. No JESD/RF proof yet.

@@ -57,3 +57,15 @@ Final implementation: Dell alinx-qpll-probe-20261023b, setup6.732ns,
 hold0.046ns, bus-skew slack7.233ns, DRC0 errors. New-top logic-only simulation
 PASS; physical QPLL/refclk/JESD NOT_RUN. Evidence under
 ../../evidence/axau15/qpll-probe-20261023/.
+
+2026-10-24 physical continuation
+--------------------------------
+
+The user explicitly authorized a bounded LVDS trial on the existing assembly.
+``../qpll-lvds-lab/`` and ``../../evidence/axau15/qpll-lvds-hardware-20261024/``
+record physical dedicated-reference activity/QPLL lock and off/on recovery PASS.
+This supersedes the earlier schematic prerequisite as a stop for this lab
+bringup. Actual coupling population, common-mode and jitter remain unmeasured.
+DAC PLL/DLL preserved with channel12-only writes; do not restart global HMC
+dividers after establishing DAC lock. QPLL LOCK remains high during reference
+loss; a running-clock watchdog is required. JESD and RF remain NOT_RUN.
