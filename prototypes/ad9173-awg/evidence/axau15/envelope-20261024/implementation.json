@@ -1,0 +1,36 @@
+{
+  "status": "IMPLEMENTATION_PASS",
+  "wns_ns": 0.148,
+  "whs_ns": 0.011,
+  "wpws_ns": 0.543,
+  "cdc_counts": {
+    "CDC-3": 29,
+    "CDC-6": 3,
+    "CDC-9": 4,
+    "CDC-15": 716
+  },
+  "cdc_review": {
+    "CDC-15": "673 held DDS bits plus43 held envelope command bits, request/ack;6ns data and skew",
+    "CDC-6": "two Gray RX FIFO pointers plus2-bit result stable through8-cycle drain before ack"
+  },
+  "bus_skew_slack_ns": [
+    4.548,
+    4.887,
+    5.352,
+    5.353,
+    5.482,
+    5.594
+  ],
+  "bit_sha256": "2ebe2318b661438e8d509ac26a9de51c2f1959fe15692da39f59ac428b0fcd3a",
+  "build_directory": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-20261024f",
+  "source_commit": "b24a616",
+  "drc_review": "0 errors;40 DPIP-2 inherited DDS pipeline warnings;1 RTSTAT-10 unused reserved held bits",
+  "reports_sha256": {
+    "bus-skew.rpt": "5dc6bf7784995bb7f4be3a054fbf5f4fb4164e32131f59278adb182b4ddedb47",
+    "cdc.rpt": "47aa1d4261981ed6e0187bcf58f7d96fd02440306ef2f677f3e116bac2ae2020",
+    "drc.rpt": "71a36195d04d38dfa4d9a8de30a82461ba3eac7cd475aba88f4e47c11ecd7f87",
+    "io.rpt": "5d87b127be8ac4d24efecf27b6fcf5b69b310eac837c19c24f300ad5fb52efc6",
+    "timing.rpt": "6324ad155823163246f0c7b1f6b70aa1fc26a0c5697ef38d93db10db5f036a1e",
+    "utilization.rpt": "76487296121ad11f270436a8c860b4b853f93217c6f159160bb6b5fd23a1065e"
+  }
+}

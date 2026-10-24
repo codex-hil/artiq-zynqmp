@@ -59,7 +59,10 @@ Current sources also provide a finite complex envelope sequencer over IPbus
 6.5104ns nominal steps, finite repeats and abort. See ``ENVELOPE.rst`` for
 its register map, CLI, validation and shared-board restoration procedure.
 The baseline CW evidence above belongs to ABI0x00010000, which remains the
-shared default image. The envelope client rejects older images explicitly.
+shared default image. The envelope client rejects older images explicitly. The extension has
+separate simulation, Vivado and physical RF PASS evidence in
+``../../evidence/axau15/envelope-20261024/acceptance.json``. Its qualification
+runner restores the shared CW image after every bounded session.
 
 Interface
 ---------

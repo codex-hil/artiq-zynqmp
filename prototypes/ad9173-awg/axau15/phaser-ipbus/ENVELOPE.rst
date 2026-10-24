@@ -105,8 +105,28 @@ Cold-start clock initialization remains a separate task.
 Validation
 ----------
 
-Current qualification: simulation PASS; final implementation and physical
-RF qualification are pending.
+Current qualification:15 RTL tests, localhost UDP regression and two synthetic
+RF analysis tests PASS. Vivado2025.2 implementation PASS:WNS+0.148ns,
+WHS+0.011ns, no critical CDC or DRC errors, all six bus-skew groups PASS.
+Physical qualification PASS on MSO4104 CH3/4:0/half/full levels, independent
+channel amplitudes, alternating90-degree complex gains, and a64-step Gaussian.
+Measured Gaussian shape RMSE is1.61%/1.55% of full-scale amplitude. Adjacent
+pulse phase steps are within0.27degrees of90degrees in these captures; this
+is not a calibrated absolute phase or inter-channel synchronization claim.
+Full256-entry RAM readback,32-bit repeats/abort, natural finite completion,
+invalid-duration rejection, held zero and explicit CW bypass also PASS.
+
+The runner restored the shared ABI0x00010000 image under the same lease:
+CH3=148.995869MHz/0.47558Vpp,CH4=150.995986MHz/0.48292Vpp, JESD0x1ff.
+Scope settings were restored and read back. Raw captures, program logs and
+separate simulation/implementation/acceptance records are retained.
+
+Candidate bitstream:
+``/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-20261024f/phaser_ipbus.bit``
+
+SHA256::
+
+  2ebe2318b661438e8d509ac26a9de51c2f1959fe15692da39f59ac428b0fcd3a
 
 Simulation, Vivado implementation and physical RF evidence are recorded
 separately in ``../../evidence/axau15/envelope-20261024``. The existing shared

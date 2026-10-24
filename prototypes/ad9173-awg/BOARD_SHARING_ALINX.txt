@@ -188,3 +188,21 @@ Nie zakładaj stałego /dev/bus/usb/XXX/YYY ani numeru targetu XSDB.
 Stan na koniec przekazania: Phaser149/151MHz działa, blokada płytki zwolniona,
 żaden hw_server tego wątku nie pozostaje aktywny. Kolejny wątek musi nabyć
 blokadę ponownie — ten tekst nie rezerwuje sprzętu.
+
+8. ROZSZERZENIE PHASERA — SEKWENCER OBWIEDNI
+
+Dodany osobny wariant ABI00010001:256 kroków, niezależne obwiednie I/Q,
+minimalny krok6.5104ns, skończone powtórzenia i ABORT, sterowanie IPbus.
+Źródła/testy:commit b24a616. Opis:axau15/phaser-ipbus/ENVELOPE.rst.
+Symulacje PASS; implementacja Vivado PASS (WNS+0.148ns/WHS+0.011ns).
+Pomiary fizyczne PASS:0/½/1, niezależne amplitudy, skoki fazy90°, Gauss,
+pełny RAM256 wpisów,32-bitowe powtórzenia, ABORT, błąd programu i powrót CW.
+Dowody:evidence/axau15/envelope-20261024/acceptance.json.
+Po sesji przywrócono stary obraz:CH3=148.995869MHz/0.47558Vpp,
+CH4=150.995986MHz/0.48292Vpp,JESD0x1ff,commit busy0,count1,mute0.
+Jest to obserwacja po tej sesji; przed dostępem ponownie sprawdź lock i stan.
+Bitstream w artifacts/alinx-envelope-20261024f/phaser_ipbus.bit, SHA256:
+  2ebe2318b661438e8d509ac26a9de51c2f1959fe15692da39f59ac428b0fcd3a
+NIE jest to zmiana domyślnego obrazu przekazania: nadal obowiązuje CW z pkt3.
+Nowy run_envelope.py po próbie przywraca stary obraz149/151MHz pod tą samą
+blokadą, wraz z pomiarem RF i odtworzeniem ustawień scope. Bez cold boot/DRTIO.

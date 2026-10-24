@@ -1,0 +1,182 @@
+{
+  "candidate_sha256": "2ebe2318b661438e8d509ac26a9de51c2f1959fe15692da39f59ac428b0fcd3a",
+  "restored_sha256": "5018618518cab3bab43e02a8c1a81691434db69754ef31abb09686d57b8bfb3f",
+  "tests": {
+    "levels": {
+      "3": {
+        "period_s": 4.166e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_levels": [
+          0.019477222354954582,
+          0.4947111434168519,
+          1.0002575569285166
+        ]
+      },
+      "4": {
+        "period_s": 4.168e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_levels": [
+          0.01684260255838964,
+          0.4924293390267082,
+          0.9965136656251807
+        ]
+      }
+    },
+    "phase": {
+      "3": {
+        "period_s": 2.084e-07,
+        "expected_period_s": 2.0833333333333333e-07,
+        "adjacent_pulse_phase_degrees": [
+          -89.80717290980141,
+          89.95213612793442,
+          -89.78229512849563,
+          89.8297717030919,
+          -90.0312030044804,
+          89.91363523671912,
+          -89.91234102395822,
+          90.0306021877212
+        ]
+      },
+      "4": {
+        "period_s": 2.084e-07,
+        "expected_period_s": 2.0833333333333333e-07,
+        "adjacent_pulse_phase_degrees": [
+          -90.20631016357204,
+          90.04965961112906,
+          -90.06441696773335,
+          90.25206479420854,
+          -90.09727191619142,
+          89.90553093285163,
+          -89.73552698908154,
+          89.90913468535814
+        ]
+      }
+    },
+    "gaussian": {
+      "3": {
+        "period_s": 4.164e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_shape_rmse": 0.016129904422608393
+      },
+      "4": {
+        "period_s": 4.168e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_shape_rmse": 0.015453127833363903
+      }
+    },
+    "independent": {
+      "3": 0.9994031073227105,
+      "4": 0.49407607152331534
+    },
+    "full_ram_and_32bit_repeat_abort": true,
+    "invalid_duration_rejected": true
+  },
+  "status": "PHYSICAL_ENVELOPE_PASS",
+  "restoration": {
+    "identity": {
+      "magic": 1096306760,
+      "abi": 65536,
+      "sample_rate": 307200000,
+      "tones": 5
+    },
+    "status": [
+      511,
+      0,
+      1,
+      0
+    ]
+  },
+  "observed_utc": "2026-10-24T19:44:29.788398+00:00",
+  "source_commit": "b24a616",
+  "hardware_directory": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-rf-20261024b",
+  "cable": "210512180081",
+  "dac": "AD9172",
+  "scope": "MSO4104 C020817 CH3/4",
+  "persistent_writes": false,
+  "other_fpga_access": false,
+  "scope_settings_restoration": "READBACK_PASS",
+  "candidate_abi_checked": "0x00010001",
+  "ram_readback": "all256 entries PASS",
+  "natural_completion": "PASS, held zero after finite program",
+  "bypass": "PASS, continuous149/151MHz recovered",
+  "rf_cw": {
+    "cw": {
+      "3": {
+        "fit_hz": 148995983.3990712,
+        "fit_vpp": 0.4755896631092059,
+        "residual_rms": 0.0038506718717871303,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.496
+      },
+      "4": {
+        "fit_hz": 150995834.63473192,
+        "fit_vpp": 0.4830004812612793,
+        "residual_rms": 0.003528776968405151,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.504
+      }
+    },
+    "bypass": {
+      "3": {
+        "fit_hz": 148996288.85887137,
+        "fit_vpp": 0.4753234336624139,
+        "residual_rms": 0.003840541625585744,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.496
+      },
+      "4": {
+        "fit_hz": 150996255.1990444,
+        "fit_vpp": 0.4826647677755273,
+        "residual_rms": 0.0035659486458934158,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5
+      }
+    },
+    "restored-rf": {
+      "3": {
+        "fit_hz": 148995868.79696926,
+        "fit_vpp": 0.4755807928514442,
+        "residual_rms": 0.0038321773170214555,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5
+      },
+      "4": {
+        "fit_hz": 150995986.35553068,
+        "fit_vpp": 0.482918934212985,
+        "residual_rms": 0.003583042939901198,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.504
+      }
+    }
+  },
+  "zero_tone_vpp": {
+    "scope-completed-zero": {
+      "3": 0.00023814894559473366,
+      "4": 0.0002063507205709774
+    },
+    "scope-gaussian-zero": {
+      "3": 0.00012982541636169525,
+      "4": 0.00017955515051319967
+    },
+    "scope-levels-zero": {
+      "3": 0.0003355727542532136,
+      "4": 0.0001645940415575298
+    },
+    "scope-phase-zero": {
+      "3": 0.00024108383875834556,
+      "4": 0.00022200386578048614
+    }
+  },
+  "artifacts_sha256": {
+    "scope-captures.json.gz": "bf513c23f7ed0694afb4a6a48cfc7024e49af399e24967d2c56153fd23528a11",
+    "candidate-program.log": "9ccb46bbdc6209bfe9409c5a6bf621b0040d6c5a404e9fd330183d02642befbf",
+    "restore-program.log": "6517504c39192364423d6af555d292dbbfcdc033c84d23490d623601d4fa73b3",
+    "status.json": "2e01888da90e68f70dc860469cff93bea616426501577da3175fe21f60e1f7e8"
+  }
+}

@@ -1,0 +1,195 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat Oct 24 19:42:26 2026
+# Process ID         : 458
+# Current directory  : /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-rf-20261024b
+# Command line       : vivado -mode batch -source /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-rf-20261024b/restore-program.tcl -log /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-rf-20261024b/restore-program.log -nojournal
+# Log file           : /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-rf-20261024b/restore-program.log
+# Journal file       : 
+# Running On         : 4252ceb505e9
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : Intel(R) Core(TM) i5-8500 CPU @ 3.00GHz
+# CPU Frequency      : 800.000 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 6
+# Host memory        : 16564 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20859 MB
+# Available Virtual  : 16203 MB
+#-----------------------------------------------------------
+source /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-envelope-rf-20261024b/restore-program.tcl
+# open_hw_manager
+# connect_hw_server -url localhost:3121
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2025.2.0
+  ****** Build date   : Nov 13 2025-23:16:52
+    **** Build number : 2025.2.1763075812
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:11 ; elapsed = 00:00:33 . Memory (MB): peak = 1636.465 ; gain = 0.000 ; free physical = 450 ; free virtual = 14905
+# set ts [get_hw_targets -filter {NAME =~ *210512180081}]
+# if {[llength $ts]!=1} {error "Cable mismatch"}
+# current_hw_target [lindex $ts 0]
+# set_property PARAM.FREQUENCY 6000000 [current_hw_target]
+# open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210512180081
+# set ds [get_hw_devices]
+# if {[llength $ds]!=1} {error "Unexpected JTAG chain"}
+# set d [lindex $ds 0]
+# if {[get_property PART $d] ne "xcau15p" || [string toupper [get_property IDCODE_HEX $d]] ne "04AC2093"} {error "FPGA identity mismatch"}
+# set_property PROGRAM.FILE {/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-20261024g/phaser_ipbus.bit} $d
+# program_hw_devices $d
+INFO: [Labtools 27-3164] End of startup status: HIGH
+program_hw_devices: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1636.465 ; gain = 0.000 ; free physical = 488 ; free virtual = 14943
+# refresh_hw_device $d
+INFO: [Labtools 27-1434] Device xcau15p (JTAG device index = 0) is programmed with a design that has no supported soft debug core(s) in it.
+# report_property $d
+Property                                                              Type          Read-only  Value
+CLASS                                                                 string        true       hw_device
+NAME                                                                  string        true       xcau15p_0
+PART                                                                  string        true       xcau15p
+VARIANT_NAME                                                          string        true       
+PROGRAM.LOG                                                           string        true       
+INDEX                                                                 int           true       0
+IDCODE                                                                string        true       00000100101011000010000010010011
+IDCODE_HEX                                                            string        true       04AC2093
+IR_LENGTH                                                             int           true       6
+USER_CHAIN_COUNT                                                      string        true       4
+IS_SYSMON_SUPPORTED                                                   bool          true       1
+PROGRAM.IS_SUPPORTED                                                  bool          true       1
+PROGRAM.FILE                                                          string        false      /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-20261024g/phaser_ipbus.bit
+PROGRAM.BOOT_FILE                                                     string        false      
+PROGRAM.OPTIONS                                                       string        false      
+PROGRAM.HW_BITSTREAM                                                  hw_bitstream  true       /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-20261024g/phaser_ipbus.bit
+AUTH_JTAG.FILE                                                        string        false      
+PROBES.FILE                                                           string        false      
+FULL_PROBES.FILE                                                      string        false      
+BOOT_PROBES.FILE                                                      string        false      
+PARTIAL_PROBES.FILES                                                  string*       false      
+PROGRAM.HW_CFGMEM                                                     hw_cfgmem     true       
+PROGRAM.HW_CFGMEM_BITFILE                                             string        true       
+PROGRAM.HW_CFGMEM_TYPE                                                string        true       
+PROGRAM.READBACK_FILE                                                 string        false      
+PROGRAM.IS_RSA_PROGRAMMED                                             bool          true       0
+PROGRAM.IS_AES_PROGRAMMED                                             bool          true       0
+PROGRAM.DPA_PROTECT                                                   bool          false      0
+PROGRAM.DPA_COUNT                                                     int           false      0
+PROGRAM.DPA_MODE                                                      string        false      
+REGISTER.BOOT_STATUS                                                  string        true       0x00000001
+REGISTER.BOOT_STATUS.BIT[00]_0_STATUS_VALID                           string        true       1
+REGISTER.BOOT_STATUS.BIT[01]_0_FALLBACK                               string        true       0
+REGISTER.BOOT_STATUS.BIT[02]_0_INTERNAL_PROG                          string        true       0
+REGISTER.BOOT_STATUS.BIT[03]_0_WATCHDOG_TIMEOUT_ERROR                 string        true       0
+REGISTER.BOOT_STATUS.BIT[04]_0_ID_ERROR                               string        true       0
+REGISTER.BOOT_STATUS.BIT[05]_0_CRC_ERROR                              string        true       0
+REGISTER.BOOT_STATUS.BIT[06]_0_WRAP_ERROR                             string        true       0
+REGISTER.BOOT_STATUS.BIT[07]_0_SECURITY_ERROR                         string        true       0
+REGISTER.BOOT_STATUS.BIT[08]_1_STATUS_VALID                           string        true       0
+REGISTER.BOOT_STATUS.BIT[09]_1_FALLBACK                               string        true       0
+REGISTER.BOOT_STATUS.BIT[10]_1_INTERNAL_PROG                          string        true       0
+REGISTER.BOOT_STATUS.BIT[11]_1_WATCHDOG_TIMEOUT_ERROR                 string        true       0
+REGISTER.BOOT_STATUS.BIT[12]_1_ID_ERROR                               string        true       0
+REGISTER.BOOT_STATUS.BIT[13]_1_CRC_ERROR                              string        true       0
+REGISTER.BOOT_STATUS.BIT[14]_1_WRAP_ERROR                             string        true       0
+REGISTER.BOOT_STATUS.BIT[15]_1_SECURITY_ERROR                         string        true       0
+REGISTER.CONFIG_STATUS                                                string        true       0x109079fc
+REGISTER.CONFIG_STATUS.BIT[00]_CRC_ERROR                              string        true       0
+REGISTER.CONFIG_STATUS.BIT[01]_DECRYPTOR_ENABLE                       string        true       0
+REGISTER.CONFIG_STATUS.BIT[02]_PLL_LOCK_STATUS                        string        true       1
+REGISTER.CONFIG_STATUS.BIT[03]_DCI_MATCH_STATUS                       string        true       1
+REGISTER.CONFIG_STATUS.BIT[04]_END_OF_STARTUP_(EOS)_STATUS            string        true       1
+REGISTER.CONFIG_STATUS.BIT[05]_GTS_CFG_B_STATUS                       string        true       1
+REGISTER.CONFIG_STATUS.BIT[06]_GWE_STATUS                             string        true       1
+REGISTER.CONFIG_STATUS.BIT[07]_GHIGH_STATUS                           string        true       1
+REGISTER.CONFIG_STATUS.BIT[08]_MODE_PIN_M[0]                          string        true       1
+REGISTER.CONFIG_STATUS.BIT[09]_MODE_PIN_M[1]                          string        true       0
+REGISTER.CONFIG_STATUS.BIT[10]_MODE_PIN_M[2]                          string        true       0
+REGISTER.CONFIG_STATUS.BIT[11]_INIT_B_INTERNAL_SIGNAL_STATUS          string        true       1
+REGISTER.CONFIG_STATUS.BIT[12]_INIT_B_PIN                             string        true       1
+REGISTER.CONFIG_STATUS.BIT[13]_DONE_INTERNAL_SIGNAL_STATUS            string        true       1
+REGISTER.CONFIG_STATUS.BIT[14]_DONE_PIN                               string        true       1
+REGISTER.CONFIG_STATUS.BIT[15]_IDCODE_ERROR                           string        true       0
+REGISTER.CONFIG_STATUS.BIT[16]_SECURITY_ERROR                         string        true       0
+REGISTER.CONFIG_STATUS.BIT[17]_SYSTEM_MONITOR_OVER-TEMP_ALARM_STATUS  string        true       0
+REGISTER.CONFIG_STATUS.BIT[20:18]_CFG_STARTUP_STATE_MACHINE_PHASE     string        true       100
+REGISTER.CONFIG_STATUS.BIT[23:21]_SECURITY_STATUS                     string        true       100
+REGISTER.CONFIG_STATUS.BIT[24]_RESERVED                               string        true       0
+REGISTER.CONFIG_STATUS.BIT[25]_CFG_BUS_WIDTH_DETECTION                string        true       0
+REGISTER.CONFIG_STATUS.BIT[26]_CFG_BUS_WIDTH_DETECTION                string        true       0
+REGISTER.CONFIG_STATUS.BIT[27]_SECURITY_AUTH_ERROR                    string        true       0
+REGISTER.CONFIG_STATUS.BIT[28]_PUDC_B_PIN                             string        true       1
+REGISTER.CONFIG_STATUS.BIT[29]_BAD_PACKET_ERROR                       string        true       0
+REGISTER.CONFIG_STATUS.BIT[30]_CFGBVS_PIN                             string        true       0
+REGISTER.CONFIG_STATUS.BIT[31]_RESERVED                               string        true       0
+REGISTER.COR0                                                         string        true       0x38003fe5
+REGISTER.COR0.BIT[02:00]_GWE_CYCLE                                    string        true       101
+REGISTER.COR0.BIT[05:03]_GTS_CYCLE                                    string        true       100
+REGISTER.COR0.BIT[08:06]_LOCK_CYCLE                                   string        true       111
+REGISTER.COR0.BIT[11:09]_MATCH_CYCLE                                  string        true       111
+REGISTER.COR0.BIT[14:12]_DONE_CYCLE                                   string        true       011
+REGISTER.COR0.BIT[16:15]_RESERVED                                     string        true       00
+REGISTER.COR0.BIT[22:17]_OSCFSEL                                      string        true       000000
+REGISTER.COR0.BIT[23]_RESERVED                                        string        true       0
+REGISTER.COR0.BIT[24]_DRIVE_DONE                                      string        true       0
+REGISTER.COR0.BIT[25]_RESERVED                                        string        true       0
+REGISTER.COR0.BIT[26]_ECLK_EN                                         string        true       0
+REGISTER.COR0.BIT[31:27]_RESERVED                                     string        true       00111
+REGISTER.COR1                                                         string        true       0x00400000
+REGISTER.COR1.BIT[01:00]_BPI_PAGE_SIZE                                string        true       00
+REGISTER.COR1.BIT[03:02]_BPI_1ST_READ_CYCLE                           string        true       00
+REGISTER.COR1.BIT[07:04]_RESERVED                                     string        true       0000
+REGISTER.COR1.BIT[08]_RBCRC_EN                                        string        true       0
+REGISTER.COR1.BIT[09]_RBCRC_NO_PIN                                    string        true       0
+REGISTER.COR1.BIT[14:10]_RESERVED                                     string        true       00000
+REGISTER.COR1.BIT[16:15]_RBCRC_ACTION                                 string        true       00
+REGISTER.COR1.BIT[17]_PERSIST_DEASSERT_AT_DESYNC                      string        true       0
+REGISTER.COR1.BIT[18]_RESERVED                                        string        true       0
+REGISTER.DNA                                                          string        true       0x0000000040020000016069493c626185
+REGISTER.IR                                                           string        true       110101
+REGISTER.IR.BIT0_ALWAYS_ONE                                           string        true       1
+REGISTER.IR.BIT1_ALWAYS_ZERO                                          string        true       0
+REGISTER.IR.BIT2_ISC_DONE                                             string        true       1
+REGISTER.IR.BIT3_ISC_ENABLED                                          string        true       0
+REGISTER.IR.BIT4_INIT_COMPLETE                                        string        true       1
+REGISTER.IR.BIT5_DONE                                                 string        true       1
+REGISTER.TIMER                                                        string        true       0x00000000
+REGISTER.TIMER.BIT[29:00]_TIMER_VALUE                                 string        true       000000000000000000000000000000
+REGISTER.TIMER.BIT[30]_TIMER_CFG_MON                                  string        true       0
+REGISTER.TIMER.BIT[31]_TIMER_USR_MON                                  string        true       0
+REGISTER.USERCODE                                                     string        true       0xffffffff
+REGISTER.USR_ACCESS                                                   string        true       0x00000000
+REGISTER.WBSTAR                                                       string        true       0x00000000
+REGISTER.WBSTAR.BIT[28:00]_START_ADDR                                 string        true       00000000000000000000000000000
+REGISTER.WBSTAR.BIT[29]_RS_TS_B                                       string        true       0
+REGISTER.WBSTAR.BIT[31:30]_RS                                         string        true       00
+REGISTER.EFUSE.FUSE_DNA                                               string        true       40020000016069493C626185
+REGISTER.EFUSE.DNA_PORT                                               string        true       40020000016069493C626185
+REGISTER.EFUSE.FUSE_CNTL                                              string        true       144400
+REGISTER.EFUSE.FUSE_USER                                              string        true       00000000
+REGISTER.EFUSE.FUSE_SECURITY                                          string        true       00
+REGISTER.EFUSE.FUSE_KEY                                               string        true       Unreadable
+REGISTER.EFUSE.FUSE_RSA                                               string        true       000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+REGISTER.EFUSE.FUSE_USER_128                                          string        true       00000000000000000000000000000000
+DID                                                                   string        true       jsn-JTAG-HS1-210512180081-04ac2093-0
+MASK                                                                  string        true       00001111111111111111111111111111
+MASK_HEX                                                              string        true       0FFFFFFF
+UNKNOWN_DEVICE                                                        bool          true       0
+XSDB_USER_BSCAN                                                       string        false      1,3
+BSCAN_SWITCH_USER_MASK                                                string        false      0001
+# close_hw_target
+INFO: [Labtoolstcl 44-464] Closing hw_target localhost:3121/xilinx_tcf/Digilent/210512180081
+# disconnect_hw_server
+# close_hw_manager
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 24 19:43:10 2026...
