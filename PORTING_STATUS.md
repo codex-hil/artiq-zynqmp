@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — printf indirect table bound to exact ELF offline
+
+22table words atffdd35d0 resolve to7aligned targets inside xil_printf;9instruction
+words pinned. Two actual-ELF tests PASS with corrupt-target/opcode controls.
+Index-bound domination remains unproven; table inventory is not whole-path proof.
+No HW/firmware changes; DDR NOT_ADMITTED. Next linked CFG bound/delay-slot review,
+then memory footprint. Evidence `evidence/pmu-printf-table-2026-10-24`.
+
+
 ## 2026-10-24 — linked PMU exception inventory, exclusion still open
 
 Offline exact-image direct-edge audit:13function blocks/26edges/148memoryops,

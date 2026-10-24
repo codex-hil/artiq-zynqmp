@@ -1,0 +1,131 @@
+{
+  "status": "EXACT_PRINTF_TABLE_INVENTORY_NOT_EXCLUSION_PROOF",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "elf_sha256": "7a82b8f2ac5beb2bff4cafaa3767b888c09461a7c66371f632332f7bd66f51c4",
+  "table_start": "0xffdd35d0",
+  "table_bytes": 88,
+  "index_count": 22,
+  "entries": [
+    {
+      "index": 0,
+      "format_character": "c",
+      "target": "0xffdccb7c"
+    },
+    {
+      "index": 1,
+      "format_character": "d",
+      "target": "0xffdccacc"
+    },
+    {
+      "index": 2,
+      "format_character": "e",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 3,
+      "format_character": "f",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 4,
+      "format_character": "g",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 5,
+      "format_character": "h",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 6,
+      "format_character": "i",
+      "target": "0xffdccacc"
+    },
+    {
+      "index": 7,
+      "format_character": "j",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 8,
+      "format_character": "k",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 9,
+      "format_character": "l",
+      "target": "0xffdcc93c"
+    },
+    {
+      "index": 10,
+      "format_character": "m",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 11,
+      "format_character": "n",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 12,
+      "format_character": "o",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 13,
+      "format_character": "p",
+      "target": "0xffdccaf4"
+    },
+    {
+      "index": 14,
+      "format_character": "q",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 15,
+      "format_character": "r",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 16,
+      "format_character": "s",
+      "target": "0xffdccb0c"
+    },
+    {
+      "index": 17,
+      "format_character": "t",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 18,
+      "format_character": "u",
+      "target": "0xffdccac4"
+    },
+    {
+      "index": 19,
+      "format_character": "v",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 20,
+      "format_character": "w",
+      "target": "0xffdcc9c8"
+    },
+    {
+      "index": 21,
+      "format_character": "x",
+      "target": "0xffdccaf4"
+    }
+  ],
+  "unique_targets": [
+    "0xffdcc93c",
+    "0xffdcc9c8",
+    "0xffdccac4",
+    "0xffdccacc",
+    "0xffdccaf4",
+    "0xffdccb0c",
+    "0xffdccb7c"
+  ],
+  "limits": "Exact instruction/table bytes and target range checked; unsigned bound semantics and domination of all paths require separate CFG proof. No full memory/ROM/reset/exception exclusion."
+}
