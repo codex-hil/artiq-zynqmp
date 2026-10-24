@@ -2297,3 +2297,11 @@ review is conditional on unproved ROM->RAM eventbridge, not fullhardwarepath.
 Physicalguard/restorePASSunchanged. NoHW/ROMreads/firmwarechanges. Nextmaintained
 AMDROM/eventforwardingAPI source review;DDRNOT_ADMITTED. Evidence
 `evidence/pmu-rom-vector-boundary-2026-10-24`.
+
+## 2026-10-24 — vector mapping depends on uncaptured GPO0 remap
+
+UG1085p119 and exactheader define GPO0bit0 ROM/RAM64bytevector remap. Thus prior
+baseaddress alone does NOT establish liveROMentry; mappingUNKNOWN. ROMextension
+table mechanism found but not general exception/break forwarding proof. NoHW or
+remapwrites. Next linkedstartup/BSP audit then bounded PMUlocal readonlytelemetry
+plan ifneeded;DDRNOT_ADMITTED. Evidence `evidence/pmu-vector-remap-review-2026-10-24`.
