@@ -65,6 +65,7 @@ def main():
     group.add_argument('--controls-only',action='store_true')
     group.add_argument('--exception-observer',action='store_true')
     group.add_argument('--exception-brk',action='store_true')
+    p.add_argument('--aib-observation',action='store_true',help='Eight fixed read-only AIB reads after guard')
     a=p.parse_args(); require_lease()
     if a.exception_observer or a.exception_brk:
         from check_el3_exception_observer import check as image_check
@@ -103,6 +104,7 @@ def main():
         if not no_master or model or pmu_diagnostic or request:raise ValueError('Guard requires separate no-master window')
         from pmu_guard_candidate import preflight as guard_preflight, parse as guard_parse
         guard=guard_preflight(a.pmu_guard_inputs,REPO)
+    if a.aib_observation and not guard:raise ValueError('AIB observation requires guarded window')
     desc=descriptor(Path(a.fsbl).read_bytes(),Path(a.symbols).read_text())
     out=Path(a.output)
     if out.exists(): raise ValueError('Use fresh output')
@@ -188,6 +190,10 @@ def main():
                 result['pmu_guard_nonce']=hex(nonce)
                 result['pmu_guard_request_attempted']=True
                 result['pmu_guard']=guard_parse(xs('pmu-guard','probe_pmu_lab_guard.tcl',a.server,'210383B7F02DA',nonce&0xffffffff,nonce>>32,guard.get('profile','sleep')),nonce,guard.get('profile','sleep'))
+            if a.aib_observation:
+                from decode_aib_state import parse as aib_parse
+                result['aib_after_guard']=aib_parse(xs('aib-after-guard','probe_aib_state.tcl',a.server,'210383B7F02DA'))
+                result['aib_observation_hardware_executed']=True
             if model:
                 model_preflight(a.model_inputs,REPO)
                 captured=xs('ocm-model','run_ddr_ocm_model.tcl',a.server,model['elf']['path'],'210383B7F02DA')

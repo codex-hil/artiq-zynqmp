@@ -1,0 +1,30 @@
+{
+  "elf": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/pmufw.elf",
+    "sha256": "346527868dc27f6d9de0d90a3a1aecb9031572a7ec5d6e69df20dd2154b6764b"
+  },
+  "symbols": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/symbols.txt",
+    "sha256": "b70c4814540de5811391046a8a1d2d9f6c32d22600b8dce5e44ddd8ed89ab48e"
+  },
+  "disassembly": {
+    "path": "/home/codex-hil/.local/state/artiq-builds/pmu-vector-snapshot-full-20261024/disassembly.txt",
+    "sha256": "372f0abe0216ee64aea8d99be95e45eb3653a6bc9b195448982efa3ce7dbb6bb"
+  },
+  "script_sha256": {
+    "scripts/test_ethernet_hw.py": "75325e938dc14ad9380450d94e58375f39d6aa0e9e0c5a8ca3796b261b2d71b5",
+    "scripts/run_trained_observer.py": "0135d25a0f5a83f37a44723f7a578032074ef4148f1ef90f75cb560e13641e54",
+    "scripts/probe_pmu_lab_guard.tcl": "22700d53b5d2a8a0c20906df0ff73e0f931db8fc9525c7275a1c2ccf592f41ae",
+    "scripts/check_pmu_lab_guard.py": "50ec2db016c5db93bfaf8d0998682c588e26807c22834f46442f31e660d0cf75",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/test_rtio_debug_hw.py": "3612fb933fe3c9f1ddd0b64aedb926162f7d667d8621ef72eb79b572f7cf4a1a",
+    "scripts/test_candidate_runtime_hw.py": "25407699975868c1a05a406acbb229a6e75956c3d195c1ea1d4c43ad63bbffeb",
+    "scripts/restart_pmu_for_restore.tcl": "4ede9ac7f9a5d1e14da00d130ac7ac0df3a198fd2e41de14fd84df9a4e3da9a0",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb",
+    "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+    "scripts/pmu_guard_candidate.py": "93ce561a368dc84361925f7ea0946332bf07f9026d48e5d1a3b417c5ff725f42",
+    "scripts/check_pmu_boundary_image.py": "f142e614da217212b9c278b9782ead83e299db80e0fe2e5fe71dfda5aec46f69"
+  },
+  "profile": "vector-v1"
+}

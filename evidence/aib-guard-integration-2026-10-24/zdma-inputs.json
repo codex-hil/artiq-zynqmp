@@ -1,0 +1,14 @@
+{
+  "plan": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/zdma-reset-audit-2026-10-23/read-plan.json",
+    "sha256": "b9d435e3a9d6bca27bd0d4fb98fb09f5a90151fb9d1ad157601e29a03c772a66"
+  },
+  "script_sha256": {
+    "scripts/probe_zdma_status.tcl": "6c153deb2967b98d261f91ef7194972d376728a0a77b6698b22d4050c1ab33c6",
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb",
+    "scripts/capture_zdma_status.py": "8ee5153669e0ce23fa62e5e6d9c1bbfc43c012bf73c8d37e90121148691318bc",
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/plan_zdma_snapshot.py": "0474d06449ef6831bf8977344ecb2a127ff9d91ed735045983a2bbb3523a35f2",
+    "scripts/test_candidate_runtime_hw.py": "25407699975868c1a05a406acbb229a6e75956c3d195c1ea1d4c43ad63bbffeb"
+  }
+}

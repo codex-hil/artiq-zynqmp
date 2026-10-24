@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — parent-owned post-guard AIB observation integrated offline
+
+Explicitbooleanrequiresguard/no-master;exactprobe/decoderpins passedtoinherited
+leasechild. Eightreadsafterguard,nowrites,retryornewfirmware. Fullpreflight+
+11integration/transport/dispatch/lifecycletestsPASS. Freshmanifests preservehistory.
+NoHW. Nextboundedchangedobservation+reservedrestoration;DDRNOT_ADMITTED. Evidence
+`evidence/aib-guard-integration-2026-10-24`.
+
+
 ## 2026-10-24 — fixed AIB readonly schema/decoder PASS offline
 
 TwoREQ/TYPE/ACK/REQsamples,8fixedAP0reads,no writes/reset/force. ActualTclmock+

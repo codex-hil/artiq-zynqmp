@@ -2376,3 +2376,11 @@ strictdecoder2testsPASS;changed/malformed/ownedstateshandled,no writepermit.
 ABA/nonatomicsnapshot/ownershiplimitations explicit. NoHW/standalonelauncher.
 Nextoptionalparentownedobserverintegration/freshpins;DDRNOT_ADMITTED. Evidence
 `evidence/aib-readonly-offline-2026-10-24`.
+
+## 2026-10-24 — parent-owned post-guard AIB observation integrated offline
+
+Explicitbooleanrequiresguard/no-master;exactprobe/decoderpins passedtoinherited
+leasechild. Eightreadsafterguard,nowrites,retryornewfirmware. Fullpreflight+
+11integration/transport/dispatch/lifecycletestsPASS. Freshmanifests preservehistory.
+NoHW. Nextboundedchangedobservation+reservedrestoration;DDRNOT_ADMITTED. Evidence
+`evidence/aib-guard-integration-2026-10-24`.
