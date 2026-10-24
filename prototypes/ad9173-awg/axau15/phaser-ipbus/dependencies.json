@@ -1,0 +1,38 @@
+{
+  "migen": {
+    "path": "/home/codex-hil/kasli-diot-switch/reference/migen",
+    "commit": "e19524c963a8342952840983047557707fbe0b6a",
+    "origin": "https://github.com/m-labs/migen",
+    "status": ""
+  },
+  "litex": {
+    "path": "/home/codex-hil/ccd-hdl-review/reference/litex",
+    "commit": "8c01073afb71aa0a0709f02f8e24247589e8f5e4",
+    "origin": "https://github.com/enjoy-digital/litex.git",
+    "status": ""
+  },
+  "liteiclink": {
+    "path": "/home/codex-hil/trenz-bringup/reference/liteiclink",
+    "commit": "cb6cd0cf52a38cf303fc5fa02dfcceef1b7e67cf",
+    "origin": "https://github.com/enjoy-digital/liteiclink.git",
+    "status": ""
+  },
+  "litejesd204b": {
+    "path": "/home/codex-hil/trenz-bringup/reference/litejesd204b",
+    "commit": "a1d0cbf27f5e386bfcad2190c82677024fc949bd",
+    "origin": "https://github.com/enjoy-digital/litejesd204b.git",
+    "status": ""
+  },
+  "liteeth": {
+    "path": "/home/codex-hil/fit-bringup/sources/liteeth-eth-check",
+    "commit": "cb101652f69fab0979cfa1f9afbcfdf185fe662e",
+    "origin": "https://github.com/enjoy-digital/liteeth.git",
+    "status": ""
+  },
+  "misoc": {
+    "path": "/home/codex-hil/open-miqro-awg/upstream/misoc",
+    "commit": "d84551418042cea0891ea743442e20684b51e77a",
+    "origin": "https://github.com/m-labs/misoc",
+    "status": ""
+  }
+}

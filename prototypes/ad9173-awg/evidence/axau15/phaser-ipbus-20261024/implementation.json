@@ -1,0 +1,60 @@
+{
+  "status": "VIVADO_IMPLEMENTATION_PASS",
+  "physical_validation": "separate hardware record required",
+  "tool": "Vivado2025.2",
+  "part": "xcau15p-ffvb676-2-i",
+  "bit_sha256": "5018618518cab3bab43e02a8c1a81691434db69754ef31abb09686d57b8bfb3f",
+  "build_chain": {
+    "synthesis": "alinx-phaser-20261024e",
+    "placement_routing": "alinx-phaser-20261024f",
+    "final_phase_ECO": "alinx-phaser-20261024g"
+  },
+  "phase_eco": "RX MMCM CLKOUT0_PHASE=-90deg compensates RGMII clock insertion. Same setting in current rgmii.py and implement.tcl; post-ECO timing/CDC/DRC/skew checked before bitgen.",
+  "wns_ns": 0.157,
+  "whs_ns": 0.012,
+  "wpws_ns": 0.537,
+  "unconstrained_internal_endpoints": 0,
+  "cdc": {
+    "critical": 0,
+    "CDC-3": 23,
+    "CDC-6": 2,
+    "CDC-9": 4,
+    "CDC-15": 673,
+    "review": "CDC6: RX FIFO Gray pointers. CDC15: held bank to active bank and rephase clear command, request/ack handshake with6ns data/skew bounds."
+  },
+  "bus_skew": {
+    "requirement_ns": 6,
+    "maximum_actual_ns": 1.793,
+    "groups": 5,
+    "status": "PASS"
+  },
+  "drc": {
+    "errors": 0,
+    "warnings": {
+      "DPIP-2": 40,
+      "RTSTAT-10": 1
+    },
+    "review": "Explicit parameter registers outside DSPs preserve atomic CDC. Reserved active parameter bits retained by DONT_TOUCH have no loads; settled timing passes."
+  },
+  "utilization": {
+    "LUT": 8244,
+    "FF": 11900,
+    "BRAM36_equivalent": 29.5,
+    "DSP": 40,
+    "GTH": 4,
+    "MMCM": 2
+  },
+  "limits": [
+    "RGMII constraints use documented engineering PHY/PCB skew budgets; no board PVT measurement.",
+    "No deterministic RTIO latency, DRTIO, clock-loss recovery or cold-start qualification."
+  ],
+  "reports": {
+    "timing.rpt": "4effef3aa65f12fd22558cd1d2b428c2a0b6e623af91b753923af4e964dc88de",
+    "cdc.rpt": "7afd63d47ad75cf55ac563c1d87e5dec5d19e2f6793690f14f39ddd2515ae48e",
+    "drc.rpt": "85127624781908493c3c8c16853bac3a5bbebc39ca00991de47511b499b623e3",
+    "bus-skew.rpt": "fe25457a102ec7296a1ea32f9de1e53684ae5fd589b833f0a680696d7df345dc",
+    "utilization.rpt": "bb76dbd2a9683b0db9d9dfeaf465fc6b835f137dc17dcbe8d4d1953b2792bc3b",
+    "rx-mmcm.rpt": "e374d1cbceed463de4594009fc527beed3ca916395938e46f96f5ce27e1c0557"
+  },
+  "current_source_equivalence": "Regenerated complete Verilog compared byte-for-byte to synthesized input: only RX MMCM phase0 -> signed8-bit166 (-90deg), exactly matching qualified post-route ECO. Diff stored alongside this record."
+}

@@ -1,0 +1,449 @@
+{
+  "status": "PHYSICAL_PASS_PHASER_IPBUS_DUAL_RF",
+  "recorded_utc": "2026-10-24T18:32:07.284651+00:00",
+  "board": "ALINX AXAU15/ACAU15 XCAU15P-2FFVB676I",
+  "fpga_dna": "40020000016069493C626185",
+  "cable": "210512180081",
+  "dac": "AD9172 ID9172 revision2",
+  "scope": "Tektronix MSO4104 C020817 CH3/4 50ohm",
+  "bit_sha256": "5018618518cab3bab43e02a8c1a81691434db69754ef31abb09686d57b8bfb3f",
+  "volatile_only": true,
+  "sources": "Phaser MultiToneDDS in FPGA; DAC main NCO150MHz both channels; internal DAC DC injection off",
+  "sample_rate_nominal_hz": 307200000,
+  "tones_per_channel": 5,
+  "network": {
+    "status": "PHYSICAL_NATIVE_IPBUS_PASS",
+    "identity": {
+      "magic": 1096306760,
+      "abi": 65536,
+      "sample_rate": 307200000,
+      "tones": 5
+    },
+    "nonincrementing_writes": 200,
+    "negative_bus_errors": 4,
+    "commits": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "counters": [
+      2763,
+      452,
+      0
+    ],
+    "read_retries": [],
+    "final_mute": 1
+  },
+  "official_uhal": "PASS official uHAL: identity,256 ordered scratch writes exactly once,256x21 pipelined read words",
+  "phy": {
+    "address": 1,
+    "id": "937c:4032",
+    "bmsr": "796d",
+    "gigabit_status": "3800"
+  },
+  "measurements": {
+    "baseline": {
+      "3": {
+        "fit_hz": 148487504.3267568,
+        "fit_vpp": 0.00021990718202382297,
+        "residual_rms": 0.0035488969782688333,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.024
+      },
+      "4": {
+        "fit_hz": 150920738.61775157,
+        "fit_vpp": 0.00020519876222135138,
+        "residual_rms": 0.0031233284196996204,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.02
+      }
+    },
+    "full": {
+      "3": {
+        "fit_hz": 148996469.3042739,
+        "fit_vpp": 0.47540403785447766,
+        "residual_rms": 0.003877831465773426,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.496
+      },
+      "4": {
+        "fit_hz": 150996555.76077232,
+        "fit_vpp": 0.48300053116430447,
+        "residual_rms": 0.003582718975304718,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5
+      }
+    },
+    "half": {
+      "3": {
+        "fit_hz": 148996553.48027977,
+        "fit_vpp": 0.23523956339961388,
+        "residual_rms": 0.003847822297689218,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.26,
+        "ratio_to_full": 0.4948202889930466
+      },
+      "4": {
+        "fit_hz": 150996659.93573594,
+        "fit_vpp": 0.2387655965799332,
+        "residual_rms": 0.0035354546623657256,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.26,
+        "ratio_to_full": 0.49433816564212274
+      }
+    },
+    "zero": {
+      "3": {
+        "fit_hz": 148745202.6789316,
+        "fit_vpp": 0.0002671868709727845,
+        "residual_rms": 0.003538893376777213,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.028
+      },
+      "4": {
+        "fit_hz": 150757142.31719697,
+        "fit_vpp": 0.00032500114134088583,
+        "residual_rms": 0.003087373311984282,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.02
+      }
+    },
+    "recovered": {
+      "3": {
+        "fit_hz": 148996024.01591387,
+        "fit_vpp": 0.4756583542226265,
+        "residual_rms": 0.0038787509165929715,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5,
+        "ratio_to_full": 1.000534947850457
+      },
+      "4": {
+        "fit_hz": 150996323.62235555,
+        "fit_vpp": 0.4828910231378128,
+        "residual_rms": 0.0035822840163495535,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.5,
+        "ratio_to_full": 0.9997732755568038
+      }
+    },
+    "shifted": {
+      "3": {
+        "fit_hz": 149496440.70562556,
+        "fit_vpp": 0.475109364040719,
+        "residual_rms": 0.0039048378950941797,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.496,
+        "ratio_to_full": 0.9993801613148081
+      },
+      "4": {
+        "fit_hz": 150496662.59256896,
+        "fit_vpp": 0.48270707729371354,
+        "residual_rms": 0.0035712579327501024,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.504,
+        "ratio_to_full": 0.9993924357186864
+      }
+    },
+    "independent": {
+      "3": {
+        "fit_hz": 148996564.43293324,
+        "fit_vpp": 0.4753120060896398,
+        "residual_rms": 0.0039199229632117935,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.492,
+        "ratio_to_full": 0.9998064135819014
+      },
+      "4": {
+        "fit_hz": 150996169.11299768,
+        "fit_vpp": 0.23880369844321717,
+        "residual_rms": 0.0035026753057113276,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.256,
+        "ratio_to_full": 0.494417051400679
+      }
+    },
+    "multitone": {
+      "3": {
+        "fit_hz": 148990213.43255427,
+        "fit_vpp": 0.037157377857954754,
+        "residual_rms": 0.026279017829894676,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.2,
+        "multitone": {
+          "frequencies_hz": [
+            144996528.4291186,
+            146996480.54538232,
+            148996432.66164604,
+            150996384.77790973,
+            152996336.89417344
+          ],
+          "vpp": [
+            0.03634268944866459,
+            0.037168961458952945,
+            0.03714908218499437,
+            0.037086672920654956,
+            0.036549196661969395
+          ],
+          "ratios_to_single_full": [
+            0.07644589981330611,
+            0.07818394144630815,
+            0.07814212591178242,
+            0.07801084965123346,
+            0.07688028235291765
+          ],
+          "residual_rms": 0.0037359042958194713,
+          "phase_curvature_rad": [
+            -0.018751270852945125,
+            -0.45079285984261763,
+            0.46161111390761045
+          ]
+        }
+      },
+      "4": {
+        "fit_hz": 150999941.29758555,
+        "fit_vpp": 0.03743957949053574,
+        "residual_rms": 0.026568164755209688,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.196,
+        "multitone": {
+          "frequencies_hz": [
+            144996819.74803025,
+            146996775.8824858,
+            148996732.0169414,
+            150996688.151397,
+            152996644.28585258
+          ],
+          "vpp": [
+            0.03687290559620057,
+            0.03776516192594213,
+            0.03747613611751984,
+            0.037436496995404855,
+            0.037009206329328775
+          ],
+          "ratios_to_single_full": [
+            0.07634133549980994,
+            0.07818865506194522,
+            0.07759025860112649,
+            0.07750819011557135,
+            0.0766235313243148
+          ],
+          "residual_rms": 0.0032989813300138126,
+          "phase_curvature_rad": [
+            -0.03167267743089817,
+            -0.8012700599562683,
+            0.8196436659965916
+          ]
+        }
+      }
+    },
+    "multitone_phase": {
+      "3": {
+        "fit_hz": 149053466.44250995,
+        "fit_vpp": 0.0368565039608586,
+        "residual_rms": 0.025967412426067385,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.156,
+        "multitone": {
+          "frequencies_hz": [
+            144996016.78144518,
+            146995961.84049958,
+            148995906.899554,
+            150995851.95860842,
+            152995797.01766282
+          ],
+          "vpp": [
+            0.03667177268606598,
+            0.03641247039372762,
+            0.03600546233437804,
+            0.03637902774617486,
+            0.03674166919277076
+          ],
+          "ratios_to_single_full": [
+            0.07713811782408819,
+            0.07659268221207993,
+            0.07573655136980431,
+            0.07652233647479151,
+            0.07728514330376277
+          ],
+          "residual_rms": 0.003747624425736564,
+          "phase_curvature_rad": [
+            1.5307718289089893,
+            2.682647351410078,
+            2.0499502976777424
+          ],
+          "phase_change_error_rad": [
+            -0.021273227032962083,
+            -0.0081524423370978,
+            0.017542856975235388
+          ]
+        }
+      },
+      "4": {
+        "fit_hz": 150916641.09201247,
+        "fit_vpp": 0.03819737431495819,
+        "residual_rms": 0.026016647849295988,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.14800000000000002,
+        "multitone": {
+          "frequencies_hz": [
+            144995982.6344824,
+            146995927.22254425,
+            148995871.81060606,
+            150995816.3986679,
+            152995760.98672974
+          ],
+          "vpp": [
+            0.03718424933204292,
+            0.036917872179880976,
+            0.03624457924613062,
+            0.036514967140359275,
+            0.03726944194046343
+          ],
+          "ratios_to_single_full": [
+            0.07698593879888257,
+            0.07643443391436448,
+            0.07504045421805372,
+            0.07560026290724267,
+            0.07716232081696266
+          ],
+          "residual_rms": 0.0033839911648498935,
+          "phase_curvature_rad": [
+            1.535897036351693,
+            2.280178546496755,
+            2.4558110001614977
+          ],
+          "phase_change_error_rad": [
+            -0.0032266130123053127,
+            -0.060144047136769595,
+            0.06537100737000956
+          ]
+        }
+      }
+    },
+    "final": {
+      "3": {
+        "fit_hz": 148996363.6326638,
+        "fit_vpp": 0.47564682087929605,
+        "residual_rms": 0.0038727702871082788,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.496,
+        "ratio_to_full": 1.000510687763432
+      },
+      "4": {
+        "fit_hz": 150996701.08918133,
+        "fit_vpp": 0.48280436313044006,
+        "residual_rms": 0.0035332377343072307,
+        "clipped": false,
+        "sample_interval_s": 2e-10,
+        "raw_peak_to_peak": 0.504,
+        "ratio_to_full": 0.999593855448996
+      }
+    }
+  },
+  "final": {
+    "identity": {
+      "magic": 1096306760,
+      "abi": 65536,
+      "sample_rate": 307200000,
+      "tones": 5
+    },
+    "jesd_status": 511,
+    "busy": 0,
+    "commits": 52,
+    "mute": 0,
+    "held": [
+      4280986283,
+      2147418112,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      13981013,
+      2147418112,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      259
+    ],
+    "counters": [
+      3514,
+      607,
+      0
+    ],
+    "read_retries": [],
+    "neighbor": "192.168.2.241 dev enp2s0 lladdr 02:00:00:00:a1:15 REACHABLE"
+  },
+  "scope_restoration": "saved settings restored and read back equal; shared untouched settings read back equal",
+  "raw_artifacts": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-rf-20261024c",
+  "raw_sha256": {
+    "scope-baseline.json": "f604c9c4bcdfe3ba6b1a6190792c919bf771d17bc3629d1b244a9f2c9ab12d19",
+    "scope-before.json": "fc15174ea6622991dcc5061bea5f42bab1782caccd9e263a9f66474a024af194",
+    "scope-final.json": "2df1e8c4e7f615a74e82fe56b91ebd0c446805d8dc80cc8ccaeaf214e138720f",
+    "scope-full.json": "248b0bc9b6946a302bf1c32541bd513985fc4204338ed8c56a74ecd5a77986c9",
+    "scope-half.json": "cb3e6358d0434a740c7aa730c4ce8113471cca2dfc9888295a18dcb47dc90d81",
+    "scope-independent.json": "7c81f3318e4cf3899e7fe3d35527a7c8ee63cfb8372fb7e1064f6865b296cd15",
+    "scope-multitone.json": "7fc33b2bbf06ce6fa676e336cbb16e4839666a2814aa264973151ffe57934137",
+    "scope-multitone_phase.json": "87b7b9afe73702c766f3506beccd49582321b9d1ef824858079832c4b583fe55",
+    "scope-recovered.json": "f6602207004179a2faf420b4b02886150bb0a3e4d557473488aeab7eb3e7bbc4",
+    "scope-restored.json": "e60a8a5b42ce45a4d31836dd057852ef68162270392d44ead5d386c4d8709bff",
+    "scope-shifted.json": "489a5a2d138d6a6886ed751db1a9d5142e09f641a2a7714a9d9d2badbbb91948",
+    "scope-unchanged.json": "f19ab61902b708cd16c49a4da9254c8910765092063bdb98e9090f5b28ebd8ee",
+    "scope-zero.json": "bf49079838575fe68c730b4412a0f86ae9830187a03b57ffeb05f965617dea56"
+  },
+  "phase_test": "Five equally spaced RF tones; add quarter-turn to149MHz tone. Compare second phase differences to cancel acquisition time and common LO phase. This validates parameter response, not absolute synchronized phase.",
+  "max_phase_relation_error_rad": 0.06537100737000956,
+  "final_rf": "FPGA DDS -1/+1MHz, ASF32767, DAC NCO150MHz both -> nominal149/151MHz",
+  "limits": [
+    "Free-running clocks, about20-30ppm nominal frequency error; no frequency-reference calibration.",
+    "No cold-power-cycle, clock-loss recovery, SFDR/jitter, deterministic latency or absolute phase qualification.",
+    "No DRTIO, RTIO integration, Fastlink or MIQRO sequencer.",
+    "Trenz/AD9173, Genesys, Kasli and SDWire not accessed. No nonvolatile writes."
+  ],
+  "normal_warm_start": "Additional normal-start.json PASS; same running tone configuration, commit53",
+  "compressed_captures_sha256": "a0cc2c42b1d444043d9959830c031818337ba0bfb2ab830067bb4cbb17d66128"
+}

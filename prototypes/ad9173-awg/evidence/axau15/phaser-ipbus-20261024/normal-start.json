@@ -1,0 +1,35 @@
+{
+  "status": "PHYSICAL_NORMAL_WARM_START_AND_RF_PASS",
+  "startup_artifacts": "/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-start-20261024a",
+  "scope_restored_and_untouched": true,
+  "identity": {
+    "magic": 1096306760,
+    "abi": 65536,
+    "sample_rate": 307200000,
+    "tones": 5
+  },
+  "commits": 53,
+  "counters": [
+    5813,
+    636,
+    0
+  ],
+  "measurements": {
+    "3": {
+      "fit_hz": 148996126.7443879,
+      "fit_vpp": 0.4750893342887764,
+      "residual_rms": 0.0038767947386013266,
+      "clipped": false,
+      "sample_interval_s": 2e-10,
+      "raw_peak_to_peak": 0.496
+    },
+    "4": {
+      "fit_hz": 150996397.30834663,
+      "fit_vpp": 0.48260335372998375,
+      "residual_rms": 0.0035542540458195354,
+      "clipped": false,
+      "sample_interval_s": 2e-10,
+      "raw_peak_to_peak": 0.504
+    }
+  }
+}

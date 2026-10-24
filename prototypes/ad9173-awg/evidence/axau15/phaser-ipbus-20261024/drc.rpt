@@ -1,0 +1,249 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date         : Sat Oct 24 18:23:27 2026
+| Host         : c37f77d931c3 running 64-bit Ubuntu 22.04.5 LTS
+| Command      : report_drc -file drc.rpt
+| Design       : axau15_jesd
+| Device       : xcau15p-ffvb676-2-i
+| Speed File   : -2
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: checkpoint_routed-input
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max checks: <unlimited>
+             Checks found: 41
++-----------+----------+-------------------+--------+
+| Rule      | Severity | Description       | Checks |
++-----------+----------+-------------------+--------+
+| DPIP-2    | Warning  | Input pipelining  | 40     |
+| RTSTAT-10 | Warning  | No routable loads | 1      |
++-----------+----------+-------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+DPIP-2#1 Warning
+Input pipelining  
+DSP dut_generator_singletonedds0_realcomplexmultiplier02_reg input dut_generator_singletonedds0_realcomplexmultiplier02_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#2 Warning
+Input pipelining  
+DSP dut_generator_singletonedds0_realcomplexmultiplier03_reg input dut_generator_singletonedds0_realcomplexmultiplier03_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#3 Warning
+Input pipelining  
+DSP dut_generator_singletonedds0_realcomplexmultiplier12_reg input dut_generator_singletonedds0_realcomplexmultiplier12_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#4 Warning
+Input pipelining  
+DSP dut_generator_singletonedds0_realcomplexmultiplier13_reg input dut_generator_singletonedds0_realcomplexmultiplier13_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#5 Warning
+Input pipelining  
+DSP dut_generator_singletonedds1_realcomplexmultiplier22_reg input dut_generator_singletonedds1_realcomplexmultiplier22_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#6 Warning
+Input pipelining  
+DSP dut_generator_singletonedds1_realcomplexmultiplier23_reg input dut_generator_singletonedds1_realcomplexmultiplier23_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#7 Warning
+Input pipelining  
+DSP dut_generator_singletonedds1_realcomplexmultiplier32_reg input dut_generator_singletonedds1_realcomplexmultiplier32_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#8 Warning
+Input pipelining  
+DSP dut_generator_singletonedds1_realcomplexmultiplier33_reg input dut_generator_singletonedds1_realcomplexmultiplier33_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#9 Warning
+Input pipelining  
+DSP dut_generator_singletonedds2_realcomplexmultiplier42_reg input dut_generator_singletonedds2_realcomplexmultiplier42_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#10 Warning
+Input pipelining  
+DSP dut_generator_singletonedds2_realcomplexmultiplier43_reg input dut_generator_singletonedds2_realcomplexmultiplier43_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#11 Warning
+Input pipelining  
+DSP dut_generator_singletonedds2_realcomplexmultiplier52_reg input dut_generator_singletonedds2_realcomplexmultiplier52_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#12 Warning
+Input pipelining  
+DSP dut_generator_singletonedds2_realcomplexmultiplier53_reg input dut_generator_singletonedds2_realcomplexmultiplier53_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#13 Warning
+Input pipelining  
+DSP dut_generator_singletonedds3_realcomplexmultiplier62_reg input dut_generator_singletonedds3_realcomplexmultiplier62_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#14 Warning
+Input pipelining  
+DSP dut_generator_singletonedds3_realcomplexmultiplier63_reg input dut_generator_singletonedds3_realcomplexmultiplier63_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#15 Warning
+Input pipelining  
+DSP dut_generator_singletonedds3_realcomplexmultiplier72_reg input dut_generator_singletonedds3_realcomplexmultiplier72_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#16 Warning
+Input pipelining  
+DSP dut_generator_singletonedds3_realcomplexmultiplier73_reg input dut_generator_singletonedds3_realcomplexmultiplier73_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#17 Warning
+Input pipelining  
+DSP dut_generator_singletonedds4_realcomplexmultiplier82_reg input dut_generator_singletonedds4_realcomplexmultiplier82_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#18 Warning
+Input pipelining  
+DSP dut_generator_singletonedds4_realcomplexmultiplier83_reg input dut_generator_singletonedds4_realcomplexmultiplier83_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#19 Warning
+Input pipelining  
+DSP dut_generator_singletonedds4_realcomplexmultiplier92_reg input dut_generator_singletonedds4_realcomplexmultiplier92_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#20 Warning
+Input pipelining  
+DSP dut_generator_singletonedds4_realcomplexmultiplier93_reg input dut_generator_singletonedds4_realcomplexmultiplier93_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#21 Warning
+Input pipelining  
+DSP dut_generator_singletonedds5_realcomplexmultiplier102_reg input dut_generator_singletonedds5_realcomplexmultiplier102_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#22 Warning
+Input pipelining  
+DSP dut_generator_singletonedds5_realcomplexmultiplier103_reg input dut_generator_singletonedds5_realcomplexmultiplier103_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#23 Warning
+Input pipelining  
+DSP dut_generator_singletonedds5_realcomplexmultiplier112_reg input dut_generator_singletonedds5_realcomplexmultiplier112_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#24 Warning
+Input pipelining  
+DSP dut_generator_singletonedds5_realcomplexmultiplier113_reg input dut_generator_singletonedds5_realcomplexmultiplier113_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#25 Warning
+Input pipelining  
+DSP dut_generator_singletonedds6_realcomplexmultiplier122_reg input dut_generator_singletonedds6_realcomplexmultiplier122_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#26 Warning
+Input pipelining  
+DSP dut_generator_singletonedds6_realcomplexmultiplier123_reg input dut_generator_singletonedds6_realcomplexmultiplier123_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#27 Warning
+Input pipelining  
+DSP dut_generator_singletonedds6_realcomplexmultiplier132_reg input dut_generator_singletonedds6_realcomplexmultiplier132_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#28 Warning
+Input pipelining  
+DSP dut_generator_singletonedds6_realcomplexmultiplier133_reg input dut_generator_singletonedds6_realcomplexmultiplier133_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#29 Warning
+Input pipelining  
+DSP dut_generator_singletonedds7_realcomplexmultiplier142_reg input dut_generator_singletonedds7_realcomplexmultiplier142_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#30 Warning
+Input pipelining  
+DSP dut_generator_singletonedds7_realcomplexmultiplier143_reg input dut_generator_singletonedds7_realcomplexmultiplier143_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#31 Warning
+Input pipelining  
+DSP dut_generator_singletonedds7_realcomplexmultiplier152_reg input dut_generator_singletonedds7_realcomplexmultiplier152_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#32 Warning
+Input pipelining  
+DSP dut_generator_singletonedds7_realcomplexmultiplier153_reg input dut_generator_singletonedds7_realcomplexmultiplier153_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#33 Warning
+Input pipelining  
+DSP dut_generator_singletonedds8_realcomplexmultiplier162_reg input dut_generator_singletonedds8_realcomplexmultiplier162_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#34 Warning
+Input pipelining  
+DSP dut_generator_singletonedds8_realcomplexmultiplier163_reg input dut_generator_singletonedds8_realcomplexmultiplier163_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#35 Warning
+Input pipelining  
+DSP dut_generator_singletonedds8_realcomplexmultiplier172_reg input dut_generator_singletonedds8_realcomplexmultiplier172_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#36 Warning
+Input pipelining  
+DSP dut_generator_singletonedds8_realcomplexmultiplier173_reg input dut_generator_singletonedds8_realcomplexmultiplier173_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#37 Warning
+Input pipelining  
+DSP dut_generator_singletonedds9_realcomplexmultiplier182_reg input dut_generator_singletonedds9_realcomplexmultiplier182_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#38 Warning
+Input pipelining  
+DSP dut_generator_singletonedds9_realcomplexmultiplier183_reg input dut_generator_singletonedds9_realcomplexmultiplier183_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#39 Warning
+Input pipelining  
+DSP dut_generator_singletonedds9_realcomplexmultiplier192_reg input dut_generator_singletonedds9_realcomplexmultiplier192_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-2#40 Warning
+Input pipelining  
+DSP dut_generator_singletonedds9_realcomplexmultiplier193_reg input dut_generator_singletonedds9_realcomplexmultiplier193_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+RTSTAT-10#1 Warning
+No routable loads  
+34 net(s) have no routable loads. The problem bus(es) and/or net(s) are dut_generator_config_active[642], dut_generator_config_active[643],
+dut_generator_config_active[644], dut_generator_config_active[645],
+dut_generator_config_active[646], dut_generator_config_active[647],
+dut_generator_config_active[648], dut_generator_config_active[649],
+dut_generator_config_active[650], dut_generator_config_active[651],
+dut_generator_config_active[652], dut_generator_config_active[653],
+dut_generator_config_active[654], dut_generator_config_active[655],
+dut_generator_config_active[656] (the first 15 of 34 listed nets/buses).
+Related violations: <none>
+
+

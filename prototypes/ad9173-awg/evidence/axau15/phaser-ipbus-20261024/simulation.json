@@ -1,0 +1,39 @@
+{
+  "kind": "simulation_and_localhost_only",
+  "status": "PASS",
+  "date": "2026-10-24T18:14:36.021804+00:00",
+  "pytest": {
+    "tests": 3,
+    "duration_s": 52.73,
+    "files": [
+      "test_dsp.py",
+      "test_client.py"
+    ]
+  },
+  "native_client_loopback": "PASS bounded read retries, stale reply, malformed reply, no write/RMW retry",
+  "scope": "Migen DDS/register model and localhost UDP client. Not emitted RTL, Vivado timing or physical RF.",
+  "source_sha256": {
+    "dsp.py": "a428161b9d39ef30a619aa588e3f153680fb29a41dc10bcdd1fa0533b2182f35",
+    "registers.py": "3bb3935cd196366ab3fa469f692e8d9065c84d6744f5b767373583ed0cb6bf91",
+    "test_dsp.py": "5ddcdbf2291bacbacdc0777f0e4d2c2707f151b387f9fa336a1e1de59f38d08b",
+    "test_client.py": "1807a6f6e35090ca27a3b91b73cf02a62794ab9ee977e32b8fd1da338af7febb",
+    "vendor/phaser/dds.py": "203e08a693a7c1b94a9adbf9e6de33527fcd9cfbf8b6ed8a7f89d16a25b46f1a",
+    "test_fifo.py": "e2d23bd9caa96b58e845c75cb004f6267a452b4d9d15623e0fc9a1903444bba4"
+  },
+  "fifo_tests": {
+    "tests": 2,
+    "duration_s": 1.54,
+    "words_each": 1000,
+    "clock_period_pairs": [
+      [
+        6,
+        10
+      ],
+      [
+        10,
+        6
+      ]
+    ],
+    "coverage": "registered-data read, pointer wrap, read backpressure, full/empty"
+  }
+}

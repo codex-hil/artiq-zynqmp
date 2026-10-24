@@ -1,10 +1,39 @@
 CURRENT PHYSICAL STATE (2026-10-24, supersedes historical AD9173 plan below)
-ALINX now hosts AD9172 ID9172 revision2. Dual JESD and FPGA payload RF scaling,
-zero/recovery and149/151MHz nominal tones PASS on MSO4104 CH3/4. Running volatile
-payload imagec23b923be1a0fa25ee6fcc181687d023431f9e40c5ed5148af9013327c7e09d3,
-I=0x7fff,Q=0, internal DC off, SPI TXEN on. Trenz/AD9173 remains untouched.
-Read evidence/axau15/payload-rf-20261024/acceptance.json and
-axau15/jesd-probe/README.rst. Next local complex DDS/IQ and RTIO; no DRTIO yet.
+ALINX AXAU15/ACAU15 + AD9172 ID9172 revision2 now runs the Phaser MultiToneDDS
+port: two channels, five oscillators each,307.2MS/s, with native CERN IPbus2
+control at192.168.2.241:50001 (MAC02:00:00:00:a1:15). No DRTIO/RTIO yet.
+
+Simulation, Vivado implementation and physical RF qualification PASS separately.
+Hardware tests cover native IPbus/uHAL, dual JESD, amplitude/zero/recovery,
+frequency tuning, independent channel amplitude, five simultaneous tones per
+channel and90deg phase adjustment. See:
+  axau15/phaser-ipbus/README.rst
+  evidence/axau15/phaser-ipbus-20261024/acceptance.json
+  evidence/axau15/phaser-ipbus-20261024/implementation.json
+  evidence/axau15/phaser-ipbus-20261024/simulation.json
+
+Running volatile image SHA256:
+5018618518cab3bab43e02a8c1a81691434db69754ef31abb09686d57b8bfb3f
+Artifact: /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-20261024g/phaser_ipbus.bit
+Final FPGA offsets-1/+1MHz, amplitude32767, DAC main NCO150MHz both,
+internal DC off, SPI TXEN on. RF nominal149/151MHz on MSO4104 CH3/4.
+Measured0.47565/0.48280Vpp; free-running frequency about20-30ppm low.
+Trenz/AD9173 CH1/2 and all other protected hardware remain untouched.
+
+Normal warm startup: phaser-ipbus/run_hardware.py --start with bit SHA/output.
+It requires the already initialized HMC/DAC clocks; no cold-power-cycle claim.
+The Python client accepts two arrays of up to five[Hz,amplitude,phase_turns]
+triples via --config, or uses the same native IPbus map through official uHAL.
+Read the target README for leases, build provenance and commands. Firmware is
+volatile only. Absolute phase, deterministic latency, clock-loss recovery,
+PVT margin, SFDR and jitter are not qualified. DRTIO remains deferred.
+
+Known recovery payload image remains preserved:
+c23b923be1a0fa25ee6fcc181687d023431f9e40c5ed5148af9013327c7e09d3
+/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-payload-20261024a/jesd_probe.bit
+Use its own jesd-probe/run_payload.py; do not mix USER3 payload and MDIO scripts.
+
+HISTORICAL INITIAL PLAN / REFERENCE
 
 Implement the budget ARTIQ AWG satellite on ALINX AXAU15 in this separate thread.
 

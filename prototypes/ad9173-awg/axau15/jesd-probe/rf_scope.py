@@ -30,10 +30,10 @@ class Scope:
   try:
    for k,v in self.saved.items():self.io.write(k+' '+v)
   finally:self.io.__exit__(*args)
- def capture(self,label):
+ def capture(self,label,targets=None):
   io=self.io;time.sleep(.4)
   result={'label':label,'identity':self.identity,'channels':{}}
-  for ch,target in [(3,149e6),(4,151e6)]:
+  for ch,target in (targets or [(3,149e6),(4,151e6)]):
    io.write(f'DATA:SOURCE CH{ch}')
    for c in ['DATA:ENCDG ASCII','DATA:WIDTH 1','DATA:START 1','DATA:STOP 10000']:io.write(c)
    sc={a:float(io.query('WFMO:'+a+'?')) for a in ['XINCR','YMULT','YZERO','YOFF']}

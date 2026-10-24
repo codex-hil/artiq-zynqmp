@@ -1,0 +1,11 @@
+--- synthesized-input
++++ current-source
+@@ -27358,7 +27358,7 @@
+ 	.CLKFBOUT_MULT_F(4'd12),
+ 	.CLKIN1_PERIOD(8.0),
+ 	.CLKOUT0_DIVIDE_F(4'd12),
+-	.CLKOUT0_PHASE(1'd0),
++	.CLKOUT0_PHASE(8'sd166),
+ 	.DIVCLK_DIVIDE(1'd1),
+ 	.REF_JITTER1(0.01)
+ ) rx_cm_mmcm (

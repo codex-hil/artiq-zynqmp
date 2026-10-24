@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT / 'gateware'))
 DualLink = import_module('generate-link').DualLink
 
 class AXAU15(Module):
-    def __init__(self, spi_only=False, payload=False):
+    def __init__(self, spi_only=False, payload=False, streaming=False):
         self.clock_domains.cd_sys = ClockDomain('sys')
         sys_p, sys_n = Signal(name='sys_p'), Signal(name='sys_n')
         raw, eos = Signal(), Signal()
@@ -84,11 +84,13 @@ class AXAU15(Module):
             self.ios.update(pads.flatten())
         if payload:
             self.specials += Instance("payload_scan", i_clk=self.cd_jesd.clk, o_amplitude=amplitude)
-        link.drive_payload(amplitude, self)
+        if not streaming:
+            link.drive_payload(amplitude, self)
         # Independent status bits; host reads repeatedly, no coherent bus promise.
         status = Signal(9)
         self.comb += status.eq(Cat(qpll.lock, *[g.tx_ready for g in phys], link.jsync, link.ready))
-        self.specials += Instance('status_scan', p_MAGIC=0x41585031 if payload else 0x41584a31, i_status=status)
+        self.jesd_status = status
+        self.specials += Instance('status_scan', p_MAGIC=0x41584631 if streaming else (0x41585031 if payload else 0x41584a31), i_status=status)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

@@ -1,0 +1,10 @@
+{
+  "url": "https://github.com/m-labs/artiq",
+  "commit": "7d7b85f377e0c172ae3496f0c03cfb6cb85ba022",
+  "path": "artiq/gateware/phaser/dds.py",
+  "original_sha256": "71a3ef1c76861baebc3c6e42c166c3fc304f4b37d1ba0c1a6a3bc7df8b29b194",
+  "changes": [
+    "replace register.WO import with identical constant2; add provenance comment"
+  ],
+  "misoc_commit": "d84551418042cea0891ea743442e20684b51e77a"
+}

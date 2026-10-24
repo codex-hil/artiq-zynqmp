@@ -1,0 +1,34 @@
+{
+  "ip": "192.168.2.241",
+  "udp_port": 50001,
+  "mac": "02:00:00:00:a1:15",
+  "phy": "JL2121-N040I",
+  "mdio_address": 1,
+  "rate": "1000BASE-T only",
+  "io_standard": "LVCMOS18",
+  "phy_straps": "RX and TX clock delays enabled, nominal2ns",
+  "manual": "AXAU15_User Manual_V1.0.pdf pages25-27; bank64 1.8V page17",
+  "pins": {
+    "rx_clk": "AD21",
+    "rx_ctl": "AE21",
+    "rx_data": [
+      "AC22",
+      "AC23",
+      "AD23",
+      "AE23"
+    ],
+    "tx_clk": "AE16",
+    "tx_ctl": "AD16",
+    "tx_data": [
+      "Y18",
+      "AA18",
+      "AB24",
+      "AC24"
+    ],
+    "reset_n": "AF23",
+    "mdc": "AF20",
+    "mdio": "AE18"
+  },
+  "physical_validation": "PASS; evidence/axau15/phaser-ipbus-20261024/acceptance.json",
+  "observed_phy_id": "937c:4032"
+}

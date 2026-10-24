@@ -1,8 +1,9 @@
 AD9173 AWG: Trenz hardware reference and AXAU15 parallel port
 ==========================================================
 
-Budget AWG satellite for ARTIQ/Kasli. This export is an implementation starting
-point, not completed AXAU15 support. The ALINX has no hard A53 cores. Kernels
+Budget AWG for ARTIQ/Kasli. AXAU15 + AD9172 now runs a qualified local
+Phaser DDS generator controlled over Ethernet/IPbus; RTIO/DRTIO integration
+remains pending. Historical Trenz references are preserved separately. The ALINX has no hard A53 cores. Kernels
 initially execute on Kasli; a softcore may run satellite management firmware.
 Local subkernels, PCIe processing and DSP performance need separate decisions.
 
@@ -167,6 +168,27 @@ Evidence: evidence/axau15/payload-rf-20261024/acceptance.json and hardware/.
 Reproducer: axau15/jesd-probe/run_payload.py (exact bit SHA and new output path).
 Implementation: WNS3.890ns/WHS0.023ns, DRC0errors; sixteen reviewed CDC-15
 bundled-data paths with request/ack handshake and6ns timing budget.
-Next: local signed complex DDS/IQ with atomic parameter updates, then RTIO.
+The following Phaser/IPbus milestone supersedes this next-step note.
 Cold start, reference-loss watchdog, deterministic phase, long BER and DRTIO
 remain unqualified; no claim of production ARTIQ AWG integration.
+
+AXAU15 Phaser/IPbus generator — 2026-10-24
+----------------------------------------
+
+``axau15/phaser-ipbus`` ports ARTIQ Phaser MultiToneDDS: two channels,
+five independent frequency/amplitude/phase oscillators each,307.2MS/s complex
+samples. Native CERN IPbus2 over1Gb Ethernet at192.168.2.241:50001 is verified
+with both the Python client and official uHAL. No DRTIO/Fastlink/MIQRO sequencer.
+
+Simulation tests PASS. Vivado implementation PASS (WNS+0.157ns,WHS+0.012ns),
+with reviewed CDC and explicit skew bounds. Physical MSO4104 CH3/4 tests PASS:
+full/half/zero/recovery, frequency tuning, independent channel amplitude,
+five simultaneous tones per output and a90deg phase parameter change.
+The running FPGA produces-1/+1MHz I/Q offsets, mixed by the DAC main NCOs
+at150MHz into nominal149/151MHz RF,0.47565/0.48280Vpp.
+
+Target instructions: ``axau15/phaser-ipbus/README.rst``.
+Evidence: ``evidence/axau15/phaser-ipbus-20261024/acceptance.json``.
+Scope settings restored/read back. No Trenz or other protected board access,
+and no persistent-memory writes. Cold start, clock-loss recovery, absolute
+phase/latency, calibrated frequency, jitter and SFDR remain unqualified.

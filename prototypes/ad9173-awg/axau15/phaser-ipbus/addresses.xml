@@ -1,0 +1,15 @@
+<node id="phaser">
+  <node id="identity" address="0x0" permission="r"/>
+  <node id="abi" address="0x1" permission="r"/>
+  <node id="sample_rate" address="0x2" permission="r"/>
+  <node id="tones" address="0x3" permission="r"/>
+  <node id="scratch" address="0x4" permission="rw"/>
+  <node id="writes" address="0x5" permission="r"/>
+  <node id="jesd_status" address="0x10" permission="r"/>
+  <node id="busy" address="0x11" permission="r"/>
+  <node id="commits" address="0x12" permission="r"/>
+  <node id="mute" address="0x13" permission="rw"/>
+  <node id="commit" address="0x14" permission="w"/>
+  <node id="shadow" address="0x100" permission="rw" mode="incremental" size="21"/>
+  <node id="held" address="0x200" permission="r" mode="incremental" size="21"/>
+</node>
