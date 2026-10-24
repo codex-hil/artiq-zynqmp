@@ -4,7 +4,7 @@ Use only with EnvelopeRTIO or EnvelopeRTIOBridge connected by the satellite
 integration. An IPbus-only image has no RTIO channel for this driver.
 """
 from artiq.language.core import kernel
-from artiq.coredevice.rtio import rtio_output
+from artiq.coredevice.rtio import rtio_output, rtio_input_data
 
 
 class PhaserEnvelope:
@@ -30,3 +30,36 @@ class PhaserEnvelope:
     def query(self):
         """Request an untimestamped input response; does not alter playback."""
         rtio_output(self.channel << 8, 0)
+
+    @kernel
+    def read_response(self):
+        """Consume the oldest response, blocking until it arrives.
+
+        Call exactly once per admitted command, in command order. This has
+        no timeout: a dropped/busy output or lost link can leave it waiting.
+        It does not advance the timeline or confirm playback completion.
+        """
+        return rtio_input_data(self.channel)
+
+    @kernel
+    def check_response(self):
+        """Consume one response; raise on rejection, return state bits on success.
+
+        The same blocking/ordering rules as read_response apply. This may
+        consume timeline slack; replenish it before scheduling another output.
+        """
+        response = rtio_input_data(self.channel)
+        if response < 0 or response > 0x3f:
+            raise ValueError('Invalid envelope RTIO response')
+        result = response & 0xf
+        if result == 1:
+            raise ValueError('Invalid envelope RTIO command')
+        if result == 2:
+            raise ValueError('Envelope is not armed or ready')
+        if result == 3:
+            raise ValueError('Stale envelope ARM token')
+        if result == 4:
+            raise ValueError('Envelope timeline is disabled')
+        if result != 0:
+            raise ValueError('Unknown envelope RTIO result')
+        return response

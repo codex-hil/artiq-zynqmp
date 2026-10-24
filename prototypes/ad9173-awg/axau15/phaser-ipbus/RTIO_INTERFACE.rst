@@ -68,10 +68,35 @@ Input response::
 The response acknowledges command admission, not pulse completion. Observe
 IPbus busy/result for completion. The integration must consume these input
 responses; otherwise the RTIO input FIFO can overflow. ``artiq_envelope.py``
-provides kernel START/ABORT/QUERY output methods, but no blocking response
-reader: connect responses to the satellite's selected input/error handling.
-Host import/command encoding is checked, not NAC3 compilation or kernel
-execution on a core.
+provides kernel START/ABORT/QUERY methods and blocking ``read_response()``
+(raw byte) / ``check_response()`` (raise ValueError on rejection). Consume
+exactly one response per admitted command, in FIFO order; do not mix these
+readers with another consumer on the same channel. Accepted responses retain
+bits4/5 describing the state before the command, not its completion.
+
+These readers use upstream ``rtio_input_data`` and have no timeout. A command
+dropped due to busy, timeline reset or link loss may never produce a response;
+do not blindly read after a known failed output. Recovery belongs to the
+satellite/runtime and must invalidate outstanding command/response pairing.
+Responses do not carry a command ID. After uncertain recovery, establish an
+empty input FIFO and a new ARM before resuming; never retry START implicitly.
+
+For a single command after a fresh ARM and with a ready bridge::
+
+  awg.start(arm_id)       # at the timestamp selected by the experiment
+  awg.check_response()   # admission only; may consume timeline slack
+  core.break_realtime()  # before scheduling a subsequent output
+
+Do not insert a blocking read into an uninterrupted timed output sequence.
+The host-semantics regression uses the real ARTIQ decorators with mocked
+RTIO syscalls. It checks encoding, token limits, ordered reads, all rejection
+codes, reserved/unknown values and propagation of transport exceptions::
+
+  /srv/codex-hil-data/artiq-zynqmp/venvs/artiq-host/bin/python \
+    -m unittest -v test_artiq_envelope_host
+
+Five host tests PASS. This is not NAC3 compilation or kernel execution on a
+core; those remain pending with the satellite integration.
 
 Clock choices and reset
 -----------------------
