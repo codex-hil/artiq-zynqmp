@@ -2350,3 +2350,12 @@ No inference that ordinarycore-releasebranchesran. Threeobligations separated:
 currentexecution/futurerelease/priortransactiondrain. NoHW/resetchanges.
 NextPMURPUsleep/wake/reset transitions+interconnectresetguarantees;DDRNOT_ADMITTED.
 Evidence `evidence/ddr-reset-release-review-2026-10-24`.
+
+## 2026-10-24 — documented AIB drain found; vendor timeout is not propagated
+
+UG1085p420 AIB blocksnew/completespostedtransactions withACK. ExactRPU sleep
+callsvoidXPfw_AibEnable thenreset/NCPUHALT anddisablesisolation;returnsSUCCESS.
+Actualvendorfunction hostmockPASS:missingACK15pollsreturnsnormally,immediateACK
+1poll. ThusRPU successNOTdrainreceipt. NoHW/firmwarechange. NextdiagnosticACK
+protocol+pathcoverage/controlaccessreview beforeanyisolationcandidate;DDRNOT_ADMITTED.
+Evidence `evidence/pmu-rpu-aib-review-2026-10-24`.
