@@ -1,3 +1,6 @@
+SHARED BOARD: read BOARD_SHARING_ALINX.txt before any hardware access.
+Shared lease and mutable state paths are defined there for all threads.
+
 CURRENT PHYSICAL STATE (2026-10-24, supersedes historical AD9173 plan below)
 ALINX AXAU15/ACAU15 + AD9172 ID9172 revision2 now runs the Phaser MultiToneDDS
 port: two channels, five oscillators each,307.2MS/s, with native CERN IPbus2

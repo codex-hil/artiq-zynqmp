@@ -1,0 +1,190 @@
+PRZEKAZANIE WSPÓŁDZIELONEJ PŁYTKI ALINX — 2026-10-24
+===================================================
+
+Do przekazania drugiemu wątkowi. Przed pracą przeczytaj cały plik.
+To współdzielony sprzęt: własny worktree nie daje wyłączności na płytkę.
+
+1. SPRZĘT I STACJA
+
+Stacja obsługująca sprzęt: greg-OptiPlex-3070, LAN192.168.2.107.
+Przed dostępem potwierdź hostname; adresy LAN mogą zmieniać się przez DHCP.
+
+ALINX AXAU15/ACAU15, XCAU15P-2FFVB676I, Vivado xcau15p-ffvb676-2-i.
+Programator Digilent HS1: serial210512180081.
+FPGA IDCODE:04ac2093. DNA:40020000016069493C626185.
+FMC: AD9172, odczyt ID9172/revision2; dokładna rewizja PCB nieustalona.
+VADJ: użytkownik zmierzył1.8V; zwora obok VADJ zdjęta.
+Ethernet PHY JL2121, MDIO address1, ID937c:4032, link1Gb/s.
+IPbus2:192.168.2.241 UDP50001, MAC02:00:00:00:a1:15.
+AXAU15 nie ma A53. Próbki powstają lokalnie w FPGA; nie ma tutaj DRTIO/RTIO.
+
+Oscyloskop: Tektronix MSO4104, serialC020817,192.168.2.15:4000.
+ALINX DAC0 -> CH3, DAC1 -> CH4; oba wejścia50ohm.
+CH1/2 należą do działającego Trenza + AD9173 z innego wątku.
+
+NIE DOTYKAJ: Trenz (programator2516330027B9A), Genesys, Kasli, SDWire.
+Bez zapisów flash, EEPROM, OTP, eFUSE. Programowanie ALINX tylko do SRAM.
+Nie uruchamiaj historycznych skryptów z tożsamością Trenza.
+
+2. WYŁĄCZNOŚĆ — OBOWIĄZUJE OBA WĄTKI
+
+Jedyna wspólna blokada płytki na Optiplexie:
+  /home/codex-hil/.cache/alinx-210512180081.lock
+
+Używaj flock EXCLUSIVE przez CAŁĄ operację: identyfikacja, JTAG, reset,
+SPI/MDIO, UART, IPbus/Ethernet (także odczyty), pomiary i przywrócenie stanu.
+Nie wykonuj równoległych operacji na tej płytce z różnych wątków.
+
+Blokada oscyloskopu:
+  /home/codex-hil/.cache/mso4104-C020817.lock
+
+Jeśli potrzebujesz obu, kolejność jest: OSCYLOSKOP, potem ALINX.
+Nabywaj nieblokująco (LOCK_NB/flock -n). Gdy druga blokada jest zajęta,
+zwolnij pierwszą. Kontynuuj offline lub ponów później; nie zabijaj właściciela.
+Nie kasuj ani nie podmieniaj plików .lock — flock dotyczy inode, nie nazwy.
+
+run_hardware.py, run_rf.py i CLI client.py SAME biorą odpowiednie blokady.
+NIE opakowuj ich w drugi flock tej samej płytki: to zablokuje własny skrypt.
+Klasa Python client.Phaser i program uhal_probe nie biorą blokady same:
+wywołujący musi ją utrzymywać. Dla samodzielnego uHAL można użyć:
+  flock -n /home/codex-hil/.cache/alinx-210512180081.lock COMMAND...
+Dla własnego Pythona:
+  lease = open('/home/codex-hil/.cache/alinx-210512180081.lock', 'a+')
+  fcntl.flock(lease, fcntl.LOCK_EX | fcntl.LOCK_NB)
+Utrzymuj otwarty deskryptor do końca testów i odtworzenia stanu.
+
+Blokada jest umową między procesami na Optiplexie; IPbus nie wymusza jej
+sprzętowo. Nie uruchamiaj dodatkowych klientów z innego komputera bez tej
+samej koordynacji przez Optiplex. Nie trzymaj blokady podczas buildów na Dellu.
+
+3. STAN PRZEKAZYWANY
+
+Ostatni odczyt pod blokadą:2026-10-24T18:39:56Z.
+IPbus identity41585048, ABI00010000, Fs307200000,5 tonów/kanał.
+JESD status0x1ff, commit busy0, commit count53, mute0, RX error counter0.
+Licznik commitów i licznik pakietów są obserwacją, nie stałą identyfikacyjną.
+
+Bieżąca konfiguracja: FPGA Phaser MultiToneDDS,2 kanały po5 oscylatorów.
+Aktywny po1 tonie: CH0 -1MHz, CH1 +1MHz, ASF32767, phase0.
+DAC main NCO150MHz na obu wyjściach; internal DC off; SPI TXEN on.
+RF nominal149/151MHz. Ostatni pomiar po zwykłym starcie:
+  CH3:148.996127MHz,0.47509Vpp
+  CH4:150.996397MHz,0.48260Vpp
+Zegar swobodny, około20–30ppm od nominalnej częstotliwości.
+
+Działający obraz SRAM:
+  /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-20261024g/phaser_ipbus.bit
+SHA256:
+  5018618518cab3bab43e02a8c1a81691434db69754ef31abb09686d57b8bfb3f
+Nie nadpisuj ani nie usuwaj tego artefaktu.
+
+Wspólny plik stanu, do aktualizacji POD BLOKADĄ po zmianach:
+  /home/codex-hil/.cache/alinx-210512180081.state.json
+To pomocniczy zapis ostatniej obserwacji, NIE blokada ani dowód aktualnego
+obrazu. Zapisuj czas UTC, swój wątek, bitstream/SHA, konfigurację, wyniki,
+stan pozostawiony i sposób odtworzenia. Zapis może być atomowy przez tmp+rename;
+nie stosuj rename do pliku .lock. Obecne skrypty nie aktualizują tego rejestru
+automatycznie: odpowiedzialność za aktualizację ma wątek wykonujący operację.
+
+4. ZASADY POŻYCZANIA I ODDANIA
+
+Po zdobyciu blokady odczytaj wspólny stan i sprawdź tożsamość sprzętu/obrazu.
+Nie zakładaj, że poprzedni wątek zostawił ten sam bitstream lub mapę rejestrów.
+Przed zmianą zapisz konfigurację i ścieżkę do działającego obrazu.
+
+Domyślnie po eksperymencie przywróć opisany wyżej Phaser149/151MHz, sprawdź
+status JESD/IPbus i wpisz wynik do wspólnego pliku stanu przed zwolnieniem
+blokady. Dłuższe pozostawienie innej konfiguracji uzgodnij z drugim wątkiem
+lub użytkownikiem; wpisz ją jawnie, żeby następny wątek jej nie nadpisał.
+Nie pozostawiaj aktywnego hw_server, klienta testowego ani procesu resetującego
+płytkę po zakończeniu swojej sesji.
+
+Na scope zmieniaj tylko CH3/4 i niezbędne ustawienia DATA, zapisz/odtwórz je
+oraz sprawdź odczytem. Nie zmieniaj CH1/2, triggera, podstawy czasu ani stanu
+akwizycji — są wspólne z Trenzem. Gdy test wymaga zmian globalnych, najpierw
+uzgodnij korzystanie ze scope z wątkiem Trenza/użytkownikiem.
+
+5. ŹRÓDŁA I GOTOWY START
+
+Repo:https://github.com/codex-hil/artiq-zynqmp
+Branch:bringup/alinx-axau15
+Commit implementacji:9e6ba282ce5aab31e51911cf656d28195a62a7af
+PR:https://github.com/codex-hil/artiq-zynqmp/pull/1
+Worktree obecnego wątku:
+  /srv/codex-hil-data/artiq-zynqmp/work/alinx-awg-handoff
+Nie edytuj cudzych niezatwierdzonych zmian i nie przełączaj mu brancha.
+Do niezależnej pracy utwórz własny worktree; blokady sprzętu pozostają wspólne.
+
+Target:
+  prototypes/ad9173-awg/axau15/phaser-ipbus
+Dokumentacja:
+  README.rst w tym katalogu
+  prototypes/ad9173-awg/HANDOFF_ALINX.txt
+Dowody:
+  prototypes/ad9173-awg/evidence/axau15/phaser-ipbus-20261024/
+  acceptance.json, normal-start.json, implementation.json, simulation.json
+  scope-captures.json.gz, raporty Vivado, sumy źródeł i artefaktów
+
+Z katalogu targetu, zwykły start / przywrócenie obrazu:
+  python3 run_hardware.py \
+    /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-phaser-20261024g/phaser_ipbus.bit \
+    --sha256 5018618518cab3bab43e02a8c1a81691434db69754ef31abb09686d57b8bfb3f \
+    --output /srv/codex-hil-data/artiq-zynqmp/artifacts/TWOJ-NOWY-KATALOG --start
+
+Katalog wyjściowy musi być nowy i mieć unikatową nazwę dla wątku/próby.
+To polecenie SAMO bierze blokadę: wywołaj je jako samodzielną operację,
+bez zewnętrznego flock. --reuse-image pomija programowanie SRAM; stosuj tylko
+po potwierdzeniu, że na płytce już jest właściwy obraz. Samo --reuse-image
+nie odczytuje SHA bitstreamu z FPGA. --start jest potrzebne do włączenia RF;
+tryb diagnostyczny bez --start pozostawia DAC wyciszony.
+
+Jeżeli twój eksperyment i przywrócenie muszą stanowić jedną nieprzerwaną
+sesję, utrzymuj jedną blokadę w swoim kontrolerze i użyj kroków startu z
+run_hardware.py w tym samym procesie. Nie uruchamiaj pod nim runnera, który
+ponownie sam bierze lock. Nie zdejmuj zabezpieczeń z istniejących runnerów.
+
+Zmiana parametrów działającego targetu (CLI samo bierze blokadę):
+  python3 client.py --config example-tones.json
+Plik JSON to dwie listy, po maksymalnie5 trójek[Hz,amplituda,faza_w_obrotach].
+example-tones.json ustawia -1/+1MHz przy amplitudzie0.5 (połowa pełnej skali).
+Do przekazywanej pełnej amplitudy użyj32767/32768 =0.999969482421875.
+  python3 client.py --mute
+wycisza generator w FPGA. Zmiana DDS nie zmienia main NCO150MHz w DAC.
+
+6. OGRANICZENIA I ODZYSKIWANIE
+
+Start jest zweryfikowany dla JUŻ ZAINICJALIZOWANYCH zegarów HMC/DAC.
+Nie jest to zweryfikowany cold boot. Nie wyłączaj zasilania i nie resetuj
+całego HMC w ramach rutynowego pożyczania; utrata konfiguracji zegarów wymaga
+osobnego odtworzenia profilu. Skrypt sprawdza DAC PLL/DLL i używa sprawdzonego
+wyjścia12 HMC jako245.76MHz MGTREFCLK dla4 GTH6.144Gb/s. Użytkownik zatwierdził
+ten laboratoryjny profil LVDS; nie zmieniaj go przy pracy nad Ethernetem/DDS.
+
+Stary, sprawdzony obraz stałych próbek (awaryjny punkt odniesienia):
+  /srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-payload-20261024a/jesd_probe.bit
+SHA256:c23b923be1a0fa25ee6fcc181687d023431f9e40c5ed5148af9013327c7e09d3
+Używaj jego własnego jesd-probe/run_payload.py i README. Nie mieszaj skryptów:
+USER3 w starym obrazie steruje próbką, a w Phaser/IPbus obsługuje MDIO.
+
+Potwierdzone oddzielnie: symulacje, implementacja Vivado i fizyczne Ethernet/RF.
+Niepotwierdzone: cold power-cycle, clock-loss recovery, deterministyczna
+latencja/absolutna faza, DRTIO/RTIO, jitter/SFDR i margines PVT płytki.
+
+7. BUILDY I IZOLACJA JTAG
+
+Ciężkie buildy wyłącznie Dell192.168.2.7 zgodnie z:
+  /home/codex-hil/docs/toolchains/vivado.md
+  /home/codex-hil/docs/toolchains/vivado-remote-handoff.md
+Na Dellu wspólny lock:
+  /srv/nvme-fast-1/vivado-work/.vivado-build.lock
+Nie zagnieżdżaj flock używanego przez launchery i nie zatrzymuj cudzych buildów.
+Każdy wątek używa własnych katalogów wejść/wyników; nie nadpisuj działającego joba.
+
+Hardware pozostaje na Optiplexie. Gotowe runnery tworzą izolowany hw_server
+z jednym, dynamicznie znalezionym urządzeniem USB i filtrem serial210512180081.
+Nie uruchamiaj ogólnego skanowania/programowania wszystkich kabli.
+Nie zakładaj stałego /dev/bus/usb/XXX/YYY ani numeru targetu XSDB.
+
+Stan na koniec przekazania: Phaser149/151MHz działa, blokada płytki zwolniona,
+żaden hw_server tego wątku nie pozostaje aktywny. Kolejny wątek musi nabyć
+blokadę ponownie — ten tekst nie rezerwuje sprzętu.
