@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — printf delay-slot structural dominance PASS offline
+
+All printf instruction words bound to ELF. Contextual delay-slot graph shows
+index-check instructions dominate indirect jump, assuming callees return normally.
+Two tests PASS incl synthetic bypass/text mismatch rejection. Register-value/CMPU
+semantics, callee ABI and memory footprint remain unresolved; DDR NOT_ADMITTED.
+No HW/firmware changes. Evidence `evidence/pmu-printf-cfg-2026-10-24`.
+
+
 ## 2026-10-24 — printf indirect table bound to exact ELF offline
 
 22table words atffdd35d0 resolve to7aligned targets inside xil_printf;9instruction

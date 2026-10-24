@@ -1,0 +1,18 @@
+{
+  "status": "STRUCTURAL_DOMINANCE_PASS_CONDITIONAL_ON_CALL_RETURNS",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "reachable_context_nodes": 257,
+  "dominates_indirect_jump": {
+    "0xffdcc99c": true,
+    "0xffdcc9d0": true,
+    "0xffdcc9d4": true,
+    "0xffdcc9d8": true,
+    "0xffdcc9dc": true,
+    "0xffdcc9e0": true,
+    "0xffdcc9e4": true,
+    "0xffdcc9e8": true
+  },
+  "limits": "Calls modeled as returning to their own continuation with ABI preserved; no callee corruption/nonlocal return proof. Branch outcomes overapproximated. Unsigned CMPU semantics and register value ranges require separate evidence. ROM/reset/NMI and memory exclusion not established.",
+  "disassembly_sha256": "79003dec6c4c0990c93e912203470af715a47ec4cbfbccc79da5a4415abe5a06"
+}
