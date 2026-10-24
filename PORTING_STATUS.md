@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — reset/release semantics narrowed offline
+
+UG1085:APUreset notgracefulrequesttermination;PMUSRST preservesstate unlikePOR.
+ExactFSBLJTAGbranch bypassesordinarypartitionload,setsRPUusagebits(policyonly).
+No inference that ordinarycore-releasebranchesran. Threeobligations separated:
+currentexecution/futurerelease/priortransactiondrain. NoHW/resetchanges.
+NextPMURPUsleep/wake/reset transitions+interconnectresetguarantees;DDRNOT_ADMITTED.
+Evidence `evidence/ddr-reset-release-review-2026-10-24`.
+
+
 ## 2026-10-24 — core/history ordering gap and observe-dispatch fix offline
 
 Master/core snapshots precede PMUguard;no-masterPL suppressesnewrequests only,
