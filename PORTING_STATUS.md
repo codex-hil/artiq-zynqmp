@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-24 — ROM/RAM vector bridge identified as open boundary
+
+BSP basevectorsffd00000 lies in PMUROM; auditedELF vectors are RAMffdc0000.
+RAMbreakslotffdc0018 has8zero filebytes/no handlersection. Prior handler/stack
+review is conditional on unproved ROM->RAM eventbridge, not fullhardwarepath.
+Physicalguard/restorePASSunchanged. NoHW/ROMreads/firmwarechanges. Nextmaintained
+AMDROM/eventforwardingAPI source review;DDRNOT_ADMITTED. Evidence
+`evidence/pmu-rom-vector-boundary-2026-10-24`.
+
+
 ## 2026-10-24 — ordinary PMU guard stack chain identified offline
 
 ExactELF Init->Main->guard;CoreLoop/telemetry inlined. Retained64+28=92bytes,

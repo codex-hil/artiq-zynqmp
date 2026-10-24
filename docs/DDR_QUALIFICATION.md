@@ -2288,3 +2288,12 @@ Hardwareexception clearsEE/setsEIP perAMD;reset/nonmaskablebreak and actualcore
 faultconfiguration unresolved. No HW/firmwarechanges;DDRNOT_ADMITTED. Next linked
 breakvector/coreconfiguration/ROM review. Evidence
 `evidence/pmu-guard-stack-entry-2026-10-24`.
+
+## 2026-10-24 — ROM/RAM vector bridge identified as open boundary
+
+BSP basevectorsffd00000 lies in PMUROM; auditedELF vectors are RAMffdc0000.
+RAMbreakslotffdc0018 has8zero filebytes/no handlersection. Prior handler/stack
+review is conditional on unproved ROM->RAM eventbridge, not fullhardwarepath.
+Physicalguard/restorePASSunchanged. NoHW/ROMreads/firmwarechanges. Nextmaintained
+AMDROM/eventforwardingAPI source review;DDRNOT_ADMITTED. Evidence
+`evidence/pmu-rom-vector-boundary-2026-10-24`.

@@ -1,0 +1,13 @@
+{
+  "status": "ROM_TO_RAM_VECTOR_BRIDGE_UNPROVEN",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "elf_sha256": "7a82b8f2ac5beb2bff4cafaa3767b888c09461a7c66371f632332f7bd66f51c4",
+  "bsp_header_sha256": "73b981904d0110cbb72db630738a16e84a2cd95420e6fbccb169d92ccfbc1b6b",
+  "configured_base_vectors": "0xffd00000",
+  "elf_vector_base": "0xffdc0000",
+  "elf_break_slot_start": "0xffdc0018",
+  "elf_break_slot_file_bytes": "0000000000000000",
+  "fault_tolerant_config": "NOT_ESTABLISHED",
+  "rom_forwarding": "NOT_ESTABLISHED"
+}

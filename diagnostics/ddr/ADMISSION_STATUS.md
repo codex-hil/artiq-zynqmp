@@ -1,5 +1,10 @@
 # DDR write-test admission — 2026-10-23
 
+2026-10-24 vector boundary: BSP hardware base is PMU ROM0xffd00000; ELF RAM
+stubs at0xffdc0000 do not prove event forwarding. RAM handler/stack estimates
+remain conditional. See [ROM/RAM boundary](../../evidence/pmu-rom-vector-boundary-2026-10-24/README.md).
+
+
 ## 2026-10-24 authoritative checkpoint
 
 The dated rows below retain earlier checkpoints. The PMU row and old transport/
