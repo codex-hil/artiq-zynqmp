@@ -219,3 +219,21 @@ CDC/błędów DRC. To blok bez pinów/GTH/bitstreamu, z jawnymi budżetami grani
 Pełny build satelity, wykonanie kernela i pomiary DRTIO->RF pozostają NOT_RUN.
 Ta sesja NIE dotykała sprzętu ani stanu lease. Złote obrazy z pkt3 i pkt8
 pozostają bez zmian. Dowody:evidence/axau15/rtio-interface-20261024/.
+
+10. ABI2 ARM PRZEZ IPBUS — TEST FIZYCZNY 2026-10-25
+
+Pełny build ABI00010002 i test na ALINX/AD9172/MSO4104 CH3/4 PASS.
+Trzy cykle ARM/ABORT/rearm, tokeny1/2/3, blokady zapisów, brak sygnału podczas
+ARM (dopasowana składowa RF <=0.230mVpp), odrzucony program z czasem0/token4.
+Regresja obwiedni, fazy, amplitud, RAM256 i32-bitowych powtórzeń PASS.
+Vivado WNS+0.157ns/WHS+0.005ns;18 testów RTL PASS.
+Dowody:evidence/axau15/armed-ipbus-20261025/acceptance.json.
+Kandydat:artifacts/alinx-armed-20261025a/phaser_ipbus.bit,
+SHA256:0b516d2abf2db9749a0393802e9caadde72329218f4ea268760c8e86a341db6e.
+Nie ma producenta RTIO w tym obrazie: DRTIO/START/timeout kernela NOT_RUN.
+
+Pod tą samą blokadą przywrócono złoty ABI0 z pkt3 i zmierzono:
+CH3=148.994774MHz/0.47573Vpp, CH4=150.994251MHz/0.48298Vpp, JESD0x1ff.
+Ustawienia scope przywrócone/sprawdzone, własny hw_server zatrzymany,
+blokady zwolnione; wspólny plik stanu zaktualizowany. To ostatnia obserwacja,
+nie rezerwacja: kolejny wątek ponownie sprawdza lease i stan sprzętu.

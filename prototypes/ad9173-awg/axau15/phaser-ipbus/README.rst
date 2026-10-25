@@ -70,8 +70,12 @@ RTIO integration preparation
 Current sources add ARM and a tagged RTLink START/ABORT endpoint (ABI0x00010002).
 See ``RTIO_INTERFACE.rst`` for the neighbouring DRTIO thread's integration
 contract, asynchronous-clock limitations, reset rules and host driver.
-The out-of-context build is separate from the physically qualified board
-image; no new RTIO/DRTIO hardware or absolute RF timing proof is implied.
+2026-10-25: full ABI2 board build and IPbus/RF qualification PASS, including
+three ARM/ABORT/rearm cycles, write ownership, invalid ARM rejection and
+regression of levels/phase/Gaussian/finite playback. Evidence:
+``../../evidence/axau15/armed-ipbus-20261025/acceptance.json``.
+The board image has no RTIO producer; RTIO/DRTIO hardware, kernel timeout
+and absolute RF timing remain unqualified. The shared default stays ABI0.
 
 Interface
 ---------

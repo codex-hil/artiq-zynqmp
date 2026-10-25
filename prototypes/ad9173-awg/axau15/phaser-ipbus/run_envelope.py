@@ -43,6 +43,57 @@ def validate_cw(capture):
         assert .35 < value['fit_vpp'] < .6 and value['residual_rms'] < .03
 
 
+def qualify_arm(c, scope, output):
+    """ABI2 IPbus-only checks; no RTIO START or DRTIO claim."""
+    tokens = []
+    blocked = []
+    for iteration in range(3):
+        c.load([(153600000, 1, .5)])
+        token = c.arm(5)
+        tokens.append(token)
+        if iteration:
+            assert token == (tokens[-2]+1)&0x3fffffff, 'ARM token did not advance'
+        status = c.playback_status()
+        assert status['busy'] and status['mode'] and not status['playing']
+        for address, value in ((0x400, 123), (0x23, 2), (0x24, 2),
+                               (0x25, 1), (0x14, 1)):
+            response = c.transact(1, address, [value], allow_error=True)
+            assert response[1]&15, 'Write accepted during ARM: '+hex(address)
+            blocked.append(address)
+        assert c.read(0x400)[0] == 153600000
+        assert c.read(0x23, 2) == [1, 5]
+        capture = scope.capture('armed-zero-'+str(iteration))
+        save(output/('scope-armed-zero-'+str(iteration)+'.json'), capture)
+        assert all(v['fit_vpp'] < .005 for v in capture['channels'].values())
+        assert c.read(0x27, 2) == [1, token], 'ARM changed without trigger'
+        assert not c.playback_status()['playing']
+        assert c.abort()['result'] == 1
+        assert c.read(0x27)[0] == 0
+        capture = scope.capture('arm-aborted-zero-'+str(iteration))
+        save(output/('scope-arm-aborted-zero-'+str(iteration)+'.json'), capture)
+        assert all(v['fit_vpp'] < .005 for v in capture['channels'].values())
+        c.bypass()
+        capture = scope.capture('arm-recovered-cw-'+str(iteration))
+        save(output/('scope-arm-recovered-cw-'+str(iteration)+'.json'), capture)
+        validate_cw(capture)
+    c.load([(1, 1, 1)])
+    c.write(0x400, [0])  # Invalid hardware entry, bypassing host validation.
+    try:
+        c.arm()
+    except RuntimeError:
+        status = c.playback_status()
+        assert not status['busy'] and status['result'] == 2
+        assert c.read(0x27)[0] == 0
+    else:
+        raise AssertionError('ARM accepted a zero-duration program')
+    invalid_token = c.read(0x28)[0]
+    assert invalid_token == (tokens[-1]+1)&0x3fffffff
+    c.bypass()
+    return {'tokens':tokens, 'blocked_addresses':blocked, 'cycles':3,
+            'invalid_program_rejected':True, 'invalid_attempt_token':invalid_token,
+            'rtio_start':'NOT_RUN', 'drtio':'NOT_RUN'}
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('bit', type=Path);p.add_argument('--sha256', required=True)
@@ -78,6 +129,9 @@ def main():
                         c.require_envelope()
                         assert c.identify()["abi"] == (0x10002 if a.profile == "armed" else 0x10001)
                         ref = scope.capture('cw');validate_cw(ref);save(a.output/'scope-cw.json', ref)
+                        if a.profile == 'armed':
+                            result['tests']['arm_abort_rearm'] = qualify_arm(c, scope, a.output)
+                            save(a.output/'arm-results.json', result['tests']['arm_abort_rearm'])
                         programs = {
                             'levels':[(16, 0, 0), (16, .5, .5), (16, 0, 0), (16, 1, 1)],
                             'phase':[(16, 0, 0), (16, 1, 1), (16, 0, 0), (16, 1j, 1j)],

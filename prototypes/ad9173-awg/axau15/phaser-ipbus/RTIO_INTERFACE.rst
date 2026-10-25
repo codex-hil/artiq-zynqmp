@@ -3,8 +3,9 @@ Phaser envelope / DRTIO integration contract v1
 
 This side supplies the generator endpoint. The neighbouring DRTIO project
 supplies the satellite, RTIO scheduler/SED, routing, recovered clock and
-timeline-valid/reset signals. No DRTIO link, FPGA programming or Kasli
-access is performed by this integration preparation.
+timeline-valid/reset signals. No DRTIO link or Kasli access is performed
+by this integration preparation. The standalone IPbus board qualification
+below tests ARM ownership and RF independently of DRTIO.
 
 Stage one is deliberately small: IPbus uploads DDS parameters and the
 finite envelope program, ARM validates and reserves it, and one scheduled
@@ -196,3 +197,23 @@ Regenerated inputs are byte-identical. Evidence:
 ``../../evidence/axau15/rtio-interface-20261024/acceptance.json``.
 No FPGA/DRTIO/Kasli/RF access occurred in this stage. The full satellite,
 NAC3/runtime execution and physical timestamp-to-RF timing remain NOT_RUN.
+
+2026-10-25 standalone IPbus hardware qualification
+------------------------------------------------
+
+Full board ABI0x00010002 implementation PASS: WNS+0.157ns,WHS+0.005ns,
+no critical CDC/DRC errors, six passing skew groups. Candidate bitstream:
+``/srv/codex-hil-data/artiq-zynqmp/artifacts/alinx-armed-20261025a/phaser_ipbus.bit``
+SHA256 ``0b516d2abf2db9749a0393802e9caadde72329218f4ea268760c8e86a341db6e``.
+
+``run_envelope.py --profile armed`` physically passed three ARM/ABORT/rearm
+cycles, token increments1/2/3, zero RF while armed (maximum fitted carrier
+0.230mVpp), RAM/length/repeat/START/DDS-COMMIT write rejection and recovery
+to CW. Invalid zero-duration ARM was rejected and consumed token4.
+Full levels/phase/Gaussian/independent-channel/256-entry/32-bit-repeat/
+completion/ABORT regression also passed. No RTIO START source is connected.
+
+Golden ABI0 restored and RF verified149/151MHz; scope restoration checked.
+Evidence: ``../../evidence/axau15/armed-ipbus-20261025/acceptance.json``.
+18 targeted RTL regressions PASS. This does not validate DRTIO, kernel
+response timeout, cold boot or deterministic timestamp-to-RF behaviour.

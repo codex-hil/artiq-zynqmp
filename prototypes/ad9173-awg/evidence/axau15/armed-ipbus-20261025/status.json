@@ -1,0 +1,117 @@
+{
+  "candidate_sha256": "0b516d2abf2db9749a0393802e9caadde72329218f4ea268760c8e86a341db6e",
+  "restored_sha256": "5018618518cab3bab43e02a8c1a81691434db69754ef31abb09686d57b8bfb3f",
+  "tests": {
+    "arm_abort_rearm": {
+      "tokens": [
+        1,
+        2,
+        3
+      ],
+      "blocked_addresses": [
+        1024,
+        35,
+        36,
+        37,
+        20,
+        1024,
+        35,
+        36,
+        37,
+        20,
+        1024,
+        35,
+        36,
+        37,
+        20
+      ],
+      "cycles": 3,
+      "invalid_program_rejected": true,
+      "invalid_attempt_token": 4,
+      "rtio_start": "NOT_RUN",
+      "drtio": "NOT_RUN"
+    },
+    "levels": {
+      "3": {
+        "period_s": 4.168e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_levels": [
+          0.019644442919317044,
+          0.49537647059529843,
+          0.9988744522753701
+        ]
+      },
+      "4": {
+        "period_s": 4.166e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_levels": [
+          0.017108352301138517,
+          0.49297285353555265,
+          0.9982389701871234
+        ]
+      }
+    },
+    "phase": {
+      "3": {
+        "period_s": 2.084e-07,
+        "expected_period_s": 2.0833333333333333e-07,
+        "adjacent_pulse_phase_degrees": [
+          -89.93162490624157,
+          89.96238615741045,
+          -90.0898457288274,
+          90.05170036794239,
+          -90.02455318994427,
+          89.90332522542234,
+          -89.84177288654803
+        ]
+      },
+      "4": {
+        "period_s": 2.084e-07,
+        "expected_period_s": 2.0833333333333333e-07,
+        "adjacent_pulse_phase_degrees": [
+          90.15932017639804,
+          -90.0222648284585,
+          90.11872791419113,
+          -90.16070671100822,
+          90.06577822475609,
+          -90.0618677745285,
+          89.91738652767893,
+          -89.78352976831428
+        ]
+      }
+    },
+    "gaussian": {
+      "3": {
+        "period_s": 4.164e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_shape_rmse": 0.015599599131748585
+      },
+      "4": {
+        "period_s": 4.168e-07,
+        "expected_period_s": 4.1666666666666667e-07,
+        "normalized_shape_rmse": 0.015024980206204986
+      }
+    },
+    "independent": {
+      "3": 0.9995974518536513,
+      "4": 0.49335348038719157
+    },
+    "full_ram_and_32bit_repeat_abort": true,
+    "invalid_duration_rejected": true
+  },
+  "status": "PHYSICAL_ENVELOPE_PASS",
+  "restoration": {
+    "identity": {
+      "magic": 1096306760,
+      "abi": 65536,
+      "sample_rate": 307200000,
+      "tones": 5
+    },
+    "status": [
+      511,
+      0,
+      1,
+      0
+    ]
+  }
+}

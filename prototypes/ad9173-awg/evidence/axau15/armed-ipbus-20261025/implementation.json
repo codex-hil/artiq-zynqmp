@@ -1,0 +1,26 @@
+{
+  "status": "IMPLEMENTATION_PASS",
+  "profile": "armed",
+  "wns_ns": 0.157,
+  "whs_ns": 0.005,
+  "wpws_ns": 0.543,
+  "cdc_counts": {
+    "CDC-3": 30,
+    "CDC-6": 4,
+    "CDC-9": 4,
+    "CDC-15": 716
+  },
+  "cdc_review": {
+    "CDC-15": "673 held DDS bits plus43 held envelope command bits, request/ack;6ns data and skew",
+    "CDC-6": "two Gray RX FIFO pointers plus2-bit result stable through8-cycle drain before ack;30-bit ARM ID stable before armed status"
+  },
+  "bus_skew_slack_ns": [
+    4.727,
+    5.258,
+    5.677,
+    5.45,
+    5.553,
+    5.6
+  ],
+  "bit_sha256": "0b516d2abf2db9749a0393802e9caadde72329218f4ea268760c8e86a341db6e"
+}

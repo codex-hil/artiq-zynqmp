@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "tests": 18,
+  "duration_seconds": 7.46,
+  "command": "pytest -q -W ignore::DeprecationWarning test_envelope.py test_envelope_registers.py test_rtio.py",
+  "physical": false
+}
