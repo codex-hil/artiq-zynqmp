@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "wire_bytes": 96,
+  "struct_format_little_endian": "<4IQ2I32s32s",
+  "fields": [
+    "commit_u32",
+    "magic_u32_0x50545331",
+    "version_u32",
+    "status_u32_1to4",
+    "nonce_u64",
+    "verified_msr_u32",
+    "terminal_msr_u32",
+    "image_sha256_32bytes",
+    "sample_sha256_32bytes_or_zero_for_absent"
+  ],
+  "status": {
+    "1": "IRQ_UNPROVEN",
+    "2": "READ_FAILED",
+    "3": "PUBLICATION_UNKNOWN",
+    "4": "CAPTURE_COMPLETE"
+  },
+  "hardware_executed": false,
+  "physical_backend_ready": false,
+  "sleep_proven": false,
+  "destructive_test_allowed": false,
+  "target_writer_implemented": false
+}

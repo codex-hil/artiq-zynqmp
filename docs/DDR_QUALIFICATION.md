@@ -2609,3 +2609,7 @@ StartupSP/BSSwordclearconditionalonly. Evidence pit-post-callback-irq-offline-20
 2026-10-27 finalMSRv3actualELFsource/layout/flow/storePASS/33tests;localtail
 checknotglobaldominance/liveness. CommittedsamplesNOTsleepreceipt;frame172not
 total. Evidence pit-final-msr-link-offline-2026-10-27.
+
+2026-10-27 terminal-intent96Bschema/decoder37PITtestsPASS;session/image/sample
+binding,ALLsleep_provenfalse. Pre-sleepwriteNOTsleepresidency;noCwriter/backend.
+Evidence pit-terminal-receipt-offline-2026-10-27.

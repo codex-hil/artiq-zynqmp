@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — separate terminal-intent receipt offline
+
+37PITtestsPASS;96Bversionedterminaldecoder binds session/image/samplehash and
+status. COMPLETErequiresIEclearMSRmatch+same-sessionvalidsamples. Errorsmay
+coexistcommittedsamples;ALLsleep_proven=false/nohardwareproof. No targetwriter/
+MMIO/hook/physicalparser/HW change. Next C layout/fakepublication interruption
+tests. Evidence `evidence/pit-terminal-receipt-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — final-MSR-v3 target link requalification offline
 
 ActualnewELF/layout/wordstore/scopedflow/sourcegatePASS:30branches10abstractcalls.
