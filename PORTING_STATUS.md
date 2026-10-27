@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — fake C event/receipt provenance crosscheck offline
+
+45PITtestsPASS;5actualCfakecallbacktraces->Pythonproducer exact96Breceiptmatch,
+14trace/imagecontrolsrejected. Cprecomputedfixedvectors independentlyhashed;
+NOTtargethashproducer/authenticatedHW. Post-snapshotIRQdrift remains explicit
+limit/sleepfalse. NoHW/targetchange. Next initial-observationfailuretraces.
+Evidence `evidence/pit-c-event-provenance-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — observation-derived receipt model offline
 
 44PITtestsPASS;stagedproducer deriveshashesfromimage/samplebytes andstatusfrom

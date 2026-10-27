@@ -2629,3 +2629,7 @@ pit-target-status-composition-offline-2026-10-27.
 2026-10-27 receiptprovenancemodel44PITtestsPASS;hashesderivedfromsuppliedbytes,
 notauthenticatedHW/targetproducer. ActualELF+SYNTHETICtrace labeled. Physical
 metadatagap/recovery/visibilityOPEN. Evidence pit-receipt-provenance-model-offline-2026-10-27.
+
+2026-10-27 fakeCevents->derivedreceipt45testsPASS/5exactbytecases+14negative
+controls. Syntheticonly/notphysicalprovenance;lateIRQafterfinalsnapshotexplicit.
+Evidence pit-c-event-provenance-offline-2026-10-27.

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "gcc",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-O2",
+    "-DPIT_EVENT_TRACE=1",
+    "-I/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_collect.c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_publish.c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_capture.c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_sleep_model.c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_terminal_record.c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/tests/fixtures/pit_status_coupling_host.c",
+    "-o",
+    "/home/codex-hil/.local/state/artiq-builds/pit-c-event-replay-20261027/events"
+  ],
+  "compiler_version": "13.3.0",
+  "target_execution": false
+}
