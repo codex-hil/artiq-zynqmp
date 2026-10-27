@@ -1095,3 +1095,9 @@ evidence/pit-c-event-provenance-offline-2026-10-27/README.md
 evidence/pit-c-event-provenance-offline-2026-10-27/command.json
 evidence/pit-c-event-provenance-offline-2026-10-27/fake-c-trace.json
 evidence/pit-c-event-provenance-offline-2026-10-27/inputs.json
+tests/fixtures/pit_missing_observation_host.c
+tests/test_pit_missing_observation.py
+evidence/pit-missing-msr-observation-offline-2026-10-27/README.md
+evidence/pit-missing-msr-observation-offline-2026-10-27/command.json
+evidence/pit-missing-msr-observation-offline-2026-10-27/fake-c-trace.json
+evidence/pit-missing-msr-observation-offline-2026-10-27/inputs.json

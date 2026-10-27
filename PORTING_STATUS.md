@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — missing MSR callback observation controls offline
+
+46PITtestsPASS;6actualCfakeeventcases->Python exactreceiptmatch:initialMSR/
+disable/checked/finalMSRfail+IEunchanged =>UNPROVEN,controlCOMPLETE. Failedcallback
+output ignored byvalidity;5forgedvaliditycontrols+poison/truncationPASS. NoHW/
+targetchange. Next Cvalidity-to-recordmetadata builder. Evidence
+`evidence/pit-missing-msr-observation-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — fake C event/receipt provenance crosscheck offline
 
 45PITtestsPASS;5actualCfakecallbacktraces->Pythonproducer exact96Breceiptmatch,

@@ -2633,3 +2633,7 @@ metadatagap/recovery/visibilityOPEN. Evidence pit-receipt-provenance-model-offli
 2026-10-27 fakeCevents->derivedreceipt45testsPASS/5exactbytecases+14negative
 controls. Syntheticonly/notphysicalprovenance;lateIRQafterfinalsnapshotexplicit.
 Evidence pit-c-event-provenance-offline-2026-10-27.
+
+2026-10-27 missingMSRobservations46tests/6C->PythontracecasesPASS;failedread
+outputnotvalid,initialfailblocksamples/finalfailcanhavecommittedsamplesnot
+success. NoHW. Evidence pit-missing-msr-observation-offline-2026-10-27.

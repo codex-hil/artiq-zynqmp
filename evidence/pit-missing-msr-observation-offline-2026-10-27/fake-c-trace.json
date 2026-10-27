@@ -1,0 +1,107 @@
+{
+  "synthetic_fake_callbacks": true,
+  "hardware_executed": false,
+  "trace_sha256": "4a73a7e8a61ba5c1cb17ad412ef0a7e7345a0b0c6061807bf031066230154be7",
+  "trace_bytes_hex": "314f4d5001000000000000000000000001000000000000000000000001000000060100800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000003153545001000000010000000700000000000000000000000000000016764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada0000000000000000000000000000000000000000000000000000000000000000314f4d5001000000010000000100000001000000010000000000000001000000060100800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000003153545001000000010000000700000000000000000000000000000016764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada0000000000000000000000000000000000000000000000000000000000000000314f4d5001000000020000000100000002000000010000000000000001000000060100800401008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000003153545001000000010000000700000000000000000000000000000016764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada0000000000000000000000000000000000000000000000000000000000000000314f4d5001000000030000000300000003000000010000000800000001000000060100800401008004010080010000000100000007000000000000000000000001000000020000000300000004000000050000000600000007000000010000003153545001000000010000000700000000000000040100800000000016764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada63759c304906a0bec1f4c9adae2f5cc969b6b1f58620aa69cec3c2e4e5f9bf8b314f4d5001000000040000000300000002000000010000000000000001000000060100800601008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000003153545001000000010000000700000000000000060100800000000016764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada0000000000000000000000000000000000000000000000000000000000000000314f4d5001000000050000000700000003000000010000000800000004000000060100800401008004010080010000000100000007000000000000000000000001000000020000000300000004000000050000000600000007000000010000003153545001000000040000000700000000000000040100800401008016764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada63759c304906a0bec1f4c9adae2f5cc969b6b1f58620aa69cec3c2e4e5f9bf8b",
+  "results": [
+    {
+      "status": "IRQ_UNPROVEN",
+      "samples": null,
+      "scope": "Untrusted supplied terminal-intent bytes; hashes bind content, not origin or actual execution",
+      "terminal_intent": "SLEEP_REQUESTED_UNOBSERVED",
+      "sleep_proven": false,
+      "hardware_executed": false,
+      "physical_backend_ready": false,
+      "destructive_test_allowed": false
+    },
+    {
+      "status": "IRQ_UNPROVEN",
+      "samples": null,
+      "scope": "Untrusted supplied terminal-intent bytes; hashes bind content, not origin or actual execution",
+      "terminal_intent": "SLEEP_REQUESTED_UNOBSERVED",
+      "sleep_proven": false,
+      "hardware_executed": false,
+      "physical_backend_ready": false,
+      "destructive_test_allowed": false
+    },
+    {
+      "status": "IRQ_UNPROVEN",
+      "samples": null,
+      "scope": "Untrusted supplied terminal-intent bytes; hashes bind content, not origin or actual execution",
+      "terminal_intent": "SLEEP_REQUESTED_UNOBSERVED",
+      "sleep_proven": false,
+      "hardware_executed": false,
+      "physical_backend_ready": false,
+      "destructive_test_allowed": false
+    },
+    {
+      "status": "IRQ_UNPROVEN",
+      "samples": null,
+      "scope": "Untrusted supplied terminal-intent bytes; hashes bind content, not origin or actual execution",
+      "terminal_intent": "SLEEP_REQUESTED_UNOBSERVED",
+      "sleep_proven": false,
+      "hardware_executed": false,
+      "physical_backend_ready": false,
+      "destructive_test_allowed": false
+    },
+    {
+      "status": "IRQ_UNPROVEN",
+      "samples": null,
+      "scope": "Untrusted supplied terminal-intent bytes; hashes bind content, not origin or actual execution",
+      "terminal_intent": "SLEEP_REQUESTED_UNOBSERVED",
+      "sleep_proven": false,
+      "hardware_executed": false,
+      "physical_backend_ready": false,
+      "destructive_test_allowed": false
+    },
+    {
+      "status": "CAPTURE_COMPLETE",
+      "samples": {
+        "scope": "Untrusted supplied observations; no hardware execution established",
+        "counters": [
+          {
+            "name": "PIT0_COUNTER",
+            "address": 4292083780,
+            "first": 0,
+            "second": 4,
+            "changed": true
+          },
+          {
+            "name": "PIT1_COUNTER",
+            "address": 4292083796,
+            "first": 1,
+            "second": 5,
+            "changed": true
+          },
+          {
+            "name": "PIT2_COUNTER",
+            "address": 4292083812,
+            "first": 2,
+            "second": 6,
+            "changed": true
+          },
+          {
+            "name": "PIT3_COUNTER",
+            "address": 4292083828,
+            "first": 3,
+            "second": 7,
+            "changed": true
+          }
+        ],
+        "elapsed_ticks": null,
+        "rollover_count": null,
+        "frequency_hz": null,
+        "ownership": "UNKNOWN",
+        "physical_backend_ready": false,
+        "destructive_test_allowed": false,
+        "publication": "Two equal supplied snapshots only; visibility/lifetime unqualified"
+      },
+      "scope": "Untrusted supplied terminal-intent bytes; hashes bind content, not origin or actual execution",
+      "terminal_intent": "SLEEP_REQUESTED_UNOBSERVED",
+      "sleep_proven": false,
+      "hardware_executed": false,
+      "physical_backend_ready": false,
+      "destructive_test_allowed": false
+    }
+  ]
+}
