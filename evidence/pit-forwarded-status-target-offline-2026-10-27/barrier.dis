@@ -1,0 +1,16 @@
+<barrier>:
+ffdcbea0:	3021ffe0 	addik	r1, r1, -32
+ffdcbea4:	fa61001c 	swi	r19, r1, 28
+ffdcbea8:	f9e10000 	swi	r15, r1, 0
+ffdcbeac:	12650000 	addk	r19, r5, r0
+ffdcbeb0:	e8650010 	lwi	r3, r5, 16
+ffdcbeb4:	99fc1800 	brald	r15, r3
+ffdcbeb8:	e8a50018 	lwi	r5, r5, 24
+ffdcbebc:	be030014 	beqid	r3, 20		// ffdcbed0
+ffdcbec0:	e9e10000 	lwi	r15, r1, 0
+ffdcbec4:	30800001 	addik	r4, r0, 1
+ffdcbec8:	f8930048 	swi	r4, r19, 72
+ffdcbecc:	e9e10000 	lwi	r15, r1, 0
+ffdcbed0:	ea61001c 	lwi	r19, r1, 28
+ffdcbed4:	b60f0008 	rtsd	r15, 8
+ffdcbed8:	30210020 	addik	r1, r1, 32

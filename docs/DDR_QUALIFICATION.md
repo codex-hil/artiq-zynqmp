@@ -2641,3 +2641,7 @@ success. NoHW. Evidence pit-missing-msr-observation-offline-2026-10-27.
 2026-10-27 Cvalidity/statusbuilder47tests/6crosslanguagecasesPASS;failedcallback
 outputignored/hashinputsEXTERNAL. MBwordstores/frame24not total. NoHW/fulltarget
 integration. Evidence pit-c-validity-metadata-offline-2026-10-27.
+
+2026-10-27 forwarding-to-buildertargetlink/layout/wordstoresPASS/48tests.
+Internal332excludescallback/caller/exception;hashprovenanceEXTERNAL. NoHW/
+deployment. Evidence pit-forwarded-status-target-offline-2026-10-27.

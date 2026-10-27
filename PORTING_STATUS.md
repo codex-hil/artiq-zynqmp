@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — forwarding callback metadata integrated in audit target
+
+48PITtestsPASS;realforwarding/builder/publisher6fakecasesbyteexactPython.
+TargetfullLTOlink/layout/noUND/entry+5forwarderwordstorechecksPASS. Entry288+
+maxforward44=332internalNOTtotalstack. MSRmetadataobserved;hashesEXTERNAL.
+NoHW/hook/backend/newadmission/MUSTNOTDEPLOY. Next metadata/publicationfault
+coupling+reentrynegative tests. Evidence `evidence/pit-forwarded-status-target-offline-2026-10-27`.
+DDR NOT_ADMITTED.
+
 ## 2026-10-27 — C validity-derived terminal metadata offline
 
 47PITtestsPASS;realCbuilder computesMSRvalidityfromcalledmask/returncode and

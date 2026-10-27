@@ -1,0 +1,4 @@
+<pit_terminal_audit>:
+ffdcf31c:	b8220004 	mbar	1
+ffdcf320:	ba020004 	sleep
+ffdcf324:	b800fffc 	bri	-4		// ffdcf320
