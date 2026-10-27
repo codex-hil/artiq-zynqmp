@@ -2516,3 +2516,11 @@ timeout r9/r10/calleesavedpairs. Hostdeadline optimized+ASanUBSan18scenario vari
 PASSinclhigh64bitbase/>32bittimeout. Finalwriteframe76(previous44);internalread/
 writepaths248excludeexternalcost. NoHW/MMIO/deployment. Nexttimer/transportbounded
 faultcontract;DDRNOT_ADMITTED. Evidence `evidence/aib-deadline-target-audit-2026-10-27`.
+
+## 2026-10-27 — real PMU timer/MMIO contract not ready
+
+ActualBSP MBbusyloop/noTickTimer,compiledlibnoXTime_GetTime. SchedulerPIT1 reload
+10ms/softwaretickIRQ,notguarddeadlinewithIEclear. VolatileIn/Out no ordinaryerror
+status orhungaccesspreemption. ATBcoverage/enableforPMU->AIBnotproven. NoHW/writes.
+PhysicalbackendNOT_READY;nextPITownership+accessrouteinventory/read-onlyplan,
+DDRNOT_ADMITTED. Evidence `evidence/pmu-time-mmio-contract-2026-10-27`.

@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — real PMU timer/MMIO contract not ready
+
+ActualBSP MBbusyloop/noTickTimer,compiledlibnoXTime_GetTime. SchedulerPIT1 reload
+10ms/softwaretickIRQ,notguarddeadlinewithIEclear. VolatileIn/Out no ordinaryerror
+status orhungaccesspreemption. ATBcoverage/enableforPMU->AIBnotproven. NoHW/writes.
+PhysicalbackendNOT_READY;nextPITownership+accessrouteinventory/read-onlyplan,
+DDRNOT_ADMITTED. Evidence `evidence/pmu-time-mmio-contract-2026-10-27`.
+
+
 ## 2026-10-27 — changed deadline ABI MicroBlaze/LTO audit PASS offline
 
 Actualrecipe auditlink/localfootprintPASS. ElevennativeABIwords bindstart r7/r8,

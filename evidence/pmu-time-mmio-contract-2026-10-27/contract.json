@@ -1,0 +1,13 @@
+{
+  "hardware_access": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "clock_source": "UNSELECTED",
+  "time_units": "UNQUALIFIED",
+  "default_bsp": "MB busy-loop delay, XTIMER_NO_TICK_TIMER",
+  "scheduler_timer": "PIT1, 10ms reload, software tick interrupt-driven",
+  "mmio_primitive_status": "volatile load/store only; no int fault return",
+  "route_timeout_configuration": "NOT_CAPTURED_NOT_PROVEN",
+  "read_fault_policy": "UNRESOLVED",
+  "accepted_write_fault_policy": "UNRESOLVED_NO_AUTOMATIC_CLEAR"
+}
