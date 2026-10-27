@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — observation-derived receipt model offline
+
+44PITtestsPASS;stagedproducer deriveshashesfromimage/samplebytes andstatusfrom
+suppliedobservations;nocallerdigest/terminalsuccessoverride. InitialIRQfailure
+blocksamples/lateIRQforcesUNPROVEN. ActualELF+SYNTHETICtrace roundtrip labeled.
+NOTauthenticatedHW/targethashproducer;physicalmetadatagapOPEN. NoHW/targetchange.
+Next fakeCevents->producer crosscheck. Evidence `evidence/pit-receipt-provenance-model-offline-2026-10-27`.
+DDR NOT_ADMITTED.
+
 ## 2026-10-27 — target status composition audit and refusal fix
 
 FullnewPMUlink/layout/noUND/wordstoresPASS;frame220NOTtotal. Status/publication

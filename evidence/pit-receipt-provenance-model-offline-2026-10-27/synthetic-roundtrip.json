@@ -1,0 +1,57 @@
+{
+  "synthetic_observations": true,
+  "hardware_executed": false,
+  "actual_audit_elf_path": "/home/codex-hil/.local/state/artiq-builds/pmu-status-composition-audit-20261027/audit-only.elf",
+  "image_sha256": "7bd1b17a9ee04745eec673ad6a18a1302df2db5a5d3bec49137d387ab5398407",
+  "sample_bytes_hex": "010000000100000007000000000000000000000001000000020000000300000004000000050000000600000007000000",
+  "receipt_bytes_hex": "01000000315354500100000004000000070000000000000004010000040100007bd1b17a9ee04745eec673ad6a18a1302df2db5a5d3bec49137d387ab539840763759c304906a0bec1f4c9adae2f5cc969b6b1f58620aa69cec3c2e4e5f9bf8b",
+  "decoded": {
+    "status": "CAPTURE_COMPLETE",
+    "samples": {
+      "scope": "Untrusted supplied observations; no hardware execution established",
+      "counters": [
+        {
+          "name": "PIT0_COUNTER",
+          "address": 4292083780,
+          "first": 0,
+          "second": 4,
+          "changed": true
+        },
+        {
+          "name": "PIT1_COUNTER",
+          "address": 4292083796,
+          "first": 1,
+          "second": 5,
+          "changed": true
+        },
+        {
+          "name": "PIT2_COUNTER",
+          "address": 4292083812,
+          "first": 2,
+          "second": 6,
+          "changed": true
+        },
+        {
+          "name": "PIT3_COUNTER",
+          "address": 4292083828,
+          "first": 3,
+          "second": 7,
+          "changed": true
+        }
+      ],
+      "elapsed_ticks": null,
+      "rollover_count": null,
+      "frequency_hz": null,
+      "ownership": "UNKNOWN",
+      "physical_backend_ready": false,
+      "destructive_test_allowed": false,
+      "publication": "Two equal supplied snapshots only; visibility/lifetime unqualified"
+    },
+    "scope": "Untrusted supplied terminal-intent bytes; hashes bind content, not origin or actual execution",
+    "terminal_intent": "SLEEP_REQUESTED_UNOBSERVED",
+    "sleep_proven": false,
+    "hardware_executed": false,
+    "physical_backend_ready": false,
+    "destructive_test_allowed": false
+  }
+}

@@ -2625,3 +2625,7 @@ intentNOTcurrentIRQ/sleepproof. Evidence pit-status-writer-coupling-offline-2026
 2026-10-27 targetstatuscompositionlayout/wordstoresPASS/frame220not total.
 MSR/hashmetadataNOTderived;v3controlledrefusal/40testsPASS. NoHW. Evidence
 pit-target-status-composition-offline-2026-10-27.
+
+2026-10-27 receiptprovenancemodel44PITtestsPASS;hashesderivedfromsuppliedbytes,
+notauthenticatedHW/targetproducer. ActualELF+SYNTHETICtrace labeled. Physical
+metadatagap/recovery/visibilityOPEN. Evidence pit-receipt-provenance-model-offline-2026-10-27.
