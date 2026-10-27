@@ -2566,3 +2566,7 @@ ELF MUST NOT DEPLOY. Evidence pit-c-publisher-offline-2026-10-27.
 2026-10-27 coupled C PIT path19testsPASS;8read failures zero writes/barriers;
 PMULTOlinkPASS/inlinedframe152not total stack. No physical adapter/visibility/
 recovery qualification. Evidence pit-capture-coupling-offline-2026-10-27.
+
+2026-10-27 actual BSP sixMBprobesPASS: lwi/swi/mbar1; load pair order retained,
+no optimizer bug shown. Hardware fault/hang/DAPvisibility unqualified. Adapter
+NOT_READY; evidence pmu-bsp-access-review-offline-2026-10-27.

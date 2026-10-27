@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — actual BSP access/barrier probe offline
+
+Six MB probe inventories PASS: In32=lwi,Out32=swi,DATA_SYNC=mbar1; both BSP and
+explicit-clobber load pairs retain two loads. No compiler reordering bug shown.
+No bus-error return/hang preemption/DAP visibility qualification. Physical
+adapter NOT_READY; next slot ownership/lifetime+consumer path audit offline.
+No HW. Evidence `evidence/pmu-bsp-access-review-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — C PIT collection/publication coupling offline
 
 19PITtestsPASS incl optimized/sanitized8readfailures=>zero writes/barriers,

@@ -1,0 +1,39 @@
+
+/home/codex-hil/.local/state/artiq-builds/pmu-bsp-access-review-20261027/probe.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <bsp_read>:
+   0:	e8650000 	lwi	r3, r5, 0
+   4:	b60f0008 	rtsd	r15, 8
+   8:	80000000 	or	r0, r0, r0
+
+0000000c <bsp_write>:
+   c:	f8c50000 	swi	r6, r5, 0
+  10:	b60f0008 	rtsd	r15, 8
+  14:	80000000 	or	r0, r0, r0
+
+00000018 <bsp_barrier>:
+  18:	b8220004 	mbar	1
+  1c:	b60f0008 	rtsd	r15, 8
+  20:	80000000 	or	r0, r0, r0
+
+00000024 <explicit_barrier>:
+  24:	b8220004 	mbar	1
+  28:	b60f0008 	rtsd	r15, 8
+  2c:	80000000 	or	r0, r0, r0
+
+00000030 <bsp_load_pair>:
+  30:	e8850000 	lwi	r4, r5, 0
+  34:	b8220004 	mbar	1
+  38:	e8650000 	lwi	r3, r5, 0
+  3c:	b60f0008 	rtsd	r15, 8
+  40:	10641800 	addk	r3, r4, r3
+
+00000044 <explicit_load_pair>:
+  44:	e8850000 	lwi	r4, r5, 0
+  48:	b8220004 	mbar	1
+  4c:	e8650000 	lwi	r3, r5, 0
+  50:	b60f0008 	rtsd	r15, 8
+  54:	10641800 	addk	r3, r4, r3

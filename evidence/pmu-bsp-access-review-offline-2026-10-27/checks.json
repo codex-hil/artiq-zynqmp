@@ -1,0 +1,43 @@
+{
+  "hardware_executed": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "object_sha256": "da1aa9868d1e91946a9f2baf19a53f474d5124355006b9e986086dd7ad84be8e",
+  "checks": {
+    "bsp_read": {
+      "loads": 1,
+      "stores": 0,
+      "mbar1": 0
+    },
+    "bsp_write": {
+      "loads": 0,
+      "stores": 1,
+      "mbar1": 0
+    },
+    "bsp_barrier": {
+      "loads": 0,
+      "stores": 0,
+      "mbar1": 1
+    },
+    "explicit_barrier": {
+      "loads": 0,
+      "stores": 0,
+      "mbar1": 1
+    },
+    "bsp_load_pair": {
+      "loads": 2,
+      "stores": 0,
+      "mbar1": 1
+    },
+    "explicit_load_pair": {
+      "loads": 2,
+      "stores": 0,
+      "mbar1": 1
+    }
+  },
+  "vendor_header_sha256": {
+    "xil_io.h": "914fcc7d3bba40d28862feb1a8d68b041cd32b345d946a2734fced6e77cb8a51",
+    "mb_interface.h": "fd36f00ba55319f9b9057952fb641dd15cf1ad45a80de42303df95f6d230b9f2",
+    "xparameters.h": "73b981904d0110cbb72db630738a16e84a2cd95420e6fbccb169d92ccfbc1b6b"
+  }
+}
