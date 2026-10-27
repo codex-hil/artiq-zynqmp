@@ -10,11 +10,16 @@ from check_pit_profile_flow import check
 ARCHIVE = ROOT / 'evidence/pmu-fresh-pit-audit-link-offline-2026-10-27'
 
 
-def fixture(change=None, stale_disassembly=False):
+def fixture(change=None, stale_disassembly=False, shape="legacy-v1"):
     # Synthetic ELF containing only actual archived function bodies; not firmware.
     text = '\n'.join((ARCHIVE / (name + '.dis')).read_text() for name in
                      ('pit_terminal_audit', 'terminal_adapter', 'pit_profile_entry_audit'))
     symbols = (ARCHIVE / 'selected-symbols.txt').read_text() + 'ffdd2030 00000114 T memset\n'
+    if shape == "word-v2":
+        text = '\n'.join((ARCHIVE / (name + '.dis')).read_text() for name in
+                         ('pit_terminal_audit', 'terminal_adapter'))
+        text += '\n' + (ROOT / 'evidence/pit-pmu-word-write-fix-offline-2026-10-27/profile.dis').read_text()
+        symbols = symbols.replace('00000250 T pit_profile_entry_audit', '00000260 T pit_profile_entry_audit').replace('ffdd2030', 'ffdd2040')
     if change and not stale_disassembly:
         old, new = change
         assert old in text
@@ -39,6 +44,13 @@ class Tests(unittest.TestCase):
         result = check(*fixture())
         self.assertEqual(result['abstract_callback_sites'], 9)
         self.assertFalse(result['deployable'])
+
+    def test_word_v2_and_cross_shape_rejection(self):
+        result = check(*fixture(shape='word-v2'), shape='word-v2')
+        self.assertEqual(result['internal_branches'], 27)
+        for fixture_shape, checker_shape in [('word-v2', 'legacy-v1'), ('legacy-v1', 'word-v2')]:
+            with self.assertRaises(ValueError): check(*fixture(shape=fixture_shape), shape=checker_shape)
+        with self.assertRaises(ValueError): check(*fixture(), shape='unreviewed')
 
     def test_consistent_control_mutations_rejected(self):
         mutations = [

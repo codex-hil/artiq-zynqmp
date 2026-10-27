@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — word-v2 profile requalification offline
+
+31PITtestsPASS/crossshaperejected. ActualnewELF27branches/9abstractcalls/one
+memset/wordstore+layout/sourcegatePASS;newv2profile10sources7helpers. Conditional
+SPalign4/frame164/offset28/len48 review;notlivecallback/libraryallpathproof.
+NoHW/MUSTNOTDEPLOY;recovery/visibilityOPEN. Next callback/terminalcontext+
+stack/initreview. Evidence `evidence/pit-word-v2-requalification-offline-2026-10-27`.
+DDR NOT_ADMITTED.
+
 ## 2026-10-27 — PMU RAM word-write correction and recovery feasibility
 
 UG1085p113wordwritesonly:old separatelylinkedPITcopieshad sbi;fullinlinedprofile

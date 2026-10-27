@@ -1,0 +1,70 @@
+<memset>:
+ffdd2040:	a4850003 	andi	r4, r5, 3
+ffdd2044:	be040104 	beqid	r4, 260		// ffdd2148
+ffdd2048:	10650000 	addk	r3, r5, r0
+ffdd204c:	10850000 	addk	r4, r5, r0
+ffdd2050:	11460000 	addk	r10, r6, r0
+ffdd2054:	be270018 	bneid	r7, 24		// ffdd206c
+ffdd2058:	3107ffff 	addik	r8, r7, -1
+ffdd205c:	b80000e4 	bri	228		// ffdd2140
+ffdd2060:	be0800e0 	beqid	r8, 224		// ffdd2140
+ffdd2064:	30e8ffff 	addik	r7, r8, -1
+ffdd2068:	11070000 	addk	r8, r7, r0
+ffdd206c:	11240000 	addk	r9, r4, r0
+ffdd2070:	30840001 	addik	r4, r4, 1
+ffdd2074:	a4e40003 	andi	r7, r4, 3
+ffdd2078:	be27ffe8 	bneid	r7, -24		// ffdd2060
+ffdd207c:	f1490000 	sbi	r10, r9, 0
+ffdd2080:	30a00003 	addik	r5, r0, 3
+ffdd2084:	16482803 	cmpu	r18, r8, r5
+ffdd2088:	bcb2009c 	bgei	r18, 156		// ffdd2124
+ffdd208c:	a4a600ff 	andi	r5, r6, 255
+ffdd2090:	65250408 	bslli	r9, r5, 8
+ffdd2094:	11292800 	addk	r9, r9, r5
+ffdd2098:	64a90410 	bslli	r5, r9, 16
+ffdd209c:	3160000f 	addik	r11, r0, 15
+ffdd20a0:	16485803 	cmpu	r18, r8, r11
+ffdd20a4:	beb2004c 	bgeid	r18, 76		// ffdd20f0
+ffdd20a8:	11292800 	addk	r9, r9, r5
+ffdd20ac:	10e40000 	addk	r7, r4, r0
+ffdd20b0:	11480000 	addk	r10, r8, r0
+ffdd20b4:	f9270000 	swi	r9, r7, 0
+ffdd20b8:	f9270004 	swi	r9, r7, 4
+ffdd20bc:	f9270008 	swi	r9, r7, 8
+ffdd20c0:	f927000c 	swi	r9, r7, 12
+ffdd20c4:	314afff0 	addik	r10, r10, -16
+ffdd20c8:	164a5803 	cmpu	r18, r10, r11
+ffdd20cc:	be52ffe8 	bltid	r18, -24		// ffdd20b4
+ffdd20d0:	30e70010 	addik	r7, r7, 16
+ffdd20d4:	30a8fff0 	addik	r5, r8, -16
+ffdd20d8:	a4a5fff0 	andi	r5, r5, -16
+ffdd20dc:	30a50010 	addik	r5, r5, 16
+ffdd20e0:	a4e8000c 	andi	r7, r8, 12
+ffdd20e4:	10842800 	addk	r4, r4, r5
+ffdd20e8:	be07003c 	beqid	r7, 60		// ffdd2124
+ffdd20ec:	a508000f 	andi	r8, r8, 15
+ffdd20f0:	11440000 	addk	r10, r4, r0
+ffdd20f4:	10e80000 	addk	r7, r8, r0
+ffdd20f8:	31600003 	addik	r11, r0, 3
+ffdd20fc:	f92a0000 	swi	r9, r10, 0
+ffdd2100:	30e7fffc 	addik	r7, r7, -4
+ffdd2104:	16475803 	cmpu	r18, r7, r11
+ffdd2108:	be52fff4 	bltid	r18, -12		// ffdd20fc
+ffdd210c:	314a0004 	addik	r10, r10, 4
+ffdd2110:	30a8fffc 	addik	r5, r8, -4
+ffdd2114:	a4a5fffc 	andi	r5, r5, -4
+ffdd2118:	30a50004 	addik	r5, r5, 4
+ffdd211c:	10842800 	addk	r4, r4, r5
+ffdd2120:	a5080003 	andi	r8, r8, 3
+ffdd2124:	be08001c 	beqid	r8, 28		// ffdd2140
+ffdd2128:	30a8ffff 	addik	r5, r8, -1
+ffdd212c:	11050000 	addk	r8, r5, r0
+ffdd2130:	f0c40000 	sbi	r6, r4, 0
+ffdd2134:	30a5ffff 	addik	r5, r5, -1
+ffdd2138:	be28fff4 	bneid	r8, -12		// ffdd212c
+ffdd213c:	30840001 	addik	r4, r4, 1
+ffdd2140:	b60f0008 	rtsd	r15, 8
+ffdd2144:	80000000 	or	r0, r0, r0
+ffdd2148:	10850000 	addk	r4, r5, r0
+ffdd214c:	b810ff34 	brid	-204		// ffdd2080
+ffdd2150:	11070000 	addk	r8, r7, r0

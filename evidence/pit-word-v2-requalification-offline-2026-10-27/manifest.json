@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "profile": "pit-counter-before-sleep-word-audit-v2",
+  "deployable": false,
+  "hardware_executed": false,
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_capture.c": "3a20d941ac3b72de4c0e6c3fce57fa0df4447b1ab9f22ff9d1f007de14e0426b",
+    "diagnostics/ddr/pit_collect/pit_capture.h": "968d5be94e63a6655c678415c702c24dffa794ce00bee5b4ce44d114b65621f7",
+    "diagnostics/ddr/pit_collect/pit_collect.c": "27b9b66fc6d74894b620b4a8db54e1b0b45f624efdf991700493541cfd4f90d5",
+    "diagnostics/ddr/pit_collect/pit_collect.h": "4aba5304a4b3bbc7a48868e507e9807a6f2fcc0803696e45c9df96981420050d",
+    "diagnostics/ddr/pit_collect/pit_profile_audit.c": "b3938b2d62e768e7bfd6576ae9dc16b6583de090f7194a6a3ef5cda91ffda68e",
+    "diagnostics/ddr/pit_collect/pit_publish.c": "9b379172009b446b3614f56d19c676c19abd936f524c4e7299a6e3e855332d6f",
+    "diagnostics/ddr/pit_collect/pit_publish.h": "1d1b8e9e0ec830ad2ecb850eb1131cd9881308726254e08747ac4c5310f683ef",
+    "diagnostics/ddr/pit_collect/pit_sleep_model.c": "f750bc8c620a0396dadebe07cd4deb321057985e2f2923757dc6b98bfa428646",
+    "diagnostics/ddr/pit_collect/pit_sleep_model.h": "7df2586e9177a49041a4ecf46e66b0ec210d5ec7f824d28e8136e1a9d91db43e",
+    "diagnostics/ddr/pit_collect/pit_terminal_audit.c": "28fff8703fbf090ae9de6dd28147085d4b74dd665c1dfe28584f7ec425be68d9"
+  },
+  "script_sha256": {
+    "scripts/build_pmu_boundary.py": "48215043606f34e6f58dcfddc7180b3915800886d43c473a75b077fdbe73f059",
+    "scripts/check_pit_profile_flow.py": "83e40def66ea2ea8f1656daaa5fe45d36b2ae66de31f1e68ed2d5cedfd0cd4e3",
+    "scripts/check_pit_word_stores.py": "d64f7238be127684fc57b57aff0fa69365d91894f784fd8bc0a4cd18c035eb78",
+    "scripts/check_pmu_boundary_image.py": "f142e614da217212b9c278b9782ead83e299db80e0fe2e5fe71dfda5aec46f69",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/pit_audit_gate.py": "4916b93f5ffdd9f799bb2c858cb2b301b0eab9a021fc298a25b5474fa3aa4a11",
+    "scripts/stage_pmu_boundary.py": "7f5c7d356bb185531fcc4a52b5e641c66db21308c9bb8fdb5c6ad4fadc33536a"
+  },
+  "artifacts": {
+    "elf": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-word-only-pit-audit-20261027/audit-only.elf",
+      "sha256": "556bc091d81541df934b9954bcd503022e50803dd95400a27bec781b4145dd44"
+    },
+    "symbols": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-word-only-pit-audit-20261027/symbols.txt",
+      "sha256": "ff54a25f6bf28807b54b387af14470d94bc3e8d978f915f58bf9ab4203e7fb16"
+    },
+    "disassembly": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-word-only-pit-audit-20261027/disassembly.txt",
+      "sha256": "e7f74d8893380caab111eaf3cca353006d105ed6faaf776a20daaf1cd48bcb47"
+    }
+  }
+}

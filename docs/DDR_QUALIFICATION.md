@@ -2597,3 +2597,7 @@ Evidence pit-source-artifact-gate-offline-2026-10-27.
 2026-10-27 UG1085p113wordwritesonly:oldstandalonePITcopieshad sbi,fullinlined
 profilealreadywordonly. Fixedu32copies/newELFcheck/layoutPASS/30tests. Oldpins/
 flowshapeSTALE;independenthungreadrecoveryUNQUALIFIED. Evidence pit-pmu-word-write-fix-offline-2026-10-27.
+
+2026-10-27 word-v2actualELFflow/store/layout/sourcegatePASS/31tests;conditional
+SPalign/frame164/record28/len48 staticreviewonly. Recovery/visibility/callback
+allpathOPEN. Evidence pit-word-v2-requalification-offline-2026-10-27.

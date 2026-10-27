@@ -4,7 +4,9 @@ import struct
 from package_local_candidate import loads
 
 
-def check(data, symbols_text, disassembly):
+def check(data, symbols_text, disassembly, shape="legacy-v1"):
+    if shape not in ("legacy-v1", "word-v2"):
+        raise ValueError("unknown compiler shape")
     machine, entry, segments = loads(data)
     if machine != 189 or entry != 0xffdc0050:
         raise ValueError('expected full PMU ELF')
@@ -62,20 +64,20 @@ def check(data, symbols_text, disassembly):
         raise ValueError('adapter must call exact terminal without return')
     profile = body('pit_profile_entry_audit')
     start = profile[0][0]; end = start + len(profile) * 4
-    ordinary = {'addik', 'swi', 'lwi', 'pcmpeq', 'or', 'addk', 'andi', 'xor', 'imm', 'bslli', 'lw'}
+    ordinary = {'addik', 'swi', 'lwi', 'pcmpeq', 'or', 'addk', 'andi', 'xor', 'imm', 'bslli', 'lw', 'sw'}
     conditional = {'beqid', 'bneid', 'beqi', 'bnei'}
     calls = []; indirect = []; branches = 0
     for index, (pc, word, mnemonic) in enumerate(profile):
         if mnemonic in ordinary:
             # Refuse known control opcodes disguised as ordinary disassembly.
-            if word >> 24 in (0xb6, 0xb8, 0xb9, 0xba, 0xbc, 0xbe, 0x99):
+            if word >> 24 in (0x98, 0xb6, 0xb8, 0xb9, 0xba, 0xbc, 0xbe, 0x99):
                 raise ValueError('hidden control opcode')
             continue
         if mnemonic == 'brald':
             if word & 0xffff07ff != 0x99fc0000:
                 raise ValueError('unexpected indirect call encoding')
             register = (word >> 11) & 31
-            if register not in (22, 24, 27, 28, 29):
+            if register not in ((22, 24, 27, 28, 29) if shape == "legacy-v1" else (22, 25, 26, 28, 29)):
                 raise ValueError('unreviewed callback register')
             indirect.append(register)
         elif mnemonic == 'brlid':
@@ -93,14 +95,16 @@ def check(data, symbols_text, disassembly):
             raise ValueError('unreviewed instruction/return: ' + mnemonic)
         if mnemonic.endswith('d') and (index + 1 >= len(profile) or profile[index + 1][2] not in ordinary):
             raise ValueError('unexpected delay slot')
-    if sorted(target for _, target in calls) != sorted([adapteraddr, memsetaddr, memsetaddr, termaddr]):
+    expected_calls = [adapteraddr, memsetaddr, termaddr] + ([memsetaddr] if shape == "legacy-v1" else [])
+    if sorted(target for _, target in calls) != sorted(expected_calls):
         raise ValueError('wrong direct call targets/counts')
-    if sorted(indirect) != sorted([22, 29, 22, 27, 24, 28, 28, 24, 24]):
+    expected_indirect = [22, 29, 22, 27, 24, 28, 28, 24, 24] if shape == "legacy-v1" else [22, 29, 22, 28, 25, 26, 26, 25, 25]
+    if sorted(indirect) != sorted(expected_indirect):
         raise ValueError('unexpected abstract callback inventory')
     if profile[-2][0] != calls[-1][0] or calls[-1][1] != termaddr:
         raise ValueError('entry may fall through instead of terminal')
     return {'status': 'SCOPED_PROFILE_LINKED_FLOW_PASS_NOT_HARDWARE',
             'hardware_executed': False, 'deployable': False,
             'physical_backend_ready': False, 'destructive_test_allowed': False,
-            'internal_branches': branches, 'abstract_callback_sites': len(indirect),
+            'compiler_shape': shape, 'internal_branches': branches, 'abstract_callback_sites': len(indirect),
             'limits': 'Static branch/call inventory only; callback identity/dataflow, liveness, MMIO, IRQ and visibility remain unproven'}

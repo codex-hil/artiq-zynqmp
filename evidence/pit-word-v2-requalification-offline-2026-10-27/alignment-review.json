@@ -1,0 +1,12 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "entry_SP_word_alignment": "required caller/ABI precondition, not a live observation",
+  "frame_bytes": 164,
+  "record_stack_offset": 28,
+  "record_bytes": 48,
+  "record_mod4_if_entry_aligned": 0,
+  "aligned_memset_path": "word-aligned start, 48 bytes = three 16-byte groups, zero tail; conditional static review only",
+  "total_stack_bound": null,
+  "callback_alignment_and_fault_behavior": "UNQUALIFIED"
+}
