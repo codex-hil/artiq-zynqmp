@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — normal-only restoration qualification plan PASS offline
+
+Newwrapper defaultsnoHW,exactnormalartifact/helperpins,sharedlease/realreserves.
+One r0-gatedPMUbootstrap thennormalruntime/tests;7orderedmarkers,no retry/guard/
+AIBwrites. Threewrapper+fourTcltestsPASS;offlineplanv2PASS. Nextboundednormal-only
+physicalqualification,notguard-stateproof. Baselineunchanged;DDRNOT_ADMITTED.
+Evidence `evidence/pmu-restore-qualification-plan-2026-10-27`.
+
+
 ## 2026-10-27 — pre-download PMU register gate prepared offline
 
 Restorationloggap:stop/suspended followedbydow withoutcore-registerread. Added
