@@ -2613,3 +2613,7 @@ total. Evidence pit-final-msr-link-offline-2026-10-27.
 2026-10-27 terminal-intent96Bschema/decoder37PITtestsPASS;session/image/sample
 binding,ALLsleep_provenfalse. Pre-sleepwriteNOTsleepresidency;noCwriter/backend.
 Evidence pit-terminal-receipt-offline-2026-10-27.
+
+2026-10-27 terminalC96Brecord38tests/108interruptions/C->PythoninteropPASS.
+MBwordstorecheck/frame152not total;providedhashesnotcomputed/authenticated.
+NoPMUintegration/HW/sleepproof. Evidence pit-terminal-c-record-offline-2026-10-27.

@@ -1,0 +1,155 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-terminal-record-object-20261027/audit-only.elf:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_terminal_publish>:
+   0:	3021ff68 	addik	r1, r1, -152
+   4:	10800000 	addk	r4, r0, r0
+   8:	fae10080 	swi	r23, r1, 128
+   c:	f9e10000 	swi	r15, r1, 0
+  10:	fa610078 	swi	r19, r1, 120
+  14:	fac1007c 	swi	r22, r1, 124
+  18:	fb010084 	swi	r24, r1, 132
+  1c:	fb210088 	swi	r25, r1, 136
+  20:	fb41008c 	swi	r26, r1, 140
+  24:	fb610090 	swi	r27, r1, 144
+  28:	fb810094 	swi	r28, r1, 148
+  2c:	88852400 	pcmpeq	r4, r5, r4
+  30:	be240014 	bneid	r4, 20		// 44
+  34:	eae100b4 	lwi	r23, r1, 180
+  38:	88862400 	pcmpeq	r4, r6, r4
+  3c:	be04003c 	beqid	r4, 60		// 78
+  40:	80674000 	or	r3, r7, r8
+  44:	13200000 	addk	r25, r0, r0
+  48:	10790000 	addk	r3, r25, r0
+  4c:	e9e10000 	lwi	r15, r1, 0
+
+00000050 <_ftext>:
+  50:	ea610078 	lwi	r19, r1, 120
+  54:	eac1007c 	lwi	r22, r1, 124
+  58:	eae10080 	lwi	r23, r1, 128
+  5c:	eb010084 	lwi	r24, r1, 132
+  60:	eb210088 	lwi	r25, r1, 136
+  64:	eb41008c 	lwi	r26, r1, 140
+  68:	eb610090 	lwi	r27, r1, 144
+  6c:	eb810094 	lwi	r28, r1, 148
+  70:	b60f0008 	rtsd	r15, 8
+  74:	30210098 	addik	r1, r1, 152
+  78:	88632400 	pcmpeq	r3, r3, r4
+  7c:	88892400 	pcmpeq	r4, r9, r4
+  80:	80832000 	or	r4, r3, r4
+  84:	be24ffc0 	bneid	r4, -64		// 44
+  88:	12c90000 	addk	r22, r9, r0
+  8c:	888a2400 	pcmpeq	r4, r10, r4
+  90:	be24ffb4 	bneid	r4, -76		// 44
+  94:	130a0000 	addk	r24, r10, r0
+  98:	e8850000 	lwi	r4, r5, 0
+  9c:	be24ffac 	bneid	r4, -84		// 48
+  a0:	13200000 	addk	r25, r0, r0
+  a4:	e8660000 	lwi	r3, r6, 0
+  a8:	a8630001 	xori	r3, r3, 1
+  ac:	be23ffa0 	bneid	r3, -96		// 4c
+  b0:	10790000 	addk	r3, r25, r0
+  b4:	e8660004 	lwi	r3, r6, 4
+  b8:	b0005054 	imm	20564
+  bc:	a8635331 	xori	r3, r3, 21297
+  c0:	be23ff8c 	bneid	r3, -116		// 4c
+  c4:	10790000 	addk	r3, r25, r0
+  c8:	eb260008 	lwi	r25, r6, 8
+  cc:	a8790001 	xori	r3, r25, 1
+  d0:	bc23ff74 	bnei	r3, -140		// 44
+  d4:	e8660010 	lwi	r3, r6, 16
+  d8:	88633800 	xor	r3, r3, r7
+  dc:	bc23ff68 	bnei	r3, -152		// 44
+  e0:	e8660014 	lwi	r3, r6, 20
+  e4:	88634000 	xor	r3, r3, r8
+  e8:	bc23ff5c 	bnei	r3, -164		// 44
+  ec:	e866000c 	lwi	r3, r6, 12
+  f0:	31200003 	addik	r9, r0, 3
+  f4:	3143ffff 	addik	r10, r3, -1
+  f8:	164a4803 	cmpu	r18, r10, r9
+  fc:	bc52ff48 	blti	r18, -184		// 44
+ 100:	a9430004 	xori	r10, r3, 4
+ 104:	be2a001c 	bneid	r10, 28		// 120
+ 108:	e9260018 	lwi	r9, r6, 24
+ 10c:	a5490002 	andi	r10, r9, 2
+ 110:	bc2aff34 	bnei	r10, -204		// 44
+ 114:	e946001c 	lwi	r10, r6, 28
+ 118:	894a4800 	xor	r10, r10, r9
+ 11c:	bc2aff28 	bnei	r10, -216		// 44
+ 120:	b0005054 	imm	20564
+ 124:	31405331 	addik	r10, r0, 21297
+ 128:	31860020 	addik	r12, r6, 32
+ 12c:	32600008 	addik	r19, r0, 8
+ 130:	f941001c 	swi	r10, r1, 28
+ 134:	31400001 	addik	r10, r0, 1
+ 138:	f9410020 	swi	r10, r1, 32
+ 13c:	f8610024 	swi	r3, r1, 36
+ 140:	f8e10028 	swi	r7, r1, 40
+ 144:	e8e6001c 	lwi	r7, r6, 28
+ 148:	f901002c 	swi	r8, r1, 44
+ 14c:	f9210030 	swi	r9, r1, 48
+ 150:	f8e10034 	swi	r7, r1, 52
+ 154:	11040000 	addk	r8, r4, r0
+ 158:	10e40000 	addk	r7, r4, r0
+ 15c:	30c60040 	addik	r6, r6, 64
+ 160:	3341001c 	addik	r26, r1, 28
+ 164:	65280402 	bslli	r9, r8, 2
+ 168:	c9696000 	lw	r11, r9, r12
+ 16c:	c9493000 	lw	r10, r9, r6
+ 170:	31280007 	addik	r9, r8, 7
+ 174:	65290402 	bslli	r9, r9, 2
+ 178:	d969d000 	sw	r11, r9, r26
+ 17c:	3128000f 	addik	r9, r8, 15
+ 180:	65290402 	bslli	r9, r9, 2
+ 184:	3273ffff 	addik	r19, r19, -1
+ 188:	d949d000 	sw	r10, r9, r26
+ 18c:	80845800 	or	r4, r4, r11
+ 190:	80e75000 	or	r7, r7, r10
+ 194:	be33ffd0 	bneid	r19, -48		// 164
+ 198:	31080001 	addik	r8, r8, 1
+ 19c:	bc04fea8 	beqi	r4, -344		// 44
+ 1a0:	88e79c00 	pcmpeq	r7, r7, r19
+ 1a4:	be070010 	beqid	r7, 16		// 1b4
+ 1a8:	30800004 	addik	r4, r0, 4
+ 1ac:	88632400 	pcmpeq	r3, r3, r4
+ 1b0:	bc23fe94 	bnei	r3, -364		// 44
+ 1b4:	30600001 	addik	r3, r0, 1
+ 1b8:	10e00000 	addk	r7, r0, r0
+ 1bc:	f8650000 	swi	r3, r5, 0
+ 1c0:	10c70000 	addk	r6, r7, r0
+ 1c4:	99fcb000 	brald	r15, r22
+ 1c8:	10b70000 	addk	r5, r23, r0
+ 1cc:	be23fe80 	bneid	r3, -384		// 4c
+ 1d0:	10790000 	addk	r3, r25, r0
+ 1d4:	10b70000 	addk	r5, r23, r0
+ 1d8:	99fcc000 	brald	r15, r24
+ 1dc:	33600018 	addik	r27, r0, 24
+ 1e0:	be23fe6c 	bneid	r3, -404		// 4c
+ 1e4:	10790000 	addk	r3, r25, r0
+ 1e8:	337bffff 	addik	r27, r27, -1
+ 1ec:	be3b0038 	bneid	r27, 56		// 224
+ 1f0:	33930001 	addik	r28, r19, 1
+ 1f4:	99fcc000 	brald	r15, r24
+ 1f8:	10b70000 	addk	r5, r23, r0
+ 1fc:	be23fe50 	bneid	r3, -432		// 4c
+ 200:	10790000 	addk	r3, r25, r0
+ 204:	10db0000 	addk	r6, r27, r0
+ 208:	10b70000 	addk	r5, r23, r0
+ 20c:	99fcb000 	brald	r15, r22
+ 210:	30e00001 	addik	r7, r0, 1
+ 214:	be23fe38 	bneid	r3, -456		// 4c
+ 218:	10790000 	addk	r3, r25, r0
+ 21c:	b810fe2c 	brid	-468		// 48
+ 220:	33200002 	addik	r25, r0, 2
+ 224:	66730402 	bslli	r19, r19, 2
+ 228:	64dc0402 	bslli	r6, r28, 2
+ 22c:	c8f3d000 	lw	r7, r19, r26
+ 230:	99fcb000 	brald	r15, r22
+ 234:	10b70000 	addk	r5, r23, r0
+ 238:	be23fe10 	bneid	r3, -496		// 48
+ 23c:	127c0000 	addk	r19, r28, r0
+ 240:	b810ffac 	brid	-84		// 1ec
+ 244:	337bffff 	addik	r27, r27, -1

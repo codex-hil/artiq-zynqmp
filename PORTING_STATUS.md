@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — C terminal-intent record publication offline
+
+38PITtestsPASS inclCoptimized/sanitized108interruptions/Cbytes->Pythondecoder.
+96Bassertionshost+MBPASS;word-onlypublishcopy,source mutation frozen. MBstandalone
+noUND/no subwordstores/frame152excludingcallbacks. ProvidedhashesNOTcomputed/
+authenticated;framingNOTsleep/hardwareproof. NoHW/noPMUintegration/MUSTNOTDEPLOY.
+Next lifecycle-status/fakewriter coupling. Evidence `evidence/pit-terminal-c-record-offline-2026-10-27`.
+DDR NOT_ADMITTED.
+
 ## 2026-10-27 — separate terminal-intent receipt offline
 
 37PITtestsPASS;96Bversionedterminaldecoder binds session/image/samplehash and
