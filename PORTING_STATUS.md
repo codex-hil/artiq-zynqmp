@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — PIT RAM ownership and consumer path offline
+
+21PITtestsPASS;new48B BSS layout probe ffddbe58 disjoint sized buffers/stack.
+Not a physical slot reservation. Old helper addresses incompatible with this
+link; never reuse. Host AP0 RAM access requires qualified PMU sleep lifecycle,
+capture must precede sleep. No visibility/fault/recovery proof/HW. Audit ELF
+MUST NOT DEPLOY. Next new GPO0-free counter/sleep profile design+symbol binding
+offline. Evidence `evidence/pit-slot-ownership-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — actual BSP access/barrier probe offline
 
 Six MB probe inventories PASS: In32=lwi,Out32=swi,DATA_SYNC=mbar1; both BSP and

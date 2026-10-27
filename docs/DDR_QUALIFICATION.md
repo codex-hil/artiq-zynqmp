@@ -2570,3 +2570,7 @@ recovery qualification. Evidence pit-capture-coupling-offline-2026-10-27.
 2026-10-27 actual BSP sixMBprobesPASS: lwi/swi/mbar1; load pair order retained,
 no optimizer bug shown. Hardware fault/hang/DAPvisibility unqualified. Adapter
 NOT_READY; evidence pmu-bsp-access-review-offline-2026-10-27.
+
+2026-10-27 RAMslotprobe layoutPASS/21PITtests;oldfixedhelperaddressesINVALID
+for new link. AP0consumer needs PMUsleep/capture-before-sleep lifecycle, not
+yet integrated/qualified. Evidence pit-slot-ownership-offline-2026-10-27.
