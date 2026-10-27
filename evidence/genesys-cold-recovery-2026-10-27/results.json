@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "kind": "normal-runtime-recovery-after-user-reboot",
+  "hardware_executed": true,
+  "ip": "192.168.2.3",
+  "storage_reservation": "HELD_UNTIL_COMPLETION",
+  "stages": {
+    "load": 0,
+    "debug": 0,
+    "ethernet": 0
+  },
+  "elapsed_seconds": 87.214
+}

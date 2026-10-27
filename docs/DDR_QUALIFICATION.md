@@ -2394,3 +2394,11 @@ NOT_RESTORED/UNKNOWN. No unchangedretry/force/resetbypass. Lease released;board
 requiresphysicalpowercycle thenleasednormalrecovery beforeotheruse. Storage
 reservesworked;earlierpreHWspaceblock+verifiedownartifactrelocationpreserved.
 DDRNOT_ADMITTED. Evidence `evidence/aib-after-guard-hardware-2026-10-24`.
+
+## 2026-10-27 — normal runtime recovered after user reboot PASS
+
+OneGenesyslease87.214s;exactnormalartifactsverified,PMUdownload/FSBL/PL/CPUloadPASS.
+TTL/CoreDMA/analyzer/MonInj/EthernetPASS192.168.2.3. Lease/reservesreleased.
+No diagnosticguard/AIBwrite/Si/SD/flash/OTP/Kasli. PreviousrestoreFAILpreserved;
+rootcauseUNKNOWN,notunchangedretryapproval. Currentbaselineusable;DDRNOT_ADMITTED.
+Evidence `evidence/genesys-cold-recovery-2026-10-27`.

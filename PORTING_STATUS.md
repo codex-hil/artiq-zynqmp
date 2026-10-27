@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — normal runtime recovered after user reboot PASS
+
+OneGenesyslease87.214s;exactnormalartifactsverified,PMUdownload/FSBL/PL/CPUloadPASS.
+TTL/CoreDMA/analyzer/MonInj/EthernetPASS192.168.2.3. Lease/reservesreleased.
+No diagnosticguard/AIBwrite/Si/SD/flash/OTP/Kasli. PreviousrestoreFAILpreserved;
+rootcauseUNKNOWN,notunchangedretryapproval. Currentbaselineusable;DDRNOT_ADMITTED.
+Evidence `evidence/genesys-cold-recovery-2026-10-27`.
+
+
 ## 2026-10-24 — AIB readonly capture PASS; PMU restore download FAIL
 
 PostguardREQ/ACK00c00000/TYPE19cf000f twice;selectedRPUMbits30000clear,notglobalzero.

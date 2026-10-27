@@ -1,5 +1,11 @@
 # DDR write-test admission — 2026-10-23
 
+CURRENT HEALTH superseding older failure notice: 2026-10-27 normal runtime
+recovered PASS after user-reported reboot. PMU download/TTL/CoreDMA/debug/Ethernet
+PASS192.168.2.3; lease released. Failure history remains; DDR NOT_ADMITTED.
+See [recovery](../../evidence/genesys-cold-recovery-2026-10-27/README.md).
+
+
 CURRENT HEALTH: 2026-10-24 PMU restoration download FAILED. Normal runtime
 NOT_RESTORED/UNKNOWN; physical power cycle then leased recovery required before
 further use. See [failure evidence](../../evidence/aib-after-guard-hardware-2026-10-24/README.md).
