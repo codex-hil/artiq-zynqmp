@@ -2428,3 +2428,12 @@ Realreservesreleasedbeforeload/leasereleased. No guard/AIBwrite/Si/SD/flash/OTP/
 Kasli. NormalcontextONLY,notguard-stateproof;oldFAIL/rootcauseUNKNOWN unchanged.
 Nextofflineguardrecoveryobligationreview;DDRNOT_ADMITTED. Evidence
 `evidence/pmu-restore-normal-hardware-2026-10-27`.
+
+## 2026-10-27 — restoration contexts compared; changed no-AIB guard plan
+
+RetainedPASS/FAILsamePMU/PL/MSR/GPO0;extraAIBreads differ,butcausationUNKNOWN.
+FreshplanexplicitnoAIB,newr0gate andshared7orderedstagevalidator. Fullpreflight+
+16Tcl/wrapper/image/lifecycletestsPASS. NoHW;nextONEboundedchangedguardcontext
+qualification,abortwithoutretryonfailure. Normalbaselineuntouched;DDRNOT_ADMITTED.
+Evidence `evidence/pmu-restore-context-comparison-2026-10-27` and
+`evidence/guard-context-recovery-plan-2026-10-27`.

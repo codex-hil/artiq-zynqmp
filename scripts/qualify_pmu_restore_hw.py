@@ -2,7 +2,7 @@
 """One normal-PMU restoration qualification, offline by default. LGPL-3.0-or-later."""
 import argparse,hashlib,json,os,re,sys,time
 from pathlib import Path
-from test_candidate_runtime_hw import REPO,CABLE,preflight,lease,bounded
+from test_candidate_runtime_hw import REPO,CABLE,preflight,lease,bounded,verify_pmu_restore_stages
 from check_hw_storage import RestoreReserve,runtime_paths,require_runtime_space
 SCRIPTS={
  'scripts/qualify_pmu_restore_hw.py','scripts/test_candidate_runtime_hw.py',
@@ -26,16 +26,7 @@ def validate(m):
  return preflight(json.loads(Path(m['runtime']['path']).read_text()))
 def bootstrap(run,command):
  text=run('pmu-bootstrap',command,60)
- required=['PMU_RESTORE_STAGE STOP_REQUEST','PMU_RESTORE_STAGE HALT_CONFIRMED',
- 'PMU_RESTORE_STAGE REGISTER_READ_PASS','PMU_RESTORE_STAGE DOWNLOAD_START',
- 'PMU_RESTORE_STAGE DOWNLOAD_COMPLETE','PMU_RESTORE_STAGE RESUME_COMPLETE',
- 'PMU_RESTORE_BOOTSTRAP_STARTED']
- positions=[]
- for marker in required:
-  lines=text.splitlines()
-  if lines.count(marker)!=1:raise ValueError('Missing/duplicate restoration marker '+marker)
-  positions.append(lines.index(marker))
- if positions!=sorted(positions):raise ValueError('Unordered restoration stages')
+ verify_pmu_restore_stages(text)
  return True
 
 def main():

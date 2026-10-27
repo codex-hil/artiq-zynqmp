@@ -188,6 +188,16 @@ def lifecycle(cycle,before_restore=None):
     return result
 
 
+def verify_pmu_restore_stages(text):
+    markers=['PMU_RESTORE_STAGE '+s for s in ('STOP_REQUEST','HALT_CONFIRMED','REGISTER_READ_PASS','DOWNLOAD_START','DOWNLOAD_COMPLETE','RESUME_COMPLETE')]+['PMU_RESTORE_BOOTSTRAP_STARTED']
+    lines=text.splitlines();positions=[]
+    for marker in markers:
+        if lines.count(marker)!=1:raise ValueError('Incomplete/duplicate PMU restoration stage '+marker)
+        positions.append(lines.index(marker))
+    if positions!=sorted(positions):raise ValueError('Unordered PMU restoration stages')
+    return True
+
+
 def bounded(command,timeout,env,fd):
     proc=subprocess.Popen(command,cwd=REPO,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
                           text=True,env=env,pass_fds=(fd,),start_new_session=True)
@@ -286,8 +296,7 @@ def main():
                     text=run('restore-pmu-bootstrap',['vivado-container','shell','-c','exec "$@"','bash',
                         '/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/xsdb',
                         str(REPO/'scripts/restart_pmu_for_restore.tcl'),a.server,files['restore_pmu']['path'],CABLE],60)
-                    if text.splitlines().count('PMU_RESTORE_BOOTSTRAP_STARTED')!=1:
-                        raise RuntimeError('PMU bootstrap not confirmed; do not assume system-reset recovery')
+                    verify_pmu_restore_stages(text)
                 def path(name):return files[prefix+'_'+name]['path']
                 ps=Path(path('fsbl')).parents[2];worker=Path(path('worker')).parent
                 load=out/(prefix+'-load')

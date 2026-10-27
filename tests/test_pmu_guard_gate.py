@@ -13,7 +13,7 @@ class Tests(unittest.TestCase):
   with self.assertRaises(ValueError):
    preflight(ROOT/'evidence/pmu-guard-boot-integration-2026-10-23/guard-inputs.json',ROOT)
  def test_actual_guard_and_stale_disassembly_pin(self):
-  path=ROOT/'evidence/pmu-vector-snapshot-integration-2026-10-24/guard-inputs.json';preflight(path,ROOT)
+  path=ROOT/'evidence/guard-context-recovery-plan-2026-10-27/guard-inputs.json';preflight(path,ROOT)
   m=json.loads(path.read_text());m['disassembly']['sha256']='0'*64
   with tempfile.TemporaryDirectory() as tmp:
    p=Path(tmp)/'bad.json';p.write_text(json.dumps(m))

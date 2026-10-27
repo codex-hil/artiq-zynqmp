@@ -1,0 +1,51 @@
+{
+  "kind": "RETAINED_EVIDENCE_COMPARISON_NOT_CAUSAL_TEST",
+  "hardware_access": false,
+  "rows": [
+    {
+      "source": "pmu-vector-snapshot-hardware-2026-10-24",
+      "pmu_sha256": "346527868dc27f6d9de0d90a3a1aecb9031572a7ec5d6e69df20dd2154b6764b",
+      "pl_sha256": "df35fe96f15249a8afd7de516c8112bbe3230c4227488c5493105a3fbf58912d",
+      "msr": [
+        2147483910,
+        2147483908
+      ],
+      "gpo0": "0x0",
+      "aib_capture": false,
+      "restoration": "PASS",
+      "elapsed_seconds": 147.988
+    },
+    {
+      "source": "aib-after-guard-hardware-2026-10-24",
+      "pmu_sha256": "346527868dc27f6d9de0d90a3a1aecb9031572a7ec5d6e69df20dd2154b6764b",
+      "pl_sha256": "df35fe96f15249a8afd7de516c8112bbe3230c4227488c5493105a3fbf58912d",
+      "msr": [
+        2147483910,
+        2147483908
+      ],
+      "gpo0": "0x0",
+      "aib_capture": true,
+      "restoration": "FAIL",
+      "elapsed_seconds": 80.775
+    }
+  ],
+  "inputs": [
+    {
+      "path": "evidence/pmu-vector-snapshot-hardware-2026-10-24/candidate-trained-observer/results.json",
+      "sha256": "385de1cab3f4cca78aafa307727e9f6ce39728387c5bff1e29591423562f3c5b"
+    },
+    {
+      "path": "evidence/pmu-vector-snapshot-hardware-2026-10-24/results.json",
+      "sha256": "1d3251006089318244b815c4c9c4c27c1fee15fb661a073aa831ffeec7838777"
+    },
+    {
+      "path": "evidence/aib-after-guard-hardware-2026-10-24/candidate-trained-observer/results.json",
+      "sha256": "3bca77f314ad268f9104df4359104255edab86d6c62a18c9a712e19c56b599e0"
+    },
+    {
+      "path": "evidence/aib-after-guard-hardware-2026-10-24/results.json",
+      "sha256": "b03b38238ca9fbe2315332a40382d784db196e6b208add7bfb7b8ed7a0078acf"
+    }
+  ],
+  "causation": "UNDETERMINED"
+}
