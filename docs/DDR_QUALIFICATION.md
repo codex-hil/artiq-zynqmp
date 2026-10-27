@@ -2645,3 +2645,7 @@ integration. Evidence pit-c-validity-metadata-offline-2026-10-27.
 2026-10-27 forwarding-to-buildertargetlink/layout/wordstoresPASS/48tests.
 Internal332excludescallback/caller/exception;hashprovenanceEXTERNAL. NoHW/
 deployment. Evidence pit-forwarded-status-target-offline-2026-10-27.
+
+2026-10-28 composition49PITtestsPASS/54publicationinterruptions/3metadataerrors
+zero receiptwrites+barriers/7entrypreservationcontrols/nestedreentryrejected.
+NoHW/targetchange. Evidence pit-compose-faults-offline-2026-10-28.

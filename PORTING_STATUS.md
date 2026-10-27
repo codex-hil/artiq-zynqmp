@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — composition fault/reentry qualification offline
+
+49PITtestsPASS;actualCoptimized/sanitized54receiptinterruptions+2controls,
+3metadatafailuresZEROreceiptwrites/barriers,7badplanstatespreserved/nocallbacks,
+everycallbacknestedreentryrejected. Lifecycle/build/publicationoutcomesseparate.
+NoHW/targetsourcechange. Next newtargetcompositionflow/mutationgate offline.
+Evidence `evidence/pit-compose-faults-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — forwarding callback metadata integrated in audit target
 
 48PITtestsPASS;realforwarding/builder/publisher6fakecasesbyteexactPython.
