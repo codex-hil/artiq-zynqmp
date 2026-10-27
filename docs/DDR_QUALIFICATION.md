@@ -2621,3 +2621,7 @@ NoPMUintegration/HW/sleepproof. Evidence pit-terminal-c-record-offline-2026-10-2
 2026-10-27 lifecycle+terminalwriter39PITtestsPASS/5C->Pythonpairedresults+54
 publicationinterruptions. IRQcanchangeAFTERsnapshotduringreceiptwrite;valid
 intentNOTcurrentIRQ/sleepproof. Evidence pit-status-writer-coupling-offline-2026-10-27.
+
+2026-10-27 targetstatuscompositionlayout/wordstoresPASS/frame220not total.
+MSR/hashmetadataNOTderived;v3controlledrefusal/40testsPASS. NoHW. Evidence
+pit-target-status-composition-offline-2026-10-27.

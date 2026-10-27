@@ -1,0 +1,33 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "elf_sha256": "7bd1b17a9ee04745eec673ad6a18a1302df2db5a5d3bec49137d387ab5398407",
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd82c0",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddc89c",
+      "end_exclusive": "0xffddd8a0"
+    },
+    "bytes_after_stack_before_extension_table": 7744,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "word_stores": {
+    "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+    "word_store_sites": 38,
+    "hardware_executed": false,
+    "deployable": false,
+    "destructive_test_allowed": false,
+    "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+  },
+  "frame_bytes_excluding_callbacks": 220,
+  "metadata_producer_present": false,
+  "runtime_hook_present": false,
+  "existing_v3_controlled_refusal": "missing required profile/adapter/library symbol"
+}

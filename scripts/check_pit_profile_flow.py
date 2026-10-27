@@ -15,6 +15,8 @@ def check(data, symbols_text, disassembly, shape="legacy-v1"):
         m = re.fullmatch(r'([0-9a-f]+) (?:([0-9a-f]+) )?([A-Za-z?]) (\S+)', line)
         if m:
             symbols[m[4]] = (int(m[1], 16), int(m[2], 16) if m[2] else 0)
+    if not {'pit_terminal_audit', 'terminal_adapter', 'pit_profile_entry_audit', 'memset'} <= set(symbols):
+        raise ValueError('missing required profile/adapter/library symbol')
     for forbidden in ('artiq_pmu_guard', 'artiq_pmu_enter_lab_guard'):
         if forbidden in symbols:
             raise ValueError('historical guard present')

@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — target status composition audit and refusal fix
+
+FullnewPMUlink/layout/noUND/wordstoresPASS;frame220NOTtotal. Status/publication
+outcomesseparate;MSR/hashmetadata stillcaller-suppliedNOTderived/trusted.
+Newentryv3refused;initialmissing-symbolKeyErrorchangedtocontrolledValueError,
+regression+40PITtestsPASS. NoHW/hook/backend/MUSTNOTDEPLOY. Next observation-to-
+receiptprovenancemodel. Evidence `evidence/pit-target-status-composition-offline-2026-10-27`.
+DDR NOT_ADMITTED.
+
 ## 2026-10-27 — lifecycle/status writer C composition offline
 
 39PITtestsPASS inclCoptimized/sanitized5pairedresults->Python and54receipt

@@ -69,6 +69,12 @@ class Tests(unittest.TestCase):
         for fixture_shape in ['legacy-v1', 'word-v2']:
             with self.assertRaises(ValueError): check(*fixture(shape=fixture_shape), shape='final-msr-v3')
 
+    def test_missing_adapter_is_controlled_refusal(self):
+        data, symbols, text = fixture(shape='final-msr-v3')
+        symbols = '\n'.join(line for line in symbols.splitlines() if not line.endswith(' terminal_adapter'))
+        with self.assertRaisesRegex(ValueError, 'missing required'):
+            check(data, symbols, text, shape='final-msr-v3')
+
     def test_consistent_control_mutations_rejected(self):
         mutations = [
             ('ffdcf1a8:\tb8220004 \tmbar\t1', 'ffdcf1a8:\t80000000 \tor r0,r0,r0'),
