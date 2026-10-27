@@ -20,6 +20,11 @@ def fixture(change=None, stale_disassembly=False, shape="legacy-v1"):
                          ('pit_terminal_audit', 'terminal_adapter'))
         text += '\n' + (ROOT / 'evidence/pit-pmu-word-write-fix-offline-2026-10-27/profile.dis').read_text()
         symbols = symbols.replace('00000250 T pit_profile_entry_audit', '00000260 T pit_profile_entry_audit').replace('ffdd2030', 'ffdd2040')
+    if shape == "final-msr-v3":
+        text = '\n'.join((ARCHIVE / (name + '.dis')).read_text() for name in
+                         ('pit_terminal_audit', 'terminal_adapter'))
+        text += '\n' + (ROOT / 'evidence/pit-final-msr-link-offline-2026-10-27/profile.dis').read_text()
+        symbols = symbols.replace('00000250 T pit_profile_entry_audit', '00000294 T pit_profile_entry_audit').replace('ffdd2030', 'ffdd2074')
     if change and not stale_disassembly:
         old, new = change
         assert old in text
@@ -51,6 +56,18 @@ class Tests(unittest.TestCase):
         for fixture_shape, checker_shape in [('word-v2', 'legacy-v1'), ('legacy-v1', 'word-v2')]:
             with self.assertRaises(ValueError): check(*fixture(shape=fixture_shape), shape=checker_shape)
         with self.assertRaises(ValueError): check(*fixture(), shape='unreviewed')
+
+    def test_final_msr_v3_and_missing_compare_rejected(self):
+        result = check(*fixture(shape='final-msr-v3'), shape='final-msr-v3')
+        self.assertEqual(result['abstract_callback_sites'], 10)
+        for old, new in [
+            ('ffdcf42c:\t99fcc000 \tbrald\tr15, r24', 'ffdcf42c:\t80000000 \tor r0,r0,r0'),
+            ('ffdcf440:\t88632000 \txor\tr3, r3, r4', 'ffdcf440:\t80000000 \tor r0,r0,r0'),
+            ('ffdcf434:\tbe23fe70 \tbneid\tr3, -400', 'ffdcf434:\tbe230004 \tbneid r3,4')]:
+            with self.assertRaises(ValueError):
+                check(*fixture((old,new), shape='final-msr-v3'), shape='final-msr-v3')
+        for fixture_shape in ['legacy-v1', 'word-v2']:
+            with self.assertRaises(ValueError): check(*fixture(shape=fixture_shape), shape='final-msr-v3')
 
     def test_consistent_control_mutations_rejected(self):
         mutations = [

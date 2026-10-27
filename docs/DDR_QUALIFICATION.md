@@ -2605,3 +2605,7 @@ allpathOPEN. Evidence pit-word-v2-requalification-offline-2026-10-27.
 2026-10-27 postcallbackIRQmodelgap oldregressionFAIL/new32testsPASS;finalMSR
 read error/change=>IRQ_UNPROVEN. CommittedsamplesNOTsleepreceipt. Oldv2pinsSTALE.
 StartupSP/BSSwordclearconditionalonly. Evidence pit-post-callback-irq-offline-2026-10-27.
+
+2026-10-27 finalMSRv3actualELFsource/layout/flow/storePASS/33tests;localtail
+checknotglobaldominance/liveness. CommittedsamplesNOTsleepreceipt;frame172not
+total. Evidence pit-final-msr-link-offline-2026-10-27.

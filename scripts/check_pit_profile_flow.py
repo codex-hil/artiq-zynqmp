@@ -5,7 +5,7 @@ from package_local_candidate import loads
 
 
 def check(data, symbols_text, disassembly, shape="legacy-v1"):
-    if shape not in ("legacy-v1", "word-v2"):
+    if shape not in ("legacy-v1", "word-v2", "final-msr-v3"):
         raise ValueError("unknown compiler shape")
     machine, entry, segments = loads(data)
     if machine != 189 or entry != 0xffdc0050:
@@ -77,14 +77,15 @@ def check(data, symbols_text, disassembly, shape="legacy-v1"):
             if word & 0xffff07ff != 0x99fc0000:
                 raise ValueError('unexpected indirect call encoding')
             register = (word >> 11) & 31
-            if register not in ((22, 24, 27, 28, 29) if shape == "legacy-v1" else (22, 25, 26, 28, 29)):
+            allowed_registers = {"legacy-v1": (22,24,27,28,29), "word-v2": (22,25,26,28,29), "final-msr-v3": (22,24,26,27,29)}
+            if register not in allowed_registers[shape]:
                 raise ValueError('unreviewed callback register')
             indirect.append(register)
         elif mnemonic == 'brlid':
             if word >> 16 != 0xb9f4:
                 raise ValueError('unexpected direct call encoding')
             calls.append((pc, relative(pc, word)))
-        elif mnemonic in conditional or mnemonic == 'brid':
+        elif mnemonic in conditional or mnemonic in ('brid', 'bri'):
             if word >> 24 not in (0xbc, 0xbe, 0xb8):
                 raise ValueError('unexpected branch encoding')
             target = relative(pc, word)
@@ -99,8 +100,18 @@ def check(data, symbols_text, disassembly, shape="legacy-v1"):
     if sorted(target for _, target in calls) != sorted(expected_calls):
         raise ValueError('wrong direct call targets/counts')
     expected_indirect = [22, 29, 22, 27, 24, 28, 28, 24, 24] if shape == "legacy-v1" else [22, 29, 22, 28, 25, 26, 26, 25, 25]
+    if shape == "final-msr-v3":
+        expected_indirect = [24,22,24,29,26,27,26,27,26,24]
     if sorted(indirect) != sorted(expected_indirect):
         raise ValueError('unexpected abstract callback inventory')
+    if shape == "final-msr-v3":
+        # Exact compiler tail: MSR callback, error test, load+compare, error
+        # test, pass status, branch to adapter; rejected-entry fallback follows.
+        expected_tail = [0x10b30000,0x99fcc000,0x30c10078,0xbe23fe70,
+                         0xe8610078,0xe881007c,0x88632000,0xbe23fe60,
+                         0x10d60000,0xb800fe60,0xb9f4fd58,0x80000000]
+        if [word for _,word,_ in profile[-12:]] != expected_tail:
+            raise ValueError('final MSR call/error/compare terminal block changed')
     if profile[-2][0] != calls[-1][0] or calls[-1][1] != termaddr:
         raise ValueError('entry may fall through instead of terminal')
     return {'status': 'SCOPED_PROFILE_LINKED_FLOW_PASS_NOT_HARDWARE',
