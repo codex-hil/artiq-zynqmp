@@ -1,5 +1,16 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — changed no-AIB guard-context recovery physical PASS
+
+Onelease145.512s;guardPASS thenr0/download/resume7orderedstagesPASS. Fullnormal
+TTL/CoreDMA/analyzer/MonInj/EthernetrestorePASS192.168.2.3. Reserves/leasereleased.
+InitialpreHWstorageblock preserved,owncompletedbuildverifiedrelocation1380entries
+oldpathsymlink;thresholdunchanged. No AIB/Si/SD/flash/OTP/Kasli changes.
+PriorFAIL/rootcauseUNKNOWN unchanged;notAIBcausalproof. Nextofflineclassify
+existingAIBinstance/initializationcoverage;DDRNOT_ADMITTED. Evidence
+`evidence/guard-context-recovery-hardware-2026-10-27`.
+
+
 ## 2026-10-27 — restoration contexts compared; changed no-AIB guard plan
 
 RetainedPASS/FAILsamePMU/PL/MSR/GPO0;extraAIBreads differ,butcausationUNKNOWN.
