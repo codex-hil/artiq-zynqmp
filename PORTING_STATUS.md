@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — GPO0 write-only discovery invalidates mapping inference
+
+UG1087GPO0/DEBUG_REMAP WO:earlierread0NOTROMselectionproof;mappingUNKNOWN.
+Vector-v1deployment/builderblocked,directMicroBlazecompile#error;archivalparser
+rawonly/UNKNOWN. Refusal/transporttestsPASS. Historicalrawbytes/successes/failures
+preserved,incorrectnarrativesannotated. PITpreloadWO,counterRO,controlmixed:
+newplan8PMUlocalcounter-onlyreads,no executableHW yet. NoHW;DDRNOT_ADMITTED.
+Evidence `evidence/pmu-writeonly-correction-2026-10-27`.
+
+
 ## 2026-10-27 — real PMU timer/MMIO contract not ready
 
 ActualBSP MBbusyloop/noTickTimer,compiledlibnoXTime_GetTime. SchedulerPIT1 reload

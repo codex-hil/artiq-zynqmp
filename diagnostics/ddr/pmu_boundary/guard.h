@@ -4,6 +4,9 @@
 /* Included ONLY with explicit ARTIQ_PMU_LAB_GUARD in request.h. */
 #ifdef __MICROBLAZE__
 #include "mb_interface.h"
+#ifdef ARTIQ_PMU_VECTOR_SNAPSHOT
+#error "GPO0 is write-only in UG1087: vector snapshot is not a valid hardware diagnostic"
+#endif
 #define ARTIQ_GUARD_MSR() ((uint32_t)mfmsr())
 #define ARTIQ_GUARD_DISABLE_IRQ() microblaze_disable_interrupts()
 #define ARTIQ_GUARD_SLEEP() mb_sleep()

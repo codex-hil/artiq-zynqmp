@@ -1,0 +1,37 @@
+{
+  "hardware_executed": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "access": "PMU-local only",
+  "registers": [
+    {
+      "name": "PIT0_COUNTER",
+      "address": "0xffd40044",
+      "access": "RO"
+    },
+    {
+      "name": "PIT1_COUNTER",
+      "address": "0xffd40054",
+      "access": "RO"
+    },
+    {
+      "name": "PIT2_COUNTER",
+      "address": "0xffd40064",
+      "access": "RO"
+    },
+    {
+      "name": "PIT3_COUNTER",
+      "address": "0xffd40074",
+      "access": "RO"
+    }
+  ],
+  "rounds": 2,
+  "reads": 8,
+  "writes": 0,
+  "prohibited": [
+    "GPO0",
+    "PIT_PRELOAD",
+    "PIT_CONTROL until field access review"
+  ],
+  "limits": "No hardware code or execute path; motion does not prove clock, ownership or rollover count."
+}

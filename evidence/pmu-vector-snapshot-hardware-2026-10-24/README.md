@@ -1,5 +1,10 @@
 # Physical PMU vector-map snapshot — 2026-10-24
 
+CORRECTION2026-10-27: GPO0 is write-only per UG1087. Readword0 does NOT prove
+ROM/RAM selection. Mapping remains UNKNOWN; raw results preserved. See
+[write-only correction](../pmu-writeonly-correction-2026-10-27/README.md).
+
+
 One shared Genesys lease147.988s, cable210383B7F02DA. Candidate and restoration
 PASS. PMU-local GPO0 read published version1/raw0 in the guard record; four
 coherent nonce-bound external reads agree. This is ONE PMU register sample read

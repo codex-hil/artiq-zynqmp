@@ -1,0 +1,22 @@
+[
+  {
+    "path": "scripts/build_pmu_boundary.py",
+    "sha256": "48215043606f34e6f58dcfddc7180b3915800886d43c473a75b077fdbe73f059"
+  },
+  {
+    "path": "scripts/pmu_guard_candidate.py",
+    "sha256": "536ea60efc991f9d17f8ac89ca0d8e241e96952e0c8721841a70e2db2a957e72"
+  },
+  {
+    "path": "diagnostics/ddr/pmu_boundary/guard.h",
+    "sha256": "4549f61aa6723c1b5b802b330033e17c597599e9f5e4d13eb5d43e89906fbd3a"
+  },
+  {
+    "path": "tests/test_pmu_guard_gate.py",
+    "sha256": "7b3d181537e122834132da9f64acd74731f74ccef011f5de4a4bd913e8c04a85"
+  },
+  {
+    "path": "tests/test_pmu_guard_transport.py",
+    "sha256": "447bbfd55702abed21fe75315ff2f7ddc73730b71f767f2672c7dc8c0803f38a"
+  }
+]

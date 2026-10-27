@@ -1,5 +1,10 @@
 # PMU ROM/RAM vector boundary — 2026-10-24
 
+CORRECTION2026-10-27: GPO0 is write-only per UG1087. Readword0 does NOT prove
+ROM/RAM selection. Mapping remains UNKNOWN; raw results preserved. See
+[write-only correction](../pmu-writeonly-correction-2026-10-27/README.md).
+
+
 Offline exact ELF and installed BSP inspection. No HW access or ROM reads.
 BSP XPAR_PSU_PMU_BASE_VECTORS=4291821568=0xffd00000. UG1085v2.5p117
 maps that address to PMU ROM, PMU-only local bus. Printed p114 describes ROM

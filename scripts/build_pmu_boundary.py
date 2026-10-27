@@ -5,6 +5,7 @@ from pathlib import Path
 from stage_pmu_boundary import stage
 
 def build(source,out,lab_guard=False,vector_snapshot=False):
+ if vector_snapshot:raise ValueError('Vector snapshot disabled: UG1087 GPO0 is write-only; readback has no mapping meaning')
  if type(vector_snapshot) is not bool or (vector_snapshot and not lab_guard):raise ValueError("Vector snapshot requires explicit lab guard")
  if type(lab_guard) is not bool:raise ValueError("Explicit boolean guard selection required")
  stage(source,out);objects=out/'objects';objects.mkdir()

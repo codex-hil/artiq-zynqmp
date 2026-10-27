@@ -2524,3 +2524,12 @@ ActualBSP MBbusyloop/noTickTimer,compiledlibnoXTime_GetTime. SchedulerPIT1 reloa
 status orhungaccesspreemption. ATBcoverage/enableforPMU->AIBnotproven. NoHW/writes.
 PhysicalbackendNOT_READY;nextPITownership+accessrouteinventory/read-onlyplan,
 DDRNOT_ADMITTED. Evidence `evidence/pmu-time-mmio-contract-2026-10-27`.
+
+## 2026-10-27 — GPO0 write-only discovery invalidates mapping inference
+
+UG1087GPO0/DEBUG_REMAP WO:earlierread0NOTROMselectionproof;mappingUNKNOWN.
+Vector-v1deployment/builderblocked,directMicroBlazecompile#error;archivalparser
+rawonly/UNKNOWN. Refusal/transporttestsPASS. Historicalrawbytes/successes/failures
+preserved,incorrectnarrativesannotated. PITpreloadWO,counterRO,controlmixed:
+newplan8PMUlocalcounter-onlyreads,no executableHW yet. NoHW;DDRNOT_ADMITTED.
+Evidence `evidence/pmu-writeonly-correction-2026-10-27`.

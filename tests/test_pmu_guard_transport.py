@@ -61,7 +61,7 @@ proc mrd {args} {
   vector=vector.replace('0x7f 2 0 0 0 0 0','0x7f 2 1 1 0 0 0')
   vr=subprocess.run(['tclsh'],input=vector,text=True,capture_output=True,timeout=5)
   self.assertEqual(vr.returncode,0);self.assertFalse(vr.stderr,vr.stderr)
-  parsed=parse(vr.stdout,nonce,'vector-v1');self.assertTrue(parsed['samples'][0]['vector_snapshot']['ram_vector_remap'])
+  parsed=parse(vr.stdout,nonce,'vector-v1');self.assertEqual(parsed['samples'][0]['vector_snapshot']['mapping'],'UNKNOWN')
   with self.assertRaises(ValueError):parse(vr.stdout.replace('word12 0x00000001','word12 0x00000000',1),nonce,'vector-v1')
   with self.assertRaises(ValueError):parse(vr.stdout,nonce)
   with self.assertRaises(ValueError):parse(r.stdout,nonce,'vector-v1')

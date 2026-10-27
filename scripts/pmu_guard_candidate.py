@@ -30,7 +30,7 @@ def preflight(path,repo):
  profile=m.get('profile','sleep')
  if profile not in ('sleep','vector-v1'):raise ValueError('Unknown guard profile')
  result=check(elf.read_bytes(),symbols,dis)
- if profile=='vector-v1':check_vector_read(dis)
+ if profile=='vector-v1':raise ValueError('Vector-v1 not deployable: GPO0 is write-only in UG1087')
  if result['terminal_pc']!=('0xffdc474c' if profile=='vector-v1' else '0xffdc4738') or result.get('terminal_mode')!='sleep-reentry':raise ValueError('Expected exact sleep guard terminal')
  shift=32 if profile=='vector-v1' else 0
  for name,addr,size in [('artiq_pmu_request',0xffdd7f20+shift,32),('artiq_pmu_guard',0xffdd7f68+shift,64)]:
@@ -57,7 +57,7 @@ def parse(text,nonce,profile="sleep"):
    if w[:6]!=[2,2,nonce&0xffffffff,nonce>>32,1,0] or (w[8:11]!=[0,0x7f,2] or (w[11:]!=[0,0,0,0,0] if profile=='sleep' else w[11]!=1 or w[13:]!=[0,0,0])):raise ValueError('Wrong guard session/state/ACK')
    if not w[6]&2 or w[7]!=(w[6]&~2):raise ValueError('Guard did not positively clear IE preserving other MSR bits')
   results.append(dict(coherent=coherent,values=values))
-  if coherent and profile=='vector-v1':results[-1]['vector_snapshot']={'version':1,'gpo0':hex(w[12]),'ram_vector_remap':bool(w[12]&1),'scope':'Sampled mapping only; no ROM/event exclusion proof'}
- if profile=='vector-v1' and len({r['vector_snapshot']['gpo0'] for r in results if r['coherent']})>1:raise ValueError('Changed GPO0 inside immutable record')
+  if coherent and profile=='vector-v1':results[-1]['vector_snapshot']={'version':1,'raw_word_from_write_only_address':hex(w[12]),'mapping':'UNKNOWN','scope':'UG1087 GPO0 write-only; raw historical read has no state meaning'}
+ if profile=='vector-v1' and len({r['vector_snapshot']['raw_word_from_write_only_address'] for r in results if r['coherent']})>1:raise ValueError('Changed GPO0 inside immutable record')
  if not any(r['coherent'] for r in results):raise ValueError('No guarded record in fixed budget; restore without retry')
  return dict(status='LAB_GUARD_RECORD_PASS_RESTORATION_REQUIRED',hardware_executed=True,nonce=hex(nonce),samples=results,destructive_test_allowed=False,limits='IE-cleared sampled guard record, not continued PC proof/ROM-NMI-error exclusion or exclusive DDR ownership. ACK0 remains.')

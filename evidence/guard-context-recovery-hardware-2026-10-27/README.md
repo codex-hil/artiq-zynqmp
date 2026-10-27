@@ -1,5 +1,10 @@
 # Guard-context recovery with r0 gate physical PASS — 2026-10-27
 
+CORRECTION2026-10-27: GPO0 is write-only per UG1087. Readword0 does NOT prove
+ROM/RAM selection. Mapping remains UNKNOWN; raw results preserved. See
+[write-only correction](../pmu-writeonly-correction-2026-10-27/README.md).
+
+
 ONE physical attempt, shared Genesys lease145.512s. Exact vector-v1 guard and
 no-master PL, no post-guard AIB capture. Guard record PASS. Positive PMU stop,
 r0zero dictionary, baseline firmware download and resume PASS; all seven stage

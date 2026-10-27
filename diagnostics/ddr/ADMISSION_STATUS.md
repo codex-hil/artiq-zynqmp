@@ -1,5 +1,10 @@
 # DDR write-test admission — 2026-10-23
 
+CORRECTION2026-10-27: GPO0 is WRITE-ONLY per UG1087. Historical raw0 is not
+vector-state evidence. ROM/RAM mapping UNKNOWN; vector-v1 deployment disabled.
+Normal runtime recovery evidence unchanged. See [correction](../../evidence/pmu-writeonly-correction-2026-10-27/README.md).
+
+
 CURRENT HEALTH superseding older failure notice: 2026-10-27 normal runtime
 recovered PASS after user-reported reboot. PMU download/TTL/CoreDMA/debug/Ethernet
 PASS192.168.2.3; lease released. Failure history remains; DDR NOT_ADMITTED.
