@@ -2653,3 +2653,7 @@ NoHW/targetchange. Evidence pit-compose-faults-offline-2026-10-28.
 2026-10-28 compositionflowactualELFPASS/51tests/10negativecontrols;12direct
 calls97entrybranches5forwarders. Notdataflow/liveness/physicalproof. NoHW.
 Evidence pit-composition-flow-offline-2026-10-28.
+
+2026-10-28 boundcompositionauditactualELFPASS/53tests/26inputchangesrejected.
+Deploymentalwaysrefused;notcompletevendorbuild/provenance/physicalproof.
+Evidence pit-composition-bound-gate-offline-2026-10-28.

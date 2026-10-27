@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — bound composition audit gate offline
+
+ActualELF16customsources7helpers3artifacts/layout/flow/storeauditPASS;53PITtests
+PASS incl26changedinputs/forgedflags/missingclosure/CLIexecuterefusal. Deployment
+ALWAYSrefused/oldhardwaregaterejects. NOTfullvendorbuildclosure/provenance. NoHW/
+targetchange. Next localfrozeninputsnapshot/relocatedaudit replay. Evidence
+`evidence/pit-composition-bound-gate-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — new composition linked-flow qualification offline
 
 ActualELF12directcalls/97entrybranches/5forwarders/exactterminal/wordstoresPASS.

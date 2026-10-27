@@ -1139,3 +1139,9 @@ tests/test_pit_composition_flow.py
 evidence/pit-composition-flow-offline-2026-10-28/README.md
 evidence/pit-composition-flow-offline-2026-10-28/check.json
 evidence/pit-composition-flow-offline-2026-10-28/inputs.json
+scripts/pit_composition_audit_gate.py
+tests/test_pit_composition_gate.py
+evidence/pit-composition-bound-gate-offline-2026-10-28/README.md
+evidence/pit-composition-bound-gate-offline-2026-10-28/audit.json
+evidence/pit-composition-bound-gate-offline-2026-10-28/manifest.json
+evidence/pit-composition-bound-gate-offline-2026-10-28/refusals.json
