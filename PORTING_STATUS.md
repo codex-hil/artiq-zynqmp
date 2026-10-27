@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — one-shot PIT collection model offline
+
+Eight tests PASS, including 40 failure variants; first error stops collection,
+no partial record/retry/reentrancy. Eight calls do not bound a hung MMIO read.
+PMU-local capture design recorded; no physical backend/HW/runtime change.
+DDR NOT_ADMITTED. Evidence `evidence/pit-collection-contract-offline-2026-10-27`.
+Next separate C collector fault tests and target review offline.
+
 ## 2026-10-27 — counter-only observation schema offline
 
 Strict eight-sample RO counter decoder: four tests PASS, including WO address

@@ -2538,3 +2538,7 @@ Evidence `evidence/pmu-writeonly-correction-2026-10-27`.
 2026-10-27: counter-only offline decoder and four tests PASS. Two ordered
 rounds of PIT0..3_COUNTER report raw changes only; rollover count/time/ownership
 unknown. No physical backend or HW access. See evidence/pit-counter-schema-offline-2026-10-27.
+
+2026-10-27: one-shot PIT callback model eight tests PASS (40 read failures).
+No partial record/retry; call count is not an MMIO wall-time bound. Physical
+backend remains unavailable. See evidence/pit-collection-contract-offline-2026-10-27.

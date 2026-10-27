@@ -44,3 +44,36 @@ def decode(record, expected_nonce):
         'frequency_hz': None, 'ownership': 'UNKNOWN',
         'physical_backend_ready': False, 'destructive_test_allowed': False,
     }
+
+
+class OfflineCollector:
+    """One-shot callback model, NOT a physical MMIO timeout mechanism.
+
+    read(address) must return a u32 or raise. A blocked callback cannot be
+    interrupted here. Eight calls bound count, never wall time. No retries.
+    """
+    def __init__(self):
+        self._consumed = False
+
+    def collect(self, nonce, read):
+        _uint(nonce, 64, True)
+        if not callable(read):
+            raise ValueError('read callback required')
+        if self._consumed:
+            raise ValueError('collector already consumed')
+        self._consumed = True  # Consume before callback, including reentrancy.
+        samples = []
+        for sequence in range(8):
+            address = ADDRESSES[sequence % 4]
+            try:
+                value = _uint(read(address), 32)
+            except Exception:
+                return {'status': 'INCOMPLETE', 'attempted_reads': sequence + 1,
+                        'completed_reads': len(samples), 'record': None,
+                        'physical_backend_ready': False,
+                        'destructive_test_allowed': False}
+            samples.append({'sequence': sequence, 'address': address, 'value': value})
+        return {'status': 'COMPLETE_OFFLINE', 'attempted_reads': 8,
+                'completed_reads': 8,
+                'record': {'version': 1, 'nonce': nonce, 'samples': samples},
+                'physical_backend_ready': False, 'destructive_test_allowed': False}
