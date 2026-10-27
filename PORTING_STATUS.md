@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — C PIT publisher and target link offline
+
+18 PIT tests PASS incl C optimized/sanitized60interruptions/private source copy.
+PMU LTO link/noUND PASS; frame104 excludes callback/caller. Two barrier callback
+calls and final commit order reviewed, no physical barrier/visibility proof.
+Audit ELF MUST NOT DEPLOY; no HW. Next C collector/publisher coupling failure
+tests. Evidence `evidence/pit-c-publisher-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — PIT writer interruption model offline
 
 17 PIT tests PASS, including60 failure cut points and buffered-payload/missing

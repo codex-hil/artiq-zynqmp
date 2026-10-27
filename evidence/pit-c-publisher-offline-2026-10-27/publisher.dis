@@ -1,0 +1,164 @@
+<pit_publish>:
+ffdcf2b4:	3021ff98 	addik	r1, r1, -104
+ffdcf2b8:	10800000 	addk	r4, r0, r0
+ffdcf2bc:	fae10050 	swi	r23, r1, 80
+ffdcf2c0:	f9e10000 	swi	r15, r1, 0
+ffdcf2c4:	fa610048 	swi	r19, r1, 72
+ffdcf2c8:	fac1004c 	swi	r22, r1, 76
+ffdcf2cc:	fb010054 	swi	r24, r1, 84
+ffdcf2d0:	fb210058 	swi	r25, r1, 88
+ffdcf2d4:	fb41005c 	swi	r26, r1, 92
+ffdcf2d8:	fb610060 	swi	r27, r1, 96
+ffdcf2dc:	fb810064 	swi	r28, r1, 100
+ffdcf2e0:	88852400 	pcmpeq	r4, r5, r4
+ffdcf2e4:	be24024c 	bneid	r4, 588		// ffdcf530
+ffdcf2e8:	eae10084 	lwi	r23, r1, 132
+ffdcf2ec:	88862400 	pcmpeq	r4, r6, r4
+ffdcf2f0:	be240240 	bneid	r4, 576		// ffdcf530
+ffdcf2f4:	80674000 	or	r3, r7, r8
+ffdcf2f8:	88632400 	pcmpeq	r3, r3, r4
+ffdcf2fc:	88892400 	pcmpeq	r4, r9, r4
+ffdcf300:	80832000 	or	r4, r3, r4
+ffdcf304:	be24022c 	bneid	r4, 556		// ffdcf530
+ffdcf308:	12c90000 	addk	r22, r9, r0
+ffdcf30c:	888a2400 	pcmpeq	r4, r10, r4
+ffdcf310:	be240220 	bneid	r4, 544		// ffdcf530
+ffdcf314:	130a0000 	addk	r24, r10, r0
+ffdcf318:	ea650000 	lwi	r19, r5, 0
+ffdcf31c:	bc33021c 	bnei	r19, 540		// ffdcf538
+ffdcf320:	e8660000 	lwi	r3, r6, 0
+ffdcf324:	a8630001 	xori	r3, r3, 1
+ffdcf328:	be230184 	bneid	r3, 388		// ffdcf4ac
+ffdcf32c:	10730000 	addk	r3, r19, r0
+ffdcf330:	eb460004 	lwi	r26, r6, 4
+ffdcf334:	a87a0001 	xori	r3, r26, 1
+ffdcf338:	be230174 	bneid	r3, 372		// ffdcf4ac
+ffdcf33c:	10730000 	addk	r3, r19, r0
+ffdcf340:	e8660008 	lwi	r3, r6, 8
+ffdcf344:	88633800 	xor	r3, r3, r7
+ffdcf348:	be230164 	bneid	r3, 356		// ffdcf4ac
+ffdcf34c:	10730000 	addk	r3, r19, r0
+ffdcf350:	e866000c 	lwi	r3, r6, 12
+ffdcf354:	88634000 	xor	r3, r3, r8
+ffdcf358:	be230154 	bneid	r3, 340		// ffdcf4ac
+ffdcf35c:	10730000 	addk	r3, r19, r0
+ffdcf360:	30600001 	addik	r3, r0, 1
+ffdcf364:	f9010024 	swi	r8, r1, 36
+ffdcf368:	f8e10020 	swi	r7, r1, 32
+ffdcf36c:	f861001c 	swi	r3, r1, 28
+ffdcf370:	30860010 	addik	r4, r6, 16
+ffdcf374:	e0c60010 	lbui	r6, r6, 16
+ffdcf378:	10f30000 	addk	r7, r19, r0
+ffdcf37c:	f0c10028 	sbi	r6, r1, 40
+ffdcf380:	e0c40001 	lbui	r6, r4, 1
+ffdcf384:	f0c10029 	sbi	r6, r1, 41
+ffdcf388:	e0c40002 	lbui	r6, r4, 2
+ffdcf38c:	f0c1002a 	sbi	r6, r1, 42
+ffdcf390:	e0c40003 	lbui	r6, r4, 3
+ffdcf394:	f0c1002b 	sbi	r6, r1, 43
+ffdcf398:	e0c40004 	lbui	r6, r4, 4
+ffdcf39c:	f0c1002c 	sbi	r6, r1, 44
+ffdcf3a0:	e0c40005 	lbui	r6, r4, 5
+ffdcf3a4:	f0c1002d 	sbi	r6, r1, 45
+ffdcf3a8:	e0c40006 	lbui	r6, r4, 6
+ffdcf3ac:	f0c1002e 	sbi	r6, r1, 46
+ffdcf3b0:	e0c40007 	lbui	r6, r4, 7
+ffdcf3b4:	f0c1002f 	sbi	r6, r1, 47
+ffdcf3b8:	e0c40008 	lbui	r6, r4, 8
+ffdcf3bc:	f0c10030 	sbi	r6, r1, 48
+ffdcf3c0:	e0c40009 	lbui	r6, r4, 9
+ffdcf3c4:	f0c10031 	sbi	r6, r1, 49
+ffdcf3c8:	e0c4000a 	lbui	r6, r4, 10
+ffdcf3cc:	f0c10032 	sbi	r6, r1, 50
+ffdcf3d0:	e0c4000b 	lbui	r6, r4, 11
+ffdcf3d4:	f0c10033 	sbi	r6, r1, 51
+ffdcf3d8:	e0c4000c 	lbui	r6, r4, 12
+ffdcf3dc:	f0c10034 	sbi	r6, r1, 52
+ffdcf3e0:	e0c4000d 	lbui	r6, r4, 13
+ffdcf3e4:	f0c10035 	sbi	r6, r1, 53
+ffdcf3e8:	e0c4000e 	lbui	r6, r4, 14
+ffdcf3ec:	f0c10036 	sbi	r6, r1, 54
+ffdcf3f0:	e0c4000f 	lbui	r6, r4, 15
+ffdcf3f4:	f0c10037 	sbi	r6, r1, 55
+ffdcf3f8:	e0c40010 	lbui	r6, r4, 16
+ffdcf3fc:	f0c10038 	sbi	r6, r1, 56
+ffdcf400:	e0c40011 	lbui	r6, r4, 17
+ffdcf404:	f0c10039 	sbi	r6, r1, 57
+ffdcf408:	e0c40012 	lbui	r6, r4, 18
+ffdcf40c:	f0c1003a 	sbi	r6, r1, 58
+ffdcf410:	e0c40013 	lbui	r6, r4, 19
+ffdcf414:	f0c1003b 	sbi	r6, r1, 59
+ffdcf418:	e0c40014 	lbui	r6, r4, 20
+ffdcf41c:	f0c1003c 	sbi	r6, r1, 60
+ffdcf420:	e0c40015 	lbui	r6, r4, 21
+ffdcf424:	f0c1003d 	sbi	r6, r1, 61
+ffdcf428:	e0c40016 	lbui	r6, r4, 22
+ffdcf42c:	f0c1003e 	sbi	r6, r1, 62
+ffdcf430:	e0c40017 	lbui	r6, r4, 23
+ffdcf434:	f0c1003f 	sbi	r6, r1, 63
+ffdcf438:	e0c40018 	lbui	r6, r4, 24
+ffdcf43c:	f0c10040 	sbi	r6, r1, 64
+ffdcf440:	e0c40019 	lbui	r6, r4, 25
+ffdcf444:	f0c10041 	sbi	r6, r1, 65
+ffdcf448:	e0c4001a 	lbui	r6, r4, 26
+ffdcf44c:	f0c10042 	sbi	r6, r1, 66
+ffdcf450:	e0c4001b 	lbui	r6, r4, 27
+ffdcf454:	f0c10043 	sbi	r6, r1, 67
+ffdcf458:	e0c4001c 	lbui	r6, r4, 28
+ffdcf45c:	f0c10044 	sbi	r6, r1, 68
+ffdcf460:	e0c4001d 	lbui	r6, r4, 29
+ffdcf464:	f0c10045 	sbi	r6, r1, 69
+ffdcf468:	e0c4001e 	lbui	r6, r4, 30
+ffdcf46c:	f0c10046 	sbi	r6, r1, 70
+ffdcf470:	e084001f 	lbui	r4, r4, 31
+ffdcf474:	10d30000 	addk	r6, r19, r0
+ffdcf478:	f8650000 	swi	r3, r5, 0
+ffdcf47c:	10b70000 	addk	r5, r23, r0
+ffdcf480:	99fc4800 	brald	r15, r9
+ffdcf484:	f0810047 	sbi	r4, r1, 71
+ffdcf488:	be23001c 	bneid	r3, 28		// ffdcf4a4
+ffdcf48c:	10b70000 	addk	r5, r23, r0
+ffdcf490:	3320000c 	addik	r25, r0, 12
+ffdcf494:	99fcc000 	brald	r15, r24
+ffdcf498:	3381001c 	addik	r28, r1, 28
+ffdcf49c:	be030060 	beqid	r3, 96		// ffdcf4fc
+ffdcf4a0:	3339ffff 	addik	r25, r25, -1
+ffdcf4a4:	127a0000 	addk	r19, r26, r0
+ffdcf4a8:	10730000 	addk	r3, r19, r0
+ffdcf4ac:	e9e10000 	lwi	r15, r1, 0
+ffdcf4b0:	ea610048 	lwi	r19, r1, 72
+ffdcf4b4:	eac1004c 	lwi	r22, r1, 76
+ffdcf4b8:	eae10050 	lwi	r23, r1, 80
+ffdcf4bc:	eb010054 	lwi	r24, r1, 84
+ffdcf4c0:	eb210058 	lwi	r25, r1, 88
+ffdcf4c4:	eb41005c 	lwi	r26, r1, 92
+ffdcf4c8:	eb610060 	lwi	r27, r1, 96
+ffdcf4cc:	eb810064 	lwi	r28, r1, 100
+ffdcf4d0:	b60f0008 	rtsd	r15, 8
+ffdcf4d4:	30210068 	addik	r1, r1, 104
+ffdcf4d8:	33730001 	addik	r27, r19, 1
+ffdcf4dc:	66730402 	bslli	r19, r19, 2
+ffdcf4e0:	64db0402 	bslli	r6, r27, 2
+ffdcf4e4:	c8f3e000 	lw	r7, r19, r28
+ffdcf4e8:	99fcb000 	brald	r15, r22
+ffdcf4ec:	10b70000 	addk	r5, r23, r0
+ffdcf4f0:	be23ffb4 	bneid	r3, -76		// ffdcf4a4
+ffdcf4f4:	127b0000 	addk	r19, r27, r0
+ffdcf4f8:	3339ffff 	addik	r25, r25, -1
+ffdcf4fc:	bc39ffdc 	bnei	r25, -36		// ffdcf4d8
+ffdcf500:	99fcc000 	brald	r15, r24
+ffdcf504:	10b70000 	addk	r5, r23, r0
+ffdcf508:	be23ff9c 	bneid	r3, -100		// ffdcf4a4
+ffdcf50c:	10d90000 	addk	r6, r25, r0
+ffdcf510:	10b70000 	addk	r5, r23, r0
+ffdcf514:	30e00001 	addik	r7, r0, 1
+ffdcf518:	99fcb000 	brald	r15, r22
+ffdcf51c:	32600002 	addik	r19, r0, 2
+ffdcf520:	be03ff8c 	beqid	r3, -116		// ffdcf4ac
+ffdcf524:	10730000 	addk	r3, r19, r0
+ffdcf528:	b810ff80 	brid	-128		// ffdcf4a8
+ffdcf52c:	127a0000 	addk	r19, r26, r0
+ffdcf530:	b810ff78 	brid	-136		// ffdcf4a8
+ffdcf534:	12600000 	addk	r19, r0, r0
+ffdcf538:	b810ff70 	brid	-144		// ffdcf4a8
+ffdcf53c:	12640000 	addk	r19, r4, r0

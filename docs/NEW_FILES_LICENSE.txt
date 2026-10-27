@@ -953,3 +953,11 @@ evidence/pit-publication-contract-offline-2026-10-27/inputs.json
 tests/test_pit_publisher.py
 evidence/pit-writer-interruption-offline-2026-10-27/README.md
 evidence/pit-writer-interruption-offline-2026-10-27/inputs.json
+diagnostics/ddr/pit_collect/pit_publish.c
+diagnostics/ddr/pit_collect/pit_publish.h
+tests/fixtures/pit_publish_host.c
+tests/test_pit_publish_c.py
+evidence/pit-c-publisher-offline-2026-10-27/README.md
+evidence/pit-c-publisher-offline-2026-10-27/build.json
+evidence/pit-c-publisher-offline-2026-10-27/inputs.json
+evidence/pit-c-publisher-offline-2026-10-27/publisher.dis

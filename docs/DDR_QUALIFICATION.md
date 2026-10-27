@@ -2558,3 +2558,7 @@ physical publication/backend qualification. Evidence pit-publication-contract-of
 2026-10-27 writer model17PITtestsPASS/60interruptions/buffered barriernegative.
 Failure after commit can leave valid receipt: visibilityUNKNOWN/no retry. No
 physical publication proof. Evidence pit-writer-interruption-offline-2026-10-27.
+
+2026-10-27 C PIT publisher18testsPASS/60interruptions; PMULTOlinkPASS frame104
+not total stack. Callback ordering only, no physical visibility/backend. Audit
+ELF MUST NOT DEPLOY. Evidence pit-c-publisher-offline-2026-10-27.
