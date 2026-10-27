@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "profile": "pit-counter-before-sleep-audit-v1",
+  "deployable": false,
+  "hardware_executed": false,
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_capture.c": "3a20d941ac3b72de4c0e6c3fce57fa0df4447b1ab9f22ff9d1f007de14e0426b",
+    "diagnostics/ddr/pit_collect/pit_capture.h": "968d5be94e63a6655c678415c702c24dffa794ce00bee5b4ce44d114b65621f7",
+    "diagnostics/ddr/pit_collect/pit_collect.c": "7501581cabd0c0f3ca3bd61be99236cbac71fd9d98c8b70535fdafbe997d805b",
+    "diagnostics/ddr/pit_collect/pit_collect.h": "4aba5304a4b3bbc7a48868e507e9807a6f2fcc0803696e45c9df96981420050d",
+    "diagnostics/ddr/pit_collect/pit_profile_audit.c": "b3938b2d62e768e7bfd6576ae9dc16b6583de090f7194a6a3ef5cda91ffda68e",
+    "diagnostics/ddr/pit_collect/pit_publish.c": "fd49d864e20deb091ea12177b4bc1b3af04a6ba9466e008549f133f456f6313e",
+    "diagnostics/ddr/pit_collect/pit_publish.h": "1d1b8e9e0ec830ad2ecb850eb1131cd9881308726254e08747ac4c5310f683ef",
+    "diagnostics/ddr/pit_collect/pit_sleep_model.c": "f750bc8c620a0396dadebe07cd4deb321057985e2f2923757dc6b98bfa428646",
+    "diagnostics/ddr/pit_collect/pit_sleep_model.h": "7df2586e9177a49041a4ecf46e66b0ec210d5ec7f824d28e8136e1a9d91db43e",
+    "diagnostics/ddr/pit_collect/pit_terminal_audit.c": "28fff8703fbf090ae9de6dd28147085d4b74dd665c1dfe28584f7ec425be68d9"
+  },
+  "script_sha256": {
+    "scripts/build_pmu_boundary.py": "48215043606f34e6f58dcfddc7180b3915800886d43c473a75b077fdbe73f059",
+    "scripts/check_pit_profile_flow.py": "8a6c2fbefa94ee28f733b5010b8a555d238520391a3df60391e8bb2b343a228a",
+    "scripts/check_pmu_boundary_image.py": "f142e614da217212b9c278b9782ead83e299db80e0fe2e5fe71dfda5aec46f69",
+    "scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "scripts/pit_audit_gate.py": "761058c900af3e31cff9b46db36830b0b5dd98ab6fc6a8524f9faf04a33c5fe7",
+    "scripts/stage_pmu_boundary.py": "7f5c7d356bb185531fcc4a52b5e641c66db21308c9bb8fdb5c6ad4fadc33536a"
+  },
+  "artifacts": {
+    "elf": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-pit-profile-audit-20261027/audit-only.elf",
+      "sha256": "e7788b03800781674301ea2a8d043b7f6f33874213ab4eef60e8b572873ab6f7"
+    },
+    "symbols": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-pit-profile-audit-20261027/symbols.txt",
+      "sha256": "6c108aa416d680304eb6bb4c25d4981943fcd64df70bf7f1951cb9a000646465"
+    },
+    "disassembly": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-pit-profile-audit-20261027/disassembly.txt",
+      "sha256": "0b7d864b7adf1712bc9ae1b106975df621d623df35dd7bda08b1091c57188b32"
+    }
+  }
+}

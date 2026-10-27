@@ -2589,3 +2589,7 @@ pmu-fresh-pit-audit-link-offline-2026-10-27.
 
 2026-10-27 scopedfreshPMUprofileflowcheckPASS/26PITtests/7mutationsrejected.
 Notliveness/callbackidentity/physicalproof. Evidence pit-profile-flow-controls-offline-2026-10-27.
+
+2026-10-27 actualsource/artifactgateofflinePASS/28PITtests;19inputchanges and
+forgeddeploymentrejected. Oldguardpreflightrejectsnewmanifest. NoHWadmission.
+Evidence pit-source-artifact-gate-offline-2026-10-27.

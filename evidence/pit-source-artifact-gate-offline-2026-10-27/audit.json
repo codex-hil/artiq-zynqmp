@@ -1,0 +1,34 @@
+{
+  "status": "PINNED_OFFLINE_AUDIT_PASS_NOT_DEPLOYMENT",
+  "hardware_executed": false,
+  "deployable": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd80c0",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddc69c",
+      "end_exclusive": "0xffddd6a0"
+    },
+    "bytes_after_stack_before_extension_table": 8256,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "flow": {
+    "status": "SCOPED_PROFILE_LINKED_FLOW_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "deployable": false,
+    "physical_backend_ready": false,
+    "destructive_test_allowed": false,
+    "internal_branches": 24,
+    "abstract_callback_sites": 9,
+    "limits": "Static branch/call inventory only; callback identity/dataflow, liveness, MMIO, IRQ and visibility remain unproven"
+  },
+  "limits": "Content consistency only, not trusted provenance, reproducible build or permission to access hardware"
+}

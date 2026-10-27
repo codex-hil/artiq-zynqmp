@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — source/artifact-bound PIT offline audit gate
+
+ActualfreshELF/layout/flow+10source/6helperpinsPASS;28PITtestsPASS incl19changed
+inputcontrols. Unconditionaldeploymentrefusal;oldguardpreflightrejectsschema.
+NoexecuteCLI/newphysicalhook/backend/mailbox/admission/HW. Hashesconsistency
+only,nottrustedprovenance. Next image-specific adapter feasibility contract.
+Evidence `evidence/pit-source-artifact-gate-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — linked PIT profile flow controls offline
 
 ActualELFscopedflowPASS:24internalbranches/directtargetinventory/9abstractcalls,
