@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — strict AIB callback protocol C offline PASS
+
+NoMMIObackend/firmwareintegration. RPUmasksubsetonly,onepreservingrequestwrite,
+fullACK/unchangedREQ-TYPE,finitepoll/deadline,callbackerrors/timeouts noautorelease.
+ActualCoptimized+ASan/UBSanfixturesPASS;5PythonmodeltestsPASS. ResultneverDDRpermit;
+callbackbounds/competingwriters/sessioncoverage unresolved. NoHW. NextMicroBlaze
+objectcompile/stack-call audit+sessionbinding. Evidence
+`evidence/aib-strict-c-offline-2026-10-27`.
+
+
 ## 2026-10-27 — retained AIB bits map to USB slave interfaces offline
 
 REQ/ACK00c00000=USB0S/USB1S instances7/8 LPD->USB,notUSB-DMA-toDDR isolation.

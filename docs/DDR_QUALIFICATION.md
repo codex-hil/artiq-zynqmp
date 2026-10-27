@@ -2456,3 +2456,12 @@ PMUSBtransitionpathfound,actualinitializerUNKNOWN. AMDspecialRPUreset permits
 continue-after-timeout;notgeneralvendorbug,stillnotstrictdrainreceipt. NoHW.
 NextisolatedCstrictRPUMACK/hold/mockbackend;DDRNOT_ADMITTED. Evidence
 `evidence/aib-directed-map-2026-10-27`.
+
+## 2026-10-27 — strict AIB callback protocol C offline PASS
+
+NoMMIObackend/firmwareintegration. RPUmasksubsetonly,onepreservingrequestwrite,
+fullACK/unchangedREQ-TYPE,finitepoll/deadline,callbackerrors/timeouts noautorelease.
+ActualCoptimized+ASan/UBSanfixturesPASS;5PythonmodeltestsPASS. ResultneverDDRpermit;
+callbackbounds/competingwriters/sessioncoverage unresolved. NoHW. NextMicroBlaze
+objectcompile/stack-call audit+sessionbinding. Evidence
+`evidence/aib-strict-c-offline-2026-10-27`.

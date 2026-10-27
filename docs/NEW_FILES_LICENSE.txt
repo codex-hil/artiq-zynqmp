@@ -905,3 +905,8 @@ tests/test_pmu_restore_qualification.py — LGPL-3.0-or-later
 
 scripts/decode_aib_instances.py — LGPL-3.0-or-later
 tests/test_aib_instances.py — LGPL-3.0-or-later
+
+diagnostics/ddr/aib_strict/aib_strict.h — LGPL-3.0-or-later
+diagnostics/ddr/aib_strict/aib_strict.c — LGPL-3.0-or-later
+tests/fixtures/aib_strict_host.c — LGPL-3.0-or-later
+tests/test_aib_strict_c.py — LGPL-3.0-or-later
