@@ -5,7 +5,7 @@ enum pit_publish_status pit_publish(struct pit_attempt *attempt,
                                    uint64_t nonce, pit_write_fn write,
                                    pit_barrier_fn barrier, void *ctx)
 {
-    uint32_t words[11];
+    volatile uint32_t words[11];
     unsigned i;
     if (!attempt || !source || !nonce || !write || !barrier ||
         attempt->consumed || source->complete != 1 || source->version != 1 ||
@@ -16,7 +16,7 @@ enum pit_publish_status pit_publish(struct pit_attempt *attempt,
     words[1] = (uint32_t)nonce;
     words[2] = (uint32_t)(nonce >> 32);
     for (i = 0; i < 8; ++i)
-        words[i + 3] = source->values[i];
+        words[i + 3] = ((const volatile uint32_t *)source->values)[i];
     attempt->consumed = 1;
     if (write(ctx, 0, 0) || barrier(ctx))
         return PIT_VISIBILITY_UNKNOWN;

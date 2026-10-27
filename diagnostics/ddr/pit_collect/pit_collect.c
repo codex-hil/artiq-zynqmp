@@ -9,11 +9,14 @@ _Static_assert(offsetof(struct pit_record, values) == 16, "samples offset");
 enum pit_status pit_collect(struct pit_attempt *attempt, struct pit_record *out,
                             uint64_t nonce, pit_read_fn read, void *ctx)
 {
-    uint32_t staged[8] = {0};
+    uint32_t staged[8];
     unsigned i;
     if (!attempt || !out || !nonce || !read || attempt->consumed || out->complete)
         return PIT_REJECTED;
     attempt->consumed = 1;
+    /* PMU RAM requires word writes, including stack temporaries. */
+    for (i = 0; i < 8; ++i)
+        ((volatile uint32_t *)staged)[i] = 0;
     /* Caller must not expose this record as a receipt until successful return. */
     for (i = 0; i < 8; ++i) {
         if (read(ctx, UINT32_C(0xffd40044) + (i % 4) * 16, &staged[i]))
@@ -22,7 +25,7 @@ enum pit_status pit_collect(struct pit_attempt *attempt, struct pit_record *out,
     out->version = 1;
     out->nonce = nonce;
     for (i = 0; i < 8; ++i)
-        out->values[i] = staged[i];
+        ((volatile uint32_t *)out->values)[i] = staged[i];
     out->complete = 1;
     return PIT_COMPLETE_OFFLINE;
 }
