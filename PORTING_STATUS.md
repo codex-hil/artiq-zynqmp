@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — fixed-address backend policy adapter offline PASS
+
+REQ/TYPE/ACKreads mappedfixed;soleREQwrite preservesinitialUSBbits/selectedmask,
+rechecksREQ-TYPE,oneattempt/no clear/retry. Actualadapter+session+protocoloptimized/
+ASanUBSanfixturesPASS;session/corefixturesPASS. No physicalMMIO/backend/HW.
+OCM/debug/restorationaccessunderisolation notproven;sourcehold/concurrentwriters
+open. NextMicroBlazelink/callbacktable+boundedtransportaudit;DDRNOT_ADMITTED.
+Evidence `evidence/aib-backend-policy-offline-2026-10-27`.
+
+
 ## 2026-10-27 — one-shot C session + isolated PMU LTO link PASS offline
 
 Boot/nonce/sequencebind,consume-beforecallback,no retry/rearm;actualhostoptimized+

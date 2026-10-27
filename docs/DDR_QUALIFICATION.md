@@ -2482,3 +2482,12 @@ backend/deployment. Finalframesexecute172/snapshot48,notfullbound. Tokensnotphys
 bootproof,concurrentwritersunexcluded. NoHW. Nextboundedbackend/address/callback
 contract+core/restorationaccessreview;DDRNOT_ADMITTED. Evidence
 `evidence/aib-session-link-offline-2026-10-27`.
+
+## 2026-10-27 — fixed-address backend policy adapter offline PASS
+
+REQ/TYPE/ACKreads mappedfixed;soleREQwrite preservesinitialUSBbits/selectedmask,
+rechecksREQ-TYPE,oneattempt/no clear/retry. Actualadapter+session+protocoloptimized/
+ASanUBSanfixturesPASS;session/corefixturesPASS. No physicalMMIO/backend/HW.
+OCM/debug/restorationaccessunderisolation notproven;sourcehold/concurrentwriters
+open. NextMicroBlazelink/callbacktable+boundedtransportaudit;DDRNOT_ADMITTED.
+Evidence `evidence/aib-backend-policy-offline-2026-10-27`.
