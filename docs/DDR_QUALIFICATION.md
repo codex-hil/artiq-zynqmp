@@ -2542,3 +2542,7 @@ unknown. No physical backend or HW access. See evidence/pit-counter-schema-offli
 2026-10-27: one-shot PIT callback model eight tests PASS (40 read failures).
 No partial record/retry; call count is not an MMIO wall-time bound. Physical
 backend remains unavailable. See evidence/pit-collection-contract-offline-2026-10-27.
+
+2026-10-27: C PIT callback collector optimized+sanitized PASS; MicroBlaze object
+548 text/88 frame/unresolved memset, not full link/stack proof. No HW adapter
+or DDR admission. Evidence pit-c-collector-offline-2026-10-27.

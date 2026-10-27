@@ -933,3 +933,11 @@ evidence/pit-counter-schema-offline-2026-10-27/inputs.json
 tests/test_pit_counter_collection.py
 evidence/pit-collection-contract-offline-2026-10-27/README.md
 evidence/pit-collection-contract-offline-2026-10-27/inputs.json
+diagnostics/ddr/pit_collect/pit_collect.c
+diagnostics/ddr/pit_collect/pit_collect.h
+tests/fixtures/pit_collect_host.c
+tests/test_pit_collect_c.py
+evidence/pit-c-collector-offline-2026-10-27/README.md
+evidence/pit-c-collector-offline-2026-10-27/inputs.json
+evidence/pit-c-collector-offline-2026-10-27/pit_collect.dis
+evidence/pit-c-collector-offline-2026-10-27/pit_collect.su

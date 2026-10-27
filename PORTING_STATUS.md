@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — C PIT collector offline
+
+Actual C optimized+ASan/UBSan PASS; all eight failure positions preserve output,
+no retry/reentrancy. Nine PIT tests PASS total. MicroBlaze object text548,frame88
+(excludes callbacks/libraries), unresolved memset; no final link/target execution.
+No HW/backend/deployment; DDR NOT_ADMITTED. Next final target link/ABI/publication
+review. Evidence `evidence/pit-c-collector-offline-2026-10-27`.
+
 ## 2026-10-27 — one-shot PIT collection model offline
 
 Eight tests PASS, including 40 failure variants; first error stops collection,
