@@ -2508,3 +2508,11 @@ errorcodesmappedIOuncertain,notfalsecancellation. FourCoptimized/ASanUBSan suite
 PASSincllatecompletion/no rollback. NoHW. Oldtargetauditstale;nextrebuildABI/
 stack/linkbeforetransport/deployment. DDRNOT_ADMITTED. Evidence
 `evidence/aib-deadline-fix-offline-2026-10-27`.
+
+## 2026-10-27 — changed deadline ABI MicroBlaze/LTO audit PASS offline
+
+Actualrecipe auditlink/localfootprintPASS. ElevennativeABIwords bindstart r7/r8,
+timeout r9/r10/calleesavedpairs. Hostdeadline optimized+ASanUBSan18scenario variants
+PASSinclhigh64bitbase/>32bittimeout. Finalwriteframe76(previous44);internalread/
+writepaths248excludeexternalcost. NoHW/MMIO/deployment. Nexttimer/transportbounded
+faultcontract;DDRNOT_ADMITTED. Evidence `evidence/aib-deadline-target-audit-2026-10-27`.

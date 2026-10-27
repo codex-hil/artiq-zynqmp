@@ -1,0 +1,36 @@
+{
+  "status": "EXACT_NATIVE_ABI_INVENTORY_PASS_NOT_EXECUTED",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "elf_sha256": "a4bc47859ddbfa7e01891341c78900371b3d60d1874842da96d8f0b5757920b6",
+  "checked_words": {
+    "0xffdcfa84": "0xe87c0008",
+    "0xffdcfa8c": "0xe9210064",
+    "0xffdcfa90": "0x115d0000",
+    "0xffdcfa94": "0x10e40000",
+    "0xffdcfa98": "0x10d30000",
+    "0xffdcfa9c": "0x99fc1800",
+    "0xffdcfaa0": "0xe8bc0000",
+    "0xffdcbfec": "0x12e90000",
+    "0xffdcbff4": "0x12ca0000",
+    "0xffdcc010": "0x13070000",
+    "0xffdcc018": "0x13280000"
+  },
+  "start_pair": [
+    "r7",
+    "r8"
+  ],
+  "timeout_pair": [
+    "r9",
+    "r10"
+  ],
+  "callee_preserved_start": [
+    "r24",
+    "r25"
+  ],
+  "callee_preserved_timeout": [
+    "r23",
+    "r22"
+  ],
+  "limits": "Exact call-site/register inventory plus host high-word controls; not target execution or independent full dataflow proof."
+}
