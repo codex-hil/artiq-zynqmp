@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — new composition linked-flow qualification offline
+
+ActualELF12directcalls/97entrybranches/5forwarders/exactterminal/wordstoresPASS.
+51PITtestsPASS incl10ELF/disassembly/symbolnegativecontrols. Staticinventory/range
+only,notliveness/dataflow/callbackidentity/physicalproof. NoHW/targetchange.
+Next source/artifact-bound readonlycompositionauditgate/deploymentrefusal.
+Evidence `evidence/pit-composition-flow-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — composition fault/reentry qualification offline
 
 49PITtestsPASS;actualCoptimized/sanitized54receiptinterruptions+2controls,

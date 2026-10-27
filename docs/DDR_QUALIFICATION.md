@@ -2649,3 +2649,7 @@ deployment. Evidence pit-forwarded-status-target-offline-2026-10-27.
 2026-10-28 composition49PITtestsPASS/54publicationinterruptions/3metadataerrors
 zero receiptwrites+barriers/7entrypreservationcontrols/nestedreentryrejected.
 NoHW/targetchange. Evidence pit-compose-faults-offline-2026-10-28.
+
+2026-10-28 compositionflowactualELFPASS/51tests/10negativecontrols;12direct
+calls97entrybranches5forwarders. Notdataflow/liveness/physicalproof. NoHW.
+Evidence pit-composition-flow-offline-2026-10-28.
