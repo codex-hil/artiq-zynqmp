@@ -2554,3 +2554,7 @@ Frame88 is not total stack. Evidence pit-final-link-offline-2026-10-27.
 2026-10-27 PIT receipt contract 13 tests PASS/layout assertions host+MB PASS.
 Double snapshot excludes observed changes only, not ABA/stale visibility. No
 physical publication/backend qualification. Evidence pit-publication-contract-offline-2026-10-27.
+
+2026-10-27 writer model17PITtestsPASS/60interruptions/buffered barriernegative.
+Failure after commit can leave valid receipt: visibilityUNKNOWN/no retry. No
+physical publication proof. Evidence pit-writer-interruption-offline-2026-10-27.

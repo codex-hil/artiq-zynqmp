@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — PIT writer interruption model offline
+
+17 PIT tests PASS, including60 failure cut points and buffered-payload/missing
+barrier negative. Invalidate/barrier/payload/barrier/commit model; failure gives
+VISIBILITY_UNKNOWN, never cancellation or retry. No physical barrier/backend/HW.
+Next C publisher fake-callback tests/target order review; DDR NOT_ADMITTED.
+Evidence `evidence/pit-writer-interruption-offline-2026-10-27`.
+
 ## 2026-10-27 — PIT publication receipt contract offline
 
 13 PIT tests PASS; strict48-byte/two-snapshot decoder rejects all48 single-byte
