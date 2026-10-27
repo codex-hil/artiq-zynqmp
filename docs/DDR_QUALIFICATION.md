@@ -2419,3 +2419,12 @@ One r0-gatedPMUbootstrap thennormalruntime/tests;7orderedmarkers,no retry/guard/
 AIBwrites. Threewrapper+fourTcltestsPASS;offlineplanv2PASS. Nextboundednormal-only
 physicalqualification,notguard-stateproof. Baselineunchanged;DDRNOT_ADMITTED.
 Evidence `evidence/pmu-restore-qualification-plan-2026-10-27`.
+
+## 2026-10-27 — normal-only r0-gated PMU restore physical PASS
+
+OneGenesyslease80.475s;stop/halt/r0zero/download/resume7orderedmarkersPASS.
+Fullnormalreset/boot/TTL/CoreDMA/analyzer/MonInj/EthernetPASS192.168.2.3.
+Realreservesreleasedbeforeload/leasereleased. No guard/AIBwrite/Si/SD/flash/OTP/
+Kasli. NormalcontextONLY,notguard-stateproof;oldFAIL/rootcauseUNKNOWN unchanged.
+Nextofflineguardrecoveryobligationreview;DDRNOT_ADMITTED. Evidence
+`evidence/pmu-restore-normal-hardware-2026-10-27`.

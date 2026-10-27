@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "hardware_executed": true,
+  "scope": "normal PMU bootstrap then normal runtime only",
+  "stages": {
+    "pmu-bootstrap": 0,
+    "load": 0,
+    "debug": 0,
+    "ethernet": 0
+  },
+  "reserve_released_before_normal_load": true,
+  "ip": "192.168.2.3",
+  "normal_runtime_verified": true,
+  "elapsed_seconds": 80.475
+}
