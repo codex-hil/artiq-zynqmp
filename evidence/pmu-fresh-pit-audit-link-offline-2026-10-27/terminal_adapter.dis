@@ -1,0 +1,5 @@
+<terminal_adapter>:
+ffdcf1b4:	3021fffc 	addik	r1, r1, -4
+ffdcf1b8:	f9e10000 	swi	r15, r1, 0
+ffdcf1bc:	b9f4ffec 	brlid	r15, -20
+ffdcf1c0:	80000000 	or	r0, r0, r0

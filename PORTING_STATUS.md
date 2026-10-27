@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — fresh complete PMU audit link without vector guard
+
+Freshvendorobjects+newPITcomponents LTOlink/footprint/noUND PASS;oldguard
+symbolsabsent,newterminal exact3opcodes. Entryframe164/adapter4 exclude callback/
+caller/exceptions. Retained-only/no runtime hook/no physical callbacks/mailbox.
+MUST NOT DEPLOY/noHW. Next machine linked-flow mutation checks.
+Evidence `evidence/pmu-fresh-pit-audit-link-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — fresh standalone sleep terminal audit offline
 
 24PITtestsPASS;actual new ELF exact mbar1/sleep/backbranch checkerPASS/frame0/

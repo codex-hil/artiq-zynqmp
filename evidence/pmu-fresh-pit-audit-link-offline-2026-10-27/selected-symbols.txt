@@ -1,0 +1,19 @@
+0004d6da W pit_collect.c.d5d5460a
+0004d898 W pit_publish.c.02470311
+0004da87 W pit_capture.c.49b2d2f7
+0004dd6f W pit_sleep_model.c.c858be00
+0004e05d W pit_terminal_audit.c.934d52fd
+0004e084 W pit_profile_audit.c.7a50e375
+ffdcf1a8 0000000c T pit_terminal_audit
+ffdcf1b4 00000010 t terminal_adapter
+ffdcf1c4 00000250 T pit_profile_entry_audit
+ffdd7fa0 B __bss_start
+ffdd8074 00000020 b artiq_pmu_echo
+ffdd8094 00000008 b artiq_pmu_last_sequence
+ffdd809c 00000004 b artiq_pmu_last_generation
+ffdd80a0 00000020 b artiq_pmu_request
+ffdd80c0 00000020 b artiq_pmu_boundary
+ffddbd80 B __bss_end
+ffddc69c B _stack_end
+ffddd6a0 B __stack
+ffddd6a0 B _stack

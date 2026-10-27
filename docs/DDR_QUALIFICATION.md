@@ -2582,3 +2582,7 @@ deployment. Evidence pit-counter-sleep-design-offline-2026-10-27.
 2026-10-27 fresh standalone terminal24PITtestsPASS/exact3opcode ELFcheckPASS.
 NoGPO0/historicalguard;entryZERO/MUSTNOTDEPLOY. NotfullPMU/runtimevisibilityproof.
 Evidence pit-terminal-flow-offline-2026-10-27.
+
+2026-10-27 freshcompletePMUauditlink/layoutPASS/nohistoricalguard;terminal3opcodes.
+Entryretainedonly/nohook/backend/mailbox;MUSTNOTDEPLOY. Evidence
+pmu-fresh-pit-audit-link-offline-2026-10-27.

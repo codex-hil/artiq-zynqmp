@@ -1,0 +1,29 @@
+{
+  "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "entry": "0xffdc0050",
+  "telemetry": {
+    "start": "0xffdd80c0",
+    "bytes": 32
+  },
+  "stack": {
+    "start": "0xffddc69c",
+    "end_exclusive": "0xffddd6a0"
+  },
+  "bytes_after_stack_before_extension_table": 8256,
+  "destructive_test_allowed": false,
+  "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof.",
+  "deployable": false,
+  "physical_backend_ready": false,
+  "elf_sha256": "e7788b03800781674301ea2a8d043b7f6f33874213ab4eef60e8b572873ab6f7",
+  "fresh_vendor_lab_guard_enabled": false,
+  "fresh_vendor_vector_snapshot_enabled": false,
+  "historical_guard_symbols_present": false,
+  "terminal_start": "0xffdcf1a8",
+  "terminal_bytes_hex": "040022b8040002bafcff00b8",
+  "profile_frame_bytes": 164,
+  "adapter_frame_bytes": 4,
+  "total_stack_bound": null,
+  "runtime_hook_present": false,
+  "physical_callbacks_present": false
+}
