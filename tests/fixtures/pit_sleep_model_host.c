@@ -13,7 +13,8 @@ static int msr(void *ctx, uint32_t *out)
 {
     struct fake *f = ctx;
     nested(f);
-    assert(!f->reads && !f->terminal);
+    assert(!f->terminal);
+    if (f->msrs < 2) assert(!f->reads);
     *out = f->msrs++ ? UINT32_C(0x80000104) : UINT32_C(0x80000106);
     if (f->msrs == 2) {
         assert(f->disabled == 1);

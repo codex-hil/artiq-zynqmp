@@ -1,0 +1,20 @@
+{
+  "old_exit_code": -6,
+  "old_stderr": "before-regression: /home/codex-hil/.local/state/artiq-builds/pit-terminal-irq-review-20261027/regression.c:45: main: Assertion `result == (mode ? PIT_SLEEP_IRQ_UNPROVEN : PIT_SLEEP_CAPTURE_COMPLETE)' failed.\n",
+  "old_command": [
+    "gcc",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-O2",
+    "-I/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_collect.c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_publish.c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_capture.c",
+    "/home/codex-hil/.local/state/artiq-builds/pit-terminal-irq-review-20261027/before-model.c",
+    "/home/codex-hil/.local/state/artiq-builds/pit-terminal-irq-review-20261027/regression.c",
+    "-o",
+    "/home/codex-hil/.local/state/artiq-builds/pit-terminal-irq-review-20261027/before-regression"
+  ]
+}

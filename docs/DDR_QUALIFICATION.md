@@ -2601,3 +2601,7 @@ flowshapeSTALE;independenthungreadrecoveryUNQUALIFIED. Evidence pit-pmu-word-wri
 2026-10-27 word-v2actualELFflow/store/layout/sourcegatePASS/31tests;conditional
 SPalign/frame164/record28/len48 staticreviewonly. Recovery/visibility/callback
 allpathOPEN. Evidence pit-word-v2-requalification-offline-2026-10-27.
+
+2026-10-27 postcallbackIRQmodelgap oldregressionFAIL/new32testsPASS;finalMSR
+read error/change=>IRQ_UNPROVEN. CommittedsamplesNOTsleepreceipt. Oldv2pinsSTALE.
+StartupSP/BSSwordclearconditionalonly. Evidence pit-post-callback-irq-offline-2026-10-27.

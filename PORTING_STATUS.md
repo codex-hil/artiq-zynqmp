@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — post-callback MSR gap fixed in offline model
+
+OldCregressionFAILreproduced:callbackcanchangeIRQafterinitialcheck. Newfinal
+MSRread/exactmatchorIRQ_UNPROVEN;32PITtestsPASS incloptimized/sanitized4controls.
+CommittedsamplesNOTterminal/sleepreceipt. MBmodelframe88NOTtotal;oldv2link/pins
+STALE. StartupSP/BSSwordclearreviewconditional,no liveentryproof. NoHW.
+Next changedtargetlink/finalMSRdominance+separateterminalreceipt tests.
+Evidence `evidence/pit-post-callback-irq-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — word-v2 profile requalification offline
 
 31PITtestsPASS/crossshaperejected. ActualnewELF27branches/9abstractcalls/one

@@ -1,0 +1,28 @@
+<XPfw_Init>:
+ffdc0050:	b000ffdd 	imm	-35
+ffdc0054:	3020d6a0 	addik	r1, r0, -10592
+ffdc0058:	b000ffdd 	imm	-35
+ffdc005c:	31a07f98 	addik	r13, r0, 32664
+ffdc0060:	b000ffdd 	imm	-35
+ffdc0064:	30407f98 	addik	r2, r0, 32664
+ffdc0068:	b000ffdd 	imm	-35
+ffdc006c:	3160d6a0 	addik	r11, r0, -10592
+ffdc0070:	940bc802 	mts	rshr, r11
+ffdc0074:	b000ffdd 	imm	-35
+ffdc0078:	3160c69c 	addik	r11, r0, -14692
+ffdc007c:	940bc800 	mts	rslr, r11
+ffdc0080:	b000ffdd 	imm	-35
+ffdc0084:	20c07fa0 	addi	r6, r0, 32672
+ffdc0088:	b000ffdd 	imm	-35
+ffdc008c:	20e0bd80 	addi	r7, r0, -17024
+ffdc0090:	06463800 	rsub	r18, r6, r7
+ffdc0094:	bc720014 	blei	r18, 20		// ffdc00a8
+ffdc0098:	f8060000 	swi	r0, r6, 0
+ffdc009c:	20c60004 	addi	r6, r6, 4
+ffdc00a0:	06463800 	rsub	r18, r6, r7
+ffdc00a4:	bc92fff4 	bgti	r18, -12		// ffdc0098
+ffdc00a8:	b0000000 	imm	0
+ffdc00ac:	b9f4892c 	brlid	r15, -30420
+ffdc00b0:	80000000 	or	r0, r0, r0
+ffdc00b4:	b8000000 	bri	0		// ffdc00b4
+ffdc00b8:	80000000 	or	r0, r0, r0
