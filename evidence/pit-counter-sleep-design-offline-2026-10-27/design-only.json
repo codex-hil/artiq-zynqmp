@@ -1,0 +1,27 @@
+{
+  "profile": "pit-counter-before-sleep-model-v1",
+  "hardware_executed": false,
+  "deployable": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "physical_entry": null,
+  "request_address": null,
+  "record_address": null,
+  "terminal_address": null,
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_sleep_model.c": "f750bc8c620a0396dadebe07cd4deb321057985e2f2923757dc6b98bfa428646",
+    "diagnostics/ddr/pit_collect/pit_sleep_model.h": "7df2586e9177a49041a4ecf46e66b0ec210d5ec7f824d28e8136e1a9d91db43e",
+    "tests/fixtures/pit_sleep_model_host.c": "7e8aa0e5488eb693f5f6e1d09e598b461e496712e69181cdd5a493826b057241",
+    "tests/test_pit_sleep_model_c.py": "eb2490a4a0fd85bfa131328c8168404118356256d7883b7771283e8ddc2a8617"
+  },
+  "required_order": [
+    "MSR before",
+    "disable IRQ",
+    "MSR after equals before & ~2",
+    "eight RO counter reads",
+    "invalidate/barrier/payload/barrier/commit",
+    "nonreturning terminal sleep (not implemented)"
+  ],
+  "incomplete_read_allows_publication": false,
+  "physical_symbol_binding": "UNRESOLVED: extract from newly built image; old helper offsets forbidden"
+}

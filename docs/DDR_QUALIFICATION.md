@@ -2574,3 +2574,7 @@ NOT_READY; evidence pmu-bsp-access-review-offline-2026-10-27.
 2026-10-27 RAMslotprobe layoutPASS/21PITtests;oldfixedhelperaddressesINVALID
 for new link. AP0consumer needs PMUsleep/capture-before-sleep lifecycle, not
 yet integrated/qualified. Evidence pit-slot-ownership-offline-2026-10-27.
+
+2026-10-27 counter-before-sleep Cmodel22PITtestsPASS;terminalcallbackRETURNING
+model only,not PMUsleep. Source-pinned design has null physical addresses/no
+deployment. Evidence pit-counter-sleep-design-offline-2026-10-27.

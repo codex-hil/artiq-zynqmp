@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — counter-before-sleep lifecycle design offline
+
+22PITtestsPASS incl C optimized/sanitized15lifecycle scenarios. MSR check before
+reads; incomplete read blocks writes; admitted returned paths hit terminal model
+once. Returning model is NOT physical sleep. MBobject408/frame84,pit_captureUND;
+no final profile ELF. Design-only source pins/addressnull/deployfalse. NoHW.
+Next fresh GPO0-free guard generation/nonreturning linked audit offline.
+Evidence `evidence/pit-counter-sleep-design-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — PIT RAM ownership and consumer path offline
 
 21PITtestsPASS;new48B BSS layout probe ffddbe58 disjoint sized buffers/stack.
