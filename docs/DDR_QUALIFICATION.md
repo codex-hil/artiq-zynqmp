@@ -2402,3 +2402,12 @@ TTL/CoreDMA/analyzer/MonInj/EthernetPASS192.168.2.3. Lease/reservesreleased.
 No diagnosticguard/AIBwrite/Si/SD/flash/OTP/Kasli. PreviousrestoreFAILpreserved;
 rootcauseUNKNOWN,notunchangedretryapproval. Currentbaselineusable;DDRNOT_ADMITTED.
 Evidence `evidence/genesys-cold-recovery-2026-10-27`.
+
+## 2026-10-27 — pre-download PMU register gate prepared offline
+
+Restorationloggap:stop/suspended followedbydow withoutcore-registerread. Added
+exactr0zero-dict gatebeforeRAMdownload+stage markers;no retry/force. Installed
+XSDBnvlist implementationreviewed. FourTclmock+sixlifecycle testsPASS;physical
+newgateNOT_RUN/rootcauseUNKNOWN. Oldpinsinvalidated,historypreserved. Current
+normalbaselineunchanged;DDRNOT_ADMITTED. Evidence
+`evidence/pmu-restore-register-gate-2026-10-27`.

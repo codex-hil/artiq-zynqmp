@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — pre-download PMU register gate prepared offline
+
+Restorationloggap:stop/suspended followedbydow withoutcore-registerread. Added
+exactr0zero-dict gatebeforeRAMdownload+stage markers;no retry/force. Installed
+XSDBnvlist implementationreviewed. FourTclmock+sixlifecycle testsPASS;physical
+newgateNOT_RUN/rootcauseUNKNOWN. Oldpinsinvalidated,historypreserved. Current
+normalbaselineunchanged;DDRNOT_ADMITTED. Evidence
+`evidence/pmu-restore-register-gate-2026-10-27`.
+
+
 ## 2026-10-27 — normal runtime recovered after user reboot PASS
 
 OneGenesyslease87.214s;exactnormalartifactsverified,PMUdownload/FSBL/PL/CPUloadPASS.

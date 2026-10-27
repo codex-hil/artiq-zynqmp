@@ -11,6 +11,7 @@ foreach p [targets -target-properties -filter {name == "MicroBlaze PMU"}] {
 }
 if {[llength $ids] != 1} {error "PMU not unique"}
 targets -set [lindex $ids 0]
+puts "PMU_RESTORE_STAGE STOP_REQUEST"
 stop
 set halted 0
 for {set i 0} {$i <= 20} {incr i} {
@@ -22,8 +23,19 @@ for {set i 0} {$i <= 20} {incr i} {
  if {$i < 20} {after 50}
 }
 if {!$halted} {error "PMU debug halt unconfirmed; no download"}
+puts "PMU_RESTORE_STAGE HALT_CONFIRMED"
+# XSDB 2025.2 supports -nvlist (installed xsdb.tcl). Exercise the core register
+# channel before touching firmware RAM; no retry/force/alternate access mode.
+set probe [rrd -nvlist r0]
+if {[dict size $probe] != 1 || ![dict exists $probe r0] || ![regexp {^0{1,8}$} [dict get $probe r0]]} {
+ error "PMU r0 probe invalid; no download"
+}
+puts "PMU_RESTORE_STAGE REGISTER_READ_PASS"
+puts "PMU_RESTORE_STAGE DOWNLOAD_START"
 dow $elf
+puts "PMU_RESTORE_STAGE DOWNLOAD_COMPLETE"
 con
+puts "PMU_RESTORE_STAGE RESUME_COMPLETE"
 after 500
 puts "PMU_RESTORE_BOOTSTRAP_STARTED"
 # This marker alone is not restoration PASS; full normal reset/boot/tests required.
