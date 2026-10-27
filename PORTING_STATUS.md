@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — backend PMU LTO callback/address audit PASS offline
+
+Exactlinkedcallbackstores/readenumtablePASS;actualELFmutationsrejected. Stack
+internalread172+48+28=248excludestransport/caller. NoMMIO/deployment/HW. Newtime
+obligation:backendREQ-TYPErechecksoccurafterprotocoldeadlinecheck,beforewrite;
+no claim allpostdeadlinewritesprevented. Nexttimedfaultinjection/budgetcontract;
+DDRNOT_ADMITTED. Evidence `evidence/aib-backend-link-offline-2026-10-27`.
+
+
 ## 2026-10-27 — fixed-address backend policy adapter offline PASS
 
 REQ/TYPE/ACKreads mappedfixed;soleREQwrite preservesinitialUSBbits/selectedmask,

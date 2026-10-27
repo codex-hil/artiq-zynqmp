@@ -1,0 +1,16 @@
+{
+  "status": "EXACT_AUDIT_CALLBACK_ASSIGNMENT_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "callbacks": {
+    "read_reg": "0xffdcbf04",
+    "write_request": "0xffdcbf74",
+    "ticks": "0xffdcc05c"
+  },
+  "enum_read_table": [
+    "0xff413030",
+    "0xff413040",
+    "0xff413038"
+  ],
+  "limits": "Checks one exact linked build. Underlying transport callbacks, caller storage, control flow and all access paths not established."
+}

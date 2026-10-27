@@ -1,0 +1,29 @@
+/home/codex-hil/.local/state/artiq-builds/aib-backend-audit-link-20261027/audit-only.elf  :
+section                   size         addr
+.vectors.reset               8   4292608000
+.vectors.sw_exception        8   4292608008
+.vectors.interrupt           8   4292608016
+.vectors.hw_exception        8   4292608032
+.text                    76968   4292608080
+.rodata                   6276   4292685048
+.data                    16404   4292691324
+.drvcfg_sec                772   4292707728
+.sdata2                      4   4292708500
+.sdata                       0   4292708504
+.sbss                        0   4292708504
+.bss                     15904   4292708512
+.srdata                   2332   4292724416
+.stack                    4100   4292726748
+.xpbr_serv_ext_tbl        1024   4292736736
+.debug_line             197055            0
+.debug_line_str          12181            0
+.debug_info             320628            0
+.debug_abbrev            35127            0
+.debug_aranges             136            0
+.debug_str               51032            0
+.debug_rnglists           9367            0
+.debug_frame             12880            0
+.debug_loclists          78642            0
+Total                   840864
+
+
