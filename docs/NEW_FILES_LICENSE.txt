@@ -1101,3 +1101,15 @@ evidence/pit-missing-msr-observation-offline-2026-10-27/README.md
 evidence/pit-missing-msr-observation-offline-2026-10-27/command.json
 evidence/pit-missing-msr-observation-offline-2026-10-27/fake-c-trace.json
 evidence/pit-missing-msr-observation-offline-2026-10-27/inputs.json
+diagnostics/ddr/pit_collect/pit_terminal_build.c
+diagnostics/ddr/pit_collect/pit_terminal_build.h
+tests/fixtures/pit_terminal_build_host.c
+tests/test_pit_terminal_build_c.py
+evidence/pit-c-validity-metadata-offline-2026-10-27/README.md
+evidence/pit-c-validity-metadata-offline-2026-10-27/builder.dis
+evidence/pit-c-validity-metadata-offline-2026-10-27/builder.su
+evidence/pit-c-validity-metadata-offline-2026-10-27/check.json
+evidence/pit-c-validity-metadata-offline-2026-10-27/commands.json
+evidence/pit-c-validity-metadata-offline-2026-10-27/inputs.json
+evidence/pit-c-validity-metadata-offline-2026-10-27/symbols.txt
+evidence/pit-c-validity-metadata-offline-2026-10-27/undefined.txt

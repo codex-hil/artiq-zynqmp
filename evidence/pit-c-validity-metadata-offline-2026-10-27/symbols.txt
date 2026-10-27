@@ -1,0 +1,23 @@
+00000000 A _HEAP_SIZE
+00000000 A _ssro_size
+00000000 A _ssrw_size
+00000000 0000023c T pit_terminal_build
+00000050 A _TEXT_START_ADDR
+00000050 T _ftext
+0000023c B _erodata
+0000023c T _etext
+0000023c B _frodata
+00000240 B _edata
+00000240 B _essro
+00000240 B _essrw
+00000240 B _fbss
+00000240 B _fdata
+00000240 B _heap
+00000240 B _heap_end
+00000240 B _heap_start
+00000240 B _ssro
+00000240 B _ssrw
+00000240 B _stack_end
+00000400 A _STACK_SIZE
+00000640 B _end
+00000640 B _stack

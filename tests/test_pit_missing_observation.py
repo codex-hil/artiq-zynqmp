@@ -40,7 +40,7 @@ class Tests(unittest.TestCase):
             for flags in (['-O2'],['-O1','-g','-fsanitize=address,undefined','-fno-omit-frame-pointer']):
                 exe=Path(directory)/'missing'
                 subprocess.run(['gcc','-std=c11','-Wall','-Wextra','-Werror',*flags,'-I'+str(base),
-                    *[str(base/(n+'.c')) for n in ['pit_collect','pit_publish','pit_capture','pit_sleep_model','pit_terminal_record']],
+                    *[str(base/(n+'.c')) for n in ['pit_collect','pit_publish','pit_capture','pit_sleep_model','pit_terminal_record','pit_terminal_build']],
                     str(ROOT/'tests/fixtures/pit_missing_observation_host.c'),'-o',str(exe)],check=True)
                 data=subprocess.check_output([str(exe)],timeout=5)
                 results=replay_missing(data)

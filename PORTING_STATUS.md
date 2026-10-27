@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — C validity-derived terminal metadata offline
+
+47PITtestsPASS;realCbuilder computesMSRvalidityfromcalledmask/returncode and
+derivesstatus;6CfakecasesstillbyteexactPython. Eightinvalidcontrolsleaveoutput
+unchanged. HashesEXTERNAL/notcomputed/authenticated. MBstandalonelink/noUND/
+wordstoresPASS/frame24NOTtotal. NoHW/fulltargetintegration. Next targetaudit
+callbacklogging+builderintegration. Evidence `evidence/pit-c-validity-metadata-offline-2026-10-27`.
+DDR NOT_ADMITTED.
+
 ## 2026-10-27 — missing MSR callback observation controls offline
 
 46PITtestsPASS;6actualCfakeeventcases->Python exactreceiptmatch:initialMSR/

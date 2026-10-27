@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "pit_sleep_model.h"
 #include "pit_terminal_record.h"
+#include "pit_terminal_build.h"
 struct fake {
     unsigned mode, calls, disabled, reads, valid, terminal;
     uint32_t observations[3], samples[12], receipt[24], msr;
@@ -42,10 +43,13 @@ static void terminal(void *ctx,int status)
     const uint32_t sample[8]={0x309c7563U,0xbea00649U,0xadc9f4c1U,0xc95c2faeU,0xf5b1b669U,0x69aa2086U,0xe4c2c3ceU,0x8bbff9e5U};
     struct pit_terminal_record r={1,PIT_TERMINAL_MAGIC,1,0,7,0,0,{0},{0}};
     unsigned i;
+    struct pit_terminal_observations obs = {0};
     assert(!f->terminal);++f->terminal;f->status=status;r.status=(uint32_t)status;
-    if(f->valid&2)r.checked_msr=f->observations[1];
-    if(f->valid&4)r.final_msr=f->observations[2];
-    for(i=0;i<8;++i){r.image_sha256_le[i]=image[i];if(f->samples[0])r.sample_sha256_le[i]=sample[i];}
+    obs.called_mask=(1u<<f->calls)-1;
+    for(i=0;i<3;++i){obs.returns[i]=(f->valid&(1u<<i))?0:-1;obs.msr[i]=f->observations[i];}
+    obs.sample_outcome=f->reads?4:1;
+    assert(pit_terminal_build(&r,&obs,7,image,f->samples[0]?sample:0)==0);
+    assert(r.status==(uint32_t)status);
     f->publication=pit_terminal_publish(&f->receipt_attempt,&r,7,receipt_write,barrier,f);
 }
 static void emit(const uint32_t *words,unsigned count)

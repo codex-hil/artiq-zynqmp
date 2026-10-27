@@ -2637,3 +2637,7 @@ Evidence pit-c-event-provenance-offline-2026-10-27.
 2026-10-27 missingMSRobservations46tests/6C->PythontracecasesPASS;failedread
 outputnotvalid,initialfailblocksamples/finalfailcanhavecommittedsamplesnot
 success. NoHW. Evidence pit-missing-msr-observation-offline-2026-10-27.
+
+2026-10-27 Cvalidity/statusbuilder47tests/6crosslanguagecasesPASS;failedcallback
+outputignored/hashinputsEXTERNAL. MBwordstores/frame24not total. NoHW/fulltarget
+integration. Evidence pit-c-validity-metadata-offline-2026-10-27.
