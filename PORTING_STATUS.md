@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — counter-only observation schema offline
+
+Strict eight-sample RO counter decoder: four tests PASS, including WO address
+rejection and rollover aliasing. Raw equality only; no elapsed ticks, frequency
+or ownership inference. No capture backend/HW; DDR remains NOT_ADMITTED.
+Evidence `evidence/pit-counter-schema-offline-2026-10-27`. Next bounded callback
+contract and PMU-local capture design offline.
+
 ## 2026-10-27 — GPO0 write-only discovery invalidates mapping inference
 
 UG1087GPO0/DEBUG_REMAP WO:earlierread0NOTROMselectionproof;mappingUNKNOWN.

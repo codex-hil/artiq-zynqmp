@@ -2533,3 +2533,8 @@ rawonly/UNKNOWN. Refusal/transporttestsPASS. Historicalrawbytes/successes/failur
 preserved,incorrectnarrativesannotated. PITpreloadWO,counterRO,controlmixed:
 newplan8PMUlocalcounter-onlyreads,no executableHW yet. NoHW;DDRNOT_ADMITTED.
 Evidence `evidence/pmu-writeonly-correction-2026-10-27`.
+
+
+2026-10-27: counter-only offline decoder and four tests PASS. Two ordered
+rounds of PIT0..3_COUNTER report raw changes only; rollover count/time/ownership
+unknown. No physical backend or HW access. See evidence/pit-counter-schema-offline-2026-10-27.
