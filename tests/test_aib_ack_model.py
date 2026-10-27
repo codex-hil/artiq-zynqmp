@@ -19,6 +19,13 @@ class Tests(unittest.TestCase):
  def test_changed_epoch_request_type_and_malformed(self):
   for args in [(8,1,0x30004,0x30000,0),(7,2,0x30004,0x30000,0),(7,1,4,0x30000,0),(7,1,0x30004,0x30000,1),(7,1,0x30004,True,0)]:
    self.assertEqual(self.model().observe(*args)['state'],'FAILED_HELD_MODEL')
+ def test_real_baseline_usb_bits_preserved(self):
+  m=AibModel(7);m.begin(7,1,0x30000,0xc00000,0xc00000,0x19cf000f,3)
+  self.assertEqual(m.request_word,0xc30000)
+  r=m.observe(7,1,0xc30000,0xc30000,0x19cf000f)
+  self.assertEqual(r['state'],'DRAINED_HELD_MODEL');self.assertFalse(r['destructive_test_allowed'])
+  m=AibModel(7);m.begin(7,1,0x30000,0xc00000,0xc00000,0x19cf000f,3)
+  self.assertEqual(m.observe(7,1,0x30000,0x30000,0x19cf000f)['state'],'FAILED_HELD_MODEL')
  def test_stale_or_unreviewed_entry_rejected(self):
   for mask,req,ack,budget in [(0,0,0,3),(0x4000000,0,0,3),(0x10000,0x10000,0,3),(0x10000,0,0x10000,3),(0x10000,0,0,0)]:
    with self.assertRaises(ValueError):AibModel(7).begin(7,1,mask,req,ack,0,budget)

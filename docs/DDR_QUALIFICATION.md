@@ -2447,3 +2447,12 @@ oldpathsymlink;thresholdunchanged. No AIB/Si/SD/flash/OTP/Kasli changes.
 PriorFAIL/rootcauseUNKNOWN unchanged;notAIBcausalproof. Nextofflineclassify
 existingAIBinstance/initializationcoverage;DDRNOT_ADMITTED. Evidence
 `evidence/guard-context-recovery-hardware-2026-10-27`.
+
+## 2026-10-27 — retained AIB bits map to USB slave interfaces offline
+
+REQ/ACK00c00000=USB0S/USB1S instances7/8 LPD->USB,notUSB-DMA-toDDR isolation.
+14AXImapheadercrosscheck+2testsPASS;5ACKmodeltestsPASSinclrealUSBbaselinepreserve.
+PMUSBtransitionpathfound,actualinitializerUNKNOWN. AMDspecialRPUreset permits
+continue-after-timeout;notgeneralvendorbug,stillnotstrictdrainreceipt. NoHW.
+NextisolatedCstrictRPUMACK/hold/mockbackend;DDRNOT_ADMITTED. Evidence
+`evidence/aib-directed-map-2026-10-27`.

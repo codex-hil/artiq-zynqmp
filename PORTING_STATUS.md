@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — retained AIB bits map to USB slave interfaces offline
+
+REQ/ACK00c00000=USB0S/USB1S instances7/8 LPD->USB,notUSB-DMA-toDDR isolation.
+14AXImapheadercrosscheck+2testsPASS;5ACKmodeltestsPASSinclrealUSBbaselinepreserve.
+PMUSBtransitionpathfound,actualinitializerUNKNOWN. AMDspecialRPUreset permits
+continue-after-timeout;notgeneralvendorbug,stillnotstrictdrainreceipt. NoHW.
+NextisolatedCstrictRPUMACK/hold/mockbackend;DDRNOT_ADMITTED. Evidence
+`evidence/aib-directed-map-2026-10-27`.
+
+
 ## 2026-10-27 — changed no-AIB guard-context recovery physical PASS
 
 Onelease145.512s;guardPASS thenr0/download/resume7orderedstagesPASS. Fullnormal

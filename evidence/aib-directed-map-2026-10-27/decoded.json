@@ -1,0 +1,153 @@
+{
+  "kind": "DIRECTED_AIB_INSTANCE_OBSERVATION",
+  "destructive_test_allowed": false,
+  "isolation_write_allowed": false,
+  "instances": [
+    {
+      "name": "RPUM0",
+      "bit": 16,
+      "instance": 1,
+      "master": "RPU0",
+      "slave": "LPD",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "RPUM1",
+      "bit": 17,
+      "instance": 2,
+      "master": "RPU1",
+      "slave": "LPD",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "LPD_DDR",
+      "bit": 27,
+      "instance": 3,
+      "master": "RPU via LPD",
+      "slave": "DDR via FPD",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "FPD_MAIN",
+      "bit": 24,
+      "instance": 4,
+      "master": "LPD",
+      "slave": "FPD other slaves",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "RPUS0",
+      "bit": 18,
+      "instance": 5,
+      "master": "LPD",
+      "slave": "RPU0",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "RPUS1",
+      "bit": 19,
+      "instance": 6,
+      "master": "LPD",
+      "slave": "RPU1",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "USB0S",
+      "bit": 22,
+      "instance": 7,
+      "master": "LPD",
+      "slave": "USB0",
+      "request": true,
+      "ack": true,
+      "type_bit": true
+    },
+    {
+      "name": "USB1S",
+      "bit": 23,
+      "instance": 8,
+      "master": "LPD",
+      "slave": "USB1",
+      "request": true,
+      "ack": true,
+      "type_bit": true
+    },
+    {
+      "name": "OCMS",
+      "bit": 26,
+      "instance": 9,
+      "master": "LPD",
+      "slave": "OCM",
+      "request": false,
+      "ack": false,
+      "type_bit": false
+    },
+    {
+      "name": "AFIFS2",
+      "bit": 28,
+      "instance": 10,
+      "master": "LPD",
+      "slave": "M_AXI_HPM0_LPD",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "FPD_LPDIBS",
+      "bit": 2,
+      "instance": 11,
+      "master": "FPD",
+      "slave": "LPD except OCM",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "FPD_OCM",
+      "bit": 3,
+      "instance": 12,
+      "master": "FPD",
+      "slave": "OCM",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "AFIFS0",
+      "bit": 0,
+      "instance": 13,
+      "master": "FPD",
+      "slave": "M_AXI_HPM0_FPD",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    },
+    {
+      "name": "AFIFS1",
+      "bit": 1,
+      "instance": 14,
+      "master": "FPD",
+      "slave": "M_AXI_HPM1_FPD",
+      "request": false,
+      "ack": false,
+      "type_bit": true
+    }
+  ],
+  "unknown_bits": {
+    "request": "0x0",
+    "ack": "0x0",
+    "type": "0x0"
+  },
+  "limits": "Directed AXI instances only; APB GPU instance15 absent. Raw TYPE bit preserved without assigning response semantics. Observation is not full-master drain or ownership proof."
+}
