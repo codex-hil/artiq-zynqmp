@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — strict AIB actual MicroBlaze object build PASS offline
+
+ReplayedactualPMUrecipe+nonLTOstacktwin;1264byte.text identical,data/bss0.
+Staticframes116+48=164internalonly,notfinalbound. Compileradds36bytememset;
+readelf/relocation exposeUNDdespitefatLTO-nmempty. Callbackaddresses/stackopen.
+No finalfirmware/backend/HW. NextCsessionbinding thenisolatedlinkaudit;
+DDRNOT_ADMITTED. Evidence `evidence/aib-strict-microblaze-2026-10-27`.
+
+
 ## 2026-10-27 — strict AIB callback protocol C offline PASS
 
 NoMMIObackend/firmwareintegration. RPUmasksubsetonly,onepreservingrequestwrite,

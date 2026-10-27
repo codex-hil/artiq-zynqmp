@@ -1,0 +1,19 @@
+
+Symbol table '.symtab' contains 16 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 SECTION LOCAL  DEFAULT    1 .text
+     2: 00000000     0 SECTION LOCAL  DEFAULT    3 .data
+     3: 00000000     0 SECTION LOCAL  DEFAULT    4 .bss
+     4: 00000000   184 FUNC    LOCAL  DEFAULT    1 snapshot
+     5: 00000000     0 SECTION LOCAL  DEFAULT    5 .debug_frame
+     6: 00000000     0 SECTION LOCAL  DEFAULT    7 .debug_info
+     7: 00000000     0 SECTION LOCAL  DEFAULT    9 .debug_abbrev
+     8: 00000000     0 SECTION LOCAL  DEFAULT   10 .debug_loclists
+     9: 00000000     0 SECTION LOCAL  DEFAULT   11 .debug_aranges
+    10: 00000000     0 SECTION LOCAL  DEFAULT   13 .debug_rnglists
+    11: 00000000     0 SECTION LOCAL  DEFAULT   14 .debug_line
+    12: 00000000     0 SECTION LOCAL  DEFAULT   16 .debug_str
+    13: 00000000     0 SECTION LOCAL  DEFAULT   17 .debug_line_str
+    14: 000000b8  1080 FUNC    GLOBAL DEFAULT    1 aib_strict_hold
+    15: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND memset

@@ -1,0 +1,16 @@
+{
+  "hardware_executed": false,
+  "destructive_test_allowed": false,
+  "recipe_text_bytes": 1264,
+  "stack_audit_text_bytes": 1264,
+  "text_byte_identical": true,
+  "recipe_text_sha256": "c9dc1534081c9e4d4722dc4673c014ff02ef710da1b9e3d607ed2269909bdd21",
+  "stack_audit_text_sha256": "c9dc1534081c9e4d4722dc4673c014ff02ef710da1b9e3d607ed2269909bdd21",
+  "unresolved_external_native_symbol": "memset",
+  "internal_static_stack_frames": {
+    "snapshot": 48,
+    "aib_strict_hold": 116
+  },
+  "internal_path_sum_excluding_callees_and_caller": 164,
+  "limits": "Relocatable object text only; final LTO link/callbacks/memset/caller may change stack and code."
+}

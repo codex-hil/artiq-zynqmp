@@ -1,0 +1,41 @@
+
+Symbol table '.symtab' contains 38 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 SECTION LOCAL  DEFAULT    1 .text
+     2: 00000000     0 SECTION LOCAL  DEFAULT    3 .data
+     3: 00000000     0 SECTION LOCAL  DEFAULT    4 .bss
+     4: 00000000     0 SECTION LOCAL  DEFAULT    5 .gnu.debuglto_.d[...]
+     5: 00000000     0 SECTION LOCAL  DEFAULT    7 .gnu.debuglto_.d[...]
+     6: 00000000     0 SECTION LOCAL  DEFAULT    8 .gnu.debuglto_.d[...]
+     7: 00000000     0 SECTION LOCAL  DEFAULT   10 .gnu.debuglto_.d[...]
+     8: 00000000     0 SECTION LOCAL  DEFAULT   11 .gnu.debuglto_.d[...]
+     9: 00000000     0 SECTION LOCAL  DEFAULT   12 .gnu.lto_.profil[...]
+    10: 00000000     0 SECTION LOCAL  DEFAULT   13 .gnu.lto_.icf.26[...]
+    11: 00000000     0 SECTION LOCAL  DEFAULT   14 .gnu.lto_.ipa_sr[...]
+    12: 00000000     0 SECTION LOCAL  DEFAULT   15 .gnu.lto_.inline[...]
+    13: 00000000     0 SECTION LOCAL  DEFAULT   16 .gnu.lto_.jmpfun[...]
+    14: 00000000     0 SECTION LOCAL  DEFAULT   17 .gnu.lto_.pureco[...]
+    15: 00000000     0 SECTION LOCAL  DEFAULT   18 .gnu.lto_.ipa_mo[...]
+    16: 00000000     0 SECTION LOCAL  DEFAULT   19 .gnu.lto_.lto.26[...]
+    17: 00000000     0 SECTION LOCAL  DEFAULT   20 .gnu.lto_snapsho[...]
+    18: 00000000     0 SECTION LOCAL  DEFAULT   21 .gnu.lto_aib_str[...]
+    19: 00000000     0 SECTION LOCAL  DEFAULT   22 .gnu.lto_.symbol[...]
+    20: 00000000     0 SECTION LOCAL  DEFAULT   23 .gnu.lto_.refs.2[...]
+    21: 00000000     0 SECTION LOCAL  DEFAULT   24 .gnu.lto_.decls.[...]
+    22: 00000000     0 SECTION LOCAL  DEFAULT   25 .gnu.lto_.symtab[...]
+    23: 00000000     0 SECTION LOCAL  DEFAULT   26 .gnu.lto_.ext_sy[...]
+    24: 00000000     0 SECTION LOCAL  DEFAULT   27 .gnu.lto_.opts
+    25: 00000000   184 FUNC    LOCAL  DEFAULT    1 snapshot
+    26: 00000000     0 SECTION LOCAL  DEFAULT   28 .debug_frame
+    27: 00000000     0 SECTION LOCAL  DEFAULT   30 .debug_info
+    28: 00000000     0 SECTION LOCAL  DEFAULT   32 .debug_abbrev
+    29: 00000000     0 SECTION LOCAL  DEFAULT   33 .debug_loclists
+    30: 00000000     0 SECTION LOCAL  DEFAULT   34 .debug_aranges
+    31: 00000000     0 SECTION LOCAL  DEFAULT   36 .debug_rnglists
+    32: 00000000     0 SECTION LOCAL  DEFAULT   37 .debug_line
+    33: 00000000     0 SECTION LOCAL  DEFAULT   39 .debug_str
+    34: 00000000     0 SECTION LOCAL  DEFAULT   40 .debug_line_str
+    35: 00000000     0 NOTYPE  WEAK   HIDDEN     5 aib_strict.c.54d9c25f
+    36: 000000b8  1080 FUNC    GLOBAL DEFAULT    1 aib_strict_hold
+    37: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND memset
