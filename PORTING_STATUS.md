@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — one-shot C session + isolated PMU LTO link PASS offline
+
+Boot/nonce/sequencebind,consume-beforecallback,no retry/rearm;actualhostoptimized+
+ASan/UBSan session/corefixturesPASS. Audit-onlyPMUlink+layoutPASS,no mainhook/MMIO
+backend/deployment. Finalframesexecute172/snapshot48,notfullbound. Tokensnotphysical
+bootproof,concurrentwritersunexcluded. NoHW. Nextboundedbackend/address/callback
+contract+core/restorationaccessreview;DDRNOT_ADMITTED. Evidence
+`evidence/aib-session-link-offline-2026-10-27`.
+
+
 ## 2026-10-27 — strict AIB actual MicroBlaze object build PASS offline
 
 ReplayedactualPMUrecipe+nonLTOstacktwin;1264byte.text identical,data/bss0.

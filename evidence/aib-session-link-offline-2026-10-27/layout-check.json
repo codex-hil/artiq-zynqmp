@@ -1,0 +1,17 @@
+{
+  "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "entry": "0xffdc0050",
+  "telemetry": {
+    "start": "0xffdd8660",
+    "bytes": 32
+  },
+  "stack": {
+    "start": "0xffddcc7c",
+    "end_exclusive": "0xffdddc80"
+  },
+  "bytes_after_stack_before_extension_table": 6752,
+  "destructive_test_allowed": false,
+  "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof.",
+  "elf_sha256": "57ad38d27d463a2ff89aae80730f5049853d8529fff467b0f6cc8cb817cc419a"
+}

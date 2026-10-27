@@ -2473,3 +2473,12 @@ Staticframes116+48=164internalonly,notfinalbound. Compileradds36bytememset;
 readelf/relocation exposeUNDdespitefatLTO-nmempty. Callbackaddresses/stackopen.
 No finalfirmware/backend/HW. NextCsessionbinding thenisolatedlinkaudit;
 DDRNOT_ADMITTED. Evidence `evidence/aib-strict-microblaze-2026-10-27`.
+
+## 2026-10-27 — one-shot C session + isolated PMU LTO link PASS offline
+
+Boot/nonce/sequencebind,consume-beforecallback,no retry/rearm;actualhostoptimized+
+ASan/UBSan session/corefixturesPASS. Audit-onlyPMUlink+layoutPASS,no mainhook/MMIO
+backend/deployment. Finalframesexecute172/snapshot48,notfullbound. Tokensnotphysical
+bootproof,concurrentwritersunexcluded. NoHW. Nextboundedbackend/address/callback
+contract+core/restorationaccessreview;DDRNOT_ADMITTED. Evidence
+`evidence/aib-session-link-offline-2026-10-27`.
