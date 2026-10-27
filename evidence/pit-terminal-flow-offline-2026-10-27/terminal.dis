@@ -1,0 +1,10 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-terminal-audit-20261027/audit-only.elf:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_terminal_audit>:
+   0:	b8220004 	mbar	1
+   4:	ba020004 	sleep
+   8:	b800fffc 	bri	-4		// 4

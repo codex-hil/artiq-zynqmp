@@ -1,0 +1,12 @@
+{
+  "status": "STANDALONE_TERMINAL_FLOW_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "deployable": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "instruction_bytes": 12,
+  "entry": 0,
+  "sleep_pc": 4,
+  "limits": "Static three-instruction loop only; no PMU image, live MSR, sleep residency or visibility proof",
+  "elf_sha256": "7667b47d617961c137272a0650f4e7448363a476d608febbac1609fcf4e7d835"
+}

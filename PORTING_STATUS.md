@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — fresh standalone sleep terminal audit offline
+
+24PITtestsPASS;actual new ELF exact mbar1/sleep/backbranch checkerPASS/frame0/
+noUND. No historical vector/GPO0 code. EntryZERO standalone ELF MUST NOT DEPLOY.
+Auditoptinabsent compile refusalPASS. No live sleep/visibility/IRQ/ROM proof/HW.
+Next fresh complete non-vector PMU audit integration without MMIO backend.
+Evidence `evidence/pit-terminal-flow-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — counter-before-sleep lifecycle design offline
 
 22PITtestsPASS incl C optimized/sanitized15lifecycle scenarios. MSR check before

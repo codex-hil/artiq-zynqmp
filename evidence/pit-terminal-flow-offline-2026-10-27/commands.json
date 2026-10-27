@@ -1,0 +1,29 @@
+{
+  "compile": [
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+    "-mlittle-endian",
+    "-mcpu=v9.2",
+    "-Os",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-ffreestanding",
+    "-fstack-usage",
+    "-DARTIQ_PIT_TERMINAL_AUDIT_ONLY=1",
+    "-c",
+    "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_terminal_audit.c",
+    "-o",
+    "/home/codex-hil/.local/state/artiq-builds/pit-terminal-audit-20261027/terminal.o"
+  ],
+  "link": [
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+    "-mlittle-endian",
+    "-mcpu=v9.2",
+    "-nostdlib",
+    "-Wl,--no-relax,-e,pit_terminal_audit,-Ttext=0",
+    "/home/codex-hil/.local/state/artiq-builds/pit-terminal-audit-20261027/terminal.o",
+    "-o",
+    "/home/codex-hil/.local/state/artiq-builds/pit-terminal-audit-20261027/audit-only.elf"
+  ],
+  "deployable": false
+}

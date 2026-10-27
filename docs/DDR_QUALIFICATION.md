@@ -2578,3 +2578,7 @@ yet integrated/qualified. Evidence pit-slot-ownership-offline-2026-10-27.
 2026-10-27 counter-before-sleep Cmodel22PITtestsPASS;terminalcallbackRETURNING
 model only,not PMUsleep. Source-pinned design has null physical addresses/no
 deployment. Evidence pit-counter-sleep-design-offline-2026-10-27.
+
+2026-10-27 fresh standalone terminal24PITtestsPASS/exact3opcode ELFcheckPASS.
+NoGPO0/historicalguard;entryZERO/MUSTNOTDEPLOY. NotfullPMU/runtimevisibilityproof.
+Evidence pit-terminal-flow-offline-2026-10-27.
