@@ -2593,3 +2593,7 @@ Notliveness/callbackidentity/physicalproof. Evidence pit-profile-flow-controls-o
 2026-10-27 actualsource/artifactgateofflinePASS/28PITtests;19inputchanges and
 forgeddeploymentrejected. Oldguardpreflightrejectsnewmanifest. NoHWadmission.
 Evidence pit-source-artifact-gate-offline-2026-10-27.
+
+2026-10-27 UG1085p113wordwritesonly:oldstandalonePITcopieshad sbi,fullinlined
+profilealreadywordonly. Fixedu32copies/newELFcheck/layoutPASS/30tests. Oldpins/
+flowshapeSTALE;independenthungreadrecoveryUNQUALIFIED. Evidence pit-pmu-word-write-fix-offline-2026-10-27.

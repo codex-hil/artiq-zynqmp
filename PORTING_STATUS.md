@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — PMU RAM word-write correction and recovery feasibility
+
+UG1085p113wordwritesonly:old separatelylinkedPITcopieshad sbi;fullinlinedprofile
+alreadywordonly. Fixedvolatileu32copiesforbothcontexts;newfullELFsubwordcheck/
+layoutPASS,30PITtestsPASS. Oldstandalonepublisherrejected. Oldpins/flowshapeSTALE.
+Restoredebugdependent/noindependenthungreadrecoveryqualified. NoHW/MUSTNOTDEPLOY.
+Next changedflow+alignedinitializationaudit. Evidence `evidence/pit-pmu-word-write-fix-offline-2026-10-27`.
+DDR NOT_ADMITTED.
+
 ## 2026-10-27 — source/artifact-bound PIT offline audit gate
 
 ActualfreshELF/layout/flow+10source/6helperpinsPASS;28PITtestsPASS incl19changed

@@ -1,3 +1,7 @@
+> 2026-10-27 correction: separately linked array copies contain byte stores,
+> unsuitable for PMU word-write-only RAM. See `../pit-pmu-word-write-fix-offline-2026-10-27`.
+> Raw artifacts unchanged; this does not imply the full inlined profile had byte stores.
+
 # C PIT publisher — offline
 
 18 PIT tests PASS, including actual publisher C -O2 and ASan/UBSan. The C
