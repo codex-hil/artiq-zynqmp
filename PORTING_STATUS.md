@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — lifecycle/status writer C composition offline
+
+39PITtestsPASS inclCoptimized/sanitized5pairedresults->Python and54receipt
+interruptions. LifecycleCOMPLETEcan coexistreceiptUNKNOWN;committedsamplesplus
+errornotpromoted. LaterIRQchangeDURINGreceiptpublication remainsundetectable
+fromearlierMSRbytes;explicitlimit/notcurrentIRQ/sleepproof. NoHW/targetsource
+change. Next targetcomposition/stack/wordstoreaudit. Evidence
+`evidence/pit-status-writer-coupling-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — C terminal-intent record publication offline
 
 38PITtestsPASS inclCoptimized/sanitized108interruptions/Cbytes->Pythondecoder.
