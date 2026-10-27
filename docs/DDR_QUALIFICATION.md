@@ -2546,3 +2546,7 @@ backend remains unavailable. See evidence/pit-collection-contract-offline-2026-1
 2026-10-27: C PIT callback collector optimized+sanitized PASS; MicroBlaze object
 548 text/88 frame/unresolved memset, not full link/stack proof. No HW adapter
 or DDR admission. Evidence pit-c-collector-offline-2026-10-27.
+
+2026-10-27 PIT final LTO link PASS/ABI reviewed; complete store follows sample
+copy, no barrier/cross-core proof. Audit ELF NOT_DEPLOYABLE (historical guard).
+Frame88 is not total stack. Evidence pit-final-link-offline-2026-10-27.

@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — PIT final target link review offline
+
+PMU LTO link PASS/no undefined symbols; collector ABI/address/commit store
+reviewed. Frame88,memset leaf/no frame; callback/caller total UNKNOWN. No mbar,
+therefore single-context return-only contract, no cross-core publication proof.
+Audit ELF contains historical prohibited guard and MUST NOT deploy. No HW.
+Evidence `evidence/pit-final-link-offline-2026-10-27`. Next offline publication
+adapter contract/negative tests; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — C PIT collector offline
 
 Actual C optimized+ASan/UBSan PASS; all eight failure positions preserve output,

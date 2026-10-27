@@ -1,0 +1,23 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "destructive_test_allowed": false,
+  "elf_sha256": "65230a404ab633005b1b3c88777a2b88ec7ca09682985ef05a84d629a5ad6330",
+  "collector_frame_bytes": 88,
+  "total_stack_bound": null,
+  "unresolved_symbols": [],
+  "abi": {
+    "attempt": "r5",
+    "output": "r6",
+    "nonce": "r7/r8",
+    "callback": "r9 -> r24",
+    "context": "r10 -> r25",
+    "callback_args": "r5=context,r6=address,r7=staged value pointer"
+  },
+  "completion_store": "ffdcf498: f8930000 swi r4,r19,0",
+  "memory_barrier_present_in_collector": false,
+  "inputs": {
+    "diagnostics/ddr/pit_collect/pit_collect.c": "5deded3ee6c7721b4111f3f3fd2e32640a0263a104b66952eda4e84cda25b735",
+    "diagnostics/ddr/pit_collect/pit_collect.h": "4aba5304a4b3bbc7a48868e507e9807a6f2fcc0803696e45c9df96981420050d"
+  }
+}
