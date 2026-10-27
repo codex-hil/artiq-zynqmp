@@ -1,5 +1,11 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
 #include "pit_collect.h"
+#include <stddef.h>
+_Static_assert(sizeof(struct pit_record) == 48, "record size");
+_Static_assert(offsetof(struct pit_record, complete) == 0, "commit offset");
+_Static_assert(offsetof(struct pit_record, version) == 4, "version offset");
+_Static_assert(offsetof(struct pit_record, nonce) == 8, "nonce offset");
+_Static_assert(offsetof(struct pit_record, values) == 16, "samples offset");
 enum pit_status pit_collect(struct pit_attempt *attempt, struct pit_record *out,
                             uint64_t nonce, pit_read_fn read, void *ctx)
 {

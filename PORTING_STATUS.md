@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — PIT publication receipt contract offline
+
+13 PIT tests PASS; strict48-byte/two-snapshot decoder rejects all48 single-byte
+changes, incomplete/stale-nonce/version/shape. C layout assertions host+MB PASS.
+Equal samples do NOT exclude stale visibility/ABA; no barrier/HW admission added.
+Next offline writer interruption/state-machine tests and visibility review.
+Evidence `evidence/pit-publication-contract-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — PIT final target link review offline
 
 PMU LTO link PASS/no undefined symbols; collector ABI/address/commit store
