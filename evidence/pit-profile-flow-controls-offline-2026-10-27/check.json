@@ -1,0 +1,11 @@
+{
+  "status": "SCOPED_PROFILE_LINKED_FLOW_PASS_NOT_HARDWARE",
+  "hardware_executed": false,
+  "deployable": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "internal_branches": 24,
+  "abstract_callback_sites": 9,
+  "limits": "Static branch/call inventory only; callback identity/dataflow, liveness, MMIO, IRQ and visibility remain unproven",
+  "elf_sha256": "e7788b03800781674301ea2a8d043b7f6f33874213ab4eef60e8b572873ab6f7"
+}

@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — linked PIT profile flow controls offline
+
+ActualELFscopedflowPASS:24internalbranches/directtargetinventory/9abstractcalls,
+exactterminal/adapter/no returns. 26PITtestsPASS incl6consistentELF+disassembly
+mutations+staledisassemblynegative. NOTcallbackidentity/dataflow/liveness/IRQ
+dominance/MMIOproof. NoHW/auditMUSTNOTDEPLOY. Next source/artifact-bound refusal
+gate. Evidence `evidence/pit-profile-flow-controls-offline-2026-10-27`; DDR NOT_ADMITTED.
+
 ## 2026-10-27 — fresh complete PMU audit link without vector guard
 
 Freshvendorobjects+newPITcomponents LTOlink/footprint/noUND PASS;oldguard

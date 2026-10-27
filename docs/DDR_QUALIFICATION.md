@@ -2586,3 +2586,6 @@ Evidence pit-terminal-flow-offline-2026-10-27.
 2026-10-27 freshcompletePMUauditlink/layoutPASS/nohistoricalguard;terminal3opcodes.
 Entryretainedonly/nohook/backend/mailbox;MUSTNOTDEPLOY. Evidence
 pmu-fresh-pit-audit-link-offline-2026-10-27.
+
+2026-10-27 scopedfreshPMUprofileflowcheckPASS/26PITtests/7mutationsrejected.
+Notliveness/callbackidentity/physicalproof. Evidence pit-profile-flow-controls-offline-2026-10-27.
