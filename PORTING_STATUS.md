@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — C PIT collection/publication coupling offline
+
+19PITtestsPASS incl optimized/sanitized8readfailures=>zero writes/barriers,
+30publicationfailures/no retry. PMULTOlink/noUND PASS; inlined frame152 excludes
+callbacks/caller/exceptions. No physical backend/HW; audit ELF MUST NOT DEPLOY.
+Next concrete adapter access/fault/visibility source review; DDR NOT_ADMITTED.
+Evidence `evidence/pit-capture-coupling-offline-2026-10-27`.
+
 ## 2026-10-27 — C PIT publisher and target link offline
 
 18 PIT tests PASS incl C optimized/sanitized60interruptions/private source copy.
