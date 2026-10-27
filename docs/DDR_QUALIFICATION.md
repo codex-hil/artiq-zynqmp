@@ -2499,3 +2499,12 @@ internalread172+48+28=248excludestransport/caller. NoMMIO/deployment/HW. Newtime
 obligation:backendREQ-TYPErechecksoccurafterprotocoldeadlinecheck,beforewrite;
 no claim allpostdeadlinewritesprevented. Nexttimedfaultinjection/budgetcontract;
 DDRNOT_ADMITTED. Evidence `evidence/aib-backend-link-offline-2026-10-27`.
+
+## 2026-10-27 — backend recheck deadline bug reproduced/fixed offline
+
+Before100tickrecheck/10budgetstilldispatchedwrite;actualC reproduced. Newcallback
+start/timeoutABI,backendentry+postrechecktimechecks blocklate dispatch. Transport
+errorcodesmappedIOuncertain,notfalsecancellation. FourCoptimized/ASanUBSan suites
+PASSincllatecompletion/no rollback. NoHW. Oldtargetauditstale;nextrebuildABI/
+stack/linkbeforetransport/deployment. DDRNOT_ADMITTED. Evidence
+`evidence/aib-deadline-fix-offline-2026-10-27`.

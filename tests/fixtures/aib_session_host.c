@@ -8,7 +8,8 @@ static int rd(void *v,enum aib_reg reg,uint32_t *out) {
  *out=reg==AIB_REQ ? f->req : reg==AIB_ACK ? f->req : 0x19cf000f;
  return 0;
 }
-static int wr(void *v,uint32_t req) {
+static int wr(void *v,uint32_t req,uint64_t start,uint64_t timeout) {
+ (void)start;(void)timeout;
  struct fake *f=v;f->writes++;f->req=req;
  struct aib_receipt nested=aib_session_execute(f->session,7,9,1,f->io,0x30000,3,100);
  assert(!nested.accepted);assert(f->writes==1);return f->fail;

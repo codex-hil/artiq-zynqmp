@@ -22,7 +22,8 @@ struct aib_result aib_strict_hold(const struct aib_io *io,uint32_t mask,
  if(now<last){r.status=AIB_CLOCK_ERROR;return r;}
  if(now-start>=timeout){r.status=AIB_TIMEOUT;return r;}
  last=now;r.requested_word=req|mask;r.write_attempted=1;
- if(io->write_request(io->ctx,r.requested_word)){r.status=AIB_IO_UNCERTAIN;return r;}
+ rc=io->write_request(io->ctx,r.requested_word,start,timeout);
+ if(rc){r.status=rc==AIB_WRITE_EXPIRED ? AIB_TIMEOUT : rc==AIB_WRITE_CLOCK ? AIB_CLOCK_ERROR : AIB_IO_UNCERTAIN;return r;}
  for(uint32_t i=0;i<budget;i++) {
   if(io->ticks(io->ctx,&now)){r.status=AIB_IO_UNCERTAIN;return r;}
   if(now<last){r.status=AIB_CLOCK_ERROR;return r;}

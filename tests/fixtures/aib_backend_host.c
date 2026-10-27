@@ -23,8 +23,8 @@ int main(void) {
   if(mode==1)f.req=0;
   if(mode==2)f.type^=1;
   if(mode==3) {
-   assert(b.io.write_request(b.io.ctx,0)==-1 && f.writes==0);
-   assert(b.io.write_request(b.io.ctx,0xc30000)==-1 && f.writes==0);continue;
+   assert(b.io.write_request(b.io.ctx,0,0,100)==-1 && f.writes==0);
+   assert(b.io.write_request(b.io.ctx,0xc30000,0,100)==-1 && f.writes==0);continue;
   }
   struct aib_session s={0};assert(aib_session_arm(&s,7,9,1)==0);
   struct aib_receipt r=aib_session_execute(&s,7,9,1,&b.io,0x30000,3,100);
@@ -32,7 +32,7 @@ int main(void) {
   if(mode==0)assert(r.result.status==AIB_DRAIN_OBSERVED && f.writes==1);
   if(mode==1 || mode==2)assert(r.result.status==AIB_IO_UNCERTAIN && f.writes==0);
   if(mode==4)assert(r.result.status==AIB_IO_UNCERTAIN && f.writes==1);
-  assert(b.io.write_request(b.io.ctx,0xc30000)==-1); /* no retry/clear */
+  assert(b.io.write_request(b.io.ctx,0xc30000,0,100)==-1); /* no retry/clear */
  }
  struct fake f={.req=0xc10000,.type=0x19cf000f};
  struct aib_transport t={&f,read32,write32,ticks};struct aib_backend b={0};

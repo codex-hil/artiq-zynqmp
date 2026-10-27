@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-27 — backend recheck deadline bug reproduced/fixed offline
+
+Before100tickrecheck/10budgetstilldispatchedwrite;actualC reproduced. Newcallback
+start/timeoutABI,backendentry+postrechecktimechecks blocklate dispatch. Transport
+errorcodesmappedIOuncertain,notfalsecancellation. FourCoptimized/ASanUBSan suites
+PASSincllatecompletion/no rollback. NoHW. Oldtargetauditstale;nextrebuildABI/
+stack/linkbeforetransport/deployment. DDRNOT_ADMITTED. Evidence
+`evidence/aib-deadline-fix-offline-2026-10-27`.
+
+
 ## 2026-10-27 — backend PMU LTO callback/address audit PASS offline
 
 Exactlinkedcallbackstores/readenumtablePASS;actualELFmutationsrejected. Stack

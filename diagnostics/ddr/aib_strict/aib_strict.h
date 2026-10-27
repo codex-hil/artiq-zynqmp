@@ -5,10 +5,13 @@
 enum aib_reg { AIB_REQ, AIB_ACK, AIB_TYPE };
 enum aib_status { AIB_REJECTED, AIB_DRAIN_OBSERVED, AIB_TIMEOUT,
  AIB_CHANGED, AIB_IO_UNCERTAIN, AIB_CLOCK_ERROR };
+/* Timeout/clock codes mean rejected before transport submission. An uncertain
+ * accepted/in-flight write must return IO error, never claim it was canceled. */
+enum aib_write_error { AIB_WRITE_IO=-1, AIB_WRITE_EXPIRED=-2, AIB_WRITE_CLOCK=-3 };
 struct aib_io {
  void *ctx;
  int (*read)(void *,enum aib_reg,uint32_t *);
- int (*write_request)(void *,uint32_t);
+ int (*write_request)(void *,uint32_t,uint64_t start,uint64_t timeout);
  int (*ticks)(void *,uint64_t *);
 };
 struct aib_result {

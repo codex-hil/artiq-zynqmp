@@ -1,0 +1,15 @@
+{
+  "status": "LATE_DISPATCH_REPRODUCED_OFFLINE",
+  "hardware_access": false,
+  "read_delay_ticks": 100,
+  "timeout_ticks": 10,
+  "writes_after_delayed_recheck": 1,
+  "source_sha256": {
+    "diagnostics/ddr/aib_strict/aib_strict.h": "1bf52bd7e96f003b605f395f84f6646b62df8b0643c537381ac5f092d0097a73",
+    "diagnostics/ddr/aib_strict/aib_strict.c": "fdf4050b1c98263560ae8ec6fe6e5abb106149c6388c114cb84a8f55d3c079b3",
+    "diagnostics/ddr/aib_strict/aib_backend.h": "65f8a40d79eb93b72663840154b96b08d9972fffc41406a38d07d59e6c2b60fd",
+    "diagnostics/ddr/aib_strict/aib_session.c": "a74b9ab7f9ab8efe132e1019f630878a191bcc8b003e584b6e40e4b84cd9daa2",
+    "diagnostics/ddr/aib_strict/aib_session.h": "83e0a6f6d2f0f081302e86ff60321de233fff2a188202edc4ecb2d5067b8bec8",
+    "diagnostics/ddr/aib_strict/aib_backend.c": "c9b3769d37f45046cabdadeee7ec4c99d6c0deaaabf4473281f52064bedd7bf9"
+  }
+}

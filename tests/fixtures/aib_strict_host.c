@@ -12,7 +12,7 @@ static int rd(void *v,enum aib_reg reg,uint32_t *out) {
  else *out=f->writes ? (f->mode==1 ? 0xc10000 : f->mode==2 ? 0xc00000 : 0xc30000) : (f->mode==7 ? 0xc10000 : 0xc00000);
  return 0;
 }
-static int wr(void *v,uint32_t n) {struct fake *f=v;f->writes++;f->req=n;return f->mode==3 ? -1 : 0;}
+static int wr(void *v,uint32_t n,uint64_t start,uint64_t timeout) {(void)start;(void)timeout;struct fake *f=v;f->writes++;f->req=n;return f->mode==3 ? -1 : 0;}
 static int ticks(void *v,uint64_t *n) {struct fake *f=v;*n=f->tick++;if(f->mode==8 && f->writes)*n=0;return 0;}
 static struct aib_result run(int mode,uint64_t timeout) {
  struct fake f={.req=0xc00000,.type=0x19cf000f,.mode=mode};

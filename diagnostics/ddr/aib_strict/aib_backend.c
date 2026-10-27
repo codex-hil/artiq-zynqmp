@@ -10,16 +10,25 @@ static int read_reg(void *ctx,enum aib_reg reg,uint32_t *out) {
  case AIB_ACK:address=ACK;break;default:return -1;}
  return b->transport.read32(b->transport.ctx,address,out);
 }
-static int write_request(void *ctx,uint32_t value) {
- struct aib_backend *b=ctx;uint32_t req,type;
+static int write_request(void *ctx,uint32_t value,uint64_t start,uint64_t timeout) {
+ struct aib_backend *b=ctx;uint32_t req,type;uint64_t before,after;
  if(!b || !b->ready || b->write_attempted)return -1;
  b->write_attempted=1;
+ if(!timeout)return AIB_WRITE_EXPIRED;
+ if(b->transport.ticks(b->transport.ctx,&before))return AIB_WRITE_IO;
+ if(before<start)return AIB_WRITE_CLOCK;
+ if(before-start>=timeout)return AIB_WRITE_EXPIRED;
  if(value!=(b->initial_request|b->mask))return -1;
  if(b->transport.read32(b->transport.ctx,REQ,&req) ||
     b->transport.read32(b->transport.ctx,TYPE,&type))return -1;
  if(req!=b->initial_request || type!=b->initial_type)return -1;
- /* Preserve every unrelated bit. This is not an atomic compare-and-swap. */
- return b->transport.write32(b->transport.ctx,REQ,value);
+ if(b->transport.ticks(b->transport.ctx,&after))return AIB_WRITE_IO;
+ if(after<before)return AIB_WRITE_CLOCK;
+ if(after-start>=timeout)return AIB_WRITE_EXPIRED;
+ /* Deadline checked at dispatch, not a cancellation guarantee for in-flight IO.
+  * Preserve every unrelated bit. This is not an atomic compare-and-swap. */
+ /* Transport errors cannot masquerade as pre-dispatch timeout/cancellation. */
+ return b->transport.write32(b->transport.ctx,REQ,value) ? AIB_WRITE_IO : 0;
 }
 static int ticks(void *ctx,uint64_t *value) {
  struct aib_backend *b=ctx;
