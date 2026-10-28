@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — archived C session replay offline
+
+11 archived actual-C fake-transport outputs/hash verified;33 correlations retain
+statuses and sticky wake/debug invalidation.44 mixed/torn controls reject. No new
+C/HW execution or admission.72-test checkpoint unchanged. Next consolidated
+observer/session handoff with source/archive pins and physical blockers.
+Evidence `evidence/pit-session-c-replay-offline-2026-10-28`.
+
 ## 2026-10-28 — session/image/terminal correlation offline
 
 72 PIT tests PASS. One-shot content correlation rejects mixed nonce/image/sample/

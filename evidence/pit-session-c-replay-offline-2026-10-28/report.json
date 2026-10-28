@@ -1,0 +1,1290 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "synthetic_transport": true,
+  "archived_actual_c_output": true,
+  "archive_sha256": "2d7bc13aeb0dbfb44cc14a52452d7bb080e73e0d9eeb18695028a0924f2659ba",
+  "archived_output_sha256_verified": true,
+  "cases": 11,
+  "correlated_traces": [
+    {
+      "case": "success",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "CAPTURE_COMPLETE",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "success",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "CAPTURE_COMPLETE",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "success",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "CAPTURE_COMPLETE",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-0",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-0",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-0",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-1",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-1",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-1",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-2",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-2",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-2",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-3",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-3",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-3",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-4",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-4",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-4",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-5",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-5",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-5",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-6",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-6",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-6",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-7",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-7",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "transport-failure-7",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "forbidden-address",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "forbidden-address",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "forbidden-address",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "pre-exhausted-fake-budget",
+      "event_order": "no_reported_event",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": false,
+          "first_invalidation": null,
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "pre-exhausted-fake-budget",
+      "event_order": "wake_before_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "wake",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    },
+    {
+      "case": "pre-exhausted-fake-budget",
+      "event_order": "debug_after_terminal",
+      "result": {
+        "nonce": 7,
+        "image_sha256": "16764f88be6cfd326ed2b8dc8c5101a7f63db458971eca5220b361cbb04eaada",
+        "terminal_attempted": true,
+        "terminal_content_bound": true,
+        "terminal_status": "READ_FAILED",
+        "lifetime": {
+          "nonce": 7,
+          "last_sample": "SLEEP_SAMPLED",
+          "invalidated": true,
+          "first_invalidation": "debug",
+          "closed": false,
+          "continuous_sleep_proven": false,
+          "pmu_ram_access_allowed": false,
+          "sample_authenticated": false,
+          "recovery_qualified": false,
+          "deployable": false,
+          "hardware_executed": false,
+          "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+        },
+        "origin_authenticated": false,
+        "sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "destructive_test_allowed": false,
+        "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+      }
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "success",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "success",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "success",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "success",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-0",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-0",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-0",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-0",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-1",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-1",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-1",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-1",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-2",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-2",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-2",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-2",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-3",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-3",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-3",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-3",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-4",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-4",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-4",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-4",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-5",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-5",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-5",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-5",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-6",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-6",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-6",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-6",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-7",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-7",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-7",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "transport-failure-7",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "forbidden-address",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "forbidden-address",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "forbidden-address",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "forbidden-address",
+      "mutation": "wrong_samples",
+      "rejected": true
+    },
+    {
+      "case": "pre-exhausted-fake-budget",
+      "mutation": "wrong_nonce",
+      "rejected": true
+    },
+    {
+      "case": "pre-exhausted-fake-budget",
+      "mutation": "wrong_image",
+      "rejected": true
+    },
+    {
+      "case": "pre-exhausted-fake-budget",
+      "mutation": "torn_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "pre-exhausted-fake-budget",
+      "mutation": "wrong_samples",
+      "rejected": true
+    }
+  ],
+  "limits": "Replay of archived actual-C output with fake callbacks. Added status/events are synthetic. No fresh C/target execution, authentic hardware origin, chronological proof or RAM admission."
+}

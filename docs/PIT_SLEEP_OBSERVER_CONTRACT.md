@@ -63,3 +63,11 @@ lifetime can coexist. No origin authentication or chronological proof is claimed
 all RAM/HW/deployment permissions stay false.72 PIT tests PASS. See
 [evidence](../evidence/pit-session-correlation-offline-2026-10-28/README.md).
 Next offline replay uses archived C-generated fake-transport traces.
+
+## Archived C-output cross-check
+
+11 fake-transport C output cases replayed in33 event-order variants;44 mixed/torn
+controls reject. Archive output SHA verified; no new C/HW execution. Sticky
+invalidation and no-admission flags hold for success and failure receipts.
+See [evidence](../evidence/pit-session-c-replay-offline-2026-10-28/README.md).
+Next safe offline step consolidates this observer/session stage and blockers.
