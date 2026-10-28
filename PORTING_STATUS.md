@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — RO adapter integrated in audit context
+
+56PITtestsPASS;compositionprepare/bindROcontext/prearmedreject,9C->Pythonpairs.
+Targetentryrequiresadapter;fullnewLTOlink/layout/noUND/wordstoresPASS. Internal
+292+52=344NOTtotalstack. PlanABI/flowchanged/oldgaterefuses;noMMIO/backend/HW.
+Next newROreadbranch/address/count/state mutationcontrols beforeauditgate.
+Evidence `evidence/pit-ro-target-context-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — strict RO/status composition offline
 
 55PITtestsPASS;11actualCfakecases(success/8transporterrors/WOaddress/preexhausted

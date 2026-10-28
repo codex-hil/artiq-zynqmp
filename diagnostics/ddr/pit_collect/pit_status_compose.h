@@ -3,6 +3,7 @@
 #define PIT_STATUS_COMPOSE_H
 #include "pit_sleep_model.h"
 #include "pit_terminal_build.h"
+#include "pit_ro_adapter.h"
 struct pit_status_audit_plan {
     uint32_t consumed;
     struct pit_capture_attempt capture;
@@ -11,6 +12,7 @@ struct pit_status_audit_plan {
     uint64_t nonce;
     struct pit_sleep_ops capture_ops;
     void *capture_context;
+    struct pit_ro_adapter *read_adapter; /* Optional in host model; required by audit entry. */
     pit_write_fn receipt_write;
     pit_barrier_fn receipt_barrier;
     void *receipt_context;

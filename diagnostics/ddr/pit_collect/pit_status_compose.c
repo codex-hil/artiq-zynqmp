@@ -3,6 +3,7 @@
 struct forwarding {
     struct pit_sleep_ops ops;
     void *context;
+    struct pit_ro_adapter *read_adapter;
     struct pit_terminal_observations observations;
     unsigned msr_calls, reads;
     int read_failed, publish_failed;
@@ -25,7 +26,8 @@ static int disable(void *ctx)
 {struct forwarding *f=ctx;return f->ops.disable(f->context);}
 static int read_word(void *ctx,uint32_t address,uint32_t *out)
 {
-    struct forwarding *f=ctx;int result=f->ops.read(f->context,address,out);
+    struct forwarding *f=ctx;
+    int result=f->read_adapter?pit_ro_read(f->read_adapter,address,out):f->ops.read(f->context,address,out);
     ++f->reads;if(result)f->read_failed=1;return result;
 }
 static int write_word(void *ctx,uint32_t offset,uint32_t value)
@@ -51,10 +53,13 @@ int pit_status_compose_model(struct pit_status_audit_plan *plan)
        !plan->capture_ops.disable||!plan->capture_ops.read||!plan->capture_ops.write||
        !plan->capture_ops.barrier||!plan->receipt_write||!plan->receipt_barrier||!plan->image_digest)
         return -1;
+    if(plan->read_adapter && pit_ro_prepare(plan->read_adapter,plan->capture_ops.read,plan->capture_context))
+        return -1;
     plan->consumed=1;
     f.ops.msr=plan->capture_ops.msr;f.ops.disable=plan->capture_ops.disable;
     f.ops.read=plan->capture_ops.read;f.ops.write=plan->capture_ops.write;
     f.ops.barrier=plan->capture_ops.barrier;f.ops.terminal=defer;
+    f.read_adapter=plan->read_adapter;
     f.context=plan->capture_context;f.observations.called_mask=0;
     f.msr_calls=0;f.reads=0;f.read_failed=0;f.publish_failed=0;
     for(i=0;i<3;++i){

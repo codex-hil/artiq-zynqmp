@@ -13,7 +13,7 @@ class Tests(unittest.TestCase):
             for flags in (['-O2'], ['-O1', '-g', '-fsanitize=address,undefined', '-fno-omit-frame-pointer']):
                 exe = Path(directory) / 'collector'
                 subprocess.run(['gcc', '-std=c11', '-Wall', '-Wextra', '-Werror', *flags,
-                                '-I' + str(base), *[str(base / (name + '.c')) for name in ('pit_collect','pit_publish','pit_capture','pit_sleep_model','pit_terminal_record','pit_terminal_build','pit_status_compose')],
+                                '-I' + str(base), *[str(base / (name + '.c')) for name in ('pit_collect','pit_publish','pit_capture','pit_sleep_model','pit_terminal_record','pit_terminal_build','pit_status_compose','pit_ro_adapter')],
                                 str(ROOT / 'tests/fixtures/pit_compose_faults_host.c'), '-o', str(exe)], check=True)
                 subprocess.run([str(exe)], check=True, timeout=5)
 

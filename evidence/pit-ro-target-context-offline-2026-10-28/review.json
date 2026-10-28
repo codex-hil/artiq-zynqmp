@@ -1,0 +1,82 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "elf_sha256": "547460f1f1f85d5bf576646fb77f49194424e4998cea2ceeddab5bf39b95f742",
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd87e0",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddcdbc",
+      "end_exclusive": "0xffddddc0"
+    },
+    "bytes_after_stack_before_extension_table": 6432,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "word_checks": {
+    "pit_status_composition_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 75,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "observe": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 10,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "disable": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "read_word": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 15,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "write_word": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "barrier": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    }
+  },
+  "frames": {
+    "entry": 292,
+    "observe": 44,
+    "disable": 28,
+    "read_word": 52,
+    "write_word": 32,
+    "barrier": 32
+  },
+  "internal_entry_plus_largest_forwarder_bytes": 344,
+  "total_stack_bound": null,
+  "prior_composition_flow_refusal": "unreviewed instruction bgei"
+}

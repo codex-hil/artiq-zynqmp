@@ -2674,3 +2674,7 @@ and evidence/pit-ro-adapter-contract-offline-2026-10-28.
 2026-10-28 RO/statuscomposition55tests/11CfakecasesPASS;allread/address/budget
 errors=>READ_FAILED/zerosamplewrites. Hostfixtureonly/noHW/targetchange. Evidence
 pit-ro-composition-offline-2026-10-28.
+
+2026-10-28 ROcontextintegrated56tests/targetlink/layout/storewidthPASS;
+entryrequiresadapter/prearmedreject. Internal344not total/oldflowgaterefuses.
+NoMMIO/HW. Evidence pit-ro-target-context-offline-2026-10-28.

@@ -42,3 +42,11 @@ continues to separate offline PASS from missing physical evidence.
 address/budget failures produce READ_FAILED with zero sample writes. Receipt
 bytes crosschecked by Python. This is host fixture wiring, not target profile
 integration or physical qualification. [Evidence](../evidence/pit-ro-composition-offline-2026-10-28/README.md).
+
+## Audit target context — 2026-10-28
+
+The audit entry now requires a nonnull separate zero-initialized adapter;
+composition prepares it and forwards reads through its sequence/budget checks.
+56PITtests PASS and fresh linked layout/store-width checks PASS. This changes
+plan/compiler layout; old flow gate refuses it. No actual MMIO backend or new
+hardware admission. [Evidence](../evidence/pit-ro-target-context-offline-2026-10-28/README.md).

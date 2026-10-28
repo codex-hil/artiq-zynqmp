@@ -10,6 +10,7 @@ extern __attribute__((noreturn)) void pit_terminal_audit(void);
 __attribute__((noinline,noreturn,used)) void pit_status_composition_audit(
     struct pit_status_audit_plan *plan)
 {
-    (void)pit_status_compose_model(plan);
+    if(plan && plan->read_adapter)
+        (void)pit_status_compose_model(plan);
     pit_terminal_audit();
 }
