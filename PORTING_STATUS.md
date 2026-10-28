@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — separate RO bound audit gate offline
+
+60 PIT tests PASS; actual RO-context ELF passes explicit v2 gate with exact
+18-source/header + seven-helper + three-artifact closure. All 28 changed pins
+reject before structural checks; profile/claim/execute/deployment controls PASS.
+Old v1 unchanged. No HW/backend/DDR admission. Next isolated v2 snapshot replay.
+Evidence `evidence/pit-ro-bound-gate-offline-2026-10-28`.
+
+
 ## 2026-10-28 — RO-context-v2 linked controls offline
 
 57PITtestsPASS;actualnewELF12calls102entrybranches/read14branches/adapterrequired

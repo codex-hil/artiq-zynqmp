@@ -58,3 +58,11 @@ address/budget/state/output words in actual linked read_word. Nine semantic
 mutations and both wrong-shape selections rejected;57PITtests PASS. Static
 pins are not physical callback/visibility/recovery proof; no deployment enabled.
 [Evidence](../evidence/pit-ro-flow-controls-offline-2026-10-28/README.md).
+
+## RO bound audit gate — 2026-10-28
+
+Separate v2 gate: 18 source/header, seven helpers, three artifacts pinned;
+actual linked ELF and 60 PIT tests PASS. Changed pins and wrong profiles reject.
+Deployment remains unconditionally refused; no MMIO/recovery/visibility proof.
+See [evidence](../evidence/pit-ro-bound-gate-offline-2026-10-28/README.md).
+Next safe offline work is an isolated relocated v2 snapshot replay.

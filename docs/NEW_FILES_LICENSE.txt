@@ -1192,3 +1192,9 @@ evidence/pit-ro-target-context-offline-2026-10-28/write_word.dis
 evidence/pit-ro-flow-controls-offline-2026-10-28/README.md
 evidence/pit-ro-flow-controls-offline-2026-10-28/check.json
 evidence/pit-ro-flow-controls-offline-2026-10-28/inputs.json
+
+scripts/pit_ro_composition_audit_gate.py
+tests/test_pit_ro_composition_gate.py
+evidence/pit-ro-bound-gate-offline-2026-10-28/README.md
+evidence/pit-ro-bound-gate-offline-2026-10-28/manifest.json
+evidence/pit-ro-bound-gate-offline-2026-10-28/check.json

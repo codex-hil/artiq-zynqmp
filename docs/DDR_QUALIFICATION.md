@@ -2682,3 +2682,11 @@ NoMMIO/HW. Evidence pit-ro-target-context-offline-2026-10-28.
 2026-10-28 ro-context-v2actualELFcontrolsPASS/57tests/9ROmutants+crossshape
 rejected;30criticalwords/prefix notsymbolicdominance/physicalproof. NoHW/admission.
 Evidence pit-ro-flow-controls-offline-2026-10-28.
+
+## RO bound audit gate — 2026-10-28
+
+Separate v2 gate: 18 source/header, seven helpers, three artifacts pinned;
+actual linked ELF and 60 PIT tests PASS. Changed pins and wrong profiles reject.
+Deployment remains unconditionally refused; no MMIO/recovery/visibility proof.
+See [evidence](../evidence/pit-ro-bound-gate-offline-2026-10-28/README.md).
+Next safe offline work is an isolated relocated v2 snapshot replay.
