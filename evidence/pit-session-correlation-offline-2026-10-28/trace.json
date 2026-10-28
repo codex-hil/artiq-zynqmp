@@ -1,0 +1,90 @@
+{
+  "synthetic": true,
+  "hardware_executed": false,
+  "trace": [
+    {
+      "nonce": 7,
+      "image_sha256": "1212121212121212121212121212121212121212121212121212121212121212",
+      "terminal_attempted": false,
+      "terminal_content_bound": false,
+      "terminal_status": null,
+      "lifetime": {
+        "nonce": 7,
+        "last_sample": "SLEEP_SAMPLED",
+        "invalidated": false,
+        "first_invalidation": null,
+        "closed": false,
+        "continuous_sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "sample_authenticated": false,
+        "recovery_qualified": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+      },
+      "origin_authenticated": false,
+      "sleep_proven": false,
+      "pmu_ram_access_allowed": false,
+      "deployable": false,
+      "hardware_executed": false,
+      "destructive_test_allowed": false,
+      "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+    },
+    {
+      "nonce": 7,
+      "image_sha256": "1212121212121212121212121212121212121212121212121212121212121212",
+      "terminal_attempted": false,
+      "terminal_content_bound": false,
+      "terminal_status": null,
+      "lifetime": {
+        "nonce": 7,
+        "last_sample": "SLEEP_SAMPLED",
+        "invalidated": true,
+        "first_invalidation": "wake",
+        "closed": false,
+        "continuous_sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "sample_authenticated": false,
+        "recovery_qualified": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+      },
+      "origin_authenticated": false,
+      "sleep_proven": false,
+      "pmu_ram_access_allowed": false,
+      "deployable": false,
+      "hardware_executed": false,
+      "destructive_test_allowed": false,
+      "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+    },
+    {
+      "nonce": 7,
+      "image_sha256": "1212121212121212121212121212121212121212121212121212121212121212",
+      "terminal_attempted": true,
+      "terminal_content_bound": true,
+      "terminal_status": "CAPTURE_COMPLETE",
+      "lifetime": {
+        "nonce": 7,
+        "last_sample": "SLEEP_SAMPLED",
+        "invalidated": true,
+        "first_invalidation": "wake",
+        "closed": false,
+        "continuous_sleep_proven": false,
+        "pmu_ram_access_allowed": false,
+        "sample_authenticated": false,
+        "recovery_qualified": false,
+        "deployable": false,
+        "hardware_executed": false,
+        "limits": "Caller-fed event model only; unobserved events remain possible. No hardware lifetime, capture, RAM admission or recovery proof"
+      },
+      "origin_authenticated": false,
+      "sleep_proven": false,
+      "pmu_ram_access_allowed": false,
+      "deployable": false,
+      "hardware_executed": false,
+      "destructive_test_allowed": false,
+      "limits": "Supplied content/session correlation only. No chronological, physical origin, continuous sleep or recovery proof"
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — session/image/terminal correlation offline
+
+72 PIT tests PASS. One-shot content correlation rejects mixed nonce/image/sample/
+torn snapshots/duplicates; validity remains separate and sticky after events.
+Valid receipt cannot restore lifetime or grant RAM/deployment. No HW/backend/
+gate change. Next offline replay archived actual-C fake-transport traces.
+Evidence `evidence/pit-session-correlation-offline-2026-10-28`.
+
 ## 2026-10-28 — sticky observation lifetime model offline
 
 68 PIT tests PASS;2801 sequences(length0..4) preserve event invalidation and

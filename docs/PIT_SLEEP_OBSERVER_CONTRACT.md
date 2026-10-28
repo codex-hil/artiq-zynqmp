@@ -53,3 +53,13 @@ does not authenticate events or prove coverage of physical sources. See
 [evidence](../evidence/pit-sleep-lifetime-offline-2026-10-28/README.md).
 Next safe offline work correlates supplied session/image/terminal receipts
 without promoting correlation to physical sleep or recovery proof.
+
+## Supplied terminal/session correlation
+
+`pit_session_correlation.Session` fixes nonce/image SHA at creation and consumes
+one terminal validation attempt. Existing decoder enforces terminal/sample
+bindings; failures/duplicates invalidate lifetime. Valid content and invalid
+lifetime can coexist. No origin authentication or chronological proof is claimed;
+all RAM/HW/deployment permissions stay false.72 PIT tests PASS. See
+[evidence](../evidence/pit-session-correlation-offline-2026-10-28/README.md).
+Next offline replay uses archived C-generated fake-transport traces.
