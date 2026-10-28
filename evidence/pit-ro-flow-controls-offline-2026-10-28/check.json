@@ -1,0 +1,54 @@
+{
+  "status": "SCOPED_COMPOSITION_FLOW_PASS_NOT_HARDWARE",
+  "compiler_shape": "ro-context-v2",
+  "functions": {
+    "pit_status_composition_audit": {
+      "direct_calls": 12,
+      "indirect_calls": 5,
+      "internal_branches": 102,
+      "returns": 0,
+      "word_store_sites": 75
+    },
+    "observe": {
+      "direct_calls": 0,
+      "indirect_calls": 1,
+      "internal_branches": 1,
+      "returns": 1,
+      "word_store_sites": 10
+    },
+    "disable": {
+      "direct_calls": 0,
+      "indirect_calls": 1,
+      "internal_branches": 0,
+      "returns": 1,
+      "word_store_sites": 1
+    },
+    "read_word": {
+      "direct_calls": 0,
+      "indirect_calls": 2,
+      "internal_branches": 14,
+      "returns": 1,
+      "word_store_sites": 15,
+      "critical_word_pins": 30
+    },
+    "write_word": {
+      "direct_calls": 0,
+      "indirect_calls": 1,
+      "internal_branches": 1,
+      "returns": 1,
+      "word_store_sites": 3
+    },
+    "barrier": {
+      "direct_calls": 0,
+      "indirect_calls": 1,
+      "internal_branches": 1,
+      "returns": 1,
+      "word_store_sites": 3
+    }
+  },
+  "hardware_executed": false,
+  "deployable": false,
+  "destructive_test_allowed": false,
+  "limits": "Static inventory/ranges only; callback identity/dataflow, liveness, library/exception paths and physical visibility unqualified",
+  "elf_sha256": "547460f1f1f85d5bf576646fb77f49194424e4998cea2ceeddab5bf39b95f742"
+}

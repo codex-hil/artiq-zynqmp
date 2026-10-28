@@ -2678,3 +2678,7 @@ pit-ro-composition-offline-2026-10-28.
 2026-10-28 ROcontextintegrated56tests/targetlink/layout/storewidthPASS;
 entryrequiresadapter/prearmedreject. Internal344not total/oldflowgaterefuses.
 NoMMIO/HW. Evidence pit-ro-target-context-offline-2026-10-28.
+
+2026-10-28 ro-context-v2actualELFcontrolsPASS/57tests/9ROmutants+crossshape
+rejected;30criticalwords/prefix notsymbolicdominance/physicalproof. NoHW/admission.
+Evidence pit-ro-flow-controls-offline-2026-10-28.

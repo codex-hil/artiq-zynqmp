@@ -10,16 +10,21 @@ from check_pit_composition_flow import check,ENTRY,FORWARDERS
 ARCHIVE=ROOT/'evidence/pit-forwarded-status-target-offline-2026-10-27'
 
 
-def fixture(mutation=None,stale=False):
+def fixture(mutation=None,stale=False,shape="forwarded-v1"):
     names=[ENTRY,*FORWARDERS,'pit_terminal_audit']
-    texts={name:(ARCHIVE/(name+'.dis')).read_text() for name in names}
+    archive=ARCHIVE if shape=='forwarded-v1' else ROOT/'evidence/pit-ro-target-context-offline-2026-10-28'
+    texts={name:(archive/(name+'.dis')).read_text() for name in names}
     original_rows={}
     for text in texts.values():
         for a,w in re.findall(r'^([0-9a-f]+):\s+([0-9a-f]{8})',text,re.M):original_rows[int(a,16)]=int(w,16)
     changed_pc=None;changed_word=None
     if mutation:
         name,op,new_op,transform=mutation
-        pattern=r'^([0-9a-f]+):\s+([0-9a-f]{8})\s+'+re.escape(op)+r'\b.*$'
+        if op.startswith('@'):
+            first=int(re.search(r'^([0-9a-f]+):',texts[name],re.M)[1],16)
+            pattern=r'^('+format(first+int(op[1:],16),'08x')+r'):\s+([0-9a-f]{8})\s+.*$'
+        else:
+            pattern=r'^([0-9a-f]+):\s+([0-9a-f]{8})\s+'+re.escape(op)+r'\b.*$'
         match=re.search(pattern,texts[name],re.M)
         assert match
         changed_pc=int(match[1],16);changed_word=transform(int(match[2],16))
@@ -33,7 +38,7 @@ def fixture(mutation=None,stale=False):
     for name,text in texts.items():
         addresses=[int(a,16) for a in re.findall(r'^([0-9a-f]+):',text,re.M)]
         symbols.append(f'{min(addresses):08x} {max(addresses)-min(addresses)+4:08x} T {name}')
-    symbols.append('ffdd265c 00000114 T memset')
+    symbols.append(('ffdd265c' if shape=='forwarded-v1' else 'ffdd2760')+' 00000114 T memset')
     ident=b'\x7fELF\x01\x01\x01'+bytes(9)
     header=struct.pack('<HHIIIIIHHHHHH',2,189,1,0xffdc0050,52,0,0,52,32,1,0,0,0)
     ph=struct.pack('<8I',1,84,base,base,len(payload),len(payload),7,4)
@@ -46,6 +51,26 @@ class Tests(unittest.TestCase):
         self.assertEqual(result['functions'][ENTRY]['direct_calls'],12)
         self.assertEqual(result['functions'][ENTRY]['internal_branches'],97)
         self.assertFalse(result['deployable'])
+
+    def test_ro_context_v2_address_budget_and_state_mutations(self):
+        result=check(*fixture(shape='ro-context-v2'),shape='ro-context-v2')
+        self.assertEqual(result['functions']['read_word']['critical_word_pins'],30)
+        mutations=[
+            ('read_word','@b8','addik',lambda w:(w&0xffff0000)|0x40), # WO preload alias
+            ('read_word','@b4','imm',lambda w:0xb000ffd5), # Wrong register bank
+            ('read_word','@94','addik',lambda w:0x30a00008), # Ninth read admitted
+            ('read_word','@ac','andi',lambda w:0xa4a40001), # Wrong timer sequence
+            ('read_word','@7c','or',lambda w:0x80000000), # Busy guard removed
+            ('read_word','@84','or',lambda w:0x80000000), # Failed-state guard removed
+            ('read_word','@dc','or',lambda w:0x80000000), # Count not consumed before call
+            ('read_word','@e8','or',lambda w:0x80000000), # Raw error ignored
+            (ENTRY,'@34','or',lambda w:0x80000000), # Audit entry accepts null adapter
+        ]
+        for mutation in mutations:
+            with self.assertRaises(ValueError):
+                check(*fixture(mutation,shape='ro-context-v2'),shape='ro-context-v2')
+        for fixture_shape,checker_shape in [('forwarded-v1','ro-context-v2'),('ro-context-v2','forwarded-v1')]:
+            with self.assertRaises(ValueError):check(*fixture(shape=fixture_shape),shape=checker_shape)
 
     def test_consistent_control_mutations_rejected(self):
         mutations=[

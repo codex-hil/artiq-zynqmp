@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — RO-context-v2 linked controls offline
+
+57PITtestsPASS;actualnewELF12calls102entrybranches/read14branches/adapterrequired
+prefix+30criticalROwordsPASS. Nineaddress-budget-state-outputmutants andboth
+crossshapeselectionsreject. Forwarded-v1preserved/no gate admission extension.
+NoHW/targetchange. Next new18-source ROauditclosure/selectv2/alwaysrefuse
+deployment. Evidence `evidence/pit-ro-flow-controls-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — RO adapter integrated in audit context
 
 56PITtestsPASS;compositionprepare/bindROcontext/prearmedreject,9C->Pythonpairs.

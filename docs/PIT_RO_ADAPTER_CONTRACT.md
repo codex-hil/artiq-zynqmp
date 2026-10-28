@@ -50,3 +50,11 @@ composition prepares it and forwards reads through its sequence/budget checks.
 56PITtests PASS and fresh linked layout/store-width checks PASS. This changes
 plan/compiler layout; old flow gate refuses it. No actual MMIO backend or new
 hardware admission. [Evidence](../evidence/pit-ro-target-context-offline-2026-10-28/README.md).
+
+## Linked RO guard qualification — 2026-10-28
+
+New ro-context-v2 checker verifies the adapter-required prefix and30critical
+address/budget/state/output words in actual linked read_word. Nine semantic
+mutations and both wrong-shape selections rejected;57PITtests PASS. Static
+pins are not physical callback/visibility/recovery proof; no deployment enabled.
+[Evidence](../evidence/pit-ro-flow-controls-offline-2026-10-28/README.md).

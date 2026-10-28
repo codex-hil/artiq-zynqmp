@@ -9,7 +9,8 @@ ENTRY='pit_status_composition_audit'
 FORWARDERS=('observe','disable','read_word','write_word','barrier')
 
 
-def check(data, symbols_text, disassembly):
+def check(data, symbols_text, disassembly, shape="forwarded-v1"):
+    if shape not in ("forwarded-v1", "ro-context-v2"):raise ValueError("unknown composition shape")
     machine, entry, segments=loads(data)
     if machine!=189 or entry!=0xffdc0050:raise ValueError('full PMU audit ELF required')
     symbols={}
@@ -45,6 +46,8 @@ def check(data, symbols_text, disassembly):
         return pc+(offset-65536 if offset&32768 else offset)
     ordinary={'addik','addk','and','andi','bsll','bslli','cmpu','imm','lw','lwi','or','pcmpeq','pcmpne','sw','swi','xor','xori'}
     branches={'beqi','beqid','bnei','bneid','bltid','bri','brid'}
+    if shape=='ro-context-v2':
+        branches.add('bgei')
     reports={}
     for name in (ENTRY,*FORWARDERS):
         store_report=check_stores(data,symbols_text,name)
@@ -75,9 +78,28 @@ def check(data, symbols_text, disassembly):
             if Counter(calls)!=Counter({symbols[n][0]:count for n,count in expected.items()}):raise ValueError('wrong direct callback/terminal targets')
             if Counter(indirect)!=Counter({25:3,26:2}) or returns:raise ValueError('wrong receipt callback inventory')
             if instructions[-2][2]!='brid':raise ValueError('entry fallthrough not reviewed')
-        elif calls or indirect!=[3] or returns!=1:
+        elif calls or indirect!=([3,3] if shape=='ro-context-v2' and name=='read_word' else [3]) or returns!=1:
             raise ValueError('wrong forwarding callback/return inventory')
         reports[name]={'direct_calls':len(calls),'indirect_calls':len(indirect),'internal_branches':branch_count,'returns':returns,'word_store_sites':store_report['word_store_sites']}
-    return {'status':'SCOPED_COMPOSITION_FLOW_PASS_NOT_HARDWARE','functions':reports,
+    if shape=='ro-context-v2':
+        entry_words={pc-symbols[ENTRY][0]:word for pc,word,_ in body(ENTRY)}
+        if any(entry_words.get(offset)!=word for offset,word in {
+            0x28:0xbe0501d0,0x30:0xe8650090,0x34:0xbe0301c4}.items()):
+            raise ValueError('entry adapter-required prefix changed')
+        ro_words={pc-symbols['read_word'][0]:word for pc,word,_ in body('read_word')}
+        pins={0x1c:0xea65001c,0x20:0xbe1300dc,0x28:0xe8730008,
+              0x2c:0xbe030010,0x34:0xe8730000,0x38:0xbc230040,
+              0x78:0xe8930014,0x7c:0xbc24ffc0,0x80:0xe8930010,
+              0x84:0xbc24ffb8,0x88:0xbe070018,0x90:0xe893000c,
+              0x94:0x30a00007,0x98:0x16442803,0x9c:0xbcb20010,
+              0xac:0xa4a40003,0xb0:0x64a50404,0xb4:0xb000ffd4,
+              0xb8:0x30a50044,0xbc:0x8ae62800,0xc0:0xbe170010,
+              0xcc:0xfb330010,0xd4:0x30840001,0xd8:0xfb330014,
+              0xdc:0xf893000c,0xe0:0x99fc1800,0xe8:0xbe23ffe0,
+              0xec:0xfaf30014,0xf0:0xe881001c,0xf8:0xf8980000}
+        if any(ro_words.get(offset)!=word for offset,word in pins.items()):
+            raise ValueError('RO address/budget/state/output contract changed')
+        reports['read_word']['critical_word_pins']=len(pins)
+    return {'status':'SCOPED_COMPOSITION_FLOW_PASS_NOT_HARDWARE','compiler_shape':shape,'functions':reports,
             'hardware_executed':False,'deployable':False,'destructive_test_allowed':False,
             'limits':'Static inventory/ranges only; callback identity/dataflow, liveness, library/exception paths and physical visibility unqualified'}
