@@ -50,6 +50,14 @@ hung-load recovery remains unqualified. Existing RAM/debug scripts were reviewed
 but not executed or modified. Next offline status-only contract/fail-closed
 interval admission; no executor. [Evidence](../evidence/pit-sleep-status-race-offline-2026-10-28/README.md).
 
+## Status-only contract update
+
+64 PIT tests PASS. Strict caller-supplied status parser never grants RAM or
+continuous-sleep/recovery/deployment claims. No capture backend or HW access.
+See [contract](PIT_SLEEP_OBSERVER_CONTRACT.md) and
+[evidence](../evidence/pit-sleep-observer-contract-offline-2026-10-28/README.md).
+Next offline candidate-specific wake/exception/reset/debug interval mapping.
+
 ## Earlier forwarded-v1 checkpoint (preserved dated context)
 
 # PMU/PIT diagnostic qualification checkpoint — 2026-10-28

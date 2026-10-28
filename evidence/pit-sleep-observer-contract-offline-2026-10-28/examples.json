@@ -1,0 +1,65 @@
+[
+  {
+    "synthetic": true,
+    "input": {
+      "version": 1,
+      "nonce": 7,
+      "address": 4292345856,
+      "return_code": 0,
+      "value": 0
+    },
+    "result": {
+      "state": "ACTIVE_SAMPLED",
+      "nonce": 7,
+      "sample_authenticated": false,
+      "continuous_sleep_proven": false,
+      "pmu_ram_access_allowed": false,
+      "recovery_qualified": false,
+      "deployable": false,
+      "hardware_executed": false,
+      "limits": "Offline interpretation only; no interval ownership, freshness authentication, safe transport or hardware execution proof"
+    }
+  },
+  {
+    "synthetic": true,
+    "input": {
+      "version": 1,
+      "nonce": 7,
+      "address": 4292345856,
+      "return_code": 0,
+      "value": 65536
+    },
+    "result": {
+      "state": "SLEEP_SAMPLED",
+      "nonce": 7,
+      "sample_authenticated": false,
+      "continuous_sleep_proven": false,
+      "pmu_ram_access_allowed": false,
+      "recovery_qualified": false,
+      "deployable": false,
+      "hardware_executed": false,
+      "limits": "Offline interpretation only; no interval ownership, freshness authentication, safe transport or hardware execution proof"
+    }
+  },
+  {
+    "synthetic": true,
+    "input": {
+      "version": 1,
+      "nonce": 7,
+      "address": 4292345856,
+      "return_code": -1,
+      "value": null
+    },
+    "result": {
+      "state": "UNKNOWN",
+      "nonce": 7,
+      "sample_authenticated": false,
+      "continuous_sleep_proven": false,
+      "pmu_ram_access_allowed": false,
+      "recovery_qualified": false,
+      "deployable": false,
+      "hardware_executed": false,
+      "limits": "Offline interpretation only; no interval ownership, freshness authentication, safe transport or hardware execution proof"
+    }
+  }
+]

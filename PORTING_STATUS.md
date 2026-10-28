@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — status-only observer contract offline
+
+64 PIT tests PASS; strict single supplied MB_SLEEP sample parser reports only
+active/sleep/unknown. Failed-read output/claim injection rejected, RAM admission
+always refused. No transport/executor/HW/profile change. Next exact candidate
+wake/exception/reset/debug source-to-interval mapping.
+Evidence `evidence/pit-sleep-observer-contract-offline-2026-10-28`.
+
 ## 2026-10-28 — exact MB_SLEEP semantics and polling race reviewed
 
 UG1087 exact entry confirms RO bit16 active0/sleep1 at0xffd80000; Dont_Sleep0
