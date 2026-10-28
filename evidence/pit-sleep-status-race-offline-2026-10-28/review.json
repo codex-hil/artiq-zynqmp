@@ -1,0 +1,36 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "source": {
+    "url": "https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/GLOBAL_CNTRL-PMU_GLOBAL-Register",
+    "resolved_link": "https://docs.amd.com/r/tRsGljEoh_lnUPXyOVIunw/t7DtP5snNed_MwMMSvScJA",
+    "document": "UG1087 1.11 2025-06-20",
+    "reviewed_lines": "9451-9487",
+    "paraphrase": "32-bit mixed PMU control/status at0xffd80000. Read-only MB_Sleep bit16 distinguishes active(0) from sleep(1). Dont_Sleep bit0 drives wake while sleep and interrupts disabled. No state-reservation, lock, synchronisation bound or no-wake interval is specified by this register entry."
+  },
+  "transport_review": [
+    {
+      "path": "scripts/probe_pmu_ram_access.tcl",
+      "sha256": "2c64ddfcf891ced0d0cdfeb469fc60e2adda0e60d411d4567983bf8ec3d9cfc3"
+    },
+    {
+      "path": "scripts/restart_pmu_for_restore.tcl",
+      "sha256": "401626dc93515f760a69a1898903d25ab6f27b693ce1436e8c1ef58558376db1"
+    },
+    {
+      "path": "scripts/probe_pmu_lab_guard.tcl",
+      "sha256": "22700d53b5d2a8a0c20906df0ff73e0f931db8fc9525c7275a1c2ccf592f41ae"
+    }
+  ],
+  "assessment": {
+    "ram_probe": "PSU/AP0 mrd fixed RAM0xffdc0050 twice; no sleep acquisition or lifetime proof. Do not run as a new safety-qualified probe.",
+    "restore": "Selects PMU debug target, stop->suspended->r0->download->resume. This intentionally alters execution and depends on a working debug path; no arbitrary-hang guarantee.",
+    "guard_probe": "PSU/AP0 request writes and record reads; existing physical scope is historical, not a generic sleep-status observer."
+  },
+  "open": [
+    "Master access/security and debug side effects for a newly scoped status-only observer need exact route proof.",
+    "Read-only status reports a state, not continuous exclusion of wake/reset/exception.",
+    "Independent recovery from stuck MMIO remains unqualified."
+  ],
+  "next_safe_step": "Offline explicit observer-only contract and fail-closed race/lifetime admission predicate, with no RAM access or deployment executor."
+}

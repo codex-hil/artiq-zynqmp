@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — exact MB_SLEEP semantics and polling race reviewed
+
+UG1087 exact entry confirms RO bit16 active0/sleep1 at0xffd80000; Dont_Sleep0
+requests wake. Register semantics gap narrowed, transport/lifetime not qualified.
+Abstract endpoint-poll model7/8 interior-wake counterexamples; not HW behavior.
+Existing RAM/debug-restore scripts reviewed only. NoHW/admission. Next offline
+status-only observer contract/fail-closed interval admission, no executor.
+Evidence `evidence/pit-sleep-status-race-offline-2026-10-28`.
+
 ## 2026-10-28 — sleep/recovery feasibility review offline
 
 UG1085 external-RAM restriction/cooperative IPI protocol reviewed. Header exposes

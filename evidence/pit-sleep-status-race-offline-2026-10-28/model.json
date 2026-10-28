@@ -1,0 +1,96 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "abstract_schedules": [
+    {
+      "sleep_states": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": false
+    },
+    {
+      "sleep_states": [
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": false
+    },
+    {
+      "sleep_states": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": false
+    },
+    {
+      "sleep_states": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": false
+    },
+    {
+      "sleep_states": [
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": false
+    },
+    {
+      "sleep_states": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": false
+    },
+    {
+      "sleep_states": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": false
+    },
+    {
+      "sleep_states": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "both_polls_report_sleep": true,
+      "continuous_sleep_during_ram": true
+    }
+  ],
+  "counterexamples": 7,
+  "limits": "Combinatorial counterexample only. Assumes wake/resleep can occur; does not model actual event timing, register synchronisation or identify a real board failure. Endpoint sleep polls cannot prove an interval property without separately excluding wake."
+}

@@ -41,6 +41,15 @@ loading protocol requires handler execution and is not independent hung-load
 recovery. No HW/admission change. Next offline exact register definition and
 observer/race review. [Evidence](../evidence/pit-sleep-recovery-feasibility-offline-2026-10-28/README.md).
 
+## Exact status semantics and interval race update
+
+UG1087 confirms read-only MB_Sleep bit16(active0/sleep1) at0xffd80000. This closes
+the field-definition retrieval gap, not transport safety or continuous sleep.
+Abstract endpoint polling admits interior-wake counterexamples; independent
+hung-load recovery remains unqualified. Existing RAM/debug scripts were reviewed
+but not executed or modified. Next offline status-only contract/fail-closed
+interval admission; no executor. [Evidence](../evidence/pit-sleep-status-race-offline-2026-10-28/README.md).
+
 ## Earlier forwarded-v1 checkpoint (preserved dated context)
 
 # PMU/PIT diagnostic qualification checkpoint — 2026-10-28
