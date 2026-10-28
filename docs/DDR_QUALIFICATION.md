@@ -2729,3 +2729,11 @@ rebuild with full dependencies. See
 banner date/time bytes differ; no identity/admission claim. Next offline link
 all 70 new objects and account for load differences. See
 [evidence](../evidence/pit-vendor-recompile-offline-2026-10-28/README.md).
+
+## All-object relink difference accounting — 2026-10-28
+
+70 rebuilt objects link with matching PT_LOAD descriptors and exactly six
+accounted timestamp bytes. Four extra-difference controls reject; static gates
+PASS. Archives reused; no HW/DDR admission or complete reproducibility proof.
+See [evidence](../evidence/pit-full-object-relink-offline-2026-10-28/README.md).
+Next offline step consolidates this stage and remaining admission obligations.

@@ -1,0 +1,40 @@
+{
+  "status": "EXACT_TIMESTAMP_DIFFERENCES_ACCOUNTED_NOT_IDENTICAL",
+  "changed_bytes": 6,
+  "fields": [
+    {
+      "field": "time",
+      "address": "0xffdd2c28",
+      "bytes": 8
+    },
+    {
+      "field": "date",
+      "address": "0xffdd2c34",
+      "bytes": 11
+    }
+  ],
+  "deployable": false,
+  "hardware_executed": false,
+  "negative_controls": [
+    {
+      "case": "extra-byte",
+      "rejected": true,
+      "reason": "unaccounted load byte difference"
+    },
+    {
+      "case": "wrong-time",
+      "rejected": true,
+      "reason": "unexpected timestamp value"
+    },
+    {
+      "case": "metadata",
+      "rejected": true,
+      "reason": "segment metadata changed"
+    },
+    {
+      "case": "missing-segment",
+      "rejected": true,
+      "reason": "changed ELF machine/entry/segment count"
+    }
+  ]
+}

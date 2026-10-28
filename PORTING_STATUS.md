@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — all rebuilt objects linked; six timestamp bytes differ
+
+70 new objects linked; three PT_LOAD descriptors match, exactly six changed
+payload bytes accounted in unique DATE/TIME fields. Four hostile accounting
+controls reject. No UND/layout/RO-v2 flow/bound gate PASS; inputs stable. BSP/
+runtime archives reused; no whole-image identity/provenance/HW/admission claim.
+Next consolidate rebuild evidence and remaining backend/recovery/visibility gaps.
+Evidence `evidence/pit-full-object-relink-offline-2026-10-28`.
+
 ## 2026-10-28 — vendor rebuild completed with timestamp difference
 
 60 units/235 full dependencies captured stable pre/post. 59 native inventories
