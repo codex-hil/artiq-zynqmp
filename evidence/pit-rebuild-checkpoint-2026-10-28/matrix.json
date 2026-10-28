@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-28",
+  "stage": "RO_CONTEXT_REBUILD_REVIEW_COMPLETE_OFFLINE",
+  "hardware_executed": false,
+  "counter_profile_deployable": false,
+  "destructive_test_allowed": false,
+  "rows": [
+    {
+      "id": "historical_checkpoint",
+      "status": "DATED_PRESERVED",
+      "limits": "Earlier forwarded-v1/53-test checkpoint is retained, not rewritten.",
+      "evidence": [
+        {
+          "path": "evidence/pit-qualification-checkpoint-2026-10-28/matrix.json",
+          "sha256": "1b175d6b8131ff88704ea4c3fc2eff922956377e5f963e22af0d16b38a162bb1"
+        }
+      ]
+    },
+    {
+      "id": "ro_host_models",
+      "status": "OFFLINE_PASS_DATED",
+      "limits": "60 tests last passed at RO bound gate checkpoint; no new suite execution.",
+      "evidence": [
+        {
+          "path": "evidence/pit-ro-bound-gate-offline-2026-10-28/README.md",
+          "sha256": "796565a7121305362d15004eb907228028f572dfd005da1570265197074b04ed"
+        }
+      ]
+    },
+    {
+      "id": "ro_linked_flow",
+      "status": "STATIC_PASS",
+      "limits": "Adapter-required prefix and 30 critical instruction words, not liveness or physical callback identity.",
+      "evidence": [
+        {
+          "path": "evidence/pit-ro-flow-controls-offline-2026-10-28/check.json",
+          "sha256": "3c65d1759adcc937b014a252574a29994998b48335fca6f43bee1fe11f4e8009"
+        }
+      ]
+    },
+    {
+      "id": "ro_bound_gate",
+      "status": "OFFLINE_PASS",
+      "limits": "18 custom source/header +7 helper +3 artifacts; unconditional deployment refusal.",
+      "evidence": [
+        {
+          "path": "evidence/pit-ro-bound-gate-offline-2026-10-28/manifest.json",
+          "sha256": "5e1bad0662f1891349ca84197a8cb4ca0e4d6e2bfa8c9e611385042b7c5faec8"
+        },
+        {
+          "path": "evidence/pit-ro-bound-gate-offline-2026-10-28/check.json",
+          "sha256": "7743db8144600b87d7dfb9314e5b6c00076d3d94dbfd59fa6cba9b6072bd3e6a"
+        }
+      ]
+    },
+    {
+      "id": "frozen_ro_replay",
+      "status": "OFFLINE_PASS",
+      "limits": "30 files plus inventory; relocation and nine negative controls; modes not security.",
+      "evidence": [
+        {
+          "path": "evidence/pit-ro-frozen-replay-offline-2026-10-28/verification.json",
+          "sha256": "a2bd2593c21262c500208214df30a5066f765401b0a0dc329610c06d7d6fe88a"
+        }
+      ]
+    },
+    {
+      "id": "current_input_inventory",
+      "status": "OBSERVED_NOT_ATTESTED",
+      "limits": "Current headers/tools/archive hashes do not prove original-time bytes.",
+      "evidence": [
+        {
+          "path": "evidence/pit-build-input-review-offline-2026-10-28/inventory.json",
+          "sha256": "6ece637ee83babf4341407c14400c33ef196ded6e922f453c65481284bdec7d7"
+        }
+      ]
+    },
+    {
+      "id": "ten_custom_units",
+      "status": "NATIVE_AGREEMENT",
+      "limits": "26 full dependencies stable; native sections/relocations equal; 0 complete object matches.",
+      "evidence": [
+        {
+          "path": "evidence/pit-custom-recompile-offline-2026-10-28/report.json",
+          "sha256": "79c6b9ab5a856afaf953860401e19d6d3a55af1ccef9e6f7db45c8afb52b7735"
+        }
+      ]
+    },
+    {
+      "id": "sixty_vendor_units",
+      "status": "DIFFERENCE_ACCOUNTED",
+      "limits": "235 dependencies stable;59 native matches;only DATE/TIME rodata differs;60 relocations match.",
+      "evidence": [
+        {
+          "path": "evidence/pit-vendor-recompile-offline-2026-10-28/report.json",
+          "sha256": "c9b0df82857497084a363568a43e641dc6c796cb38f819c0540b9d4b5b6ae333"
+        },
+        {
+          "path": "evidence/pit-vendor-recompile-offline-2026-10-28/controls.json",
+          "sha256": "df6d55c5be746285173900886dd0f23cb37f951df391306afda9aec4f09516e0"
+        }
+      ]
+    },
+    {
+      "id": "seventy_object_link",
+      "status": "STATIC_PASS_WITH_DIFFERENCE",
+      "limits": "3 PT_LOAD descriptors match;6 timestamp bytes differ. Archives reused; not identical ELF.",
+      "evidence": [
+        {
+          "path": "evidence/pit-full-object-relink-offline-2026-10-28/report.json",
+          "sha256": "36efcc766a53a4fb076d5aa25a15740d1a553f4f5b6ad69b46b6e49481647d51"
+        },
+        {
+          "path": "evidence/pit-full-object-relink-offline-2026-10-28/accounting.json",
+          "sha256": "adfc8821aaa9c288c3523b1a7fa1258ff83eb59741de5f088886b33e3bffab22"
+        },
+        {
+          "path": "evidence/pit-full-object-relink-offline-2026-10-28/gate.json",
+          "sha256": "7743db8144600b87d7dfb9314e5b6c00076d3d94dbfd59fa6cba9b6072bd3e6a"
+        }
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "id": "physical_backend",
+      "status": "NOT_IMPLEMENTED",
+      "reason": "No qualified PMU-local MMIO adapter or runtime hook; no admission from static loads."
+    },
+    {
+      "id": "hung_load_recovery",
+      "status": "UNQUALIFIED",
+      "reason": "Software timeout cannot preempt a hung load; current debug restore remains conditional."
+    },
+    {
+      "id": "sleep_ap0_visibility",
+      "status": "UNQUALIFIED",
+      "reason": "Pre-sleep record commit is intent, not sleep residency or permission to read running-PMU RAM."
+    },
+    {
+      "id": "mailbox_and_hash_source",
+      "status": "UNQUALIFIED",
+      "reason": "No production symbol allocation/ownership and authenticated target digest producer."
+    },
+    {
+      "id": "exceptions_and_total_stack",
+      "status": "UNQUALIFIED",
+      "reason": "Internal344-byte frame sum excludes raw callbacks/caller/exceptions; ROM/EE/NMI/reset unresolved."
+    },
+    {
+      "id": "ddr_all_owner_exclusion",
+      "status": "NOT_ADMITTED",
+      "reason": "PMU authority, secondary future release, PS masters, posted traffic and same-boot epochs remain open."
+    },
+    {
+      "id": "whole_build_provenance",
+      "status": "INCOMPLETE",
+      "reason": "BSP/runtime archives reused and full tool runtime/compiler trust not established."
+    }
+  ],
+  "next_safe_step": "Offline review of non-MMIO sleep observation and independent hung-load recovery feasibility using local platform documentation; no executor or hardware retry."
+}

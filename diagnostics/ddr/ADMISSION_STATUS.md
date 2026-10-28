@@ -7,6 +7,18 @@ Software/linked audit PASS does not qualify physical MMIO, sleep/AP0 visibility,
 independent hang recovery, target hash provenance or global DDR exclusion.
 No new hardware check in this checkpoint; Oct27 restoration is historical evidence.
 
+## RO rebuild review update — 2026-10-28
+
+Current [pinned rebuild matrix](../../evidence/pit-rebuild-checkpoint-2026-10-28/matrix.json)
+adds 18-source RO gate/frozen replay and 70-object recompile/relink. All three
+segment descriptors match; six timestamp bytes differ explicitly. This is not
+an identical or fully independent build; BSP/runtime archives were reused.
+
+Physical backend, hung-load recovery, sleep/AP0 visibility, mailbox/hash source,
+exceptions/total stack and all-owner DDR exclusion remain unqualified. Next
+safe offline step reviews supported sleep observation and independent recovery.
+No HW/DDR admission or unchanged physical retry follows from this update.
+
 ## Historical notes (dated claims are superseded where stated)
 
 CORRECTION2026-10-27: GPO0 is WRITE-ONLY per UG1087. Historical raw0 is not

@@ -1,0 +1,11 @@
+{
+  "status": "CHECKPOINT_EVIDENCE_AND_FROZEN_REPLAY_PASS",
+  "hardware_executed": false,
+  "deployable": false,
+  "evidence_rows_verified": 9,
+  "six_load_differences_accounted": true,
+  "frozen_inventory_anchor_verified": true,
+  "frozen_replay_pass": true,
+  "host_suite_rerun": false,
+  "limits": "Checks recorded evidence consistency and frozen audit only, not physical qualification or full trusted build provenance."
+}

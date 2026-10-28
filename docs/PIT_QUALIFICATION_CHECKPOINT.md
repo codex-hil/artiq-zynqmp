@@ -1,3 +1,40 @@
+# PMU/PIT qualification — RO rebuild checkpoint, 2026-10-28
+
+**Offline rebuild review complete. PIT counter image NOT DEPLOYABLE.
+Full destructive DDR NOT_RUN / NOT_ADMITTED.** No new hardware access.
+[Current pinned matrix](../evidence/pit-rebuild-checkpoint-2026-10-28/matrix.json)
+and [verification](../evidence/pit-rebuild-checkpoint-2026-10-28/verification.json).
+
+| Layer | Current evidence | Limit |
+|---|---|---|
+| Host behavior | 60 tests, dated RO bound gate PASS | Fake transports; no fresh suite or HW claim |
+| RO linked guards | Required adapter +30 critical words; nine mutants rejected | Static inventory, not liveness or callback trust |
+| Bound gate | 18 custom sources/headers +7 helpers +3 artifacts | Always refuses deployment; not full provenance |
+| Frozen RO replay | Two relocated copies, nine negative controls; fresh replay PASS | Prior audit image preserved; no repin; owner can alter files |
+| Ten custom units | Native code/data/relocations match;26 full dependencies stable | Whole objects differ; same compiler |
+| Sixty vendor units |59 native matches,60 relocation matches;235 dependencies stable | One date/time banner difference; archives not rebuilt |
+| Seventy-object LTO link | Three segment descriptors match; exactly six timestamp bytes differ | ELF/load image NOT identical; static gates PASS only |
+
+The explicit stack subtotal for this RO profile is292+52=344bytes, excluding
+raw callbacks, caller and exception frames. Earlier332-byte subtotal belongs to
+the older forwarded profile. Source hashes are consistency checks, not proof of
+compiler trust, original-time ancestry or independent physical state.
+
+Seven requirements remain open: concrete physical backend/runtime hook;
+independent hung-load recovery; sleep/AP0 visibility; mailbox/hash provenance;
+exception/total-stack coverage; all-owner DDR exclusion; full build provenance.
+The rebuild closes none of the physical obligations. The Oct27 runtime recovery
+remains historical, and earlier PMU access/restoration failures remain retained.
+
+Next safe work: offline review of supported non-MMIO sleep observation and
+independent recovery from a hung PMU-local load. A record committed before sleep
+cannot establish sleep residency. A host deadline cannot preempt an MMIO load.
+Do not change reset/watchdog/AIB/interrupt policy to manufacture qualification.
+No hardware retry or executor is authorized by this checkpoint. Any eventual HW
+window still requires exact identity and shared lease through restoration.
+
+## Earlier forwarded-v1 checkpoint (preserved dated context)
+
 # PMU/PIT diagnostic qualification checkpoint — 2026-10-28
 
 **Software audit qualified within its scope. New counter profile NOT DEPLOYABLE.

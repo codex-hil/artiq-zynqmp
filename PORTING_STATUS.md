@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — RO rebuild review stage consolidated
+
+Nine hash-bound evidence rows/seven open admission obligations verified; frozen
+relocated RO audit replay PASS with independent inventory anchor. 70-object
+rebuild has six explicit timestamp load differences; archives reused. No HW or
+admission. Current checkpoint updates old profile counts without repinning it.
+Next offline sleep-observation/independent hung-load recovery feasibility review.
+Evidence `evidence/pit-rebuild-checkpoint-2026-10-28`.
+
 ## 2026-10-28 — all rebuilt objects linked; six timestamp bytes differ
 
 70 new objects linked; three PT_LOAD descriptors match, exactly six changed
