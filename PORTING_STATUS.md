@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — sticky observation lifetime model offline
+
+68 PIT tests PASS;2801 sequences(length0..4) preserve event invalidation and
+unconditional no-RAM/no-deployment. Bad samples/unknown events poison session;
+late sleep/report mutation cannot revive it; close irreversible. Caller-fed
+model is not physical event coverage. NoHW/admission. Next supplied receipt/
+image/session correlation offline, retaining separate trust/lifetime limits.
+Evidence `evidence/pit-sleep-lifetime-offline-2026-10-28`.
+
 ## 2026-10-28 — candidate event-to-interval map offline
 
 Exact rebuilt ELF/symbol/disassembly pinned; eight event classes reviewed.

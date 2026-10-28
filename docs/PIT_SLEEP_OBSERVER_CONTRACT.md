@@ -42,3 +42,14 @@ is not complete control/dataflow or physical ROM forwarding proof. PM service
 capability is distinct from execution while parked. No-wake lifetime and
 independent recovery remain unqualified. Next offline consumer state model must
 invalidate observations across wake/reset/debug/transport uncertainty.
+
+## Sticky caller-fed lifetime
+
+`pit_sleep_lifetime.Lifetime` holds one nonce. Wake/reset/debug/exception/transport
+uncertainty/ownership loss, bad samples and unknown events invalidate permanently;
+close cannot restart. Reports are copies and always refuse RAM/deployment.
+68 PIT tests PASS including2801 bounded sequences. Delivered-event bookkeeping
+does not authenticate events or prove coverage of physical sources. See
+[evidence](../evidence/pit-sleep-lifetime-offline-2026-10-28/README.md).
+Next safe offline work correlates supplied session/image/terminal receipts
+without promoting correlation to physical sleep or recovery proof.
