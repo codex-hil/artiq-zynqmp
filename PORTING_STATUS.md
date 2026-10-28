@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — build-input provenance gaps recorded offline
+
+18 frozen custom-source matches; current 70 objects/10 mapped archive paths/
+7 tools/1665 header superset inventoried with no missing paths. These are
+post-build observations, not build-time ancestry. MMD omitted system headers;
+vendor/BSP/tool runtime provenance and independent rebuild remain incomplete.
+No HW/DDR admission. Next fresh ten-unit compile with full dependency capture.
+Evidence `evidence/pit-build-input-review-offline-2026-10-28`.
+
 ## 2026-10-28 — frozen RO-context v2 replay offline
 
 Two isolated relocated copies yield identical audit PASS; nine tamper/inventory/

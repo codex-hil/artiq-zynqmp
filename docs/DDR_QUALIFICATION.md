@@ -2697,3 +2697,11 @@ Two isolated copies PASS with identical reports; nine negative replay controls
 reject. This is consistency only, not trusted build provenance or HW admission.
 See [evidence](../evidence/pit-ro-frozen-replay-offline-2026-10-28/README.md).
 Next offline step inventories compiler/vendor/BSP/object provenance gaps.
+
+## Build provenance limits — 2026-10-28
+
+Current input inventory agrees with all 18 frozen custom source/header pins,
+but original build-time hashes and exact system-header closure are absent.
+Vendor/BSP ancestry and reproducibility remain unproved. No admission change.
+See [review](../evidence/pit-build-input-review-offline-2026-10-28/README.md).
+Next safe offline step is fresh ten-unit compilation with full dependencies.
