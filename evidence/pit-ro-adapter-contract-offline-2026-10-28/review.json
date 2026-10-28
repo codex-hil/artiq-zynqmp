@@ -1,0 +1,28 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "elf_sha256": "3b3f95c7b8de769065922d0bca317920dc15acf865089733bd61b82de793986b",
+  "word_checks": {
+    "pit_ro_prepare": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_ro_read": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 10,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    }
+  },
+  "frame_bytes": {
+    "prepare": 0,
+    "read": 44
+  },
+  "total_stack_bound": null
+}

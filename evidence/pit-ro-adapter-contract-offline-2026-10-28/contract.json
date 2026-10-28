@@ -1,0 +1,24 @@
+{
+  "hardware_executed": false,
+  "physical_backend_ready": false,
+  "new_hardware_attempt_selected": false,
+  "destructive_test_allowed": false,
+  "access": "PMU-local only, transport not implemented",
+  "ordered_addresses_twice": [
+    "0xffd40044",
+    "0xffd40054",
+    "0xffd40064",
+    "0xffd40074",
+    "0xffd40044",
+    "0xffd40054",
+    "0xffd40064",
+    "0xffd40074"
+  ],
+  "maximum_transport_invocations": 8,
+  "wall_time_bound": null,
+  "device_register_write_api": false,
+  "transport_zero_return": "one word returned, not bus fault/identity/visibility proof",
+  "transport_nonzero_return": "failed attempt, no output publication, latch failure, no retry",
+  "hung_transport": "cannot return/check deadline/enter terminal; recovery unresolved",
+  "vendor_header_sha256": "1507dcf6c834879e26bed5c6a581263de03ee5fc6f809156f79d33cd246f17e9"
+}

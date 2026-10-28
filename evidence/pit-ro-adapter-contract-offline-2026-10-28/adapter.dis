@@ -1,0 +1,84 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-ro-adapter-audit-20261028/audit-only.elf:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_ro_prepare>:
+   0:	10600000 	addk	r3, r0, r0
+   4:	88651c00 	pcmpeq	r3, r5, r3
+   8:	bc23004c 	bnei	r3, 76		// 54
+   c:	88661c00 	pcmpeq	r3, r6, r3
+  10:	bc230044 	bnei	r3, 68		// 54
+  14:	e8850008 	lwi	r4, r5, 8
+  18:	be240034 	bneid	r4, 52		// 4c
+  1c:	3060ffff 	addik	r3, r0, -1
+  20:	e885000c 	lwi	r4, r5, 12
+  24:	bc240028 	bnei	r4, 40		// 4c
+  28:	e8850010 	lwi	r4, r5, 16
+  2c:	bc240020 	bnei	r4, 32		// 4c
+  30:	e8850014 	lwi	r4, r5, 20
+  34:	bc240018 	bnei	r4, 24		// 4c
+  38:	30600001 	addik	r3, r0, 1
+  3c:	f8650008 	swi	r3, r5, 8
+  40:	10640000 	addk	r3, r4, r0
+  44:	f8c50000 	swi	r6, r5, 0
+  48:	f8e50004 	swi	r7, r5, 4
+  4c:	b60f0008 	rtsd	r15, 8
+
+00000050 <_ftext>:
+  50:	80000000 	or	r0, r0, r0
+  54:	b810fff8 	brid	-8		// 4c
+  58:	3060ffff 	addik	r3, r0, -1
+
+0000005c <pit_ro_read>:
+  5c:	3021ffd4 	addik	r1, r1, -44
+  60:	fa610020 	swi	r19, r1, 32
+  64:	f9e10000 	swi	r15, r1, 0
+  68:	fac10024 	swi	r22, r1, 36
+  6c:	fae10028 	swi	r23, r1, 40
+  70:	f801001c 	swi	r0, r1, 28
+  74:	be050050 	beqid	r5, 80		// c4
+  78:	12650000 	addk	r19, r5, r0
+  7c:	e8650008 	lwi	r3, r5, 8
+  80:	be030048 	beqid	r3, 72		// c8
+  84:	3060ffff 	addik	r3, r0, -1
+  88:	e8650000 	lwi	r3, r5, 0
+  8c:	bc030038 	beqi	r3, 56		// c4
+  90:	e8850014 	lwi	r4, r5, 20
+  94:	bc240030 	bnei	r4, 48		// c4
+  98:	e8850010 	lwi	r4, r5, 16
+  9c:	bc240028 	bnei	r4, 40		// c4
+  a0:	be07001c 	beqid	r7, 28		// bc
+  a4:	12e70000 	addk	r23, r7, r0
+  a8:	e885000c 	lwi	r4, r5, 12
+  ac:	30e00007 	addik	r7, r0, 7
+  b0:	16443803 	cmpu	r18, r4, r7
+  b4:	beb2002c 	bgeid	r18, 44		// e0
+  b8:	a6c40003 	andi	r22, r4, 3
+  bc:	30600001 	addik	r3, r0, 1
+  c0:	f8730010 	swi	r3, r19, 16
+  c4:	3060ffff 	addik	r3, r0, -1
+  c8:	e9e10000 	lwi	r15, r1, 0
+  cc:	ea610020 	lwi	r19, r1, 32
+  d0:	eac10024 	lwi	r22, r1, 36
+  d4:	eae10028 	lwi	r23, r1, 40
+  d8:	b60f0008 	rtsd	r15, 8
+  dc:	3021002c 	addik	r1, r1, 44
+  e0:	66d60404 	bslli	r22, r22, 4
+  e4:	b000ffd4 	imm	-44
+  e8:	32d60044 	addik	r22, r22, 68
+  ec:	8ad63000 	xor	r22, r22, r6
+  f0:	be36ffcc 	bneid	r22, -52		// bc
+  f4:	30a00001 	addik	r5, r0, 1
+  f8:	10842800 	addk	r4, r4, r5
+  fc:	f8b30014 	swi	r5, r19, 20
+ 100:	e8b30004 	lwi	r5, r19, 4
+ 104:	f893000c 	swi	r4, r19, 12
+ 108:	99fc1800 	brald	r15, r3
+ 10c:	30e1001c 	addik	r7, r1, 28
+ 110:	be23ffac 	bneid	r3, -84		// bc
+ 114:	fad30014 	swi	r22, r19, 20
+ 118:	e881001c 	lwi	r4, r1, 28
+ 11c:	b810ffac 	brid	-84		// c8
+ 120:	f8970000 	swi	r4, r23, 0

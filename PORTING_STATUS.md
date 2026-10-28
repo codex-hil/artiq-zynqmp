@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — concrete RO transport contract offline
+
+54PITtestsPASS;Csequence-limitedadapter8orderedcountercalls/noextra/WO/order
+rejection/noreentry/noretry/erroroutputnotpublished. MBstandalonewordstores/no
+UND/frame44NOTtotal. No actualMMIO/walltimebound/profileintegration/HW. Next
+fakecompositioncouplingbeforetargetlink. docs/PIT_RO_ADAPTER_CONTRACT.md;
+`evidence/pit-ro-adapter-contract-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — consolidated PIT qualification handoff
 
 19-rowpinnedmatrixseparatesOFFLINE/STATIC/HISTORICAL_HW/UNKNOWN/NOT_RUN.

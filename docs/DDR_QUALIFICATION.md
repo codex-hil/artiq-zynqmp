@@ -2666,3 +2666,7 @@ Evidence pit-frozen-audit-replay-offline-2026-10-28.
 softwarePASSnotnewHWadmission,lastrestoreOct27historical. Newcounterprofile
 NOTDEPLOYABLE/fullDDRNOT_RUN_NOT_ADMITTED. See PIT_QUALIFICATION_CHECKPOINT.md
 and evidence/pit-qualification-checkpoint-2026-10-28. NoHW/newtestthisreview.
+
+2026-10-28 concreteROadapter54tests/8orderedcalls/erroroutputignoredPASS;
+MBwordstores/frame44not total/noMMIO/walltimebound. NoHW. See PIT_RO_ADAPTER_CONTRACT.md
+and evidence/pit-ro-adapter-contract-offline-2026-10-28.
