@@ -1,0 +1,56 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "snapshots": [
+    "/home/codex-hil/.local/state/artiq-builds/pit-frozen-audit-20261028-v2/snapshot-a",
+    "/home/codex-hil/.local/state/artiq-builds/pit-frozen-audit-20261028-v2/relocated/snapshot-b"
+  ],
+  "unrelated_cwd": "/home/codex-hil/.local/state/artiq-builds/pit-frozen-audit-20261028-v2/unrelated-cwd",
+  "inventory_sha256": "c6e12adb82352d744a2aee886b915b8e52d81534db9dc147cb19f8815b1a3a90",
+  "file_count": 29,
+  "logical_bytes": 1806287,
+  "relocation_reports_identical": true,
+  "restored_negative_replay_identical": true,
+  "negative_controls": [
+    {
+      "kind": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_capture.c",
+      "refused": true
+    },
+    {
+      "kind": "changed-file",
+      "path": "repo/scripts/build_pmu_boundary.py",
+      "refused": true
+    },
+    {
+      "kind": "changed-file",
+      "path": "artifacts/elf",
+      "refused": true
+    },
+    {
+      "kind": "unlisted-file",
+      "path": "unlisted-file",
+      "refused": true
+    },
+    {
+      "kind": "unlisted-file",
+      "path": "repo/extra/inventory.json",
+      "refused": true
+    },
+    {
+      "kind": "symlink-to-original",
+      "refused": true
+    },
+    {
+      "kind": "external-artifact-path-with-rehashed-manifest",
+      "refused": true
+    },
+    {
+      "kind": "execute-option",
+      "refused": true
+    }
+  ],
+  "filesystem_modes": "files0444/directories0555; not tamper-resistant",
+  "prior_v1_retained": "/home/codex-hil/.local/state/artiq-builds/pit-frozen-audit-20261028",
+  "original_manifest_sha256": "13a5a5d99c07d6d535e2e46e2d4e863f695caf47405c3afc749086472ea2ec3a"
+}

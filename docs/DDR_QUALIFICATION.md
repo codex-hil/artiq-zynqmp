@@ -2657,3 +2657,7 @@ Evidence pit-composition-flow-offline-2026-10-28.
 2026-10-28 boundcompositionauditactualELFPASS/53tests/26inputchangesrejected.
 Deploymentalwaysrefused;notcompletevendorbuild/provenance/physicalproof.
 Evidence pit-composition-bound-gate-offline-2026-10-28.
+
+2026-10-28 frozen29fileauditinputs relocatedreplayidentical/8negativecontrols
+PASS. Readonlymodesnot tamperproof;notfullvendorbuild/provenance/HWqualification.
+Evidence pit-frozen-audit-replay-offline-2026-10-28.

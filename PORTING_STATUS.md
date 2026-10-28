@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — frozen input relocation replay offline
+
+Two29file/1.8MBsnapshots replay fromunrelatedcwd withidenticalreports;8negative
+controlsPASS includingnestedinventoryfile/symlink/externalpath/execute. V2tightens
+v1inventory-namefilter;v1retained. Filesreadonlynot tamperproof;notvendorbuild
+closure. NoHW/productioncodechange. Next consolidatedqualificationmatrix/handoff.
+Evidence `evidence/pit-frozen-audit-replay-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — bound composition audit gate offline
 
 ActualELF16customsources7helpers3artifacts/layout/flow/storeauditPASS;53PITtests
