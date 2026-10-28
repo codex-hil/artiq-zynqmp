@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — vendor rebuild completed with timestamp difference
+
+60 units/235 full dependencies captured stable pre/post. 59 native inventories
+match; all 60 scoped relocations match. Only xpfw_main .rodata differs within
+DATE/TIME banner fields; exact offsets/strings recorded, no normalization.
+First stop preserved; no identical-build claim/HW/admission. Next controlled
+70-object LTO link and explicit PT_LOAD difference accounting.
+Evidence `evidence/pit-vendor-recompile-offline-2026-10-28`.
+
 ## 2026-10-28 — custom LTO relink load image agrees offline
 
 New ten-custom-object link matches all three PT_LOAD descriptors/payloads

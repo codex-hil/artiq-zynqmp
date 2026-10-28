@@ -2721,3 +2721,11 @@ Fresh custom-object LTO link matches all three old PT_LOAD descriptors and
 vendor/BSP inputs were reused. No HW/admission change. Next offline vendor-unit
 rebuild with full dependencies. See
 [evidence](../evidence/pit-custom-relink-offline-2026-10-28/README.md).
+
+## Vendor rebuild timestamp difference — 2026-10-28
+
+60-unit rebuild completed; 235 dependency hashes stable per-unit pre/post.
+59 native inventories/all 60 scoped relocations match. Only vendor firmware
+banner date/time bytes differ; no identity/admission claim. Next offline link
+all 70 new objects and account for load differences. See
+[evidence](../evidence/pit-vendor-recompile-offline-2026-10-28/README.md).

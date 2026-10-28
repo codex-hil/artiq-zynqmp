@@ -1,0 +1,25 @@
+{
+  "hardware_executed": false,
+  "native_sections_match_units": 59,
+  "native_relocations_match_units": 60,
+  "dependency_files": 235,
+  "whole_object_match_units": 0,
+  "timestamp_only_rodata_difference": {
+    "unit": "xpfw_main.c",
+    "section_size": 102,
+    "changed_byte_offsets": [
+      44,
+      45,
+      47,
+      48,
+      51,
+      61
+    ],
+    "old_time": "17:43:13",
+    "new_time": "03:59:15",
+    "old_date": "Oct 27 2026",
+    "new_date": "Oct 28 2026"
+  },
+  "first_attempt": "v1 stopped on native .rodata difference; preserved. v2 completes comparisons without requiring equality.",
+  "admission_changed": false
+}
