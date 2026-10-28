@@ -19,6 +19,15 @@ exceptions/total stack and all-owner DDR exclusion remain unqualified. Next
 safe offline step reviews supported sleep observation and independent recovery.
 No HW/DDR admission or unchanged physical retry follows from this update.
 
+## Observer/session stage complete — 2026-10-28
+
+[21-file checkpoint](../../evidence/pit-observer-session-checkpoint-2026-10-28/README.md)
+verified with identical archived replay; last72 tests PASS. No hardware admission.
+Independent hung-load recovery, authentic status transport and continuous no-wake
+lifetime remain unqualified. A concrete recovery mechanism and its physical
+availability/restoration must be established before a separate physical plan.
+No executor, RAM shortcut, policy change or unchanged test retry scheduled.
+
 ## Historical notes (dated claims are superseded where stated)
 
 CORRECTION2026-10-27: GPO0 is WRITE-ONLY per UG1087. Historical raw0 is not

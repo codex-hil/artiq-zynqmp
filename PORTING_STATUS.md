@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — observer/session offline stage complete
+
+21pins/3historical source manifests verified; fresh archived replay identical.
+72-test PASS remains dated. Strict samples/sticky lifetime/one-shot session
+correlation complete within software scope; no authentic physical transport,
+continuous no-wake lifetime or independent hung-load recovery qualified.
+No HW/admission or next physical step scheduled. Prerequisite: concrete independent
+recovery availability/restoration and separately reviewed status-only transport.
+Evidence `evidence/pit-observer-session-checkpoint-2026-10-28`.
+
 ## 2026-10-28 — archived C session replay offline
 
 11 archived actual-C fake-transport outputs/hash verified;33 correlations retain

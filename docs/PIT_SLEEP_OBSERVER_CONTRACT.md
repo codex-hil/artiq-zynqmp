@@ -71,3 +71,12 @@ controls reject. Archive output SHA verified; no new C/HW execution. Sticky
 invalidation and no-admission flags hold for success and failure receipts.
 See [evidence](../evidence/pit-session-c-replay-offline-2026-10-28/README.md).
 Next safe offline step consolidates this observer/session stage and blockers.
+
+## Completed-stage checkpoint
+
+Observer/session offline scope complete;21 pins/three historical manifests and
+fresh identical archived replay verified. Last72-test result remains dated.
+[Checkpoint](../evidence/pit-observer-session-checkpoint-2026-10-28/README.md).
+Earlier automatic continuation suggestions are superseded. No next hardware
+step is admitted; concrete independent recovery and transport/lifetime evidence
+remain prerequisites. No unavailable physical recovery is assumed.

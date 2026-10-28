@@ -1,3 +1,16 @@
+# Current observer/session checkpoint — offline stage complete
+
+2026-10-28:21 source/test/evidence pins and three historical manifests verified;
+archived replay identical. Last PIT suite72 PASS. No HW or deployment admission.
+[Checkpoint](../evidence/pit-observer-session-checkpoint-2026-10-28/README.md).
+
+Observer/session software scope is complete. Physical progression still requires
+authentic status transport, continuous no-wake lifetime and independent hung-load
+recovery. Identify a concrete available independent recovery/restoration mechanism
+before reviewing a physical window; do not assume power-control hardware or an
+unchanged retry. No next physical step or executor is scheduled. Earlier next-step
+notes below are dated context, superseded by this completed-stage checkpoint.
+
 # PMU/PIT qualification — RO rebuild checkpoint, 2026-10-28
 
 **Offline rebuild review complete. PIT counter image NOT DEPLOYABLE.

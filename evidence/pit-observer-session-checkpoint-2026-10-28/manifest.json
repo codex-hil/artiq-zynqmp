@@ -1,0 +1,40 @@
+{
+  "stage": "OFFLINE_OBSERVER_SESSION_STAGE_COMPLETE",
+  "hardware_executed": false,
+  "deployable": false,
+  "sha256": {
+    "diagnostics/ddr/pit_sleep_observation.py": "857e6d7f0677ed7e75f07f93c22e1a87263dc7f816385b963bd10282919137c2",
+    "diagnostics/ddr/pit_sleep_lifetime.py": "66c3e83a0da58c8187caf43b45b0a0cbe3a77e00bd8c084a5392efd31dbce6fd",
+    "diagnostics/ddr/pit_session_correlation.py": "4385779033ff1e08ce0dc19ceff14256ef4229a36b8a83277bcdf8e44e93ae90",
+    "diagnostics/ddr/pit_terminal_receipt.py": "432062dd88b99db09ba7d7146573b34daefea312987ff399f376c006125c3c6a",
+    "diagnostics/ddr/pit_publication.py": "7cd0742aee0180b9734eecd9dd31643cd967bef712c6f7ce3eeb895f8af06a35",
+    "diagnostics/ddr/pit_counter_observation.py": "8ea41f4e13213d74a03a179dd74f5f9415db93f5db410fd473b02fe0204bfe9a",
+    "tests/test_pit_sleep_observation.py": "49e15d44c8c340189eb75153f7f35b0eca87e47d310475d3ed35a35fec7c039d",
+    "tests/test_pit_sleep_lifetime.py": "cf5c5c7ec1967000612a27e43213ce6016a0cfd806c6c429a41b6874771f0aa3",
+    "tests/test_pit_session_correlation.py": "c42317b05efeb532ca2d0020865ba3de4471e539f298b956ef88fd8162483a70",
+    "evidence/pit-sleep-status-race-offline-2026-10-28/review.json": "894162841eff3ab162a070abe69809da26d48265647e1ee86d3a6602a7a7c543",
+    "evidence/pit-sleep-status-race-offline-2026-10-28/model.json": "b4ab06a9161be48ed0ee7495e08ab90d5032d2779f512632ac4fbbb3ad139fb4",
+    "evidence/pit-candidate-wake-map-offline-2026-10-28/review.json": "d50638e3d34c1e65960864db5519487063f580a74e4d61102d6e2108d3efedbd",
+    "evidence/pit-sleep-observer-contract-offline-2026-10-28/verification.json": "d882e0d75c058114c73547084eb0a991ba09b9f579415c306073eb63471e3101",
+    "evidence/pit-sleep-lifetime-offline-2026-10-28/verification.json": "768d4b6a8c10de3594dc5b1815c76c7527667e3173e002a19cf0cca3da8e100d",
+    "evidence/pit-session-correlation-offline-2026-10-28/verification.json": "bb633cff53ec2d2ae91cef385461c821b1087bb7fd663d6bb87b9f108d249319",
+    "evidence/pit-session-c-replay-offline-2026-10-28/replay.py": "b1bc9be40c64a30781da567c2d794363c59964e1ff5a334a38a0ff459ef0dd45",
+    "evidence/pit-session-c-replay-offline-2026-10-28/report.json": "47acbc4797849268eb8b9b33d881658014e43f30cfc0912fd00a2685935e38fb",
+    "evidence/pit-ro-composition-offline-2026-10-28/fake-c-results.json": "2d7bc13aeb0dbfb44cc14a52452d7bb080e73e0d9eeb18695028a0924f2659ba",
+    "evidence/pit-sleep-observer-contract-offline-2026-10-28/inputs.json": "4af4372e68860769eccf9ae3aee0bf09210f34fdfd2bd0c62580db749d99a0c7",
+    "evidence/pit-sleep-lifetime-offline-2026-10-28/inputs.json": "507ad152c546576db89d1403fc3d665bc6ed0d06c90b19cb150a87d7e7743b46",
+    "evidence/pit-session-correlation-offline-2026-10-28/inputs.json": "9c186a2ef6af65da4076f6684f2ac3c570050f67b3563585e364a2afe8ac35e0"
+  },
+  "historical_input_manifests": [
+    "evidence/pit-sleep-observer-contract-offline-2026-10-28/inputs.json",
+    "evidence/pit-sleep-lifetime-offline-2026-10-28/inputs.json",
+    "evidence/pit-session-correlation-offline-2026-10-28/inputs.json"
+  ],
+  "remaining_physical_blockers": [
+    "No qualified authentic status-only transport with verified master/security and debug side effects.",
+    "No evidence of continuous no-wake/exception/reset lifetime across any PMU RAM transaction.",
+    "No independently qualified recovery from arbitrary stuck local load or debug/bus failure.",
+    "Production mailbox/hash provenance and exact runtime hook remain absent; full DDR all-owner exclusion is separately unqualified."
+  ],
+  "next_step": "Stage complete. Any physical continuation first needs a concrete independent recovery mechanism and separately reviewed status-only transport/ownership plan; no executor or unchanged hardware retry is scheduled."
+}
