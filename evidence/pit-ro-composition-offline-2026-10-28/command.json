@@ -1,0 +1,20 @@
+[
+  "gcc",
+  "-std=c11",
+  "-Wall",
+  "-Wextra",
+  "-Werror",
+  "-O2",
+  "-I/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_collect.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_publish.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_capture.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_sleep_model.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_terminal_record.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_terminal_build.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_status_compose.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_ro_adapter.c",
+  "/home/codex-hil/artiq-zynqmp/work/artiq-new-wip/tests/fixtures/pit_ro_composition_host.c",
+  "-o",
+  "/home/codex-hil/.local/state/artiq-builds/pit-ro-composition-20261028/ro-composition"
+]

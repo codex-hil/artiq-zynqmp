@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — strict RO/status composition offline
+
+55PITtestsPASS;11actualCfakecases(success/8transporterrors/WOaddress/preexhausted
+budget),allerrorsREAD_FAILED/zerosamplewrites,Pythonreceiptcrosscheck. Noextra
+rawcall/retry/reprepare/reentry. NoHW/productiontargetchange;hostfixturewiring
+only. Next explicitROtargetauditcontext/link/stackchecks. Evidence
+`evidence/pit-ro-composition-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — concrete RO transport contract offline
 
 54PITtestsPASS;Csequence-limitedadapter8orderedcountercalls/noextra/WO/order

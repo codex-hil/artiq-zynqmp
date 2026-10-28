@@ -2670,3 +2670,7 @@ and evidence/pit-qualification-checkpoint-2026-10-28. NoHW/newtestthisreview.
 2026-10-28 concreteROadapter54tests/8orderedcalls/erroroutputignoredPASS;
 MBwordstores/frame44not total/noMMIO/walltimebound. NoHW. See PIT_RO_ADAPTER_CONTRACT.md
 and evidence/pit-ro-adapter-contract-offline-2026-10-28.
+
+2026-10-28 RO/statuscomposition55tests/11CfakecasesPASS;allread/address/budget
+errors=>READ_FAILED/zerosamplewrites. Hostfixtureonly/noHW/targetchange. Evidence
+pit-ro-composition-offline-2026-10-28.

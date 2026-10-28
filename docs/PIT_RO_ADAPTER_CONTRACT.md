@@ -35,3 +35,10 @@ Before any later HW access, owning-station identification and shared Genesys
 lease must cover every reset/JTAG/UART/AP0/network/test/restoration step. The new
 profile remains disabled; [qualification checkpoint](PIT_QUALIFICATION_CHECKPOINT.md)
 continues to separate offline PASS from missing physical evidence.
+
+## Returning composition qualification — 2026-10-28
+
+55 PIT tests PASS, including11actual C fake-backend composition cases; all read/
+address/budget failures produce READ_FAILED with zero sample writes. Receipt
+bytes crosschecked by Python. This is host fixture wiring, not target profile
+integration or physical qualification. [Evidence](../evidence/pit-ro-composition-offline-2026-10-28/README.md).
