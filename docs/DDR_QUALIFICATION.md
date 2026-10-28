@@ -2690,3 +2690,10 @@ actual linked ELF and 60 PIT tests PASS. Changed pins and wrong profiles reject.
 Deployment remains unconditionally refused; no MMIO/recovery/visibility proof.
 See [evidence](../evidence/pit-ro-bound-gate-offline-2026-10-28/README.md).
 Next safe offline work is an isolated relocated v2 snapshot replay.
+
+## Frozen RO v2 replay — 2026-10-28
+
+Two isolated copies PASS with identical reports; nine negative replay controls
+reject. This is consistency only, not trusted build provenance or HW admission.
+See [evidence](../evidence/pit-ro-frozen-replay-offline-2026-10-28/README.md).
+Next offline step inventories compiler/vendor/BSP/object provenance gaps.

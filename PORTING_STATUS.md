@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — frozen RO-context v2 replay offline
+
+Two isolated relocated copies yield identical audit PASS; nine tamper/inventory/
+symlink/execute controls reject. 30 files + inventory per copy, pinned independent
+inventory SHA recorded in evidence. No live-repo imports; old snapshots preserved.
+No HW or DDR admission. Next offline build-input/provenance dependency review.
+Evidence `evidence/pit-ro-frozen-replay-offline-2026-10-28`.
+
 ## 2026-10-28 — separate RO bound audit gate offline
 
 60 PIT tests PASS; actual RO-context ELF passes explicit v2 gate with exact
