@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — candidate event-to-interval map offline
+
+Exact rebuilt ELF/symbol/disassembly pinned; eight event classes reviewed.
+Linked PM capabilities remain; no terminal-runtime execution inferred. RAM
+exception inventory13functions/148memory/88unresolved controls, ROM mapping
+unknown. External wake/debug/reset/fault policy unexcluded. No HW/admission.
+Next offline consumer lifetime invalidation model, no executor.
+Evidence `evidence/pit-candidate-wake-map-offline-2026-10-28`.
+
 ## 2026-10-28 — status-only observer contract offline
 
 64 PIT tests PASS; strict single supplied MB_SLEEP sample parser reports only

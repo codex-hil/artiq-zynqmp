@@ -33,3 +33,12 @@ mailbox or older physical probe is changed.
 Next safe offline work: map the exact candidate's wake/exception/reset/debug
 sources to the proposed interval, using existing platform/source audits. Keep
 unknown sources explicit and do not disable them to manufacture a quiet result.
+
+## Candidate interval map
+
+[Exact-image review](../evidence/pit-candidate-wake-map-offline-2026-10-28/README.md)
+keeps eight event classes unresolved/conditional. Existing RAM exception inventory
+is not complete control/dataflow or physical ROM forwarding proof. PM service
+capability is distinct from execution while parked. No-wake lifetime and
+independent recovery remain unqualified. Next offline consumer state model must
+invalidate observations across wake/reset/debug/transport uncertainty.

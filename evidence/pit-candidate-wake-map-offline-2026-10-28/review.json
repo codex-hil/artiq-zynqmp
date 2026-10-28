@@ -1,0 +1,161 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "candidate_sha256": "f143fbf501bc4435326d1eb4f211c34b8ff64a177a313c20818d43785e614973",
+  "artifact_pins": {
+    "audit-only.elf": "f143fbf501bc4435326d1eb4f211c34b8ff64a177a313c20818d43785e614973",
+    "disassembly.txt": "70ce65b8e068df5bf5ced2a585ea39135f4c9b36a8a3c3f8d7aebddcda5e4e04",
+    "symbols.txt": "a4d0015e045fccd3f5735aae9c32da1954f9e7c0b1f554e45aaea35e3b5c7e0b"
+  },
+  "linked_symbols": [
+    "PmIpiHandler",
+    "PmProcFsm",
+    "PmProcWake",
+    "PmMasterWake",
+    "pit_terminal_audit"
+  ],
+  "vendor_source_anchors": [
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_mod_pm.c",
+      "sha256": "b38dd571d775f09fffa68fa9ea250856b8026e042aba760ebe807ac8f6bce844",
+      "anchors": {
+        "static void PmIpiHandler(": [
+          25
+        ],
+        "XPfw_PmIpiHandler(SrcMask,": [
+          36
+        ],
+        "static void PmEventHandler(": [
+          67
+        ],
+        "XPfw_PmWakeHandler(RegValue)": [
+          75
+        ],
+        "XPFW_EV_ACPU_1_WAKE": [
+          100,
+          103
+        ],
+        "XPFW_EV_R5_0_WAKE": [
+          116,
+          119
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/pm_core.c",
+      "sha256": "c21f66ac4ebb1a6124d3dceee27b15a0b2f79afaf5da93348939d52780907a21",
+      "anchors": {
+        "static void PmRequestWakeup(": [
+          501
+        ],
+        "PmMasterCanRequestWake(": [
+          533
+        ],
+        "status = PmMasterWakeProc(proc);": [
+          554
+        ],
+        "case PM_API(PM_REQUEST_WAKEUP):": [
+          2347,
+          2526
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/pm_master.c",
+      "sha256": "6af59653a39aecc82fcce2f2c93be7b6cd513bd6e07cf6314feb79639f04ab3b",
+      "anchors": {
+        "s32 PmMasterWakeProc(": [
+          703
+        ],
+        "PmProcFsm(proc, PM_PROC_EVENT_WAKE)": [
+          717
+        ],
+        "s32 PmWakeMasterBySlave(": [
+          677
+        ],
+        "status = PmMasterWake(mst);": [
+          687
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/pm_proc.c",
+      "sha256": "b91759f7da858d7c149c0252f4415a7c2ce71268a44ca24b5e9cf410cd53ffda",
+      "anchors": {
+        "static s32 PmProcWake(": [
+          357
+        ],
+        "status = proc->wake();": [
+          375
+        ],
+        "case PM_PROC_EVENT_WAKE:": [
+          638
+        ],
+        "return (s32)XpbrACPU1WakeHandler();": [
+          265
+        ]
+      }
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_config.h",
+      "sha256": "3492a335d09d202a9d6a09cce7dffe2ef69ac0ead84d746ccf332350fef90b93",
+      "anchors": {
+        "#define SLEEP_WHEN_IDLE": [
+          82
+        ],
+        "#define ENABLE_PM": [
+          420
+        ]
+      }
+    }
+  ],
+  "rows": [
+    {
+      "source": "maskable_interrupt",
+      "status": "CONDITIONAL",
+      "interval_assessment": "Audit lifecycle requires IE clear before capture and checks again before receipt; assumes returning honest MSR callback. Final snapshot is not invariant through publication/terminal entry."
+    },
+    {
+      "source": "normal_pm_service",
+      "status": "CAPABILITY_PRESENT",
+      "interval_assessment": "Linked PmIpiHandler/PmProcFsm/PmProcWake/PmMasterWake remain; audit entry is not wired to main. Normal PM service capability does not prove those paths execute while terminal loop sleeps."
+    },
+    {
+      "source": "hardware_software_exception",
+      "status": "UNRESOLVED",
+      "interval_assessment": "RAM vector direct-edge inventory has memory operations and unresolved branches; physical ROM/RAM forwarding is unknown. IE clear does not qualify all exception paths."
+    },
+    {
+      "source": "external_wake",
+      "status": "UNEXCLUDED",
+      "interval_assessment": "GLOBAL_CNTRL Dont_Sleep may be asserted by another master; shared host lease does not prevent all on-chip masters or external debug."
+    },
+    {
+      "source": "debug",
+      "status": "EXECUTION_CHANGING",
+      "interval_assessment": "Existing restore uses stop/suspended/r0/dow/con. Not a passive sleep witness or guaranteed recovery against a wedged bus."
+    },
+    {
+      "source": "reset_por",
+      "status": "UNEXCLUDED",
+      "interval_assessment": "SRST/POR effects differ; reset destroys candidate/session continuity. No observed sleep sample excludes subsequent reset."
+    },
+    {
+      "source": "sleep_fault_policy",
+      "status": "UNKNOWN",
+      "interval_assessment": "GPO0 write-only fault tolerance policy cannot be inferred by reading zero. No policy change or masking is justified."
+    },
+    {
+      "source": "terminal_code",
+      "status": "STATIC_ONLY",
+      "interval_assessment": "Three-word mbar/sleep/backward-branch loop pinned by flow gate. Reaching/executing sleep and remaining there is unproved; future event paths can break interval assumptions."
+    }
+  ],
+  "exception_summary": {
+    "functions": 13,
+    "memory_operations": 148,
+    "unresolved_control": 88
+  },
+  "limits": "Source anchors plus symbol/direct-edge inventory, not full source-to-LTO equivalence, runtime event history, physical vector mapping or no-wake proof.",
+  "next_safe_step": "Offline consumer lifetime state-machine contract that treats wake/reset/debug/transport uncertainty as invalidation; no executor and no physical admission."
+}
