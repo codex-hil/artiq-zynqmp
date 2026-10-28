@@ -2713,3 +2713,11 @@ full dependency hashes stable pre/post compilation. Complete object hashes diffe
 LTO and final ELF identity remain unchecked. No HW/admission change. See
 [evidence](../evidence/pit-custom-recompile-offline-2026-10-28/README.md).
 Next safe offline step: new LTO audit link and loadable-byte comparison.
+
+## Custom LTO load-image agreement — 2026-10-28
+
+Fresh custom-object LTO link matches all three old PT_LOAD descriptors and
+103376 payload bytes; gate/layout/flow PASS, no UND. Whole ELF differs and
+vendor/BSP inputs were reused. No HW/admission change. Next offline vendor-unit
+rebuild with full dependencies. See
+[evidence](../evidence/pit-custom-relink-offline-2026-10-28/README.md).

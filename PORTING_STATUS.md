@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — custom LTO relink load image agrees offline
+
+New ten-custom-object link matches all three PT_LOAD descriptors/payloads
+(103376 bytes); whole ELF differs. Inputs stable pre/post, ten resolved archive
+paths agree, no UND; layout/RO-v2 flow/bound gate PASS. Vendor objects/BSP reused;
+no whole-build or HW proof. Next fresh vendor-unit dependency/native comparison.
+Evidence `evidence/pit-custom-relink-offline-2026-10-28`; DDR NOT_ADMITTED.
+
 ## 2026-10-28 — ten custom units recompiled offline
 
 Native allocatable code/data and scoped relocations match in all ten fresh

@@ -1,0 +1,77 @@
+{
+  "status": "PINNED_RO_COMPOSITION_AUDIT_PASS_NOT_DEPLOYMENT",
+  "hardware_executed": false,
+  "deployable": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd87e0",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddcdbc",
+      "end_exclusive": "0xffddddc0"
+    },
+    "bytes_after_stack_before_extension_table": 6432,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "flow": {
+    "status": "SCOPED_COMPOSITION_FLOW_PASS_NOT_HARDWARE",
+    "compiler_shape": "ro-context-v2",
+    "functions": {
+      "pit_status_composition_audit": {
+        "direct_calls": 12,
+        "indirect_calls": 5,
+        "internal_branches": 102,
+        "returns": 0,
+        "word_store_sites": 75
+      },
+      "observe": {
+        "direct_calls": 0,
+        "indirect_calls": 1,
+        "internal_branches": 1,
+        "returns": 1,
+        "word_store_sites": 10
+      },
+      "disable": {
+        "direct_calls": 0,
+        "indirect_calls": 1,
+        "internal_branches": 0,
+        "returns": 1,
+        "word_store_sites": 1
+      },
+      "read_word": {
+        "direct_calls": 0,
+        "indirect_calls": 2,
+        "internal_branches": 14,
+        "returns": 1,
+        "word_store_sites": 15,
+        "critical_word_pins": 30
+      },
+      "write_word": {
+        "direct_calls": 0,
+        "indirect_calls": 1,
+        "internal_branches": 1,
+        "returns": 1,
+        "word_store_sites": 3
+      },
+      "barrier": {
+        "direct_calls": 0,
+        "indirect_calls": 1,
+        "internal_branches": 1,
+        "returns": 1,
+        "word_store_sites": 3
+      }
+    },
+    "hardware_executed": false,
+    "deployable": false,
+    "destructive_test_allowed": false,
+    "limits": "Static inventory/ranges only; callback identity/dataflow, liveness, library/exception paths and physical visibility unqualified"
+  },
+  "limits": "Content consistency only, not trusted provenance, reproducible build or permission to access hardware"
+}
