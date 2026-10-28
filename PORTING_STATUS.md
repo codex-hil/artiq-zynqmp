@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — independent physical recovery mapping missing
+
+Read-only workspace inventory found conditional PMU debug restore and historical
+user-reported reboot recovery, but no verified Genesys-mapped independent power/
+reset actuator in reviewed material. No HW access. Owner information needed:
+actual independent actuator/connection or manual physical power-cycle availability.
+Then review recovery effect/restoration before physical diagnostic; no admission.
+Evidence `evidence/pit-independent-recovery-inventory-2026-10-28`.
+
 ## 2026-10-28 — observer/session offline stage complete
 
 21pins/3historical source manifests verified; fresh archived replay identical.

@@ -1,0 +1,18 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "status": "PHYSICAL_RECOVERY_MAPPING_REQUIRES_OWNER_INFORMATION",
+  "inputs": {
+    "scripts/restart_pmu_for_restore.tcl": "401626dc93515f760a69a1898903d25ab6f27b693ce1436e8c1ef58558376db1",
+    "evidence/genesys-cold-recovery-2026-10-27/README.md": "7b7156fb904d5955f8231df9c1b314bf21db2dbfa21b0ebc2371e797a69ce415",
+    "evidence/guard-context-recovery-hardware-2026-10-27/README.md": "fe87ca2c9f294960a5567247740b91889068d65c3914921d3862a963d554ed15"
+  },
+  "scope": "Read-only search of workspace docs/artifacts/environment-rebuild text plus exact Genesys recovery evidence/scripts; not a complete inventory of physical wiring or private external services.",
+  "findings": [
+    "Existing restore requires PMU debug stop, suspended status, r0 read, firmware download and resume.",
+    "Historical recovery after user-reported reboot succeeded, but reboot/POR itself was not independently measured.",
+    "No verified Genesys-mapped independent power/reset actuator or physical connection documented in the reviewed material. Absence from these files does not prove no such device exists."
+  ],
+  "blocking_information": "Whether Genesys has an independently controlled supply/reset path; exact actuator/connection/ownership or availability of manual physical power cycling.",
+  "next_step": "Owner identifies actual independent recovery hardware/path or confirms manual intervention availability. Then review recovery effect and restoration before any bounded physical diagnostic. Do not assume any reset method preempts every stalled transaction."
+}
