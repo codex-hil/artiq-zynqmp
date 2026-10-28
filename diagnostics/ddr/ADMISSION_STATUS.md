@@ -1,4 +1,13 @@
-# DDR write-test admission — 2026-10-23
+# DDR write-test admission — current checkpoint 2026-10-28
+
+**Full destructive DDR NOT_RUN / NOT_ADMITTED. New PIT counter profile NOT DEPLOYABLE.**
+See the [consolidated qualification handoff](../../docs/PIT_QUALIFICATION_CHECKPOINT.md)
+and [pinned matrix](../../evidence/pit-qualification-checkpoint-2026-10-28/matrix.json).
+Software/linked audit PASS does not qualify physical MMIO, sleep/AP0 visibility,
+independent hang recovery, target hash provenance or global DDR exclusion.
+No new hardware check in this checkpoint; Oct27 restoration is historical evidence.
+
+## Historical notes (dated claims are superseded where stated)
 
 CORRECTION2026-10-27: GPO0 is WRITE-ONLY per UG1087. Historical raw0 is not
 vector-state evidence. ROM/RAM mapping UNKNOWN; vector-v1 deployment disabled.
@@ -11,13 +20,13 @@ PASS192.168.2.3; lease released. Failure history remains; DDR NOT_ADMITTED.
 See [recovery](../../evidence/genesys-cold-recovery-2026-10-27/README.md).
 
 
-CURRENT HEALTH: 2026-10-24 PMU restoration download FAILED. Normal runtime
+HISTORICAL FAILURE (superseded by Oct27 recovery): 2026-10-24 PMU restoration download FAILED. Normal runtime
 NOT_RESTORED/UNKNOWN; physical power cycle then leased recovery required before
 further use. See [failure evidence](../../evidence/aib-after-guard-hardware-2026-10-24/README.md).
 
 
-2026-10-24 physical snapshot: PMU-local GPO0=0, RAM-vector remap disabled at
-sample. Four coherent reads of one published sample; normal runtime restored.
+2026-10-24 historical raw snapshot: PMU-local GPO0 read0; the former remap
+inference is WITHDRAWN because GPO0 is write-only. ROM/RAM mapping UNKNOWN. Four coherent reads of one published sample; normal runtime restored.
 ROM behavior still unproven. See [physical evidence](../../evidence/pmu-vector-snapshot-hardware-2026-10-24/README.md).
 
 
@@ -31,7 +40,7 @@ stubs at0xffdc0000 do not prove event forwarding. RAM handler/stack estimates
 remain conditional. See [ROM/RAM boundary](../../evidence/pmu-rom-vector-boundary-2026-10-24/README.md).
 
 
-## 2026-10-24 authoritative checkpoint
+## Historical 2026-10-24 checkpoint
 
 The dated rows below retain earlier checkpoints. The PMU row and old transport/
 USB blockage descriptions are superseded by this checkpoint.

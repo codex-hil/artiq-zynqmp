@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — consolidated PIT qualification handoff
+
+19-rowpinnedmatrixseparatesOFFLINE/STATIC/HISTORICAL_HW/UNKNOWN/NOT_RUN.
+53hosttests+staticlink+frozenreplayremain scopedPASS;newcounterprofileNOTDEPLOYABLE/
+fullDDRNOT_RUN_NOT_ADMITTED. LastnormalHWrestoreOct27NOTfreshhealthcheck.
+ADMISSION_STATUSentrypointupdated/oldGPO0inferencewithdrawn/historypreserved.
+NoHW/newtests/codechange. Next offline concrete ROadapter/access-return contract,
+keeping physicalblockers explicit. See docs/PIT_QUALIFICATION_CHECKPOINT.md and
+`evidence/pit-qualification-checkpoint-2026-10-28`.
+
 ## 2026-10-28 — frozen input relocation replay offline
 
 Two29file/1.8MBsnapshots replay fromunrelatedcwd withidenticalreports;8negative

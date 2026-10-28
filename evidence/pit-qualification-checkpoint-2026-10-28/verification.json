@@ -1,0 +1,73 @@
+{
+  "hardware_executed": false,
+  "evidence_pin_rows_verified": 10,
+  "matrix_rows": 19,
+  "local_markdown_references_checked": [
+    {
+      "document": "docs/PIT_QUALIFICATION_CHECKPOINT.md",
+      "target": "../evidence/pit-qualification-checkpoint-2026-10-28/matrix.json"
+    },
+    {
+      "document": "docs/PIT_QUALIFICATION_CHECKPOINT.md",
+      "target": "../evidence/guard-context-recovery-hardware-2026-10-27/README.md"
+    },
+    {
+      "document": "docs/PIT_QUALIFICATION_CHECKPOINT.md",
+      "target": "../evidence/aib-after-guard-hardware-2026-10-24/README.md"
+    },
+    {
+      "document": "docs/PIT_QUALIFICATION_CHECKPOINT.md",
+      "target": "../evidence/pit-frozen-audit-replay-offline-2026-10-28/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../docs/PIT_QUALIFICATION_CHECKPOINT.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/pit-qualification-checkpoint-2026-10-28/matrix.json"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/pmu-writeonly-correction-2026-10-27/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/genesys-cold-recovery-2026-10-27/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/aib-after-guard-hardware-2026-10-24/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/pmu-vector-snapshot-hardware-2026-10-24/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/pmu-vector-remap-review-2026-10-24/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/pmu-rom-vector-boundary-2026-10-24/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/pmu-sleep-guard-hardware-2026-10-23/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/ddr-post-guard-review-2026-10-24/README.md"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/ddr-admission-review-2026-10-23/review.json"
+    },
+    {
+      "document": "diagnostics/ddr/ADMISSION_STATUS.md",
+      "target": "../../evidence/dma-observer-short-hardware-2026-10-23/"
+    }
+  ],
+  "image_and_inventory_anchors_match_saved_reports": true,
+  "scope": "Documentation/link/hash checks only, no new unit or hardware test run"
+}
