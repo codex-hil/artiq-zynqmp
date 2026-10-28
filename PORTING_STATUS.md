@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — sleep/recovery feasibility review offline
+
+UG1085 external-RAM restriction/cooperative IPI protocol reviewed. Header exposes
+MB_SLEEP bit16 at0xffd80000, encoding only; exact UG1087 semantics retrieval
+incomplete and status-to-RAM wake race remains. No independent hung-load recovery
+qualified. No HW/admission. Next exact register definition + observer/race review.
+Evidence `evidence/pit-sleep-recovery-feasibility-offline-2026-10-28`.
+
 ## 2026-10-28 — RO rebuild review stage consolidated
 
 Nine hash-bound evidence rows/seven open admission obligations verified; frozen

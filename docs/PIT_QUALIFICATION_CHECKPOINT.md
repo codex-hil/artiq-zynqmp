@@ -33,6 +33,14 @@ Do not change reset/watchdog/AIB/interrupt policy to manufacture qualification.
 No hardware retry or executor is authorized by this checkpoint. Any eventual HW
 window still requires exact identity and shared lease through restoration.
 
+## Sleep/recovery feasibility update
+
+Vendor header MB_SLEEP bit16 at0xffd80000 is a candidate only; exact UG1087
+semantics and status-to-RAM no-wake lifetime remain unqualified. UG1085 IPI
+loading protocol requires handler execution and is not independent hung-load
+recovery. No HW/admission change. Next offline exact register definition and
+observer/race review. [Evidence](../evidence/pit-sleep-recovery-feasibility-offline-2026-10-28/README.md).
+
 ## Earlier forwarded-v1 checkpoint (preserved dated context)
 
 # PMU/PIT diagnostic qualification checkpoint — 2026-10-28

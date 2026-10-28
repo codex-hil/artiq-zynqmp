@@ -1,0 +1,56 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "inputs": [
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/ug1085-review-20261023.txt",
+      "sha256": "591790ea960e94eb11f7103eb54179b3b61abc52e4dfaf4c687887f7987a2151"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/pmu_global.h",
+      "sha256": "daae2146a8b8cb87f5611021760fc481d0a6906052316c6c9d3de7cc7d26e151"
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_core.c",
+      "sha256": "87c1f2bd8d5574457dd4c0b780c9f788e960da20ac13e7b76cff39b02524a9ce"
+    }
+  ],
+  "findings": [
+    {
+      "id": "external_ram",
+      "status": "DOCUMENTED_RESTRICTION",
+      "source": "UG1085 v2.5 p113, local text lines6027-6038",
+      "assessment": "External APB RAM access requires PMU sleep; active CPU accesses can starve external access and hang the system."
+    },
+    {
+      "id": "ipi_sleep_protocol",
+      "status": "DOCUMENTED_COOPERATIVE_PROTOCOL",
+      "source": "UG1085 pp141-142, local text7540-7585",
+      "assessment": "IPI0 handler disables interrupts and sleeps before loading/wake sequence. This assumes handler execution and does not establish recovery from a stuck load."
+    },
+    {
+      "id": "sleep_candidate",
+      "status": "ENCODING_ONLY_NOT_QUALIFIED",
+      "source": "pmu_global.h lines16-25",
+      "address": "0xffd80000",
+      "mask": "0x00010000",
+      "assessment": "MB_SLEEP field candidate outside PMU RAM. Header defines encoding, not full read side effects, state synchronisation, access permissions or stable residency."
+    },
+    {
+      "id": "reset",
+      "status": "NOT_INDEPENDENT_RECOVERY_PROOF",
+      "source": "UG1085 p113, local text6000-6011",
+      "assessment": "POR clears PMU state; SRST preserves much local/global and PS power state. No tested independent host-controlled recovery from arbitrary hung local transaction is established."
+    }
+  ],
+  "retrieval": {
+    "attempted_official_url": "https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/GLOBAL_CNTRL-PMU_GLOBAL-Register",
+    "result": "web open inaccessible; search did not return exact UG1087 entry; Versal PMC results excluded"
+  },
+  "required_before_hw": [
+    "Exact UG1087 PMU_GLOBAL register semantics, nonclearing/read safety and master-access scope.",
+    "Same-image/session terminal lifecycle plus no-wake/exception argument across status check and RAM read (TOCTOU remains).",
+    "Independent recovery path with justified effect on stuck transaction, ownership and normal-runtime restoration; cooperative IPI and host process timeout insufficient."
+  ],
+  "next_safe_step": "Offline obtain exact UG1087 register definition and inspect existing read-only observer transports for semantics and race model. No hardware reads or new executor."
+}
