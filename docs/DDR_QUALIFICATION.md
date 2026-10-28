@@ -2705,3 +2705,11 @@ but original build-time hashes and exact system-header closure are absent.
 Vendor/BSP ancestry and reproducibility remain unproved. No admission change.
 See [review](../evidence/pit-build-input-review-offline-2026-10-28/README.md).
 Next safe offline step is fresh ten-unit compilation with full dependencies.
+
+## Ten-unit native code agreement — 2026-10-28
+
+All ten new custom objects match native code/data and scoped relocations; 26
+full dependency hashes stable pre/post compilation. Complete object hashes differ;
+LTO and final ELF identity remain unchecked. No HW/admission change. See
+[evidence](../evidence/pit-custom-recompile-offline-2026-10-28/README.md).
+Next safe offline step: new LTO audit link and loadable-byte comparison.

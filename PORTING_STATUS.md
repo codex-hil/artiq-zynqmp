@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-28 — ten custom units recompiled offline
+
+Native allocatable code/data and scoped relocations match in all ten fresh
+fat objects; 26 dependency hashes stable before/after full -M/-MD capture.
+0/10 whole-object hashes match; LTO/final ELF equality not claimed. Native-byte
+mutation detected. First debug-inclusive relocation comparison rejected and
+retained. No HW/gate admission change. Next new LTO link/loadable-byte comparison.
+Evidence `evidence/pit-custom-recompile-offline-2026-10-28`.
+
 ## 2026-10-28 — build-input provenance gaps recorded offline
 
 18 frozen custom-source matches; current 70 objects/10 mapped archive paths/
