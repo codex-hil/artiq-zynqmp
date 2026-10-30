@@ -69,3 +69,13 @@ checked before inputs. No HW or new physical permission; previous89-test result
 dated. Next safe offline result-allocation step: image-owned mailbox symbols,
 alignment and nonoverlap checks, no runtime hook or external RAM access.
 [Evidence](../evidence/pit-mmio-word-frozen-offline-2026-10-30/README.md).
+
+## Static mailbox allocation — 2026-10-30
+
+Owned144-byte BSS allocation(48sample+96terminal) and symbol-derived layout
+checks PASS;93 PIT tests PASS. No producer/consumer/hook. This closes only static
+size/alignment/named-storage/stack placement for one ELF; dynamic heap exclusion
+and initialization/lifetime/authenticity remain unproved. The mailbox changes
+custom closure to22files; previous20-source gate does not certify its placement.
+Next offline word-only bounded publisher callbacks and negative controls, no
+external RAM reader. [Evidence](../evidence/pit-mailbox-allocation-offline-2026-10-30/README.md).

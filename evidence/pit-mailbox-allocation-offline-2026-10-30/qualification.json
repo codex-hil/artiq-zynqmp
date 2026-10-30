@@ -1,0 +1,20 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "pit_tests": 93,
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_mailbox_audit.c": "e75b574857f43f4c7c5ec2640febb45e76b6c0dfbdaae27dec295ce89af28390",
+    "diagnostics/ddr/pit_collect/pit_mailbox_audit.h": "ea62c85f04becab219773d317e4429b81cef6ff3f81310f6999e2483cfa21910",
+    "scripts/check_pit_mailbox_layout.py": "5be6359470952c478dad2f990153188aa8729cb8c915ff5cfcde5f75e4bb7562",
+    "tests/test_pit_mailbox_layout.py": "b8822cea14f28a65b22042cde4159b81e1af3aa4db108ec34b8001c8bfebc916"
+  },
+  "artifact_sha256": {
+    "audit-only.elf": "30b2e75e1af56315fb1375b07db33660785e4e73030236ab5a8f468efb0434fa",
+    "symbols.txt": "af962bb72a838665c1eb9f56cb7a7453f772ac883a229db5f7af08d8a853885c",
+    "disassembly.txt": "49ee1b3e139d979553523d63c097a6e68ab71271b3dfc06cdf112cd55d8f0d28"
+  },
+  "producer_installed": false,
+  "consumer_installed": false,
+  "global_heap_exclusion_proven": false,
+  "limits": "Static symbol ownership/allocation only; no permission to access PMU RAM or actual zero-init/runtime lifetime proof."
+}

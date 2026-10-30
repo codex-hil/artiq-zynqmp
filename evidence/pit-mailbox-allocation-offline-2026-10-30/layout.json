@@ -1,0 +1,38 @@
+{
+  "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+  "hardware_executed": false,
+  "deployable": false,
+  "pmu_ram_access_allowed": false,
+  "image_sha256": "30b2e75e1af56315fb1375b07db33660785e4e73030236ab5a8f468efb0434fa",
+  "mailbox": {
+    "start": "0xffddc520",
+    "bytes": 144,
+    "end_exclusive": "0xffddc5b0"
+  },
+  "samples": {
+    "start": "0xffddc520",
+    "bytes": 48
+  },
+  "terminal": {
+    "start": "0xffddc550",
+    "bytes": 96
+  },
+  "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+  "baseline_layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd8860",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddcecc",
+      "end_exclusive": "0xffddded0"
+    },
+    "bytes_after_stack_before_extension_table": 6160,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified."
+}

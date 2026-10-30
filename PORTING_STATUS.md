@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — image-owned mailbox allocation offline
+
+Fresh12custom-unit LTO/noUND/648projectcodepins/static mailboxlayoutPASS.
+144B BSSffddc520(samples48)+ffddc550(terminal96),aligned8/disjointstacktelemetry/
+sizedstorage;6160Bbelowtable.93PITtestsPASS. Heapboundssymbolsabsent/dynamicheap
+exclusionOPEN;no producer/consumer/hook/HW/admission. New22-sourceclosure needed.
+Next offline boundedwordpublicationcallbacks+offset/one-shot/reentrycontrols.
+Evidence `evidence/pit-mailbox-allocation-offline-2026-10-30`.
+
 ## 2026-10-30 — corrected MMIO audit frozen and replayed offline
 
 Two32-file+inventorycopies/identicalisolatedreplayPASS;39tamper/missing/extra/

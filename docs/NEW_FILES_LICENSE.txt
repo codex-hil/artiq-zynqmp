@@ -1406,3 +1406,16 @@ evidence/pit-mmio-word-frozen-offline-2026-10-30/freeze.py
 evidence/pit-mmio-word-frozen-offline-2026-10-30/inventory.json
 evidence/pit-mmio-word-frozen-offline-2026-10-30/replay.py
 evidence/pit-mmio-word-frozen-offline-2026-10-30/verification.json
+
+diagnostics/ddr/pit_collect/pit_mailbox_audit.c
+diagnostics/ddr/pit_collect/pit_mailbox_audit.h
+scripts/check_pit_mailbox_layout.py
+tests/test_pit_mailbox_layout.py
+evidence/pit-mailbox-allocation-offline-2026-10-30/README.md
+evidence/pit-mailbox-allocation-offline-2026-10-30/build.json
+evidence/pit-mailbox-allocation-offline-2026-10-30/build.py
+evidence/pit-mailbox-allocation-offline-2026-10-30/code-check.json
+evidence/pit-mailbox-allocation-offline-2026-10-30/layout.json
+evidence/pit-mailbox-allocation-offline-2026-10-30/qualification.json
+evidence/pit-mailbox-allocation-offline-2026-10-30/symbols.txt
+evidence/pit-mailbox-allocation-offline-2026-10-30/undefined.txt
