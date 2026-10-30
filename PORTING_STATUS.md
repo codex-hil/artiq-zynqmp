@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — normal runtime physically restored after plug ON
+
+Cold-start normal PMU/FSBL/PL/CPU load and TTL/CoreDMA/analyzer/MonInj/Ethernet
+PASS192.168.2.3/MAC02:38:3b:7f:02:0d;76.209s shared Genesys window, plug reserved,
+both leases released/supplyON. Initial parked-PMU bootstrap refused before action:
+no MicroBlaze target; read-only topology confirmed generic PMU then existing cold
+JTAG boot sequence succeeded. Failure/refusal retained. No PIT/DDR/flash/Si writes.
+Next offline bounded status-only observer/pins/negative controls, no RAM/writes.
+Evidence `evidence/genesys-normal-start-hardware-2026-10-30`.
+
 ## 2026-10-30 — owner-mapped Genesys plug enabled
 
 Owner confirms Zigbee plug supplies only devkit, initially OFF, authorizes ON.

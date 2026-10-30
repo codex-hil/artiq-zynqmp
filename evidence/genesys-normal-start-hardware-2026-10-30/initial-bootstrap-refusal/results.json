@@ -1,0 +1,11 @@
+{
+  "status": "FAIL",
+  "hardware_executed": true,
+  "scope": "normal PMU bootstrap then normal runtime only",
+  "stages": {
+    "pmu-bootstrap": 1
+  },
+  "error": "pmu-bootstrap failed; no retry",
+  "normal_runtime_verified": false,
+  "elapsed_seconds": 16.31
+}

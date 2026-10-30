@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "hardware_executed": true,
+  "scope": "normal cold-start runtime only",
+  "stages": {
+    "load": 0,
+    "debug": 0,
+    "ethernet": 0
+  },
+  "reserve_released_before_normal_load": true,
+  "ip": "192.168.2.3",
+  "elapsed_seconds": 76.209
+}

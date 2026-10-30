@@ -1,0 +1,6 @@
+PMU not unique
+    while executing
+"error "PMU not unique""
+    invoked from within
+"if {[llength $ids] != 1} {error "PMU not unique"}"
+    (file "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/restart_pmu_for_restore.tcl" line 12)

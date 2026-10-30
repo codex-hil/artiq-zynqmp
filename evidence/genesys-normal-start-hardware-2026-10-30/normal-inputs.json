@@ -1,0 +1,27 @@
+{
+  "kind": "NORMAL_PMU_RECOVERY_QUALIFICATION_V1",
+  "runtime": {
+    "path": "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/trained-observer-integration-2026-10-22/runtime-inputs.json",
+    "sha256": "8e50cc625b8147aec223724a2c06d1b1f53e2ca9e522c45b8f6010aa58fad9e6"
+  },
+  "script_sha256": {
+    "examples/device_db_genesys.py": "a4b56b9c91f4c1a6e4db0163f77df030c4fad7e12f8a0599c7b20fa14699bfff",
+    "scripts/check_hw_storage.py": "86ae50d19a33ad75038144d67a95fdce0c92b58e6d381825463b9c6f4c819aeb",
+    "scripts/check_remote_rtio_build.py": "6ce79bdfd717da5f2ac37f5b5492b10de4173049c8b99712838532a65b4fdd10",
+    "scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+    "scripts/prepare_local_rtio.tcl": "72185a0134ce4f1c78b082b24d2da387c32fe942fa2e7436aca377cf9c683619",
+    "scripts/program_genesys_pl.tcl": "c47b5d8ed53177c5acb3ea014dabc944f67726cae1b03ac2cf365d333674c968",
+    "scripts/qualify_pmu_restore_hw.py": "09dd5d54264503af42d582565bfbf2e7f78fa245177aed7163ee3e86f47b186e",
+    "scripts/reset_genesys_ps.tcl": "e6e091c2c68db8a0dd50fe1cec5f6df346fbec222303eb26f8ac0e66f930d01b",
+    "scripts/restart_pmu_for_restore.tcl": "401626dc93515f760a69a1898903d25ab6f27b693ce1436e8c1ef58558376db1",
+    "scripts/run_a53_runtime.tcl": "dbc8490b9809a6bd285564d674286773d8505d34093b89fa40e59bca318b6eee",
+    "scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "scripts/run_kernel_worker.tcl": "b7a2704a05808689a5b122d9ea9fa4c7d7e6f6293ccbc35ee69914f9106aef90",
+    "scripts/test_candidate_runtime_hw.py": "2f21f117667846f44a745afcfb4b9bc894710d061418a3398a5145eab88cb0bc",
+    "scripts/test_ethernet_hw.py": "75325e938dc14ad9380450d94e58375f39d6aa0e9e0c5a8ca3796b261b2d71b5",
+    "scripts/test_rtio_debug_hw.py": "3612fb933fe3c9f1ddd0b64aedb926162f7d667d8621ef72eb79b572f7cf4a1a"
+  },
+  "guard": false,
+  "aib_writes": false,
+  "retries": 0
+}
