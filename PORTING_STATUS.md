@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — explicit record word initialization removes library call
+
+82PITtestsPASS;freshLTO/noUND/layout/scopedwordstoresPASS. Entry12volatileword
+loop/eightpins;11directcalls/no memset. Fourcounter-stride-width-librarymutants
+reject. Frame296+52+0=348NOTtotal. Libraryretainedelsewhere/indirectpathsOPEN.
+NoHW/admission. Oldpinsreject/oldworking-sourcehashesstale bydesign, not repinned.
+Next newword-initMMIO20source-headerclosure/profile/refusalgate.
+Evidence `evidence/pit-capture-word-init-offline-2026-10-30`.
+
 ## 2026-10-30 — MMIO exact pins pass; library byte paths remain open
 
 82PITtests/16labeled+712singlewordmutants reject;actual ELF ninebodypinsPASS.

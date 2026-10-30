@@ -1,0 +1,46 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "pit_tests": 82,
+  "elf_sha256": "b6cd0be02183c239052ff694aa02e88c26f72308b50f89207cb2ddcd0f53ff48",
+  "negative_controls": [
+    {
+      "case": "13-word overrun",
+      "rejected": true,
+      "reason": "changed 12-word volatile initializer"
+    },
+    {
+      "case": "wrong stride",
+      "rejected": true,
+      "reason": "changed 12-word volatile initializer"
+    },
+    {
+      "case": "byte store",
+      "rejected": true,
+      "reason": "changed 12-word volatile initializer"
+    },
+    {
+      "case": "reinjected memset call",
+      "rejected": true,
+      "reason": "unexpected direct call, including possible library path"
+    }
+  ],
+  "old_build_pin_refusal": "unexpected function range: pit_mmio_composition_audit",
+  "stack_frames": {
+    "observe": 44,
+    "disable": 28,
+    "read_word": 52,
+    "write_word": 32,
+    "barrier": 32,
+    "pit_mmio_read": 0,
+    "pit_terminal_audit": 0,
+    "pit_mmio_composition_audit": 296
+  },
+  "internal_subtotal_not_total": 348,
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_capture.c": "9db75a26c55fac9acd87e0a064594add40beaf144f98e46f492e1d38c609f3d8",
+    "diagnostics/ddr/pit_collect/pit_mmio_composition_audit.c": "ffe26962b95df9e48615c0b6a9bffa6d64338196ef18f9753d22f1dc803d2554",
+    "diagnostics/ddr/pit_collect/pit_mmio_read.c": "66e68e2880d35d1b98c1e203db59619cafaa50980508810a59a8ea5e2357d0ba"
+  },
+  "limits": "No entry-to-memset call; vendor library remains for other runtime paths. Indirect callbacks/exception paths not fully qualified; no physical admission."
+}

@@ -43,3 +43,12 @@ alignment/path proof, so whole-path width remains unqualified. Next safe offline
 fix uses explicit volatile32-bit initialization in pit_capture and a fresh link
 with no entry-to-memset call. No admission/physical change. See
 [evidence](../evidence/pit-mmio-flow-controls-offline-2026-10-30/README.md).
+
+## Explicit word-init revision — 2026-10-30
+
+pit_capture48-byte aggregate clear replaced by12volatile32-bit writes through
+aligned union representation. New LTO entry has no memset direct call;11 allowed
+calls/initializerpins/fournegativecontrolsPASS;82 PIT tests PASS. Frame subtotal
+now348NOTtotal. Library remains elsewhere; indirect callbacks/exception paths
+are not admitted. New source/header/artifact closure required; old source hashes
+must not be repinned. [Evidence](../evidence/pit-capture-word-init-offline-2026-10-30/README.md).

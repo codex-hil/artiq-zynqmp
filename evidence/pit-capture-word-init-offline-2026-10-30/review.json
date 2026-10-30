@@ -1,0 +1,147 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "initializer_words": 12,
+  "initializer_critical_pins": 8,
+  "direct_calls": [
+    {
+      "pc": "0xffdcf5c8",
+      "target": "0xffdcbd70",
+      "name": "observe"
+    },
+    {
+      "pc": "0xffdcf670",
+      "target": "0xffdcf458",
+      "name": "pit_terminal_audit"
+    },
+    {
+      "pc": "0xffdcf678",
+      "target": "0xffdcbe00",
+      "name": "disable"
+    },
+    {
+      "pc": "0xffdcf688",
+      "target": "0xffdcbd70",
+      "name": "observe"
+    },
+    {
+      "pc": "0xffdcf718",
+      "target": "0xffdcbe20",
+      "name": "read_word"
+    },
+    {
+      "pc": "0xffdcf7b8",
+      "target": "0xffdcbf30",
+      "name": "write_word"
+    },
+    {
+      "pc": "0xffdcf7c4",
+      "target": "0xffdcbf6c",
+      "name": "barrier"
+    },
+    {
+      "pc": "0xffdcf7ec",
+      "target": "0xffdcbf30",
+      "name": "write_word"
+    },
+    {
+      "pc": "0xffdcf80c",
+      "target": "0xffdcbf6c",
+      "name": "barrier"
+    },
+    {
+      "pc": "0xffdcf820",
+      "target": "0xffdcbf30",
+      "name": "write_word"
+    },
+    {
+      "pc": "0xffdcf834",
+      "target": "0xffdcbd70",
+      "name": "observe"
+    }
+  ],
+  "no_entry_memset_call": true,
+  "word_stores": {
+    "pit_mmio_composition_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 77,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mmio_read": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_terminal_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 0,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "observe": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 10,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "disable": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "read_word": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 15,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "write_word": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "barrier": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    }
+  },
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd8860",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddce3c",
+      "end_exclusive": "0xffddde40"
+    },
+    "bytes_after_stack_before_extension_table": 6304,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "limits": "Exact initializer word pins and named direct-call inventory only. Indirect external callback/library/exception paths and full CFG/dataflow/stack/liveness remain unqualified."
+}
