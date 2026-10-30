@@ -1390,3 +1390,12 @@ evidence/pit-capture-word-init-offline-2026-10-30/review.json
 evidence/pit-capture-word-init-offline-2026-10-30/review.py
 evidence/pit-capture-word-init-offline-2026-10-30/undefined.txt
 evidence/pit-capture-word-init-offline-2026-10-30/write_word.dis
+
+scripts/check_pit_mmio_word_flow.py
+scripts/pit_mmio_word_audit_gate.py
+tests/test_pit_mmio_word_flow.py
+tests/test_pit_mmio_word_gate.py
+evidence/pit-mmio-word-gate-offline-2026-10-30/README.md
+evidence/pit-mmio-word-gate-offline-2026-10-30/check.json
+evidence/pit-mmio-word-gate-offline-2026-10-30/manifest.json
+evidence/pit-mmio-word-gate-offline-2026-10-30/qualification.json

@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — explicit word-init MMIO bound gate offline
+
+89PITtests/actualELF20source-header+7helper+3artifactgatePASS;648projectwords
+pinned/scopedwidthPASS.30filetamper/19labeled+648wordmutants/cross-profile6reject.
+No genericCFG/dataflow/vendorcallback/exception proof; deploymentalwaysrefused.
+NoHW/admission. Next separatefrozen20+7+3closure/relocatedreplay+tampercontrols.
+Evidence `evidence/pit-mmio-word-gate-offline-2026-10-30`.
+
 ## 2026-10-30 — explicit record word initialization removes library call
 
 82PITtestsPASS;freshLTO/noUND/layout/scopedwordstoresPASS. Entry12volatileword

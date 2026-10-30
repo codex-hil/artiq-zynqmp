@@ -1,0 +1,45 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "pit_tests": 89,
+  "source_header_pins": 20,
+  "helper_pins": 7,
+  "artifact_pins": 3,
+  "changed_file_controls": 30,
+  "scoped_instruction_words": 648,
+  "individual_word_mutants_rejected": 648,
+  "labeled_mutants_rejected": 19,
+  "cross_profile_controls": [
+    {
+      "case": "old-MMIO-checker/new-image",
+      "rejected": true,
+      "reason": "unexpected function range: pit_mmio_composition_audit"
+    },
+    {
+      "case": "new-MMIO-checker/old-image",
+      "rejected": true,
+      "reason": "unexpected function range: pit_mmio_composition_audit"
+    },
+    {
+      "case": "pit-ro-context-composition-audit-v2/new-manifest",
+      "rejected": true,
+      "reason": "unsupported audit profile/schema"
+    },
+    {
+      "case": "new-gate/pit-ro-context-composition-audit-v2",
+      "rejected": true,
+      "reason": "unsupported audit profile/schema"
+    },
+    {
+      "case": "pit-forwarded-status-composition-audit-v1/new-manifest",
+      "rejected": true,
+      "reason": "unsupported audit profile/schema"
+    },
+    {
+      "case": "new-gate/pit-forwarded-status-composition-audit-v1",
+      "rejected": true,
+      "reason": "unsupported audit profile/schema"
+    }
+  ],
+  "limits": "Exact scoped byte/range consistency and source/artifact binding, not generic CFG/dataflow or physical admission. Vendor libraries/indirect callbacks/exceptions remain outside no-subword-store scope."
+}

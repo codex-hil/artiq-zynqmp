@@ -52,3 +52,11 @@ calls/initializerpins/fournegativecontrolsPASS;82 PIT tests PASS. Frame subtotal
 now348NOTtotal. Library remains elsewhere; indirect callbacks/exception paths
 are not admitted. New source/header/artifact closure required; old source hashes
 must not be repinned. [Evidence](../evidence/pit-capture-word-init-offline-2026-10-30/README.md).
+
+## New word-init bound gate — 2026-10-30
+
+Explicit20source-header/7helper/3artifact gate and648project-word pins PASS on
+actual ELF;89 PIT tests PASS with30file and19labeled+648word controls plus crossed
+profiles. Deployment always refused; scoped width is not complete CFG/dataflow,
+callback/library/exception coverage. Next isolated freeze/replay with new anchor.
+[Evidence](../evidence/pit-mmio-word-gate-offline-2026-10-30/README.md).
