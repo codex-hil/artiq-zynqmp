@@ -1,0 +1,209 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "copies": [
+    "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-frozen-20261030-v1/snapshot-a",
+    "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-frozen-20261030-v1/relocated/snapshot-b"
+  ],
+  "files_excluding_inventory": 32,
+  "inventory_sha256": "85e9e184062b1817dd6dcb5aec4650a2fc14709ac99a2a0f8de7fd3678b89605",
+  "positive_reports_identical": true,
+  "negative_controls": [
+    {
+      "case": "changed-file",
+      "path": "artifacts/audit-only.elf",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "artifacts/disassembly.txt",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "artifacts/symbols.txt",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "manifest.json",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "replay.py",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_capture.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_capture.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_collect.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_collect.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_mmio_composition_audit.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_mmio_read.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_mmio_read.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_publish.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_publish.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_ro_adapter.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_ro_adapter.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_sleep_model.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_sleep_model.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_status_compose.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_status_compose.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_terminal_audit.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_terminal_build.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_terminal_build.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_terminal_record.c",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/diagnostics/ddr/pit_collect/pit_terminal_record.h",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/scripts/build_pmu_boundary.py",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/scripts/check_pit_mmio_word_flow.py",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/scripts/check_pit_word_stores.py",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/scripts/check_pmu_boundary_image.py",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/scripts/package_local_candidate.py",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/scripts/pit_mmio_word_audit_gate.py",
+      "rejected": true
+    },
+    {
+      "case": "changed-file",
+      "path": "repo/scripts/stage_pmu_boundary.py",
+      "rejected": true
+    },
+    {
+      "case": "missing",
+      "rejected": true,
+      "reason": "ValueError: snapshot inventory changed"
+    },
+    {
+      "case": "extra",
+      "rejected": true,
+      "reason": "ValueError: snapshot inventory changed"
+    },
+    {
+      "case": "nested-inventory",
+      "rejected": true,
+      "reason": "ValueError: snapshot inventory changed"
+    },
+    {
+      "case": "symlink",
+      "rejected": true,
+      "reason": "ValueError: snapshot symlink forbidden"
+    },
+    {
+      "case": "inventory-tamper",
+      "rejected": true,
+      "reason": "ValueError: inventory differs from independent anchor"
+    },
+    {
+      "case": "wrong-anchor",
+      "rejected": true,
+      "reason": "ValueError: inventory differs from independent anchor"
+    },
+    {
+      "case": "execute",
+      "rejected": true,
+      "reason": "replay.py: error: unrecognized arguments: --execute"
+    }
+  ],
+  "limits": "Offline content consistency only, not trusted build provenance or a sandbox against an owner rewriting the loader. Local ELF remains outside public repo. No physical qualification."
+}

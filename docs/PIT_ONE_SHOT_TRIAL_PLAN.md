@@ -60,3 +60,12 @@ actual ELF;89 PIT tests PASS with30file and19labeled+648word controls plus cross
 profiles. Deployment always refused; scoped width is not complete CFG/dataflow,
 callback/library/exception coverage. Next isolated freeze/replay with new anchor.
 [Evidence](../evidence/pit-mmio-word-gate-offline-2026-10-30/README.md).
+
+## Frozen corrected audit — 2026-10-30
+
+New20+7+3closure frozen as32files+inventory per copy. Two isolated relocated
+replays identical;39negativecontrolsreject, required independent inventory anchor
+checked before inputs. No HW or new physical permission; previous89-test result
+dated. Next safe offline result-allocation step: image-owned mailbox symbols,
+alignment and nonoverlap checks, no runtime hook or external RAM access.
+[Evidence](../evidence/pit-mmio-word-frozen-offline-2026-10-30/README.md).

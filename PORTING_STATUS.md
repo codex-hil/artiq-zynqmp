@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — corrected MMIO audit frozen and replayed offline
+
+Two32-file+inventorycopies/identicalisolatedreplayPASS;39tamper/missing/extra/
+symlink/anchor/executecontrolsreject. IndependentinventorySHA required before
+trust;readonlymodesnotsecurity. Oldsnapshotsretained/noHW/admission. Next offline
+image-owned sample-terminal mailbox symbols/alignment/nonoverlap requirements.
+Evidence `evidence/pit-mmio-word-frozen-offline-2026-10-30`.
+
 ## 2026-10-30 — explicit word-init MMIO bound gate offline
 
 89PITtests/actualELF20source-header+7helper+3artifactgatePASS;648projectwords
