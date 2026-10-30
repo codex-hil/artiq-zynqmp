@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — MMIO exact pins pass; library byte paths remain open
+
+82PITtests/16labeled+712singlewordmutants reject;actual ELF ninebodypinsPASS.
+This is exact byte/range consistency, NOT genericCFG/dataflow. New transitive
+review found librarymemset sbi paths; whole-path storewidth qualificationFALSE.
+Entrycalluses48bytes/SP+28 but alignment branch proof unclosed. NoHW/admission.
+Next explicit volatileword initialization in pit_capture/newLTO/no memsetcall.
+Evidence `evidence/pit-mmio-flow-controls-offline-2026-10-30`.
+
 ## 2026-10-30 — concrete MMIO audit composition linked offline
 
 Fresh11custom-unit LTO link/noUND/layout/scopedwordstoresPASS. Separateentry

@@ -1,0 +1,115 @@
+{
+  "status": "EXACT_SCOPED_MMIO_INSTRUCTION_PINS_PASS_NOT_DEPLOYMENT",
+  "profile": "pit-concrete-mmio-instruction-audit-v1",
+  "hardware_executed": false,
+  "deployable": false,
+  "destructive_test_allowed": false,
+  "functions": {
+    "pit_mmio_composition_audit": {
+      "instruction_words": 470,
+      "sha256": "1efb053e1ae486b736db661ab908a06aced3dbb7c006d7fa597ab1e765f8c0f0",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 75,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "pit_mmio_read": {
+      "instruction_words": 28,
+      "sha256": "98677f3e59f558fc5ab4822e9675a3815c7b758eabfbbe901b8271ad842fc53b",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 1,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "pit_terminal_audit": {
+      "instruction_words": 3,
+      "sha256": "e7d88279bc84b61d056548cfcf38d58409152261590feb9ee5a4ca4891564efc",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 0,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "observe": {
+      "instruction_words": 36,
+      "sha256": "5c0da7d5709806b74cb23f9c1dd11bb879a87af504caa1a10a9a80fd022eaf7c",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 10,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "disable": {
+      "instruction_words": 8,
+      "sha256": "4956afde32fea22016abd4ba0bbc742766d6194574e8820f1300a654b80e7515",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 1,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "read_word": {
+      "instruction_words": 68,
+      "sha256": "3f636c1483eb42c9fa9e0f758153f818cc8eeab4a9da5ba61b08d91f7ba86a98",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 15,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "write_word": {
+      "instruction_words": 15,
+      "sha256": "97fb08fb93dc1a24a687758b1ad5dacab1ab9a957433e428c29608589863624d",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 3,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "barrier": {
+      "instruction_words": 15,
+      "sha256": "0fba4c40a943d76b54b37fa9de2f25fb9466d9c5bc338f0cba90dd388727ae54",
+      "stores": {
+        "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+        "word_store_sites": 3,
+        "hardware_executed": false,
+        "deployable": false,
+        "destructive_test_allowed": false,
+        "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+      }
+    },
+    "memset": {
+      "instruction_words": 69,
+      "sha256": "eedfca5b425b9c8c5403a73fe6e7b81bf390ea99cb00e5eb7399568cfa957ed5",
+      "stores": {
+        "status": "LIBRARY_SUBWORD_PATHS_PRESENT_NOT_QUALIFIED",
+        "qualification_complete": false
+      }
+    }
+  },
+  "library_store_width_qualified": false,
+  "limits": "Exact nine-function byte/range consistency for one reviewed LTO artifact. No generic CFG/dataflow, liveness, caller callback trust, physical origin, total stack, memory ownership or deployment proof."
+}

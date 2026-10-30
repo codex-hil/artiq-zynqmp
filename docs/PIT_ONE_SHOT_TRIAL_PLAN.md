@@ -33,3 +33,13 @@ custom C units. Layout/noUND/scoped word stores PASS;78 PIT tests PASS. Frames
 292+52+0=344bytes internal subtotal only. Both old flow profiles reject this entry;
 new full binding/flow mutation gate remains required. No HW/admission change.
 [Evidence](../evidence/pit-mmio-linked-offline-2026-10-30/README.md).
+
+## Instruction pins / library width gap — 2026-10-30
+
+Nine exact bodies/712words pinned;16specific and712individual-word mutations
+reject.82 PIT tests PASS. This is not full CFG/dataflow qualification. Library
+memset retains byte-store paths; entry48-byte/SP+28 arguments require unresolved
+alignment/path proof, so whole-path width remains unqualified. Next safe offline
+fix uses explicit volatile32-bit initialization in pit_capture and a fresh link
+with no entry-to-memset call. No admission/physical change. See
+[evidence](../evidence/pit-mmio-flow-controls-offline-2026-10-30/README.md).

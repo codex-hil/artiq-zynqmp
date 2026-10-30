@@ -1,0 +1,11 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "pit_tests": 82,
+  "exact_pin_status": "PASS",
+  "semantic_labeled_mutants_rejected": 16,
+  "individual_word_mutants_rejected": 712,
+  "library_store_width_qualified": false,
+  "initial_failure": "Both actual checker and positive synthetic fixture rejected library memset sbi atffdd2814. Library also has sbi atffdd28c8. Exact byte pins are now reported separately from this unresolved width obligation.",
+  "next_safe_step": "Explicit volatile word initialization in pit_capture, fresh LTO link, reject retained entry-to-memset path; preserve old artifacts."
+}

@@ -1366,3 +1366,11 @@ evidence/pit-mmio-linked-offline-2026-10-30/review.json
 evidence/pit-mmio-linked-offline-2026-10-30/tests.json
 evidence/pit-mmio-linked-offline-2026-10-30/undefined.txt
 evidence/pit-mmio-linked-offline-2026-10-30/write_word.dis
+
+scripts/check_pit_mmio_flow.py
+tests/test_pit_mmio_flow.py
+evidence/pit-mmio-flow-controls-offline-2026-10-30/README.md
+evidence/pit-mmio-flow-controls-offline-2026-10-30/check.json
+evidence/pit-mmio-flow-controls-offline-2026-10-30/inputs.json
+evidence/pit-mmio-flow-controls-offline-2026-10-30/memset.dis
+evidence/pit-mmio-flow-controls-offline-2026-10-30/qualification.json
