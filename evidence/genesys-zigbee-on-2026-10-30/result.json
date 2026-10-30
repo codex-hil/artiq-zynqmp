@@ -1,0 +1,44 @@
+{
+  "genesys_lock_held": true,
+  "plug_ieee": "0xa4c1386c56ee225b",
+  "load_mapping": "USER_CONFIRMED_ONLY_GENESYS_DEVKIT",
+  "user_authorized_on": true,
+  "actions": [
+    {
+      "action": "on",
+      "result": {
+        "requested_state": "ON",
+        "mqtt_delivered": true,
+        "physical_state_confirmed": false,
+        "next": "status"
+      }
+    },
+    {
+      "action": "status",
+      "result": {
+        "device": "0xa4c1386c56ee225b",
+        "received_at": 1793370674.5477538,
+        "state": "ON",
+        "measurements": {
+          "power": 0,
+          "current": 0,
+          "voltage": 234,
+          "energy": 0.66
+        },
+        "units": {
+          "power": "W",
+          "current": "A",
+          "voltage": "V",
+          "energy": "kWh"
+        },
+        "field_sample_age": "UNKNOWN (Z2M may merge cached fields)",
+        "physical_state_confirmed": false,
+        "linkquality": 131
+      }
+    }
+  ],
+  "release": {
+    "released": true,
+    "power_changed": false
+  }
+}

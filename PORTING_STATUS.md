@@ -1,5 +1,13 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — owner-mapped Genesys plug enabled
+
+Owner confirms Zigbee plug supplies only devkit, initially OFF, authorizes ON.
+Shared Genesys flock+plug reservation held; CLI ON delivered/status reportsON.
+Both leases released. No OFF/cycle/board-access/programming; power-field freshness
+unknown/actual boot not checked. Independent load mapping gap narrowed, physical
+recovery/automatic ON watchdog not qualified. Evidence `evidence/genesys-zigbee-on-2026-10-30`.
+
 ## 2026-10-28 — independent physical recovery mapping missing
 
 Read-only workspace inventory found conditional PMU debug restore and historical
