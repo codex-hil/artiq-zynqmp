@@ -25,3 +25,11 @@ show changed/unchanged values only; no elapsed time/frequency/ownership inferenc
 Next authorized safe step: fresh audit-only LTO integration and negative static
 controls for the concrete raw callback. Physical preparation then still requires
 closing the recovery, entry, result ownership and consumer-lifetime rows above.
+
+## Offline link checkpoint — 2026-10-30
+
+Separate pit_mmio_composition_audit binds actual raw callback and links with11
+custom C units. Layout/noUND/scoped word stores PASS;78 PIT tests PASS. Frames
+292+52+0=344bytes internal subtotal only. Both old flow profiles reject this entry;
+new full binding/flow mutation gate remains required. No HW/admission change.
+[Evidence](../evidence/pit-mmio-linked-offline-2026-10-30/README.md).

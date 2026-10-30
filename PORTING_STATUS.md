@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — concrete MMIO audit composition linked offline
+
+Fresh11custom-unit LTO link/noUND/layout/scopedwordstoresPASS. Separateentry
+binds concreteMMIO callback under NULLcontext/unsettransport/unconsumedguards;
+rawone lwi/oneoutputswi. Frames292+52+0=344NOTtotal;6304Bstackheadroom.
+78PITtestsPASS. Oldflowprofilesreject/newwholeflowgateunqualified. NoHW/admission.
+Next separatebinding/address/load/storemutationcontrols+closure.
+Evidence `evidence/pit-mmio-linked-offline-2026-10-30`.
+
 ## 2026-10-30 — concrete PIT raw callback and draft trial plan offline
 
 78 PIT tests PASS; anonymous-memory host test couples exact4address raw callback

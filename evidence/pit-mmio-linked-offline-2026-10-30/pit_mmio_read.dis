@@ -1,0 +1,28 @@
+ffdcbfb0:	10600000 	addk	r3, r0, r0
+ffdcbfb4:	8ca51c00 	pcmpne	r5, r5, r3
+ffdcbfb8:	be25003c 	bneid	r5, 60		// ffdcbff4
+ffdcbfbc:	88a72c00 	pcmpeq	r5, r7, r5
+ffdcbfc0:	be250058 	bneid	r5, 88		// ffdcc018
+ffdcbfc4:	3060ffff 	addik	r3, r0, -1
+ffdcbfc8:	b000ffd4 	imm	-44
+ffdcbfcc:	a8660064 	xori	r3, r6, 100
+ffdcbfd0:	bc03003c 	beqi	r3, 60		// ffdcc00c
+ffdcbfd4:	b000ffd4 	imm	-44
+ffdcbfd8:	30600064 	addik	r3, r0, 100
+ffdcbfdc:	16461803 	cmpu	r18, r6, r3
+ffdcbfe0:	bc52001c 	blti	r18, 28		// ffdcbffc
+ffdcbfe4:	a466ffef 	andi	r3, r6, -17
+ffdcbfe8:	b000ffd4 	imm	-44
+ffdcbfec:	a8630044 	xori	r3, r3, 68
+ffdcbff0:	bc03001c 	beqi	r3, 28		// ffdcc00c
+ffdcbff4:	b8100024 	brid	36		// ffdcc018
+ffdcbff8:	3060ffff 	addik	r3, r0, -1
+ffdcbffc:	b000ffd4 	imm	-44
+ffdcc000:	a8860074 	xori	r4, r6, 116
+ffdcc004:	be240014 	bneid	r4, 20		// ffdcc018
+ffdcc008:	3060ffff 	addik	r3, r0, -1
+ffdcc00c:	e8660000 	lwi	r3, r6, 0
+ffdcc010:	f8670000 	swi	r3, r7, 0
+ffdcc014:	10600000 	addk	r3, r0, r0
+ffdcc018:	b60f0008 	rtsd	r15, 8
+ffdcc01c:	80000000 	or	r0, r0, r0
