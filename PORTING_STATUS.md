@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — concrete PIT raw callback and draft trial plan offline
+
+78 PIT tests PASS; anonymous-memory host test couples exact4address raw callback
+to ordered8read adapter. Explicit MB audit-opt-in; nativeone lwi/one output swi/
+return/noUND. No bus-error/hang recovery, runtime integration or HW execution.
+One-shot plan enumerates new image/mailbox/recovery/lifetime/restore gates; none
+relaxed. Next fresh audit LTO integration/static controls. Old pins unchanged.
+Evidence `evidence/pit-mmio-backend-offline-2026-10-30`.
+
 ## 2026-10-30 — one physical status-only PMU read PASS
 
 Exact cable/PSU/AP0 readGLOBAL_CNTRL0xffd80000 once =>0x00018812/MB_SLEEP1

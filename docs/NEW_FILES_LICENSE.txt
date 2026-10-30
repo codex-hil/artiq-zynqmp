@@ -1339,3 +1339,14 @@ evidence/pmu-status-only-hardware-2026-10-30/capture.py
 evidence/pmu-status-only-hardware-2026-10-30/plan.json
 evidence/pmu-status-only-hardware-2026-10-30/result.json
 evidence/pmu-status-only-hardware-2026-10-30/tests.json
+
+diagnostics/ddr/pit_collect/pit_mmio_read.c
+diagnostics/ddr/pit_collect/pit_mmio_read.h
+tests/fixtures/pit_mmio_read_host.c
+tests/test_pit_mmio_read.py
+docs/PIT_ONE_SHOT_TRIAL_PLAN.md
+evidence/pit-mmio-backend-offline-2026-10-30/README.md
+evidence/pit-mmio-backend-offline-2026-10-30/command.json
+evidence/pit-mmio-backend-offline-2026-10-30/disassembly.txt
+evidence/pit-mmio-backend-offline-2026-10-30/review.json
+evidence/pit-mmio-backend-offline-2026-10-30/undefined.txt

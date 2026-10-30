@@ -66,3 +66,12 @@ actual linked ELF and 60 PIT tests PASS. Changed pins and wrong profiles reject.
 Deployment remains unconditionally refused; no MMIO/recovery/visibility proof.
 See [evidence](../evidence/pit-ro-bound-gate-offline-2026-10-28/README.md).
 Next safe offline work is an isolated relocated v2 snapshot replay.
+
+## Concrete raw callback — 2026-10-30
+
+`pit_mmio_read.c/h` now implements an explicit MicroBlaze audit-only volatile
+word-load callback for the four COUNTER addresses; NULL context and valid output
+required. This supersedes earlier "not implemented" only for the standalone raw
+callback, not runtime integration/backend admission.78 PIT tests/native inventory
+PASS, no HW. No bus-error return or hang preemption. Old gate/source pins remain
+unchanged; [one-shot plan](PIT_ONE_SHOT_TRIAL_PLAN.md) is draft/NOT_ADMITTED.

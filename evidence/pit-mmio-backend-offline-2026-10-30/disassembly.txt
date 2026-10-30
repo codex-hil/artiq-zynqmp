@@ -1,0 +1,42 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-mmio-raw-audit-20261030/pit_mmio_read.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_mmio_read>:
+   0:	10600000 	addk	r3, r0, r0
+   4:	8ca51c00 	pcmpne	r5, r5, r3
+   8:	be25003c 	bneid	r5, 60		// 44
+			8: R_MICROBLAZE_NONE	*ABS*+0x3c
+   c:	88a72c00 	pcmpeq	r5, r7, r5
+  10:	be250058 	bneid	r5, 88		// 68
+			10: R_MICROBLAZE_NONE	*ABS*+0x58
+  14:	3060ffff 	addik	r3, r0, -1
+  18:	b000ffd4 	imm	-44
+  1c:	a8660064 	xori	r3, r6, 100
+  20:	bc03003c 	beqi	r3, 60		// 5c
+			20: R_MICROBLAZE_NONE	*ABS*+0x3c
+  24:	b000ffd4 	imm	-44
+  28:	30600064 	addik	r3, r0, 100
+  2c:	16461803 	cmpu	r18, r6, r3
+  30:	bc52001c 	blti	r18, 28		// 4c
+			30: R_MICROBLAZE_NONE	*ABS*+0x1c
+  34:	a466ffef 	andi	r3, r6, -17
+  38:	b000ffd4 	imm	-44
+  3c:	a8630044 	xori	r3, r3, 68
+  40:	bc03001c 	beqi	r3, 28		// 5c
+			40: R_MICROBLAZE_NONE	*ABS*+0x1c
+  44:	b8100024 	brid	36		// 68
+			44: R_MICROBLAZE_NONE	*ABS*+0x24
+  48:	3060ffff 	addik	r3, r0, -1
+  4c:	b000ffd4 	imm	-44
+  50:	a8860074 	xori	r4, r6, 116
+  54:	be240014 	bneid	r4, 20		// 68
+			54: R_MICROBLAZE_NONE	*ABS*+0x14
+  58:	3060ffff 	addik	r3, r0, -1
+  5c:	e8660000 	lwi	r3, r6, 0
+  60:	f8670000 	swi	r3, r7, 0
+  64:	10600000 	addk	r3, r0, r0
+  68:	b60f0008 	rtsd	r15, 8
+  6c:	80000000 	or	r0, r0, r0

@@ -1,0 +1,19 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "pit_tests": 78,
+  "raw_backend": "EXPLICIT_MICROBLAZE_AUDIT_ONLY",
+  "target_object_sha256": "86b91011d8faa12b1bbdcf5ca4cada2fb4c52d04d8f6eedad4a5cec2798e7490",
+  "native_instruction_count": 28,
+  "native_load_sites": 1,
+  "native_output_store_sites": 1,
+  "native_return_sites": 1,
+  "undefined_symbols": false,
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_mmio_read.c": "66e68e2880d35d1b98c1e203db59619cafaa50980508810a59a8ea5e2357d0ba",
+    "diagnostics/ddr/pit_collect/pit_mmio_read.h": "c7638dec1fa4aaab160749fb42e373075d534d27dea8e3e60ea140837512c274",
+    "tests/fixtures/pit_mmio_read_host.c": "929ab4d7f0d3d223070539d1d140b187c1a515bd52557b65e248a4adc7eb9c1e",
+    "tests/test_pit_mmio_read.py": "2c90e4cac725758ea1025375a3735becdb89a95bc5bae58071cac9048f6215b7"
+  },
+  "limits": "Native standalone fat object inventory, not full LTO image or effective-address dataflow proof; output buffer validity/caller aliasing and physical bus faults/hangs remain external. Host memory fixture is synthetic; no hardware execution."
+}
