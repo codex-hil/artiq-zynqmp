@@ -1326,3 +1326,16 @@ evidence/genesys-normal-start-hardware-2026-10-30/normal-inputs.json
 evidence/genesys-normal-start-hardware-2026-10-30/raw-uart-hashes.json
 evidence/genesys-normal-start-hardware-2026-10-30/reproducer.py
 evidence/genesys-normal-start-hardware-2026-10-30/targets.log
+
+scripts/probe_pmu_sleep_status.tcl
+tests/test_pit_sleep_status_probe.py
+evidence/pmu-status-only-hardware-2026-10-30/README.md
+evidence/pmu-status-only-hardware-2026-10-30/after-ethernet.json
+evidence/pmu-status-only-hardware-2026-10-30/after-ethernet.log
+evidence/pmu-status-only-hardware-2026-10-30/before-ethernet.json
+evidence/pmu-status-only-hardware-2026-10-30/before-ethernet.log
+evidence/pmu-status-only-hardware-2026-10-30/capture.log
+evidence/pmu-status-only-hardware-2026-10-30/capture.py
+evidence/pmu-status-only-hardware-2026-10-30/plan.json
+evidence/pmu-status-only-hardware-2026-10-30/result.json
+evidence/pmu-status-only-hardware-2026-10-30/tests.json

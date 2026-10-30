@@ -80,3 +80,16 @@ fresh identical archived replay verified. Last72-test result remains dated.
 Earlier automatic continuation suggestions are superseded. No next hardware
 step is admitted; concrete independent recovery and transport/lifetime evidence
 remain prerequisites. No unavailable physical recovery is assumed.
+
+## Narrow physical status window — 2026-10-30
+
+After owner-mapped power-on and normal runtime recovery, an explicitly bounded
+status-only observer performed one PSU/AP0 GLOBAL_CNTRL read under shared Genesys
+and plug leases.0x00018812 reports MB_SLEEP1 at sample time; before/afterEthernet
+and identity PASS.76 PIT tests PASS. No RAM/writes/reset/stop or power change.
+This supersedes earlier absence-of-capture statements only for this narrow
+observer; it does not promote parser content to continuous-sleep or RAM authority.
+The outer evidence records physical execution, parser flags retain offline scope.
+[Evidence](../evidence/pmu-status-only-hardware-2026-10-30/README.md).
+Stage complete; no identical poll needed. Counter/backend/terminal/mailbox/
+independent recovery prerequisites remain separately unqualified.

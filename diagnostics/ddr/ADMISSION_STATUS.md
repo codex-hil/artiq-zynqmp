@@ -28,6 +28,14 @@ lifetime remain unqualified. A concrete recovery mechanism and its physical
 availability/restoration must be established before a separate physical plan.
 No executor, RAM shortcut, policy change or unchanged test retry scheduled.
 
+## Single status-only physical read — 2026-10-30
+
+One verified PSU/AP0 GLOBAL_CNTRL sample reports MB_SLEEP1; normal Ethernet and
+identity PASS before/after, no RAM/writes/reset/stop. This establishes sampled
+status transport only; continuous lifetime and independent recovery remain
+unqualified. Full DDR and PIT image admission unchanged. See
+[evidence](../../evidence/pmu-status-only-hardware-2026-10-30/README.md).
+
 ## Historical notes (dated claims are superseded where stated)
 
 CORRECTION2026-10-27: GPO0 is WRITE-ONLY per UG1087. Historical raw0 is not

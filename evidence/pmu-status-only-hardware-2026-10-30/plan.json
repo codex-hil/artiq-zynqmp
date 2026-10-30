@@ -1,0 +1,14 @@
+{
+  "source_sha256": {
+    "scripts/probe_pmu_sleep_status.tcl": "43befab8c62e0f509cb9bdd7382382236f801bf3120d9e987d1af7e16aab450c",
+    "scripts/test_candidate_runtime_hw.py": "2f21f117667846f44a745afcfb4b9bc894710d061418a3398a5145eab88cb0bc",
+    "scripts/test_ethernet_hw.py": "75325e938dc14ad9380450d94e58375f39d6aa0e9e0c5a8ca3796b261b2d71b5",
+    "diagnostics/ddr/pit_sleep_observation.py": "857e6d7f0677ed7e75f07f93c22e1a87263dc7f816385b963bd10282919137c2"
+  },
+  "address": "0xffd80000",
+  "reads": 1,
+  "writes": false,
+  "cable": "210383B7F02DA",
+  "ip": "192.168.2.3",
+  "mac": "02:38:3b:7f:02:0d"
+}

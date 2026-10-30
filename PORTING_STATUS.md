@@ -1,5 +1,14 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-30 — one physical status-only PMU read PASS
+
+Exact cable/PSU/AP0 readGLOBAL_CNTRL0xffd80000 once =>0x00018812/MB_SLEEP1
+sampled.76 PIT tests PASS/Tcl identity-read bounds; pre/postEthernet+MACPASS.
+Shared Genesys+plugleases released; normal runtime192.168.2.3 retained. NoRAM/
+writes/reset/stop/program/powercycle/PIT/DDR test. Narrow status transport stage
+complete; continuous sleep/recovery/mailbox/localbackend remain unqualified.
+Evidence `evidence/pmu-status-only-hardware-2026-10-30`.
+
 ## 2026-10-30 — normal runtime physically restored after plug ON
 
 Cold-start normal PMU/FSBL/PL/CPU load and TTL/CoreDMA/analyzer/MonInj/Ethernet

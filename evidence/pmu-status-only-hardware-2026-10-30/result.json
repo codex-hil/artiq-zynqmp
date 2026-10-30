@@ -1,0 +1,29 @@
+{
+  "hardware_executed": true,
+  "deployable": false,
+  "pmu_ram_access_allowed": false,
+  "status": "SINGLE_STATUS_AND_BEFORE_AFTER_ETHERNET_PASS",
+  "writes": false,
+  "reads_requested": 1,
+  "nonce": 15680735726537476572,
+  "record": {
+    "version": 1,
+    "nonce": 15680735726537476572,
+    "address": 4292345856,
+    "return_code": 0,
+    "value": 100370
+  },
+  "interpretation": {
+    "state": "SLEEP_SAMPLED",
+    "nonce": 15680735726537476572,
+    "sample_authenticated": false,
+    "continuous_sleep_proven": false,
+    "pmu_ram_access_allowed": false,
+    "recovery_qualified": false,
+    "deployable": false,
+    "hardware_executed": false,
+    "limits": "Offline interpretation only; no interval ownership, freshness authentication, safe transport or hardware execution proof"
+  },
+  "source_pins_unchanged": true,
+  "plug_released": true
+}
