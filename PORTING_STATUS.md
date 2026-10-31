@@ -1,3 +1,9 @@
+## 2026-10-31 — proposed word-oriented fault receipt (offline)
+
+Separate64-byte/16-u32 schema and host supplied-snapshot encoder/strict decoder added, distinct from terminal-v1.140 tests PASS, both routes/all16 masks, invalid headers/masks/reserved/session/type/range/length controls. Session words fixed0: NO nonce/image binding. Decoder claims no hardware/sleep/recovery/access proof. Evidence `evidence/pit-exception-contract-offline-2026-10-31`; contract `docs/PIT_EXCEPTION_RECEIPT_CONTRACT.md`.
+
+No HW/handler/entry/vector/runtime/frozen change. Existing exception printf byte-store gap remains. Next safe offline step: portable word-only supplied-snapshot formatter/writer and torn/error tests plus actual target object store/stack checks. Actual exception entry/stack/reentrancy/notification policy/sleep lifetime/recovery remain separate open obligations; deployment refused.
+
 ## 2026-10-31 — static exception/vector inventory (offline)
 
 Four ELF vectors/targets and22 IRQ table entries decoded; IRQ frame80 with indirect handler dispatch, hardware exception frame28 calls xil_printf104 and error RMW then loops, software exception records ESR/EAR/error then loops. Concrete gap: linked xil_printf has stack sbi at ffdcd718/ffdcd790; actual word-store checker rejects as expected. Normal792-byte/word-store model does not qualify these paths. Evidence `evidence/pit-exception-inventory-offline-2026-10-31`.

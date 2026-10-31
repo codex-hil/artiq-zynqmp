@@ -1699,3 +1699,12 @@ evidence/pit-exception-inventory-offline-2026-10-31/inventory.py
 evidence/pit-exception-inventory-offline-2026-10-31/qualification.json
 evidence/pit-exception-inventory-offline-2026-10-31/report.json
 evidence/pit-exception-inventory-offline-2026-10-31/xil_printf.dis
+
+# Proposed exception receipt — LGPL-3.0-or-later
+docs/PIT_EXCEPTION_RECEIPT_CONTRACT.md
+scripts/pit_exception_receipt.py
+tests/test_pit_exception_receipt.py
+evidence/pit-exception-contract-offline-2026-10-31/README.md
+evidence/pit-exception-contract-offline-2026-10-31/inputs.json
+evidence/pit-exception-contract-offline-2026-10-31/qualification.json
+evidence/pit-exception-contract-offline-2026-10-31/synthetic-vector.json

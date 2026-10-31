@@ -1,0 +1,20 @@
+{
+  "source": "SYNTHETIC_HOST_SUPPLIED_WORDS_NOT_PHYSICAL",
+  "hex": "010000003158465001000000020000000f00000000010000341200004400d4ff0000000000000000000000000000000000000000000000000000000000000000",
+  "decoded": {
+    "kind": "PROPOSED_FAULT_RECEIPT_NOT_NORMAL_TERMINAL",
+    "route": 2,
+    "supplied_snapshots": {
+      "msr": 256,
+      "esr": 4660,
+      "ear": 4292083780,
+      "edr": 0
+    },
+    "session_bound": false,
+    "hardware_executed": false,
+    "deployable": false,
+    "pmu_ram_access_allowed": false,
+    "sleep_proven": false,
+    "recovery_proven": false
+  }
+}

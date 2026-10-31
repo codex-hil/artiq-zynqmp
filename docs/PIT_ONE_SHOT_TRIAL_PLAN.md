@@ -173,3 +173,7 @@ Actual ELF exact profile pins29 bodies/1737 words,64 SHA constants/owned storage
 ## 2026-10-31 static exception dependencies
 
 Exact ELF vector/IRQ-table inventory finds concrete unqualified exception path through xil_printf byte stores (expected checker rejection). See `evidence/pit-exception-inventory-offline-2026-10-31`. No live fault/recovery or vector-policy change. Next offline step: separate word-oriented audit-only fail-stop receipt design, no printf/UART and no exception-disable shortcut. Normal-path792-byte result is not total-stack admission.
+
+## 2026-10-31 exception receipt proposal
+
+Distinct16-u32/64-byte fault schema and host supplied-word codec,140 tests PASS. No session/image/sleep/physical proof or handler binding. Contract `PIT_EXCEPTION_RECEIPT_CONTRACT.md`; evidence `evidence/pit-exception-contract-offline-2026-10-31`. Next offline step: portable word-oriented formatter/writer, fault/torn controls and target object checks, without changing vectors/exception policy. Linked printf gap still blocks exceptional-path qualification.
