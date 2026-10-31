@@ -177,3 +177,7 @@ Exact ELF vector/IRQ-table inventory finds concrete unqualified exception path t
 ## 2026-10-31 exception receipt proposal
 
 Distinct16-u32/64-byte fault schema and host supplied-word codec,140 tests PASS. No session/image/sleep/physical proof or handler binding. Contract `PIT_EXCEPTION_RECEIPT_CONTRACT.md`; evidence `evidence/pit-exception-contract-offline-2026-10-31`. Next offline step: portable word-oriented formatter/writer, fault/torn controls and target object checks, without changing vectors/exception policy. Linked printf gap still blocks exceptional-path qualification.
+
+## 2026-10-31 fault formatter/publication model
+
+Portable supplied-word C formatter and19-stage one-shot publisher, host codec/failure/source-snapshot/sanitizer controls; actual target no undefined/subword stores, frames68/120. Evidence `evidence/pit-fault-record-offline-2026-10-31`. No exception entry/vector changes or printf fix. Next offline: owned64-byte direct target slot/fence writer, no callbacks, still unbound to vectors; entry/reentrancy/sleep/recovery remain separate.

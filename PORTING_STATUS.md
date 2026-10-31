@@ -1,3 +1,11 @@
+## 2026-10-31 — word-oriented fault formatting/publication model (offline)
+
+Full PIT Python suite:142 tests PASS.
+
+Separate portable64-byte supplied-snapshot formatter and one-shot publisher added. Both routes/all16 masks match host codec; private source snapshot survives callback mutation; all19 publication failure stages return visibility unknown with no retry. Actual standalone target formatter frame68/publisher120, no undefined symbols or detected subword stores. Sanitized native formatting/publication check included. Evidence `evidence/pit-fault-record-offline-2026-10-31`.
+
+No HW/exception entry/vector/image/runtime/frozen changes; existing printf exception path remains unqualified. Callback-based publication is a returning model, not safe exception entry. Next safe offline step: distinct owned64-byte slot/direct target word-writer/fence candidate without callback dispatch, unbound to vectors, plus storage/store checks. Entry/stack/reentrancy/notification/sleep/reader lifetime/recovery remain open; deployment refused.
+
 ## 2026-10-31 — proposed word-oriented fault receipt (offline)
 
 Separate64-byte/16-u32 schema and host supplied-snapshot encoder/strict decoder added, distinct from terminal-v1.140 tests PASS, both routes/all16 masks, invalid headers/masks/reserved/session/type/range/length controls. Session words fixed0: NO nonce/image binding. Decoder claims no hardware/sleep/recovery/access proof. Evidence `evidence/pit-exception-contract-offline-2026-10-31`; contract `docs/PIT_EXCEPTION_RECEIPT_CONTRACT.md`.

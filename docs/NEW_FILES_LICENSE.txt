@@ -1708,3 +1708,14 @@ evidence/pit-exception-contract-offline-2026-10-31/README.md
 evidence/pit-exception-contract-offline-2026-10-31/inputs.json
 evidence/pit-exception-contract-offline-2026-10-31/qualification.json
 evidence/pit-exception-contract-offline-2026-10-31/synthetic-vector.json
+
+# Word fault formatter/publication — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_fault_record.c
+diagnostics/ddr/pit_collect/pit_fault_record.h
+tests/test_pit_fault_record.py
+evidence/pit-fault-record-offline-2026-10-31/README.md
+evidence/pit-fault-record-offline-2026-10-31/build.json
+evidence/pit-fault-record-offline-2026-10-31/build.py
+evidence/pit-fault-record-offline-2026-10-31/qualification.json
+evidence/pit-fault-record-offline-2026-10-31/sha.dis
+evidence/pit-fault-record-offline-2026-10-31/stack.txt
