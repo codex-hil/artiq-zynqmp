@@ -1,3 +1,11 @@
+## 2026-10-31 — private capture/digest/publication candidate (offline)
+
+Full Python PIT suite: 121 tests PASS.
+
+Separate one-shot API collects into owned local snapshot, computes its canonical SHA256 and publishes the same record. Digest retained privately identifies intended bytes on publication-unknown; read/hash failures expose no digest or publication. Host checks eight read failures,15 publication-stage failures, byte-exact success/hash, nested-use/no-retry and invalid-state controls; explicit hash-failure doubles under ASan/UBSan PASS. Standalone target frame156 with three expected dependencies and no detected subword stores. Evidence `evidence/pit-capture-digest-offline-2026-10-31`.
+
+No integration with lifecycle/status/terminal root or frozen profiles; no HW operations. Scoped capture+SHA standalone stack subtotal456 is not whole-stack/exception proof. Next safe offline step: separate small C/LTO audit link and concrete call/store/stack inspection before new lifecycle integration. Hook/image-digest delivery/trust/exception/reader lifetime/recovery remain open; deployment refused.
+
 ## 2026-10-31 — fixed sample SHA-256 candidate (offline)
 
 Added separate C fixed-48-byte sample SHA-256 candidate with nonce/header validation, private volatile-word snapshot and little-endian digest-word output. Optimized host matches hashlib for 258 records; rejection/overlap/alignment controls and ASan/UBSan canonical vector PASS. All 119 Python tests PASS. Actual standalone MicroBlaze object has no undefined helper or detected subword store; frame300, swap frame0. Evidence `evidence/pit-sample-sha-offline-2026-10-31`.

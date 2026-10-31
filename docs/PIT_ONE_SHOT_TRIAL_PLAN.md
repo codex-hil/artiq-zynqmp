@@ -133,3 +133,7 @@ Canonical bytes and ordering specified in `PIT_DIGEST_PRODUCER_CONTRACT.md`; hos
 ## 2026-10-31 fixed sample SHA candidate
 
 Separate fixed-record C SHA-256 candidate passes 258 hashlib comparisons, rejection/sanitizer checks; 119 tests PASS. Standalone target object frame300, no undefined/subword-store findings. See `evidence/pit-sample-sha-offline-2026-10-31`. Not integrated/LTO-qualified. Next offline step: private snapshot capture/hash/publication API with failure controls, then linked review. Existing frozen profiles and physical admission unchanged.
+
+## 2026-10-31 private digest pipeline candidate
+
+Separate local-snapshot capture/hash/publication API and failure/reentry tests added; evidence `evidence/pit-capture-digest-offline-2026-10-31`. Not connected to existing lifecycle or terminal metadata. Target standalone frame156, expected three dependencies; next offline step is distinct C/LTO link and store/call/stack inspection. No physical admission or frozen-profile change.

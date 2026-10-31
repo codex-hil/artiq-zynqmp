@@ -1561,3 +1561,14 @@ evidence/pit-sample-sha-offline-2026-10-31/build.py
 evidence/pit-sample-sha-offline-2026-10-31/qualification.json
 evidence/pit-sample-sha-offline-2026-10-31/sha.dis
 evidence/pit-sample-sha-offline-2026-10-31/stack.txt
+
+# Private capture digest candidate — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_capture_digest.c
+diagnostics/ddr/pit_collect/pit_capture_digest.h
+tests/test_pit_capture_digest.py
+evidence/pit-capture-digest-offline-2026-10-31/README.md
+evidence/pit-capture-digest-offline-2026-10-31/build.json
+evidence/pit-capture-digest-offline-2026-10-31/build.py
+evidence/pit-capture-digest-offline-2026-10-31/sha.dis
+evidence/pit-capture-digest-offline-2026-10-31/stack.txt
+evidence/pit-capture-digest-offline-2026-10-31/qualification.json
