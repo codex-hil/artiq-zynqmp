@@ -1,3 +1,9 @@
+## 2026-10-31 — fixed sample SHA-256 candidate (offline)
+
+Added separate C fixed-48-byte sample SHA-256 candidate with nonce/header validation, private volatile-word snapshot and little-endian digest-word output. Optimized host matches hashlib for 258 records; rejection/overlap/alignment controls and ASan/UBSan canonical vector PASS. All 119 Python tests PASS. Actual standalone MicroBlaze object has no undefined helper or detected subword store; frame300, swap frame0. Evidence `evidence/pit-sample-sha-offline-2026-10-31`.
+
+Not integrated into capture/publication/runtime, not LTO-linked or whole-stack/exception qualified. No HW operations/frozen-profile changes. Next safe offline step: separate snapshot-owning capture+digest+publication API, ensuring same private words and failure classification, then fresh linked/store/stack review. Hook/digest delivery/trust/exception/reader lifetime/recovery remain open; deployment refused.
+
 ## 2026-10-31 — digest producer contract (offline)
 
 Defined canonical sample SHA-256 input: completed 48-byte version1/nonce/eight-value record in little-endian form, same private immutable snapshot as publication. Image identity is SHA-256 of exact final external ELF bytes, avoiding embedding a self-hash. Host reference and vectors added; 117 Python tests PASS. Evidence `evidence/pit-digest-contract-offline-2026-10-31`; contract `docs/PIT_DIGEST_PRODUCER_CONTRACT.md`.

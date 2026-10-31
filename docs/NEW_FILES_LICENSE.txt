@@ -1550,3 +1550,14 @@ scripts/pit_digest_contract.py
 tests/test_pit_digest_contract.py
 evidence/pit-digest-contract-offline-2026-10-31/README.md
 evidence/pit-digest-contract-offline-2026-10-31/vectors.json
+
+# Fixed sample SHA candidate — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_sample_sha256.c
+diagnostics/ddr/pit_collect/pit_sample_sha256.h
+tests/test_pit_sample_sha256.py
+evidence/pit-sample-sha-offline-2026-10-31/README.md
+evidence/pit-sample-sha-offline-2026-10-31/build.json
+evidence/pit-sample-sha-offline-2026-10-31/build.py
+evidence/pit-sample-sha-offline-2026-10-31/qualification.json
+evidence/pit-sample-sha-offline-2026-10-31/sha.dis
+evidence/pit-sample-sha-offline-2026-10-31/stack.txt

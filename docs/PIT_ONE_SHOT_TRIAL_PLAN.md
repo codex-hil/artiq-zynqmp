@@ -129,3 +129,7 @@ BSP and target compiler layout checks trace linked ffdd8b94 to initial UseMsrIns
 ## 2026-10-31 digest producer contract
 
 Canonical bytes and ordering specified in `PIT_DIGEST_PRODUCER_CONTRACT.md`; host reference/vectors pass within 117 tests. Current caller-supplied hashes are not correlated by the target; no target producer or delivery protocol added. Next offline step: separate SHA-256 implementation candidate, vectors and word-store/stack review, then revised private snapshot pipeline. Existing frozen profiles and physical admission unchanged.
+
+## 2026-10-31 fixed sample SHA candidate
+
+Separate fixed-record C SHA-256 candidate passes 258 hashlib comparisons, rejection/sanitizer checks; 119 tests PASS. Standalone target object frame300, no undefined/subword-store findings. See `evidence/pit-sample-sha-offline-2026-10-31`. Not integrated/LTO-qualified. Next offline step: private snapshot capture/hash/publication API with failure controls, then linked review. Existing frozen profiles and physical admission unchanged.
