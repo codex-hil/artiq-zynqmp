@@ -1,0 +1,17 @@
+ffdccac0 <barrier.lto_priv.1>:
+ffdccac0:	3021ffe0 	addik	r1, r1, -32
+ffdccac4:	fa61001c 	swi	r19, r1, 28
+ffdccac8:	f9e10000 	swi	r15, r1, 0
+ffdccacc:	12650000 	addk	r19, r5, r0
+ffdccad0:	e8650010 	lwi	r3, r5, 16
+ffdccad4:	99fc1800 	brald	r15, r3
+ffdccad8:	e8a50018 	lwi	r5, r5, 24
+ffdccadc:	be030014 	beqid	r3, 20		// ffdccaf0
+ffdccae0:	e9e10000 	lwi	r15, r1, 0
+ffdccae4:	30800001 	addik	r4, r0, 1
+ffdccae8:	f8930048 	swi	r4, r19, 72
+ffdccaec:	e9e10000 	lwi	r15, r1, 0
+ffdccaf0:	ea61001c 	lwi	r19, r1, 28
+ffdccaf4:	b60f0008 	rtsd	r15, 8
+ffdccaf8:	30210020 	addik	r1, r1, 32
+

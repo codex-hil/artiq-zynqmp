@@ -1,0 +1,64 @@
+ffdcc790 <pit_mailbox_prepare_audit>:
+ffdcc790:	b000ffdd 	imm	-35
+ffdcc794:	3080dbf0 	addik	r4, r0, -9232
+ffdcc798:	e8a40018 	lwi	r5, r4, 24
+ffdcc79c:	e8640014 	lwi	r3, r4, 20
+ffdcc7a0:	80632800 	or	r3, r3, r5
+ffdcc7a4:	e8a4001c 	lwi	r5, r4, 28
+ffdcc7a8:	80632800 	or	r3, r3, r5
+ffdcc7ac:	e8a40010 	lwi	r5, r4, 16
+ffdcc7b0:	80632800 	or	r3, r3, r5
+ffdcc7b4:	be030014 	beqid	r3, 20		// ffdcc7c8
+ffdcc7b8:	30a0000c 	addik	r5, r0, 12
+ffdcc7bc:	3060ffff 	addik	r3, r0, -1
+ffdcc7c0:	b60f0008 	rtsd	r15, 8
+ffdcc7c4:	80000000 	or	r0, r0, r0
+ffdcc7c8:	64c30402 	bslli	r6, r3, 2
+ffdcc7cc:	b000ffdd 	imm	-35
+ffdcc7d0:	30c6dc38 	addik	r6, r6, -9160
+ffdcc7d4:	e8c60000 	lwi	r6, r6, 0
+ffdcc7d8:	bc26ffe4 	bnei	r6, -28		// ffdcc7bc
+ffdcc7dc:	30a5ffff 	addik	r5, r5, -1
+ffdcc7e0:	be25ffe8 	bneid	r5, -24		// ffdcc7c8
+ffdcc7e4:	30630001 	addik	r3, r3, 1
+ffdcc7e8:	b000ffdd 	imm	-35
+ffdcc7ec:	3060dc38 	addik	r3, r0, -9160
+ffdcc7f0:	f8a40008 	swi	r5, r4, 8
+ffdcc7f4:	b000ffdc 	imm	-36
+ffdcc7f8:	30e0c778 	addik	r7, r0, -14472
+ffdcc7fc:	b000ffdd 	imm	-35
+ffdcc800:	30a0dbd0 	addik	r5, r0, -9264
+ffdcc804:	f8640000 	swi	r3, r4, 0
+ffdcc808:	3060000c 	addik	r3, r0, 12
+ffdcc80c:	f864000c 	swi	r3, r4, 12
+ffdcc810:	30600001 	addik	r3, r0, 1
+ffdcc814:	f8640014 	swi	r3, r4, 20
+ffdcc818:	f8e40004 	swi	r7, r4, 4
+ffdcc81c:	e8650018 	lwi	r3, r5, 24
+ffdcc820:	e8850014 	lwi	r4, r5, 20
+ffdcc824:	80841800 	or	r4, r4, r3
+ffdcc828:	e865001c 	lwi	r3, r5, 28
+ffdcc82c:	80841800 	or	r4, r4, r3
+ffdcc830:	e8650010 	lwi	r3, r5, 16
+ffdcc834:	80841800 	or	r4, r4, r3
+ffdcc838:	be24ff84 	bneid	r4, -124		// ffdcc7bc
+ffdcc83c:	30600018 	addik	r3, r0, 24
+ffdcc840:	64c40402 	bslli	r6, r4, 2
+ffdcc844:	b000ffdd 	imm	-35
+ffdcc848:	30c6dc68 	addik	r6, r6, -9112
+ffdcc84c:	e8c60000 	lwi	r6, r6, 0
+ffdcc850:	be26ff6c 	bneid	r6, -148		// ffdcc7bc
+ffdcc854:	3063ffff 	addik	r3, r3, -1
+ffdcc858:	be23ffe8 	bneid	r3, -24		// ffdcc840
+ffdcc85c:	30840001 	addik	r4, r4, 1
+ffdcc860:	b000ffdd 	imm	-35
+ffdcc864:	3080dc68 	addik	r4, r0, -9112
+ffdcc868:	f8e50004 	swi	r7, r5, 4
+ffdcc86c:	f8650008 	swi	r3, r5, 8
+ffdcc870:	f8850000 	swi	r4, r5, 0
+ffdcc874:	30800018 	addik	r4, r0, 24
+ffdcc878:	f885000c 	swi	r4, r5, 12
+ffdcc87c:	30800001 	addik	r4, r0, 1
+ffdcc880:	b810ff40 	brid	-192		// ffdcc7c0
+ffdcc884:	f8850014 	swi	r4, r5, 20
+

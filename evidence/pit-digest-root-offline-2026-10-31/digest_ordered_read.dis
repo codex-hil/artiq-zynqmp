@@ -1,0 +1,14 @@
+ffdccb04 <digest_ordered_read>:
+ffdccb04:	bc250028 	bnei	r5, 40		// ffdccb2c
+ffdccb08:	b000ffdd 	imm	-35
+ffdccb0c:	30a0dbb8 	addik	r5, r0, -9288
+ffdccb10:	3021ffe4 	addik	r1, r1, -28
+ffdccb14:	f9e10000 	swi	r15, r1, 0
+ffdccb18:	b9f4f968 	brlid	r15, -1688
+ffdccb1c:	80000000 	or	r0, r0, r0
+ffdccb20:	e9e10000 	lwi	r15, r1, 0
+ffdccb24:	b60f0008 	rtsd	r15, 8
+ffdccb28:	3021001c 	addik	r1, r1, 28
+ffdccb2c:	b60f0008 	rtsd	r15, 8
+ffdccb30:	3060ffff 	addik	r3, r0, -1
+

@@ -1,0 +1,42 @@
+ffdcc6d8 <pit_word_slot_barrier>:
+ffdcc6d8:	e8650014 	lwi	r3, r5, 20
+ffdcc6dc:	bc030094 	beqi	r3, 148		// ffdcc770
+ffdcc6e0:	3021ffe0 	addik	r1, r1, -32
+ffdcc6e4:	fa61001c 	swi	r19, r1, 28
+ffdcc6e8:	f9e10000 	swi	r15, r1, 0
+ffdcc6ec:	e8650018 	lwi	r3, r5, 24
+ffdcc6f0:	be03001c 	beqid	r3, 28		// ffdcc70c
+ffdcc6f4:	12650000 	addk	r19, r5, r0
+ffdcc6f8:	3060ffff 	addik	r3, r0, -1
+ffdcc6fc:	e9e10000 	lwi	r15, r1, 0
+ffdcc700:	ea61001c 	lwi	r19, r1, 28
+ffdcc704:	b60f0008 	rtsd	r15, 8
+ffdcc708:	30210020 	addik	r1, r1, 32
+ffdcc70c:	e865001c 	lwi	r3, r5, 28
+ffdcc710:	be23ffec 	bneid	r3, -20		// ffdcc6fc
+ffdcc714:	3060ffff 	addik	r3, r0, -1
+ffdcc718:	e8650010 	lwi	r3, r5, 16
+ffdcc71c:	a8830001 	xori	r4, r3, 1
+ffdcc720:	be040028 	beqid	r4, 40		// ffdcc748
+ffdcc724:	30800001 	addik	r4, r0, 1
+ffdcc728:	e885000c 	lwi	r4, r5, 12
+ffdcc72c:	30840001 	addik	r4, r4, 1
+ffdcc730:	88832000 	xor	r4, r3, r4
+ffdcc734:	be040014 	beqid	r4, 20		// ffdcc748
+ffdcc738:	30800001 	addik	r4, r0, 1
+ffdcc73c:	30600001 	addik	r3, r0, 1
+ffdcc740:	b810ffb8 	brid	-72		// ffdcc6f8
+ffdcc744:	f8730018 	swi	r3, r19, 24
+ffdcc748:	10632000 	addk	r3, r3, r4
+ffdcc74c:	f8730010 	swi	r3, r19, 16
+ffdcc750:	e8b30008 	lwi	r5, r19, 8
+ffdcc754:	e8730004 	lwi	r3, r19, 4
+ffdcc758:	99fc1800 	brald	r15, r3
+ffdcc75c:	f893001c 	swi	r4, r19, 28
+ffdcc760:	be03ff9c 	beqid	r3, -100		// ffdcc6fc
+ffdcc764:	f813001c 	swi	r0, r19, 28
+ffdcc768:	b810ffd8 	brid	-40		// ffdcc740
+ffdcc76c:	30600001 	addik	r3, r0, 1
+ffdcc770:	b60f0008 	rtsd	r15, 8
+ffdcc774:	3060ffff 	addik	r3, r0, -1
+

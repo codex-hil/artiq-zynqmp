@@ -1,0 +1,10 @@
+ffdcca20 <disable.lto_priv.1>:
+ffdcca20:	3021ffe4 	addik	r1, r1, -28
+ffdcca24:	f9e10000 	swi	r15, r1, 0
+ffdcca28:	e8650004 	lwi	r3, r5, 4
+ffdcca2c:	99fc1800 	brald	r15, r3
+ffdcca30:	e8a50018 	lwi	r5, r5, 24
+ffdcca34:	e9e10000 	lwi	r15, r1, 0
+ffdcca38:	b60f0008 	rtsd	r15, 8
+ffdcca3c:	3021001c 	addik	r1, r1, 28
+

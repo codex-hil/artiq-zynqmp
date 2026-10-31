@@ -1,0 +1,80 @@
+ffdccb34 <pit_collect.constprop.0>:
+ffdccb34:	80674000 	or	r3, r7, r8
+ffdccb38:	10800000 	addk	r4, r0, r0
+ffdccb3c:	88632400 	pcmpeq	r3, r3, r4
+ffdccb40:	bc230124 	bnei	r3, 292		// ffdccc64
+ffdccb44:	3021ffa4 	addik	r1, r1, -92
+ffdccb48:	fb410050 	swi	r26, r1, 80
+ffdccb4c:	f9e10000 	swi	r15, r1, 0
+ffdccb50:	fa61003c 	swi	r19, r1, 60
+ffdccb54:	fac10040 	swi	r22, r1, 64
+ffdccb58:	fae10044 	swi	r23, r1, 68
+ffdccb5c:	fb010048 	swi	r24, r1, 72
+ffdccb60:	fb21004c 	swi	r25, r1, 76
+ffdccb64:	fb610054 	swi	r27, r1, 84
+ffdccb68:	fb810058 	swi	r28, r1, 88
+ffdccb6c:	88691c00 	pcmpeq	r3, r9, r3
+ffdccb70:	be2300e4 	bneid	r3, 228		// ffdccc54
+ffdccb74:	13490000 	addk	r26, r9, r0
+ffdccb78:	e8860000 	lwi	r4, r6, 0
+ffdccb7c:	be2400ac 	bneid	r4, 172		// ffdccc28
+ffdccb80:	12660000 	addk	r19, r6, r0
+ffdccb84:	13270000 	addk	r25, r7, r0
+ffdccb88:	13080000 	addk	r24, r8, r0
+ffdccb8c:	136a0000 	addk	r27, r10, r0
+ffdccb90:	30600001 	addik	r3, r0, 1
+ffdccb94:	f8650000 	swi	r3, r5, 0
+ffdccb98:	32c00008 	addik	r22, r0, 8
+ffdccb9c:	3381001c 	addik	r28, r1, 28
+ffdccba0:	64640402 	bslli	r3, r4, 2
+ffdccba4:	32d6ffff 	addik	r22, r22, -1
+ffdccba8:	d803e000 	sw	r0, r3, r28
+ffdccbac:	be36fff4 	bneid	r22, -12		// ffdccba0
+ffdccbb0:	30840001 	addik	r4, r4, 1
+ffdccbb4:	32e00008 	addik	r23, r0, 8
+ffdccbb8:	a4d60003 	andi	r6, r22, 3
+ffdccbbc:	64f60402 	bslli	r7, r22, 2
+ffdccbc0:	64c60404 	bslli	r6, r6, 4
+ffdccbc4:	10bb0000 	addk	r5, r27, r0
+ffdccbc8:	b000ffd4 	imm	-44
+ffdccbcc:	30c60044 	addik	r6, r6, 68
+ffdccbd0:	99fcd000 	brald	r15, r26
+ffdccbd4:	10fc3800 	addk	r7, r28, r7
+ffdccbd8:	be230084 	bneid	r3, 132		// ffdccc5c
+ffdccbdc:	32f7ffff 	addik	r23, r23, -1
+ffdccbe0:	be37ffd8 	bneid	r23, -40		// ffdccbb8
+ffdccbe4:	32d60001 	addik	r22, r22, 1
+ffdccbe8:	30600001 	addik	r3, r0, 1
+ffdccbec:	f8730004 	swi	r3, r19, 4
+ffdccbf0:	fb330008 	swi	r25, r19, 8
+ffdccbf4:	fb13000c 	swi	r24, r19, 12
+ffdccbf8:	30600008 	addik	r3, r0, 8
+ffdccbfc:	30b30010 	addik	r5, r19, 16
+ffdccc00:	64970402 	bslli	r4, r23, 2
+ffdccc04:	c8c4e000 	lw	r6, r4, r28
+ffdccc08:	3063ffff 	addik	r3, r3, -1
+ffdccc0c:	32f70001 	addik	r23, r23, 1
+ffdccc10:	d8c42800 	sw	r6, r4, r5
+ffdccc14:	be23fff0 	bneid	r3, -16		// ffdccc04
+ffdccc18:	64970402 	bslli	r4, r23, 2
+ffdccc1c:	30600001 	addik	r3, r0, 1
+ffdccc20:	f8730000 	swi	r3, r19, 0
+ffdccc24:	30600002 	addik	r3, r0, 2
+ffdccc28:	e9e10000 	lwi	r15, r1, 0
+ffdccc2c:	ea61003c 	lwi	r19, r1, 60
+ffdccc30:	eac10040 	lwi	r22, r1, 64
+ffdccc34:	eae10044 	lwi	r23, r1, 68
+ffdccc38:	eb010048 	lwi	r24, r1, 72
+ffdccc3c:	eb21004c 	lwi	r25, r1, 76
+ffdccc40:	eb410050 	lwi	r26, r1, 80
+ffdccc44:	eb610054 	lwi	r27, r1, 84
+ffdccc48:	eb810058 	lwi	r28, r1, 88
+ffdccc4c:	b60f0008 	rtsd	r15, 8
+ffdccc50:	3021005c 	addik	r1, r1, 92
+ffdccc54:	b810ffd4 	brid	-44		// ffdccc28
+ffdccc58:	10600000 	addk	r3, r0, r0
+ffdccc5c:	b810ffcc 	brid	-52		// ffdccc28
+ffdccc60:	30600001 	addik	r3, r0, 1
+ffdccc64:	b60f0008 	rtsd	r15, 8
+ffdccc68:	10600000 	addk	r3, r0, r0
+

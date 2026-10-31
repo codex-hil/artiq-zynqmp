@@ -1,0 +1,17 @@
+ffdcca84 <write_word.lto_priv.1>:
+ffdcca84:	3021ffe0 	addik	r1, r1, -32
+ffdcca88:	fa61001c 	swi	r19, r1, 28
+ffdcca8c:	f9e10000 	swi	r15, r1, 0
+ffdcca90:	12650000 	addk	r19, r5, r0
+ffdcca94:	e865000c 	lwi	r3, r5, 12
+ffdcca98:	99fc1800 	brald	r15, r3
+ffdcca9c:	e8a50018 	lwi	r5, r5, 24
+ffdccaa0:	be030014 	beqid	r3, 20		// ffdccab4
+ffdccaa4:	e9e10000 	lwi	r15, r1, 0
+ffdccaa8:	30800001 	addik	r4, r0, 1
+ffdccaac:	f8930048 	swi	r4, r19, 72
+ffdccab0:	e9e10000 	lwi	r15, r1, 0
+ffdccab4:	ea61001c 	lwi	r19, r1, 28
+ffdccab8:	b60f0008 	rtsd	r15, 8
+ffdccabc:	30210020 	addik	r1, r1, 32
+

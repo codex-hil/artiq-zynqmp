@@ -1,0 +1,297 @@
+{
+  "status": "LINKED_DIGEST_ROOT_SCOPED_PASS_NOT_DEPLOYMENT",
+  "hardware_executed": false,
+  "deployable": false,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd9f20",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffdde5e4",
+      "end_exclusive": "0xffddf5e8"
+    },
+    "bytes_after_stack_before_extension_table": 248,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "mailbox": {
+    "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+    "hardware_executed": false,
+    "deployable": false,
+    "pmu_ram_access_allowed": false,
+    "image_sha256": "e12cd23e27b9829912774c6a8edcf0cc1f0d04de1798b7e6247464b1e00a6a81",
+    "mailbox": {
+      "start": "0xffdddc38",
+      "bytes": 144,
+      "end_exclusive": "0xffdddcc8"
+    },
+    "samples": {
+      "start": "0xffdddc38",
+      "bytes": 48
+    },
+    "terminal": {
+      "start": "0xffdddc68",
+      "bytes": 96
+    },
+    "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+    "baseline_layout": {
+      "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+      "hardware_executed": false,
+      "entry": "0xffdc0050",
+      "telemetry": {
+        "start": "0xffdd9f20",
+        "bytes": 32
+      },
+      "stack": {
+        "start": "0xffdde5e4",
+        "end_exclusive": "0xffddf5e8"
+      },
+      "bytes_after_stack_before_extension_table": 248,
+      "destructive_test_allowed": false,
+      "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+    },
+    "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified."
+  },
+  "scoped_stores": {
+    "digest_ordered_read": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_sample_sha256": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 26,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_capture_digest": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 17,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_digest_root_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 76,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_publish": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 14,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_terminal_publish": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 19,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_terminal_build": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 15,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_ro_read": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 10,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mmio_read": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_word_slot_write": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 4,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_word_slot_barrier": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 6,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mailbox_prepare_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 10,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mailbox_sample_write_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mailbox_terminal_write_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mailbox_sample_barrier_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mailbox_terminal_barrier_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_irq_msr_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "swap": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 0,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "observe.lto_priv.1": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 10,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "disable.lto_priv.1": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "read_word.lto_priv.1": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 4,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "write_word.lto_priv.1": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "barrier.lto_priv.1": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_collect.constprop.0": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 16,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_irq_disable_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 2,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_terminal_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 0,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mailbox_composition_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 6,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_irq_composition_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "microblaze_disable_interrupts": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 0,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    }
+  },
+  "limits": "Scoped word stores/layout plus archived linked functions, not generic CFG or total callback/exception stack. No runtime hook or hardware execution.",
+  "scoped_sha_frame_subtotal": 792,
+  "total_stack_qualified": false,
+  "python_tests": 126
+}
