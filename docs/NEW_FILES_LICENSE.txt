@@ -1586,3 +1586,14 @@ evidence/pit-capture-digest-link-offline-2026-10-31/sha-constants.json
 evidence/pit-capture-digest-link-offline-2026-10-31/stack.txt
 evidence/pit-capture-digest-link-offline-2026-10-31/swap.dis
 evidence/pit-capture-digest-link-offline-2026-10-31/symbols.txt
+
+# Digest-aware lifecycle candidate — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_digest_sleep.c
+diagnostics/ddr/pit_collect/pit_digest_sleep.h
+tests/test_pit_digest_sleep.py
+evidence/pit-digest-sleep-offline-2026-10-31/README.md
+evidence/pit-digest-sleep-offline-2026-10-31/build.json
+evidence/pit-digest-sleep-offline-2026-10-31/build.py
+evidence/pit-digest-sleep-offline-2026-10-31/qualification.json
+evidence/pit-digest-sleep-offline-2026-10-31/sha.dis
+evidence/pit-digest-sleep-offline-2026-10-31/stack.txt

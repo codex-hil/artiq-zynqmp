@@ -141,3 +141,7 @@ Separate local-snapshot capture/hash/publication API and failure/reentry tests a
 ## 2026-10-31 linked digest dependencies
 
 Separate digest API/SHA retained in fresh19-unit LTO image; scoped calls/stores/constants/layout PASS. SHA path frame subtotal456 is not whole-stack proof. Evidence `evidence/pit-capture-digest-link-offline-2026-10-31`. Existing121 tests unchanged, no HW. Next safe offline step: separate lifecycle/composition consumes internally generated digest, final MSR after hash and explicit failure/substitution controls; existing root/frozen profiles remain unchanged.
+
+## 2026-10-31 digest lifecycle candidate
+
+Separate lifecycle uses internal capture digest and final MSR after hash/publication/copy.123 tests PASS, target standalone frame128; evidence `evidence/pit-digest-sleep-offline-2026-10-31`. Hash failure status5 is not terminal-v1 compatible. Next offline step: distinct composition with fail-closed/versioned hash-failure handling and correlation tests, then new root link. No HW or frozen-profile change; physical admission closed.

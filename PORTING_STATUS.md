@@ -1,3 +1,9 @@
+## 2026-10-31 — digest-aware lifecycle candidate (offline)
+
+Separate returning lifecycle reserves state before callbacks, runs private capture/hash/publication, copies internally produced digest and observes final MSR afterward. No caller sample-hash input. Explicit hash-failure status5 is NOT admitted into terminal-record v1. Final policy failure remains IRQ-unproven even with valid intended-snapshot digest.123 tests PASS including real C digest correlation/failure/order/reentry and sanitized hash-failure double. Actual standalone target frame128, expected capture dependency only, no detected subword stores. Evidence `evidence/pit-digest-sleep-offline-2026-10-31`.
+
+No HW operations, runtime/terminal/root integration or frozen changes. Scoped standalone lifecycle+capture+SHA frame584 is not total stack. Next safe offline step: distinct terminal composition consuming internal digest/recorded MSR outcomes; hash failure must fail closed or use separately versioned receipt, never silently terminal-v1 status5. Then fresh root LTO/store/stack review. Hook/image-digest delivery/trust/exception/lifetime/recovery remain open; deployment refused.
+
 ## 2026-10-31 — linked private digest dependencies (offline)
 
 Fresh19-unit small C/LTO audit ELF PASS, no undefined symbols. New API retained separately: capture frame156 calls collector92, SHA300 and publisher104; SHA calls local swap0. Same stack+32 record passed to hash/publisher; SHA constants match ELF/source. Five scoped word-store checks and layout/mailbox PASS. Scoped SHA path456 excludes caller/callback/exception frames. Evidence `evidence/pit-capture-digest-link-offline-2026-10-31`. Existing121 implementation tests remain dated, unchanged.
