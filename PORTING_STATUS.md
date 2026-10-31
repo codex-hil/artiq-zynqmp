@@ -1,3 +1,9 @@
+## 2026-10-31 — digest-aware terminal adapter (offline)
+
+Separate private terminal-v1 adapter consumes internal digest state plus lifecycle/MSR observations, checks presence/status consistency and copies a privately built candidate only on success. Hashfailure5/rejected/unknown statuses fail closed without output writes; no v1 extension.124 tests PASS. Actual standalone target frame140, expected terminal builder dependency only, no detected subword stores. Evidence `evidence/pit-digest-terminal-offline-2026-10-31`.
+
+State contains no nonce, so adapter cannot independently establish same-session provenance; caller must own/record all inputs. No HW/runtime/frozen changes. Next safe offline step: distinct composition owns digest lifecycle state and MSR forwarding observations from one invocation, fail-closed hash failures and terminal publication only after adapter success; correlation/order tests then new root link. Hook/image input/trust/exception/lifetime/recovery remain open; deployment refused.
+
 ## 2026-10-31 — digest-aware lifecycle candidate (offline)
 
 Separate returning lifecycle reserves state before callbacks, runs private capture/hash/publication, copies internally produced digest and observes final MSR afterward. No caller sample-hash input. Explicit hash-failure status5 is NOT admitted into terminal-record v1. Final policy failure remains IRQ-unproven even with valid intended-snapshot digest.123 tests PASS including real C digest correlation/failure/order/reentry and sanitized hash-failure double. Actual standalone target frame128, expected capture dependency only, no detected subword stores. Evidence `evidence/pit-digest-sleep-offline-2026-10-31`.

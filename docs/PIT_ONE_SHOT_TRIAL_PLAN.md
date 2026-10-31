@@ -145,3 +145,7 @@ Separate digest API/SHA retained in fresh19-unit LTO image; scoped calls/stores/
 ## 2026-10-31 digest lifecycle candidate
 
 Separate lifecycle uses internal capture digest and final MSR after hash/publication/copy.123 tests PASS, target standalone frame128; evidence `evidence/pit-digest-sleep-offline-2026-10-31`. Hash failure status5 is not terminal-v1 compatible. Next offline step: distinct composition with fail-closed/versioned hash-failure handling and correlation tests, then new root link. No HW or frozen-profile change; physical admission closed.
+
+## 2026-10-31 digest terminal adapter
+
+Separate adapter validates lifecycle/digest/observation consistency before output writes; explicit hashfailure5 rejected for v1.124 tests PASS, target frame140; evidence `evidence/pit-digest-terminal-offline-2026-10-31`. State has no nonce so same-session provenance remains caller premise. Next offline composition must own lifecycle state and record observations from one invocation, test correlation/order/failure before separate root link. No physical admission.

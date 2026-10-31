@@ -1597,3 +1597,14 @@ evidence/pit-digest-sleep-offline-2026-10-31/build.py
 evidence/pit-digest-sleep-offline-2026-10-31/qualification.json
 evidence/pit-digest-sleep-offline-2026-10-31/sha.dis
 evidence/pit-digest-sleep-offline-2026-10-31/stack.txt
+
+# Digest terminal adapter — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_digest_terminal.c
+diagnostics/ddr/pit_collect/pit_digest_terminal.h
+tests/test_pit_digest_terminal.py
+evidence/pit-digest-terminal-offline-2026-10-31/README.md
+evidence/pit-digest-terminal-offline-2026-10-31/build.json
+evidence/pit-digest-terminal-offline-2026-10-31/build.py
+evidence/pit-digest-terminal-offline-2026-10-31/qualification.json
+evidence/pit-digest-terminal-offline-2026-10-31/sha.dis
+evidence/pit-digest-terminal-offline-2026-10-31/stack.txt

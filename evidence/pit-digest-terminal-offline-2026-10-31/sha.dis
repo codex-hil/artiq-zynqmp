@@ -1,0 +1,150 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-digest-terminal-audit-20261031-v1/sha.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_digest_terminal>:
+   0:	3021ff74 	addik	r1, r1, -140
+   4:	10800000 	addk	r4, r0, r0
+   8:	fae10084 	swi	r23, r1, 132
+   c:	f9e10000 	swi	r15, r1, 0
+  10:	fa61007c 	swi	r19, r1, 124
+  14:	fac10080 	swi	r22, r1, 128
+  18:	fb010088 	swi	r24, r1, 136
+  1c:	88852400 	pcmpeq	r4, r5, r4
+  20:	12e70000 	addk	r23, r7, r0
+  24:	10e90000 	addk	r7, r9, r0
+  28:	be2401b8 	bneid	r4, 440		// 1e0
+			28: R_MICROBLAZE_NONE	*ABS*+0x1b8
+  2c:	e92100a8 	lwi	r9, r1, 168
+  30:	88862400 	pcmpeq	r4, r6, r4
+  34:	be2401ac 	bneid	r4, 428		// 1e0
+			34: R_MICROBLAZE_NONE	*ABS*+0x1ac
+  38:	10660000 	addk	r3, r6, r0
+  3c:	10c80000 	addk	r6, r8, r0
+  40:	110a0000 	addk	r8, r10, r0
+  44:	81475000 	or	r10, r7, r10
+  48:	12650000 	addk	r19, r5, r0
+  4c:	88a62400 	pcmpeq	r5, r6, r4
+  50:	888a2400 	pcmpeq	r4, r10, r4
+  54:	80852000 	or	r4, r5, r4
+  58:	bc240188 	bnei	r4, 392		// 1e0
+			58: R_MICROBLAZE_NONE	*ABS*+0x188
+  5c:	88892400 	pcmpeq	r4, r9, r4
+  60:	bc240180 	bnei	r4, 384		// 1e0
+			60: R_MICROBLAZE_NONE	*ABS*+0x180
+  64:	e8a30000 	lwi	r5, r3, 0
+  68:	a8a50001 	xori	r5, r5, 1
+  6c:	bc250174 	bnei	r5, 372		// 1e0
+			6c: R_MICROBLAZE_NONE	*ABS*+0x174
+  70:	e9830004 	lwi	r12, r3, 4
+  74:	30800001 	addik	r4, r0, 1
+  78:	164c2003 	cmpu	r18, r12, r4
+  7c:	be520164 	bltid	r18, 356		// 1e0
+			7c: R_MICROBLAZE_NONE	*ABS*+0x164
+  80:	3157ffff 	addik	r10, r23, -1
+  84:	30800003 	addik	r4, r0, 3
+  88:	164a2003 	cmpu	r18, r10, r4
+  8c:	bc520154 	blti	r18, 340		// 1e0
+			8c: R_MICROBLAZE_NONE	*ABS*+0x154
+  90:	30800060 	addik	r4, r0, 96
+  94:	c1459800 	lbu	r10, r5, r19
+  98:	a54a00ff 	andi	r10, r10, 255
+  9c:	bc2a0144 	bnei	r10, 324		// 1e0
+			9c: R_MICROBLAZE_NONE	*ABS*+0x144
+  a0:	3084ffff 	addik	r4, r4, -1
+  a4:	be24fff0 	bneid	r4, -16		// 94
+			a4: R_MICROBLAZE_NONE	*ABS*-0x10
+  a8:	30a50001 	addik	r5, r5, 1
+  ac:	11440000 	addk	r10, r4, r0
+  b0:	30a00008 	addik	r5, r0, 8
+  b4:	316a0002 	addik	r11, r10, 2
+  b8:	656b0402 	bslli	r11, r11, 2
+  bc:	c96b1800 	lw	r11, r11, r3
+  c0:	30a5ffff 	addik	r5, r5, -1
+  c4:	314a0001 	addik	r10, r10, 1
+  c8:	be25ffec 	bneid	r5, -20		// b4
+			c8: R_MICROBLAZE_NONE	*ABS*-0x14
+  cc:	80845800 	or	r4, r4, r11
+  d0:	bc0c00f0 	beqi	r12, 240		// 1c0
+			d0: R_MICROBLAZE_NONE	*ABS*+0xf0
+  d4:	be04010c 	beqid	r4, 268		// 1e0
+			d4: R_MICROBLAZE_NONE	*ABS*+0x10c
+  d8:	31400001 	addik	r10, r0, 1
+  dc:	e886001c 	lwi	r4, r6, 28
+  e0:	3084fffd 	addik	r4, r4, -3
+  e4:	16445003 	cmpu	r18, r4, r10
+  e8:	be5200f8 	bltid	r18, 248		// 1e0
+			e8: R_MICROBLAZE_NONE	*ABS*+0xf8
+  ec:	31430008 	addik	r10, r3, 8
+  f0:	32c00018 	addik	r22, r0, 24
+  f4:	3301001c 	addik	r24, r1, 28
+  f8:	64650402 	bslli	r3, r5, 2
+  fc:	32d6ffff 	addik	r22, r22, -1
+ 100:	d803c000 	sw	r0, r3, r24
+ 104:	be36fff4 	bneid	r22, -12		// f8
+			104: R_MICROBLAZE_NONE	*ABS*-0xc
+ 108:	30a50001 	addik	r5, r5, 1
+ 10c:	b0000000 	imm	0
+			10c: R_MICROBLAZE_64_PCREL	pit_terminal_build
+ 110:	b9f40000 	brlid	r15, 0
+ 114:	10b80000 	addk	r5, r24, r0
+ 118:	bc2300c8 	bnei	r3, 200		// 1e0
+			118: R_MICROBLAZE_NONE	*ABS*+0xc8
+ 11c:	e8810028 	lwi	r4, r1, 40
+ 120:	8884b800 	xor	r4, r4, r23
+ 124:	be2400bc 	bneid	r4, 188		// 1e0
+			124: R_MICROBLAZE_NONE	*ABS*+0xbc
+ 128:	e8a10020 	lwi	r5, r1, 32
+ 12c:	e881001c 	lwi	r4, r1, 28
+ 130:	faf3000c 	swi	r23, r19, 12
+ 134:	f8930000 	swi	r4, r19, 0
+ 138:	e8810024 	lwi	r4, r1, 36
+ 13c:	f8b30004 	swi	r5, r19, 4
+ 140:	30f30020 	addik	r7, r19, 32
+ 144:	f8930008 	swi	r4, r19, 8
+ 148:	e881002c 	lwi	r4, r1, 44
+ 14c:	e8a10030 	lwi	r5, r1, 48
+ 150:	32730040 	addik	r19, r19, 64
+ 154:	f893ffd0 	swi	r4, r19, -48
+ 158:	f8b3ffd4 	swi	r5, r19, -44
+ 15c:	e8810038 	lwi	r4, r1, 56
+ 160:	e8a10034 	lwi	r5, r1, 52
+ 164:	f893ffdc 	swi	r4, r19, -36
+ 168:	f8b3ffd8 	swi	r5, r19, -40
+ 16c:	30800008 	addik	r4, r0, 8
+ 170:	30b60008 	addik	r5, r22, 8
+ 174:	64a50402 	bslli	r5, r5, 2
+ 178:	64d60402 	bslli	r6, r22, 2
+ 17c:	c8a5c000 	lw	r5, r5, r24
+ 180:	3084ffff 	addik	r4, r4, -1
+ 184:	d8a63800 	sw	r5, r6, r7
+ 188:	30b60010 	addik	r5, r22, 16
+ 18c:	64a50402 	bslli	r5, r5, 2
+ 190:	c8a5c000 	lw	r5, r5, r24
+ 194:	32d60001 	addik	r22, r22, 1
+ 198:	d8a69800 	sw	r5, r6, r19
+ 19c:	be24ffd8 	bneid	r4, -40		// 174
+			19c: R_MICROBLAZE_NONE	*ABS*-0x28
+ 1a0:	30b60008 	addik	r5, r22, 8
+ 1a4:	e9e10000 	lwi	r15, r1, 0
+ 1a8:	ea61007c 	lwi	r19, r1, 124
+ 1ac:	eac10080 	lwi	r22, r1, 128
+ 1b0:	eae10084 	lwi	r23, r1, 132
+ 1b4:	eb010088 	lwi	r24, r1, 136
+ 1b8:	b60f0008 	rtsd	r15, 8
+ 1bc:	3021008c 	addik	r1, r1, 140
+ 1c0:	be24ffe4 	bneid	r4, -28		// 1a4
+			1c0: R_MICROBLAZE_NONE	*ABS*-0x1c
+ 1c4:	3060ffff 	addik	r3, r0, -1
+ 1c8:	e866001c 	lwi	r3, r6, 28
+ 1cc:	30800001 	addik	r4, r0, 1
+ 1d0:	3063ffff 	addik	r3, r3, -1
+ 1d4:	16432003 	cmpu	r18, r3, r4
+ 1d8:	beb2ff18 	bgeid	r18, -232		// f0
+			1d8: R_MICROBLAZE_NONE	*ABS*-0xe8
+ 1dc:	11450000 	addk	r10, r5, r0
+ 1e0:	b810ffc4 	brid	-60		// 1a4
+			1e0: R_MICROBLAZE_NONE	*ABS*-0x3c
+ 1e4:	3060ffff 	addik	r3, r0, -1
