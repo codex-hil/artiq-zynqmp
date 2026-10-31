@@ -1528,3 +1528,11 @@ evidence/pit-irq-binding-offline-2026-10-31/pit_word_slot_barrier.dis
 evidence/pit-irq-binding-offline-2026-10-31/pit_word_slot_write.dis
 evidence/pit-irq-binding-offline-2026-10-31/read_word.dis
 evidence/pit-irq-binding-offline-2026-10-31/write_word.dis
+
+# Frozen IRQ replay — LGPL-3.0-or-later
+evidence/pit-irq-frozen-offline-2026-10-31/README.md
+evidence/pit-irq-frozen-offline-2026-10-31/check.json
+evidence/pit-irq-frozen-offline-2026-10-31/freeze.py
+evidence/pit-irq-frozen-offline-2026-10-31/inventory.json
+evidence/pit-irq-frozen-offline-2026-10-31/replay.py
+evidence/pit-irq-frozen-offline-2026-10-31/verification.json

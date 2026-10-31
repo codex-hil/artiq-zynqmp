@@ -1,3 +1,9 @@
+## 2026-10-31 — frozen linked IRQ replay (offline)
+
+Two isolated copies of the IRQ closure (43 files plus inventory each) produce identical audit reports; all 50 negative controls reject. Independent inventory SHA-256 `1b06e40bbdc63f7db960f97dc394593f68ddc612687b96ec977ea1aed4f4a408`. Evidence `evidence/pit-irq-frozen-offline-2026-10-31`. Existing 113-test result unchanged; no implementation/gate or HW operations this turn. Earlier frozen profiles untouched.
+
+Content consistency only, deployment refused. Next safe offline step: trace helper config-read ffdd8b94 through ELF data and BSP initialization, distinguishing initial bytes, later writes and unobserved live state. Hook, digests, exception/full-stack, reader no-wake lifetime and recovery remain open.
+
 ## 2026-10-31 — exact linked IRQ gate (offline)
 
 Distinct IRQ profile passes on actual ELF: 20 bodies/1008 instruction words, owned storage/mailbox checks, 30 project source/header + eight helper + three artifact pins. 113 Python tests PASS: 12 labeled IRQ/helper mutants, every scoped word mutated, 41 file tamper controls and stale-listing/storage/profile/deployment refusals. Evidence `evidence/pit-irq-gate-offline-2026-10-31`.

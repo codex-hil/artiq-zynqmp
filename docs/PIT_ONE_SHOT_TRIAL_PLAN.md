@@ -117,3 +117,7 @@ Fresh audit-only IRQ root binds actual callbacks and delegates to mailbox/MMIO r
 ## 2026-10-31 distinct IRQ gate
 
 Actual IRQ image passes exact 20-body/1008-word profile with 41 pinned inputs; 113 tests PASS. Evidence `evidence/pit-irq-gate-offline-2026-10-31`. Both helper paths/config-read address pinned, live flag and exception behavior unobserved. No deployment. Next safe step is frozen relocated replay with external inventory anchor, keeping all old profiles intact.
+
+## 2026-10-31 frozen IRQ checkpoint
+
+43-file closure copied/relocated; identical isolated reports, 50 negative controls rejected. External anchor/recipe in `evidence/pit-irq-frozen-offline-2026-10-31`. No HW or deployment admission. Next safe offline dependency review: configuration flag feeding linked IRQ-helper branch, ELF initial bytes and BSP writes; live contents remain unobserved. Preserve frozen profiles and unresolved hook/digest/exception/lifetime/recovery requirements.
