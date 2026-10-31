@@ -125,3 +125,7 @@ Actual IRQ image passes exact 20-body/1008-word profile with 41 pinned inputs; 1
 ## 2026-10-31 initial IRQ configuration dependency
 
 BSP and target compiler layout checks trace linked ffdd8b94 to initial UseMsrInstr=1 in ELF. 115 tests PASS; see `evidence/pit-irq-config-offline-2026-10-31`. No live or no-writer proof. Frozen profiles unchanged. Next offline requirement: canonical digest inputs/ordering and producer contract for actual image/sample bytes, replacing no existing profile until a separate implementation is reviewed. Physical admission remains closed.
+
+## 2026-10-31 digest producer contract
+
+Canonical bytes and ordering specified in `PIT_DIGEST_PRODUCER_CONTRACT.md`; host reference/vectors pass within 117 tests. Current caller-supplied hashes are not correlated by the target; no target producer or delivery protocol added. Next offline step: separate SHA-256 implementation candidate, vectors and word-store/stack review, then revised private snapshot pipeline. Existing frozen profiles and physical admission unchanged.

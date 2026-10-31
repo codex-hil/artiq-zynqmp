@@ -1,0 +1,19 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "target_producer_implemented": false,
+  "sample_record_hex": "010000000100000088776655443322110000000001000000020000000300000004000000050000000600000007000000",
+  "sample_sha256": "fcac2dafa446d88980fe5ed41118f4c261da24c178be87bc36546e53fef3e549",
+  "sample_digest_le_words": [
+    2939006204,
+    2312652452,
+    3562995328,
+    3270776849,
+    3240417889,
+    3163012728,
+    1399739446,
+    1239806974
+  ],
+  "image_abc_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+  "limits": "Synthetic host vector only, no acquisition or image-execution proof"
+}

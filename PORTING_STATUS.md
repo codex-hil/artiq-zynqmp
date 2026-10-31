@@ -1,3 +1,9 @@
+## 2026-10-31 — digest producer contract (offline)
+
+Defined canonical sample SHA-256 input: completed 48-byte version1/nonce/eight-value record in little-endian form, same private immutable snapshot as publication. Image identity is SHA-256 of exact final external ELF bytes, avoiding embedding a self-hash. Host reference and vectors added; 117 Python tests PASS. Evidence `evidence/pit-digest-contract-offline-2026-10-31`; contract `docs/PIT_DIGEST_PRODUCER_CONTRACT.md`.
+
+Current caller sample_digest is not a target producer/correlation proof; capture snapshot is local, so new API/pipeline is required. Publication-unknown may identify intended bytes but never visibility. No target SHA or digest delivery protocol, no HW operations or frozen profile changes. Next safe offline step: separate bounded SHA-256 candidate/vector and PMU word-store/stack checks before snapshot integration. Hook, trust, exception, no-wake lifetime and recovery remain open; deployment refused.
+
 ## 2026-10-31 — initial IRQ configuration traced (offline)
 
 ELF field ffdd8b94 = UseMsrInstr offset44 in XMicroblaze_ConfigTable ffdd8b68/0x138, initial u32 value1. Actual-target static assertions confirm layout; BSP initializer/macros/CfgPtr and linked direct load agree. Would select msrclr only if loaded unchanged; no live state or immutability claim. Lexical references cover 397 project/BSP files (20 matches), not alias/vendor/debug/DMA writer exclusion. 115 Python tests PASS. Evidence `evidence/pit-irq-config-offline-2026-10-31`.
