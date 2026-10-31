@@ -1,0 +1,339 @@
+{
+  "status": "STATIC_VECTOR_DEPENDENCY_INVENTORY_NOT_EXCEPTION_BOUND",
+  "hardware_executed": false,
+  "deployable": false,
+  "elf_sha256": "e12cd23e27b9829912774c6a8edcf0cc1f0d04de1798b7e6247464b1e00a6a81",
+  "vectors": [
+    {
+      "name": "_vector_reset",
+      "address": 4292608000,
+      "target": 4292608080,
+      "target_symbol": "XPfw_Init",
+      "raw_hex": "dcff00b0500008b8"
+    },
+    {
+      "name": "_vector_sw_exception",
+      "address": 4292608008,
+      "target": 4292608188,
+      "target_symbol": "XPfw_Exception",
+      "raw_hex": "dcff00b0bc0008b8"
+    },
+    {
+      "name": "_vector_interrupt",
+      "address": 4292608016,
+      "target": 4292630780,
+      "target_symbol": "_interrupt_handler",
+      "raw_hex": "dcff00b0fc5808b8"
+    },
+    {
+      "name": "_vector_hw_exception",
+      "address": 4292608032,
+      "target": 4292643100,
+      "target_symbol": "XPfw_Exception_Handler",
+      "raw_hex": "dcff00b01c8908b8"
+    }
+  ],
+  "handlers": {
+    "XPfw_Exception": {
+      "subword_store_sites": [],
+      "address": 4292608188,
+      "bytes": 60,
+      "sha256": "9ac3bdbd541024105a90b5365c629eaa5e2ce7c3494dd06b8f9a3cfd2ab9dfcb",
+      "frame_allocations": [],
+      "direct_calls": [],
+      "indirect_call_sites": [],
+      "self_loop_sites": [
+        4292608240
+      ]
+    },
+    "XPfw_InterruptHandler": {
+      "subword_store_sites": [],
+      "address": 4292630780,
+      "bytes": 352,
+      "sha256": "fd7eff4ca9c9306c626d2b0a7954d62dd9c0f2cec26ac4bd335a21992e0ea2b7",
+      "frame_allocations": [
+        80
+      ],
+      "direct_calls": [],
+      "indirect_call_sites": [
+        4292630936
+      ],
+      "self_loop_sites": []
+    },
+    "XPfw_Exception_Handler": {
+      "subword_store_sites": [],
+      "address": 4292643100,
+      "bytes": 116,
+      "sha256": "fe702e660ad8d684c3d2bbed50926705e2f277b6e45e45c575f437cad16c92f2",
+      "frame_allocations": [
+        28
+      ],
+      "direct_calls": [
+        {
+          "pc": 4292643136,
+          "target": 4292662852,
+          "symbol": "xil_printf"
+        },
+        {
+          "pc": 4292643156,
+          "target": 4292631168,
+          "symbol": "XPfw_UtilRMW"
+        },
+        {
+          "pc": 4292643180,
+          "target": 4292631168,
+          "symbol": "XPfw_UtilRMW"
+        },
+        {
+          "pc": 4292643204,
+          "target": 4292631168,
+          "symbol": "XPfw_UtilRMW"
+        }
+      ],
+      "indirect_call_sites": [],
+      "self_loop_sites": [
+        4292643212
+      ]
+    },
+    "xil_printf": {
+      "subword_store_sites": [
+        {
+          "pc": 4292663064,
+          "instruction": "sbi\tr23, r1, 40"
+        },
+        {
+          "pc": 4292663184,
+          "instruction": "sbi\tr3, r1, 40"
+        }
+      ],
+      "address": 4292662852,
+      "bytes": 944,
+      "sha256": "b94e25af297d078ee9043c168439cfb7672e930241102c717ad0a97006dd970e",
+      "frame_allocations": [
+        104
+      ],
+      "direct_calls": [
+        {
+          "pc": 4292663040,
+          "target": 4292655704,
+          "symbol": "outbyte"
+        },
+        {
+          "pc": 4292663120,
+          "target": 4292655408,
+          "symbol": "getnum"
+        },
+        {
+          "pc": 4292663188,
+          "target": 4292655408,
+          "symbol": "getnum"
+        },
+        {
+          "pc": 4292663400,
+          "target": 4292655704,
+          "symbol": "outbyte"
+        },
+        {
+          "pc": 4292663416,
+          "target": 4292655704,
+          "symbol": "outbyte"
+        },
+        {
+          "pc": 4292663532,
+          "target": 4292655704,
+          "symbol": "outbyte"
+        },
+        {
+          "pc": 4292663564,
+          "target": 4292660808,
+          "symbol": "outnum"
+        },
+        {
+          "pc": 4292663636,
+          "target": 4292655744,
+          "symbol": "padding"
+        },
+        {
+          "pc": 4292663656,
+          "target": 4292689576,
+          "symbol": "strlen"
+        },
+        {
+          "pc": 4292663676,
+          "target": 4292655744,
+          "symbol": "padding"
+        },
+        {
+          "pc": 4292663712,
+          "target": 4292655704,
+          "symbol": "outbyte"
+        },
+        {
+          "pc": 4292663732,
+          "target": 4292655704,
+          "symbol": "outbyte"
+        },
+        {
+          "pc": 4292663780,
+          "target": 4292655704,
+          "symbol": "outbyte"
+        }
+      ],
+      "indirect_call_sites": [],
+      "self_loop_sites": []
+    },
+    "XPfw_UtilRMW": {
+      "subword_store_sites": [],
+      "address": 4292631168,
+      "bytes": 28,
+      "sha256": "fb88ff57673bb508f88316ee33534942230659cca25f5d98a5e43b121e227ba4",
+      "frame_allocations": [],
+      "direct_calls": [],
+      "indirect_call_sites": [],
+      "self_loop_sites": []
+    }
+  },
+  "irq_table": {
+    "address": 4292692352,
+    "bytes": 176,
+    "sha256": "b4812a2c13a1db35ddbd0a658d9e552858afff32a318922138eafd7fc5b2cfc3",
+    "entries": [
+      {
+        "index": 0,
+        "mask": 4096,
+        "target": 4292626144,
+        "symbol": "XPfw_InterruptGpi1Handler"
+      },
+      {
+        "index": 1,
+        "mask": 524288,
+        "target": 4292626556,
+        "symbol": "XPfw_Ipi0Handler"
+      },
+      {
+        "index": 2,
+        "mask": 262144,
+        "target": 4292626492,
+        "symbol": "XPfw_InterruptRtcAlaramHandler"
+      },
+      {
+        "index": 3,
+        "mask": 131072,
+        "target": 4292626524,
+        "symbol": "XPfw_InterruptRtcSecondsmHandler"
+      },
+      {
+        "index": 4,
+        "mask": 65536,
+        "target": 4292617208,
+        "symbol": "XPfw_PmuRamCEHandler"
+      },
+      {
+        "index": 5,
+        "mask": 536870912,
+        "target": 4292609728,
+        "symbol": "XPfw_NullHandler"
+      },
+      {
+        "index": 6,
+        "mask": 4194304,
+        "target": 4292626760,
+        "symbol": "XPfw_Ipi3Handler"
+      },
+      {
+        "index": 7,
+        "mask": 2097152,
+        "target": 4292626692,
+        "symbol": "XPfw_Ipi2Handler"
+      },
+      {
+        "index": 8,
+        "mask": 1048576,
+        "target": 4292626624,
+        "symbol": "XPfw_Ipi1Handler"
+      },
+      {
+        "index": 9,
+        "mask": 134217728,
+        "target": 4292626016,
+        "symbol": "XPfw_InterruptPwrUpHandler"
+      },
+      {
+        "index": 10,
+        "mask": 268435456,
+        "target": 4292626048,
+        "symbol": "XPfw_InterruptPwrDnHandler"
+      },
+      {
+        "index": 11,
+        "mask": 16777216,
+        "target": 4292626080,
+        "symbol": "XPfw_InterruptIsolationHandler"
+      },
+      {
+        "index": 12,
+        "mask": 67108864,
+        "target": 4292609728,
+        "symbol": "XPfw_NullHandler"
+      },
+      {
+        "index": 13,
+        "mask": 33554432,
+        "target": 4292609728,
+        "symbol": "XPfw_NullHandler"
+      },
+      {
+        "index": 14,
+        "mask": 16384,
+        "target": 4292626376,
+        "symbol": "XPfw_InterruptGpi3Handler"
+      },
+      {
+        "index": 15,
+        "mask": 8192,
+        "target": 4292626260,
+        "symbol": "XPfw_InterruptGpi2Handler"
+      },
+      {
+        "index": 16,
+        "mask": 2048,
+        "target": 4292626112,
+        "symbol": "XPfw_InterruptGpi0Handler"
+      },
+      {
+        "index": 17,
+        "mask": 64,
+        "target": 4292609728,
+        "symbol": "XPfw_NullHandler"
+      },
+      {
+        "index": 18,
+        "mask": 32,
+        "target": 4292609728,
+        "symbol": "XPfw_NullHandler"
+      },
+      {
+        "index": 19,
+        "mask": 16,
+        "target": 4292617228,
+        "symbol": "XPfw_Pit1Handler"
+      },
+      {
+        "index": 20,
+        "mask": 8,
+        "target": 4292609728,
+        "symbol": "XPfw_NullHandler"
+      },
+      {
+        "index": 21,
+        "mask": 2147483648,
+        "target": 4292609728,
+        "symbol": "XPfw_NullHandler"
+      }
+    ]
+  },
+  "nmi_debug_paths_excluded": false,
+  "total_stack_qualified": false,
+  "recovery_qualified": false,
+  "limits": "Static image only. No vector-selection/live MSR/platform routing observation, no nested exception bound or asynchronous exclusion. ROM/debug/NMI absence cannot be inferred from missing ELF symbols."
+}

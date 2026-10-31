@@ -169,3 +169,7 @@ Actual ELF exact profile pins29 bodies/1737 words,64 SHA constants/owned storage
 ## 2026-10-31 conditional normal-path stack
 
 28-function graph with reviewed callback bindings yields conditional792-byte peak. Extra exact fence pin closes a scope omission in prior29-body gate without changing its frozen inventory; see `evidence/pit-digest-stack-offline-2026-10-31`. Not total-stack/exception admission. Next safe offline step: inventory exception/NMI/debug/error vector/handler dependencies and unbounded paths; no physical fault injection or deployment.
+
+## 2026-10-31 static exception dependencies
+
+Exact ELF vector/IRQ-table inventory finds concrete unqualified exception path through xil_printf byte stores (expected checker rejection). See `evidence/pit-exception-inventory-offline-2026-10-31`. No live fault/recovery or vector-policy change. Next offline step: separate word-oriented audit-only fail-stop receipt design, no printf/UART and no exception-disable shortcut. Normal-path792-byte result is not total-stack admission.

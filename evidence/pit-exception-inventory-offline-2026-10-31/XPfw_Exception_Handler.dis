@@ -1,0 +1,31 @@
+ffdc891c <XPfw_Exception_Handler>:
+ffdc891c:	3021ffe4 	addik	r1, r1, -28
+ffdc8920:	f9e10000 	swi	r15, r1, 0
+ffdc8924:	94c08001 	mfs	r6, rmsr
+ffdc8928:	94e08003 	mfs	r7, rear
+ffdc892c:	9500800d 	mfs	r8, redr
+ffdc8930:	95208005 	mfs	r9, resr
+ffdc8934:	b000ffdd 	imm	-35
+ffdc8938:	30a041ec 	addik	r5, r0, 16876
+ffdc893c:	b0000000 	imm	0
+ffdc8940:	b9f44d04 	brlid	r15, 19716
+ffdc8944:	80000000 	or	r0, r0, r0
+ffdc8948:	30e00002 	addik	r7, r0, 2
+ffdc894c:	b000ffd8 	imm	-40
+ffdc8950:	30a00064 	addik	r5, r0, 100
+ffdc8954:	b9f4d12c 	brlid	r15, -11988
+ffdc8958:	10c70000 	addk	r6, r7, r0
+ffdc895c:	b0002000 	imm	8192
+ffdc8960:	30e00000 	addik	r7, r0, 0
+ffdc8964:	b000ffd6 	imm	-42
+ffdc8968:	30a0033c 	addik	r5, r0, 828
+ffdc896c:	b9f4d114 	brlid	r15, -12012
+ffdc8970:	10c70000 	addk	r6, r7, r0
+ffdc8974:	b0002000 	imm	8192
+ffdc8978:	30c00000 	addik	r6, r0, 0
+ffdc897c:	b000ffd6 	imm	-42
+ffdc8980:	30a0033c 	addik	r5, r0, 828
+ffdc8984:	b9f4d0fc 	brlid	r15, -12036
+ffdc8988:	10e00000 	addk	r7, r0, r0
+ffdc898c:	b8000000 	bri	0		// ffdc898c
+

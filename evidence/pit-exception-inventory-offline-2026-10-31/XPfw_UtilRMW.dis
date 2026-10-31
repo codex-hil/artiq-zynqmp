@@ -1,0 +1,9 @@
+ffdc5a80 <XPfw_UtilRMW>:
+ffdc5a80:	e8650000 	lwi	r3, r5, 0
+ffdc5a84:	88e71800 	xor	r7, r7, r3
+ffdc5a88:	84e73000 	and	r7, r7, r6
+ffdc5a8c:	88e71800 	xor	r7, r7, r3
+ffdc5a90:	f8e50000 	swi	r7, r5, 0
+ffdc5a94:	b60f0008 	rtsd	r15, 8
+ffdc5a98:	80000000 	or	r0, r0, r0
+

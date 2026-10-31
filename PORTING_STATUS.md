@@ -1,3 +1,9 @@
+## 2026-10-31 — static exception/vector inventory (offline)
+
+Four ELF vectors/targets and22 IRQ table entries decoded; IRQ frame80 with indirect handler dispatch, hardware exception frame28 calls xil_printf104 and error RMW then loops, software exception records ESR/EAR/error then loops. Concrete gap: linked xil_printf has stack sbi at ffdcd718/ffdcd790; actual word-store checker rejects as expected. Normal792-byte/word-store model does not qualify these paths. Evidence `evidence/pit-exception-inventory-offline-2026-10-31`.
+
+No HW/fault injection/live vector or recovery observation, no image/runtime/frozen change. Existing137 normal-path tests unchanged, not rerun. Next safe offline step: separate word-oriented audit-only fail-stop exception-receipt contract, without printf/UART or changing normal vector/exception policy. No deployment; exception stack/ROM/NMI/debug routing/entry/image trust/reader lifetime/recovery remain open.
+
 ## 2026-10-31 — conditional normal-path stack model (offline)
 
 Final full PIT suite:137 tests PASS.

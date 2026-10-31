@@ -1,0 +1,17 @@
+ffdc00bc <XPfw_Exception>:
+ffdc00bc:	b000ffd8 	imm	-40
+ffdc00c0:	30600050 	addik	r3, r0, 80
+ffdc00c4:	94808005 	mfs	r4, resr
+ffdc00c8:	f8830000 	swi	r4, r3, 0
+ffdc00cc:	b000ffd8 	imm	-40
+ffdc00d0:	30600054 	addik	r3, r0, 84
+ffdc00d4:	94808003 	mfs	r4, rear
+ffdc00d8:	f8830000 	swi	r4, r3, 0
+ffdc00dc:	b000ffd6 	imm	-42
+ffdc00e0:	3060033c 	addik	r3, r0, 828
+ffdc00e4:	b0001000 	imm	4096
+ffdc00e8:	30800000 	addik	r4, r0, 0
+ffdc00ec:	f8830000 	swi	r4, r3, 0
+ffdc00f0:	b8000000 	bri	0		// ffdc00f0
+ffdc00f4:	80000000 	or	r0, r0, r0
+

@@ -1,0 +1,15 @@
+{
+  "status": "STATIC_INVENTORY_PASS_EXCEPTION_PATH_NOT_ADMITTED",
+  "hardware_executed": false,
+  "deployable": false,
+  "normal_test_suite_unchanged": 137,
+  "actual_printf_word_store_check": "EXPECTED_REJECTION",
+  "reason": "PMU RAM subword store at 0xffdcd718",
+  "source_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_start.S": "98fb81769ec13fd0b9e54816e9afcc4209ecbcb9863576109b055cb4317684ee",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_core.c": "87c1f2bd8d5574457dd4c0b780c9f788e960da20ac13e7b76cff39b02524a9ce",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_interrupts.c": "87fac5ab29a629b4d5210646e710fe590bdc76ce4260a2a3fb46cdf2fb459323"
+  },
+  "inventory_script_sha256": "13e2c50a8f3acadf36bb38e0d659955ce1c03c0ffe65a3ffd2bff316615f75c5",
+  "limits": "No physical fault, live vector state or recovery test. Static byte stores are concrete out-of-scope findings."
+}
