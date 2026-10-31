@@ -1,0 +1,17 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "pit_tests": 97,
+  "host_binding_cases": 21,
+  "host_modes": [
+    "O2",
+    "ASan_UBSan"
+  ],
+  "initial_fixture_failure": "GCC -Wclobbered rejected automatic loop variable across longjmp; made fixture iteration state static before final PASS. No target semantics changed.",
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_mailbox_composition_audit.c": "fb65cdceef1c746ca91f839ab4b4c3d1843ae4f46d3c55e3bd54a4004cfb4030",
+    "tests/fixtures/pit_mailbox_binding_host.c": "9e2d6232c92626508d11775195e49d479f2ef5ac9b51a0860df84c682d0e86f4",
+    "tests/test_pit_mailbox_binding.py": "8250f9e2c37db1980561676ae8aa34b380ed0a4f1df3ef0f273a53d649fac91e"
+  },
+  "limits": "Host terminal/prepare/wrapper doubles test root guards and binding; actual target objects linked/statically reviewed, not executed."
+}

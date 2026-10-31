@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-31 — owned mailbox audit root linked offline
+
+Newroot validatesfreshplan/NULLcontexts/emptycallbacks, preparesownedslots and
+binds4wrappers before rawauditroot.15customC LTO/noUND/16scopedwidth/mailboxlayout
+PASS;slots2x32B disjoint/mailbox144B.97PITtests/21hostdoublecasesPASS. Readsubtotal
+376/barrier416NOTtotal;MSR-disable/hashorigin/exceptionsunqualified. Oldpinsreject/
+new27-sourceheaderclosure needed. NoHWoperations/runtimehook/consumer/admission.
+Next exactslot-wrapper-fencebinding/sequence mutations+closure.
+Evidence `evidence/pit-mailbox-binding-offline-2026-10-31`.
+
 ## 2026-10-31 — bounded word mailbox callbacks offline
 
 96PITtests/O2+ASanUBSanPASS;actualCpublishers15/27steps/byteexact;42invalid-stage

@@ -1,0 +1,15 @@
+ffdcbf30:	3021ffe0 	addik	r1, r1, -32
+ffdcbf34:	fa61001c 	swi	r19, r1, 28
+ffdcbf38:	f9e10000 	swi	r15, r1, 0
+ffdcbf3c:	12650000 	addk	r19, r5, r0
+ffdcbf40:	e865000c 	lwi	r3, r5, 12
+ffdcbf44:	99fc1800 	brald	r15, r3
+ffdcbf48:	e8a50018 	lwi	r5, r5, 24
+ffdcbf4c:	be030014 	beqid	r3, 20		// ffdcbf60
+ffdcbf50:	e9e10000 	lwi	r15, r1, 0
+ffdcbf54:	30800001 	addik	r4, r0, 1
+ffdcbf58:	f893004c 	swi	r4, r19, 76
+ffdcbf5c:	e9e10000 	lwi	r15, r1, 0
+ffdcbf60:	ea61001c 	lwi	r19, r1, 28
+ffdcbf64:	b60f0008 	rtsd	r15, 8
+ffdcbf68:	30210020 	addik	r1, r1, 32

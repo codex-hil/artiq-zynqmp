@@ -1,0 +1,12 @@
+ffdcc22c:	bc250028 	bnei	r5, 40		// ffdcc254
+ffdcc230:	b000ffdd 	imm	-35
+ffdcc234:	30a0c918 	addik	r5, r0, -14056
+ffdcc238:	3021ffe4 	addik	r1, r1, -28
+ffdcc23c:	f9e10000 	swi	r15, r1, 0
+ffdcc240:	b9f4fea4 	brlid	r15, -348
+ffdcc244:	80000000 	or	r0, r0, r0
+ffdcc248:	e9e10000 	lwi	r15, r1, 0
+ffdcc24c:	b60f0008 	rtsd	r15, 8
+ffdcc250:	3021001c 	addik	r1, r1, 28
+ffdcc254:	b60f0008 	rtsd	r15, 8
+ffdcc258:	3060ffff 	addik	r3, r0, -1

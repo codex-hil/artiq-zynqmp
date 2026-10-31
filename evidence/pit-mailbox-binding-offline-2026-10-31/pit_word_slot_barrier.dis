@@ -1,0 +1,40 @@
+ffdcc0e4:	e8650014 	lwi	r3, r5, 20
+ffdcc0e8:	bc030094 	beqi	r3, 148		// ffdcc17c
+ffdcc0ec:	3021ffe0 	addik	r1, r1, -32
+ffdcc0f0:	fa61001c 	swi	r19, r1, 28
+ffdcc0f4:	f9e10000 	swi	r15, r1, 0
+ffdcc0f8:	e8650018 	lwi	r3, r5, 24
+ffdcc0fc:	be03001c 	beqid	r3, 28		// ffdcc118
+ffdcc100:	12650000 	addk	r19, r5, r0
+ffdcc104:	3060ffff 	addik	r3, r0, -1
+ffdcc108:	e9e10000 	lwi	r15, r1, 0
+ffdcc10c:	ea61001c 	lwi	r19, r1, 28
+ffdcc110:	b60f0008 	rtsd	r15, 8
+ffdcc114:	30210020 	addik	r1, r1, 32
+ffdcc118:	e865001c 	lwi	r3, r5, 28
+ffdcc11c:	be23ffec 	bneid	r3, -20		// ffdcc108
+ffdcc120:	3060ffff 	addik	r3, r0, -1
+ffdcc124:	e8650010 	lwi	r3, r5, 16
+ffdcc128:	a8830001 	xori	r4, r3, 1
+ffdcc12c:	be040028 	beqid	r4, 40		// ffdcc154
+ffdcc130:	30800001 	addik	r4, r0, 1
+ffdcc134:	e885000c 	lwi	r4, r5, 12
+ffdcc138:	30840001 	addik	r4, r4, 1
+ffdcc13c:	88832000 	xor	r4, r3, r4
+ffdcc140:	be040014 	beqid	r4, 20		// ffdcc154
+ffdcc144:	30800001 	addik	r4, r0, 1
+ffdcc148:	30600001 	addik	r3, r0, 1
+ffdcc14c:	b810ffb8 	brid	-72		// ffdcc104
+ffdcc150:	f8730018 	swi	r3, r19, 24
+ffdcc154:	10632000 	addk	r3, r3, r4
+ffdcc158:	f8730010 	swi	r3, r19, 16
+ffdcc15c:	e8b30008 	lwi	r5, r19, 8
+ffdcc160:	e8730004 	lwi	r3, r19, 4
+ffdcc164:	99fc1800 	brald	r15, r3
+ffdcc168:	f893001c 	swi	r4, r19, 28
+ffdcc16c:	be03ff9c 	beqid	r3, -100		// ffdcc108
+ffdcc170:	f813001c 	swi	r0, r19, 28
+ffdcc174:	b810ffd8 	brid	-40		// ffdcc14c
+ffdcc178:	30600001 	addik	r3, r0, 1
+ffdcc17c:	b60f0008 	rtsd	r15, 8
+ffdcc180:	3060ffff 	addik	r3, r0, -1

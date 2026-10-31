@@ -1,0 +1,8 @@
+ffdcbe00:	3021ffe4 	addik	r1, r1, -28
+ffdcbe04:	f9e10000 	swi	r15, r1, 0
+ffdcbe08:	e8650004 	lwi	r3, r5, 4
+ffdcbe0c:	99fc1800 	brald	r15, r3
+ffdcbe10:	e8a50018 	lwi	r5, r5, 24
+ffdcbe14:	e9e10000 	lwi	r15, r1, 0
+ffdcbe18:	b60f0008 	rtsd	r15, 8
+ffdcbe1c:	3021001c 	addik	r1, r1, 28

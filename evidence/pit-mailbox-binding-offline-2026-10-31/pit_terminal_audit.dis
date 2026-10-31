@@ -1,0 +1,3 @@
+ffdcf694:	b8220004 	mbar	1
+ffdcf698:	ba020004 	sleep
+ffdcf69c:	b800fffc 	bri	-4		// ffdcf698

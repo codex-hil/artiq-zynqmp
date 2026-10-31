@@ -1,0 +1,49 @@
+ffdcc020:	e8650014 	lwi	r3, r5, 20
+ffdcc024:	be030014 	beqid	r3, 20		// ffdcc038
+ffdcc028:	3060ffff 	addik	r3, r0, -1
+ffdcc02c:	e8650018 	lwi	r3, r5, 24
+ffdcc030:	bc030010 	beqi	r3, 16		// ffdcc040
+ffdcc034:	3060ffff 	addik	r3, r0, -1
+ffdcc038:	b60f0008 	rtsd	r15, 8
+ffdcc03c:	80000000 	or	r0, r0, r0
+ffdcc040:	e865001c 	lwi	r3, r5, 28
+ffdcc044:	be23fff0 	bneid	r3, -16		// ffdcc034
+ffdcc048:	a4660003 	andi	r3, r6, 3
+ffdcc04c:	be23001c 	bneid	r3, 28		// ffdcc068
+ffdcc050:	30600001 	addik	r3, r0, 1
+ffdcc054:	e865000c 	lwi	r3, r5, 12
+ffdcc058:	64830402 	bslli	r4, r3, 2
+ffdcc05c:	16443003 	cmpu	r18, r4, r6
+ffdcc060:	bc520010 	blti	r18, 16		// ffdcc070
+ffdcc064:	30600001 	addik	r3, r0, 1
+ffdcc068:	b810ffcc 	brid	-52		// ffdcc034
+ffdcc06c:	f8650018 	swi	r3, r5, 24
+ffdcc070:	e8850010 	lwi	r4, r5, 16
+ffdcc074:	bc24002c 	bnei	r4, 44		// ffdcc0a0
+ffdcc078:	80663800 	or	r3, r6, r7
+ffdcc07c:	be23ffe8 	bneid	r3, -24		// ffdcc064
+ffdcc080:	30840001 	addik	r4, r4, 1
+ffdcc084:	e8650000 	lwi	r3, r5, 0
+ffdcc088:	f8850010 	swi	r4, r5, 16
+ffdcc08c:	a4c6fffc 	andi	r6, r6, -4
+ffdcc090:	d8e61800 	sw	r7, r6, r3
+ffdcc094:	f805001c 	swi	r0, r5, 28
+ffdcc098:	b810ffa0 	brid	-96		// ffdcc038
+ffdcc09c:	10600000 	addk	r3, r0, r0
+ffdcc0a0:	16441803 	cmpu	r18, r4, r3
+ffdcc0a4:	be520020 	bltid	r18, 32		// ffdcc0c4
+ffdcc0a8:	31000001 	addik	r8, r0, 1
+ffdcc0ac:	8d044400 	pcmpne	r8, r4, r8
+ffdcc0b0:	bc080014 	beqi	r8, 20		// ffdcc0c4
+ffdcc0b4:	3064ffff 	addik	r3, r4, -1
+ffdcc0b8:	64630402 	bslli	r3, r3, 2
+ffdcc0bc:	b810ffc0 	brid	-64		// ffdcc07c
+ffdcc0c0:	88661800 	xor	r3, r6, r3
+ffdcc0c4:	30630002 	addik	r3, r3, 2
+ffdcc0c8:	88641800 	xor	r3, r4, r3
+ffdcc0cc:	be23ff98 	bneid	r3, -104		// ffdcc064
+ffdcc0d0:	8c661c00 	pcmpne	r3, r6, r3
+ffdcc0d4:	be23ff90 	bneid	r3, -112		// ffdcc064
+ffdcc0d8:	30600001 	addik	r3, r0, 1
+ffdcc0dc:	b810ffa0 	brid	-96		// ffdcc07c
+ffdcc0e0:	8c671c00 	pcmpne	r3, r7, r3

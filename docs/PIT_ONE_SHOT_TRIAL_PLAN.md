@@ -88,3 +88,12 @@ preserve offsets while permitting word-array stores.96PITtests/nativeobjectsPASS
 no fullLTO/runtimebinding or physical publication/consumer qualification. Next
 separate audit-only binding and complete layout/call/stack review,26custom-source/
 headerclosure. [Evidence](../evidence/pit-mailbox-publication-offline-2026-10-31/README.md).
+
+## Owned mailbox audit-root binding — 2026-10-31
+
+Separate validated root prepares slots/binds sample and terminal writer/barriers,
+then rawMMIO audit root;15customC LTO/noUND/16scopedwidth/layoutPASS.97PITtests
+including21hostdoublebindingcasesPASS. Read/internalbarriersubtotals376/416NOTtotal.
+External MSR/disable/hashorigin and runtime/consumer/recovery remain unqualified.
+New27-sourceheaderclosure required. Next exact binding/fence/sequence mutations.
+[Evidence](../evidence/pit-mailbox-binding-offline-2026-10-31/README.md).
