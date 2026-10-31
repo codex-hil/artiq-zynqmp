@@ -1,3 +1,9 @@
+## 2026-11-01 — stackless exception-entry contract (offline)
+
+Defined isolated assembly-entry contract without incoming C stack/SDA/argument/callback assumptions, direct linker-owned slot/u32 stores and nonreturn loop. Local startup/core paths and official AMD UG9842024.1 ABI/hardware-exception/mbar references reviewed. Captured MSR is post-entry, no universal fault-PC inference; mbar may wait, not recovery. Evidence `evidence/pit-exception-entry-contract-offline-2026-11-01`; contract `docs/PIT_EXCEPTION_ENTRY_CONTRACT.md`.
+
+No implementation/vector/image/HW changes; existing146 tests unchanged/not rerun. Next safe offline step: unreferenced standalone assembly candidate, qualified snapshot subset only, static clobber/relocation/store/fence/delay-slot/loop review. No vector section/hook or exception-policy shortcut. PMU-specific entry/register/slot/reentrancy/notification/sleep/recovery obligations remain; deployment refused.
+
 ## 2026-11-01 — exact minimal fault-writer scope (offline)
 
 Full PIT Python suite:146 tests PASS.

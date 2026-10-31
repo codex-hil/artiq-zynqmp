@@ -1,0 +1,28 @@
+{
+  "status": "STACKLESS_ENTRY_CONTRACT_ONLY_NOT_IMPLEMENTED",
+  "hardware_executed": false,
+  "deployable": false,
+  "implementation_changed": false,
+  "vector_changed": false,
+  "normal_suite_unchanged": 146,
+  "sources": {
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_start.S": "98fb81769ec13fd0b9e54816e9afcc4209ecbcb9863576109b055cb4317684ee",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_core.c": "87c1f2bd8d5574457dd4c0b780c9f788e960da20ac13e7b76cff39b02524a9ce"
+  },
+  "contract_sha256": "755d04fb409a0eab361937267c37aac27b0e2458a13894124b86621e49aee4eb",
+  "architecture_sources": [
+    {
+      "title": "UG984 2024.1 Register Usage Conventions",
+      "url": "https://docs.amd.com/r/2024.1-English/ug984-vivado-microblaze-ref/Register-Usage-Conventions"
+    },
+    {
+      "title": "UG984 2024.1 Hardware Exceptions",
+      "url": "https://docs.amd.com/r/2024.1-English/ug984-vivado-microblaze-ref/Hardware-Exceptions"
+    },
+    {
+      "title": "UG984 2024.1 mbar",
+      "url": "https://docs.amd.com/r/2024.1-English/ug984-vivado-microblaze-ref/mbar"
+    }
+  ],
+  "limits": "General architecture plus local source review, not PMU-specific entry/reentry/notification/recovery proof or live behavior."
+}

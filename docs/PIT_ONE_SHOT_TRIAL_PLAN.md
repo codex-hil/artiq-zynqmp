@@ -193,3 +193,7 @@ Separate19-unit LTO audit image fits after excluding six old profiles, unchanged
 ## 2026-11-01 exact fault-writer scope
 
 Actual minimal ELF writer110-word profile and all word/storage/boundary/listing mutations checked; evidence `evidence/pit-fault-slot-exact-offline-2026-11-01`. Not a whole-image or exception-entry gate. Next safe offline: isolated handler assembly-entry/stack/register/slot contract, preserving normal vector/notification policy; no HW injection or deployment.
+
+## 2026-11-01 stackless entry contract
+
+Contract `PIT_EXCEPTION_ENTRY_CONTRACT.md` separates no-stack assembly proposal from C writer and hardware entry qualification; evidence `evidence/pit-exception-entry-contract-offline-2026-11-01`. Official AMD ABI/exception/mbar reviewed; no code/vector/HW change,146 prior tests unchanged. Next safe offline: standalone unreferenced assembly candidate/static inspection only. No EDR read without configuration proof, vector binding or live injection.
