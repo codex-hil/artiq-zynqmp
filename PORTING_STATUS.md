@@ -1,3 +1,9 @@
+## 2026-11-01 — standalone stackless assembly entry candidate (offline)
+
+Two unreferenced assembly entry sections128B/32 instructions each, MSR/ESR/EAR subset (no EDR), direct u32 fault record stores, two mbar1 and local infinite loop. Dedicated64B/aligned8 NOBITS slot, no vector section/call/stack/SDA/ABI pointer dependency. Exact relocatable ELF section/symbol/instruction/relocation checker and64 word mutants plus metadata controls PASS;149 tests PASS. Evidence `evidence/pit-fault-entry-object-offline-2026-11-01`.
+
+Object only, no linked slot/vector/runtime/HW change. Shared-slot reentry/nested fault exclusion, PMU special-register/privilege/entry/memory/notification/sleep/recovery remain unqualified; existing printf handler unchanged. Next safe offline step: isolated non-runtime link of object with explicit bounded code/slot map and resolved-relocation/no-call/no-stack/no-vector checks, not production image integration. Deployment refused.
+
 ## 2026-11-01 — stackless exception-entry contract (offline)
 
 Defined isolated assembly-entry contract without incoming C stack/SDA/argument/callback assumptions, direct linker-owned slot/u32 stores and nonreturn loop. Local startup/core paths and official AMD UG9842024.1 ABI/hardware-exception/mbar references reviewed. Captured MSR is post-entry, no universal fault-PC inference; mbar may wait, not recovery. Evidence `evidence/pit-exception-entry-contract-offline-2026-11-01`; contract `docs/PIT_EXCEPTION_ENTRY_CONTRACT.md`.

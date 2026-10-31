@@ -1,0 +1,18 @@
+{
+  "status": "STANDALONE_ASSEMBLED_NOT_LINKED_OR_EXECUTED",
+  "hardware_executed": false,
+  "deployable": false,
+  "command": [
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+    "-c",
+    "-mlittle-endian",
+    "-mcpu=v9.2",
+    "-DARTIQ_PIT_FAULT_ENTRY_AUDIT_ONLY=1",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_fault_entry_audit.S",
+    "-o",
+    "/home/codex-hil/.local/state/artiq-builds/pit-fault-entry-object-20261101-v1/entry.o"
+  ],
+  "source_sha256": "dad43312487a560023faa0e6975bc2fd6f5e86b7616660951882e7dab6426bd2",
+  "object_sha256": "a8ff1efa5e91f0fde20dda71263de4c8a5f6b1d813f35a49b6f93b8184eb2446",
+  "limits": "Object only; no vector/entry/slot runtime qualification, reentry exclusion, notification preservation, external visibility, sleep or recovery."
+}

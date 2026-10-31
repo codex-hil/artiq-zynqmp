@@ -1,0 +1,10 @@
+
+Relocation section '.rela.text.pit_fault_sw_entry_audit' at offset 0x220 contains 2 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name + Addend
+0000000c  00000705 R_MICROBLAZE_64        00000000   pit_fault_entry_slot + 0
+00000078  00000000 R_MICROBLAZE_NONE                 0
+
+Relocation section '.rela.text.pit_fault_hw_entry_audit' at offset 0x238 contains 2 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name + Addend
+0000000c  00000705 R_MICROBLAZE_64        00000000   pit_fault_entry_slot + 0
+00000078  00000000 R_MICROBLAZE_NONE                 0

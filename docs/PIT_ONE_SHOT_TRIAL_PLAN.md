@@ -197,3 +197,7 @@ Actual minimal ELF writer110-word profile and all word/storage/boundary/listing 
 ## 2026-11-01 stackless entry contract
 
 Contract `PIT_EXCEPTION_ENTRY_CONTRACT.md` separates no-stack assembly proposal from C writer and hardware entry qualification; evidence `evidence/pit-exception-entry-contract-offline-2026-11-01`. Official AMD ABI/exception/mbar reviewed; no code/vector/HW change,146 prior tests unchanged. Next safe offline: standalone unreferenced assembly candidate/static inspection only. No EDR read without configuration proof, vector binding or live injection.
+
+## 2026-11-01 standalone assembly entry candidate
+
+Two unreferenced128B entries/64B slot, no stack/calls/vectors, MSR/ESR/EAR only. Exact object/relocation64-word mutant controls and149 tests PASS; evidence `evidence/pit-fault-entry-object-offline-2026-11-01`. No linked address/HW or handler admission. Next offline: isolated explicit-map non-runtime link and static resolved-address/store/fence/loop checks, preserve production policy and all nested-fault/recovery gaps.
