@@ -1,0 +1,162 @@
+{
+  "status": "LINKED_DIGEST_DEPENDENCIES_PASS_NOT_RUNTIME_INTEGRATION",
+  "hardware_executed": false,
+  "deployable": false,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd9660",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffdddd0c",
+      "end_exclusive": "0xffdded10"
+    },
+    "bytes_after_stack_before_extension_table": 2512,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "mailbox": {
+    "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+    "hardware_executed": false,
+    "deployable": false,
+    "pmu_ram_access_allowed": false,
+    "image_sha256": "3aad2366f261386f17e06c98b340daab992cb0b4407a995a0effa7b5bce832aa",
+    "mailbox": {
+      "start": "0xffddd360",
+      "bytes": 144,
+      "end_exclusive": "0xffddd3f0"
+    },
+    "samples": {
+      "start": "0xffddd360",
+      "bytes": 48
+    },
+    "terminal": {
+      "start": "0xffddd390",
+      "bytes": 96
+    },
+    "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+    "baseline_layout": {
+      "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+      "hardware_executed": false,
+      "entry": "0xffdc0050",
+      "telemetry": {
+        "start": "0xffdd9660",
+        "bytes": 32
+      },
+      "stack": {
+        "start": "0xffdddd0c",
+        "end_exclusive": "0xffdded10"
+      },
+      "bytes_after_stack_before_extension_table": 2512,
+      "destructive_test_allowed": false,
+      "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+    },
+    "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified."
+  },
+  "scoped_stores": {
+    "pit_capture_digest": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 17,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_sample_sha256": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 26,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "swap": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 0,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_collect.constprop.0": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 16,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_publish": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 14,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    }
+  },
+  "direct_calls": {
+    "pit_capture_digest": [
+      {
+        "pc": 4292675548,
+        "target": 4292658208
+      },
+      {
+        "pc": 4292675580,
+        "target": 4292674360
+      },
+      {
+        "pc": 4292675664,
+        "target": 4292656472
+      }
+    ],
+    "pit_sample_sha256": [
+      {
+        "pc": 4292674648,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675120,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675140,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675160,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675180,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675200,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675220,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675240,
+        "target": 4292658196
+      },
+      {
+        "pc": 4292675260,
+        "target": 4292658196
+      }
+    ],
+    "swap": [],
+    "pit_collect.constprop.0": [],
+    "pit_publish": []
+  },
+  "sha_constants_match": true,
+  "scoped_sha_peak_frame_subtotal": 456,
+  "total_stack_qualified": false,
+  "limits": "Manual direct-call and scoped word-store/constants checks; no generic CFG/transitive callback/exception proof, digest lifecycle integration or physical qualification."
+}

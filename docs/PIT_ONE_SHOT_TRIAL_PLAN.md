@@ -137,3 +137,7 @@ Separate fixed-record C SHA-256 candidate passes 258 hashlib comparisons, reject
 ## 2026-10-31 private digest pipeline candidate
 
 Separate local-snapshot capture/hash/publication API and failure/reentry tests added; evidence `evidence/pit-capture-digest-offline-2026-10-31`. Not connected to existing lifecycle or terminal metadata. Target standalone frame156, expected three dependencies; next offline step is distinct C/LTO link and store/call/stack inspection. No physical admission or frozen-profile change.
+
+## 2026-10-31 linked digest dependencies
+
+Separate digest API/SHA retained in fresh19-unit LTO image; scoped calls/stores/constants/layout PASS. SHA path frame subtotal456 is not whole-stack proof. Evidence `evidence/pit-capture-digest-link-offline-2026-10-31`. Existing121 tests unchanged, no HW. Next safe offline step: separate lifecycle/composition consumes internally generated digest, final MSR after hash and explicit failure/substitution controls; existing root/frozen profiles remain unchanged.

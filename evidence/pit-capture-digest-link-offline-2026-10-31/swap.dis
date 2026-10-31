@@ -1,0 +1,5 @@
+ffdcc414 <swap>:
+ffdcc414:	906501e0 	swapb	r3, r5
+ffdcc418:	b60f0008 	rtsd	r15, 8
+ffdcc41c:	80000000 	or	r0, r0, r0
+

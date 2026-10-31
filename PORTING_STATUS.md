@@ -1,3 +1,9 @@
+## 2026-10-31 — linked private digest dependencies (offline)
+
+Fresh19-unit small C/LTO audit ELF PASS, no undefined symbols. New API retained separately: capture frame156 calls collector92, SHA300 and publisher104; SHA calls local swap0. Same stack+32 record passed to hash/publisher; SHA constants match ELF/source. Five scoped word-store checks and layout/mailbox PASS. Scoped SHA path456 excludes caller/callback/exception frames. Evidence `evidence/pit-capture-digest-link-offline-2026-10-31`. Existing121 implementation tests remain dated, unchanged.
+
+No HW operations or runtime integration; old IRQ root still uses old lifecycle. New artifact is not admitted by older exact gates. Next safe offline step: distinct digest-aware lifecycle/composition using internally computed sample digest, final MSR after hash, failure/caller-hash substitution tests, then fresh root link. Hook, image-digest delivery/trust, exceptions, reader lifetime and recovery remain open; deployment refused.
+
 ## 2026-10-31 — private capture/digest/publication candidate (offline)
 
 Full Python PIT suite: 121 tests PASS.
