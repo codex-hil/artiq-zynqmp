@@ -1,0 +1,17 @@
+ffdcc244 <pit_irq_msr_audit>:
+ffdcc244:	10600000 	addk	r3, r0, r0
+ffdcc248:	8ca51c00 	pcmpne	r5, r5, r3
+ffdcc24c:	be25002c 	bneid	r5, 44		// ffdcc278
+ffdcc250:	88a62c00 	pcmpeq	r5, r6, r5
+ffdcc254:	be250024 	bneid	r5, 36		// ffdcc278
+ffdcc258:	a4860003 	andi	r4, r6, 3
+ffdcc25c:	be240014 	bneid	r4, 20		// ffdcc270
+ffdcc260:	3060ffff 	addik	r3, r0, -1
+ffdcc264:	94608001 	mfs	r3, rmsr
+ffdcc268:	f8660000 	swi	r3, r6, 0
+ffdcc26c:	10640000 	addk	r3, r4, r0
+ffdcc270:	b60f0008 	rtsd	r15, 8
+ffdcc274:	80000000 	or	r0, r0, r0
+ffdcc278:	b810fff8 	brid	-8		// ffdcc270
+ffdcc27c:	3060ffff 	addik	r3, r0, -1
+

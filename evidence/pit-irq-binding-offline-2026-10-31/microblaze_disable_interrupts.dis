@@ -1,0 +1,14 @@
+ffdcd008 <microblaze_disable_interrupts>:
+ffdcd008:	b000ffdd 	imm	-35
+ffdcd00c:	e8608b94 	lwi	r3, r0, -29804
+ffdcd010:	bc030014 	beqi	r3, 20		// ffdcd024
+ffdcd014:	94110002 	msrclr	r0, 2
+ffdcd018:	80000000 	or	r0, r0, r0
+ffdcd01c:	b60f0008 	rtsd	r15, 8
+ffdcd020:	80000000 	or	r0, r0, r0
+ffdcd024:	94608001 	mfs	r3, rmsr
+ffdcd028:	a463fffd 	andi	r3, r3, -3
+ffdcd02c:	9403c001 	mts	rmsr, r3
+ffdcd030:	80000000 	or	r0, r0, r0
+ffdcd034:	b800ffe8 	bri	-24		// ffdcd01c
+

@@ -1,0 +1,16 @@
+ffdcd038 <pit_irq_disable_audit>:
+ffdcd038:	bc250030 	bnei	r5, 48		// ffdcd068
+ffdcd03c:	3021fff8 	addik	r1, r1, -8
+ffdcd040:	fa610004 	swi	r19, r1, 4
+ffdcd044:	f9e10000 	swi	r15, r1, 0
+ffdcd048:	12650000 	addk	r19, r5, r0
+ffdcd04c:	b9f4ffbc 	brlid	r15, -68
+ffdcd050:	80000000 	or	r0, r0, r0
+ffdcd054:	10730000 	addk	r3, r19, r0
+ffdcd058:	e9e10000 	lwi	r15, r1, 0
+ffdcd05c:	ea610004 	lwi	r19, r1, 4
+ffdcd060:	b60f0008 	rtsd	r15, 8
+ffdcd064:	30210008 	addik	r1, r1, 8
+ffdcd068:	b60f0008 	rtsd	r15, 8
+ffdcd06c:	3060ffff 	addik	r3, r0, -1
+

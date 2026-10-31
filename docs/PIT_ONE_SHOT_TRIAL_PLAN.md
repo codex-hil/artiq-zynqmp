@@ -109,3 +109,7 @@ Two isolated copies of the 40-file mailbox closure yield identical reports; 47 n
 ## 2026-10-31 IRQ callback candidates
 
 Standalone real MicroBlaze candidates and maintained interrupt-only helper compile PASS; 105 Python tests PASS. See `evidence/pit-irq-callback-offline-2026-10-31`. Candidates reject non-NULL context, observer rejects invalid alignment, compiler memory barriers bracket operations. No linked binding or physical claim. Next offline step is a separate root and fresh C/LTO link with linked helper inspection; retain old frozen profiles. No runtime hook or external PMU RAM consumer admission.
+
+## 2026-10-31 linked IRQ root checkpoint
+
+Fresh audit-only IRQ root binds actual callbacks and delegates to mailbox/MMIO roots; 106 tests PASS. Linked BSP C disable helper has two configuration-selected paths, unlike standalone .S evidence. See `evidence/pit-irq-binding-offline-2026-10-31`. No physical or deployment admission. Next: separate exact gate/mutation checks covering both helper paths/config read, bindings and relocated storage; preserve frozen prior closure.

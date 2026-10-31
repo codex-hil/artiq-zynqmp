@@ -1488,3 +1488,18 @@ evidence/pit-irq-callback-offline-2026-10-31/build.py
 evidence/pit-irq-callback-offline-2026-10-31/callbacks.dis
 evidence/pit-irq-callback-offline-2026-10-31/interrupt-helper.dis
 evidence/pit-irq-callback-offline-2026-10-31/qualification.json
+
+# Linked IRQ audit root — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_irq_composition_audit.c
+tests/test_pit_irq_binding.py
+tests/fixtures/pit_irq_binding_host.c
+evidence/pit-irq-binding-offline-2026-10-31/README.md
+evidence/pit-irq-binding-offline-2026-10-31/build.json
+evidence/pit-irq-binding-offline-2026-10-31/build.py
+evidence/pit-irq-binding-offline-2026-10-31/microblaze_disable_interrupts.dis
+evidence/pit-irq-binding-offline-2026-10-31/pit_irq_composition_audit.dis
+evidence/pit-irq-binding-offline-2026-10-31/pit_irq_disable_audit.dis
+evidence/pit-irq-binding-offline-2026-10-31/pit_irq_msr_audit.dis
+evidence/pit-irq-binding-offline-2026-10-31/pit_mailbox_composition_audit.dis
+evidence/pit-irq-binding-offline-2026-10-31/review.json
+evidence/pit-irq-binding-offline-2026-10-31/symbols.txt

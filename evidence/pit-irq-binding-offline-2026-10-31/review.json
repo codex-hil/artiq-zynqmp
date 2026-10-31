@@ -1,0 +1,103 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "python_tests": 106,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd8e00",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddd4ac",
+      "end_exclusive": "0xffdde4b0"
+    },
+    "bytes_after_stack_before_extension_table": 4656,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "mailbox": {
+    "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+    "hardware_executed": false,
+    "deployable": false,
+    "pmu_ram_access_allowed": false,
+    "image_sha256": "73909b0ffc200cab0a22043d6bbfbd72c315edb9179c83e21e5a6bb14660e1ea",
+    "mailbox": {
+      "start": "0xffddcb00",
+      "bytes": 144,
+      "end_exclusive": "0xffddcb90"
+    },
+    "samples": {
+      "start": "0xffddcb00",
+      "bytes": 48
+    },
+    "terminal": {
+      "start": "0xffddcb30",
+      "bytes": 96
+    },
+    "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+    "baseline_layout": {
+      "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+      "hardware_executed": false,
+      "entry": "0xffdc0050",
+      "telemetry": {
+        "start": "0xffdd8e00",
+        "bytes": 32
+      },
+      "stack": {
+        "start": "0xffddd4ac",
+        "end_exclusive": "0xffdde4b0"
+      },
+      "bytes_after_stack_before_extension_table": 4656,
+      "destructive_test_allowed": false,
+      "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+    },
+    "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified."
+  },
+  "word_stores": {
+    "pit_irq_composition_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 3,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_irq_msr_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 1,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_irq_disable_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 2,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "microblaze_disable_interrupts": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 0,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_mailbox_composition_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 15,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    }
+  },
+  "helper_origin": "BSP xil_exception.c, configuration-selected msrclr or mfs/andi/mts; standalone assembly evidence is not linked helper evidence",
+  "limits": "Manual linked instruction review and scoped store/layout checks only, no exact new-profile checker, runtime integration or physical qualification"
+}

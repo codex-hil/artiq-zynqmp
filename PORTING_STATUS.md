@@ -1,3 +1,9 @@
+## 2026-10-31 — linked concrete IRQ audit root (offline)
+
+Separate IRQ-binding root and fresh 17-custom-unit C/LTO image PASS, no undefined symbols; 106 Python tests PASS including optimized/sanitized host guard/binding doubles. Actual linked layout/mailbox and five scoped word-store checks PASS. Evidence `evidence/pit-irq-binding-offline-2026-10-31`.
+
+Finding: linked disable helper comes from BSP xil_exception.c, with configuration-selected msrclr or mfs/andi/mts paths; it is not the prior standalone .S helper. Both static paths clear IE2, live selection unobserved. IRQ root28 + mailbox28 + MMIO296 + disable forwarder28 + callback8 = 388-byte scoped subtotal, not total stack/exception proof. No HW operations or deployment. Next offline step: distinct exact instruction/storage/source-bound gate with mutants for both helper paths and callback bindings. Existing frozen profiles unchanged; digest, hook, exception, lifetime and recovery gaps remain.
+
 ## 2026-10-31 — concrete IRQ callback candidates (offline)
 
 Added separately opted-in MSR observation and interrupt-only-disable callback candidates, with NULL-context guards, aligned output and compiler memory barriers. Actual standalone MicroBlaze compilation PASS; observer 44 bytes/no frame, disable 60 bytes/8-byte frame/one helper relocation. Separately compiled maintained helper clears IE mask 0x2, preserving exception-enable. All 105 Python tests PASS, including host-double rejection/read-clear-read contracts and target opt-in rejection. Evidence: `evidence/pit-irq-callback-offline-2026-10-31`.

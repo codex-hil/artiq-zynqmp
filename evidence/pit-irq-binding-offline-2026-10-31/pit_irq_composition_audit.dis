@@ -1,0 +1,58 @@
+ffdd0078 <pit_irq_composition_audit>:
+ffdd0078:	3021ffe4 	addik	r1, r1, -28
+ffdd007c:	be0500b8 	beqid	r5, 184		// ffdd0134
+ffdd0080:	f9e10000 	swi	r15, r1, 0
+ffdd0084:	e8650090 	lwi	r3, r5, 144
+ffdd0088:	bc0300ac 	beqi	r3, 172		// ffdd0134
+ffdd008c:	e885008c 	lwi	r4, r5, 140
+ffdd0090:	bc2400a4 	bnei	r4, 164		// ffdd0134
+ffdd0094:	e885009c 	lwi	r4, r5, 156
+ffdd0098:	bc24009c 	bnei	r4, 156		// ffdd0134
+ffdd009c:	e8850000 	lwi	r4, r5, 0
+ffdd00a0:	bc240094 	bnei	r4, 148		// ffdd0134
+ffdd00a4:	e8850004 	lwi	r4, r5, 4
+ffdd00a8:	bc24008c 	bnei	r4, 140		// ffdd0134
+ffdd00ac:	e8850008 	lwi	r4, r5, 8
+ffdd00b0:	bc240084 	bnei	r4, 132		// ffdd0134
+ffdd00b4:	e885000c 	lwi	r4, r5, 12
+ffdd00b8:	bc24007c 	bnei	r4, 124		// ffdd0134
+ffdd00bc:	e885006c 	lwi	r4, r5, 108
+ffdd00c0:	e8c50070 	lwi	r6, r5, 112
+ffdd00c4:	80843000 	or	r4, r4, r6
+ffdd00c8:	bc04006c 	beqi	r4, 108		// ffdd0134
+ffdd00cc:	e88500a0 	lwi	r4, r5, 160
+ffdd00d0:	bc040064 	beqi	r4, 100		// ffdd0134
+ffdd00d4:	e88500a4 	lwi	r4, r5, 164
+ffdd00d8:	bc04005c 	beqi	r4, 92		// ffdd0134
+ffdd00dc:	e8850074 	lwi	r4, r5, 116
+ffdd00e0:	bc240054 	bnei	r4, 84		// ffdd0134
+ffdd00e4:	e8850078 	lwi	r4, r5, 120
+ffdd00e8:	bc24004c 	bnei	r4, 76		// ffdd0134
+ffdd00ec:	e885007c 	lwi	r4, r5, 124
+ffdd00f0:	bc240044 	bnei	r4, 68		// ffdd0134
+ffdd00f4:	e8850080 	lwi	r4, r5, 128
+ffdd00f8:	bc24003c 	bnei	r4, 60		// ffdd0134
+ffdd00fc:	e8850084 	lwi	r4, r5, 132
+ffdd0100:	bc240034 	bnei	r4, 52		// ffdd0134
+ffdd0104:	e8850094 	lwi	r4, r5, 148
+ffdd0108:	bc24002c 	bnei	r4, 44		// ffdd0134
+ffdd010c:	e8850098 	lwi	r4, r5, 152
+ffdd0110:	bc240024 	bnei	r4, 36		// ffdd0134
+ffdd0114:	e8830008 	lwi	r4, r3, 8
+ffdd0118:	bc24001c 	bnei	r4, 28		// ffdd0134
+ffdd011c:	e883000c 	lwi	r4, r3, 12
+ffdd0120:	bc240014 	bnei	r4, 20		// ffdd0134
+ffdd0124:	e8830010 	lwi	r4, r3, 16
+ffdd0128:	bc24000c 	bnei	r4, 12		// ffdd0134
+ffdd012c:	e8630014 	lwi	r3, r3, 20
+ffdd0130:	bc03000c 	beqi	r3, 12		// ffdd013c
+ffdd0134:	b9f4f5ec 	brlid	r15, -2580
+ffdd0138:	80000000 	or	r0, r0, r0
+ffdd013c:	b000ffdc 	imm	-36
+ffdd0140:	3060c244 	addik	r3, r0, -15804
+ffdd0144:	f8650074 	swi	r3, r5, 116
+ffdd0148:	b000ffdc 	imm	-36
+ffdd014c:	3060d038 	addik	r3, r0, -12232
+ffdd0150:	b9f4fd48 	brlid	r15, -696
+ffdd0154:	f8650078 	swi	r3, r5, 120
+
