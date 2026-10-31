@@ -1,0 +1,84 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-standalone-20261031-v1/sha.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_fault_store_audit>:
+   0:	b0000000 	imm	0
+			0: R_MICROBLAZE_64	.bss
+   4:	e8600000 	lwi	r3, r0, 0
+   8:	bc270020 	bnei	r7, 32		// 28
+			8: R_MICROBLAZE_NONE	*ABS*+0x20
+   c:	b60f0008 	rtsd	r15, 8
+  10:	3060ffff 	addik	r3, r0, -1
+  14:	3060ffff 	addik	r3, r0, -1
+  18:	ea61005c 	lwi	r19, r1, 92
+  1c:	eac10060 	lwi	r22, r1, 96
+  20:	b60f0008 	rtsd	r15, 8
+  24:	30210064 	addik	r1, r1, 100
+  28:	a4870003 	andi	r4, r7, 3
+  2c:	80841800 	or	r4, r4, r3
+  30:	be24ffdc 	bneid	r4, -36		// c
+			30: R_MICROBLAZE_NONE	*ABS*-0x24
+  34:	11070000 	addk	r8, r7, r0
+  38:	30600010 	addik	r3, r0, 16
+  3c:	64e40402 	bslli	r7, r4, 2
+  40:	b0000000 	imm	0
+			40: R_MICROBLAZE_64	pit_fault_slot_audit
+  44:	30e70000 	addik	r7, r7, 0
+  48:	e8e70000 	lwi	r7, r7, 0
+  4c:	bc27ffc0 	bnei	r7, -64		// c
+			4c: R_MICROBLAZE_NONE	*ABS*-0x40
+  50:	3063ffff 	addik	r3, r3, -1
+  54:	be23ffe8 	bneid	r3, -24		// 3c
+			54: R_MICROBLAZE_NONE	*ABS*-0x18
+  58:	30840001 	addik	r4, r4, 1
+  5c:	3021ff9c 	addik	r1, r1, -100
+  60:	30800001 	addik	r4, r0, 1
+  64:	fa61005c 	swi	r19, r1, 92
+  68:	fac10060 	swi	r22, r1, 96
+  6c:	f9e10000 	swi	r15, r1, 0
+  70:	b0000000 	imm	0
+			70: R_MICROBLAZE_64	.bss
+  74:	f8800000 	swi	r4, r0, 0
+  78:	32600010 	addik	r19, r0, 16
+  7c:	32c1001c 	addik	r22, r1, 28
+  80:	64830402 	bslli	r4, r3, 2
+  84:	3273ffff 	addik	r19, r19, -1
+  88:	d804b000 	sw	r0, r4, r22
+  8c:	be33fff4 	bneid	r19, -12		// 80
+			8c: R_MICROBLAZE_NONE	*ABS*-0xc
+  90:	30630001 	addik	r3, r3, 1
+  94:	10e60000 	addk	r7, r6, r0
+  98:	10c50000 	addk	r6, r5, r0
+  9c:	b0000000 	imm	0
+			9c: R_MICROBLAZE_64_PCREL	pit_fault_format
+  a0:	b9f40000 	brlid	r15, 0
+  a4:	10b60000 	addk	r5, r22, r0
+  a8:	be23ff6c 	bneid	r3, -148		// 14
+			a8: R_MICROBLAZE_NONE	*ABS*-0x94
+  ac:	e9e10000 	lwi	r15, r1, 0
+  b0:	b0000000 	imm	0
+			b0: R_MICROBLAZE_64	pit_fault_slot_audit
+  b4:	30e00000 	addik	r7, r0, 0
+  b8:	fa670000 	swi	r19, r7, 0
+  bc:	b8220004 	mbar	1
+  c0:	30a0000f 	addik	r5, r0, 15
+  c4:	30c00001 	addik	r6, r0, 1
+  c8:	64860402 	bslli	r4, r6, 2
+  cc:	c904b000 	lw	r8, r4, r22
+  d0:	b0000000 	imm	0
+			d0: R_MICROBLAZE_64	pit_fault_slot_audit
+  d4:	30840000 	addik	r4, r4, 0
+  d8:	30a5ffff 	addik	r5, r5, -1
+  dc:	f9040000 	swi	r8, r4, 0
+  e0:	be25ffe8 	bneid	r5, -24		// c8
+			e0: R_MICROBLAZE_NONE	*ABS*-0x18
+  e4:	30c60001 	addik	r6, r6, 1
+  e8:	b8220004 	mbar	1
+  ec:	30800001 	addik	r4, r0, 1
+  f0:	f8870000 	swi	r4, r7, 0
+  f4:	b810ff24 	brid	-220		// 18
+			f4: R_MICROBLAZE_NONE	*ABS*-0xdc
+  f8:	e9e10000 	lwi	r15, r1, 0

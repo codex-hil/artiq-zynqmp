@@ -1,3 +1,11 @@
+## 2026-10-31 — direct owned fault slot candidate, full link rejected (offline)
+
+Full PIT Python suite:143 tests PASS; full target link remains FAILED.
+
+Added target-opt-in64-byte BSS slot/direct u32 writer with two mbar1 fences, one-context consumed flag and direct formatter only. Host fence-double O2/sanitizer cases PASS; actual standalone object252 bytes/frame100, slot64/state4, expected formatter dependency, no detected subword stores/indirect calls. Evidence `evidence/pit-fault-slot-offline-2026-10-31`.
+
+Full25-unit cumulative audit link FAILED: PMU_RAM overflow272 bytes, stack ffdde7ec..ffddf7ef overlaps service table ffddf6e0..ffddfadf. No valid new linked artifact; no stack/table/linker relaxation or HW operation. Existing valid/frozen images untouched. Next safe offline step: isolated minimal source closure removing unrelated retained audit profiles while preserving stack/service-table requirements, then fresh link/layout checks. Exception entry/reentrancy/policy/sleep/recovery remain unqualified; deployment refused.
+
 ## 2026-10-31 — word-oriented fault formatting/publication model (offline)
 
 Full PIT Python suite:142 tests PASS.

@@ -1719,3 +1719,18 @@ evidence/pit-fault-record-offline-2026-10-31/build.py
 evidence/pit-fault-record-offline-2026-10-31/qualification.json
 evidence/pit-fault-record-offline-2026-10-31/sha.dis
 evidence/pit-fault-record-offline-2026-10-31/stack.txt
+
+# Direct owned fault slot candidate — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_fault_slot_audit.c
+diagnostics/ddr/pit_collect/pit_fault_slot_audit.h
+tests/test_pit_fault_slot.py
+evidence/pit-fault-slot-offline-2026-10-31/README.md
+evidence/pit-fault-slot-offline-2026-10-31/build.json
+evidence/pit-fault-slot-offline-2026-10-31/build.py
+evidence/pit-fault-slot-offline-2026-10-31/failed-link.json
+evidence/pit-fault-slot-offline-2026-10-31/failed-link.log
+evidence/pit-fault-slot-offline-2026-10-31/qualification.json
+evidence/pit-fault-slot-offline-2026-10-31/sha.dis
+evidence/pit-fault-slot-offline-2026-10-31/stack.txt
+evidence/pit-fault-slot-offline-2026-10-31/standalone-symbols.txt
+evidence/pit-fault-slot-offline-2026-10-31/standalone.py

@@ -1,0 +1,10 @@
+microblaze-xilinx-elf-gcc.real: warning: '-pipe' ignored because '-save-temps' specified
+microblaze-xilinx-elf-gcc.real: warning: '-pipe' ignored because '-save-temps' specified
+lto-wrapper.real: warning: using serial compilation of 2 LTRANS jobs
+lto-wrapper.real: note: see the '-flto' option documentation for more information
+microblaze-xilinx-elf-gcc.real: warning: '-pipe' ignored because '-save-temps' specified
+microblaze-xilinx-elf-gcc.real: warning: '-pipe' ignored because '-save-temps' specified
+/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/gnu/microblaze/lin/x86_64-oesdk-linux/usr/bin/microblaze-xilinx-elf/microblaze-xilinx-elf-ld.real: /home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf section `.stack' will not fit in region `PMU_RAM'
+/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/gnu/microblaze/lin/x86_64-oesdk-linux/usr/bin/microblaze-xilinx-elf/microblaze-xilinx-elf-ld.real: section .xpbr_serv_ext_tbl VMA [ffddf6e0,ffddfadf] overlaps section .stack VMA [ffdde7ec,ffddf7ef]
+/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/gnu/microblaze/lin/x86_64-oesdk-linux/usr/bin/microblaze-xilinx-elf/microblaze-xilinx-elf-ld.real: region `PMU_RAM' overflowed by 272 bytes
+collect2.real: error: ld returned 1 exit status

@@ -181,3 +181,7 @@ Distinct16-u32/64-byte fault schema and host supplied-word codec,140 tests PASS.
 ## 2026-10-31 fault formatter/publication model
 
 Portable supplied-word C formatter and19-stage one-shot publisher, host codec/failure/source-snapshot/sanitizer controls; actual target no undefined/subword stores, frames68/120. Evidence `evidence/pit-fault-record-offline-2026-10-31`. No exception entry/vector changes or printf fix. Next offline: owned64-byte direct target slot/fence writer, no callbacks, still unbound to vectors; entry/reentrancy/sleep/recovery remain separate.
+
+## 2026-10-31 owned fault slot capacity finding
+
+Target direct writer object has two mbar1/u32 stores and frame100; host fence doubles pass. Full cumulative audit link fails RAM overflow272/stack-service-table overlap, no valid new image. Evidence `evidence/pit-fault-slot-offline-2026-10-31`. No shrinking stack/moving table/HW/vector changes. Next offline step: minimal isolated source closure excluding unrelated retained profiles, preserving all linker/stack constraints and verifying fresh layout. Handler entry/reentrancy/sleep/recovery still open.

@@ -1,0 +1,17 @@
+{
+  "status": "REJECTED_RAM_STACK_SERVICE_TABLE_OVERLAP",
+  "hardware_executed": false,
+  "deployable": false,
+  "overflow_bytes": 272,
+  "stack_vma_start": "0xffdde7ec",
+  "stack_vma_end": "0xffddf7ef",
+  "service_table_start": "0xffddf6e0",
+  "service_table_end": "0xffddfadf",
+  "stack_reduced": false,
+  "table_relocated": false,
+  "log_sha256": "ce8bebd45c08edb86efc58d28ca34b851c5a8a18ba73dfe79b79592442b48fb8",
+  "source_sha256": {
+    "pit_fault_slot_audit.c": "01c1da2befc0b73c7e938a52524c96e3e395bd05a0be068caf3228dc6d3db79b",
+    "pit_fault_slot_audit.h": "4a52fdda617b8efd4724293207b4b13bbf999af1670644426dccd9ea6a3c9c8d"
+  }
+}
