@@ -1,0 +1,111 @@
+{
+  "files_scanned": 397,
+  "roots": [
+    "diagnostics/ddr/pit_collect",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src"
+  ],
+  "references": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c",
+      "line": 46,
+      "text": "static XMicroblaze_Config *CfgPtr = XGet_CpuCfgPtr();"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c",
+      "line": 360,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c",
+      "line": 373,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c",
+      "line": 385,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c",
+      "line": 398,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c",
+      "line": 409,
+      "text": "XMicroblaze_Config *CfgPtr = XGet_CpuCfgPtr();"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_cache.c",
+      "line": 423,
+      "text": "XMicroblaze_Config *CfgPtr = XGet_CpuCfgPtr();"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_exception.c",
+      "line": 67,
+      "text": "static XMicroblaze_Config *CfgPtr = XGet_CpuCfgPtr();"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_exception.c",
+      "line": 190,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_exception.c",
+      "line": 202,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_exception.c",
+      "line": 214,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xil_exception.c",
+      "line": 227,
+      "text": "if (CfgPtr->UseMsrInstr) {"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xmicroblaze.h",
+      "line": 28,
+      "text": "u32 UseMsrInstr;"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xmicroblaze_config.h",
+      "line": 17,
+      "text": "extern XMicroblaze_Config XMicroblaze_ConfigTable;"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xmicroblaze_config.h",
+      "line": 20,
+      "text": "#define XGet_CpuFreq() XMicroblaze_ConfigTable.CpuFreq"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xmicroblaze_config.h",
+      "line": 21,
+      "text": "#define XGet_CpuId() XMicroblaze_ConfigTable.CpuId"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xmicroblaze_config.h",
+      "line": 22,
+      "text": "#define XGet_DdrSa() XMicroblaze_ConfigTable.DdrSa"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/xmicroblaze_config.h",
+      "line": 23,
+      "text": "#define XGet_CpuCfgPtr() &XMicroblaze_ConfigTable"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/riscv/xmicroblaze_riscv_config.h",
+      "line": 23,
+      "text": "#define XGet_CpuCfgPtr() &XMicroblaze_RISCV_ConfigTable"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/xmicroblaze_g.c",
+      "line": 3,
+      "text": "XMicroblaze_Config XMicroblaze_ConfigTable[] __attribute__ ((section (\".drvcfg_sec\"))) = {"
+    }
+  ],
+  "no_write_proof": false,
+  "limits": "Lexical named references only, not alias/assembly/DMA/debug/vendor-runtime writer exclusion."
+}

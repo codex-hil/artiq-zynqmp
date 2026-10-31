@@ -1536,3 +1536,10 @@ evidence/pit-irq-frozen-offline-2026-10-31/freeze.py
 evidence/pit-irq-frozen-offline-2026-10-31/inventory.json
 evidence/pit-irq-frozen-offline-2026-10-31/replay.py
 evidence/pit-irq-frozen-offline-2026-10-31/verification.json
+
+# IRQ initial configuration review — LGPL-3.0-or-later
+scripts/check_pit_irq_config.py
+tests/test_pit_irq_config.py
+evidence/pit-irq-config-offline-2026-10-31/README.md
+evidence/pit-irq-config-offline-2026-10-31/references.json
+evidence/pit-irq-config-offline-2026-10-31/review.json

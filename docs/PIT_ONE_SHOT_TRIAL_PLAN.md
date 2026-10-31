@@ -121,3 +121,7 @@ Actual IRQ image passes exact 20-body/1008-word profile with 41 pinned inputs; 1
 ## 2026-10-31 frozen IRQ checkpoint
 
 43-file closure copied/relocated; identical isolated reports, 50 negative controls rejected. External anchor/recipe in `evidence/pit-irq-frozen-offline-2026-10-31`. No HW or deployment admission. Next safe offline dependency review: configuration flag feeding linked IRQ-helper branch, ELF initial bytes and BSP writes; live contents remain unobserved. Preserve frozen profiles and unresolved hook/digest/exception/lifetime/recovery requirements.
+
+## 2026-10-31 initial IRQ configuration dependency
+
+BSP and target compiler layout checks trace linked ffdd8b94 to initial UseMsrInstr=1 in ELF. 115 tests PASS; see `evidence/pit-irq-config-offline-2026-10-31`. No live or no-writer proof. Frozen profiles unchanged. Next offline requirement: canonical digest inputs/ordering and producer contract for actual image/sample bytes, replacing no existing profile until a separate implementation is reviewed. Physical admission remains closed.

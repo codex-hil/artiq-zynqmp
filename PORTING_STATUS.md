@@ -1,3 +1,9 @@
+## 2026-10-31 — initial IRQ configuration traced (offline)
+
+ELF field ffdd8b94 = UseMsrInstr offset44 in XMicroblaze_ConfigTable ffdd8b68/0x138, initial u32 value1. Actual-target static assertions confirm layout; BSP initializer/macros/CfgPtr and linked direct load agree. Would select msrclr only if loaded unchanged; no live state or immutability claim. Lexical references cover 397 project/BSP files (20 matches), not alias/vendor/debug/DMA writer exclusion. 115 Python tests PASS. Evidence `evidence/pit-irq-config-offline-2026-10-31`.
+
+No HW operations or frozen gate changes. Next safe offline step: define image/sample digest production and canonical sample bytes/ordering; current caller-supplied hashes have unqualified provenance and correlation. Hook, exception/whole-stack, reader no-wake lifetime and arbitrary-hang recovery remain open; deployment refused.
+
 ## 2026-10-31 — frozen linked IRQ replay (offline)
 
 Two isolated copies of the IRQ closure (43 files plus inventory each) produce identical audit reports; all 50 negative controls reject. Independent inventory SHA-256 `1b06e40bbdc63f7db960f97dc394593f68ddc612687b96ec977ea1aed4f4a408`. Evidence `evidence/pit-irq-frozen-offline-2026-10-31`. Existing 113-test result unchanged; no implementation/gate or HW operations this turn. Earlier frozen profiles untouched.
