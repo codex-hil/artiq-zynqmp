@@ -1,3 +1,9 @@
+## 2026-10-31 — owned mailbox exact instruction gate (offline)
+
+Separate mailbox profile passed against the actual linked ELF: 16 function bodies / 911 instruction words, owned storage and mailbox layout checked; 27 source/header + eight helper + three artifact pins. All 104 Python tests passed (19 labeled instruction mutants, every scoped word mutated, 38 file tamper controls). Evidence: `evidence/pit-mailbox-flow-gate-offline-2026-10-31`.
+
+Exact pins provide build-specific consistency only, not generic flow proof or transitive callback/exception qualification. Gate always refuses deployment. No hardware operation this turn; normal runtime physical claims remain dated and unchanged. Next safe step: frozen relocated replay of this closure. PMU hook, physical MSR/disable callbacks, digest production, no-wake reader lifetime and recovery remain open.
+
 # Genesys ZU-5EV — status portu ARTIQ
 
 ## 2026-10-31 — owned mailbox audit root linked offline

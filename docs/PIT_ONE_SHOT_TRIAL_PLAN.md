@@ -97,3 +97,7 @@ including21hostdoublebindingcasesPASS. Read/internalbarriersubtotals376/416NOTto
 External MSR/disable/hashorigin and runtime/consumer/recovery remain unqualified.
 New27-sourceheaderclosure required. Next exact binding/fence/sequence mutations.
 [Evidence](../evidence/pit-mailbox-binding-offline-2026-10-31/README.md).
+
+## 2026-10-31 owned mailbox gate checkpoint
+
+The separately pinned owned-mailbox profile passes on its actual ELF (16 bodies, 911 words, 38 inputs); 104 tests pass. See `evidence/pit-mailbox-flow-gate-offline-2026-10-31`. This adds no hardware admission. Next offline step is frozen relocated replay, retaining explicit refusal of deployment and all callback, reader lifetime and recovery gaps.

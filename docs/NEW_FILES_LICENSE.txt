@@ -1459,3 +1459,13 @@ evidence/pit-mailbox-binding-offline-2026-10-31/review.json
 evidence/pit-mailbox-binding-offline-2026-10-31/symbols.txt
 evidence/pit-mailbox-binding-offline-2026-10-31/undefined.txt
 evidence/pit-mailbox-binding-offline-2026-10-31/write_word.dis
+
+# Owned mailbox instruction gate — LGPL-3.0-or-later
+scripts/check_pit_mailbox_flow.py
+scripts/pit_mailbox_audit_gate.py
+tests/test_pit_mailbox_flow.py
+tests/test_pit_mailbox_gate.py
+evidence/pit-mailbox-flow-gate-offline-2026-10-31/README.md
+evidence/pit-mailbox-flow-gate-offline-2026-10-31/manifest.json
+evidence/pit-mailbox-flow-gate-offline-2026-10-31/qualification.json
+evidence/pit-mailbox-flow-gate-offline-2026-10-31/report.json
