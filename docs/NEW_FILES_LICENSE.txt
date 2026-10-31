@@ -1660,3 +1660,14 @@ evidence/pit-digest-root-offline-2026-10-31/stack.txt
 evidence/pit-digest-root-offline-2026-10-31/swap.dis
 evidence/pit-digest-root-offline-2026-10-31/symbols.txt
 evidence/pit-digest-root-offline-2026-10-31/write_word.lto_priv.1.dis
+
+# Exact digest-root gate — LGPL-3.0-or-later
+scripts/check_pit_digest_root_flow.py
+scripts/pit_digest_root_audit_gate.py
+tests/test_pit_digest_root_flow.py
+tests/test_pit_digest_root_gate.py
+evidence/pit-digest-root-offline-2026-10-31/sha-constants.json
+evidence/pit-digest-root-gate-offline-2026-10-31/README.md
+evidence/pit-digest-root-gate-offline-2026-10-31/manifest.json
+evidence/pit-digest-root-gate-offline-2026-10-31/qualification.json
+evidence/pit-digest-root-gate-offline-2026-10-31/report.json

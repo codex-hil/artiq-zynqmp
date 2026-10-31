@@ -1,3 +1,11 @@
+## 2026-10-31 — exact digest-root gate (offline)
+
+Full PIT Python suite:133 tests PASS.
+
+Distinct actual-ELF profile PASS:29 bodies/1737 instruction words,64 SHA constant words and owned storage/ordered-adapter ranges pinned. All instruction/constant word mutations,52 changed-file controls and range/listing/schema/profile/execution refusals covered.41 project C/header +8 helper +3 artifact pins. Evidence `evidence/pit-digest-root-gate-offline-2026-10-31`.
+
+Count correction: prior build manifest has23 fresh custom C compile commands, not24 stated in preceding prose; image/source hashes unchanged. Exact scope is23 C+18 headers. No HW/runtime/frozen changes. Next safe offline step: freeze/relocate52-input closure with external inventory anchor and tamper controls. Exact consistency is not generic CFG, vendor provenance, full-stack/exception, live configuration or hardware admission; image trust/entry/no-wake reader/recovery remain open.
+
 ## 2026-10-31 — concrete digest audit root (offline)
 
 Separate opt-in root binds IRQ/raw-PIT ordered adapter/owned mailbox callbacks and digest composition, then terminal loop; no main hook. Fresh24-unit C/LTO link PASS/no undefined. Lifecycle/adapter/compose inline into root frame336; capture156+SHA300 yield scoped792, not whole stack.29 scoped word-store and layout/mailbox checks PASS;126 tests PASS including optimized/sanitized binding/guard doubles. Evidence `evidence/pit-digest-root-offline-2026-10-31`.

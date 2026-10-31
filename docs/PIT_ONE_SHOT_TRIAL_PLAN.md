@@ -157,3 +157,7 @@ Private composition generates digest and records MSR outcomes in one call; no sa
 ## 2026-10-31 concrete digest root
 
 New concrete opt-in audit root and fresh24-unit LTO artifact PASS,126 tests,29 scoped stores/layout checks. Root frame336 and scoped SHA path792 are not full-stack proof. Evidence `evidence/pit-digest-root-offline-2026-10-31`. No HW/main hook/frozen changes. Next: distinct exact instruction/storage/constants/source gate plus mutants; retain physical admission gaps.
+
+## 2026-10-31 exact digest-root gate
+
+Actual ELF exact profile pins29 bodies/1737 words,64 SHA constants/owned storage and52 files; independent mutation/refusal controls. Evidence `evidence/pit-digest-root-gate-offline-2026-10-31`. Compile-count correction: preceding build used23 custom C units (not24), unchanged artifact. Next safe offline freeze/relocation replay with external anchor; no HW or deployment admission.
