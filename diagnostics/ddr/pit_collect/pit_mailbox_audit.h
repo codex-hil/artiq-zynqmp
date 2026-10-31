@@ -6,8 +6,8 @@
 /* Image-owned allocation only. No runtime hook, producer or external reader.
  * Zero-initialized storage is not a committed result or a sleep receipt. */
 struct pit_mailbox_audit {
-    struct pit_record samples;
-    struct pit_terminal_record terminal;
+    union { struct pit_record samples; uint32_t sample_words[12]; };
+    union { struct pit_terminal_record terminal; uint32_t terminal_words[24]; };
 };
 extern volatile struct pit_mailbox_audit pit_mailbox_audit;
 #endif

@@ -1,0 +1,124 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-mailbox-publication-objects-20261031/pit_mailbox_publish_audit.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <fence>:
+   0:	be250010 	bneid	r5, 16		// 10
+			0: R_MICROBLAZE_NONE	*ABS*+0x10
+   4:	3060ffff 	addik	r3, r0, -1
+   8:	b8220004 	mbar	1
+   c:	10650000 	addk	r3, r5, r0
+  10:	b60f0008 	rtsd	r15, 8
+  14:	80000000 	or	r0, r0, r0
+
+00000018 <pit_mailbox_prepare_audit>:
+  18:	b0000000 	imm	0
+			18: R_MICROBLAZE_64	.text
+  1c:	31000000 	addik	r8, r0, 0
+  20:	b0000000 	imm	0
+			20: R_MICROBLAZE_64	pit_mailbox_audit
+  24:	30c00000 	addik	r6, r0, 0
+  28:	b0000000 	imm	0
+			28: R_MICROBLAZE_64	.bss+0x20
+  2c:	30a00020 	addik	r5, r0, 32
+  30:	3021ffe4 	addik	r1, r1, -28
+  34:	11200000 	addk	r9, r0, r0
+  38:	f9e10000 	swi	r15, r1, 0
+  3c:	b0000000 	imm	0
+			3c: R_MICROBLAZE_64_PCREL	pit_word_slot_prepare
+  40:	b9f40000 	brlid	r15, 0
+  44:	30e0000c 	addik	r7, r0, 12
+  48:	11230000 	addk	r9, r3, r0
+  4c:	be29002c 	bneid	r9, 44		// 78
+			4c: R_MICROBLAZE_NONE	*ABS*+0x2c
+  50:	3060ffff 	addik	r3, r0, -1
+  54:	b0000000 	imm	0
+			54: R_MICROBLAZE_64	.text
+  58:	31000000 	addik	r8, r0, 0
+  5c:	b0000000 	imm	0
+			5c: R_MICROBLAZE_64	pit_mailbox_audit+0x30
+  60:	30c00000 	addik	r6, r0, 0
+  64:	b0000000 	imm	0
+			64: R_MICROBLAZE_64	.bss
+  68:	30a00000 	addik	r5, r0, 0
+  6c:	b0000000 	imm	0
+			6c: R_MICROBLAZE_64_PCREL	pit_word_slot_prepare
+  70:	b9f40000 	brlid	r15, 0
+  74:	30e00018 	addik	r7, r0, 24	// 18 <pit_mailbox_prepare_audit>
+  78:	e9e10000 	lwi	r15, r1, 0
+  7c:	b60f0008 	rtsd	r15, 8
+  80:	3021001c 	addik	r1, r1, 28
+
+00000084 <pit_mailbox_sample_write_audit>:
+  84:	bc25002c 	bnei	r5, 44		// b0
+			84: R_MICROBLAZE_NONE	*ABS*+0x2c
+  88:	b0000000 	imm	0
+			88: R_MICROBLAZE_64	.bss+0x20
+  8c:	30a00020 	addik	r5, r0, 32
+  90:	3021ffe4 	addik	r1, r1, -28
+  94:	f9e10000 	swi	r15, r1, 0
+  98:	b0000000 	imm	0
+			98: R_MICROBLAZE_64_PCREL	pit_word_slot_write
+  9c:	b9f40000 	brlid	r15, 0
+  a0:	80000000 	or	r0, r0, r0
+  a4:	e9e10000 	lwi	r15, r1, 0
+  a8:	b60f0008 	rtsd	r15, 8
+  ac:	3021001c 	addik	r1, r1, 28
+  b0:	b60f0008 	rtsd	r15, 8
+  b4:	3060ffff 	addik	r3, r0, -1
+
+000000b8 <pit_mailbox_terminal_write_audit>:
+  b8:	bc25002c 	bnei	r5, 44		// e4
+			b8: R_MICROBLAZE_NONE	*ABS*+0x2c
+  bc:	b0000000 	imm	0
+			bc: R_MICROBLAZE_64	.bss
+  c0:	30a00000 	addik	r5, r0, 0
+  c4:	3021ffe4 	addik	r1, r1, -28
+  c8:	f9e10000 	swi	r15, r1, 0
+  cc:	b0000000 	imm	0
+			cc: R_MICROBLAZE_64_PCREL	pit_word_slot_write
+  d0:	b9f40000 	brlid	r15, 0
+  d4:	80000000 	or	r0, r0, r0
+  d8:	e9e10000 	lwi	r15, r1, 0
+  dc:	b60f0008 	rtsd	r15, 8
+  e0:	3021001c 	addik	r1, r1, 28
+  e4:	b60f0008 	rtsd	r15, 8
+  e8:	3060ffff 	addik	r3, r0, -1
+
+000000ec <pit_mailbox_sample_barrier_audit>:
+  ec:	bc25002c 	bnei	r5, 44		// 118
+			ec: R_MICROBLAZE_NONE	*ABS*+0x2c
+  f0:	b0000000 	imm	0
+			f0: R_MICROBLAZE_64	.bss+0x20
+  f4:	30a00020 	addik	r5, r0, 32
+  f8:	3021ffe4 	addik	r1, r1, -28
+  fc:	f9e10000 	swi	r15, r1, 0
+ 100:	b0000000 	imm	0
+			100: R_MICROBLAZE_64_PCREL	pit_word_slot_barrier
+ 104:	b9f40000 	brlid	r15, 0
+ 108:	80000000 	or	r0, r0, r0
+ 10c:	e9e10000 	lwi	r15, r1, 0
+ 110:	b60f0008 	rtsd	r15, 8
+ 114:	3021001c 	addik	r1, r1, 28
+ 118:	b60f0008 	rtsd	r15, 8
+ 11c:	3060ffff 	addik	r3, r0, -1
+
+00000120 <pit_mailbox_terminal_barrier_audit>:
+ 120:	bc25002c 	bnei	r5, 44		// 14c
+			120: R_MICROBLAZE_NONE	*ABS*+0x2c
+ 124:	b0000000 	imm	0
+			124: R_MICROBLAZE_64	.bss
+ 128:	30a00000 	addik	r5, r0, 0
+ 12c:	3021ffe4 	addik	r1, r1, -28
+ 130:	f9e10000 	swi	r15, r1, 0
+ 134:	b0000000 	imm	0
+			134: R_MICROBLAZE_64_PCREL	pit_word_slot_barrier
+ 138:	b9f40000 	brlid	r15, 0
+ 13c:	80000000 	or	r0, r0, r0
+ 140:	e9e10000 	lwi	r15, r1, 0
+ 144:	b60f0008 	rtsd	r15, 8
+ 148:	3021001c 	addik	r1, r1, 28
+ 14c:	b60f0008 	rtsd	r15, 8
+ 150:	3060ffff 	addik	r3, r0, -1

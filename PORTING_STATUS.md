@@ -1,5 +1,15 @@
 # Genesys ZU-5EV — status portu ARTIQ
 
+## 2026-10-31 — bounded word mailbox callbacks offline
+
+96PITtests/O2+ASanUBSanPASS;actualCpublishers15/27steps/byteexact;42invalid-stage
+injections+4fenceerrors/order/bounds/reentry/one-shotcontrols. Targetwrappers bind
+ownedwordarrays/NULLcontext/mbar1;nativeobjectsnosubwordstores. No fullLTO/entry
+binding or HWoperations thisturn(accessandpowercontrolavailable). MailboxABI144B
+unchanged/unionviewsnew/oldheaderpinsstale. Next separateauditbinding+LTO/layout/
+stack/callreview;new26-sourceheaderclosure. No consumer/recovery/DDR admission.
+Evidence `evidence/pit-mailbox-publication-offline-2026-10-31`.
+
 ## 2026-10-30 — image-owned mailbox allocation offline
 
 Fresh12custom-unit LTO/noUND/648projectcodepins/static mailboxlayoutPASS.

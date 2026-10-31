@@ -1419,3 +1419,16 @@ evidence/pit-mailbox-allocation-offline-2026-10-30/layout.json
 evidence/pit-mailbox-allocation-offline-2026-10-30/qualification.json
 evidence/pit-mailbox-allocation-offline-2026-10-30/symbols.txt
 evidence/pit-mailbox-allocation-offline-2026-10-30/undefined.txt
+
+diagnostics/ddr/pit_collect/pit_word_slot.c
+diagnostics/ddr/pit_collect/pit_word_slot.h
+diagnostics/ddr/pit_collect/pit_mailbox_publish_audit.c
+diagnostics/ddr/pit_collect/pit_mailbox_publish_audit.h
+tests/fixtures/pit_word_slot_host.c
+tests/test_pit_word_slot.py
+evidence/pit-mailbox-publication-offline-2026-10-31/README.md
+evidence/pit-mailbox-publication-offline-2026-10-31/compile.json
+evidence/pit-mailbox-publication-offline-2026-10-31/pit_mailbox_audit.dis
+evidence/pit-mailbox-publication-offline-2026-10-31/pit_mailbox_publish_audit.dis
+evidence/pit-mailbox-publication-offline-2026-10-31/pit_word_slot.dis
+evidence/pit-mailbox-publication-offline-2026-10-31/qualification.json

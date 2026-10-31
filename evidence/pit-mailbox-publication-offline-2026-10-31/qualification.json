@@ -1,0 +1,24 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "pit_tests": 96,
+  "host_modes": [
+    "O2",
+    "ASan_UBSan"
+  ],
+  "sample_callback_steps": 15,
+  "terminal_callback_steps": 27,
+  "invalid_offset_injection_positions": 42,
+  "fence_error_cases": 4,
+  "source_sha256": {
+    "diagnostics/ddr/pit_collect/pit_word_slot.c": "6a23741d99bf9a3f0abec621e06795f2d79490437fdc2a1d3278494ee39695c3",
+    "diagnostics/ddr/pit_collect/pit_word_slot.h": "8aefff82a9f2eda5cab6ce7abd11daa2519fc26019e276f008220fd36fba3be9",
+    "diagnostics/ddr/pit_collect/pit_mailbox_publish_audit.c": "ca9db2c3860637580c13b93b33f5285cf0665eae007dc4c87691cad2caa99fa1",
+    "diagnostics/ddr/pit_collect/pit_mailbox_publish_audit.h": "d3d3c9188d8d1ef019d0d2477be8a8cac4fae826ec921e8d2399402b14335c6a",
+    "diagnostics/ddr/pit_collect/pit_mailbox_audit.h": "706a1dbcee37c5df0b9dae480a3e4d588fc1c85989f4f6b9bf08cbff81d87a40",
+    "tests/fixtures/pit_word_slot_host.c": "61ec9b7faebf9d83bc5e5dcd5aa017d83bca8242a608dbfa6fdeb23dd12b78a3",
+    "tests/test_pit_word_slot.py": "bee958d51f8dcc976014236be65d8515b662ed14bd932a11daacf26076b25525"
+  },
+  "native_fence_word": "b8220004",
+  "limits": "Fake host RAM and native standalone objects; no full target LTO, runtime binding, physical publication visibility, external RAM consumer or recovery qualification."
+}

@@ -79,3 +79,12 @@ and initialization/lifetime/authenticity remain unproved. The mailbox changes
 custom closure to22files; previous20-source gate does not certify its placement.
 Next offline word-only bounded publisher callbacks and negative controls, no
 external RAM reader. [Evidence](../evidence/pit-mailbox-allocation-offline-2026-10-30/README.md).
+
+## Bounded mailbox publication — 2026-10-31
+
+Word-slot callbacks enforce15/27step invalidation/fence/payload/fence/commit.
+Owned target wrappers use NULLcontext andmbar1; mailbox144B union representations
+preserve offsets while permitting word-array stores.96PITtests/nativeobjectsPASS;
+no fullLTO/runtimebinding or physical publication/consumer qualification. Next
+separate audit-only binding and complete layout/call/stack review,26custom-source/
+headerclosure. [Evidence](../evidence/pit-mailbox-publication-offline-2026-10-31/README.md).

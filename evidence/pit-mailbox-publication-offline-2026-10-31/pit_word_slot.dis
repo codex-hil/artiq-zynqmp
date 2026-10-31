@@ -1,0 +1,182 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-mailbox-publication-objects-20261031/pit_word_slot.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_word_slot_prepare>:
+   0:	10600000 	addk	r3, r0, r0
+   4:	88651c00 	pcmpeq	r3, r5, r3
+   8:	bc23009c 	bnei	r3, 156		// a4
+			8: R_MICROBLAZE_NONE	*ABS*+0x9c
+   c:	88661c00 	pcmpeq	r3, r6, r3
+  10:	be230094 	bneid	r3, 148		// a4
+			10: R_MICROBLAZE_NONE	*ABS*+0x94
+  14:	a4860003 	andi	r4, r6, 3
+  18:	8c641c00 	pcmpne	r3, r4, r3
+  1c:	bc230088 	bnei	r3, 136		// a4
+			1c: R_MICROBLAZE_NONE	*ABS*+0x88
+  20:	88681c00 	pcmpeq	r3, r8, r3
+  24:	be230078 	bneid	r3, 120		// 9c
+			24: R_MICROBLAZE_NONE	*ABS*+0x78
+  28:	3060ffff 	addik	r3, r0, -1
+  2c:	3060000c 	addik	r3, r0, 12
+  30:	8c671c00 	pcmpne	r3, r7, r3
+  34:	be030014 	beqid	r3, 20		// 48
+			34: R_MICROBLAZE_NONE	*ABS*+0x14
+  38:	30800018 	addik	r4, r0, 24
+  3c:	8c872400 	pcmpne	r4, r7, r4
+  40:	be24005c 	bneid	r4, 92		// 9c
+			40: R_MICROBLAZE_NONE	*ABS*+0x5c
+  44:	3060ffff 	addik	r3, r0, -1
+  48:	e8850014 	lwi	r4, r5, 20
+  4c:	be240050 	bneid	r4, 80		// 9c
+			4c: R_MICROBLAZE_NONE	*ABS*+0x50
+  50:	3060ffff 	addik	r3, r0, -1
+  54:	e8850018 	lwi	r4, r5, 24
+  58:	bc240044 	bnei	r4, 68		// 9c
+			58: R_MICROBLAZE_NONE	*ABS*+0x44
+  5c:	e885001c 	lwi	r4, r5, 28
+  60:	bc24003c 	bnei	r4, 60		// 9c
+			60: R_MICROBLAZE_NONE	*ABS*+0x3c
+  64:	e8850010 	lwi	r4, r5, 16
+  68:	bc240034 	bnei	r4, 52		// 9c
+			68: R_MICROBLAZE_NONE	*ABS*+0x34
+  6c:	64640402 	bslli	r3, r4, 2
+  70:	c8633000 	lw	r3, r3, r6
+  74:	be230030 	bneid	r3, 48		// a4
+			74: R_MICROBLAZE_NONE	*ABS*+0x30
+  78:	30840001 	addik	r4, r4, 1
+  7c:	16472003 	cmpu	r18, r7, r4
+  80:	bc52ffec 	blti	r18, -20		// 6c
+			80: R_MICROBLAZE_NONE	*ABS*-0x14
+  84:	30800001 	addik	r4, r0, 1
+  88:	f8c50000 	swi	r6, r5, 0
+  8c:	f8e5000c 	swi	r7, r5, 12
+  90:	f9050004 	swi	r8, r5, 4
+  94:	f9250008 	swi	r9, r5, 8
+  98:	f8850014 	swi	r4, r5, 20
+  9c:	b60f0008 	rtsd	r15, 8
+  a0:	80000000 	or	r0, r0, r0
+  a4:	b810fff8 	brid	-8		// 9c
+			a4: R_MICROBLAZE_NONE	*ABS*-0x8
+  a8:	3060ffff 	addik	r3, r0, -1
+
+000000ac <pit_word_slot_write>:
+  ac:	be050050 	beqid	r5, 80		// fc
+			ac: R_MICROBLAZE_NONE	*ABS*+0x50
+  b0:	3060ffff 	addik	r3, r0, -1
+  b4:	e8650014 	lwi	r3, r5, 20
+  b8:	be030044 	beqid	r3, 68		// fc
+			b8: R_MICROBLAZE_NONE	*ABS*+0x44
+  bc:	3060ffff 	addik	r3, r0, -1
+  c0:	e8650018 	lwi	r3, r5, 24
+  c4:	be230038 	bneid	r3, 56		// fc
+			c4: R_MICROBLAZE_NONE	*ABS*+0x38
+  c8:	3060ffff 	addik	r3, r0, -1
+  cc:	e865001c 	lwi	r3, r5, 28
+  d0:	be230028 	bneid	r3, 40		// f8
+			d0: R_MICROBLAZE_NONE	*ABS*+0x28
+  d4:	a4660003 	andi	r3, r6, 3
+  d8:	be23001c 	bneid	r3, 28		// f4
+			d8: R_MICROBLAZE_NONE	*ABS*+0x1c
+  dc:	30600001 	addik	r3, r0, 1
+  e0:	e865000c 	lwi	r3, r5, 12
+  e4:	64830402 	bslli	r4, r3, 2
+  e8:	16443003 	cmpu	r18, r4, r6
+  ec:	bc520018 	blti	r18, 24		// 104
+			ec: R_MICROBLAZE_NONE	*ABS*+0x18
+  f0:	30600001 	addik	r3, r0, 1
+  f4:	f8650018 	swi	r3, r5, 24
+  f8:	3060ffff 	addik	r3, r0, -1
+  fc:	b60f0008 	rtsd	r15, 8
+ 100:	80000000 	or	r0, r0, r0
+ 104:	e8850010 	lwi	r4, r5, 16
+ 108:	bc24002c 	bnei	r4, 44		// 134
+			108: R_MICROBLAZE_NONE	*ABS*+0x2c
+ 10c:	80663800 	or	r3, r6, r7
+ 110:	be23ffe0 	bneid	r3, -32		// f0
+			110: R_MICROBLAZE_NONE	*ABS*-0x20
+ 114:	30840001 	addik	r4, r4, 1
+ 118:	e8650000 	lwi	r3, r5, 0
+ 11c:	f8850010 	swi	r4, r5, 16
+ 120:	a4c6fffc 	andi	r6, r6, -4
+ 124:	d8e61800 	sw	r7, r6, r3
+ 128:	f805001c 	swi	r0, r5, 28
+ 12c:	b810ffd0 	brid	-48		// fc
+			12c: R_MICROBLAZE_NONE	*ABS*-0x30
+ 130:	10600000 	addk	r3, r0, r0
+ 134:	16441803 	cmpu	r18, r4, r3
+ 138:	be520020 	bltid	r18, 32		// 158
+			138: R_MICROBLAZE_NONE	*ABS*+0x20
+ 13c:	31000001 	addik	r8, r0, 1
+ 140:	8d044400 	pcmpne	r8, r4, r8
+ 144:	bc080014 	beqi	r8, 20		// 158
+			144: R_MICROBLAZE_NONE	*ABS*+0x14
+ 148:	3064ffff 	addik	r3, r4, -1
+ 14c:	64630402 	bslli	r3, r3, 2
+ 150:	b810ffc0 	brid	-64		// 110
+			150: R_MICROBLAZE_NONE	*ABS*-0x40
+ 154:	88661800 	xor	r3, r6, r3
+ 158:	30630002 	addik	r3, r3, 2
+ 15c:	88641800 	xor	r3, r4, r3
+ 160:	be23ff90 	bneid	r3, -112		// f0
+			160: R_MICROBLAZE_NONE	*ABS*-0x70
+ 164:	8c661c00 	pcmpne	r3, r6, r3
+ 168:	be23ff88 	bneid	r3, -120		// f0
+			168: R_MICROBLAZE_NONE	*ABS*-0x78
+ 16c:	30600001 	addik	r3, r0, 1
+ 170:	b810ffa0 	brid	-96		// 110
+			170: R_MICROBLAZE_NONE	*ABS*-0x60
+ 174:	8c671c00 	pcmpne	r3, r7, r3
+
+00000178 <pit_word_slot_barrier>:
+ 178:	bc05009c 	beqi	r5, 156		// 214
+			178: R_MICROBLAZE_NONE	*ABS*+0x9c
+ 17c:	3021ffe0 	addik	r1, r1, -32
+ 180:	fa61001c 	swi	r19, r1, 28
+ 184:	f9e10000 	swi	r15, r1, 0
+ 188:	e8650014 	lwi	r3, r5, 20
+ 18c:	be03004c 	beqid	r3, 76		// 1d8
+			18c: R_MICROBLAZE_NONE	*ABS*+0x4c
+ 190:	12650000 	addk	r19, r5, r0
+ 194:	e8650018 	lwi	r3, r5, 24
+ 198:	be230044 	bneid	r3, 68		// 1dc
+			198: R_MICROBLAZE_NONE	*ABS*+0x44
+ 19c:	3060ffff 	addik	r3, r0, -1
+ 1a0:	e865001c 	lwi	r3, r5, 28
+ 1a4:	be230038 	bneid	r3, 56		// 1dc
+			1a4: R_MICROBLAZE_NONE	*ABS*+0x38
+ 1a8:	3060ffff 	addik	r3, r0, -1
+ 1ac:	e8650010 	lwi	r3, r5, 16
+ 1b0:	a8830001 	xori	r4, r3, 1
+ 1b4:	be040038 	beqid	r4, 56		// 1ec
+			1b4: R_MICROBLAZE_NONE	*ABS*+0x38
+ 1b8:	30800001 	addik	r4, r0, 1
+ 1bc:	e885000c 	lwi	r4, r5, 12
+ 1c0:	30840001 	addik	r4, r4, 1
+ 1c4:	88832000 	xor	r4, r3, r4
+ 1c8:	be040024 	beqid	r4, 36		// 1ec
+			1c8: R_MICROBLAZE_NONE	*ABS*+0x24
+ 1cc:	30800001 	addik	r4, r0, 1
+ 1d0:	30600001 	addik	r3, r0, 1
+ 1d4:	f8730018 	swi	r3, r19, 24
+ 1d8:	3060ffff 	addik	r3, r0, -1
+ 1dc:	e9e10000 	lwi	r15, r1, 0
+ 1e0:	ea61001c 	lwi	r19, r1, 28
+ 1e4:	b60f0008 	rtsd	r15, 8
+ 1e8:	30210020 	addik	r1, r1, 32
+ 1ec:	10632000 	addk	r3, r3, r4
+ 1f0:	f8730010 	swi	r3, r19, 16
+ 1f4:	e8b30008 	lwi	r5, r19, 8
+ 1f8:	e8730004 	lwi	r3, r19, 4
+ 1fc:	99fc1800 	brald	r15, r3
+ 200:	f893001c 	swi	r4, r19, 28
+ 204:	be03ffd8 	beqid	r3, -40		// 1dc
+			204: R_MICROBLAZE_NONE	*ABS*-0x28
+ 208:	f813001c 	swi	r0, r19, 28
+ 20c:	b810ffc8 	brid	-56		// 1d4
+			20c: R_MICROBLAZE_NONE	*ABS*-0x38
+ 210:	30600001 	addik	r3, r0, 1
+ 214:	b60f0008 	rtsd	r15, 8
+ 218:	3060ffff 	addik	r3, r0, -1
