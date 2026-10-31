@@ -1,0 +1,14 @@
+ffdcc184 <pit_mailbox_sample_write_audit>:
+ffdcc184:	bc250028 	bnei	r5, 40		// ffdcc1ac
+ffdcc188:	b000ffdd 	imm	-35
+ffdcc18c:	30a0cab8 	addik	r5, r0, -13640
+ffdcc190:	3021ffe4 	addik	r1, r1, -28
+ffdcc194:	f9e10000 	swi	r15, r1, 0
+ffdcc198:	b9f4fe70 	brlid	r15, -400
+ffdcc19c:	80000000 	or	r0, r0, r0
+ffdcc1a0:	e9e10000 	lwi	r15, r1, 0
+ffdcc1a4:	b60f0008 	rtsd	r15, 8
+ffdcc1a8:	3021001c 	addik	r1, r1, 28
+ffdcc1ac:	b60f0008 	rtsd	r15, 8
+ffdcc1b0:	3060ffff 	addik	r3, r0, -1
+

@@ -1,0 +1,8 @@
+ffdcc16c <fence>:
+ffdcc16c:	be250010 	bneid	r5, 16		// ffdcc17c
+ffdcc170:	3060ffff 	addik	r3, r0, -1
+ffdcc174:	b8220004 	mbar	1
+ffdcc178:	10650000 	addk	r3, r5, r0
+ffdcc17c:	b60f0008 	rtsd	r15, 8
+ffdcc180:	80000000 	or	r0, r0, r0
+

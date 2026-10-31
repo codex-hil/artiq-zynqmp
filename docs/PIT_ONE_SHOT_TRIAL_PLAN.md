@@ -113,3 +113,7 @@ Standalone real MicroBlaze candidates and maintained interrupt-only helper compi
 ## 2026-10-31 linked IRQ root checkpoint
 
 Fresh audit-only IRQ root binds actual callbacks and delegates to mailbox/MMIO roots; 106 tests PASS. Linked BSP C disable helper has two configuration-selected paths, unlike standalone .S evidence. See `evidence/pit-irq-binding-offline-2026-10-31`. No physical or deployment admission. Next: separate exact gate/mutation checks covering both helper paths/config read, bindings and relocated storage; preserve frozen prior closure.
+
+## 2026-10-31 distinct IRQ gate
+
+Actual IRQ image passes exact 20-body/1008-word profile with 41 pinned inputs; 113 tests PASS. Evidence `evidence/pit-irq-gate-offline-2026-10-31`. Both helper paths/config-read address pinned, live flag and exception behavior unobserved. No deployment. Next safe step is frozen relocated replay with external inventory anchor, keeping all old profiles intact.

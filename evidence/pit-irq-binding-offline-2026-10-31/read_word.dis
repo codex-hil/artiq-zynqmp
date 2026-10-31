@@ -1,0 +1,70 @@
+ffdcbe08 <read_word>:
+ffdcbe08:	3021ffcc 	addik	r1, r1, -52
+ffdcbe0c:	fac10024 	swi	r22, r1, 36
+ffdcbe10:	f9e10000 	swi	r15, r1, 0
+ffdcbe14:	fa610020 	swi	r19, r1, 32
+ffdcbe18:	fae10028 	swi	r23, r1, 40
+ffdcbe1c:	fb01002c 	swi	r24, r1, 44
+ffdcbe20:	fb210030 	swi	r25, r1, 48
+ffdcbe24:	ea65001c 	lwi	r19, r5, 28
+ffdcbe28:	be1300dc 	beqid	r19, 220		// ffdcbf04
+ffdcbe2c:	12c50000 	addk	r22, r5, r0
+ffdcbe30:	e8730008 	lwi	r3, r19, 8
+ffdcbe34:	be030010 	beqid	r3, 16		// ffdcbe44
+ffdcbe38:	f801001c 	swi	r0, r1, 28
+ffdcbe3c:	e8730000 	lwi	r3, r19, 0
+ffdcbe40:	bc230040 	bnei	r3, 64		// ffdcbe80
+ffdcbe44:	3060ffff 	addik	r3, r0, -1
+ffdcbe48:	e8960044 	lwi	r4, r22, 68
+ffdcbe4c:	30840001 	addik	r4, r4, 1
+ffdcbe50:	be030010 	beqid	r3, 16		// ffdcbe60
+ffdcbe54:	f8960044 	swi	r4, r22, 68
+ffdcbe58:	30800001 	addik	r4, r0, 1
+ffdcbe5c:	f8960048 	swi	r4, r22, 72
+ffdcbe60:	e9e10000 	lwi	r15, r1, 0
+ffdcbe64:	ea610020 	lwi	r19, r1, 32
+ffdcbe68:	eac10024 	lwi	r22, r1, 36
+ffdcbe6c:	eae10028 	lwi	r23, r1, 40
+ffdcbe70:	eb01002c 	lwi	r24, r1, 44
+ffdcbe74:	eb210030 	lwi	r25, r1, 48
+ffdcbe78:	b60f0008 	rtsd	r15, 8
+ffdcbe7c:	30210034 	addik	r1, r1, 52
+ffdcbe80:	e8930014 	lwi	r4, r19, 20
+ffdcbe84:	bc24ffc0 	bnei	r4, -64		// ffdcbe44
+ffdcbe88:	e8930010 	lwi	r4, r19, 16
+ffdcbe8c:	bc24ffb8 	bnei	r4, -72		// ffdcbe44
+ffdcbe90:	be070018 	beqid	r7, 24		// ffdcbea8
+ffdcbe94:	13070000 	addk	r24, r7, r0
+ffdcbe98:	e893000c 	lwi	r4, r19, 12
+ffdcbe9c:	30a00007 	addik	r5, r0, 7
+ffdcbea0:	16442803 	cmpu	r18, r4, r5
+ffdcbea4:	bcb20010 	bgei	r18, 16		// ffdcbeb4
+ffdcbea8:	30600001 	addik	r3, r0, 1
+ffdcbeac:	b810ff98 	brid	-104		// ffdcbe44
+ffdcbeb0:	f8730010 	swi	r3, r19, 16
+ffdcbeb4:	a4a40003 	andi	r5, r4, 3
+ffdcbeb8:	64a50404 	bslli	r5, r5, 4
+ffdcbebc:	b000ffd4 	imm	-44
+ffdcbec0:	30a50044 	addik	r5, r5, 68
+ffdcbec4:	8ae62800 	xor	r23, r6, r5
+ffdcbec8:	be170010 	beqid	r23, 16		// ffdcbed8
+ffdcbecc:	33200001 	addik	r25, r0, 1
+ffdcbed0:	b810ff74 	brid	-140		// ffdcbe44
+ffdcbed4:	fb330010 	swi	r25, r19, 16
+ffdcbed8:	e8b30004 	lwi	r5, r19, 4
+ffdcbedc:	30840001 	addik	r4, r4, 1
+ffdcbee0:	fb330014 	swi	r25, r19, 20
+ffdcbee4:	f893000c 	swi	r4, r19, 12
+ffdcbee8:	99fc1800 	brald	r15, r3
+ffdcbeec:	30e1001c 	addik	r7, r1, 28
+ffdcbef0:	be23ffe0 	bneid	r3, -32		// ffdcbed0
+ffdcbef4:	faf30014 	swi	r23, r19, 20
+ffdcbef8:	e881001c 	lwi	r4, r1, 28
+ffdcbefc:	b810ff4c 	brid	-180		// ffdcbe48
+ffdcbf00:	f8980000 	swi	r4, r24, 0
+ffdcbf04:	e8650008 	lwi	r3, r5, 8
+ffdcbf08:	99fc1800 	brald	r15, r3
+ffdcbf0c:	e8a50018 	lwi	r5, r5, 24
+ffdcbf10:	b810ff3c 	brid	-196		// ffdcbe4c
+ffdcbf14:	e8960044 	lwi	r4, r22, 68
+

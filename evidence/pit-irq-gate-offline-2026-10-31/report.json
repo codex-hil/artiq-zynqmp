@@ -1,0 +1,330 @@
+{
+  "status": "PINNED_IRQ_BOUND_AUDIT_PASS_NOT_DEPLOYMENT",
+  "hardware_executed": false,
+  "deployable": false,
+  "physical_backend_ready": false,
+  "destructive_test_allowed": false,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd8e00",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddd4ac",
+      "end_exclusive": "0xffdde4b0"
+    },
+    "bytes_after_stack_before_extension_table": 4656,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "flow": {
+    "status": "EXACT_SCOPED_MMIO_INSTRUCTION_PINS_PASS_NOT_DEPLOYMENT",
+    "profile": "pit-irq-bound-instruction-audit-v1",
+    "hardware_executed": false,
+    "deployable": false,
+    "destructive_test_allowed": false,
+    "functions": {
+      "barrier": {
+        "instruction_words": 15,
+        "sha256": "0fba4c40a943d76b54b37fa9de2f25fb9466d9c5bc338f0cba90dd388727ae54",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 3,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "disable": {
+        "instruction_words": 8,
+        "sha256": "4956afde32fea22016abd4ba0bbc742766d6194574e8820f1300a654b80e7515",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "fence": {
+        "instruction_words": 6,
+        "sha256": "24072df1489e3f1e888357098c23516e3112815901ea0796cee2303e250dcd30",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 0,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "microblaze_disable_interrupts": {
+        "instruction_words": 12,
+        "sha256": "d540a1070b31ec0c1490c729ea23529d0e6f0af5865698ce05604358dfe9b39c",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 0,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "observe": {
+        "instruction_words": 36,
+        "sha256": "5c0da7d5709806b74cb23f9c1dd11bb879a87af504caa1a10a9a80fd022eaf7c",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 10,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_irq_composition_audit": {
+        "instruction_words": 56,
+        "sha256": "acac7c8022de2034ace1e3084086fa9f6a630291fb0b9eee114892f89770d805",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 3,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_irq_disable_audit": {
+        "instruction_words": 14,
+        "sha256": "e44da0f4739d0d8e862da2edbbbe493dd545999e803493a4d90e4a8f9cb3abe2",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 2,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_irq_msr_audit": {
+        "instruction_words": 15,
+        "sha256": "92d8217a83a377dc0674102f54408f786285c641c78d92c6466b0fd5e9d091be",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_mailbox_composition_audit": {
+        "instruction_words": 120,
+        "sha256": "3fdeaab4f9a7c2e1072e59891145c4d603401e699d5e9c3de755229f01547f3c",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 15,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_mailbox_sample_barrier_audit": {
+        "instruction_words": 12,
+        "sha256": "77d48e3ba52b2a12ab9550ea636229770671df458cf5cca3b70287a3e554de2d",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_mailbox_sample_write_audit": {
+        "instruction_words": 12,
+        "sha256": "7c63c35540910f4d1907f77d93e76474bfd6204d1859de0b7335dde72625a56c",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_mailbox_terminal_barrier_audit": {
+        "instruction_words": 12,
+        "sha256": "78125547d638e88dbff911c915df89a48f988c523cc3ab77c58e60d8edda2daf",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_mailbox_terminal_write_audit": {
+        "instruction_words": 12,
+        "sha256": "68d15108f49a61bb45a54b1b71989a4355a320de0a58f210477cc8447b4b7f8c",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_mmio_composition_audit": {
+        "instruction_words": 475,
+        "sha256": "fe55f4923c2f0579055dffe74c5e862835a1265ce68bdbee994934626e6d3081",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 77,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_mmio_read": {
+        "instruction_words": 28,
+        "sha256": "98677f3e59f558fc5ab4822e9675a3815c7b758eabfbbe901b8271ad842fc53b",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_terminal_audit": {
+        "instruction_words": 3,
+        "sha256": "e7d88279bc84b61d056548cfcf38d58409152261590feb9ee5a4ca4891564efc",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 0,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_word_slot_barrier": {
+        "instruction_words": 40,
+        "sha256": "40c3c8c2d65f13c3952f141ca4b3df27992c529a9e95c967547ebb493582224e",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 6,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "pit_word_slot_write": {
+        "instruction_words": 49,
+        "sha256": "691f1e0d3d7010960f2d4e5c9f62350eaeea6326a35db236858b66a6429b94a0",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 4,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "read_word": {
+        "instruction_words": 68,
+        "sha256": "3f636c1483eb42c9fa9e0f758153f818cc8eeab4a9da5ba61b08d91f7ba86a98",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 15,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      },
+      "write_word": {
+        "instruction_words": 15,
+        "sha256": "97fb08fb93dc1a24a687758b1ad5dacab1ab9a957433e428c29608589863624d",
+        "stores": {
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 3,
+          "hardware_executed": false,
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+        }
+      }
+    },
+    "owned_storage": {
+      "pit_mailbox_audit": [
+        4292725504,
+        144,
+        "B"
+      ],
+      "sample_slot": [
+        4292725432,
+        32,
+        "b"
+      ],
+      "terminal_slot": [
+        4292725400,
+        32,
+        "b"
+      ]
+    },
+    "mailbox": {
+      "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+      "hardware_executed": false,
+      "deployable": false,
+      "pmu_ram_access_allowed": false,
+      "image_sha256": "73909b0ffc200cab0a22043d6bbfbd72c315edb9179c83e21e5a6bb14660e1ea",
+      "mailbox": {
+        "start": "0xffddcb00",
+        "bytes": 144,
+        "end_exclusive": "0xffddcb90"
+      },
+      "samples": {
+        "start": "0xffddcb00",
+        "bytes": 48
+      },
+      "terminal": {
+        "start": "0xffddcb30",
+        "bytes": 96
+      },
+      "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+      "baseline_layout": {
+        "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+        "hardware_executed": false,
+        "entry": "0xffdc0050",
+        "telemetry": {
+          "start": "0xffdd8e00",
+          "bytes": 32
+        },
+        "stack": {
+          "start": "0xffddd4ac",
+          "end_exclusive": "0xffdde4b0"
+        },
+        "bytes_after_stack_before_extension_table": 4656,
+        "destructive_test_allowed": false,
+        "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+      },
+      "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified."
+    },
+    "external_callback_paths_qualified": false,
+    "limits": "Exact twenty-function byte/range consistency for one reviewed owned-mailbox LTO artifact. Includes both linked IRQ helper paths and the configuration-read address, not live configuration contents. Vendor code elsewhere is outside scope. No generic CFG/dataflow, liveness, caller callback trust, physical origin, total stack, memory ownership or deployment proof."
+  },
+  "limits": "Content consistency only, not trusted provenance, reproducible build or permission to access hardware"
+}

@@ -1,0 +1,10 @@
+ffdcbde8 <disable>:
+ffdcbde8:	3021ffe4 	addik	r1, r1, -28
+ffdcbdec:	f9e10000 	swi	r15, r1, 0
+ffdcbdf0:	e8650004 	lwi	r3, r5, 4
+ffdcbdf4:	99fc1800 	brald	r15, r3
+ffdcbdf8:	e8a50018 	lwi	r5, r5, 24
+ffdcbdfc:	e9e10000 	lwi	r15, r1, 0
+ffdcbe00:	b60f0008 	rtsd	r15, 8
+ffdcbe04:	3021001c 	addik	r1, r1, 28
+

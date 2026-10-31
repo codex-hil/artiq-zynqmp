@@ -1,0 +1,38 @@
+ffdcbd58 <observe>:
+ffdcbd58:	3021ffd4 	addik	r1, r1, -44
+ffdcbd5c:	f9e10000 	swi	r15, r1, 0
+ffdcbd60:	fa610020 	swi	r19, r1, 32
+ffdcbd64:	fac10024 	swi	r22, r1, 36
+ffdcbd68:	fae10028 	swi	r23, r1, 40
+ffdcbd6c:	eac50040 	lwi	r22, r5, 64
+ffdcbd70:	f801001c 	swi	r0, r1, 28
+ffdcbd74:	30800002 	addik	r4, r0, 2
+ffdcbd78:	30760001 	addik	r3, r22, 1
+ffdcbd7c:	f8650040 	swi	r3, r5, 64
+ffdcbd80:	16562003 	cmpu	r18, r22, r4
+ffdcbd84:	be52004c 	bltid	r18, 76		// ffdcbdd0
+ffdcbd88:	3060ffff 	addik	r3, r0, -1
+ffdcbd8c:	12650000 	addk	r19, r5, r0
+ffdcbd90:	e8650000 	lwi	r3, r5, 0
+ffdcbd94:	e8a50018 	lwi	r5, r5, 24
+ffdcbd98:	12e60000 	addk	r23, r6, r0
+ffdcbd9c:	99fc1800 	brald	r15, r3
+ffdcbda0:	30c1001c 	addik	r6, r1, 28
+ffdcbda4:	e8930020 	lwi	r4, r19, 32
+ffdcbda8:	30a00001 	addik	r5, r0, 1
+ffdcbdac:	44a5b400 	bsll	r5, r5, r22
+ffdcbdb0:	66d60402 	bslli	r22, r22, 2
+ffdcbdb4:	80842800 	or	r4, r4, r5
+ffdcbdb8:	f8930020 	swi	r4, r19, 32
+ffdcbdbc:	e881001c 	lwi	r4, r1, 28
+ffdcbdc0:	1273b000 	addk	r19, r19, r22
+ffdcbdc4:	f8730024 	swi	r3, r19, 36
+ffdcbdc8:	f8930030 	swi	r4, r19, 48
+ffdcbdcc:	f8970000 	swi	r4, r23, 0
+ffdcbdd0:	e9e10000 	lwi	r15, r1, 0
+ffdcbdd4:	ea610020 	lwi	r19, r1, 32
+ffdcbdd8:	eac10024 	lwi	r22, r1, 36
+ffdcbddc:	eae10028 	lwi	r23, r1, 40
+ffdcbde0:	b60f0008 	rtsd	r15, 8
+ffdcbde4:	3021002c 	addik	r1, r1, 44
+

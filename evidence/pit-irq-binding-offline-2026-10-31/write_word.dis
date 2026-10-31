@@ -1,0 +1,17 @@
+ffdcbf18 <write_word>:
+ffdcbf18:	3021ffe0 	addik	r1, r1, -32
+ffdcbf1c:	fa61001c 	swi	r19, r1, 28
+ffdcbf20:	f9e10000 	swi	r15, r1, 0
+ffdcbf24:	12650000 	addk	r19, r5, r0
+ffdcbf28:	e865000c 	lwi	r3, r5, 12
+ffdcbf2c:	99fc1800 	brald	r15, r3
+ffdcbf30:	e8a50018 	lwi	r5, r5, 24
+ffdcbf34:	be030014 	beqid	r3, 20		// ffdcbf48
+ffdcbf38:	e9e10000 	lwi	r15, r1, 0
+ffdcbf3c:	30800001 	addik	r4, r0, 1
+ffdcbf40:	f893004c 	swi	r4, r19, 76
+ffdcbf44:	e9e10000 	lwi	r15, r1, 0
+ffdcbf48:	ea61001c 	lwi	r19, r1, 28
+ffdcbf4c:	b60f0008 	rtsd	r15, 8
+ffdcbf50:	30210020 	addik	r1, r1, 32
+

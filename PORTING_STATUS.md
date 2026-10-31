@@ -1,3 +1,9 @@
+## 2026-10-31 — exact linked IRQ gate (offline)
+
+Distinct IRQ profile passes on actual ELF: 20 bodies/1008 instruction words, owned storage/mailbox checks, 30 project source/header + eight helper + three artifact pins. 113 Python tests PASS: 12 labeled IRQ/helper mutants, every scoped word mutated, 41 file tamper controls and stale-listing/storage/profile/deployment refusals. Evidence `evidence/pit-irq-gate-offline-2026-10-31`.
+
+Both static linked-helper paths/configuration-read address are pinned; live flag contents/exception behavior are unobserved. Project pins do not qualify vendor build provenance; exact bytes do not prove generic control flow or whole-path safety. No HW operations or new admission. Next safe offline step: frozen relocated replay of this distinct closure, preserving prior frozen images. Request hook/digest origins/exception/lifetime/recovery remain open.
+
 ## 2026-10-31 — linked concrete IRQ audit root (offline)
 
 Separate IRQ-binding root and fresh 17-custom-unit C/LTO image PASS, no undefined symbols; 106 Python tests PASS including optimized/sanitized host guard/binding doubles. Actual linked layout/mailbox and five scoped word-store checks PASS. Evidence `evidence/pit-irq-binding-offline-2026-10-31`.

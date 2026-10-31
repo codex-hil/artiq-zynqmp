@@ -1,0 +1,14 @@
+ffdcc1b4 <pit_mailbox_terminal_write_audit>:
+ffdcc1b4:	bc250028 	bnei	r5, 40		// ffdcc1dc
+ffdcc1b8:	b000ffdd 	imm	-35
+ffdcc1bc:	30a0ca98 	addik	r5, r0, -13672
+ffdcc1c0:	3021ffe4 	addik	r1, r1, -28
+ffdcc1c4:	f9e10000 	swi	r15, r1, 0
+ffdcc1c8:	b9f4fe40 	brlid	r15, -448
+ffdcc1cc:	80000000 	or	r0, r0, r0
+ffdcc1d0:	e9e10000 	lwi	r15, r1, 0
+ffdcc1d4:	b60f0008 	rtsd	r15, 8
+ffdcc1d8:	3021001c 	addik	r1, r1, 28
+ffdcc1dc:	b60f0008 	rtsd	r15, 8
+ffdcc1e0:	3060ffff 	addik	r3, r0, -1
+
