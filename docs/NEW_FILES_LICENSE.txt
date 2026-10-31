@@ -1608,3 +1608,14 @@ evidence/pit-digest-terminal-offline-2026-10-31/build.py
 evidence/pit-digest-terminal-offline-2026-10-31/qualification.json
 evidence/pit-digest-terminal-offline-2026-10-31/sha.dis
 evidence/pit-digest-terminal-offline-2026-10-31/stack.txt
+
+# Digest composition — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_digest_compose.c
+diagnostics/ddr/pit_collect/pit_digest_compose.h
+tests/test_pit_digest_compose.py
+evidence/pit-digest-compose-offline-2026-10-31/README.md
+evidence/pit-digest-compose-offline-2026-10-31/build.json
+evidence/pit-digest-compose-offline-2026-10-31/build.py
+evidence/pit-digest-compose-offline-2026-10-31/qualification.json
+evidence/pit-digest-compose-offline-2026-10-31/sha.dis
+evidence/pit-digest-compose-offline-2026-10-31/stack.txt

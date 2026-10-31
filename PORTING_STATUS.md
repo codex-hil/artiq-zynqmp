@@ -1,3 +1,9 @@
+## 2026-10-31 — same-invocation digest composition (offline)
+
+New composition owns local digest/MSR observation state, snapshots nonce/image/callback inputs and accepts no caller sample hash. Publishes terminal only after consistency checks; hash failure stays fail-closed even when final IRQ-unproven overrides lifecycle result. Full125-test suite PASS plus strengthened focused test across six64-bit nonces/12 scenarios. Actual standalone target composition frame244, expected three dependencies, no detected subword stores. Evidence `evidence/pit-digest-compose-offline-2026-10-31`.
+
+No HW/runtime/frozen changes. No concrete read-order/raw MMIO/IRQ/mailbox/root binding yet; scoped standalone SHA path828 is not total stack. Next safe offline step: separate concrete audit root with ordered read adapter, callback/owned mailbox binding and nonreturn terminal, then fresh C/LTO/store/stack review. Image input/trust/exception/no-wake lifetime/recovery remain open; deployment refused.
+
 ## 2026-10-31 — digest-aware terminal adapter (offline)
 
 Separate private terminal-v1 adapter consumes internal digest state plus lifecycle/MSR observations, checks presence/status consistency and copies a privately built candidate only on success. Hashfailure5/rejected/unknown statuses fail closed without output writes; no v1 extension.124 tests PASS. Actual standalone target frame140, expected terminal builder dependency only, no detected subword stores. Evidence `evidence/pit-digest-terminal-offline-2026-10-31`.

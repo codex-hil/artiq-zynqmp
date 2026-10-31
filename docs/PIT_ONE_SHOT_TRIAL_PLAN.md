@@ -149,3 +149,7 @@ Separate lifecycle uses internal capture digest and final MSR after hash/publica
 ## 2026-10-31 digest terminal adapter
 
 Separate adapter validates lifecycle/digest/observation consistency before output writes; explicit hashfailure5 rejected for v1.124 tests PASS, target frame140; evidence `evidence/pit-digest-terminal-offline-2026-10-31`. State has no nonce so same-session provenance remains caller premise. Next offline composition must own lifecycle state and record observations from one invocation, test correlation/order/failure before separate root link. No physical admission.
+
+## 2026-10-31 same-invocation digest composition
+
+Private composition generates digest and records MSR outcomes in one call; no sample-hash input, hash failure blocks terminal even after final IRQ override.125-suite tests plus strengthened focused tests PASS; evidence `evidence/pit-digest-compose-offline-2026-10-31`. Next safe offline step: separate concrete callback/ordered read/mailbox/nonreturn audit root and fresh LTO review. No HW/runtime/frozen changes or physical admission.
