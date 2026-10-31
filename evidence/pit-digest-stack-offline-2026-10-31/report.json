@@ -1,0 +1,394 @@
+{
+  "status": "CONDITIONAL_NORMAL_PATH_MODEL_NOT_TOTAL_STACK_PROOF",
+  "hardware_executed": false,
+  "deployable": false,
+  "normal_peak_bytes": 792,
+  "peak_path": [
+    "pit_digest_root_audit",
+    "pit_capture_digest",
+    "pit_sample_sha256",
+    "swap"
+  ],
+  "frames": {
+    "pit_digest_root_audit": 336,
+    "pit_terminal_build": 24,
+    "disable.lto_priv.1": 28,
+    "pit_irq_disable_audit": 8,
+    "microblaze_disable_interrupts": 0,
+    "pit_terminal_audit": 0,
+    "pit_terminal_publish": 152,
+    "pit_mailbox_terminal_barrier_audit": 28,
+    "pit_word_slot_barrier": 32,
+    "fence": 0,
+    "pit_mailbox_terminal_write_audit": 28,
+    "pit_word_slot_write": 0,
+    "pit_capture_digest": 156,
+    "pit_publish": 104,
+    "write_word.lto_priv.1": 32,
+    "pit_mailbox_sample_write_audit": 28,
+    "barrier.lto_priv.1": 32,
+    "pit_mailbox_sample_barrier_audit": 28,
+    "pit_sample_sha256": 300,
+    "swap": 0,
+    "pit_collect.constprop.0": 92,
+    "read_word.lto_priv.1": 32,
+    "digest_ordered_read": 28,
+    "pit_ro_read": 44,
+    "pit_mmio_read": 0,
+    "observe.lto_priv.1": 44,
+    "pit_irq_msr_audit": 0,
+    "pit_mailbox_prepare_audit": 0
+  },
+  "graph": {
+    "pit_digest_root_audit": [
+      "disable.lto_priv.1",
+      "observe.lto_priv.1",
+      "pit_capture_digest",
+      "pit_mailbox_prepare_audit",
+      "pit_terminal_audit",
+      "pit_terminal_build",
+      "pit_terminal_publish"
+    ],
+    "pit_terminal_build": [],
+    "disable.lto_priv.1": [
+      "pit_irq_disable_audit"
+    ],
+    "pit_irq_disable_audit": [
+      "microblaze_disable_interrupts"
+    ],
+    "microblaze_disable_interrupts": [],
+    "pit_terminal_audit": [],
+    "pit_terminal_publish": [
+      "pit_mailbox_terminal_barrier_audit",
+      "pit_mailbox_terminal_write_audit"
+    ],
+    "pit_mailbox_terminal_barrier_audit": [
+      "pit_word_slot_barrier"
+    ],
+    "pit_word_slot_barrier": [
+      "fence"
+    ],
+    "fence": [],
+    "pit_mailbox_terminal_write_audit": [
+      "pit_word_slot_write"
+    ],
+    "pit_word_slot_write": [],
+    "pit_capture_digest": [
+      "pit_collect.constprop.0",
+      "pit_publish",
+      "pit_sample_sha256"
+    ],
+    "pit_publish": [
+      "barrier.lto_priv.1",
+      "write_word.lto_priv.1"
+    ],
+    "write_word.lto_priv.1": [
+      "pit_mailbox_sample_write_audit"
+    ],
+    "pit_mailbox_sample_write_audit": [
+      "pit_word_slot_write"
+    ],
+    "barrier.lto_priv.1": [
+      "pit_mailbox_sample_barrier_audit"
+    ],
+    "pit_mailbox_sample_barrier_audit": [
+      "pit_word_slot_barrier"
+    ],
+    "pit_sample_sha256": [
+      "swap"
+    ],
+    "swap": [],
+    "pit_collect.constprop.0": [
+      "read_word.lto_priv.1"
+    ],
+    "read_word.lto_priv.1": [
+      "digest_ordered_read"
+    ],
+    "digest_ordered_read": [
+      "pit_ro_read"
+    ],
+    "pit_ro_read": [
+      "pit_mmio_read"
+    ],
+    "pit_mmio_read": [],
+    "observe.lto_priv.1": [
+      "pit_irq_msr_audit"
+    ],
+    "pit_irq_msr_audit": [],
+    "pit_mailbox_prepare_audit": []
+  },
+  "call_sites": [
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292676832,
+      "callee": "pit_mailbox_prepare_audit",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677256,
+      "callee": "observe.lto_priv.1",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677268,
+      "callee": "disable.lto_priv.1",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677284,
+      "callee": "observe.lto_priv.1",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677412,
+      "callee": "pit_capture_digest",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677504,
+      "callee": "observe.lto_priv.1",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677540,
+      "callee": "pit_terminal_audit",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677764,
+      "callee": "pit_terminal_build",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_digest_root_audit",
+      "pc": 4292677952,
+      "callee": "pit_terminal_publish",
+      "kind": "direct"
+    },
+    {
+      "caller": "disable.lto_priv.1",
+      "pc": 4292659756,
+      "callee": "pit_irq_disable_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_irq_disable_audit",
+      "pc": 4292663864,
+      "callee": "microblaze_disable_interrupts",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_terminal_publish",
+      "pc": 4292657312,
+      "callee": "pit_mailbox_terminal_write_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_terminal_publish",
+      "pc": 4292657332,
+      "callee": "pit_mailbox_terminal_barrier_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_terminal_publish",
+      "pc": 4292657360,
+      "callee": "pit_mailbox_terminal_barrier_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_terminal_publish",
+      "pc": 4292657384,
+      "callee": "pit_mailbox_terminal_write_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_terminal_publish",
+      "pc": 4292657420,
+      "callee": "pit_mailbox_terminal_write_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_mailbox_terminal_barrier_audit",
+      "pc": 4292659500,
+      "callee": "pit_word_slot_barrier",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_word_slot_barrier",
+      "pc": 4292659032,
+      "callee": "fence",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_mailbox_terminal_write_audit",
+      "pc": 4292659404,
+      "callee": "pit_word_slot_write",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_capture_digest",
+      "pc": 4292676292,
+      "callee": "pit_collect.constprop.0",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_capture_digest",
+      "pc": 4292676324,
+      "callee": "pit_sample_sha256",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_capture_digest",
+      "pc": 4292676408,
+      "callee": "pit_publish",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_publish",
+      "pc": 4292656696,
+      "callee": "write_word.lto_priv.1",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_publish",
+      "pc": 4292656712,
+      "callee": "barrier.lto_priv.1",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_publish",
+      "pc": 4292656792,
+      "callee": "write_word.lto_priv.1",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_publish",
+      "pc": 4292656816,
+      "callee": "barrier.lto_priv.1",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_publish",
+      "pc": 4292656836,
+      "callee": "write_word.lto_priv.1",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "write_word.lto_priv.1",
+      "pc": 4292659864,
+      "callee": "pit_mailbox_sample_write_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_mailbox_sample_write_audit",
+      "pc": 4292659356,
+      "callee": "pit_word_slot_write",
+      "kind": "direct"
+    },
+    {
+      "caller": "barrier.lto_priv.1",
+      "pc": 4292659924,
+      "callee": "pit_mailbox_sample_barrier_audit",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "pit_mailbox_sample_barrier_audit",
+      "pc": 4292659452,
+      "callee": "pit_word_slot_barrier",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675392,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675864,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675884,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675904,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675924,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675944,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675964,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292675984,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_sample_sha256",
+      "pc": 4292676004,
+      "callee": "swap",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_collect.constprop.0",
+      "pc": 4292660176,
+      "callee": "read_word.lto_priv.1",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "read_word.lto_priv.1",
+      "pc": 4292659796,
+      "callee": "digest_ordered_read",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "digest_ordered_read",
+      "pc": 4292659992,
+      "callee": "pit_ro_read",
+      "kind": "direct"
+    },
+    {
+      "caller": "pit_ro_read",
+      "pc": 4292658476,
+      "callee": "pit_mmio_read",
+      "kind": "reviewed-binding-assumption"
+    },
+    {
+      "caller": "observe.lto_priv.1",
+      "pc": 4292659668,
+      "callee": "pit_irq_msr_audit",
+      "kind": "reviewed-binding-assumption"
+    }
+  ],
+  "indirect_binding_assumptions": true,
+  "limits": "Exact artifact plus manually reviewed callback binding assumptions; excludes entry caller, exceptions/interrupt/NMI/debug/error frames, recursion through hostile callbacks and hung MMIO. No generic instruction semantics/CFG or stack ownership/recovery proof."
+}

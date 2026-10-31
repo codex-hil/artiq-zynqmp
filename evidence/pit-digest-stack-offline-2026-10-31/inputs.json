@@ -1,0 +1,20 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "script_sha256": "179ee9997abad015270d7d30f43a7700c94f097fb91cf59e574fdec099b70e22",
+  "artifacts": {
+    "audit-only.elf": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf",
+      "sha256": "e12cd23e27b9829912774c6a8edcf0cc1f0d04de1798b7e6247464b1e00a6a81"
+    },
+    "symbols.txt": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/symbols.txt",
+      "sha256": "a4a1cf4d700c440aa9228fdc46ded14332798d0999a55d9785f81b05c63bafbd"
+    },
+    "disassembly.txt": {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/disassembly.txt",
+      "sha256": "e357865b302490c5eb928a0ec08fbd86340a29bb197518255ac3287144547b3d"
+    }
+  },
+  "limits": "Records inputs for conditional model; does not extend frozen gate or qualify vendor provenance"
+}

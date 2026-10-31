@@ -165,3 +165,7 @@ Actual ELF exact profile pins29 bodies/1737 words,64 SHA constants/owned storage
 ## 2026-10-31 frozen concrete digest-root replay
 
 54-file closure copied/relocated, identical isolated reports,61 negative controls rejected. External anchor/recipe in `evidence/pit-digest-root-frozen-offline-2026-10-31`. Existing133 tests unchanged; no HW. Next safe offline step: concrete normal-path callback/call-stack analysis, keeping entry and exception/interrupt/debug/error/hang obligations separate. No deployment or PMU RAM reader admission.
+
+## 2026-10-31 conditional normal-path stack
+
+28-function graph with reviewed callback bindings yields conditional792-byte peak. Extra exact fence pin closes a scope omission in prior29-body gate without changing its frozen inventory; see `evidence/pit-digest-stack-offline-2026-10-31`. Not total-stack/exception admission. Next safe offline step: inventory exception/NMI/debug/error vector/handler dependencies and unbounded paths; no physical fault injection or deployment.

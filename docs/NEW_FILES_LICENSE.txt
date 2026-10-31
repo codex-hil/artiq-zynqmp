@@ -1679,3 +1679,12 @@ evidence/pit-digest-root-frozen-offline-2026-10-31/freeze.py
 evidence/pit-digest-root-frozen-offline-2026-10-31/inventory.json
 evidence/pit-digest-root-frozen-offline-2026-10-31/replay.py
 evidence/pit-digest-root-frozen-offline-2026-10-31/verification.json
+
+# Conditional digest stack model — LGPL-3.0-or-later
+scripts/pit_digest_stack_audit.py
+tests/test_pit_digest_stack.py
+evidence/pit-digest-stack-offline-2026-10-31/README.md
+evidence/pit-digest-stack-offline-2026-10-31/fence.dis
+evidence/pit-digest-stack-offline-2026-10-31/inputs.json
+evidence/pit-digest-stack-offline-2026-10-31/qualification.json
+evidence/pit-digest-stack-offline-2026-10-31/report.json

@@ -1,3 +1,11 @@
+## 2026-10-31 — conditional normal-path stack model (offline)
+
+Final full PIT suite:137 tests PASS.
+
+Exact-image call model covers28 reachable functions and reviewed indirect callback-register bindings. Conditional normal peak792: root336+capture156+SHA300+swap0; sequential calls use maximum, not sum. Prologue allocation checks and graph cycle/missing-binding/frame refusal controls added. Evidence `evidence/pit-digest-stack-offline-2026-10-31`.
+
+Coverage finding: prior29-body gate did not include reachable fence. New separate model adds exact fence body/range/listing and six word mutants; old frozen gate is unchanged and not retroactively upgraded. Initial fixture tests exposed missing fence and were corrected. No image/HW/runtime changes. This remains conditional normal-path arithmetic, not generic CFG/indirect-dataflow, total stack or exception ownership proof. Next safe offline step: exception/NMI/debug/error entry/handler dependency inventory for this ELF; no exception injection. Entry/image trust/no-wake reader/recovery remain open.
+
 ## 2026-10-31 — frozen concrete digest-root replay (offline)
 
 54 files plus inventory copied into two separate locations; isolated replay reports identical,61 negative controls rejected. Independent inventory SHA-256 `2812eff93bc6cef8b2bd05f151d7233cde3c3ba5a4121f7c7b0346534a6cb782`. Evidence `evidence/pit-digest-root-frozen-offline-2026-10-31`. Existing133 tests unchanged; no implementation/gate/HW/runtime/frozen-prior changes.
