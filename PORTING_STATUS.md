@@ -1,3 +1,9 @@
+## 2026-10-31 — concrete digest audit root (offline)
+
+Separate opt-in root binds IRQ/raw-PIT ordered adapter/owned mailbox callbacks and digest composition, then terminal loop; no main hook. Fresh24-unit C/LTO link PASS/no undefined. Lifecycle/adapter/compose inline into root frame336; capture156+SHA300 yield scoped792, not whole stack.29 scoped word-store and layout/mailbox checks PASS;126 tests PASS including optimized/sanitized binding/guard doubles. Evidence `evidence/pit-digest-root-offline-2026-10-31`.
+
+No HW operations or runtime/frozen changes. Old exact gates intentionally unqualified for this artifact. Next safe offline step: distinct exact instruction/storage/constants/source-bound gate and mutation tests for concrete new image. Image-input trust, entry protocol, exception/full stack, no-wake reader lifetime and arbitrary-hang recovery remain open; deployment refused.
+
 ## 2026-10-31 — same-invocation digest composition (offline)
 
 New composition owns local digest/MSR observation state, snapshots nonce/image/callback inputs and accepts no caller sample hash. Publishes terminal only after consistency checks; hash failure stays fail-closed even when final IRQ-unproven overrides lifecycle result. Full125-test suite PASS plus strengthened focused test across six64-bit nonces/12 scenarios. Actual standalone target composition frame244, expected three dependencies, no detected subword stores. Evidence `evidence/pit-digest-compose-offline-2026-10-31`.

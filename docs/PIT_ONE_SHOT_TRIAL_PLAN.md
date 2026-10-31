@@ -153,3 +153,7 @@ Separate adapter validates lifecycle/digest/observation consistency before outpu
 ## 2026-10-31 same-invocation digest composition
 
 Private composition generates digest and records MSR outcomes in one call; no sample-hash input, hash failure blocks terminal even after final IRQ override.125-suite tests plus strengthened focused tests PASS; evidence `evidence/pit-digest-compose-offline-2026-10-31`. Next safe offline step: separate concrete callback/ordered read/mailbox/nonreturn audit root and fresh LTO review. No HW/runtime/frozen changes or physical admission.
+
+## 2026-10-31 concrete digest root
+
+New concrete opt-in audit root and fresh24-unit LTO artifact PASS,126 tests,29 scoped stores/layout checks. Root frame336 and scoped SHA path792 are not full-stack proof. Evidence `evidence/pit-digest-root-offline-2026-10-31`. No HW/main hook/frozen changes. Next: distinct exact instruction/storage/constants/source gate plus mutants; retain physical admission gaps.
