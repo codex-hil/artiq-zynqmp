@@ -1,0 +1,72 @@
+{
+  "status": "EXACT_FAULT_WRITER_SCOPE_PASS_NOT_DEPLOYMENT",
+  "profile": "pit-minimal-fault-slot-scoped-v1",
+  "hardware_executed": false,
+  "deployable": false,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd96e0",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddddec",
+      "end_exclusive": "0xffddedf0"
+    },
+    "bytes_after_stack_before_extension_table": 2288,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "mailbox": {
+    "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+    "hardware_executed": false,
+    "deployable": false,
+    "pmu_ram_access_allowed": false,
+    "image_sha256": "f73b9ed5003a56a711ae3029f63d378125c8ec1abf0004215588d4eb967a4fa1",
+    "mailbox": {
+      "start": "0xffddd440",
+      "bytes": 144,
+      "end_exclusive": "0xffddd4d0"
+    },
+    "samples": {
+      "start": "0xffddd440",
+      "bytes": 48
+    },
+    "terminal": {
+      "start": "0xffddd470",
+      "bytes": 96
+    },
+    "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+    "baseline_layout": {
+      "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+      "hardware_executed": false,
+      "entry": "0xffdc0050",
+      "telemetry": {
+        "start": "0xffdd96e0",
+        "bytes": 32
+      },
+      "stack": {
+        "start": "0xffddddec",
+        "end_exclusive": "0xffddedf0"
+      },
+      "bytes_after_stack_before_extension_table": 2288,
+      "destructive_test_allowed": false,
+      "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+    },
+    "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified."
+  },
+  "stores": {
+    "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+    "word_store_sites": 13,
+    "hardware_executed": false,
+    "deployable": false,
+    "destructive_test_allowed": false,
+    "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+  },
+  "instruction_words": 110,
+  "stack_bytes": 4100,
+  "stack_to_service_table_gap": 2288,
+  "limits": "Exact one-function/layout scope, including inlined formatter and two mbar instructions. Not whole-image/root/callback/exception-entry provenance, stack, visibility or recovery qualification."
+}

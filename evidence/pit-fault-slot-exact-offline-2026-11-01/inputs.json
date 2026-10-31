@@ -1,0 +1,20 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/check_pit_fault_slot.py": "aec10b2224ed1cfefaa77d4c06d9cfef1e3182a8830c1ec1d6d2ad2bd3686d0e",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/package_local_candidate.py": "436874f69210a2ae16c1cc29bb9268bdbe164102aeee2439d56f8f8520b6a35c",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/check_pmu_boundary_image.py": "f142e614da217212b9c278b9782ead83e299db80e0fe2e5fe71dfda5aec46f69",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/check_pit_mailbox_layout.py": "5be6359470952c478dad2f990153188aa8729cb8c915ff5cfcde5f75e4bb7562",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/check_pit_word_stores.py": "d64f7238be127684fc57b57aff0fa69365d91894f784fd8bc0a4cd18c035eb78",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_fault_slot_audit.c": "01c1da2befc0b73c7e938a52524c96e3e395bd05a0be068caf3228dc6d3db79b",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_fault_slot_audit.h": "4a52fdda617b8efd4724293207b4b13bbf999af1670644426dccd9ea6a3c9c8d",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_fault_record.c": "3608c3dcd92a66ce10a23e9a7c845e27f56b390a1f7569e8d85ffb65fbd2aa90",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_fault_record.h": "b3050f3aa33cf86602087c945e1734cc8564d017aa0d66c70269d51463957a1c",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_publish.h": "1d1b8e9e0ec830ad2ecb850eb1131cd9881308726254e08747ac4c5310f683ef",
+    "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf": "f73b9ed5003a56a711ae3029f63d378125c8ec1abf0004215588d4eb967a4fa1",
+    "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/symbols.txt": "0c8ef04853a55d2077fac0b602d3290747843a229698bdb7b3671a2ff9d4ab86",
+    "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/disassembly.txt": "38f09cfb83a2b0f5b6585387afb62c721b03a04d87c338bb35d089568bd72142"
+  },
+  "limits": "Recorded scoped inputs, not complete whole-image source provenance or deployment gate"
+}

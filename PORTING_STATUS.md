@@ -1,3 +1,11 @@
+## 2026-11-01 — exact minimal fault-writer scope (offline)
+
+Full PIT Python suite:146 tests PASS.
+
+Actual minimal ELF passes separate one-function profile: inlined fault writer440 bytes/110 words, exact body/range and listing; every instruction word mutation rejects. Owned slot/consumed/mailbox/slot states plus BSS/stack ranges pinned, writable zero-BSS/nonoverlap checked, generic layout/mailbox checks PASS. Evidence `evidence/pit-fault-slot-exact-offline-2026-11-01`.
+
+No HW/image/vector/runtime/frozen changes. This is scoped writer/layout consistency only, not whole-image/source/exception entry/stack/physical visibility qualification. Next safe offline step: assembly-entry register/stack/slot ownership contract for isolated audit handler, preserving normal policy and identifying assumptions before any implementation/vector link. Existing printf exception gap remains; deployment/PMU RAM reader admission refused.
+
 ## 2026-10-31 — minimal fault-slot audit link fits (offline)
 
 Separate19-custom-unit LTO image PASS/no undefined after excluding six old parallel audit profiles. No source implementation or vendor constraints changed. Original failed25-unit build preserved. Stack range remains4100 bytes, top ffddedf0; fixed service table ffddf6e0, gap2288. Fault slot ffddd400/64B/aligned8/zero-BSS/disjoint mailbox PASS. Inlined writer440 bytes/frame132/no calls/two mbar1 and scoped word stores PASS; digest root2488 bytes/frame332. Evidence `evidence/pit-fault-slot-minimal-offline-2026-10-31`. Existing143 tests unchanged/not rerun.

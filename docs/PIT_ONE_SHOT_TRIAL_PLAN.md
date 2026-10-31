@@ -189,3 +189,7 @@ Target direct writer object has two mbar1/u32 stores and frame100; host fence do
 ## 2026-10-31 minimal fault-slot link
 
 Separate19-unit LTO audit image fits after excluding six old profiles, unchanged stack4100/table ffddf6e0;2288-byte separation. Fault slot bounds/zero-BSS/mailbox and writer no-call/two-mbar/word-store checks PASS. Evidence `evidence/pit-fault-slot-minimal-offline-2026-10-31`. Prior failure preserved; no HW or source implementation change,143 prior tests unchanged. Next offline: distinct exact inlined writer/storage/fence mutant profile; no vector/main/exception admission.
+
+## 2026-11-01 exact fault-writer scope
+
+Actual minimal ELF writer110-word profile and all word/storage/boundary/listing mutations checked; evidence `evidence/pit-fault-slot-exact-offline-2026-11-01`. Not a whole-image or exception-entry gate. Next safe offline: isolated handler assembly-entry/stack/register/slot contract, preserving normal vector/notification policy; no HW injection or deployment.
