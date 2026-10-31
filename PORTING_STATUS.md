@@ -1,3 +1,9 @@
+## 2026-10-31 — frozen concrete digest-root replay (offline)
+
+54 files plus inventory copied into two separate locations; isolated replay reports identical,61 negative controls rejected. Independent inventory SHA-256 `2812eff93bc6cef8b2bd05f151d7233cde3c3ba5a4121f7c7b0346534a6cb782`. Evidence `evidence/pit-digest-root-frozen-offline-2026-10-31`. Existing133 tests unchanged; no implementation/gate/HW/runtime/frozen-prior changes.
+
+No deployment or new physical claim. Next safe offline step: normal-path stack/call-graph analysis including exact concrete indirect callback bindings. Caller entry/exception/interrupt/debug/error frames and hung callback recovery remain separate unqualified obligations; image trust, entry protocol and no-wake reader lifetime remain open.
+
 ## 2026-10-31 — exact digest-root gate (offline)
 
 Full PIT Python suite:133 tests PASS.

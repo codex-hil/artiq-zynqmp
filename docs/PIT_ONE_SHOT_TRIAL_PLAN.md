@@ -161,3 +161,7 @@ New concrete opt-in audit root and fresh24-unit LTO artifact PASS,126 tests,29 s
 ## 2026-10-31 exact digest-root gate
 
 Actual ELF exact profile pins29 bodies/1737 words,64 SHA constants/owned storage and52 files; independent mutation/refusal controls. Evidence `evidence/pit-digest-root-gate-offline-2026-10-31`. Compile-count correction: preceding build used23 custom C units (not24), unchanged artifact. Next safe offline freeze/relocation replay with external anchor; no HW or deployment admission.
+
+## 2026-10-31 frozen concrete digest-root replay
+
+54-file closure copied/relocated, identical isolated reports,61 negative controls rejected. External anchor/recipe in `evidence/pit-digest-root-frozen-offline-2026-10-31`. Existing133 tests unchanged; no HW. Next safe offline step: concrete normal-path callback/call-stack analysis, keeping entry and exception/interrupt/debug/error/hang obligations separate. No deployment or PMU RAM reader admission.
