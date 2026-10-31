@@ -1477,3 +1477,14 @@ evidence/pit-mailbox-frozen-offline-2026-10-31/freeze.py
 evidence/pit-mailbox-frozen-offline-2026-10-31/inventory.json
 evidence/pit-mailbox-frozen-offline-2026-10-31/replay.py
 evidence/pit-mailbox-frozen-offline-2026-10-31/verification.json
+
+# IRQ callback candidates — LGPL-3.0-or-later
+diagnostics/ddr/pit_collect/pit_irq_audit.c
+diagnostics/ddr/pit_collect/pit_irq_audit.h
+tests/test_pit_irq_audit.py
+evidence/pit-irq-callback-offline-2026-10-31/README.md
+evidence/pit-irq-callback-offline-2026-10-31/build.json
+evidence/pit-irq-callback-offline-2026-10-31/build.py
+evidence/pit-irq-callback-offline-2026-10-31/callbacks.dis
+evidence/pit-irq-callback-offline-2026-10-31/interrupt-helper.dis
+evidence/pit-irq-callback-offline-2026-10-31/qualification.json

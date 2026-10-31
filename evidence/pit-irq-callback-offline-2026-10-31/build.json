@@ -1,0 +1,95 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "status": "STANDALONE_COMPILE_NOT_LINKED",
+  "command": [
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+    "-I/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-app/build/include",
+    "-isystem",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/include",
+    "-isystem",
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/gnu/microblaze/lin/x86_64-oesdk-linux/usr/lib/microblaze-xilinx-elf/gcc/microblaze-xilinx-elf/13.3.0/include",
+    "-isystem",
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/gnu/microblaze/lin/x86_64-oesdk-linux/usr/lib/microblaze-xilinx-elf/gcc/microblaze-xilinx-elf/13.3.0/include-fixed",
+    "-isystem",
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/microblazeeb-xilinx-elf/usr/include",
+    "-O2",
+    "-mlittle-endian",
+    "-mxl-barrel-shift",
+    "-mxl-pattern-compare",
+    "-mxl-reorder",
+    "-mxl-soft-mul",
+    "-mxl-soft-div",
+    "-O2",
+    "-pipe",
+    "-g",
+    "-feliminate-unused-debug-types",
+    "-Os",
+    "-DPSU_PMU=1U",
+    "-mcpu=v9.2",
+    "-DSDT",
+    "-MMD",
+    "-MP",
+    "-specs=/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/Xilinx.spec",
+    "-I/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/include",
+    "-fstack-usage",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-o",
+    "/home/codex-hil/.local/state/artiq-builds/pit-irq-callback-audit-20261031-v1/pit_irq_audit.o",
+    "-c",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/diagnostics/ddr/pit_collect/pit_irq_audit.c",
+    "-DARTIQ_PIT_TERMINAL_AUDIT_ONLY=1",
+    "-DARTIQ_PIT_IRQ_AUDIT_ONLY=1"
+  ],
+  "source_sha256": "4f4d24514a7a36c24361f94c326a3db92ca972fcaf617da71d0c61c796521247",
+  "header_sha256": "f95ae065a0bd43b556b15c4f3d3910dadc2d2a772e114261438ebbee320357e6",
+  "object_sha256": "01dfdd7519df24575e078748557323ebc6900ba595e2b1210cf9cca042bdbc85",
+  "helper": {
+    "status": "MICROBLAZE_MASK_HELPERS_COMPILED_OFFLINE_NOT_EXECUTED",
+    "hardware_executed": false,
+    "destructive_test_allowed": false,
+    "helpers": {
+      "microblaze_disable_interrupts": {
+        "cleared_msr_mask": "0x2",
+        "source_sha256": "57a1895dc1a44d33925f351a59d9591f38a8dee315b88eb7fb29e37f9b06fa95",
+        "object_sha256": "3960874b7e2cf6cd1c90dd02179358c0bf94f93b51d22ec5a22c04b417ad4d9c",
+        "command": [
+          "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+          "-c",
+          "-mlittle-endian",
+          "-mcpu=v9.2",
+          "-I/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/include",
+          "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_disable_interrupts.S",
+          "-o",
+          "/home/codex-hil/.local/state/artiq-builds/pit-irq-callback-audit-20261031-v1/helpers/microblaze_disable_interrupts.o"
+        ]
+      },
+      "microblaze_disable_exceptions": {
+        "cleared_msr_mask": "0x100",
+        "source_sha256": "5082b24768007fba118be325bc6a60fac203dcf340242fe9163e7d0a0beabe9e",
+        "object_sha256": "29118a2b9394129bcc5129fceba37415c09897b3c9f568834448f55ca0f81747",
+        "command": [
+          "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-gcc",
+          "-c",
+          "-mlittle-endian",
+          "-mcpu=v9.2",
+          "-I/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/include",
+          "/srv/codex-hil-data/artiq-zynqmp/build-vivado/fsbl-spd-dump-20261022/pmu-bsp/libsrc/standalone/src/microblaze/microblaze_disable_exceptions.S",
+          "-o",
+          "/home/codex-hil/.local/state/artiq-builds/pit-irq-callback-audit-20261031-v1/helpers/microblaze_disable_exceptions.o"
+        ]
+      }
+    },
+    "exception_api_sha256": "dd5de8679218f5fb10b7c87f8e6f1d81e369eca94f8767b42de4810bf8f30759",
+    "decision": "Future laboratory guard should use maintained interrupt-only helper with MSR readback, preserving exception reporting; not a DDR ownership permit.",
+    "remaining": [
+      "Hardware exception/ROM/NMI/error paths remain unexcluded.",
+      "No scheduler processing after entering guard must be established in complete target control flow.",
+      "PMU-originated outstanding transactions and secondary-core releases remain separate obligations."
+    ],
+    "limits": "Actual objects for explicit command/BSP includes, not proof of original library build equivalence, linked guard or live MSR. Undefined canonical XPAR_MICROBLAZE_USE_MSR_INSTR selects fallback instructions here; do not assert msrclr was used."
+  },
+  "limits": "Standalone non-LTO callbacks and separately compiled helper only; no linked runtime binding, physical MSR, exception exclusion or deployment."
+}

@@ -105,3 +105,7 @@ The separately pinned owned-mailbox profile passes on its actual ELF (16 bodies,
 ## 2026-10-31 frozen mailbox replay
 
 Two isolated copies of the 40-file mailbox closure yield identical reports; 47 negative controls reject. See `evidence/pit-mailbox-frozen-offline-2026-10-31` for external anchor and replay recipe. No HW operations or admission. Next: offline qualification of concrete MSR/interrupt-disable callbacks, using a separate image/profile and preserving this snapshot. Request hook, digests, consumer lifetime and recovery remain unresolved.
+
+## 2026-10-31 IRQ callback candidates
+
+Standalone real MicroBlaze candidates and maintained interrupt-only helper compile PASS; 105 Python tests PASS. See `evidence/pit-irq-callback-offline-2026-10-31`. Candidates reject non-NULL context, observer rejects invalid alignment, compiler memory barriers bracket operations. No linked binding or physical claim. Next offline step is a separate root and fresh C/LTO link with linked helper inspection; retain old frozen profiles. No runtime hook or external PMU RAM consumer admission.

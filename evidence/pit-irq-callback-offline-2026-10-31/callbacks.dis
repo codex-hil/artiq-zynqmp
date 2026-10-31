@@ -1,0 +1,39 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-irq-callback-audit-20261031-v1/pit_irq_audit.o:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00000000 <pit_irq_msr_audit>:
+   0:	be060024 	beqid	r6, 36		// 24
+			0: R_MICROBLAZE_NONE	*ABS*+0x24
+   4:	3060ffff 	addik	r3, r0, -1
+   8:	a4660003 	andi	r3, r6, 3
+   c:	80a51800 	or	r5, r5, r3
+  10:	be250014 	bneid	r5, 20		// 24
+			10: R_MICROBLAZE_NONE	*ABS*+0x14
+  14:	3060ffff 	addik	r3, r0, -1
+  18:	94608001 	mfs	r3, rmsr
+  1c:	f8660000 	swi	r3, r6, 0
+  20:	10650000 	addk	r3, r5, r0
+  24:	b60f0008 	rtsd	r15, 8
+  28:	80000000 	or	r0, r0, r0
+
+0000002c <pit_irq_disable_audit>:
+  2c:	bc250034 	bnei	r5, 52		// 60
+			2c: R_MICROBLAZE_NONE	*ABS*+0x34
+  30:	3021fff8 	addik	r1, r1, -8
+  34:	fa610004 	swi	r19, r1, 4
+  38:	f9e10000 	swi	r15, r1, 0
+  3c:	12650000 	addk	r19, r5, r0
+  40:	b0000000 	imm	0
+			40: R_MICROBLAZE_64_PCREL	microblaze_disable_interrupts
+  44:	b9f40000 	brlid	r15, 0
+  48:	80000000 	or	r0, r0, r0
+  4c:	10730000 	addk	r3, r19, r0
+  50:	e9e10000 	lwi	r15, r1, 0
+  54:	ea610004 	lwi	r19, r1, 4
+  58:	b60f0008 	rtsd	r15, 8
+  5c:	30210008 	addik	r1, r1, 8
+  60:	b60f0008 	rtsd	r15, 8
+  64:	3060ffff 	addik	r3, r0, -1

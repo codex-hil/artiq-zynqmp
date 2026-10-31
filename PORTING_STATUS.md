@@ -1,3 +1,9 @@
+## 2026-10-31 — concrete IRQ callback candidates (offline)
+
+Added separately opted-in MSR observation and interrupt-only-disable callback candidates, with NULL-context guards, aligned output and compiler memory barriers. Actual standalone MicroBlaze compilation PASS; observer 44 bytes/no frame, disable 60 bytes/8-byte frame/one helper relocation. Separately compiled maintained helper clears IE mask 0x2, preserving exception-enable. All 105 Python tests PASS, including host-double rejection/read-clear-read contracts and target opt-in rejection. Evidence: `evidence/pit-irq-callback-offline-2026-10-31`.
+
+Not linked or bound into any existing root; frozen mailbox closure unchanged. No HW operations. Compiler barriers do not establish bus ordering or exception exclusion. Next safe step: distinct audit root binding these callbacks, fresh small C/LTO link and actual linked callback/helper inspection. Request hook, digest provenance, exception/whole-stack, no-wake consumer lifetime and arbitrary-hang recovery remain open; deployment refused.
+
 ## 2026-10-31 — frozen owned-mailbox replay (offline)
 
 The owned-mailbox closure is frozen in two local locations: 40 files plus inventory each. Isolated relocated replay reports are identical; all 47 negative controls reject. Inventory SHA-256 `b4b4b0c3270c2d370625f2abc250ee7535424f27ef1304836312b56b30105f98`. Evidence: `evidence/pit-mailbox-frozen-offline-2026-10-31`. Existing 104-test result unchanged; no gate/implementation change or HW operation this turn.
