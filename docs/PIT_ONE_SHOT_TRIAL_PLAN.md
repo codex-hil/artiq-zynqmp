@@ -101,3 +101,7 @@ New27-sourceheaderclosure required. Next exact binding/fence/sequence mutations.
 ## 2026-10-31 owned mailbox gate checkpoint
 
 The separately pinned owned-mailbox profile passes on its actual ELF (16 bodies, 911 words, 38 inputs); 104 tests pass. See `evidence/pit-mailbox-flow-gate-offline-2026-10-31`. This adds no hardware admission. Next offline step is frozen relocated replay, retaining explicit refusal of deployment and all callback, reader lifetime and recovery gaps.
+
+## 2026-10-31 frozen mailbox replay
+
+Two isolated copies of the 40-file mailbox closure yield identical reports; 47 negative controls reject. See `evidence/pit-mailbox-frozen-offline-2026-10-31` for external anchor and replay recipe. No HW operations or admission. Next: offline qualification of concrete MSR/interrupt-disable callbacks, using a separate image/profile and preserving this snapshot. Request hook, digests, consumer lifetime and recovery remain unresolved.

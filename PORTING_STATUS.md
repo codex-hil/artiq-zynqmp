@@ -1,3 +1,9 @@
+## 2026-10-31 — frozen owned-mailbox replay (offline)
+
+The owned-mailbox closure is frozen in two local locations: 40 files plus inventory each. Isolated relocated replay reports are identical; all 47 negative controls reject. Inventory SHA-256 `b4b4b0c3270c2d370625f2abc250ee7535424f27ef1304836312b56b30105f98`. Evidence: `evidence/pit-mailbox-frozen-offline-2026-10-31`. Existing 104-test result unchanged; no gate/implementation change or HW operation this turn.
+
+Content consistency only; no new deployment, external RAM-read, sleep, recovery or whole-path callback claim. Next offline step: inspect and qualify concrete MSR/interrupt-disable audit callbacks in a separate profile, preserving this frozen closure. Digest provenance, request hook, no-wake consumer lifetime and arbitrary-hang recovery remain open.
+
 ## 2026-10-31 — owned mailbox exact instruction gate (offline)
 
 Separate mailbox profile passed against the actual linked ELF: 16 function bodies / 911 instruction words, owned storage and mailbox layout checked; 27 source/header + eight helper + three artifact pins. All 104 Python tests passed (19 labeled instruction mutants, every scoped word mutated, 38 file tamper controls). Evidence: `evidence/pit-mailbox-flow-gate-offline-2026-10-31`.

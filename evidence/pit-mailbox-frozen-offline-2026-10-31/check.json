@@ -1,0 +1,282 @@
+{
+  "deployable": false,
+  "destructive_test_allowed": false,
+  "flow": {
+    "deployable": false,
+    "destructive_test_allowed": false,
+    "external_callback_paths_qualified": false,
+    "functions": {
+      "barrier": {
+        "instruction_words": 15,
+        "sha256": "0fba4c40a943d76b54b37fa9de2f25fb9466d9c5bc338f0cba90dd388727ae54",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 3
+        }
+      },
+      "disable": {
+        "instruction_words": 8,
+        "sha256": "4956afde32fea22016abd4ba0bbc742766d6194574e8820f1300a654b80e7515",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1
+        }
+      },
+      "fence": {
+        "instruction_words": 6,
+        "sha256": "24072df1489e3f1e888357098c23516e3112815901ea0796cee2303e250dcd30",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 0
+        }
+      },
+      "observe": {
+        "instruction_words": 36,
+        "sha256": "5c0da7d5709806b74cb23f9c1dd11bb879a87af504caa1a10a9a80fd022eaf7c",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 10
+        }
+      },
+      "pit_mailbox_composition_audit": {
+        "instruction_words": 120,
+        "sha256": "f632c0f4e7c0d255e49c8950b02cc678d667a3f6621691979fbe5781d5130378",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 15
+        }
+      },
+      "pit_mailbox_sample_barrier_audit": {
+        "instruction_words": 12,
+        "sha256": "034066ca48f1d81dae1f8fab8503aed9e13756f77b6d69bf78e7306cfb50ace7",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1
+        }
+      },
+      "pit_mailbox_sample_write_audit": {
+        "instruction_words": 12,
+        "sha256": "b55c18323dcd42e1ae611f03cd9e7e847279b66c5c53133268a78fc3364cf298",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1
+        }
+      },
+      "pit_mailbox_terminal_barrier_audit": {
+        "instruction_words": 12,
+        "sha256": "b7d085877bed6c0c0aac6a03974ba92f8ac9b959c93a896130761c78b583fcaa",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1
+        }
+      },
+      "pit_mailbox_terminal_write_audit": {
+        "instruction_words": 12,
+        "sha256": "2738e75c09e6d1a81e3cf5c5eea87fac960dde1e9dc0bb32dbb7ba319d233131",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1
+        }
+      },
+      "pit_mmio_composition_audit": {
+        "instruction_words": 475,
+        "sha256": "4396a38d2cebeadf491a5f7306f717f4cf3180c69d423b9f270827989659568f",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 77
+        }
+      },
+      "pit_mmio_read": {
+        "instruction_words": 28,
+        "sha256": "98677f3e59f558fc5ab4822e9675a3815c7b758eabfbbe901b8271ad842fc53b",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 1
+        }
+      },
+      "pit_terminal_audit": {
+        "instruction_words": 3,
+        "sha256": "e7d88279bc84b61d056548cfcf38d58409152261590feb9ee5a4ca4891564efc",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 0
+        }
+      },
+      "pit_word_slot_barrier": {
+        "instruction_words": 40,
+        "sha256": "40c3c8c2d65f13c3952f141ca4b3df27992c529a9e95c967547ebb493582224e",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 6
+        }
+      },
+      "pit_word_slot_write": {
+        "instruction_words": 49,
+        "sha256": "691f1e0d3d7010960f2d4e5c9f62350eaeea6326a35db236858b66a6429b94a0",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 4
+        }
+      },
+      "read_word": {
+        "instruction_words": 68,
+        "sha256": "3f636c1483eb42c9fa9e0f758153f818cc8eeab4a9da5ba61b08d91f7ba86a98",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 15
+        }
+      },
+      "write_word": {
+        "instruction_words": 15,
+        "sha256": "97fb08fb93dc1a24a687758b1ad5dacab1ab9a957433e428c29608589863624d",
+        "stores": {
+          "deployable": false,
+          "destructive_test_allowed": false,
+          "hardware_executed": false,
+          "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof",
+          "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+          "word_store_sites": 3
+        }
+      }
+    },
+    "hardware_executed": false,
+    "limits": "Exact sixteen-project-function byte/range consistency for one reviewed owned-mailbox LTO artifact. Vendor library code elsewhere is outside scope. No generic CFG/dataflow, liveness, caller callback trust, physical origin, total stack, memory ownership or deployment proof.",
+    "mailbox": {
+      "baseline_layout": {
+        "bytes_after_stack_before_extension_table": 5040,
+        "destructive_test_allowed": false,
+        "entry": "0xffdc0050",
+        "hardware_executed": false,
+        "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof.",
+        "stack": {
+          "end_exclusive": "0xffdde330",
+          "start": "0xffddd32c"
+        },
+        "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+        "telemetry": {
+          "bytes": 32,
+          "start": "0xffdd8c80"
+        }
+      },
+      "deployable": false,
+      "hardware_executed": false,
+      "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+      "image_sha256": "338fc13699439472b94b3450ffcc0417b6e5badccef316cb38287d83ca8a5768",
+      "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified.",
+      "mailbox": {
+        "bytes": 144,
+        "end_exclusive": "0xffddca10",
+        "start": "0xffddc980"
+      },
+      "pmu_ram_access_allowed": false,
+      "samples": {
+        "bytes": 48,
+        "start": "0xffddc980"
+      },
+      "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+      "terminal": {
+        "bytes": 96,
+        "start": "0xffddc9b0"
+      }
+    },
+    "owned_storage": {
+      "pit_mailbox_audit": [
+        4292725120,
+        144,
+        "B"
+      ],
+      "sample_slot": [
+        4292725048,
+        32,
+        "b"
+      ],
+      "terminal_slot": [
+        4292725016,
+        32,
+        "b"
+      ]
+    },
+    "profile": "pit-owned-mailbox-instruction-audit-v1",
+    "status": "EXACT_SCOPED_MMIO_INSTRUCTION_PINS_PASS_NOT_DEPLOYMENT"
+  },
+  "hardware_executed": false,
+  "layout": {
+    "bytes_after_stack_before_extension_table": 5040,
+    "destructive_test_allowed": false,
+    "entry": "0xffdc0050",
+    "hardware_executed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof.",
+    "stack": {
+      "end_exclusive": "0xffdde330",
+      "start": "0xffddd32c"
+    },
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "telemetry": {
+      "bytes": 32,
+      "start": "0xffdd8c80"
+    }
+  },
+  "limits": "Content consistency only, not trusted provenance, reproducible build or permission to access hardware",
+  "physical_backend_ready": false,
+  "status": "PINNED_OWNED_MAILBOX_AUDIT_PASS_NOT_DEPLOYMENT"
+}
