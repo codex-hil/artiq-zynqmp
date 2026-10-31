@@ -1,0 +1,24 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "excluded_old_custom_sources": [
+    "pit_capture",
+    "pit_irq_composition_audit",
+    "pit_mailbox_composition_audit",
+    "pit_mmio_composition_audit",
+    "pit_sleep_model",
+    "pit_status_compose"
+  ],
+  "added_sources": [
+    "pit_fault_record",
+    "pit_fault_slot_audit"
+  ],
+  "custom_c_units": 19,
+  "old_stack_range_bytes": 4100,
+  "new_stack_range_bytes": 4100,
+  "service_table_start": "0xffddf6e0",
+  "layout_constraints_relaxed": false,
+  "prior_failed_link_preserved": true,
+  "linker_script": "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/lscript.ld",
+  "linker_script_current_sha256": "7ff9c0b4a7cf01e23729ede8b43dba4e3a9ba98f7c1d6156889eb04be00f0786"
+}

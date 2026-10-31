@@ -185,3 +185,7 @@ Portable supplied-word C formatter and19-stage one-shot publisher, host codec/fa
 ## 2026-10-31 owned fault slot capacity finding
 
 Target direct writer object has two mbar1/u32 stores and frame100; host fence doubles pass. Full cumulative audit link fails RAM overflow272/stack-service-table overlap, no valid new image. Evidence `evidence/pit-fault-slot-offline-2026-10-31`. No shrinking stack/moving table/HW/vector changes. Next offline step: minimal isolated source closure excluding unrelated retained profiles, preserving all linker/stack constraints and verifying fresh layout. Handler entry/reentrancy/sleep/recovery still open.
+
+## 2026-10-31 minimal fault-slot link
+
+Separate19-unit LTO audit image fits after excluding six old profiles, unchanged stack4100/table ffddf6e0;2288-byte separation. Fault slot bounds/zero-BSS/mailbox and writer no-call/two-mbar/word-store checks PASS. Evidence `evidence/pit-fault-slot-minimal-offline-2026-10-31`. Prior failure preserved; no HW or source implementation change,143 prior tests unchanged. Next offline: distinct exact inlined writer/storage/fence mutant profile; no vector/main/exception admission.

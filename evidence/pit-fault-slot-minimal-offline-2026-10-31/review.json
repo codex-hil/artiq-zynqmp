@@ -1,0 +1,93 @@
+{
+  "status": "MINIMAL_LINK_PASS_NOT_DEPLOYMENT",
+  "hardware_executed": false,
+  "deployable": false,
+  "custom_c_units": 19,
+  "layout": {
+    "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+    "hardware_executed": false,
+    "entry": "0xffdc0050",
+    "telemetry": {
+      "start": "0xffdd96e0",
+      "bytes": 32
+    },
+    "stack": {
+      "start": "0xffddddec",
+      "end_exclusive": "0xffddedf0"
+    },
+    "bytes_after_stack_before_extension_table": 2288,
+    "destructive_test_allowed": false,
+    "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+  },
+  "mailbox": {
+    "status": "MAILBOX_STATIC_ALLOCATION_PASS_NOT_CONSUMER_ADMISSION",
+    "hardware_executed": false,
+    "deployable": false,
+    "pmu_ram_access_allowed": false,
+    "image_sha256": "f73b9ed5003a56a711ae3029f63d378125c8ec1abf0004215588d4eb967a4fa1",
+    "mailbox": {
+      "start": "0xffddd440",
+      "bytes": 144,
+      "end_exclusive": "0xffddd4d0"
+    },
+    "samples": {
+      "start": "0xffddd440",
+      "bytes": 48
+    },
+    "terminal": {
+      "start": "0xffddd470",
+      "bytes": 96
+    },
+    "heap_scope": "NO_HEAP_BOUNDS_SYMBOLS_DYNAMIC_HEAP_NOT_EXCLUDED",
+    "baseline_layout": {
+      "status": "PMU_BOUNDARY_LOCAL_LAYOUT_PASS_NOT_HARDWARE",
+      "hardware_executed": false,
+      "entry": "0xffdc0050",
+      "telemetry": {
+        "start": "0xffdd96e0",
+        "bytes": 32
+      },
+      "stack": {
+        "start": "0xffddddec",
+        "end_exclusive": "0xffddedf0"
+      },
+      "bytes_after_stack_before_extension_table": 2288,
+      "destructive_test_allowed": false,
+      "limits": "PMU-local layout only; RWE legacy segment flags retained. No boot/telemetry-access/coherence/quiescence proof."
+    },
+    "limits": "ELF/symbol allocation consistency only; zero-init segment is a loader obligation, not observed initialization. Dynamic allocation, callbacks, runtime lifetime, no-wake interval, authenticity and consumer/recovery remain unqualified."
+  },
+  "scoped_word_stores": {
+    "pit_fault_store_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 13,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    },
+    "pit_digest_root_audit": {
+      "status": "SCOPED_NO_SUBWORD_STORE_PASS_NOT_HARDWARE",
+      "word_store_sites": 104,
+      "hardware_executed": false,
+      "deployable": false,
+      "destructive_test_allowed": false,
+      "limits": "Opcode inventory only; alignment, callback/library/exception paths and device behavior need separate proof"
+    }
+  },
+  "formatter_inlined_into_writer": true,
+  "fault_slot": {
+    "address": 4292727808,
+    "bytes": 64,
+    "alignment": 8,
+    "zero_bss": true
+  },
+  "stack": {
+    "low": 4292730348,
+    "high": 4292734448,
+    "bytes": 4100,
+    "service_table_start": 4292736736,
+    "headroom": 2288
+  },
+  "limits": "Separate valid audit link only. No exception/vector/main hook, live ownership, external RAM read, exception stack or recovery qualification."
+}

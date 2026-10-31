@@ -1,3 +1,9 @@
+## 2026-10-31 — minimal fault-slot audit link fits (offline)
+
+Separate19-custom-unit LTO image PASS/no undefined after excluding six old parallel audit profiles. No source implementation or vendor constraints changed. Original failed25-unit build preserved. Stack range remains4100 bytes, top ffddedf0; fixed service table ffddf6e0, gap2288. Fault slot ffddd400/64B/aligned8/zero-BSS/disjoint mailbox PASS. Inlined writer440 bytes/frame132/no calls/two mbar1 and scoped word stores PASS; digest root2488 bytes/frame332. Evidence `evidence/pit-fault-slot-minimal-offline-2026-10-31`. Existing143 tests unchanged/not rerun.
+
+No HW/vector/main hook/runtime/frozen changes. Old exact gates/stack graph do not qualify this new LTO image. Next safe offline step: distinct exact fault-writer instruction/storage/fence profile with mutations and slot/state/stack/service boundary checks. Exception printf remains unqualified; entry/reentrancy/policy/no-wake lifetime/recovery remain open. Deployment refused.
+
 ## 2026-10-31 — direct owned fault slot candidate, full link rejected (offline)
 
 Full PIT Python suite:143 tests PASS; full target link remains FAILED.
