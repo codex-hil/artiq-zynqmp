@@ -1,3 +1,9 @@
+## 2026-11-01 — static vendor vector-selection trace (offline)
+
+60 vendor C/S units scanned: no named GPO0/DEBUG_REMAP/ffd40010 references. Exact linked startup/vector bodies archived; XPfw_Init stack/BSS/main sequence contains no reviewed remap transaction. Core interrupt/exception-enable and ROM service table declarations do not prove vector source. BSP0xffd00000 vs ELF0xffdc0000 discrepancy preserved, remap UNKNOWN. Official GPO0 WO/all-bit update contract reviewed, no read/write/reset. Evidence `evidence/pit-vector-selection-offline-2026-11-01`; trace `docs/PIT_VECTOR_SELECTION_TRACE.md`.
+
+No HW/image/vector/runtime/frozen changes;155 tests unchanged/not rerun. Lexical absence not no-write/ROM/alias/loader/debug proof. Next safe offline step: ROM service/loader launch/PC assumptions inventory and exact dependency pins, without execution or APB/WO inspection. Exception entry/notification/recovery/sleep/reader lifetime remain unqualified; deployment refused.
+
 ## 2026-11-01 — initial PMU config/EE-EIP entry review (offline)
 
 12 target offsetof/sizeof assertions PASS; initial minimal-ELF config fields extracted. Software metadata says UseMmu0, UseInterrupt1, selected exceptions/stack protection1, external break fields0. These are not live/PVR/routing proof. Concrete discrepancy: BaseVectorAddr0xffd00000 vs linked vector aperture0xffdc0000; no correction/relocation attempted. Official MSR/exception documentation reviewed; C_FAULT_TOLERANT remains unknown, conditional second-fault halt is not recovery guarantee. Evidence `evidence/pit-entry-policy-offline-2026-11-01`; review `docs/PIT_ENTRY_POLICY_REVIEW.md`.

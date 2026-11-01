@@ -213,3 +213,7 @@ Isolated non-PMU CODE0x10000/SLOT0x20000 fixture resolves exact entry relocation
 ## 2026-11-01 PMU software config and EE/EIP
 
 12 target layout assertions/ELF field reads PASS; documented architecture remains separate from live configuration. BaseVectorAddr0xffd00000 differs from linked0xffdc0000 vectors; review `PIT_ENTRY_POLICY_REVIEW.md`, evidence `evidence/pit-entry-policy-offline-2026-11-01`. No patches/HW. Next offline: vendor shadow/vector-selection source trace, no write-only register reads; no reentry/recovery inference.
+
+## 2026-11-01 vendor vector selection trace
+
+60 vendor C/S files/no named remap refs, exact startup/vector listings; lexical absence not no-write/live source proof. GPO0 write-only/all-bit contract means no readback/RMW shortcut; mapping UNKNOWN. Trace `PIT_VECTOR_SELECTION_TRACE.md`, evidence `evidence/pit-vector-selection-offline-2026-11-01`. Next offline: ROM service/loader launch assumptions inventory, no execution/HW/APB inspection or policy change.

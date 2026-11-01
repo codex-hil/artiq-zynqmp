@@ -1,0 +1,18 @@
+{
+  "hardware_executed": false,
+  "deployable": false,
+  "additional_source_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_interrupts.c": "87fac5ab29a629b4d5210646e710fe590bdc76ce4260a2a3fb46cdf2fb459323",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_core.c": "87c1f2bd8d5574457dd4c0b780c9f788e960da20ac13e7b76cff39b02524a9ce",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_rom_interface.c": "0764392432c625d808758ac787293bff25d6d64aa2e7827c49f9d9be9a812d2b",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_rom_interface.h": "791f255b388a177711f400d3127b027a80024ae127ab3729cbb6558bf26f620d",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/pmu_iomodule.h": "1507dcf6c834879e26bed5c6a581263de03ee5fc6f809156f79d33cd246f17e9",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/lscript.ld": "7ff9c0b4a7cf01e23729ede8b43dba4e3a9ba98f7c1d6156889eb04be00f0786"
+  },
+  "documentation": {
+    "url": "https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/GPO0-PMU_IOMODULE-Register?contentId=n1lYCViMc_vfwdPAscq~iA",
+    "revision": "UG1087 1.11 2025-06-20"
+  },
+  "prior_python_tests_unchanged": 155,
+  "contract_sha256": "43a78b88ae2d36925506d3a5dd6f48dc165762f0d4a75d0b02df5dbb23837941"
+}
