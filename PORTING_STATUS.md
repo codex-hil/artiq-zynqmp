@@ -1,3 +1,15 @@
+2026-11-01 live read-only JTAG PASS: exact cable 210383B7F02DA exposes13
+XSDB targets. A53#0/#1 report Running; MicroBlaze PMU reports Sleeping. No clock;
+A53#2/#3 Power On Reset is their reported state, not a cold-cycle proof.
+Board flock and unique persistent plug lease held7.918s; plug reportsON with
+physical confirmation false/measurement freshness UNKNOWN; both claims released.
+No target selection/stop/reset/download/register or memory read/UART open/power
+switch. Existing hw_server reused without restart. Evidence
+ evidence/genesys-jtag-readonly-2026-11-01/report.json and targets.tcl.
+Target enumeration is not firmware identity or safe PMU RAM lifetime proof.
+Next safe step: bounded normal-runtime identity/network check under fresh shared
+claims, verify MAC/address association first; no PMU/APB/GPO access or cold cycle.
+
 2026-11-01 recovery-window review and migration correction: separate OFF/ON
 procedure documented in docs/PIT_COLD_RECOVERY_WINDOW.md. Relay ACK/power-field
 freshness and USB/ping loss cannot certify board OFF/POR; independent observation
