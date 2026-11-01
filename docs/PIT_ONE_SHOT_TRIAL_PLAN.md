@@ -225,3 +225,7 @@ Static ROM service declaration/initial zero256-entry extension table/loader comm
 ## 2026-11-01 consolidated readiness and next step
 
 Current readiness/proposal is `PIT_QUALIFICATION_READINESS_2026-11-01.md`; it supersedes earlier dated next-step prose. Next safe approved Phase A is read-only station/board/plug readiness under both leases, no switching/reset/PMU memory or GPO access. Recovery window separate, entry/policy unresolved and handler trial not admitted. Existing155 tests unchanged; evidence `evidence/pit-readiness-offline-2026-11-01`. No hardware action this checkpoint.
+
+## 2026-11-01 present Phase A read-only result
+
+Bounded5.324s shared-board+plug lease window: plug reportedON, exact USB serial metadata, UART unopened, network cache STALE/no active runtime identity claim; baseline nine inputs hash-match; leases released. No switching/reset/PMU memory. Shared restore storage short54,190,080 bytes under existing threshold; recovery windows not admitted. Evidence `evidence/pit-readiness-phase-a-2026-11-01`. Next safe offline inventory own disposable compiler intermediates, preserve artifacts/frozen/other data, no threshold relaxation.

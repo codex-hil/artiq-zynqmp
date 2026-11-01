@@ -1,3 +1,9 @@
+## 2026-11-01 — actual read-only station readiness, storage gap
+
+Genesys shared lease+unique plug reservation held5.324s, then both released. Plug reportsON (not physical/POR proof); exact Digilent USB/UART serial metadata present, UART unopened. Passive expected MAC/oldIP STALE; no network probe/current runtime identity claim. Nine baseline restore inputs hash-match. No power/reset/program/JTAG state/PMU memory/GPO access. Evidence `evidence/pit-readiness-phase-a-2026-11-01`.
+
+Recovery storage not admitted: shared free1,287,987,200 vs required1,342,177,280 (768MiB reserve+512MiB minimum), deficit54,190,080 bytes (~51.7MiB). No reserve allocation or threshold change. Next safe offline step: inventory own disposable compile intermediates only, preserve ELF/maps/build/evidence/frozen/tool/vendor/other-thread data.155 prior software tests unchanged/not rerun. No new-handler/entry/power/recovery trial admission.
+
 ## 2026-11-01 — readiness/qualification boundaries consolidated (offline)
 
 Reviewable readiness matrix and bounded proposal added: `docs/PIT_QUALIFICATION_READINESS_2026-11-01.md`, evidence `evidence/pit-readiness-offline-2026-11-01`. Completed offline proof scopes separated from historical physical baseline, present station availability, independent recovery, entry/notification policy and future trial. No blanket trial admission. Existing155 tests unchanged/not rerun.
