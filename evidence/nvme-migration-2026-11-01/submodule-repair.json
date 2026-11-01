@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "changed_git_pointer_files": [
+    "common/migen/.git",
+    "common/artiq/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-security/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-aws/.git",
+    "common/petalinux/rel-v2025.2/sources/yocto-scripts/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-arm/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-system-controller/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-embedded-plus/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-virtualization/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-openamp/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-openembedded/.git",
+    "common/petalinux/rel-v2025.2/sources/poky/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-mingw/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-ros/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-xilinx-tsn/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-petalinux/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-xilinx-tools/.git",
+    "common/petalinux/rel-v2025.2/sources/manifest/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-amd-adaptive-socs/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-qt5/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-rauc/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-kria/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-xilinx/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-jupyter/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-vitis/.git",
+    "common/petalinux/rel-v2025.2/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf/.git"
+  ],
+  "git_status": {
+    "legacy": "?? .Xil/\n?? vivado.jou\n?? vivado.log\n?? vivado_54.backup.jou\n?? vivado_54.backup.log\n?? vivado_55.backup.jou\n?? vivado_55.backup.log\n?? vivado_56.backup.jou\n?? vivado_56.backup.log\n",
+    "nvme": "?? .Xil/\n?? vivado.jou\n?? vivado.log\n?? vivado_54.backup.jou\n?? vivado_54.backup.log\n?? vivado_55.backup.jou\n?? vivado_55.backup.log\n?? vivado_56.backup.jou\n?? vivado_56.backup.log\n"
+  },
+  "recursive_submodule_status": " 1461cf90953ed9972c040b263e5a11c9ebc9e41a common/artiq (4.0-3281-g1461cf909)\n 44e5627d367c528b3ce5e686b6f305a9dfc56f2a common/migen (0.6.dev-426-g44e5627)\n 171a401ec50c20353361061fc53d2853a141ba2c common/petalinux/rel-v2025.2/sources/manifest (xlnx-rel-v2024.2_update3-19-g171a401)\n 6567b8fa288ab24018d3536487b5c667d05e253c common/petalinux/rel-v2025.2/sources/meta-amd-adaptive-socs (xlnx-rel-v2024.2_update3-324-g6567b8fa)\n 0f1e7bf92c89759f0ab74cfa5be4ee47b092ad46 common/petalinux/rel-v2025.2/sources/meta-arm (xlnx-rel-v2024.2_update3-22-g0f1e7bf9)\n 3990a0254b1633ab77212732e1f3e623d8cc3ff1 common/petalinux/rel-v2025.2/sources/meta-aws (xlnx-rel-v2024.2_update3-1000-g3990a025)\n 2145875610bb794efa2134c30b411fa192e12396 common/petalinux/rel-v2025.2/sources/meta-embedded-plus (xlnx-rel-v2024.2-256-g2145875)\n 5e47ac5efa4c9f7a36912253acbca0cdb2a812e6 common/petalinux/rel-v2025.2/sources/meta-jupyter (amd-edf-rel-v26.06.1)\n 660eb84415794ddd5cfca0b4a909ede40acab08e common/petalinux/rel-v2025.2/sources/meta-kria (xlnx-rel-v2024.2-293-g660eb84)\n bd9fef71ec005be3c3a6d7f8b99d8116daf70c4f common/petalinux/rel-v2025.2/sources/meta-mingw (amd-edf-rel-v26.06.1)\n cc7a54969c887823a934c705edd9825f3fad672e common/petalinux/rel-v2025.2/sources/meta-openamp (xlnx-rel-v2024.2_update3-26-gcc7a549)\n b9fb6556a3c8a3e477dce334205b658cb79ad501 common/petalinux/rel-v2025.2/sources/meta-openembedded (xlnx-rel-v2024.2_update3-238-gb9fb6556a)\n a59a0c815a0ffc2747ab4289284f2c3aee3bc7fd common/petalinux/rel-v2025.2/sources/meta-petalinux (xlnx-rel-v2024.2-37-ga59a0c81)\n e197839013fa2cfd59339508303bce91fef48928 common/petalinux/rel-v2025.2/sources/meta-qt5 (xlnx-rel-v2024.2_update3-3-ge197839)\n a0f4a8b9986954239850b9d4256c003c91e6b931 common/petalinux/rel-v2025.2/sources/meta-rauc (xlnx-rel-v2024.2_update3-7-ga0f4a8b)\n ff76fa90fb66d0b83238d99f882c60f2373eb875 common/petalinux/rel-v2025.2/sources/meta-ros (xlnx-rel-v2024.2_update3)\n bc865c5276c2ab4031229916e8d7c20148dfbac3 common/petalinux/rel-v2025.2/sources/meta-security (xlnx-rel-v2024.2_update3-1-gbc865c5)\n e0ccbf43df545d52f79852f28ffce502b20478bc common/petalinux/rel-v2025.2/sources/meta-system-controller (xlnx-rel-v2024.2-464-ge0ccbf4)\n 196b64c06935089b445bf90502dc0a675fb1024f common/petalinux/rel-v2025.2/sources/meta-virtualization (amd-edf-rel-v25.11)\n 562adefd277483afb2eb4a9402f6a6ebbd653bba common/petalinux/rel-v2025.2/sources/meta-vitis (xlnx-rel-v2024.2_update3-6-g562adef)\n 5391a52df6e72fdb5453491af8829c27eec64a60 common/petalinux/rel-v2025.2/sources/meta-xilinx (xlnx-rel-v2024.2_update3-1633-g5391a52df)\n e1bc2ac323a92fe3c2b87f11044010351cd79b25 common/petalinux/rel-v2025.2/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf (xilinx_v2024.1-242-ge1bc2ac)\n 5bc80078fa08c7c6dbe17962860f5d3354c5833e common/petalinux/rel-v2025.2/sources/meta-xilinx-tools (xlnx-rel-v2024.2_update3-217-g5bc8007)\n c38ac51e99ee47f384b66da3d6780929a96d20a9 common/petalinux/rel-v2025.2/sources/meta-xilinx-tsn (xlnx-rel-v2024.2_update2-4-gc38ac51)\n e3ce89324da1e33c17c9180ef846f41d92616254 common/petalinux/rel-v2025.2/sources/poky (amd-edf-rel-v25.11)\n 27644974099014f27a84549a4610a6b908271155 common/petalinux/rel-v2025.2/sources/yocto-scripts (xlnx-rel-v2026.1)\n",
+  "tracked_source_changed": false
+}

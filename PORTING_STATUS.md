@@ -1,3 +1,15 @@
+2026-11-01 recovery-window review and migration correction: separate OFF/ON
+procedure documented in docs/PIT_COLD_RECOVERY_WINDOW.md. Relay ACK/power-field
+freshness and USB/ping loss cannot certify board OFF/POR; independent observation
+source still unestablished, no cold test executed. Next safe executable step is
+read-only live target/runtime identification under shared board/plug claims.
+During review found 26 relative submodule gitdir pointers broken by migration;
+converted only these local metadata pointers to existing absolute Git dirs.
+Both legacy and NVMe git status plus recursive submodule enumeration PASS.
+Evidence evidence/nvme-migration-2026-11-01/submodule-repair.json. Earlier HEAD-only
+migration validation missed this; tracked submodule source content unchanged.
+No hardware/plug/firmware/reset access. No PMU handler admission.
+
 2026-11-01 post-NVMe recovery review: normal-PMU qualifier offline preflight
 PASS with fresh exact helper/runtime manifest; 3 restore qualification + 6 actual
 reserve tests PASS. Negative-control FAIL text is fully mocked, no hardware run.
