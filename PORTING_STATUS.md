@@ -1,3 +1,9 @@
+## 2026-11-01 — initial PMU config/EE-EIP entry review (offline)
+
+12 target offsetof/sizeof assertions PASS; initial minimal-ELF config fields extracted. Software metadata says UseMmu0, UseInterrupt1, selected exceptions/stack protection1, external break fields0. These are not live/PVR/routing proof. Concrete discrepancy: BaseVectorAddr0xffd00000 vs linked vector aperture0xffdc0000; no correction/relocation attempted. Official MSR/exception documentation reviewed; C_FAULT_TOLERANT remains unknown, conditional second-fault halt is not recovery guarantee. Evidence `evidence/pit-entry-policy-offline-2026-11-01`; review `docs/PIT_ENTRY_POLICY_REVIEW.md`.
+
+No HW/MSR/vector/image/runtime/frozen change;155 prior tests unchanged/not rerun. Next safe offline step: trace original PMU vendor startup/ROM-RAM shadow/vector-selection writes and linked entry assumptions without reading write-only GPO or changing working configuration. Reentry/notification/sleep/reader lifetime/recovery remain unqualified; deployment refused.
+
 ## 2026-11-01 — bounded fault-slot interleaving model (offline)
 
 Full PIT Python suite:155 tests PASS.

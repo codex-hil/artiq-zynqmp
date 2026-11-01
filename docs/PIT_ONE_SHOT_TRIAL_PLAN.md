@@ -209,3 +209,7 @@ Isolated non-PMU CODE0x10000/SLOT0x20000 fixture resolves exact entry relocation
 ## 2026-11-01 bounded shared-slot publication model
 
 20 prefixes/400 nonreturning nested prefix pairs show invalid/whole receipts, no mixed under stated assumptions; forbidden resumed-outer class yields four accepted mixed records, replayable counterexample. Evidence `evidence/pit-fault-interleavings-offline-2026-11-01`. Not physical timing/reentry/freshness proof. Next offline: PMU config/EE/EIP architecture entry restrictions without changing policy; no HW or external RAM reads.
+
+## 2026-11-01 PMU software config and EE/EIP
+
+12 target layout assertions/ELF field reads PASS; documented architecture remains separate from live configuration. BaseVectorAddr0xffd00000 differs from linked0xffdc0000 vectors; review `PIT_ENTRY_POLICY_REVIEW.md`, evidence `evidence/pit-entry-policy-offline-2026-11-01`. No patches/HW. Next offline: vendor shadow/vector-selection source trace, no write-only register reads; no reentry/recovery inference.
