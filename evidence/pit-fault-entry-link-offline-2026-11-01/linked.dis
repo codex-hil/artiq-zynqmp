@@ -1,0 +1,73 @@
+
+/home/codex-hil/.local/state/artiq-builds/pit-fault-entry-link-20261101-v1/fixture.elf:     file format elf32-microblazeel
+
+
+Disassembly of section .text:
+
+00010000 <pit_fault_sw_entry_audit>:
+   10000:	94608001 	mfs	r3, rmsr
+   10004:	94808005 	mfs	r4, resr
+   10008:	94a08003 	mfs	r5, rear
+   1000c:	b0000002 	imm	2
+   10010:	31000000 	addik	r8, r0, 0	// 20000 <pit_fault_entry_slot>
+   10014:	f8080000 	swi	r0, r8, 0
+   10018:	b8220004 	mbar	1
+   1001c:	b0005046 	imm	20550
+   10020:	31205831 	addik	r9, r0, 22577
+   10024:	f9280004 	swi	r9, r8, 4
+   10028:	31200001 	addik	r9, r0, 1
+   1002c:	f9280008 	swi	r9, r8, 8
+   10030:	31200001 	addik	r9, r0, 1
+   10034:	f928000c 	swi	r9, r8, 12
+   10038:	31200007 	addik	r9, r0, 7
+   1003c:	f9280010 	swi	r9, r8, 16
+   10040:	f8680014 	swi	r3, r8, 20
+   10044:	f8880018 	swi	r4, r8, 24
+   10048:	f8a8001c 	swi	r5, r8, 28
+   1004c:	f8080020 	swi	r0, r8, 32
+   10050:	f8080024 	swi	r0, r8, 36
+   10054:	f8080028 	swi	r0, r8, 40
+   10058:	f808002c 	swi	r0, r8, 44
+   1005c:	f8080030 	swi	r0, r8, 48
+   10060:	f8080034 	swi	r0, r8, 52
+   10064:	f8080038 	swi	r0, r8, 56
+   10068:	f808003c 	swi	r0, r8, 60
+   1006c:	b8220004 	mbar	1
+   10070:	31200001 	addik	r9, r0, 1
+   10074:	f9280000 	swi	r9, r8, 0
+   10078:	b8000000 	bri	0		// 10078
+   1007c:	80000000 	or	r0, r0, r0
+
+00010080 <pit_fault_hw_entry_audit>:
+   10080:	94608001 	mfs	r3, rmsr
+   10084:	94808005 	mfs	r4, resr
+   10088:	94a08003 	mfs	r5, rear
+   1008c:	b0000002 	imm	2
+   10090:	31000000 	addik	r8, r0, 0	// 20000 <pit_fault_entry_slot>
+   10094:	f8080000 	swi	r0, r8, 0
+   10098:	b8220004 	mbar	1
+   1009c:	b0005046 	imm	20550
+   100a0:	31205831 	addik	r9, r0, 22577
+   100a4:	f9280004 	swi	r9, r8, 4
+   100a8:	31200001 	addik	r9, r0, 1
+   100ac:	f9280008 	swi	r9, r8, 8
+   100b0:	31200002 	addik	r9, r0, 2
+   100b4:	f928000c 	swi	r9, r8, 12
+   100b8:	31200007 	addik	r9, r0, 7
+   100bc:	f9280010 	swi	r9, r8, 16
+   100c0:	f8680014 	swi	r3, r8, 20
+   100c4:	f8880018 	swi	r4, r8, 24
+   100c8:	f8a8001c 	swi	r5, r8, 28
+   100cc:	f8080020 	swi	r0, r8, 32
+   100d0:	f8080024 	swi	r0, r8, 36
+   100d4:	f8080028 	swi	r0, r8, 40
+   100d8:	f808002c 	swi	r0, r8, 44
+   100dc:	f8080030 	swi	r0, r8, 48
+   100e0:	f8080034 	swi	r0, r8, 52
+   100e4:	f8080038 	swi	r0, r8, 56
+   100e8:	f808003c 	swi	r0, r8, 60
+   100ec:	b8220004 	mbar	1
+   100f0:	31200001 	addik	r9, r0, 1
+   100f4:	f9280000 	swi	r9, r8, 0
+   100f8:	b8000000 	bri	0		// 100f8
+   100fc:	80000000 	or	r0, r0, r0

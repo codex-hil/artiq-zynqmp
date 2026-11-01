@@ -1773,3 +1773,19 @@ evidence/pit-fault-entry-object-offline-2026-11-01/relocations.txt
 evidence/pit-fault-entry-object-offline-2026-11-01/review.json
 evidence/pit-fault-entry-object-offline-2026-11-01/sections.txt
 evidence/pit-fault-entry-object-offline-2026-11-01/symbols.txt
+
+# Synthetic non-PMU entry link — LGPL-3.0-or-later
+scripts/check_pit_fault_entry_link.py
+tests/test_pit_fault_entry_link.py
+evidence/pit-fault-entry-link-offline-2026-11-01/README.md
+evidence/pit-fault-entry-link-offline-2026-11-01/audit-only.ld
+evidence/pit-fault-entry-link-offline-2026-11-01/build.json
+evidence/pit-fault-entry-link-offline-2026-11-01/build.py
+evidence/pit-fault-entry-link-offline-2026-11-01/elf-layout.txt
+evidence/pit-fault-entry-link-offline-2026-11-01/fixture.hex
+evidence/pit-fault-entry-link-offline-2026-11-01/inputs.json
+evidence/pit-fault-entry-link-offline-2026-11-01/link.log
+evidence/pit-fault-entry-link-offline-2026-11-01/linked.dis
+evidence/pit-fault-entry-link-offline-2026-11-01/qualification.json
+evidence/pit-fault-entry-link-offline-2026-11-01/review.json
+evidence/pit-fault-entry-link-offline-2026-11-01/symbols.txt

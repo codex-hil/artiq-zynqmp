@@ -1,0 +1,19 @@
+{
+  "status": "SYNTHETIC_NON_PMU_LINK_PASS_NOT_FIRMWARE",
+  "hardware_executed": false,
+  "deployable": false,
+  "command": [
+    "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/gnu/microblaze/lin/bin/mb-ld",
+    "-EL",
+    "--no-relax",
+    "-T",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/evidence/pit-fault-entry-link-offline-2026-11-01/audit-only.ld",
+    "/home/codex-hil/.local/state/artiq-builds/pit-fault-entry-object-20261101-v1/entry.o",
+    "-o",
+    "/home/codex-hil/.local/state/artiq-builds/pit-fault-entry-link-20261101-v1/fixture.elf"
+  ],
+  "object_sha256": "a8ff1efa5e91f0fde20dda71263de4c8a5f6b1d813f35a49b6f93b8184eb2446",
+  "linker_sha256": "a7cdda4a748cd3b3d633c125dbd633a844612585e780fcc6e907427488f89d2e",
+  "elf_sha256": "54dbd5774163bcbdc74f28ee004d6b0431e40335df7811cc69b9fafda6fe795c",
+  "limits": "Synthetic addresses 0x10000/0x20000, no PMU runtime/vector map, no execution or deployment."
+}

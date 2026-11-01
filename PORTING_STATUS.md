@@ -1,3 +1,11 @@
+## 2026-11-01 — isolated synthetic entry link (offline)
+
+Full PIT Python suite:152 tests PASS.
+
+Standalone object linked alone with bounded synthetic non-PMU map CODE0x10000/256B and SLOT0x20000/64B zero-BSS/aligned8; no remaining relocations/vectors/stack/heap/calls. Exact linked instructions/resolved slot addresses/map/sections/listing checked;64 word mutants and map/symbol/listing controls reject. Actual PMU boundary checker explicitly rejects this fixture. Evidence `evidence/pit-fault-entry-link-offline-2026-11-01`.
+
+No HW/vector/runtime/frozen change; this is not PMU firmware or entry qualification. Next safe offline step: partial/nested entry publication interleaving model and strict decoder, record single-writer requirements and concrete counterexamples. No reentry/notification/sleep/recovery admission; production printf path remains unchanged.
+
 ## 2026-11-01 — standalone stackless assembly entry candidate (offline)
 
 Two unreferenced assembly entry sections128B/32 instructions each, MSR/ESR/EAR subset (no EDR), direct u32 fault record stores, two mbar1 and local infinite loop. Dedicated64B/aligned8 NOBITS slot, no vector section/call/stack/SDA/ABI pointer dependency. Exact relocatable ELF section/symbol/instruction/relocation checker and64 word mutants plus metadata controls PASS;149 tests PASS. Evidence `evidence/pit-fault-entry-object-offline-2026-11-01`.

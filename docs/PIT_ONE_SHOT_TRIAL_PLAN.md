@@ -201,3 +201,7 @@ Contract `PIT_EXCEPTION_ENTRY_CONTRACT.md` separates no-stack assembly proposal 
 ## 2026-11-01 standalone assembly entry candidate
 
 Two unreferenced128B entries/64B slot, no stack/calls/vectors, MSR/ESR/EAR only. Exact object/relocation64-word mutant controls and149 tests PASS; evidence `evidence/pit-fault-entry-object-offline-2026-11-01`. No linked address/HW or handler admission. Next offline: isolated explicit-map non-runtime link and static resolved-address/store/fence/loop checks, preserve production policy and all nested-fault/recovery gaps.
+
+## 2026-11-01 synthetic entry link
+
+Isolated non-PMU CODE0x10000/SLOT0x20000 fixture resolves exact entry relocations, no vectors/calls/stack; PMU boundary gate rejects it. Evidence `evidence/pit-fault-entry-link-offline-2026-11-01`. No HW/entry admission. Next offline: partial/nested store interleaving model and decoder with explicit single-writer limitations, without changing exception policy.
