@@ -1,0 +1,26 @@
+{
+  "status": "PRACTICAL_OFF_ON_AND_NORMAL_RESTORATION_PASS",
+  "power_commands": [
+    "off",
+    "on"
+  ],
+  "off_observation": "reported OFF; two unanswered ICMP probes after prior successful ICMP",
+  "on_observation": "reported ON; later exact cable JTAG and expected-MAC network runtime returned",
+  "autoboot": "Older kernel-bringup image lacks debug services; initial debug connection refused. Normal baseline then restored by volatile JTAG.",
+  "early_readiness_observation": "First post-ON check showed only3 JTAG targets and no ICMP; later bounded readiness check showed12 targets and successful ICMP. Controller overwrote same-name phase records; first observation retained here from tool output, not a separate raw log.",
+  "host_failures": [
+    "Initial loader aborted before reset because inherited zero-width TTY caused rlwrap failure; non-TTY invocation succeeded.",
+    "Initial post-restore debug test used example stale192.168.2.16; kernel connection failed before execution. Generated current DHCP192.168.2.3 database then full debug test passed."
+  ],
+  "normal_load": "normal-load-no-tty/results.json",
+  "debug": "restored-debug-current-ip/results.json",
+  "ethernet": "restored-ethernet.json",
+  "management": "Final standard management log read succeeded",
+  "claims": "Board flock and plug token held across cycle/load/tests; released; private token removed",
+  "limits": [
+    "No measured rail voltage or POR waveform",
+    "No hung-PMU or fault-injection recovery test",
+    "No new PMU handler/vector/reader admission",
+    "No persistent image/flash/SD/OTP writes; boot source remains older image"
+  ]
+}

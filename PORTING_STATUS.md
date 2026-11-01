@@ -1,3 +1,20 @@
+2026-11-01 user-authorized practical plug OFF/ON + normal restore PASS.
+Exactly one OFF and one separate ON under continuous Genesys flock/plug lease;
+OFF report plus network loss, ON report then exact cable JTAG and expected MAC
+runtime returned. No rail/POR measurement; earlier physical-observation block
+superseded for this practical scope by explicit user clarification/authorization.
+Autoboot is older kernel-bringup without debug services; normal pinned PMU/FSBL/
+PL/CPU0/CPU1 restored through volatile JTAG. Full physical TTL/MonInj/analyzer,
+9 CoreDMA experiments and ring wrap PASS; Ethernet20/20 ICMP/5 TCP connections/
+1080 byte-exact exchanges/1129210 bytes PASS; final management log PASS192.168.2.3.
+Two host mistakes preserved: zero-width TTY abort before reset, then stale example
+DB192.168.2.16 failed kernel connection before experiment; corrected non-TTY/current
+DHCP invocation PASS. No fault retry/power retry cascade. Both claims released.
+Evidence evidence/genesys-plug-cycle-2026-11-01/summary.json and raw results.
+No flash/SD/OTP/Si writes, no new PMU image/handler trial or hung-load recovery proof.
+Next safe offline step: reconcile demonstrated practical recovery with PIT entry/
+notification/result-transport gates; do not infer those gates closed by this test.
+
 2026-11-01 normal-runtime read-only check PASS: single ICMP reply at192.168.2.3,
 expected MAC02:38:3b:7f:02:0d, then neighbor REACHABLE and standard
 artiq_coremgmt log read PASS. Initial DELAY guard stopped before application;

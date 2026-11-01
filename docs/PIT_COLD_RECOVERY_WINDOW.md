@@ -2,7 +2,14 @@
 
 SPDX-License-Identifier: LGPL-3.0-or-later
 
-Status: reviewed procedure; NOT_EXECUTED. Existing authorization covers control
+Status update 2026-11-01: practical user-authorized OFF/ON and pinned normal
+restoration PASS; see evidence/genesys-plug-cycle-2026-11-01/summary.json.
+No electrical/POR waveform qualification or hung-PMU test. Earlier requirement
+for independent rail observation applies to electrical/POR claims, not as an
+extra authorization blocker for the user-approved practical switching test.
+The procedure below records the original broader qualification scope.
+
+Original status: reviewed procedure; NOT_EXECUTED at drafting time. Existing authorization covers control
 of the devkit-only plug. No new PMU candidate or exception policy is admitted.
 
 1. Re-identify Optiplex, exact Genesys cable 210383B7F02DA and stable UART

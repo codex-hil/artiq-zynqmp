@@ -1,0 +1,103 @@
+{
+  "started": "2026-11-01T08:25:00.703681+00:00",
+  "phases": {
+    "reservation": {
+      "code": 0,
+      "stdout": "{\"lease\": null}\n",
+      "stderr": ""
+    },
+    "before-status": {
+      "code": 0,
+      "stdout": "{\"device\": \"0xa4c1386c56ee225b\", \"received_at\": 1793521503.4029555, \"state\": \"ON\", \"measurements\": {\"power\": 9, \"current\": 0.08, \"voltage\": 236, \"energy\": 1.04}, \"units\": {\"power\": \"W\", \"current\": \"A\", \"voltage\": \"V\", \"energy\": \"kWh\"}, \"field_sample_age\": \"UNKNOWN (Z2M may merge cached fields)\", \"physical_state_confirmed\": false, \"linkquality\": 127}\n",
+      "stderr": ""
+    },
+    "before-ping": {
+      "code": 0,
+      "stdout": "PING 192.168.2.3 (192.168.2.3) 56(84) bytes of data.\n64 bytes from 192.168.2.3: icmp_seq=1 ttl=255 time=0.057 ms\n\n--- 192.168.2.3 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.057/0.057/0.057/0.000 ms\n",
+      "stderr": ""
+    },
+    "off": {
+      "code": 0,
+      "stdout": "{\"requested_state\": \"OFF\", \"mqtt_delivered\": true, \"physical_state_confirmed\": false, \"next\": \"status\"}\n",
+      "stderr": ""
+    },
+    "off-status": {
+      "code": 0,
+      "stdout": "{\"device\": \"0xa4c1386c56ee225b\", \"received_at\": 1793521513.3460937, \"state\": \"OFF\", \"measurements\": {\"power\": 9, \"current\": 0.08, \"voltage\": 236, \"energy\": 1.04}, \"units\": {\"power\": \"W\", \"current\": \"A\", \"voltage\": \"V\", \"energy\": \"kWh\"}, \"field_sample_age\": \"UNKNOWN (Z2M may merge cached fields)\", \"physical_state_confirmed\": false, \"linkquality\": 123}\n",
+      "stderr": ""
+    },
+    "off-ping": {
+      "code": 1,
+      "stdout": "PING 192.168.2.3 (192.168.2.3) 56(84) bytes of data.\n\n--- 192.168.2.3 ping statistics ---\n2 packets transmitted, 0 received, 100% packet loss, time 999ms\n\n",
+      "stderr": ""
+    },
+    "on": {
+      "code": 0,
+      "stdout": "{\"requested_state\": \"ON\", \"mqtt_delivered\": true, \"physical_state_confirmed\": false, \"next\": \"status\"}\n",
+      "stderr": ""
+    },
+    "on-status": {
+      "code": 0,
+      "stdout": "{\"device\": \"0xa4c1386c56ee225b\", \"received_at\": 1793521523.9106514, \"state\": \"ON\", \"measurements\": {\"power\": 0, \"current\": 0.08, \"voltage\": 235, \"energy\": 1.04}, \"units\": {\"power\": \"W\", \"current\": \"A\", \"voltage\": \"V\", \"energy\": \"kWh\"}, \"field_sample_age\": \"UNKNOWN (Z2M may merge cached fields)\", \"physical_state_confirmed\": false, \"linkquality\": 127}\n",
+      "stderr": ""
+    },
+    "after-ping": {
+      "code": 0,
+      "stdout": "PING 192.168.2.3 (192.168.2.3) 56(84) bytes of data.\n64 bytes from 192.168.2.3: icmp_seq=1 ttl=255 time=0.204 ms\n\n--- 192.168.2.3 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.204/0.204/0.204/0.000 ms\n",
+      "stderr": ""
+    },
+    "jtag": {
+      "code": 0,
+      "stdout": "GENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0} target_id 1 level 0 name {PS TAP} parent_ctx {} parent {} state_reason {} is_current 0 bscan {} jtag_device_id 2 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0} jtag_device_name xczu5 jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 0 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0P} target_id 2 level 1 name PMU parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0} parent {PS TAP} state_reason {} is_current 0 bscan PMU jtag_device_id 2 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0} jtag_device_name xczu5 jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 0 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0L} target_id 3 level 1 name PL parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0} parent {PS TAP} state_reason {} is_current 0 bscan {} jtag_device_id 2 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-04720093-0} jtag_device_name xczu5 jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 0 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} target_id 4 level 0 name PSU parent_ctx {} parent {} state_reason {} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R} target_id 5 level 1 name RPU parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} parent PSU state_reason {} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R0} target_id 6 level 2 name {Cortex-R5 #0} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R} parent RPU state_reason Halted is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R1} target_id 7 level 2 name {Cortex-R5 #1} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0R} parent RPU state_reason {Lock Step Mode} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} target_id 8 level 1 name APU parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} parent PSU state_reason {} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A0} target_id 9 level 2 name {Cortex-A53 #0} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason Running is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A1} target_id 10 level 2 name {Cortex-A53 #1} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason Running is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A2} target_id 11 level 2 name {Cortex-A53 #2} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason {Power On Reset} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0\nGENESYS_TARGET target_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A3} target_id 12 level 2 name {Cortex-A53 #3} parent_ctx {JTAG-jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0A} parent APU state_reason {Power On Reset} is_current 0 bscan {} jtag_device_id 3 jtag_device_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA-5ba00477-0} jtag_device_name arm_dap jtag_cable_id 1 jtag_cable_ctx {jsn-Genesys ZU - 5EV-210383B7F02DA} jtag_cable_name {Digilent Genesys ZU - 5EV 210383B7F02DA} jtag_device_index 1 jtag_cable_manufacturer Digilent jtag_cable_product {Genesys ZU - 5EV} jtag_cable_serial 210383B7F02DA suspended 0\nGENESYS_READONLY_TARGET_COUNT 12\n",
+      "stderr": ""
+    },
+    "runtime-log": {
+      "code": 0,
+      "stdout": " kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nManagement TCP connection accepted.\n",
+      "stderr": ""
+    },
+    "restore": {
+      "code": 1,
+      "stdout": "FAIL reset: rlwrap: error: My terminal reports width=0 (is it emacs?)  I can't handle this, sorry!\n\n",
+      "stderr": ""
+    },
+    "release": {
+      "code": 0,
+      "stdout": "{\"released\": true, \"power_changed\": false}\n",
+      "stderr": ""
+    }
+  },
+  "power_commands": [
+    "off",
+    "on"
+  ],
+  "reserve": {
+    "status": "ALLOCATED",
+    "entries": [
+      {
+        "role": "output",
+        "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/evidence/genesys-plug-cycle-2026-11-01",
+        "device": 66308,
+        "bytes": 805306368,
+        "allocated_bytes": 805310464
+      },
+      {
+        "role": "amd_home",
+        "path": "/srv/codex-hil-data/toolchains/amd/shared/home",
+        "device": 2049,
+        "bytes": 805306368,
+        "allocated_bytes": 805310464
+      },
+      {
+        "role": "host_tmp",
+        "path": "/tmp",
+        "device": 66306,
+        "bytes": 805306368,
+        "allocated_bytes": 805310464
+      }
+    ],
+    "limits": "Allocated unlinked blocks released before restore; not protection against concurrent consumption after release, inode exhaustion, quotas, I/O faults or SIGKILL during restoration."
+  },
+  "reserve_released": true,
+  "finished": "2026-11-01T08:29:08.354864+00:00"
+}
