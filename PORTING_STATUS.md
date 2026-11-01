@@ -1,3 +1,18 @@
+2026-11-01 normal-runtime read-only check PASS: single ICMP reply at192.168.2.3,
+expected MAC02:38:3b:7f:02:0d, then neighbor REACHABLE and standard
+artiq_coremgmt log read PASS. Initial DELAY guard stopped before application;
+separate claimed continuation observed completed NUD without another ICMP.
+Both windows held Genesys flock+unique plug lease, released successfully.
+No experiments/reset/config/power/PMU memory/register/UART changes. Returned
+ring log shows CPU1 kernel/RPC history, not proof of newly executed experiments,
+exact current firmware hash, TTL/DMA correctness or cold recovery.
+Evidence evidence/genesys-runtime-readonly-2026-11-01. Read-only readiness stage
+complete. Cold/POR qualification still lacks independent physical board-power
+observation; operator must provide an observed supply/power-good/POR indication
+or attach a suitable measurement before dependent OFF/ON qualification. Existing
+relay reports/cached mains measurement and software liveness cannot close it.
+No supervisor CONTINUE for that physical-observation block; no handler admission.
+
 2026-11-01 live read-only JTAG PASS: exact cable 210383B7F02DA exposes13
 XSDB targets. A53#0/#1 report Running; MicroBlaze PMU reports Sleeping. No clock;
 A53#2/#3 Power On Reset is their reported state, not a cold-cycle proof.

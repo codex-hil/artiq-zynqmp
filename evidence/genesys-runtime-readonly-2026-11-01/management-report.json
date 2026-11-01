@@ -1,0 +1,31 @@
+{
+  "start_utc": "2026-11-01T08:15:08.851450+00:00",
+  "reset": false,
+  "power_switch": false,
+  "register_memory_access": false,
+  "experiment_run": false,
+  "board_lock": true,
+  "route": {
+    "returncode": 0,
+    "stdout": "192.168.2.3 dev enp2s0 src 192.168.2.107 uid 1001 \n    cache \n",
+    "stderr": ""
+  },
+  "icmp": "NOT_REPEATED: preceding bounded probe already received reply",
+  "neighbor": {
+    "returncode": 0,
+    "stdout": "192.168.2.3 lladdr 02:38:3b:7f:02:0d REACHABLE \n",
+    "stderr": ""
+  },
+  "management_log": {
+    "returncode": 0,
+    "stdout": " kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nCPU1 kernel ELF relocated and loaded.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel RPC request.\nCPU1 kernel finished.\nManagement TCP connection accepted.\n",
+    "stderr": ""
+  },
+  "status": "NORMAL_MANAGEMENT_LOG_READ_PASS",
+  "release": {
+    "returncode": 0,
+    "stdout": "{\"released\": true, \"power_changed\": false}\n",
+    "stderr": ""
+  },
+  "elapsed_seconds": 2.553
+}

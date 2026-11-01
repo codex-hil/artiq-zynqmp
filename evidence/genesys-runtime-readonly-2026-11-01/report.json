@@ -1,0 +1,31 @@
+{
+  "start_utc": "2026-11-01T08:14:49.610706+00:00",
+  "reset": false,
+  "power_switch": false,
+  "register_memory_access": false,
+  "experiment_run": false,
+  "board_lock": true,
+  "route": {
+    "returncode": 0,
+    "stdout": "192.168.2.3 dev enp2s0 src 192.168.2.107 uid 1001 \n    cache \n",
+    "stderr": ""
+  },
+  "icmp": {
+    "returncode": 0,
+    "stdout": "PING 192.168.2.3 (192.168.2.3) from 192.168.2.107 enp2s0: 56(84) bytes of data.\n64 bytes from 192.168.2.3: icmp_seq=1 ttl=255 time=0.059 ms\n\n--- 192.168.2.3 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.059/0.059/0.059/0.000 ms\n",
+    "stderr": ""
+  },
+  "neighbor": {
+    "returncode": 0,
+    "stdout": "192.168.2.3 lladdr 02:38:3b:7f:02:0d DELAY \n",
+    "stderr": ""
+  },
+  "status": "PROBE_STOP_NO_RETRY",
+  "error": "Neighbor not freshly REACHABLE; no application probe",
+  "release": {
+    "returncode": 0,
+    "stdout": "{\"released\": true, \"power_changed\": false}\n",
+    "stderr": ""
+  },
+  "elapsed_seconds": 2.049
+}
