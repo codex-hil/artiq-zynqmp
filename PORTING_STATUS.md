@@ -1,3 +1,13 @@
+2026-11-01 post-NVMe recovery review: normal-PMU qualifier offline preflight
+PASS with fresh exact helper/runtime manifest; 3 restore qualification + 6 actual
+reserve tests PASS. Negative-control FAIL text is fully mocked, no hardware run.
+Existing qualifier stops/probes/downloads PMU through JTAG; it does not reserve or
+switch plug and cannot establish cold/POR recovery. No power/reset/JTAG/UART or
+PMU access this turn. Evidence evidence/pmu-restore-post-nvme-preflight-2026-11-01.
+Next safe approved offline step: separate bounded cold-recovery orchestration
+review with explicit independent OFF/ON observations/stop criteria; no automatic
+watchdog/cycle, no handler admission. Storage blocker remains resolved.
+
 2026-11-01: User-authorized NVMe migration PASS. Current checkout moved to
 /srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip; original SATA/home paths
 remain usable through a symlink. rsync metadata/checksum comparison clean before

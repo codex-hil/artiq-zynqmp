@@ -1,0 +1,23 @@
+{
+  "status": "OFFLINE_PREFLIGHT_PASS",
+  "hardware_executed": false,
+  "tests": {
+    "pmu_restore_qualification": 3,
+    "restore_reserve": 6,
+    "result": "PASS"
+  },
+  "test_output_note": "FAIL/hardware_executed=true in unittest stdout belongs to fully mocked negative control; bounded hardware runner is patched and never invoked.",
+  "jtag_recovery_scope": [
+    "PMU stop",
+    "confirmed halt",
+    "r0 register probe",
+    "baseline download/resume",
+    "normal boot and TTL/CoreDMA/debug/Ethernet checks"
+  ],
+  "cold_recovery_missing": [
+    "No plug reservation or OFF/ON in existing qualifier",
+    "No independent physical OFF/POR observation",
+    "No qualified cold-start path when PMU target disappears"
+  ],
+  "next_safe_step": "Prepare separate bounded cold-recovery orchestration using existing plug CLI and target-only load; review independent observations and stop conditions before execution. Do not treat JTAG preflight as cold recovery or PMU trial admission."
+}
