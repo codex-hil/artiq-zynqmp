@@ -1,3 +1,8 @@
+> Current update 2026-11-01: practical OFF/ON and normal restoration PASS.
+> See [post-recovery admission](PIT_POST_RECOVERY_ADMISSION.md) for current
+> gates; earlier NOT_RUN/recovery-unavailable statements below are dated context.
+> New PMU handler/PIT reader execution remains NOT_ADMITTED.
+
 # One-shot PIT counter diagnostic plan — DRAFT / NOT ADMITTED
 
 Scope: one nonce/image-bound record containing PIT0..3_COUNTER read twice in

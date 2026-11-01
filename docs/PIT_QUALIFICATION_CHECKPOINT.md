@@ -1,3 +1,8 @@
+> Current update 2026-11-01: practical OFF/ON and normal restoration PASS.
+> See [post-recovery admission](PIT_POST_RECOVERY_ADMISSION.md) for current
+> gates; earlier NOT_RUN/recovery-unavailable statements below are dated context.
+> New PMU handler/PIT reader execution remains NOT_ADMITTED.
+
 # Current observer/session checkpoint — offline stage complete
 
 2026-10-28:21 source/test/evidence pins and three historical manifests verified;

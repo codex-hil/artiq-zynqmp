@@ -1,0 +1,48 @@
+{
+  "status": "PRACTICAL_RECOVERY_CONFIRMED_PMU_TRIAL_NOT_ADMITTED",
+  "hardware_executed_this_review": false,
+  "recovery_evidence_sha256": {
+    "summary.json": "a030e171b01dba1e7acdb9aef5d867e67fefc6a97de3dfa1c73b8e103493cdbf",
+    "report.json": "54f83b79aaedcf6499839d0b132a662f3e191a4964cd1e0a889a2d4a1cdbd4a4",
+    "normal-load-no-tty/results.json": "d387d9eef33b2be8fbbfa5d61b63c01587c2b8e23de0ccb3530e0b4c2d3b0a59",
+    "restored-debug-current-ip/results.json": "3b773ba2404c4f223ca994b56e8f972c5fd2bd51e2977f80667be62030a34158",
+    "restored-ethernet.json": "38687087e608638c385732dd994cf089edf0c7ae77f0625f9cdf3b22ffad9605"
+  },
+  "vendor_source_sha256": {
+    "xpfw_start.S": "98fb81769ec13fd0b9e54816e9afcc4209ecbcb9863576109b055cb4317684ee",
+    "xpfw_core.c": "87c1f2bd8d5574457dd4c0b780c9f788e960da20ac13e7b76cff39b02524a9ce",
+    "pmu_global.h": "daae2146a8b8cb87f5611021760fc481d0a6906052316c6c9d3de7cc7d26e151",
+    "pmu_local.h": "4a901e9fb0698defbad05511c0a86612bb955806691b2f99a2032c0657763e8c",
+    "xpfw_default.h": "5805f3563656727a1cae09b1443c7143190faf2153156670dd6d86f294d67a59"
+  },
+  "audit_assembly_sha256": "dad43312487a560023faa0e6975bc2fd6f5e86b7616660951882e7dab6426bd2",
+  "notification_difference": {
+    "software_vendor": [
+      "ESR word store0xffd80050",
+      "EAR word store0xffd80054",
+      "literal0x10000000 word store0xffd6033c",
+      "nonreturning loop"
+    ],
+    "hardware_vendor": [
+      "printf of MSR/EAR/EDR/ESR before notification",
+      "RMW persistent storage5 with HW_EXCEPTION_RECEIVED0x2",
+      "RMW FWERR1 set0x20000000 then clear0 at PMU_SERV_ERR",
+      "nonreturning loop"
+    ],
+    "audit_candidate": [
+      "64-byte RAM fault record only",
+      "MSR/ESR/EAR subset; EDR invalid/zero",
+      "two fences then nonreturning loop",
+      "no persistent/error MMIO notification"
+    ]
+  },
+  "gates": {
+    "device_power_and_normal_restoration": "PASS_PRACTICAL_SCOPE",
+    "arbitrary_hung_pmu_fault_recovery": "NOT_TESTED",
+    "active_exception_vector_route": "UNKNOWN",
+    "error_notification_equivalence": "NOT_PRESERVED_BY_AUDIT_CANDIDATE",
+    "safe_result_transport_or_no_wake_interval": "UNQUALIFIED",
+    "new_handler_execution": "NOT_ADMITTED"
+  },
+  "next_offline_step": "Trace exact vendor error RMW helper and register definitions/order against audit candidate; define notification-preserving requirements without implementation or hardware writes."
+}

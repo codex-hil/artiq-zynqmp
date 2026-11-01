@@ -1,3 +1,17 @@
+2026-11-01 post-recovery admission reconciliation complete, offline. Practical
+OFF/ON+normal physical restoration gate PASS within tested scope; earlier voltage
+observation blocker superseded by explicit user practical-test scope. No repeated
+power trial needed. Exact vendor-vs-audit source review identifies notification
+mismatch: software ESR/EAR persistent writes+FWERR literal, hardware printf then
+persistent RMW/FWERR1 set-clear; audit candidate only RAM receipt/loop. Active
+vector route UNKNOWN, safe result transport/no-wake UNQUALIFIED, hung-fault case
+NOT_TESTED, new handler NOT_ADMITTED. Recovery evidence assertions/pins PASS;
+155 prior tests unchanged/not rerun; no HW/leases/implementation/build change.
+See docs/PIT_POST_RECOVERY_ADMISSION.md and
+ evidence/pit-post-recovery-review-2026-11-01/review.json.
+Next safe offline: exact RMW helper/register semantics/order trace and preservation
+requirements; no vector binding/notification removal/PMU memory read.
+
 2026-11-01 user-authorized practical plug OFF/ON + normal restore PASS.
 Exactly one OFF and one separate ON under continuous Genesys flock/plug lease;
 OFF report plus network loss, ON report then exact cable JTAG and expected MAC
