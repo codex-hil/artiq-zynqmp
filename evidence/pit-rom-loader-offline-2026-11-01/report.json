@@ -1,0 +1,70 @@
+{
+  "status": "STATIC_ROM_LOADER_INTERFACE_REVIEW_NOT_VECTOR_OBSERVATION",
+  "hardware_executed": false,
+  "deployable": false,
+  "elf_entry": 4292608080,
+  "declared_rom_service_table": 4291853256,
+  "ram_extension_table": {
+    "address": 4292736736,
+    "bytes": 1024,
+    "entries": 256,
+    "initial_nonzero_bytes": 0,
+    "initial_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+  },
+  "loader_command_inventory": {
+    "scripts/run_boot_firmware.tcl": [
+      {
+        "line": 20,
+        "text": "mwr 0xFF5E0200 0x10E"
+      },
+      {
+        "line": 22,
+        "text": "mwr 0xFFCA0038 0x1FF"
+      },
+      {
+        "line": 26,
+        "text": "dow $pmu_elf"
+      },
+      {
+        "line": 27,
+        "text": "con"
+      },
+      {
+        "line": 30,
+        "text": "rst -processor -clear-registers"
+      },
+      {
+        "line": 32,
+        "text": "dow $fsbl_elf"
+      },
+      {
+        "line": 33,
+        "text": "con"
+      }
+    ],
+    "scripts/restart_pmu_for_restore.tcl": [
+      {
+        "line": 35,
+        "text": "dow $elf"
+      },
+      {
+        "line": 37,
+        "text": "con"
+      }
+    ]
+  },
+  "source_sha256": {
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_rom_interface.h": "791f255b388a177711f400d3127b027a80024ae127ab3729cbb6558bf26f620d",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_rom_interface.c": "0764392432c625d808758ac787293bff25d6d64aa2e7827c49f9d9be9a812d2b",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/pm_power.c": "c6dee0ec6f57cd0c021a525c867e6140dd17e5d1dba845913a7768b136d4d89f",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/xpfw_start.S": "98fb81769ec13fd0b9e54816e9afcc4209ecbcb9863576109b055cb4317684ee",
+    "/home/codex-hil/.local/state/artiq-builds/pmu-fresh-no-vector-20261027/src/lscript.ld": "7ff9c0b4a7cf01e23729ede8b43dba4e3a9ba98f7c1d6156889eb04be00f0786",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/load_rtio_runtime.py": "9172a0bc1183a218064d6333d86e45130db89cad73809d7245989eda6dcb45e7",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/run_boot_firmware.tcl": "e98ecf7c491239b40dbe4201e3f46745d6d400f4c0b4d842b66bc729a9e2a6fe",
+    "/srv/codex-hil-data/artiq-zynqmp/work/artiq-new-wip/scripts/restart_pmu_for_restore.tcl": "401626dc93515f760a69a1898903d25ab6f27b693ce1436e8c1ef58558376db1"
+  },
+  "live_extension_table_observed": false,
+  "rom_dispatch_verified": false,
+  "remap_state_known": false,
+  "limits": "Header declaration/initial ELF/script text only, not ROM code, actual PC after dow/con, executed startup, dynamic hooks or active vector route."
+}

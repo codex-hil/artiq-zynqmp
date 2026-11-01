@@ -217,3 +217,7 @@ Isolated non-PMU CODE0x10000/SLOT0x20000 fixture resolves exact entry relocation
 ## 2026-11-01 vendor vector selection trace
 
 60 vendor C/S files/no named remap refs, exact startup/vector listings; lexical absence not no-write/live source proof. GPO0 write-only/all-bit contract means no readback/RMW shortcut; mapping UNKNOWN. Trace `PIT_VECTOR_SELECTION_TRACE.md`, evidence `evidence/pit-vector-selection-offline-2026-11-01`. Next offline: ROM service/loader launch assumptions inventory, no execution/HW/APB inspection or policy change.
+
+## 2026-11-01 ROM/loader boundary
+
+Static ROM service declaration/initial zero256-entry extension table/loader command inventory do not prove live dispatch/vector source. Review `PIT_ROM_LOADER_REVIEW.md`, evidence `evidence/pit-rom-loader-offline-2026-11-01`. No HW or loader execution;155 prior tests unchanged. Next offline: readiness/decision matrix and non-executing qualification proposal, separate policy changes/HW obligations from completed offline work.

@@ -1,3 +1,9 @@
+## 2026-11-01 — ROM service/loader static assumptions (offline)
+
+Declared ROM service table0xffd07bc8 is an absolute interface, not ROM byte/execution proof. RAM extension table0xffddf6e0/256 entries initial zero in ELF; dynamic power-hook assignment exists, so no live no-hook inference. Cable-qualified normal loader text downloads/continues PMU then FSBL, no explicit DEBUG_REMAP transaction; no loader/PC/routing observation this turn. Active ROM/remap/exception source remains UNKNOWN. Evidence `evidence/pit-rom-loader-offline-2026-11-01`; review `docs/PIT_ROM_LOADER_REVIEW.md`.
+
+No HW/ROM/APB/WO/reset/vector/image/runtime/frozen change;155 prior tests unchanged/not rerun. Next safe offline step: readiness/decision matrix and non-executing qualification proposal, exact evidence/policy/recovery/ownership boundaries before any isolated entry trial. Passing offline tests is not a trial permit; notification/sleep/recovery remain unqualified.
+
 ## 2026-11-01 — static vendor vector-selection trace (offline)
 
 60 vendor C/S units scanned: no named GPO0/DEBUG_REMAP/ffd40010 references. Exact linked startup/vector bodies archived; XPfw_Init stack/BSS/main sequence contains no reviewed remap transaction. Core interrupt/exception-enable and ROM service table declarations do not prove vector source. BSP0xffd00000 vs ELF0xffdc0000 discrepancy preserved, remap UNKNOWN. Official GPO0 WO/all-bit update contract reviewed, no read/write/reset. Evidence `evidence/pit-vector-selection-offline-2026-11-01`; trace `docs/PIT_VECTOR_SELECTION_TRACE.md`.
