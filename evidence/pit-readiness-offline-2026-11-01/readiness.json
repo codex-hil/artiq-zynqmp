@@ -1,0 +1,18 @@
+{
+  "status": "READINESS_MATRIX_PHASE_A_READ_ONLY_NEXT",
+  "hardware_executed": false,
+  "deployable": false,
+  "new_hardware_entry": "NOT_ADMITTED",
+  "phase_a": "READ_ONLY_NO_POWER_OR_PMU_MEMORY_ACTION",
+  "phase_b": "SEPARATE_RECOVERY_WINDOW_NOT_RUN",
+  "phase_c": "ENTRY_AND_NOTIFICATION_POLICY_UNRESOLVED",
+  "phase_d": "NOT_ADMITTED",
+  "latest_software_tests": 155,
+  "tests_rerun": false,
+  "input_sha256": {
+    "docs/PIT_QUALIFICATION_READINESS_2026-11-01.md": "51b5636a3f6ecc678f0e84d2e70d6ce84fbdece998333d9e4858c5c34754f983",
+    "docs/PIT_ONE_SHOT_TRIAL_PLAN.md": "9e3c4ba73e2ad4c895039dd9173526f41da93a87001dbd9387441629113e5d4e",
+    "docs/PIT_ROM_LOADER_REVIEW.md": "3ba7b2740e2c722d3b1e92d8212fd54d879867bd37c064d16d4ebaede8b2a91e",
+    "docs/PIT_VECTOR_SELECTION_TRACE.md": "43a78b88ae2d36925506d3a5dd6f48dc165762f0d4a75d0b02df5dbb23837941"
+  }
+}

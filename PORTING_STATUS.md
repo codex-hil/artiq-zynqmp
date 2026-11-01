@@ -1,3 +1,9 @@
+## 2026-11-01 — readiness/qualification boundaries consolidated (offline)
+
+Reviewable readiness matrix and bounded proposal added: `docs/PIT_QUALIFICATION_READINESS_2026-11-01.md`, evidence `evidence/pit-readiness-offline-2026-11-01`. Completed offline proof scopes separated from historical physical baseline, present station availability, independent recovery, entry/notification policy and future trial. No blanket trial admission. Existing155 tests unchanged/not rerun.
+
+No HW/lease/plug/code/image/vector/runtime/frozen changes. Next safe approved step Phase A: read-only present readiness under Genesys shared lock and plug reservation, no power switching/reset/JTAG state change/PMU memory/GPO access. Exact identity before bounded normal status/network probes. Phase B recovery window separate/not run; C entry/policy unresolved; D handler trial not admitted. Concrete faults/physical/operator requirements stop dependent work without CONTINUE.
+
 ## 2026-11-01 — ROM service/loader static assumptions (offline)
 
 Declared ROM service table0xffd07bc8 is an absolute interface, not ROM byte/execution proof. RAM extension table0xffddf6e0/256 entries initial zero in ELF; dynamic power-hook assignment exists, so no live no-hook inference. Cable-qualified normal loader text downloads/continues PMU then FSBL, no explicit DEBUG_REMAP transaction; no loader/PC/routing observation this turn. Active ROM/remap/exception source remains UNKNOWN. Evidence `evidence/pit-rom-loader-offline-2026-11-01`; review `docs/PIT_ROM_LOADER_REVIEW.md`.

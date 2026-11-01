@@ -221,3 +221,7 @@ Isolated non-PMU CODE0x10000/SLOT0x20000 fixture resolves exact entry relocation
 ## 2026-11-01 ROM/loader boundary
 
 Static ROM service declaration/initial zero256-entry extension table/loader command inventory do not prove live dispatch/vector source. Review `PIT_ROM_LOADER_REVIEW.md`, evidence `evidence/pit-rom-loader-offline-2026-11-01`. No HW or loader execution;155 prior tests unchanged. Next offline: readiness/decision matrix and non-executing qualification proposal, separate policy changes/HW obligations from completed offline work.
+
+## 2026-11-01 consolidated readiness and next step
+
+Current readiness/proposal is `PIT_QUALIFICATION_READINESS_2026-11-01.md`; it supersedes earlier dated next-step prose. Next safe approved Phase A is read-only station/board/plug readiness under both leases, no switching/reset/PMU memory or GPO access. Recovery window separate, entry/policy unresolved and handler trial not admitted. Existing155 tests unchanged; evidence `evidence/pit-readiness-offline-2026-11-01`. No hardware action this checkpoint.
