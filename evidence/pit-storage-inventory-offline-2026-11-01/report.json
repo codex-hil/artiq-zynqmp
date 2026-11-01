@@ -1,0 +1,2223 @@
+{
+  "status": "NO_AUTHORIZED_OWN_CLEANUP_SUFFICIENT_ON_AFFECTED_FILESYSTEM",
+  "hardware_executed": false,
+  "files_deleted": 0,
+  "files_moved": 0,
+  "shared_device": 2049,
+  "system_device": 66306,
+  "shared_free_bytes": 1287483392,
+  "required_restore_reserve_plus_minimum": 1342177280,
+  "deficit_bytes": 54693888,
+  "owned_build_intermediate_groups": [
+    {
+      "device": 66306,
+      "category": "primary-object",
+      "files": 165,
+      "allocated_bytes": 3207168
+    },
+    {
+      "device": 66306,
+      "category": "ltrans",
+      "files": 108,
+      "allocated_bytes": 56369152
+    }
+  ],
+  "owned_build_intermediates": [
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-audit-20261031-v1/sha.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 8180,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 229,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 109,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2949494,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1299,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1040384,
+      "bytes": 1039337,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 109,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1773568,
+      "bytes": 1772090,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19086,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1299,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 446464,
+      "bytes": 445791,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 12905,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16536,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_capture_digest.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_irq_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11844,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_irq_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19340,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9864,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_mailbox_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 20776,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_mailbox_publish_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 22020,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_sample_sha256.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 23432,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-capture-digest-link-audit-20261031-v1/pit_word_slot.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19460,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-compose-audit-20261031-v1/sha.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 16352,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 213,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 101,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2949486,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1267,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1040384,
+      "bytes": 1039329,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 101,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1871872,
+      "bytes": 1868673,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 20666,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1267,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 471040,
+      "bytes": 467710,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 13111,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16536,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_capture_digest.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_digest_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 37568,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_digest_root_audit.o",
+      "device": 66306,
+      "allocated_bytes": 28672,
+      "bytes": 24680,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_digest_sleep.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 21476,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_digest_terminal.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 20136,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_irq_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11844,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_irq_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19340,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9864,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_mailbox_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 20776,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_mailbox_publish_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 22020,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_sample_sha256.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 23432,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18600,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-root-audit-20261031-v1/pit_word_slot.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19460,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-sleep-audit-20261031-v1/sha.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9248,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-digest-terminal-audit-20261031-v1/sha.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 8660,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-record-audit-20261031-v1/sha.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9964,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 211,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 100,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2949485,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1263,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1040384,
+      "bytes": 1039292,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 100,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1892352,
+      "bytes": 1892261,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 20807,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1263,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 475136,
+      "bytes": 472358,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 13276,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16536,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_capture_digest.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_digest_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 37568,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_digest_root_audit.o",
+      "device": 66306,
+      "allocated_bytes": 28672,
+      "bytes": 24664,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_digest_sleep.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 21476,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_digest_terminal.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 20136,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_fault_record.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 21908,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_fault_slot_audit.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 13580,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_irq_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11844,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_irq_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19324,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9864,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_mailbox_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 20760,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_mailbox_publish_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 22020,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_sample_sha256.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 23448,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-audit-20261031-v1/pit_word_slot.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19428,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 227,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 108,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2949493,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1295,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1040384,
+      "bytes": 1039336,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 108,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1798144,
+      "bytes": 1794791,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18796,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1295,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 454656,
+      "bytes": 450731,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 12868,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_capture_digest.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_digest_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 37568,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_digest_root_audit.o",
+      "device": 66306,
+      "allocated_bytes": 28672,
+      "bytes": 24680,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_digest_sleep.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 21476,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_digest_terminal.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 20136,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_fault_record.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 21908,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_fault_slot_audit.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 13580,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_irq_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11844,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9864,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_mailbox_publish_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 22020,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_sample_sha256.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 23448,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-minimal-audit-20261031-v1/pit_word_slot.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19460,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-fault-slot-standalone-20261031-v1/sha.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 5896,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 213,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 101,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2949486,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1267,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1040384,
+      "bytes": 1038241,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 101,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1691648,
+      "bytes": 1691234,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18443,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1267,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 438272,
+      "bytes": 436186,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 12528,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16536,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_irq_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11844,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_irq_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19340,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9864,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_mailbox_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 20776,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_mailbox_publish_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 22020,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-binding-audit-20261031-v1/pit_word_slot.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19460,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-callback-audit-20261031-v1/pit_irq_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 4620,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-irq-config-20261031-v1/offset.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 5192,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 205,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 97,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2952525,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1251,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1044480,
+      "bytes": 1040898,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 97,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1630208,
+      "bytes": 1627550,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16688,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1251,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 417792,
+      "bytes": 417091,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11964,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16536,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9356,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-audit-20261030-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 221,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 105,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2952533,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1283,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1044480,
+      "bytes": 1040870,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 105,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1675264,
+      "bytes": 1673402,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17861,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1283,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 434176,
+      "bytes": 430743,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 12408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16524,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14172,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9864,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_mailbox_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 20776,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_mailbox_publish_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 22020,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-binding-audit-20261031-v1/pit_word_slot.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19460,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-publication-objects-20261031/pit_mailbox_audit.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9852,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-publication-objects-20261031/pit_mailbox_publish_audit.o",
+      "device": 66306,
+      "allocated_bytes": 24576,
+      "bytes": 22020,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mailbox-publication-objects-20261031/pit_word_slot.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 19460,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 213,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 101,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2952529,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1267,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1044480,
+      "bytes": 1040902,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 101,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1630208,
+      "bytes": 1629825,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16688,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1267,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 417792,
+      "bytes": 415967,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11932,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15572,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6556,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-linked-audit-20261030-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18944,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-raw-audit-20261030/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9376,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans.out",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 219,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 104,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 2953216,
+      "bytes": 2952532,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans0.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 36864,
+      "bytes": 34408,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans0.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1279,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans0.o",
+      "device": 66306,
+      "allocated_bytes": 1044480,
+      "bytes": 1040905,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.args.0",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 104,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.s",
+      "device": 66306,
+      "allocated_bytes": 1630208,
+      "bytes": 1627565,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans1.ltrans.su",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16688,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans1.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 4096,
+      "bytes": 1279,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans1.o",
+      "device": 66306,
+      "allocated_bytes": 417792,
+      "bytes": 416394,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/audit-only.elf.ltrans_args",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 11977,
+      "category": "ltrans",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_capture.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 16536,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_collect.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14184,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_mmio_composition_audit.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 17084,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_mmio_read.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 9392,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_publish.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 15516,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_ro_adapter.o",
+      "device": 66306,
+      "allocated_bytes": 16384,
+      "bytes": 14812,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_sleep_model.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18204,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_status_compose.o",
+      "device": 66306,
+      "allocated_bytes": 40960,
+      "bytes": 38056,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_terminal_audit.o",
+      "device": 66306,
+      "allocated_bytes": 8192,
+      "bytes": 6540,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_terminal_build.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18616,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-mmio-word-init-audit-20261030-v1/pit_terminal_record.o",
+      "device": 66306,
+      "allocated_bytes": 20480,
+      "bytes": 18956,
+      "category": "primary-object",
+      "deleted": false
+    },
+    {
+      "path": "/home/codex-hil/.local/state/artiq-builds/pit-sample-sha-audit-20261031-v1/sha.o",
+      "device": 66306,
+      "allocated_bytes": 12288,
+      "bytes": 12228,
+      "category": "primary-object",
+      "deleted": false
+    }
+  ],
+  "repo_bytecode_candidates": {
+    "allocated_bytes": 2621440,
+    "files": 340,
+    "ownership": "Shared project caches; no deletion authorized by this inventory",
+    "sufficient": false
+  },
+  "preserved": [
+    "All primary ELF/object/map/build/disassembly/evidence/frozen snapshots",
+    "All source/git history/vendor/tool/install caches and other-thread projects",
+    "Existing .Xil and Vivado journals/logs"
+  ],
+  "limits": "Inventory-only, no claim no reclaimable files exist elsewhere. Examined own build intermediates are on system device; broad cleanup on shared data not authorized."
+}

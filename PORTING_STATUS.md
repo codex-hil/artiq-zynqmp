@@ -1,3 +1,9 @@
+## 2026-11-01 — affected-filesystem cleanup scope exhausted, storage-owner action needed
+
+Read-only own compiler inventory:165 primary objects3.2MB+108 LTO intermediates56.4MB reside on system device66306, not affected shared device2049. Removing them would not close shared reserve gap. Shared project bytecode2.6MB insufficient and not treated as exclusive. No files removed/moved. Shared available1,287,483,392 vs required1,342,177,280, deficit54,693,888 bytes (~52.2MiB). Evidence `evidence/pit-storage-inventory-offline-2026-11-01`.
+
+Dependent recovery/programming is BLOCKED pending owner freeing shared space (128MiB suggested) or naming a specific approved directory to archive. Do not delete other projects, relocate reserve to another filesystem, relax thresholds or bypass admission. No HW/lease/runtime/frozen changes;155 prior tests unchanged/not rerun. No supervisor CONTINUE for this human storage/ownership block. After action, rerun actual capacity/reserve checks; handler entry remains separately NOT_ADMITTED.
+
 ## 2026-11-01 — actual read-only station readiness, storage gap
 
 Genesys shared lease+unique plug reservation held5.324s, then both released. Plug reportsON (not physical/POR proof); exact Digilent USB/UART serial metadata present, UART unopened. Passive expected MAC/oldIP STALE; no network probe/current runtime identity claim. Nine baseline restore inputs hash-match. No power/reset/program/JTAG state/PMU memory/GPO access. Evidence `evidence/pit-readiness-phase-a-2026-11-01`.

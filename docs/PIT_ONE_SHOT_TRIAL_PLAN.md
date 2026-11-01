@@ -229,3 +229,7 @@ Current readiness/proposal is `PIT_QUALIFICATION_READINESS_2026-11-01.md`; it su
 ## 2026-11-01 present Phase A read-only result
 
 Bounded5.324s shared-board+plug lease window: plug reportedON, exact USB serial metadata, UART unopened, network cache STALE/no active runtime identity claim; baseline nine inputs hash-match; leases released. No switching/reset/PMU memory. Shared restore storage short54,190,080 bytes under existing threshold; recovery windows not admitted. Evidence `evidence/pit-readiness-phase-a-2026-11-01`. Next safe offline inventory own disposable compiler intermediates, preserve artifacts/frozen/other data, no threshold relaxation.
+
+## 2026-11-01 storage inventory / human ownership boundary
+
+Own intermediates are on system disk, not shared data; bytecode insufficient. Nothing deleted. Shared deficit54,693,888 bytes; evidence `evidence/pit-storage-inventory-offline-2026-11-01`. Recovery/programming blocked pending owner freeing shared space or naming approved archive directory. No automatic continuation for this block; do not reduce reserve or delete other-project data. After action, recheck/allocate actual reserve before separately considering next phase.
