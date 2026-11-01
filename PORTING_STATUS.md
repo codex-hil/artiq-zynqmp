@@ -1,3 +1,14 @@
+2026-11-01: User-authorized NVMe migration PASS. Current checkout moved to
+/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip; original SATA/home paths
+remain usable through a symlink. rsync metadata/checksum comparison clean before
+cutover; Git HEAD preserved and nine baseline input hashes match. Real 768 MiB
+restore reserves allocated and released on NVMe, SATA and system filesystems;
+previous storage blocker removed without changing admission thresholds. New
+Vivado containers mount NVMe; existing hw_server untouched. Heavy new builds
+remain on Dell. No hardware access, programming, reset or power switching.
+Evidence: evidence/nvme-migration-2026-11-01/report.json. Migration does not admit
+the separate PMU handler trial; recovery qualification remains a separate step.
+
 ## 2026-11-01 — affected-filesystem cleanup scope exhausted, storage-owner action needed
 
 Read-only own compiler inventory:165 primary objects3.2MB+108 LTO intermediates56.4MB reside on system device66306, not affected shared device2049. Removing them would not close shared reserve gap. Shared project bytecode2.6MB insufficient and not treated as exclusive. No files removed/moved. Shared available1,287,483,392 vs required1,342,177,280, deficit54,693,888 bytes (~52.2MiB). Evidence `evidence/pit-storage-inventory-offline-2026-11-01`.
