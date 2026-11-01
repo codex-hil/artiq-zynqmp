@@ -1,3 +1,11 @@
+## 2026-11-01 — bounded fault-slot interleaving model (offline)
+
+Full PIT Python suite:155 tests PASS.
+
+Abstract atomic in-order model:20 single-writer prefixes and400 nonreturning nested prefix pairs. Nested class379 rejected/20 fullB/one fullA/no mixed; first fault may be overwritten and freshness/session remain absent. Separate forbidden outer-resume class has four structurally accepted mixed records among20 insertion cuts. Replayable witness route2/MSR fromB with ESR/EAR fromA; NOT claimed physically reachable for nonreturning single-core entry. Evidence `evidence/pit-fault-interleavings-offline-2026-11-01`.
+
+No HW/PMU RAM reads/vector/image/runtime/frozen changes. Model assumes completed fences/atomic ordered stores and enumerates only bounded classes, not all hardware interleavings. Next safe offline step: actual PMU configuration/EE/EIP/entry restrictions review, leaving NMI/debug/ROM/platform routing unknowns explicit. No flag/MSR/vector-policy shortcut, deployment or sleep/recovery admission.
+
 ## 2026-11-01 — isolated synthetic entry link (offline)
 
 Full PIT Python suite:152 tests PASS.

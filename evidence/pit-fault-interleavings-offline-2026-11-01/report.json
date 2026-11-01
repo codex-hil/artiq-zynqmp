@@ -1,0 +1,363 @@
+{
+  "status": "ABSTRACT_WORD_MODEL_NOT_PHYSICAL_EXCEPTION_PROOF",
+  "hardware_executed": false,
+  "deployable": false,
+  "assumptions": [
+    "Atomic in-order u32 stores and completed fences; no memory/bus faults, reordering or timing.",
+    "Nested inner never returns: outer cannot resume in faithful class.",
+    "Reads here are abstract snapshots, not permission to access PMU RAM."
+  ],
+  "record_a_hex": "01000000315846500100000001000000070000000101000002010000030100000000000000000000000000000000000000000000000000000000000000000000",
+  "record_b_hex": "01000000315846500100000002000000070000000102000002020000030200000000000000000000000000000000000000000000000000000000000000000000",
+  "events_per_writer": 19,
+  "single_prefixes": [
+    {
+      "prefix": 0,
+      "result": "rejected"
+    },
+    {
+      "prefix": 1,
+      "result": "rejected"
+    },
+    {
+      "prefix": 2,
+      "result": "rejected"
+    },
+    {
+      "prefix": 3,
+      "result": "rejected"
+    },
+    {
+      "prefix": 4,
+      "result": "rejected"
+    },
+    {
+      "prefix": 5,
+      "result": "rejected"
+    },
+    {
+      "prefix": 6,
+      "result": "rejected"
+    },
+    {
+      "prefix": 7,
+      "result": "rejected"
+    },
+    {
+      "prefix": 8,
+      "result": "rejected"
+    },
+    {
+      "prefix": 9,
+      "result": "rejected"
+    },
+    {
+      "prefix": 10,
+      "result": "rejected"
+    },
+    {
+      "prefix": 11,
+      "result": "rejected"
+    },
+    {
+      "prefix": 12,
+      "result": "rejected"
+    },
+    {
+      "prefix": 13,
+      "result": "rejected"
+    },
+    {
+      "prefix": 14,
+      "result": "rejected"
+    },
+    {
+      "prefix": 15,
+      "result": "rejected"
+    },
+    {
+      "prefix": 16,
+      "result": "rejected"
+    },
+    {
+      "prefix": 17,
+      "result": "rejected"
+    },
+    {
+      "prefix": 18,
+      "result": "rejected"
+    },
+    {
+      "prefix": 19,
+      "result": "a"
+    }
+  ],
+  "nested_nonreturning_counts": {
+    "rejected": 379,
+    "a": 1,
+    "b": 20,
+    "structurally_valid_mixed": 0
+  },
+  "nested_nonreturning_cases": 400,
+  "forbidden_outer_resume_counts": {
+    "rejected": 0,
+    "a": 5,
+    "b": 11,
+    "structurally_valid_mixed": 4
+  },
+  "forbidden_outer_resume_cases": 20,
+  "mixed_witness": {
+    "cut": 7,
+    "trace": [
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 0,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "fence",
+        "word": null,
+        "value": null
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 1,
+        "value": 1346787377
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 2,
+        "value": 1
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 3,
+        "value": 1
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 4,
+        "value": 7
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 5,
+        "value": 257
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 0,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "fence",
+        "word": null,
+        "value": null
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 1,
+        "value": 1346787377
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 2,
+        "value": 1
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 3,
+        "value": 2
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 4,
+        "value": 7
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 5,
+        "value": 513
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 6,
+        "value": 514
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 7,
+        "value": 515
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 8,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 9,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 10,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 11,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 12,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 13,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 14,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 15,
+        "value": 0
+      },
+      {
+        "owner": "b",
+        "kind": "fence",
+        "word": null,
+        "value": null
+      },
+      {
+        "owner": "b",
+        "kind": "write",
+        "word": 0,
+        "value": 1
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 6,
+        "value": 258
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 7,
+        "value": 259
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 8,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 9,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 10,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 11,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 12,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 13,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 14,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 15,
+        "value": 0
+      },
+      {
+        "owner": "a",
+        "kind": "fence",
+        "word": null,
+        "value": null
+      },
+      {
+        "owner": "a",
+        "kind": "write",
+        "word": 0,
+        "value": 1
+      }
+    ],
+    "final_hex": "01000000315846500100000002000000070000000102000002010000030100000000000000000000000000000000000000000000000000000000000000000000",
+    "decoded": {
+      "kind": "PROPOSED_FAULT_RECEIPT_NOT_NORMAL_TERMINAL",
+      "route": 2,
+      "supplied_snapshots": {
+        "msr": 513,
+        "esr": 258,
+        "ear": 259
+      },
+      "session_bound": false,
+      "hardware_executed": false,
+      "deployable": false,
+      "pmu_ram_access_allowed": false,
+      "sleep_proven": false,
+      "recovery_proven": false
+    }
+  },
+  "first_fault_preserved": false,
+  "session_bound": false,
+  "reentry_excluded": false,
+  "pmu_ram_access_allowed": false,
+  "limits": "Exhaustive bounded prefix/contiguous-insertion classes only, not all interleavings or physical reachability. Structural decode cannot establish identity, first-fault preservation, sleep or recovery."
+}

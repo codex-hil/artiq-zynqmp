@@ -205,3 +205,7 @@ Two unreferenced128B entries/64B slot, no stack/calls/vectors, MSR/ESR/EAR only.
 ## 2026-11-01 synthetic entry link
 
 Isolated non-PMU CODE0x10000/SLOT0x20000 fixture resolves exact entry relocations, no vectors/calls/stack; PMU boundary gate rejects it. Evidence `evidence/pit-fault-entry-link-offline-2026-11-01`. No HW/entry admission. Next offline: partial/nested store interleaving model and decoder with explicit single-writer limitations, without changing exception policy.
+
+## 2026-11-01 bounded shared-slot publication model
+
+20 prefixes/400 nonreturning nested prefix pairs show invalid/whole receipts, no mixed under stated assumptions; forbidden resumed-outer class yields four accepted mixed records, replayable counterexample. Evidence `evidence/pit-fault-interleavings-offline-2026-11-01`. Not physical timing/reentry/freshness proof. Next offline: PMU config/EE/EIP architecture entry restrictions without changing policy; no HW or external RAM reads.

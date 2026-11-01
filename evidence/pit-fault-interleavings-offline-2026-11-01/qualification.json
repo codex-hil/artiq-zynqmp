@@ -1,0 +1,12 @@
+{
+  "status": "BOUNDED_ABSTRACT_INTERLEAVING_MODEL_PASS",
+  "python_tests": 155,
+  "single_prefixes": 20,
+  "nested_nonreturning_prefix_pairs": 400,
+  "forbidden_resumed_outer_cuts": 20,
+  "structurally_valid_mixed_forbidden_cases": 4,
+  "hardware_executed": false,
+  "deployable": false,
+  "physical_reachability_proven": false,
+  "reentry_excluded": false
+}
