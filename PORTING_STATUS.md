@@ -1,3 +1,18 @@
+2026-11-06 explicit user requested reversed DRTIO roles: Genesys ZU master,
+KASLI04 satellite (corrected user's Zybo name). Started separate offline candidate;
+old Kasli-master/Genesys-satellite profiles/normal images unchanged. Kasli v2.1
+satellite125MHz/noWRPLL/noSATA/noEEM config validates and GenericSatellite actual
+Python construction PASS with4GTchannels/localLEDs. Upstream satellite uplink is
+SFP0, prior Kasli master usedSFP1; physical direct-cable question pending. No
+Ethernet switch in DRTIO path. Genesys still needs new master packet/controller,
+AUX master firmware/discovery/routing/reset/TSC and CRI routing integration;
+existing LocalRTIO finewidth0 differs from Kasli finewidth3, time units must be
+reviewed, not blindly reusing localdb. No new build/HW/locks/UART/reset/clock/flash/
+OTP/SD action. Details diagnostics/drtio/role-reversal/{plan,kasli04-satellite}.json;
+evidence genesys-master-kasli04-satellite-2026-11-06. Next safe offline native
+master/controller-vs-satellite simulation; then Dell current3-slot builds. Existing
+maintenancehold for otherthreads remains unchanged; no physical role switch yet.
+
 2026-11-01 post-recovery admission reconciliation complete, offline. Practical
 OFF/ON+normal physical restoration gate PASS within tested scope; earlier voltage
 observation blocker superseded by explicit user practical-test scope. No repeated

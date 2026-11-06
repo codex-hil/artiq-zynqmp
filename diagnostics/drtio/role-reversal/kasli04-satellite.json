@@ -1,0 +1,11 @@
+{
+  "target": "kasli",
+  "variant": "kasli04_genesys_satellite_v1",
+  "hw_rev": "v2.1",
+  "drtio_role": "satellite",
+  "rtio_frequency": 125000000,
+  "enable_wrpll": false,
+  "enable_sata_drtio": false,
+  "peripherals": [],
+  "_description": "Kasli04 satellite candidate for Genesys ZU master; upstream SFP0 uplink; no EEM peripherals; not hardware qualified"
+}

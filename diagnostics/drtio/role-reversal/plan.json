@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "roles": {
+    "master": "Genesys ZU-5EV cable210383B7F02DA",
+    "satellite": "KASLI04 DNA0x006c440674704854"
+  },
+  "status": "OFFLINE_CANDIDATE_NOT_DEPLOYED",
+  "kasli_config": "kasli04-satellite.json",
+  "physical_link": {
+    "required": "Direct DRTIO cable, no Ethernet switch",
+    "genesys_port": "SFP+",
+    "kasli_upstream_default": "SFP0",
+    "old_port": "SFP1 on prior master, not equivalent after role reversal",
+    "current_cabling": "AWAITING_USER_ANSWER"
+  },
+  "clock": {
+    "nominal_rtio_hz": 125000000,
+    "line_rate_bps": 2500000000,
+    "master_source": "Stable Genesys reference, independently maintain PS management clock",
+    "slave_source": "Kasli recovered uplink; review clock restoration before live load"
+  },
+  "implementation_work": [
+    {
+      "task": "Kasli GenericSatellite config and Python construction",
+      "status": "PASS_NO_BUILD_OR_HW"
+    },
+    {
+      "task": "Genesys native DRTIOMaster/controller plus AUX CSR/SRAM and link resets",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "task": "Genesys kernel+DMA CRI routing between local and remote destinations",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "task": "TSC width/time-unit reconciliation",
+      "status": "REQUIRED: existing Genesys LocalRTIO fine width0, upstream Kasli satellite fine width3; no unchanged timing-unit assumption"
+    },
+    {
+      "task": "A53 master AUX discovery/routing/reset/TSC and destination status",
+      "status": "NOT_IMPLEMENTED: existing persistent responder is satellite-oriented"
+    },
+    {
+      "task": "Dell builds using current3-slot launcher/maxThreads4, unique directories",
+      "status": "NOT_RUN"
+    },
+    {
+      "task": "Bounded volatile two-board load and known-state restoration",
+      "status": "NOT_RUN; no flash/OTP/SD writes"
+    }
+  ],
+  "first_remote_io": "Built-in Kasli LEDs only; no EEM peripherals or absent mux0x70 accesses",
+  "source_sha256": {
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/1_gateware/local_rtio.py": "889c6f602296230f3cf3f192b621f60d5c7a22f100fcaceb352fc3a7ae411eb8",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_ps.py": "bd817b01b504f0051642bd953295c50c92e90d2bb177e280cd58de341a68f9cf",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/satellite_transport.py": "c7cf78256cb9f44643f52a9fdae49eade6a32b881d65c9c3918dae1c8a626afd",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
+  },
+  "next_safe_offline": "Implement and simulate isolated native Genesys master packet/controller path against upstream satellite before target integration",
+  "hardware_accessed": false
+}
