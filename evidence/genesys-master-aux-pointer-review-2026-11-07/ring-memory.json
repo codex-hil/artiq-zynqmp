@@ -1,0 +1,31 @@
+{
+  "status": "DUAL_CLOCK_MEMORY_OWNERSHIP_MODEL_PASS",
+  "suite_tests": 5,
+  "ring_case": {
+    "slots": 8,
+    "usable": 7,
+    "words_read_exact": 28,
+    "full_write_attempts": 4,
+    "cycles_per_rejected_attempt": 5,
+    "writer_ns": 8,
+    "reader_ns": 22,
+    "reader_phase_ns": 3
+  },
+  "checks": [
+    "Full blocks producer pointer and SRAM write",
+    "Exact FIFO order across multiple wraps",
+    "No deadbeef rejected word observed",
+    "Freed slots writable after read pointer synchronization"
+  ],
+  "limits": [
+    "One32bit word per slot, not native AUX packet SRAM",
+    "Reader waits three edges before data sample; no throughput claim",
+    "No reset/clockstop ring-memory test yet",
+    "No synthesis/physical CDC/BRAM inference proof"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_gray_ring_model.py": "cae52b1cf85993ddd5d87b391704593cad37f6c89cc5161e1712135752e04741",
+    "diagnostics/drtio/test_aux_gray_ring.py": "6f4afdb07c5bc3e1c1ed245360ff2f232648b4522630b497c1e3dc1158edbc63"
+  },
+  "hardware_accessed": false
+}

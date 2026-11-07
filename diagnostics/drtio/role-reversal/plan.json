@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Implement bounded ring ownership harness with actual dual-clock SRAM; prevent full unconsumed lap and test publication/consumption before native AUX integration",
+  "next_safe_offline": "Test ring-memory coordinated reset with queued data and stopped clocks before native AUX packet overlay",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -102,5 +102,9 @@
   "isolated_gray_pointer": {
     "status": "FOUR_MODEL_TESTS_PASS_RAPID_SKIP_AND_FULL_LAP_NEGATIVE",
     "evidence": "../../../evidence/genesys-master-aux-pointer-review-2026-11-07/gray-candidate.json"
+  },
+  "isolated_ring_memory": {
+    "status": "ONE_MEMORY_PLUS_FOUR_POINTER_TESTS_PASS",
+    "evidence": "../../../evidence/genesys-master-aux-pointer-review-2026-11-07/ring-memory.json"
   }
 }

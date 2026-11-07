@@ -1,3 +1,12 @@
+2026-11-07 dualclock SRAM ring ownership harness PASS plus4pointertests,
+5total0.119s. Actual Migen Memory separate RXwrite/SYSread ports, registered
+Gray pointers both directions, oneempty slot (7usableof8). Four fill/reject/drain
+batches deliver28exactorderedwords acrosswraps;4fullwrite attempts5RXcycles each
+blocked/no0xdeadbeef, freedslots reusable. One32bitword/slot only, readwait3edges;
+not nativeAUXpacketmemory/throughput/physicalBRAMCDC proof. Nextsafe queuedmemory
+reset/stoppedclock tests. NoHW/lease/program, maintenancehold retained. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/ring-memory.json.
+
 2026-11-07 isolatedGraypointer rapid/negative extension PASS4tests0.044s.
 100increments source8ns/destination22ns phase3 width8: remote skips samples,
 nondecreasing exactfinal100. Negative3bit case8unconsumed advances returns0,
