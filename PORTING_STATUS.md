@@ -1,3 +1,13 @@
+2026-11-07 isolatedGraypointer rapid/negative extension PASS4tests0.044s.
+100increments source8ns/destination22ns phase3 width8: remote skips samples,
+nondecreasing exactfinal100. Negative3bit case8unconsumed advances returns0,
+aliasing empty: Grayalone notFIFO/full detection. Documented mandatory bounded
+occupancy before completeunconsumedlap; nativeAUX oneemptyslot policy or proven
+wrapbit scheme required. No SRAM/nativeAUX integration/physicalCDC proof.
+Nextsafe boundedringownership harness withactualdualclockSRAM publication tests.
+NoHW/lease/program; maintenancehold retained. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/rapid-pointer.json.
+
 2026-11-07 isolated AUX Gray pointer candidate PASS2modeltests0.024s.
 Own binary pointer advances at most1/sourceedge; binary and Gray registered
 same edge, MultiReg Gray only then combinational decode.24increments/3wraps,

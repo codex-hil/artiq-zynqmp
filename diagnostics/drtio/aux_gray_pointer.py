@@ -3,6 +3,8 @@
 
 Advance at most once per source edge. Encoding is registered alongside binary
 state. Both domains require coordinated reset while packet admission is disabled.
+Caller must prevent a complete unconsumed lap (one-empty-slot policy or a
+separately proven wrap-bit occupancy scheme). This module is not a FIFO.
 Physical Gray bus skew/max-delay constraints, reset release and packet SRAM
 visibility remain integration requirements; MultiReg alone is not signoff.
 """

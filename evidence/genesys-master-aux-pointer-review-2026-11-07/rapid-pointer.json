@@ -1,0 +1,24 @@
+{
+  "status": "FOUR_POINTER_MODEL_TESTS_PASS_OCCUPANCY_GATE_RETAINED",
+  "tests": 4,
+  "rapid_case": {
+    "source_period_ns": 8,
+    "destination_period_ns": 22,
+    "destination_phase_ns": 3,
+    "pointer_width": 8,
+    "increments": 100,
+    "observations": "nondecreasing, skipped values observed, final exact100"
+  },
+  "negative_case": "3bit pointer after8unconsumed advances returns0: aliases initial empty; Gray encoding does not detect full",
+  "required_next": "Bound ring occupancy before full lap, then qualify actual dual-clock SRAM publication/consumption",
+  "limits": [
+    "Model only, not physical bit-skew/metastability proof",
+    "No native AUX or packet-memory integration",
+    "No occupancy policy implemented in pointer candidate"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_gray_pointer.py": "78a2925979ec5b58330fbfd391bd8c0546e0a83af79c0a098bea617a6b215675",
+    "diagnostics/drtio/test_aux_gray_pointer.py": "5f028d1ce7241b2ac05485b6e4171265165c91269593f7a9407ca9bcec775350"
+  },
+  "hardware_accessed": false
+}
