@@ -1,0 +1,25 @@
+{
+  "status": "ISOLATED_NATIVE_MASTER_BACKEND_SIMULATION_PASS",
+  "hardware_accessed": false,
+  "tests": 3,
+  "elapsed_seconds": 10.334,
+  "cases": {
+    "native_time_and_two_remote_outputs": "one serialized TSC load and4remote TTL edges with20/30/20cycle separation",
+    "underflow": "exception reported with0remote TTL edges",
+    "fine_width_guard": "old width0 rejected; width3 required"
+  },
+  "source_sha256": {
+    "diagnostics/drtio/master_backend.py": "959cfc5a22586417e54aca5455b6c7a1c2b950fbabc522572f17fa93348c0db5",
+    "diagnostics/drtio/test_master_backend.py": "e1626b12b06bf993a872107b2afd2a469c4a9c45c0d58bb466ac1fad7668ea1a",
+    "diagnostics/drtio/raw20_codec.py": "90e126331bcc19eeef99d9d7cd6fc2821918549ae906ad9f60a1403576894149",
+    "diagnostics/drtio/test_packets_raw20.py": "f230d13ff221e80a94e3ff856efb85c39dd4ae4c574608967c8dee9016eaf6e4"
+  },
+  "implementation": "Unmodified upstream DRTIOMaster packet/controller/link wrapped with explicit Kasli fine-width/raw20 profile guards. Caller still owns clocks, TSC and channel readiness.",
+  "limits": [
+    "Ideal8ns simulation clocks and raw20 encoded wires; no GT/physical/reset recovery result",
+    "No AXI bus, master AUX firmware/discovery/routing or hardware deployment",
+    "No local/remote CRI arbitration or CPU timing-unit adaptation yet",
+    "Kasli satellite config remains unbuilt; physical cable answer still pending"
+  ],
+  "next_safe_step": "Separate master/local CRI routing and fine-width3 common-TSC simulation; preserve normal local-only mode and maps"
+}

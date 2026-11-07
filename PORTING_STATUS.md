@@ -1,3 +1,14 @@
+2026-11-07 reversed roles offline progress: new GenesysMasterBackend wraps
+unchanged upstream DRTIOMaster link/packet/controller, strict finewidth3 and2symbol
+profile guards.3bounded RTL tests PASS10.334s with actual raw20 codecs/upstream
+satellite, KernelInitiator/SED/TTL:1serializedTSCload,4remoteedges20/30/20cycles;
+underflow0edges; oldlocalfinewidth0 refused. NoGT/AXI/AUXmasterfirmware/CRIrouter/
+CPUtime-unit or physical integration credit, no build/HW/lease/reset/clockwrites.
+Kasli satellite config still Pythonconstruction only, physicalcable answerpending.
+Evidence evidence/genesys-master-backend-offline-2026-11-07/report.json. Existing
+satellite/normalruntime unchanged. Next safe offline separate commonTSCfine3
+local/remote CRIroute/arbitration simulation before PSbus/firmware integration.
+
 2026-11-06 explicit user requested reversed DRTIO roles: Genesys ZU master,
 KASLI04 satellite (corrected user's Zybo name). Started separate offline candidate;
 old Kasli-master/Genesys-satellite profiles/normal images unchanged. Kasli v2.1
