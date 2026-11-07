@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Define coordinated PS/master/rtio_rx reset and test abort of active multiword AUX packet with fresh packet recovery; retain unknown AXI commit outcomes",
+  "next_safe_offline": "Specify all-domain controller/native-link/PS reset ownership and test interrupted TX/RX plus AXI in isolated full path; RX-only result is insufficient",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -115,5 +115,6 @@
   "optional_master_aux_map": "AXI_CSR_SRAM_AND_FIVE_HOLE_SLVERR_CASES_PASS",
   "master_aux_length_readback": "AXI_7_ALIGNED_LENGTHS_PASS_INITIAL4_TO512_BUG_CORRECTED",
   "crossed_master_aux_map": "FULL_AXI_PS8_MASTER14_PROFILE_LENGTH_SRAM_ERRORS_IDLE_RESET_PASS",
-  "full_axi_aux_link": "THREE_REQUEST_REPLY_PAIRS_42WORDS_EXACT_OVERLAP_PASS"
+  "full_axi_aux_link": "THREE_REQUEST_REPLY_PAIRS_42WORDS_EXACT_OVERLAP_PASS",
+  "active_rx_reset": "THREE_PARTIAL_FRAME_POINTS_PASS_RETAINED_SRAM_NO_PUBLICATION_FRESH_RECOVERY"
 }

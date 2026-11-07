@@ -1,0 +1,26 @@
+{
+  "status": "GRAY_RX_PARTIAL_FRAME_RESET_THREE_CASES_MODEL_PASS",
+  "tests": 1,
+  "subcases_partial_words": [
+    1,
+    7,
+    255
+  ],
+  "seconds": 0.75,
+  "checks": [
+    "Pause symbols without EOP after partial packet",
+    "No publication before reset",
+    "Coordinated SYS+RX reset with input admission disabled",
+    "Explicit retained SRAM contents survive but not published",
+    "Fresh2word packet exact/newwritepointer1/readpointer0/error0"
+  ],
+  "fixture_note": "Extra RX edge drains registered final nibble before pausing; initial1word check otherwise observed no committed SRAM word",
+  "limits": [
+    "Receiver only, not whole controller/native link or PS AXI reset",
+    "Both clocks running during reset; no physical reset timing proof",
+    "Old frame tail not resumed; upstream must restart with fresh frame",
+    "MemoryToArray storage explicitly reset_less, shared simulator unchanged"
+  ],
+  "test_sha256": "7c3caab14ec4bc5ba4c4fd4c3a0ed2cf5d112ed90e79a0013911c163a2f7794e",
+  "hardware_accessed": false
+}

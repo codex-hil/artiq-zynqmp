@@ -1,3 +1,13 @@
+2026-11-07 GrayRX partialframeabort PASS1test3subcases0.750s:1/7/255words
+withoutEOP, no publication, coordinatedSYS+RXreset/inputdisabled; retainedSRAM
+stillpresent butnotpublished, fresh2wordpacket exact/newwrite1/read0/error0.
+Fixtureextraedge drains registeredfinalnibble beforepause (initial1word check
+otherwisehadnocommittedword). Explicitreset_lessMemoryToArray testmodel.
+RXonly, notcontroller/TX/nativelink/PSAXI reset; clocksrunning/resetphysical
+unqualified, oldtail notresumed. Nextsafe all-domainownership/fullpathinterrupted
+TXRX/AXI resettest. NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/active-rx-reset.json.
+
 2026-11-07 fullPSAXI/CDC/nativeAUX requestreply modelPASS60.693s.
 3requests+3replies sizes1/3/17=42wordsexact, PS8ns/master14ns;PSAXITXSRAM/
 length/trigger→nativeencodedlink→peerWBreceive/reply→PSRXCSR/SRAM/consume.
