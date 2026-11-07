@@ -1,0 +1,23 @@
+{
+  "status": "CONTROL_DOMAIN_RESET_ADMISSION_TWO_MODEL_TESTS_PASS",
+  "tests": 2,
+  "protocol": [
+    "Request immediately inhibits admit; sampled request clears previous abandonment",
+    "Hold reset until ready vector0 and new abandonment low-to-high observed after request deassertion",
+    "Release reset then wait all domains ready before admit",
+    "Any missing ready inhibits admit",
+    "New request requires new abandonment handshake"
+  ],
+  "limits": [
+    "Synchronized control inputs assumed; no reset distribution or per-domain acknowledger implemented",
+    "Request must span control edge; no subcycle asynchronous pulse claim",
+    "Ready loss inhibits admit but does not autonomously initiate reset or detect stopped clocks",
+    "Abandonment never proves prior AXI write did not execute; no retry output",
+    "Not integrated with fullpath/firmware/hardware"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_reset_control.py": "67c5afcf2d9862b802deebba0c8c38544529d2db27a2deafe049144553f73e6c",
+    "diagnostics/drtio/test_aux_reset_control.py": "33f4636eba2c617a0777f51ef9c7bc11e6a47282262888012ae8af51354ac3b0"
+  },
+  "hardware_accessed": false
+}

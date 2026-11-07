@@ -1,3 +1,13 @@
+2026-11-07 AuxResetControl candidatePASS2tests0.004s. Control-domainFSM
+holdsreset until readyvector0 andfreshPSabandonment low/high afterrequestclear,
+thenwaitsallready beforeadmit. Stalehighready/abandonment refuse, missingdomain
+blocks, newepisode requiresnewhandshake; ready loss inhibitsadmit. Inputs assumed
+synchronized/requestspanscontroledge. No per-domain resetdistribution/acks or
+clockstopwatchdog; readyloss notautoreset. Abandonment NOTrollback/noautoretry.
+Nextsafe per-domainreleaseacks/synchronizedhandshake/fullpathintegration.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/reset-control.json.
+
 2026-11-07 fullmodeledpath activeAUXreset PASS104.105s. Active64wordTXframe
 asserted then all5domainsPS/SYS/RX/rio/rio_phy reset40PScycles, clockslive.
 TriggerAXIB alreadyaccepted (no outstandingAXIresetclaim). TXbusy/length0,
