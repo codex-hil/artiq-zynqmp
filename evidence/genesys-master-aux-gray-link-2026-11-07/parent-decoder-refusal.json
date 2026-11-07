@@ -1,0 +1,13 @@
+{
+  "status": "STOCK_SHARED_AXI_DECODER_RESET_MANAGEMENT_ADOPTION_REFUSED",
+  "characterization_tests": 1,
+  "seconds": 0.029,
+  "finding": "Accepted target AW with no B locks write selection; management AW blocked despite its ready1. Management AR independently succeeds. Target B completion releases write lock.",
+  "consequence": "Always-live management slave alone does not ensure reset write reachability behind shared decoder with abandoned target completion",
+  "source_sha256": "1bff89ebdcf42ada448505009fbfdfda54eb74aef60c7db2a73075b149d63d31",
+  "test_sha256": "7dff7e471d1e34719b53e9028f318cb2afb453e9aed4a8dcac52b944c85f1b8d",
+  "fixture_note": "Corrected test edge scheduling to issue exactly one AW and allow decode propagation before assertions",
+  "next": "Review independent PS HPM management ingress; alternatively explicitly qualify abort/transaction ownership protocol, never silently clear counters or fabricate success",
+  "observed_target_source": "diagnostics/drtio/diag_gateware.py uses connect_ps_hpm0; second ingress not configured/qualified yet",
+  "hardware_accessed": false
+}

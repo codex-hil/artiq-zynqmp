@@ -31,3 +31,9 @@ On timeout, do not reopen admission or retry target operations. Keep/request res
 and diagnose missing clocks/readiness offline or with authorized board leases.
 No automatic clock-loss watchdog, management-domain reset recovery, physical CDC
 constraints or real firmware implementation is claimed by this candidate.
+
+The stock shared AXIDecoder is explicitly refused for this placement: an
+accepted target AW with a missing B retains its write-direction slave lock,
+blocking a later management reset write. Independent status reads do not solve
+reset-write reachability. Independent PS ingress or an explicitly qualified
+transaction-abort protocol is required; neither has been implemented yet.

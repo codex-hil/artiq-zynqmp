@@ -1,3 +1,13 @@
+2026-11-07 stocksharedAXIdecoder managementadoption REFUSED. Characterization
+PASS0.029s reproduces missingtargetB retainswriteselection andblocksmanagement
+AW despite managementready1; independentmanagementARworks; targetB releaseslock.
+Alwaysliveregister slave alone insufficient. Fixtureedge scheduling corrected
+foroneAW anddecodepropagation. Actualdiag_gateware uses connect_ps_hpm0; second
+managementingress notconfigured/qualified. Nextsafe inspectPSHPM/independent
+managementport, or explicitabortownershipprotocol—no silentcounterclear/fakeOK.
+NoRTLadoption/HW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/parent-decoder-refusal.json.
+
 2026-11-07 separatelivemanagementMMIO PASS1test0.083s. AXILite0xa0020000
 identity/command/status, commandfull32bit0..3only,2resetepisodeswithtargetreset
 andmanagementaccessible,3badreads/5badwritesSLVERR/commandunchanged. FixtureAW/W
