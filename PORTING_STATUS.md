@@ -1,3 +1,13 @@
+2026-11-07 recoverycontextreview/portablemanagementdriver PASS20hostcases
+ASAN/UBSAN. CPU0foregroundnetwork/debug andCPU1CoreDMA preserved; CPU2/3not
+assigned/qualified. PortableAPI identity/boundedpoll/noautomaticretry/attemptflags,
+allcallbackfailstages includingeffectbeforeerror,timeout/reservedbits/explicit
+abandonment PASS. Pollcount notcallbackhangbound; noagentELF/core/OCM/realMMIO
+faultproof. ExistingA53schedulerbinding unchanged/excludesB000managementrange.
+Nextsafe DellA53compile andisolateddualHPMtop; recoverycontextremainsHWgate.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/reset-driver/report.json.
+
 2026-11-07 dualindependentfullAXIingress resetmodelPASS8.134s. HPM0style
 write68committed/native17/Bunaccepted, HPM1styleMMIOB0000000reset/status/identity
 remainreachable;5domainready/admissionreopen,no staleB,length0/new12correct.

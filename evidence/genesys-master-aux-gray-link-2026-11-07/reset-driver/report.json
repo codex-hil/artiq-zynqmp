@@ -1,0 +1,31 @@
+{
+  "status": "PORTABLE_RESET_DRIVER_TWENTY_HOST_MODEL_CASES_ASAN_UBSAN_PASS",
+  "cases": 20,
+  "checks": [
+    "Identity before writes",
+    "Bounded poll limits1..1024",
+    "Everycallback failure returnsIO without retry",
+    "Write effect before error modeled, attempted flags retained",
+    "Fresh abandonment explicit caller input",
+    "Release timeout before commit does not attempt release",
+    "Reservedstatus bits refuse"
+  ],
+  "execution_context_review": {
+    "CPU0": "Existing foreground AMD/lwIP network/analyzer/MonInj",
+    "CPU1": "Existing CoreDMA kernel worker",
+    "CPU2_CPU3": "Not assigned or qualified as recovery agents",
+    "decision": "No core reassigned. API independent of execution context; real recovery agent still required."
+  },
+  "limits": [
+    "Host callbacks model only, not real MMIO fault/hang recovery",
+    "No A53/R5 agent ELF/boot/interrupt/OCM implementation or hardware",
+    "Existing compile-only A53 scheduler binding intentionally unchanged; its address validator excludes management range",
+    "Poll counts do not bound a callback that itself blocks"
+  ],
+  "sources": {
+    "diagnostics/drtio/role-reversal/a53/reset_driver.h": "442d524ae1c13b35c5685c0cc01fee3b9da965425b6275775c0fa2ccbdf77605",
+    "diagnostics/drtio/role-reversal/a53/test_reset_driver.c": "225744edf16513290f5131e68a512296fbcc204d506ba71ad55358fa627e6214",
+    "docs/RTIO_DEBUG.md": "62a1098675a04ce58bef8b62b8acc1336fce40b9002199a6130ad1c48440a28f"
+  },
+  "hardware_accessed": false
+}

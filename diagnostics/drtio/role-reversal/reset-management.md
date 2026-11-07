@@ -50,3 +50,11 @@ target B response, using two independent behavioral initiators. This does not
 prove that one A53 core stalled on a synchronous target MMIO access can issue
 management commands. An independent recovery execution context or a separately
 qualified bounded-fault mechanism is required; no core has been reassigned.
+
+Current ownership review preserves CPU0 foreground network/debug services and
+CPU1 CoreDMA worker. CPU2/3 are not assigned or qualified recovery agents.
+`a53/reset_driver.h` is a callback-based portable API tested on the host only.
+Its finite polling does not bound a callback blocked inside real MMIO. It reports
+reset/release attempts before writes, including failures after a write may have
+executed. Success still requires target reinitialization and does not clear the
+unknown outcome of prior operations. Existing direct A53 bindings are unchanged.

@@ -1,0 +1,2 @@
+cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g
+RESET_DRIVER_MODEL_PASS 20 cases
