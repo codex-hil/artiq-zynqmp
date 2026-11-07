@@ -1,0 +1,27 @@
+{
+  "status": "FULL_AXI_EXPANDED_MAP_PS_MASTER_CDC_MODEL_PASS",
+  "crossed_test_seconds": 20.395,
+  "clocks_ns": {
+    "ps": 8,
+    "master_sys": 14
+  },
+  "checks": [
+    "FullAXI converter PS domain, fivechannel common-reset FIFO crossing to map master domain",
+    "Profile/AUX CSR/SRAM roundtrip",
+    "Seven aligned length byte values/internalwordcounts",
+    "Five invalid reads SLVERR/ID/recovery",
+    "Idle PS+master reset then identity/length0/newlength12 correct"
+  ],
+  "fixture_correction": "Explicit reset-capable SYS domain required; original auto-created resetless SYS refused common-reset elaboration",
+  "limits": [
+    "Idle control/map reset only, not coordinated entire RX/link reset",
+    "No active AUX reset, clock-stop or simultaneous AXI/packet traffic in this integration test",
+    "Memory contents after reset not used as retention proof",
+    "Functional reset override, physical CDC/timing unresolved"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_csr.py": "45c85b797a38c437e489f4f9d20d7c7944a287e75c2831ac27d95503bba89087",
+    "diagnostics/drtio/test_master_aux_map.py": "b9ec8f8bee71d6252c11a56a32b297bdd15b5ac11ba3b960d11ed88fa7774039"
+  },
+  "hardware_accessed": false
+}

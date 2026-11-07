@@ -1,16 +1,20 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 import unittest
 from migen.sim import run_simulation
+from migen import ClockDomain
+from migen.genlib.resetsync import AsyncResetSynchronizer
+from test_master_ps_cdc import FunctionalReset
 from test_master_csr import AXIMaster, Pair, CLOCKS
 from master_csr import GenesysMasterCSR
 from master_aux import GenesysMasterAux
 from aux_controller_gray import GrayAuxController
 
 class AuxMapTests(unittest.TestCase):
+    ps_clock=None
     def test_profile_aux_csrs_and_sram_axi(self):
         d=Pair(now64=True)
         d.submodules.aux=GenesysMasterAux(d.master,controller_type=GrayAuxController)
-        d.submodules.csr=GenesysMasterCSR(d.time,d.ki,d.master,d.routing,aux=d.aux)
+        d.submodules.csr=GenesysMasterCSR(d.time,d.ki,d.master,d.routing,aux=d.aux,ps_clock=self.ps_clock)
         m=AXIMaster(d.csr.axi)
         reg=d.csr.registers
         self.assertEqual(reg['aux_aux_tx_length']['address'],0xa0002000)
@@ -49,6 +53,34 @@ class AuxMapTests(unittest.TestCase):
                 yield a.r.ready.eq(0)
                 yield
                 self.assertEqual((yield from m.read(0xa0010000)),0x12345678)
-        run_simulation(d,test(),CLOCKS)
+            if self.ps_clock:
+                # Idle coordinated reset only. SRAM retention/active reset is
+                # separately qualified; do not inspect SRAM after this reset.
+                yield d.cd_ps.rst.eq(1)
+                yield d.cd_sys.rst.eq(1)
+                for _ in range(24):yield
+                yield d.cd_ps.rst.eq(0)
+                yield d.cd_sys.rst.eq(0)
+                for _ in range(24):yield
+                self.assertEqual((yield from m.read(reg['profile_identity']['address'])),GenesysMasterCSR.IDENTITY)
+                self.assertEqual((yield from m.read(reg['aux_aux_tx_length']['address'])),0)
+                yield from m.write(reg['aux_aux_tx_length']['address'],12)
+                self.assertEqual((yield from m.read(reg['aux_aux_tx_length']['address'])),12)
+        if self.ps_clock:
+            d.clock_domains.cd_ps=ClockDomain('ps')
+            d.clock_domains.cd_sys=ClockDomain('sys')
+            clocks={key:14 for key in CLOCKS}
+            clocks['ps']=8
+            for name,crossing in d.csr.ps_cdc.crossings.items():
+                periods=(14,8) if name in ('b','r') else (8,14)
+                for domain,period in zip(crossing._fragment.clock_domains,periods):
+                    clocks[domain.name]=period
+            run_simulation(d,{'ps':test()},clocks,
+                special_overrides={AsyncResetSynchronizer:FunctionalReset})
+        else:
+            run_simulation(d,test(),CLOCKS)
+
+class CrossedAuxMapTests(AuxMapTests):
+    ps_clock='ps'
 
 if __name__=='__main__':unittest.main()

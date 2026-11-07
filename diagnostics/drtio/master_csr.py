@@ -6,7 +6,7 @@ ABI are not qualified.
 """
 import json
 from pathlib import Path
-from migen import Module
+from migen import Module, ClockDomainsRenamer
 from migen.fhdl.structure import _Assign
 from misoc.interconnect import csr_bus,wishbone2csr
 from misoc.interconnect.csr import CSRStatus
@@ -17,7 +17,7 @@ from aux_axi import CheckedAXILite2Wishbone
 class GenesysMasterCSR(Module):
     BASE=0xa0000000
     IDENTITY=0x47534d31
-    def __init__(self,tsc,kernel,backend,routing,aux=None):
+    def __init__(self,tsc,kernel,backend,routing,aux=None,ps_clock=None):
         if tsc.glbl_fine_ts_width!=3 or not hasattr(kernel,'now') or kernel.now.size!=64:
             raise ValueError('Master CSR profile requires fine3 and now64 kernel initiator')
         profile=[CSRStatus(32,name='identity'),CSRStatus(32,name='fine_width'),CSRStatus(32,name='coarse_hz')]
@@ -27,7 +27,16 @@ class GenesysMasterCSR(Module):
             descriptions.append(('aux',4,aux.get_csrs()))
         self.axi=AXIInterface(data_width=32,address_width=40,id_width=16)
         lite=AXILiteInterface(data_width=32,address_width=40)
-        self.submodules.converter=AXI2AXILite(self.axi,lite)
+        if ps_clock is None:
+            self.submodules.converter=AXI2AXILite(self.axi,lite)
+        else:
+            if ps_clock=='sys':
+                raise ValueError('PS crossing requires a distinct declared clock')
+            from master_ps_cdc import GenesysMasterPSCDC
+            ps_lite=AXILiteInterface(data_width=32,address_width=40)
+            self.submodules.converter=ClockDomainsRenamer(ps_clock)(AXI2AXILite(self.axi,ps_lite))
+            self.submodules.ps_cdc=GenesysMasterPSCDC(ps_lite,lite,
+                ps_clock=ps_clock,master_clock='sys')
         bus=wishbone.Interface(data_width=32,address_width=40,addressing='word')
         self.submodules.bridge=CheckedAXILite2Wishbone(lite,bus,self.BASE)
         if aux is not None:

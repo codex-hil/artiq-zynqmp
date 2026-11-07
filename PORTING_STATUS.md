@@ -1,3 +1,14 @@
+2026-11-07 expandedmastermap PSCDC integrated crossedtestPASS20.395s.
+Optionalps_clock preservesdefault; fullAXIconverter onPS, maintained5channel
+commonresetcrossing to masterSYS. PS8ns/master14ns:profile/AUXCSR/TXSRAM,
+7lengthvalues/nativewords,5invalidreadSLVERR/ID/recovery PASS. IdlePS+SYSreset
+thenidentity/length0/new12 PASS. FixtureexplicitresetcapableSYS needed; implicit
+simSYSresetless refusedelaboration. Functionalreset only, idlecontrolreset NOT
+wholeRX/link active reset orretentionproof. Nextsafe simultaneousPSAXI+native
+packettraffic thenall-domainactive resetcontract. NoHW/leases/program;
+maintenancehold. Evidence genesys-master-aux-gray-link-2026-11-07/
+crossed-master-map.json.
+
 2026-11-07 masterAUXalignedlengthCSR corrected/testPASS7.471s. Beforefix
 actualAXI write4/read512 FAIL3.438s. Guarded finalizedMiSoClengthreadback
 storage_full&~3 (existingAuxPSpattern), notupstreamedit. Sevenlengths0/4/12/68/
