@@ -1,3 +1,13 @@
+2026-11-07 per-domain resetreleaseacks+control PASS4modeltests0.027s.
+Privateclock-following releasedomains/AsyncResetSynchronizer/localcounter/ready
+MultiRegtolivecontrol. ActualB/privateBedges suppressed AFTERreadyclear; Aready
+only blocksadmit, resumeBopens. Secondresetreadyclear/staleabandonmentrefused/
+freshhandshakeopens. Functionalresetoverride, reset_out notwholetargetdistributed.
+Notasyncstoppedclear/physicalreset/timing/watchdogproof; alreadyready clockloss
+notdetected. Nextsafe reset_out/admissionfullisolatedpathintegration withseparate
+livecontrol/targetownership. NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/reset-domain-acks.json.
+
 2026-11-07 AuxResetControl candidatePASS2tests0.004s. Control-domainFSM
 holdsreset until readyvector0 andfreshPSabandonment low/high afterrequestclear,
 thenwaitsallready beforeadmit. Stalehighready/abandonment refuse, missingdomain

@@ -1,0 +1,24 @@
+{
+  "status": "DOMAIN_RELEASE_ACKS_PLUS_RESET_CONTROL_FOUR_MODEL_TESTS_PASS",
+  "tests": 4,
+  "seconds": 0.027,
+  "checks": [
+    "Private release domains source clocked with AsyncResetSynchronizer",
+    "Local release counter then ready MultiReg into live control",
+    "Actual B/privateB scheduled edges suppressed after reset ack low",
+    "Aready1/Bready0 blocks admit, resumedB yields bothready/admit",
+    "Second reset clears ready, stale abandonment high refuses, fresh handshake opens"
+  ],
+  "limits": [
+    "Functional reset special override only",
+    "reset_out not yet distributed to whole target/AXI/link domains",
+    "Stop after reset acknowledgements clear; asynchronous clearing while stopped not dynamically proven",
+    "No clock-stop watchdog; domain_ready can stay high if already running clock later stops",
+    "No physical async-reset or timing qualification"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_reset_domains.py": "42be921f51ddc2e3b90d361398e8308ad29d3600615109cf0ace626b4791ad34",
+    "diagnostics/drtio/test_aux_reset_domains.py": "5db70e5a8bb9a5870ad044b19287056ff777e35840b13c29216d944d87a60680"
+  },
+  "hardware_accessed": false
+}
