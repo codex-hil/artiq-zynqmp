@@ -1,0 +1,256 @@
+{
+  "kind": "genesys-master-candidate-not-local-rtio-abi",
+  "identity": 1196641585,
+  "fine_ts_width": 3,
+  "timestamp_unit_ps": 1000,
+  "coarse_hz": 125000000,
+  "csr_base": 2684354560,
+  "registers": {
+    "kernel_target": {
+      "address": 2684354560,
+      "bits": 32,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_now": {
+      "address": 2684354564,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_o_data": {
+      "address": 2684354572,
+      "bits": 512,
+      "words": 16,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_o_status": {
+      "address": 2684354636,
+      "bits": 3,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_i_timeout": {
+      "address": 2684354640,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_i_data": {
+      "address": 2684354648,
+      "bits": 32,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_i_timestamp": {
+      "address": 2684354652,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_i_status": {
+      "address": 2684354660,
+      "bits": 4,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_counter": {
+      "address": 2684354664,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "kernel_counter_update": {
+      "address": 2684354672,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "profile_identity": {
+      "address": 2684356608,
+      "bits": 32,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "profile_fine_width": {
+      "address": 2684356612,
+      "bits": 32,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "profile_coarse_hz": {
+      "address": 2684356616,
+      "bits": 32,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_rx_up": {
+      "address": 2684358656,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_rx_disable": {
+      "address": 2684358660,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_tx_force_aux_zero": {
+      "address": 2684358664,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_tx_force_rt_zero": {
+      "address": 2684358668,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_aux_word_cnt": {
+      "address": 2684358672,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_aux_zword_cnt": {
+      "address": 2684358680,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_rt_word_cnt": {
+      "address": 2684358688,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_rt_zword_cnt": {
+      "address": 2684358696,
+      "bits": 64,
+      "words": 2,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_update_link_stats": {
+      "address": 2684358704,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_reset": {
+      "address": 2684358708,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_protocol_error": {
+      "address": 2684358712,
+      "bits": 3,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_set_time": {
+      "address": 2684358716,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_underflow_margin": {
+      "address": 2684358720,
+      "bits": 16,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_force_destination": {
+      "address": 2684358724,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_destination": {
+      "address": 2684358728,
+      "bits": 8,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_o_get_buffer_space": {
+      "address": 2684358732,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_o_dbg_buffer_space": {
+      "address": 2684358736,
+      "bits": 16,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_o_dbg_buffer_space_req_cnt": {
+      "address": 2684358740,
+      "bits": 32,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "master_o_wait": {
+      "address": 2684358744,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "routing_selected": {
+      "address": 2684360704,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "routing_destination": {
+      "address": 2684360708,
+      "bits": 8,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "routing_hop": {
+      "address": 2684360712,
+      "bits": 2,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    }
+  },
+  "scope": "Aligned single-beat32-bit accesses; no AXI/GT/firmware hardware qualification"
+}

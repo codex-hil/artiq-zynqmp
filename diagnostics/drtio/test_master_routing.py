@@ -18,13 +18,13 @@ from test_packets_raw20 import EncodedPair
 CLOCKS={'sys':8,'rtio_rx':8,'rio':8,'rio_phy':8}
 
 class Pair(Module):
-    def __init__(self):
+    def __init__(self,now64=False):
         self.local_pad=Signal();self.remote_pad=Signal()
         self.submodules.wires=EncodedPair(2)
         self.submodules.time=rtio.TSC(glbl_fine_ts_width=3)
         self.submodules.remote_time=rtio.TSC(glbl_fine_ts_width=3)
         self.submodules.master=GenesysMasterBackend(self.time,self.wires.alice)
-        self.submodules.ki=rtio.KernelInitiator(self.time)
+        self.submodules.ki=rtio.KernelInitiator(self.time,now64=now64)
         self.submodules.local_phy=ttl_simple.Output(self.local_pad)
         self.submodules.remote_phy=ttl_simple.Output(self.remote_pad)
         # Upstream latency RAM requires at least two channels in this fixture.

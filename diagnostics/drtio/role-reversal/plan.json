@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Separate PS AXI/CSR candidate map with now64 timestamp units, staging/order and local/remote status tests; preserve old local-only ABI",
+  "next_safe_offline": "Generate A53 register API from map with profile identity/time-unit checks, host MMIO model tests and cross-build on Dell before hardware integration",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -69,5 +69,12 @@
     "status": "FOUR_NATIVE_SIMULATION_TESTS_PASS",
     "implementation": "../master_routing.py",
     "limits": "No AXI/firmware or real DMA integration; owner changes only idle"
+  },
+  "isolated_master_csr": {
+    "status": "FOUR_CSR_PLUS_FOUR_ROUTING_CASES_PASS",
+    "map": "../../../evidence/genesys-master-csr-offline-2026-11-07/csr-map.json",
+    "profile_identity": "0x47534d31",
+    "timestamp_unit_ps": 1000,
+    "integration": "CANDIDATE_MODULE_ONLY_NO_BOARD_IMAGE"
   }
 }

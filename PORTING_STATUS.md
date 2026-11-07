@@ -1,3 +1,16 @@
+2026-11-07 reversed roles PSbus stage PASS: separate GenesysMasterCSR AXI32/
+addr40/id16→nativeMiSoC banks (now64kernel/profile/master/routing), checkedSLVERR.
+4uniqueCSR cases+4routing regressions PASS; three runs3+2+4 executions inclnew
+read-error/nonzero64bit cases. ProfileGSM1/fine3/125MHz, big-wordnow64 readback,
+AXIserializedTSCload/remotecredits and4isolatededges40cyclewidth PASS. Below/above/
+highaddressalias R/W andpartialwrite refuseSLVERR, responsebackpressure/ID/recovery
+PASS, targetunchanged. OldLocalRTIO sourcehash unchanged. Pairfixture gained
+optionalnow64 only/defaultoldmode; regressionPASS. MapactualfinalizedCSR widths/
+order saved evidence/genesys-master-csr-offline-2026-11-07/csr-map.json. NoGT/CDC/
+AUXmasterfirmware/DMAkernelABI/boardimage credit, alignedsinglebeat only, noHW/
+lease/reset/build/program. Nextsafe map-generatedA53 API/profile/timeunit checks,
+hostMMIOmodel tests and Dellcrossbuild before hardware integration.
+
 2026-11-07 reversed roles routing stage PASS,4bounded Python RTL tests.
 New GenesysMasterRouting uses upstream CRIshared fabric with explicitdefault
 0local/1remote/allothersunreachable (avoids upstream zero-table unknown→local).

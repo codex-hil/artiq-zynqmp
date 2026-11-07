@@ -1,0 +1,47 @@
+{
+  "status": "ISOLATED_PS_AXI_CSR_NATIVE_RTIO_SIMULATION_PASS",
+  "hardware_accessed": false,
+  "unique_csr_cases": 4,
+  "routing_regression_cases": 4,
+  "runs": {
+    "tests.log": {
+      "tests": 3,
+      "seconds": 63.62,
+      "sha256": "47edca0563b9f137b34af844a62220097c330abf55537c62030bc83703c24e16"
+    },
+    "extended-csr-tests.log": {
+      "tests": 2,
+      "seconds": 5.724,
+      "sha256": "4c9cac409bb03be76e4280280a4061c4e9e81db669245c3b0b8afc8f860d703d"
+    },
+    "routing-regression.log": {
+      "tests": 4,
+      "seconds": 55.385,
+      "sha256": "be68b3c476b4fbfb202af0bb73a0011fb316981835f42483f75a864603279148"
+    }
+  },
+  "inputs": {
+    "diagnostics/drtio/master_csr.py": "d8cbaf838eb8b998a58d5c604c4a8a2d6a41da2a3e24a928cfc880a0f9c12ca8",
+    "diagnostics/drtio/test_master_csr.py": "118fa7d8c084e376d69be3cb05892a03597adab3142989384e4abbcff6d73429",
+    "diagnostics/drtio/master_routing.py": "f90e9c7d4d1c8a55d75974466fae8ec4decdb1b77b5c813635efab06be6c2be1",
+    "diagnostics/drtio/test_master_routing.py": "814f176b8904ab10ba6b06a4cdf430dd0585066df1bd3dde696aa6e241e72420"
+  },
+  "csr_map_sha256": "a699deb3f560bbf0e3188d58e1f39d5a7f2e358d78b628ee94a7869e97ac7732",
+  "scope": [
+    "AXI32/address40/id16 to native CSR kernel/master/routing banks",
+    "Profile identity GSM1,fine3,coarse125MHz and counter1ns units",
+    "Actual AXI TSC load, remote buffer query and4local/remote edges with40cycle pulse widths",
+    "now64 high0x11223344/low0x55667788 readback, no implicit event",
+    "Below-window/above-window/high-address alias reads+writes returnSLVERR; stalled responses retain ID/response; good access recovers",
+    "Partial write returnsSLVERR and leaves target register unchanged",
+    "Old split timestamp kernel profile refused; old local_rtio source SHA unchanged"
+  ],
+  "limits": [
+    "No full board/GT/clock reset or CDC/hardware qualification",
+    "No AUX CSR/SRAM master services/discovery/routing firmware yet",
+    "No real DMA attachment or CPU1 kernel ABI upgrade yet",
+    "Aligned single-beat32-bit profile only; unaligned/burst behavior unqualified",
+    "No synthesis/timing/build or physical image deployment"
+  ],
+  "next_safe_step": "Generate A53 register API from map with profile identity/time-unit checks, host MMIO model tests and cross-build on Dell before hardware integration"
+}
