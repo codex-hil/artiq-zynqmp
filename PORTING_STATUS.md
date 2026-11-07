@@ -1,3 +1,18 @@
+2026-11-07 reversed roles same-link AUX candidate PASS4modeltests (3main111.144s
++phase5.875s). Actual upstream AUXcontroller attached to existing native master
+link (no duplicateLinkLayer), satellite nativeAUX peer.9packets/direction sizes
+1/3/17words exact/ringwrap;64word request/reply coexistswithRTframe overlap and
+remote20cyclepulse; duplicateowner/declaredPSvsTXclockmismatch refuse;RXphase2
+casePASS. Correct nativeAUX width4bits vsRT16/raw20; no CRC/firmware claim.
+Clocksource review: existingSYS=PSpl_clk0 !=GTHTX phase; nativeTSC/CRI/controller/
+TX requiremaster ownership, separatePS transactionCDC needed. RXnative SRAM
+port rtio_rx, binaryringpointers MultiReg/errorPulseSynchronizer observed—not
+atomicCDCqualification fromsimulation. Explicit future reset/stalecommit gates.
+Evidence evidence/genesys-master-aux-offline-2026-11-07/{report,clock-contract}.json.
+NoHW/leases/reset/build/firmware/oldimages change. Nextsafe PS/master transaction
+CDC model/reset/clock-stop tests; retain separateRXpointerreview beforeHW.
+PhysicaldirectKasliSFP0 cable answerpending; maintenancehold notbypassed.
+
 2026-11-07 reversed roles A53 API stage PASS: exact CSR-map generator/header,
 profileGSM1/fine3/125MHz checks, explicitCRIowner0/remoteRX guards beforewrites;
 target→fence→now64hi/lo→fence→lowodata commit→boundedstatus. HostC model27cases

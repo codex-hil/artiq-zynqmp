@@ -1,0 +1,35 @@
+{
+  "status": "SAME_NATIVE_MASTER_LINK_AUX_RT_SIMULATION_PASS",
+  "hardware_accessed": false,
+  "tests": 4,
+  "runs": {
+    "tests.log": {
+      "tests": 3,
+      "seconds": 111.144,
+      "sha256": "1707cb8383ff33b6c3e781288d2fb384ef740781e4464386698e80ef720f0c40"
+    },
+    "phase-test.log": {
+      "tests": 1,
+      "seconds": 5.875,
+      "sha256": "48774f9e0af2904396aafa64e275217f15bbb66567bccdfe28b4eb80ba16baf8"
+    }
+  },
+  "source_sha256": {
+    "diagnostics/drtio/master_aux.py": "3dd05125cb333998496c7457dccf316305ef09b9a682eb9c89383e2875699e2d",
+    "diagnostics/drtio/test_master_aux.py": "347111b72dc51d14308515ad4e4d94f73f1041acbce7d0109b4164cfcbad6b37"
+  },
+  "cases": [
+    "9packets each direction via actual upstream AUX SRAM controller, byte-exact1/3/17word payloads and RX ring wrap",
+    "64word AUX payload and response while actual RT frame requests overlap on same master link; remote pad high/low20cycles",
+    "Second AUX owner and declared PS/TX clock mismatch refused",
+    "Additional bidirectional packet with RX clock phase shifted2simulation units"
+  ],
+  "limits": [
+    "Raw AUX payload transport, not packet codec/CRC/discovery firmware",
+    "Ideal125MHz model clocks; phase offset is not metastability/CDC/reset qualification",
+    "No second native link layer instantiated; existing satellite/normal images unchanged",
+    "No PS AXI-to-AUX map/bridge or target board integration built",
+    "Native RX binary-pointer crossing explicitly not qualified"
+  ],
+  "next_safe_step": "Implement PS/master transaction CDC candidate with bounded reset/clock-stop tests, retaining native RX pointer review as separate unresolved gate"
+}

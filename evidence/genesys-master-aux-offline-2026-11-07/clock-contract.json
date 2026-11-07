@@ -1,0 +1,33 @@
+{
+  "status": "SOURCE_CONTRACT_REVIEW_NOT_CLOCK_CDC_QUALIFICATION",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/aux_controller.py": "0d648fc25f79af35f687fbf47e938d0759358d8d77e2e499e091adc6ba62e075",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/link_layer.py": "f7da7512a2e079e52bac56124573f121a45e4093a95a17ed050accc14e9008eb",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/diag_gateware.py": "b691a1f13f53cb45b01db2f191ea94e7c7a837a22400f4056bbc9c7c663b4c24",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/litex/litex/soc/interconnect/axi/axi_lite.py": "5dae396da352eb0b1365ee03a08f6e23735abd537bdb564f36553f1e2c835260"
+  },
+  "known_domains": {
+    "existing_diagnostic_sys": "PS pl_clk0",
+    "existing_gth_tx": "GTH TX user clock",
+    "new_native_master": "TSC/CRI/controller/link TX must share master clock",
+    "native_receive": "rtio_rx"
+  },
+  "integration_decision": "Do not connect PS-clock CSR strobes to GTH-clock register state directly. Preserve one link layer; add reviewed transaction CDC ahead of master-owned CSR/AUX region.",
+  "native_aux_bus_widths": {
+    "raw20_symbols": 2,
+    "RT_bits_per_cycle": 16,
+    "AUX_bits_per_cycle": 4
+  },
+  "native_receive_observation": "RX memory write port in rtio_rx; read/write ring pointers cross through MultiReg, error via PulseSynchronizer. Pointers are binary in reviewed source; ideal simulation does not establish atomic multi-bit CDC.",
+  "reset_requirements": [
+    "Explicit coordinated reset of control/TX/RX and transaction queues",
+    "No stale requests/replies/CSR commits after independent clock/reset changes",
+    "AXI in-flight failure/completion outcome must be defined before hardware use"
+  ],
+  "remaining_gates": [
+    "PS/master transaction CDC and reset tests",
+    "Native AUX RX pointer crossing review or separate qualified overlay",
+    "AUX CSR/SRAM address map and aligned-length readback",
+    "Master discovery/routing/TSC firmware with current native codec"
+  ]
+}
