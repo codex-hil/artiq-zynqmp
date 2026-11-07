@@ -1,0 +1,30 @@
+{
+  "status": "SEPARATE_ALWAYS_LIVE_MANAGEMENT_MMIO_MODEL_PASS",
+  "tests": 1,
+  "seconds": 0.083,
+  "base": "0xa0020000",
+  "registers": {
+    "0": "identity47524d31",
+    "4": "command request/abandoned",
+    "8": "status reset/abandonment_ready/admit"
+  },
+  "checks": [
+    "Two complete handshake episodes while target reset",
+    "Identity/control/status remain accessible",
+    "Three invalidread addresses SLVERR",
+    "Five invalidwrites SLVERR without command modification"
+  ],
+  "fixture_correction": "Pinned AXILite2Wishbone accepts AW/W together; test initially timed out with sequential AW then W, corrected driver not RTL",
+  "limits": [
+    "SeparateAXILite endpoint not yet parentfullAXIdecoder",
+    "Aligned32bit only/no managementdomain reset recovery",
+    "Independent status bits are not atomic snapshot",
+    "Physical clocks/reset/CDC unqualified"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_reset_management.py": "ce0b1082c7b09a4956ecf5068fb8005d22556a1b85fa676bf888ca482a07bd32",
+    "diagnostics/drtio/test_aux_reset_management.py": "f84c1549f02ec40f38170b081952a8c913132b15c54e455e7e6a33ae2a406fe0",
+    "diagnostics/drtio/role-reversal/reset-management.md": "1bd1501e89aff1cd7a471fe827df9333c299dcc0b5515e9753563756c08916b3"
+  },
+  "hardware_accessed": false
+}

@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Design always-live management MMIO register placement and reset request/abandonment software contract; qualify physical Gray timing/reset constraints before board admission",
+  "next_safe_offline": "Implement full AXI parent decode preserving live management access while target reset/admission blocked; test independent AW/W/errors and reset flow before hardware",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -122,5 +122,6 @@
   "reset_domain_acks": "FOUR_MODEL_TESTS_PASS_STOPPED_DOMAIN_RESTART_AND_FRESH_HANDSHAKE",
   "sequenced_full_path": "ACTIVE64WORD_ABORT_FIVE_DOMAIN_ACKS_AXI_GATE_THREE_FRESH_PAIRS_PASS",
   "reset_command_handshake": "FIVE_RESET_TESTS_PASS_TWO_EPISODES_STALE_ACK_REFUSED_ALWAYS_LIVE_MANAGEMENT",
-  "command_full_path": "UNACCEPTED_AXI_COMMIT_RESET_AND_ACTIVE_AUX_ABORT_THREE_FRESH_PAIRS_PASS"
+  "command_full_path": "UNACCEPTED_AXI_COMMIT_RESET_AND_ACTIVE_AUX_ABORT_THREE_FRESH_PAIRS_PASS",
+  "management_mmio": "SEPARATE_AXILITE_THREE_REGISTERS_TWO_EPISODES_ERRORS_PASS"
 }

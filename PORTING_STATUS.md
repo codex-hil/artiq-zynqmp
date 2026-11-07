@@ -1,3 +1,12 @@
+2026-11-07 separatelivemanagementMMIO PASS1test0.083s. AXILite0xa0020000
+identity/command/status, commandfull32bit0..3only,2resetepisodeswithtargetreset
+andmanagementaccessible,3badreads/5badwritesSLVERR/commandunchanged. FixtureAW/W
+mustpresenttogetherforpinnedbridge; initialsequentialAWtimeoutcorrecteddriver.
+Softwareordered/boundedprotocol+unknownoutcome/noretry documented. Statusbits
+independent/notatomic; alignedonly/notrealparentAXIdecode/managementresetproof.
+Nextsafe fullAXIparentdecode bypassingtargetgate/reset. NoHW/lease/program;
+maintenancehold. Evidence genesys-master-aux-gray-link-2026-11-07/management-mmio.json.
+
 2026-11-07 synchronizedcommand/fullpath reset PASS130.371s. Livemanagement
 8ns/control10/PS8/master14:actualAXIlengthwrite68committed/native17, Bvalidnot
 accepted; handshake/reset/reopen no staleB orobservedreplay, length0/new12correct.
