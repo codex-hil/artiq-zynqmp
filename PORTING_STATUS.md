@@ -1,3 +1,14 @@
+2026-11-07 dualindependentfullAXIingress resetmodelPASS8.134s. HPM0style
+write68committed/native17/Bunaccepted, HPM1styleMMIOB0000000reset/status/identity
+remainreachable;5domainready/admissionreopen,no staleB,length0/new12correct.
+Two behavioralinitiators NOTsameA53blockedMMIOrecovery proof. SeparateHPMport
+alone doesnotensure blockedcore canexecute manager; autonomousrequester/core
+ownership architecture required. Moduleexposesreset_out/targetgate; parentmust
+wiretargetresets/packetadmission. NotphysicalPS/synth/CDC/boardproof. Nextsafe
+recoveryagent/clockownership review andisolateddualHPMtop integration.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/dual-ingress.json.
+
 2026-11-07 DellisolateddualHPMwrapper V2 BDvalidation/HDLexport PASS.
 V1 generated but2criticalunassignedHPMsegments retained/notadopted. V2explicit
 HPM0A0000000/128KiB/HPM1B0000000/4KiB,125MHzinputdeclarations, validateBD+

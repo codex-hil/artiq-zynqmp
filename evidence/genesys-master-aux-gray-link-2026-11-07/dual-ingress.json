@@ -1,0 +1,23 @@
+{
+  "status": "TWO_INDEPENDENT_FULL_AXI_INGRESS_RESET_RECOVERY_MODEL_PASS",
+  "tests": 1,
+  "seconds": 8.134,
+  "checks": [
+    "HPM0-style target AXI write68 committed/native17 with Bvalid unaccepted",
+    "Independent HPM1-style fullAXI management at B0000000 issues reset and reads identity/status",
+    "Five-domain reset/ready/admission handshake completes through MMIO",
+    "No stale targetB after reopen, lengthreset0/new12write/readcorrect"
+  ],
+  "limits": [
+    "Two independent behavioral initiators, not actual PS cores/interconnect execution",
+    "Same A53 blocked in synchronous MMIO may not issue management commands; recovery agent architecture still required",
+    "No integrated physicalPSprimitive/synthesis/clocktiming/boardproof",
+    "No external side-effect rollback claim; outstanding result unknown/no retry",
+    "Parent must wire reset_out and external packet admission explicitly"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_dual_ingress.py": "cc8bb4eb8d17327ce1d0b50f8eea606d6bed401fd73f2389cf4e0c9f3be03f8a",
+    "diagnostics/drtio/test_master_dual_ingress.py": "a9251df922c0c4ac009ddcdd3cd9151f9586ef19376150a9218df0c526e60d90"
+  },
+  "hardware_accessed": false
+}

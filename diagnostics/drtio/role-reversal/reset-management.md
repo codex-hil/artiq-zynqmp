@@ -44,3 +44,9 @@ input. Its connected address probe was assigned `0xb0000000` (HPM0 probe:
 `0xa0000000`). The former management base `0xa0020000` is superseded.
 This is IP/address inspection, not validated BD, synthesized wrapper or board
 proof. Actual scalar exported-pin helper integration remains to be verified.
+
+The dual-ingress model now verifies management reset writes with an unaccepted
+target B response, using two independent behavioral initiators. This does not
+prove that one A53 core stalled on a synchronous target MMIO access can issue
+management commands. An independent recovery execution context or a separately
+qualified bounded-fault mechanism is required; no core has been reassigned.
