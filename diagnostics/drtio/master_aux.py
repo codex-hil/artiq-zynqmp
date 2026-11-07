@@ -1,13 +1,15 @@
 """Attach upstream AUX SRAM to the SAME native master link; LGPL-3.0-or-later.
 
 Control/CSR/TX logic must share the master clock and reset. Receive-side CDC is
-owned by upstream DRTIOAuxController. No PS/GT bridge or reset qualification here.
+owned by the selected controller (upstream by default). Explicit controller_type
+permits isolated candidate testing; no PS/GT bridge or reset qualification here.
 """
 from migen import Module
 from artiq.gateware.drtio.aux_controller import DRTIOAuxController
 
 class GenesysMasterAux(Module):
-    def __init__(self,backend,*,control_clock='master',tx_clock='master'):
+    def __init__(self,backend,*,control_clock='master',tx_clock='master',
+                 controller_type=DRTIOAuxController):
         # These are caller declarations, not measured clock-domain evidence.
         # A parent must rename backend and attachment together. Different PS/GT
         # clocks need a separately reviewed transaction/CSR CDC boundary.
@@ -19,6 +21,6 @@ class GenesysMasterAux(Module):
             raise ValueError('Expected four AUX bits per two-symbol raw20 cycle')
         backend._genesys_aux_owner=True
         self.link_layer=backend.link_layer
-        self.submodules.controller=DRTIOAuxController(self.link_layer)
+        self.submodules.controller=controller_type(self.link_layer)
         self.bus=self.controller.bus
     def get_csrs(self):return self.controller.get_csrs()

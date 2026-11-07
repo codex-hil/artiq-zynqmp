@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Test isolated Gray AUX controller on same native master/satellite link including TX/RX coexistence before PS CSR mapping and active-traffic reset",
+  "next_safe_offline": "Integrate Gray AUX CSR/SRAM in isolated master map with address bounds and PS clock crossing; retain active-traffic reset and physical CDC gates",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -110,5 +110,6 @@
   "native_aux_packet_bounds": "DYNAMIC_FAIL_REPRODUCED_1028_BYTES_PUBLISHED_ERROR0_SLOT0_OVERWRITE",
   "isolated_bounded_receiver": "EIGHT_COMPARISON_TESTS_PASS_LENGTH_AND_MODULO_FULL_FIX_BINARY_CDC_PENDING",
   "isolated_gray_receiver": "FIFTEEN_COMPARISON_TESTS_PASS_CONCURRENT_UNEQUAL_CLOCK_RX_CSR",
-  "isolated_gray_controller": "WISHBONE_RX_READONLY_TX_SRAM_FIVE_CSR_ORDER_12PACKETS_PASS"
+  "isolated_gray_controller": "WISHBONE_RX_READONLY_TX_SRAM_FIVE_CSR_ORDER_12PACKETS_PASS",
+  "gray_aux_same_link": "FOUR_MODEL_TESTS_PASS_RT_AUX_COEXISTENCE_BIDIRECTIONAL_WRAP"
 }

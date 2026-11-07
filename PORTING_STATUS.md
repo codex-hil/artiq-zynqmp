@@ -1,3 +1,12 @@
+2026-11-07 same-native-link GrayAUX PASS4modeltests112.974s. Explicit
+controller_type injection preserves upstreamdefault; candidatebothendpoints.
+9packets/direction1/3/17words exact/wrap;64wordrequest/reply concurrentactualRT
+frame overlap and20cycle remotepulse;RXphase2/duplicateowner/domainrefusals PASS.
+Raw20encoded simulation notphysicalGTH/twoboards/resettraffic/CRC/discoveryproof.
+Nextsafe GrayAUXCSR/SRAM isolatedmastermap/PSclockcrossing withbounds; active
+reset/physicalGrayconstraints unresolved. NoHW/leases/program; maintenancehold.
+Evidence genesys-master-aux-gray-link-2026-11-07/report.json.
+
 2026-11-07 isolatedGrayAuxController Wishbone/CSR testPASS1.318s.
 NativeTXengine/layout retained, GrayboundedRX substituted; DW32only enforced.
 FiveCSRnames/order preserved,12packets1/3/17words exact viaactualWishboneRX

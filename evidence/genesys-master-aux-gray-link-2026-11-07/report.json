@@ -1,0 +1,24 @@
+{
+  "status": "FOUR_SAME_NATIVE_LINK_GRAY_AUX_TESTS_PASS",
+  "tests": 4,
+  "seconds": 112.974,
+  "checks": [
+    "9packets eachdirection sizes1/3/17words exact/ringwrap",
+    "64word request/reply coexists with actual RTframe overlap and exact20cycle remote pulse",
+    "RXphase2 case",
+    "Duplicateowner/crossclock attachment declarations refused"
+  ],
+  "selection": "Explicit controller_type injection, native DRTIOAuxController remains default; Gray controller at both simulated endpoints",
+  "limits": [
+    "Raw20 encoded model, not physical GTH or two boards",
+    "No reset under traffic or PS AXI/CSR map integration",
+    "No CRC/discovery/firmware or physical Gray timing qualification"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_aux.py": "b67f4f11ca8c71c2ec2233872938ada582920d562d4b5dcc36cf63db80d61414",
+    "diagnostics/drtio/test_master_aux.py": "268da434fee84624d8a54cfb4364c546625b8b89578bfafabe3acda132d4e967",
+    "diagnostics/drtio/test_master_aux_gray.py": "5516fe9bb8380ef1f013e7243f2b2b840fbd7ac4d0f802f6e9a94a1c6ac17497",
+    "diagnostics/drtio/aux_controller_gray.py": "5b5536d4ff64a0979b45db04fda3e1a24115b56916fb8e0d8b6595f089ca9fbe"
+  },
+  "hardware_accessed": false
+}

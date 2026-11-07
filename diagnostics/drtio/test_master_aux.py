@@ -7,9 +7,10 @@ from master_aux import GenesysMasterAux
 from test_master_routing import Pair,CLOCKS
 
 class MasterAuxTests(unittest.TestCase):
+    controller_type=DRTIOAuxController
     def exercise(self,count,traffic=False,rx_phase=0):
-        d=Pair();d.submodules.master_aux=GenesysMasterAux(d.master)
-        d.submodules.satellite_aux=DRTIOAuxController(d.satellite.link_layer)
+        d=Pair();d.submodules.master_aux=GenesysMasterAux(d.master,controller_type=self.controller_type)
+        d.submodules.satellite_aux=self.controller_type(d.satellite.link_layer)
         ma,sa=d.master_aux.controller,d.satellite_aux
         self.assertIs(d.master_aux.link_layer,d.master.link_layer)
         done=[False];edges=[];overlap=[False];received=[]
