@@ -7,6 +7,7 @@ ABI are not qualified.
 import json
 from pathlib import Path
 from migen import Module
+from migen.fhdl.structure import _Assign
 from misoc.interconnect import csr_bus,wishbone2csr
 from misoc.interconnect.csr import CSRStatus
 from litex.soc.interconnect import wishbone
@@ -56,6 +57,15 @@ class GenesysMasterCSR(Module):
                 self.registers[label+'_'+reg.name]={'address':offset,'bits':reg.size,'words':words,'word_order':'big','word_bytes':4}
                 offset+=words*4
             if offset>self.BASE+(bank_id+1)*0x800:raise ValueError('CSR bank overflow')
+        if aux is not None:
+            # Pinned MiSoC aligned CSR readback pads too many low bits.
+            # Correct only this finalized length register, as in AuxPS.
+            length=aux.controller.transmitter.aux_tx_length
+            assignments=[s for s in length._fragment.comb
+                         if isinstance(s,_Assign) and s.l is length.simple_csrs[0].w]
+            if len(assignments)!=1 or length.alignment_bits!=2 or length.size!=11:
+                raise ValueError('Unsupported master AUX length CSR readback shape')
+            assignments[0].r=length.storage_full & ~3
         self.submodules.interconnect=csr_bus.Interconnect(w.csr,buses)
     def write_map(self,path):
         Path(path).write_text(json.dumps({'kind':'genesys-master-candidate-not-local-rtio-abi','identity':self.IDENTITY,'fine_ts_width':3,'timestamp_unit_ps':1000,'coarse_hz':125000000,'csr_base':self.BASE,'registers':self.registers,'scope':'Aligned single-beat32-bit accesses; no AXI/GT/firmware hardware qualification'},indent=2)+'\n')

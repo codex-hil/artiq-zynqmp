@@ -25,6 +25,11 @@ class AuxMapTests(unittest.TestCase):
             self.assertEqual((yield from m.read(0xa00103fc)),0xabcdef01)
             self.assertEqual((yield from m.read(reg['aux_aux_tx_length']['address'])),0)
             self.assertEqual((yield from m.read(reg['profile_identity']['address'])),GenesysMasterCSR.IDENTITY)
+            for length in (0,4,12,68,256,1020,1024):
+                yield from m.write(reg['aux_aux_tx_length']['address'],length)
+                self.assertEqual((yield from m.read(reg['aux_aux_tx_length']['address'])),length)
+                self.assertEqual((yield d.aux.controller.transmitter.aux_tx_length.storage),length//4)
+            self.assertEqual((yield from m.read(reg['aux_aux_tx']['address'])),0)
             a=d.csr.axi
             for address in (0x9ffffffc,0xa0002800,0xa0004000,0xa0014000,0x1a0010000):
                 yield a.ar.addr.eq(address)

@@ -1,3 +1,12 @@
+2026-11-07 masterAUXalignedlengthCSR corrected/testPASS7.471s. Beforefix
+actualAXI write4/read512 FAIL3.438s. Guarded finalizedMiSoClengthreadback
+storage_full&~3 (existingAuxPSpattern), notupstreamedit. Sevenlengths0/4/12/68/
+256/1020/1024 exactbyte readback/nativeTXstorage=bytes/4/noTXtrigger. Existing
+SRAM/profile/5SLVERRcases/recovery retained. Alignedonly/notzerolengthTXproof.
+Nextsafe insertPS/masterCDC inexpandedmap/independentclocks/coordinatedreset.
+NoHW/leases/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/length-csr.json.
+
 2026-11-07 optionalmasterAUXmap PASS expandedtest3.985s +defaultmap error
 regression4.238s. Bank4 AUXCSR0xa0002000, SRAM0xa0010000/16KiB viaexisting
 boundedrouter. FullAXITX2words exact/profileunchanged;5hole/below/above/highalias

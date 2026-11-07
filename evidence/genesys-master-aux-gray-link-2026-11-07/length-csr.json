@@ -1,0 +1,36 @@
+{
+  "status": "MASTER_AUX_LENGTH_READBACK_CORRECTION_AXI_MODEL_PASS",
+  "initial_failure": {
+    "write_bytes": 4,
+    "read_bytes": 512,
+    "seconds": 3.438
+  },
+  "fix": "Guarded replacement of finalized pinned MiSoC length CSR readback with storage_full & ~3, same pattern as existing AuxPS; no upstream mutation",
+  "tested_bytes": [
+    0,
+    4,
+    12,
+    68,
+    256,
+    1020,
+    1024
+  ],
+  "checks": [
+    "Exact byte readback over full AXI",
+    "Native TX storage remains length/4",
+    "No TX trigger from length write",
+    "Existing SRAM/profile/5invalidread SLVERR/recovery retained"
+  ],
+  "tests": 1,
+  "seconds": 7.471,
+  "limits": [
+    "Only aligned lengths checked; malformed/zero TX launch not authorized by this test",
+    "No PS/master CDC inserted yet",
+    "No finalized-target firmware/reset/physical qualification"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_csr.py": "9754b8630c19b6a935ca4fd1e461e4384a21c51a1b1486ca69a72d6cd0f5a7a1",
+    "diagnostics/drtio/test_master_aux_map.py": "f9405ab3406c66c4d7b6ab9c8c60f6efe91585da4bc258f3d262b37425c48845"
+  },
+  "hardware_accessed": false
+}
