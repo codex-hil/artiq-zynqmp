@@ -1,3 +1,17 @@
+2026-11-07 native AUX RX pointer source/bit-skew review complete, NOT QUALIFIED.
+Pinned actual Receiver AST confirms direct read_pointer->read_pointer_rx and
+write_pointer->write_pointer_sys MultiReg. Exhaustive eight 3bit increments:
+3->4 permits six nonendpoint bitwise combinations; mixed0 can falsely compare
+empty with consumer0 while both stable producer endpoints differ. Conservative
+possibility only, no physical failure/probability claim. Gray reference changes
+one bit per increment inclwrap but is NOT a complete fix: registered encoding,
+decoding/timing bounds/reset and packetSRAM visibility/full-ring proof required.
+PS bridge reset does not imply native AUX reset. Required coordinated master/
+rtio_rx reset with admission disabled, pointers/pipelines cleared before traffic,
+stopped recovered-clock release qualification remains. Script/report reproduces.
+Nextsafe isolated Gray-pointer overlay design/tests; no upstream/HW changes.
+Evidence genesys-master-aux-pointer-review-2026-11-07/report.json.
+
 2026-11-07 PS/master CDC committed-write/lost-response model PASS, suite5tests
 1.154s. Target records side effect before PS accepts B. Coordinated reset drops
 unaccepted B, preserves modeled external effect, no staleAW/W/B or duplicate

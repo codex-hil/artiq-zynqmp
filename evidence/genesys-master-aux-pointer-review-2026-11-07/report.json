@@ -1,0 +1,177 @@
+{
+  "status": "NATIVE_BINARY_POINTER_ATOMICITY_NOT_QUALIFIED",
+  "source_sha256": "0d648fc25f79af35f687fbf47e938d0759358d8d77e2e499e091adc6ba62e075",
+  "source": "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/aux_controller.py",
+  "direct_multireg_pairs": [
+    [
+      "read_pointer",
+      "read_pointer_rx"
+    ],
+    [
+      "write_pointer",
+      "write_pointer_sys"
+    ]
+  ],
+  "binary_increment_enumeration": [
+    {
+      "old": 0,
+      "new": 1,
+      "possible_bitwise_samples": [
+        0,
+        1
+      ],
+      "non_endpoint_samples": []
+    },
+    {
+      "old": 1,
+      "new": 2,
+      "possible_bitwise_samples": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "non_endpoint_samples": [
+        0,
+        3
+      ]
+    },
+    {
+      "old": 2,
+      "new": 3,
+      "possible_bitwise_samples": [
+        2,
+        3
+      ],
+      "non_endpoint_samples": []
+    },
+    {
+      "old": 3,
+      "new": 4,
+      "possible_bitwise_samples": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "non_endpoint_samples": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "old": 4,
+      "new": 5,
+      "possible_bitwise_samples": [
+        4,
+        5
+      ],
+      "non_endpoint_samples": []
+    },
+    {
+      "old": 5,
+      "new": 6,
+      "possible_bitwise_samples": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "non_endpoint_samples": [
+        4,
+        7
+      ]
+    },
+    {
+      "old": 6,
+      "new": 7,
+      "possible_bitwise_samples": [
+        6,
+        7
+      ],
+      "non_endpoint_samples": []
+    },
+    {
+      "old": 7,
+      "new": 0,
+      "possible_bitwise_samples": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "non_endpoint_samples": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "gray_increment_reference": [
+    {
+      "old_encoded": 0,
+      "new_encoded": 1
+    },
+    {
+      "old_encoded": 1,
+      "new_encoded": 3
+    },
+    {
+      "old_encoded": 3,
+      "new_encoded": 2
+    },
+    {
+      "old_encoded": 2,
+      "new_encoded": 6
+    },
+    {
+      "old_encoded": 6,
+      "new_encoded": 7
+    },
+    {
+      "old_encoded": 7,
+      "new_encoded": 5
+    },
+    {
+      "old_encoded": 5,
+      "new_encoded": 4
+    },
+    {
+      "old_encoded": 4,
+      "new_encoded": 0
+    }
+  ],
+  "counterexample": {
+    "transition": "3 -> 4",
+    "mixed_sample": 0,
+    "consumer_pointer": 0,
+    "implication": "Equality can indicate empty although neither stable producer pointer equals consumer pointer"
+  },
+  "limits": [
+    "Conservative bit-skew possibility, not observed hardware failure or probability",
+    "Gray reference alone is not an implementation fix; registered encoding, decoding, timing bounds and reset ownership need review",
+    "Packet SRAM visibility and full-ring producer protection need separate proof"
+  ],
+  "required_reset_contract": [
+    "Coordinate master/control and rtio_rx reset with link admission disabled",
+    "Clear both pointers and synchronizer pipelines before admitting new packets",
+    "Do not assume resetting the PS AXI bridge resets native AUX receiver",
+    "Qualify stopped recovered clock and subsequent reset release before hardware"
+  ],
+  "hardware_accessed": false
+}

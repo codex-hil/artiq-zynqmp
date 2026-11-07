@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Review coordinated reset ownership and native AUX binary RX pointer CDC before integrating PS/master target",
+  "next_safe_offline": "Design isolated registered Gray-pointer overlay with coordinated reset and SRAM/full-ring visibility contract; test before native AUX integration",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -86,7 +86,7 @@
   "isolated_master_aux": {
     "status": "FOUR_MODEL_TESTS_PASS_SAME_NATIVE_LINK",
     "evidence": "../../../evidence/genesys-master-aux-offline-2026-11-07/report.json",
-    "receive_pointer_cdc": "REVIEW_REQUIRED_BINARY_POINTERS_NOT_QUALIFIED",
+    "receive_pointer_cdc": "SOURCE_REVIEW_CONFIRMS_DIRECT_BINARY_MULTIREG; CONSERVATIVE_FALSE_EMPTY_COUNTEREXAMPLE; NOT_QUALIFIED",
     "ps_cdc": "NOT_IMPLEMENTED"
   },
   "ps_master_cdc_review": {
@@ -97,5 +97,6 @@
     "candidate": "../master_ps_cdc.py",
     "transport_evidence": "../../../evidence/genesys-master-cdc-review-2026-11-07/transport.json",
     "committed_write_evidence": "../../../evidence/genesys-master-cdc-review-2026-11-07/committed-write.json"
-  }
+  },
+  "aux_pointer_review": "../../../evidence/genesys-master-aux-pointer-review-2026-11-07/report.json"
 }
