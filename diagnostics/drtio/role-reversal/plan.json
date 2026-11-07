@@ -90,10 +90,11 @@
     "ps_cdc": "NOT_IMPLEMENTED"
   },
   "ps_master_cdc_review": {
-    "status": "TWO_CONSTRUCTION_TESTS_PASS_DYNAMIC_TESTS_PENDING",
+    "status": "CONSTRUCTION_AND_UNEQUAL_CLOCK_TRANSPORT_PASS_RESET_STOP_PENDING",
     "evidence": "../../../evidence/genesys-master-cdc-review-2026-11-07/report.json",
     "stock_wrapper_common_reset": false,
     "clock_stop_dynamic_test": "NOT_RUN",
-    "candidate": "../master_ps_cdc.py"
+    "candidate": "../master_ps_cdc.py",
+    "transport_evidence": "../../../evidence/genesys-master-cdc-review-2026-11-07/transport.json"
   }
 }

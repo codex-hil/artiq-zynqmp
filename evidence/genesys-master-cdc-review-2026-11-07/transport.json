@@ -1,0 +1,28 @@
+{
+  "status": "UNEQUAL_CLOCK_TRANSPORT_MODEL_PASS",
+  "tests": 3,
+  "transport_cases": {
+    "writes": 6,
+    "reads": 6,
+    "ps_period_ns": 8,
+    "master_period_ns": 14,
+    "ready_low_cycles_per_receive": 7,
+    "responses": [
+      0,
+      1,
+      2
+    ],
+    "independent_aw_w_delay": true
+  },
+  "limits": [
+    "Functional AsyncResetSynchronizer simulation override only",
+    "No reset asserted in transport test",
+    "Actual stopped-clock and reset/stale replay tests pending",
+    "No physical CDC or board integration proof"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/master_ps_cdc.py": "db8cefc94019e7d42b9e5a3ac2fecb14f376d791222f4b17fcdc6d2f894f9acd",
+    "diagnostics/drtio/test_master_ps_cdc.py": "835f465b15045329e94272439b15a319de1dcc7a75b5ce1e3688304aef91ee4a"
+  },
+  "hardware_accessed": false
+}

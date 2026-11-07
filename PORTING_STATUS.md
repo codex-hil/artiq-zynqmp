@@ -1,3 +1,13 @@
+2026-11-07 PS/master CDC unequal-clock transport model PASS. Three tests
+(2 construction+1 transport) in0.839s. Six writes/six reads, PS8ns/master14ns,
+independent AW/W delays, seven-cycle ready-low at every receiver, byte-exact
+40bit addresses/32bit data/strb and response codes0/1/2 preserved. Test driver
+handshake corrected to avoid holding valid for an extra accepted cycle.
+Functional reset special override only; reset not asserted in this transport
+case. Actual stopped-clock/reset/stale replay remains pending, no physical CDC
+qualification. Evidence genesys-master-cdc-review-2026-11-07/transport.json.
+Nextsafe actual stopped-edge/commonreset tests offline. NoHW/lease/programming.
+
 2026-11-07 PS/master AXI-Lite CDC candidate implemented in master_ps_cdc.py.
 Five maintained LiteX stream CDC FIFOs depth4 explicitly request common reset;
 response directions reversed. Constructor rejects equal declared clocks, non32bit
