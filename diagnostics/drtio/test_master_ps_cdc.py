@@ -209,5 +209,96 @@ class StoppedClock(unittest.TestCase):
             sim.run()
 
 
+class CommittedWrite(unittest.TestCase):
+    def test_reset_discards_response_without_undo_or_retry(self):
+        from migen.sim import run_simulation, passive
+        top = Module()
+        top.clock_domains.cd_sys = ClockDomain('sys')
+        top.clock_domains.cd_master = ClockDomain('master')
+        ps, master = AXILiteInterface(), AXILiteInterface()
+        top.submodules.cdc = cdc = GenesysMasterPSCDC(ps, master)
+        clocks = {'sys': 8, 'master': 14}
+        for name, crossing in cdc.crossings.items():
+            periods = (14, 8) if name in ('b', 'r') else (8, 14)
+            for domain, period in zip(crossing._fragment.clock_domains, periods):
+                clocks[domain.name] = period
+        commits = []  # External side effects intentionally survive bus reset.
+
+        @passive
+        def target():
+            aw = data = None
+            response = False
+            yield master.aw.ready.eq(1)
+            yield master.w.ready.eq(1)
+            while True:
+                if (yield top.cd_master.rst):
+                    aw = data = None
+                    response = False
+                else:
+                    if (yield master.aw.valid) and (yield master.aw.ready):
+                        aw = (yield master.aw.addr)
+                    if (yield master.w.valid) and (yield master.w.ready):
+                        data = (yield master.w.data)
+                    if response and (yield master.b.ready):
+                        response = False
+                    if aw is not None and data is not None:
+                        commits.append((aw, data))
+                        aw = data = None
+                        response = True
+                yield master.b.valid.eq(response)
+                yield master.b.resp.eq(0)
+                yield
+
+        def wait(signal):
+            for _ in range(160):
+                if (yield signal):
+                    return
+                yield
+            self.fail('Bounded handshake timed out')
+
+        def send(channel, field, value):
+            yield getattr(channel, field).eq(value)
+            yield channel.valid.eq(1)
+            yield from wait(channel.ready)
+            yield
+            yield channel.valid.eq(0)
+
+        def requester():
+            yield ps.w.strb.eq(15)
+            yield from send(ps.aw, 'addr', 0xa0000010)
+            yield from send(ps.w, 'data', 0x12345678)
+            yield from wait(ps.b.valid)
+            self.assertEqual(commits, [(0xa0000010, 0x12345678)])
+            # PS has not accepted B: a real side effect exists without completion.
+            self.assertEqual((yield ps.b.ready), 0)
+            yield top.cd_sys.rst.eq(1)
+            yield top.cd_master.rst.eq(1)
+            for _ in range(16):
+                yield
+            yield top.cd_sys.rst.eq(0)
+            yield top.cd_master.rst.eq(0)
+            for _ in range(30):
+                self.assertEqual((yield ps.b.valid), 0)
+                self.assertEqual((yield master.aw.valid), 0)
+                self.assertEqual((yield master.w.valid), 0)
+                self.assertEqual(len(commits), 1)
+                yield
+            yield from send(ps.aw, 'addr', 0xa0000020)
+            yield from send(ps.w, 'data', 0xcafef00d)
+            yield from wait(ps.b.valid)
+            self.assertEqual((yield ps.b.resp), 0)
+            yield ps.b.ready.eq(1)
+            yield
+            yield ps.b.ready.eq(0)
+            for _ in range(16):
+                yield
+            self.assertEqual(commits, [(0xa0000010, 0x12345678),
+                                       (0xa0000020, 0xcafef00d)])
+            self.assertEqual((yield ps.b.valid), 0)
+
+        run_simulation(top, {'sys': requester(), 'master': target()}, clocks=clocks,
+                       special_overrides={AsyncResetSynchronizer: FunctionalReset})
+
+
 if __name__ == '__main__':
     unittest.main()

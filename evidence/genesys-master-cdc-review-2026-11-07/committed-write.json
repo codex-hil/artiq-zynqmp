@@ -1,0 +1,21 @@
+{
+  "status": "COMMITTED_WRITE_LOST_RESPONSE_COMMON_RESET_MODEL_PASS",
+  "suite_tests": 5,
+  "suite_seconds": 1.154,
+  "checks": [
+    "Target records one side effect before PS accepts B",
+    "Common reset discards unaccepted B",
+    "Side effect count remains one for 30 PS cycles after reset release",
+    "No stale AW/W/B after reset",
+    "Fresh distinct write completes B and exact side effect count becomes two"
+  ],
+  "interpretation": "PS cannot infer rollback from reset; unacknowledged write outcome is unknown and must not be automatically retried",
+  "limits": [
+    "Target side effects are an explicit persistent Python model, not physical hardware",
+    "Functional reset override, no metastability or asynchronous reset timing proof",
+    "Coordinated requester and target reset assumed",
+    "No full PS/master top integration or AUX RX pointer CDC qualification"
+  ],
+  "test_sha256": "5e04b2ddcd4b8c84369adacc774d80483ada9fd42664fdb84630130cc557dfb2",
+  "hardware_accessed": false
+}

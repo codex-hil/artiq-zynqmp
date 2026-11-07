@@ -1,3 +1,14 @@
+2026-11-07 PS/master CDC committed-write/lost-response model PASS, suite5tests
+1.154s. Target records side effect before PS accepts B. Coordinated reset drops
+unaccepted B, preserves modeled external effect, no staleAW/W/B or duplicate
+commit over30PS cycles; fresh distinct write completes B, exact2effects total.
+Requester cannot infer rollback: prior unacknowledged write stays unknown and
+must not auto-retry. Persistent target effect is explicit Python model, not HW.
+Functional reset override only; coordinated requester/target reset assumed.
+Nextsafe reset ownership/native AUX binary RXpointer CDC review before target
+integration. NoHW/lease/programming, maintenancehold retained. Evidence
+ genesys-master-cdc-review-2026-11-07/committed-write.json.
+
 2026-11-07 PS/master CDC stopped-edge queued-write model PASS; suite4tests
 0.985s. Test-local simulator tick filter suppresses actual master/private FIFO
 rising/falling events (counts assert zero delivered/positive suppressed), without
