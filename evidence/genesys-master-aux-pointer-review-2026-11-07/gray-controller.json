@@ -1,0 +1,24 @@
+{
+  "status": "ISOLATED_GRAY_AUX_CONTROLLER_WISHBONE_CSR_MODEL_PASS",
+  "tests": 1,
+  "seconds": 1.318,
+  "checks": [
+    "Native5CSR names/order preserved",
+    "12packets sizes1/3/17words exact via Wishbone RX8192byte window",
+    "Ring slot wrap",
+    "RX8ns/SYS22nsphase3",
+    "RX window writes ignored/data retained",
+    "TX SRAM write/read retained across RX traffic"
+  ],
+  "limits": [
+    "CSR method interface, no finalized PS CSR bank/address map yet",
+    "Native TX engine retained but no TX link transmission test here",
+    "Test pacing one packet outstanding, not saturation",
+    "No controller active-traffic reset or physical CDC proof"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_controller_gray.py": "5b5536d4ff64a0979b45db04fda3e1a24115b56916fb8e0d8b6595f089ca9fbe",
+    "diagnostics/drtio/test_aux_controller_gray.py": "4dfbf56219e07ba488f8cc4bf8235ae6393c6c33649215e610bd37b7c932307a"
+  },
+  "hardware_accessed": false
+}

@@ -1,3 +1,13 @@
+2026-11-07 isolatedGrayAuxController Wishbone/CSR testPASS1.318s.
+NativeTXengine/layout retained, GrayboundedRX substituted; DW32only enforced.
+FiveCSRnames/order preserved,12packets1/3/17words exact viaactualWishboneRX
+8192bytewindow,ringwrap,RX8ns/SYS22nsphase3. RXwrite attemptsignored/wordretained;
+TXSRAMwrite/read persists. CSRmethodtest notfinalizedPSbank/addressmap; nativeTX
+engine nottransmitted here, onepacketoutstanding pacing/noactive reset proof.
+Nextsafe same-nativelink TX/RX/coexistence controller test beforePSmapping.
+No installedsource/HW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/gray-controller.json.
+
 2026-11-07 GrayboundedRX concurrentRX/CSRconsumer PASS suite15tests6.932s.
 24packets/168words sizes1/3/17 exactordered,3ringwraps, RX8ns/SYS22nsphase3,
 RXactive whilepriorpacketread overlap observed; finalempty/readpointer0/error0.
