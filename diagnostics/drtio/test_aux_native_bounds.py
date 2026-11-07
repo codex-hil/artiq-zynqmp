@@ -76,6 +76,8 @@ class BoundedCases(NativeBounds):
     def test_2048_bytes_discard_through_eop(self): self.exercise(512)
 
 class BoundedRing(unittest.TestCase):
+    from aux_receiver_bounded import BoundedReceiver
+    receiver_type = BoundedReceiver
     def test_full_preserves_published_and_recovers(self):
         from aux_receiver_bounded import BoundedReceiver
         d = Module()
@@ -84,7 +86,7 @@ class BoundedRing(unittest.TestCase):
             rx_aux_stb = Signal()
             rx_aux_frame = Signal()
         link = Link()
-        d.submodules.receiver = r = BoundedReceiver(link, 32)
+        d.submodules.receiver = r = self.receiver_type(link, 32)
         port = r.mem.get_port(async_read=True)
         d.specials += port
         packets = [[0xabc00000 + 16*i+j for j in range(3)] for i in range(7)]
@@ -146,6 +148,51 @@ class BoundedRing(unittest.TestCase):
             self.assertEqual((yield r.aux_read_pointer.w), 0)
             self.assertEqual((yield r.aux_rx_error.w), 0)
         run_simulation(d, {'rtio_rx': test()}, clocks={'sys': 8, 'rtio_rx': 8})
+
+class GrayCases(BoundedCases):
+    from aux_receiver_gray import GrayBoundedReceiver
+    receiver_type = GrayBoundedReceiver
+
+class GrayRing(BoundedRing):
+    from aux_receiver_gray import GrayBoundedReceiver
+    receiver_type = GrayBoundedReceiver
+
+    def test_unequal_clock_publication(self):
+        d = Module()
+        class Link:
+            rx_aux_data = Signal(4)
+            rx_aux_stb = Signal()
+            rx_aux_frame = Signal()
+        link = Link()
+        d.submodules.receiver = r = self.receiver_type(link, 32)
+        port = r.mem.get_port(async_read=True)
+        d.specials += port
+        def producer():
+            # Fill seven packet slots while slower SYS observes Gray publication.
+            for slot in range(7):
+                yield link.rx_aux_stb.eq(1)
+                yield link.rx_aux_frame.eq(1)
+                for word in [0xabc00000+slot, 0x12340000+slot]:
+                    for nibble in range(8):
+                        yield link.rx_aux_data.eq((word >> (4*nibble)) & 15)
+                        yield
+                yield link.rx_aux_frame.eq(0)
+                yield
+                yield link.rx_aux_stb.eq(0)
+                for _ in range(15):
+                    yield
+            for _ in range(40):
+                yield
+            self.assertEqual((yield r.aux_rx_present.w), 1)
+            self.assertEqual((yield r.aux_rx_error.w), 0)
+            self.assertEqual((yield r.write_position.remote), 7)
+            for slot in range(7):
+                for offset, expected in enumerate([0xabc00000+slot, 0x12340000+slot]):
+                    yield port.adr.eq(slot*256+offset)
+                    yield
+                    self.assertEqual((yield port.dat_r), expected)
+        run_simulation(d, {'rtio_rx': producer()},
+                       clocks={'rtio_rx': 8, 'sys': (22, 3)})
 
 if __name__ == '__main__':
     unittest.main()

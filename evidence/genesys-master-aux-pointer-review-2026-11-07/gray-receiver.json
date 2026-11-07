@@ -1,0 +1,24 @@
+{
+  "status": "GRAY_BOUNDED_RX_FOURTEEN_COMPARISON_TESTS_PASS",
+  "suite_tests": 14,
+  "seconds": 6.327,
+  "gray_cases": [
+    "1020/1024 accept",
+    "1028/2048 reject/error/recovery",
+    "Full-ring drop/preserve/reuse/drain",
+    "Seven2word packets published exact RX8ns/SYS22ns phase3"
+  ],
+  "implementation": "Separate derived receiver, registered Gray positions both directions; local binary pointers drive memory and full/empty decisions",
+  "limits": [
+    "Unequal-clock test publication only, no concurrent consumption",
+    "Physical Gray skew/max-delay constraints and reset release unqualified",
+    "Not attached to master AUX/controller or board image",
+    "Native source remains unchanged"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_receiver_gray.py": "09af4aa5af51389b1e71994fb2c114de6f67cdc7e493a8e3ea7662b7a8545b21",
+    "diagnostics/drtio/test_aux_native_bounds.py": "1db7cb13c4004dd11ee1384470bcfde7289afc33ccd19954d85708ed25d2b9c5",
+    "diagnostics/drtio/aux_gray_pointer.py": "78a2925979ec5b58330fbfd391bd8c0546e0a83af79c0a098bea617a6b215675"
+  },
+  "hardware_accessed": false
+}

@@ -1,3 +1,14 @@
+2026-11-07 isolated GrayboundedRX integrated PASS14comparisontests6.327s.
+Separate derivedReceiver uses registeredGraypositions bothdirections, localbinary
+memory/full/empty; lengthlimit/discard/modulofull fixes retained. Grayvariants
+boundary1020/1024accept/1028/2048reject+recovery/fullringpreserve/reuse/drain PASS.
+UnequalRX8ns/SYS22nsphase3 seven2wordpackets published/exact14words/remotewrite7.
+Unequalcase no concurrentconsume; physicalGraybounds/resetrelease unqualified.
+No nativeinstallation/controller/boardimage changes. Nextsafe independentclock
+producer/CSRconsumer thenisolatedcontroller/reset integration. NoHW/leases/program;
+maintenancehold. Evidence genesys-master-aux-pointer-review-2026-11-07/
+gray-receiver.json.
+
 2026-11-07 boundedRX fullring test initiallyFAIL(error0vs1): widened Migen
 write_pointer+1 comparison does not wrap7to0. Isolatedcandidate now explicit3bit
 next_write_pointer beforefullcheck. Suite8testsPASS3.493s:7published3wordpackets,
