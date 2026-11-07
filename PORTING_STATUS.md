@@ -1,3 +1,13 @@
+2026-11-07 ring queued-data/stopped-reader reset model PASS suite6tests0.138s.
+Two wordsqueued before actualSYS schedulededges suppressed. Bothresets asserted
+stopped, heldthroughrestart; staleSRAMretained but present0, freshslot0wordexact
+thenconsumedonce. Important modelcorrection: stockMigenMemoryToArray generates
+resettable storage; testlocal lowering marks SRAMwords reset_less before reset
+insertion. No sharedsimulator/sourceRTL change, no hardwareerasureclaim.
+Notphysicalasyncreset/BRAM/nativeAUXpacket qualification. Nextsafe writerclockstop/
+bidirectionalrestart resetcases. NoHW/leases/program; maintenancehold retained.
+Evidence genesys-master-aux-pointer-review-2026-11-07/ring-reset.json.
+
 2026-11-07 dualclock SRAM ring ownership harness PASS plus4pointertests,
 5total0.119s. Actual Migen Memory separate RXwrite/SYSread ports, registered
 Gray pointers both directions, oneempty slot (7usableof8). Four fill/reject/drain

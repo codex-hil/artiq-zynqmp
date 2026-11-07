@@ -1,0 +1,18 @@
+{
+  "status": "QUEUED_RING_STOPPED_READER_COMMON_RESET_MODEL_PASS",
+  "suite_tests": 6,
+  "checks": [
+    "Two queued words before actual SYS edge suppression",
+    "Both resets asserted while reader stopped and held through restart",
+    "No present after pointer reset despite retained first SRAM word",
+    "Fresh word replaces slot0, is read exactly and consumed once"
+  ],
+  "simulation_correction": "Stock Migen MemoryToArray storage is resettable; test-local lowering marks SRAM words reset_less to explicitly retain contents. Shared simulator unchanged.",
+  "limits": [
+    "Reset held through restarted clock edges; not physical asynchronous reset qualification",
+    "One word per slot; no native AUX packet integration",
+    "Writer-clock stop and simultaneous reset timing variants pending"
+  ],
+  "test_sha256": "8d4a29037014fc38ff1008b99b1bf1f2f1e73901187e9b25c7b7b51e434c48fa",
+  "hardware_accessed": false
+}
