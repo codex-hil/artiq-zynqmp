@@ -1850,3 +1850,10 @@ diagnostics/drtio/master_routing.py
 diagnostics/drtio/test_master_routing.py
 diagnostics/drtio/master_csr.py
 diagnostics/drtio/test_master_csr.py
+diagnostics/drtio/role-reversal/generate_master_regs.py
+diagnostics/drtio/role-reversal/test_generate_master_regs.py
+diagnostics/drtio/role-reversal/a53/master_regs.h
+diagnostics/drtio/role-reversal/a53/master_driver.h
+diagnostics/drtio/role-reversal/a53/master_a53.c
+diagnostics/drtio/role-reversal/a53/test_master_driver.c
+evidence/genesys-master-api-offline-2026-11-07/build-a53.sh

@@ -1,0 +1,49 @@
+{
+  "status": "MAP_GENERATED_API_HOST_AND_DELL_A53_OBJECT_PASS",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/generate_master_regs.py": "bdf82e6a264793cf925814f4f3042fd500b166676e0a2c1f2ff1aa4a1f1abfdb",
+    "diagnostics/drtio/role-reversal/test_generate_master_regs.py": "e4eb5073ca998898084b8b68f2ab607f6a35171f3acaa4d5aa2eca3a56c0ccbd",
+    "diagnostics/drtio/role-reversal/a53/master_regs.h": "ce0bb74503e2ec791e60fb8134fbf4ebf441478b0ddb1158f188718053294381",
+    "diagnostics/drtio/role-reversal/a53/master_driver.h": "8c3be417008459a9e566977f35a2cb85c1ff72bd5f682d2c4f15310914512090",
+    "diagnostics/drtio/role-reversal/a53/master_a53.c": "db17f44267fbbfa1a255aafb2260ccbab79b0b088c7599cafb21919405df24bc",
+    "diagnostics/drtio/role-reversal/a53/test_master_driver.c": "4e361bd2641127c9d2f18f2cb53ca236c04bed97d3a28d9fc4cf8f343a681128"
+  },
+  "host_model": {
+    "cases": 27,
+    "failure_stages": 13,
+    "sanitizers": "AddressSanitizer and UndefinedBehaviorSanitizer",
+    "checks": [
+      "profile/fine/time-unit mismatches refuse before writes",
+      "CRI owner and remote RX readiness refuse before event",
+      "target then big-word timestamp high/low then low o_data commit with fences",
+      "all13 injected callback failures stop with no retry",
+      "commit_attempted stays true if committing write takes effect then returns error",
+      "bounded busy/status underflow/destination/reserved failures",
+      "local output does not require remote link"
+    ]
+  },
+  "generator": {
+    "tests": 2,
+    "negative_map_controls": 13,
+    "header_reproduction": "PASS"
+  },
+  "dell": {
+    "job": "/srv/nvme-fast-1/vivado-work/genesys-master-api-20261107-v1",
+    "slot": "2/3 acquired through dell-build-slot",
+    "status": "AARCH64_FREESTANDING_OBJECT_ONLY_PASS",
+    "object_sha256": "1253c699f622f6465e035a81a9ab79172f9f7d7b51a8faa29545b1cf484d3e93",
+    "actual3source_inputs": "HASH_MATCH_LOCAL",
+    "undefined_symbols": [],
+    "dsb_present": true
+  },
+  "limits": [
+    "No linked firmware/entry point or code executed on board",
+    "Native A53 direct MMIO does not catch bus faults or preempt a hung access; callback error model is separate",
+    "Memory attributes/clock reset/CSR domain crossings remain integration requirements",
+    "Profile/owner/link reads are snapshots, not continuous ownership or reset exclusion",
+    "OK means submitted with CRI status acceptance, not physical TTL completion",
+    "No AUX master controller/SRAM/discovery service or GT board top integrated"
+  ],
+  "next_safe_offline": "Review clock/CSR ownership and AUX attachment to the same native master link; avoid two link layers or unsynchronized PS/GT CSR ownership before board top/firmware integration"
+}

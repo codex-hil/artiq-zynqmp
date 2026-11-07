@@ -1,3 +1,17 @@
+2026-11-07 reversed roles A53 API stage PASS: exact CSR-map generator/header,
+profileGSM1/fine3/125MHz checks, explicitCRIowner0/remoteRX guards beforewrites;
+target→fence→now64hi/lo→fence→lowodata commit→boundedstatus. HostC model27cases
+ASAN/UBSAN PASS incl13failurestages/noautomaticretry and commit-unknown flag;
+2generator tests/13mapmutants reject, headerreproduces. ExistingDell ARM13.2
+freestandingA53 object buildPASS via slot2/3, noUND/DSB inspected, actual3source
+hashes/object fetchedandmatch; no ELFentry/linkedfirmware/boardexecution.
+Modelcallbacks errors do not prove realbusfault recovery; readsnapshot checks
+not locks, OK=submitted notphysicaledge. No newHW/lease/reset/clock/program.
+Evidence evidence/genesys-master-api-offline-2026-11-07/report.json; remoteunique
+job genesys-master-api-20261107-v1 complete, no retry. Nextsafe review PS/GT clock/
+CSRownership andsingle-native-link AUXattachment before target/firmware integration.
+PhysicaldirectSFP0 cableanswer stillpending; existingmaintenancehold notbypassed.
+
 2026-11-07 reversed roles PSbus stage PASS: separate GenesysMasterCSR AXI32/
 addr40/id16→nativeMiSoC banks (now64kernel/profile/master/routing), checkedSLVERR.
 4uniqueCSR cases+4routing regressions PASS; three runs3+2+4 executions inclnew
