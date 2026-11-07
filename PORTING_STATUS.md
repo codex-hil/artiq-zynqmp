@@ -1,3 +1,13 @@
+2026-11-07 DellisolateddualHPMwrapper V2 BDvalidation/HDLexport PASS.
+V1 generated but2criticalunassignedHPMsegments retained/notadopted. V2explicit
+HPM0A0000000/128KiB/HPM1B0000000/4KiB,125MHzinputdeclarations, validateBD+
+generatewrapper marker/noERROR/WARNING/CRITICAL. Actualscalarpins testedstrict
+HPM1helper incldirections/widths,3testsPASS0.042s. Notphysicalclock/synth/route/
+fullmastertop/boardproof. Nextsafe dualingressintegration/simmanagementwrite
+whiletargetBmissing before synthesis. No deployedPS/HW/lease/program changes;
+maintenancehold. Evidence genesys-master-aux-gray-link-2026-11-07/
+ps-hpm-wrapper-v2/report.json; V1preservedinps-hpm-wrapper.
+
 2026-11-07 DellPSdualHPMquery PASS underbuildslot, no synthesis/HW.
 ActualIPGP0/1width32/address40/ID16, bothHPMclockinputs found. Connectedprobe
 addressassign HPM0A0000000/HPM1B0000000, managementBASE correctedB0000000

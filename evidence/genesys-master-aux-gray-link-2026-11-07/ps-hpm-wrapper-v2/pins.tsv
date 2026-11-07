@@ -1,0 +1,84 @@
+emio_enet0_enet_tsu_timer_cnt	O	93	0
+maxigp0_araddr	O	39	0
+maxigp0_arburst	O	1	0
+maxigp0_arcache	O	3	0
+maxigp0_arid	O	15	0
+maxigp0_arlen	O	7	0
+maxigp0_arlock	O		
+maxigp0_arprot	O	2	0
+maxigp0_arqos	O	3	0
+maxigp0_arready	I		
+maxigp0_arsize	O	2	0
+maxigp0_aruser	O	15	0
+maxigp0_arvalid	O		
+maxigp0_awaddr	O	39	0
+maxigp0_awburst	O	1	0
+maxigp0_awcache	O	3	0
+maxigp0_awid	O	15	0
+maxigp0_awlen	O	7	0
+maxigp0_awlock	O		
+maxigp0_awprot	O	2	0
+maxigp0_awqos	O	3	0
+maxigp0_awready	I		
+maxigp0_awsize	O	2	0
+maxigp0_awuser	O	15	0
+maxigp0_awvalid	O		
+maxigp0_bid	I	15	0
+maxigp0_bready	O		
+maxigp0_bresp	I	1	0
+maxigp0_bvalid	I		
+maxigp0_rdata	I	31	0
+maxigp0_rid	I	15	0
+maxigp0_rlast	I		
+maxigp0_rready	O		
+maxigp0_rresp	I	1	0
+maxigp0_rvalid	I		
+maxigp0_wdata	O	31	0
+maxigp0_wlast	O		
+maxigp0_wready	I		
+maxigp0_wstrb	O	3	0
+maxigp0_wvalid	O		
+maxigp1_araddr	O	39	0
+maxigp1_arburst	O	1	0
+maxigp1_arcache	O	3	0
+maxigp1_arid	O	15	0
+maxigp1_arlen	O	7	0
+maxigp1_arlock	O		
+maxigp1_arprot	O	2	0
+maxigp1_arqos	O	3	0
+maxigp1_arready	I		
+maxigp1_arsize	O	2	0
+maxigp1_aruser	O	15	0
+maxigp1_arvalid	O		
+maxigp1_awaddr	O	39	0
+maxigp1_awburst	O	1	0
+maxigp1_awcache	O	3	0
+maxigp1_awid	O	15	0
+maxigp1_awlen	O	7	0
+maxigp1_awlock	O		
+maxigp1_awprot	O	2	0
+maxigp1_awqos	O	3	0
+maxigp1_awready	I		
+maxigp1_awsize	O	2	0
+maxigp1_awuser	O	15	0
+maxigp1_awvalid	O		
+maxigp1_bid	I	15	0
+maxigp1_bready	O		
+maxigp1_bresp	I	1	0
+maxigp1_bvalid	I		
+maxigp1_rdata	I	31	0
+maxigp1_rid	I	15	0
+maxigp1_rlast	I		
+maxigp1_rready	O		
+maxigp1_rresp	I	1	0
+maxigp1_rvalid	I		
+maxigp1_wdata	O	31	0
+maxigp1_wlast	O		
+maxigp1_wready	I		
+maxigp1_wstrb	O	3	0
+maxigp1_wvalid	O		
+maxihpm0_fpd_aclk	I		
+maxihpm1_fpd_aclk	I		
+pl_clk0	O		
+pl_ps_irq0	I	0	0
+pl_resetn0	O		

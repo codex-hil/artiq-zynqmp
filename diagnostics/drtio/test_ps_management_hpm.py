@@ -21,6 +21,20 @@ class HPMTests(unittest.TestCase):
         ps,axi=self.fixture();d=Module()
         connect_management_hpm1(d,ps,axi,Signal())
         self.assertEqual(len(d._fragment.comb),38)
+    def test_actual_dell_export(self):
+        from pathlib import Path
+        path=Path(__file__).resolve().parents[2]/'evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/pins.tsv'
+        ps=SimpleNamespace(inputs={},outputs={})
+        for line in path.read_text().splitlines():
+            name,direction,left,right=line.split('\t')
+            width=abs(int(left)-int(right))+1 if left and right else 1
+            collection=ps.inputs if direction=='I' else ps.outputs
+            collection[name]=Signal(width)
+        axi=AXIInterface(data_width=32,address_width=40,id_width=16)
+        d=Module()
+        connect_management_hpm1(d,ps,axi,Signal())
+        self.assertEqual(len(d._fragment.comb),38)
+
     def test_export_mismatch_no_partial_wiring(self):
         for kind in ('missing','width','direction','clock'):
             ps,axi=self.fixture();d=Module()

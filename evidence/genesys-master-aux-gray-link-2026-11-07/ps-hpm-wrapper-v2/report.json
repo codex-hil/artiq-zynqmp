@@ -1,0 +1,30 @@
+{
+  "status": "DELL_DUAL_HPM_BD_VALIDATION_HDL_WRAPPER_AND_ACTUAL_PIN_HELPER_PASS",
+  "job": "genesys-dual-hpm-wrapper-20261107-v2",
+  "slot": "shared Dell build slot/maxThreads4",
+  "checks": [
+    "Explicit HPM0 A0000000/128KiB and HPM1 B0000000/4KiB address assignments",
+    "BD validation and generated HDL wrapper completion marker",
+    "No Vivado warnings/criticalwarnings/errors in v2 log",
+    "Strict HPM1 helper checks actual exported scalar pin names/directions/widths"
+  ],
+  "tests": 3,
+  "test_seconds": 0.042,
+  "prior_v1": "Wrapper generated but two critical warnings for unassigned external address segments; logs and export preserved, v1 not adopted",
+  "limits": [
+    "No synthesis/implementation/bitstream",
+    "125MHz input clock declarations not physical clock qualification",
+    "No complete master/AUX/management top integration",
+    "Deployed PS config and current board image unchanged"
+  ],
+  "files_sha256": {
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/launcher.log": "93c8ea01a5ef130f1f17de06f6ce479400c6e4f5a1244a49f09688c6283bcccc",
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/pins.tsv": "92cb52680a8667aa15054833dbed9dd488e69d1294f3bf064cb9b88b674e4fae",
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/exported-bd.tcl": "3062f02f32e41a2d2cbb4a1d3591fbf32e126016396364ed5c80dcebd41f2583",
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/dual_hpm_wrapper.v": "d6f36415543cb2f3c98281bfea9a7c04fbe96c3912a4f7fd3c663a7abf93de49",
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/wrappers.txt": "9ed154fc0fa3c249a3fe7e03bac4eecdc7c44c3a00701c5e4da40c35f1808e9e",
+    "diagnostics/drtio/role-reversal/build-dual-hpm-wrapper.tcl": "4e601834da043a0932f19c8177b3bf4e1a3751f35f1afb88af54046a7dd898bd",
+    "diagnostics/drtio/test_ps_management_hpm.py": "01fcf249118eb88fd86e3426cbe4d21b600740823839716bd761d40649884726"
+  },
+  "hardware_accessed": false
+}
