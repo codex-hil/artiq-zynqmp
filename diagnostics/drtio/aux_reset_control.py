@@ -19,10 +19,13 @@ class AuxResetControl(Module):
         self.requester_abandoned=Signal()
         self.reset=Signal()
         self.admit=Signal()
+        self.abandonment_ready=Signal()
         low_seen=Signal()
         abandonment_seen=Signal()
         self.submodules.fsm=fsm=FSM(reset_state='RESET')
-        self.comb += [self.reset.eq(fsm.ongoing('RESET') | self.request),
+        self.comb += [self.abandonment_ready.eq(fsm.ongoing('RESET') &
+                           ~self.request & low_seen & ~abandonment_seen),
+                      self.reset.eq(fsm.ongoing('RESET') | self.request),
                       self.admit.eq(fsm.ongoing('OPEN') & ~self.request &
                                     (self.domain_ready==(1<<domains)-1))]
         self.sync += If(self.request,

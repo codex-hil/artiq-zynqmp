@@ -1,0 +1,25 @@
+{
+  "status": "FIVE_RESET_TESTS_PASS_SYNCHRONIZED_COMMAND_TWO_EPISODES",
+  "tests": 5,
+  "seconds": 0.051,
+  "new_protocol": [
+    "Always-live management request/abandoned levels cross via MultiReg",
+    "Control exports explicit abandonment_ready after observing low",
+    "Management waits resetstatus/ready before high acknowledgement",
+    "Admit/resetstatus return synchronized",
+    "Two episodes refuse stale high acknowledgement and complete with fresh handshake"
+  ],
+  "limits": [
+    "Always-live management/control requirement; not resettable PL PS bus registers",
+    "No software MMIO bank or asynchronous management-reset proof",
+    "Per-domain release model functional override only",
+    "Unknown previous AXI outcome unchanged/no retry",
+    "Not yet integrated synchronized command bridge into long fullpath test"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_reset_commands.py": "aaa8ac7ba113482d5b854e6e0f8bd99835acc2e931ff0a9cb5bc8decb9156b1d",
+    "diagnostics/drtio/test_aux_reset_commands.py": "e01ea387d985a1c5fe2133760cce8ea991f52edb86c1df7689e8809262d2bceb",
+    "diagnostics/drtio/aux_reset_control.py": "65568e0cfa104746cd10f5f25f6a90faa7907c57efdefc6804e4d45842d32f56"
+  },
+  "hardware_accessed": false
+}

@@ -1,3 +1,13 @@
+2026-11-07 synchronizedmanagement/resetcontrol handshake PASS5resettests
+0.051s. Addedexplicitabandonment_ready afterlowseen; request/abandoned levels
+MultiRegtocontrol, resetstatus/ready/admit MultiRegback. Twoepisodes stalhigh
+refused thenfreshhandshake/perdomainready complete. Always-live management and
+control required, notresettablePLAXIbank/softwareMMIO implementation; noasync
+managementreset/physicalCDC proof. UnknownAXIoutcome/noautoretry unchanged.
+Nextsafe fullpathcommandbridge integration thenunacceptedAXIcompletionreset.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/reset-command-handshake.json.
+
 2026-11-07 sequencedfullpath activeAUXreset PASS125.554s +2AXIgate tests
 0.014s. Independentcontrol10ns,PS8/master14;releaseoutputs5targetdomains,
 readyacks→admitMultiRegPS→5channelAXIgate. Startup/active64wordabort withfresh
