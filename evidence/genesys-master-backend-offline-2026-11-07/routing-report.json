@@ -1,0 +1,30 @@
+{
+  "status": "LOCAL_REMOTE_NATIVE_ROUTING_SIMULATION_PASS",
+  "hardware_accessed": false,
+  "tests": 4,
+  "elapsed_seconds": 57.269,
+  "source_sha256": {
+    "diagnostics/drtio/master_routing.py": "f90e9c7d4d1c8a55d75974466fae8ec4decdb1b77b5c813635efab06be6c2be1",
+    "diagnostics/drtio/test_master_routing.py": "d17c88225566368d76d71be100c87d26f654532dcfb9d99fc6d4b0dbc9bd1857",
+    "diagnostics/drtio/master_backend.py": "959cfc5a22586417e54aca5455b6c7a1c2b950fbabc522572f17fa93348c0db5"
+  },
+  "tests_log_sha256": "d20410d26af30dc73e6054288363a264f4c90346286458e7941127422e6baac7",
+  "routing": {
+    "destination0": "local SyncRTIO",
+    "destination1": "native Genesys master\u2192raw20\u2192native satellite SyncRTIO",
+    "other_destinations": "upstream unreachable sink2 at initialization"
+  },
+  "cases": [
+    "Four output edges isolated to selected local/remote pads, each pulse20cycles",
+    "Destination255 reports unreachable with0local/remote edges",
+    "Two explicit CRI owners forward commands only from selected owner; idle switch",
+    "Unstaged timestamp rejected with underflow and0edges; staged timestamp succeeds"
+  ],
+  "timing_contract": "Native SED needs committed timestamp/channel one cycle before command; future AXI/software sequence must preserve this. No added delay or relaxed timestamp/underflow guard in production core.",
+  "limits": [
+    "Ideal8ns clocks; common master finewidth3 TSC and separate satellite counter, no physical synchronization/CDC/reset evidence",
+    "Two-owner test is interfaces only, not DMA engine/arbitration fairness or idle-enforcement proof",
+    "No bus/CSR address map, firmware, GT or board image built/deployed",
+    "Remote buffer query/discovery/TSC policy still needs runtime implementation"
+  ]
+}

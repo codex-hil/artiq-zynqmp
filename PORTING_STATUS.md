@@ -1,3 +1,17 @@
+2026-11-07 reversed roles routing stage PASS,4bounded Python RTL tests.
+New GenesysMasterRouting uses upstream CRIshared fabric with explicitdefault
+0local/1remote/allothersunreachable (avoids upstream zero-table unknown→local).
+Native master/raw20/native satellite/local SED/KernelInitiator fine3 tests show
+4isolated local/remote edges,20cycle pulse widths; destination255 yields unreachable
+and0edges. Two-source interface owner selection testPASS, no realDMA/fairnessclaim.
+NativeSED timestamp/channel-before-command contract exposed by initialfixture;
+staged versionPASS, separate unstaged negative underflow/0edge retained. No core
+timing guard weakened. No HW/build/lease/reset/clock/firmware or normal ABI change.
+Evidence evidence/genesys-master-backend-offline-2026-11-07/routing-{tests.log,report.json}.
+Next safeoffline separate AXI/CSR candidate withnow64/timeunits/order/status before
+firmware andGTintegration. PhysicalSFP0 cable question stillpending; no physical
+rolechangeadmission fromsimulation. Shared maintenancehold forotherthreadsunchanged.
+
 2026-11-07 reversed roles offline progress: new GenesysMasterBackend wraps
 unchanged upstream DRTIOMaster link/packet/controller, strict finewidth3 and2symbol
 profile guards.3bounded RTL tests PASS10.334s with actual raw20 codecs/upstream

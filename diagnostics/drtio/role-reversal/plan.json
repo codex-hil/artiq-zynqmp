@@ -57,12 +57,17 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Separate common-TSC finewidth3 local/remote CRI routing simulation, followed by PS AXI/controller/AUX and firmware integration",
+  "next_safe_offline": "Separate PS AXI/CSR candidate map with now64 timestamp units, staging/order and local/remote status tests; preserve old local-only ABI",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
     "implementation": "../master_backend.py",
     "evidence": "../../../evidence/genesys-master-backend-offline-2026-11-07/report.json",
     "target_integration": "NOT_IMPLEMENTED"
+  },
+  "isolated_routing": {
+    "status": "FOUR_NATIVE_SIMULATION_TESTS_PASS",
+    "implementation": "../master_routing.py",
+    "limits": "No AXI/firmware or real DMA integration; owner changes only idle"
   }
 }
