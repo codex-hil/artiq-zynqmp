@@ -1,0 +1,29 @@
+{
+  "status": "FIFTEEN_COMPARISON_TESTS_PASS_INDEPENDENT_RX_CSR_CONSUMER",
+  "suite_tests": 15,
+  "seconds": 6.932,
+  "concurrent_case": {
+    "packets": 24,
+    "words": 168,
+    "sizes_words": [
+      1,
+      3,
+      17
+    ],
+    "ring_wraps": 3,
+    "rx_period_ns": 8,
+    "sys_period_ns": 22,
+    "sys_phase_ns": 3,
+    "data": "all words exact in order",
+    "overlap_observed": true,
+    "final": "empty/readpointer0/error0"
+  },
+  "limits": [
+    "Test producer pacing at most3outstanding, not saturation/drop coverage under unequal clocks",
+    "Test reads actual memory port and native CSR strobes directly, not PS AXI",
+    "No reset during active multiword traffic yet",
+    "Physical Gray skew/max-delay and reset qualification pending"
+  ],
+  "test_sha256": "b3b6247c0e0098ec20dc9d1f11774d5769c9a0cabb86fa9e92cbaab6c7313905",
+  "hardware_accessed": false
+}

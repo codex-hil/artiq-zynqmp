@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Test Gray bounded RX concurrent producer/CSR consumer under independent clocks, then integrate isolated AUX controller and reset contracts",
+  "next_safe_offline": "Integrate isolated Gray bounded receiver into native-compatible AUX controller; verify real Wishbone SRAM and CSR map before reset/active-traffic cases",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -109,5 +109,5 @@
   },
   "native_aux_packet_bounds": "DYNAMIC_FAIL_REPRODUCED_1028_BYTES_PUBLISHED_ERROR0_SLOT0_OVERWRITE",
   "isolated_bounded_receiver": "EIGHT_COMPARISON_TESTS_PASS_LENGTH_AND_MODULO_FULL_FIX_BINARY_CDC_PENDING",
-  "isolated_gray_receiver": "FOURTEEN_COMPARISON_TESTS_PASS_UNEQUAL_PUBLICATION_ONLY"
+  "isolated_gray_receiver": "FIFTEEN_COMPARISON_TESTS_PASS_CONCURRENT_UNEQUAL_CLOCK_RX_CSR"
 }

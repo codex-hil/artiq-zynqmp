@@ -194,5 +194,79 @@ class GrayRing(BoundedRing):
         run_simulation(d, {'rtio_rx': producer()},
                        clocks={'rtio_rx': 8, 'sys': (22, 3)})
 
+class GrayConcurrent(unittest.TestCase):
+    def test_independent_rx_and_csr_consumer(self):
+        from aux_receiver_gray import GrayBoundedReceiver
+        d = Module()
+        class Link:
+            rx_aux_data = Signal(4)
+            rx_aux_stb = Signal()
+            rx_aux_frame = Signal()
+        link = Link()
+        d.submodules.receiver = r = GrayBoundedReceiver(link, 32)
+        port = r.mem.get_port(async_read=True)
+        d.specials += port
+        packets = [[((i+1)*0x1020304 ^ j*0x7654321) & 0xffffffff
+                    for j in range((1, 3, 17)[i % 3])] for i in range(24)]
+        state = {'sent': 0, 'consumed': 0, 'rx_active': False, 'overlap': False}
+        def producer():
+            for packet in packets:
+                # Test-only traffic pacing, not hardware admission control.
+                for _ in range(3000):
+                    if state['sent'] - state['consumed'] < 3:
+                        break
+                    yield
+                else:
+                    self.fail('Consumer stopped making progress')
+                state['rx_active'] = True
+                yield link.rx_aux_stb.eq(1)
+                yield link.rx_aux_frame.eq(1)
+                for word in packet:
+                    for nibble in range(8):
+                        yield link.rx_aux_data.eq((word >> (4*nibble)) & 15)
+                        yield
+                yield link.rx_aux_frame.eq(0)
+                yield
+                yield link.rx_aux_stb.eq(0)
+                state['rx_active'] = False
+                state['sent'] += 1
+                for _ in range(5):
+                    yield
+        def consumer():
+            for index, packet in enumerate(packets):
+                for _ in range(3000):
+                    if (yield r.aux_rx_present.w):
+                        break
+                    yield
+                else:
+                    self.fail('Packet never published')
+                self.assertEqual((yield r.aux_read_pointer.w), index % 8)
+                for _ in range(3 + index % 5):
+                    yield
+                actual = []
+                for offset in range(len(packet)):
+                    state['overlap'] |= state['rx_active']
+                    yield port.adr.eq((index % 8)*256+offset)
+                    yield
+                    actual.append((yield port.dat_r))
+                self.assertEqual(actual, packet)
+                self.assertEqual((yield r.aux_rx_error.w), 0)
+                yield r.aux_rx_present.re.eq(1)
+                yield
+                yield r.aux_rx_present.re.eq(0)
+                for _ in range(5):
+                    yield
+                state['consumed'] += 1
+            for _ in range(30):
+                yield
+            self.assertEqual((yield r.aux_rx_present.w), 0)
+            self.assertEqual((yield r.aux_read_pointer.w), 0)
+            self.assertEqual((yield r.aux_rx_error.w), 0)
+        run_simulation(d, {'rtio_rx': producer(), 'sys': consumer()},
+                       clocks={'rtio_rx': 8, 'sys': (22, 3)})
+        self.assertEqual(state['sent'], 24)
+        self.assertEqual(state['consumed'], 24)
+        self.assertTrue(state['overlap'])
+
 if __name__ == '__main__':
     unittest.main()

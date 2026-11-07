@@ -1,3 +1,13 @@
+2026-11-07 GrayboundedRX concurrentRX/CSRconsumer PASS suite15tests6.932s.
+24packets/168words sizes1/3/17 exactordered,3ringwraps, RX8ns/SYS22nsphase3,
+RXactive whilepriorpacketread overlap observed; finalempty/readpointer0/error0.
+NativeCSRstrobes/directactualMemoryport, notPSAXI. Testpacingmax3outstanding,
+notunequalclock saturation/drop orresetduringmultiword proof. PhysicalCDC
+bounds/resetrelease stillpending. Nextsafe nativecompatible isolatedAUXcontroller
+WishboneSRAM/CSRmap integration thenactivetrafficreset. NoHW/lease/program,
+maintenancehold. Evidence genesys-master-aux-pointer-review-2026-11-07/
+gray-concurrent.json.
+
 2026-11-07 isolated GrayboundedRX integrated PASS14comparisontests6.327s.
 Separate derivedReceiver uses registeredGraypositions bothdirections, localbinary
 memory/full/empty; lengthlimit/discard/modulofull fixes retained. Grayvariants
