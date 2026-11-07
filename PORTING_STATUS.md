@@ -1,3 +1,12 @@
+2026-11-07 fullPSAXI/CDC/nativeAUX requestreply modelPASS60.693s.
+3requests+3replies sizes1/3/17=42wordsexact, PS8ns/master14ns;PSAXITXSRAM/
+length/trigger→nativeencodedlink→peerWBreceive/reply→PSRXCSR/SRAM/consume.
+RXerror0/finalempty, actualAXIaccess/nativeAUXframeoverlap observed. Sequential
+requests notsaturation. Raw20model notphysicalGTH/boards/firmwareCRC/discovery.
+Nextsafe alldomainresetcontract and abortactivemultiword/reset/freshrecovery,
+retainingAXIunknowncommit semantics. NoHW/leases/program; maintenancehold.
+Evidence genesys-master-aux-gray-link-2026-11-07/full-axi-link.json.
+
 2026-11-07 expandedmastermap PSCDC integrated crossedtestPASS20.395s.
 Optionalps_clock preservesdefault; fullAXIconverter onPS, maintained5channel
 commonresetcrossing to masterSYS. PS8ns/master14ns:profile/AUXCSR/TXSRAM,

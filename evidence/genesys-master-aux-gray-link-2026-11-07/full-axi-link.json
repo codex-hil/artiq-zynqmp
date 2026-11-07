@@ -1,0 +1,33 @@
+{
+  "status": "FULL_AXI_PS_CDC_NATIVE_AUX_REQUEST_REPLY_MODEL_PASS",
+  "tests": 1,
+  "seconds": 60.693,
+  "traffic": {
+    "requests": 3,
+    "replies": 3,
+    "packet_words": [
+      1,
+      3,
+      17
+    ],
+    "total_words": 42,
+    "ps_period_ns": 8,
+    "master_period_ns": 14
+  },
+  "checks": [
+    "PS fullAXI TXSRAM/length/trigger",
+    "Peer native-compatible Wishbone RX exact",
+    "Peer TX replies xor55aa55aa",
+    "PS fullAXI RXCSR/SRAM reply exact and consume",
+    "RXerror0/finalempty",
+    "AXI access and native AUX frame overlap observed"
+  ],
+  "limits": [
+    "Raw20 encoded simulation, no physical GTH/two boards",
+    "No active-traffic reset or stopped-clock integration test yet",
+    "No PS firmware/CRC/discovery or final physical Gray bounds qualification",
+    "Sequential request/reply, not saturated outstanding requests"
+  ],
+  "test_sha256": "19c656048a2b0bb893d6281aece415a662d3cf0341ff11bc120d5b552a681af0",
+  "hardware_accessed": false
+}
