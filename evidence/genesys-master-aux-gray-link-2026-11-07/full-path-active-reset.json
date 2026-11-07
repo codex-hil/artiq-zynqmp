@@ -1,0 +1,30 @@
+{
+  "status": "FULL_MODELED_PATH_ACTIVE_AUX_RESET_AND_FRESH_RECOVERY_PASS",
+  "tests": 1,
+  "seconds": 104.105,
+  "interrupted_frame_words": 64,
+  "reset_domains": [
+    "ps",
+    "sys",
+    "rtio_rx",
+    "rio",
+    "rio_phy"
+  ],
+  "checks": [
+    "Native master tx_aux_frame asserted before reset",
+    "Trigger AXI completion accepted before reset",
+    "TXbusy/length reset0",
+    "Master and peer RX not present; peer responded0times to aborted frame",
+    "Three fresh1/3/17word request/reply pairs exact over fullAXI/CDC/link",
+    "RXerror0/finalempty/AXI-frame overlap"
+  ],
+  "limits": [
+    "All modeled clocks running; reset sequencer physical assertion/release unqualified",
+    "Functional reset override, no hardware",
+    "No outstanding AXI completion during reset in this case",
+    "No SRAM retention claim in fullpath; retained SRAM RX test separate",
+    "No physical GTH/Gray bounds/two-board restoration qualification"
+  ],
+  "test_sha256": "12be05ca413706278dc6a941c8ca2f7565fd65da190a14f8a7c52c89c889aafe",
+  "hardware_accessed": false
+}

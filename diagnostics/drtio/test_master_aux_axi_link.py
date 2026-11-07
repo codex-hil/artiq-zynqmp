@@ -11,10 +11,14 @@ from master_csr import GenesysMasterCSR
 from aux_controller_gray import GrayAuxController
 
 class AXILinkTests(unittest.TestCase):
+    active_reset=False
     def test_ps_request_satellite_reply(self):
         d=Pair(now64=True)
         d.clock_domains.cd_ps=ClockDomain('ps')
         d.clock_domains.cd_sys=ClockDomain('sys')
+        if self.active_reset:
+            for name in ('rtio_rx','rio','rio_phy'):
+                setattr(d.clock_domains,'cd_'+name,ClockDomain(name))
         d.submodules.aux=GenesysMasterAux(d.master,controller_type=GrayAuxController)
         d.submodules.peer=GrayAuxController(d.satellite.link_layer)
         d.submodules.csr=GenesysMasterCSR(d.time,d.ki,d.master,d.routing,aux=d.aux,ps_clock='ps')
@@ -56,6 +60,28 @@ class AXILinkTests(unittest.TestCase):
                 yield
         def requester():
             for _ in range(80):yield
+            if self.active_reset:
+                # Trigger a long frame; AXI B is already accepted before reset.
+                for j in range(64):yield from m.write(0xa0010000+j*4,0xdead0000+j)
+                yield from m.write(addr('aux_tx_length'),256)
+                yield from m.write(addr('aux_tx'),1)
+                for _ in range(300):
+                    if (yield d.master.link_layer.tx_aux_frame):break
+                    yield
+                else:self.fail('No active TX to interrupt')
+                for _ in range(8):yield
+                self.assertEqual((yield d.master.link_layer.tx_aux_frame),1)
+                # Whole modeled endpoint/control domains, input clocks remain live.
+                domains=[d.cd_ps,d.cd_sys,d.cd_rtio_rx,d.cd_rio,d.cd_rio_phy]
+                for domain in domains:yield domain.rst.eq(1)
+                for _ in range(40):yield
+                for domain in domains:yield domain.rst.eq(0)
+                for _ in range(100):yield
+                self.assertEqual((yield from m.read(addr('aux_tx'))),0)
+                self.assertEqual((yield from m.read(addr('aux_tx_length'))),0)
+                self.assertEqual((yield from m.read(addr('aux_rx_present'))),0)
+                self.assertEqual((yield d.peer.receiver.aux_rx_present.w),0)
+                self.assertEqual(done['peer'],0)
             for index,words in enumerate(packets):
                 for j,word in enumerate(words):yield from m.write(0xa0010000+j*4,word)
                 yield from m.write(addr('aux_tx_length'),len(words)*4)
@@ -81,5 +107,8 @@ class AXILinkTests(unittest.TestCase):
                        special_overrides={AsyncResetSynchronizer:FunctionalReset})
         self.assertEqual(done['peer'],3)
         self.assertTrue(done['overlap'])
+
+class ActiveResetAXILinkTests(AXILinkTests):
+    active_reset=True
 
 if __name__=='__main__':unittest.main()

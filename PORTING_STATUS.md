@@ -1,3 +1,13 @@
+2026-11-07 fullmodeledpath activeAUXreset PASS104.105s. Active64wordTXframe
+asserted then all5domainsPS/SYS/RX/rio/rio_phy reset40PScycles, clockslive.
+TriggerAXIB alreadyaccepted (no outstandingAXIresetclaim). TXbusy/length0,
+master/peerRXnotpresent/peerresponses0 forabortedframe; then3fresh1/3/17word
+requestreplypairs exactoverAXI/CDC/nativelink,error0/finalempty/overlap.
+Functionalreset only, notphysicalsequencer/stoppedclock/retention proof.
+Nextsafe explicitresetadmission/sequencer/unknownAXIcommit review; physicalGray
+bounds/restoration remain gates. NoHW/lease/program; maintenancehold.
+Evidence genesys-master-aux-gray-link-2026-11-07/full-path-active-reset.json.
+
 2026-11-07 GrayRX partialframeabort PASS1test3subcases0.750s:1/7/255words
 withoutEOP, no publication, coordinatedSYS+RXreset/inputdisabled; retainedSRAM
 stillpresent butnotpublished, fresh2wordpacket exact/newwrite1/read0/error0.
