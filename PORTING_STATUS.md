@@ -1,3 +1,14 @@
+2026-11-07 isolated AUX Gray pointer candidate PASS2modeltests0.024s.
+Own binary pointer advances at most1/sourceedge; binary and Gray registered
+same edge, MultiReg Gray only then combinational decode.24increments/3wraps,
+onebit transition each, settled remoteexact PS8ns/RX14ns; coordinated reset
+fromnonzero clears both sides. Invalidwidth/domain declarations refuse.
+Not connected to native AUX. Settled test not rapidproducer/SRAMvisibility/
+fullring/clockstop reset proof. Physical Gray skew/maxdelay/resetrelease gates
+remain. Nextsafe rapidprogression/ring-memory ownership tests offline.
+NoHW/leases/program; evidence genesys-master-aux-pointer-review-2026-11-07/
+gray-candidate.json; maintenancehold retained.
+
 2026-11-07 native AUX RX pointer source/bit-skew review complete, NOT QUALIFIED.
 Pinned actual Receiver AST confirms direct read_pointer->read_pointer_rx and
 write_pointer->write_pointer_sys MultiReg. Exhaustive eight 3bit increments:

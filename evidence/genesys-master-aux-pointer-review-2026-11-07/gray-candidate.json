@@ -1,0 +1,26 @@
+{
+  "status": "ISOLATED_GRAY_POINTER_TWO_MODEL_TESTS_PASS",
+  "tests": 2,
+  "source_period_ns": 14,
+  "destination_period_ns": 8,
+  "increments": 24,
+  "wraps": 3,
+  "checks": [
+    "Registered binary and Gray advance together",
+    "One encoded bit changes per source increment including wrap",
+    "Decoded destination equals expected after settling",
+    "Coordinated reset from nonzero state clears source and destination",
+    "Invalid width/domain declarations refused"
+  ],
+  "limits": [
+    "No native AUX integration",
+    "Settled comparisons, not rapid-producer or packet-memory visibility proof",
+    "No clock-stop reset or physical reset-release qualification",
+    "Gray bus skew/max-delay constraints not implemented or routed"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_gray_pointer.py": "5ac7273c513654798365b0f4e9149956f7f813c1ee06a2255bd45c57fce98700",
+    "diagnostics/drtio/test_aux_gray_pointer.py": "ee22949c8d483d4cf9ba25bf1a225fd1133fa88eb7ea546db5bb5715f5371981"
+  },
+  "hardware_accessed": false
+}

@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Design isolated registered Gray-pointer overlay with coordinated reset and SRAM/full-ring visibility contract; test before native AUX integration",
+  "next_safe_offline": "Test rapid Gray pointer progression and ring/SRAM ownership before integrating native AUX; retain physical CDC/reset gates",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -98,5 +98,9 @@
     "transport_evidence": "../../../evidence/genesys-master-cdc-review-2026-11-07/transport.json",
     "committed_write_evidence": "../../../evidence/genesys-master-cdc-review-2026-11-07/committed-write.json"
   },
-  "aux_pointer_review": "../../../evidence/genesys-master-aux-pointer-review-2026-11-07/report.json"
+  "aux_pointer_review": "../../../evidence/genesys-master-aux-pointer-review-2026-11-07/report.json",
+  "isolated_gray_pointer": {
+    "status": "TWO_MODEL_TESTS_PASS_NO_NATIVE_INTEGRATION",
+    "evidence": "../../../evidence/genesys-master-aux-pointer-review-2026-11-07/gray-candidate.json"
+  }
 }
