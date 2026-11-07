@@ -1,0 +1,22 @@
+{
+  "status": "NATIVE_OVERSIZE_REJECTION_FAIL_REPRODUCED",
+  "characterization_tests": 3,
+  "seconds": 1.178,
+  "results": {
+    "1020_bytes": "published first and word254 exact error0",
+    "1024_bytes": "published first and word254 exact error0",
+    "1028_bytes": "INCORRECTLY published error0; word256 overwrites slotword0"
+  },
+  "recovery": "Each case acknowledged then short valid packet exact in next slot, error0",
+  "method": "Unchanged pinned Receiver fed raw4bit AUX nibbles; actual SRAM read port; ideal equal8ns clocks isolate length semantics",
+  "source_sha256": "0d648fc25f79af35f687fbf47e938d0759358d8d77e2e499e091adc6ba62e075",
+  "test_sha256": "f8350c7a3e44b3461bfe52d2ea97dca1b59f58424a53d738b02a7cf2e446102a",
+  "limits": [
+    "Characterization PASS reproduces bug, not receiver safety PASS",
+    "No physical malformed-frame test",
+    "No transmitter or CRC/firmware input validation bypass claim",
+    "No upstream source changes"
+  ],
+  "next": "Isolated corrected receiver candidate: word-count limit and explicit oversize discard-through-EOP precedence, then boundary/recovery and full-ring regressions",
+  "hardware_accessed": false
+}

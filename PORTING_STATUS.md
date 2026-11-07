@@ -1,3 +1,14 @@
+2026-11-07 nativeAUX oversize rejection FAIL dynamically reproduced. Three
+characterization tests complete1.178s:1020/1024bytes published exactcheckedwords,
+error0;1028bytes INCORRECTLY published error0 and word256 overwrites slotword0.
+Afterack shortvalidpacket exact in nextslot for allcases. Unchanged actualReceiver
+raw4bitnibbles and realMemoryreadport, ideal8nsclocks isolate lengthsemantics.
+TestsPASS means bug reproduced, NOT receiverqualification. No physicalfault or
+normalTXvalidationbypassclaim. Nextsafe isolatedcorrectedRX wordlimit with
+explicit discardthroughEOP/precedence thenboundary/recovery/fullring tests.
+No upstream/HW/lease/program changes, maintenancehold retained. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/native-packet-bounds.json.
+
 2026-11-07 nativeAUX packet publication/bounds staticreview: DW32 RX counter
 counts converterwords, width9/max511 yet compares frame_counter==max_packet1024
 (bytes): unreachable guard. Payload low8counterbits address256wordslot, word256
