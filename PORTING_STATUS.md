@@ -1,3 +1,12 @@
+2026-11-07 resetAPI DellCortexA53object compilePASS slot1/3 ARM13.2.1,
+O2/freestanding/WallWextraWerror. ELF64AArch64RELentry0/noUND/callbackBLR inspected,
+4sourcepins+fetchedobjectSHA match. Compileonly/noentry/linkedfirmware/directMMIO/
+agentcore/OCM/realbusfaultproof. ExistingCPUownership/runtime unchanged.
+Nextsafe isolatedintegrateddualHPMPS/master/AUXtopelaboration withclock/reset
+ownership; agentexecutioncontext/physicalCDC/restoration remainHWgates.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/reset-driver/a53/report.json.
+
 2026-11-07 recoverycontextreview/portablemanagementdriver PASS20hostcases
 ASAN/UBSAN. CPU0foregroundnetwork/debug andCPU1CoreDMA preserved; CPU2/3not
 assigned/qualified. PortableAPI identity/boundedpoll/noautomaticretry/attemptflags,
