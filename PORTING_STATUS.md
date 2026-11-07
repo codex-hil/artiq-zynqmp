@@ -1,3 +1,12 @@
+2026-11-07 isolated boundedReceiver lengthfix PASS7comparisontests2.953s.
+Derived pinnednativeRX, FRAME limits words256 beforewrite/EOPpriority; DISCARD
+consumes throughEOP withoutpublication.1020/1024 accepted;1028/2048error/rejected,
+slot0not overwritten, nextshortvalid exact/readpointer0 afterreject. Unchanged
+native1028bug reproduced separately. No installedsource changes. Binarypointer
+CDC unresolved; candidatefullring/concurrentconsume tests nextbeforeGrayoverlay.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/bounded-receiver.json.
+
 2026-11-07 nativeAUX oversize rejection FAIL dynamically reproduced. Three
 characterization tests complete1.178s:1020/1024bytes published exactcheckedwords,
 error0;1028bytes INCORRECTLY published error0 and word256 overwrites slotword0.

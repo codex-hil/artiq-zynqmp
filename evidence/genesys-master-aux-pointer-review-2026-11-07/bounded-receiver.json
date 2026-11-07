@@ -1,0 +1,25 @@
+{
+  "status": "ISOLATED_LENGTH_FIX_SEVEN_COMPARISON_TESTS_PASS",
+  "suite_tests": 7,
+  "seconds": 2.953,
+  "candidate_cases": {
+    "1020": "accepted",
+    "1024": "accepted",
+    "1028": "error/rejected/no slot0 overwrite",
+    "2048": "discard through EOP/error/rejected/no slot0 overwrite"
+  },
+  "recovery": "Valid short packet exact after every candidate case; read pointer stays0 after rejected frame",
+  "baseline": "Native1028 unflagged overwrite still reproduced",
+  "implementation": "Derived unchanged native Receiver except FRAME word bound/EOP rejection priority and DISCARD state",
+  "limits": [
+    "Binary pointer CDC still unqualified",
+    "No full-ring concurrent consume test for candidate yet",
+    "No physical timing or hardware integration",
+    "One pinned DW32 configuration tested"
+  ],
+  "sources": {
+    "diagnostics/drtio/aux_receiver_bounded.py": "b91af3176b58a8b0128dfaa45a44cfe7a118371a01ccd2d34195e4552c237d85",
+    "diagnostics/drtio/test_aux_native_bounds.py": "1744a17bbca256ba49f3b42cc1f30e4c6ac360fe1ac1ef1b231d73db7805df07"
+  },
+  "hardware_accessed": false
+}
