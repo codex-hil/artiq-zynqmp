@@ -1,3 +1,13 @@
+2026-11-07 independentmanagementHPM sourcecandidate prepared. CurrentlocalRTIO
+PSproperties GP0=1 GP1/2=0,GP0width32; diagconnectsHPM0. Separateoverlay enables
+GP1width32 whilepreservingGP0; strictcandidateHPM1pinhelper validatesdirection/
+width/allpinsbeforewiring. Two syntheticfixturetestsPASS0.030s/fourrefusals,
+NOTactualPSexport proof. HPM1addresssegment unknown; management0xa0020000 is
+PROVISIONAL/notassumedreachable. No installedPSproperties/helper/IP/bitstream
+changes. Nextsafe DellisolatedPSIPquery actualHPM1pins/addressrouting. NoHW/
+lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/dual-hpm-candidate.json.
+
 2026-11-07 stocksharedAXIdecoder managementadoption REFUSED. Characterization
 PASS0.029s reproduces missingtargetB retainswriteselection andblocksmanagement
 AW despite managementready1; independentmanagementARworks; targetB releaseslock.

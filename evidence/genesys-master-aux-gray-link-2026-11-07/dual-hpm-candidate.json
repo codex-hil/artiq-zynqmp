@@ -1,0 +1,31 @@
+{
+  "status": "ISOLATED_DUAL_HPM_SOURCE_CANDIDATE_ONLY_NOT_PS_IP_VALIDATED",
+  "source_findings": [
+    "Current local-rtio variant enablesGP0=1 GP1=0 GP2=0, GP0width32",
+    "Existing diagnostic connects PS HPM0 pins to target AXI",
+    "Independent management requires new export/configuration, not existing board capability assumption"
+  ],
+  "candidate": [
+    "Separate Tcloverlay GP0/GP1=1 widths32 GP2=0",
+    "Strict HPM1 exportedpin helper validates all pins/directions/widths before parent mutation"
+  ],
+  "tests": {
+    "count": 2,
+    "seconds": 0.03,
+    "scope": "Declared synthetic PS pin fixture only; four missing/width/direction/clock refusals"
+  },
+  "limits": [
+    "Actual HPM1 names/widths/clock and address segment export NOT_RUN",
+    "Management0xa0020000 provisional; HPM1 reachable aperture unknown",
+    "No PS IP generation/synthesis/bitstream/HW change",
+    "Existing board PS properties and local_rtio helper unchanged"
+  ],
+  "sources": {
+    "diagnostics/drtio/role-reversal/ps-dual-hpm.properties.tcl": "a8a296afaf0fc42b18b054acc3ae8defb349476903ae699f8dcbd2fd2c9a5fda",
+    "diagnostics/drtio/ps_management_hpm.py": "98ebe23ae7f9dea362474b3bb3cf5b3ce06a0f6e4dd56b4999df97ccde8d2e7c",
+    "diagnostics/drtio/test_ps_management_hpm.py": "50c588d0f1fa85805cf76deebd4fdd80cd293960b6f3cd032edfd9fb3dfa1e2f",
+    "boards/genesys_zu-5ev/0_platform/zynq_ultra_ps_e_0.properties.tcl": "944d303e9cee626d043a1aeb9531922fbf3e06ed6110e0866aeeec7fcac1128c"
+  },
+  "next": "Dell isolated PS IP generation/export query under build slot to verify actual HPM1 pins and address routing before target integration",
+  "hardware_accessed": false
+}

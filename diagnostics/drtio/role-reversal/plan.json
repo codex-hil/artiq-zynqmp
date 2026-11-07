@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Inspect PS HPM configuration and independent management ingress feasibility; do not adopt shared decoder without explicit abort/ownership qualification",
+  "next_safe_offline": "Run isolated Dell PS IP export query to verify HPM1 pins/widths/clock and reachable management address segments; no current-board configuration changes",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -124,5 +124,6 @@
   "reset_command_handshake": "FIVE_RESET_TESTS_PASS_TWO_EPISODES_STALE_ACK_REFUSED_ALWAYS_LIVE_MANAGEMENT",
   "command_full_path": "UNACCEPTED_AXI_COMMIT_RESET_AND_ACTIVE_AUX_ABORT_THREE_FRESH_PAIRS_PASS",
   "management_mmio": "SEPARATE_AXILITE_THREE_REGISTERS_TWO_EPISODES_ERRORS_PASS",
-  "parent_axi_decoder": "STOCK_SHARED_DECODER_REFUSED_MISSING_TARGET_B_BLOCKS_MANAGEMENT_AW"
+  "parent_axi_decoder": "STOCK_SHARED_DECODER_REFUSED_MISSING_TARGET_B_BLOCKS_MANAGEMENT_AW",
+  "dual_hpm_management": "SOURCE_CANDIDATE_AND_TWO_SYNTHETIC_PIN_TESTS_ONLY_GP1_CURRENTLY_DISABLED"
 }

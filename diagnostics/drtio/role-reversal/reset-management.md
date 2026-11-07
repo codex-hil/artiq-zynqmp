@@ -37,3 +37,8 @@ accepted target AW with a missing B retains its write-direction slave lock,
 blocking a later management reset write. Independent status reads do not solve
 reset-write reachability. Independent PS ingress or an explicitly qualified
 transaction-abort protocol is required; neither has been implemented yet.
+
+Independent HPM1 is now a source-only candidate. Current platform disables GP1.
+The management base `0xa0020000` is provisional: its reachability through HPM1
+must be established from actual PS IP address segments before integration.
+Synthetic exported-pin tests do not prove actual IP port names or widths.
