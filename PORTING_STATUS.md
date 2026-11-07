@@ -1,3 +1,13 @@
+2026-11-07 isolatedGenesysMasterIntegration elaborationPASS+3pinchecks,
+4tests0.257s. NativeTSCfine3/KInow64/master/localRTIO/routing/GrayAUX/mapCDC/
+dualingressreset assembled. PSmanagement/control/ingressclocks=PSplclk0,
+nativeSYS/rio/rio_phy=callerTX,RX=callerRX, HPM0/1clocks=plclk0; allsyncdomains
+exist/resetcapable. Actualexportadapterpinvalidation forbothHPM. No PSprimitive/
+GTHwizard/constraints inassembly, no packetadmission/transceiverreset hookup,
+no behavioralnewassembly/synth/physicalproof. Nextsafe actualPSadapterbehavior
+thenphysicalplatform+packetresetcandidate. NoHW/lease/program; maintenancehold.
+Evidence genesys-master-aux-gray-link-2026-11-07/integration-elaboration.json.
+
 2026-11-07 resetAPI DellCortexA53object compilePASS slot1/3 ARM13.2.1,
 O2/freestanding/WallWextraWerror. ELF64AArch64RELentry0/noUND/callbackBLR inspected,
 4sourcepins+fetchedobjectSHA match. Compileonly/noentry/linkedfirmware/directMMIO/

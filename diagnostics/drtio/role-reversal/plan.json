@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Prepare isolated integrated dual-HPM PS/master/AUX top elaboration with explicit independent clock/reset ownership and exported management ingress; no agent core assignment or HW admission",
+  "next_safe_offline": "Behavioral test new assembly through actual PS adapter signals; then define packet admission/transceiver reset and connect physical PS/GTH platform candidate before synthesis",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -130,5 +130,6 @@
   "dual_ingress_model": "TWO_FULL_AXI_INITIATORS_TARGET_B_UNACCEPTED_MANAGEMENT_RESET_RECOVERY_PASS",
   "recovery_execution_context": "CPU0_NETWORK_CPU1_WORKER_PRESERVED_NO_CORE_REASSIGNED",
   "portable_reset_driver": "TWENTY_HOST_CALLBACK_MODEL_CASES_ASAN_UBSAN_PASS_NO_REAL_FAULT_RECOVERY",
-  "reset_api_a53_object": "DELL_CORTEX_A53_FREESTANDING_COMPILE_NO_UNDEFINED_HASH_MATCH_PASS"
+  "reset_api_a53_object": "DELL_CORTEX_A53_FREESTANDING_COMPILE_NO_UNDEFINED_HASH_MATCH_PASS",
+  "integrated_master_assembly": "FOUR_ELABORATION_PIN_TESTS_PASS_CALLER_PS_GTH_ADAPTERS_REQUIRED"
 }

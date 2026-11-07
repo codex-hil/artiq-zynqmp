@@ -1,0 +1,26 @@
+{
+  "status": "ISOLATED_MASTER_INTEGRATION_ACTUAL_PS_ADAPTER_ELABORATION_FOUR_TESTS_PASS",
+  "tests": 4,
+  "seconds": 0.257,
+  "assembly": [
+    "NativeTSCfine3/kernelnow64/master/localSyncRTIO/routing",
+    "Gray AUX/CSR/SRAM/PSCDC",
+    "Dual ingress reset management B0000000 and target A0000000",
+    "Explicitmanagement/control/PS fromPSpl_clk0; nativeSYS/rio/rio_phy fromcallerTX; rtio_rx callerRX",
+    "BothHPMclockpins PSpl_clk0 via strict actualexportadapterchecks",
+    "Allsyncdomainsdefined/resetcapable"
+  ],
+  "limits": [
+    "Caller-provided PS signal adapter, no PS Instance in module",
+    "Encoded channel and clocks supplied externally; no actual GTH wizard/pin constraints",
+    "Packet input admission and transceiver reset not yet connected",
+    "Elaboration only, not behavioral newassembly/synthesis/physicalCDC proof",
+    "No DMAengine/recoveryagent or boardimage"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_integration.py": "db4b1ee927d8f417a6ef2250575e933647ceb84fd01bbd6a3b47f773ba41df21",
+    "diagnostics/drtio/test_master_integration.py": "26eeda625de13dcb5d3873069983f33271c12f5bb76f292aec9a20804707bb0b",
+    "diagnostics/drtio/ps_management_hpm.py": "00c1308368164bff4483293c6cf65a6b8c11203c5b1861e88471e3e21127f704"
+  },
+  "hardware_accessed": false
+}
