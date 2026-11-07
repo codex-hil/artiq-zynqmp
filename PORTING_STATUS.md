@@ -1,3 +1,15 @@
+2026-11-07 PS/master CDC stopped-edge queued-write model PASS; suite4tests
+0.985s. Test-local simulator tick filter suppresses actual master/private FIFO
+rising/falling events (counts assert zero delivered/positive suppressed), without
+editing shared simulator. Queued AW/W accepted, no target request or fabricated
+B while stopped. Both resets asserted stopped and held through restart; no stale
+request after release, fresh address/data delivered exactly. Functional reset
+special only: physical asynchronous reset/release timing NOT qualified. Fresh
+request delivery does not claim complete write response. Nextsafe alreadycommitted
+write/lostresponse/reset case, preserve unknown outcome/no retry. Native AUX RX
+pointer CDC separate gate. NoHW/leases/programming, maintenancehold retained.
+Evidence genesys-master-cdc-review-2026-11-07/stopped-clock.json.
+
 2026-11-07 PS/master CDC unequal-clock transport model PASS. Three tests
 (2 construction+1 transport) in0.839s. Six writes/six reads, PS8ns/master14ns,
 independent AW/W delays, seven-cycle ready-low at every receiver, byte-exact

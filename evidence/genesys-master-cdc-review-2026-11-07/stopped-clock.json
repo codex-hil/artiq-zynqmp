@@ -1,0 +1,22 @@
+{
+  "status": "STOPPED_EDGE_QUEUED_WRITE_RESET_RESTART_MODEL_PASS",
+  "suite_tests": 4,
+  "suite_seconds": 0.985,
+  "method": "Test-local Simulator.time.tick filtering of rising/falling edges for master and all corresponding FIFO private domains; no shared simulator source modifications",
+  "checks": [
+    "Both FIFO inputs accept queued AW/W while target has no scheduled edges",
+    "No target AW/W valid and no fabricated B response during 24 PS cycles",
+    "Assert both domain resets while stopped; keep asserted for 16 PS cycles after restart",
+    "No stale AW/W or B for 24 PS cycles after reset release",
+    "Fresh AW/W reaches target with new exact address and payload"
+  ],
+  "limits": [
+    "Functional reset override; asynchronous assertion/release timing NOT qualified",
+    "Reset is retained through restart, not released with target stopped",
+    "Fresh request delivery only, not a complete AXI write response",
+    "Already committed write uncertainty case remains pending",
+    "No board CDC constraints/metastability qualification"
+  ],
+  "test_sha256": "6ab204e475016f86b0a28014417e8a412258c8ab2f04dba84a5e2c0bae64207a",
+  "hardware_accessed": false
+}
