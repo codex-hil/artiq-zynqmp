@@ -13,6 +13,7 @@ from aux_controller_gray import GrayAuxController
 class AXILinkTests(unittest.TestCase):
     active_reset=False
     sequenced=False
+    commands=False
     def test_ps_request_satellite_reply(self):
         d=Pair(now64=True)
         d.clock_domains.cd_ps=ClockDomain('ps')
@@ -40,6 +41,10 @@ class AXILinkTests(unittest.TestCase):
             d.specials+=MultiReg(c.admit,admitted_ps,'ps')
             d.submodules.admission=g=MasterAXIAdmission(d.csr.axi)
             d.comb += g.enable.eq(admitted_ps & ~r.reset_out[0])
+            if self.commands:
+                from aux_reset_commands import AuxResetCommands
+                d.clock_domains.cd_management=ClockDomain('management')
+                d.submodules.commands=h=AuxResetCommands(c)
             m=AXIMaster(g.axi)
         else:
             m=AXIMaster(d.csr.axi)
@@ -78,14 +83,28 @@ class AXILinkTests(unittest.TestCase):
                                   (yield d.satellite.link_layer.tx_aux_frame)):
                     done['overlap']=True
                 yield
+        def request_reset():
+            yield (h.request if self.commands else c.request).eq(1)
         def release():
-            yield c.request.eq(0)
-            yield c.requester_abandoned.eq(0)
-            for _ in range(12):yield
-            yield c.requester_abandoned.eq(1)
-            for _ in range(300):
-                if (yield g.enable):return
-                yield
+            if self.commands:
+                yield h.request.eq(0)
+                yield h.abandoned.eq(0)
+                for _ in range(300):
+                    if (yield h.abandonment_ready):break
+                    yield
+                else:self.fail('No fresh abandonment ready through command CDC')
+                yield h.abandoned.eq(1)
+                for _ in range(300):
+                    if (yield h.admit) and (yield g.enable):return
+                    yield
+            else:
+                yield c.request.eq(0)
+                yield c.requester_abandoned.eq(0)
+                for _ in range(12):yield
+                yield c.requester_abandoned.eq(1)
+                for _ in range(300):
+                    if (yield g.enable):return
+                    yield
             self.fail('Sequenced reset failed to admit PS')
         def requester():
             if self.sequenced:
@@ -93,6 +112,35 @@ class AXILinkTests(unittest.TestCase):
                 for _ in range(24):yield
                 yield from release()
             for _ in range(80):yield
+            if self.commands:
+                # Commit an actual CSR write but deliberately do not accept B.
+                a=g.axi
+                yield a.b.ready.eq(0)
+                yield a.aw.addr.eq(addr('aux_tx_length'))
+                yield a.aw.size.eq(2)
+                yield a.aw.burst.eq(1)
+                yield a.aw.len.eq(0)
+                yield a.aw.id.eq(0x1234)
+                yield from m.handshake(a.aw)
+                yield a.w.data.eq(68)
+                yield a.w.strb.eq(15)
+                yield a.w.last.eq(1)
+                yield from m.handshake(a.w)
+                for _ in range(300):
+                    if (yield a.b.valid):break
+                    yield
+                else:self.fail('No unaccepted AXI completion')
+                self.assertEqual((yield d.aux.controller.transmitter.aux_tx_length.storage),17)
+                self.assertEqual((yield a.b.ready),0)
+                yield from request_reset()
+                for _ in range(40):yield
+                yield from release()
+                for _ in range(30):
+                    self.assertEqual((yield a.b.valid),0)
+                    yield
+                self.assertEqual((yield from m.read(addr('aux_tx_length'))),0)
+                yield from m.write(addr('aux_tx_length'),12)
+                self.assertEqual((yield from m.read(addr('aux_tx_length'))),12)
             if self.active_reset:
                 # Trigger a long frame; AXI B is already accepted before reset.
                 for j in range(64):yield from m.write(0xa0010000+j*4,0xdead0000+j)
@@ -106,7 +154,7 @@ class AXILinkTests(unittest.TestCase):
                 self.assertEqual((yield d.master.link_layer.tx_aux_frame),1)
                 # Whole modeled endpoint/control domains, input clocks remain live.
                 if self.sequenced:
-                    yield c.request.eq(1)
+                    yield from request_reset()
                     for _ in range(40):yield
                     self.assertEqual((yield g.enable),0)
                     self.assertEqual((yield r.ready),0)
@@ -147,7 +195,8 @@ class AXILinkTests(unittest.TestCase):
             clocks['control']=10
             for name in ('ps','sys','rtio_rx','rio','rio_phy'):
                 clocks['aux_release_'+name]=8 if name=='ps' else 14
-        run_simulation(d,{'ps':requester(),'sys':[peer(),monitor()]},clocks,
+        if self.commands:clocks['management']=8
+        run_simulation(d,{('management' if self.commands else 'ps'):requester(),'sys':[peer(),monitor()]},clocks,
                        special_overrides={AsyncResetSynchronizer:FunctionalReset})
         self.assertEqual(done['peer'],3)
         self.assertTrue(done['overlap'])
@@ -157,5 +206,8 @@ class ActiveResetAXILinkTests(AXILinkTests):
 
 class SequencedResetAXILinkTests(ActiveResetAXILinkTests):
     sequenced=True
+
+class CommandResetAXILinkTests(SequencedResetAXILinkTests):
+    commands=True
 
 if __name__=='__main__':unittest.main()

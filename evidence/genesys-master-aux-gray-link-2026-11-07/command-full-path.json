@@ -1,0 +1,21 @@
+{
+  "status": "SYNCHRONIZED_COMMAND_FULL_PATH_UNACCEPTED_AXI_AND_ACTIVE_AUX_RESET_PASS",
+  "tests": 1,
+  "seconds": 130.371,
+  "checks": [
+    "Always-live management8ns/control10ns level handshake integrated with5domain resets/admission",
+    "ActualAXI lengthCSR write68 committed(nativeword17), Bvalid held/unaccepted",
+    "Reset before B acceptance: no stale B after reopen, no observed write replay, lengthreset0/new12correct",
+    "Second reset interrupts active64word AUX frame, no fragment peer response",
+    "Three fresh1/3/17word requestreply pairs exact/error0/finalempty/overlap"
+  ],
+  "interpretation": "Unknown previous AXI outcome persists for real software. CSR reset0 is not rollback evidence for arbitrary external effects. No automatic retry.",
+  "limits": [
+    "Testbench AXI master shares management8ns phase with PS8ns; no software/always-live MMIO command bank yet",
+    "All clocks live during integrated resets, physical Gray/reset qualification pending",
+    "No SRAM-retention proof from fullpath",
+    "No board access/programming/restoration proof"
+  ],
+  "test_sha256": "e6b2b97b0cfef76c1a1631d1ea465ee4e976a50c877532dd1c0a29ceb1b39dc2",
+  "hardware_accessed": false
+}

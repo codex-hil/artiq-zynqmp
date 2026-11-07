@@ -1,3 +1,14 @@
+2026-11-07 synchronizedcommand/fullpath reset PASS130.371s. Livemanagement
+8ns/control10/PS8/master14:actualAXIlengthwrite68committed/native17, Bvalidnot
+accepted; handshake/reset/reopen no staleB orobservedreplay, length0/new12correct.
+Thenactive64wordAUXabort and3fresh1/3/17wordrequestreplypairs exact/error0/empty.
+CSRreset0 NOTrollbackevidence forexternaleffects; softwareunknownoutcome/no retry
+retained. TestbenchAXIdriver managementsamephaseasPS, no livemanagementMMIObank.
+Clockslive/notphysicalGray/reset/retention/boardproof. Nextsafe livemanagement
+MMIOplacement/softwarecontract andphysicalconstraints beforeHWadmission.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/command-full-path.json.
+
 2026-11-07 synchronizedmanagement/resetcontrol handshake PASS5resettests
 0.051s. Addedexplicitabandonment_ready afterlowseen; request/abandoned levels
 MultiRegtocontrol, resetstatus/ready/admit MultiRegback. Twoepisodes stalhigh
