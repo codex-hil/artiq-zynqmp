@@ -1,0 +1,28 @@
+{
+  "status": "OPTIONAL_AUX_MASTER_AXI_MAP_MODEL_PASS",
+  "tests": "Expanded AUX map1test3.985s plus original non-AUX error regression1test4.238s",
+  "layout": {
+    "aux_csr": "0xa0002000 bank4",
+    "aux_tx_sram": "0xa0010000",
+    "aux_rx_sram": "0xa0012000",
+    "aux_aperture_bytes": 16384
+  },
+  "checks": [
+    "Profile intact",
+    "Five AUX register addresses",
+    "TX two words write/read via full AXI",
+    "Five below/hole/above/highalias reads SLVERR with ID preserved and valid SRAM access recovery",
+    "Default original map error/partialCSR regression unchanged"
+  ],
+  "limits": [
+    "Same simulation control domain, PS/master CDC not yet inserted",
+    "Native AUX SRAM aliases/byte enables retained; partial CSR writes refused",
+    "Aligned length CSR readback correction still pending",
+    "No finalized real target/firmware/hardware qualification"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_csr.py": "0a35ee8550d33a6946f6e2f85c803fd231209e23e277171fcf672226241719b3",
+    "diagnostics/drtio/test_master_aux_map.py": "6730037079ca51a6b7273a3a45972e9e4b0c96ec916d013c9f04ff85b08daf24"
+  },
+  "hardware_accessed": false
+}

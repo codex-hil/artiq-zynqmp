@@ -1,3 +1,12 @@
+2026-11-07 optionalmasterAUXmap PASS expandedtest3.985s +defaultmap error
+regression4.238s. Bank4 AUXCSR0xa0002000, SRAM0xa0010000/16KiB viaexisting
+boundedrouter. FullAXITX2words exact/profileunchanged;5hole/below/above/highalias
+readsSLVERR/ID/recoveryPASS. Originalmap remainsdefault/noAUX, partialCSRrefusal
+retained; optionalSRAM nativebyteenables/aliases retained. Samecontroldomain,
+PSCDCnotinserted; nativealignedlengthreadback unresolved. Nextsafe lengthCSR
+correction thenexpandedmapCDC. NoHW/leases/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/master-map.json.
+
 2026-11-07 same-native-link GrayAUX PASS4modeltests112.974s. Explicit
 controller_type injection preserves upstreamdefault; candidatebothendpoints.
 9packets/direction1/3/17words exact/wrap;64wordrequest/reply concurrentactualRT
