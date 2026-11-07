@@ -1,3 +1,13 @@
+2026-11-07 boundedRX fullring test initiallyFAIL(error0vs1): widened Migen
+write_pointer+1 comparison does not wrap7to0. Isolatedcandidate now explicit3bit
+next_write_pointer beforefullcheck. Suite8testsPASS3.493s:7published3wordpackets,
+normal8th/oversized257word drops/error, all21publishedwords preserved, consume1
+thenfresh2word slot7, remainingexact/readpointerwrap0empty. Priorlengthtests and
+nativeoversizebug reproduction retained. Equalidealclocks, binarypointerCDC
+unqualified. Nextsafe registeredGrayoverlay/independentclock regressions.
+No installedsource/HW/lease/program changes; maintenancehold. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/bounded-full-ring.json.
+
 2026-11-07 isolated boundedReceiver lengthfix PASS7comparisontests2.953s.
 Derived pinnednativeRX, FRAME limits words256 beforewrite/EOPpriority; DISCARD
 consumes throughEOP withoutpublication.1020/1024 accepted;1028/2048error/rejected,

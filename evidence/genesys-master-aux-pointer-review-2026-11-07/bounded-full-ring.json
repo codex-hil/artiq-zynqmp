@@ -1,0 +1,23 @@
+{
+  "status": "EIGHT_COMPARISON_TESTS_PASS_AFTER_MODULO_FULL_FIX",
+  "seconds": 3.493,
+  "new_finding": "Prior isolated candidate failed full-ring test: widened write_pointer+1 comparison does not wrap7to0. Initial assertion expected error1 observed0.",
+  "fix": "Explicit3bit next_write_pointer before full equality, isolated candidate only",
+  "checks": [
+    "Seven3word packets published",
+    "Normal eighth and257word oversized packet both drop/error",
+    "All21published words preserved after each drop",
+    "Consume one then fresh2word packet in slot7",
+    "Remaining7packets read exact and consumed; final empty pointer0"
+  ],
+  "limits": [
+    "Equal ideal clocks, binary pointer CDC still unqualified",
+    "No physical/native installation change",
+    "Gray overlay integration pending"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_receiver_bounded.py": "775655d38bfc908d5d48a6ac9c0c6f0e0a3864db929580fe18c84ba17723b283",
+    "diagnostics/drtio/test_aux_native_bounds.py": "1fd7b7d2249280e0b8b5e60b6a646c5ec686e9353490519eeb524ef828eb21d3"
+  },
+  "hardware_accessed": false
+}

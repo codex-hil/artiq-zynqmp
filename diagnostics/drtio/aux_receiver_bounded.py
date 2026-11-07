@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 """Isolated length fix derived from ARTIQ gateware/drtio/aux_controller.py.
 
-Original upstream Receiver retained except FRAME limit/priority and DISCARD.
+Upstream Receiver retained except FRAME limit/priority, DISCARD and modulo full check.
 No native installation mutation. Binary pointer CDC remains UNQUALIFIED.
 Source attribution: M-Labs ARTIQ, pinned checkout source in evidence report.
 """
@@ -129,9 +129,12 @@ class BoundedReceiver(Module, AutoCSR):
             If(converter.source.stb & converter.source.eop, NextState("IDLE"))
         )
 
+        # Explicit modulo pointer width: Migen addition otherwise grows a bit.
+        next_write_pointer = Signal.like(write_pointer)
+        self.comb += next_write_pointer.eq(write_pointer + 1)
         fsm.act("SIGNAL_FRAME",
             NextState("IDLE"),
-            If((write_pointer + 1) == read_pointer_rx,
+            If(next_write_pointer == read_pointer_rx,
                 # on full buffer, overwrite only current frame
                 signal_error.i.eq(1)
             ).Else(
