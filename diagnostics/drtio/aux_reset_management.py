@@ -11,7 +11,7 @@ from aux_axi import CheckedAXILite2Wishbone
 from aux_reset_commands import AuxResetCommands
 
 class AuxResetManagement(Module):
-    BASE=0xa0020000
+    BASE=0xb0000000
     IDENTITY=0x47524d31
     def __init__(self,coordinator,*,management='management',control='control'):
         self.axi=AXILiteInterface(data_width=32,address_width=40)

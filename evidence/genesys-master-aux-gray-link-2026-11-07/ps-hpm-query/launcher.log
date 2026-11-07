@@ -1,0 +1,147 @@
+Acquired Dell heavy-build slot 2/3
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Sat Nov  7 18:49:07 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source query-dual-hpm.tcl
+# set_param general.maxThreads 4
+# create_project -force hpm_query ./project -part xczu5ev-sfvc784-1-e
+# create_bd_design hpm_query
+Wrote  : </srv/nvme-fast-1/vivado-work/genesys-dual-hpm-query-20261107-v1/project/hpm_query.srcs/sources_1/bd/hpm_query/hpm_query.bd> 
+# create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.5 zynq_ultra_ps_e_0
+# set ::artiq_variant local-rtio
+# source ./board.properties.tcl
+## if {$::artiq_variant in {local-rtio local-rtio-dma}} {
+##     set_property -dict [list \
+##         CONFIG.PSU__USE__M_AXI_GP0 {1} \
+##         CONFIG.PSU__USE__M_AXI_GP1 {0} \
+##         CONFIG.PSU__USE__M_AXI_GP2 {0} \
+##         CONFIG.PSU__MAXIGP0__DATA_WIDTH {32} \
+##         CONFIG.PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ {125} \
+##     ] [get_bd_cells zynq_ultra_ps_e_0]
+## }
+## if {$::artiq_variant eq "local-rtio-dma"} {
+##     set_property -dict [list CONFIG.PSU__USE__S_AXI_GP2 {1} \
+##         CONFIG.PSU__SAXIGP2__DATA_WIDTH {64}] [get_bd_cells zynq_ultra_ps_e_0]
+## }
+## set_property -dict [list \
+##     CONFIG.PSU__USE__IRQ0 {1} \
+##     CONFIG.PSU__TTC0__PERIPHERAL__ENABLE {1} \
+##     CONFIG.PSU_BANK_1_IO_STANDARD {LVCMOS18} \
+##     CONFIG.PSU_BANK_2_IO_STANDARD {LVCMOS18} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+## set_property -dict [list \
+##     CONFIG.PSU__PSS_REF_CLK__FREQMHZ {30} \
+##     CONFIG.PSU__CRF_APB__GDMA_REF_CTRL__SRCSEL {APLL} \
+##     CONFIG.PSU__CRF_APB__GPU_REF_CTRL__SRCSEL {IOPLL} \
+##     CONFIG.PSU__CRF_APB__TOPSW_MAIN_CTRL__SRCSEL {DPLL} \
+##     CONFIG.PSU__CRL_APB__PL0_REF_CTRL__SRCSEL {IOPLL} \
+##     CONFIG.PSU__DLL__ISUSED {1} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+## set_property -dict [list \
+##     CONFIG.PSU_DYNAMIC_DDR_CONFIG_EN {1} \
+##     CONFIG.PSU__DDR__INTERFACE__FREQMHZ {533.000} \
+##     CONFIG.PSU__DDRC__COMPONENTS {UDIMM} \
+##     CONFIG.PSU__DDRC__DEVICE_CAPACITY {4096 MBits} \
+##     CONFIG.PSU__DDRC__SPEED_BIN {DDR4_2133P} \
+##     CONFIG.PSU__DDRC__DDR4_ADDR_MAPPING {0} \
+##     CONFIG.PSU__DDRC__DDR4_T_REF_MODE {1} \
+##     CONFIG.PSU__DDRC__ROW_ADDR_COUNT {15} \
+##     CONFIG.PSU__CRF_APB__DDR_CTRL__FREQMHZ {1066} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+## set_property -dict [list \
+##     CONFIG.PSU__UART0__BAUD_RATE {115200} \
+##     CONFIG.PSU__UART0__PERIPHERAL__ENABLE {1} \
+##     CONFIG.PSU__UART0__PERIPHERAL__IO {MIO 18 .. 19} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+## set_property -dict [list \
+##     CONFIG.PSU__I2C0__PERIPHERAL__ENABLE {1} \
+##     CONFIG.PSU__I2C0__PERIPHERAL__IO {MIO 22 .. 23} \
+##     CONFIG.PSU__I2C1__PERIPHERAL__ENABLE {1} \
+##     CONFIG.PSU__I2C1__PERIPHERAL__IO {MIO 8 .. 9} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+## set_property -dict [list \
+##     CONFIG.PSU__QSPI__PERIPHERAL__ENABLE {1} \
+##     CONFIG.PSU__QSPI__PERIPHERAL__IO {MIO 0 .. 5} \
+##     CONFIG.PSU__QSPI__PERIPHERAL__MODE {Single} \
+##     CONFIG.PSU__QSPI__PERIPHERAL__DATA_MODE {x4} \
+##     CONFIG.PSU__QSPI__GRP_FBCLK__ENABLE {1} \
+##     CONFIG.PSU__QSPI__GRP_FBCLK__IO {MIO 6} \
+##     CONFIG.PSU__CRL_APB__QSPI_REF_CTRL__FREQMHZ {250} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+## set_property -dict [list \
+##     CONFIG.PSU__SD1__PERIPHERAL__ENABLE {1} \
+##     CONFIG.PSU__SD1__PERIPHERAL__IO {MIO 39 .. 51} \
+##     CONFIG.PSU__SD1__GRP_CD__ENABLE {1} \
+##     CONFIG.PSU__SD1__GRP_CD__IO {MIO 45} \
+##     CONFIG.PSU__SD1__GRP_POW__ENABLE {1} \
+##     CONFIG.PSU__SD1__GRP_POW__IO {MIO 43} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+## set_property -dict [list \
+##     CONFIG.PSU__ENET0__PERIPHERAL__ENABLE {1} \
+##     CONFIG.PSU__ENET0__PERIPHERAL__IO {MIO 26 .. 37} \
+##     CONFIG.PSU__ENET0__GRP_MDIO__ENABLE {1} \
+##     CONFIG.PSU__ENET0__GRP_MDIO__IO {MIO 76 .. 77} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+# source ./ps-dual-hpm.properties.tcl
+## set_property -dict [list \
+##     CONFIG.PSU__USE__M_AXI_GP0 {1} \
+##     CONFIG.PSU__USE__M_AXI_GP1 {1} \
+##     CONFIG.PSU__USE__M_AXI_GP2 {0} \
+##     CONFIG.PSU__MAXIGP0__DATA_WIDTH {32} \
+##     CONFIG.PSU__MAXIGP1__DATA_WIDTH {32} \
+## ] [get_bd_cells zynq_ultra_ps_e_0]
+# set out [open query.tsv w]
+# foreach key {PSU__USE__M_AXI_GP0 PSU__USE__M_AXI_GP1 PSU__MAXIGP0__DATA_WIDTH PSU__MAXIGP1__DATA_WIDTH} {
+#     puts $out "CONFIG\t$key\t[get_property CONFIG.$key [get_bd_cells zynq_ultra_ps_e_0]]"
+# }
+# foreach port {M_AXI_HPM0_FPD M_AXI_HPM1_FPD} {
+#     set pin [get_bd_intf_pins zynq_ultra_ps_e_0/$port]
+#     if {[llength $pin] != 1} {error "Missing interface $port"}
+#     foreach property [lsort [list_property $pin]] {
+#         if {[string match CONFIG.* $property]} {
+#             puts $out "INTERFACE\t$port\t$property\t[get_property $property $pin]"
+#         }
+#     }
+# }
+# foreach name {maxihpm0_fpd_aclk maxihpm1_fpd_aclk} {
+#     set pin [get_bd_pins zynq_ultra_ps_e_0/$name]
+#     if {[llength $pin] != 1} {error "Missing clock $name"}
+#     puts $out "CLOCK\t$name\t[get_property DIR $pin]\t[get_property TYPE $pin]"
+# }
+# foreach index {0 1} {
+#     create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 probe$index
+#     set_property -dict [list CONFIG.DATA_WIDTH {32} CONFIG.SINGLE_PORT_BRAM {1}] [get_bd_cells probe$index]
+#     connect_bd_intf_net [get_bd_intf_pins zynq_ultra_ps_e_0/M_AXI_HPM${index}_FPD] [get_bd_intf_pins probe$index/S_AXI]
+# }
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] hpm_query_probe0_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] hpm_query_probe0_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] hpm_query_probe0_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] hpm_query_probe0_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] hpm_query_probe1_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] hpm_query_probe1_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] hpm_query_probe1_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] hpm_query_probe1_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+# assign_bd_address
+INFO: [BD 41-3093] Triggering Legacy Auto Assign Algorithm
+Slave segment '/probe0/S_AXI/Mem0' is being assigned into address space '/zynq_ultra_ps_e_0/Data' at <0xA000_0000 [ 8K ]>.
+Slave segment '/probe1/S_AXI/Mem0' is being assigned into address space '/zynq_ultra_ps_e_0/Data' at <0xB000_0000 [ 8K ]>.
+# foreach segment [get_bd_addr_segs -hierarchical] {
+#     puts $out "SEGMENT\t$segment\t[get_property OFFSET $segment]\t[get_property RANGE $segment]"
+# }
+# close $out
+# save_bd_design
+Wrote  : </srv/nvme-fast-1/vivado-work/genesys-dual-hpm-query-20261107-v1/project/hpm_query.srcs/sources_1/bd/hpm_query/hpm_query.bd> 
+# write_bd_tcl -force exported-bd.tcl
+INFO: [BD 5-148] Tcl file written out </srv/nvme-fast-1/vivado-work/genesys-dual-hpm-query-20261107-v1/exported-bd.tcl>.
+
+CRITICAL WARNING: [BD 5-339] The block design <hpm_query> has not been validated, therefore, a block design created using this Tcl file
+</srv/nvme-fast-1/vivado-work/genesys-dual-hpm-query-20261107-v1/exported-bd.tcl> may result in errors during validation.
+# puts "DUAL_HPM_QUERY_COMPLETE"
+DUAL_HPM_QUERY_COMPLETE
+INFO: [Common 17-206] Exiting Vivado at Sat Nov  7 18:49:17 2026...

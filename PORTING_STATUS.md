@@ -1,3 +1,13 @@
+2026-11-07 DellPSdualHPMquery PASS underbuildslot, no synthesis/HW.
+ActualIPGP0/1width32/address40/ID16, bothHPMclockinputs found. Connectedprobe
+addressassign HPM0A0000000/HPM1B0000000, managementBASE correctedB0000000
+(previousA0020000superseded); MMIOregressionPASS0.086s. Rawquery/export/log
+fetched/SHA. BDexplicitlyUNVALIDATEDwarning, interfacefrequency100MHzmetadata
+notfinalclockqualification; scalarHDLexport/helperpending. NoPSdeployedconfig
+change. Nextsafe validateddualHPMwrapper/export onDell thenclock/resetmapping.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/ps-hpm-query/report.json.
+
 2026-11-07 independentmanagementHPM sourcecandidate prepared. CurrentlocalRTIO
 PSproperties GP0=1 GP1/2=0,GP0width32; diagconnectsHPM0. Separateoverlay enables
 GP1width32 whilepreservingGP0; strictcandidateHPM1pinhelper validatesdirection/

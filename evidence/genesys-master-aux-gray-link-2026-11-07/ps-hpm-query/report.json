@@ -1,0 +1,58 @@
+{
+  "status": "DELL_PS_IP_INTERFACE_AND_CONNECTED_ADDRESS_QUERY_PASS_NOT_BD_VALIDATED",
+  "job": "genesys-dual-hpm-query-20261107-v1",
+  "shared_slot": true,
+  "part": "xczu5ev-sfvc784-1-e",
+  "interfaces": {
+    "M_AXI_HPM0_FPD": {
+      "CONFIG.DATA_WIDTH": "32",
+      "CONFIG.ADDR_WIDTH": "40",
+      "CONFIG.ID_WIDTH": "16"
+    },
+    "M_AXI_HPM1_FPD": {
+      "CONFIG.DATA_WIDTH": "32",
+      "CONFIG.ADDR_WIDTH": "40",
+      "CONFIG.ID_WIDTH": "16"
+    }
+  },
+  "clock_inputs": [
+    "maxihpm0_fpd_aclk",
+    "maxihpm1_fpd_aclk"
+  ],
+  "probe_address_segments": {
+    "/probe0/S_AXI/Mem0": [
+      "",
+      "0x00001000"
+    ],
+    "/probe1/S_AXI/Mem0": [
+      "",
+      "0x00001000"
+    ],
+    "/zynq_ultra_ps_e_0/Data/SEG_probe0_Mem0": [
+      "0x00A0000000",
+      "0x0000002000"
+    ],
+    "/zynq_ultra_ps_e_0/Data/SEG_probe1_Mem0": [
+      "0x00B0000000",
+      "0x0000002000"
+    ]
+  },
+  "management_base": "0xb0000000",
+  "supersedes_provisional": "0xa0020000",
+  "management_regression": "PASS1test0.086s at new base",
+  "limits": [
+    "BD has explicit unvalidated-design critical warning; no validate/synthesis/implementation/bitstream",
+    "Clock interface frequency metadata100MHz not measured or final125MHz clock contract",
+    "Probe BRAM controllers only address-discovery scaffolding",
+    "Actual scalar HDL export/pin helper not yet qualified",
+    "No deployed PS config or hardware changes"
+  ],
+  "files_sha256": {
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-query/launcher.log": "71985e9c19380796f430334766dd1ffaa38b153f1cf1610ed903a8c9e88694a2",
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-query/query.tsv": "e6d1de81cec842feec1ff7bdd3efb1827f70beb3a173e2408839d082ace53ad4",
+    "evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-query/exported-bd.tcl": "09b1d75f3f2804fea05e4e6515147d70d1f4d044c44780c4012e39cdce4a6076",
+    "diagnostics/drtio/role-reversal/query-dual-hpm.tcl": "4eb02af3083daf47c7a170927a6f452e8938a5e02823aec0b7f290446243d660",
+    "diagnostics/drtio/aux_reset_management.py": "b54fb45d47c448b0f0d2bc4f6cb757bbf9d8b336ef90efdc259fc1ba2b33929a"
+  },
+  "hardware_accessed": false
+}

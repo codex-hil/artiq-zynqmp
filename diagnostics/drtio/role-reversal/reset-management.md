@@ -2,7 +2,7 @@
 
 The management clock and registers must remain live while PS PL ingress, master,
 RX and RTIO target domains reset. This is a separate AXI-Lite interface at
-`0xa0020000`; the real parent AXI address decoder is not implemented yet.
+`0xb0000000`; the real parent AXI address decoder is not implemented yet.
 It must bypass the target admission gate and target reset. Address identity
 alone does not establish that a deployed bitstream contains this ABI.
 
@@ -38,7 +38,9 @@ blocking a later management reset write. Independent status reads do not solve
 reset-write reachability. Independent PS ingress or an explicitly qualified
 transaction-abort protocol is required; neither has been implemented yet.
 
-Independent HPM1 is now a source-only candidate. Current platform disables GP1.
-The management base `0xa0020000` is provisional: its reachability through HPM1
-must be established from actual PS IP address segments before integration.
-Synthetic exported-pin tests do not prove actual IP port names or widths.
+Current deployed platform still disables GP1. The isolated Dell Vivado PS IP
+query enabled GP1 and reported HPM1 AXI32/address40/ID16 with a separate clock
+input. Its connected address probe was assigned `0xb0000000` (HPM0 probe:
+`0xa0000000`). The former management base `0xa0020000` is superseded.
+This is IP/address inspection, not validated BD, synthesized wrapper or board
+proof. Actual scalar exported-pin helper integration remains to be verified.
