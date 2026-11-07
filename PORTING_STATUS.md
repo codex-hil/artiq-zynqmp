@@ -1,3 +1,13 @@
+2026-11-07 ring reset stop/restart matrix PASS suite7tests0.194s. Fourreset
+cases: SYSstopped, RXstopped, bothstopped SYSfirst and RXfirst restart. Independent
+control domain keeps test running; actual scheduled edges suppressed/counted
+perdomain. Reset helduntilbothdomainsrestart. Retained staleSRAMnotpublished;
+freshwordexact/consumedonce/finalpointers1 each. No earlyrelease/onesidedreset
+proof, no physical asyncreset/metastability/timing/BRAM qualification.
+Nextsafe nativeAUXmultiwordpublication/overflow semantics overlay review.
+NoHW/leases/program; maintenancehold retained. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/ring-reset-matrix.json.
+
 2026-11-07 ring queued-data/stopped-reader reset model PASS suite6tests0.138s.
 Two wordsqueued before actualSYS schedulededges suppressed. Bothresets asserted
 stopped, heldthroughrestart; staleSRAMretained but present0, freshslot0wordexact

@@ -67,12 +67,23 @@ class RingTests(unittest.TestCase):
                        clocks={'rtio_rx': 8, 'sys': (22, 3)})
 
     def test_queued_memory_reset_with_reader_clock_stopped(self):
+        self._reset_case(('sys',), ('sys',))
+
+    def test_writer_stop_and_restart_matrix(self):
+        for stopped, order in [(('rtio_rx',), ('rtio_rx',)),
+                               (('sys', 'rtio_rx'), ('sys', 'rtio_rx')),
+                               (('sys', 'rtio_rx'), ('rtio_rx', 'sys'))]:
+            with self.subTest(stopped=stopped, restart=order):
+                self._reset_case(stopped, order)
+
+    def _reset_case(self, stopped, restart_order):
         from migen.sim import Simulator
         top = Module()
         top.clock_domains.cd_sys = ClockDomain('sys')
         top.clock_domains.cd_rtio_rx = ClockDomain('rtio_rx')
         top.submodules.ring = ring = AuxGrayRingModel()
-        state = {'stop': False, 'suppressed': 0}
+        top.clock_domains.cd_control = ClockDomain('control')
+        state = {'stopped': set(), 'suppressed': {cd: 0 for cd in stopped}}
         def test():
             for value in (0x11111111, 0x22222222):
                 yield ring.write_data.eq(value)
@@ -83,10 +94,11 @@ class RingTests(unittest.TestCase):
             for _ in range(20):
                 yield
             self.assertEqual((yield ring.present), 1)
-            state['stop'] = True
+            state['stopped'] = set(stopped)
             for _ in range(20):
                 yield
-            self.assertGreater(state['suppressed'], 0)
+            for cd in stopped:
+                self.assertGreater(state['suppressed'][cd], 0)
             # Admission disabled and both pointer owners reset. Memory is retained.
             yield ring.put.eq(0)
             yield ring.consume.eq(0)
@@ -94,8 +106,11 @@ class RingTests(unittest.TestCase):
             yield top.cd_rtio_rx.rst.eq(1)
             for _ in range(12):
                 yield
-            state['stop'] = False
-            # Functional reset remains asserted across actual resumed SYS edges.
+            for cd in restart_order:
+                state['stopped'].remove(cd)
+                for _ in range(16):
+                    yield
+            # Reset is held until both domains have resumed; no early release.
             for _ in range(20):
                 yield
             yield top.cd_sys.rst.eq(0)
@@ -131,15 +146,15 @@ class RingTests(unittest.TestCase):
         memory_model.transform_fragment(None, fragment)
         for word in memory_model.replacements[ring.memory]:
             word.reset_less = True
-        with Simulator(fragment, {'rtio_rx': test()},
-                       clocks={'rtio_rx': 8, 'sys': (22, 3)}) as sim:
+        with Simulator(fragment, {'control': test()},
+                       clocks={'control': 8, 'rtio_rx': 8, 'sys': (22, 3)}) as sim:
             original_tick = sim.time.tick
             def tick():
                 dt, rising, falling = original_tick()
-                if state['stop']:
-                    state['suppressed'] += int('sys' in rising)
-                    rising.discard('sys')
-                    falling.discard('sys')
+                for cd in state['stopped']:
+                    state['suppressed'][cd] += int(cd in rising)
+                    rising.discard(cd)
+                    falling.discard(cd)
                 return dt, rising, falling
             sim.time.tick = tick
             sim.run()

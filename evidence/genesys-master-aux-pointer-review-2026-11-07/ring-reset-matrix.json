@@ -1,0 +1,56 @@
+{
+  "status": "SEVEN_MODEL_TESTS_PASS_FOUR_RESET_CASES",
+  "suite_tests": 7,
+  "reset_cases": [
+    {
+      "stopped": [
+        "sys"
+      ],
+      "restart": [
+        "sys"
+      ]
+    },
+    {
+      "stopped": [
+        "rtio_rx"
+      ],
+      "restart": [
+        "rtio_rx"
+      ]
+    },
+    {
+      "stopped": [
+        "sys",
+        "rtio_rx"
+      ],
+      "restart": [
+        "sys",
+        "rtio_rx"
+      ]
+    },
+    {
+      "stopped": [
+        "sys",
+        "rtio_rx"
+      ],
+      "restart": [
+        "rtio_rx",
+        "sys"
+      ]
+    }
+  ],
+  "method": "Independent control domain continues while test-local scheduler suppresses actual selected domain edges; per-domain suppressed edge counters asserted positive. Both resets held until all domains restart.",
+  "checks": [
+    "Retained stale SRAM not published after reset",
+    "Fresh exact word published and consumed once",
+    "Writer and reader final pointers both1"
+  ],
+  "limits": [
+    "Functional reset model, no asynchronous assertion/release timing proof",
+    "No one-sided reset or reset release with required clock still stopped authorized",
+    "One-word slots not native AUX multiword packets",
+    "Physical skew/timing/BRAM inference unresolved"
+  ],
+  "test_sha256": "44b3facc6c6e96970aa1bc28f92f6b1c44a70f517d0c8d98a1b57d32596dc1a9",
+  "hardware_accessed": false
+}
