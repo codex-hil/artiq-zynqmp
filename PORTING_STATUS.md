@@ -1,3 +1,15 @@
+2026-11-07 PS/master AXI-Lite CDC candidate implemented in master_ps_cdc.py.
+Five maintained LiteX stream CDC FIFOs depth4 explicitly request common reset;
+response directions reversed. Constructor rejects equal declared clocks, non32bit
+data, address truncation and non-rw interfaces. Two construction tests PASS
+(0.070s), verifying two reset synchronizers/private domains per channel and four
+invalid configurations refused. These are NOT dynamic CDC/reset/clock-stop tests.
+Caller must coordinate requester, both external domain resets and target reset,
+abandon outstanding transactions before release; committed writes cannot roll
+back and unacknowledged outcomes stay unknown. No automatic timeout/retry.
+Nextsafe dynamic unequal-clock/backpressure/actual stopped-edge/reset tests.
+No HW/lease/reset/programming; existing maintenance hold preserved.
+
 2026-11-07 PS/master CDC source-contract review complete, implementation pending.
 Pinned LiteX AXILiteClockDomainCrossing creates five independent channel FIFOs;
 all omit with_common_rst, whose stream default is False. Stock wrapper alone
