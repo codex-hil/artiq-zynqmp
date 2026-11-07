@@ -1,0 +1,28 @@
+{
+  "status": "SOURCE_CONTRACT_REVIEW_PASS_NOT_CDC_QUALIFIED",
+  "sources": {
+    "/srv/codex-hil-data/artiq-zynqmp/reference/litex/litex/soc/interconnect/axi/axi_lite.py": "5dae396da352eb0b1365ee03a08f6e23735abd537bdb564f36553f1e2c835260",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/litex/litex/soc/interconnect/stream.py": "7aafde83b5cd9e791b7a65bf65c983f4f2eb622513ba841063b7888929659eb0"
+  },
+  "checks": {
+    "axi_lite_independent_channel_fifos": 5,
+    "stream_common_reset_default": false,
+    "axi_wrapper_requests_common_reset": false
+  },
+  "decision": "Do not adopt stock wrapper as a qualified reset boundary without an external coordinated reset contract.",
+  "required_tests": [
+    "Unequal PS/master clocks, independent AW/W acceptance and response backpressure",
+    "Stop actual destination clock edges; queued request must not fabricate a response",
+    "Common asynchronous reset while destination clock is stopped; no stale request after restart",
+    "Reset after target accepted a write: outcome remains unknown, no automatic retry",
+    "Fresh transaction after coordinated reset and target reinitialization"
+  ],
+  "simulation_requirement": "Migen TimeManager schedules domain edges independently of combinational clock assignments; suppress actual scheduled edges or use an HDL simulator. Ready-low is not clock-stop evidence.",
+  "other_gates": [
+    "Native AUX binary RX pointer CDC remains unqualified",
+    "Board reset release timing and physical CDC constraints remain unqualified"
+  ],
+  "hardware_accessed": false,
+  "implementation": "NOT_IMPLEMENTED",
+  "dynamic_tests": "NOT_RUN"
+}

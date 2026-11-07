@@ -26,11 +26,11 @@
     },
     {
       "task": "Genesys native DRTIOMaster/controller plus AUX CSR/SRAM and link resets",
-      "status": "NOT_IMPLEMENTED"
+      "status": "ISOLATED_MASTER_AND_AUX_SIMULATIONS_PASS; PS CDC/reset/top integration pending"
     },
     {
       "task": "Genesys kernel+DMA CRI routing between local and remote destinations",
-      "status": "NOT_IMPLEMENTED"
+      "status": "ISOLATED_ROUTING_SIMULATIONS_PASS; real DMA/top integration pending"
     },
     {
       "task": "TSC width/time-unit reconciliation",
@@ -88,5 +88,11 @@
     "evidence": "../../../evidence/genesys-master-aux-offline-2026-11-07/report.json",
     "receive_pointer_cdc": "REVIEW_REQUIRED_BINARY_POINTERS_NOT_QUALIFIED",
     "ps_cdc": "NOT_IMPLEMENTED"
+  },
+  "ps_master_cdc_review": {
+    "status": "SOURCE_CONTRACT_REVIEW_PASS_IMPLEMENTATION_PENDING",
+    "evidence": "../../../evidence/genesys-master-cdc-review-2026-11-07/report.json",
+    "stock_wrapper_common_reset": false,
+    "clock_stop_dynamic_test": "NOT_RUN"
   }
 }

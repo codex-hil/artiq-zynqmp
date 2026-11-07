@@ -1,3 +1,15 @@
+2026-11-07 PS/master CDC source-contract review complete, implementation pending.
+Pinned LiteX AXILiteClockDomainCrossing creates five independent channel FIFOs;
+all omit with_common_rst, whose stream default is False. Stock wrapper alone
+is not accepted as a qualified reset boundary. Reproducer review_ps_cdc.py
+checks actual AST/default/calls and records SHA256 source pins. Dynamic reset,
+clock-stop and stale-commit tests NOT_RUN. Migen schedules domain edges; merely
+gating a combinational clock signal or lowering ready is not clock-stop proof.
+Next implement coordinated bridge/target reset and test actual stopped edges,
+including unknown write outcome after commit; no automatic retry. Native AUX
+binary RX-pointer CDC remains a separate gate. No HW/leases/reset/programming.
+Evidence evidence/genesys-master-cdc-review-2026-11-07/report.json.
+
 2026-11-07 reversed roles same-link AUX candidate PASS4modeltests (3main111.144s
 +phase5.875s). Actual upstream AUXcontroller attached to existing native master
 link (no duplicateLinkLayer), satellite nativeAUX peer.9packets/direction sizes
