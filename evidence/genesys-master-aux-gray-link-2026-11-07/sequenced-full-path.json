@@ -1,0 +1,30 @@
+{
+  "status": "SEQUENCED_FULL_PATH_ACTIVE_AUX_RESET_PASS_PLUS_TWO_AXI_GATE_TESTS",
+  "fullpath_seconds": 125.554,
+  "gate_tests": 2,
+  "gate_seconds": 0.014,
+  "checks": [
+    "Independent10ns control domain, PS8ns/master14ns",
+    "Reset release outputs distributed to5targetdomains",
+    "Ready acknowledgements gate admission synchronized toPS",
+    "All5AXIchannels gate before mapping",
+    "Startup and active64wordabort require fresh abandonment then allready",
+    "Three fresh1/3/17word requestreply pairs exact/error0/finalempty"
+  ],
+  "validation_note": "Only constructor interface-width refusal was added to gate while fullpath process was running; datapath unchanged; added refusal and gate behavior separately tested afterward",
+  "limits": [
+    "Control request/abandonment driven by testbench; real software/control input CDC not implemented",
+    "No outstanding AXI completion during reset",
+    "Fullpath clocks live; standalone stopped-domain test separate",
+    "No physical async reset/Gray bounds/BRAM/board qualification",
+    "No clock-stop watchdog or SRAM retention claim in fullpath"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_axi_admission.py": "102b8a3244ce1bbf6a0efe32e92a5ac1f4c9bee6360a11e43c7deb3ea7d26f13",
+    "diagnostics/drtio/test_master_axi_admission.py": "f1ac38bb3adedec5e80c532ae6f10f132c27f4dd699e90841e7e184d994d5a10",
+    "diagnostics/drtio/test_master_aux_axi_link.py": "853d1706ad81a56ca690bd9cdc366cfc513b75abc4f39baf3a17147a636984f9",
+    "diagnostics/drtio/aux_reset_control.py": "67c5afcf2d9862b802deebba0c8c38544529d2db27a2deafe049144553f73e6c",
+    "diagnostics/drtio/aux_reset_domains.py": "42be921f51ddc2e3b90d361398e8308ad29d3600615109cf0ace626b4791ad34"
+  },
+  "hardware_accessed": false
+}

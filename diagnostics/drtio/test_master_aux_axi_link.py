@@ -12,6 +12,7 @@ from aux_controller_gray import GrayAuxController
 
 class AXILinkTests(unittest.TestCase):
     active_reset=False
+    sequenced=False
     def test_ps_request_satellite_reply(self):
         d=Pair(now64=True)
         d.clock_domains.cd_ps=ClockDomain('ps')
@@ -22,7 +23,26 @@ class AXILinkTests(unittest.TestCase):
         d.submodules.aux=GenesysMasterAux(d.master,controller_type=GrayAuxController)
         d.submodules.peer=GrayAuxController(d.satellite.link_layer)
         d.submodules.csr=GenesysMasterCSR(d.time,d.ki,d.master,d.routing,aux=d.aux,ps_clock='ps')
-        m=AXIMaster(d.csr.axi)
+        if self.sequenced:
+            from migen import ClockDomainsRenamer, Signal
+            from migen.genlib.cdc import MultiReg
+            from aux_reset_control import AuxResetControl
+            from aux_reset_domains import AuxResetDomains
+            from master_axi_admission import MasterAXIAdmission
+            d.clock_domains.cd_control=ClockDomain('control')
+            d.submodules.reset_control=c=ClockDomainsRenamer('control')(AuxResetControl(5))
+            d.submodules.reset_domains=r=AuxResetDomains(
+                ('ps','sys','rtio_rx','rio','rio_phy'),control='control')
+            d.comb += [r.request.eq(c.reset),c.domain_ready.eq(r.ready)]
+            for index,name in enumerate(('ps','sys','rtio_rx','rio','rio_phy')):
+                d.comb += getattr(d,'cd_'+name).rst.eq(r.reset_out[index])
+            admitted_ps=Signal()
+            d.specials+=MultiReg(c.admit,admitted_ps,'ps')
+            d.submodules.admission=g=MasterAXIAdmission(d.csr.axi)
+            d.comb += g.enable.eq(admitted_ps & ~r.reset_out[0])
+            m=AXIMaster(g.axi)
+        else:
+            m=AXIMaster(d.csr.axi)
         regs=d.csr.registers
         addr=lambda name:regs['aux_'+name]['address']
         packets=[[0x12340000+i*256+j for j in range(size)] for i,size in enumerate((1,3,17))]
@@ -58,7 +78,20 @@ class AXILinkTests(unittest.TestCase):
                                   (yield d.satellite.link_layer.tx_aux_frame)):
                     done['overlap']=True
                 yield
+        def release():
+            yield c.request.eq(0)
+            yield c.requester_abandoned.eq(0)
+            for _ in range(12):yield
+            yield c.requester_abandoned.eq(1)
+            for _ in range(300):
+                if (yield g.enable):return
+                yield
+            self.fail('Sequenced reset failed to admit PS')
         def requester():
+            if self.sequenced:
+                self.assertEqual((yield g.enable),0)
+                for _ in range(24):yield
+                yield from release()
             for _ in range(80):yield
             if self.active_reset:
                 # Trigger a long frame; AXI B is already accepted before reset.
@@ -72,10 +105,17 @@ class AXILinkTests(unittest.TestCase):
                 for _ in range(8):yield
                 self.assertEqual((yield d.master.link_layer.tx_aux_frame),1)
                 # Whole modeled endpoint/control domains, input clocks remain live.
-                domains=[d.cd_ps,d.cd_sys,d.cd_rtio_rx,d.cd_rio,d.cd_rio_phy]
-                for domain in domains:yield domain.rst.eq(1)
-                for _ in range(40):yield
-                for domain in domains:yield domain.rst.eq(0)
+                if self.sequenced:
+                    yield c.request.eq(1)
+                    for _ in range(40):yield
+                    self.assertEqual((yield g.enable),0)
+                    self.assertEqual((yield r.ready),0)
+                    yield from release()
+                else:
+                    domains=[d.cd_ps,d.cd_sys,d.cd_rtio_rx,d.cd_rio,d.cd_rio_phy]
+                    for domain in domains:yield domain.rst.eq(1)
+                    for _ in range(40):yield
+                    for domain in domains:yield domain.rst.eq(0)
                 for _ in range(100):yield
                 self.assertEqual((yield from m.read(addr('aux_tx'))),0)
                 self.assertEqual((yield from m.read(addr('aux_tx_length'))),0)
@@ -103,6 +143,10 @@ class AXILinkTests(unittest.TestCase):
         for name,crossing in d.csr.ps_cdc.crossings.items():
             periods=(14,8) if name in ('b','r') else (8,14)
             for domain,period in zip(crossing._fragment.clock_domains,periods):clocks[domain.name]=period
+        if self.sequenced:
+            clocks['control']=10
+            for name in ('ps','sys','rtio_rx','rio','rio_phy'):
+                clocks['aux_release_'+name]=8 if name=='ps' else 14
         run_simulation(d,{'ps':requester(),'sys':[peer(),monitor()]},clocks,
                        special_overrides={AsyncResetSynchronizer:FunctionalReset})
         self.assertEqual(done['peer'],3)
@@ -110,5 +154,8 @@ class AXILinkTests(unittest.TestCase):
 
 class ActiveResetAXILinkTests(AXILinkTests):
     active_reset=True
+
+class SequencedResetAXILinkTests(ActiveResetAXILinkTests):
+    sequenced=True
 
 if __name__=='__main__':unittest.main()

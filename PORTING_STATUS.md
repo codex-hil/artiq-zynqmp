@@ -1,3 +1,14 @@
+2026-11-07 sequencedfullpath activeAUXreset PASS125.554s +2AXIgate tests
+0.014s. Independentcontrol10ns,PS8/master14;releaseoutputs5targetdomains,
+readyacks→admitMultiRegPS→5channelAXIgate. Startup/active64wordabort withfresh
+abandonment/allready,3freshpairs exact/error0/finalempty PASS. Constructorwidth
+refusal addedwhilefullpathrunning (datapathunchanged), checkedseparatelywithgate
+behavior afterward. Testbenchcontrolinputs/notrealPS-controlCDC, AXItriggerB
+alreadyaccepted/nooutstandingresetclaim, clockslive/noHWphysicalreset/Graybounds.
+Nextsafe synchronizedPS-controlrequest/abandonment thenoutstandingAXI outcome.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-aux-gray-link-2026-11-07/sequenced-full-path.json.
+
 2026-11-07 per-domain resetreleaseacks+control PASS4modeltests0.027s.
 Privateclock-following releasedomains/AsyncResetSynchronizer/localcounter/ready
 MultiRegtolivecontrol. ActualB/privateBedges suppressed AFTERreadyclear; Aready
