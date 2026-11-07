@@ -1,0 +1,40 @@
+{
+  "status": "STATIC_NATIVE_RX_LENGTH_BOUND_UNREACHABLE_FOR_DW32",
+  "source": "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/aux_controller.py",
+  "source_sha256": "0d648fc25f79af35f687fbf47e938d0759358d8d77e2e499e091adc6ba62e075",
+  "configuration": {
+    "link_aux_bits": 4,
+    "memory_word_bits": 32,
+    "max_packet_bytes": 1024,
+    "words_per_slot": 256
+  },
+  "counter": {
+    "unit": "converter output words",
+    "bits": 9,
+    "max_representable": 511,
+    "native_comparison": "frame_counter == max_packet (1024)",
+    "comparison_reachable": false,
+    "slot_address_bits": 8,
+    "word_index_256_address": 0
+  },
+  "publication_review": [
+    "SRAM writes precede SIGNAL_FRAME pointer publication",
+    "Full ring discards current uncommitted slot by withholding pointer advance",
+    "Payload address uses low8 word-counter bits, so word256 aliases slot offset0",
+    "EOP transition follows length-error transition in FRAME; overlay must define precedence explicitly"
+  ],
+  "next_dynamic_cases": [
+    "1020 byte packet",
+    "1024 byte packet",
+    "1028 byte packet rejected without publication",
+    "EOP at offending word",
+    "Malformed oversized frame followed by valid packet",
+    "Full ring preserves all previously published slots"
+  ],
+  "limits": [
+    "Static source/width analysis only; no malformed-frame simulation yet",
+    "No claim that current normal transmit firmware emits oversized frames",
+    "No upstream source modification or native AUX overlay adoption"
+  ],
+  "hardware_accessed": false
+}

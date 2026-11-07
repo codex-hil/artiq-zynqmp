@@ -1,3 +1,15 @@
+2026-11-07 nativeAUX packet publication/bounds staticreview: DW32 RX counter
+counts converterwords, width9/max511 yet compares frame_counter==max_packet1024
+(bytes): unreachable guard. Payload low8counterbits address256wordslot, word256
+aliasesoffset0 in current uncommittedslot. ASTpins actualexpressions/sourceSHA.
+SIGNAL_FRAME publishes after SRAMwrites; fullring withholds pointeradvance,
+so currentfree-slot writes are not automatically published. EOP NextState follows
+length-error NextState in FRAME; overlay must define rejection precedence.
+Staticanalysis only, no malformedframe execution or normalfirmware abuseclaim.
+Nextsafe native1020/1024/1028byte/EOPoverflow/recovery tests beforeoverlay.
+No upstream/HW/lease/program changes; maintenancehold retained. Evidence
+ genesys-master-aux-pointer-review-2026-11-07/packet-bounds.json.
+
 2026-11-07 ring reset stop/restart matrix PASS suite7tests0.194s. Fourreset
 cases: SYSstopped, RXstopped, bothstopped SYSfirst and RXfirst restart. Independent
 control domain keeps test running; actual scheduled edges suppressed/counted
