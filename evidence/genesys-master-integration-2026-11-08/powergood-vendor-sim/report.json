@@ -1,0 +1,32 @@
+{
+  "status": "SOURCE_AUDIT_COMPLETE_VENDOR_SIMULATION_NOT_RUN",
+  "job": "genesys-powergood-sim-20261108-v1",
+  "vendor_source_sha256": {
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v": "6823b3099a7918c5662f9a7939fcbb25ece67193fa9cd0025abad9220efe1737",
+    "synth/drtio_gth.v": "614f157843e6def80ae81b302f74ce2c8ff588a2bd13276bc32fb3bd8186507b",
+    "synth/drtio_gth_gtwizard_gthe4.v": "3846e100e4aeec356101805da14f71f66ba93c6fce242a37fa10e474c6879958",
+    "synth/drtio_gth.xdc": "a216acfce0d2fe34758fc75b3ce5cf2fb7fbebaebc102b12aa35004f928db4ae"
+  },
+  "source_findings": [
+    "Actual generated top enables C_USER_GTPOWERGOOD_DELAY_EN=1 and ties user RXRATE000/RXRATEMODE0",
+    "Vendor module uses startup RXRATE001/RXRATEMODE1, then passes user inputs when pwr_on_fsm=1",
+    "Powergood loss asynchronously clears int_pwr_on_fsm, but exported pwr_on_fsm updates only at a rising RXOUTCLKPCS edge",
+    "Consequently stopped RX clock can retain stale exported done/runtime mux selection; this is a source inference, not simulated or hardware evidence",
+    "Vendor XDC steady-case powergood Q1 describes runtime only; direct primitive RXRATE cases are not approved production constraints"
+  ],
+  "validation": {
+    "xvlog": "PASS",
+    "xelab_static_elaboration": "PASS_AFTER_CORRECTING_VERSIONED_MODULE_NAME",
+    "simulation": "NOT_RUN_GCC_MISSING",
+    "initial_attempt": "Wrong unversioned module name; preserved failure, corrected bench",
+    "tool_warning": "LIBRARY_PATH warning retained"
+  },
+  "next": "Provide an isolated GCC-equipped simulator runtime on Dell, rerun unchanged vendor module bench, then audit admission/reset dependencies against stale powergood status",
+  "limits": [
+    "No GT primitive simulation",
+    "Ideal RX clock testbench only",
+    "No physical clock, CDC, startup timing or hardware qualification",
+    "No production RTL/constraint changes"
+  ],
+  "hardware_accessed": false
+}

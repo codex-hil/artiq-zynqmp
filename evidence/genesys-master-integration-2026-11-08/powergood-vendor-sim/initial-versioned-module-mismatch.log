@@ -1,0 +1,16 @@
+Acquired Dell heavy-build slot 3/3
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-powergood-sim-20261108-v1/vendor.v" into library work
+INFO: [VRFC 10-311] analyzing module gtwizard_ultrascale_v1_7_22_gthe4_delay_powergood
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-powergood-sim-20261108-v1/tb_powergood_runtime.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_powergood_runtime
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab tb_powergood_runtime -s powergood_test 
+Multi-threading is on. Using 14 slave threads.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+    LIBRARY_PATH
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-2063] Module <gtwizard_ultrascale_v1_7_gthe4_delay_powergood> not found while processing module instance <dut> [/srv/nvme-fast-1/vivado-work/genesys-powergood-sim-20261108-v1/tb_powergood_runtime.v:11]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

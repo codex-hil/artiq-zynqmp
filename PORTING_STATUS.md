@@ -1,3 +1,13 @@
+2026-11-08 vendor powergood source audit: actual delay enabled, userRXRATE000/
+mode0; startup001/mode1. Internal FSM asynchronously clears on powergood loss,
+but exported done/mux select updates only on RX clock edge: stopped RX can retain
+stale done (SOURCE INFERENCE, not simulation/hardware proof). Original vendor RTL
+xvlog/static elaboration PASS after versioned module-name correction; simulation
+NOT_RUN because container /usr/bin/gcc absent. Raw failures retained. No runtime
+constraint adoption. Next isolated GCC simulator environment + unchanged-vendor
+bench, then reset/admission dependency audit. NoHW; maintenancehold. Evidence
+genesys-master-integration-2026-11-08/powergood-vendor-sim/report.json.
+
 2026-11-08 direct primitive RXRATE000 diagnostic reconciles RXOUTCLK/PCS to8ns,
 TX8ns, with prior selector010/powergood1 cases. No manual clock period override.
 Powergood Q case alone was insufficient in elaborated model; steady model agrees
