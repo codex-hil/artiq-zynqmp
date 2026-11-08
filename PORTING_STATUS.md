@@ -1,3 +1,12 @@
+2026-11-08 nativeencodedlinkboundary down/reopen/AUX PASS7.031s. Native
+master+satelliteUP/exact2wordAUX, masteradmitoff/resetrequest/statusoff→DOWN,
+statusrestore/requestoff/admitoff holdsDOWN64cycles, admiton→UP/exactsecond2word
+AUXslot1/error0/masterprotocol0. FixtureexplicitresetcapableSYS correction.
+Ideal8ns/raw20wires/clocksalwayslive, no GTwizardreset/clockstop/physicallock or
+AUXpointerreset claim. Nextsafe actualGTreset/status/clockinterface review and
+isolatedphysicalplatformadapter. NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-integration-2026-11-08/native-link-relock.json.
+
 2026-11-08 masterlinkboundary+integrationelaboration PASS2tests0.249s.
 GTresetrequest=coordinatorreset NOT~admit (clocksrestartbeforeadmission); permit/
 request/resetdone/clockactive/aligned singlebitMultiRegintoSYS, codec rx_ready

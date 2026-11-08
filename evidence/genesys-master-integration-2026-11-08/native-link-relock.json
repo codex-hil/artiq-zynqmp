@@ -1,0 +1,22 @@
+{
+  "status": "NATIVE_ENCODED_LINK_BOUNDARY_DOWN_REOPEN_AUX_MODEL_PASS",
+  "tests": 1,
+  "seconds": 7.031,
+  "checks": [
+    "Initial native master/satellite rx_up and exact2word AUXpacket",
+    "Masteradmitoff/requeston/statusoff yields rx_ready0/rx_upDOWN",
+    "Statusrestored/requestoff butadmitoff keeps rx_up0 for64cycles",
+    "Admiton yields nativeUP and exactsecond2word AUXpacket",
+    "Readslot0then1/error0/masterprotocolerror0"
+  ],
+  "fixture_correction": "Explicit reset-capable SYS clockdomain; implicit simulator SYS resetless rejects boundary ResetSignal",
+  "limits": [
+    "Ideal8ns clocks/raw20encoded model alwaysrunning",
+    "No actual GT reset output hook or clock stop/relock",
+    "AUX controller pointers not reset in this boundary-only test",
+    "No full newintegration PS adapter traffic in this case",
+    "Physical clock/GTstatus/Gray/reset proof pending"
+  ],
+  "test_sha256": "a411e3ddf6d28efc7b70d276119ad8c809f34c24fa882c6cf7a5e3962e86601b",
+  "hardware_accessed": false
+}
