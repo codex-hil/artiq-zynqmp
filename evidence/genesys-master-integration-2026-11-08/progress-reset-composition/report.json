@@ -1,0 +1,34 @@
+{
+  "status": "SIX_FUNCTIONAL_TESTS_PASS_TEST_COMPOSITION_ONLY",
+  "wiring": {
+    "monitor_rearm": "coordinator.reset",
+    "effective_admit": "coordinator.admit AND monitor.allowed",
+    "coordinator_request": "explicit management request ONLY; not monitor fault"
+  },
+  "checks": [
+    "High stale RX status and ready do not bypass monitor timeout",
+    "Actual RX/releaseRX scheduler edges stopped; independent control and SYS continue",
+    "Monitor fault closes effective admission and synchronized link boundary",
+    "RX restart80control cycles does not clear fault or reopen",
+    "Explicit management request resets targets and clears monitor qualification",
+    "Fresh abandonment cannot release with stale stoppedRX acknowledgement",
+    "RX restart clears acknowledgement then fresh release/progress reopen"
+  ],
+  "reason_no_fault_reset_feedback": "If fault drove reset and reset drove monitor rearm, automatic reset could clear its own sticky fault; excluded from composition",
+  "limits": [
+    "Test-local wiring only, no production module integration",
+    "Codec interface signals only; no packet or complete AXI path",
+    "FunctionalReset substitutes do not qualify physical async reset",
+    "MultiReg boundary permits synchronization delay; no immediate asynchronous packet cutoff claim",
+    "Threshold32 functional only; no real GT clock ratio/metastability/CDC timing proof"
+  ],
+  "next": "Compose effective admission with full five-channel AXI gate and independent management ingress; verify fault with outstanding response stays blocked and no implicit retry",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/test_master_progress_reset.py": "470e5ce21f6144757c1875bb657ff85b928bc677d6ce865c997e093e524ee706",
+    "diagnostics/drtio/master_rx_progress.py": "283c75edb29cbd1a8c1045d98f5c132c6668508be1cb3548848bb38cfb71e9c5",
+    "diagnostics/drtio/aux_reset_control.py": "65568e0cfa104746cd10f5f25f6a90faa7907c57efdefc6804e4d45842d32f56",
+    "diagnostics/drtio/aux_reset_domains.py": "42be921f51ddc2e3b90d361398e8308ad29d3600615109cf0ace626b4791ad34",
+    "diagnostics/drtio/master_link_boundary.py": "eaf729fcfc019fbd0ce6e865d1b3f2746e0b081c4d70e3a0056fbc4f166ed034"
+  }
+}

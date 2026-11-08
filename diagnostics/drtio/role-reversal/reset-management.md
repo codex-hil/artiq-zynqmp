@@ -97,3 +97,18 @@ remain usable; committed writes retain unknown outcome and must not be retried.
 These are requirements for offline design and review, not an implemented watchdog
 or permission to resume hardware operations. No threshold has been qualified for
 the physical link, and the existing maintenance hold remains.
+
+## Functional monitor/reset composition (2026-11-08)
+
+Test-local wiring gates admission with both coordinator admission and qualified
+RX progress. Coordinator reset rearms the monitor; only the explicit management
+request drives the coordinator request. A monitor fault does not drive reset.
+This avoids a feedback path in which a fault would trigger its own rearm and clear
+the sticky fault. No automatic retry or transaction-outcome inference is added.
+
+Stopped RX with stale high status closes effective admission. Spontaneous clock
+return leaves it closed. Explicit reset, fresh abandonment, reset-domain
+acknowledgements and fresh progress are all needed before reopening. The link
+boundary follows through its existing synchronizers, so this is not an immediate
+asynchronous packet cutoff claim. This composition is in a test fixture only.
+The complete AXI/management path and physical clock-loss behavior remain pending.

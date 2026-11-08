@@ -1,3 +1,13 @@
+2026-11-08 progressmonitor+reset/domainacks/linkboundary testcompositionPASS,
+6functionaltests inclmonitorregression. effectiveadmit=coordinatoradmit&progress;
+monitorrearm=coordinatorreset; fault DOESNOT drive reset (prevents self-clearing
+fault/rearm feedback). Stalehighstatus RXstop closesboundary, restartalone stays
+blocked, explicitrequest+freshabandonment+RXrestart+freshacks/progress reopens.
+Testlocalwiring/codecinterface/FunctionalResetonly, nofullAXI/packet/physicalproof.
+Next full5channelAXIgate+independentmanagement outstandingresponsefault test.
+No productionRTL/HW/constraints;maintenancehold. Evidence
+genesys-master-integration-2026-11-08/progress-reset-composition/report.json.
+
 2026-11-08 isolatedRXprogress monitor 5functionaltestsPASS. Singleoutstanding
 toggle challenge/echo through two MultiRegs; two completions afterrearm drains
 oneoldreply beforefreshprogress. SYScontrol8ns/RX4,8,10,14; absentstartup/actual

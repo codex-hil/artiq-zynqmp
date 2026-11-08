@@ -1,0 +1,11 @@
+test_progress_fault_blocks_until_explicit_reset_and_fresh_rx (test_master_progress_reset.ProgressResetCompositionTests.test_progress_fault_blocks_until_explicit_reset_and_fresh_rx) ... ok
+test_equal_clocks (test_master_rx_progress.ProgressTests.test_equal_clocks) ... ok
+test_fast_rx (test_master_rx_progress.ProgressTests.test_fast_rx) ... ok
+test_invalid (test_master_rx_progress.ProgressTests.test_invalid) ... ok
+test_rx_absent_at_start (test_master_rx_progress.ProgressTests.test_rx_absent_at_start) ... ok
+test_slow_rx (test_master_rx_progress.ProgressTests.test_slow_rx) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.130s
+
+OK
