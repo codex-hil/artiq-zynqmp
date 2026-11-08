@@ -1,0 +1,44 @@
+{
+  "status": "ORIGINAL_VENDOR_DIGITAL_LOGIC_SIMULATION_PASS",
+  "image": "localhost/pm12-xsim-runtime:20261104",
+  "image_id": "b7b066512d328abaf5dce280d01973e1a64c85fa46602426d015df17f36d2155",
+  "compiler": "Ubuntu GCC11.4.0",
+  "shared_container_modified": false,
+  "parameters": {
+    "C_USER_GTPOWERGOOD_DELAY_EN": 1,
+    "C_PCIE_ENABLE": 0
+  },
+  "cases": [
+    "startup001/mode1",
+    "runtime000/mode0",
+    "user-rate change passes through mux",
+    "stopped RX clock retains stale exported powergood",
+    "first resumed RX edge clears stale done",
+    "restart returns to runtime000/mode0"
+  ],
+  "prior_failures": [
+    "Original container missingGCC retained",
+    "Wrong module version retained",
+    "Standalone vendor default C_PCIE_ENABLE string FALSE selects bypass; corrected bench explicitly uses integer0 matching actual parent; initial Fatal retained"
+  ],
+  "runner_validation": "Require success marker AND reject Fatal/Error; xsim itself returned0 on initial fatal so exit code alone refused",
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/tb_powergood_runtime.v": "f0100502b26a6a51ed13c1990cd6f87795bdcb7b824607e5879365b3dff18167",
+    "diagnostics/drtio/role-reversal/run-powergood-vendor-sim.sh": "8c655ab7e4e1b33b38c5c8bb1ebaab78e75e9fdd7fd81d43da080484ff9b540d",
+    "diagnostics/drtio/master_gth_adapter.py": "52103c96db5064cb46bd5ab78896fcc4ae0791ff3fd07d277f26894161bf594e",
+    "diagnostics/drtio/master_link_boundary.py": "eaf729fcfc019fbd0ce6e865d1b3f2746e0b081c4d70e3a0056fbc4f166ed034"
+  },
+  "dependency_audit": [
+    "Adapter exposes powergood only in raw_status, not sole link readiness",
+    "Alignment reset uses request OR not rxpma OR not rxdone OR not rxactive",
+    "Boundary transports rxdone/rxactive/aligned into SYS; userclk active is not independent watchdog",
+    "No automatic clock-failure detection/recovery claim; maintenance hold remains"
+  ],
+  "limits": [
+    "Ideal input clock, vendor digital helper only; no GT analog/primitive behavior",
+    "No CDC/timing/physical qualification",
+    "Direct runtime clock cases remain diagnostic; no production constraints adopted"
+  ],
+  "next": "Audit reset/admission behavior when raw GT status remains stale during stopped RX; preserve independent management/reset path",
+  "hardware_accessed": false
+}

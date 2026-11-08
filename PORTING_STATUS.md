@@ -1,3 +1,14 @@
+2026-11-08 original vendor powergood digital helper simulation PASS on Dell,
+existing isolated GCC image reused by exact imageID; shared runtime unchanged.
+Explicit integerPCIE0 matches parent (standalone stringFALSE default bypassed;
+initial fatal retained). Startup001/runtime000/user-change/stoppedRX stale-done/
+first-edge-clear/restart PASS. Runner now requires successmarker and rejectsFatal;
+xsim exit0 alone is insufficient. Ideal clocks/helper only, noGT/physical/CDC proof.
+Adapter does not use powergood as sole readiness; rxactive is not a watchdog.
+Next reset/admission stale-status/clock-stop audit; no constraint adoption/HW,
+maintenancehold. Evidence genesys-master-integration-2026-11-08/
+powergood-vendor-sim/completed-report.json.
+
 2026-11-08 vendor powergood source audit: actual delay enabled, userRXRATE000/
 mode0; startup001/mode1. Internal FSM asynchronously clears on powergood loss,
 but exported done/mux select updates only on RX clock edge: stopped RX can retain

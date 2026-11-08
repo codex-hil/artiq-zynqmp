@@ -9,7 +9,7 @@ wire mode, done;
 integer n;
 always #2 if(ticking) clk=~clk;
 gtwizard_ultrascale_v1_7_22_gthe4_delay_powergood #(
- .C_USER_GTPOWERGOOD_DELAY_EN(1)) dut (
+ .C_USER_GTPOWERGOOD_DELAY_EN(1), .C_PCIE_ENABLE(0)) dut (
  .USER_RXPD(2'b00), .USER_GTRXRESET(1'b0), .USER_RXPMARESET(1'b0),
  .USER_RXRATE(user_rate), .USER_RXRATEMODE(1'b0),
  .GT_GTPOWERGOOD(pg), .GT_RXOUTCLKPCS(clk),
