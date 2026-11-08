@@ -1,3 +1,13 @@
+2026-11-08 progressfault/fullAXI testlocal containment/recovery PASS; production
+AXIinterruption REFUSED. Actual CSR/AUX/PSCDC+dualHPM, committedlength68/native17,
+unacceptedB thenRXschedulerstop: outergate blocks5channels, innerBVALID1 hidden,
+managementread/resetwrite live, RXrestartaloneblocked, explicitreset/freshprogress
+reopens/no staleB/fresh12PASS. Withdrawing externalBVALID before handshake/reset
+is NOT AXIprotocolqualified and outside existinggate in-flightcontract. Do not
+adopt wiring. Next stop-newrequests/drainresponse/resetcontainment states and
+partialAW/W tests. No samehungCPU/rollback/retry/physicalproof/HW;hold. Evidence
+genesys-master-integration-2026-11-08/progress-axi-fault/report.json.
+
 2026-11-08 progressmonitor+reset/domainacks/linkboundary testcompositionPASS,
 6functionaltests inclmonitorregression. effectiveadmit=coordinatoradmit&progress;
 monitorrearm=coordinatorreset; fault DOESNOT drive reset (prevents self-clearing

@@ -1,0 +1,24 @@
+{
+  "status": "TEST_LOCAL_CONTAINMENT_RECOVERY_PASS_AXI_INTERRUPTION_PROTOCOL_NOT_QUALIFIED",
+  "composition": "Existing full CSR/AUX/PS CDC target and MasterDualIngress plus test-local outer MasterAXIAdmission driven by synchronized RX progress qualification",
+  "scenario": "Commit length68/native17words; BVALID high with BREADY0; suppress RX and releaseRX edges; monitor faults while management remains live",
+  "checks": [
+    "Five channels valid/ready suppressed after fault",
+    "Inner target BVALID remains1 while externally hidden; explicitly asserted",
+    "Native length storage17 retains committed effect before reset",
+    "Independent HPM1 identity read and reset write succeed",
+    "RX restart alone keeps sticky gate closed",
+    "Explicit management abandonment/reset/fresh domainacks and progress reopen",
+    "No stale B30cycles; length reset0; fresh write12/read12 pass"
+  ],
+  "protocol_refusal": "Outer fault gate withdraws previously asserted external BVALID without BREADY or already-completed coordinated reset. Recovery/containment test is not AXI protocol signoff. Existing gate contract only admits in-flight disable with requester abandonment/reset; spontaneous fault does not establish these. Do not adopt this test wiring.",
+  "limits": [
+    "Two behavioral initiators, not same hung A53 recovery",
+    "No automatic retry, rollback or known MMIO outcome",
+    "Functional reset and ideal clocks; no physicalCDC/GT qualification",
+    "Target/control/management mapping test-local; no production changes"
+  ],
+  "next": "Design distinct stop-new-requests/drain-existing-responses/reset-containment states; preserve pending VALID until handshake or explicit reset and test AW/W partial transactions before considering adoption",
+  "hardware_accessed": false,
+  "source_sha256": "57d91171fe9d5f5e37d536bcf2b941128ebeaf6183973a2b4d060f4ddc39b384"
+}

@@ -1,0 +1,8 @@
+test_progress_fault_with_unaccepted_b_and_independent_management (test_master_progress_axi_fault.ProgressAXIFaultTests.test_progress_fault_with_unaccepted_b_and_independent_management) ... /srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 12.004s
+
+OK

@@ -112,3 +112,22 @@ acknowledgements and fresh progress are all needed before reopening. The link
 boundary follows through its existing synchronizers, so this is not an immediate
 asynchronous packet cutoff claim. This composition is in a test fixture only.
 The complete AXI/management path and physical clock-loss behavior remain pending.
+
+## Spontaneous fault during pending AXI response: adoption refused
+
+The full CSR/AUX/PS CDC test commits length68 (native17 words), leaves BVALID
+unaccepted, then stops RX clock edges. A test-local outer gate closes all five
+channels when the progress monitor faults. Independent HPM1 remains usable for
+identity reads and explicit management reset; reset/rearm allows a fresh write12.
+
+The inner pending BVALID remains asserted but the outer gate hides it. This
+withdraws an external response before its handshake or an explicit completed
+reset. It does not satisfy normal AXI VALID retention. The existing gate's
+in-flight disable contract requires requester abandonment and coordinated reset;
+a spontaneous clock fault alone establishes neither. This wiring is refused for
+production adoption even though containment and explicit recovery tests pass.
+
+Next design work must separate admission of new requests from retention/draining
+of existing responses and explicit reset containment. Partial AW-only and W-only
+transactions also require treatment. No missing response may imply rollback or
+automatic retry: the test observes the original committed register effect.
