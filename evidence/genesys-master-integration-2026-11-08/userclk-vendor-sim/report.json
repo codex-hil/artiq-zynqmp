@@ -1,0 +1,30 @@
+{
+  "status": "ORIGINAL_VENDOR_USERCLK_HELPER_AND_AMD_BUFG_GT_SIM_PASS",
+  "job": "genesys-userclk-sim-20261108-v1",
+  "image_id": "b7b066512d328abaf5dce280d01973e1a64c85fa46602426d015df17f36d2155",
+  "vendor_sha256": "b48ac114e2d5c3d22ebe584cb979061861a95be185c55ea6aa6ce9853563d963",
+  "parameters": {
+    "P_CONTENTS": 0,
+    "P_FREQ_RATIO_SOURCE_TO_USRCLK": 1,
+    "P_FREQ_RATIO_USRCLK_TO_USRCLK2": 1
+  },
+  "primitive_model": "AMD unisims_ver BUFG_GT; original helper unchanged; glbl startup allowed120ns",
+  "checks": [
+    "Running source raises active",
+    "Stopped source has no output edges for80ns but active stays high",
+    "Reset asserted while source stopped clears active without a source edge",
+    "Reset release with no source edges keeps active low",
+    "Restart produces output edges and raises active"
+  ],
+  "limits": [
+    "Behavioral ideal source and vendor primitive library, not actual GT loss-of-signal or hardware measurement",
+    "No physical reset/CDC/timing qualification",
+    "No autonomous loss detection or production RTL/constraints adopted"
+  ],
+  "next": "Develop isolated independent-control-domain clock progress monitor and sticky admission interlock candidate; test stale status, stopped/restarted RX and explicit rearm before integration",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/tb_userclk_active.v": "ee011307ef577615a5ef4b3e004c5987d5f2cc4545b891bd1f77d485ea7db10e",
+    "diagnostics/drtio/role-reversal/run-userclk-vendor-sim.sh": "43b3fb4df29f79db77b6d78b22844b74296112d4d2d8d45d9cb4aa26e217d80e"
+  }
+}

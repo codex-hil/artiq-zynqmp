@@ -1,0 +1,18 @@
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Sun Nov  8 15:12:58 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/userclk_test/xsim_script.tcl
+# xsim {userclk_test} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+USERCLK_VENDOR_RTL_PASS running stopped-stale asynchronous-reset stopped-release restart
+$finish called at time : 401 ns : File "/srv/nvme-fast-1/vivado-work/genesys-userclk-sim-20261108-v1/tb_userclk_active.v" Line 34
+exit
+INFO: xsimkernel Simulation Memory Usage: 270140 KB (Peak: 335156 KB), Simulation CPU Usage: 1300 ms
+INFO: [Common 17-206] Exiting xsim at Sun Nov  8 15:13:02 2026...

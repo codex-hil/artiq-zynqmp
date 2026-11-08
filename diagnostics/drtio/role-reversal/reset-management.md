@@ -77,3 +77,23 @@ Before hardware admission, qualify a separate clock-loss indication/interlock or
 a bounded externally managed fault protocol. The existing userclk-active signal
 is not a watchdog. Next offline work is original vendor userclk helper simulation
 with a stopped source clock. No production constraint or RTL change is adopted.
+
+## Userclk-active qualification and next candidate
+
+The original vendor RX userclk helper, using AMD's BUFG_GT simulation library at
+ratio1, retains active high when the ideal source stops. Reset clears active
+without source edges, and restart is required to set it again. This confirms the
+status is not a clock-loss watchdog; it does not qualify real GT failure behavior.
+
+The next isolated candidate must observe RX progress from the independently live
+control clock. It must begin closed, require fresh progress before admission,
+latch loss after a specified finite observation interval, and keep admission
+closed after spontaneous RX restart until explicit reset/rearm completes. CDC
+encoding, sampling aliasing, allowable clock ratios, reset epochs and timeout
+selection must be stated and tested. A monitor fault must not depend on a working
+RX edge or a CPU completing target MMIO. The independent management ingress must
+remain usable; committed writes retain unknown outcome and must not be retried.
+
+These are requirements for offline design and review, not an implemented watchdog
+or permission to resume hardware operations. No threshold has been qualified for
+the physical link, and the existing maintenance hold remains.

@@ -1,3 +1,12 @@
+2026-11-08 original vendor userclk RX helper + AMD unisims BUFG_GT sim PASS.
+Actualratio1/contents0, ideal125MHz source: active rises, staysHIGH with output
+edges stopped80ns, reset clears without source edge, release waits for restart,
+then active rises. Not a clock watchdog. Existing pinned GCCimage/sharedslot,
+no sharedruntime modification. No GT/physicalreset/CDC/timing proof. Next isolated
+independentcontrol progressmonitor/stickyadmissioninterlock with explicitrearm
+candidate; no productionadoption/HW/constraints,maintenancehold. Evidence
+genesys-master-integration-2026-11-08/userclk-vendor-sim/report.json.
+
 2026-11-08 staleRX reset/admission functional composition PASS (3tests).
 Actual coordinator+domainacks+distributedresets+boundary, SYS/control live while
 RX/releaseRX scheduleredges suppressed. Negativecontrol admits remain high with
