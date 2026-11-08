@@ -1,0 +1,449 @@
+Acquired Dell heavy-build slot 2/3
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Sun Nov  8 13:53:05 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run.tcl
+# source ./elaborate-physical-assembly.tcl
+## set_param general.maxThreads 4
+## create_project -force master_elab ./project -part xczu5ev-sfvc784-1-e
+## read_verilog [glob drtio_gth/hdl/*.v]
+## read_verilog [glob drtio_gth/synth/*.v]
+## read_verilog master_physical_candidate.v
+## synth_design -rtl -top master_physical_candidate -part xczu5ev-sfvc784-1-e
+Command: synth_design -rtl -top master_physical_candidate -part xczu5ev-sfvc784-1-e
+Starting synth_design
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 62
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2737.262 ; gain = 152.688 ; free physical = 8373 ; free virtual = 63394
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'master_physical_candidate' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:2]
+INFO: [Synth 8-3876] $readmem data file 'latency_compensation.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11054]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11134]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_1.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11146]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_2.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11158]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_3.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11170]
+INFO: [Synth 8-3876] $readmem data file 'routing_table.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11190]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:2586]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3280]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9670]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10409]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10571]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10585]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10687]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10709]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS_GTE4' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:83082]
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS_GTE4' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:83082]
+WARNING: [Synth 8-7071] port 'ODIV2' of module 'IBUFDS_GTE4' is unconnected for instance 'IBUFDS_GTE4' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10955]
+WARNING: [Synth 8-7023] instance 'IBUFDS_GTE4' of module 'IBUFDS_GTE4' has 5 connections declared, but only 4 given [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10955]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_tx.v:53]
+	Parameter P_CONTENTS bound to: 0 - type: integer 
+	Parameter P_FREQ_RATIO_SOURCE_TO_USRCLK bound to: 1 - type: integer 
+	Parameter P_FREQ_RATIO_USRCLK_TO_USRCLK2 bound to: 1 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'BUFG_GT' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2855]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG_GT' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2855]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_tx.v:53]
+WARNING: [Synth 8-7071] port 'gtwiz_userclk_tx_usrclk2_out' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' is unconnected for instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10966]
+WARNING: [Synth 8-7023] instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' has 5 connections declared, but only 4 given [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10966]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_rx.v:53]
+	Parameter P_CONTENTS bound to: 0 - type: integer 
+	Parameter P_FREQ_RATIO_SOURCE_TO_USRCLK bound to: 1 - type: integer 
+	Parameter P_FREQ_RATIO_USRCLK_TO_USRCLK2 bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_rx.v:53]
+WARNING: [Synth 8-7071] port 'gtwiz_userclk_rx_usrclk2_out' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' is unconnected for instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10977]
+WARNING: [Synth 8-7023] instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' has 5 connections declared, but only 4 given [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10977]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth.v:53]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth_gtwizard_top' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth_gtwizard_top.v:173]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth_gtwizard_gthe4' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth_gtwizard_gthe4.v:141]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth_gthe4_channel_wrapper' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth_gthe4_channel_wrapper.v:56]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_channel' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/gtwizard_ultrascale_v1_7_gthe4_channel.v:53]
+INFO: [Synth 8-6157] synthesizing module 'GTHE4_CHANNEL' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:53844]
+INFO: [Synth 8-6155] done synthesizing module 'GTHE4_CHANNEL' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:53844]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_channel' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/gtwizard_ultrascale_v1_7_gthe4_channel.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth_gthe4_channel_wrapper' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth_gthe4_channel_wrapper.v:56]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_synchronizer' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_synchronizer' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_sync.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_bit_synchronizer' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_bit_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_bit_synchronizer' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_bit_sync.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_freq_counter' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cal_freqcnt.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_freq_counter' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cal_freqcnt.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_rx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_rx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_rx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_rx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gte4_drp_arb' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gte4_drp_arb.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gte4_drp_arb' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gte4_drp_arb.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_delay_powergood' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v:53]
+INFO: [Synth 8-226] default block is never used [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v:136]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_delay_powergood' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_reset.v:53]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_reset.v:162]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_inv_synchronizer' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_inv_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_inv_synchronizer' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_inv_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_reset.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_tx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_tx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_tx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_tx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_rx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_rx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth_gtwizard_gthe4' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth_gtwizard_gthe4.v:141]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth_gtwizard_top' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth_gtwizard_top.v:173]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/synth/drtio_gth.v:53]
+WARNING: [Synth 8-7071] port 'rxresetdone_out' of module 'drtio_gth' is unconnected for instance 'drtio_gth' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10984]
+WARNING: [Synth 8-7071] port 'txresetdone_out' of module 'drtio_gth' is unconnected for instance 'drtio_gth' [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10984]
+WARNING: [Synth 8-7023] instance 'drtio_gth' of module 'drtio_gth' has 36 connections declared, but only 34 given [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10984]
+INFO: [Synth 8-6157] synthesizing module 'FDPE' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FDPE' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+INFO: [Synth 8-6155] done synthesizing module 'master_physical_candidate' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:2]
+WARNING: [Synth 8-7137] Register freq_cnt_o_reg in module gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_freq_counter has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cal_freqcnt.v:188]
+WARNING: [Synth 8-6014] Unused sequential element mask_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:1077]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_first_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6084]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_last_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6085]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_lock_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6090]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_prot_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6091]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_cache_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6092]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_qos_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6093]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_region_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6094]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_param_dest_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6096]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_param_user_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:6097]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_first_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4803]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_last_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4804]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_lock_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4809]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_prot_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4810]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_cache_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4811]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_qos_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4812]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_region_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4813]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_param_dest_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4815]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_param_user_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:4816]
+WARNING: [Synth 8-6014] Unused sequential element sync_t_lhs_self_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:8865]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_lane_dist_sequence_error_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3809]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_lane_dist_sequence_error_channel_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3810]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_maximum0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:8897]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_maximum1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:8902]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_maximum2_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:8907]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_max_level_valid_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:8912]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_max_level_valid_counter_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:8913]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record0_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9031]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record1_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9037]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record2_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9043]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record3_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9049]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_collision_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3811]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_collision_channel_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3812]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_busy_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3813]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_busy_channel_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3814]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9077]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9078]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9083]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9084]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r2_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9089]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r2_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9090]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r3_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9095]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r3_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9096]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record4_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9240]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record4_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9244]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record7_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9315]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record7_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9319]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record9_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9376]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record9_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9037]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record10_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9383]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record10_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9043]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record8_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9442]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record8_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9031]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record11_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9449]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record11_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9049]
+WARNING: [Synth 8-6014] Unused sequential element decoder1_k_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9591]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_echo_received_now0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9658]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_graycodetransfer_o_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3390]
+WARNING: [Synth 8-6014] Unused sequential element encoder6_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9875]
+WARNING: [Synth 8-6014] Unused sequential element encoder7_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9877]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_echo_sent_now0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10191]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_tx_frame_r_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10195]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_packet_cnt_tx1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:3388]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_kernel_now_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10509]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_link_layer_rx_disable_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10660]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_link_layer_tx_force_aux_zero_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10664]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_link_layer_tx_force_rt_zero_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10668]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_reset_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10672]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_underflow_margin_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10676]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_force_destination_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10680]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_destination_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10684]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_fabric_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10702]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_routes_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10706]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_aux_transmitter_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:10730]
+WARNING: [Synth 8-6014] Unused sequential element memdat_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11026]
+WARNING: [Synth 8-6014] Unused sequential element memdat_1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11063]
+WARNING: [Synth 8-6014] Unused sequential element memdat_3_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11080]
+WARNING: [Synth 8-6014] Unused sequential element memdat_5_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11097]
+WARNING: [Synth 8-6014] Unused sequential element memdat_7_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11114]
+WARNING: [Synth 8-6014] Unused sequential element memadr_8_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11199]
+WARNING: [Synth 8-6014] Unused sequential element memadr_10_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11215]
+WARNING: [Synth 8-6014] Unused sequential element memadr_12_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11231]
+WARNING: [Synth 8-6014] Unused sequential element memadr_14_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11247]
+WARNING: [Synth 8-6014] Unused sequential element memadr_16_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11263]
+WARNING: [Synth 8-6014] Unused sequential element memadr_26_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11343]
+WARNING: [Synth 8-6014] Unused sequential element memadr_28_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11359]
+WARNING: [Synth 8-6014] Unused sequential element memadr_30_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11375]
+WARNING: [Synth 8-6014] Unused sequential element memadr_32_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11391]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record1_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9112]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record1_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9113]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record3_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9180]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record3_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:9181]
+WARNING: [Synth 8-6014] Unused sequential element memadr_20_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11293]
+WARNING: [Synth 8-6014] Unused sequential element memadr_21_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11299]
+WARNING: [Synth 8-6014] Unused sequential element memadr_22_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11309]
+WARNING: [Synth 8-6014] Unused sequential element memadr_23_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11315]
+WARNING: [Synth 8-6014] Unused sequential element memadr_24_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11325]
+WARNING: [Synth 8-6014] Unused sequential element memadr_25_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11331]
+WARNING: [Synth 8-6014] Unused sequential element memadr_29_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11363]
+WARNING: [Synth 8-6014] Unused sequential element memadr_31_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-master-rxrate-runtime-20261108-v1/master_physical_candidate.v:11379]
+INFO: [Common 17-14] Message 'Synth 8-6014' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7129] Port rxdata_in[127] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[126] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[125] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[124] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[123] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[122] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[121] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[120] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[119] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[118] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[117] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[116] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[115] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[114] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[113] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[112] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[111] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[110] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[109] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[108] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[107] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[106] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[105] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[104] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[103] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[102] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[101] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[100] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[99] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[98] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[97] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[96] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[95] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[94] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[93] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[92] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[91] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[90] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[89] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[88] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[87] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[86] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[85] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[84] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[83] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[82] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[81] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[80] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[79] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[78] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[77] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[76] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[75] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[74] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[73] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[72] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[71] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[70] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[69] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[68] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[67] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[66] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[65] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[64] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[63] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[62] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[61] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[60] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[59] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[58] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[57] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[56] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[55] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[54] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[53] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[52] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[51] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[50] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[49] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[48] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[47] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[46] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[45] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[44] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[43] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[42] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[41] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[40] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[39] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[38] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[37] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[36] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[35] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[34] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[33] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[32] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[31] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[30] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[29] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[28] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2916.199 ; gain = 331.625 ; free physical = 8166 ; free virtual = 63190
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2916.199 ; gain = 331.625 ; free physical = 8166 ; free virtual = 63189
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2916.199 ; gain = 331.625 ; free physical = 8166 ; free virtual = 63189
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.14 . Memory (MB): peak = 2916.207 ; gain = 0.000 ; free physical = 8336 ; free virtual = 63360
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 2 OBUFs to IO ports without IO buffers.
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-441] Inserted BUFG_GT_SYNC drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/BUFG_GT_SYNC for BUFG_GT drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst
+INFO: [Opt 31-441] Inserted BUFG_GT_SYNC drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/BUFG_GT_SYNC_1 for BUFG_GT gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3298.688 ; gain = 0.000 ; free physical = 8233 ; free virtual = 63255
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IBUF => IBUF (IBUFCTRL, INBUF): 1 instance 
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:21 ; elapsed = 00:00:18 . Memory (MB): peak = 3298.723 ; gain = 714.148 ; free physical = 8233 ; free virtual = 63255
+77 Infos, 210 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:26 . Memory (MB): peak = 3298.723 ; gain = 1714.609 ; free physical = 8233 ; free virtual = 63255
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2647.240; main = 2647.240; forked = 0.000
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3298.691; main = 3298.691; forked = 0.000
+## set out [open unresolved.txt w]
+WARNING: [Vivado 12-180] No cells matched 'get_cells -hierarchical -filter {IS_BLACKBOX == 1}'.
+## foreach cell [get_cells -hierarchical -filter {IS_BLACKBOX == 1}] {puts $out $cell}
+## close $out
+## puts "MASTER_PHYSICAL_RTL_IP_ELABORATION_COMPLETE"
+MASTER_PHYSICAL_RTL_IP_ELABORATION_COMPLETE
+# source ./query-physical-clocks.tcl
+## proc require_one {objects label} {
+##     if {[llength $objects] != 1} {error "$label: expected1 got[llength $objects]"}
+##     return $objects
+## }
+## create_clock -name ps_management -period 8.000 [require_one [get_ports pl_clk0] ps_clock_port]
+## create_clock -name gt_reference -period 6.400 [require_one [get_ports ref_p] reference_port]
+## update_timing
+WARNING: [Timing 38-277] The instance 'drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST' has TXOUTCLKSEL pins that are not constant, so the corresponding mux will select the input(s) having the worst case (highest frequency) clock(s) for automatic derivation of generated clocks
+INFO: [Timing 38-2] Deriving generated clocks
+## set out [open clock-audit.tsv w]
+## foreach clock [get_clocks] {
+##     puts $out "CLOCK\t$clock\t[get_property PERIOD $clock]\t[get_property SOURCE_PINS $clock]"
+## }
+## foreach cell [get_cells -hierarchical -filter {REF_NAME == BUFG_GT}] {
+##     set pin [get_pins -of_objects $cell -filter {REF_PIN_NAME == O}]
+##     puts $out "BUFFER\t$cell\t[get_clocks -quiet -of_objects $pin]"
+## }
+## close $out
+## report_clocks -file clocks.rpt
+## puts "MASTER_PHY_CLOCK_QUERY_COMPLETE"
+MASTER_PHY_CLOCK_QUERY_COMPLETE
+# source ./query-runtime-gt-clocks.tcl
+## set gt [get_cells -hierarchical -filter {REF_NAME == GTHE4_CHANNEL}]
+## if {[llength $gt] != 1} {error "Expected one GT primitive"}
+## set seen {}
+## foreach pin [get_pins -of_objects $gt] {
+##     set name [get_property REF_PIN_NAME $pin]
+##     if {[regexp {^(TX|RX)OUTCLKSEL\[([0-2])\]$} $name -> direction bit]} {
+##         set value [expr {$bit == 1 ? 1 : 0}]
+##         set_case_analysis $value $pin
+##         lappend seen "$name=$value"
+##     }
+## }
+## if {[llength $seen] != 6} {error "Expected six runtime selector pins, got$seen"}
+## update_timing
+INFO: [Timing 38-2] Deriving generated clocks
+## set out [open runtime-clock-audit.tsv w]
+## puts $out "SELECTORS\t$seen"
+## foreach clock [get_clocks] {
+##     puts $out "CLOCK\t$clock\t[get_property PERIOD $clock]\t[get_property SOURCE_PINS $clock]"
+## }
+## foreach cell [get_cells -hierarchical -filter {REF_NAME == BUFG_GT}] {
+##     set pin [get_pins -of_objects $cell -filter {REF_PIN_NAME == O}]
+##     puts $out "BUFFER\t$cell\t[get_clocks -quiet -of_objects $pin]"
+## }
+## close $out
+## report_clocks -file runtime-clocks.rpt
+## puts "GT_RUNTIME_CLOCK_QUERY_COMPLETE"
+GT_RUNTIME_CLOCK_QUERY_COMPLETE
+# source ./query-rx-runtime-powergood.tcl
+## set selected {}
+## foreach cell [get_cells -hierarchical -filter {NAME =~ *pwr_on_fsm*}] {
+##     if {[regexp {(^|[/.])pwr_on_fsm_reg$} [get_property NAME $cell]]} {lappend selected $cell}
+## }
+## if {[llength $selected] != 1} {error "Expected one power-on-done register, got$selected"}
+## set pin [get_pins -of_objects $selected -filter {REF_PIN_NAME == Q}]
+## if {[llength $pin] != 1} {error "Expected one power-on-done Q pin"}
+## set_case_analysis 1 $pin
+## update_timing
+## set out [open rx-runtime-powergood.tsv w]
+## puts $out "POWERGOOD_CASE\t$pin\t1"
+## foreach clock [get_clocks] {
+##     puts $out "CLOCK\t$clock\t[get_property PERIOD $clock]\t[get_property SOURCE_PINS $clock]"
+## }
+## close $out
+## report_clocks -file rx-runtime-powergood.rpt
+## puts "RX_RUNTIME_POWERGOOD_QUERY_COMPLETE"
+RX_RUNTIME_POWERGOOD_QUERY_COMPLETE
+# source ./query-rxrate-runtime.tcl
+## set gt [get_cells -hierarchical -filter {REF_NAME == GTHE4_CHANNEL}]
+## if {[llength $gt] != 1} {error "Expected one GT primitive"}
+## set selected {}
+## foreach pin [get_pins -of_objects $gt] {
+##     if {[regexp {^RXRATE\[([0-2])\]$} [get_property REF_PIN_NAME $pin]]} {
+##         set_case_analysis 0 $pin
+##         lappend selected $pin
+##     }
+## }
+## if {[llength $selected] != 3} {error "Expected three RXRATE pins, got$selected"}
+## update_timing
+INFO: [Timing 38-2] Deriving generated clocks
+## set out [open rxrate-runtime.tsv w]
+## foreach pin $selected {
+##     set value unknown
+##     foreach property {CASE_VALUE CASE_ANALYSIS} {
+##         if {[lsearch -exact [list_property $pin] $property] >= 0} {set value [get_property $property $pin]}
+##     }
+##     puts $out "RXRATE_CASE\t$pin\t$value"
+## }
+## foreach clock [get_clocks] {
+##     puts $out "CLOCK\t$clock\t[get_property PERIOD $clock]\t[get_property SOURCE_PINS $clock]"
+## }
+## close $out
+## report_clocks -file rxrate-runtime.rpt
+## puts "RXRATE_RUNTIME_QUERY_COMPLETE"
+RXRATE_RUNTIME_QUERY_COMPLETE
+INFO: [Common 17-206] Exiting Vivado at Sun Nov  8 13:53:43 2026...

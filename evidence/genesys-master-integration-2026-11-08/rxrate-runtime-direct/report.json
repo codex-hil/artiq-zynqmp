@@ -19,5 +19,7 @@
   ],
   "next": "Review vendor RXRATE mux cone and runtime constraints for a source-justified constraint candidate, preserving startup/reset qualification gates",
   "hardware_accessed": false,
-  "source_sha256": "698ca8a235f601676b1d32c9a04eee782acdec2bfd59e08473def9aef758d8de"
+  "source_sha256": "698ca8a235f601676b1d32c9a04eee782acdec2bfd59e08473def9aef758d8de",
+  "final_run_exit_code": 0,
+  "receipt_checks": "PASS_THREE_CASE_PINS_SEVEN_CLOCKS_FOUR_GT_OUTPUTS_8NS"
 }
