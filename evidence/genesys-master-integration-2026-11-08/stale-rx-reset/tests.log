@@ -1,0 +1,8 @@
+test_no_watchdog_then_explicit_reset_blocks_until_rx_restart (test_master_stale_rx_status.StaleRXStatusTests.test_no_watchdog_then_explicit_reset_blocks_until_rx_restart) ... ok
+test_coordinator_waits_stopped_domain_and_fresh_handshake (test_aux_reset_domains.DomainResetTests.test_coordinator_waits_stopped_domain_and_fresh_handshake) ... ok
+test_invalid_domains (test_aux_reset_domains.DomainResetTests.test_invalid_domains) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.051s
+
+OK

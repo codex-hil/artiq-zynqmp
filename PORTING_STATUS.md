@@ -1,3 +1,13 @@
+2026-11-08 staleRX reset/admission functional composition PASS (3tests).
+Actual coordinator+domainacks+distributedresets+boundary, SYS/control live while
+RX/releaseRX scheduleredges suppressed. Negativecontrol admits remain high with
+stale all-ready/status: NO clockloss autodetection. Explicit request closes both;
+fresh abandonment cannot reopen until RXrestart clears ack and fresh release
+completes. Codec interface-only/FunctionalReset, no physicalasync/packet/firmware
+recovery proof. Next vendoruserclkactive stopped-source sim and independent
+clock-loss interlock requirement. No productionRTL/constraints/HW;maintenancehold.
+Evidence genesys-master-integration-2026-11-08/stale-rx-reset/report.json.
+
 2026-11-08 original vendor powergood digital helper simulation PASS on Dell,
 existing isolated GCC image reused by exact imageID; shared runtime unchanged.
 Explicit integerPCIE0 matches parent (standalone stringFALSE default bypassed;

@@ -58,3 +58,22 @@ Its finite polling does not bound a callback blocked inside real MMIO. It report
 reset/release attempts before writes, including failures after a write may have
 executed. Success still requires target reinitialization and does not clear the
 unknown outcome of prior operations. Existing direct A53 bindings are unchanged.
+
+## Stopped RX and stale status (2026-11-08)
+
+The functional composition test suppresses RX and its release-domain clock edges
+after admission opens. With ready, reset-done, active and aligned retained high,
+admission stays open. Neither the coordinator nor the link boundary detects clock
+loss. These levels cannot authorize unattended recovery or prove a live RX clock.
+
+An explicit request from the independent control clock closes admission. With the
+functional reset substitute, RX acknowledgement remains stale until RX restarts;
+fresh requester abandonment alone does not reopen the path. After restart, the
+reset acknowledgement clears and fresh release acknowledgements permit reopening.
+This verifies sequencing only. It does not qualify asynchronous reset assertion
+with a stopped physical clock, packet recovery, or recovery by a CPU hung on MMIO.
+
+Before hardware admission, qualify a separate clock-loss indication/interlock or
+a bounded externally managed fault protocol. The existing userclk-active signal
+is not a watchdog. Next offline work is original vendor userclk helper simulation
+with a stopped source clock. No production constraint or RTL change is adopted.

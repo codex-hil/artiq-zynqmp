@@ -1,0 +1,36 @@
+{
+  "status": "COORDINATED_RESET_STALE_RX_STATUS_FUNCTIONAL_MODEL_PASS_NO_AUTODETECTION",
+  "tests": 3,
+  "composition": [
+    "AuxResetControl in independent control clock",
+    "AuxResetDomains SYS/RX release acknowledgements and distributed target resets",
+    "MasterLinkBoundary native SYS with deliberately stale reset_done/clock_active/aligned"
+  ],
+  "clock_periods_ns": {
+    "control": 8,
+    "sys": 10,
+    "rx": 14
+  },
+  "stop_method": "Suppress actual scheduler rising/falling edges for RX and its private reset-release domain after OPEN; positive suppressed-edge count required",
+  "checks": [
+    "Negative control: admit/allowed remain high after32control cycles of stoppedRX with stale ready/status",
+    "Explicit live-control request closes coordinator and boundary; codec reset asserted",
+    "Fresh low/high abandonment alone cannot reopen while RX reset acknowledgement stale",
+    "Restart RX clears acknowledgement; reset/release sequence obtains fresh ready then reopens"
+  ],
+  "limits": [
+    "Codec is interface signals, not complete native link or packet transport",
+    "FunctionalReset simulator substitute models reset on edges; no physical asynchronous assertion proof",
+    "No independent clock watchdog; high rxactive/resetdone alone does not establish running RX",
+    "No AXI/MMIO firmware recovery or timeout qualification",
+    "No production RTL or constraints changed"
+  ],
+  "next": "Simulate original vendor userclk-active helper with stopped source clock and review an independent clock-loss interlock requirement before hardware admission",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/test_master_stale_rx_status.py": "3801abf1994dccee4207bc6d8fb5fb4e3e1a86f467295e7f1d8bf1237a323d21",
+    "diagnostics/drtio/aux_reset_control.py": "65568e0cfa104746cd10f5f25f6a90faa7907c57efdefc6804e4d45842d32f56",
+    "diagnostics/drtio/aux_reset_domains.py": "42be921f51ddc2e3b90d361398e8308ad29d3600615109cf0ace626b4791ad34",
+    "diagnostics/drtio/master_link_boundary.py": "eaf729fcfc019fbd0ce6e865d1b3f2746e0b081c4d70e3a0056fbc4f166ed034"
+  }
+}
