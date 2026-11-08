@@ -1,0 +1,28 @@
+{
+  "status": "TX_RUNTIME_CLOCK_MODEL_RECONCILED_RX_QUALIFICATION_STILL_REFUSED",
+  "jobs": [
+    "genesys-master-gt-params-20261108-v1",
+    "genesys-master-gt-runtime-clock-20261108-v1"
+  ],
+  "findings": [
+    "PinnedXCI TX/RXinternalUSRCLK125MHz, externalhelperratio1",
+    "Nativeuser selectorTX/RX010; CPLLcalibration dynamicTXoverride101",
+    "RTL-only priorquery omitted generatedwizardXDC runtimecaseanalysis",
+    "Diagnostic applies exactly6matchingTX/RXselectorbits010 and nothingelse",
+    "TXOUTCLK changes6.4\u21928ns, RXOUTCLK remains4ns"
+  ],
+  "primitive_receipt": "CPLL_FBDIV4/FBDIV_45=4/REFCLK_DIV1/datawidth20 captured. Some elaborated property aliases empty and hierarchical select drivers unresolved; not full driver proof.",
+  "exceptions_policy": "No fullvendorXDC import/CDCwaivers/falsepaths/manualclockoverrides. Six vendor-equivalent runtime case analyses diagnostic only, not qualified for full calibration/reset timeline.",
+  "next": "Audit remaining RX recovered-clock timing derivation/actual divider parameters/vendor model or simulation; keep physical/native clock admission blocked",
+  "sources": {
+    "diagnostics/drtio/role-reversal/query-gt-clock-parameters.tcl": "bd544e065a3452c80d35f689421e9eecfd3b1d164651b2f48ec4539fec9e33eb",
+    "diagnostics/drtio/role-reversal/query-runtime-gt-clocks.tcl": "5353ec76fac6890eeee4a92bfb5736a76a0b18bfc342a68ed33c82e9a6738071"
+  },
+  "vendor_source_pins": {
+    "drtio_gth.xci": "aaa71467ac1f6a45b6f34be02d7cc63f26e6017d474cdd3f91a3baaeb90c9e41",
+    "synth/drtio_gth.xdc": "a216acfce0d2fe34758fc75b3ce5cf2fb7fbebaebc102b12aa35004f928db4ae",
+    "synth/drtio_gth_ooc.xdc": "4bca94524211b492cb10132b66b10b443356eef7fab56ccb91c953e953456fb8",
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v": "e7f20f5da94282565a9ceaad6c7c0492dbe5224c3c4b90c80e70759a0e062864"
+  },
+  "hardware_accessed": false
+}

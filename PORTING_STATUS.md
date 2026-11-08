@@ -1,3 +1,13 @@
+2026-11-08 clockreview TXruntime model reconciled, RXqualification REFUSED.
+XCIinternalTX/RXUSRCLK125MHz/helperratio1. VendorXDC selectsTX/RX010 duringknown
+runtime; TXcalibration overrides101. OurRTLonlyelab omittedIPXDC. Diagnostic
+exact6bitruntimecases(nofullXDC/waiver/falsepath/manualclockoverride) changes
+TXOUTCLK6.4→8ns; RXstill4ns. PrimitiveCPLL4/4/refdiv1/data20 receipt, someproperty
+aliases/driverqueries incomplete—notfullnetdriverproof. NextsafeRXrecoveredclock
+model/divideraudit/vendorvalidation; calibrationtimeline/physical proof pending.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-integration-2026-11-08/gt-runtime-clock-review/report.json.
+
 2026-11-08 clockqualification REFUSED derivedperiodmismatch. ActualcopiedXCI
 ref156.25MHz vsfreerun125, line2.5/raw20; prior125referenceassumption rejected,
 strictprofilechecker/fourmutants refuse. DellRTLclockquery rootPS8ns/ref6.4ns,
