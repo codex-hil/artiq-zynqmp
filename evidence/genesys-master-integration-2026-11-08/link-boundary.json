@@ -1,0 +1,27 @@
+{
+  "status": "LINK_RESET_ADMISSION_BOUNDARY_AND_INTEGRATION_ELABORATION_TWO_TESTS_PASS",
+  "tests": 2,
+  "seconds": 0.249,
+  "checks": [
+    "GT reset request follows coordinator reset, not inverse admission",
+    "Reset deasserts while admission still blocked, permitting clock restart",
+    "Admit/request and3rawstatusbits synchronize into nativeSYS",
+    "Codec rx_ready requires permit/resetdone/clockactive/aligned",
+    "Individualstatusloss/request/reset inhibitsready",
+    "Optional integration binds exactsamecodecchannel and exposesGTresetrequest"
+  ],
+  "limits": [
+    "gt_reset_request not connected to physical wizard controller yet",
+    "clock_active externalqualifiedinput, not a watchdog",
+    "No raw20 peer traffic or physical GTH reset/clockloss proof",
+    "Singlebit statuses independentlysampled; no atomicstatussnapshot claim",
+    "No physicalCDC/resetassertion/release qualification"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/master_link_boundary.py": "eaf729fcfc019fbd0ce6e865d1b3f2746e0b081c4d70e3a0056fbc4f166ed034",
+    "diagnostics/drtio/test_master_link_boundary.py": "5465a535a1de1dbc58260385da714d3773a7137740279b7e6e9aa42e444eed8c",
+    "diagnostics/drtio/master_integration.py": "8811912ccacf14fd1adfcb2de1e374e82dd29d5acbcb4eabfc8775885479c121",
+    "diagnostics/drtio/test_master_integration.py": "1c96ea775a582ef5c62243fb6489376814f6cdcdedf96ecb51c38b67b2e25e0b"
+  },
+  "hardware_accessed": false
+}

@@ -19,7 +19,11 @@ from master_dual_ingress import MasterDualIngress
 from ps_management_hpm import connect_target_hpm0,connect_management_hpm1
 
 class GenesysMasterIntegration(Module):
-    def __init__(self,ps,channel,tx_clock,rx_clock):
+    def __init__(self,ps,channel,tx_clock,rx_clock,*,codec=None,link_status=None):
+        if (codec is None)!=(link_status is None):
+            raise ValueError('Codec and physical status must be supplied together')
+        if codec is not None and codec.channel is not channel:
+            raise ValueError('Link boundary must own the same encoded channel')
         for name in ('management','control','ps','sys','rtio_rx','rio','rio_phy'):
             setattr(self.clock_domains,'cd_'+name,ClockDomain(name))
         pl_clock=ps.outputs['pl_clk0']
@@ -46,5 +50,10 @@ class GenesysMasterIntegration(Module):
         connect_target_hpm0(self,ps,g.target_axi,pl_clock)
         connect_management_hpm1(self,ps,g.management_axi,pl_clock)
         self.admit=g.admit
+        self.gt_reset_request=g.coordinator.reset
+        if codec is not None:
+            from master_link_boundary import MasterLinkBoundary
+            self.submodules.link_boundary=MasterLinkBoundary(codec,g.admit,
+                g.coordinator.reset,link_status)
         # Parent must gate incoming packet admission/reset actual transceiver;
         # this output alone does not synchronize admission into recovered RX.

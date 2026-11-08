@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Define and test synchronized link-admission/transceiver-reset boundary for new assembly, then prepare physical PS/GTH platform integration with scoped synthesis/CDC gates",
+  "next_safe_offline": "Test native encoded link with new boundary through reset/relock; map GT wizard reset/clock-active/alignment ownership before physical platform synthesis",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -132,5 +132,6 @@
   "portable_reset_driver": "TWENTY_HOST_CALLBACK_MODEL_CASES_ASAN_UBSAN_PASS_NO_REAL_FAULT_RECOVERY",
   "reset_api_a53_object": "DELL_CORTEX_A53_FREESTANDING_COMPILE_NO_UNDEFINED_HASH_MATCH_PASS",
   "integrated_master_assembly": "FOUR_ELABORATION_PIN_TESTS_PASS_CALLER_PS_GTH_ADAPTERS_REQUIRED",
-  "integrated_master_behavior": "TWO_TESTS_PASS_EXTERNAL_PS_PIN_ADAPTERS_RESET_MGMT_TARGET_ROUNDTRIP"
+  "integrated_master_behavior": "TWO_TESTS_PASS_EXTERNAL_PS_PIN_ADAPTERS_RESET_MGMT_TARGET_ROUNDTRIP",
+  "link_boundary": "TWO_TESTS_PASS_RESET_BEFORE_ADMISSION_STATUS_SYNC_OPTIONAL_SAME_CODEC_BINDING"
 }

@@ -1,3 +1,13 @@
+2026-11-08 masterlinkboundary+integrationelaboration PASS2tests0.249s.
+GTresetrequest=coordinatorreset NOT~admit (clocksrestartbeforeadmission); permit/
+request/resetdone/clockactive/aligned singlebitMultiRegintoSYS, codec rx_ready
+inhibitedwithoutconditions/statusloss/reset. Optionalassemblybinds samecodec
+and exposesGTresetrequest; elaboratedwithactualPSadapter. clockactiveexternal
+qualifiedinput/no watchdog; GTwizardresetnotconnected/nopeer/physicalproof.
+Nextsafe nativeencodedlinkboundaryreset/relock thenGTreset/statusownership.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-integration-2026-11-08/link-boundary.json.
+
 2026-11-08 newmasterintegration actualPS-pinadapterbehavior PASS2tests9.827s.
 ExternalAXIhost drives export-namedPSsignals notinternalbus. HPM1managementID/
 handshake/HPM0profile/length12/resetclosedAWARready0/HPM1stillaccessible/reopen

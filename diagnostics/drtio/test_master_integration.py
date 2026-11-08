@@ -15,7 +15,8 @@ class IntegrationTests(unittest.TestCase):
             width=abs(int(left)-int(right))+1 if left and right else 1
             (ps.inputs if direction=='I' else ps.outputs)[name]=Signal(width)
         codec=Raw20Codec()
-        top=GenesysMasterIntegration(ps,codec.channel,Signal(),Signal())
+        top=GenesysMasterIntegration(ps,codec.channel,Signal(),Signal(),codec=codec,
+            link_status=SimpleNamespace(reset_done=Signal(),clock_active=Signal(),aligned=Signal()))
         top.submodules.codec=codec
         self.assertEqual(top.csr.registers['profile_identity']['address'],0xa0000800)
         self.assertEqual(top.csr.registers['aux_aux_tx_length']['address'],0xa0002000)
@@ -26,6 +27,7 @@ class IntegrationTests(unittest.TestCase):
         self.assertFalse(set(fragment.sync)-names)
         self.assertTrue(all(cd.rst is not None for cd in fragment.clock_domains))
         self.assertIs(top.aux.link_layer,top.master.link_layer)
+        self.assertIs(top.gt_reset_request,top.ingress.coordinator.reset)
 
     def test_two_hpm_signal_adapters_and_reset_roundtrip(self):
         from migen import ClockDomain,ClockSignal
