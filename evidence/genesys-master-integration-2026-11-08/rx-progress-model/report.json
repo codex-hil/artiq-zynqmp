@@ -1,0 +1,44 @@
+{
+  "status": "ISOLATED_PROGRESS_MONITOR_FUNCTIONAL_MODEL_FIVE_TESTS_PASS_NOT_INTEGRATED",
+  "protocol": "Single outstanding toggle request control->RX, RX echoes synchronized request, response->control; two completions after rearm before allowed",
+  "timeout_cycles": 32,
+  "timeout_scope": "Per-outstanding challenge in live control domain; behavioral value only, not physically qualified",
+  "periods_tested_ns": {
+    "control": 8,
+    "rx": [
+      4,
+      8,
+      10,
+      14
+    ]
+  },
+  "cases": [
+    "running without false timeout180control cycles",
+    "RX absent at start faults closed",
+    "scheduler RX edges suppressed during running; bounded detection70control cycles",
+    "RX restart cannot clear sticky fault100cycles",
+    "explicit rearm with RX still stopped does not admit stale response",
+    "RX restart and fresh challenges qualify after rearm",
+    "invalid constructor parameters refused"
+  ],
+  "bug_fixed": "Initial rearm cleared fault/fresh count but retained expired age, causing immediate refault; rearm now resets age, all tests rerun",
+  "contracts": [
+    "Control clock independently live",
+    "Parent asserts rearm throughout coordinated reset/abandonment",
+    "No independent RX reset while admitted; reset epochs require coordination",
+    "Request/response are single bits held until round-trip, no free-running sampling alias",
+    "Two completion requirement drains at most one prior outstanding reply before fresh proof"
+  ],
+  "limits": [
+    "No GT/physicalCDC/metastability qualification",
+    "No production admission or AXI/reset integration",
+    "Threshold not qualified for real RX frequency range or fault latency",
+    "No automatic transaction retry or outcome claim"
+  ],
+  "next": "Compose monitor sticky fault with independent reset/admission coordinator; test in-flight response, stop/restart, coordinated resets and explicit management rearm",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/master_rx_progress.py": "283c75edb29cbd1a8c1045d98f5c132c6668508be1cb3548848bb38cfb71e9c5",
+    "diagnostics/drtio/test_master_rx_progress.py": "07c9be256bc870dcd11293695858e9d3a662829b1bc8a0a71b925cafbc88bb79"
+  }
+}

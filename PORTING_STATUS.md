@@ -1,3 +1,13 @@
+2026-11-08 isolatedRXprogress monitor 5functionaltestsPASS. Singleoutstanding
+toggle challenge/echo through two MultiRegs; two completions afterrearm drains
+oneoldreply beforefreshprogress. SYScontrol8ns/RX4,8,10,14; absentstartup/actual
+schedulerstop/boundedfault/stickyrestart/rearmstopped/freshrestart tested. Fixed
+expiredage retainedat rearm; rerunPASS. Timeout32 is modelonly; parentcoordinated
+resetepochs required/no independentRXresetwhileadmitted. Notwired production,
+noGT/CDCphysicalproof. Next monitorfault+reset/admission composition. NoHW,
+maintenancehold. Evidence genesys-master-integration-2026-11-08/
+rx-progress-model/report.json.
+
 2026-11-08 original vendor userclk RX helper + AMD unisims BUFG_GT sim PASS.
 Actualratio1/contents0, ideal125MHz source: active rises, staysHIGH with output
 edges stopped80ns, reset clears without source edge, release waits for restart,
