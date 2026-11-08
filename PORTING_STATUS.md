@@ -1,3 +1,11 @@
+2026-11-08 direct primitive RXRATE000 diagnostic reconciles RXOUTCLK/PCS to8ns,
+TX8ns, with prior selector010/powergood1 cases. No manual clock period override.
+Powergood Q case alone was insufficient in elaborated model; steady model agrees
+with XCI125MHz, not physical/startup/calibration/CDC qualification. Two optional
+report commands unsupported at RTL stage; failures retained. Next safe offline
+step: vendor RXRATE mux cone/runtime constraint review. NoHW; maintenancehold.
+Evidence genesys-master-integration-2026-11-08/rxrate-runtime-direct/report.json.
+
 2026-11-08 RXclockaudit confirmsactualprimitiveRXOUT_DIV2/TXOUT_DIV2/data20,
 modelC_RX_OUTCLK125MHz/BUFGdiv1/USRCLK125. RXOUTCLKSEL010/RXSYSCLKSEL00,
 RXRATEdriver vendorpowergoodmux (startup001/runtimeUSER000). GeneratedXDC

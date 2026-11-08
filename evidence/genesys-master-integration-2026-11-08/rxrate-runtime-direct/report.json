@@ -1,0 +1,23 @@
+{
+  "status": "STEADY_RUNTIME_MODEL_RX_TX_8NS_PHYSICAL_QUALIFICATION_PENDING",
+  "job": "genesys-master-rxrate-runtime-20261108-v1",
+  "diagnostic_cases": "Prior six TX/RX selector cases010 and powergood Q1, plus exactly three primitive RXRATE bits000",
+  "result": {
+    "ps_ns": 8,
+    "reference_ns": 6.4,
+    "rxoutclk_ns": 8,
+    "rxoutclkpcs_ns": 8,
+    "txoutclk_ns": 8,
+    "txoutclkpcs_ns": 8
+  },
+  "interpretation": "Direct primitive runtime RXRATE000 reconciles derived RX clock with IP metadata125MHz; powergood Q case alone did not propagate the required mode in this elaborated model. No physical frequency measurement.",
+  "limits": [
+    "Steady diagnostic mode only; no production constraint adoption",
+    "Startup/calibration/reset transitions and CDC timing remain unqualified",
+    "No manual period override or hardware divider changes",
+    "Two optional report commands failed; raw failures retained; final query uses report_clocks only"
+  ],
+  "next": "Review vendor RXRATE mux cone and runtime constraints for a source-justified constraint candidate, preserving startup/reset qualification gates",
+  "hardware_accessed": false,
+  "source_sha256": "698ca8a235f601676b1d32c9a04eee782acdec2bfd59e08473def9aef758d8de"
+}
