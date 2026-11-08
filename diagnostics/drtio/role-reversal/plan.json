@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Prepare explicit management125MHz/reference125MHz and generated TX/RX clock/CDC constraint candidate, validate against netlist before full synthesis; physical PS integration remains required",
+  "next_safe_offline": "Inspect GT primitive output selectors/CPLL calibration clock modes/userclk divide ratios and reconcile derived clock model before adopting clock/CDC constraints",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -136,5 +136,6 @@
   "link_boundary": "TWO_TESTS_PASS_RESET_BEFORE_ADMISSION_STATUS_SYNC_OPTIONAL_SAME_CODEC_BINDING",
   "native_link_boundary_reopen": "NATIVE_DOWN_BLOCKED_UP_TWO_EXACT_AUX_PACKETS_PASS_IDEAL_LIVE_CLOCKS",
   "physical_gth_adapter": "THREE_STRUCTURAL_FABRIC_TESTS_PASS_PHYSICAL_INSTANCES_NOT_SIMULATED",
-  "physical_assembly_rtl": "V2_ELAB_PASS_LOCAL_OUTPUTS_EXPOSED_RESET_TRIM_GONE_VENDOR_WARNINGS_RETAINED"
+  "physical_assembly_rtl": "V2_ELAB_PASS_LOCAL_OUTPUTS_EXPOSED_RESET_TRIM_GONE_VENDOR_WARNINGS_RETAINED",
+  "native_clock_qualification": "REFUSED_TIMING_MODEL_TX6_4_RX4_VS_EXPECTED8_NS_REF_ACTUALLY156_25"
 }

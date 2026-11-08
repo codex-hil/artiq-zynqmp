@@ -1,3 +1,13 @@
+2026-11-08 clockqualification REFUSED derivedperiodmismatch. ActualcopiedXCI
+ref156.25MHz vsfreerun125, line2.5/raw20; prior125referenceassumption rejected,
+strictprofilechecker/fourmutants refuse. DellRTLclockquery rootPS8ns/ref6.4ns,
+actualhelperbuffers autoTXOUTCLK6.4ns/RXOUTCLK4ns vsnativeexpected8ns. TX/RX
+OUTCLKsourcePMA, calibrationselection/dividers requireactualparameterreview.
+No manual8nsoverride/falsepath/resetexception; elaboratedtimingmodel notphysical
+frequency orhardwarebug proof. Nextsafe GTselectors/CPLLcalibration/ratioaudit
+beforeconstraints/admission. NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-integration-2026-11-08/clock-preflight/report.json.
+
 2026-11-08 combinedphysicalRTL V2elaborationDellPASS,localTTL0/1 exported.
 ExactV1→V2stringtransform onlyportexposure/aliases;6initfilesequal/no statelogic
 change. Resetvectortrim5→4warningGONE;0errors/critical/unresolved.211warninglines

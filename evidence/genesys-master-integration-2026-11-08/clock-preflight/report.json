@@ -1,0 +1,64 @@
+{
+  "status": "NATIVE_CLOCK_QUALIFICATION_REFUSED_DERIVED_PERIOD_MISMATCH",
+  "job": "genesys-master-clock-query-20261108-v1",
+  "actual_ip_profile": "TX/RXref156.25MHz,freerun125MHz,line2.5Gbps/raw20",
+  "declared_primary_periods_ns": {
+    "ps_management": 8,
+    "gt_reference": 6.4
+  },
+  "derived_clocks": {
+    "ps_management": {
+      "period_ns": 8.0,
+      "source": "pl_clk0"
+    },
+    "gt_reference": {
+      "period_ns": 6.4,
+      "source": "ref_p"
+    },
+    "GTHE4_CHANNEL_GTREFCLKMONITOR[0]": {
+      "period_ns": 6.4,
+      "source": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/GTREFCLKMONITOR"
+    },
+    "GTHE4_CHANNEL_RXOUTCLK[0]": {
+      "period_ns": 4.0,
+      "source": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK"
+    },
+    "GTHE4_CHANNEL_RXOUTCLKPCS[0]": {
+      "period_ns": 4.0,
+      "source": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS"
+    },
+    "GTHE4_CHANNEL_TXOUTCLK[0]": {
+      "period_ns": 6.4,
+      "source": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK"
+    },
+    "GTHE4_CHANNEL_TXOUTCLKPCS[0]": {
+      "period_ns": 8.0,
+      "source": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLKPCS"
+    }
+  },
+  "observed_userclk_buffers": {
+    "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst": "GTHE4_CHANNEL_TXOUTCLK[0]",
+    "gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst": "GTHE4_CHANNEL_RXOUTCLK[0]",
+    "gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst": "GTHE4_CHANNEL_TXOUTCLK[0]"
+  },
+  "expected_native_period_ns": 8,
+  "finding": "TXuserbuffer receives autoTXOUTCLK6.4ns;RXuserbuffer autoRXOUTCLK4ns, conflicting with modeled8ns. No manual8ns override adopted.",
+  "additional_profile": "TX_OUTCLK_SOURCE=TXOUTCLKPMA, RX_OUTCLK_SOURCE=RXOUTCLKPMA, TXPROGDIV_FREQ_ENABLE=false; dynamic CPLL calibration selection still requires review",
+  "checks": [
+    "Strict primary-port counts1each",
+    "Actual pinned XCI validated",
+    "Four unreviewedprofile mutations rejected",
+    "Dell RTLclockquery completion marker"
+  ],
+  "limits": [
+    "Elaborated timing model, not physical frequency measurement or proof of hardware bug",
+    "No CDC timing exceptions or reset false paths introduced",
+    "No full logic synthesis/place/route or board admission"
+  ],
+  "next": "Inspect actual primitive parameters/output selectors/CPLL calibration clock modes and userclk divide ratios; resolve modeled vs expected clocks before constraint adoption",
+  "sources": {
+    "diagnostics/drtio/role-reversal/inspect-phy-clock-profile.py": "ed936c23d4b97ef3885dd16698e9a75e1443e4c1ff81f2f174cb8a1cfd26b502",
+    "diagnostics/drtio/role-reversal/query-physical-clocks.tcl": "92f7f3ce85d2cc2a52ca13b3a44c938e2552325486522d357060714f78253ba0"
+  },
+  "hardware_accessed": false
+}

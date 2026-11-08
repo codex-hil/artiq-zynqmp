@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
-"""Isolated adapter for the existing drtio_gth125MHz/raw20 wizard profile.
+"""Isolated adapter for the existing drtio_gth raw20 wizard profile.
 
 Derived wiring pattern from diag_gateware.py. Caller owns independent125MHz
-freerun/DRP clock and reset request. No platform pins/IP sources/constraints are
+freerun/DRP clock and reset request. The pinned IP reference is156.25MHz;
+that is separate from125MHz freerun. Native derived clock qualification is pending. No platform pins/IP sources/constraints are
 installed by this module. Userclk active is not an independent clock watchdog.
 """
 from types import SimpleNamespace
