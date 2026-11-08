@@ -1,0 +1,30 @@
+{
+  "status": "NEW_INTEGRATION_PS_PIN_ADAPTER_BEHAVIOR_TWO_TESTS_PASS",
+  "tests": 2,
+  "seconds": 9.827,
+  "checks": [
+    "External AXIMaster drives actualexport-named PS outputs and receives PS inputs forHPM0/1",
+    "Management B0000000 identity/handshake while HPM0 gated",
+    "Target profile/length12 via HPM0 then management reset",
+    "Closed HPM0 AW/ARready0, management identity accessible",
+    "Reopen length0/new68correct"
+  ],
+  "clocks_ns": {
+    "PSplsource": 8,
+    "management_control_PS": 8,
+    "TX_SYS_RIO": 14,
+    "RX": 18
+  },
+  "limits": [
+    "Ideal namedclock schedules consistent with suppliedsource signals, no physical clock propagation/constraints proof",
+    "PS adapter signals, not PS hardprimitive execution",
+    "Codec unconnected to peer; no GTH/packettraffic in newassembly test",
+    "Physical transceiver reset and packet admission not connected",
+    "No timing/synthesis/board/recoveryagent proof"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/test_master_integration.py": "8d99ac471b554c0c0daa92d52abd5413ccd3cdae8c3fccee9bfcb116b63398ee",
+    "diagnostics/drtio/master_integration.py": "db4b1ee927d8f417a6ef2250575e933647ceb84fd01bbd6a3b47f773ba41df21"
+  },
+  "hardware_accessed": false
+}

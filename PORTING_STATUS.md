@@ -1,3 +1,12 @@
+2026-11-08 newmasterintegration actualPS-pinadapterbehavior PASS2tests9.827s.
+ExternalAXIhost drives export-namedPSsignals notinternalbus. HPM1managementID/
+handshake/HPM0profile/length12/resetclosedAWARready0/HPM1stillaccessible/reopen
+length0/new68exact. PSsource8ns/TXSYSRIO14/RX18 idealnamedclocksconsistentwith
+sourceclockconnections; notphysicalclockpropagation. PSsignaladapter nothardPS,
+codecnopeer/nopackettraffic. Nextsafe synchronizedlinkadmission/transceiverreset
+boundary thenphysicalPS/GTHplatformcandidate/synthCDC. NoHW/lease/program;
+maintenancehold. Evidence genesys-master-integration-2026-11-08/ps-adapter-behavior.json.
+
 2026-11-07 isolatedGenesysMasterIntegration elaborationPASS+3pinchecks,
 4tests0.257s. NativeTSCfine3/KInow64/master/localRTIO/routing/GrayAUX/mapCDC/
 dualingressreset assembled. PSmanagement/control/ingressclocks=PSplclk0,
