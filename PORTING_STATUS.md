@@ -1,3 +1,13 @@
+2026-11-08 RXclockaudit confirmsactualprimitiveRXOUT_DIV2/TXOUT_DIV2/data20,
+modelC_RX_OUTCLK125MHz/BUFGdiv1/USRCLK125. RXOUTCLKSEL010/RXSYSCLKSEL00,
+RXRATEdriver vendorpowergoodmux (startup001/runtimeUSER000). GeneratedXDC
+powergooddonecase1 applieddiagnostically toexactoneQ plus6selectors:RXstill4ns,
+TX8ns. StartupoverridehypothesisINSUFFICIENT, nothardwarefrequency/defectproof.
+OfficialUG903/UG576context recorded, no7seriesguidance adopted. NextsafeRXRATE
+propagation/directruntimepinmodel audit, no hardwaredivider/manual8nsoverride.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-integration-2026-11-08/rx-clock-runtime/report.json.
+
 2026-11-08 clockreview TXruntime model reconciled, RXqualification REFUSED.
 XCIinternalTX/RXUSRCLK125MHz/helperratio1. VendorXDC selectsTX/RX010 duringknown
 runtime; TXcalibration overrides101. OurRTLonlyelab omittedIPXDC. Diagnostic

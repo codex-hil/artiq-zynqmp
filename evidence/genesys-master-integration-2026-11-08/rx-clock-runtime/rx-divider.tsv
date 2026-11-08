@@ -1,0 +1,17 @@
+PARAM	RXOUT_DIV	2
+PARAM	TXOUT_DIV	2
+PARAM	CPLL_FBDIV	4
+PARAM	CPLL_FBDIV_45	4
+PARAM	CPLL_REFCLK_DIV	1
+PARAM	RX_DATA_WIDTH	20
+PARAM	TX_DATA_WIDTH	20
+PARAM	RX_INT_DATAWIDTH	0
+PARAM	TX_INT_DATAWIDTH	0
+PIN	RXOUTCLKSEL[2]	drtio_gth/GND/G
+PIN	RXOUTCLKSEL[1]	drtio_gth/VCC/P
+PIN	RXOUTCLKSEL[0]	drtio_gth/GND/G
+PIN	RXRATE[2]	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_pwrgood_delay_inst[0].delay_powergood_inst/GT_RXRATE_i/O[2]
+PIN	RXRATE[1]	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_pwrgood_delay_inst[0].delay_powergood_inst/GT_RXRATE_i/O[1]
+PIN	RXRATE[0]	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_pwrgood_delay_inst[0].delay_powergood_inst/GT_RXRATE_i/O[0]
+PIN	RXSYSCLKSEL[1]	drtio_gth/GND/G
+PIN	RXSYSCLKSEL[0]	drtio_gth/GND/G

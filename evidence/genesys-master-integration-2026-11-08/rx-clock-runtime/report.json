@@ -1,0 +1,57 @@
+{
+  "status": "RX_RUNTIME_CLOCK_QUALIFICATION_STILL_REFUSED_DIVIDER_METADATA_CONFIRMED",
+  "jobs": [
+    "genesys-master-rx-divider-20261108-v1",
+    "genesys-master-rx-powergood-20261108-v1"
+  ],
+  "primitive_parameters": {
+    "RXOUT_DIV": "2",
+    "TXOUT_DIV": "2",
+    "CPLL_FBDIV": "4",
+    "CPLL_FBDIV_45": "4",
+    "CPLL_REFCLK_DIV": "1",
+    "RX_DATA_WIDTH": "20",
+    "TX_DATA_WIDTH": "20",
+    "RX_INT_DATAWIDTH": "0",
+    "TX_INT_DATAWIDTH": "0"
+  },
+  "generated_ip_model_parameters": {
+    "C_RX_OUTCLK_BUFG_GT_DIV": "1",
+    "C_RX_OUTCLK_FREQUENCY": "125.0000000",
+    "C_RX_USRCLK_FREQUENCY": "125.0000000",
+    "C_TX_OUTCLK_FREQUENCY": "125.0000000"
+  },
+  "source_findings": [
+    "UserRXRATE000, RXSYSCLKSEL00, RXOUTCLKSEL010",
+    "Vendorpowergood block overridesRXRATE001 before done andpassesUSER_RXRATE afterward",
+    "GeneratedvendorXDCmodels powergood-done1",
+    "Diagnostic exactonepowergoodregisterQcase1 plus prior6selectors still leavesRXOUTCLK4ns/TX8ns"
+  ],
+  "interpretation": "Startupoverride hypothesis alone did not resolve RX timing. No claim actualRXfrequency250MHz or actualhardwaredivider defect.",
+  "primary_reference_context": [
+    {
+      "url": "https://docs.amd.com/r/2022.1-English/ug903-vivado-using-constraints/Automatically-Derived-Clocks",
+      "scope": "Vivado automatically derives GT/BUFG clocks from declared masters; not a hardware frequency measurement"
+    },
+    {
+      "url": "https://docs.amd.com/api/khub/documents/X8hVhAx~JVBkxiZRAjsdRg/content?filename=ug576-ultrascale-gth-transceivers.pdf",
+      "scope": "GTH RX recovered-clock selection context; no buffer-bypass recommendation for this buffered IP"
+    }
+  ],
+  "limits": [
+    "Elaborated model not postroute or physicalmeasurement",
+    "No divider/hardwarechange/manual8nsoverride/CDCwaivers",
+    "Calibration/reset transient modes notqualified by steadycaseanalysis"
+  ],
+  "next": "Diagnose RXRATE case propagation through vendorstartupmux and direct primitive runtime-mode model, then decide whether recovered-clock simulation is required",
+  "sources": {
+    "diagnostics/drtio/role-reversal/query-rx-divider.tcl": "387a3e999f50e6f5ac57bae2723c957669ba4a0eb8cdb7cb7a191820b4c52350",
+    "diagnostics/drtio/role-reversal/query-rx-runtime-powergood.tcl": "a1da9103b8b201d4006d1eb88155476bc3288619a903addb7acd11d44303178f"
+  },
+  "vendor_source_sha256": {
+    "drtio_gth.xci": "aaa71467ac1f6a45b6f34be02d7cc63f26e6017d474cdd3f91a3baaeb90c9e41",
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v": "6823b3099a7918c5662f9a7939fcbb25ece67193fa9cd0025abad9220efe1737",
+    "synth/drtio_gth_gthe4_channel_wrapper.v": "d78721503515fabfad76c2a296a62c68268e359b2f94707176fceb52b60f7752"
+  },
+  "hardware_accessed": false
+}
