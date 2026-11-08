@@ -1,3 +1,13 @@
+2026-11-08 isolatedMasterGTHAdapter PASS3tests0.711s. Existingraw20drtio_gth/
+userclk1.7.22 pattern, independentmanagement125MHz freerun/DRP,externalmode/
+PRBS0/loopback0; RXalignerdedicatedreset request|!rxpma|!rxdone|!rxactive.
+Fabric testoffset0→readinessloss/clear→freshoffset3 reacquire; nonraw20refuse.
+DynamicphysicalInstancesREMOVED/functionalreset/idealRX, NOTGTprimitive/relock/
+clockwatchdog/deterministiclatencyproof. No platformpins/IP/constraints installed.
+Nextsafe PS/master/GTHassembly+VerilogIPbindingvalidationDell/explicitclocks.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-integration-2026-11-08/gth-adapter.json.
+
 2026-11-08 nativeencodedlinkboundary down/reopen/AUX PASS7.031s. Native
 master+satelliteUP/exact2wordAUX, masteradmitoff/resetrequest/statusoff→DOWN,
 statusrestore/requestoff/admitoff holdsDOWN64cycles, admiton→UP/exactsecond2word

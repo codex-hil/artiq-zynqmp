@@ -1,0 +1,28 @@
+{
+  "status": "ISOLATED_GTH_ADAPTER_STRUCTURAL_AND_FABRIC_ALIGNMENT_THREE_TESTS_PASS",
+  "tests": 3,
+  "seconds": 0.711,
+  "checks": [
+    "Existing drtio_gth raw20/userclkhelper1.7.22 wiring reused",
+    "Freerunresetclock and DRP from independent caller managementclock",
+    "External-link mode loopback/PRBS0",
+    "Aligner RX reset on request or rxpma/rxdone/rxactive loss",
+    "Fabric commaoffset0 acquired, readinessloss clears, freshoffset3 reacquired",
+    "Nonraw20 TX rejected"
+  ],
+  "source_review": "Existing build_phy.tcl declares FREERUN_FREQUENCY125, diagnostic has PS125 freerun/DRP and distinct TX/RX helpers",
+  "limits": [
+    "Dynamic test removes all physical Instances and substitutes functional reset; no GT primitive/IP simulation",
+    "Userclkactive is helper status, not independent clock-loss watchdog",
+    "No platform pin/IP-source/clock constraints installed",
+    "GTclock CPLL/CDR/phase/deterministic latency and physical reset unqualified",
+    "No newmaster+PS+GTH top elaboration or synthesis yet"
+  ],
+  "sources": {
+    "diagnostics/drtio/master_gth_adapter.py": "fd61478f29bafc2f24e20214bd115de6dd2d71507716d0316e2d174609192152",
+    "diagnostics/drtio/test_master_gth_adapter.py": "4c5c1f1381ab2288fe453153023b9c830f762d74f380138b0e934bb03a5a9f1a",
+    "diagnostics/drtio/build_phy.tcl": "bb32351c394f6ef238fddf2f365b12e9d9057555cc3b5fd31100da1824c036ee",
+    "diagnostics/drtio/diag_gateware.py": "b691a1f13f53cb45b01db2f191ea94e7c7a837a22400f4056bbc9c7c663b4c24"
+  },
+  "hardware_accessed": false
+}
