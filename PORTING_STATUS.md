@@ -1,3 +1,14 @@
+2026-11-08 combinedmaster/GTH/dualHPM-adapter RTL/IP elaboration completeDell
+sharedslot/synth_design-rtl (NOTlogicsynthesis),0errors/critical/no unresolved
+modules. RTL+6initfiles reproducebyteexact aftergeneratoroutputdirfix; vendorIP
+sourcesprivatecopied/pinned.212warninglines:unconnectedoutputs9,vendorpriority1,
+unusedsequential100,userdata100,resetvectortrim1,no-blackbox-query1. Resetvector
+5→4/localoutputsnotexported requireconsumerreview beforeadmission; no blanket
+warningwaiver. PShardprimitiveexternal/noXDC/physicalCDC/timing/boardproof.
+Nextsafe resettrim/localIOobservation+vendorreview thenrepeat scopedelaboration.
+NoHW/lease/program; maintenancehold. Evidence
+ genesys-master-integration-2026-11-08/physical-rtl-elab/report.json.
+
 2026-11-08 isolatedMasterGTHAdapter PASS3tests0.711s. Existingraw20drtio_gth/
 userclk1.7.22 pattern, independentmanagement125MHz freerun/DRP,externalmode/
 PRBS0/loopback0; RXalignerdedicatedreset request|!rxpma|!rxdone|!rxactive.

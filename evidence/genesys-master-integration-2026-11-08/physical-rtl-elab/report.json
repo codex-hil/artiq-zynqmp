@@ -1,0 +1,74 @@
+{
+  "status": "RTL_IP_BINDING_ELABORATION_COMPLETE_WITH_WARNINGS_NOT_SYNTH_ADMISSION",
+  "job": "genesys-master-physical-elab-20261108-v1",
+  "shared_build_slot": true,
+  "mode": "Vivado synth_design -rtl, no logic synthesis/place/route",
+  "checks": [
+    "Combinedmaster/AUX/dualHPMadapter/GTH RTL generated",
+    "RTL and6memoryinitfiles reproduce byteexact after outputdirectory correction",
+    "Existing actualGTHgeneratedsources/helpermodules resolve",
+    "No criticalwarnings/errors, no unresolvedblackboxes"
+  ],
+  "warning_groups": {
+    "Synth 8-7071": 5,
+    "Synth 8-7023": 4,
+    "Synth 8-7137": 1,
+    "Synth 8-6014": 100,
+    "Synth 8-3936": 1,
+    "Synth 8-7129": 100,
+    "Vivado 12-180": 1
+  },
+  "warning_review": "Open resetvector trimming and vendor warning review, no blanket waiver",
+  "limits": [
+    "PS hardprimitive still external PSadapter ports",
+    "Local outputs not exposed in export yet; optimizer observation scope incomplete",
+    "No XDC/timing/CDC/physicalclock or board qualification",
+    "Vendor generated IP files copied privately toDell, not republished"
+  ],
+  "generated_sha256": {
+    "en_replaces_rom.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_3.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "latency_compensation.init": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead",
+    "en_replaces_rom_2.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "routing_table.init": "d87bcaf61125aa37cb4795610ee9ce84d1b9fef91d0072b5283078949133d79f",
+    "en_replaces_rom_1.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "export.json": "1158e1d4b789f1e8c279bc4f266e6c3d8454623c9a16f22b2b815378150208ab",
+    "master_physical_candidate.v": "cfcc5fed85485d365c658b39d4fff4872b0756893bd70aa85ef18e2302e819a8"
+  },
+  "ip_source_sha256": {
+    "hdl/gtwizard_ultrascale_v1_7_bit_sync.v": "bc15dfe7f171054e19b3316454d225ccb2135802c348014cfa0c55d1bf3e8b17",
+    "hdl/gtwizard_ultrascale_v1_7_gte4_drp_arb.v": "9c4cd93085c24e656c08937fbc53ddbb79f8fbcb49db9be727a331e815c9cf37",
+    "hdl/gtwizard_ultrascale_v1_7_gthe3_cal_freqcnt.v": "60f92099969ad070f350eecc3cd81d86df28fe64cc71547fda03ec1c174c81e8",
+    "hdl/gtwizard_ultrascale_v1_7_gthe3_cpll_cal.v": "35f7e12d8a8574d72f7006d5538c2fdc9f7c5985eadc9c015660441b54b6abce",
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_cal_freqcnt.v": "a3bcac0e0882ed14a63930ab260b135317369995c5db9af3e0365e48c7c42c8a",
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal.v": "3a7a227714ddb2522fbe93ccaa33dcb2b951b7c7d4d669e68ff59230f1d5685c",
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_rx.v": "646e99a41ce79e911aea0501fb6bc6601a6b241acc6b61b2490b229c4a619803",
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v": "e7f20f5da94282565a9ceaad6c7c0492dbe5224c3c4b90c80e70759a0e062864",
+    "hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v": "6823b3099a7918c5662f9a7939fcbb25ece67193fa9cd0025abad9220efe1737",
+    "hdl/gtwizard_ultrascale_v1_7_gtwiz_buffbypass_rx.v": "3a38eb8d6d3ade95e54e52c18621ecf223823907d5b6a1430cda055fb1343be7",
+    "hdl/gtwizard_ultrascale_v1_7_gtwiz_buffbypass_tx.v": "0c0b376ada7506aa8b3f52cf7504ffb706abbf3836be9c7f7b3a27e8cc434be7",
+    "hdl/gtwizard_ultrascale_v1_7_gtwiz_reset.v": "fb9be47efd89e7e7d05cfd4596c38d20b539e935a4708b6ac72ae50e9f27d0c0",
+    "hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_rx.v": "b48ac114e2d5c3d22ebe584cb979061861a95be185c55ea6aa6ce9853563d963",
+    "hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_tx.v": "99d9264dabf9174674dc3a789f28c8f3261d66df96521bb3ca1996b05f43b6b7",
+    "hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_rx.v": "2c368197cd82af2179f154b515c2c8d43dd24ea17b59cee8588780ceb162ca7e",
+    "hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_tx.v": "a5fa07726564854491a637c43400255cb0fcfce13e789941e6fbebe86999e0e9",
+    "hdl/gtwizard_ultrascale_v1_7_gtye4_cal_freqcnt.v": "5eddaff87d8beb96edac5cc9b24f8b8224c1c2a0e6334054b3def0e3480e0bb2",
+    "hdl/gtwizard_ultrascale_v1_7_gtye4_cpll_cal.v": "d7c4125e9304cac5ac1a10c5f0c97cbd30243e0b5b6a6e499fc39a37e92a0b18",
+    "hdl/gtwizard_ultrascale_v1_7_gtye4_cpll_cal_rx.v": "5cb7e58114f69d8038abf120b810119d13e8d63e53f3857b698629d5fc4e493a",
+    "hdl/gtwizard_ultrascale_v1_7_gtye4_cpll_cal_tx.v": "039e5c1f4bba8371e1b31b8d5f0e7ce96e204d03a0c71044d0c8cabfaae0f759",
+    "hdl/gtwizard_ultrascale_v1_7_gtye4_delay_powergood.v": "a53fb99f3b5ee566d420ec66e4870dd66215b03f1a2e854943f63326d9cce84e",
+    "hdl/gtwizard_ultrascale_v1_7_reset_inv_sync.v": "1e7b235824ce269ab1af3cc666e3aea47be9a8d78418211302f5a336243679b2",
+    "hdl/gtwizard_ultrascale_v1_7_reset_sync.v": "121e60cf9252faaec32ed1c8b048ed0449e09395e21241db7c78061d4237fa6e",
+    "synth/drtio_gth.v": "614f157843e6def80ae81b302f74ce2c8ff588a2bd13276bc32fb3bd8186507b",
+    "synth/drtio_gth_gthe4_channel_wrapper.v": "d78721503515fabfad76c2a296a62c68268e359b2f94707176fceb52b60f7752",
+    "synth/drtio_gth_gtwizard_gthe4.v": "3846e100e4aeec356101805da14f71f66ba93c6fce242a37fa10e474c6879958",
+    "synth/drtio_gth_gtwizard_top.v": "98fbef1aabd7d888eaa6c1ccd7136395691b3b9b196570649390c78f5c41242d",
+    "synth/gtwizard_ultrascale_v1_7_gthe4_channel.v": "a615fb76356ecc254977676338de1f5ced6d33a314ff6fd0575b6267e9c122b0"
+  },
+  "source_sha256": {
+    "diagnostics/drtio/master_physical_assembly.py": "6109ad15e98098b2929fd258b23dc4488215e0762cea7345c5cc2994ef157ae0",
+    "diagnostics/drtio/role-reversal/export-physical-assembly.py": "8a0e1a36275e641faa7c17339c074eb727cea69b450d2ed256e174e73cebcb67",
+    "diagnostics/drtio/role-reversal/elaborate-physical-assembly.tcl": "768c07a5c243d4b097ae3ef465643a8eda46da1c0efa634dab16b2064a2df7b2"
+  },
+  "hardware_accessed": false
+}
