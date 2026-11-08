@@ -1,0 +1,31 @@
+--- v1
++++ v2
+@@ -88,6 +88,8 @@
+ 	output sfp_txn,
+ 	input ref_p,
+ 	input ref_n,
++	output local_ttl0,
++	output local_ttl1,
+ 	output sfp_tx_disable
+ );
+ 
+@@ -525,8 +527,6 @@
+ reg genesysmasterintegration_rt_controller_i_status_overflow = 1'd0;
+ reg genesysmasterintegration_rt_controller_i_status_wait_status;
+ reg genesysmasterintegration_rt_controller_load_read_reply;
+-wire genesysmasterintegration;
+-wire genesysmasterintegration_local_outputs;
+ reg genesysmasterintegration_phy0_stb = 1'd0;
+ reg genesysmasterintegration_phy0_busy = 1'd0;
+ reg genesysmasterintegration_phy0_data = 1'd0;
+@@ -3803,8 +3803,8 @@
+ 	dummy_d_30 <= dummy_s;
+ // synthesis translate_on
+ end
+-assign genesysmasterintegration = genesysmasterintegration_phy0_pad_o;
+-assign genesysmasterintegration_local_outputs = genesysmasterintegration_phy1_pad_o;
++assign local_ttl0 = genesysmasterintegration_phy0_pad_o;
++assign local_ttl1 = genesysmasterintegration_phy1_pad_o;
+ assign genesysmasterintegration_local_gates_coarse_timestamp = genesysmasterintegration_coarse_ts;
+ assign genesysmasterintegration_local_async_errors_sequence_error = genesysmasterintegration_local_lane_dist_sequence_error;
+ assign genesysmasterintegration_local_async_errors_sequence_error_channel = genesysmasterintegration_local_lane_dist_sequence_error_channel;

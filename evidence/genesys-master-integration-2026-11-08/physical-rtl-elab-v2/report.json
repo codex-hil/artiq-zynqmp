@@ -1,0 +1,46 @@
+{
+  "status": "V2_RTL_IP_ELAB_PASS_RESET_TRIM_WARNING_REMOVED_OUTPUT_OBSERVATION_ONLY",
+  "job": "genesys-master-physical-elab-20261108-v2",
+  "checks": [
+    "LocalTTL0/1 now exported as real RTL outputs",
+    "Exactstringtransform verifies only port exposure/wire aliases changed vsV1",
+    "All6memoryinitfiles byteequal",
+    "No resetvector trim warning vsV1",
+    "0errors/critical/unresolvedblackboxes"
+  ],
+  "remaining_warning_groups": {
+    "Synth 8-7071": 5,
+    "Synth 8-7023": 4,
+    "Synth 8-7137": 1,
+    "Synth 8-6014": 100,
+    "Synth 8-7129": 100,
+    "Vivado 12-180": 1
+  },
+  "remaining_warning_review": {
+    "Synth8-7071/7023": "Unused ODIV2,userclk2 and lowlevelresetdone ports; outputs only, no missing input finding",
+    "Synth8-7137": "Vendor CPLLfrequencycounter samepriority set/reset, retained unresolved physical verification",
+    "Synth8-6014/7129": "Unused vendor registers and rawuserdata bits",
+    "Vivado12-180": "No blackboxes query returnedempty"
+  },
+  "limits": [
+    "RTLelaboration notlogic synthesis/timing/CDCclosure",
+    "PS hardprimitive still externaladapter",
+    "No physical IO pin assignments or GT reset/clock qualification",
+    "Vendorpriority warning notwaived by this result"
+  ],
+  "generated_sha256": {
+    "en_replaces_rom.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_3.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "latency_compensation.init": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead",
+    "en_replaces_rom_2.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "routing_table.init": "d87bcaf61125aa37cb4795610ee9ce84d1b9fef91d0072b5283078949133d79f",
+    "en_replaces_rom_1.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "export.json": "16c9fc088cecacc1c2a77df46e871c50f0a950457e96cb043a1d7e174b6c8aa6",
+    "master_physical_candidate.v": "697bed53c8344fb25bb84eca8266201347970a460cd826acb50f4b7b6b22a11a"
+  },
+  "source_sha256": {
+    "diagnostics/drtio/master_physical_assembly.py": "63f7d0542119e04227f63fc2bbbfa838a877506b35938c9781c70295d668ee8a",
+    "diagnostics/drtio/role-reversal/export-physical-assembly.py": "ae87d6aec4a26ab9e7e96a991704c56d605d4fc8a14024f42fb995330c0b436e"
+  },
+  "hardware_accessed": false
+}

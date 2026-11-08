@@ -18,5 +18,6 @@ class MasterPhysicalAssembly(Module):
             codec=codec,link_status=phy.link_status)
         self.comb += [codec.rx_raw.eq(phy.rx_raw),
                       request.eq(core.gt_reset_request | ~ps.outputs['pl_resetn0'])]
+        self.local_outputs=core.local_outputs
         self.sfp_tx_disable=Signal(reset=1)
         self.comb += self.sfp_tx_disable.eq(~core.admit | request)

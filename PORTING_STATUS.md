@@ -1,3 +1,13 @@
+2026-11-08 combinedphysicalRTL V2elaborationDellPASS,localTTL0/1 exported.
+ExactV1→V2stringtransform onlyportexposure/aliases;6initfilesequal/no statelogic
+change. Resetvectortrim5→4warningGONE;0errors/critical/unresolved.211warninglines
+remaining=9unusedoutputconnection,1vendorCPLLpriority,100unusedseq,100userdata,
+1emptyblackboxquery. No vendorprioritywaiver orphysicalproof. NoGPIOpinmapping/
+PShardprimitive/logicsynthesis/timingCDCclosure. Nextsafe explicitclock/CDC
+constraintcandidate/netlistvalidation beforefullsynthesis. NoHW/lease/program;
+maintenancehold. Evidence genesys-master-integration-2026-11-08/
+physical-rtl-elab-v2/report.json andoutputonlydiff.
+
 2026-11-08 combinedmaster/GTH/dualHPM-adapter RTL/IP elaboration completeDell
 sharedslot/synth_design-rtl (NOTlogicsynthesis),0errors/critical/no unresolved
 modules. RTL+6initfiles reproducebyteexact aftergeneratoroutputdirfix; vendorIP
