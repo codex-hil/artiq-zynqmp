@@ -1,3 +1,11 @@
+2026-11-09 defaultvsEXACTXilinxMultiReg startup2episode2testsPASS. Initial
+managementresetstatus0vendor vs1default explicitlychecked; first32cycles admit0/
+boundaryclosed/codecreset1, thenfreshhandshake releases. Newrequestcloses/stale
+abandonment1refused/freshlowhighreopens. Mismatchstillpresent/notwaived, noearly
+admit inthissmallcompositiononly. AsyncresetFunctionalReset/noFDPE/GSR/physical
+proof. Next fullguardedHPM roundtrip exactlowering. NoHW;hold. Evidence
+genesys-master-integration-2026-11-09/xilinx-multireg-startup/report.json.
+
 2026-11-09 mapped49MultiReg RTLinput/output/stages and23clockaliases toPS/TX/RX.
 RTLhash remainsDelltop. Found3requestedreset1 vsactualXilinxloweredregisterinit0:
 managementrequest->control/coordinatorreset->management+SYS. Existingbackendomits

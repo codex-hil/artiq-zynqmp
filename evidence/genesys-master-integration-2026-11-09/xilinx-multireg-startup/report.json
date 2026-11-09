@@ -1,0 +1,26 @@
+{
+  "status": "DEFAULT_AND_EXACT_XILINX_MULTIREG_STARTUP_TWO_EPISODE_TESTS_PASS_NO_EARLY_ADMISSION_IN_TEST",
+  "model": "Exact XilinxMultiReg.lower used for MultiReg, FunctionalReset substitute only for AsyncResetSynchronizer",
+  "checks": [
+    "Explicit initializationdifference: management reset_status0 with Xilinx vs1default",
+    "First32management cycles coordinatoradmit0/boundaryallowed0/codecreset1",
+    "Resetstatus settles1 and managementrequest reachescontrol1",
+    "Fresh abandonment handshake releases domains and boundary",
+    "New explicit request closes coordinator and boundary",
+    "Stale abandonment1 cannot release second episode; fresh low/high required"
+  ],
+  "interpretation": "Observed initialization mismatch persists; test does not require a backend modification to avoid early admission in this composition. Status0 during startup is not evidence reset is released or safe to access target.",
+  "limits": [
+    "Small coordinator/domains/commands/boundary composition, not full guardedPS/AXI assembly",
+    "Functional reset on simulated edges, no FDPE/GSR/physical async reset qualification",
+    "No metastability/clockstop/timing proof; no global waiver of three mismatch paths"
+  ],
+  "next": "Run full guarded HPM adapter/reset roundtrip with exact Xilinx MultiReg lowering and compare functional results before closing source-level startup discrepancy",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/test_xilinx_multireg_startup.py": "8bc9d1cd9d620ab7df97a6f94a4ab396bd9cb52c9b040e9e9291440aee94a7b1",
+    "diagnostics/drtio/aux_reset_control.py": "65568e0cfa104746cd10f5f25f6a90faa7907c57efdefc6804e4d45842d32f56",
+    "diagnostics/drtio/aux_reset_commands.py": "aaa8ac7ba113482d5b854e6e0f8bd99835acc2e931ff0a9cb5bc8decb9156b1d",
+    "diagnostics/drtio/master_link_boundary.py": "eaf729fcfc019fbd0ce6e865d1b3f2746e0b081c4d70e3a0056fbc4f166ed034"
+  }
+}
