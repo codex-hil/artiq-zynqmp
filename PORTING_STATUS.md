@@ -1,3 +1,11 @@
+2026-11-09 fullCSR/AUX/dualHPM shapeguard+optionalstatus3testsPASS. AWsize1held
+READY0/notforwarded/length0; independentfullAXIHPM1identity/fault+12/reset live.
+Resetclear/heldAWrefault; withdraw+explicitreset/freshprogress staysclear, noB30/
+read0/write12/read12. Optionalfaultforwarding defaultNone, enabledtestfixtureonly;
+no productionphysicalassemblychange/samehungCPU/physicalCDC/resetproof. Next
+fullpath badWLASTafteracceptedAW/recovery/no stalepair. NoHW;hold. Evidence
+genesys-master-integration-2026-11-09/full-shape-fault/report.json.
+
 2026-11-09 optionalmanagement ROshape-fault BASE+12 syncedbit0 PASS4tests;
 default3registeraperture regressionPASS. Unequal8/14/22 clocks, blockedmalformed
 AWsize1 whileidentity/resetaccessible, statuswriteSLVERR. Resetclears thenheld

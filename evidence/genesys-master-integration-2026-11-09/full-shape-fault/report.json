@@ -1,0 +1,25 @@
+{
+  "status": "THREE_TESTS_PASS_FULL_CSR_DUAL_HPM_SHAPE_FAULT_OPTION_TESTLOCAL",
+  "wiring": "MasterDualIngress optional shape_fault forwarded to AuxResetManagement; outer shape guard in PS domain; signal supplied only by test fixture",
+  "checks": [
+    "Malformed AW size1 held VALID sees READY0 and is never forwarded",
+    "Actual native AUX length remains0",
+    "Independent fullAXI HPM1 reads identity and fault BASE+12 and writes reset command",
+    "Reset clears synchronized fault; held invalid AW refaults after fresh release",
+    "Explicit requester withdraw then reset/release/progress clears fault durably",
+    "No staleB30cycles; length0 then fresh write12/read12; fault remains0",
+    "Default management aperture regression PASS"
+  ],
+  "limits": [
+    "Behavioral dual initiators not sameCPU blockedMMIO recovery",
+    "Optional shape status not enabled in production physical assembly",
+    "Only AWsize1 full path here; other bad classes isolated only",
+    "No physicalCDC/GT/reset or complete AXI formal proof"
+  ],
+  "next": "Full-path malformed WLAST after already accepted AW: verify no target side effect, management recovery, coordinated partial reset and fresh write without stale pairing",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/master_dual_ingress.py": "58a9975af68ca3c183c086ba3796c3f7a27816c30552e1dea9eef1505c714e71",
+    "diagnostics/drtio/test_master_full_shape_fault.py": "67e22e1abf33605f3c251c91c418c7247363181a7fa06388b30411dce254ed9d"
+  }
+}

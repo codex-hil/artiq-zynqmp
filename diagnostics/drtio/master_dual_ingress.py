@@ -14,13 +14,14 @@ from master_axi_admission import MasterAXIAdmission
 
 class MasterDualIngress(Module):
     def __init__(self,target,*,domains=('ps','sys','rtio_rx','rio','rio_phy'),
-                 ps='ps',management='management',control='control'):
+                 ps='ps',management='management',control='control',shape_fault=None):
         domains=tuple(domains)
         if ps not in domains or management in domains or control in domains:
             raise ValueError('Target PS must reset; management/control must remain live')
         self.submodules.coordinator=c=ClockDomainsRenamer(control)(AuxResetControl(len(domains)))
         self.submodules.releases=r=AuxResetDomains(domains,control=control)
-        self.submodules.management=m=AuxResetManagement(c,management=management,control=control)
+        self.submodules.management=m=AuxResetManagement(c,management=management,control=control,
+                                                     shape_fault=shape_fault)
         self.comb += [r.request.eq(c.reset),c.domain_ready.eq(r.ready)]
         self.reset_out=r.reset_out
         self.admit=c.admit
