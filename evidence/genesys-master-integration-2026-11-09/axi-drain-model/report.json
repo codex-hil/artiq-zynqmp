@@ -1,0 +1,30 @@
+{
+  "status": "ISOLATED_SINGLE_BEAT_DRAIN_THREE_DIRECTED_TESTS_PASS_NOT_INTEGRATED",
+  "contract": [
+    "Single-beat aligned32bit AW/AR len0 size2, WLAST1 supplied by caller",
+    "One write and one read outstanding",
+    "AW/W buffered independently; stop permits missing half only",
+    "Buffered target requests retain VALID through backpressure",
+    "B/R directly forwarded regardless stop; target must retain stable valid/payload",
+    "No cancel/retry; coordinated target+bridge reset only after explicit requester abandonment"
+  ],
+  "checks": [
+    "AW accepted then stop then W accepted; both stable to target until handshake",
+    "W accepted then stop then AW accepted; both stable to target until handshake",
+    "Pending BVALID+ID retained under backpressure while stopped",
+    "Buffered ARVALID retained after stop; RVALID/data retained until handshake",
+    "Idle after completion; stop still refuses new transactions"
+  ],
+  "limits": [
+    "No bursts/multiple outstanding/unaligned access qualification; shape precondition not hardware-enforced",
+    "No integrated progress fault/dual-ingress/PS test yet",
+    "Stop alone has no finite drain bound; absent AW/W partner or target response may wait indefinitely",
+    "No physical/CDC/reset or complete AXI formal protocol proof"
+  ],
+  "next": "Replace test-local fault blanket gate with drain candidate in full CSR/dual-ingress fixture; then test explicit abandonment/coordinated reset of partial writes",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/master_axi_drain.py": "6d609b6a0165db796bab9256b421dffb7210b403ae4990b26e448c2340d1d138",
+    "diagnostics/drtio/test_master_axi_drain.py": "3bc1d6f4230f78fc87562d527261355074cd31a60ec2bd434de7e8096eefc279"
+  }
+}

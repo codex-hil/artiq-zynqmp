@@ -1,3 +1,12 @@
+2026-11-09 isolatedsinglebeatAXIdrain 3directedtestsPASS: AWfirst/stop/W,
+Wfirst/stop/AW, ARpending/stop/R. Bufferedrequests keepVALID untilhandshake;
+responsesunmaskedwhile stopped; no newtransactions afterdrain. Callerrestricts
+aligned32bit/len0/WLAST1 (not hardwareenforced), one read/write outstanding.
+No finite drainbound ifmissingpartner/response; explicitabandonment+coordinated
+reset required, no retry/cancel. Not integrated/protocolformal/physicalqualified.
+Next fullCSR/dualHPM progressfault composition +partialwritereset. NoHW;hold.
+Evidence genesys-master-integration-2026-11-09/axi-drain-model/report.json.
+
 2026-11-08 progressfault/fullAXI testlocal containment/recovery PASS; production
 AXIinterruption REFUSED. Actual CSR/AUX/PSCDC+dualHPM, committedlength68/native17,
 unacceptedB thenRXschedulerstop: outergate blocks5channels, innerBVALID1 hidden,
