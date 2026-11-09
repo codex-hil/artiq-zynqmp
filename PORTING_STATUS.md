@@ -1,3 +1,11 @@
+2026-11-09 fullCSR/dualHPM badWLASTafteracceptedAW +badAWregression2testsPASS.
+AWaccepted/nonidle/noB; W68/last0 READY0/notforwarded/length0. HPM1fault/reset
+live; heldbadWrefaults onreopen. Withdraw+sharedreset/freshacks/progress yields
+noB30/read0/new12/fault0, no stalehalf. Testlocal/twoinitiators/notproduction/
+physical/samehungCPUproof. Next portableA53optionalstatus/API abandonment-reset
+model, no targetretry/outcomeinference. NoHW;hold. Evidence
+genesys-master-integration-2026-11-09/full-bad-wlast/report.json.
+
 2026-11-09 fullCSR/AUX/dualHPM shapeguard+optionalstatus3testsPASS. AWsize1held
 READY0/notforwarded/length0; independentfullAXIHPM1identity/fault+12/reset live.
 Resetclear/heldAWrefault; withdraw+explicitreset/freshprogress staysclear, noB30/

@@ -16,7 +16,7 @@ from master_rx_progress import MasterRXProgress
 from master_axi_shape_guard import MasterAXIShapeGuard
 
 class FullShapeFaultTests(unittest.TestCase):
-    def test_malformed_aw_full_hpm_status_reset_and_fresh_write(self):
+    def exercise(self,malformed):
         d=Pair(now64=True)
         domains=('ps','sys','rtio_rx','rio','rio_phy')
         for name in domains+('management','control'):
@@ -60,7 +60,8 @@ class FullShapeFaultTests(unittest.TestCase):
             for _ in range(40):
                 if (yield from management.read(base+12))==1:break
             else:self.fail('Shape fault not visible through HPM1')
-            self.assertEqual((yield f.axi.aw.ready),0)
+            self.assertEqual((yield getattr(f.axi,malformed).ready),0)
+            self.assertEqual((yield g.target_axi.w.valid),0)
             self.assertEqual((yield g.target_axi.aw.valid),0)
             self.assertEqual((yield d.aux.controller.transmitter.aux_tx_length.storage),0)
             self.assertEqual((yield from management.read(base)),g.management.IDENTITY)
@@ -93,16 +94,26 @@ class FullShapeFaultTests(unittest.TestCase):
                 yield
             else:self.fail('No initial admission')
             a=f.axi
-            yield a.aw.addr.eq(length);yield a.aw.size.eq(1);yield a.aw.len.eq(0)
-            yield a.aw.valid.eq(1)
+            yield a.aw.addr.eq(length);yield a.aw.len.eq(0)
+            if malformed=='w':
+                yield a.aw.size.eq(2);yield a.aw.burst.eq(1);yield a.aw.id.eq(0x1234)
+                yield from target.handshake(a.aw)
+                for _ in range(20):yield
+                self.assertEqual((yield f.idle),0)
+                self.assertEqual((yield a.b.valid),0)
+                yield a.w.data.eq(68);yield a.w.strb.eq(15);yield a.w.last.eq(0)
+                yield a.w.valid.eq(1)
+            else:
+                yield a.aw.size.eq(1);yield a.aw.valid.eq(1)
             for _ in range(15):yield
-            self.assertEqual((yield a.aw.ready),0)
+            self.assertEqual((yield getattr(a,malformed).ready),0)
             state['pending']=True
             for _ in range(3000):
                 if state['withdraw']:break
                 yield
             else:self.fail('No abandonment request')
-            yield a.aw.valid.eq(0);yield a.aw.size.eq(2)
+            yield getattr(a,malformed).valid.eq(0)
+            yield a.aw.size.eq(2);yield a.w.last.eq(1)
             for _ in range(3000):
                 if state['reopened']:break
                 yield
@@ -132,5 +143,8 @@ class FullShapeFaultTests(unittest.TestCase):
                 return dt,rising,falling
             sim.time.tick=tick;sim.run()
         self.assertTrue(state['done'])
+
+    def test_malformed_aw_full_hpm_status_reset_and_fresh_write(self):self.exercise('aw')
+    def test_bad_wlast_after_accepted_aw_full_hpm_recovery(self):self.exercise('w')
 
 if __name__=='__main__':unittest.main()

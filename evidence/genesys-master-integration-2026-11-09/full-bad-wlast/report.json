@@ -1,0 +1,22 @@
+{
+  "status": "TWO_FULL_CSR_DUAL_HPM_TESTS_PASS_BAD_WLAST_AFTER_ACCEPTED_AW_AND_AW_REGRESSION",
+  "checks": [
+    "Correct AW accepted, drain nonidle and B absent before malformed W",
+    "Wdata68/WLAST0 held VALID sees READY0 and no downstreamWVALID",
+    "Native AUX length stays0: malformed W causes no observed target effect",
+    "FullAXI independent HPM1 reads stickyfault and executes reset",
+    "Held malformedW refaults after reset/reopen",
+    "Requester withdraws W then explicit shared reset/freshdomainacks/progress recovers",
+    "No staleB30cycles, length0, fresh write12/read12, fault0",
+    "MalformedAW regression passes"
+  ],
+  "limits": [
+    "Two behavioral initiators, not sameA53 hungMMIO recovery",
+    "Singlebeat32 model; no completeAXI formal proof",
+    "Test-local guard/status/progress composition; not production physical assembly",
+    "No physicalCDC/GT/reset/hardware qualification"
+  ],
+  "next": "Extend portable A53 management API/model to read optional shape-fault status and express explicit abandonment/reset with no target retry or outcome inference",
+  "hardware_accessed": false,
+  "source_sha256": "bf102cc3204672a05dd3fa2e5f1dc7975f944591d8b936f53be26e206cddca94"
+}
