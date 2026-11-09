@@ -1,3 +1,10 @@
+2026-11-09 resetRTLmap18synchronizers/36FDPEPASS: eachpairINIT1/sameC/PRE/
+D0→metaQ→domainreset. Management/control externalplreset only,5release domains
+sharedcoordinatorrequest,5FIFOclockpairs commonassertion. ExactRTLsameDelltop.
+No physicalreset/recoveryremoval/timingproof; GTstatussourcesOPEN. Next integrated
+coordinator/releases AMD FDPE/GSR sim stoppedtargetclock. NoHW/exception;hold.
+Evidence genesys-master-integration-2026-11-09/reset-endpoints/report.json.
+
 2026-11-09 exactXilinxAsyncResetSync2FDPEINIT1 AMDunisims/glbl simPASS.
 Stoppedlow/high asyncassertwithoutedge, deasserthelduntil2resumedrisingedges.
 InitialtimescaleREFUSED preexecution retained, testmetadataonlyfixed. Isolated

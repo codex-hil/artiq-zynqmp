@@ -1,0 +1,28 @@
+{
+  "status": "EIGHTEEN_RESET_SYNCHRONIZERS_36_FDPE_RTL_TOPOLOGY_CHECK_PASS",
+  "checks": [
+    "Each pair INIT1/sameclock/samePRE/firstD0/secondDfirstQ/secondQdomainreset",
+    "Management/control asyncassert depends on externalpl_resetn0, not coordinator reset",
+    "Five targetrelease domains share coordinatorrequest assertion",
+    "FiveFIFO from/to pairs each share commonassertion signal",
+    "ExportRTLhash identical to Dell-elaborated guardedtop"
+  ],
+  "assertion_source_drivers": {
+    "(((request | (~mastergthadapter6)) | (~mastergthadapter4)) | (~mastergthadapter8))": "EXPRESSION_NOT_SINGLE_SIGNAL",
+    "(~pl_resetn0)": "EXPRESSION_NOT_SINGLE_SIGNAL",
+    "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst": "(ps_rst | sys_rst)",
+    "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst": "(ps_rst | sys_rst)",
+    "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst": "(sys_rst | ps_rst)",
+    "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst": "(ps_rst | sys_rst)",
+    "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst": "(sys_rst | ps_rst)",
+    "genesysmasterintegration_ingress_releases_request": "genesysmasterintegration_ingress_auxresetcontrol_reset"
+  },
+  "limits": [
+    "EmittedRTL topology only, not postroute/netlist/timing/physicalreset proof",
+    "GTH align assertion combines request and rawGTstatus; source timing qualificationOPEN",
+    "Common assertion does not prove reset release safe across all clocks",
+    "No timingexceptions or hardwarechanges"
+  ],
+  "next": "Export coordinator+release-domain assembly and simulate exact AMD FDPE/GSR reset models with one targetclockstopped; verify live management, no admission before freshdomainacks",
+  "hardware_accessed": false
+}

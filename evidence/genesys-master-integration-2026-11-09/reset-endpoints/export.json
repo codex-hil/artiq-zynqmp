@@ -1,0 +1,362 @@
+{
+  "status": "RTL_EXPORT_ONLY_PS_ADAPTER_BOUNDARY",
+  "ps_export_sha256": "92cb52680a8667aa15054833dbed9dd488e69d1294f3bf064cb9b88b674e4fae",
+  "guarded_candidate": true,
+  "runtime_capability_granted": false,
+  "ports": {
+    "maxigp0_arready": {
+      "rtl_name": "maxigp0_arready",
+      "bits": 1
+    },
+    "maxigp0_awready": {
+      "rtl_name": "maxigp0_awready",
+      "bits": 1
+    },
+    "maxigp0_bid": {
+      "rtl_name": "maxigp0_bid",
+      "bits": 16
+    },
+    "maxigp0_bresp": {
+      "rtl_name": "maxigp0_bresp",
+      "bits": 2
+    },
+    "maxigp0_bvalid": {
+      "rtl_name": "maxigp0_bvalid",
+      "bits": 1
+    },
+    "maxigp0_rdata": {
+      "rtl_name": "maxigp0_rdata",
+      "bits": 32
+    },
+    "maxigp0_rid": {
+      "rtl_name": "maxigp0_rid",
+      "bits": 16
+    },
+    "maxigp0_rlast": {
+      "rtl_name": "maxigp0_rlast",
+      "bits": 1
+    },
+    "maxigp0_rresp": {
+      "rtl_name": "maxigp0_rresp",
+      "bits": 2
+    },
+    "maxigp0_rvalid": {
+      "rtl_name": "maxigp0_rvalid",
+      "bits": 1
+    },
+    "maxigp0_wready": {
+      "rtl_name": "maxigp0_wready",
+      "bits": 1
+    },
+    "maxigp1_arready": {
+      "rtl_name": "maxigp1_arready",
+      "bits": 1
+    },
+    "maxigp1_awready": {
+      "rtl_name": "maxigp1_awready",
+      "bits": 1
+    },
+    "maxigp1_bid": {
+      "rtl_name": "maxigp1_bid",
+      "bits": 16
+    },
+    "maxigp1_bresp": {
+      "rtl_name": "maxigp1_bresp",
+      "bits": 2
+    },
+    "maxigp1_bvalid": {
+      "rtl_name": "maxigp1_bvalid",
+      "bits": 1
+    },
+    "maxigp1_rdata": {
+      "rtl_name": "maxigp1_rdata",
+      "bits": 32
+    },
+    "maxigp1_rid": {
+      "rtl_name": "maxigp1_rid",
+      "bits": 16
+    },
+    "maxigp1_rlast": {
+      "rtl_name": "maxigp1_rlast",
+      "bits": 1
+    },
+    "maxigp1_rresp": {
+      "rtl_name": "maxigp1_rresp",
+      "bits": 2
+    },
+    "maxigp1_rvalid": {
+      "rtl_name": "maxigp1_rvalid",
+      "bits": 1
+    },
+    "maxigp1_wready": {
+      "rtl_name": "maxigp1_wready",
+      "bits": 1
+    },
+    "maxihpm0_fpd_aclk": {
+      "rtl_name": "maxihpm0_fpd_aclk",
+      "bits": 1
+    },
+    "maxihpm1_fpd_aclk": {
+      "rtl_name": "maxihpm1_fpd_aclk",
+      "bits": 1
+    },
+    "maxigp0_araddr": {
+      "rtl_name": "maxigp0_araddr",
+      "bits": 40
+    },
+    "maxigp0_arburst": {
+      "rtl_name": "maxigp0_arburst",
+      "bits": 2
+    },
+    "maxigp0_arcache": {
+      "rtl_name": "maxigp0_arcache",
+      "bits": 4
+    },
+    "maxigp0_arid": {
+      "rtl_name": "maxigp0_arid",
+      "bits": 16
+    },
+    "maxigp0_arlen": {
+      "rtl_name": "maxigp0_arlen",
+      "bits": 8
+    },
+    "maxigp0_arlock": {
+      "rtl_name": "maxigp0_arlock",
+      "bits": 1
+    },
+    "maxigp0_arprot": {
+      "rtl_name": "maxigp0_arprot",
+      "bits": 3
+    },
+    "maxigp0_arqos": {
+      "rtl_name": "maxigp0_arqos",
+      "bits": 4
+    },
+    "maxigp0_arsize": {
+      "rtl_name": "maxigp0_arsize",
+      "bits": 3
+    },
+    "maxigp0_aruser": {
+      "rtl_name": "maxigp0_aruser",
+      "bits": 16
+    },
+    "maxigp0_arvalid": {
+      "rtl_name": "maxigp0_arvalid",
+      "bits": 1
+    },
+    "maxigp0_awaddr": {
+      "rtl_name": "maxigp0_awaddr",
+      "bits": 40
+    },
+    "maxigp0_awburst": {
+      "rtl_name": "maxigp0_awburst",
+      "bits": 2
+    },
+    "maxigp0_awcache": {
+      "rtl_name": "maxigp0_awcache",
+      "bits": 4
+    },
+    "maxigp0_awid": {
+      "rtl_name": "maxigp0_awid",
+      "bits": 16
+    },
+    "maxigp0_awlen": {
+      "rtl_name": "maxigp0_awlen",
+      "bits": 8
+    },
+    "maxigp0_awlock": {
+      "rtl_name": "maxigp0_awlock",
+      "bits": 1
+    },
+    "maxigp0_awprot": {
+      "rtl_name": "maxigp0_awprot",
+      "bits": 3
+    },
+    "maxigp0_awqos": {
+      "rtl_name": "maxigp0_awqos",
+      "bits": 4
+    },
+    "maxigp0_awsize": {
+      "rtl_name": "maxigp0_awsize",
+      "bits": 3
+    },
+    "maxigp0_awuser": {
+      "rtl_name": "maxigp0_awuser",
+      "bits": 16
+    },
+    "maxigp0_awvalid": {
+      "rtl_name": "maxigp0_awvalid",
+      "bits": 1
+    },
+    "maxigp0_bready": {
+      "rtl_name": "maxigp0_bready",
+      "bits": 1
+    },
+    "maxigp0_rready": {
+      "rtl_name": "maxigp0_rready",
+      "bits": 1
+    },
+    "maxigp0_wdata": {
+      "rtl_name": "maxigp0_wdata",
+      "bits": 32
+    },
+    "maxigp0_wlast": {
+      "rtl_name": "maxigp0_wlast",
+      "bits": 1
+    },
+    "maxigp0_wstrb": {
+      "rtl_name": "maxigp0_wstrb",
+      "bits": 4
+    },
+    "maxigp0_wvalid": {
+      "rtl_name": "maxigp0_wvalid",
+      "bits": 1
+    },
+    "maxigp1_araddr": {
+      "rtl_name": "maxigp1_araddr",
+      "bits": 40
+    },
+    "maxigp1_arburst": {
+      "rtl_name": "maxigp1_arburst",
+      "bits": 2
+    },
+    "maxigp1_arcache": {
+      "rtl_name": "maxigp1_arcache",
+      "bits": 4
+    },
+    "maxigp1_arid": {
+      "rtl_name": "maxigp1_arid",
+      "bits": 16
+    },
+    "maxigp1_arlen": {
+      "rtl_name": "maxigp1_arlen",
+      "bits": 8
+    },
+    "maxigp1_arlock": {
+      "rtl_name": "maxigp1_arlock",
+      "bits": 1
+    },
+    "maxigp1_arprot": {
+      "rtl_name": "maxigp1_arprot",
+      "bits": 3
+    },
+    "maxigp1_arqos": {
+      "rtl_name": "maxigp1_arqos",
+      "bits": 4
+    },
+    "maxigp1_arsize": {
+      "rtl_name": "maxigp1_arsize",
+      "bits": 3
+    },
+    "maxigp1_aruser": {
+      "rtl_name": "maxigp1_aruser",
+      "bits": 16
+    },
+    "maxigp1_arvalid": {
+      "rtl_name": "maxigp1_arvalid",
+      "bits": 1
+    },
+    "maxigp1_awaddr": {
+      "rtl_name": "maxigp1_awaddr",
+      "bits": 40
+    },
+    "maxigp1_awburst": {
+      "rtl_name": "maxigp1_awburst",
+      "bits": 2
+    },
+    "maxigp1_awcache": {
+      "rtl_name": "maxigp1_awcache",
+      "bits": 4
+    },
+    "maxigp1_awid": {
+      "rtl_name": "maxigp1_awid",
+      "bits": 16
+    },
+    "maxigp1_awlen": {
+      "rtl_name": "maxigp1_awlen",
+      "bits": 8
+    },
+    "maxigp1_awlock": {
+      "rtl_name": "maxigp1_awlock",
+      "bits": 1
+    },
+    "maxigp1_awprot": {
+      "rtl_name": "maxigp1_awprot",
+      "bits": 3
+    },
+    "maxigp1_awqos": {
+      "rtl_name": "maxigp1_awqos",
+      "bits": 4
+    },
+    "maxigp1_awsize": {
+      "rtl_name": "maxigp1_awsize",
+      "bits": 3
+    },
+    "maxigp1_awuser": {
+      "rtl_name": "maxigp1_awuser",
+      "bits": 16
+    },
+    "maxigp1_awvalid": {
+      "rtl_name": "maxigp1_awvalid",
+      "bits": 1
+    },
+    "maxigp1_bready": {
+      "rtl_name": "maxigp1_bready",
+      "bits": 1
+    },
+    "maxigp1_rready": {
+      "rtl_name": "maxigp1_rready",
+      "bits": 1
+    },
+    "maxigp1_wdata": {
+      "rtl_name": "maxigp1_wdata",
+      "bits": 32
+    },
+    "maxigp1_wlast": {
+      "rtl_name": "maxigp1_wlast",
+      "bits": 1
+    },
+    "maxigp1_wstrb": {
+      "rtl_name": "maxigp1_wstrb",
+      "bits": 4
+    },
+    "maxigp1_wvalid": {
+      "rtl_name": "maxigp1_wvalid",
+      "bits": 1
+    },
+    "pl_clk0": {
+      "rtl_name": "pl_clk0",
+      "bits": 1
+    },
+    "pl_resetn0": {
+      "rtl_name": "pl_resetn0",
+      "bits": 1
+    }
+  },
+  "local_outputs": [
+    "local_ttl0",
+    "local_ttl1"
+  ],
+  "limits": [
+    "PS hardIP external; adapter boundary signals only",
+    "No XDC or synthesis/timing/physical qualification"
+  ],
+  "interface_manifest_sha256": "1bbef6ccf2bd185f288e943edabfd3351f1924be6999f7e554d86110897e6701",
+  "generated_sha256": {
+    "cdc-endpoints.json": "45e25def4bde6698b157755fde6388da1d2487b9e3211183697a4549a3bf36a2",
+    "en_replaces_rom.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_3.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "latency_compensation.init": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead",
+    "en_replaces_rom_2.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "routing_table.init": "d87bcaf61125aa37cb4795610ee9ce84d1b9fef91d0072b5283078949133d79f",
+    "en_replaces_rom_1.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "cdc-inventory.json": "5c18a1671347545e0a7a232d8df4b440a3aa6819505069a9be84369640fe2df4",
+    "master_physical_candidate.v": "5f0f9620461f87bd997c24e77a97f7e9092b46d857f09753d2b796b9e56c3b9b"
+  },
+  "assembly_source_sha256": {
+    "diagnostics/drtio/master_integration.py": "2b6f73a1e53eb156d9f528c98fad6afd33f69f1d7bfeae9cd42d0bf0bb76470e",
+    "diagnostics/drtio/master_physical_assembly.py": "43e7ea47e704c3e65020cda32771fe15421b49c24913705d3d9c42cceefa1d68",
+    "diagnostics/drtio/master_cdc_inventory.py": "1a2e75b5629cbd2bc2d533ccceaee17b51706f948e12c200cebbaf34b52c2e11",
+    "diagnostics/drtio/role-reversal/export-physical-assembly.py": "3b7d5337ed2b4e82fc5d49d0b52d7d92c3d56857f14d8004e7c9abc1ecabee97"
+  }
+}

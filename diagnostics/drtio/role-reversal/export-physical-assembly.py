@@ -48,6 +48,9 @@ inventory=collect(fragment,top,source_notes)
 from migen.genlib.cdc import MultiReg
 from migen.fhdl.tools import list_signals
 lowered=[]
+reset_lowered=[]
+from migen.genlib.resetsync import AsyncResetSynchronizer
+from migen.fhdl.specials import Instance
 original_multireg=xilinx_special_overrides[MultiReg]
 class ObservedMultiReg:
  @staticmethod
@@ -55,7 +58,16 @@ class ObservedMultiReg:
   implementation=original_multireg.lower(special)
   lowered.append((special,implementation))
   return implementation
+original_reset=xilinx_special_overrides[AsyncResetSynchronizer]
+class ObservedReset:
+ @staticmethod
+ def lower(special):
+  implementation=original_reset.lower(special)
+  cells=sorted(implementation._fragment.specials,key=lambda cell:cell.duid)
+  reset_lowered.append((special,cells))
+  return implementation
 overrides=dict(xilinx_special_overrides);overrides[MultiReg]=ObservedMultiReg
+overrides[AsyncResetSynchronizer]=ObservedReset
 domains=list(fragment.clock_domains)
 result=verilog.convert(fragment,ios=ios,name='master_physical_candidate',special_overrides=overrides)
 endpoint_rows=[]
@@ -74,9 +86,21 @@ def chain(name):
   visited.append(name);name=aliases[name]
  return visited+[name]
 endpoints={'status':'EMITTED_RTL_NAMES_ONLY_NOT_NETLIST_TIMING_ENDPOINTS',
- 'multiregs':endpoint_rows,
+  'multiregs':endpoint_rows,
  'clock_aliases':{cd.name:chain(result.ns.get_name(cd.clk)) for cd in domains},
  'limits':['No get_cells/get_pins post-synthesis binding','No reset polarity/initialization waiver','No constraints generated']}
+reset_rows=[]
+for special,cells in reset_lowered:
+ entries=[]
+ for cell in cells:
+  assert isinstance(cell,Instance) and cell.of=='FDPE'
+  params={item.name:item.value.value for item in cell.items if isinstance(item,Instance.Parameter)}
+  pin_expr={item.name:verilog._printexpr(result.ns,item.expr)[0] for item in cell.items if isinstance(item,Instance._IO)}
+  entries.append({'rtl_instance':result.ns.get_name(cell),'primitive':cell.of,'parameters':params,'pins':pin_expr})
+ reset_rows.append({'domain':special.cd.name,'clock_alias_chain':chain(result.ns.get_name(special.cd.clk)),
+  'asynchronous_assert_expression':verilog._printexpr(result.ns,special.async_reset)[0],
+  'reset_output':result.ns.get_name(special.cd.rst),'cells':entries})
+endpoints['reset_synchronizers']=reset_rows
 (args.output/'cdc-endpoints.json').write_text(json.dumps(endpoints,indent=2)+'\n')
 original=Path.cwd()
 try:
