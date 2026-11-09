@@ -1,0 +1,27 @@
+{
+  "status": "ISOLATED_SHAPE_GUARD_TWO_TESTS_NINE_BAD_CLASSES_PASS_NOT_INTEGRATED",
+  "checks": [
+    "AW/AR len1,size1,unalignedaddr3; WLAST0; AWLOCK1; ARBURST2 blocked READY0 and no downstreamVALID",
+    "Sticky fault remains after malformed request removed; only domain reset clears",
+    "Independent malformed AR after acceptedAW does not prevent correct complementaryW",
+    "Pending BVALID/ID17 remains visible8cycles while faulted and drains normally"
+  ],
+  "contract": [
+    "len0 size2 aligned32 address, lock0, burstFIXED0 orINCR1; WLAST1",
+    "Fault detects malformed request when drain would otherwise accept it; no malformed traffic accepted",
+    "Fault stops new transactions but retains drain accepted halves/responses",
+    "No synthetic AXI error response; invalid request can remain backpressured indefinitely",
+    "Fault output not management-mapped yet; domain reset only clears, parent must coordinate target+bridge and abandonment"
+  ],
+  "limits": [
+    "Isolated directed functional model, no full CSR/dualHPM/protocolformal proof",
+    "No management visibility or bounded sameCPU recovery yet",
+    "No physicalCDC/reset or hardware qualification"
+  ],
+  "next": "Expose synchronized shape-fault status through isolated independent management candidate and test explicit reset with malformed request held; no automatic retry or clear",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/master_axi_shape_guard.py": "1e10383766c2fb0d9cc90dde16c0c8248d093080a3ac0006699383fed57dfa70",
+    "diagnostics/drtio/test_master_axi_shape_guard.py": "8abebae3000e3c05fb6e1c570640336de8673df4d08a6b6e2eec31962ee006be"
+  }
+}

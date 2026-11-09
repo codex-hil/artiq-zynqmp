@@ -1,3 +1,12 @@
+2026-11-09 isolatedshape guard2tests/9badclassesPASS: eligibleinvalidAW/AR
+len,size,align,lock/burst orWLAST blockedbeforeaccept/forward, stickyfault.
+AcceptedAW companionW stilldrains despiteindependentARfault; pendingBVALID/ID
+retained8cycles. READY0backpressure NOT AXIerrorresponse; maywaitindefinitely
+untilabandonment/coordinatedreset. Faultonlysignal/notmanagementmapped yet.
+Next independentmanagement synchronizedfaultstatus/reset test. No fullCSR/
+formal/physical/production/HW;hold. Evidence
+genesys-master-integration-2026-11-09/shape-guard/report.json.
+
 2026-11-09 drain concurrentoneR+oneW PASS Bfirst/Rfirst with7cycle independent
 backpressure, exactID/data/RESP andidleuntilbothcomplete. Sevennegative shapes
 AW/ARLEN1,SIZE1,ADDR3,WLAST0 forwardedunchanged: no shapeenforcement, nothandling
