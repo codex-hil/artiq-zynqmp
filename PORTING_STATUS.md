@@ -1,3 +1,11 @@
+2026-11-09 versionedofflineinterfacemanifest8sourcebindings consistencyPASS,
+11mutationsREFUSED incldeployment/runtimecap/offset/reset/retry/sourcehash.
+Actualgateware+C BASE/ID/statusoffset agree. TEST_FIXTURE_ONLY_NOT_DEPLOYED,
+runtimecapFALSE/no deployedimagehash/signature/attestation. DoesnotgrantMMIO or
+physicalqualification. Next isolatedguardedintegrationexport/exacttopbindings
+beforeofflineelaboration. NoHW;hold. Evidence
+genesys-master-integration-2026-11-09/interface-manifest/report.json.
+
 2026-11-09 DellA53recoverywrapper compilePASS REL/AArch64entry0/noUND, five
 source+objecthashmatch. Host24cases/17failurepoints rerunASanUBSan with exact
 reset/releaseattemptflags matching sideeffect-before-error commandwrites. Flags

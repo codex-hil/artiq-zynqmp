@@ -1,0 +1,62 @@
+{
+  "contract": {
+    "schema": 1,
+    "profile": "genesys-reversed-roles-shape-guard-offline-v1",
+    "scope": "TEST_FIXTURE_ONLY_NOT_DEPLOYED",
+    "deployment_admissible": false,
+    "management": {
+      "base": 2952790016,
+      "identity": 1196576049,
+      "identity_discovers_optional_capability": false,
+      "registers": {
+        "identity": 0,
+        "command": 4,
+        "reset_status": 8,
+        "shape_fault_ro_bit0": 12
+      },
+      "optional_shape_fault_present_in_fixture": true,
+      "runtime_capability_granted": false
+    },
+    "target": {
+      "data_bits": 32,
+      "address_bits": 40,
+      "id_bits": 16,
+      "len": 0,
+      "size": 2,
+      "alignment_bytes": 4,
+      "lock": 0,
+      "bursts": [
+        0,
+        1
+      ],
+      "wlast": 1,
+      "max_reads": 1,
+      "max_writes": 1,
+      "malformed_handling": "READY0_STICKY_FAULT_NO_AXI_ERROR_RESPONSE"
+    },
+    "reset": {
+      "requester_abandoned_required": true,
+      "requester_withdrawn_required": true,
+      "bridge_target_coordinated_reset_required": true,
+      "automatic_retry": false,
+      "same_hung_cpu_recovery_qualified": false
+    },
+    "hardware": {
+      "accessed": false,
+      "physical_cdc_qualified": false,
+      "maintenance_hold": true,
+      "deployed_bitstream_sha256": null,
+      "deployed_firmware_sha256": null
+    }
+  },
+  "source_sha256": {
+    "diagnostics/drtio/aux_reset_management.py": "c8d868949f923de68541ecc2f367aaac120ff288532ebd9cb458876d0687fdd9",
+    "diagnostics/drtio/master_dual_ingress.py": "58a9975af68ca3c183c086ba3796c3f7a27816c30552e1dea9eef1505c714e71",
+    "diagnostics/drtio/master_axi_drain.py": "1958a1e2cabb8f85c40132e564ca1bb374376ee20f7cc18f4f3427f826f38fcb",
+    "diagnostics/drtio/master_axi_shape_guard.py": "1e10383766c2fb0d9cc90dde16c0c8248d093080a3ac0006699383fed57dfa70",
+    "diagnostics/drtio/master_rx_progress.py": "283c75edb29cbd1a8c1045d98f5c132c6668508be1cb3548848bb38cfb71e9c5",
+    "diagnostics/drtio/test_master_full_shape_fault.py": "bf102cc3204672a05dd3fa2e5f1dc7975f944591d8b936f53be26e206cddca94",
+    "diagnostics/drtio/role-reversal/a53/reset_driver.h": "14b09757af0853807c342997cc9f473ba0e58231184c35b7a2686167e37a78dd",
+    "diagnostics/drtio/role-reversal/a53/shape_recovery.h": "9110af42fd3a78ef0b305326133808f3b87b55be62aa86ecf96132f93a876f5e"
+  }
+}

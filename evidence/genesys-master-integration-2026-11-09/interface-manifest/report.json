@@ -1,0 +1,23 @@
+{
+  "status": "VERSIONED_OFFLINE_INTERFACE_MANIFEST_EIGHT_BINDINGS_ELEVEN_MUTATION_REFUSALS_PASS",
+  "manifest": "diagnostics/drtio/role-reversal/interface-manifest-v1.json",
+  "scope": "TEST_FIXTURE_ONLY_NOT_DEPLOYED",
+  "checks": [
+    "Eight exact source SHA256 bindings",
+    "Management base/identity/statusoffset declarations agree with portableC",
+    "Eleven mutations of deployment/capability/offset/reset/retry/shape/hardware/sourcebindings refused"
+  ],
+  "limits": [
+    "Not signed or authenticated deployment attestation",
+    "No deployedbitstream/firmware hash known",
+    "Runtime capability is false; noMMIOpermission granted",
+    "Shapeprogressguard still testfixture wiring, not physicalassembly integrated",
+    "No physicalCDC/reset/hardware proof"
+  ],
+  "next": "Prepare isolated full guarded integration export bound to this contract, with generated top/source hashes and explicit optional-interface wiring; elaborate offline before any deployment discussion",
+  "hardware_accessed": false,
+  "artifact_sha256": {
+    "diagnostics/drtio/role-reversal/check-interface-manifest.py": "3244ce00de0d1b38cfd5f20b0d42c9354a10d8a49c575d3a4cf2808f5c84c398",
+    "diagnostics/drtio/role-reversal/interface-manifest-v1.json": "1bbef6ccf2bd185f288e943edabfd3351f1924be6999f7e554d86110897e6701"
+  }
+}

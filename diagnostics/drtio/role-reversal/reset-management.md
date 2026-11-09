@@ -200,3 +200,17 @@ A zero status is only a sampled diagnostic; it is not admission, a live RX clock
 or a known previous transaction outcome. Callbacks must return; no software poll
 limit can bound a CPU blocked in synchronous MMIO. No recovery context is assigned
 and no automatic target retry is introduced. A53 crosscompile remains next.
+
+## Offline interface manifest v1
+
+`interface-manifest-v1.json` binds the test candidate's optional management map,
+singlebeat transfer restrictions, reset obligations and eight source hashes. Run
+`python3 diagnostics/drtio/role-reversal/check-interface-manifest.py
+diagnostics/drtio/role-reversal/interface-manifest-v1.json` from the repository.
+
+The checker verifies offline consistency only. The manifest explicitly grants no
+runtime capability and has no deployed bitstream or firmware hash. The common
+GR_ID cannot identify the extension, and this unsigned source manifest cannot
+attest what is running on a board. Do not pass capability1 to a hardware callback
+from this manifest alone. Deployment identification and physical qualification
+remain separate gates; the maintenance hold remains in place.
