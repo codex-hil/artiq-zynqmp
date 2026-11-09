@@ -1,3 +1,12 @@
+2026-11-09 integrated2targetcoordinator exactFDPE/GSR digitalPASS onDell.
+InitialBstop blocksadmit; restartfreshacks opens. StopBafterOPEN+reset asserts
+Bresetasync BUTlocalready remains1(syncresetconsumer); coordinatorholdsRESET
+closed untilBmanuallyresumes/clearsoldack/freshrelease. Initialtestwrongasyncack
+assumptionFatalretained/expectationcorrected/noRTLchange. NotautonomousGTproof:
+next audit reset→GT/userclkstop→readyclear circularwait; clockrestartavailability
+OPEN. No physical/HW/waiver;hold. Evidence
+genesys-master-integration-2026-11-09/reset-coordinator-primitives/report.json.
+
 2026-11-09 resetRTLmap18synchronizers/36FDPEPASS: eachpairINIT1/sameC/PRE/
 D0→metaQ→domainreset. Management/control externalplreset only,5release domains
 sharedcoordinatorrequest,5FIFOclockpairs commonassertion. ExactRTLsameDelltop.

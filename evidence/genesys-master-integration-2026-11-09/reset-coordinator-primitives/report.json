@@ -1,0 +1,28 @@
+{
+  "status": "TWO_TARGET_COORDINATOR_EXACT_FDPE_GSR_DIGITAL_SIM_PASS_REQUIRES_TARGET_CLOCK_RESTART",
+  "job": "genesys-reset-coordinator-sim-20261109-v1",
+  "implementation": "Original coordinator, reset commands, two release domains; exact Xilinx lowering + AMDunisims/glbl",
+  "checks": [
+    "Management/control/A live while B stopped during initialrelease; admit0/readyAonly/resetBheld",
+    "B restart givesfreshacks andadmit",
+    "AfterOPEN stopB thenexplicitreset: outputBreset asyncasserts, localreadyB stays1 because synchronousconsumerreset",
+    "Coordinator holdsRESET/admit0 while staleBready remains",
+    "ResumeB underheldreset clearsoldready, then release/freshacks/admit"
+  ],
+  "initial_failure": "Test incorrectly expected readyB asynchronousclear; rawFatal retained. Corrected expectation matches generated synchronous ready counter, no implementation change.",
+  "limits": [
+    "Ideal two-target digital simulation, not full five-domain/GT/AXI/board",
+    "Clock B manually restarted by test while resetheld; this does not establish GT clock restart availability",
+    "No separate staleabandonment proof credited here because staleack also holdsreset",
+    "No physicalCDC/recoveryremoval/metastability qualification"
+  ],
+  "next": "Audit coordinator-reset->GT reset/userclk-stop->ready-clear dependency for circular wait before claiming autonomous recovery; retain hold and do not bypass with forced clock/hardware changes",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/export-reset-coordinator.py": "f3535b059ed678ffe7677be5311b6d7e08ee6df9c0dc84c7f2173d9a379ba349",
+    "diagnostics/drtio/role-reversal/tb_reset_coordinator.v": "5d4f4c8bc35595a92aa465994977b3c0bfd3f79b3434d3d5e166eba0eddcd029",
+    "diagnostics/drtio/role-reversal/run-reset-coordinator-sim.sh": "067c17c675f314199aab336602e67d81cb7eae4365ec194e536cbda9192a58d4",
+    "diagnostics/drtio/aux_reset_domains.py": "42be921f51ddc2e3b90d361398e8308ad29d3600615109cf0ace626b4791ad34"
+  },
+  "rtl_sha256": "d3d478f543bab8d862b8efd0bc3a947aa3ca527fbf4fb1e953450190fff86c4b"
+}
