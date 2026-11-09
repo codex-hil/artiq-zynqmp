@@ -10,12 +10,12 @@ from master_gth_adapter import MasterGTHAdapter
 from master_integration import GenesysMasterIntegration
 
 class MasterPhysicalAssembly(Module):
-    def __init__(self,ps,pads,refpads):
+    def __init__(self,ps,pads,refpads,*,guarded_candidate=False):
         request=Signal(reset=1)
         self.submodules.codec=codec=Raw20Codec()
         self.submodules.phy=phy=MasterGTHAdapter(pads,refpads,ps.outputs['pl_clk0'],request,codec.tx_raw)
         self.submodules.core=core=GenesysMasterIntegration(ps,codec.channel,phy.tx_clock,phy.rx_clock,
-            codec=codec,link_status=phy.link_status)
+            codec=codec,link_status=phy.link_status,guarded_candidate=guarded_candidate)
         self.comb += [codec.rx_raw.eq(phy.rx_raw),
                       request.eq(core.gt_reset_request | ~ps.outputs['pl_resetn0'])]
         self.local_outputs=core.local_outputs

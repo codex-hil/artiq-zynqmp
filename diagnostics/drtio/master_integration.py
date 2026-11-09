@@ -19,7 +19,7 @@ from master_dual_ingress import MasterDualIngress
 from ps_management_hpm import connect_target_hpm0,connect_management_hpm1
 
 class GenesysMasterIntegration(Module):
-    def __init__(self,ps,channel,tx_clock,rx_clock,*,codec=None,link_status=None):
+    def __init__(self,ps,channel,tx_clock,rx_clock,*,codec=None,link_status=None,guarded_candidate=False):
         if (codec is None)!=(link_status is None):
             raise ValueError('Codec and physical status must be supplied together')
         if codec is not None and codec.channel is not channel:
@@ -44,16 +44,35 @@ class GenesysMasterIntegration(Module):
         self.submodules.routing=GenesysMasterRouting([self.kernel.cri],self.local.cri,self.master.cri)
         self.submodules.aux=GenesysMasterAux(self.master,controller_type=GrayAuxController)
         self.submodules.csr=GenesysMasterCSR(self.time,self.kernel,self.master,self.routing,aux=self.aux,ps_clock='ps')
-        self.submodules.ingress=g=MasterDualIngress(self.csr.axi)
+        shape_fault=Signal() if guarded_candidate else None
+        self.submodules.ingress=g=MasterDualIngress(self.csr.axi,shape_fault=shape_fault)
+        target_axi=g.target_axi
+        admitted=g.admit
+        if guarded_candidate:
+            from migen import ClockDomainsRenamer
+            from migen.genlib.cdc import MultiReg
+            from master_rx_progress import MasterRXProgress
+            from master_axi_shape_guard import MasterAXIShapeGuard
+            self.submodules.progress=progress=MasterRXProgress(32)
+            self.submodules.shape_guard=guard=ClockDomainsRenamer('ps')(MasterAXIShapeGuard(g.target_axi))
+            qualified_ps=Signal();fault_control=Signal()
+            self.specials += [MultiReg(progress.allowed,qualified_ps,'ps'),
+                              MultiReg(guard.fault,fault_control,'control')]
+            self.comb += [progress.rearm.eq(g.coordinator.reset),
+                          guard.stop.eq(~qualified_ps | g.reset_out[0]),
+                          shape_fault.eq(guard.fault)]
+            admitted=Signal()
+            self.comb += admitted.eq(g.admit & progress.allowed & ~fault_control)
+            target_axi=guard.axi
         for index,name in enumerate(('ps','sys','rtio_rx','rio','rio_phy')):
             self.comb+=getattr(self,'cd_'+name).rst.eq(g.reset_out[index] | ~ps.outputs['pl_resetn0'])
-        connect_target_hpm0(self,ps,g.target_axi,pl_clock)
+        connect_target_hpm0(self,ps,target_axi,pl_clock)
         connect_management_hpm1(self,ps,g.management_axi,pl_clock)
-        self.admit=g.admit
+        self.admit=admitted
         self.gt_reset_request=g.coordinator.reset
         if codec is not None:
             from master_link_boundary import MasterLinkBoundary
-            self.submodules.link_boundary=MasterLinkBoundary(codec,g.admit,
+            self.submodules.link_boundary=MasterLinkBoundary(codec,admitted,
                 g.coordinator.reset,link_status)
         # Parent must gate incoming packet admission/reset actual transceiver;
         # this output alone does not synchronize admission into recovered RX.

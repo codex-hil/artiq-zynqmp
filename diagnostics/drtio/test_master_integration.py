@@ -29,7 +29,7 @@ class IntegrationTests(unittest.TestCase):
         self.assertIs(top.aux.link_layer,top.master.link_layer)
         self.assertIs(top.gt_reset_request,top.ingress.coordinator.reset)
 
-    def test_two_hpm_signal_adapters_and_reset_roundtrip(self):
+    def exercise_two_hpm_roundtrip(self,guarded=False):
         from migen import ClockDomain,ClockSignal
         from migen.sim import run_simulation
         from migen.genlib.resetsync import AsyncResetSynchronizer
@@ -42,7 +42,7 @@ class IntegrationTests(unittest.TestCase):
             width=abs(int(left)-int(right))+1 if left and right else 1
             (ps.inputs if direction=='I' else ps.outputs)[name]=Signal(width)
         codec=Raw20Codec()
-        top=GenesysMasterIntegration(ps,codec.channel,ClockSignal('tx_source'),ClockSignal('rx_source'))
+        top=GenesysMasterIntegration(ps,codec.channel,ClockSignal('tx_source'),ClockSignal('rx_source'),guarded_candidate=guarded)
         top.submodules.codec=codec
         for name in ('pl_source','tx_source','rx_source'):
             setattr(top.clock_domains,'cd_'+name,ClockDomain(name,reset_less=True))
@@ -115,5 +115,8 @@ class IntegrationTests(unittest.TestCase):
         run_simulation(top,{'management':manager(),'ps':requester()},clocks,
                        special_overrides={AsyncResetSynchronizer:FunctionalReset})
         self.assertEqual(state['done'],2)
+
+    def test_two_hpm_signal_adapters_and_reset_roundtrip(self):self.exercise_two_hpm_roundtrip()
+    def test_guarded_two_hpm_signal_adapters_and_reset_roundtrip(self):self.exercise_two_hpm_roundtrip(True)
 
 if __name__=='__main__':unittest.main()

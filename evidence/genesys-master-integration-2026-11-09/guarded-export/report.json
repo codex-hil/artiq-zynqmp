@@ -1,0 +1,25 @@
+{
+  "status": "OPTIONAL_GUARDED_ASSEMBLY_RTL_EXPORT_THREE_INTEGRATION_TESTS_PASS",
+  "option": "guarded_candidate=True explicitly; defaultFalse preserved",
+  "wiring": [
+    "HPM0->shapeguard/drain->existing target gate/CSR",
+    "HPM1 independent management with optional synchronized fault",
+    "RXprogress always-live control, qualified signal synchronized intoPS",
+    "Shape fault synchronized intocontrol; effectiveadmit=coordinatoradmit&progressallowed&notfault",
+    "Reset request remains coordinator only; no fault->reset self-clearfeedback",
+    "Parent SFPdisable and native link boundary use effectiveadmit"
+  ],
+  "checks": [
+    "Actual exportedPS pin schema",
+    "Default and guarded adapter-level HPM/reset/CSR roundtrips PASS",
+    "Seven generatedRTL/init hashes verified; manifest and assemblysource hashes bound"
+  ],
+  "limits": [
+    "Only basic roundtrip on this actualassembly; detailed faultcases previously testfixture composition",
+    "No Vivado RTL elaboration/synthesis/timing on new guardedexport yet",
+    "PS hardprimitive external, no actualpinconstraints, no deployedimage",
+    "No physicalCDC/GT/reset/hungCPU qualification; runtimecapabilityFalse"
+  ],
+  "next": "Run bounded Dell RTL elaboration of this exact guardedexport against existing vendorGTH sources; preserve warnings and generatedclock qualification gates",
+  "hardware_accessed": false
+}

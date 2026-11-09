@@ -1,3 +1,11 @@
+2026-11-09 optionalguardedintegrationexportPASS with3tests actualPSschema,
+default+guardedHPM/reset/CSRroundtrips. Explicitoptinonly; HPM0shape/drain+progress,
+HPM1optionalROfault, effectiveadmitcrossings, nofault->resetfeedback. SevenRTL/init
+hashes+manifest+assemblysources bound. NoPSprimitive/pins/newVivadoelab/timing/
+physicalqualification/deployment; runtimecapFALSE/hold. Next boundedDellRTLelab
+exactexportwithvendorGTH. NoHW. Evidence
+genesys-master-integration-2026-11-09/guarded-export/report.json.
+
 2026-11-09 versionedofflineinterfacemanifest8sourcebindings consistencyPASS,
 11mutationsREFUSED incldeployment/runtimecap/offset/reset/retry/sourcehash.
 Actualgateware+C BASE/ID/statusoffset agree. TEST_FIXTURE_ONLY_NOT_DEPLOYED,
