@@ -1,3 +1,11 @@
+2026-11-09 drain concurrentoneR+oneW PASS Bfirst/Rfirst with7cycle independent
+backpressure, exactID/data/RESP andidleuntilbothcomplete. Sevennegative shapes
+AW/ARLEN1,SIZE1,ADDR3,WLAST0 forwardedunchanged: no shapeenforcement, nothandling
+PASS or genericHPMadmission. 3tests total. Next preacceptshapeinterlock/sticky
+managementfault/explicitreset preservingacceptedhalves andresponses. Directed
+modelonly/noformal/production/physical/HW;hold. Evidence
+genesys-master-integration-2026-11-09/drain-concurrent-shape/report.json.
+
 2026-11-09 drain directedmatrixPASS:10tests including24 AW/Worder×gap0/1/13×
 stall1/2/7/19 combinations. Upstreamchanges afteracceptance do notcorrupt buffered
 address/id/user/prot/cache/data/WLAST. Pairingtarget coordinatedreset AWonly/Wonly

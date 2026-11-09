@@ -159,3 +159,16 @@ They use a simplified pairing target, not the actual CSR path. They add no logic
 that detects an unexpected independent reset. Coordinated bridge-and-target reset
 with explicit abandonment remains required; unilateral reset/rearm is refused as
 a recovery procedure. Next work broadens transaction/epoch scoreboard coverage.
+
+## Concurrent responses and transfer-shape restriction
+
+Directed tests allow one read and one write outstanding and drain responses in
+both orders after stop. The unaccepted response retains its ID/data/status, and
+idle asserts only after both complete. This is finite functional evidence only.
+
+Seven negative cases show that AW/AR length1, size1, unaligned address3 and
+WLAST0 are forwarded unchanged. The candidate does not enforce its singlebeat32
+contract. Unrestricted PS/HPM traffic is therefore not admitted by these results.
+Next work is a pre-accept shape interlock with a sticky management-visible fault
+and explicit reset recovery. It must not withdraw prior VALID or silently discard
+an accepted complementary half; no cancellation or automatic retry is implied.

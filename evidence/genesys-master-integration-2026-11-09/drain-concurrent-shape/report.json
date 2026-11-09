@@ -1,0 +1,29 @@
+{
+  "status": "CONCURRENT_SINGLE_R_W_TWO_ORDERS_PASS_SEVEN_UNSUPPORTED_SHAPE_NEGATIVES_REPRODUCED",
+  "tests": 3,
+  "positive_cases": [
+    "One read and one write outstanding, stop asserted after acceptance",
+    "B drained first while R retained",
+    "R drained first while B retained",
+    "BID17/BRESP2 and RID29/data0xabcdef stable under7cycles backpressure",
+    "idle remains0 until both complete; stop blocks new traffic after drain"
+  ],
+  "negative_cases": [
+    "AWLEN1",
+    "ARLEN1",
+    "AWSIZE1",
+    "ARSIZE1",
+    "AWADDR3",
+    "ARADDR3",
+    "WLAST0"
+  ],
+  "negative_result": "All seven are forwarded unchanged to target; no hardware shape enforcement exists. These are expected hazard reproductions, not unsupported-transfer handling PASS.",
+  "limits": [
+    "Directed model only, no full AXI formal compliance",
+    "Singlebeat32/alignment/WLAST contract is caller-only; generic PS/HPM unrestricted traffic not admitted",
+    "No production integration/CDC/physical proof"
+  ],
+  "next": "Design pre-accept transfer-shape interlock with sticky management-visible fault and explicit reset recovery; preserve already accepted half transactions and response VALID",
+  "hardware_accessed": false,
+  "source_sha256": "a55a6a5d2dc198c69fddce779e51f6b8d25efa17c7a7b52013031f4d53b6bacf"
+}

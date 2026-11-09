@@ -1,0 +1,8 @@
+test_b_drains_before_r (test_master_drain_concurrent.ConcurrentTests.test_b_drains_before_r) ... ok
+test_r_drains_before_b (test_master_drain_concurrent.ConcurrentTests.test_r_drains_before_b) ... ok
+test_unsupported_shapes_are_forwarded_not_rejected (test_master_drain_concurrent.ConcurrentTests.test_unsupported_shapes_are_forwarded_not_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.117s
+
+OK
