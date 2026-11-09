@@ -1,0 +1,41 @@
+{
+  "status": "TEN_DIRECTED_TESTS_WITH_24_ORDER_GAP_STALL_COMBINATIONS_PASS",
+  "matrix": {
+    "orders": [
+      "AW-first",
+      "W-first"
+    ],
+    "missing_half_gap_cycles": [
+      0,
+      1,
+      13
+    ],
+    "target_stall_cycles": [
+      1,
+      2,
+      7,
+      19
+    ],
+    "combinations": 24
+  },
+  "additional_checks": [
+    "Upstream address/id/user/prot/cache/data/last changed after acceptance; target retains original buffered values",
+    "BVALID/id retained while stopped/backpressured",
+    "RVALID/data retained while stopped/backpressured",
+    "Both bridge+pairingtarget reset after AW-only or W-only yields only fresh address/data12",
+    "Four unilateral-reset negative controls still reproduce stale mixing or stall"
+  ],
+  "limits": [
+    "Directed finite simulation, not exhaustive protocol/formal scoreboard",
+    "Reset comparison uses simplified AW/W pairing target, not actual CSR",
+    "Singlebeat aligned32 len0/WLAST1 precondition remains unenforced",
+    "No simultaneous read/write test yet",
+    "No physicalCDC/reset or hardware qualification"
+  ],
+  "next": "Test concurrent one-read/one-write outstanding with independent response backpressure; separately define rejection or enforcement of unsupported transfer shape before production integration",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/test_master_axi_drain.py": "918b49972f9be793996b9864c16ff67ea3da9428729b1df0049a761a3cc0baab",
+    "diagnostics/drtio/test_master_drain_reset_negative.py": "db9e675914fc64af3cfb76203a49647a85cd375bbe2ede9b04fa5e7d17f2ffba"
+  }
+}

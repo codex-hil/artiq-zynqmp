@@ -1,3 +1,11 @@
+2026-11-09 drain directedmatrixPASS:10tests including24 AW/Worder×gap0/1/13×
+stall1/2/7/19 combinations. Upstreamchanges afteracceptance do notcorrupt buffered
+address/id/user/prot/cache/data/WLAST. Pairingtarget coordinatedreset AWonly/Wonly
+usesfreshpair12;4unilateralnegativecontrols stillreproducestale mix/stall. Finite
+directedmodel/notexhaustive/formal/actualCSRresetproof. Next concurrentR/W and
+unsupportedtransfer shapecontractenforcement. No production/HW/physicalproof;hold.
+Evidence genesys-master-integration-2026-11-09/drain-order-reset-matrix/report.json.
+
 2026-11-09 independentreset negativecontrols4PASS (smallAW/Wpairingtarget,
 NOTrealCSR): bridge-onlyreset afterAW mixesoldaddress/newdata; afterW mixes
 newaddress/old68data. Target-onlyreset leavesfirsthalfsent inbridge butforgotten

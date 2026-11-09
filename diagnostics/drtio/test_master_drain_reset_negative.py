@@ -42,19 +42,29 @@ class NegativeResetTests(unittest.TestCase):
             self.assertEqual((yield getattr(t,first+'_full')),1)
             self.assertEqual((yield t.commits),0)
             # Deliberately violate the coordinated reset contract in this fixture.
-            yield getattr(d,'cd_'+reset_side).rst.eq(1)
+            for name in (('bridge','target') if reset_side=='both' else (reset_side,)):
+                yield getattr(d,'cd_'+name).rst.eq(1)
             yield from cycles(5)
-            yield getattr(d,'cd_'+reset_side).rst.eq(0)
+            for name in (('bridge','target') if reset_side=='both' else (reset_side,)):
+                yield getattr(d,'cd_'+name).rst.eq(0)
             yield from cycles(5)
             yield b.stop.eq(0);yield
             yield a.aw.addr.eq(0xa0000020);yield a.w.data.eq(12)
             other='w' if first=='aw' else 'aw'
-            yield from send(other);yield from cycles(12)
+            yield from send(other)
+            if reset_side=='both':
+                yield from send(first)
+            yield from cycles(12)
             if reset_side=='bridge':
                 # New complementary half combines with old half retained in target.
                 self.assertEqual((yield t.commits),1)
                 self.assertEqual((yield t.address),0xa0000010 if first=='aw' else 0xa0000020)
                 self.assertEqual((yield t.data),12 if first=='aw' else 68)
+                self.assertEqual((yield a.b.valid),1)
+            elif reset_side=='both':
+                self.assertEqual((yield t.commits),1)
+                self.assertEqual((yield t.address),0xa0000020)
+                self.assertEqual((yield t.data),12)
                 self.assertEqual((yield a.b.valid),1)
             else:
                 # Bridge remembers first half as sent, target forgot it: stuck.
@@ -69,4 +79,6 @@ class NegativeResetTests(unittest.TestCase):
     def test_w_bridge_reset_stale_data_mix(self):self.exercise('w','bridge')
     def test_aw_target_reset_loses_address_stalls(self):self.exercise('aw','target')
     def test_w_target_reset_loses_data_stalls(self):self.exercise('w','target')
+    def test_aw_both_reset_fresh_pair_only(self):self.exercise('aw','both')
+    def test_w_both_reset_fresh_pair_only(self):self.exercise('w','both')
 if __name__=='__main__':unittest.main()
