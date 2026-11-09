@@ -131,3 +131,17 @@ Next design work must separate admission of new requests from retention/draining
 of existing responses and explicit reset containment. Partial AW-only and W-only
 transactions also require treatment. No missing response may imply rollback or
 automatic retry: the test observes the original committed register effect.
+
+## Partial-write coordinated reset checks (2026-11-09)
+
+Two full CSR/AUX/dual-HPM functional tests accept only AW or only W68, then stop
+RX, abandon the operation and issue explicit reset through HPM1. The drain bridge
+shares the PS reset with the target converter; all target domains participate in
+the existing acknowledgement sequence. After fresh release and progress, no old
+B response appears for30 cycles, length reads0, and a fresh write12 reads back12.
+The old partial write is not combined with the fresh transaction in these tests.
+
+This evidence applies only to coordinated bridge-and-target reset. Resetting one
+side alone can leave a half-transaction resident elsewhere and is not an admitted
+recovery procedure. Negative-control tests of each independent reset remain next.
+No hardware, physical reset, or recovery by the same hung CPU is qualified.

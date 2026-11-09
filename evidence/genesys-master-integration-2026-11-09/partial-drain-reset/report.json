@@ -1,0 +1,25 @@
+{
+  "status": "TWO_FULL_CSR_DUAL_HPM_PARTIAL_WRITE_RESET_TESTS_PASS",
+  "cases": [
+    "AW accepted alone then RXfault and explicit abandonment/coordinated reset",
+    "W accepted alone then RXfault and explicit abandonment/coordinated reset"
+  ],
+  "checks": [
+    "Partial transaction makes drain nonidle, no B response, native length storage0",
+    "RX scheduler stop causes sticky monitor fault",
+    "Independent HPM1 read and explicit reset write work",
+    "RX restart alone does not reopen",
+    "Bridge reset uses same PS target reset distribution as CSR converter/CDC",
+    "Fresh domain acknowledgements/progress reopen",
+    "No stale B30cycles, readlength0, fresh write12/read12; old W68 not mixed"
+  ],
+  "limits": [
+    "Behavioral two-initiator/FunctionalReset model only",
+    "Only coordinated reset path qualified; independent bridge-only or target-only reset not covered",
+    "Singlebeat32bit shape callercontract, no burst/unaligned/multiple outstanding proof",
+    "No samehungCPU/GT/physicalCDC/reset qualification"
+  ],
+  "next": "Negative-control independent bridge-only/target-only reset tests to identify stale half risk and enforce refusal of uncoordinated rearm",
+  "hardware_accessed": false,
+  "source_sha256": "8204cc5bc5262df0a9a8118077f3a36d0e050643f60b030fd6a6af444b41f9f2"
+}

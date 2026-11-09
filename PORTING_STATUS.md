@@ -1,3 +1,12 @@
+2026-11-09 fullCSR/dualHPM AWonly and Wonly coordinatedreset2testsPASS.
+Partialdrainnonidle/noB/noCSRcommit; RXfault+restartaloneblocked, HPM1read/reset
+live, explicitabandonment+sharedPS/targetreset+freshacks/progress restores.
+No staleB30cycles/read0/newwrite12/read12 (oldW68 notmixed). FunctionalReset/
+twoinitiators/singlebeatonly, not independentreset/physical/firmwarerecovery.
+Next negativecontrol bridge-only/target-only resets and uncoordinatedrearmrefusal.
+No production/HW;maintenancehold. Evidence
+genesys-master-integration-2026-11-09/partial-drain-reset/report.json.
+
 2026-11-09 fullCSR/AUX/dualHPM progressfault+drain 4testsPASS (testlocal).
 Integration caught payload-onlybuffer missingWLAST/AXIID: committed68/native17
 butnoB; fixed full first/last/payload/param retention and strengthenedtests.
