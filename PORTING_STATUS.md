@@ -1,3 +1,11 @@
+2026-11-09 CDCprovenance:4wide64actualMultiReg inputs identitymatch upstream
+LinkLayerStats registeredGrayCounter.q. Two64bitsourceencoding testsPASS including
+nearwrap/pauses. Sevenunknownsets explicitobjectreviewed:spreadinternalinit0,
+controlFSMreset/admit,GTHrxdone/RXactive. Inferenceincomplete/physicalskew/reset/
+statusOPEN. RTLidenticaltoDelltop. No exceptions/HW. Next Grayendpoint/privateFIFO
+clockalias mapping+constraintrequirements ledger. Hold. Evidence
+genesys-master-integration-2026-11-09/cdc-provenance/report.json.
+
 2026-11-09 preloweringguardedCDCinventory:49MultiReg(all2stage),18resetSync,
 4wide64transfers/7unknownknown-originsets. Conservativecomb-originpropagation
 INCOMPLETE/no physicalCDCendpointqualification. ExportRTLhash EXACTDellguarded

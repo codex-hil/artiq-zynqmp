@@ -3,14 +3,21 @@
 from collections import Counter
 from migen.fhdl.visit import NodeVisitor
 from migen.fhdl.tools import list_signals
-from migen.genlib.cdc import MultiReg
+from migen.genlib.cdc import MultiReg,GrayCounter
 from migen.genlib.resetsync import AsyncResetSynchronizer
 
 class Assignments(NodeVisitor):
     def __init__(self):self.items=[]
     def visit_Assign(self,node):self.items.append((set(list_signals(node.l)),set(list_signals(node.r))))
 
-def collect(fragment):
+def collect(fragment,top=None,source_notes=None):
+    source_notes=source_notes or {}
+    gray_sources={}
+    def walk(module,path):
+        if isinstance(module,GrayCounter):gray_sources[module.q]=path
+        for index,(name,child) in enumerate(module._submodules):
+            walk(child,path+'/'+str(name or type(child).__name__)+':'+str(index))
+    if top is not None:walk(top,'top')
     owners={};edges=[]
     for domain,statements in fragment.sync.items():
         visitor=Assignments();visitor.visit(statements)
@@ -34,6 +41,8 @@ def collect(fragment):
             rows.append({'type':'MultiReg','bits':len(special.i),'stages':special.n,
                          'destination':special.odomain,'known_sequential_origins':sorted(origin),
                          'origin_complete':False,
+                         'registered_gray_counter_source':gray_sources.get(special.i),
+                         'explicit_object_source_review':source_notes.get(special.i),
                          'input_signal_hints':sorted({s.backtrace[-1][0] if s.backtrace else 'unnamed' for s in list_signals(special.i)})})
         elif isinstance(special,AsyncResetSynchronizer):
             rows.append({'type':'AsyncResetSynchronizer','destination':special.cd.name,

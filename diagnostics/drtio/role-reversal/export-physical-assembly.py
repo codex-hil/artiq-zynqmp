@@ -37,7 +37,12 @@ ios|=set(used.values())
 args.output.mkdir(parents=True,exist_ok=True)
 from master_cdc_inventory import collect
 fragment=top.get_fragment()
-inventory=collect(fragment)
+source_notes={top.core.local.sed_spread_enable:'Internal undriven initialized0 control; not external clock',
+ top.core.ingress.coordinator.reset:'Control FSM combinational reset output; explicit reset protocol',
+ top.core.ingress.coordinator.admit:'Control FSM combinational admit output; ready/request dependent',
+ top.phy.link_status.reset_done:'Vendor GTH rxdone output; physical source/CDC qualification OPEN',
+ top.phy.link_status.clock_active:'Vendor userclk RX active output; RX-clocked sticky status, NOT watchdog'}
+inventory=collect(fragment,top,source_notes)
 (args.output/'cdc-inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
 result=verilog.convert(fragment,ios=ios,name='master_physical_candidate',special_overrides=xilinx_special_overrides)
 original=Path.cwd()

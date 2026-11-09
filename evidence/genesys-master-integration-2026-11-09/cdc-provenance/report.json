@@ -1,0 +1,27 @@
+{
+  "status": "FOUR_GRAY64_OBJECT_BINDINGS_SEVEN_UNKNOWN_SOURCE_REVIEWS_PASS_PHYSICAL_CDC_OPEN",
+  "wide64": "Four actual MultiReg inputs match registered upstream LinkLayerStats GrayCounter.q objects",
+  "tests": "Two64bit sourceencoding tests PASS zero/pauses and nearwrap/pauses; not physicalCDC proof",
+  "seven_source_reviews": [
+    "Internal undriven initialized0 control; not external clock",
+    "Control FSM combinational reset output; explicit reset protocol",
+    "Control FSM combinational admit output; ready/request dependent",
+    "Control FSM combinational admit output; ready/request dependent",
+    "Control FSM combinational reset output; explicit reset protocol",
+    "Vendor GTH rxdone output; physical source/CDC qualification OPEN",
+    "Vendor userclk RX active output; RX-clocked sticky status, NOT watchdog"
+  ],
+  "rtl_identical_to_dell_elaborated_export": true,
+  "limits": [
+    "Gray encoding not physical bus skew/maxdelay/reset qualification",
+    "Source inference incomplete; explicit object/source notes not netlist timing proof",
+    "GTH resetdone and active physicalCDC remainOPEN; active notwatchdog",
+    "No timingexceptions or hardware changes"
+  ],
+  "next": "Map Gray endpoints and privateFIFO/resetclock aliases to emitted RTL; prepare sourceperiod/skew requirements ledger without applying exceptions",
+  "hardware_accessed": false,
+  "upstream_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/link_layer.py": "f7da7512a2e079e52bac56124573f121a45e4093a95a17ed050accc14e9008eb",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/genlib/cdc.py": "9525c1c66c37c742ba06bb1c111c4387451e3cf21bd6df0afe376b7ad875d6d3"
+  }
+}
