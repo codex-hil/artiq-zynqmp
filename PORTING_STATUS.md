@@ -1,3 +1,11 @@
+2026-11-09 fullguardedactualHPMadapter/CSR defaultvsEXACTXilinxMultiReg2tests
+PASS. Twoepisodes HPM1identity/reset/release, HPM0profile/length0/new12then68
+readback. Initdiscrepancy remains/notchanged, didnotbreaktestedscenarios, notglobal
+startup/faultproof. AsyncResetSync stillFunctionalReset, idealclocks/noFDPE/GSR/
+physicalcredit. Next originalXilinxresetlowering AMDprimitive sim stoppedclock
+assert/resume-release. NoHW/deployment/capability;hold. Evidence
+genesys-master-integration-2026-11-09/full-xilinx-multireg/report.json.
+
 2026-11-09 defaultvsEXACTXilinxMultiReg startup2episode2testsPASS. Initial
 managementresetstatus0vendor vs1default explicitlychecked; first32cycles admit0/
 boundaryclosed/codecreset1, thenfreshhandshake releases. Newrequestcloses/stale

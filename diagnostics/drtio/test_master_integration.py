@@ -29,7 +29,7 @@ class IntegrationTests(unittest.TestCase):
         self.assertIs(top.aux.link_layer,top.master.link_layer)
         self.assertIs(top.gt_reset_request,top.ingress.coordinator.reset)
 
-    def exercise_two_hpm_roundtrip(self,guarded=False):
+    def exercise_two_hpm_roundtrip(self,guarded=False,xilinx=False):
         from migen import ClockDomain,ClockSignal
         from migen.sim import run_simulation
         from migen.genlib.resetsync import AsyncResetSynchronizer
@@ -112,11 +112,18 @@ class IntegrationTests(unittest.TestCase):
         for name,crossing in top.csr.ps_cdc.crossings.items():
             periods=(14,8) if name in ('b','r') else (8,14)
             for domain,period in zip(crossing._fragment.clock_domains,periods):clocks[domain.name]=period
+        overrides={AsyncResetSynchronizer:FunctionalReset}
+        if xilinx:
+            from migen.genlib.cdc import MultiReg
+            from migen.build.xilinx.common import XilinxMultiReg
+            overrides[MultiReg]=XilinxMultiReg
         run_simulation(top,{'management':manager(),'ps':requester()},clocks,
-                       special_overrides={AsyncResetSynchronizer:FunctionalReset})
+                       special_overrides=overrides)
         self.assertEqual(state['done'],2)
 
     def test_two_hpm_signal_adapters_and_reset_roundtrip(self):self.exercise_two_hpm_roundtrip()
     def test_guarded_two_hpm_signal_adapters_and_reset_roundtrip(self):self.exercise_two_hpm_roundtrip(True)
+
+    def test_guarded_hpm_roundtrip_exact_xilinx_multireg(self):self.exercise_two_hpm_roundtrip(True,True)
 
 if __name__=='__main__':unittest.main()

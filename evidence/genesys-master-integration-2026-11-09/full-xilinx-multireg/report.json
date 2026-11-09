@@ -1,0 +1,20 @@
+{
+  "status": "FULL_GUARDED_HPM_DEFAULT_AND_EXACT_XILINX_MULTIREG_TWO_TESTS_PASS",
+  "model": "Actual exported PS pin adapters, native master/CSR/AUX, guarded shape/drain/progress assembly, exact XilinxMultiReg.lower override vsdefault",
+  "checks": [
+    "IndependentHPM1 identity/reset handshake",
+    "Two reset/release episodes",
+    "HPM0 closed until initialadmission; profile identityread",
+    "AUX lengthreset0 then write12/read12 firstepisode",
+    "Resetagain then length0/write68/read68 secondepisode"
+  ],
+  "interpretation": "Existing requestedreset1/loweredinit0 discrepancy did not break these tested fullassembly scenarios. No backendcode or initvalues changed. Not globalqualification of allstartup/fault trajectories.",
+  "limits": [
+    "AsyncResetSynchronizer uses FunctionalReset substitute, not FDPE/GSR model",
+    "Ideal live clocks only; no clockstop/metastability/timing or physicalproof",
+    "No samehungCPU recovery or deployedimage/MMIOcapability"
+  ],
+  "next": "Use original Xilinx AsyncResetSynchronizer lowering with AMD FDPE/GSR simulation models; test resetassertion while sourceclockstopped and release only after resumededges",
+  "hardware_accessed": false,
+  "source_sha256": "d2b8ea95ca47efbc4519c4daa7eb25d2501f8071507ffb7b39b4fe95ccf88914"
+}
