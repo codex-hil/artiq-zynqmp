@@ -1,3 +1,11 @@
+2026-11-09 optionalmanagement ROshape-fault BASE+12 syncedbit0 PASS4tests;
+default3registeraperture regressionPASS. Unequal8/14/22 clocks, blockedmalformed
+AWsize1 whileidentity/resetaccessible, statuswriteSLVERR. Resetclears thenheld
+invalidVALID refaults afterreopen; requesterwithdraw+explicitreset/freshhandshake
+staysclear. Optionalonly/notproductiondualHPMwired, nofullHPM/CSR/physicalCDC/
+hungCPUproof. Next isolatedfullHPM+CSR shapeguard/statusrecovery. NoHW;hold.
+Evidence genesys-master-integration-2026-11-09/shape-fault-management/report.json.
+
 2026-11-09 isolatedshape guard2tests/9badclassesPASS: eligibleinvalidAW/AR
 len,size,align,lock/burst orWLAST blockedbeforeaccept/forward, stickyfault.
 AcceptedAW companionW stilldrains despiteindependentARfault; pendingBVALID/ID

@@ -1,0 +1,30 @@
+{
+  "status": "FOUR_FUNCTIONAL_TESTS_PASS_OPTIONAL_READONLY_MANAGEMENT_FAULT",
+  "register": {
+    "address": "0xb000000c",
+    "access": "read-only",
+    "bit0": "synchronized shape fault",
+    "availability": "Only when optional shape_fault source supplied; default aperture unchanged"
+  },
+  "checks": [
+    "Unequal management8/control14/PS22 clocks with FunctionalReset",
+    "Held malformed AW size1 is not accepted/forwarded; fault visible through managementAXILite",
+    "Read-only fault writeSLVERR; identity and reset commands accessible while targetblocked",
+    "Explicit reset clears fault after synchronization",
+    "Held malformedVALID causes refault after reopening",
+    "Requester withdraws malformedVALID, then explicit reset/freshhandshake staysfault0",
+    "Default three-register management regression and shape guard tests pass"
+  ],
+  "limits": [
+    "Test-local composition; optional status not connected to production MasterDualIngress",
+    "No full HPM/CSR test with shape guard yet",
+    "No synthetic AXI error response or bounded hungCPU recovery",
+    "MultiReg only functional CDC, no physical signoff"
+  ],
+  "next": "Integrate optional fault status and shape guard into isolated full dualHPM/CSR fixture; verify malformed target request with independent fullAXI management recovery",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_reset_management.py": "c8d868949f923de68541ecc2f367aaac120ff288532ebd9cb458876d0687fdd9",
+    "diagnostics/drtio/test_shape_fault_management.py": "c2a84754cc2dbf7e83153bf4ed2ddc35ac65af37445482c832e331fd671f637e"
+  }
+}

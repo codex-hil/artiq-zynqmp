@@ -172,3 +172,17 @@ contract. Unrestricted PS/HPM traffic is therefore not admitted by these results
 Next work is a pre-accept shape interlock with a sticky management-visible fault
 and explicit reset recovery. It must not withdraw prior VALID or silently discard
 an accepted complementary half; no cancellation or automatic retry is implied.
+
+## Optional shape-fault management status
+
+Supplying `shape_fault` to the isolated management aperture adds read-only
+`BASE+12` bit0 through a MultiReg into the always-live management clock. Without
+that option, the original three-register map and invalid-address behavior remain.
+The test uses separate management/control/PS clocks and a resettable shape guard.
+Identity/status/reset access continues while malformed target AW is held blocked.
+Reset clears fault, but held invalid VALID faults again after reopening. The
+requester must abandon/withdraw it before coordinated reset can recover durably.
+
+This optional status is not yet connected to the production dual-HPM assembly.
+The tests do not qualify physical CDC, same-hung-CPU recovery, or a synthetic AXI
+error response. Full dual-HPM/CSR shape-guard integration remains the next step.
