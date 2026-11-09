@@ -1,0 +1,24 @@
+{
+  "status": "EXACT_XILINX_TWO_FDPE_INIT1_AMD_GSR_DIGITAL_SIM_PASS",
+  "job": "genesys-reset-sync-sim-20261109-v1",
+  "checks": [
+    "Original Xilinx lowering generates twoFDPEINIT1, AMDunisims/glbl",
+    "120nsstartupGSR allowed",
+    "Stoppedlow/high asyncreset assertswithoutedge",
+    "Requestdeassertalone cannotrelease, firstresumededge retains, secondreleases"
+  ],
+  "initial_refusal": "Missingtimescale; preexecution refusal retained, metadata prefixonly added",
+  "limits": [
+    "Isolateddigitalprimitive sim not metastability/recoveryremoval/physicalqualification",
+    "Not complete coordinator/GT/AXI/resetdistribution simulation",
+    "No hardware/deployment/MMIOcapability"
+  ],
+  "next": "Map exact fullguardedFDPE reset endpoints/assertion sources/distribution before integratedprimitive simulation",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/export-reset-sync.py": "454076abf8d11ef5ca268a87327bf45d252a13cd7ec3258267acea9516cf91a4",
+    "diagnostics/drtio/role-reversal/tb_reset_sync.v": "f71bf0b30a2dd25f323f8e310a651cd0a4d3d38409890c7fa78a5e9b415c13f2",
+    "diagnostics/drtio/role-reversal/run-reset-sync-sim.sh": "185148927306f53606dbb426f1e542f5db84c408641bc91424627a85f848aa24"
+  },
+  "generated_rtl_sha256": "1bd2558d6235da54d5a8507caaa33d2f7441356b6b54e9563557b043933aeef2"
+}

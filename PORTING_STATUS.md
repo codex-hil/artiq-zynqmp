@@ -1,3 +1,10 @@
+2026-11-09 exactXilinxAsyncResetSync2FDPEINIT1 AMDunisims/glbl simPASS.
+Stoppedlow/high asyncassertwithoutedge, deasserthelduntil2resumedrisingedges.
+InitialtimescaleREFUSED preexecution retained, testmetadataonlyfixed. Isolated
+digital/no metastability/recoveryremoval/physicalproof. Next fullguardedFDPE/source/
+resetdistribution mapping before integratedprimitive sim. NoHW/cap;hold. Evidence
+genesys-master-integration-2026-11-09/reset-sync-primitives/report.json.
+
 2026-11-09 fullguardedactualHPMadapter/CSR defaultvsEXACTXilinxMultiReg2tests
 PASS. Twoepisodes HPM1identity/reset/release, HPM0profile/length0/new12then68
 readback. Initdiscrepancy remains/notchanged, didnotbreaktestedscenarios, notglobal
