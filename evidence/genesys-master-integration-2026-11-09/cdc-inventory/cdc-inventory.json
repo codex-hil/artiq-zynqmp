@@ -1,0 +1,770 @@
+{
+  "status": "PRELOWERING_STRUCTURAL_INVENTORY_ONLY",
+  "rows": [
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "gt_align",
+      "assertion_qualified": false
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "management",
+      "assertion_qualified": false
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "control",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "rtio_rx",
+      "known_sequential_origins": [
+        "sys"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "rx_up_r"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "sys"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "rx_up_r"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "rtio_rx",
+      "known_sequential_origins": [
+        "sys"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "storage"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 64,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 64,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 64,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 64,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "toggle_i"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "toggle_i"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "toggle_i"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "rtio_rx",
+      "known_sequential_origins": [
+        "sys"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "toggle_i"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "toggle_i"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "rtio_rx",
+      "known_sequential_origins": [
+        "sys"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "toggle_i"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 32,
+      "stages": 2,
+      "destination": "rtio_rx",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "value_gray_rtio"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "rio",
+      "known_sequential_origins": [],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "sed_spread_enable"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "gray"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "rtio_rx",
+      "known_sequential_origins": [
+        "sys"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "gray"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "toggle_i"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "from6749",
+      "assertion_qualified": false
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "to6749",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "to6749",
+      "known_sequential_origins": [
+        "from6749"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "from6749",
+      "known_sequential_origins": [
+        "to6749"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "from6912",
+      "assertion_qualified": false
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "to6912",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "to6912",
+      "known_sequential_origins": [
+        "from6912"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "from6912",
+      "known_sequential_origins": [
+        "to6912"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "from7075",
+      "assertion_qualified": false
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "to7075",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "to7075",
+      "known_sequential_origins": [
+        "from7075"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "from7075",
+      "known_sequential_origins": [
+        "to7075"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "from7226",
+      "assertion_qualified": false
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "to7226",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "to7226",
+      "known_sequential_origins": [
+        "from7226"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "from7226",
+      "known_sequential_origins": [
+        "to7226"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "from7389",
+      "assertion_qualified": false
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "to7389",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "to7389",
+      "known_sequential_origins": [
+        "from7389"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 3,
+      "stages": 2,
+      "destination": "from7389",
+      "known_sequential_origins": [
+        "to7389"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "q"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "aux_release_ps",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "aux_release_ps"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "local_ready"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "aux_release_sys",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "aux_release_sys"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "local_ready"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "aux_release_rtio_rx",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "aux_release_rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "local_ready"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "aux_release_rio",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "aux_release_rio"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "local_ready"
+      ]
+    },
+    {
+      "type": "AsyncResetSynchronizer",
+      "destination": "aux_release_rio_phy",
+      "assertion_qualified": false
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "aux_release_rio_phy"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "local_ready"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "management"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "request"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "management"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "abandoned"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "management",
+      "known_sequential_origins": [],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "reset"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "management",
+      "known_sequential_origins": [
+        "control"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "abandonment_ready"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "management",
+      "known_sequential_origins": [],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "admit"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "management",
+      "known_sequential_origins": [
+        "ps"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "genesysmasterintegration"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "ps",
+      "known_sequential_origins": [],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "admit"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "rtio_rx",
+      "known_sequential_origins": [
+        "control"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "request"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "rtio_rx"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "response"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "ps",
+      "known_sequential_origins": [
+        "control"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "allowed"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "control",
+      "known_sequential_origins": [
+        "ps"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "fault"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "control"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "admitted"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "reset"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "mastergthadapter"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "mastergthadapter"
+      ]
+    },
+    {
+      "type": "MultiReg",
+      "bits": 1,
+      "stages": 2,
+      "destination": "sys",
+      "known_sequential_origins": [
+        "gt_align"
+      ],
+      "origin_complete": false,
+      "input_signal_hints": [
+        "aligned"
+      ]
+    }
+  ],
+  "counts": {
+    "AsyncResetSynchronizer": 18,
+    "MultiReg": 49
+  },
+  "clock_domains": [
+    "aux_release_ps",
+    "aux_release_rio",
+    "aux_release_rio_phy",
+    "aux_release_rtio_rx",
+    "aux_release_sys",
+    "control",
+    "from6749",
+    "from6912",
+    "from7075",
+    "from7226",
+    "from7389",
+    "gt_align",
+    "management",
+    "ps",
+    "rio",
+    "rio_phy",
+    "rtio_rx",
+    "sys",
+    "to6749",
+    "to6912",
+    "to7075",
+    "to7226",
+    "to7389"
+  ],
+  "clock_source_contract": {
+    "pl_clk0": [
+      "management",
+      "control",
+      "ps"
+    ],
+    "phy_tx_clock": [
+      "sys",
+      "rio",
+      "rio_phy"
+    ],
+    "phy_rx_clock": [
+      "rtio_rx",
+      "gt_align"
+    ]
+  },
+  "limits": [
+    "Not post-synthesis CDC or endpoint/constraint matching",
+    "Origin propagation incomplete: special outputs/control dependencies not inferred",
+    "MultiReg presence/stage count is not physical signoff",
+    "Shared physical source does not establish safe reset/CDC semantics",
+    "No false-path, clock-group, skew or max-delay exceptions generated"
+  ]
+}

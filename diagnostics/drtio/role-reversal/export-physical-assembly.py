@@ -35,7 +35,11 @@ for index,signal in enumerate(top.local_outputs):
  ios.add(signal)
 ios|=set(used.values())
 args.output.mkdir(parents=True,exist_ok=True)
-result=verilog.convert(top,ios=ios,name='master_physical_candidate',special_overrides=xilinx_special_overrides)
+from master_cdc_inventory import collect
+fragment=top.get_fragment()
+inventory=collect(fragment)
+(args.output/'cdc-inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
+result=verilog.convert(fragment,ios=ios,name='master_physical_candidate',special_overrides=xilinx_special_overrides)
 original=Path.cwd()
 try:
  os.chdir(args.output.resolve())
@@ -49,7 +53,7 @@ report={'status':'RTL_EXPORT_ONLY_PS_ADAPTER_BOUNDARY','ps_export_sha256':hashli
         'local_outputs':[result.ns.get_name(signal) for signal in top.local_outputs],
         'limits':['PS hardIP external; adapter boundary signals only','No XDC or synthesis/timing/physical qualification']}
 report['interface_manifest_sha256']=hashlib.sha256((root/'diagnostics/drtio/role-reversal/interface-manifest-v1.json').read_bytes()).hexdigest() if args.guarded_candidate else None
-report['generated_sha256']={f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in args.output.iterdir() if f.suffix in ('.v','.init')}
-report['assembly_source_sha256']={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in ('diagnostics/drtio/master_integration.py','diagnostics/drtio/master_physical_assembly.py','diagnostics/drtio/role-reversal/export-physical-assembly.py')}
+report['generated_sha256']={f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in args.output.iterdir() if f.suffix in ('.v','.init') or f.name=='cdc-inventory.json'}
+report['assembly_source_sha256']={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in ('diagnostics/drtio/master_integration.py','diagnostics/drtio/master_physical_assembly.py','diagnostics/drtio/master_cdc_inventory.py','diagnostics/drtio/role-reversal/export-physical-assembly.py')}
 (args.output/'export.json').write_text(json.dumps(report,indent=2)+'\n')
 print('MASTER_PHYSICAL_ASSEMBLY_RTL_EXPORT_PASS')

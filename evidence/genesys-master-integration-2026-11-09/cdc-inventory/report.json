@@ -1,0 +1,20 @@
+{
+  "status": "PRELOWERING_STRUCTURAL_INVENTORY_COMPLETE_PHYSICAL_CDC_QUALIFICATION_OPEN",
+  "counts": {
+    "AsyncResetSynchronizer": 18,
+    "MultiReg": 49
+  },
+  "wide64_multiregs": 4,
+  "unknown_known_origin_sets": 7,
+  "rtl_hash_equal_to_dell_elaborated_guarded_top": true,
+  "clock_contract": "management/control/PS share pl_clk0; SYS/rio/rio_phy share TX; rtio_rx/gt_align RX; privateFIFO/resetrelease clocks require alias review",
+  "limits": [
+    "Not post-synthesis CDC or endpoint/constraint matching",
+    "Origin propagation incomplete: special outputs/control dependencies not inferred",
+    "MultiReg presence/stage count is not physical signoff",
+    "Shared physical source does not establish safe reset/CDC semantics",
+    "No false-path, clock-group, skew or max-delay exceptions generated"
+  ],
+  "next": "Audit four64bit MultiReg transfers against actual upstream stable-data/handshake protocol; resolve seven unknown origin sets before proposing timing exceptions",
+  "hardware_accessed": false
+}

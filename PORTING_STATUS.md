@@ -1,3 +1,11 @@
+2026-11-09 preloweringguardedCDCinventory:49MultiReg(all2stage),18resetSync,
+4wide64transfers/7unknownknown-originsets. Conservativecomb-originpropagation
+INCOMPLETE/no physicalCDCendpointqualification. ExportRTLhash EXACTDellguarded
+elabtop unchanged. ClocksourcecontractPS/control/managementplclk0,TXsys/rio/phy,
+RXrtio_rx/align; privatealiases open. No exceptionsgenerated. Next upstream64bit
+stabledata/handshake audit andunknownoriginresolution. NoHW/physicalcredit;hold.
+Evidence genesys-master-integration-2026-11-09/cdc-inventory/report.json.
+
 2026-11-09 Dellguardedcandidate RTL+vendorIPelabPASS exit0/180s/max4/sharedslot.
 Exactstagedtop/export/Tcl/XCIhashesmatch,0errors/critical/blackboxes.211reported
 warnings same6groups asunguardedv2; unusedwarningcaps100each/vendorCPLLpriority
