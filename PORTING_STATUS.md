@@ -1,3 +1,11 @@
+2026-11-09 mapped49MultiReg RTLinput/output/stages and23clockaliases toPS/TX/RX.
+RTLhash remainsDelltop. Found3requestedreset1 vsactualXilinxloweredregisterinit0:
+managementrequest->control/coordinatorreset->management+SYS. Existingbackendomits
+resetargument; no change/waiver. Functionaldefaultsim maydiffer. Requirementsledger
+ONLY/no numericbound/falsepaths. Next exactlowering startup/resetadmissionsafety
+model. No netlist/physicalCDC/constraintcredit/HW;hold. Evidence
+genesys-master-integration-2026-11-09/cdc-endpoints/report.json.
+
 2026-11-09 CDCprovenance:4wide64actualMultiReg inputs identitymatch upstream
 LinkLayerStats registeredGrayCounter.q. Two64bitsourceencoding testsPASS including
 nearwrap/pauses. Sevenunknownsets explicitobjectreviewed:spreadinternalinit0,

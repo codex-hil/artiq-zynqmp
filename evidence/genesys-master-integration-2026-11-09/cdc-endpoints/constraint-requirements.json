@@ -1,0 +1,18 @@
+{
+  "status": "REQUIREMENTS_ONLY_NO_CONSTRAINTS_APPLIED",
+  "root_clock_qualification": "PS125/freerun and GT156.25 reference profile; derived steadyTX/RX125 only diagnostic; startup/relock timing OPEN",
+  "gray_buses": {
+    "requirement": "Bind registered sourceQ and first synchronizerD in synthesized netlist; constrain skew/maxdelay against qualified minimum source transition interval",
+    "numeric_bound_ns": null,
+    "reason": "Source startup/runtime clock qualification and post-synthesis endpoints not yet approved"
+  },
+  "single_bit_levels": "Review metastability/reset semantics and clock relationships per endpoint, not blanketfalsepaths",
+  "fifo_payloads": "Preserve native FIFO pointer protocol, common-reset contracts, and memory visibility; clock aliases alone not reset proof",
+  "reset_issue": {
+    "count": 3,
+    "required_action": "Simulate exact Xilinx lowering initialization and first reset episode; default functional simulator reset values differ",
+    "waived": false
+  },
+  "exceptions_applied": [],
+  "physical_cdc_qualified": false
+}

@@ -1,0 +1,74 @@
+{
+  "status": "RTL_ENDPOINT_AND_CLOCK_ALIAS_MAPPING_PASS_THREE_INIT_MISMATCHES_REQUIRE_AUDIT",
+  "multiregs": 49,
+  "clock_domains_mapped": 23,
+  "reset_mismatches": [
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "genesysmasterintegration_ingress_management_request"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_auxresetcontrol_request"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl330",
+        "xilinxmultiregimpl331"
+      ],
+      "requested_reset": 1,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "management",
+      "input_signals": [
+        "genesysmasterintegration_ingress_auxresetcontrol_reset"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_management_reset_status"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl350",
+        "xilinxmultiregimpl351"
+      ],
+      "requested_reset": 1,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_ingress_auxresetcontrol_reset"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_link_boundary_requested"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl450",
+        "xilinxmultiregimpl451"
+      ],
+      "requested_reset": 1,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "rtl_identical_to_dell_elaborated_top": true,
+  "observation": "Existing XilinxMultiReg.lower passes i/o/domain/n but omits requested reset; generated registers default0. Three source requested1 paths are managementrequest->control and coordinatorreset->management/SYS. Not changed or waived.",
+  "limits": [
+    "No get_cells/get_pins post-synthesis binding",
+    "No reset polarity/initialization waiver",
+    "No constraints generated"
+  ],
+  "next": "Reproduce exact vendor lowering reset initialization in model and test startup/reset first-cycle admission safety before changing reset implementation",
+  "hardware_accessed": false,
+  "vendor_lowering_sha256": "50f80a1534f5a14f2a6b20dc3897e29b515c5972e07c0886b85d0fc7baf7178b"
+}
