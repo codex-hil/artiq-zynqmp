@@ -15,7 +15,11 @@ for name in ('management','control','a','b'):
  cd=ClockDomain(name);setattr(m.clock_domains,'cd_'+name,cd)
  clock=Signal(name_override=name+'_clock');m.comb+=cd.clk.eq(clock);ios.add(clock)
 m.submodules.coordinator=c=ClockDomainsRenamer('control')(AuxResetControl(2))
-m.submodules.releases=r=AuxResetDomains(('a','b'),control='control')
+if '--masked-ready' in sys.argv:
+ from aux_reset_domains_masked import AuxResetDomainsMasked
+ release_type=AuxResetDomainsMasked
+else:release_type=AuxResetDomains
+m.submodules.releases=r=release_type(('a','b'),control='control')
 m.submodules.commands=h=AuxResetCommands(c)
 m.comb += [r.request.eq(c.reset),c.domain_ready.eq(r.ready),
            m.cd_a.rst.eq(r.reset_out[0]),m.cd_b.rst.eq(r.reset_out[1])]

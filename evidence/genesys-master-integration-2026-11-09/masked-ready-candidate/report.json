@@ -1,0 +1,28 @@
+{
+  "status": "SEPARATE_MASKED_READY_CANDIDATE_DIGITAL_FDPE_GSR_PASS_NOT_ADOPTED",
+  "job": "genesys-reset-masked-ready-sim-20261109-v1",
+  "behavioral_source_delta": "Only MultiReg source local_ready -> local_ready & ~cd.rst; class rename/doc only elsewhere; AST normalization exactPASS",
+  "comparison": "Original conditionalreset-clock model stalls (2dbccd2 evidence); candidate in same clockdependency recovers without forcing clock while coordinatorresetheld",
+  "checks": [
+    "StoppedB visibleack goes0 with localreset asserted",
+    "Stale abandonment stillholdsreset until freshlow/high",
+    "Afterfreshabandonment coordinatorrequest releases whileBstillstopped, admit0/Bresetheld",
+    "Externalstopremoved: conditionalclock returns naturally because coordinatorreset0",
+    "Atleast6resumedB risingedges required before freshready/admit"
+  ],
+  "limits": [
+    "Candidate class not used by production MasterDualIngress; defaultoriginalunchanged",
+    "Ideal digitalmodel/conditional clockenvironment not vendorGTprimitive or physicalrecoveryproof",
+    "Async assertion of ready-mask to control synchronizer requires physicalCDC/reset/timingreview",
+    "Two-target only; no full five-domain/AXI/firmware qualification"
+  ],
+  "next": "Test candidate across two-target phase/frequency/stopped-high-low cases and then opt-in five-domain composition; keep original baseline and physical hold",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_reset_domains.py": "42be921f51ddc2e3b90d361398e8308ad29d3600615109cf0ace626b4791ad34",
+    "diagnostics/drtio/aux_reset_domains_masked.py": "5280861d60b9af84ccf9516dae7bc832cf3bdb3482c650b55a55cc46f6e1613c",
+    "diagnostics/drtio/role-reversal/export-reset-coordinator.py": "17c8d4b274e318f59be4b5d8ff756098726995b589fceece2582dfcccd1760a5",
+    "diagnostics/drtio/role-reversal/tb_reset_masked_ready.v": "8e34b78eea02ef4e53648686df5d79df03374a9112cda8bfb048c9aa8a3d0d11",
+    "diagnostics/drtio/role-reversal/run-reset-masked-ready-sim.sh": "37d3cb0a53477589c317e2bc9f1265453bf868ecd28586a21fcc44471a872d19"
+  }
+}

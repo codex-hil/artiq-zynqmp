@@ -1,3 +1,12 @@
+2026-11-09 separateMaskedReady candidate exactFDPE/GSR digitalPASS/notadopted.
+ASTaudit onlyMultiRegsource ready→ready&~localreset; originalunchanged. StoppedB
+ack0 withoutedge, freshabandonment releasescoordinatorrequest/admitstill0; clock
+returnsnaturally underconditionalresetdependency, >=6Bfirstedges beforefreshadmit.
+Originalstallbaseline retained. Two-target/conditionalidealmodel, physicalCDC/
+reset/GTproofOPEN. Next phase/frequency/high-lowstop matrix thenoptin5domain
+composition. NoHW;hold. Evidence
+genesys-master-integration-2026-11-09/masked-ready-candidate/report.json.
+
 2026-11-09 conditionalreset-clock circularwaitREPRODUCED withFDPE/GSR: after
 OPEN/Bstop/reset oldreadyB1; externalstopremoved butmodelclockrequiresresetlow,
 2000nsadmit0/reset1 persists. NOTactualGT/physicaldeadlockproof. SourceGTresetall
