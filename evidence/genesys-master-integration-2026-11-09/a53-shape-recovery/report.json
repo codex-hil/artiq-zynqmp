@@ -1,0 +1,27 @@
+{
+  "status": "PORTABLE_RECOVERY_HOST_MODEL_24_CASES_17_CALLBACK_FAILUREPOINTS_PASS",
+  "sequence": "Require manifest capability and explicit abandoned+withdrawn acknowledgements; read diagnostic, assert reset, verifyfault0, release via fresh handshake, samplefaultagain",
+  "checks": [
+    "NoMMIO if any acknowledgement/capability absent, even initialfault0",
+    "Initialfault0 never bypasses explicit reset; exactly3managementwrites",
+    "Any callbackfailure stops immediately at that call, no retry/cleanupwrites",
+    "Fault persisting duringreset prevents release",
+    "Refault afterrelease returnsfailure with release_attempted",
+    "Managementcallbacks assert only BASEidentity/status/fault and command addresses; no targetaccess",
+    "Sideeffectbeforewriteerror modeled; attemptflags retained",
+    "shape_valid invalidated before reset/release writes and failed statusreads"
+  ],
+  "limits": [
+    "Caller acknowledgements are obligations, not hardware detection",
+    "Host callbacks/ASanUBSan only; no A53compile or firmwareexecution for new sequence",
+    "Callbacks must return; no bound for a hung MMIO instruction",
+    "OK is management sequence plus sampledstatus, not targetready/liveclock/outcome proof",
+    "No target retry/reconciliation/coreassignment"
+  ],
+  "next": "Crosscompile recovery wrapper on Dell with existing Cortex-A53 toolchain and verify source/object receipts; then review phase/attempt flags for firmware integration",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/a53/shape_recovery.h": "9110af42fd3a78ef0b305326133808f3b87b55be62aa86ecf96132f93a876f5e",
+    "diagnostics/drtio/role-reversal/a53/test_shape_recovery.c": "6e8441bf5c28ffbbe35f1279697260d02607f4d2876e2f83663ddea0ef8a2c62"
+  }
+}

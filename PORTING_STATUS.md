@@ -1,3 +1,12 @@
+2026-11-09 portable recoveryhostmodel24cases/17callbackfailurepointsPASS
+ASanUBSan. Manifestcap+explicitabandoned/withdrawn required beforeMMIO; zero
+diagnosticdoesnotbypassreset; assert/status0/release/status sequence, no target
+access/retry/cleanupwrite. Persistentfaultblocksrelease; postreleasefaultreturns
+failure/releaseattempted. shape_validinvalidatedbeforemutations/failedreads.
+Acknowledgements callerobligations/notdetection, callbacksnotboundblockedMMIO,
+OKnotphysicalready/outcomeproof. Next DellA53compile/receipts. NoHW;hold. Evidence
+genesys-master-integration-2026-11-09/a53-shape-recovery/report.json.
+
 2026-11-09 Dell CortexA53 optionalshape accessor freestandingcompilePASS.
 ArmGNU13.2.Rel1/-O2/WallWextraWerror; AArch64RELentry0/newwrapper emitted/noUND.
 Four source+retrievedobject hashesmatchDell. No linkedfirmware/execution/core
