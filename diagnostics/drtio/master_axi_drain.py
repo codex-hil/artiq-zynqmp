@@ -7,7 +7,7 @@ but accepts the missing half of an already accepted write. Buffered requests and
 responses remain visible until handshake. Target and bridge require coordinated
 reset after explicit requester abandonment; stop never cancels or retries.
 """
-from migen import Module,Signal,If
+from migen import Module,Signal,If,Cat
 from litex.soc.interconnect.axi import AXIInterface
 
 class MasterAXIDrain(Module):
@@ -23,11 +23,13 @@ class MasterAXIDrain(Module):
                 ('w',w_full,w_sent,~self.stop | aw_full),
                 ('ar',ar_full,ar_sent,~self.stop)):
             source,sink=getattr(a,name),getattr(target,name)
-            stored=Signal(len(source.payload))
+            source_bits=Cat(source.first,source.last,source.payload.raw_bits(),source.param.raw_bits())
+            sink_bits=Cat(sink.first,sink.last,sink.payload.raw_bits(),sink.param.raw_bits())
+            stored=Signal(len(source_bits))
             self.comb += [source.ready.eq(~full & permit),
-                          sink.valid.eq(full & ~sent),sink.payload.raw_bits().eq(stored)]
+                          sink.valid.eq(full & ~sent),sink_bits.eq(stored)]
             self.sync += [If(source.valid & source.ready,
-                             stored.eq(source.payload.raw_bits()),full.eq(1)),
+                             stored.eq(source_bits),full.eq(1)),
                           If(sink.valid & sink.ready,sent.eq(1))]
         for name in ('b','r'):
             self.comb += getattr(target,name).connect(getattr(a,name))

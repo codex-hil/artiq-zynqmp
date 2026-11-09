@@ -1,3 +1,12 @@
+2026-11-09 fullCSR/AUX/dualHPM progressfault+drain 4testsPASS (testlocal).
+Integration caught payload-onlybuffer missingWLAST/AXIID: committed68/native17
+butnoB; fixed full first/last/payload/param retention and strengthenedtests.
+PendingBVALID/ID/RESP retained12cycles onRXfault; newrequestsblocked/HPM1live,
+restartaloneblocked, explicitabandonment/reset/freshprogress/no staleB/new12PASS.
+PriorisolatedPASS didnotqualifymetadata. Singlebeatcallercontract/notproduction/
+formal/physical. Next AWonly/Wonly explicitreset no stalehalf mixing. NoHW;hold.
+Evidence genesys-master-integration-2026-11-09/axi-drain-integration/report.json.
+
 2026-11-09 isolatedsinglebeatAXIdrain 3directedtestsPASS: AWfirst/stop/W,
 Wfirst/stop/AW, ARpending/stop/R. Bufferedrequests keepVALID untilhandshake;
 responsesunmaskedwhile stopped; no newtransactions afterdrain. Callerrestricts

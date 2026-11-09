@@ -1,0 +1,28 @@
+{
+  "status": "FULL_CSR_DUAL_HPM_PROGRESS_DRAIN_FOUR_TESTS_PASS_TESTLOCAL_ONLY",
+  "bug_found_and_fixed": "Initial drain buffered payload only; WLAST and AWID/other stream metadata omitted. Full target committed length but never produced B. Buffer now retains first/last/payload/param; directed tests assert AWID17 and WLAST1, full path checks returnedID0x1234. Prior isolated PASS did not qualify metadata.",
+  "checks": [
+    "Real CSR/AUX/native length68/17words commits then BVALID remains unaccepted",
+    "RX scheduler stop faults progress monitor; new AW/W/AR blocked",
+    "Pending BVALID/ID/RESP retained12management cycles after stop, unlike prior blanketgate",
+    "Independent HPM1 identity read/reset write remain usable",
+    "RX restart alone does not reopen",
+    "Explicit abandonment/coordinated PS reset clears drain and target together",
+    "Fresh domainacks/progress reopen; no stale B30cycles; read0/write12/read12 pass"
+  ],
+  "limits": [
+    "Test-local outer drain, not production hardware",
+    "Single-beat aligned32/len0/WLAST1 caller restriction not enforced",
+    "No full AXI formal proof/multiple outstanding/burst qualification",
+    "Two initiator model not hungCPU recovery",
+    "Partial-write explicit reset remains next test",
+    "No CDC/physical GT/reset proof"
+  ],
+  "next": "Test AW-only and W-only pending drain across explicit requester abandonment/coordinated reset; ensure no stale partner combines with fresh transaction",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/master_axi_drain.py": "1958a1e2cabb8f85c40132e564ca1bb374376ee20f7cc18f4f3427f826f38fcb",
+    "diagnostics/drtio/test_master_axi_drain.py": "2cd19c667aa4022c09995461f9f04c1147dcf107deb7f885253faa45d654063e",
+    "diagnostics/drtio/test_master_progress_axi_drain.py": "06e49f780c1f2d70f921994f47e2846682891c52d2a16637f9676b87bb66cb57"
+  }
+}

@@ -34,6 +34,8 @@ class DrainTests(unittest.TestCase):
             for _ in range(5):
                 self.assertEqual((yield t.aw.valid),1)
                 self.assertEqual((yield t.aw.addr),0xa0000010)
+                self.assertEqual((yield t.aw.id),17)
+                self.assertEqual((yield t.w.last),1)
                 self.assertEqual((yield t.w.valid),1)
                 self.assertEqual((yield t.w.data),0x12345678)
                 self.assertEqual((yield a.aw.ready),0)
