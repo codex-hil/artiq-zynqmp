@@ -1,0 +1,26 @@
+{
+  "status": "CORTEX_A53_FREESTANDING_RELOCATABLE_COMPILE_PASS",
+  "job": "genesys-a53-shape-status-20261109-v1",
+  "compiler": "Arm GNU13.2.Rel1 aarch64-none-elf-gcc13.2.1",
+  "flags": "-mcpu=cortex-a53 -O2 -std=c11 -Wall -Wextra -Werror -ffreestanding -fno-builtin -fno-stack-protector",
+  "checks": [
+    "AArch64 REL ELF, entry0",
+    "gr_compile_shape_status emitted alongside reset wrappers",
+    "No undefined symbols",
+    "All four source hashes and retrieved object hash match Dell receipt"
+  ],
+  "hashes": {
+    "reset_compile.c": "192e14211a9c7ef51a73c43f12ba3c9b5b0b4ab89922240f4d8a3b1b9fdfe990",
+    "reset_driver.h": "14b09757af0853807c342997cc9f473ba0e58231184c35b7a2686167e37a78dd",
+    "master_driver.h": "8c3be417008459a9e566977f35a2cb85c1ff72bd5f682d2c4f15310914512090",
+    "master_regs.h": "ce0bb74503e2ec791e60fb8134fbf4ebf441478b0ddb1158f188718053294381",
+    "reset_compile.o": "013cbf2a10645081062783e23f9398f7c5f690449d29f1c6f671ab000b5e44e5"
+  },
+  "limits": [
+    "Compilation only; no linked firmware, no entrypoint/runtime/core assignment",
+    "Indirect callbacks still require independently responsive execution context",
+    "No real MMIO/clockloss/reset/hardware verification"
+  ],
+  "next": "Host-model recovery sequence using manifest-gated diagnostic accessor and explicit abandonment/reset; ensure zero fault alone cannot authorize target retry or reopening",
+  "hardware_accessed": false
+}

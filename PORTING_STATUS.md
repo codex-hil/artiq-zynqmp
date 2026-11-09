@@ -1,3 +1,10 @@
+2026-11-09 Dell CortexA53 optionalshape accessor freestandingcompilePASS.
+ArmGNU13.2.Rel1/-O2/WallWextraWerror; AArch64RELentry0/newwrapper emitted/noUND.
+Four source+retrievedobject hashesmatchDell. No linkedfirmware/execution/core
+assignment/MMIO/HWproof. Next hostrecoverysequence model: manifestgatedstatus/
+explicitabandonment-reset, no zero-status permission or targetretry. NoHW;hold.
+Evidence genesys-master-integration-2026-11-09/a53-shape-object/report.json.
+
 2026-11-09 portableC gr_shape_status13hostcases +20resetregressionPASS with
 ASan/UBSan/WallWextraWerror. Readonly identity/status, explicitcapability1 from
 exactmanifest required: sharedGR_ID cannotdiscoveroptionalregister. Absentcap no

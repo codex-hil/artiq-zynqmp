@@ -8,3 +8,6 @@ struct gr_result gr_compile_assert(const struct gm_bus *bus,uint32_t limit) {
 struct gr_result gr_compile_release(const struct gm_bus *bus,uint32_t limit,uint32_t abandoned) {
  return gr_release_reset(bus,limit,abandoned);
 }
+int gr_compile_shape_status(const struct gm_bus *bus,uint32_t capability,uint32_t *fault) {
+ return gr_shape_status(bus,capability,fault);
+}
