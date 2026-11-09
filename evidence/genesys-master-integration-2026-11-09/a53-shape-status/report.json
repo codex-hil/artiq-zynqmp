@@ -1,0 +1,28 @@
+{
+  "status": "PORTABLE_C_SHAPE_STATUS_13_HOST_CASES_PLUS20_RESET_REGRESSION_PASS",
+  "api": "gr_shape_status(bus, capability, output)",
+  "checks": [
+    "capability1 required from exact gateware manifest; capability0/2 no MMIO",
+    "GR_ID checked but not used to infer extension; old and optional maps share ID",
+    "Fault0/1 reads exactly identity plus status",
+    "Read failure at either stage stops immediately without retry; outputunchanged",
+    "Profile mismatch stops before optional status read",
+    "Reserved bits2/4/8 produceIOerror/outputunchanged",
+    "NULL bus/read/output rejected beforeaccess",
+    "Read-only API works with no write/fence callbacks; cannot clear/reset/retry target",
+    "20 existing resetmodel tests unchanged pass"
+  ],
+  "validation": "C11 Wall Wextra Werror ASan UBSan",
+  "limits": [
+    "Host callback model only; no A53 crosscompile or firmware execution of new accessor",
+    "Callback must return; API cannot bound a blocked physical MMIO read",
+    "Zero sample is diagnostic only, not admission/liveclock/known prior outcome proof",
+    "No integrated automatic recovery policy or target retry"
+  ],
+  "next": "Crosscompile the new accessor into an isolated Cortex-A53 relocatable object on Dell; inspect symbols/undefined references and retain source/object hashes",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/a53/reset_driver.h": "14b09757af0853807c342997cc9f473ba0e58231184c35b7a2686167e37a78dd",
+    "diagnostics/drtio/role-reversal/a53/test_shape_status.c": "da636a8ede7f16e74a88f146b975b0a740d08f69ef6ea8348987359ac2283dbf"
+  }
+}

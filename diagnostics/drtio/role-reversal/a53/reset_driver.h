@@ -47,3 +47,16 @@ static inline struct gr_result gr_release_reset(const struct gm_bus *b,uint32_t 
  if(b->write(b->context,GR_BASE+4,2)||b->fence(b->context)){r.error=GR_IO;return r;}
  r.error=gr_poll(b,5,4,limit,&r);return r;
 }
+/* Optional aperture selected by the caller's exact gateware manifest, not GR_ID:
+ * legacy and extended maps share GR_ID. No speculative read of BASE+12 when
+ * absent. Read-only diagnostic: neither a clear/reset nor a target retry.
+ * Output remains unchanged on every failure. A zero sample is not permission to
+ * issue MMIO and does not prove live clocks or a known prior target outcome.
+ */
+static inline int gr_shape_status(const struct gm_bus *b,uint32_t capability,
+ uint32_t *fault) {
+ if(!b||!b->read||!fault||capability!=1)return GR_INVALID;
+ int rc=gr_profile(b);if(rc)return rc;
+ uint32_t v;if(b->read(b->context,GR_BASE+12,&v)||v&~1u)return GR_IO;
+ *fault=v;return GR_OK;
+}

@@ -1,3 +1,11 @@
+2026-11-09 portableC gr_shape_status13hostcases +20resetregressionPASS with
+ASan/UBSan/WallWextraWerror. Readonly identity/status, explicitcapability1 from
+exactmanifest required: sharedGR_ID cannotdiscoveroptionalregister. Absentcap no
+MMIO; readfail/reserved/profileinvalid leaveoutputunchanged/no retry/no writes.
+Zerosample notadmission/outcomeproof; callbackblockedMMIOnotbounded. Next Dell
+A53relocatablecompile/symbol/hashcheck. No firmwareexecution/HW;hold. Evidence
+genesys-master-integration-2026-11-09/a53-shape-status/report.json.
+
 2026-11-09 fullCSR/dualHPM badWLASTafteracceptedAW +badAWregression2testsPASS.
 AWaccepted/nonidle/noB; W68/last0 READY0/notforwarded/length0. HPM1fault/reset
 live; heldbadWrefaults onreopen. Withdraw+sharedreset/freshacks/progress yields

@@ -186,3 +186,17 @@ requester must abandon/withdraw it before coordinated reset can recover durably.
 This optional status is not yet connected to the production dual-HPM assembly.
 The tests do not qualify physical CDC, same-hung-CPU recovery, or a synthetic AXI
 error response. Full dual-HPM/CSR shape-guard integration remains the next step.
+
+## Portable shape-status accessor
+
+`gr_shape_status` reads only identity and optional fault status, preserves the
+output on error, and never writes, clears, retries or resets. Capability1 must
+come from the exact deployed gateware manifest: the legacy and extended maps
+share GR_ID, so identity alone cannot establish that BASE+12 exists. Without the
+capability the accessor refuses before MMIO. Reserved status bits are an error.
+
+Thirteen host callback cases and20 reset API regression cases pass ASan/UBSan.
+A zero status is only a sampled diagnostic; it is not admission, a live RX clock
+or a known previous transaction outcome. Callbacks must return; no software poll
+limit can bound a CPU blocked in synchronous MMIO. No recovery context is assigned
+and no automatic target retry is introduced. A53 crosscompile remains next.
