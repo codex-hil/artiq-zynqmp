@@ -145,3 +145,17 @@ This evidence applies only to coordinated bridge-and-target reset. Resetting one
 side alone can leave a half-transaction resident elsewhere and is not an admitted
 recovery procedure. Negative-control tests of each independent reset remain next.
 No hardware, physical reset, or recovery by the same hung CPU is qualified.
+
+## Independent-reset negative controls
+
+Four directed tests intentionally reset only the bridge or only a small AW/W
+pairing target. Resetting the bridge after one half has reached the target lets
+a fresh complementary half combine with the target's old address or old data.
+Resetting only the target leaves the bridge remembering that a half was sent;
+the target no longer has it, so the complementary half stalls without B.
+
+These tests reproduce the hazard under a deliberately broken reset contract.
+They use a simplified pairing target, not the actual CSR path. They add no logic
+that detects an unexpected independent reset. Coordinated bridge-and-target reset
+with explicit abandonment remains required; unilateral reset/rearm is refused as
+a recovery procedure. Next work broadens transaction/epoch scoreboard coverage.

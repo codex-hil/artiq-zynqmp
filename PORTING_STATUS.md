@@ -1,3 +1,12 @@
+2026-11-09 independentreset negativecontrols4PASS (smallAW/Wpairingtarget,
+NOTrealCSR): bridge-onlyreset afterAW mixesoldaddress/newdata; afterW mixes
+newaddress/old68data. Target-onlyreset leavesfirsthalfsent inbridge butforgotten
+in target, complementaryhalf stalls/noB/nonidle. Deliberatecontractviolations,
+not recoveryPASS. No automaticunilateralreset detection/rearmrefusallogicadded.
+Coordinatedresetrequired. Next widerAW/W/backpressure/stop/coordinatedepoch
+scoreboard. No production/HW/physicalproof;hold. Evidence
+genesys-master-integration-2026-11-09/drain-reset-negative/report.json.
+
 2026-11-09 fullCSR/dualHPM AWonly and Wonly coordinatedreset2testsPASS.
 Partialdrainnonidle/noB/noCSRcommit; RXfault+restartaloneblocked, HPM1read/reset
 live, explicitabandonment+sharedPS/targetreset+freshacks/progress restores.

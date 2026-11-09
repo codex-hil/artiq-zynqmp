@@ -1,0 +1,20 @@
+{
+  "status": "FOUR_NEGATIVE_CONTROL_TESTS_PASS_UNCOORDINATED_RESET_UNSAFE",
+  "target": "Small independent AW/W pairing model, NOT real CSR or full AXI compliant slave signoff",
+  "cases": {
+    "AW_then_bridge_only_reset": "old address + fresh data commit",
+    "W_then_bridge_only_reset": "fresh address + old data68 commit",
+    "AW_then_target_only_reset": "bridge remembers AW sent; target forgot AW; new W remains unmatched, B absent",
+    "W_then_target_only_reset": "bridge remembers W sent; target forgot W; new AW remains unmatched, B absent"
+  },
+  "interpretation": "Tests intentionally violate reset contract and reproduce stale half mixing or stalled transaction. They do not qualify an independent reset recovery procedure.",
+  "limits": [
+    "Ideal equal clocks/reset-on-edge behavior only",
+    "Pairing model retains first address/data until response; no actual CSR path in these negatives",
+    "No automatic independent-reset detection or rearm refusal logic added",
+    "No physical reset/CDC/GT/hungCPU proof"
+  ],
+  "next": "Expand single-beat drain scoreboard across AW/W ordering, backpressure, stop and coordinated reset epochs; assert no cross-epoch pairing before considering integration",
+  "hardware_accessed": false,
+  "source_sha256": "cd2f42dc2985102d234f4cf2353b41ca964c9081487a94118231bd81ab753d1e"
+}

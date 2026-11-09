@@ -1,0 +1,9 @@
+test_aw_bridge_reset_stale_address_mix (test_master_drain_reset_negative.NegativeResetTests.test_aw_bridge_reset_stale_address_mix) ... ok
+test_aw_target_reset_loses_address_stalls (test_master_drain_reset_negative.NegativeResetTests.test_aw_target_reset_loses_address_stalls) ... ok
+test_w_bridge_reset_stale_data_mix (test_master_drain_reset_negative.NegativeResetTests.test_w_bridge_reset_stale_data_mix) ... ok
+test_w_target_reset_loses_data_stalls (test_master_drain_reset_negative.NegativeResetTests.test_w_target_reset_loses_data_stalls) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.077s
+
+OK
