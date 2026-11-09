@@ -1,0 +1,40 @@
+Acquired Dell heavy-build slot 1/3
+/usr/bin/gcc
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-reset-masked-matrix-20261109-v1/reset_coordinator.v" into library work
+INFO: [VRFC 10-311] analyzing module reset_coordinator
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-reset-masked-matrix-20261109-v1/tb_reset_masked_ready.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_reset_masked_ready
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab -mt off -L unisims_ver tb_reset_masked_ready glbl -s masked_test 
+Turned off multi-threading.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+    LIBRARY_PATH
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.FDPE_default
+Compiling module work.reset_coordinator
+Compiling module work.tb_reset_masked_ready
+Compiling module work.glbl
+Built simulation snapshot masked_test
+MASKED_READY_COORDINATOR_PASS B_HALF=3 B_PHASE=0 STOP_HIGH=0
+MASKED_READY_COORDINATOR_PASS B_HALF=3 B_PHASE=0 STOP_HIGH=1
+MASKED_READY_COORDINATOR_PASS B_HALF=3 B_PHASE=2 STOP_HIGH=0
+MASKED_READY_COORDINATOR_PASS B_HALF=3 B_PHASE=2 STOP_HIGH=1
+MASKED_READY_COORDINATOR_PASS B_HALF=9 B_PHASE=0 STOP_HIGH=0
+MASKED_READY_COORDINATOR_PASS B_HALF=9 B_PHASE=0 STOP_HIGH=1
+MASKED_READY_COORDINATOR_PASS B_HALF=9 B_PHASE=2 STOP_HIGH=0
+MASKED_READY_COORDINATOR_PASS B_HALF=9 B_PHASE=2 STOP_HIGH=1
+MASKED_READY_COORDINATOR_PASS B_HALF=13 B_PHASE=0 STOP_HIGH=0
+MASKED_READY_COORDINATOR_PASS B_HALF=13 B_PHASE=0 STOP_HIGH=1
+MASKED_READY_COORDINATOR_PASS B_HALF=13 B_PHASE=2 STOP_HIGH=0
+MASKED_READY_COORDINATOR_PASS B_HALF=13 B_PHASE=2 STOP_HIGH=1
+MASKED_READY_MATRIX_PASS_12

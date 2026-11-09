@@ -7,12 +7,22 @@ wire coordinator_reset;
 wire admit,abandon_ready,reset_status;
 wire [1:0] domain_ready,target_reset;
 integer n,b_edges=0,restart_edges;
+integer b_half=9,b_phase=0,stop_high=0,arg_ok;
 always @(posedge b)b_edges=b_edges+1;
 always #4 mgmt=~mgmt;
 always #5 control=~control;
 always #7 a=~a;
 // Conditional environment model, NOT the vendor GT primitive.
-always #9 if(run_b && (!clock_depends_on_reset_release || !coordinator_reset))b=~b;
+initial begin
+ arg_ok=$value$plusargs("B_HALF=%d",b_half);
+ arg_ok=$value$plusargs("B_PHASE=%d",b_phase);
+ arg_ok=$value$plusargs("STOP_HIGH=%d",stop_high);
+ #(b_phase);
+ forever begin
+  #(b_half);
+  if(run_b && (!clock_depends_on_reset_release || !coordinator_reset))b=~b;
+ end
+end
 reset_coordinator dut(.management_clock(mgmt),.control_clock(control),
  .a_clock(a),.b_clock(b),.request(request),.abandoned(abandoned),
  .admit(admit),.abandon_ready(abandon_ready),.reset_status(reset_status),
@@ -46,7 +56,8 @@ initial begin
  clock_depends_on_reset_release=1;
  // Stop B after OPEN: reset output asserts asynchronously, but local ready
  // register resets synchronously and retains its old value until a B edge.
- @(negedge b);run_b=0;request=1;
+ if(stop_high)begin @(posedge b);end else begin @(negedge b);end
+ #1;run_b=0;request=1;
  #160;check(!admit && reset_status && domain_ready==0 && target_reset==3,"masked ready clears while B stopped");
  request=0; // stale abandoned remains high: must not release reset.
  #160;check(!admit && reset_status && target_reset==3,"stale abandonment refused");
@@ -56,7 +67,7 @@ initial begin
  run_b=1; // Clock returns naturally because coordinator reset has been released.
  wait_open;
  check(b_edges-restart_edges>=6,"fresh ready requires reset release and count after restart");
- $display("MASKED_READY_COORDINATOR_PASS zero-ack-without-clock fresh-restart conditional-wait-removed");
+ $display("MASKED_READY_COORDINATOR_PASS B_HALF=%0d B_PHASE=%0d STOP_HIGH=%0d",b_half,b_phase,stop_high);
  $finish;
 end
 initial begin #10000;$fatal(1,"timeout");end

@@ -1,0 +1,105 @@
+{
+  "status": "SEPARATE_MASKED_READY_12_DIGITAL_FDPE_GSR_CASES_PASS_NOT_ADOPTED",
+  "job": "genesys-reset-masked-matrix-20261109-v1",
+  "bound_seconds": 180,
+  "cases": [
+    {
+      "period_ns": 6,
+      "phase_ns": 0,
+      "stop_level": 0,
+      "log_sha256": "2dfe1e79e3ddc4d29c5a556b9d1b5bc4a77e7a0c3389f7e0210d30cf3b0d3543"
+    },
+    {
+      "period_ns": 6,
+      "phase_ns": 0,
+      "stop_level": 1,
+      "log_sha256": "de6561a194f740d70d7a7c33def3fd9b017215dde3b67e7d90ae7eca88550426"
+    },
+    {
+      "period_ns": 6,
+      "phase_ns": 2,
+      "stop_level": 0,
+      "log_sha256": "81ccdaffb8e771029fa9719955e54c143c9c2add9584b3acbf5620a4faa5c689"
+    },
+    {
+      "period_ns": 6,
+      "phase_ns": 2,
+      "stop_level": 1,
+      "log_sha256": "b4f6514b34411ecb5f07dc6eae13ee4a4429c35977ec41ff8c154d032a054345"
+    },
+    {
+      "period_ns": 18,
+      "phase_ns": 0,
+      "stop_level": 0,
+      "log_sha256": "2146b3157e01c2c175a05bd5e82baea3346053e52fe4922423d6633ea4dc50fe"
+    },
+    {
+      "period_ns": 18,
+      "phase_ns": 0,
+      "stop_level": 1,
+      "log_sha256": "68733919a6ec3b9d92ac4585bb8b5f161884a1b55e50e35fa6447c3e00d6bd47"
+    },
+    {
+      "period_ns": 18,
+      "phase_ns": 2,
+      "stop_level": 0,
+      "log_sha256": "6661bc1bdb9fd29d6de80d8c782e71026ad53675eee9a3257d8453faf82b505e"
+    },
+    {
+      "period_ns": 18,
+      "phase_ns": 2,
+      "stop_level": 1,
+      "log_sha256": "31d751241d411500ce08a7ea272416a8527d0bbff0ec04c31722761f789d6099"
+    },
+    {
+      "period_ns": 26,
+      "phase_ns": 0,
+      "stop_level": 0,
+      "log_sha256": "4e0ab43b52585586d2ea9b1799030ad006dd9c1ef7e40a6a09bdc47432f7d9b5"
+    },
+    {
+      "period_ns": 26,
+      "phase_ns": 0,
+      "stop_level": 1,
+      "log_sha256": "8624bd48ee0b049f28126156597197c3ab610b5b953171dea5c6ddff478848b2"
+    },
+    {
+      "period_ns": 26,
+      "phase_ns": 2,
+      "stop_level": 0,
+      "log_sha256": "a5b5e3560375856c649bf205d75ea0e60298ba192e8e5c023a7f989efab22ccb"
+    },
+    {
+      "period_ns": 26,
+      "phase_ns": 2,
+      "stop_level": 1,
+      "log_sha256": "56aa3227e95f74b6eae9c2ae6f5bec6da65beae76ff7478b5647a8b2af53ba41"
+    }
+  ],
+  "other_clock_periods_ns": {
+    "management": 8,
+    "control": 10,
+    "targetA": 14
+  },
+  "checks": [
+    "Original candidateRTL reused unchanged fromsinglecase",
+    "StoppedB ackmasked0 independent of sourceedges",
+    "Stale abandonment requires freshlow/high",
+    "Coordinatorreset releases whileBstopped, admissionremains0",
+    "Conditionalclock resumesnaturally afterresetrequestlow andexternalstopremoved",
+    "Atleast6resumedB risingedges required beforefreshadmission"
+  ],
+  "limits": [
+    "Two-target ideal digitalmodel with AMDprimitives, not actualGTH/clocksource simulation",
+    "Finite12cases, not exhaustivephase/metastability/reset timing proof",
+    "Candidate not connected to production assembly or deployedhardware"
+  ],
+  "next": "Opt-in five-domain reset composition using separateMaskedReady class; verify management/control remain independently live and alltargetacksfresh beforeadmit",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_reset_domains_masked.py": "5280861d60b9af84ccf9516dae7bc832cf3bdb3482c650b55a55cc46f6e1613c",
+    "diagnostics/drtio/role-reversal/tb_reset_masked_ready.v": "73ffdb1911f2cc60efab51d64461a318aad1c1a23519d8457114468634cb3800",
+    "diagnostics/drtio/role-reversal/run-reset-masked-matrix.sh": "eafaddf0e729085d1941490701d00c787548f8dfb9bf455c6ed1364186ae25db"
+  },
+  "candidate_rtl_sha256": "55d7930404bc1722a84fcf4cbaf9d1ab39dc98b94dff4c48635810c1f5515e99"
+}

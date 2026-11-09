@@ -1,3 +1,10 @@
+2026-11-09 separateMaskedReady AMD FDPE/GSR12case matrixPASS: Bperiod6/18/26ns
+×phase0/2×stoplow/high; originalcandidateRTLreused. Ack0withoutclock/freshabandon
+requestrelease/admit0whileBstopped, naturalconditionalclockreturn and>=6freshB
+edges beforeadmit. Two-target/idealconditional/notGTHphysical/exhaustiveCDCproof.
+Notadopted; next optin5domaincomposition/live management/freshallacks. NoHW;hold.
+Evidence genesys-master-integration-2026-11-09/masked-ready-matrix/report.json.
+
 2026-11-09 separateMaskedReady candidate exactFDPE/GSR digitalPASS/notadopted.
 ASTaudit onlyMultiRegsource ready→ready&~localreset; originalunchanged. StoppedB
 ack0 withoutedge, freshabandonment releasescoordinatorrequest/admitstill0; clock

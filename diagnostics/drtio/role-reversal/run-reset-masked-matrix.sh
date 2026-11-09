@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Run on Dell inside the unique job directory with reset_coordinator.v and the bench.
+set -euo pipefail
+image=localhost/pm12-xsim-runtime:20261104
+expected=b7b066512d328abaf5dce280d01973e1a64c85fa46602426d015df17f36d2155
+actual=$(podman image inspect "$image" --format '{{.Id}}')
+[[ "$actual" == "$expected" ]] || { echo 'Simulator image identity changed'; exit 1; }
+exec /home/codex-hil/.local/bin/dell-build-slot -- podman run --rm --init --network=none \
+ --mount type=bind,src=/srv/codex-hil-data/toolchains/amd/Xilinx,dst=/srv/codex-hil-data/toolchains/amd/Xilinx,ro=true \
+ --mount "type=bind,src=$PWD,dst=$PWD" --workdir "$PWD" "$image" bash -c '
+set -euo pipefail
+source /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/settings64.sh
+command -v gcc
+gcc --version | head -n 1
+xvlog reset_coordinator.v tb_reset_masked_ready.v /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v
+xelab -mt off -L unisims_ver tb_reset_masked_ready glbl -s masked_test
+count=0
+for half in 3 9 13; do
+ for phase in 0 2; do
+  for high in 0 1; do
+   log="simulation-${half}-${phase}-${high}.log"
+   xsim masked_test -runall -testplusarg "B_HALF=$half" -testplusarg "B_PHASE=$phase" -testplusarg "STOP_HIGH=$high" > "$log" 2>&1
+   ! grep -E "Fatal:|Error:" "$log"
+   grep -F "MASKED_READY_COORDINATOR_PASS B_HALF=$half B_PHASE=$phase STOP_HIGH=$high" "$log"
+   count=$((count+1))
+  done
+ done
+done
+test "$count" = 12
+echo MASKED_READY_MATRIX_PASS_12
+'
