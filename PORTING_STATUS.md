@@ -1,3 +1,11 @@
+2026-11-09 Dellguardedcandidate RTL+vendorIPelabPASS exit0/180s/max4/sharedslot.
+Exactstagedtop/export/Tcl/XCIhashesmatch,0errors/critical/blackboxes.211reported
+warnings same6groups asunguardedv2; unusedwarningcaps100each/vendorCPLLpriority
+retained/notwaived. RTLonly/no logic synthesis/PSprimitive/pins/timing/CDC/
+clockstartupqualification/deployment. Next actualguardedCDCinventory/constraints
+review. runtimecapFALSE/noHW/hold. Evidence
+genesys-master-integration-2026-11-09/guarded-rtl-elab/report.json.
+
 2026-11-09 optionalguardedintegrationexportPASS with3tests actualPSschema,
 default+guardedHPM/reset/CSRroundtrips. Explicitoptinonly; HPM0shape/drain+progress,
 HPM1optionalROfault, effectiveadmitcrossings, nofault->resetfeedback. SevenRTL/init

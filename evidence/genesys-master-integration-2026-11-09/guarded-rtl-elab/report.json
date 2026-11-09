@@ -1,0 +1,40 @@
+{
+  "status": "GUARDED_CANDIDATE_RTL_VENDOR_IP_ELABORATION_PASS_NO_SYNTH_TIMING_CDC_CREDIT",
+  "job": "genesys-guarded-rtl-elab-20261109-v1",
+  "exit_code": 0,
+  "bound_seconds": 180,
+  "max_threads": 4,
+  "errors": 0,
+  "critical_warnings": 0,
+  "unresolved_blackboxes": 0,
+  "warning_groups": {
+    "Synth 8-7071": 5,
+    "Synth 8-7023": 4,
+    "Synth 8-7137": 1,
+    "Synth 8-6014": 100,
+    "Synth 8-7129": 100,
+    "Vivado 12-180": 1
+  },
+  "warning_review": {
+    "Synth8-7071/7023": "Unused ODIV2,userclk2 and lowlevelresetdone ports; outputs only, no missing input finding",
+    "Synth8-7137": "Vendor CPLLfrequencycounter samepriority set/reset, retained unresolved physical verification",
+    "Synth8-6014/7129": "Unused vendor registers and rawuserdata bits",
+    "Vivado12-180": "No blackboxes query returnedempty"
+  },
+  "comparison": "Same six warning groups/counts as earlier unguarded v2, not a waiver; log caps unusedwarning output at100 each",
+  "staged_hashes": {
+    "elaborate-physical-assembly.tcl": "768c07a5c243d4b097ae3ef465643a8eda46da1c0efa634dab16b2064a2df7b2",
+    "export.json": "3507e9d73939a5c801ec7cd4a3675dee85a9c650dfd82d66fe8d76f49f9819fd",
+    "master_physical_candidate.v": "5f0f9620461f87bd997c24e77a97f7e9092b46d857f09753d2b796b9e56c3b9b",
+    "drtio_gth/drtio_gth.xci": "aaa71467ac1f6a45b6f34be02d7cc63f26e6017d474cdd3f91a3baaeb90c9e41"
+  },
+  "limits": [
+    "synth_design -rtl only, no logic synthesis/implementation/timing closure",
+    "No PS primitive or physical pin constraints",
+    "Clock mode/startup/reset qualification remains open; previous diagnostic clock cases not production constraints",
+    "No CDC/skew/timeout physical validation or deployed image",
+    "runtime capability remains false; maintenance hold preserved"
+  ],
+  "next": "Inventory actual guarded assembly CDC paths and independent management/reset clock relationships; prepare bounded constraint review before logic synthesis",
+  "hardware_accessed": false
+}
