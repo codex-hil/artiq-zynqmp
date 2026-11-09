@@ -1,3 +1,11 @@
+2026-11-09 conditionalreset-clock circularwaitREPRODUCED withFDPE/GSR: after
+OPEN/Bstop/reset oldreadyB1; externalstopremoved butmodelclockrequiresresetlow,
+2000nsadmit0/reset1 persists. NOTactualGT/physicaldeadlockproof. SourceGTresetall
+FSM heldBRANCH whileinputhigh; clockavailabilitynotindependent. No forcedHWbypass.
+Next separateackclearwithouttargetedge candidate, freshpostrestartrelease required,
+compareoriginalin sameconditionalenvironment. Productionlogicunchanged/noHW;hold.
+Evidence genesys-master-integration-2026-11-09/reset-clock-dependency/report.json.
+
 2026-11-09 integrated2targetcoordinator exactFDPE/GSR digitalPASS onDell.
 InitialBstop blocksadmit; restartfreshacks opens. StopBafterOPEN+reset asserts
 Bresetasync BUTlocalready remains1(syncresetconsumer); coordinatorholdsRESET

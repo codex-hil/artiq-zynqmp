@@ -1,0 +1,30 @@
+{
+  "status": "CONDITIONAL_RESET_CLOCK_CIRCULAR_WAIT_REPRODUCED_AUTONOMOUS_RECOVERY_REFUSED",
+  "job": "genesys-reset-clock-dependency-20261109-v1",
+  "scenario": "AfterOPEN Bstops, reset asserted, readyB retains1. Externalstop removed but conditionalclock model permits B onlywhen coordinatorreset0. For2000ns admit0/reset1/readyB1 persists.",
+  "source_audit": [
+    "Physicalassembly wires coordinatorreset ORexternalPSreset to GTH reset_all",
+    "Adapter buffers use reset_in=notPMAresetdone; userclock availability is not independent of transceiver reset state",
+    "Vendor reset_all_sync high holds reset-all FSM atBRANCH and clears internal sequence triggers; subsequent sequence advances afterdeassert",
+    "Release ready register clears synchronously, so stoppedclock can prevent all-ready0 condition needed to release coordinatorreset"
+  ],
+  "scope": "Clockdependency is explicit conditionalenvironment, NOT vendor GTprimitive simulation or physicaldeadlock proof. Do not force a hardware clock/reset to bypass this gate.",
+  "limits": [
+    "Actual GT/PMA/outputclock restart relation not yet simulated/measured",
+    "Two targetdigital assembly, not fullPHY/AXI",
+    "No physicalCDC/recoveryremoval/timing qualification",
+    "Productioncandidate unchanged except diagnosticexport adds coordinatorreset output"
+  ],
+  "next": "Create separate ready-ack candidate masked low during asserted localreset, or equivalent asynchronous-clear storage; require zeroack while stopped and fresh postrestart release before admit. Compare original and candidate in same conditional environment.",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/master_physical_assembly.py": "43e7ea47e704c3e65020cda32771fe15421b49c24913705d3d9c42cceefa1d68",
+    "diagnostics/drtio/master_gth_adapter.py": "52103c96db5064cb46bd5ab78896fcc4ae0791ff3fd07d277f26894161bf594e",
+    "diagnostics/drtio/aux_reset_domains.py": "42be921f51ddc2e3b90d361398e8308ad29d3600615109cf0ace626b4791ad34",
+    "diagnostics/drtio/aux_reset_control.py": "65568e0cfa104746cd10f5f25f6a90faa7907c57efdefc6804e4d45842d32f56",
+    "diagnostics/drtio/role-reversal/tb_reset_clock_dependency.v": "dc48d28f3fb4c4f25b1184b385502870e9ec5f3992a6870d6891d208987d01a7",
+    "diagnostics/drtio/role-reversal/export-reset-coordinator.py": "5935899819e0d5a910a0ce1d75bf27142bd8b8a1832e90f68b31c271af777cb3",
+    "diagnostics/drtio/role-reversal/run-reset-clock-dependency-sim.sh": "4a50a3442a7b62da39064ad2a156abd3edea0141b709ca004690a8bab05cff4f"
+  },
+  "vendor_reset_sha256": "fb9be47efd89e7e7d05cfd4596c38d20b539e935a4708b6ac72ae50e9f27d0c0"
+}

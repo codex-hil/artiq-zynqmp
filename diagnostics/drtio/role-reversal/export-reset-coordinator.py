@@ -21,7 +21,7 @@ m.comb += [r.request.eq(c.reset),c.domain_ready.eq(r.ready),
            m.cd_a.rst.eq(r.reset_out[0]),m.cd_b.rst.eq(r.reset_out[1])]
 for name,signal in {'request':h.request,'abandoned':h.abandoned,'admit':h.admit,
  'abandon_ready':h.abandonment_ready,'reset_status':h.reset_status,
- 'domain_ready':r.ready,'target_reset':r.reset_out}.items():
+ 'domain_ready':r.ready,'target_reset':r.reset_out,'coordinator_reset':c.reset}.items():
  signal.name_override=name;ios.add(signal)
 result=verilog.convert(m,ios=ios,name='reset_coordinator',special_overrides=xilinx_special_overrides)
 result.write(sys.argv[1]);p=Path(sys.argv[1]);p.write_text('`timescale 1ns/1ps\n'+p.read_text())
