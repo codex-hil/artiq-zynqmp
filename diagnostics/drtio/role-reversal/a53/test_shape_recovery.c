@@ -26,7 +26,9 @@ int main(void) {
  assert(m.writes==3);unsigned calls=m.calls;cases++;
  for(unsigned fail=1;fail<=calls;fail++) {
   m=fresh();m.fail=fail;b=bus(&m);r=gsr_recover(&b,4,1,1,1);
-  assert(r.error==GR_IO&&m.calls==fail);cases++; /* no retry or cleanup write */
+  assert(r.error==GR_IO&&m.calls==fail);
+  assert(r.reset_attempted==(m.writes>=1));
+  assert(r.release_attempted==(m.writes>=3));cases++; /* no retry or cleanup write */
  }
  for(unsigned which=0;which<3;which++) {
   m=fresh();m.fault=0;b=bus(&m);

@@ -1,0 +1,28 @@
+{
+  "status": "CORTEX_A53_RECOVERY_RELOCATABLE_COMPILE_AND_HOST_ATTEMPT_FLAG_CHECKS_PASS",
+  "job": "genesys-a53-shape-recovery-20261109-v1",
+  "compiler": "ArmGNU13.2.Rel1 Cortex-A53 freestandingO2 WallWextraWerror",
+  "checks": [
+    "AArch64RELentry0/new recoverywrapper/no undefinedsymbols",
+    "Five source hashes plus object match Dell receipt",
+    "24hostcases/17callbackfailurepoints ASanUBSan",
+    "For every injected failure reset_attempted equals at leastone commandwrite attempted; release_attempted equals third commandwrite attempted",
+    "Model applies write sideeffect before reporting injectedfailure"
+  ],
+  "hashes": {
+    "reset_compile.c": "9ab5358f99e02277ef471bedd6d481833e0e63e22f435172769c539782e649c7",
+    "reset_driver.h": "14b09757af0853807c342997cc9f473ba0e58231184c35b7a2686167e37a78dd",
+    "shape_recovery.h": "9110af42fd3a78ef0b305326133808f3b87b55be62aa86ecf96132f93a876f5e",
+    "master_driver.h": "8c3be417008459a9e566977f35a2cb85c1ff72bd5f682d2c4f15310914512090",
+    "master_regs.h": "ce0bb74503e2ec791e60fb8134fbf4ebf441478b0ddb1158f188718053294381",
+    "reset_compile.o": "6e9e18c98ed31c36b0effc0df9b0e46aaa58f4a58cacd2801ea0b3a097035ef9"
+  },
+  "limits": [
+    "No linkedfirmware/execution/coreassignment",
+    "Flags indicate attempted writes, not proven reset state or rollback",
+    "No physicalMMIO timeout/CDC/reset qualification",
+    "Manifest capability remains caller supplied, not discovered byGR_ID"
+  ],
+  "next": "Create a versioned offline interface manifest for the isolated extended gateware and driver; verify optional status address, shape constraints, reset obligations and exact source bindings before any production adoption",
+  "hardware_accessed": false
+}

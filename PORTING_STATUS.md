@@ -1,3 +1,11 @@
+2026-11-09 DellA53recoverywrapper compilePASS REL/AArch64entry0/noUND, five
+source+objecthashmatch. Host24cases/17failurepoints rerunASanUBSan with exact
+reset/releaseattemptflags matching sideeffect-before-error commandwrites. Flags
+notprovenresetstate/rollback; no linkedfirmware/execution/coreassignment/physical
+MMIOproof. Next versionedofflineinterface manifest for optionalstatus/shape/reset
+obligations/exactsources beforeadoption. NoHW;hold. Evidence
+genesys-master-integration-2026-11-09/a53-recovery-object/report.json.
+
 2026-11-09 portable recoveryhostmodel24cases/17callbackfailurepointsPASS
 ASanUBSan. Manifestcap+explicitabandoned/withdrawn required beforeMMIO; zero
 diagnosticdoesnotbypassreset; assert/status0/release/status sequence, no target

@@ -7,5 +7,5 @@ arm_tool=/srv/nvme-fast-2/toolchains/arm-gnu/arm-gnu-toolchain-13.2.Rel1-x86_64-
 "${arm_tool}-nm" -u reset_compile.o > undefined.txt
 test ! -s undefined.txt
 "${arm_tool}-objdump" -dr reset_compile.o > disassembly.txt
-sha256sum reset_compile.c reset_driver.h master_driver.h master_regs.h reset_compile.o > hashes.txt
+sha256sum reset_compile.c reset_driver.h shape_recovery.h master_driver.h master_regs.h reset_compile.o > hashes.txt
 echo RESET_A53_OBJECT_COMPILE_PASS
