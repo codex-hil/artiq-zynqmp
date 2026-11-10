@@ -1,0 +1,53 @@
+{
+  "status": "COMPLETE_ROW_ACCOUNTING_NOT_CDC_SIGNOFF",
+  "raw_sha256": "fc082066a0256a540f5f12000d9f4041b34f3388d4b45a58852e08499d295d72",
+  "rows": 2935,
+  "summary": {
+    "CDC-1": [
+      "Critical",
+      138
+    ],
+    "CDC-3": [
+      "Info",
+      27
+    ],
+    "CDC-6": [
+      "Warning",
+      16
+    ],
+    "CDC-9": [
+      "Info",
+      3
+    ],
+    "CDC-10": [
+      "Critical",
+      12
+    ],
+    "CDC-11": [
+      "Critical",
+      4
+    ],
+    "CDC-13": [
+      "Critical",
+      2572
+    ],
+    "CDC-15": [
+      "Warning",
+      163
+    ]
+  },
+  "triage": {
+    "VENDOR_GT_NAME_REVIEW_REQUIRED": 28,
+    "OTHER_UNCLASSIFIED_REVIEW_REQUIRED": 2859,
+    "RESET_OR_REGISTERED_RESET_NAME_REVIEW_REQUIRED": 14,
+    "GRAY_NAME_PROTOCOL_AND_CONSTRAINT_REVIEW_REQUIRED": 34
+  },
+  "reset_and_fanout_count": 16,
+  "truncation_mutant": "REFUSED",
+  "limits": [
+    "Classification uses names, not synthesized fan-in proof",
+    "All severities retained; vendor and Gray names are not waivers",
+    "Separate isolated reset result does not qualify full reset fanout"
+  ],
+  "next": "Read-only full synthesized DCP fan-in and reset endpoint mapping for 12 CDC10 and 4 CDC11 paths"
+}

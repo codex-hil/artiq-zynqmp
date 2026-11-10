@@ -1,3 +1,10 @@
+2026-11-10 full CDC row accounting PASS: all2935 detailed entries match eight
+summary groups; truncation mutant REFUSED. Name-only triage retains severity:
+16 CDC10/11 selected for reset/fanout review, including vendor GT paths.
+No source-name waiver or physical CDC credit. Next read-only synthesized DCP
+fanin/endpoint mapping for these16; preserve DCP hashes. No HW/adoption. Evidence
+genesys-master-integration-2026-11-10/combined-cdc-triage/report.json.
+
 2026-11-10 combined full logic synthesis COMPLETE; full CDC NOT CLEAN.
 CDC1=138, CDC10=12, CDC11=4, CDC13=2572 critical; CDC6=16/CDC15=163 warning.
 No timing exceptions. No_clock/multiple_clock/unconstrained_internal_endpoints0;
