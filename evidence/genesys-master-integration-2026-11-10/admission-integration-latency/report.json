@@ -1,0 +1,56 @@
+{
+  "status": "COMBINED_CORE_LINK_BASELINE_AND_REGISTERED_FAULT_RESET_SIM_PASS",
+  "test_seconds": 25.306,
+  "measurements": {
+    "baseline": {
+      "progress_fault": {
+        "raw_first_sys_sample": 0,
+        "closed_first_sys_sample": 2,
+        "delta_sys_samples": 2
+      },
+      "shape_fault": {
+        "raw_first_sys_sample": 1,
+        "closed_first_sys_sample": 3,
+        "delta_sys_samples": 2
+      },
+      "reset": {
+        "raw_first_sys_sample": 3,
+        "closed_first_sys_sample": 3,
+        "delta_sys_samples": 0
+      }
+    },
+    "registered": {
+      "progress_fault": {
+        "raw_first_sys_sample": 0,
+        "closed_first_sys_sample": 2,
+        "delta_sys_samples": 2
+      },
+      "shape_fault": {
+        "raw_first_sys_sample": 1,
+        "closed_first_sys_sample": 3,
+        "delta_sys_samples": 2
+      },
+      "reset": {
+        "raw_first_sys_sample": 3,
+        "closed_first_sys_sample": 3,
+        "delta_sys_samples": 0
+      }
+    }
+  },
+  "scope": [
+    "Actual GenesysMasterIntegration with codec/link boundary, HPM1 signal adapter and grouped/registered reset scoped substitutions",
+    "Explicit injection of sticky progress-fault and shape-fault states, management-driven reset and fresh abandonment/reopen between fault episodes",
+    "Exact XilinxMultiReg lowering; FunctionalReset instead of vendor FDPE"
+  ],
+  "limits": [
+    "PL/control8ns SYS14ns RX18ns with one deterministic phase; not worst-case bound",
+    "Both variants sampled same2SYS closure for injected faults; extra control register latency remains and may cost another SYS edge at other phases",
+    "Not fault detection latency from physical RX loss or malformed transaction; fault state was injected",
+    "Diagnostic <=5 SYS-sample regression assertion is a test fixture cap, not admitted physical latency budget",
+    "No hardware/default adoption/CDC waiver"
+  ],
+  "next": "Sweep trigger/control-to-SYS phase and trace control register edges to resolve phase-dependent additional SYS sample before any latency qualification",
+  "sha256": {
+    "diagnostics/drtio/test_registered_admission_integration.py": "255d34bb219b52601939f769e55cc561726ba05e7dfb448f39fb4b1763780a1e"
+  }
+}

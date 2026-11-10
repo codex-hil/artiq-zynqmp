@@ -1,3 +1,11 @@
+2026-11-10 combined core+codec/link/HPM1 integration baseline vs registered
+admission simPASS25.306s, injected stickyprogress/shape faults and managedreset/
+freshabandon reopen. ExactMultiReg/FunctionalReset only. Fixed8/14/18ns phase:
+bothfaultwithdraw2SYSsamples, reset0; equalobservations do not remove added
+controledge or establish worstcase budget. Faultstatesinjected/notdetection
+latency. Next phase/trigger sweep+control-edge trace. NoHW/adoption/waiver.
+Evidence genesys-master-integration-2026-11-10/admission-integration-latency/report.json.
+
 2026-11-10 separate registered-admission fullsynthCDC comparison COMPLETE:
 CDC10 12->11, CDC3 27->28; exact SYS firstD now driven by sampledregisterQ.
 Allothercounts unchanged including CDC11critical4. SameTcl/GTIP/clocks/init6;

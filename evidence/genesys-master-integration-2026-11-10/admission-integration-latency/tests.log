@@ -1,0 +1,14 @@
+test_baseline_and_registered_fault_reset_withdrawal (test_registered_admission_integration.AdmissionIntegrationTests.test_baseline_and_registered_fault_reset_withdrawal) ... /srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+WITHDRAWAL_EDGES baseline progress_fault raw_first 0 closed_first 2 delta_sys_samples 2
+WITHDRAWAL_EDGES baseline shape_fault raw_first 1 closed_first 3 delta_sys_samples 2
+WITHDRAWAL_EDGES baseline reset raw_first 3 closed_first 3 delta_sys_samples 0
+WITHDRAWAL_EDGES registered progress_fault raw_first 0 closed_first 2 delta_sys_samples 2
+WITHDRAWAL_EDGES registered shape_fault raw_first 1 closed_first 3 delta_sys_samples 2
+WITHDRAWAL_EDGES registered reset raw_first 3 closed_first 3 delta_sys_samples 0
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 25.306s
+
+OK
