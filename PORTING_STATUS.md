@@ -1,3 +1,11 @@
+2026-11-10 separate combined RTL/vendor IP elaboration on Dell PASS: zero
+errors/critical warnings/unresolved blackboxes. Warning counts compared with
+masked baseline in report; retained without waiver. Exact RTL/Tcl/IP hashes
+recorded. RTL elaboration only, no logic synthesis/CDC/timing/physical signoff.
+No HW/default adoption/deployment. Next full combined diagnostic logic synthesis
+and CDC/reset-topology inspection without broad timing exceptions. Evidence
+genesys-master-integration-2026-11-10/combined-rtl-elab/report.json.
+
 2026-11-10 combined reset narrow policy/topology audit PASS; three mutation
 refusals: wrong group, ungated registered admit, removed external reset.
 Three release groups/common request; management/control external PS reset only;

@@ -1,0 +1,30 @@
+{
+  "status": "COMBINED_SEPARATE_RTL_VENDOR_IP_ELABORATION_PASS_NOT_DEPLOYED",
+  "job": "genesys-combined-rtl-elab-20261110-v1",
+  "exit_code": 0,
+  "bound_seconds": 180,
+  "errors": 0,
+  "critical_warnings": 0,
+  "unresolved_blackboxes": 0,
+  "warnings": {
+    "Synth 8-7071": 5,
+    "Synth 8-7023": 4,
+    "Synth 8-7137": 1,
+    "Synth 8-6014": 100,
+    "Synth 8-7129": 100,
+    "Vivado 12-180": 1
+  },
+  "same_warning_counts_as_masked": true,
+  "staged_hashes": {
+    "master_physical_candidate.v": "fc2b7aa176ea60e6805a2c658804ccb75eb9281d512658a2e8bf1298c7895458",
+    "elaborate-physical-assembly.tcl": "768c07a5c243d4b097ae3ef465643a8eda46da1c0efa634dab16b2064a2df7b2",
+    "drtio_gth/drtio_gth.xci": "aaa71467ac1f6a45b6f34be02d7cc63f26e6017d474cdd3f91a3baaeb90c9e41"
+  },
+  "limits": [
+    "synth_design -rtl only; no logic synthesis/place/route",
+    "Warnings retained, not waived",
+    "No full-system CDC/timing/GT recovery qualification",
+    "No hardware access or production default adoption"
+  ],
+  "next": "Full combined logic synthesis with explicit diagnostic clocks, inspect CDC and grouped reset topology without broad timing exceptions"
+}
