@@ -1,3 +1,12 @@
+2026-11-10 combined groupedTX+registered/masked reset: two full HPM/CSR tests
+PASS (27.487s), actual adapters/exact XilinxMultiReg two reset episodes, CSR12/68;
+bad WLAST, independent management, held-request refault and withdrawal/recovery.
+Scoped test substitutions only; original manifest PASS. Functional reset model
+here; separate FDPE/isolated CDC evidence is not full-system physical signoff.
+No default adoption/HW/deployment; hold. Next separate combined physical RTL
+export with explicit common-TX identity/reset-policy validation and baseline audit.
+Evidence genesys-master-integration-2026-11-10/grouped-registered-full-hpm/report.json.
+
 2026-11-10 grouped+registered/masked isolatedreset synthCDC9Info+3resetInfo,
 0Critical/Warning/sameTcl+testclocks/noexceptions.6FDPE/3physicalgroups removes
 sharedTXresetfanout findings inTHISresetonlydesign. NotfullFPGA/physicalCDC/

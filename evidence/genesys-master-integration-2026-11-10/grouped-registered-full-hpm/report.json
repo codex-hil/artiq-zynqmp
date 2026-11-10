@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "seconds": 27.487,
+  "scope": "Test-only scoped substitutions: grouped masked ready plus registered coordinator outputs in full HPM/CSR models",
+  "checks": [
+    "Actual PS adapters: two reset episodes with exact XilinxMultiReg lowering; CSR lengths 12 and 68",
+    "Accepted AW and malformed WLAST: independent management, reset, held-request refault, withdrawal and fresh transfer recovery",
+    "Original eight-source interface manifest remains valid"
+  ],
+  "limitations": [
+    "Functional reset synchronizer in these HPM simulations; AMD FDPE simulations and isolated CDC results are separate evidence",
+    "Common TX clock and reset policy are fixture-specific obligations",
+    "One added control cycle; no full-system stopped-clock or physical timing qualification",
+    "No production defaults changed; no hardware access or deployment; maintenance hold remains"
+  ],
+  "next": "Separate combined physical RTL export with explicit common-TX identity and reset-policy validation, then audit against baseline",
+  "sha256": {
+    "diagnostics/drtio/test_grouped_registered_full_hpm.py": "9c823168886edd26aba78fee9fe12b163088928bd64a796e7dc8f346877f50dc",
+    "evidence/genesys-master-integration-2026-11-10/grouped-registered-full-hpm/tests.log": "bda8ae1673b14a1b49f13f3612a7ac862d042280a043bd036c8a805e5abe0016",
+    "evidence/genesys-master-integration-2026-11-10/grouped-registered-full-hpm/original-manifest-check.json": "51c1e36cddb420ab6dd257e6a03e9c334f44de0356ec3ffc60fcc88b1f71c2b6"
+  }
+}
