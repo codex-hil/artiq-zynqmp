@@ -1,0 +1,32 @@
+{
+  "status": "SEPARATE_MASKED_GUARDED_RTL_VENDOR_IP_ELABORATION_PASS_NOT_ADOPTED",
+  "job": "genesys-masked-rtl-elab-20261110-v1",
+  "exit_code": 0,
+  "bound_seconds": 180,
+  "max_threads": 4,
+  "errors": 0,
+  "critical_warnings": 0,
+  "unresolved_blackboxes": 0,
+  "warnings": {
+    "Synth 8-7071": 5,
+    "Synth 8-7023": 4,
+    "Synth 8-7137": 1,
+    "Synth 8-6014": 100,
+    "Synth 8-7129": 100,
+    "Vivado 12-180": 1
+  },
+  "warning_comparison": "Same six groups/counts as original guarded variant; unusedmessage caps100, no waiver. Vendor CPLL priority warning remains.",
+  "staged_hashes": {
+    "elaborate-physical-assembly.tcl": "768c07a5c243d4b097ae3ef465643a8eda46da1c0efa634dab16b2064a2df7b2",
+    "export.json": "bf7751d1e58b79794dce0b49e8a0b7f3be8e8c4e151e8e2589e26fa52b7d0902",
+    "master_physical_candidate.v": "2ccc42f053812051821ee54f1e7e90f421886782d654352c1ee898cae3871cf0",
+    "drtio_gth/drtio_gth.xci": "aaa71467ac1f6a45b6f34be02d7cc63f26e6017d474cdd3f91a3baaeb90c9e41"
+  },
+  "limits": [
+    "synth_design-rtl only, not logic synthesis or netlistCDC/timing qualification",
+    "No PS primitive/physicalpins/GT recovery qualification",
+    "Masked variant separate/not default/not deployed; runtime capabilityfalse"
+  ],
+  "next": "Bounded isolated five-domain reset logic synthesis with explicit test clocks and report_cdc; inspect mask-to-first-stage topology without broad falsepaths or physical signoff",
+  "hardware_accessed": false
+}

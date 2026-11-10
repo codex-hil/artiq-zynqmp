@@ -1,3 +1,10 @@
+2026-11-10 separateMasked guardedRTL/vendorIPelabPASS exit0/180s/max4/sharedslot.
+Stagedtop/export/Tcl/XCIhashesmatch;0errors/critical/blackboxes.211reportedwarnings
+same6groups asoriginalguarded,100messagecaps/vendorCPLLpriority retained/notwaived.
+RTLonly/no logic synthesis/CDC/timing/PSprimitive/pins/deploymentcredit. Next
+isolated5domainreset synth+reportCDC/testclocks/no broadfalsepaths. NoHW/cap;hold.
+Evidence genesys-master-integration-2026-11-10/masked-rtl-elab/report.json.
+
 2026-11-10 separateMasked guardedRTLexport+deltaauditPASS:5maskDexpressions,
 10syncreg renames,5provenunusedgeneratoraliases only; allotherRTLtext+6inits
 identical baseline.4auditmutantsREFUSED/originalmanifestPASS(baselineonly/no
