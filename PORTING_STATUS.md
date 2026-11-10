@@ -1,3 +1,11 @@
+2026-11-10 grouped+registered/masked isolatedreset synthCDC9Info+3resetInfo,
+0Critical/Warning/sameTcl+testclocks/noexceptions.6FDPE/3physicalgroups removes
+sharedTXresetfanout findings inTHISresetonlydesign. NotfullFPGA/physicalCDC/
+route/reset/timingqualification; commonclock/policyparentproofstillrequired.
+Next combinedvariant testonlyfullHPM/CSR latency/recovery/admission. No adoption/
+production/HW/cap;hold. Evidence
+genesys-master-integration-2026-11-10/grouped-reset-cdc/report.json.
+
 2026-11-10 separateGroupedTX+registered/masked reset2hosttests+5logicaldomain
 FDPE/GSRsimPASS. Threephysicalgroups PS/TX/RX→5logical,6FDPE; SYS/rio/phy shared
 ready/reset. ExportexactclockSignalidentity checked/explicitresetpolicy required;

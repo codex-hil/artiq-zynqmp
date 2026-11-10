@@ -1,0 +1,81 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date              : Tue Nov 10 03:49:24 2026
+| Host              : codex-hil-Precision-5820-Tower-X-Series running 64-bit Ubuntu 22.04.5 LTS
+| Command           : report_cdc -details -file cdc.rpt
+| Design            : reset_five_domains
+| Device            : xczu5ev-sfvc784
+| Speed File        : -1  PRODUCTION 1.30 05-15-2022
+| Design State      : Synthesized
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+ID     Severity  Count  Description
+-----  --------  -----  -------------------------------------------------------
+CDC-3  Info          9  1-bit synchronized with ASYNC_REG property
+CDC-9  Info          3  Asynchronous reset synchronized with ASYNC_REG property
+
+Source Clock: ps_clock
+Destination Clock: control_clock
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                 Depth  Exception  Source (From)                Destination (To)
+---  -----  --------  ------------------------------------------  -----  ---------  ---------------------------  ----------------------------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       releases_local_ready0_reg/C  xilinxmultiregimpl0_xilinxmultiregimpl00_reg/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       FDPE_1/C                     xilinxmultiregimpl0_xilinxmultiregimpl00_reg/R
+
+Source Clock: rx_clock
+Destination Clock: control_clock
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                 Depth  Exception  Source (From)                Destination (To)
+---  -----  --------  ------------------------------------------  -----  ---------  ---------------------------  ----------------------------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       releases_local_ready2_reg/C  xilinxmultiregimpl2_xilinxmultiregimpl20_reg/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       FDPE_5/C                     xilinxmultiregimpl2_xilinxmultiregimpl20_reg/R
+
+Source Clock: tx_clock
+Destination Clock: control_clock
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                 Depth  Exception  Source (From)                Destination (To)
+---  -----  --------  ------------------------------------------  -----  ---------  ---------------------------  ----------------------------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       releases_local_ready1_reg/C  xilinxmultiregimpl1_xilinxmultiregimpl10_reg/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       FDPE_3/C                     xilinxmultiregimpl1_xilinxmultiregimpl10_reg/R
+
+Source Clock: control_clock
+Destination Clock: management_clock
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                 Depth  Exception  Source (From)                       Destination (To)
+---  -----  --------  ------------------------------------------  -----  ---------  ----------------------------------  --------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       coordinator_reset_reg/C             xilinxmultiregimpl50_reg/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       registered_abandonment_ready_reg/C  xilinxmultiregimpl60_reg/D
+  3  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  None       registered_admit_reg/C              xilinxmultiregimpl70_reg/D
+
+Source Clock: control_clock
+Destination Clock: ps_clock
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                              Depth  Exception  Source (From)            Destination (To)
+---  -----  --------  -------------------------------------------------------  -----  ---------  -----------------------  ----------------
+  1  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  None       coordinator_reset_reg/C  FDPE/PRE
+
+Source Clock: control_clock
+Destination Clock: rx_clock
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                              Depth  Exception  Source (From)            Destination (To)
+---  -----  --------  -------------------------------------------------------  -----  ---------  -----------------------  ----------------
+  1  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  None       coordinator_reset_reg/C  FDPE_4/PRE
+
+Source Clock: control_clock
+Destination Clock: tx_clock
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                              Depth  Exception  Source (From)            Destination (To)
+---  -----  --------  -------------------------------------------------------  -----  ---------  -----------------------  ----------------
+  1  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  None       coordinator_reset_reg/C  FDPE_2/PRE
+

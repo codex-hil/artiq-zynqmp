@@ -1,0 +1,30 @@
+{
+  "status": "ISOLATED_GROUPED_REGISTERED_RESET_SYNTH_CDC_NO_CRITICAL_NO_WARNING_NOT_SYSTEM_SIGNOFF",
+  "job": "genesys-reset-grouped-cdc-20261110-v1",
+  "cdc_summary": {
+    "CDC-3_Info": 9,
+    "CDC-9_Info": 3,
+    "Critical": 0,
+    "Warning": 0
+  },
+  "comparison": "Original8criticalCDC10; masked8criticalCDC10; registered3criticalCDC11; groupedregistered0critical in same isolatedclockmodel",
+  "constraints": "Exactsame Tcl, management8/control10/PS8/TX14/RX18ns independenttestroots, no timingexceptions",
+  "register_counts": {
+    "FDPE": 6,
+    "FDRE": 32
+  },
+  "hashes": {
+    "reset_five_domains.v": "a2f23608ed479825af3dd49cc1bc05bb23ad2f327787143347d9981248dc0c25",
+    "synth-reset-five-domains.tcl": "c83b9578516949b732194a0e04822166c63438b1ac39dce92a63edd1da5ecb57",
+    "reset_cdc.dcp": "24972260ec68e433358487095fc39f87abaabe6cdb5e9a60a7b0a4cb7a54f30b"
+  },
+  "limits": [
+    "Reset-only synthesizedcandidate, not complete guarded FPGA",
+    "No implementation/route/recovery-removal/metastability or physicaltiming/reset qualification",
+    "CommonTXclock/policy assumptions must be proved in actualparent",
+    "No HPM/firmware integration of combinedgrouped+registered variant yet",
+    "No production/default/adoption/deployment/MMIOcapability"
+  ],
+  "next": "Test combined groupedready+registeredcoordinator in separate fullHPM/CSR fixture with explicitcommonclock contract; verify addedlatency, management recovery and no premature admission",
+  "hardware_accessed": false
+}

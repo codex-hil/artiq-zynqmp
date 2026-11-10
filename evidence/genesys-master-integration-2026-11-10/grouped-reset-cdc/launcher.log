@@ -1,0 +1,243 @@
+Acquired Dell heavy-build slot 1/3
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Nov 10 03:48:33 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source synth-reset-five-domains.tcl
+# set_param general.maxThreads 4
+# create_project -force reset_cdc ./project -part xczu5ev-sfvc784-1-e
+# read_verilog reset_five_domains.v
+# synth_design -top reset_five_domains -part xczu5ev-sfvc784-1-e -mode out_of_context
+Command: synth_design -top reset_five_domains -part xczu5ev-sfvc784-1-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 62
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2039.441 ; gain = 456.652 ; free physical = 7829 ; free virtual = 64229
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'reset_five_domains' [/srv/nvme-fast-1/vivado-work/genesys-reset-grouped-cdc-20261110-v1/reset_five_domains.v:3]
+INFO: [Synth 8-6157] synthesizing module 'FDPE' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FDPE' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+INFO: [Synth 8-6155] done synthesizing module 'reset_five_domains' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-reset-grouped-cdc-20261110-v1/reset_five_domains.v:3]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2125.379 ; gain = 542.590 ; free physical = 7718 ; free virtual = 64119
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2143.191 ; gain = 560.402 ; free physical = 7716 ; free virtual = 64118
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu5ev-sfvc784-1-e
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2149.129 ; gain = 566.340 ; free physical = 7716 ; free virtual = 64118
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'reset_five_domains'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                               00 |                               00
+*
+                  iSTATE |                               01 |                               10
+                 iSTATE0 |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'reset_five_domains'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2149.129 ; gain = 566.340 ; free physical = 7714 ; free virtual = 64117
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    2 Bit       Adders := 3     
++---Registers : 
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 24    
++---Muxes : 
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2952.309 ; gain = 1369.520 ; free physical = 7059 ; free virtual = 63462
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2952.309 ; gain = 1369.520 ; free physical = 7059 ; free virtual = 63461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2952.309 ; gain = 1369.520 ; free physical = 7059 ; free virtual = 63461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7010 ; free virtual = 63412
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7010 ; free virtual = 63412
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7010 ; free virtual = 63412
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7010 ; free virtual = 63412
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7010 ; free virtual = 63412
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7010 ; free virtual = 63412
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT1 |     3|
+|2     |LUT2 |     6|
+|3     |LUT3 |     1|
+|4     |LUT4 |     7|
+|5     |LUT5 |     2|
+|6     |LUT6 |     1|
+|7     |FDPE |     6|
+|8     |FDRE |    32|
++------+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |    58|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7010 ; free virtual = 63412
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.121 ; gain = 1396.332 ; free physical = 7006 ; free virtual = 63408
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2979.129 ; gain = 1396.332 ; free physical = 7006 ; free virtual = 63408
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2992.996 ; gain = 0.000 ; free physical = 6982 ; free virtual = 63384
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3087.500 ; gain = 0.000 ; free physical = 6903 ; free virtual = 63305
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 448054b4
+INFO: [Common 17-83] Releasing license: Synthesis
+17 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:22 . Memory (MB): peak = 3087.535 ; gain = 1504.781 ; free physical = 6903 ; free virtual = 63305
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2524.846; main = 2524.846; forked = 344.062
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3752.219; main = 3087.504; forked = 986.906
+# foreach {port period} {management_clock 8 control_clock 10 ps_clock 8 tx_clock 14 rx_clock 18} {
+#  set found [get_ports $port]
+#  if {[llength $found] != 1} {error "Clock port not unique: $port"}
+#  create_clock -name $port -period $period $found
+# }
+# report_clocks -file clocks.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+report_clocks: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 3327.914 ; gain = 240.379 ; free physical = 6986 ; free virtual = 63388
+# report_cdc -details -file cdc.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "control_clock" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "management_clock" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "ps_clock" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "rx_clock" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "tx_clock" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+INFO: [Timing 38-314] The report_cdc command only analyzes and reports clock domain crossing paths where clocks have been defined on both source and destination sides. Ports with no input delay constraint are skipped. Please run check_timing to verify there are no missing clock definitions in your design, nor any unconstrained input port.
+report_cdc: Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 4138.875 ; gain = 810.961 ; free physical = 6243 ; free virtual = 62645
+# report_exceptions -file exceptions.rpt
+# report_timing_summary -file timing.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+# report_utilization -file utilization.rpt
+# set out [open registers.tsv w]
+# foreach cell [lsort [get_cells -hierarchical -filter {REF_NAME =~ FD*}]] {
+#  puts $out "$cell\t[get_property REF_NAME $cell]\t[get_property INIT $cell]\t[get_property ASYNC_REG $cell]"
+# }
+# close $out
+# write_checkpoint -force reset_cdc.dcp
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4170.891 ; gain = 0.000 ; free physical = 6244 ; free virtual = 62646
+INFO: [Common 17-1381] The checkpoint '/srv/nvme-fast-1/vivado-work/genesys-reset-grouped-cdc-20261110-v1/reset_cdc.dcp' has been generated.
+# puts "RESET_FIVE_DOMAIN_LOGIC_SYNTH_CDC_COMPLETE"
+RESET_FIVE_DOMAIN_LOGIC_SYNTH_CDC_COMPLETE
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 10 03:49:25 2026...
