@@ -1,0 +1,62 @@
+{
+  "status": "ADMISSION64_ASSIGNMENTS_AND_TWO_RESET_DIRECT_Q_PATHS_PASS",
+  "admission_expression": [
+    "lut",
+    8,
+    [
+      [
+        "lut",
+        4,
+        [
+          [
+            "var",
+            "genesysmasterintegration_progress_fresh_reg[0]/Q"
+          ],
+          [
+            "var",
+            "genesysmasterintegration_progress_fresh_reg[1]/Q"
+          ],
+          [
+            "var",
+            "genesysmasterintegration_progress_fault_reg/Q"
+          ],
+          [
+            "var",
+            "genesysmasterintegration_ingress_outputs_reset_reg/Q"
+          ]
+        ]
+      ],
+      [
+        "var",
+        "genesysmasterintegration_ingress_outputs_admit_reg/Q"
+      ],
+      [
+        "var",
+        "xilinxmultiregimpl411_reg/Q"
+      ]
+    ]
+  ],
+  "q_cutpoints": [
+    "genesysmasterintegration_ingress_outputs_admit_reg/Q",
+    "genesysmasterintegration_ingress_outputs_reset_reg/Q",
+    "genesysmasterintegration_progress_fault_reg/Q",
+    "genesysmasterintegration_progress_fresh_reg[0]/Q",
+    "genesysmasterintegration_progress_fresh_reg[1]/Q",
+    "xilinxmultiregimpl411_reg/Q"
+  ],
+  "fdse_q_only_evaluator_aliases": [
+    "genesysmasterintegration_ingress_outputs_reset_reg"
+  ],
+  "mutation": "REFUSED",
+  "findings": [
+    "Permit first-stage D is a combinational function of six control Q cutpoints, including progress and synchronized shape fault; source-function match does not remove CDC10 glitch risk",
+    "One registered reset Q directly drives both TX reset synchronizer PRE and requested-status first D; CDC11 fanout remains",
+    "Requested reset MultiReg INIT1 versus emitted INIT0 mismatch remains separately recorded"
+  ],
+  "limits": [
+    "No timing/glitch/metastability proof",
+    "No sequential equivalence or FDSE set/reset proof",
+    "No netlist/default/HW modifications or waiver"
+  ],
+  "next": "Separate registered-admission candidate before SYS MultiReg with explicit extra control cycle; test fault withdrawal and reset sequencing before considering adoption"
+}

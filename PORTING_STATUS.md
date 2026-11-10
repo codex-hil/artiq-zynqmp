@@ -1,3 +1,13 @@
+2026-11-10 admission/reset cone audit PASS: all64 six-Q assignments match
+admit & !reset & !progressfault & fresh==2 & !shapefault; changed LUT REFUSED.
+Combinational first-stage SYS D remains CDC10/glitch qualification OPEN.
+Registered reset Q directly drives TXreset PRE and requested-status first D;
+CDC11 fanout and requestedINIT1/loweredINIT0 mismatch remain. FDSE Q-only
+evaluator alias adds no set/reset equivalence claim. Next separate registered
+admission candidate with explicit added control-cycle/fault latency tests.
+No HW/default/netlist changes/waivers. Evidence
+genesys-master-integration-2026-11-10/admission-cdc-cones/report.json.
+
 2026-11-10 actual PSCDC5channel AMD FDPE/GSR96depth/resetcases PASS:
 PS/TXlow/high x phase0/2 x all/AWonly/Wonly x occupancy1..4; fullbackpressure,
 stalediscard and fresh4packed tokens/channel ordered/exact once under separately
