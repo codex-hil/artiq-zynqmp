@@ -1,0 +1,41 @@
+{
+  "status": "ISOLATED_LOGIC_SYNTH_COMPLETE_CDC_NOT_CLEAN_EIGHT_CRITICAL_NO_ADOPTION",
+  "job": "genesys-reset-five-cdc-20261110-v1",
+  "bound_seconds": 180,
+  "max_threads": 4,
+  "cdc_summary": {
+    "CDC-3_Info": 10,
+    "CDC-10_Critical": 8
+  },
+  "critical_endpoint_groups": {
+    "control_to_management_firststageD": 3,
+    "control_to_target_reset_FDPE_PRE": 5
+  },
+  "test_clocks_ns": {
+    "management": 8,
+    "control": 10,
+    "ps": 8,
+    "tx": 14,
+    "rx": 18
+  },
+  "clock_scope": "Independent diagnostic clock roots. Physical assembly management/control/PS share pl_clk0; no alias waiver inferred from this isolated report.",
+  "exceptions": "None",
+  "observations": [
+    "Masked-ready paths reported as synchronized onebit info; not physical proof or waiver",
+    "Criticalentries relate to combinational control outputs driving status synchronizers and resetPRE; not attributed solely to new masks",
+    "Five FDPEpairs INIT1 retained in registerinventory"
+  ],
+  "hashes": {
+    "reset_five_domains.v": "92e6bd6d2d746ea526ff583e776b7a164607fc565a0a9abdb8ad739a45104e74",
+    "synth-reset-five-domains.tcl": "c83b9578516949b732194a0e04822166c63438b1ac39dce92a63edd1da5ecb57",
+    "reset_cdc.dcp": "b884374160917e1186695e9082c434e9fcc7ade35b9ef6ee2406889e6748823f"
+  },
+  "limits": [
+    "Isolated synthesized reset-only candidate, not complete guardeddesign",
+    "No place/route/IOdelay/physicalclock/CDC timing qualification",
+    "No claim allcriticalentries existedbefore mask; need originalbaseline comparison",
+    "No hardware/deployment/runtimecapability"
+  ],
+  "next": "Synthesize original five-domain release implementation under exactly same diagnostic clocks, compare CDC endpoints and mapped primitive topology before proposing fixes or clock-model refinement",
+  "hardware_accessed": false
+}

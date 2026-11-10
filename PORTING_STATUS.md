@@ -1,3 +1,11 @@
+2026-11-10 isolated5domainmaskedreset logicsynth COMPLETE/CDCNOTCLEAN:10CDC-3Info,
+8CDC-10Critical (3control→mgmtfirstD,5control→targetFDPE_PRE). Noexceptions; diagnostic
+independentclockroots8/10/8/14/18 notactualsharedPSaliasqualification. Maskedready
+pathsInfo notwaiver/physicalproof; no attributionallcriticaltonewmask. StagedRTL/
+Tclhashmatch/DCPprivatehashreceipt. Next originalsynthsameclocks/endpointcomparison
+beforefix. No production/HW;hold. Evidence
+genesys-master-integration-2026-11-10/reset-five-cdc/report.json.
+
 2026-11-10 separateMasked guardedRTL/vendorIPelabPASS exit0/180s/max4/sharedslot.
 Stagedtop/export/Tcl/XCIhashesmatch;0errors/critical/blackboxes.211reportedwarnings
 same6groups asoriginalguarded,100messagecaps/vendorCPLLpriority retained/notwaived.
