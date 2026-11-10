@@ -1,3 +1,11 @@
+2026-11-10 originalsynthsameTcl/testclocks COMPLETE:5CDC3Info/8CDC10Critical,
+masked10Info/8Critical. Clock+destinationcriticalsets equal butstrictsourcesREFUSED:
+7/8source rowsmatch; admitstatusrepresentative sourceoriginalreadybit2 vsmasked
+bit3. No fullconeequivalenceclaim. RegREF/INIT/ASYNCinventorysame afterknownnames,
+noexceptions/maskedregenbyteidentical. Next readonlyexactDCPfanins D/R/PRE/admit
+allready compare beforefix/waiver. No physical/HW;hold. Evidence
+genesys-master-integration-2026-11-10/reset-original-cdc/report.json.
+
 2026-11-10 isolated5domainmaskedreset logicsynth COMPLETE/CDCNOTCLEAN:10CDC-3Info,
 8CDC-10Critical (3control→mgmtfirstD,5control→targetFDPE_PRE). Noexceptions; diagnostic
 independentclockroots8/10/8/14/18 notactualsharedPSaliasqualification. Maskedready

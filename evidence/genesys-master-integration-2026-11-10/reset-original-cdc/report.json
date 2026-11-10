@@ -1,0 +1,48 @@
+{
+  "status": "ORIGINAL_SYNTH_COMPLETE_BOTH_EIGHT_CRITICAL_STRICT_SOURCE_COMPARISON_REFUSED",
+  "job": "genesys-reset-original-five-cdc-20261110-v1",
+  "original_info": 5,
+  "masked_info": 10,
+  "critical_each": 8,
+  "critical_clock_and_destination_sets_equal": true,
+  "strict_source_sets_equal": false,
+  "matched_source_rows": 7,
+  "source_differences": {
+    "original": [
+      [
+        "control_clock",
+        "management_clock",
+        "CDC-10",
+        "Critical",
+        "xilinxmultiregimpl21_reg/C",
+        "xilinxmultiregimpl90_reg/D"
+      ]
+    ],
+    "masked": [
+      [
+        "control_clock",
+        "management_clock",
+        "CDC-10",
+        "Critical",
+        "xilinxmultiregimpl31_reg/C",
+        "xilinxmultiregimpl90_reg/D"
+      ]
+    ]
+  },
+  "register_ref_init_async_inventory_equal_after_narrow_stage_renames": true,
+  "register_count": 49,
+  "constraints": "Exact same Tcl/testclocks and noexceptions; regeneratedmaskedRTL byteidentical topriorinput",
+  "hashes": {
+    "reset_five_domains.v": "a2b445ea417888cb2c728d673f91cac8702552bc84213525aa394172fb1d9acb",
+    "synth-reset-five-domains.tcl": "c83b9578516949b732194a0e04822166c63438b1ac39dce92a63edd1da5ecb57",
+    "reset_cdc.dcp": "39d2fb75e0eb0a0df5c1504b1d8999418074a97dafc66b1691540bc8c8939c7b"
+  },
+  "limits": [
+    "Representative source may change within fanin cone; not proved fullcone equivalence",
+    "Counts/destination equality not waiver or proofCDC safe",
+    "Addedmasked InfoRpin paths need mappedD/R review",
+    "Independentdiagnosticclockroots, no route/physical/timing/adoption/HW credit"
+  ],
+  "next": "Read-only compare both exactDCP firststageD/R, resetPRE and admit-status fanin including allready bits; preserve strict source discrepancy until cone evidence",
+  "hardware_accessed": false
+}

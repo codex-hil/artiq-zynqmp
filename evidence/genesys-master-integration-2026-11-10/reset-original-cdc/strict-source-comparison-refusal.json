@@ -1,0 +1,24 @@
+{
+  "status": "REFUSED_STRICT_SOURCE_ENDPOINT_EQUALITY",
+  "original_only": [
+    [
+      "control_clock",
+      "management_clock",
+      "CDC-10",
+      "Critical",
+      "xilinxmultiregimpl21_reg/C",
+      "xilinxmultiregimpl90_reg/D"
+    ]
+  ],
+  "masked_only": [
+    [
+      "control_clock",
+      "management_clock",
+      "CDC-10",
+      "Critical",
+      "xilinxmultiregimpl31_reg/C",
+      "xilinxmultiregimpl90_reg/D"
+    ]
+  ],
+  "no_equivalence_credit": true
+}
