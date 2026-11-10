@@ -1,3 +1,12 @@
+2026-11-10 separate localSYS-reset+registeredadmission fullintegration2runs
+phase0/3 PASS. Six risingallowed transitions onlyready31/rawadmit1/SYSreset0;
+everySYSsample localreset1 blocks. Progress/shape injection+HPM1 managedreset/
+freshabandon reopen, originalmanifestPASS. FunctionalReset/exactMultiReg not
+asynchronousFDPE/clockstop/externalresetproof. Earlier-reopen counterexample
+remains/notadopted/noHW. Next vendorFDPE parentreset fixture stoppedSYS/control
+and externalPLreset. Evidence
+genesys-master-integration-2026-11-10/local-reset-integration/report.json.
+
 2026-11-10 duplicate requestedSYS reset-status path audit: exactXilinx
 lowerer omits requestedreset1 (emitsINIT0), alreadyknownmismatch retained.
 Separate local-reset-only boundary3tests PASS, explicitparentcontractrequired.

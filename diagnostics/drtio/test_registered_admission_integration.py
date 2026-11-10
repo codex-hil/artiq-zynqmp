@@ -21,14 +21,14 @@ from master_integration import GenesysMasterIntegration
 from raw20_codec import Raw20Codec
 
 class AdmissionIntegrationTests(unittest.TestCase):
- def exercise(self,registered,tx_phase=0,trigger_delay=0):
+ def exercise(self,registered,tx_phase=0,trigger_delay=0,boundary_factory=None):
   ps=SimpleNamespace(inputs={},outputs={})
   root=Path(__file__).resolve().parents[2]
   for line in (root/'evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/pins.tsv').read_text().splitlines():
    name,direction,left,right=line.split('\t');width=abs(int(left)-int(right))+1 if left and right else 1
    (ps.inputs if direction=='I' else ps.outputs)[name]=Signal(width)
   codec=Raw20Codec()
-  with patch('master_dual_ingress.AuxResetControl',RegisteredCoordinatorFixture),patch('master_dual_ingress.AuxResetDomains',side_effect=grouped_fixture),patch('master_link_boundary.MasterLinkBoundary',MasterLinkBoundaryRegistered if registered else MasterLinkBoundary):
+  with patch('master_dual_ingress.AuxResetControl',RegisteredCoordinatorFixture),patch('master_dual_ingress.AuxResetDomains',side_effect=grouped_fixture),patch('master_link_boundary.MasterLinkBoundary',boundary_factory or (MasterLinkBoundaryRegistered if registered else MasterLinkBoundary)):
    top=GenesysMasterIntegration(ps,codec.channel,ClockSignal('tx_source'),ClockSignal('rx_source'),codec=codec,link_status=SimpleNamespace(reset_done=Signal(reset=1),clock_active=Signal(reset=1),aligned=Signal(reset=1)),guarded_candidate=True)
   top.submodules.codec=codec
   for name in ('pl_source','tx_source','rx_source'):setattr(top.clock_domains,'cd_'+name,ClockDomain(name,reset_less=True))
@@ -39,10 +39,19 @@ class AdmissionIntegrationTests(unittest.TestCase):
    for field in names.split():
     name='maxigp1_'+channel+field;fields[field]=(ps.inputs if name in ps.inputs else ps.outputs)[name]
    setattr(bus,channel,SimpleNamespace(**fields))
-  h=AXIMaster(bus);base=0xb0000000;state={'event':None,'traces':{},'control':{},'done':False}
+  h=AXIMaster(bus);base=0xb0000000;state={'event':None,'traces':{},'control':{},'openings':[],'done':False}
   @passive
   def observer():
+   previous=0
    while True:
+    allowed=(yield top.link_boundary.allowed)
+    local_reset=(yield top.cd_sys.rst)
+    self.assertFalse(allowed and local_reset)
+    if allowed and not previous:
+     opening={'ready':(yield top.ingress.releases.ready),'raw_admit':(yield top.admit),'local_reset':local_reset}
+     self.assertEqual(opening,{'ready':31,'raw_admit':1,'local_reset':0})
+     state['openings'].append(opening)
+    previous=allowed
     event=state['event']
     if event is not None:state['traces'][event].append({'raw_admit':(yield top.admit),'link_allowed':(yield top.link_boundary.allowed)})
     yield
@@ -100,6 +109,7 @@ class AdmissionIntegrationTests(unittest.TestCase):
   run_simulation(top,{'management':manager(),'sys':observer(),'control':control_observer()},clocks,special_overrides={AsyncResetSynchronizer:FunctionalReset,MultiReg:XilinxMultiReg})
   self.assertTrue(state['done'])
   self.last_control_trace=state['control']
+  self.last_openings=state['openings']
   return state['traces']
  def test_baseline_and_registered_fault_reset_withdrawal(self):
   results={name:self.exercise(flag) for name,flag in (('baseline',False),('registered',True))}

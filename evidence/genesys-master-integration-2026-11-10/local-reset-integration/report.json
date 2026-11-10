@@ -1,0 +1,25 @@
+{
+  "status": "SEPARATE_LOCAL_RESET_REGISTERED_ADMISSION_TWO_FULL_INTEGRATION_RUNS_PASS",
+  "phases": [
+    0,
+    3
+  ],
+  "checks": [
+    "Six observed rising allowed transitions across startup and post-fault resets: all five domain ready bits1, raw admit1, local SYS reset0",
+    "Every SYS sample enforces no allowed while local reset asserted",
+    "Progress-fault and shape-fault injection, independent HPM1 reset and fresh-abandonment reopen",
+    "Original interface manifest PASS"
+  ],
+  "limits": [
+    "FunctionalReset model plus exact XilinxMultiReg, not vendor FDPE asynchronous reset simulation",
+    "Only deterministic fixed running clocks; no stopped SYS/control or external-reset skew test",
+    "Earlier-reopen Boolean counterexample remains; no arbitrary equivalence or parent physical reset contract proof",
+    "No CDC delta measurement for this new variant yet; no adoption/hardware access"
+  ],
+  "next": "Vendor FDPE parent reset/admission fixture with stopped SYS/control and external PL reset assertion/release; retain unqualified earlier-reopen contract",
+  "sha256": {
+    "diagnostics/drtio/test_local_reset_integration.py": "860e4dbd1ce43bb5436e8d7c00a996760285ed7dca6092bda80b18da58cd59d9",
+    "diagnostics/drtio/test_registered_admission_integration.py": "e751ab9c41686f0a66fa683233bea19fbaeeafae88ecb8bb0fddd3bfb29dabb8",
+    "diagnostics/drtio/master_link_local_reset.py": "f659ba36763ccda137ed7a2639374f0c5a5a744e46092eb7d1f582acf0ae8bdd"
+  }
+}
