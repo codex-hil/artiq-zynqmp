@@ -1,0 +1,101 @@
+{
+  "status": "REGISTERED_ADMISSION_SYNTH_LOCAL_CDC_IMPROVEMENT_NOT_QUALIFIED",
+  "job": "genesys-registered-admission-cdc-20261110-v1",
+  "baseline": {
+    "CDC-1": [
+      "Critical",
+      138
+    ],
+    "CDC-3": [
+      "Info",
+      27
+    ],
+    "CDC-6": [
+      "Warning",
+      16
+    ],
+    "CDC-9": [
+      "Info",
+      3
+    ],
+    "CDC-10": [
+      "Critical",
+      12
+    ],
+    "CDC-11": [
+      "Critical",
+      4
+    ],
+    "CDC-13": [
+      "Critical",
+      2572
+    ],
+    "CDC-15": [
+      "Warning",
+      163
+    ]
+  },
+  "candidate": {
+    "CDC-1": [
+      "Critical",
+      138
+    ],
+    "CDC-3": [
+      "Info",
+      28
+    ],
+    "CDC-6": [
+      "Warning",
+      16
+    ],
+    "CDC-9": [
+      "Info",
+      3
+    ],
+    "CDC-10": [
+      "Critical",
+      11
+    ],
+    "CDC-11": [
+      "Critical",
+      4
+    ],
+    "CDC-13": [
+      "Critical",
+      2572
+    ],
+    "CDC-15": [
+      "Warning",
+      163
+    ]
+  },
+  "registered_admission_paths": [
+    {
+      "row": 2757,
+      "id": "CDC-3",
+      "severity": "Info",
+      "description": "1-bit synchronized with ASYNC_REG property",
+      "depth": 2,
+      "exception": "None",
+      "source": "genesysmasterintegration_sample_allowed_reg/C",
+      "destination": "xilinxmultiregimpl420_reg/D",
+      "source_clock": "diagnostic_pl_clk0",
+      "destination_clock": "txoutclk_out[0]"
+    }
+  ],
+  "delta": "CDC10 12->11, CDC3 27->28; all other counts unchanged",
+  "same_inputs": [
+    "Same synthesis Tcl SHA ae856ae96ff84dd35eef7f31fb7a7fef6481c3f3b7cb8ebcb538bd0ee2184c07",
+    "Same vendor GT XCI SHA aaa71467ac1f6a45b6f34be02d7cc63f26e6017d474cdd3f91a3baaeb90c9e41",
+    "Same diagnostic PL/ref clocks; no timing exceptions",
+    "Six memory init files byte-identical"
+  ],
+  "rtl_sha256": "a3deba8722c2d1dfdde012684d295b26f34aeb884c641d17d00341edc8f42531",
+  "limits": [
+    "All remaining critical CDC findings retained",
+    "One additional control edge including sustained fault withdrawal",
+    "No full integration fault-latency budget/physical timing or reset qualification",
+    "Separate scoped candidate only; no hardware/default changes"
+  ],
+  "next": "Test registered admission in combined full integration reset/fault model, measuring end-to-end withdrawal edges before any adoption"
+}

@@ -1,3 +1,11 @@
+2026-11-10 separate registered-admission fullsynthCDC comparison COMPLETE:
+CDC10 12->11, CDC3 27->28; exact SYS firstD now driven by sampledregisterQ.
+Allothercounts unchanged including CDC11critical4. SameTcl/GTIP/clocks/init6;
+noexceptions. No physical/timing/latencybudget signoff/adoption/HW. Oneextra
+controlcycle includingfaultwithdrawal remains. Next combined fullintegration
+fault/reset withdrawal-edge measurement. Evidence
+genesys-master-integration-2026-11-10/registered-admission-cdc/report.json.
+
 2026-11-10 separate registered link-admission candidate2hosttests PASS:
 64controlconditions+fault/reset episodes, initial0/sample behavior and existing
 SYS firstD registration/independentreset/fiveMultiReg wiring. Originalmanifest
