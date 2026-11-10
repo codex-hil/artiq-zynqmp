@@ -1,0 +1,21 @@
+{
+  "status": "SEPARATE_REGISTERED_ADMISSION_TWO_HOST_TESTS_PASS_NOT_ADOPTED",
+  "checks": [
+    "64 control condition combinations plus explicit sustained progress-fault, shape-fault and reset episodes",
+    "Registered output initializes zero and preserves prior sampled value before control edge",
+    "Existing SYS MultiReg input is sampled register, not raw admit",
+    "Five original boundary synchronizers and independent reset path preserved",
+    "Original interface manifest validation PASS"
+  ],
+  "latency": "One extra control edge before existing SYS crossing, including sustained fault withdrawal; physical latency unqualified",
+  "limits": [
+    "No full candidate export/netlist CDC comparison yet",
+    "No physical glitch/reset/metastability qualification or short pulse capture guarantee",
+    "No default integration change, hardware access or deployment"
+  ],
+  "next": "Separate combined physical export with scoped registered link-boundary substitution; inspect RTL and full synthesis CDC delta, retaining added-cycle limitation",
+  "sha256": {
+    "diagnostics/drtio/master_admission_registered.py": "864a89de5244a56e99ce3852242ded8ecc4c4107f60f9889ae0a29d6b36c5146",
+    "diagnostics/drtio/test_master_admission_registered.py": "eb53afdeebc0217745b391c7e749ed2530a2e940fa80a1012bac246d51c6c863"
+  }
+}

@@ -1,3 +1,11 @@
+2026-11-10 separate registered link-admission candidate2hosttests PASS:
+64controlconditions+fault/reset episodes, initial0/sample behavior and existing
+SYS firstD registration/independentreset/fiveMultiReg wiring. Originalmanifest
+PASS. Adds one control edge INCLUDING fault withdrawal; no async kill/pulse
+capture/physical latency guarantee. Default integration unchanged/notadopted.
+Next separate combined RTL export and full synthCDCdelta. NoHW. Evidence
+genesys-master-integration-2026-11-10/registered-admission/report.json.
+
 2026-11-10 admission/reset cone audit PASS: all64 six-Q assignments match
 admit & !reset & !progressfault & fresh==2 & !shapefault; changed LUT REFUSED.
 Combinational first-stage SYS D remains CDC10/glitch qualification OPEN.
