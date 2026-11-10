@@ -1,0 +1,28 @@
+{
+  "status": "READONLY_DCP_CAPTURE_AND_LOCAL_COMBINATIONAL_COMPARISON_PASS_CDC_CRITICAL_REMAINS",
+  "job": "genesys-reset-cdc-fanins-20261110-v1",
+  "bound_seconds": 180,
+  "input_checkpoint_hashes_pre_post_unchanged": [
+    "39d2fb75e0eb0a0df5c1504b1d8999418074a97dafc66b1691540bc8c8939c7b",
+    "b884374160917e1186695e9082c434e9fcc7ade35b9ef6ee2406889e6748823f"
+  ],
+  "checks": [
+    "Eight criticalendpoint combinationalfunctions compareequal over allsequentialQcutpoint assignments (up to256 percone)",
+    "Admitcone includes bothFSMstatebits, allfive readysecondstages, synchronizedrequest; changed reportsource is representativeonly",
+    "Five firststageFDRE D unchanged/CE1, originalR0 vs maskedRexactlocalresetFDPEsecondQ",
+    "Two negative controls LUTrootcomplement/wrongRconstant refused"
+  ],
+  "interpretation": "Local combinational equivalence explains priorrepresentative-source difference, not global sequential equivalence or CDC safety. CDC-10 findings retained.",
+  "limits": [
+    "LUT1..6/FDRE/FDPE/VCC/GND exactsourceparse only; unsupportedprimitive refuses",
+    "SequentialQ cutpoints arbitrary; no metastability/resetrecovery-removal/timing/physicalproof",
+    "Independent testclockmodel; notactualsharedPSclockqualification",
+    "No checkpoint edits/synthesis/routing or hardware actions"
+  ],
+  "next": "Prepare separate registered control-domain reset/status output candidate to address combinational pre-synchronizer paths; explicitly model added controlcycle and preserve original baseline before integration",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/query-reset-cdc-fanins.tcl": "70a601af2017efec8c7b9317e495a75d98b3cd4dcae59401e96ac6b154eb92b4",
+    "diagnostics/drtio/role-reversal/audit-reset-cdc-cones.py": "cefc14e299b7e4ebf727da474851529de7b9dc4de491ab9de7359961b430e60a"
+  }
+}

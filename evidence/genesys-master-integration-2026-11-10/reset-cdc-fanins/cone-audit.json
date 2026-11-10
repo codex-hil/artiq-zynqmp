@@ -1,0 +1,133 @@
+{
+  "status": "EIGHT_COMBINATIONAL_CONES_EQUAL_AND_FIVE_MASK_D_R_MAPPINGS_PASS",
+  "cones": [
+    {
+      "endpoint": "xilinxmultiregimpl70_reg/D",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 8,
+      "equal": true
+    },
+    {
+      "endpoint": "xilinxmultiregimpl80_reg/D",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "abandonment_seen_reg/Q",
+        "low_seen_reg/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 32,
+      "equal": true
+    },
+    {
+      "endpoint": "xilinxmultiregimpl90_reg/D",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "xilinxmultiregimpl01_reg/Q",
+        "xilinxmultiregimpl11_reg/Q",
+        "xilinxmultiregimpl21_reg/Q",
+        "xilinxmultiregimpl31_reg/Q",
+        "xilinxmultiregimpl41_reg/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 256,
+      "equal": true
+    },
+    {
+      "endpoint": "FDPE/PRE",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 8,
+      "equal": true
+    },
+    {
+      "endpoint": "FDPE_2/PRE",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 8,
+      "equal": true
+    },
+    {
+      "endpoint": "FDPE_4/PRE",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 8,
+      "equal": true
+    },
+    {
+      "endpoint": "FDPE_6/PRE",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 8,
+      "equal": true
+    },
+    {
+      "endpoint": "FDPE_8/PRE",
+      "sequential_cutpoints": [
+        "FSM_sequential_state_reg[0]/Q",
+        "FSM_sequential_state_reg[1]/Q",
+        "xilinxmultiregimpl51_reg/Q"
+      ],
+      "assignments": 8,
+      "equal": true
+    }
+  ],
+  "mask_mappings": [
+    {
+      "stage": "xilinxmultiregimpl0_xilinxmultiregimpl00_reg",
+      "D_unchanged": true,
+      "original_R": 0,
+      "masked_R_cutpoint": "FDPE_1/Q",
+      "scope": "FDRE nextD is ready AND NOT localReset with CE assumed from separate pin review"
+    },
+    {
+      "stage": "xilinxmultiregimpl1_xilinxmultiregimpl10_reg",
+      "D_unchanged": true,
+      "original_R": 0,
+      "masked_R_cutpoint": "FDPE_3/Q",
+      "scope": "FDRE nextD is ready AND NOT localReset with CE assumed from separate pin review"
+    },
+    {
+      "stage": "xilinxmultiregimpl2_xilinxmultiregimpl20_reg",
+      "D_unchanged": true,
+      "original_R": 0,
+      "masked_R_cutpoint": "FDPE_5/Q",
+      "scope": "FDRE nextD is ready AND NOT localReset with CE assumed from separate pin review"
+    },
+    {
+      "stage": "xilinxmultiregimpl3_xilinxmultiregimpl30_reg",
+      "D_unchanged": true,
+      "original_R": 0,
+      "masked_R_cutpoint": "FDPE_7/Q",
+      "scope": "FDRE nextD is ready AND NOT localReset with CE assumed from separate pin review"
+    },
+    {
+      "stage": "xilinxmultiregimpl4_xilinxmultiregimpl40_reg",
+      "D_unchanged": true,
+      "original_R": 0,
+      "masked_R_cutpoint": "FDPE_9/Q",
+      "scope": "FDRE nextD is ready AND NOT localReset with CE assumed from separate pin review"
+    }
+  ],
+  "limits": [
+    "Sequential Q cutpoints arbitrary, not sequential equivalence",
+    "Not metastability/CDC/reset timing qualification"
+  ]
+}

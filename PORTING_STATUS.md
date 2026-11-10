@@ -1,3 +1,11 @@
+2026-11-10 readonlybothDCPfanincapturePASS/preposthashsame. LocalLUTtruthaudit
+8criticalcones equal allQcutpointassignments(up to256); admitincludesall5readybits/
+FSM/request, representative source difference explained notglobalLEC.5firstFDRE
+Dsame/CE1, Roriginal0 vs maskedlocalresetFDPEQ.2mutantsREFUSED. CriticalCDC10
+RETAINED/no physical/metastability/timingproof. Next separatelocalregistered
+controlreset/status candidate with explicitaddedcycle andbaseline. NoHW;hold.
+Evidence genesys-master-integration-2026-11-10/reset-cdc-fanins/report.json.
+
 2026-11-10 originalsynthsameTcl/testclocks COMPLETE:5CDC3Info/8CDC10Critical,
 masked10Info/8Critical. Clock+destinationcriticalsets equal butstrictsourcesREFUSED:
 7/8source rowsmatch; admitstatusrepresentative sourceoriginalreadybit2 vsmasked
