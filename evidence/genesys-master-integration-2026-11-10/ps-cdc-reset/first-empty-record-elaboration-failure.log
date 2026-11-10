@@ -1,0 +1,62 @@
+Acquired Dell heavy-build slot 1/3
+/usr/bin/gcc
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v" into library work
+INFO: [VRFC 10-311] analyzing module ps_cdc_reset
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:414]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:415]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:416]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:417]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:418]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:419]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:420]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:421]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:422]
+WARNING: [VRFC 10-605] empty concatenation not allowed here [/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/ps_cdc_reset.v:423]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-ps-cdc-reset-20261110-v1/tb_ps_cdc_reset.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_ps_cdc_reset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab -mt off -L unisims_ver tb_ps_cdc_reset glbl -s ps_cdc_test 
+Turned off multi-threading.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+    LIBRARY_PATH
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.FDPE_default
+Compiling module work.ps_cdc_reset
+Compiling module work.tb_ps_cdc_reset
+Compiling module work.glbl
+xelab: /scratch/swcp/cnts/xsimllvm701/5/2025.2/build/xsim_llvm/lnx64.o/llvm-7.0.1.src/lib/IR/Instructions.cpp:310: void llvm::CallInst::init(llvm::FunctionType*, llvm::Value*, llvm::ArrayRef<llvm::Value*>, llvm::ArrayRef<llvm::OperandBundleDefT<llvm::Value*> >, const llvm::Twine&): Assertion `(Args.size() == FTy->getNumParams() || (FTy->isVarArg() && Args.size() > FTy->getNumParams())) && "Calling a function with bad signature!"' failed.
+ERROR: [XSIM 43-3312] Signal SIGABRT received.
+Printing stacktrace...
+
+[0] /lib/x86_64-linux-gnu/libc.so.6(abort+0xd3) [0x7b27705ff7f3]
+[1] /lib/x86_64-linux-gnu/libc.so.6(+0x2871b) [0x7b27705ff71b]
+[2] /lib/x86_64-linux-gnu/libc.so.6(+0x39e96) [0x7b2770610e96]
+[3] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0x23407e8]
+[4] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xb0f2e7]
+[5] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xb0af00]
+[6] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xb0bd90]
+[7] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xb0ab4d]
+[8] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xb110cd]
+[9] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xb02b54]
+[10] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xafe084]
+[11] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0x986ca9]
+[12] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xac7bc6]
+[13] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0xa7b078]
+[14] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0x58bade]
+[15] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0x57a9f2]
+[16] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0x5102e8]
+[17] /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x7b2770600d90]
+[18] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x7b2770600e40]
+[19] /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab() [0x57319e]
+
+Done

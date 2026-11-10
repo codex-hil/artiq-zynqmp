@@ -1,0 +1,74 @@
+{
+  "status": "ACTUAL_FIVE_CHANNEL_PSCDC_VENDOR_FDPE_GSR_EIGHT_CASES_PASS",
+  "job": "genesys-ps-cdc-reset-20261110-v2",
+  "cases": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      2,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      1
+    ],
+    [
+      2,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      1
+    ]
+  ],
+  "widths": {
+    "aw": 45,
+    "w": 38,
+    "b": 4,
+    "ar": 45,
+    "r": 36
+  },
+  "checks": [
+    "All five old tokens queued in both directions",
+    "All ten private resets assert asynchronously with stopped PS/TX low/high",
+    "Held TX reset retains all reset pairs",
+    "After restart all old AW/W/B/AR/R tokens absent",
+    "Fresh AW visible independently before W",
+    "All packed payload/first/last/parameter bits exact through each channel; fresh tokens consumed once under held receiver readiness"
+  ],
+  "first_attempt": "Empty zero-width parameter records emitted empty concatenations; XSIM internal assertion. Export now excludes zero-width fields only; original failure retained",
+  "limits": [
+    "One stale/fresh token per channel; not full AXI transaction pairing or target behavior",
+    "Two deterministic phases fixed8/14ns clocks",
+    "Not full master physical CDC/reset timing or retry safety qualification"
+  ],
+  "next": "Five-channel multiple outstanding/reset-under-backpressure tests, including AW-only and W-only queued cases; preserve requester abandonment requirement",
+  "sha256": {
+    "diagnostics/drtio/master_ps_cdc.py": "db8cefc94019e7d42b9e5a3ac2fecb14f376d791222f4b17fcdc6d2f894f9acd",
+    "diagnostics/drtio/role-reversal/export-ps-cdc-reset.py": "40ac90e3ee34687cfe455ffc14171bf99d98a2e4e01cf9f4d94a070ec53d29ad",
+    "diagnostics/drtio/role-reversal/tb_ps_cdc_reset.v": "d8b6f2e751f2e4efe0456c00161ddf889d41ae62953892361994d989e15e61af",
+    "evidence/genesys-master-integration-2026-11-10/ps-cdc-reset/ps_cdc_reset.v": "b6ee2404e5ea04eeae5011364b788fc32d61af043a1257c22087aa1629581684"
+  }
+}

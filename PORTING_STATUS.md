@@ -1,3 +1,11 @@
+2026-11-10 actual GenesysMasterPSCDC five-channel AMD FDPE/GSR sim8cases
+PASS: PS/TX stoppedlow/high x phase0/2, ten private async resets, oldtokens
+discarded bothdirections, independentfreshAW beforeW, allpacked payload/metadata
+exact and consumedonce. Emptyparameter-record XSIM failure retained; exporter
+zero-width-only filter fixed. NotfullAXItransaction pairing/fullmaster/physical
+CDCsignoff. Next deeperqueues/AW-only/W-only reset-under-backpressure. NoHW.
+Evidence genesys-master-integration-2026-11-10/ps-cdc-reset/report.json.
+
 2026-11-10 single LiteX FIFO/AMD FDPE+GSR matrix32cases PASS: stoppedPS/TX
 low/high x phase0/2ns x occupancy1..4. Asyncassert/heldcommonreset/private
 release requires resumededges/stalediscard/fresh3ordered tokens with backpressure.
