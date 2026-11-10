@@ -1,0 +1,25 @@
+{
+  "status": "SINGLE_COMMON_RESET_FIFO_VENDOR_FDPE_SIM_PASS",
+  "job": "genesys-csr-fifo-reset-20261110-v2",
+  "checks": [
+    "Stopped PS low: async both private reset assertion",
+    "Stopped TX low: async both private reset assertion",
+    "TX reset held after PS release retains both private resets",
+    "After restart and reset release stale queued token absent",
+    "Fresh 32-bit token byte exact and consumed once in both episodes"
+  ],
+  "first_attempt": "XSIM refused missing generated RTL timescale; fixed timescale only, original refusal retained",
+  "scope": "Exact LiteX ClockDomainCrossing depth4 with_common_rst=True, representative single 32-bit data stream, original Xilinx special lowering plus AMD unisims/glbl",
+  "limits": [
+    "Not all five AXI channel layouts or full master",
+    "Stopped-high/phase/backpressure matrix not yet run",
+    "Digital simulation not physical metastability/reset recovery/removal or CDC waiver"
+  ],
+  "next": "Extend stopped-high/phase cases and buffered traffic reset cases before full five-channel integration",
+  "sha256": {
+    "evidence/genesys-master-integration-2026-11-10/csr-fifo-reset/csr_fifo_reset.v": "56855fcc48c2d33d858673e5c4cc55a83204455e12cf6195111beffb537fd545",
+    "diagnostics/drtio/role-reversal/export-csr-fifo-reset.py": "69e6e929649c557c4f0984103801f87d90b1e6f2e371316ac91e36e5d3724231",
+    "diagnostics/drtio/role-reversal/tb_csr_fifo_reset.v": "46786eef09df4aa833793f5337505c1a533bfb78add64db47083032fbb9582e1",
+    "diagnostics/drtio/role-reversal/run-csr-fifo-reset-sim.sh": "33ce00b1e4c69af96fee3765a0389b3c8f3d8cacf7256768584c665659d93719"
+  }
+}

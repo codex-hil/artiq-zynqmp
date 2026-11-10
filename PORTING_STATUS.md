@@ -1,3 +1,11 @@
+2026-11-10 single actual LiteX common-reset FIFO/AMD FDPE+GSR sim PASS:
+stoppedPSlow/stoppedTXlow async assertion, held TX reset retains both private
+resets; stale token discarded, fresh32-bit exact/consumed once after restart.
+First compile timescale refusal retained; corrected declaration only. Not five
+AXI channels/full master or physical CDC qualification. Next stop-high/phase
+and buffered traffic matrix. No HW/adoption/waivers. Evidence
+genesys-master-integration-2026-11-10/csr-fifo-reset/report.json.
+
 2026-11-10 ten CSR common-reset PRE LUT functions PASS, eight assignments
 each: PSrelease OR TXrelease OR NOT pl_resetn0. Exact top-level external input
 bound; unknown net drivers still refused. Changed LUT mutant REFUSED. Matches
