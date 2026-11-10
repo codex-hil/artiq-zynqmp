@@ -1,3 +1,11 @@
+2026-11-10 actual PSCDC5channel AMD FDPE/GSR96depth/resetcases PASS:
+PS/TXlow/high x phase0/2 x all/AWonly/Wonly x occupancy1..4; fullbackpressure,
+stalediscard and fresh4packed tokens/channel ordered/exact once under separately
+delayed consumption, AWbeforeW/WbeforeAW. Transport only, no AXItarget side
+effect/transaction pairing/retry proof. PhysicalCDC findings remain open.
+Next remaining reset-rearm/admission CDC10/11 netlist cone audit. NoHW/adoption.
+Evidence genesys-master-integration-2026-11-10/ps-cdc-depth-matrix/report.json.
+
 2026-11-10 actual GenesysMasterPSCDC five-channel AMD FDPE/GSR sim8cases
 PASS: PS/TX stoppedlow/high x phase0/2, ten private async resets, oldtokens
 discarded bothdirections, independentfreshAW beforeW, allpacked payload/metadata

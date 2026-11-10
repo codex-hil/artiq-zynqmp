@@ -2,7 +2,7 @@
 `timescale 1ns/1ps
 module tb_ps_cdc_reset;
 reg ps=0,tx=0,run_ps=1,run_tx=1,pr=1,tr=1;
-integer phase=0,stop_index,level,cases=0;
+integer phase=0,stop_index,level,mode_index,fill,cases=0;
 wire [9:0] private_resets;
 always #4 if(run_ps)ps=~ps;
 initial begin if($value$plusargs("PHASE=%d",phase))begin end
@@ -64,13 +64,21 @@ end endtask
  @(negedge ps);check(r_source_valid && r_output===value,"r packed metadata/payload exact");
  r_source_ready=1;@(posedge ps);@(negedge ps);r_source_ready=0;
 end endtask
-task episode;input stopped;input high;begin
-send_aw('h155555555555);
-send_w('h155555555555);
-send_b('h155555555555);
-send_ar('h155555555555);
-send_r('h155555555555);
-#120;check(aw_source_valid && w_source_valid && b_source_valid && ar_source_valid && r_source_valid,"all five stale queues present");
+task episode;input stopped;input high;input integer mode;input integer occupancy;
+integer k;begin
+for(k=0;k<occupancy;k=k+1)begin
+ if(mode!=2)send_aw('h155555555550+k);
+ if(mode!=1)send_w('h155555555550+k);
+ if(mode==0)begin send_b(k);send_ar('h155555555550+k);send_r('h155555555550+k);end
+end
+#120;
+check(aw_source_valid==(mode!=2) && w_source_valid==(mode!=1),"expected independent stale AW/W queues");
+check(b_source_valid==(mode==0) && ar_source_valid==(mode==0) && r_source_valid==(mode==0),"expected response/read queues");
+if(occupancy==4)begin
+ if(mode!=2)check(!aw_sink_ready,"AW full backpressure");
+ if(mode!=1)check(!w_sink_ready,"W full backpressure");
+ if(mode==0)check(!b_sink_ready&&!ar_sink_ready&&!r_sink_ready,"response/read full backpressure");
+end
 if(stopped==0)begin if(high)@(posedge ps);else @(negedge ps);#1;run_ps=0;end
 else begin if(high)@(posedge tx);else @(negedge tx);#1;run_tx=0;end
 pr=1;tr=1;#3;check(private_resets==1023,"all ten resets assert asynchronously");
@@ -78,24 +86,36 @@ pr=0;#100;check(private_resets==1023,"held TX reset retains all pairs");
 tr=0;#100;check(private_resets!=0,"stopped clock prevents full release");
 run_ps=1;run_tx=1;#150;check(private_resets==0,"all ten release after restart");
 check(!aw_source_valid && !w_source_valid && !b_source_valid && !ar_source_valid && !r_source_valid,"all five stale queues discarded");
-send_aw('h1aaaaaaaaaaa);#100;check(aw_source_valid&&!w_source_valid,"AW independent before W");
-send_w('h1aaaaaaaaaaa);
-send_b('h1aaaaaaaaaaa);
-send_ar('h1aaaaaaaaaaa);
-send_r('h1aaaaaaaaaaa);
-#100;
-receive_aw('h1aaaaaaaaaaa);
-receive_w('h1aaaaaaaaaaa);
-receive_b('h1aaaaaaaaaaa);
-receive_ar('h1aaaaaaaaaaa);
-receive_r('h1aaaaaaaaaaa);
-#100;check(!aw_source_valid && !w_source_valid && !b_source_valid && !ar_source_valid && !r_source_valid,"fresh five-channel tokens consumed once");
-$display("PSCDC_CASE_PASS phase=%0d stopped=%0d high=%0d",phase,stopped,high);
+// Fresh four-entry queues use different values from discarded tokens.
+for(k=0;k<4;k=k+1)begin
+ if(mode==2)begin
+  send_w('h1aaaaaaaaaa0+k);
+  if(k==0)begin #100;check(w_source_valid&&!aw_source_valid,"fresh W precedes AW independently");end
+  send_aw('h1aaaaaaaaaa0+k);
+ end else begin
+  send_aw('h1aaaaaaaaaa0+k);
+  if(k==0)begin #100;check(aw_source_valid&&!w_source_valid,"fresh AW precedes W independently");end
+  send_w('h1aaaaaaaaaa0+k);
+ end
+ send_b(8+k);send_ar('h1aaaaaaaaaa0+k);send_r('h1aaaaaaaaaa0+k);
+end
+#100;check(!aw_sink_ready&&!w_sink_ready&&!b_sink_ready&&!ar_sink_ready&&!r_sink_ready,"all fresh queues full");
+for(k=0;k<4;k=k+1)begin
+ receive_aw('h1aaaaaaaaaa0+k);#14;
+ receive_w('h1aaaaaaaaaa0+k);#28;
+ receive_b(8+k);#16;
+ receive_ar('h1aaaaaaaaaa0+k);#42;
+ receive_r('h1aaaaaaaaaa0+k);#24;
+end
+#100;check(!aw_source_valid && !w_source_valid && !b_source_valid && !ar_source_valid && !r_source_valid,"all fresh tokens consumed once");
+$display("PSCDC_CASE_PASS phase=%0d stopped=%0d high=%0d mode=%0d occupancy=%0d",phase,stopped,high,mode,occupancy);
 end endtask
 initial begin #180;pr=0;tr=0;#150;
 for(stop_index=0;stop_index<2;stop_index=stop_index+1)
- for(level=0;level<2;level=level+1)begin episode(stop_index,level);cases=cases+1;end
-check(cases==4,"four cases executed");
+ for(level=0;level<2;level=level+1)
+  for(mode_index=0;mode_index<3;mode_index=mode_index+1)
+   for(fill=1;fill<=4;fill=fill+1)begin episode(stop_index,level,mode_index,fill);cases=cases+1;end
+check(cases==48,"forty-eight cases executed");
 $display("PSCDC_FIVE_CHANNEL_PASS phase=%0d cases=%0d",phase,cases);$finish;end
-initial begin #30000;$fatal(1,"timeout");end
+initial begin #300000;$fatal(1,"timeout");end
 endmodule
