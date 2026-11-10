@@ -1,3 +1,12 @@
+2026-11-10 ten CSR common-reset PRE LUT functions PASS, eight assignments
+each: PSrelease OR TXrelease OR NOT pl_resetn0. Exact top-level external input
+bound; unknown net drivers still refused. Changed LUT mutant REFUSED. Matches
+LiteX with_common_rst source OR of source/destination resets. Boolean identity
+only: stopped TX/reset high retains common PRE; no new temporal/physical proof.
+Next exact FIFO/FDPE simulation with stopped PS/TX and coordinated release.
+No HW/waivers/adoption. Evidence
+genesys-master-integration-2026-11-10/csr-common-reset-audit/report.json.
+
 2026-11-10 full DCP read-only fanin capture PASS, pre/post SHA unchanged;
 16 CDC paths/16 exact destination pins bound. Ten CDC10 PRE endpoints match
 five CSR crossing reset pairs; fanin starts PS/TX release plus pl_resetn0.

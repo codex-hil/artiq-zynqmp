@@ -1,0 +1,69 @@
+{
+  "status": "TEN_CSR_PRE_LUT_TRUTH_TABLES_PASS",
+  "checks": [
+    {
+      "endpoint": "FDPE_6/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_8/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_10/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_12/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_14/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_16/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_18/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_20/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_22/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    },
+    {
+      "endpoint": "FDPE_24/PRE",
+      "assignments": 8,
+      "function": "PS_release_reset OR TX_release_reset OR NOT pl_resetn0"
+    }
+  ],
+  "changed_lut_mutant": "REFUSED",
+  "external_input_binding": "Exact top-level pl_resetn0 input and identically named captured net; other missing nets refused",
+  "limits": [
+    "Arbitrary Q cutpoints, not sequential equivalence",
+    "Stopped TX with TX release reset high keeps common PRE high even after PS release, by Boolean identity only",
+    "No new stopped-clock simulation or physical reset/CDC timing credit"
+  ],
+  "next": "Exercise actual LiteX with_common_rst FIFO reset assertion/release with stopped PS/TX clocks and vendor FDPE lowering",
+  "source_sha256": {
+    "diagnostics/drtio/master_ps_cdc.py": "db8cefc94019e7d42b9e5a3ac2fecb14f376d791222f4b17fcdc6d2f894f9acd",
+    "diagnostics/drtio/master_integration.py": "2b6f73a1e53eb156d9f528c98fad6afd33f69f1d7bfeae9cd42d0bf0bb76470e",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/litex/litex/soc/interconnect/stream.py": "7aafde83b5cd9e791b7a65bf65c983f4f2eb622513ba841063b7888929659eb0",
+    "diagnostics/drtio/role-reversal/audit-csr-common-reset.py": "a1ec27645b1153eb45c73a4e4de95b39a50ec68112bd5280997db49508217c58"
+  }
+}
