@@ -1,0 +1,33 @@
+{
+  "status": "SEPARATE_THREE_PHYSICAL_RESET_GROUPS_FIVE_LOGICAL_DOMAINS_HOST_AND_FDPE_SIM_PASS_NOT_ADOPTED",
+  "job": "genesys-grouped-reset-five-sim-20261110-v1",
+  "group_map": {
+    "ps": 0,
+    "sys": 1,
+    "rtio_rx": 2,
+    "rio": 1,
+    "rio_phy": 1
+  },
+  "checks": [
+    "Two constructor/structure tests reject missing/nonatomicboolean confirmations",
+    "Exporter verifies exactsame clockSignalobject forSYS/rio/rio_phy",
+    "Commonresetpolicy explicitcallerobligation, not automaticdetection",
+    "Three physical maskedready groups, sixFDPE ratherthan10",
+    "Five logicalready/reset outputs mapTXcohort tosharedsynchronizer andsharedready",
+    "Staged PS/TX/RX restart primitive sim remainsclosed untilRXfresh>=6edges"
+  ],
+  "limits": [
+    "CDC-11 improvement unmeasured untilsame-clocklogic synthesis",
+    "Commonclock/resetproof appliesisolatedexport only, notproductionparentwiring",
+    "Conditional ideal clocks and AMDdigitalprimitives notphysicalGT/CDC/reset proof",
+    "Defaultoriginal/productionclasses unchanged; groupflags are obligations, not detectedhardware"
+  ],
+  "next": "Synthesize grouped registered candidate with identical Tcl/clocks and compare CDC-10/11/endpoints against previous52register candidate before considering integration",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_reset_domains_grouped.py": "3a07552c3cda0337d0a8aac87c07583066db57a779835bb6f9124835a5feff5d",
+    "diagnostics/drtio/test_aux_reset_domains_grouped.py": "f6b480e81169b8ea8c78541ec74ef3e2ee2d4c0366affdc56003f58ffd8c6023",
+    "diagnostics/drtio/role-reversal/export-reset-five-domains.py": "70a956ecba4034130d87f239031d7bab4b05e44a1ef669f7180bd6598a6d8417"
+  },
+  "rtl_sha256": "a2f23608ed479825af3dd49cc1bc05bb23ad2f327787143347d9981248dc0c25"
+}

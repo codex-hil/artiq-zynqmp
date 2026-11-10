@@ -1,3 +1,11 @@
+2026-11-10 separateGroupedTX+registered/masked reset2hosttests+5logicaldomain
+FDPE/GSRsimPASS. Threephysicalgroups PS/TX/RX→5logical,6FDPE; SYS/rio/phy shared
+ready/reset. ExportexactclockSignalidentity checked/explicitresetpolicy required;
+missingconfirmationsREFUSED. PS/TXaloneblocked/RXfresh>=6opens. CDC11improvement
+UNMEASURED/notproduction/physicalproof. Next identicalsynthTcl/clocks/CDCcomparison.
+NoHW;hold. Evidence
+genesys-master-integration-2026-11-10/grouped-reset-candidate/report.json.
+
 2026-11-10 registeredreset/status isolatedsynth COMPLETE:CDC10zero but3Critical
 CDC11 remain,13CDC3Info+2CDC9Info/noexceptions/exactsameTcl+clocks. Criticals
 coordinatorresetQ→FDPE2/6/8PRE allTXclock (SYS/rio/phy separate resetreleasecopies).
