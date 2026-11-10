@@ -1,3 +1,12 @@
+2026-11-10 full DCP read-only fanin capture PASS, pre/post SHA unchanged;
+16 CDC paths/16 exact destination pins bound. Ten CDC10 PRE endpoints match
+five CSR crossing reset pairs; fanin starts PS/TX release plus pl_resetn0.
+Other GT-align/admission/grouped-reset/vendor CPLL findings remain OPEN.
+Name correspondence/all_fanin not Boolean or sequential equivalence proof.
+Next CSR common-reset source/LUT truth audit and stopped-clock policy review.
+No HW/adoption/waivers. Evidence
+genesys-master-integration-2026-11-10/combined-cdc-fanins/report.json.
+
 2026-11-10 full CDC row accounting PASS: all2935 detailed entries match eight
 summary groups; truncation mutant REFUSED. Name-only triage retains severity:
 16 CDC10/11 selected for reset/fanout review, including vendor GT paths.

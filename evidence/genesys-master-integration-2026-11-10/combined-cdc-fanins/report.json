@@ -1,0 +1,61 @@
+{
+  "status": "READONLY_NETLIST_CAPTURE_PASS_CDC_OPEN",
+  "job": "genesys-combined-fanins-20261110-v1",
+  "cdc_paths": 16,
+  "unique_destination_pins": 16,
+  "checkpoint_pre_post_sha256": "5645f58a82dbf6681b52af597324ae95a7c7418c2405cd1125f4dd624220ad94",
+  "ten_common_csr_reset_endpoints": {
+    "FDPE_6/PRE": {
+      "domain": "from6749",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst"
+    },
+    "FDPE_8/PRE": {
+      "domain": "to6749",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst"
+    },
+    "FDPE_10/PRE": {
+      "domain": "from6912",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst"
+    },
+    "FDPE_12/PRE": {
+      "domain": "to6912",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst"
+    },
+    "FDPE_14/PRE": {
+      "domain": "from7075",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst"
+    },
+    "FDPE_16/PRE": {
+      "domain": "to7075",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst"
+    },
+    "FDPE_18/PRE": {
+      "domain": "from7226",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst"
+    },
+    "FDPE_20/PRE": {
+      "domain": "to7226",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst"
+    },
+    "FDPE_22/PRE": {
+      "domain": "from7389",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst"
+    },
+    "FDPE_24/PRE": {
+      "domain": "to7389",
+      "rtl_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst"
+    }
+  },
+  "findings": [
+    "Ten CDC10 endpoints map by retained FDPE names to five CSR crossing reset pairs; all_fanin starts include PS release, TX release and external pl_resetn0",
+    "CDC10 at GT align reset includes registered coordinator and vendor status logic",
+    "CDC11 at grouped TX release and reset rearm plus CDC10 at admission path remain open",
+    "Two selected CDC11 destinations are vendor CPLL calibration paths"
+  ],
+  "limits": [
+    "all_fanin startpoints reported as launch C pins; not Boolean or sequential equivalence proof",
+    "RTL-name binding is retained-name correspondence, not full reset truth-table audit",
+    "No warning waiver, DCP mutation, hardware access, default adoption or physical qualification"
+  ],
+  "next": "Audit CSR clock-domain-crossing common reset implementation and exact synthesized LUT functions; compare coordinated reset policy and stopped-clock behavior"
+}
