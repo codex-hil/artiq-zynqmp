@@ -1,0 +1,26 @@
+{
+  "status": "REGISTERED_RESET_SYNTH_COMPLETE_CDC10_REMOVED_THREE_CRITICAL_CDC11_REMAIN_NOT_ADOPTED",
+  "job": "genesys-reset-registered-cdc-20261110-v1",
+  "cdc_summary": {
+    "CDC-3_Info": 13,
+    "CDC-9_Info": 2,
+    "CDC-11_Critical": 3,
+    "CDC-10": 0
+  },
+  "comparison": "Original5Info+8CDC10Critical; masked10Info+8CDC10Critical; registered13CDC3Info+2CDC9Info+3CDC11Critical",
+  "remaining_critical": "coordinator_reset_reg/C fanout to FDPE_2/6/8 PRE, all tx_clock; three independent SYS/rio/rio_phy reset synchronizers sharing one physical clock",
+  "constraints": "Exactsame synthTcl and5diagnosticclocks; no timingexceptions",
+  "hashes": {
+    "reset_five_domains.v": "bc6f1e8981281d5578a1d146f9bcf6113e1406718a70951789acf73cd9ae1833",
+    "synth-reset-five-domains.tcl": "c83b9578516949b732194a0e04822166c63438b1ac39dce92a63edd1da5ecb57",
+    "reset_cdc.dcp": "5c71712628ea5347a15df93736c43ff54f7825c5a9e1b35f60d5e31b0b58af25"
+  },
+  "limits": [
+    "Not CDCclean or physical reset/timing qualification",
+    "Independent TX resetrelease copies may differ; no waiver from passing functionalmodels",
+    "Fullsystem ready/admission protocol may bound effects, not yet proven for this topology",
+    "No production/default/GT/HPM/firmware integration or hardwaredeployment"
+  ],
+  "next": "Design separate groupedTX reset-release candidate sharing one synchronizer for proven commonTXclock SYS/rio/rio_phy; retain separatePS/RX and explicit groupclock/reset-policy preconditions; compare reportCDC before integration",
+  "hardware_accessed": false
+}

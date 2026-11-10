@@ -1,3 +1,11 @@
+2026-11-10 registeredreset/status isolatedsynth COMPLETE:CDC10zero but3Critical
+CDC11 remain,13CDC3Info+2CDC9Info/noexceptions/exactsameTcl+clocks. Criticals
+coordinatorresetQ→FDPE2/6/8PRE allTXclock (SYS/rio/phy separate resetreleasecopies).
+NotCDCclean/notwaived/notphysicalqualified. Next separatecommonTXgrouprelease
+candidate withexplicitclock/resetpolicyproof; PS/RX remainseparate. No adoption/
+production/HW;hold. Evidence
+genesys-master-integration-2026-11-10/registered-reset-cdc/report.json.
+
 2026-11-10 separateRegisteredReset/status candidate host+5domainFDPE/GSR sim
 PASS.3controlFF resetINIT1/admit0/abandonready0, oneaddedcontrolcycle; commands
 readregisteredstatus/releasesuseregisteredreset, level-heldrequestrequired.
