@@ -1,0 +1,28 @@
+{
+  "status": "TEST_ONLY_MASKED_READY_FULL_HPM_CSR_TWO_TESTS_PASS_NOT_ADOPTED",
+  "selection": "Scoped unittest.mock.patch of master_dual_ingress.AuxResetDomains to separate AuxResetDomainsMasked; original class/default/manifest unchanged",
+  "checks": [
+    "Actual PS-adapter guardedHPM/CSR twoepisode reset roundtrip with exactXilinxMultiReg logic lowering",
+    "Length reset0 then write12/read12; secondreset0/write68/read68",
+    "AcceptedAW then WLAST0 blocked/no lengthcommit, fullHPM1 readsfault/resets",
+    "HeldbadW refaults afterreopen; withdraw+coordinatedreset/freshprogress recovers",
+    "No staleB30cycles, freshlength12readback/fault0",
+    "Original eight-source manifest consistency stillPASS"
+  ],
+  "limits": [
+    "Async reset uses FunctionalReset in these HPM behavioral tests; not FDPE/GSR integratedHPM simulation",
+    "ExactMultiReg override only PSadapterroundtrip; faultcase standard functionalMultiReg",
+    "Ideal live clocks here; stopped-clock primitive behavior covered separately, not combined proof",
+    "No productionphysicalassembly/default change or deployedimage",
+    "No physicalCDC/GT/timing/samehungCPU qualification"
+  ],
+  "next": "Prepare separately labelled masked-ready guarded RTL export with explicit source bindings and baseline difference audit, then bounded Dell RTL elaboration; keep original export/manifest intact",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/test_masked_ready_full_hpm.py": "c1c44a363e11afc53aa6d2daf823abaf8ac301d365a4312b901be00b0bd0b0c5",
+    "diagnostics/drtio/aux_reset_domains_masked.py": "5280861d60b9af84ccf9516dae7bc832cf3bdb3482c650b55a55cc46f6e1613c",
+    "diagnostics/drtio/master_dual_ingress.py": "58a9975af68ca3c183c086ba3796c3f7a27816c30552e1dea9eef1505c714e71",
+    "diagnostics/drtio/test_master_integration.py": "d2b8ea95ca47efbc4519c4daa7eb25d2501f8071507ffb7b39b4fe95ccf88914",
+    "diagnostics/drtio/test_master_full_shape_fault.py": "bf102cc3204672a05dd3fa2e5f1dc7975f944591d8b936f53be26e206cddca94"
+  }
+}

@@ -1,3 +1,12 @@
+2026-11-10 separateMaskedReady testonlysubstitution fullHPM/CSR2testsPASS:
+actualPSadapter guarded2episode reset/12then68 withXilinxMultiReg, acceptedAW+
+badWLAST managementfault/reset/refault/withdraw/fresh12/noB30. Scopedpatchonly;
+originalclass/default/8sourcemanifestunchangedPASS. AsyncresetFunctionalReset in
+HPMtests, primitive/stoppedclock evidence separate/notcombinedphysicalproof.
+Next separatelylabelledguardedRTLexport+sourcebindings/deltaaudit thenDellRTLelab.
+No production/HW;hold. Evidence
+genesys-master-integration-2026-11-10/masked-ready-full-hpm/report.json.
+
 2026-11-10 separate5domainMaskedReady exactXilinx/AMD FDPE/GSR digitalPASS.
 PS/sys/RX/rio/phy: stopTX+RX/reset ack0withoutedges; freshabandon releasesrequest;
 PSonlyready1/reset30/admit0; TXreturn ready27/reset4/admit0; RXreturn>=6edges
