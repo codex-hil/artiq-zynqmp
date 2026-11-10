@@ -1,3 +1,11 @@
+2026-11-10 combined full logic synthesis COMPLETE; full CDC NOT CLEAN.
+CDC1=138, CDC10=12, CDC11=4, CDC13=2572 critical; CDC6=16/CDC15=163 warning.
+No timing exceptions. No_clock/multiple_clock/unconstrained_internal_endpoints0;
+PS boundary no_input_delay363/no_output_delay132 remain open. No blackboxes;
+DCP hash recorded. Isolated reset clean report does not qualify this assembly.
+No HW/default adoption/deployment. Next critical endpoint classification. Evidence
+genesys-master-integration-2026-11-10/combined-synth-cdc/report.json.
+
 2026-11-10 separate combined RTL/vendor IP elaboration on Dell PASS: zero
 errors/critical warnings/unresolved blackboxes. Warning counts compared with
 masked baseline in report; retained without waiver. Exact RTL/Tcl/IP hashes

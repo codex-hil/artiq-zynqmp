@@ -1,0 +1,1094 @@
+Acquired Dell heavy-build slot 1/3
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Nov 10 05:32:53 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source synth-combined-physical.tcl
+# set_param general.maxThreads 4
+# create_project -force combined_cdc ./project -part xczu5ev-sfvc784-1-e
+# read_verilog [glob drtio_gth/hdl/*.v]
+# read_verilog [glob drtio_gth/synth/*.v]
+# read_verilog master_physical_candidate.v
+# synth_design -top master_physical_candidate -part xczu5ev-sfvc784-1-e -mode out_of_context
+Command: synth_design -top master_physical_candidate -part xczu5ev-sfvc784-1-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu5ev'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 62
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2039.910 ; gain = 457.641 ; free physical = 7782 ; free virtual = 64197
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'master_physical_candidate' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:2]
+INFO: [Synth 8-3876] $readmem data file 'latency_compensation.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11405]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11485]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_1.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11497]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_2.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11509]
+INFO: [Synth 8-3876] $readmem data file 'en_replaces_rom_3.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11521]
+INFO: [Synth 8-3876] $readmem data file 'routing_table.init' is read successfully [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11541]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:2738]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3436]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10017]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10760]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10922]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10936]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11038]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11060]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS_GTE4' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:83082]
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS_GTE4' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:83082]
+WARNING: [Synth 8-7071] port 'ODIV2' of module 'IBUFDS_GTE4' is unconnected for instance 'IBUFDS_GTE4' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11306]
+WARNING: [Synth 8-7023] instance 'IBUFDS_GTE4' of module 'IBUFDS_GTE4' has 5 connections declared, but only 4 given [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11306]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_tx.v:53]
+	Parameter P_CONTENTS bound to: 0 - type: integer 
+	Parameter P_FREQ_RATIO_SOURCE_TO_USRCLK bound to: 1 - type: integer 
+	Parameter P_FREQ_RATIO_USRCLK_TO_USRCLK2 bound to: 1 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'BUFG_GT' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2855]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG_GT' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2855]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_tx.v:53]
+WARNING: [Synth 8-7071] port 'gtwiz_userclk_tx_usrclk2_out' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' is unconnected for instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11317]
+WARNING: [Synth 8-7023] instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx' has 5 connections declared, but only 4 given [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11317]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_rx.v:53]
+	Parameter P_CONTENTS bound to: 0 - type: integer 
+	Parameter P_FREQ_RATIO_SOURCE_TO_USRCLK bound to: 1 - type: integer 
+	Parameter P_FREQ_RATIO_USRCLK_TO_USRCLK2 bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_rx.v:53]
+WARNING: [Synth 8-7071] port 'gtwiz_userclk_rx_usrclk2_out' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' is unconnected for instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11328]
+WARNING: [Synth 8-7023] instance 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' of module 'gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx' has 5 connections declared, but only 4 given [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11328]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth.v:53]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth_gtwizard_top' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth_gtwizard_top.v:173]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth_gtwizard_gthe4' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth_gtwizard_gthe4.v:141]
+INFO: [Synth 8-6157] synthesizing module 'drtio_gth_gthe4_channel_wrapper' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth_gthe4_channel_wrapper.v:56]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_channel' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/gtwizard_ultrascale_v1_7_gthe4_channel.v:53]
+INFO: [Synth 8-6157] synthesizing module 'GTHE4_CHANNEL' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:53844]
+INFO: [Synth 8-6155] done synthesizing module 'GTHE4_CHANNEL' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:53844]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_channel' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/gtwizard_ultrascale_v1_7_gthe4_channel.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth_gthe4_channel_wrapper' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth_gthe4_channel_wrapper.v:56]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_synchronizer' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_synchronizer' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_sync.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_bit_synchronizer' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_bit_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_bit_synchronizer' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_bit_sync.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_freq_counter' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cal_freqcnt.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_freq_counter' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cal_freqcnt.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_rx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_rx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_rx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_rx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gte4_drp_arb' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gte4_drp_arb.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gte4_drp_arb' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gte4_drp_arb.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_delay_powergood' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v:53]
+INFO: [Synth 8-226] default block is never used [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v:136]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gthe4_delay_powergood' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_reset.v:53]
+INFO: [Synth 8-155] case statement is not full and has no default [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_reset.v:162]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_inv_synchronizer' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_inv_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_reset_inv_synchronizer' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_reset_inv_sync.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_reset.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_tx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_tx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_tx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_tx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_rx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userdata_rx.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth_gtwizard_gthe4' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth_gtwizard_gthe4.v:141]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth_gtwizard_top' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth_gtwizard_top.v:173]
+INFO: [Synth 8-6155] done synthesizing module 'drtio_gth' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/synth/drtio_gth.v:53]
+WARNING: [Synth 8-7071] port 'rxresetdone_out' of module 'drtio_gth' is unconnected for instance 'drtio_gth' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11335]
+WARNING: [Synth 8-7071] port 'txresetdone_out' of module 'drtio_gth' is unconnected for instance 'drtio_gth' [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11335]
+WARNING: [Synth 8-7023] instance 'drtio_gth' of module 'drtio_gth' has 36 connections declared, but only 34 given [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11335]
+INFO: [Synth 8-6157] synthesizing module 'FDPE' [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FDPE' (0#1) [/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/scripts/rt/data/unisim_comp.v:49336]
+INFO: [Synth 8-6155] done synthesizing module 'master_physical_candidate' (0#1) [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:2]
+WARNING: [Synth 8-7137] Register freq_cnt_o_reg in module gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_freq_counter has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cal_freqcnt.v:188]
+WARNING: [Synth 8-6014] Unused sequential element mask_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:1077]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_first_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6271]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_last_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6272]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_lock_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6277]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_prot_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6278]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_cache_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6279]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_qos_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6280]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_payload_region_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6281]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_param_dest_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6283]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_ingress_axi2axilite_pipe_valid_source_param_user_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:6284]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_first_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4959]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_last_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4960]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_lock_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4965]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_prot_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4966]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_cache_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4967]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_qos_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4968]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_payload_region_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4969]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_param_dest_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4971]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_csr_axi2axilite_pipe_valid_source_param_user_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:4972]
+WARNING: [Synth 8-6014] Unused sequential element sync_t_lhs_self_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9212]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_lane_dist_sequence_error_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3965]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_lane_dist_sequence_error_channel_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3966]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_maximum0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9244]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_maximum1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9249]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_maximum2_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9254]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_max_level_valid_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9259]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_max_level_valid_counter_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9260]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record0_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9378]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record1_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9384]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record2_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9390]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record3_payload_fine_ts1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9396]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_collision_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3967]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_collision_channel_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3968]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_busy_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3969]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_busy_channel_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3970]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9424]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9425]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9430]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9431]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r2_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9436]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r2_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9437]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_stb_r3_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9442]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_channel_r3_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9443]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record4_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9587]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record4_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9591]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record7_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9662]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record7_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9666]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record9_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9723]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record9_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9384]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record10_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9730]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record10_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9390]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record8_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9789]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record8_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9378]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record11_rec_seqn_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9796]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record11_rec_payload_fine_ts_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9396]
+WARNING: [Synth 8-6014] Unused sequential element decoder1_k_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9938]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_echo_received_now0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10005]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_graycodetransfer_o_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3546]
+WARNING: [Synth 8-6014] Unused sequential element encoder6_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10226]
+WARNING: [Synth 8-6014] Unused sequential element encoder7_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10228]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_echo_sent_now0_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10542]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_tx_frame_r_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10546]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_packet_packet_cnt_tx1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:3544]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_kernel_now_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:10860]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_link_layer_rx_disable_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11011]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_link_layer_tx_force_aux_zero_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11015]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_link_layer_tx_force_rt_zero_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11019]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_reset_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11023]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_underflow_margin_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11027]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_force_destination_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11031]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_rt_controller_destination_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11035]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_fabric_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11053]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_routes_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11057]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_aux_transmitter_re_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11081]
+WARNING: [Synth 8-6014] Unused sequential element memdat_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11377]
+WARNING: [Synth 8-6014] Unused sequential element memdat_1_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11414]
+WARNING: [Synth 8-6014] Unused sequential element memdat_3_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11431]
+WARNING: [Synth 8-6014] Unused sequential element memdat_5_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11448]
+WARNING: [Synth 8-6014] Unused sequential element memdat_7_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11465]
+WARNING: [Synth 8-6014] Unused sequential element memadr_8_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11550]
+WARNING: [Synth 8-6014] Unused sequential element memadr_10_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11566]
+WARNING: [Synth 8-6014] Unused sequential element memadr_12_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11582]
+WARNING: [Synth 8-6014] Unused sequential element memadr_14_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11598]
+WARNING: [Synth 8-6014] Unused sequential element memadr_16_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11614]
+WARNING: [Synth 8-6014] Unused sequential element memadr_26_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11694]
+WARNING: [Synth 8-6014] Unused sequential element memadr_28_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11710]
+WARNING: [Synth 8-6014] Unused sequential element memadr_30_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11726]
+WARNING: [Synth 8-6014] Unused sequential element memadr_32_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11742]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record1_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9459]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record1_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9460]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record3_rec_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9527]
+WARNING: [Synth 8-6014] Unused sequential element genesysmasterintegration_local_record3_rec_nondata_replace_occurred_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:9528]
+WARNING: [Synth 8-6014] Unused sequential element memadr_20_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11644]
+WARNING: [Synth 8-6014] Unused sequential element memadr_21_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11650]
+WARNING: [Synth 8-6014] Unused sequential element memadr_22_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11660]
+WARNING: [Synth 8-6014] Unused sequential element memadr_23_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11666]
+WARNING: [Synth 8-6014] Unused sequential element memadr_24_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11676]
+WARNING: [Synth 8-6014] Unused sequential element memadr_25_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11682]
+WARNING: [Synth 8-6014] Unused sequential element memadr_29_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11714]
+WARNING: [Synth 8-6014] Unused sequential element memadr_31_reg was removed.  [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/master_physical_candidate.v:11730]
+INFO: [Common 17-14] Message 'Synth 8-6014' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7129] Port rxdata_in[127] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[126] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[125] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[124] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[123] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[122] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[121] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[120] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[119] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[118] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[117] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[116] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[115] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[114] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[113] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[112] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[111] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[110] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[109] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[108] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[107] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[106] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[105] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[104] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[103] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[102] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[101] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[100] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[99] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[98] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[97] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[96] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[95] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[94] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[93] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[92] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[91] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[90] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[89] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[88] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[87] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[86] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[85] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[84] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[83] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[82] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[81] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[80] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[79] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[78] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[77] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[76] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[75] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[74] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[73] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[72] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[71] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[70] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[69] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[68] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[67] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[66] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[65] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[64] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[63] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[62] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[61] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[60] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[59] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[58] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[57] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[56] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[55] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[54] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[53] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[52] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[51] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[50] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[49] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[48] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[47] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[46] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[45] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[44] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[43] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[42] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[41] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[40] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[39] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[38] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[37] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[36] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[35] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[34] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[33] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[32] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[31] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[30] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[29] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rxdata_in[28] in module gtwizard_ultrascale_v1_7_22_gtwiz_userdata_rx is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2220.848 ; gain = 638.578 ; free physical = 7657 ; free virtual = 64074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2220.848 ; gain = 638.578 ; free physical = 7737 ; free virtual = 64155
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu5ev-sfvc784-1-e
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2220.848 ; gain = 638.578 ; free physical = 7738 ; free virtual = 64155
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 'progclk_sel_store_reg' and it is trimmed from '16' to '15' bits. [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:705]
+WARNING: [Synth 8-3936] Found unconnected internal register 'x0e1_store_reg' and it is trimmed from '16' to '15' bits. [/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v:778]
+INFO: [Synth 8-802] inferred FSM for state register 'arb_state_reg' in module 'gtwizard_ultrascale_v1_7_22_gte4_drp_arb'
+INFO: [Synth 8-802] inferred FSM for state register 'sm_reset_all_reg' in module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset'
+INFO: [Synth 8-802] inferred FSM for state register 'sm_reset_tx_reg' in module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset'
+INFO: [Synth 8-802] inferred FSM for state register 'sm_reset_rx_reg' in module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset'
+INFO: [Synth 8-802] inferred FSM for state register 'registeredcoordinator_state_reg' in module 'master_physical_candidate'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'master_physical_candidate'
+INFO: [Synth 8-802] inferred FSM for state register 'genesysmasterbackend_clockdomainsrenamer_state_reg' in module 'master_physical_candidate'
+INFO: [Synth 8-802] inferred FSM for state register 'genesysmasterbackend_linklayer_state_reg' in module 'master_physical_candidate'
+INFO: [Synth 8-802] inferred FSM for state register 'transmitter_state_reg' in module 'master_physical_candidate'
+INFO: [Synth 8-802] inferred FSM for state register 'genesysmastercsr_checkedaxilite2wishbone_state_reg' in module 'master_physical_candidate'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               ARB_START |                             0001 |                             0001
+                ARB_WAIT |                             0010 |                             0010
+              ARB_REPORT |                             0100 |                             0100
+                 ARB_INC |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'arb_state_reg' using encoding 'one-hot' in module 'gtwizard_ultrascale_v1_7_22_gte4_drp_arb'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+      ST_RESET_TX_BRANCH |                              000 |                              000
+         ST_RESET_TX_PLL |                              001 |                              001
+    ST_RESET_TX_DATAPATH |                              010 |                              010
+   ST_RESET_TX_WAIT_LOCK |                              011 |                              011
+ST_RESET_TX_WAIT_USERRDY |                              100 |                              100
+ST_RESET_TX_WAIT_RESETDONE |                              101 |                              101
+        ST_RESET_TX_IDLE |                              110 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sm_reset_tx_reg' using encoding 'sequential' in module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+      ST_RESET_RX_BRANCH |                              000 |                              000
+         ST_RESET_RX_PLL |                              001 |                              001
+    ST_RESET_RX_DATAPATH |                              010 |                              010
+   ST_RESET_RX_WAIT_LOCK |                              011 |                              011
+    ST_RESET_RX_WAIT_CDR |                              100 |                              100
+ST_RESET_RX_WAIT_USERRDY |                              101 |                              101
+ST_RESET_RX_WAIT_RESETDONE |                              110 |                              110
+        ST_RESET_RX_IDLE |                              111 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sm_reset_rx_reg' using encoding 'sequential' in module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+       ST_RESET_ALL_INIT |                              000 |                              000
+     ST_RESET_ALL_BRANCH |                              001 |                              001
+     ST_RESET_ALL_TX_PLL |                              010 |                              010
+ST_RESET_ALL_TX_PLL_WAIT |                              011 |                              011
+      ST_RESET_ALL_RX_DP |                              100 |                              100
+     ST_RESET_ALL_RX_PLL |                              101 |                              101
+    ST_RESET_ALL_RX_WAIT |                              110 |                              110
+                  iSTATE |                              111 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sm_reset_all_reg' using encoding 'sequential' in module 'gtwizard_ultrascale_v1_7_22_gtwiz_reset'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                               00 |                               00
+*
+                  iSTATE |                               01 |                               10
+                 iSTATE0 |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'registeredcoordinator_state_reg' using encoding 'sequential' in module 'master_physical_candidate'
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_6_reg" of size (depth=4 x width=36) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                              001 |                               00
+*
+                  iSTATE |                              010 |                               01
+                 iSTATE0 |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'genesysmasterbackend_linklayer_state_reg' using encoding 'one-hot' in module 'master_physical_candidate'
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain0_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain1_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain2_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain3_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 |                               00
+*
+                 iSTATE2 |                               01 |                               01
+                 iSTATE1 |                               10 |                               10
+                 iSTATE0 |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'genesysmasterbackend_clockdomainsrenamer_state_reg' using encoding 'sequential' in module 'master_physical_candidate'
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/routing_table_reg" of size (depth=256 x width=2) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_reg" of size (depth=4 x width=609) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                               00
+*
+                 iSTATE0 |                              010 |                               01
+                 iSTATE1 |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'transmitter_state_reg' using encoding 'one-hot' in module 'master_physical_candidate'
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain0_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain1_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain2_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain3_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_4_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_3_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_2_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_1_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_8_reg" of size (depth=4 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_5_reg" of size (depth=4 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                            00001 |                              000
+*
+                 iSTATE2 |                            00010 |                              011
+                 iSTATE1 |                            00100 |                              100
+                 iSTATE3 |                            01000 |                              001
+                 iSTATE0 |                            10000 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'genesysmastercsr_checkedaxilite2wishbone_state_reg' using encoding 'one-hot' in module 'master_physical_candidate'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                              000
+*
+                 iSTATE2 |                              001 |                              011
+                 iSTATE1 |                              010 |                              100
+                 iSTATE3 |                              011 |                              001
+                 iSTATE0 |                              100 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'master_physical_candidate'
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_7_reg" of size (depth=4 x width=2) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_9_reg" of size (depth=4 x width=34) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:13 . Memory (MB): peak = 2895.816 ; gain = 1313.547 ; free physical = 7116 ; free virtual = 63536
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   64 Bit       Adders := 5     
+	   3 Input   62 Bit       Adders := 8     
+	   3 Input   61 Bit       Adders := 1     
+	   2 Input   61 Bit       Adders := 1     
+	   2 Input   40 Bit       Adders := 6     
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input   25 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 1     
+	   3 Input   18 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 2     
+	   2 Input   13 Bit       Adders := 3     
+	   3 Input   13 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 2     
+	   2 Input    9 Bit       Adders := 6     
+	   2 Input    8 Bit       Adders := 3     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 10    
+	   2 Input    3 Bit       Adders := 35    
+	   2 Input    2 Bit       Adders := 9     
++---XORs : 
+	   2 Input     64 Bit         XORs := 4     
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      3 Bit         XORs := 12    
+	   2 Input      1 Bit         XORs := 303   
+	   3 Input      1 Bit         XORs := 20    
++---Registers : 
+	              512 Bit    Registers := 3     
+	              112 Bit    Registers := 1     
+	               98 Bit    Registers := 1     
+	               89 Bit    Registers := 2     
+	               73 Bit    Registers := 4     
+	               64 Bit    Registers := 29    
+	               62 Bit    Registers := 4     
+	               61 Bit    Registers := 6     
+	               48 Bit    Registers := 2     
+	               41 Bit    Registers := 1     
+	               40 Bit    Registers := 2     
+	               32 Bit    Registers := 17    
+	               31 Bit    Registers := 1     
+	               30 Bit    Registers := 1     
+	               25 Bit    Registers := 1     
+	               24 Bit    Registers := 1     
+	               23 Bit    Registers := 2     
+	               20 Bit    Registers := 1     
+	               18 Bit    Registers := 1     
+	               16 Bit    Registers := 17    
+	               15 Bit    Registers := 2     
+	               14 Bit    Registers := 1     
+	               13 Bit    Registers := 3     
+	               11 Bit    Registers := 5     
+	               10 Bit    Registers := 6     
+	                9 Bit    Registers := 5     
+	                8 Bit    Registers := 25    
+	                7 Bit    Registers := 13    
+	                6 Bit    Registers := 6     
+	                5 Bit    Registers := 6     
+	                4 Bit    Registers := 12    
+	                3 Bit    Registers := 78    
+	                2 Bit    Registers := 22    
+	                1 Bit    Registers := 484   
++---RAMs : 
+	              16K Bit	(2048 X 8 bit)          RAMs := 4     
+	               4K Bit	(256 X 16 bit)          RAMs := 1     
+	               2K Bit	(4 X 609 bit)          RAMs := 1     
+	               2K Bit	(256 X 8 bit)          RAMs := 4     
+	              584 Bit	(8 X 73 bit)          RAMs := 4     
+	              512 Bit	(256 X 2 bit)          RAMs := 1     
+	              160 Bit	(4 X 40 bit)          RAMs := 2     
+	              144 Bit	(4 X 36 bit)          RAMs := 1     
+	              136 Bit	(4 X 34 bit)          RAMs := 1     
+	                8 Bit	(4 X 2 bit)          RAMs := 1     
++---Muxes : 
+	   3 Input  512 Bit        Muxes := 1     
+	   9 Input  112 Bit        Muxes := 1     
+	   3 Input   89 Bit        Muxes := 2     
+	   2 Input   64 Bit        Muxes := 1     
+	   4 Input   64 Bit        Muxes := 1     
+	   3 Input   64 Bit        Muxes := 1     
+	   4 Input   61 Bit        Muxes := 2     
+	   4 Input   48 Bit        Muxes := 1     
+	   2 Input   48 Bit        Muxes := 2     
+	   3 Input   41 Bit        Muxes := 1     
+	   4 Input   40 Bit        Muxes := 6     
+	   2 Input   40 Bit        Muxes := 8     
+	   5 Input   38 Bit        Muxes := 2     
+	  33 Input   32 Bit        Muxes := 1     
+	   3 Input   32 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 5     
+	   2 Input   32 Bit        Muxes := 39    
+	  24 Input   32 Bit        Muxes := 1     
+	   5 Input   32 Bit        Muxes := 5     
+	   8 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 2     
+	   4 Input   31 Bit        Muxes := 1     
+	   5 Input   31 Bit        Muxes := 1     
+	   2 Input   30 Bit        Muxes := 3     
+	   2 Input   28 Bit        Muxes := 1     
+	   2 Input   27 Bit        Muxes := 1     
+	   2 Input   26 Bit        Muxes := 1     
+	  33 Input   25 Bit        Muxes := 1     
+	   2 Input   25 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 2     
+	   2 Input   23 Bit        Muxes := 3     
+	   4 Input   22 Bit        Muxes := 1     
+	   2 Input   21 Bit        Muxes := 1     
+	   2 Input   20 Bit        Muxes := 1     
+	   2 Input   19 Bit        Muxes := 1     
+	   2 Input   18 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 16    
+	  33 Input   16 Bit        Muxes := 2     
+	   4 Input   16 Bit        Muxes := 8     
+	   2 Input   15 Bit        Muxes := 1     
+	   3 Input   14 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 5     
+	   2 Input   12 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 5     
+	   4 Input   10 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 7     
+	   4 Input    9 Bit        Muxes := 3     
+	   5 Input    8 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 11    
+	   8 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 22    
+	   3 Input    7 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 7     
+	   3 Input    6 Bit        Muxes := 1     
+	   6 Input    5 Bit        Muxes := 1     
+	   3 Input    5 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 4     
+	   5 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 13    
+	  33 Input    4 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 4     
+	   5 Input    4 Bit        Muxes := 1     
+	   8 Input    4 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 60    
+	   4 Input    3 Bit        Muxes := 6     
+	   7 Input    3 Bit        Muxes := 2     
+	   8 Input    3 Bit        Muxes := 3     
+	  16 Input    3 Bit        Muxes := 6     
+	   3 Input    3 Bit        Muxes := 4     
+	   6 Input    3 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 45    
+	   4 Input    2 Bit        Muxes := 16    
+	   3 Input    2 Bit        Muxes := 3     
+	   5 Input    2 Bit        Muxes := 6     
+	  33 Input    1 Bit        Muxes := 18    
+	   2 Input    1 Bit        Muxes := 239   
+	   5 Input    1 Bit        Muxes := 17    
+	   8 Input    1 Bit        Muxes := 41    
+	   4 Input    1 Bit        Muxes := 85    
+	   7 Input    1 Bit        Muxes := 13    
+	   3 Input    1 Bit        Muxes := 18    
+	   6 Input    1 Bit        Muxes := 12    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_5_reg" of size (depth=4 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_8_reg" of size (depth=4 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_6_reg" of size (depth=4 x width=36) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/routing_table_reg" of size (depth=256 x width=2) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_reg" of size (depth=4 x width=609) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain0_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain1_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain2_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain3_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_4_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_3_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_2_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_1_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_7_reg" of size (depth=4 x width=2) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_9_reg" of size (depth=4 x width=34) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+WARNING: [Synth 8-3917] design master_physical_candidate has port maxigp1_rdata[31] driven by constant 0
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_1_reg. We will not be able to pipeline it. This may degrade performance. 
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain0_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+INFO: [Synth 8-7124] RAM ("master_physical_candidate/mem_grain0_1_reg") is implemented using BRAM instead of URAM. Memory would be severely underutilized if URAMs are used
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_1_reg. We will not be able to pipeline it. This may degrade performance. 
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain1_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+INFO: [Synth 8-7124] RAM ("master_physical_candidate/mem_grain1_1_reg") is implemented using BRAM instead of URAM. Memory would be severely underutilized if URAMs are used
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_1_reg. We will not be able to pipeline it. This may degrade performance. 
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain2_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+INFO: [Synth 8-7124] RAM ("master_physical_candidate/mem_grain2_1_reg") is implemented using BRAM instead of URAM. Memory would be severely underutilized if URAMs are used
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_1_reg. We will not be able to pipeline it. This may degrade performance. 
+WARNING: [Synth 8-6430] The Block RAM "master_physical_candidate/mem_grain3_1_reg" may get memory collision error if read and write address collide. Use attribute (* rw_addr_collision= "yes" *) to avoid collision 
+INFO: [Synth 8-7124] RAM ("master_physical_candidate/mem_grain3_1_reg") is implemented using BRAM instead of URAM. Memory would be severely underutilized if URAMs are used
+RAM Pipeline Warning: Read Address Register Found For RAM buffer_space_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM buffer_space_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM buffer_space_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM ("master_physical_candidate/buffer_space_reg") is too shallow (depth = 256) to use URAM. Choosing BRAM instead of URAM 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_5_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_5_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_5_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_5_reg" of size (depth=4 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_8_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_8_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_8_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_8_reg" of size (depth=4 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_6_reg" of size (depth=4 x width=36) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM routing_table_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM routing_table_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/routing_table_reg" of size (depth=256 x width=2) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_reg" of size (depth=4 x width=609) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain0_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain1_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain2_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/mem_grain3_reg" of size (depth=256 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_4_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_3_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_2_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_1_reg" of size (depth=8 x width=73) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_7_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_7_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_7_reg" of size (depth=4 x width=2) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_9_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_9_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-6904] The RAM "master_physical_candidate/storage_9_reg" of size (depth=4 x width=34) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM buffer_space_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_5_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_8_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM routing_table_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain0_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain2_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM mem_grain3_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_7_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM storage_9_reg. We will not be able to pipeline it. This may degrade performance. 
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_genesysmasterbackend_linklayer_state_reg[0]) is unused and will be removed from module master_physical_candidate.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_transmitter_state_reg[0]) is unused and will be removed from module master_physical_candidate.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_genesysmastercsr_checkedaxilite2wishbone_state_reg[0]) is unused and will be removed from module master_physical_candidate.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:31 . Memory (MB): peak = 3016.816 ; gain = 1434.547 ; free physical = 6903 ; free virtual = 63324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++--------------------------+------------------+---------------+----------------+
+|Module Name               | RTL Object       | Depth x Width | Implemented As | 
++--------------------------+------------------+---------------+----------------+
+|master_physical_candidate | sync_rhs_self2   | 64x5          | LUT            | 
+|master_physical_candidate | sync_rhs_self3   | 64x5          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self5 | 32x1          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self1 | 32x1          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self0 | 32x6          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self2 | 32x1          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self4 | 32x6          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self6 | 32x1          | LUT            | 
+|master_physical_candidate | sync_rhs_self2   | 64x5          | LUT            | 
+|master_physical_candidate | sync_rhs_self3   | 64x5          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self5 | 32x1          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self1 | 32x1          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self0 | 32x6          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self2 | 32x1          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self4 | 32x6          | LUT            | 
+|master_physical_candidate | sync_f_rhs_self6 | 32x1          | LUT            | 
++--------------------------+------------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping Report (see note below)
++--------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name               | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++--------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|master_physical_candidate | mem_grain0_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | mem_grain1_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | mem_grain2_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | mem_grain3_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | buffer_space_reg | 256 x 16(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 1      | 0      | 1               | 
++--------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++--------------------------+-------------------+-----------+----------------------+----------------+
+|Module Name               | RTL Object        | Inference | Size (Depth x Width) | Primitives     | 
++--------------------------+-------------------+-----------+----------------------+----------------+
+|master_physical_candidate | storage_5_reg     | Implied   | 4 x 40               | RAM32M16 x 3   | 
+|master_physical_candidate | storage_8_reg     | Implied   | 4 x 40               | RAM32M16 x 3   | 
+|master_physical_candidate | storage_6_reg     | Implied   | 4 x 36               | RAM32M16 x 3   | 
+|master_physical_candidate | routing_table_reg | Implied   | 256 x 2              | RAM256X1D x 4  | 
+|master_physical_candidate | storage_reg       | Implied   | 4 x 609              | RAM32M16 x 44  | 
+|master_physical_candidate | mem_grain0_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | mem_grain1_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | mem_grain2_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | mem_grain3_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | storage_4_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_3_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_2_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_1_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_7_reg     | Implied   | 4 x 2                | RAM16X1D x 2   | 
+|master_physical_candidate | storage_9_reg     | Implied   | 4 x 34               | RAM32M16 x 3   | 
++--------------------------+-------------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:33 . Memory (MB): peak = 3016.816 ; gain = 1434.547 ; free physical = 6903 ; free virtual = 63324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++--------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name               | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++--------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|master_physical_candidate | mem_grain0_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | mem_grain1_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | mem_grain2_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | mem_grain3_1_reg | 2 K x 8(NO_CHANGE)     | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 1               | 
+|master_physical_candidate | buffer_space_reg | 256 x 16(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 1      | 0      | 1               | 
++--------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+
+Distributed RAM: Final Mapping Report
++--------------------------+-------------------+-----------+----------------------+----------------+
+|Module Name               | RTL Object        | Inference | Size (Depth x Width) | Primitives     | 
++--------------------------+-------------------+-----------+----------------------+----------------+
+|master_physical_candidate | storage_5_reg     | Implied   | 4 x 40               | RAM32M16 x 3   | 
+|master_physical_candidate | storage_8_reg     | Implied   | 4 x 40               | RAM32M16 x 3   | 
+|master_physical_candidate | storage_6_reg     | Implied   | 4 x 36               | RAM32M16 x 3   | 
+|master_physical_candidate | routing_table_reg | Implied   | 256 x 2              | RAM256X1D x 4  | 
+|master_physical_candidate | storage_reg       | Implied   | 4 x 609              | RAM32M16 x 44  | 
+|master_physical_candidate | mem_grain0_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | mem_grain1_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | mem_grain2_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | mem_grain3_reg    | Implied   | 256 x 8              | RAM64M8 x 16   | 
+|master_physical_candidate | storage_4_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_3_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_2_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_1_reg     | Implied   | 8 x 73               | RAM32M16 x 6   | 
+|master_physical_candidate | storage_7_reg     | Implied   | 4 x 2                | RAM16X1D x 2   | 
+|master_physical_candidate | storage_9_reg     | Implied   | 4 x 34               | RAM32M16 x 3   | 
++--------------------------+-------------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance mem_grain0_1_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem_grain1_1_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem_grain2_1_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem_grain3_1_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance buffer_space_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:35 . Memory (MB): peak = 3016.816 ; gain = 1434.547 ; free physical = 6914 ; free virtual = 63335
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:40 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6919 ; free virtual = 63340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:40 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6919 ; free virtual = 63340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:00:40 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6919 ; free virtual = 63340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:00:40 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6919 ; free virtual = 63340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:00:41 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6919 ; free virtual = 63340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:00:41 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6919 ; free virtual = 63340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++--------------------------+-------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name               | RTL Name                                                    | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++--------------------------+-------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|master_physical_candidate | genesysmasterintegration_local_record3_payload_channel2_reg | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|master_physical_candidate | genesysmasterintegration_local_record0_payload_channel2_reg | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|master_physical_candidate | genesysmasterintegration_local_record3_payload_data2_reg    | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|master_physical_candidate | genesysmasterintegration_local_record0_payload_data2_reg    | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
++--------------------------+-------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |BUFG_GT       |     3|
+|2     |CARRY8        |   196|
+|3     |GTHE4_CHANNEL |     1|
+|4     |IBUFDS_GTE4   |     1|
+|5     |LUT1          |   154|
+|6     |LUT2          |  1613|
+|7     |LUT3          |   605|
+|8     |LUT4          |   678|
+|9     |LUT5          |   738|
+|10    |LUT6          |  1595|
+|11    |MUXF7         |   165|
+|12    |MUXF8         |    29|
+|13    |RAM16X1D      |     1|
+|14    |RAM256X1D     |     4|
+|15    |RAM32M        |     5|
+|16    |RAM32M16      |    75|
+|17    |RAM64M8       |    32|
+|18    |RAM64X1D      |    32|
+|19    |RAMB18E2      |     5|
+|20    |SRL16E        |     4|
+|21    |FDCE          |    66|
+|22    |FDPE          |    83|
+|23    |FDRE          |  6447|
+|24    |FDSE          |    37|
++------+--------------+------+
+
+Report Instance Areas: 
++------+---------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+------+
+|      |Instance                                                                                                                               |Module                                                  |Cells |
++------+---------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+------+
+|1     |top                                                                                                                                    |                                                        | 12569|
+|2     |  drtio_gth                                                                                                                            |drtio_gth                                               |  1233|
+|3     |    inst                                                                                                                               |drtio_gth_gtwizard_top                                  |  1233|
+|4     |      \gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst                                                                            |drtio_gth_gtwizard_gthe4                                |  1233|
+|5     |        \gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst                                    |drtio_gth_gthe4_channel_wrapper                         |   209|
+|6     |          channel_inst                                                                                                                 |gtwizard_ultrascale_v1_7_22_gthe4_channel               |   209|
+|7     |        \gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst  |gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal              |   695|
+|8     |          bit_synchronizer_drprst_inst                                                                                                 |gtwizard_ultrascale_v1_7_22_bit_synchronizer_19         |     6|
+|9     |          gtwizard_ultrascale_v1_7_22_gte4_drp_arb_i                                                                                   |gtwizard_ultrascale_v1_7_22_gte4_drp_arb                |   198|
+|10    |          gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i                                                                              |gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx           |   479|
+|11    |            U_TXOUTCLK_FREQ_COUNTER                                                                                                    |gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_freq_counter |   136|
+|12    |              reset_synchronizer_testclk_rst_inst                                                                                      |gtwizard_ultrascale_v1_7_22_reset_synchronizer_28       |     5|
+|13    |            bit_synchronizer_cplllock_inst                                                                                             |gtwizard_ultrascale_v1_7_22_bit_synchronizer_22         |     6|
+|14    |            bit_synchronizer_txoutclksel_inst0                                                                                         |gtwizard_ultrascale_v1_7_22_bit_synchronizer_23         |     7|
+|15    |            bit_synchronizer_txoutclksel_inst1                                                                                         |gtwizard_ultrascale_v1_7_22_bit_synchronizer_24         |     7|
+|16    |            bit_synchronizer_txoutclksel_inst2                                                                                         |gtwizard_ultrascale_v1_7_22_bit_synchronizer_25         |     7|
+|17    |            bit_synchronizer_txprgdivresetdone_inst                                                                                    |gtwizard_ultrascale_v1_7_22_bit_synchronizer_26         |    12|
+|18    |            bit_synchronizer_txprogdivreset_inst                                                                                       |gtwizard_ultrascale_v1_7_22_bit_synchronizer_27         |     6|
+|19    |          reset_synchronizer_resetin_rx_inst                                                                                           |gtwizard_ultrascale_v1_7_22_reset_synchronizer_20       |     4|
+|20    |          reset_synchronizer_resetin_tx_inst                                                                                           |gtwizard_ultrascale_v1_7_22_reset_synchronizer_21       |     5|
+|21    |        \gen_gtwizard_gthe4.gen_pwrgood_delay_inst[0].delay_powergood_inst                                                             |gtwizard_ultrascale_v1_7_22_gthe4_delay_powergood       |    21|
+|22    |        \gen_gtwizard_gthe4.gen_reset_controller_internal.gen_single_instance.gen_ch_xrd[0].bit_synchronizer_rxresetdone_inst          |gtwizard_ultrascale_v1_7_22_bit_synchronizer            |     5|
+|23    |        \gen_gtwizard_gthe4.gen_reset_controller_internal.gen_single_instance.gen_ch_xrd[0].bit_synchronizer_txresetdone_inst          |gtwizard_ultrascale_v1_7_22_bit_synchronizer_0          |     5|
+|24    |        \gen_gtwizard_gthe4.gen_reset_controller_internal.gen_single_instance.gtwiz_reset_inst                                         |gtwizard_ultrascale_v1_7_22_gtwiz_reset                 |   298|
+|25    |          bit_synchronizer_gtpowergood_inst                                                                                            |gtwizard_ultrascale_v1_7_22_bit_synchronizer_1          |     6|
+|26    |          bit_synchronizer_gtwiz_reset_rx_datapath_dly_inst                                                                            |gtwizard_ultrascale_v1_7_22_bit_synchronizer_2          |     5|
+|27    |          bit_synchronizer_gtwiz_reset_rx_pll_and_datapath_dly_inst                                                                    |gtwizard_ultrascale_v1_7_22_bit_synchronizer_3          |     8|
+|28    |          bit_synchronizer_gtwiz_reset_tx_datapath_dly_inst                                                                            |gtwizard_ultrascale_v1_7_22_bit_synchronizer_4          |     5|
+|29    |          bit_synchronizer_gtwiz_reset_tx_pll_and_datapath_dly_inst                                                                    |gtwizard_ultrascale_v1_7_22_bit_synchronizer_5          |     8|
+|30    |          bit_synchronizer_gtwiz_reset_userclk_rx_active_inst                                                                          |gtwizard_ultrascale_v1_7_22_bit_synchronizer_6          |    10|
+|31    |          bit_synchronizer_gtwiz_reset_userclk_tx_active_inst                                                                          |gtwizard_ultrascale_v1_7_22_bit_synchronizer_7          |     9|
+|32    |          bit_synchronizer_plllock_rx_inst                                                                                             |gtwizard_ultrascale_v1_7_22_bit_synchronizer_8          |    11|
+|33    |          bit_synchronizer_plllock_tx_inst                                                                                             |gtwizard_ultrascale_v1_7_22_bit_synchronizer_9          |    11|
+|34    |          bit_synchronizer_rxcdrlock_inst                                                                                              |gtwizard_ultrascale_v1_7_22_bit_synchronizer_10         |     8|
+|35    |          reset_synchronizer_gtwiz_reset_all_inst                                                                                      |gtwizard_ultrascale_v1_7_22_reset_synchronizer          |     6|
+|36    |          reset_synchronizer_gtwiz_reset_rx_any_inst                                                                                   |gtwizard_ultrascale_v1_7_22_reset_synchronizer_11       |     7|
+|37    |          reset_synchronizer_gtwiz_reset_rx_datapath_inst                                                                              |gtwizard_ultrascale_v1_7_22_reset_synchronizer_12       |     5|
+|38    |          reset_synchronizer_gtwiz_reset_rx_pll_and_datapath_inst                                                                      |gtwizard_ultrascale_v1_7_22_reset_synchronizer_13       |     5|
+|39    |          reset_synchronizer_gtwiz_reset_tx_any_inst                                                                                   |gtwizard_ultrascale_v1_7_22_reset_synchronizer_14       |     6|
+|40    |          reset_synchronizer_gtwiz_reset_tx_datapath_inst                                                                              |gtwizard_ultrascale_v1_7_22_reset_synchronizer_15       |     5|
+|41    |          reset_synchronizer_gtwiz_reset_tx_pll_and_datapath_inst                                                                      |gtwizard_ultrascale_v1_7_22_reset_synchronizer_16       |     5|
+|42    |          reset_synchronizer_rx_done_inst                                                                                              |gtwizard_ultrascale_v1_7_22_reset_inv_synchronizer      |     6|
+|43    |          reset_synchronizer_tx_done_inst                                                                                              |gtwizard_ultrascale_v1_7_22_reset_inv_synchronizer_17   |     5|
+|44    |          reset_synchronizer_txprogdivreset_inst                                                                                       |gtwizard_ultrascale_v1_7_22_reset_synchronizer_18       |     5|
+|45    |  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx                                                                                         |gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx            |     3|
+|46    |  gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx                                                                                         |gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx            |     3|
++------+---------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:00:41 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6919 ; free virtual = 63340
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1080 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:43 ; elapsed = 00:00:41 . Memory (MB): peak = 3036.660 ; gain = 1454.391 ; free physical = 6918 ; free virtual = 63339
+Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:00:41 . Memory (MB): peak = 3036.668 ; gain = 1454.391 ; free physical = 6918 ; free virtual = 63339
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.08 . Memory (MB): peak = 3054.504 ; gain = 0.000 ; free physical = 7057 ; free virtual = 63477
+INFO: [Netlist 29-17] Analyzing 539 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'master_physical_candidate' is not ideal for floorplanning, since the cellview 'master_physical_candidate' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-441] Inserted BUFG_GT_SYNC drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/BUFG_GT_SYNC for BUFG_GT drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst
+INFO: [Opt 31-441] Inserted BUFG_GT_SYNC drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/BUFG_GT_SYNC_1 for BUFG_GT gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3155.336 ; gain = 0.000 ; free physical = 6968 ; free virtual = 63388
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 149 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+  RAM256X1D => RAM256X1D (MUXF7(x4), MUXF8(x2), RAMD64E(x8)): 4 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 5 instances
+  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 75 instances
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 32 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 32 instances
+
+Synth Design complete | Checksum: e8622362
+INFO: [Common 17-83] Releasing license: Synthesis
+155 Infos, 225 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:47 . Memory (MB): peak = 3155.371 ; gain = 1573.148 ; free physical = 6964 ; free virtual = 63385
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2653.490; main = 2606.934; forked = 344.139
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4023.570; main = 3155.340; forked = 986.906
+# foreach {port period} {pl_clk0 8 ref_p 6.4} {
+#  set found [get_ports $port]
+#  if {[llength $found] != 1} {error "Clock port not unique: $port"}
+#  create_clock -name diagnostic_$port -period $period $found
+# }
+# report_clocks -file clocks.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+WARNING: [Timing 38-278] The instance 'drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST' has RXRATE pins that are not constant, so the worst case divide value of 1 will be used for automatic derivation of generated clocks
+WARNING: [Timing 38-277] The instance 'drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST' has TXOUTCLKSEL pins that are not constant, so the corresponding mux will select the input(s) having the worst case (highest frequency) clock(s) for automatic derivation of generated clocks
+INFO: [Timing 38-2] Deriving generated clocks
+report_clocks: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 3377.688 ; gain = 222.316 ; free physical = 6890 ; free virtual = 63311
+# report_cdc -details -file cdc.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "pl_clk0" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+INFO: [Timing 38-433] Consider using Xilinx recommended XPM_CDC modules to avoid Critical severities
+INFO: [Timing 38-314] The report_cdc command only analyzes and reports clock domain crossing paths where clocks have been defined on both source and destination sides. Ports with no input delay constraint are skipped. Please run check_timing to verify there are no missing clock definitions in your design, nor any unconstrained input port.
+report_cdc: Time (s): cpu = 00:00:16 ; elapsed = 00:00:15 . Memory (MB): peak = 4183.648 ; gain = 805.961 ; free physical = 6189 ; free virtual = 62611
+# report_exceptions -file exceptions.rpt
+# check_timing -verbose -file check-timing.rpt
+# report_utilization -file utilization.rpt
+# set out [open unresolved.txt w]
+# foreach cell [get_cells -quiet -hierarchical -filter {IS_BLACKBOX == 1}] {puts $out $cell}
+# close $out
+# set out [open registers.tsv w]
+# foreach cell [lsort [get_cells -hierarchical -filter {REF_NAME =~ FD*}]] {
+#  puts $out "$cell\t[get_property REF_NAME $cell]\t[get_property INIT $cell]\t[get_property ASYNC_REG $cell]"
+# }
+# close $out
+# write_checkpoint -force combined_cdc.dcp
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.03 . Memory (MB): peak = 4215.664 ; gain = 0.000 ; free physical = 6184 ; free virtual = 62609
+INFO: [Common 17-1381] The checkpoint '/srv/nvme-fast-1/vivado-work/genesys-combined-synth-cdc-20261110-v1/combined_cdc.dcp' has been generated.
+# puts "COMBINED_LOGIC_SYNTH_CDC_COMPLETE"
+COMBINED_LOGIC_SYNTH_CDC_COMPLETE
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 10 05:34:15 2026...
