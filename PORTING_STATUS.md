@@ -1,3 +1,9 @@
+2026-11-10 separate combined grouped/registered/masked RTL export PASS.
+Parent SYS/rio/rio_phy driver identity equals PHY TX; missing reset-policy flag
+REFUSED. Semantic policy audit and full vendor elaboration remain pending.
+No adoption/HW/deployment. Next baseline reset-topology/latency audit. Evidence
+genesys-master-integration-2026-11-10/combined-physical-export/report.json.
+
 2026-11-10 combined groupedTX+registered/masked reset: two full HPM/CSR tests
 PASS (27.487s), actual adapters/exact XilinxMultiReg two reset episodes, CSR12/68;
 bad WLAST, independent management, held-request refault and withdrawal/recovery.

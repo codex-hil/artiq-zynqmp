@@ -1,0 +1,24 @@
+{
+  "status": "EXPORT_PASS_NOT_DEPLOYED",
+  "clock_check": "SYS/rio/rio_phy actual parent drivers share PHY TX signal identity",
+  "policy_check": "Missing confirmation refused; semantic policy audit pending",
+  "artifact_sha256": {
+    "cdc-endpoints.json": "4cac9b1048bb4dabe27d968efacaea2fc8cfc7bcbeeaa6bb7aca080cf12a8a7c",
+    "en_replaces_rom.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_3.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "latency_compensation.init": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead",
+    "en_replaces_rom_2.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "routing_table.init": "d87bcaf61125aa37cb4795610ee9ce84d1b9fef91d0072b5283078949133d79f",
+    "en_replaces_rom_1.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "cdc-inventory.json": "a767a14bacb908a11a6180bcf986c4620b265f0f85d7e37e0ef07b8d022799c9",
+    "export.json": "8d513fcc721e6db0ddb4d58ae392fd1ee7410246f5bc966ea48ddeef52d5c609",
+    "master_physical_candidate.v": "fc2b7aa176ea60e6805a2c658804ccb75eb9281d512658a2e8bf1298c7895458"
+  },
+  "limits": [
+    "Full combined vendor elaboration pending",
+    "Semantic reset-policy audit pending",
+    "No hardware/default adoption/deployment"
+  ],
+  "validation_note": "First refusal check lacked ARTIQ PYTHONPATH; corrected environment then CLI refusal passed",
+  "next": "Baseline reset topology and latency audit, then vendor RTL elaboration"
+}
