@@ -1,3 +1,11 @@
+2026-11-10 additional fullintegration phase/trigger4runs PASS49.575s:
+phase0/delay1 and phase3/delay0, eachbaseline+registered. Injected progress/shape
+fault withdrawal baseline2SYS vs registered3SYS; controltrace added1edge.
+Reset0SYSsamples. Priorphase equal2SYS demonstrates phase-dependent cost. Not
+exhaustive/detection/physicalworstcase; no accepted latency budget/adoption.
+Next remaining reset-request CDC11fanout/INIT mismatch policy audit. NoHW.
+Evidence genesys-master-integration-2026-11-10/admission-phase-latency/report.json.
+
 2026-11-10 combined core+codec/link/HPM1 integration baseline vs registered
 admission simPASS25.306s, injected stickyprogress/shape faults and managedreset/
 freshabandon reopen. ExactMultiReg/FunctionalReset only. Fixed8/14/18ns phase:

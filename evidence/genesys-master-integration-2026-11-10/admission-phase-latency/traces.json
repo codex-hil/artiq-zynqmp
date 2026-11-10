@@ -1,0 +1,6076 @@
+[
+  {
+    "tx_phase": 0,
+    "trigger_delay": 1,
+    "registered": false,
+    "metrics": {
+      "progress_fault": {
+        "first_raw_sys": 0,
+        "first_closed_sys": 2,
+        "delta_sys_samples": 2
+      },
+      "shape_fault": {
+        "first_raw_sys": 1,
+        "first_closed_sys": 3,
+        "delta_sys_samples": 2
+      },
+      "reset": {
+        "first_raw_sys": 4,
+        "first_closed_sys": 4,
+        "delta_sys_samples": 0
+      }
+    },
+    "sys_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ]
+    },
+    "control_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        }
+      ]
+    }
+  },
+  {
+    "tx_phase": 0,
+    "trigger_delay": 1,
+    "registered": true,
+    "metrics": {
+      "progress_fault": {
+        "first_raw_sys": 0,
+        "first_closed_sys": 3,
+        "delta_sys_samples": 3,
+        "raw_to_registered_control_samples": 1
+      },
+      "shape_fault": {
+        "first_raw_sys": 1,
+        "first_closed_sys": 4,
+        "delta_sys_samples": 3,
+        "raw_to_registered_control_samples": 1
+      },
+      "reset": {
+        "first_raw_sys": 4,
+        "first_closed_sys": 4,
+        "delta_sys_samples": 0,
+        "raw_to_registered_control_samples": 1
+      }
+    },
+    "sys_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ]
+    },
+    "control_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        }
+      ]
+    }
+  },
+  {
+    "tx_phase": 3,
+    "trigger_delay": 0,
+    "registered": false,
+    "metrics": {
+      "progress_fault": {
+        "first_raw_sys": 0,
+        "first_closed_sys": 2,
+        "delta_sys_samples": 2
+      },
+      "shape_fault": {
+        "first_raw_sys": 1,
+        "first_closed_sys": 3,
+        "delta_sys_samples": 2
+      },
+      "reset": {
+        "first_raw_sys": 3,
+        "first_closed_sys": 3,
+        "delta_sys_samples": 0
+      }
+    },
+    "sys_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ]
+    },
+    "control_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1
+        }
+      ]
+    }
+  },
+  {
+    "tx_phase": 3,
+    "trigger_delay": 0,
+    "registered": true,
+    "metrics": {
+      "progress_fault": {
+        "first_raw_sys": 0,
+        "first_closed_sys": 3,
+        "delta_sys_samples": 3,
+        "raw_to_registered_control_samples": 1
+      },
+      "shape_fault": {
+        "first_raw_sys": 1,
+        "first_closed_sys": 4,
+        "delta_sys_samples": 3,
+        "raw_to_registered_control_samples": 1
+      },
+      "reset": {
+        "first_raw_sys": 3,
+        "first_closed_sys": 3,
+        "delta_sys_samples": 0,
+        "raw_to_registered_control_samples": 1
+      }
+    },
+    "sys_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 1,
+          "link_allowed": 1
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        },
+        {
+          "raw_admit": 0,
+          "link_allowed": 0
+        }
+      ]
+    },
+    "control_traces": {
+      "progress_fault": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        }
+      ],
+      "shape_fault": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 0,
+          "registered_admit": 0
+        }
+      ],
+      "reset": [
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 1,
+          "coordinator_reset": 0,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 1
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        },
+        {
+          "raw_admit": 0,
+          "coordinator_reset": 1,
+          "registered_admit": 0
+        }
+      ]
+    }
+  }
+]

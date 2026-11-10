@@ -21,7 +21,7 @@ from master_integration import GenesysMasterIntegration
 from raw20_codec import Raw20Codec
 
 class AdmissionIntegrationTests(unittest.TestCase):
- def exercise(self,registered):
+ def exercise(self,registered,tx_phase=0,trigger_delay=0):
   ps=SimpleNamespace(inputs={},outputs={})
   root=Path(__file__).resolve().parents[2]
   for line in (root/'evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/pins.tsv').read_text().splitlines():
@@ -39,12 +39,21 @@ class AdmissionIntegrationTests(unittest.TestCase):
    for field in names.split():
     name='maxigp1_'+channel+field;fields[field]=(ps.inputs if name in ps.inputs else ps.outputs)[name]
    setattr(bus,channel,SimpleNamespace(**fields))
-  h=AXIMaster(bus);base=0xb0000000;state={'event':None,'traces':{},'done':False}
+  h=AXIMaster(bus);base=0xb0000000;state={'event':None,'traces':{},'control':{},'done':False}
   @passive
   def observer():
    while True:
     event=state['event']
     if event is not None:state['traces'][event].append({'raw_admit':(yield top.admit),'link_allowed':(yield top.link_boundary.allowed)})
+    yield
+  @passive
+  def control_observer():
+   while True:
+    event=state['event']
+    if event is not None:
+     row={'raw_admit':(yield top.admit),'coordinator_reset':(yield top.gt_reset_request)}
+     if registered:row['registered_admit']=(yield top.link_boundary.sample.allowed)
+     state['control'][event].append(row)
     yield
   def poll(mask,value):
    for _ in range(100):
@@ -63,7 +72,8 @@ class AdmissionIntegrationTests(unittest.TestCase):
    for _ in range(24):yield
    yield from open_link()
    for event in ('progress_fault','shape_fault','reset'):
-    state['traces'][event]=[];state['event']=event
+    for _ in range(trigger_delay):yield
+    state['traces'][event]=[];state['control'][event]=[];state['event']=event
     if event=='progress_fault':yield top.progress.fault.eq(1)
     elif event=='shape_fault':yield top.shape_guard.fault.eq(1)
     else:yield from h.write(base+4,1)
@@ -82,8 +92,14 @@ class AdmissionIntegrationTests(unittest.TestCase):
   clocks={'pl_source':8,'tx_source':14,'rx_source':18,'management':8,'control':8,'ps':8,'sys':14,'rio':14,'rio_phy':14,'rtio_rx':18,'aux_release_ps':8,'aux_release_sys':14,'aux_release_rtio_rx':18}
   for name,crossing in top.csr.ps_cdc.crossings.items():
    for domain,period in zip(crossing._fragment.clock_domains,(14,8) if name in ('b','r') else (8,14)):clocks[domain.name]=period
-  run_simulation(top,{'management':manager(),'sys':observer()},clocks,special_overrides={AsyncResetSynchronizer:FunctionalReset,MultiReg:XilinxMultiReg})
+  for name in ('tx_source','sys','rio','rio_phy','aux_release_sys'):
+   clocks[name]=(14,tx_phase)
+  for crossing in top.csr.ps_cdc.crossings.values():
+   for domain in crossing._fragment.clock_domains:
+    if clocks[domain.name]==14:clocks[domain.name]=(14,tx_phase)
+  run_simulation(top,{'management':manager(),'sys':observer(),'control':control_observer()},clocks,special_overrides={AsyncResetSynchronizer:FunctionalReset,MultiReg:XilinxMultiReg})
   self.assertTrue(state['done'])
+  self.last_control_trace=state['control']
   return state['traces']
  def test_baseline_and_registered_fault_reset_withdrawal(self):
   results={name:self.exercise(flag) for name,flag in (('baseline',False),('registered',True))}

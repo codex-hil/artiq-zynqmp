@@ -1,0 +1,113 @@
+{
+  "status": "FOUR_FULL_INTEGRATION_PHASE_TRIGGER_RUNS_PASS_ADDED_LATENCY_OBSERVED",
+  "seconds": 49.575,
+  "metrics": [
+    {
+      "tx_phase": 0,
+      "trigger_delay": 1,
+      "registered": false,
+      "metrics": {
+        "progress_fault": {
+          "first_raw_sys": 0,
+          "first_closed_sys": 2,
+          "delta_sys_samples": 2
+        },
+        "shape_fault": {
+          "first_raw_sys": 1,
+          "first_closed_sys": 3,
+          "delta_sys_samples": 2
+        },
+        "reset": {
+          "first_raw_sys": 4,
+          "first_closed_sys": 4,
+          "delta_sys_samples": 0
+        }
+      }
+    },
+    {
+      "tx_phase": 0,
+      "trigger_delay": 1,
+      "registered": true,
+      "metrics": {
+        "progress_fault": {
+          "first_raw_sys": 0,
+          "first_closed_sys": 3,
+          "delta_sys_samples": 3,
+          "raw_to_registered_control_samples": 1
+        },
+        "shape_fault": {
+          "first_raw_sys": 1,
+          "first_closed_sys": 4,
+          "delta_sys_samples": 3,
+          "raw_to_registered_control_samples": 1
+        },
+        "reset": {
+          "first_raw_sys": 4,
+          "first_closed_sys": 4,
+          "delta_sys_samples": 0,
+          "raw_to_registered_control_samples": 1
+        }
+      }
+    },
+    {
+      "tx_phase": 3,
+      "trigger_delay": 0,
+      "registered": false,
+      "metrics": {
+        "progress_fault": {
+          "first_raw_sys": 0,
+          "first_closed_sys": 2,
+          "delta_sys_samples": 2
+        },
+        "shape_fault": {
+          "first_raw_sys": 1,
+          "first_closed_sys": 3,
+          "delta_sys_samples": 2
+        },
+        "reset": {
+          "first_raw_sys": 3,
+          "first_closed_sys": 3,
+          "delta_sys_samples": 0
+        }
+      }
+    },
+    {
+      "tx_phase": 3,
+      "trigger_delay": 0,
+      "registered": true,
+      "metrics": {
+        "progress_fault": {
+          "first_raw_sys": 0,
+          "first_closed_sys": 3,
+          "delta_sys_samples": 3,
+          "raw_to_registered_control_samples": 1
+        },
+        "shape_fault": {
+          "first_raw_sys": 1,
+          "first_closed_sys": 4,
+          "delta_sys_samples": 3,
+          "raw_to_registered_control_samples": 1
+        },
+        "reset": {
+          "first_raw_sys": 3,
+          "first_closed_sys": 3,
+          "delta_sys_samples": 0,
+          "raw_to_registered_control_samples": 1
+        }
+      }
+    }
+  ],
+  "conclusion": "At both additional phase/trigger pairs baseline fault closure2SYS samples vs registered3; registered control output withdraws one control sample after raw admit. Prior original phase observed2SYS for both, so effect is phase-dependent. Reset closure0SYS samples in tested scenarios.",
+  "limits": [
+    "Only three phase/trigger points including prior run, not exhaustive or worst-case physical bound",
+    "Sticky fault state injection; not real RX-loss or malformed-request detection latency",
+    "Exact XilinxMultiReg with FunctionalReset; no vendor FDPE or board GT",
+    "Test sample counting convention is pre-settle generator observation",
+    "No adoption or accepted physical latency budget"
+  ],
+  "next": "Review remaining reset-request CDC11 fanout and INIT mismatch; prepare isolated candidate only after preserving independent reset/admission behavior",
+  "sha256": {
+    "diagnostics/drtio/test_registered_admission_integration.py": "6a3967b782bf1fcbf304a17cf4f235f5fe9f38622ddb6379edd256b20bd655f1",
+    "diagnostics/drtio/test_admission_integration_phase.py": "a85e0502f36b56933c9bdbeec11ffdab285cff9f9aad843d76a7d72ab2474cb5"
+  }
+}
