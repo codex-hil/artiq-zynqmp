@@ -1,0 +1,28 @@
+{
+  "physical_release_groups": 3,
+  "logical_mapping": [
+    0,
+    1,
+    2,
+    1,
+    1
+  ],
+  "fdpe_pairs_checked": 16,
+  "status": "NARROW_POLICY_AUDIT_PASS",
+  "mutations_refused": [
+    "aux_reset_domains_grouped.py",
+    "aux_reset_registered.py",
+    "master_integration.py"
+  ],
+  "source_sha256": {
+    "aux_reset_domains_grouped.py": "3a07552c3cda0337d0a8aac87c07583066db57a779835bb6f9124835a5feff5d",
+    "aux_reset_registered.py": "93910c495937767ff8e1af97531e43297697c6f084f78400007de4d4c484cf8b",
+    "master_dual_ingress.py": "58a9975af68ca3c183c086ba3796c3f7a27816c30552e1dea9eef1505c714e71",
+    "master_integration.py": "2b6f73a1e53eb156d9f528c98fad6afd33f69f1d7bfeae9cd42d0bf0bb76470e"
+  },
+  "limits": [
+    "Source statements and emitted topology only, not sequential equivalence",
+    "Registered outputs delay raw coordinator by one control edge; previous full-HPM tests cover bounded command sequences only",
+    "Physical timing/CDC and arbitrary requester behavior remain unqualified"
+  ]
+}

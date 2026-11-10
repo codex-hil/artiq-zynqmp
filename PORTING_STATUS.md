@@ -1,3 +1,12 @@
+2026-11-10 combined reset narrow policy/topology audit PASS; three mutation
+refusals: wrong group, ungated registered admit, removed external reset.
+Three release groups/common request; management/control external PS reset only;
+all emitted FDPE pairs INIT1/two-stage topology checked. Registered outputs add
+one control edge; earlier bounded full-HPM tests are not arbitrary-request or
+sequential equivalence proof. No physical timing/CDC credit/HW/adoption. Next
+combined full RTL vendor elaboration on Dell. Evidence
+genesys-master-integration-2026-11-10/combined-reset-policy/report.json.
+
 2026-11-10 separate combined grouped/registered/masked RTL export PASS.
 Parent SYS/rio/rio_phy driver identity equals PHY TX; missing reset-policy flag
 REFUSED. Semantic policy audit and full vendor elaboration remain pending.
