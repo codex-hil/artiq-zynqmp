@@ -1,3 +1,11 @@
+2026-11-10 separate5domainMaskedReady exactXilinx/AMD FDPE/GSR digitalPASS.
+PS/sys/RX/rio/phy: stopTX+RX/reset ack0withoutedges; freshabandon releasesrequest;
+PSonlyready1/reset30/admit0; TXreturn ready27/reset4/admit0; RXreturn>=6edges
+allready31/reset0/admit1. Management/control live commandhandshake, NOTMMIO.
+Idealconditionalclock/notactualGT/physicalCDC/notadopted. Next testonlysubstitution
+infullguardedHPM/CSR, preserveoriginal/manifest. NoHW;hold. Evidence
+genesys-master-integration-2026-11-10/masked-ready-five-domains/report.json.
+
 2026-11-09 separateMaskedReady AMD FDPE/GSR12case matrixPASS: Bperiod6/18/26ns
 ×phase0/2×stoplow/high; originalcandidateRTLreused. Ack0withoutclock/freshabandon
 requestrelease/admit0whileBstopped, naturalconditionalclockreturn and>=6freshB

@@ -1,0 +1,35 @@
+{
+  "status": "SEPARATE_FIVE_DOMAIN_MASKED_READY_AMD_FDPE_GSR_DIGITAL_SIM_PASS_NOT_ADOPTED",
+  "job": "genesys-reset-five-domains-sim-20261110-v1",
+  "domains": [
+    "ps",
+    "sys",
+    "rtio_rx",
+    "rio",
+    "rio_phy"
+  ],
+  "clocks": "PS8/TX14/RX18ns; management8/control10ns independently live; TX/RX conditionalreturn aftercoordinatorresetrelease",
+  "checks": [
+    "Initial allready0/reset31, freshinitialhandshake opens",
+    "StopTXandRX afterOPEN thenreset givesallready0/reset31 without stoppededges",
+    "Staleabandonment holdsreset; freshlow/high required",
+    "WhileTX/RXstopped onlyPSready1, targetreset30, admission0",
+    "TXresumed: ready27/reset4, missingRXstill blocksadmission",
+    "RXresumed: >=6newedges beforeallready31/reset0/admission1"
+  ],
+  "limits": [
+    "Commandlevel handshake source, not AXI/MMIO management path",
+    "Original Xilinx lowering/AMDprimitives but ideal clocks and conditionalenvironment, not vendorGT simulation",
+    "No physicalCDC/reset/metastability/recovery-removal qualification",
+    "Candidate notused inproduction MasterDualIngress or deployedassembly"
+  ],
+  "next": "Test separateMaskedReady via test-only substitution in full guardedHPM/CSR fixture, preserve original class/default and manifest; compare reset/recovery behavior before opt-in integration",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_reset_domains_masked.py": "5280861d60b9af84ccf9516dae7bc832cf3bdb3482c650b55a55cc46f6e1613c",
+    "diagnostics/drtio/role-reversal/export-reset-five-domains.py": "6fa960943fb454a4704759e9fa5a1a1651b4fa54be2488d9ca0b9ba3c7011377",
+    "diagnostics/drtio/role-reversal/tb_reset_five_domains.v": "8e529a926290c7080adf50d1e1cd39fa457d71f4e8b5f7c718a4e625fe171a6e",
+    "diagnostics/drtio/role-reversal/run-reset-five-domains-sim.sh": "94890d9373789dedfbc3dcb8cbc84c1ea484fb97204d7ce4426496e5671a3a5d"
+  },
+  "rtl_sha256": "92e6bd6d2d746ea526ff583e776b7a164607fc565a0a9abdb8ad739a45104e74"
+}
