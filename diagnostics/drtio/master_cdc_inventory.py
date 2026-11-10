@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 """Conservative pre-lowering fragment inventory; NOT a physical CDC checker."""
 from collections import Counter
+from migen import Signal
 from migen.fhdl.visit import NodeVisitor
 from migen.fhdl.tools import list_signals
 from migen.genlib.cdc import MultiReg,GrayCounter
@@ -41,8 +42,8 @@ def collect(fragment,top=None,source_notes=None):
             rows.append({'type':'MultiReg','bits':len(special.i),'stages':special.n,
                          'destination':special.odomain,'known_sequential_origins':sorted(origin),
                          'origin_complete':False,
-                         'registered_gray_counter_source':gray_sources.get(special.i),
-                         'explicit_object_source_review':source_notes.get(special.i),
+                         'registered_gray_counter_source':gray_sources.get(special.i) if isinstance(special.i,Signal) else None,
+                         'explicit_object_source_review':source_notes.get(special.i) if isinstance(special.i,Signal) else None,
                          'input_signal_hints':sorted({s.backtrace[-1][0] if s.backtrace else 'unnamed' for s in list_signals(special.i)})})
         elif isinstance(special,AsyncResetSynchronizer):
             rows.append({'type':'AsyncResetSynchronizer','destination':special.cd.name,

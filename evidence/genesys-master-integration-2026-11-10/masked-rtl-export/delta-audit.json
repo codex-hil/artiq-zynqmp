@@ -1,0 +1,25 @@
+{
+  "status": "NARROW_RTL_TEXT_DELTA_PASS",
+  "masks": 5,
+  "register_renames": 10,
+  "unused_generator_aliases": [
+    "xilinxmultiregimpl28_i",
+    "xilinxmultiregimpl29_i",
+    "xilinxmultiregimpl30_i",
+    "xilinxmultiregimpl31_i",
+    "xilinxmultiregimpl32_i"
+  ],
+  "other_rtl_text_identical": true,
+  "six_memory_init_hashes": {
+    "en_replaces_rom.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "en_replaces_rom_3.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "latency_compensation.init": "d77d5173cb087b3261e49dd2b131d3c1df4557744c60d2d1603ac88602a9cead",
+    "en_replaces_rom_2.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba",
+    "routing_table.init": "d87bcaf61125aa37cb4795610ee9ce84d1b9fef91d0072b5283078949133d79f",
+    "en_replaces_rom_1.init": "ad0fadf63cc7cd779ce475e345bf4063565b63a3c2efef1eebc89790aaa6acba"
+  },
+  "limits": [
+    "Not sequential equivalence",
+    "Not CDC/reset/timing qualification"
+  ]
+}

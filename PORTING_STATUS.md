@@ -1,3 +1,11 @@
+2026-11-10 separateMasked guardedRTLexport+deltaauditPASS:5maskDexpressions,
+10syncreg renames,5provenunusedgeneratoraliases only; allotherRTLtext+6inits
+identical baseline.4auditmutantsREFUSED/originalmanifestPASS(baselineonly/no
+variantattestation). InitialinventoryoperatorhashTypeError retained; Signalonly
+objectlookupfix/no inventedorigin. NotseqLEC/physicalCDC/adopted. Next bounded
+DellRTL/vendorIPelab exactseparateexport. NoHW/runtimecapFALSE;hold. Evidence
+genesys-master-integration-2026-11-10/masked-rtl-export/report.json.
+
 2026-11-10 separateMaskedReady testonlysubstitution fullHPM/CSR2testsPASS:
 actualPSadapter guarded2episode reset/12then68 withXilinxMultiReg, acceptedAW+
 badWLAST managementfault/reset/refault/withdraw/fresh12/noB30. Scopedpatchonly;

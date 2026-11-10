@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/role-reversal/export-masked-physical-assembly.py", line 14, in <module>
+    runpy.run_path(str(exporter),run_name='__main__')
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/role-reversal/export-physical-assembly.py", line 45, in <module>
+    inventory=collect(fragment,top,source_notes)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/master_cdc_inventory.py", line 44, in collect
+    'registered_gray_counter_source':gray_sources.get(special.i),
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/fhdl/structure.py", line 167, in __hash__
+    raise TypeError("unhashable type: '{}'".format(type(self).__name__))
+TypeError: unhashable type: '_Operator'

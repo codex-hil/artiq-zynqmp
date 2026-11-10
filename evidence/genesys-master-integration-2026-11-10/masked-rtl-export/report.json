@@ -1,0 +1,28 @@
+{
+  "status": "SEPARATE_MASKED_GUARDED_EXPORT_NARROW_RTL_DELTA_AUDIT_PASS_NOT_ADOPTED",
+  "export_directory": "/tmp/genesys-masked-physical-20261110-v2",
+  "comparison": "Original guarded top previously elaborated onDell",
+  "checks": [
+    "Five ready-mask firststageD expressions only behavioral textdifference",
+    "Ten synchronizerregister renames and five provenunusedgenerator aliases normalized",
+    "All otherRTLtext exactlyidentical after narrowlybounded substitutions",
+    "Six memoryinitializer hashesidentical",
+    "Four mutations unrelatedRTL/mask/init/stagemetadata refused",
+    "Original manifestconsistencyPASS; manifestisbaselineonly, notvariantattestation"
+  ],
+  "initial_refusal": "Inventory tried hashing operator expression asSignal; capturedTypeError. Collector now performs directobjectlookup only forSignal; expressionorigin remainsunknown rather thaninvented.",
+  "limits": [
+    "Narrow textaudit not sequentialequivalence or physicalCDC/timingproof",
+    "Scoped substitution exporter only; defaultproduction class unchanged",
+    "No newVivado elaboration/synthesis or deployedimage yet",
+    "Runtime capabilityfalse/maintenancehold"
+  ],
+  "next": "Bounded Dell RTL/vendorGTH elaboration of exact separate maskedexport with stagehashpreflight and warningcomparison; no synthesis/timing/hardwarecredit",
+  "hardware_accessed": false,
+  "artifact_sha256": {
+    "diagnostics/drtio/role-reversal/export-masked-physical-assembly.py": "9e8d3a2a21caaf5e0e0b73f8238d2d5ba13b88e8a36d9675860c67df41af12f3",
+    "diagnostics/drtio/role-reversal/audit-masked-export.py": "82da0e0ac65a0ade749bdb7fdc1ca277abef668d8116017b3f2be1f84b5545c1",
+    "diagnostics/drtio/master_cdc_inventory.py": "bef1ba7af174acd50c571a9b28d27e254a6f16f85e5380d4eb91a606fb53551d"
+  },
+  "generated_top_sha256": "2ccc42f053812051821ee54f1e7e90f421886782d654352c1ee898cae3871cf0"
+}
