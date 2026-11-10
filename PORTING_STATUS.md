@@ -1,3 +1,13 @@
+2026-11-10 duplicate requestedSYS reset-status path audit: exactXilinx
+lowerer omits requestedreset1 (emitsINIT0), alreadyknownmismatch retained.
+Separate local-reset-only boundary3tests PASS, explicitparentcontractrequired.
+FourMultiReg/GTrequestunchanged; Booleanold=>new but counterexample permit1/
+requested1/localreset0 reopensearlier. Not arbitraryequivalent/notadopted.
+Initialblocked/localresetdominance/freshadmit hosttestPASS; parent asyncassert/
+syncrelease/admissioncontract stillneeds fullintegrationproof. Next bounded
+integration/export audit+resetreopen beforeCDCcomparison. NoHW. Evidence
+genesys-master-integration-2026-11-10/local-reset-boundary/report.json.
+
 2026-11-10 additional fullintegration phase/trigger4runs PASS49.575s:
 phase0/delay1 and phase3/delay0, eachbaseline+registered. Injected progress/shape
 fault withdrawal baseline2SYS vs registered3SYS; controltrace added1edge.

@@ -1,0 +1,22 @@
+{
+  "status": "SEPARATE_LOCAL_RESET_BOUNDARY_THREE_TESTS_PASS_NOT_ADOPTED",
+  "checks": [
+    "Explicit parent contract required; missing/None/integer1 refused",
+    "Four synchronizers; no direct reset_request status crossing; GT reset output retains original request object",
+    "Eight Boolean assignments prove old=>new but not equivalence: permit1/requested1/localreset0 differs",
+    "Exact XilinxMultiReg simulation initialblocked/assertedlocalreset dominates stalepermit/freshadmission afterclear",
+    "Original interface manifest PASS"
+  ],
+  "scope": "Caller must prove independent asynchronous SYS reset assertion, synchronized release and admission zero through reset/fresh acknowledgements. Flag is obligation only.",
+  "limits": [
+    "Earlier reopening can differ from original status synchronizer delay",
+    "No combined integration/physical reset qualification or measured CDC change yet",
+    "No blanket reset safety claim, default changes or hardware access"
+  ],
+  "next": "Check parent reset wiring and initial-state contract in separate full integration/export; test reset/reopen and compare CDC before considering adoption",
+  "sha256": {
+    "diagnostics/drtio/master_link_local_reset.py": "f659ba36763ccda137ed7a2639374f0c5a5a744e46092eb7d1f582acf0ae8bdd",
+    "diagnostics/drtio/test_master_link_local_reset.py": "fac521783d6afe0767ef4fd8c911ce231bbd4a26b24c80d1ef8f9235cfa348ed",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/build/xilinx/common.py": "50f80a1534f5a14f2a6b20dc3897e29b515c5972e07c0886b85d0fc7baf7178b"
+  }
+}
