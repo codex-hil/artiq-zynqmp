@@ -1,0 +1,97 @@
+Acquired Dell heavy-build slot 1/3
+/usr/bin/gcc
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-csr-fifo-matrix-20261110-v1/csr_fifo_reset.v" into library work
+INFO: [VRFC 10-311] analyzing module csr_fifo_reset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-csr-fifo-matrix-20261110-v1/tb_csr_fifo_reset.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_csr_fifo_reset
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/bin/unwrapped/lnx64.o/xelab -mt off -L unisims_ver tb_csr_fifo_reset glbl -s csr_fifo_test 
+Turned off multi-threading.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+    LIBRARY_PATH
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.FDPE_default
+Compiling module work.csr_fifo_reset
+Compiling module work.tb_csr_fifo_reset
+Compiling module work.glbl
+Built simulation snapshot csr_fifo_test
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Nov 10 07:16:49 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/csr_fifo_test/xsim_script.tcl
+# xsim {csr_fifo_test} -testplusarg PHASE=0 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=0 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=0 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=0 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=0 occupancy=4
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=1 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=1 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=1 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=0 stopped=0 high=1 occupancy=4
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=0 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=0 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=0 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=0 occupancy=4
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=1 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=1 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=1 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=0 stopped=1 high=1 occupancy=4
+CSR_COMMON_RESET_FIFO_PASS phase=0 cases=16
+$finish called at time : 13906 ns : File "/srv/nvme-fast-1/vivado-work/genesys-csr-fifo-matrix-20261110-v1/tb_csr_fifo_reset.v" Line 55
+exit
+INFO: xsimkernel Simulation Memory Usage: 270148 KB (Peak: 335164 KB), Simulation CPU Usage: 1300 ms
+INFO: [Common 17-206] Exiting xsim at Tue Nov 10 07:16:52 2026...
+CSR_COMMON_RESET_FIFO_PASS phase=0 cases=16
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Nov 10 07:16:54 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/csr_fifo_test/xsim_script.tcl
+# xsim {csr_fifo_test} -testplusarg PHASE=2 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=0 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=0 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=0 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=0 occupancy=4
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=1 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=1 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=1 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=2 stopped=0 high=1 occupancy=4
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=0 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=0 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=0 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=0 occupancy=4
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=1 occupancy=1
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=1 occupancy=2
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=1 occupancy=3
+FIFO_MATRIX_CASE_PASS phase=2 stopped=1 high=1 occupancy=4
+CSR_COMMON_RESET_FIFO_PASS phase=2 cases=16
+$finish called at time : 13922 ns : File "/srv/nvme-fast-1/vivado-work/genesys-csr-fifo-matrix-20261110-v1/tb_csr_fifo_reset.v" Line 55
+exit
+INFO: xsimkernel Simulation Memory Usage: 270148 KB (Peak: 335164 KB), Simulation CPU Usage: 1280 ms
+INFO: [Common 17-206] Exiting xsim at Tue Nov 10 07:16:57 2026...
+CSR_COMMON_RESET_FIFO_PASS phase=2 cases=16

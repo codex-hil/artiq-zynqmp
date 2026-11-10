@@ -1,0 +1,216 @@
+{
+  "status": "32_SINGLE_FIFO_VENDOR_FDPE_GSR_MATRIX_CASES_PASS",
+  "job": "genesys-csr-fifo-matrix-20261110-v1",
+  "cases": [
+    [
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      4
+    ],
+    [
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      0,
+      1,
+      3
+    ],
+    [
+      0,
+      0,
+      1,
+      4
+    ],
+    [
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      0,
+      2
+    ],
+    [
+      0,
+      1,
+      0,
+      3
+    ],
+    [
+      0,
+      1,
+      0,
+      4
+    ],
+    [
+      0,
+      1,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      1,
+      3
+    ],
+    [
+      0,
+      1,
+      1,
+      4
+    ],
+    [
+      2,
+      0,
+      0,
+      1
+    ],
+    [
+      2,
+      0,
+      0,
+      2
+    ],
+    [
+      2,
+      0,
+      0,
+      3
+    ],
+    [
+      2,
+      0,
+      0,
+      4
+    ],
+    [
+      2,
+      0,
+      1,
+      1
+    ],
+    [
+      2,
+      0,
+      1,
+      2
+    ],
+    [
+      2,
+      0,
+      1,
+      3
+    ],
+    [
+      2,
+      0,
+      1,
+      4
+    ],
+    [
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      2,
+      1,
+      0,
+      2
+    ],
+    [
+      2,
+      1,
+      0,
+      3
+    ],
+    [
+      2,
+      1,
+      0,
+      4
+    ],
+    [
+      2,
+      1,
+      1,
+      1
+    ],
+    [
+      2,
+      1,
+      1,
+      2
+    ],
+    [
+      2,
+      1,
+      1,
+      3
+    ],
+    [
+      2,
+      1,
+      1,
+      4
+    ]
+  ],
+  "checks": [
+    "Async assertion with PS/TX stopped low/high",
+    "Common reset held while TX reset remains high",
+    "Stopped private reset cannot release without edges after both requests drop",
+    "Queue of 1..4 stale tokens discarded after restart",
+    "Three fresh tokens preserve exact order and single consumption with receiver backpressure"
+  ],
+  "limits": [
+    "Single 32-bit data FIFO, not five AXI channels/full master",
+    "Two deterministic phases and fixed periods8/14ns only",
+    "Digital simulation is not physical CDC/reset recovery-removal qualification; critical findings retained"
+  ],
+  "next": "Exact five-channel GenesysMasterPSCDC simulation with coordinated reset and stopped clocks, including independent AW/W and response channels",
+  "sha256": {
+    "diagnostics/drtio/role-reversal/tb_csr_fifo_reset.v": "54815f0a3723402a8f43007023f892f1f50d14cc7a1be6479064ae30e8f4ba0c",
+    "diagnostics/drtio/role-reversal/run-csr-fifo-reset-sim.sh": "f1242150cfcf9980883fd0c22517cf3e90cc9cf744fd6109b65dc5cc9367e6dc",
+    "/tmp/csr_fifo_reset.v": "56855fcc48c2d33d858673e5c4cc55a83204455e12cf6195111beffb537fd545"
+  }
+}

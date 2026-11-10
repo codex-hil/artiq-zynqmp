@@ -15,8 +15,10 @@ command -v gcc
 gcc --version | head -n 1
 xvlog csr_fifo_reset.v tb_csr_fifo_reset.v /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v
 xelab -mt off -L unisims_ver tb_csr_fifo_reset glbl -s csr_fifo_test
-xsim csr_fifo_test -runall > simulation.log 2>&1
-cat simulation.log
-! grep -E "Fatal:|Error:" simulation.log
-grep -F "CSR_COMMON_RESET_FIFO_PASS" simulation.log
+for phase in 0 2; do
+ xsim csr_fifo_test -testplusarg "PHASE=$phase" -runall > "simulation-$phase.log" 2>&1
+ cat "simulation-$phase.log"
+ ! grep -E "Fatal:|Error:" "simulation-$phase.log"
+ grep -F "CSR_COMMON_RESET_FIFO_PASS" "simulation-$phase.log"
+done
 '

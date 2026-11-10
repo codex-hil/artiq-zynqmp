@@ -1,3 +1,10 @@
+2026-11-10 single LiteX FIFO/AMD FDPE+GSR matrix32cases PASS: stoppedPS/TX
+low/high x phase0/2ns x occupancy1..4. Asyncassert/heldcommonreset/private
+release requires resumededges/stalediscard/fresh3ordered tokens with backpressure.
+Fixed8/14ns periods; not five AXI/fullmaster/physicalCDC signoff. Next actual
+GenesysMasterPSCDC five-channel stop/reset/recovery simulation. NoHW/adoption.
+Evidence genesys-master-integration-2026-11-10/csr-fifo-reset-matrix/report.json.
+
 2026-11-10 single actual LiteX common-reset FIFO/AMD FDPE+GSR sim PASS:
 stoppedPSlow/stoppedTXlow async assertion, held TX reset retains both private
 resets; stale token discarded, fresh32-bit exact/consumed once after restart.
