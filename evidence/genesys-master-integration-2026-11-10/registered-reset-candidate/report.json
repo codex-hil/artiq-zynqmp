@@ -1,0 +1,27 @@
+{
+  "status": "SEPARATE_REGISTERED_RESET_STATUS_CANDIDATE_MODEL_AND_FIVE_DOMAIN_PRIMITIVE_SIM_PASS_NOT_ADOPTED",
+  "job": "genesys-registered-reset-five-sim-20261110-v1",
+  "delta": "Three control-domain outputregisters resetINIT1/admitINIT0/abandonmentreadyINIT0; commands source registeredstatuses, releases source registeredreset; coordinatorinputs remain aliases",
+  "latency": "One added control edge before reset/status reaches otherdomains; level-held command acknowledgement required, no shortpulse guarantee",
+  "checks": [
+    "Host model outputregisters change only aftercontrol sampling; resetdominatesadmit, resetqualifiesabandonmentready",
+    "ExactXilinx lowering+AMD FDPE/GSR five-domain simulation with TX/RX stopped",
+    "Maskready clears whileclocksstopped; staleabandonment refused",
+    "PSthenTX alone cannotadmit; RXrestart requires >=6edges beforeallfresh/open"
+  ],
+  "limits": [
+    "Simulation only, CDC-10 improvement not yet measured",
+    "Testexport flag only, originaldefaults/productionclasses unchanged",
+    "No physicalCDC/reset/metastability/recoveryremoval/timing qualification",
+    "Added latency not yet tested through fullHPM/firmwarepoll budgets"
+  ],
+  "next": "Synthesize registered candidate with exact same reset-only Tcl and testclocks, compare CDC report/endpoints against original and masked baselines; no timingexceptions",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_reset_registered.py": "93910c495937767ff8e1af97531e43297697c6f084f78400007de4d4c484cf8b",
+    "diagnostics/drtio/test_aux_reset_registered.py": "117c08761c4579cfe0ba28c3cf725ff08e3b002d0d6ce13c1ff9611b621ae8f8",
+    "diagnostics/drtio/role-reversal/export-reset-five-domains.py": "3454b4629e658f3944a07a72aef68a5e61ab2246d530b3b4d560c158f8ca9076",
+    "diagnostics/drtio/role-reversal/tb_reset_five_domains.v": "8e529a926290c7080adf50d1e1cd39fa457d71f4e8b5f7c718a4e625fe171a6e"
+  },
+  "rtl_sha256": "bc6f1e8981281d5578a1d146f9bcf6113e1406718a70951789acf73cd9ae1833"
+}

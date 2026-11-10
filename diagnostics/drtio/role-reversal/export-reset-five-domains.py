@@ -20,12 +20,16 @@ for name in ('management','control')+domains:
 m.submodules.coordinator=c=ClockDomainsRenamer('control')(AuxResetControl(5))
 release_type=AuxResetDomains if '--original' in sys.argv else AuxResetDomainsMasked
 m.submodules.releases=r=release_type(domains,control='control')
-m.submodules.commands=h=AuxResetCommands(c)
-m.comb += [r.request.eq(c.reset),c.domain_ready.eq(r.ready)]
+if '--registered-outputs' in sys.argv:
+ from aux_reset_registered import AuxResetRegistered
+ m.submodules.registered=external=AuxResetRegistered(c)
+else:external=c
+m.submodules.commands=h=AuxResetCommands(external)
+m.comb += [r.request.eq(external.reset),c.domain_ready.eq(r.ready)]
 for i,name in enumerate(domains):m.comb+=getattr(m,'cd_'+name).rst.eq(r.reset_out[i])
 for name,signal in {'request':h.request,'abandoned':h.abandoned,'admit':h.admit,
  'abandon_ready':h.abandonment_ready,'reset_status':h.reset_status,
- 'domain_ready':r.ready,'target_reset':r.reset_out,'coordinator_reset':c.reset}.items():
+ 'domain_ready':r.ready,'target_reset':r.reset_out,'coordinator_reset':external.reset}.items():
  signal.name_override=name;ios.add(signal)
 verilog.convert(m,ios=ios,name='reset_five_domains',special_overrides=xilinx_special_overrides).write(sys.argv[1])
 p=Path(sys.argv[1]);p.write_text('`timescale 1ns/1ps\n'+p.read_text())

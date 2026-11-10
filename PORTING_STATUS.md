@@ -1,3 +1,11 @@
+2026-11-10 separateRegisteredReset/status candidate host+5domainFDPE/GSR sim
+PASS.3controlFF resetINIT1/admit0/abandonready0, oneaddedcontrolcycle; commands
+readregisteredstatus/releasesuseregisteredreset, level-heldrequestrequired.
+StoppedTX/RX maskclear, PS/TXaloneblocked, RX>=6fresh edgesalladmit. Default/
+productionunchanged/notadopted, CDCimprovementUNMEASURED/fullHPMbudgetOPEN. Next
+samesynthTcl/clocks CDCcomparison/noexceptions. NoHW;hold. Evidence
+genesys-master-integration-2026-11-10/registered-reset-candidate/report.json.
+
 2026-11-10 readonlybothDCPfanincapturePASS/preposthashsame. LocalLUTtruthaudit
 8criticalcones equal allQcutpointassignments(up to256); admitincludesall5readybits/
 FSM/request, representative source difference explained notglobalLEC.5firstFDRE
