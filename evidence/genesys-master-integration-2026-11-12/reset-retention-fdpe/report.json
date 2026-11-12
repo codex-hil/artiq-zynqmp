@@ -1,0 +1,41 @@
+{
+  "status": "ISOLATED_CONTROL_RESET_RETENTION_VENDOR_FDPE_FOUR_CASES_PASS_NOT_ADOPTED",
+  "job": "genesys-local-reset-retained-20261112-v1",
+  "attempt": 3,
+  "exit_code": 0,
+  "prior_attempts": "Both exit75 slot contention, no simulation; retained in candidate evidence",
+  "cases": [
+    {
+      "control_stopped_high": 0,
+      "tx_stopped": 0
+    },
+    {
+      "control_stopped_high": 0,
+      "tx_stopped": 1
+    },
+    {
+      "control_stopped_high": 1,
+      "tx_stopped": 0
+    },
+    {
+      "control_stopped_high": 1,
+      "tx_stopped": 1
+    }
+  ],
+  "checks": [
+    "Original SYS stop asynchronous assertion/masked ready/fresh return case remains PASS",
+    "After external reset release with control stopped all five target reset bits stay asserted and allowed0",
+    "After control clock returns registered coordinator reset takes ownership, no stale ready",
+    "Fresh explicit reset and low/high abandonment handshake required before reopening",
+    "Stopped TX remains blocked until resumed edges; all domain-ready bits31 on opening",
+    "Staged RTL/bench/runner hashes match local reviewed sources"
+  ],
+  "scope": "Isolated actual reset coordination/grouping/registered admission/local boundary with AMD FDPE/glbl and original XilinxMultiReg; health conditions fixed, not full PS/GT/AXI runtime",
+  "limits": [
+    "Four deterministic clock-stop cases, no phase/frequency/reset-skew sweep",
+    "Does not qualify physical recovery/removal, metastability, GT restart or requester state",
+    "Separate candidate only; full integration/export CDC delta still pending",
+    "No hardware access/default configuration change/runtime capability"
+  ],
+  "next": "Scoped retained release-group substitution in full combined integration/export; preserve original defaults, test managed reset/fault recovery before full CDC comparison"
+}

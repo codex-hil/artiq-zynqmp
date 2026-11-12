@@ -1,3 +1,12 @@
+2026-11-12 reset-retention vendorFDPE4cases PASS after Dellslotfree attempt3:
+controlstoplow/high x TXrunning/stopped, externalassert/deassert holdsall5reset/
+allowed0; controlreturn coordinatorownsreset/ready0, freshreset/abandonhandshake
+andTXreturn required for ready31/open. Earlier SYSstop case alsoPASS. Staged
+RTL/bench/runner SHA match. Isolatedfixture only, notfullPS/GT/physicalCDC
+qualification/adoption. Next scoped fullintegration/export retainedreleasegroup
+substitution and reset/fault tests beforeCDCdelta. NoHW/defaultchange. Evidence
+genesys-master-integration-2026-11-12/reset-retention-fdpe/report.json.
+
 2026-11-12 separate reset-retention candidate prepared: release request OR
 synchronizedcontrolreset. Defaultfixtureexport byteidentical; narrowtext audit
 oneOR+10renames only, two mutants REFUSED. Bench staged on Dell covers control

@@ -1,0 +1,23 @@
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Nov 12 19:57:46 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/retained_test/xsim_script.tcl
+# xsim {retained_test} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+LOCAL_PARENT_SYS_STOP_PASS
+RESET_RETENTION_CASE_PASS control_high=0 tx_stopped=0
+RESET_RETENTION_CASE_PASS control_high=0 tx_stopped=1
+RESET_RETENTION_CASE_PASS control_high=1 tx_stopped=0
+RESET_RETENTION_CASE_PASS control_high=1 tx_stopped=1
+LOCAL_PARENT_RESET_RETENTION_PASS
+$finish called at time : 3055 ns : File "/srv/nvme-fast-1/vivado-work/genesys-local-reset-retained-20261112-v1/tb_local_reset_retained.v" Line 48
+exit
+INFO: xsimkernel Simulation Memory Usage: 270168 KB (Peak: 335184 KB), Simulation CPU Usage: 1300 ms
+INFO: [Common 17-206] Exiting xsim at Thu Nov 12 19:57:50 2026...
