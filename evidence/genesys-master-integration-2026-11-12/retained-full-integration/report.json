@@ -1,0 +1,23 @@
+{
+  "status": "SEPARATE_RETAINED_RELEASE_GROUP_FULL_CORE_AND_HPM_TESTS_PASS_NOT_ADOPTED",
+  "tests": 2,
+  "seconds": 35.582,
+  "checks": [
+    "Two actual PS HPM adapter reset episodes: identity read and CSR length writes/readback12 then68",
+    "Full core+codec/link registered local-reset boundary at SYS phases0/3: injected progress and shape faults, management reset, fresh abandonment and reopen",
+    "Six observed allowed rising transitions only with ready31/rawadmit1/SYSreset0; sampled local reset always blocks",
+    "Original interface manifest PASS"
+  ],
+  "scope": "Scoped test replacement of grouped release class by retained wrapper; all common TX/reset confirmation checks delegated to original grouped candidate",
+  "limits": [
+    "FunctionalReset plus exact XilinxMultiReg; stopped-control FDPE proof remains separate isolated fixture",
+    "No combined vendor RTL export/synthesis CDC comparison yet",
+    "No physical reset timing/GT recovery/ABI latency qualification or adoption",
+    "Default classes and hardware unchanged"
+  ],
+  "next": "Separate combined full physical export including retained release group and registered local-reset boundary; audit wiring/default preservation before Dell synthesis CDC delta",
+  "sha256": {
+    "diagnostics/drtio/aux_reset_domains_retained.py": "f9f003e8336d07af1569f518184900dbb69497fe57ef2f49dc7c2650e83a5aaa",
+    "diagnostics/drtio/test_retained_reset_integration.py": "823aa8f435a86d5fcde1200777f8ff77c0c67ae0e4778f2332a32bd526da0784"
+  }
+}

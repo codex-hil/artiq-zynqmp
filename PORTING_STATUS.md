@@ -1,3 +1,12 @@
+2026-11-12 retainedrelease wrapper fullintegration2tests PASS35.582s:
+actualHPMadapters resetepisodes CSR12/68 plus core/codec/link2phases0/3
+progress/shapefault injection/HPM1reset/freshabandonreopen. Sixfreshopenings
+ready31/rawadmit1/SYSreset0; sampledresetblocks. ExactMultiReg/FunctionalReset,
+isolatedFDPEclockstop evidence separate. No combinedfullRTL/CDCdelta yet or
+physicalqualification/adoption/HW. Next separate fullphysicalexport retained
+release+registeredlocalboundary, wiring audit thenDellCDC. Evidence
+genesys-master-integration-2026-11-12/retained-full-integration/report.json.
+
 2026-11-12 reset-retention vendorFDPE4cases PASS after Dellslotfree attempt3:
 controlstoplow/high x TXrunning/stopped, externalassert/deassert holdsall5reset/
 allowed0; controlreturn coordinatorownsreset/ready0, freshreset/abandonhandshake

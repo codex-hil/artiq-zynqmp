@@ -1,0 +1,11 @@
+test_hpm_adapters_two_reset_episodes_exact_multireg (test_retained_reset_integration.RetainedIntegrationTests.test_hpm_adapters_two_reset_episodes_exact_multireg) ... /srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+ok
+test_two_core_link_phases_fault_reset_reopen (test_retained_reset_integration.RetainedIntegrationTests.test_two_core_link_phases_fault_reset_reopen) ... RETAINED_FULL_CORE_PASS phase 0 fresh_openings 3
+RETAINED_FULL_CORE_PASS phase 3 fresh_openings 3
+ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 35.582s
+
+OK
