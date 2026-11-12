@@ -22,7 +22,12 @@ m.specials+=AsyncResetSynchronizer(m.cd_control,~pl_resetn)
 m.submodules.coordinator=c=ClockDomainsRenamer('control')(AuxResetControl(5))
 m.submodules.registered=o=AuxResetRegistered(c)
 m.submodules.releases=r=AuxResetDomainsGrouped(shared_tx_clock_confirmed=True,shared_reset_policy_confirmed=True)
-m.comb += [r.request.eq(o.reset),c.domain_ready.eq(r.ready)]
+if '--retain-control-reset' in sys.argv:
+ from aux_reset_retention import AuxResetRetention
+ m.submodules.retention=hold=AuxResetRetention(o.reset,m.cd_control.rst)
+ release_request=hold.request
+else:release_request=o.reset
+m.comb += [r.request.eq(release_request),c.domain_ready.eq(r.ready)]
 for i,name in enumerate(('ps','sys','rtio_rx','rio','rio_phy')):
  m.comb+=getattr(m,'cd_'+name).rst.eq(r.reset_out[i] | ~pl_resetn)
 m.submodules.sample=s=MasterAdmissionRegistered(o.admit,o.reset)

@@ -1,0 +1,10 @@
+{
+  "status": "NARROW_RETENTION_RTL_DELTA_PASS_TWO_MUTANTS_REFUSED",
+  "delta": "Release request gains OR synchronized control reset; ten explicitly listed names change; all other RTL byte identical after normalization",
+  "baseline_sha256": "06501e644b7604b3dde19a8dd3c3caaa178790b9ef124237dc7d5fa09b3d2a10",
+  "candidate_sha256": "acdf6d58d07a97b931577abb1ea94d56f69fad9c9145025cac359ef128dc3b43",
+  "limits": [
+    "Text correspondence not sequential/physical equivalence",
+    "Vendor FDPE stopped-control retention/restart simulation pending"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "SEPARATE_RETENTION_CANDIDATE_RTL_AUDIT_PASS_VENDOR_SIM_PENDING_SLOT_BUSY",
+  "job": "genesys-local-reset-retained-20261112-v1",
+  "changes": [
+    "Release request OR synchronized control-domain reset; original registered coordinator/admission and target reset policy otherwise unchanged",
+    "Explicit opt-in exporter flag; default export remains byte-identical",
+    "New vendor bench covers stopped control low/high and TX running/stopped, handover to coordinator reset, fresh abandonment and restart"
+  ],
+  "validation": "Narrow RTL normalization: one OR functional change, ten names, all other text identical; two mutants refused",
+  "blocker": "Dell shared build-slot launcher exit75 on both attempts; no simulation launched, other owners untouched",
+  "limits": [
+    "Prior conditional reopening counterexample remains unresolved until vendor simulation passes",
+    "No new physical/CDC/latency qualification or adoption",
+    "No hardware access/default integration change"
+  ],
+  "next": "Retry existing staged vendor simulation after Dell slot frees, inspect reset ownership handover and fresh restart; retain raw failure if any"
+}

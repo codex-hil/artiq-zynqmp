@@ -1,3 +1,12 @@
+2026-11-12 separate reset-retention candidate prepared: release request OR
+synchronizedcontrolreset. Defaultfixtureexport byteidentical; narrowtext audit
+oneOR+10renames only, two mutants REFUSED. Bench staged on Dell covers control
+stoplow/high x TXrunning/stopped, coordinator handover/freshabandon/restart.
+Vendor simulation NOT_RUN: sharedslots busy exit75 twice; no owner preemption.
+Prior reopening counterexample remains unresolved/notadopted. Next retry staged
+job genesys-local-reset-retained-20261112-v1. NoHW/defaultintegrationchange.
+Evidence genesys-master-integration-2026-11-12/reset-retention-candidate/report.json.
+
 2026-11-12 vendorFDPE parentreset fixture: SYSstoplow asyncassert/maskedready/
 freshrestart PASS, BUT conditional control-stop externalreset reopening reproduced.
 AfterOPEN/PLstop/extresetassert/deassert whilePLstopped: controlreset1 but
