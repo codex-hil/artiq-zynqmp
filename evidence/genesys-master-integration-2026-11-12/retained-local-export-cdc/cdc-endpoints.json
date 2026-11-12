@@ -1,0 +1,1625 @@
+{
+  "status": "EMITTED_RTL_NAMES_ONLY_NOT_NETLIST_TIMING_ENDPOINTS",
+  "multiregs": [
+    {
+      "bits": 1,
+      "destination": "rtio_rx",
+      "input_signals": [
+        "genesysmasterintegration_link_layer_rx_up_r"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_link_layer_rx_up_rx"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl00",
+        "xilinxmultiregimpl01"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_link_layer_rx_up_r"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_link_layer_rx_up_status"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl10",
+        "xilinxmultiregimpl11"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "rtio_rx",
+      "input_signals": [
+        "genesysmasterintegration_link_layer_rx_disable_storage"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_link_layer_rx_disable_rx"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl20",
+        "xilinxmultiregimpl21"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 64,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_graycounter0_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_graydecoder0_i"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl30",
+        "xilinxmultiregimpl31"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 64,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_graycounter1_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_graydecoder1_i"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl40",
+        "xilinxmultiregimpl41"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 64,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_graycounter2_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_graydecoder2_i"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl50",
+        "xilinxmultiregimpl51"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 64,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_graycounter3_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_graydecoder3_i"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl60",
+        "xilinxmultiregimpl61"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_rt_packet_crossdomainnotification0_toggle_i"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_rt_packet_crossdomainnotification0_toggle_o"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl70",
+        "xilinxmultiregimpl71"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_rt_packet_crossdomainnotification1_toggle_i"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_rt_packet_crossdomainnotification1_toggle_o"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl80",
+        "xilinxmultiregimpl81"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_rt_packet_err_unknown_packet_type_ps_toggle_i"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_rt_packet_err_unknown_packet_type_ps_toggle_o"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl90",
+        "xilinxmultiregimpl91"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "rtio_rx",
+      "input_signals": [
+        "genesysmasterintegration_rt_packet_err_unknown_packet_type_ps_ack_toggle_i"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_rt_packet_err_unknown_packet_type_ps_ack_toggle_o"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl100",
+        "xilinxmultiregimpl101"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_rt_packet_err_packet_truncated_ps_toggle_i"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_rt_packet_err_packet_truncated_ps_toggle_o"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl110",
+        "xilinxmultiregimpl111"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "rtio_rx",
+      "input_signals": [
+        "genesysmasterintegration_rt_packet_err_packet_truncated_ps_ack_toggle_i"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_rt_packet_err_packet_truncated_ps_ack_toggle_o"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl120",
+        "xilinxmultiregimpl121"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 32,
+      "destination": "rtio_rx",
+      "input_signals": [
+        "genesysmasterintegration_rt_packet_graycodetransfer_value_gray_rtio"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_rt_packet_graycodetransfer_value_gray_sys"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl130",
+        "xilinxmultiregimpl131"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "rio",
+      "input_signals": [
+        "genesysmasterintegration_local_sed_spread_enable"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_local_lane_dist_enable_spread"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl140",
+        "xilinxmultiregimpl141"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_aux_receiver_write_position_gray"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_aux_receiver_write_position_gray_remote"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl150",
+        "xilinxmultiregimpl151"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "rtio_rx",
+      "input_signals": [
+        "genesysmasterintegration_aux_receiver_read_position_gray"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_aux_receiver_read_position_gray_remote"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl160",
+        "xilinxmultiregimpl161"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_aux_receiver_toggle_i"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_aux_receiver_toggle_o"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl170",
+        "xilinxmultiregimpl171"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "to6749",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter0_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing0_cdc_produce_rdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl180",
+        "xilinxmultiregimpl181"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "from6749",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter1_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing0_cdc_consume_wdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl190",
+        "xilinxmultiregimpl191"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "to6912",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter2_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing1_cdc_produce_rdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl200",
+        "xilinxmultiregimpl201"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "from6912",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter3_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing1_cdc_consume_wdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl210",
+        "xilinxmultiregimpl211"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "to7075",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter4_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing2_cdc_produce_rdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl220",
+        "xilinxmultiregimpl221"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "from7075",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter5_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing2_cdc_consume_wdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl230",
+        "xilinxmultiregimpl231"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "to7226",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter6_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing3_cdc_produce_rdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl240",
+        "xilinxmultiregimpl241"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "from7226",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter7_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing3_cdc_consume_wdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl250",
+        "xilinxmultiregimpl251"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "to7389",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter8_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing4_cdc_produce_rdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl260",
+        "xilinxmultiregimpl261"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 3,
+      "destination": "from7389",
+      "input_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter9_q"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_csr_clockdomaincrossing4_cdc_consume_wdomain"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl270",
+        "xilinxmultiregimpl271"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "aux_release_ps_rst",
+        "genesysmasterintegration_ingress_releases_groups_local_ready0"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_releases_groups_ready1"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl28_xilinxmultiregimpl280",
+        "xilinxmultiregimpl28_xilinxmultiregimpl281"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "aux_release_sys_rst",
+        "genesysmasterintegration_ingress_releases_groups_local_ready1"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_releases_groups_ready1"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl29_xilinxmultiregimpl290",
+        "xilinxmultiregimpl29_xilinxmultiregimpl291"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "aux_release_rtio_rx_rst",
+        "genesysmasterintegration_ingress_releases_groups_local_ready2"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_releases_groups_ready1"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl30_xilinxmultiregimpl300",
+        "xilinxmultiregimpl30_xilinxmultiregimpl301"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "genesysmasterintegration_ingress_management_request"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_raw_request"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl310",
+        "xilinxmultiregimpl311"
+      ],
+      "requested_reset": 1,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "genesysmasterintegration_ingress_management_abandoned"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_raw_requester_abandoned"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl320",
+        "xilinxmultiregimpl321"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "management",
+      "input_signals": [
+        "genesysmasterintegration_ingress_outputs_reset"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_management_reset_status"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl330",
+        "xilinxmultiregimpl331"
+      ],
+      "requested_reset": 1,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "management",
+      "input_signals": [
+        "genesysmasterintegration_ingress_outputs_abandonment_ready"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_management_abandonment_ready"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl340",
+        "xilinxmultiregimpl341"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "management",
+      "input_signals": [
+        "genesysmasterintegration_ingress_outputs_admit"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_management_admit"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl350",
+        "xilinxmultiregimpl351"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "management",
+      "input_signals": [
+        "genesysmasterintegration1"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_management_fault_status"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl360",
+        "xilinxmultiregimpl361"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "ps",
+      "input_signals": [
+        "genesysmasterintegration_ingress_outputs_admit"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_ingress_admitted"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl370",
+        "xilinxmultiregimpl371"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "rtio_rx",
+      "input_signals": [
+        "genesysmasterintegration_progress_request"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_progress_request_rx"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl380",
+        "xilinxmultiregimpl381"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "genesysmasterintegration_progress_response"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_progress_response_control"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl390",
+        "xilinxmultiregimpl391"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "ps",
+      "input_signals": [
+        "genesysmasterintegration_progress_allowed"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_qualified_ps"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl400",
+        "xilinxmultiregimpl401"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "control",
+      "input_signals": [
+        "genesysmasterintegration_masteraxishapeguard_fault"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_fault_control"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl410",
+        "xilinxmultiregimpl411"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "genesysmasterintegration_sample_allowed"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_boundary_permit"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl420",
+        "xilinxmultiregimpl421"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "mastergthadapter4"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_boundary_reset_done"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl430",
+        "xilinxmultiregimpl431"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "mastergthadapter8"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_boundary_clock_active"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl440",
+        "xilinxmultiregimpl441"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    },
+    {
+      "bits": 1,
+      "destination": "sys",
+      "input_signals": [
+        "mastergthadapter_aligned"
+      ],
+      "output_signals": [
+        "genesysmasterintegration_boundary_aligned"
+      ],
+      "stage_registers": [
+        "xilinxmultiregimpl450",
+        "xilinxmultiregimpl451"
+      ],
+      "requested_reset": 0,
+      "lowered_register_reset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "clock_aliases": {
+    "gt_align": [
+      "gt_align_clk",
+      "mastergthadapter_rx_clock"
+    ],
+    "management": [
+      "management_clk",
+      "pl_clk0"
+    ],
+    "control": [
+      "control_clk",
+      "pl_clk0"
+    ],
+    "ps": [
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "sys": [
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "rtio_rx": [
+      "rtio_rx_clk",
+      "mastergthadapter_rx_clock"
+    ],
+    "rio": [
+      "rio_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "rio_phy": [
+      "rio_phy_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "from6749": [
+      "from6749_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "to6749": [
+      "to6749_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "from6912": [
+      "from6912_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "to6912": [
+      "to6912_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "from7075": [
+      "from7075_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "to7075": [
+      "to7075_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "from7226": [
+      "from7226_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "to7226": [
+      "to7226_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "from7389": [
+      "from7389_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "to7389": [
+      "to7389_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "aux_release_ps": [
+      "aux_release_ps_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "aux_release_sys": [
+      "aux_release_sys_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "aux_release_rtio_rx": [
+      "aux_release_rtio_rx_clk",
+      "rtio_rx_clk",
+      "mastergthadapter_rx_clock"
+    ]
+  },
+  "limits": [
+    "No get_cells/get_pins post-synthesis binding",
+    "No reset polarity/initialization waiver",
+    "No constraints generated"
+  ],
+  "reset_synchronizers": [
+    {
+      "domain": "gt_align",
+      "clock_alias_chain": [
+        "gt_align_clk",
+        "mastergthadapter_rx_clock"
+      ],
+      "asynchronous_assert_expression": "(((request | (~mastergthadapter6)) | (~mastergthadapter4)) | (~mastergthadapter8))",
+      "reset_output": "gt_align_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "gt_align_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "xilinxasyncresetsynchronizerimpl0_async_reset",
+            "Q": "xilinxasyncresetsynchronizerimpl0_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_1",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "gt_align_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl0_rst_meta",
+            "PRE": "xilinxasyncresetsynchronizerimpl0_async_reset",
+            "Q": "gt_align_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "management",
+      "clock_alias_chain": [
+        "management_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "(~pl_resetn0)",
+      "reset_output": "management_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_2",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "management_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "xilinxasyncresetsynchronizerimpl1_async_reset",
+            "Q": "xilinxasyncresetsynchronizerimpl1_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_3",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "management_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl1_rst_meta",
+            "PRE": "xilinxasyncresetsynchronizerimpl1_async_reset",
+            "Q": "management_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "control",
+      "clock_alias_chain": [
+        "control_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "(~pl_resetn0)",
+      "reset_output": "control_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_4",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "control_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "xilinxasyncresetsynchronizerimpl2_async_reset",
+            "Q": "xilinxasyncresetsynchronizerimpl2_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_5",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "control_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl2_rst_meta",
+            "PRE": "xilinxasyncresetsynchronizerimpl2_async_reset",
+            "Q": "control_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "from6749",
+      "clock_alias_chain": [
+        "from6749_clk",
+        "ps_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+      "reset_output": "from6749_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_6",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from6749_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl3_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_7",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from6749_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl3_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+            "Q": "from6749_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "to6749",
+      "clock_alias_chain": [
+        "to6749_clk",
+        "sys_clk",
+        "mastergthadapter_tx_clock"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+      "reset_output": "to6749_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_8",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to6749_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl4_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_9",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to6749_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl4_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+            "Q": "to6749_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "from6912",
+      "clock_alias_chain": [
+        "from6912_clk",
+        "ps_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+      "reset_output": "from6912_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_10",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from6912_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl5_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_11",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from6912_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl5_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+            "Q": "from6912_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "to6912",
+      "clock_alias_chain": [
+        "to6912_clk",
+        "sys_clk",
+        "mastergthadapter_tx_clock"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+      "reset_output": "to6912_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_12",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to6912_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl6_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_13",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to6912_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl6_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+            "Q": "to6912_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "from7075",
+      "clock_alias_chain": [
+        "from7075_clk",
+        "sys_clk",
+        "mastergthadapter_tx_clock"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+      "reset_output": "from7075_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_14",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from7075_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl7_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_15",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from7075_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl7_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+            "Q": "from7075_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "to7075",
+      "clock_alias_chain": [
+        "to7075_clk",
+        "ps_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+      "reset_output": "to7075_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_16",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to7075_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl8_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_17",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to7075_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl8_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+            "Q": "to7075_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "from7226",
+      "clock_alias_chain": [
+        "from7226_clk",
+        "ps_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+      "reset_output": "from7226_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_18",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from7226_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl9_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_19",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from7226_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl9_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+            "Q": "from7226_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "to7226",
+      "clock_alias_chain": [
+        "to7226_clk",
+        "sys_clk",
+        "mastergthadapter_tx_clock"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+      "reset_output": "to7226_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_20",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to7226_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl10_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_21",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to7226_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl10_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+            "Q": "to7226_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "from7389",
+      "clock_alias_chain": [
+        "from7389_clk",
+        "sys_clk",
+        "mastergthadapter_tx_clock"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+      "reset_output": "from7389_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_22",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from7389_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl11_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_23",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "from7389_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl11_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+            "Q": "from7389_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "to7389",
+      "clock_alias_chain": [
+        "to7389_clk",
+        "ps_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+      "reset_output": "to7389_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_24",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to7389_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+            "Q": "xilinxasyncresetsynchronizerimpl12_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_25",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "to7389_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl12_rst_meta",
+            "PRE": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+            "Q": "to7389_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "aux_release_ps",
+      "clock_alias_chain": [
+        "aux_release_ps_clk",
+        "ps_clk",
+        "pl_clk0"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+      "reset_output": "aux_release_ps_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_26",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "aux_release_ps_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_ingress_releases_groups_request1",
+            "Q": "xilinxasyncresetsynchronizerimpl13_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_27",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "aux_release_ps_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl13_rst_meta",
+            "PRE": "genesysmasterintegration_ingress_releases_groups_request1",
+            "Q": "aux_release_ps_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "aux_release_sys",
+      "clock_alias_chain": [
+        "aux_release_sys_clk",
+        "sys_clk",
+        "mastergthadapter_tx_clock"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+      "reset_output": "aux_release_sys_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_28",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "aux_release_sys_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_ingress_releases_groups_request1",
+            "Q": "xilinxasyncresetsynchronizerimpl14_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_29",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "aux_release_sys_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl14_rst_meta",
+            "PRE": "genesysmasterintegration_ingress_releases_groups_request1",
+            "Q": "aux_release_sys_rst"
+          }
+        }
+      ]
+    },
+    {
+      "domain": "aux_release_rtio_rx",
+      "clock_alias_chain": [
+        "aux_release_rtio_rx_clk",
+        "rtio_rx_clk",
+        "mastergthadapter_rx_clock"
+      ],
+      "asynchronous_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+      "reset_output": "aux_release_rtio_rx_rst",
+      "cells": [
+        {
+          "rtl_instance": "FDPE_30",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "aux_release_rtio_rx_clk",
+            "CE": "1'd1",
+            "D": "1'd0",
+            "PRE": "genesysmasterintegration_ingress_releases_groups_request1",
+            "Q": "xilinxasyncresetsynchronizerimpl15_rst_meta"
+          }
+        },
+        {
+          "rtl_instance": "FDPE_31",
+          "primitive": "FDPE",
+          "parameters": {
+            "INIT": 1
+          },
+          "pins": {
+            "C": "aux_release_rtio_rx_clk",
+            "CE": "1'd1",
+            "D": "xilinxasyncresetsynchronizerimpl15_rst_meta",
+            "PRE": "genesysmasterintegration_ingress_releases_groups_request1",
+            "Q": "aux_release_rtio_rx_rst"
+          }
+        }
+      ]
+    }
+  ]
+}

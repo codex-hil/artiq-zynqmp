@@ -1,0 +1,18 @@
+{
+  "status": "EMITTED_WIRING_AUDIT_PASS_NOT_NETLIST_OR_PHYSICAL_PROOF",
+  "retention_assignment": [
+    [
+      "genesysmasterintegration_ingress_releases_retention_request",
+      "genesysmasterintegration_ingress_releases_request"
+    ]
+  ],
+  "three_release_assertions_resolve_to_retention": true,
+  "registered_sys_admission": true,
+  "duplicate_sys_reset_status_multireg_absent": true,
+  "six_memory_inits_same": true,
+  "limits": [
+    "Generated alias/name correspondence only",
+    "Earlier reopening and added control-cycle limits retained",
+    "Vendor isolated clock-stop and full FunctionalReset tests remain separate evidence"
+  ]
+}

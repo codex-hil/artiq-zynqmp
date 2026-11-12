@@ -1,0 +1,111 @@
+{
+  "status": "SEPARATE_RETAINED_LOCAL_FULL_SYNTH_COMPLETE_CDC_TRADEOFF_NOT_QUALIFIED",
+  "job": "genesys-retained-local-cdc-20261112-v1",
+  "baseline": {
+    "CDC-1": [
+      "Critical",
+      138
+    ],
+    "CDC-3": [
+      "Info",
+      28
+    ],
+    "CDC-6": [
+      "Warning",
+      16
+    ],
+    "CDC-9": [
+      "Info",
+      3
+    ],
+    "CDC-10": [
+      "Critical",
+      11
+    ],
+    "CDC-11": [
+      "Critical",
+      4
+    ],
+    "CDC-13": [
+      "Critical",
+      2572
+    ],
+    "CDC-15": [
+      "Warning",
+      163
+    ]
+  },
+  "candidate": {
+    "CDC-1": [
+      "Critical",
+      138
+    ],
+    "CDC-3": [
+      "Info",
+      28
+    ],
+    "CDC-6": [
+      "Warning",
+      16
+    ],
+    "CDC-9": [
+      "Info",
+      2
+    ],
+    "CDC-10": [
+      "Critical",
+      13
+    ],
+    "CDC-11": [
+      "Critical",
+      2
+    ],
+    "CDC-13": [
+      "Critical",
+      2572
+    ],
+    "CDC-15": [
+      "Warning",
+      163
+    ]
+  },
+  "delta": "CDC11 4->2 (two remaining vendor GT); CDC10 11->13; CDC9 3->2; other counts unchanged",
+  "remaining_cdc11": [
+    {
+      "row": 11,
+      "id": "CDC-11",
+      "severity": "Critical",
+      "description": "Fan-out from launch flop to destination clock",
+      "depth": 5,
+      "exception": "None",
+      "source": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/U_TXOUTCLK_FREQ_COUNTER/state_reg[0]/C",
+      "destination": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/U_TXOUTCLK_FREQ_COUNTER/reset_synchronizer_testclk_rst_inst/rst_in_meta_reg/PRE",
+      "source_clock": "diagnostic_pl_clk0",
+      "destination_clock": "txoutclk_out[0]"
+    },
+    {
+      "row": 13,
+      "id": "CDC-11",
+      "severity": "Critical",
+      "description": "Fan-out from launch flop to destination clock",
+      "depth": 2,
+      "exception": "None",
+      "source": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/U_TXOUTCLK_FREQ_COUNTER/state_reg[0]/C",
+      "destination": "drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/U_TXOUTCLK_FREQ_COUNTER/tstclk_rst_dly1_reg/D",
+      "source_clock": "diagnostic_pl_clk0",
+      "destination_clock": "txoutclk_out[0]"
+    }
+  ],
+  "findings": [
+    "Duplicate SYS reset-request status synchronizer absent",
+    "New retention OR before target reset synchronizers creates CDC10 findings; no waiver",
+    "Same Tcl/vendor IP/diagnostic clocks and six memory-init hashes; no timing exceptions"
+  ],
+  "limits": [
+    "Several candidate changes combined: retention OR plus local-reset boundary, not single-change causal equivalence",
+    "Clock-stop FDPE and full running-clock integration results are separate evidence",
+    "Physical timing/GT startup, I/O delays and all other full CDC critical findings remain open",
+    "No hardware/default changes or deployment capability"
+  ],
+  "next": "Read-only DCP capture of new retained-request CDC10 PRE fanins; audit LUT function and reset-ownership handover before considering topology changes"
+}

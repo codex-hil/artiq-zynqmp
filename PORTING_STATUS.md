@@ -1,3 +1,12 @@
+2026-11-12 retainedrelease+registeredlocalboundary separatefullRTL export/
+synth COMPLETE. SameTcl/GT/clocks/init6/noexceptions, no blackboxes. Versus
+registeredadmissionbaseline CDC11 4->2 (remainingvendorGT), CDC10 11->13,
+CDC9 3->2, otherssame. RetentionOR adds targetreset CDC10; notCDCclean/notwaived.
+Emittedwiring audit3releaseassertions resolveORcontrolreset, duplicateSYSreset
+statusabsent. NoHW/defaultadoption/physicalqualification. Next readonlynewDCP
+retentionPREfanin/LUT/handover audit. Evidence
+genesys-master-integration-2026-11-12/retained-local-export-cdc/report.json.
+
 2026-11-12 retainedrelease wrapper fullintegration2tests PASS35.582s:
 actualHPMadapters resetepisodes CSR12/68 plus core/codec/link2phases0/3
 progress/shapefault injection/HPM1reset/freshabandonreopen. Sixfreshopenings
