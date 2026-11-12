@@ -1,0 +1,11 @@
+Acquired Dell heavy-build slot 1/3
+/usr/bin/gcc
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/srv/nvme-fast-1/vivado-work/genesys-local-reset-parent-20261112-v1/local_reset_parent.v" into library work
+INFO: [VRFC 10-311] analyzing module local_reset_parent
+ERROR: [VRFC 10-4982] syntax error near '3' [/srv/nvme-fast-1/vivado-work/genesys-local-reset-parent-20261112-v1/local_reset_parent.v:57]
+ERROR: [VRFC 10-4982] syntax error near '=' [/srv/nvme-fast-1/vivado-work/genesys-local-reset-parent-20261112-v1/local_reset_parent.v:202]
+ERROR: [VRFC 10-4982] syntax error near '=' [/srv/nvme-fast-1/vivado-work/genesys-local-reset-parent-20261112-v1/local_reset_parent.v:203]
+ERROR: [VRFC 10-4982] syntax error near '=' [/srv/nvme-fast-1/vivado-work/genesys-local-reset-parent-20261112-v1/local_reset_parent.v:204]
+ERROR: [VRFC 10-4982] syntax error near '=' [/srv/nvme-fast-1/vivado-work/genesys-local-reset-parent-20261112-v1/local_reset_parent.v:205]
+ERROR: [VRFC 10-8530] module 'local_reset_parent' is ignored due to previous errors [/srv/nvme-fast-1/vivado-work/genesys-local-reset-parent-20261112-v1/local_reset_parent.v:3]

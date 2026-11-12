@@ -1,0 +1,24 @@
+{
+  "status": "CONDITIONAL_CONTROL_STOP_EXTERNAL_RESET_REOPEN_REPRODUCED_ADOPTION_REFUSED",
+  "job": "genesys-local-reset-parent-20261112-v2",
+  "positive": "SYS stopped low: asynchronous local reset assertion, masked ready clear, no release before resumed SYS edges, fresh all-domain opening",
+  "counterexample": "After OPEN, stop PL/control clock, assert external pl_resetn0 low then deassert while control stays stopped. control_reset remains1 but registered coordinator reset remains stale0; local SYS reset falls and stale permit allows reopening.",
+  "scope": [
+    "Isolated exact parent reset/distribution formulas plus grouped releases, registered coordinator/admission and local-reset boundary",
+    "AMD FDPE/unisims/glbl and original XilinxMultiReg lowering",
+    "No full GT/PS/AXI model or board test; deliberately violates always-live control assumption"
+  ],
+  "first_attempt": "Generated unnamed internal signals had numeric Verilog names; explicit fixture names added, first compile refusal retained",
+  "limits": [
+    "Not evidence of hardware fault or unconditional failure under qualified live-control contract",
+    "Candidate not adopted; previous running-clock passes do not cover this counterexample",
+    "No physical reset timing/CDC waiver or runtime capability"
+  ],
+  "next": "Separate candidate gate release request with synchronized control-domain reset, then test external-reset retention through stopped control and fresh restart before export/CDC comparison",
+  "sha256": {
+    "diagnostics/drtio/role-reversal/export-local-reset-parent.py": "ea727fed18a917ddf23550cdf28f176440b9469578b359b1d0ee3aabf8c697b2",
+    "diagnostics/drtio/role-reversal/tb_local_reset_parent.v": "0b896f26b2e775db7d1475d8cf745ad47aabc5190dfcdd4cf7d0840a359e7bd8",
+    "diagnostics/drtio/role-reversal/run-local-reset-parent-sim.sh": "89b52fcce1ac70c2fa44640251f37807bcb60a58387cc774e44960a807dd7147",
+    "evidence/genesys-master-integration-2026-11-12/local-reset-parent/local_reset_parent.v": "06501e644b7604b3dde19a8dd3c3caaa178790b9ef124237dc7d5fa09b3d2a10"
+  }
+}

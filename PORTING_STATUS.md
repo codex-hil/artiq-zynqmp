@@ -1,3 +1,13 @@
+2026-11-12 vendorFDPE parentreset fixture: SYSstoplow asyncassert/maskedready/
+freshrestart PASS, BUT conditional control-stop externalreset reopening reproduced.
+AfterOPEN/PLstop/extresetassert/deassert whilePLstopped: controlreset1 but
+coordinatorreset stale0/SYSreset0/allowed1. Violates always-live control premise;
+localreset candidate adoption REFUSED pending retention qualification. Notboard
+fault/fullGTtest. Numeric generated names firstcompile refusal retained/fixed
+fixture names only. Next separate release-request OR synchronizedcontrolreset
+candidate and stoppedcontrol restart tests. NoHW/defaultchanges. Evidence
+genesys-master-integration-2026-11-12/local-reset-parent/report.json.
+
 2026-11-10 separate localSYS-reset+registeredadmission fullintegration2runs
 phase0/3 PASS. Six risingallowed transitions onlyready31/rawadmit1/SYSreset0;
 everySYSsample localreset1 blocks. Progress/shape injection+HPM1 managedreset/
