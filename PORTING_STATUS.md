@@ -1,3 +1,11 @@
+2026-11-13 retainedDCP readonly audit PASS/prepostSHAunchanged. ThreePRE
+LUT OR functions4assignmentseach, changedLUT REFUSED. CoordinatorFDSE INIT1/
+CE1/S=controlFDPE5Q; samePLclock => discrete same-edge resetownership handover.
+FDSE Q evaluator initiallyREFUSED then Q-only alias; realS/C/INIT/CE separate
+audit. Not routed timing/glitch/reset/metastability proof; CDC10 retained/no
+waiver/HW/defaultchange. Next exactmapped FDPE/FDSE/LUT reset-offset/clockpause
+simulation. Evidence genesys-master-integration-2026-11-13/retention-cdc-fanins/report.json.
+
 2026-11-12 retainedrelease+registeredlocalboundary separatefullRTL export/
 synth COMPLETE. SameTcl/GT/clocks/init6/noexceptions, no blackboxes. Versus
 registeredadmissionbaseline CDC11 4->2 (remainingvendorGT), CDC10 11->13,
