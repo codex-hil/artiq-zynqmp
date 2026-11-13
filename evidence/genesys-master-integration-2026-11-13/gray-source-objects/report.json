@@ -1,0 +1,29 @@
+{
+  "status": "16_ACTUAL_GRAY_OBJECTS_SINGLE_SOURCE_OWNERS_BOUND_TO287_LIVE_BITS_UNCHANGED_RTL",
+  "object_kinds": {
+    "AuxGrayPointer.gray": 2,
+    "GrayCounter.q": 14
+  },
+  "checks": [
+    "Actual MultiReg input identity equals registered Gray object output, not source name inference",
+    "Each source signal assigned synchronously by exactly one final fragment domain",
+    "Every reported CDC6 stage binds to one observed special and source object",
+    "Same emitted candidate RTL SHA as synthesized retained-local baseline",
+    "Source clock aliases and reset-release paths recorded for each group"
+  ],
+  "limits": [
+    "Gray encoding source contract is not full synthesized encoder sequential-equivalence proof",
+    "Private/common reset release mapping is structural evidence, not reset or clock-stop timing qualification",
+    "No accepted actual fastest source-transition periods during GT startup/calibration; physical skew/maxdelay constraints unqualified",
+    "Destination may skip Gray states; no Hamming1 destination-sample requirement",
+    "No hardware/default constraints/adoption or blanket waiver"
+  ],
+  "next": "Audit source advance gating and reset/admission during GT startup/calibration to bound when Gray words may transition; only then prepare separately scoped numeric constraints",
+  "rtl_sha256": "22a1d3704c9c04d78e4143109b3d36f25e457d790ff213d4b4c8e5ab27dc2661",
+  "source_sha256": {
+    "diagnostics/drtio/aux_gray_pointer.py": "78a2925979ec5b58330fbfd391bd8c0546e0a83af79c0a098bea617a6b215675",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/genlib/cdc.py": "9525c1c66c37c742ba06bb1c111c4387451e3cf21bd6df0afe376b7ad875d6d3",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/genlib/fifo.py": "edf3c6192556e61d0ba9287e9111cd76875e4c8aa68820357a96419b6741de7e",
+    "diagnostics/drtio/master_integration.py": "2b6f73a1e53eb156d9f528c98fad6afd33f69f1d7bfeae9cd42d0bf0bb76470e"
+  }
+}

@@ -1,3 +1,12 @@
+2026-11-13 actualsourceobject audit16PASS: MultiReg inputs identity14x
+GrayCounter.q+2xAuxGrayPointer.gray; one syncowner each, exactstage binding to
+287livebits, clockaliases/resetreleaseledger. Instrumentedexport RTL SHA
+identical synthesizedretainedbaseline. Sourceincrement0/1+registeredGray reviewed;
+notencoderLEC/reset/physicalskew proof. No actualfastestadmittedtransition bound
+forstartup/calibration/no numeric8nsconstraints. Next sourceadvance gating and
+reset/admission startup review. NoHW/defaultconstraint/adoption. Evidence
+genesys-master-integration-2026-11-13/gray-source-objects/report.json.
+
 2026-11-13 16CDC6/287bits exactnetlistbinding PASS: sourceFDRE Q->stage0
 FDRE D->stage1FDRE D direct, bothASYNC_REG1. FamilyCSR-FIFO10/AUXring2/
 Graystats64x4. DCPprepostSHAunchanged; upstreamGrayCounter/LinkLayerStats SHA

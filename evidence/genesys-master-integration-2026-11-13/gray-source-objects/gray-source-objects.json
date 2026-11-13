@@ -1,0 +1,194 @@
+[
+  {
+    "source_name": "genesysmasterintegration_aux_receiver_write_position_gray",
+    "object_path": "top/core:2/aux:7/controller:0/receiver:1/write_position:1",
+    "kind": "AuxGrayPointer.gray",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl150",
+      "xilinxmultiregimpl151"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_aux_receiver_read_position_gray",
+    "object_path": "top/core:2/aux:7/controller:0/receiver:1/read_position:2",
+    "kind": "AuxGrayPointer.gray",
+    "source_domain": "sys",
+    "destination": "rtio_rx",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl160",
+      "xilinxmultiregimpl161"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter0_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:0/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from6749",
+    "destination": "to6749",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl180",
+      "xilinxmultiregimpl181"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter1_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:0/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to6749",
+    "destination": "from6749",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl190",
+      "xilinxmultiregimpl191"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter2_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:1/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from6912",
+    "destination": "to6912",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl200",
+      "xilinxmultiregimpl201"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter3_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:1/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to6912",
+    "destination": "from6912",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl210",
+      "xilinxmultiregimpl211"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter4_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:2/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from7075",
+    "destination": "to7075",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl220",
+      "xilinxmultiregimpl221"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter5_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:2/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to7075",
+    "destination": "from7075",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl230",
+      "xilinxmultiregimpl231"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter6_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:3/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from7226",
+    "destination": "to7226",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl240",
+      "xilinxmultiregimpl241"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter7_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:3/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to7226",
+    "destination": "from7226",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl250",
+      "xilinxmultiregimpl251"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter8_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:4/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from7389",
+    "destination": "to7389",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl260",
+      "xilinxmultiregimpl261"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter9_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:4/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to7389",
+    "destination": "from7389",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl270",
+      "xilinxmultiregimpl271"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter0_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl30",
+      "xilinxmultiregimpl31"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter1_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:2",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl40",
+      "xilinxmultiregimpl41"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter2_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:4",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl50",
+      "xilinxmultiregimpl51"
+    ]
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter3_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:6",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl60",
+      "xilinxmultiregimpl61"
+    ]
+  }
+]

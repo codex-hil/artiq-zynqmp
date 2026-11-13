@@ -1,0 +1,364 @@
+[
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter1_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:0/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to6749",
+    "destination": "from6749",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl190",
+      "xilinxmultiregimpl191"
+    ],
+    "reported_live_bits": 2,
+    "source_clock_alias_chain": [
+      "to6749_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "source_reset_release_domain": "to6749",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter3_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:1/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to6912",
+    "destination": "from6912",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl210",
+      "xilinxmultiregimpl211"
+    ],
+    "reported_live_bits": 2,
+    "source_clock_alias_chain": [
+      "to6912_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "source_reset_release_domain": "to6912",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter4_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:2/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from7075",
+    "destination": "to7075",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl220",
+      "xilinxmultiregimpl221"
+    ],
+    "reported_live_bits": 3,
+    "source_clock_alias_chain": [
+      "from7075_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "source_reset_release_domain": "from7075",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter7_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:3/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to7226",
+    "destination": "from7226",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl250",
+      "xilinxmultiregimpl251"
+    ],
+    "reported_live_bits": 2,
+    "source_clock_alias_chain": [
+      "to7226_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "source_reset_release_domain": "to7226",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter8_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:4/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from7389",
+    "destination": "to7389",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl260",
+      "xilinxmultiregimpl261"
+    ],
+    "reported_live_bits": 3,
+    "source_clock_alias_chain": [
+      "from7389_clk",
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "source_reset_release_domain": "from7389",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_aux_receiver_read_position_gray",
+    "object_path": "top/core:2/aux:7/controller:0/receiver:1/read_position:2",
+    "kind": "AuxGrayPointer.gray",
+    "source_domain": "sys",
+    "destination": "rtio_rx",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl160",
+      "xilinxmultiregimpl161"
+    ],
+    "reported_live_bits": 2,
+    "source_clock_alias_chain": [
+      "sys_clk",
+      "mastergthadapter_tx_clock"
+    ],
+    "source_reset_release_domain": "aux_release_sys",
+    "source_reset_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "Aux pointer increments binary/registered XOR encoding only on advance",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter0_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:0/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from6749",
+    "destination": "to6749",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl180",
+      "xilinxmultiregimpl181"
+    ],
+    "reported_live_bits": 3,
+    "source_clock_alias_chain": [
+      "from6749_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "source_reset_release_domain": "from6749",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing0_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter2_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:1/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from6912",
+    "destination": "to6912",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl200",
+      "xilinxmultiregimpl201"
+    ],
+    "reported_live_bits": 3,
+    "source_clock_alias_chain": [
+      "from6912_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "source_reset_release_domain": "from6912",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing1_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter5_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:2/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to7075",
+    "destination": "from7075",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl230",
+      "xilinxmultiregimpl231"
+    ],
+    "reported_live_bits": 3,
+    "source_clock_alias_chain": [
+      "to7075_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "source_reset_release_domain": "to7075",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing2_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter6_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:3/AsyncFIFO:0/fifo:0/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "from7226",
+    "destination": "to7226",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl240",
+      "xilinxmultiregimpl241"
+    ],
+    "reported_live_bits": 3,
+    "source_clock_alias_chain": [
+      "from7226_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "source_reset_release_domain": "from7226",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing3_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter9_q",
+    "object_path": "top/core:2/csr:8/ps_cdc:1/ClockDomainCrossing:4/AsyncFIFO:0/fifo:0/GrayCounter:1",
+    "kind": "GrayCounter.q",
+    "source_domain": "to7389",
+    "destination": "from7389",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl270",
+      "xilinxmultiregimpl271"
+    ],
+    "reported_live_bits": 3,
+    "source_clock_alias_chain": [
+      "to7389_clk",
+      "ps_clk",
+      "pl_clk0"
+    ],
+    "source_reset_release_domain": "to7389",
+    "source_reset_assert_expression": "genesysmasterintegration_csr_clockdomaincrossing4_cd_rst",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_aux_receiver_write_position_gray",
+    "object_path": "top/core:2/aux:7/controller:0/receiver:1/write_position:1",
+    "kind": "AuxGrayPointer.gray",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 3,
+    "stage_registers": [
+      "xilinxmultiregimpl150",
+      "xilinxmultiregimpl151"
+    ],
+    "reported_live_bits": 2,
+    "source_clock_alias_chain": [
+      "rtio_rx_clk",
+      "mastergthadapter_rx_clock"
+    ],
+    "source_reset_release_domain": "aux_release_rtio_rx",
+    "source_reset_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "Aux pointer increments binary/registered XOR encoding only on advance",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter0_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:0",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl30",
+      "xilinxmultiregimpl31"
+    ],
+    "reported_live_bits": 64,
+    "source_clock_alias_chain": [
+      "rtio_rx_clk",
+      "mastergthadapter_rx_clock"
+    ],
+    "source_reset_release_domain": "aux_release_rtio_rx",
+    "source_reset_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter1_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:2",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl40",
+      "xilinxmultiregimpl41"
+    ],
+    "reported_live_bits": 64,
+    "source_clock_alias_chain": [
+      "rtio_rx_clk",
+      "mastergthadapter_rx_clock"
+    ],
+    "source_reset_release_domain": "aux_release_rtio_rx",
+    "source_reset_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter2_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:4",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl50",
+      "xilinxmultiregimpl51"
+    ],
+    "reported_live_bits": 64,
+    "source_clock_alias_chain": [
+      "rtio_rx_clk",
+      "mastergthadapter_rx_clock"
+    ],
+    "source_reset_release_domain": "aux_release_rtio_rx",
+    "source_reset_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  },
+  {
+    "source_name": "genesysmasterintegration_graycounter3_q",
+    "object_path": "top/core:2/master:2/native:0/link_stats:1/GrayCounter:6",
+    "kind": "GrayCounter.q",
+    "source_domain": "rtio_rx",
+    "destination": "sys",
+    "declared_bits": 64,
+    "stage_registers": [
+      "xilinxmultiregimpl60",
+      "xilinxmultiregimpl61"
+    ],
+    "reported_live_bits": 64,
+    "source_clock_alias_chain": [
+      "rtio_rx_clk",
+      "mastergthadapter_rx_clock"
+    ],
+    "source_reset_release_domain": "aux_release_rtio_rx",
+    "source_reset_assert_expression": "genesysmasterintegration_ingress_releases_groups_request1",
+    "reset_scope": "CSR private domains use common from/to reset; main target domains additionally OR external PL reset in parent",
+    "transition_contract": "GrayCounter increments binary by0/1 via ce and synchronously registers XOR encoding",
+    "physical_bound_status": "Unqualified: actual fastest admitted source edges, reset/coherency and routed skew/maxdelay still required; no automatic numeric8ns constraint"
+  }
+]
