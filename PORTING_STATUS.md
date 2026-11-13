@@ -1,3 +1,12 @@
+2026-11-13 steadyGTmode CDC/clockinteractioncomparison COMPLETE: all2934
+paths/severity/source/destination/clocks identical tobaseline. CriticalCDC1=138/
+10=13/11=2/13=2572 retained; warnings6=16/15=163. DCPprepostSHAunchanged.
+Explicit9case assumptions/no manualclock/blanketwaiver; 8ns reconciliation
+notstructuralCDCfix. OOC HD.CLK_SRCunset meansPLclockskew/delayunqualified;
+unrouted/startupunqualified. Next multibit16CDC6 Graybindings/skew/maxdelay audit.
+NoHW/defaultconstraint/adoption. Evidence
+genesys-master-integration-2026-11-13/steady-cdc/report.json.
+
 2026-11-13 retainedDCP runtimeclock diagnostic reconciled: baselineTX6.4/
 RX4ns -> sixselector010cases TX8/RX4 -> plus3primitiveRXRATE000 TX8/RX8ns.
 DCPprepostSHAunchanged/no save/manualperiodoverride/fullvendorXDC/falsepaths.

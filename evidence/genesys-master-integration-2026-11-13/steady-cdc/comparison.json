@@ -1,0 +1,89 @@
+{
+  "status": "DIAGNOSTIC_MODE_CDC_COMPARISON_ACCOUNTED_NOT_QUALIFIED",
+  "baseline": {
+    "CDC-1": [
+      "Critical",
+      138
+    ],
+    "CDC-3": [
+      "Info",
+      28
+    ],
+    "CDC-6": [
+      "Warning",
+      16
+    ],
+    "CDC-9": [
+      "Info",
+      2
+    ],
+    "CDC-10": [
+      "Critical",
+      13
+    ],
+    "CDC-11": [
+      "Critical",
+      2
+    ],
+    "CDC-13": [
+      "Critical",
+      2572
+    ],
+    "CDC-15": [
+      "Warning",
+      163
+    ]
+  },
+  "steady": {
+    "CDC-1": [
+      "Critical",
+      138
+    ],
+    "CDC-3": [
+      "Info",
+      28
+    ],
+    "CDC-6": [
+      "Warning",
+      16
+    ],
+    "CDC-9": [
+      "Info",
+      2
+    ],
+    "CDC-10": [
+      "Critical",
+      13
+    ],
+    "CDC-11": [
+      "Critical",
+      2
+    ],
+    "CDC-13": [
+      "Critical",
+      2572
+    ],
+    "CDC-15": [
+      "Warning",
+      163
+    ]
+  },
+  "baseline_rows": 2934,
+  "steady_rows": 2934,
+  "removed_paths": [],
+  "added_paths": [],
+  "same_paths": 2934,
+  "limits": [
+    "Six selector010 and three primitive RXRATE000 cases are explicit steady-mode assumptions",
+    "Disappearing CDC paths are model-dependent, not fixed or waived circuitry",
+    "Equal8ns periods or common generated masters do not prove physical recovered-clock phase or deterministic latency",
+    "No saved DCP/default/hardware changes or broad exceptions"
+  ],
+  "next": "Review changed CDC endpoints and clock-interaction classifications against source protocol before considering any runtime constraints",
+  "report_sha256": {
+    "baseline-cdc.rpt": "cce83ba88874a3cf57f2dd229e65bde7822bcd21bef863b5755829f2cbf39cd3",
+    "steady-cdc.rpt": "7c56aa8ee8a8fe2ee279b6006236e69ffec295f45a45f9b82656fa6a212a7d0b",
+    "baseline-interaction.rpt": "ca73edeaf5eac4100fa8c898aff7682b2499fea27d89dc764f232c1d67c52df8",
+    "steady-interaction.rpt": "3f9abd82af8e2a74a59658123d3d0b162ca5356838b6433610161981e08386e9"
+  }
+}

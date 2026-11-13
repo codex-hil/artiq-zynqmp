@@ -1,0 +1,19 @@
+{
+  "status": "STEADY_MODE_ALL2934_CDC_PATHS_IDENTICAL_CRITICAL_FINDINGS_RETAINED",
+  "job": "genesys-steady-cdc-20261113-v1",
+  "checkpoint_sha256": "afd55ae2221b6690eda3d5eef23430f8a677018ecb9077cefc9231abc4aa5f01",
+  "checks": [
+    "Same checkpoint before/after SHA; no checkpoint writes",
+    "All detailed CDC paths and severity/source/destination/clock names match, not just summary counts",
+    "Clock-interaction reports retained for both diagnostic modes",
+    "Explicit six selector cases plus three RXRATE cases only; no broad CDC waivers or manual clock overrides"
+  ],
+  "result": "Runtime8ns clock reconciliation does not remove structural/protocol CDC findings: CDC1 138, CDC10 13, CDC11 2, CDC13 2572 critical; warnings CDC6 16/CDC15 163 remain",
+  "limits": [
+    "Steady-mode assumptions do not qualify calibration/reset transitions",
+    "Out-of-context PL port HD.CLK_SRC unset; clock delay/skew estimation not qualified",
+    "Synthesized, not routed; no physical timing, GT frequency or deterministic latency proof",
+    "No hardware/default constraints/adoption"
+  ],
+  "next": "Audit the16 multibit CDC6 paths against Gray source bindings and bus-skew/max-delay requirements; no automatic waiver based on ASYNC_REG or equal clock periods"
+}
