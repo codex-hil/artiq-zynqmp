@@ -1,0 +1,113 @@
+{
+  "status": "THREE_RETAINED_PRE_FOUR_ASSIGNMENTS_EACH_PASS_MUTANT_REFUSED",
+  "checks": [
+    {
+      "endpoint": "FDPE_26/PRE",
+      "expression": [
+        "lut",
+        14,
+        [
+          [
+            "var",
+            "genesysmasterintegration_ingress_outputs_reset_reg/Q"
+          ],
+          [
+            "var",
+            "FDPE_5/Q"
+          ]
+        ]
+      ],
+      "assignments": 4
+    },
+    {
+      "endpoint": "FDPE_28/PRE",
+      "expression": [
+        "lut",
+        14,
+        [
+          [
+            "var",
+            "genesysmasterintegration_ingress_outputs_reset_reg/Q"
+          ],
+          [
+            "var",
+            "FDPE_5/Q"
+          ]
+        ]
+      ],
+      "assignments": 4
+    },
+    {
+      "endpoint": "FDPE_30/PRE",
+      "expression": [
+        "lut",
+        14,
+        [
+          [
+            "var",
+            "genesysmasterintegration_ingress_outputs_reset_reg/Q"
+          ],
+          [
+            "var",
+            "FDPE_5/Q"
+          ]
+        ]
+      ],
+      "assignments": 4
+    }
+  ],
+  "q_cutpoints": [
+    "genesysmasterintegration_ingress_outputs_reset_reg/Q",
+    "FDPE_5/Q"
+  ],
+  "fdse_q_only_evaluator_aliases": [
+    "genesysmasterintegration_ingress_outputs_reset_reg"
+  ],
+  "mapped_handover_pins": "Coordinator FDSE INIT1/S=control FDPE5 Q; both C same pl_clk0, CE net name <const1> only. Constant driver not captured; enabled same-edge handover argument remains conditional",
+  "ownership_handover": {
+    "required_overlap_sequence_coordinator_control": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "or_levels": [
+      1,
+      1,
+      1
+    ],
+    "missing_overlap_counterexample": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "unsafe_or_levels": [
+      1,
+      0,
+      1
+    ]
+  },
+  "limits": [
+    "Boolean Q-cutpoint audit only, not sequential ownership proof",
+    "Does not dismiss CDC10 or prove glitch-free physical timing",
+    "Prior isolated FDPE handover simulation is separate from full netlist timing"
+  ],
+  "next": "Map control reset release and registered coordinator reset set/reset pins in full DCP, then inspect handover invariant without broad timing exceptions"
+}

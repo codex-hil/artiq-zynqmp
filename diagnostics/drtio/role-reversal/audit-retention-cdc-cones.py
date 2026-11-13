@@ -19,7 +19,7 @@ if __name__=='__main__':
  assert n.cells['FDPE_5']==('FDPE',"1'b1")
  assert n.pins[coord+'/S']==n.pins['FDPE_5/Q']
  assert n.pins[coord+'/C']==n.pins['FDPE_5/C']
- assert n.expression(coord+'/CE')==n.expression('FDPE_5/CE')==('const',1)
+ assert n.pins[coord+'/CE']==n.pins['FDPE_5/CE']=='<const1>'
  # FDSE Q is an arbitrary cutpoint here, same as FDRE Q. No set/reset
  # semantics are inferred by this evaluator-only type alias.
  fdse=[]
@@ -30,4 +30,4 @@ if __name__=='__main__':
  try:audit(n)
  except AssertionError:pass
  else:raise AssertionError('Changed LUT accepted')
- print(json.dumps({'status':'THREE_RETAINED_PRE_FOUR_ASSIGNMENTS_EACH_PASS_MUTANT_REFUSED','checks':checks,'q_cutpoints':NAMES,'fdse_q_only_evaluator_aliases':fdse,'mapped_handover_pins':'Coordinator FDSE INIT1/CE1/S=control FDPE5 Q; both C same pl_clk0. Discrete same-edge sampling sets coordinator before control reset drops; physical timing still open','ownership_handover':{'required_overlap_sequence_coordinator_control':[[0,1],[1,1],[1,0]],'or_levels':[1,1,1],'missing_overlap_counterexample':[[0,1],[0,0],[1,0]],'unsafe_or_levels':[1,0,1]},'limits':['Boolean Q-cutpoint audit only, not sequential ownership proof','Does not dismiss CDC10 or prove glitch-free physical timing','Prior isolated FDPE handover simulation is separate from full netlist timing'],'next':'Map control reset release and registered coordinator reset set/reset pins in full DCP, then inspect handover invariant without broad timing exceptions'},indent=2))
+ print(json.dumps({'status':'THREE_RETAINED_PRE_FOUR_ASSIGNMENTS_EACH_PASS_MUTANT_REFUSED','checks':checks,'q_cutpoints':NAMES,'fdse_q_only_evaluator_aliases':fdse,'mapped_handover_pins':'Coordinator FDSE INIT1/S=control FDPE5 Q; both C same pl_clk0, CE net name <const1> only. Constant driver not captured; enabled same-edge handover argument remains conditional','ownership_handover':{'required_overlap_sequence_coordinator_control':[[0,1],[1,1],[1,0]],'or_levels':[1,1,1],'missing_overlap_counterexample':[[0,1],[0,0],[1,0]],'unsafe_or_levels':[1,0,1]},'limits':['Boolean Q-cutpoint audit only, not sequential ownership proof','Does not dismiss CDC10 or prove glitch-free physical timing','Prior isolated FDPE handover simulation is separate from full netlist timing'],'next':'Map control reset release and registered coordinator reset set/reset pins in full DCP, then inspect handover invariant without broad timing exceptions'},indent=2))

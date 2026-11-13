@@ -5,14 +5,15 @@
   "checks": [
     "All three retained PRE functions equal coordinator_reset OR control_reset for four Q assignments each",
     "Changed LUT mutant refused",
-    "Coordinator primitive FDSE INIT1 CE1, S driven by control FDPE5 Q; both clock pins same PL clock",
+    "Coordinator FDSE INIT1, S driven by control FDPE5 Q, same PL clock; CE pins share net named <const1>, constant driver not captured",
     "Checkpoint pre/post SHA identical"
   ],
   "evaluator_note": "First evaluator refused FDSE/Q; extended evaluator view to arbitrary Q cutpoint alias only, while real FDSE type/INIT/S/C/CE audited separately. No set/reset semantics inferred from FDRE alias.",
   "limits": [
+    "CE constant source not captured; handover argument conditional on CE1 pending explicit driver capture",
     "Discrete synchronous set handover argument only; no routed setup/hold/reset recovery/removal/glitch timing qualification",
     "Earlier isolated vendor simulation and full FunctionalReset tests remain separate evidence",
     "CDC10 findings retained, no timing exception/default/hardware change"
   ],
-  "next": "Simulate exactly mapped FDPE/FDSE/LUT primitives for control-reset release offsets and paused clocks; preserve original critical CDC classification pending timing qualification"
+  "next": "Read-only capture of CE constant drivers and mapped FDPE/FDSE/LUT primitive simulation; retain all critical findings"
 }

@@ -1,6 +1,7 @@
 2026-11-13 retainedDCP readonly audit PASS/prepostSHAunchanged. ThreePRE
 LUT OR functions4assignmentseach, changedLUT REFUSED. CoordinatorFDSE INIT1/
-CE1/S=controlFDPE5Q; samePLclock => discrete same-edge resetownership handover.
+S=controlFDPE5Q; samePLclock; CE net named<const1> only, constantdriver
+notcaptured. Discrete handover remainsconditional onCE1, explicitdriverauditOPEN.
 FDSE Q evaluator initiallyREFUSED then Q-only alias; realS/C/INIT/CE separate
 audit. Not routed timing/glitch/reset/metastability proof; CDC10 retained/no
 waiver/HW/defaultchange. Next exactmapped FDPE/FDSE/LUT reset-offset/clockpause
