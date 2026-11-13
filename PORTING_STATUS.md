@@ -1,3 +1,12 @@
+2026-11-13 mappedDCP primitive slice vendor12cases PASS: controlstoplow/high
+x SYSrun/stop x releaseoffset1/3/6ns; resetretention and coordinatorownsreset
+atcontrolrelease, SYSrelease needsSYSedges. FourFDPE/FDSE/LUT2OR/LUT1/VCC/GND
+exactcapture, externalrawD forced0. DCPprepostSHAunchanged. CE0mutant REFUSED
+atinitialrelease(not handoverstage), OR->AND REFUSEDatasyncassert. Digitalonly/
+noSDF/physicalCDCwaiver/HW/defaultchange. Next startup-permitting CE handover
+mutant to complete negativecontrol, then physicalconstraint gate review. Evidence
+genesys-master-integration-2026-11-13/mapped-reset/report.json.
+
 2026-11-13 exact CEdriver audit PASS: coordinatorFDSE+controlFDPE4/5 CE
 uniquely driven by VCC/P REF_NAME VCC; pre/postDCP SHAunchanged. Previous CE1
 constantdriver assumption discharged for this DCP, not a routedtiming/CDCwaiver.

@@ -1,0 +1,72 @@
+Acquired Dell heavy-build slot 1/3
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Fri Nov 13 15:41:50 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source query-mapped-reset-primitives.tcl
+# set_param general.maxThreads 4
+# open_checkpoint /srv/nvme-fast-1/vivado-work/genesys-retained-local-cdc-20261112-v1/combined_cdc.dcp
+Command: open_checkpoint /srv/nvme-fast-1/vivado-work/genesys-retained-local-cdc-20261112-v1/combined_cdc.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 1556.656 ; gain = 0.000 ; free physical = 2981 ; free virtual = 64780
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2589.156 ; gain = 0.000 ; free physical = 1943 ; free virtual = 63742
+INFO: [Netlist 29-17] Analyzing 538 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'master_physical_candidate' is not ideal for floorplanning, since the cellview 'master_physical_candidate' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2589.156 ; gain = 0.000 ; free physical = 1951 ; free virtual = 63750
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3215.586 ; gain = 0.000 ; free physical = 1415 ; free virtual = 63213
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 149 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+  RAM256X1D => RAM256X1D (MUXF7(x4), MUXF8(x2), RAMD64E(x8)): 4 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 5 instances
+  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 75 instances
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 32 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 32 instances
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.2 (64-bit) build 6299465
+open_checkpoint: Time (s): cpu = 00:00:27 ; elapsed = 00:00:44 . Memory (MB): peak = 3215.621 ; gain = 1658.965 ; free physical = 1413 ; free virtual = 63212
+# set cells {}
+# foreach name {FDPE_4 FDPE_5 genesysmasterintegration_ingress_outputs_reset_reg FDPE_28 FDPE_29} {
+#  set cell [get_cells -quiet -hierarchical -filter "NAME == \"$name\""]
+#  if {[llength $cell]!=1} {error "Primitive not unique $name"}
+#  dict set cells $cell 1
+# }
+# foreach name {FDPE_4/PRE FDPE_28/PRE FDPE_4/D FDPE_28/D FDPE_4/CE FDPE_5/CE genesysmasterintegration_ingress_outputs_reset_reg/CE} {
+#  set pin [get_pins -quiet -hierarchical -filter "NAME == \"$name\""]
+#  set drivers [get_pins -of_objects [get_nets -segments -of_objects $pin] -filter {DIRECTION == OUT}]
+#  if {[llength $drivers]!=1} {error "Driver not unique $name"}
+#  dict set cells [get_cells -of_objects $drivers] 1
+# }
+# set out [open primitives.tsv w]
+# foreach cell [lsort [dict keys $cells]] {
+#  set ref [get_property REF_NAME $cell]
+#  set init ""
+#  if {[string match FD* $ref] || [string match LUT* $ref]} {set init [get_property INIT $cell]}
+#  puts $out "CELL\t$cell\t$ref\t$init"
+#  foreach property [list_property $cell] {
+#   if {[regexp {^IS_.*_INVERTED$} $property]} {puts $out "PARAM\t$cell\t$property\t[get_property $property $cell]"}
+#  }
+#  foreach pin [get_pins -of_objects $cell] {
+#   puts $out "PIN\t$pin\t[get_property DIRECTION $pin]\t[join [get_nets -of_objects $pin] ,]"
+#  }
+# }
+# close $out
+# close_design
+# puts "MAPPED_RESET_PRIMITIVES_READONLY_COMPLETE"
+MAPPED_RESET_PRIMITIVES_READONLY_COMPLETE
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 13 15:42:37 2026...

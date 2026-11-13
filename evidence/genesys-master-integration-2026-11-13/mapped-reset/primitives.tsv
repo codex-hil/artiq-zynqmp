@@ -1,0 +1,56 @@
+CELL	FDPE_26_i_1	LUT2	4'hE
+PIN	FDPE_26_i_1/O	OUT	genesysmasterintegration_ingress_releases_groups_request1
+PIN	FDPE_26_i_1/I0	IN	genesysmasterintegration_ingress_outputs_reset
+PIN	FDPE_26_i_1/I1	IN	control_rst
+CELL	FDPE_28	FDPE	1'b1
+PARAM	FDPE_28	IS_C_INVERTED	1'b0
+PARAM	FDPE_28	IS_D_INVERTED	1'b0
+PARAM	FDPE_28	IS_PRE_INVERTED	1'b0
+PIN	FDPE_28/Q	OUT	xilinxasyncresetsynchronizerimpl14_rst_meta
+PIN	FDPE_28/C	IN	mastergthadapter_tx_clock
+PIN	FDPE_28/CE	IN	<const1>
+PIN	FDPE_28/D	IN	<const0>
+PIN	FDPE_28/PRE	IN	genesysmasterintegration_ingress_releases_groups_request1
+CELL	FDPE_29	FDPE	1'b1
+PARAM	FDPE_29	IS_C_INVERTED	1'b0
+PARAM	FDPE_29	IS_D_INVERTED	1'b0
+PARAM	FDPE_29	IS_PRE_INVERTED	1'b0
+PIN	FDPE_29/Q	OUT	aux_release_sys_rst
+PIN	FDPE_29/C	IN	mastergthadapter_tx_clock
+PIN	FDPE_29/CE	IN	<const1>
+PIN	FDPE_29/D	IN	xilinxasyncresetsynchronizerimpl14_rst_meta
+PIN	FDPE_29/PRE	IN	genesysmasterintegration_ingress_releases_groups_request1
+CELL	FDPE_2_i_1	LUT1	2'h1
+PIN	FDPE_2_i_1/O	OUT	xilinxasyncresetsynchronizerimpl1_async_reset
+PIN	FDPE_2_i_1/I0	IN	pl_resetn0
+CELL	FDPE_4	FDPE	1'b1
+PARAM	FDPE_4	IS_C_INVERTED	1'b0
+PARAM	FDPE_4	IS_D_INVERTED	1'b0
+PARAM	FDPE_4	IS_PRE_INVERTED	1'b0
+PIN	FDPE_4/Q	OUT	xilinxasyncresetsynchronizerimpl2_rst_meta
+PIN	FDPE_4/C	IN	pl_clk0
+PIN	FDPE_4/CE	IN	<const1>
+PIN	FDPE_4/D	IN	<const0>
+PIN	FDPE_4/PRE	IN	xilinxasyncresetsynchronizerimpl1_async_reset
+CELL	FDPE_5	FDPE	1'b1
+PARAM	FDPE_5	IS_C_INVERTED	1'b0
+PARAM	FDPE_5	IS_D_INVERTED	1'b0
+PARAM	FDPE_5	IS_PRE_INVERTED	1'b0
+PIN	FDPE_5/Q	OUT	control_rst
+PIN	FDPE_5/C	IN	pl_clk0
+PIN	FDPE_5/CE	IN	<const1>
+PIN	FDPE_5/D	IN	xilinxasyncresetsynchronizerimpl2_rst_meta
+PIN	FDPE_5/PRE	IN	xilinxasyncresetsynchronizerimpl1_async_reset
+CELL	GND	GND	
+PIN	GND/G	OUT	<const0>
+CELL	VCC	VCC	
+PIN	VCC/P	OUT	<const1>
+CELL	genesysmasterintegration_ingress_outputs_reset_reg	FDSE	1'b1
+PARAM	genesysmasterintegration_ingress_outputs_reset_reg	IS_C_INVERTED	
+PARAM	genesysmasterintegration_ingress_outputs_reset_reg	IS_D_INVERTED	
+PARAM	genesysmasterintegration_ingress_outputs_reset_reg	IS_S_INVERTED	
+PIN	genesysmasterintegration_ingress_outputs_reset_reg/Q	OUT	genesysmasterintegration_ingress_outputs_reset
+PIN	genesysmasterintegration_ingress_outputs_reset_reg/C	IN	pl_clk0
+PIN	genesysmasterintegration_ingress_outputs_reset_reg/CE	IN	<const1>
+PIN	genesysmasterintegration_ingress_outputs_reset_reg/D	IN	genesysmasterintegration_ingress_raw_reset
+PIN	genesysmasterintegration_ingress_outputs_reset_reg/S	IN	control_rst

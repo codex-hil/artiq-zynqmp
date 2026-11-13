@@ -1,0 +1,92 @@
+{
+  "status": "MAPPED_PRIMITIVE_SLICE_VENDOR_SIM_12_CASES_PASS_TWO_MUTANTS_REFUSED",
+  "capture_job": "genesys-mapped-reset-20261113-v2",
+  "checkpoint_sha256": "afd55ae2221b6690eda3d5eef23430f8a677018ecb9077cefc9231abc4aa5f01",
+  "cases": [
+    {
+      "control_stopped_high": 0,
+      "sys_stopped": 0,
+      "release_offset_ns": 1
+    },
+    {
+      "control_stopped_high": 0,
+      "sys_stopped": 0,
+      "release_offset_ns": 3
+    },
+    {
+      "control_stopped_high": 0,
+      "sys_stopped": 0,
+      "release_offset_ns": 6
+    },
+    {
+      "control_stopped_high": 0,
+      "sys_stopped": 1,
+      "release_offset_ns": 1
+    },
+    {
+      "control_stopped_high": 0,
+      "sys_stopped": 1,
+      "release_offset_ns": 3
+    },
+    {
+      "control_stopped_high": 0,
+      "sys_stopped": 1,
+      "release_offset_ns": 6
+    },
+    {
+      "control_stopped_high": 1,
+      "sys_stopped": 0,
+      "release_offset_ns": 1
+    },
+    {
+      "control_stopped_high": 1,
+      "sys_stopped": 0,
+      "release_offset_ns": 3
+    },
+    {
+      "control_stopped_high": 1,
+      "sys_stopped": 0,
+      "release_offset_ns": 6
+    },
+    {
+      "control_stopped_high": 1,
+      "sys_stopped": 1,
+      "release_offset_ns": 1
+    },
+    {
+      "control_stopped_high": 1,
+      "sys_stopped": 1,
+      "release_offset_ns": 3
+    },
+    {
+      "control_stopped_high": 1,
+      "sys_stopped": 1,
+      "release_offset_ns": 6
+    }
+  ],
+  "slice": "Four FDPE, one FDSE, LUT2 INIT_E, LUT1 inverter, explicit VCC and GND primitives. All captured connected nets closed except PL/SYS clocks, external resetn and raw coordinator D input.",
+  "checks": [
+    "Control-reset assertion/retention while PL stopped",
+    "At control-reset falling edge after fresh PL clocks, coordinator Q and OR output remain asserted",
+    "SYS reset requires resumed SYS edges",
+    "No DCP mutation, pre/post SHA same"
+  ],
+  "mutants": {
+    "CE0": "Refused at initial release (not a specific handover-stage mutation)",
+    "OR_to_AND": "Refused at asynchronous assertion with paused control"
+  },
+  "plan_deviation": "CE0 mutant fails before handover because INIT1 cannot clear. This is explicit early failure, not handover-stage fault injection.",
+  "limits": [
+    "Coordinator raw D forced0; no actual FSM, requester, AXI, GT or packet admission model",
+    "Empty FDSE inversion properties use vendor library defaults; generated slice records captured parameters",
+    "Digital zero-delay unisims/glbl only; no SDF, routed recovery/removal/setup/hold or metastability qualification",
+    "Original CDC10 findings retained; no deployment/default/hardware changes"
+  ],
+  "next": "Complete primitive-bound handover mutation that permits startup then inhibits coordinator CE during control reset release; thereafter review physical constraint gates without broad CDC waivers",
+  "sha256": {
+    "diagnostics/drtio/role-reversal/generate-mapped-reset-slice.py": "e315cd661058cfed394bf66d712a5f28816922fbe2430ece635c7c78c10ff657",
+    "diagnostics/drtio/role-reversal/tb_mapped_reset.v": "17cbf3b1663688465c4efafaacff3d16bf7a57b92eeb46282bd62fef91ee06fa",
+    "evidence/genesys-master-integration-2026-11-13/mapped-reset/mapped_reset.v": "bc5406d58c8f6c7ba411bd799499d08ad72bd03de8be76890f43cbce8f7293b5",
+    "evidence/genesys-master-integration-2026-11-13/mapped-reset/primitives.tsv": "c5ed2fe381d3deea2a7ebfb98e300122d353aa25616cca6b400493e5e43d2f76"
+  }
+}
