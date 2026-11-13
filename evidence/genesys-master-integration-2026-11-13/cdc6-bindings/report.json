@@ -1,0 +1,32 @@
+{
+  "status": "16_CDC6_GROUPS_287_BITS_DIRECT_TWO_STAGE_BINDINGS_PASS_PHYSICAL_OPEN",
+  "job": "genesys-cdc6-bindings-20261113-v1",
+  "checkpoint_sha256": "afd55ae2221b6690eda3d5eef23430f8a677018ecb9077cefc9231abc4aa5f01",
+  "counts": {
+    "csr_fifo_groups": 10,
+    "aux_ring_groups": 2,
+    "stats64_groups": 4,
+    "bits": 287
+  },
+  "checks": [
+    "Exact unique source Q/stage0 D/stage1 D pin resolution, direct net equality through both stages",
+    "All source/stage cells FDRE; both destination stages ASYNC_REG1",
+    "Current upstream GrayCounter/LinkLayerStats hashes match earlier four64-bit actual-object binding receipt",
+    "Source reviews: LiteX FIFO wraps Migen AsyncFIFO with registered GrayCounter.q; AUX receiver uses registered AuxGrayPointer"
+  ],
+  "limits": [
+    "Source family/name/source-code correspondence is not full netlist encoder sequential equivalence",
+    "No routed bus skew or max-delay bounds applied or qualified; CDC6 warnings remain",
+    "Destination can skip Gray states; source transition policy and coordinated resets still matter",
+    "Steady-mode clock period equality does not qualify GT startup/reset; no hardware/default changes"
+  ],
+  "next": "Bind each group to exact source transition clock/reset contract and review per-family source encoding/advance provenance before preparing isolated numeric constraint candidate",
+  "source_sha256": {
+    "diagnostics/drtio/master_ps_cdc.py": "db8cefc94019e7d42b9e5a3ac2fecb14f376d791222f4b17fcdc6d2f894f9acd",
+    "diagnostics/drtio/aux_receiver_gray.py": "09af4aa5af51389b1e71994fb2c114de6f67cdc7e493a8e3ea7662b7a8545b21",
+    "diagnostics/drtio/aux_gray_pointer.py": "78a2925979ec5b58330fbfd391bd8c0546e0a83af79c0a098bea617a6b215675",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/genlib/fifo.py": "edf3c6192556e61d0ba9287e9111cd76875e4c8aa68820357a96419b6741de7e",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/genlib/cdc.py": "9525c1c66c37c742ba06bb1c111c4387451e3cf21bd6df0afe376b7ad875d6d3",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/link_layer.py": "f7da7512a2e079e52bac56124573f121a45e4093a95a17ed050accc14e9008eb"
+  }
+}

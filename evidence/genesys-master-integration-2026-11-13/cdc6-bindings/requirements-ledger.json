@@ -1,0 +1,290 @@
+[
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter1_q_reg[1:0]/C",
+    "first_stage": "xilinxmultiregimpl190_reg[1:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "txoutclk_out[0]",
+    "destination_clock": "diagnostic_pl_clk0",
+    "reported_bits": 2,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter3_q_reg[1:0]/C",
+    "first_stage": "xilinxmultiregimpl210_reg[1:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "txoutclk_out[0]",
+    "destination_clock": "diagnostic_pl_clk0",
+    "reported_bits": 2,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter4_q_reg[2:0]/C",
+    "first_stage": "xilinxmultiregimpl220_reg[2:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "txoutclk_out[0]",
+    "destination_clock": "diagnostic_pl_clk0",
+    "reported_bits": 3,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter7_q_reg[1:0]/C",
+    "first_stage": "xilinxmultiregimpl250_reg[1:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "txoutclk_out[0]",
+    "destination_clock": "diagnostic_pl_clk0",
+    "reported_bits": 2,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter8_q_reg[2:0]/C",
+    "first_stage": "xilinxmultiregimpl260_reg[2:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "txoutclk_out[0]",
+    "destination_clock": "diagnostic_pl_clk0",
+    "reported_bits": 3,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_aux_receiver_read_position_gray_reg[1:0]/C",
+    "first_stage": "xilinxmultiregimpl160_reg[1:0]/D",
+    "family": "AUX_RING_GRAY",
+    "source_clock": "txoutclk_out[0]",
+    "destination_clock": "rxoutclk_out[0]",
+    "reported_bits": 2,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing0_cdc_graycounter0_q_reg[2:0]/C",
+    "first_stage": "xilinxmultiregimpl180_reg[2:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "diagnostic_pl_clk0",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 3,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing1_cdc_graycounter2_q_reg[2:0]/C",
+    "first_stage": "xilinxmultiregimpl200_reg[2:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "diagnostic_pl_clk0",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 3,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing2_cdc_graycounter5_q_reg[2:0]/C",
+    "first_stage": "xilinxmultiregimpl230_reg[2:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "diagnostic_pl_clk0",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 3,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing3_cdc_graycounter6_q_reg[2:0]/C",
+    "first_stage": "xilinxmultiregimpl240_reg[2:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "diagnostic_pl_clk0",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 3,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_csr_clockdomaincrossing4_cdc_graycounter9_q_reg[2:0]/C",
+    "first_stage": "xilinxmultiregimpl270_reg[2:0]/D",
+    "family": "CSR_FIFO_GRAY",
+    "source_clock": "diagnostic_pl_clk0",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 3,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_aux_receiver_write_position_gray_reg[1:0]/C",
+    "first_stage": "xilinxmultiregimpl150_reg[1:0]/D",
+    "family": "AUX_RING_GRAY",
+    "source_clock": "rxoutclk_out[0]",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 2,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_graycounter0_q_reg[63:0]/C",
+    "first_stage": "xilinxmultiregimpl30_reg[63:0]/D",
+    "family": "LINK_STATS_GRAY64",
+    "source_clock": "rxoutclk_out[0]",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 64,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_graycounter1_q_reg[63:0]/C",
+    "first_stage": "xilinxmultiregimpl40_reg[63:0]/D",
+    "family": "LINK_STATS_GRAY64",
+    "source_clock": "rxoutclk_out[0]",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 64,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_graycounter2_q_reg[63:0]/C",
+    "first_stage": "xilinxmultiregimpl50_reg[63:0]/D",
+    "family": "LINK_STATS_GRAY64",
+    "source_clock": "rxoutclk_out[0]",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 64,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  },
+  {
+    "source": "genesysmasterintegration_graycounter3_q_reg[63:0]/C",
+    "first_stage": "xilinxmultiregimpl60_reg[63:0]/D",
+    "family": "LINK_STATS_GRAY64",
+    "source_clock": "rxoutclk_out[0]",
+    "destination_clock": "txoutclk_out[0]",
+    "reported_bits": 64,
+    "protocol_requirements": [
+      "Registered source Gray encoding; at most one source advance per source edge",
+      "Coordinated reset and ownership/admission policy; no arbitrary independent reset"
+    ],
+    "physical_requirements": [
+      "Bound source-Q to each first-stage D datapath delay and inter-bit bus skew under actual fastest admitted source transitions",
+      "Bind constraints to these exact pins after source/clock/reset review; preserve stage0->stage1 timing and placement",
+      "Steady8ns diagnostic mode alone does not qualify calibration/startup/reset periods"
+    ],
+    "constraint_status": "NOT_APPLIED_NO_PHYSICAL_BOUND_QUALIFIED"
+  }
+]

@@ -1,0 +1,69 @@
+Acquired Dell heavy-build slot 1/3
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Fri Nov 13 18:21:30 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source query-cdc6-bindings.tcl
+# set_param general.maxThreads 4
+# open_checkpoint /srv/nvme-fast-1/vivado-work/genesys-retained-local-cdc-20261112-v1/combined_cdc.dcp
+Command: open_checkpoint /srv/nvme-fast-1/vivado-work/genesys-retained-local-cdc-20261112-v1/combined_cdc.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.04 . Memory (MB): peak = 1556.621 ; gain = 0.000 ; free physical = 15024 ; free virtual = 64815
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2597.121 ; gain = 0.000 ; free physical = 14044 ; free virtual = 63835
+INFO: [Netlist 29-17] Analyzing 538 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'master_physical_candidate' is not ideal for floorplanning, since the cellview 'master_physical_candidate' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2597.121 ; gain = 0.000 ; free physical = 14028 ; free virtual = 63818
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3217.027 ; gain = 0.000 ; free physical = 13500 ; free virtual = 63291
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 149 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+  RAM256X1D => RAM256X1D (MUXF7(x4), MUXF8(x2), RAMD64E(x8)): 4 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 5 instances
+  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 75 instances
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 32 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 32 instances
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.2 (64-bit) build 6299465
+open_checkpoint: Time (s): cpu = 00:00:27 ; elapsed = 00:00:23 . Memory (MB): peak = 3217.062 ; gain = 1660.441 ; free physical = 13500 ; free virtual = 63291
+# set input [open endpoints.tsv r]
+# set out [open bindings.tsv w]
+# while {[gets $input line]>=0} {
+#  lassign [split $line "\t"] source first second
+#  set pins {}
+#  foreach name [list $source $first $second] {
+#   set p [get_pins -quiet -hierarchical -filter "NAME == \"$name\""]
+#   if {[llength $p]!=1} {error "Pin not unique: $name"}
+#   lappend pins $p
+#  }
+#  lassign $pins s d0 d1
+#  set c0 [get_cells -of_objects $d0]
+#  set q0 [get_pins -of_objects $c0 -filter {REF_PIN_NAME == Q}]
+#  set c1 [get_cells -of_objects $d1]
+#  set sn [get_nets -of_objects $s]
+#  set dn [get_nets -of_objects $d0]
+#  set qn [get_nets -of_objects $q0]
+#  set nextn [get_nets -of_objects $d1]
+#  if {[llength $sn]!=1 || $sn ne $dn || [llength $qn]!=1 || $qn ne $nextn} {error "Not direct register chain: $line"}
+#  puts $out "$source\t$first\t$second\t$sn\t$qn\t[get_property REF_NAME [get_cells -of_objects $s]]\t[get_property REF_NAME $c0]\t[get_property REF_NAME $c1]\t[get_property ASYNC_REG $c0]\t[get_property ASYNC_REG $c1]"
+# }
+# close $input
+# close $out
+# close_design
+# puts "CDC6_DIRECT_TWO_STAGE_BINDINGS_COMPLETE"
+CDC6_DIRECT_TWO_STAGE_BINDINGS_COMPLETE
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 13 18:22:08 2026...

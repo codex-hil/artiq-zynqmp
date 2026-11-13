@@ -1,3 +1,12 @@
+2026-11-13 16CDC6/287bits exactnetlistbinding PASS: sourceFDRE Q->stage0
+FDRE D->stage1FDRE D direct, bothASYNC_REG1. FamilyCSR-FIFO10/AUXring2/
+Graystats64x4. DCPprepostSHAunchanged; upstreamGrayCounter/LinkLayerStats SHA
+matchprioractualobjectreceipt. Ledger recordsGrayadvance/reset and sourceQ->
+firstD maxdelay/busskew requirements; no numericbound/appliedconstraints.
+NotencoderLEC/routedCDCsignoff; warningsremain/noHW/defaultchange. Next exact
+perfamily transitionclock/reset/provenance review beforeconstraintcandidate.
+Evidence genesys-master-integration-2026-11-13/cdc6-bindings/report.json.
+
 2026-11-13 steadyGTmode CDC/clockinteractioncomparison COMPLETE: all2934
 paths/severity/source/destination/clocks identical tobaseline. CriticalCDC1=138/
 10=13/11=2/13=2572 retained; warnings6=16/15=163. DCPprepostSHAunchanged.
