@@ -1,3 +1,11 @@
+2026-11-13 exact CEdriver audit PASS: coordinatorFDSE+controlFDPE4/5 CE
+uniquely driven by VCC/P REF_NAME VCC; pre/postDCP SHAunchanged. Previous CE1
+constantdriver assumption discharged for this DCP, not a routedtiming/CDCwaiver.
+Mappedprimitive simulation plan recorded (controllevels/SYSstop/resetoffsets/
+CE0 and OR->AND mutants); full primitivepin capture still needed beforebinding.
+Next read-only complete primitivecapture/generate vendorbench. NoHW/default
+changes. Evidence genesys-master-integration-2026-11-13/retention-ce-drivers/report.json.
+
 2026-11-13 retainedDCP readonly audit PASS/prepostSHAunchanged. ThreePRE
 LUT OR functions4assignmentseach, changedLUT REFUSED. CoordinatorFDSE INIT1/
 S=controlFDPE5Q; samePLclock; CE net named<const1> only, constantdriver

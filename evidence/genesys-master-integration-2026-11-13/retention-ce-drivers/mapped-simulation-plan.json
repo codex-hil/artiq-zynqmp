@@ -1,0 +1,38 @@
+{
+  "scope": "Minimal mapped reset-ownership fixture, not full PS/GT runtime",
+  "capture_required": [
+    "FDPE_4",
+    "FDPE_5",
+    "genesysmasterintegration_ingress_outputs_reset_reg",
+    "LUT driver of FDPE_28/PRE",
+    "FDPE_28",
+    "FDPE_29"
+  ],
+  "vary": {
+    "control_stop_level": [
+      0,
+      1
+    ],
+    "sys_clock_stopped": [
+      false,
+      true
+    ],
+    "external_reset_release_offset_ns": [
+      1,
+      3,
+      6
+    ]
+  },
+  "assertions": [
+    "Control-reset assertion asynchronously holds target reset",
+    "Target reset remains asserted after external reset release while control stopped",
+    "Coordinator reset set is observed before control-reset deassertion",
+    "No low retained-request interval during ownership handover",
+    "Target release requires resumed target-clock edges"
+  ],
+  "mutation_controls": [
+    "Coordinator CE tied0 must fail handover check",
+    "OR LUT replaced by AND must fail stopped-control retention"
+  ],
+  "limits": "Digital zero-delay vendor models only; no physical timing qualification"
+}

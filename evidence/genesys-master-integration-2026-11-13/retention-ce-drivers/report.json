@@ -1,0 +1,40 @@
+{
+  "status": "THREE_CE_UNIQUE_VCC_DRIVERS_READONLY_PASS",
+  "job": "genesys-retention-ce-20261113-v1",
+  "checkpoint_sha256": "afd55ae2221b6690eda3d5eef23430f8a677018ecb9077cefc9231abc4aa5f01",
+  "drivers": [
+    [
+      "genesysmasterintegration_ingress_outputs_reset_reg/CE",
+      "<const1>",
+      "VCC/P",
+      "VCC",
+      "VCC"
+    ],
+    [
+      "FDPE_4/CE",
+      "<const1>",
+      "VCC/P",
+      "VCC",
+      "VCC"
+    ],
+    [
+      "FDPE_5/CE",
+      "<const1>",
+      "VCC/P",
+      "VCC",
+      "VCC"
+    ]
+  ],
+  "checks": [
+    "Each exact CE pin resolves through connected net segments to exactly one output pin",
+    "Driver cell REF_NAME VCC, output VCC/P; not inferred from net name",
+    "Checkpoint pre/post SHA identical"
+  ],
+  "conclusion": "Previous CE1 source assumption discharged for this captured DCP; previous OR truth and FDSE/control clock wiring audit remain separate evidence",
+  "limits": [
+    "No routed setup/hold/recovery/removal or metastability qualification",
+    "No CDC waiver/default/hardware changes",
+    "Full mapped first-stage and target reset primitive pin capture required before a netlist-bound simulation"
+  ],
+  "next": "Capture complete FDPE4/5, coordinator FDSE, retained LUT and target FDPE28/29 primitive pin/INIT records, generate bounded vendor simulation and sweep release offsets"
+}
