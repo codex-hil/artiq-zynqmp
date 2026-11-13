@@ -29,7 +29,7 @@ class IntegrationTests(unittest.TestCase):
         self.assertIs(top.aux.link_layer,top.master.link_layer)
         self.assertIs(top.gt_reset_request,top.ingress.coordinator.reset)
 
-    def exercise_two_hpm_roundtrip(self,guarded=False,xilinx=False):
+    def exercise_two_hpm_roundtrip(self,guarded=False,xilinx=False,not_ready_link=False):
         from migen import ClockDomain,ClockSignal
         from migen.sim import run_simulation
         from migen.genlib.resetsync import AsyncResetSynchronizer
@@ -42,7 +42,10 @@ class IntegrationTests(unittest.TestCase):
             width=abs(int(left)-int(right))+1 if left and right else 1
             (ps.inputs if direction=='I' else ps.outputs)[name]=Signal(width)
         codec=Raw20Codec()
-        top=GenesysMasterIntegration(ps,codec.channel,ClockSignal('tx_source'),ClockSignal('rx_source'),guarded_candidate=guarded)
+        options={}
+        if not_ready_link:
+            options=dict(codec=codec,link_status=SimpleNamespace(reset_done=Signal(),clock_active=Signal(),aligned=Signal()))
+        top=GenesysMasterIntegration(ps,codec.channel,ClockSignal('tx_source'),ClockSignal('rx_source'),guarded_candidate=guarded,**options)
         top.submodules.codec=codec
         for name in ('pl_source','tx_source','rx_source'):
             setattr(top.clock_domains,'cd_'+name,ClockDomain(name,reset_less=True))
@@ -99,6 +102,7 @@ class IntegrationTests(unittest.TestCase):
                     if state['open']==episode:break
                     yield
                 else:self.fail('No target admission')
+                if not_ready_link:self.assertEqual((yield codec.channel.rx_ready),0)
                 self.assertEqual((yield from target.read(0xa0000800)),0x47534d31)
                 self.assertEqual((yield from target.read(length)),0)
                 value=12 if episode==1 else 68

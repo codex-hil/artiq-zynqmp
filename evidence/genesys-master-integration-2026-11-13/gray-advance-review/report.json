@@ -1,0 +1,25 @@
+{
+  "status": "GRAY_ADVANCE_GATING_REVIEW_AND_TWO_MODELS_PASS_QUIESCENCE_ASSUMPTION_REFUSED",
+  "tests": 2,
+  "seconds": 11.227,
+  "findings": [
+    "Cannot derive all Gray sources static from admit0 or physical-link-not-ready alone",
+    "Actual stats registered trigger has update tail after frame permission drops",
+    "Actual HPM adapters can complete CSR identity/read/write12/68 at rx_ready0 under running modeled clocks",
+    "AUX source CE rules depend on CSR consumption and packet FSM, not one global gate"
+  ],
+  "constraint_consequence": "Do not apply steady8ns source-transition bound based solely on link readiness. Need fastest actual source-clock modes and reset/clock-enable contract for every active producer.",
+  "limits": [
+    "Running fixed model clocks; no claim actual clock frequency during GT calibration",
+    "Counter sample sequence reflects Migen observation scheduling, not physical elapsed-time bound",
+    "No numerical constraints, source flow-control modification, hardware access or runtime admission change"
+  ],
+  "next": "Review generated GT startup/calibration user-clock enable/reset/selector modes against CSR admission to establish actual fastest active source periods; keep reset/coherency requirements explicit",
+  "source_sha256": {
+    "diagnostics/drtio/master_integration.py": "2b6f73a1e53eb156d9f528c98fad6afd33f69f1d7bfeae9cd42d0bf0bb76470e",
+    "diagnostics/drtio/aux_receiver_gray.py": "09af4aa5af51389b1e71994fb2c114de6f67cdc7e493a8e3ea7662b7a8545b21",
+    "diagnostics/drtio/raw20_codec.py": "90e126331bcc19eeef99d9d7cd6fc2821918549ae906ad9f60a1403576894149",
+    "/srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/genlib/fifo.py": "edf3c6192556e61d0ba9287e9111cd76875e4c8aa68820357a96419b6741de7e",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/link_layer.py": "f7da7512a2e079e52bac56124573f121a45e4093a95a17ed050accc14e9008eb"
+  }
+}

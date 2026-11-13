@@ -1,0 +1,17 @@
+{
+  "CSR_FIFO_GRAY": {
+    "update_condition": "produce.ce=writable & we; consume.ce=readable & re",
+    "readiness_finding": "Full PS HPM/CSR reset12/68 test succeeds with codec supplied and physical reset_done/clock_active/aligned all0 while modeled clocks run. Physical link-not-ready does not imply CSR FIFO quiescence.",
+    "scope": "AXI transport allowed by coordinator/progress gate, not a physical GT startup simulation"
+  },
+  "AUX_RING_GRAY": {
+    "update_condition": "read advance=aux_rx_present.re & aux_rx_present.w; write advance=SIGNAL_FRAME and next_write!=read_remote",
+    "readiness_finding": "Read pointer is CSR driven; write pointer depends on receiver state and delayed link-layer frame signals. No direct universal admit0/GT-not-ready stop condition is established.",
+    "scope": "Source review only for AUX; no new AUX startup simulation"
+  },
+  "LINK_STATS_GRAY64": {
+    "update_condition": "counter.ce=registered *_word trigger, captured from rx_*_frame_perm; permissive frame includes synchronized rx_up_rx",
+    "readiness_finding": "Actual upstream stats test after permission withdrawal: before6, observations7,8,8,8,8,8,8. Update tail exists at test sampling convention.",
+    "scope": "Not end-to-end admit withdrawal or physical detection latency"
+  }
+}

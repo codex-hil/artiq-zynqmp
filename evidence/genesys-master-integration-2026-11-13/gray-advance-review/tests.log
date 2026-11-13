@@ -1,0 +1,11 @@
+test_full_hpm_csr_can_advance_before_physical_link_ready (test_gray_stats_withdrawal.StatsWithdrawalTests.test_full_hpm_csr_can_advance_before_physical_link_ready) ... /srv/codex-hil-data/artiq-zynqmp/reference/migen/migen/sim/core.py:140: DeprecationWarning: Bitwise inversion '~' on bool is deprecated. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+  if op == "~": return ~a
+HPM_CSR12_68_WITH_RX_READY0_PASS modeled_clocks_running
+ok
+test_registered_frame_trigger_has_tail_after_permission_withdrawal (test_gray_stats_withdrawal.StatsWithdrawalTests.test_registered_frame_trigger_has_tail_after_permission_withdrawal) ... ACTUAL_STATS_WITHDRAWAL before 6 samples [7, 8, 8, 8, 8, 8, 8]
+ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 11.227s
+
+OK

@@ -1,3 +1,13 @@
+2026-11-13 Grayadvance review+2models PASS11.227s; universalquiescence
+assumption REFUSED. Actualstats permissiondrop before6 ->samples7,8,8,... tail.
+Full HPMCSR reset12/68 succeeds with physicalstatusall0/rx_ready0 under running
+modeledclocks. CSR-FIFO updateshandshake/AUX CSRread+packetFSM/statsregistered
+permissiveframe; no directglobalGT-notready stopproof. Notphysicalstartupfreq
+measurement. No steady8ns boundfromreadiness alone/numericconstraints/HW/default
+change. Next GTstartup userclock enable/reset/selector and fastestactiveperiod
+review againstCSRadmission. Evidence
+genesys-master-integration-2026-11-13/gray-advance-review/report.json.
+
 2026-11-13 actualsourceobject audit16PASS: MultiReg inputs identity14x
 GrayCounter.q+2xAuxGrayPointer.gray; one syncowner each, exactstage binding to
 287livebits, clockaliases/resetreleaseledger. Instrumentedexport RTL SHA
