@@ -1,0 +1,24 @@
+{
+  "status": "MAPPED_RESET12_POSITIVE_CASES_FOUR_MUTANTS_REFUSED_HANDOVER_STAGE_COVERED",
+  "job": "genesys-mapped-handover-20261113-v2",
+  "mutants": {
+    "tb_mapped_ce_bad.log": "initial discrete release",
+    "tb_mapped_and_bad.log": "mapped asynchronous assertion with paused control",
+    "tb_mapped_handover_bad.log": "coordinator releases after fresh PL edges",
+    "tb_mapped_set_bad.log": "mapped coordinator owns reset at control release"
+  },
+  "finding": "FDSE synchronous S has priority over CE in tested vendor model. CE inhibited after startup still sets reset, then prevents later clearing. Inhibiting S after startup causes actual reset-ownership handover check failure.",
+  "first_attempt": "Runner incorrectly expected post-start CE inhibition to fail ownership check. It failed release check instead; raw run retained, expectation corrected and S-path mutant added.",
+  "limits": [
+    "New fault-arm input and mutation parameters are test-only; zero-valued parameters preserve captured slice behavior",
+    "No FSM/GT/AXI, SDF, physical timing or CDC waiver",
+    "Current diagnostic TX6.4ns/RX4ns clock derivation not runtime125MHz qualification; I/O delays and routed checks remain open"
+  ],
+  "next": "Trace actual GT clock selector/rate/runtime bindings to reconcile diagnostic TX/RX periods before proposing constraints; no blind clock overrides",
+  "sha256": {
+    "diagnostics/drtio/role-reversal/generate-mapped-reset-slice.py": "3badf66fdabe35412096155adc7e917406ad51a60339dcb1ffa11f03b7fecb20",
+    "diagnostics/drtio/role-reversal/tb_mapped_reset.v": "1298bf6d3664a6e5447a522336a2b539c3e3eec16c903ca090910bc0163cb3d6",
+    "diagnostics/drtio/role-reversal/run-mapped-reset-sim.sh": "7b05553a3a560290660e408bc7e7d64f5f5d64db38dfaf59a2638677daea66a7",
+    "evidence/genesys-master-integration-2026-11-13/mapped-handover-mutation/mapped_reset.v": "cc7e6330a9f50313459c27f2002fbda2e5d2c6fd01cee2c9882906cf1963fa38"
+  }
+}

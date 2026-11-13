@@ -1,0 +1,20 @@
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Fri Nov 13 17:38:15 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_mapped_set_bad/xsim_script.tcl
+# xsim {tb_mapped_set_bad} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+MAPPED_INITIAL_RELEASE_PASS
+Fatal: FAIL                 mapped coordinator owns reset at control release
+Time: 476101 ps  Iteration: 0  Process: /tb_mapped_set_bad/b/check  Scope: tb_mapped_set_bad.b.check  File: /srv/nvme-fast-1/vivado-work/genesys-mapped-handover-20261113-v2/tb_mapped_reset.v Line: 10
+$finish called at time : 476101 ps
+exit
+INFO: xsimkernel Simulation Memory Usage: 270124 KB (Peak: 335140 KB), Simulation CPU Usage: 1280 ms
+INFO: [Common 17-206] Exiting xsim at Fri Nov 13 17:38:19 2026...

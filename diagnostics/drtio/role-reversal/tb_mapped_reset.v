@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 `timescale 1ns/1ps
-module mapped_bench #(parameter CE_BAD=0,AND_BAD=0);
-reg pl=0,tx=0,run_pl=1,run_tx=1,rn=0,armed=0;
+module mapped_bench #(parameter CE_BAD=0,AND_BAD=0,HANDOVER_BAD=0,SET_BAD=0);
+reg pl=0,tx=0,run_pl=1,run_tx=1,rn=0,armed=0,handover_fault=0;
 wire cr,qr,hold_reset,sr;
 integer high,stopped,offset,cases=0;
 always #4 if(run_pl)pl=~pl;
 always #7 if(run_tx)tx=~tx;
-mapped_reset #(.MUTATE_CE(CE_BAD),.MUTATE_AND(AND_BAD)) dut(.pl_clock(pl),.tx_clock(tx),.pl_resetn(rn),.raw_reset(1'b0),.control_reset(cr),.coordinator_reset(qr),.retained_request(hold_reset),.sys_reset(sr));
+mapped_reset #(.MUTATE_CE(CE_BAD),.MUTATE_AND(AND_BAD),.MUTATE_HANDOVER(HANDOVER_BAD),.MUTATE_SET(SET_BAD)) dut(.pl_clock(pl),.tx_clock(tx),.pl_resetn(rn),.raw_reset(1'b0),.handover_fault(handover_fault),.control_reset(cr),.coordinator_reset(qr),.retained_request(hold_reset),.sys_reset(sr));
 task check;input ok;input [511:0] label;begin if(ok!==1'b1)$fatal(1,"FAIL %s",label);end endtask
 always @(negedge cr)begin #0.001;if(armed)check(qr&&hold_reset,"mapped coordinator owns reset at control release");end
 initial begin
- #200;rn=1;#150;check(!cr&&!qr&&!sr,"initial discrete release");armed=1;
+ #200;rn=1;#150;check(!cr&&!qr&&!sr,"initial discrete release");armed=1;$display("MAPPED_INITIAL_RELEASE_PASS");handover_fault=1;
  for(high=0;high<2;high=high+1)
  for(stopped=0;stopped<2;stopped=stopped+1)
  for(offset=1;offset<=6;offset=offset+1)if(offset==1||offset==3||offset==6)begin
@@ -30,3 +30,5 @@ endmodule
 module tb_mapped_reset;mapped_bench b();endmodule
 module tb_mapped_ce_bad;mapped_bench #(.CE_BAD(1)) b();endmodule
 module tb_mapped_and_bad;mapped_bench #(.AND_BAD(1)) b();endmodule
+module tb_mapped_handover_bad;mapped_bench #(.HANDOVER_BAD(1)) b();endmodule
+module tb_mapped_set_bad;mapped_bench #(.SET_BAD(1)) b();endmodule

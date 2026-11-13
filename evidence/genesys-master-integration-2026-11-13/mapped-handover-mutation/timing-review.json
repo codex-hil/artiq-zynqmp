@@ -1,0 +1,21 @@
+{
+  "status": "TIMING_QUALIFICATION_OPEN_NO_CONSTRAINT_CHANGE",
+  "source_sha256": {
+    "clocks.rpt": "06d0a4c8267e80625d90fd02fc1ba917f172a1197d5bfabc5910d7ec93046cd3",
+    "check-timing.rpt": "1641d6cfe654071d8fb8e38a11bf91216867f490aef27ff429fb74c7ecff471b",
+    "cdc.rpt": "808412f2ef2dd63f3184aed582686704221fdee9086500db5a92b8d3b35ae2d8",
+    "report.json": "a4d44f4447f45b677c4748dd8ab1ed103d259759658b7da9d07030d2acadadb6"
+  },
+  "observations": [
+    "Checkpoint is Synthesized, not placed/routed; no SDF",
+    "Diagnostic PL input8ns/ref6.4ns; derived TX6.4ns/RX4ns in current full report; runtime raw20/125MHz profile not established by these diagnostic clocks",
+    "363 input and132 output ports lack I/O delay constraints",
+    "Full CDC critical findings remain, including13CDC10/2CDC11; no timing exceptions applied"
+  ],
+  "remaining_work": [
+    "Trace GT selector/rate/runtime source bindings to reconcile generated TX/RX clock periods; do not override periods blindly",
+    "Establish PS boundary I/O timing and reset recovery/removal constraints with proper integration",
+    "Route only a qualified clock/port model, then inspect timing/CDC/skew, retaining failure evidence"
+  ],
+  "scope": "Technical evidence review only; no adoption, hardware access or board configuration changes"
+}

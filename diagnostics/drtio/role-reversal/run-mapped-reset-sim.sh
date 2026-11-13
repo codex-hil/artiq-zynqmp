@@ -14,7 +14,7 @@ source /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/settings64.sh
 command -v gcc
 gcc --version | head -n 1
 xvlog mapped_reset.v tb_mapped_reset.v /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v
-for top in tb_mapped_reset tb_mapped_ce_bad tb_mapped_and_bad; do
+for top in tb_mapped_reset tb_mapped_ce_bad tb_mapped_and_bad tb_mapped_handover_bad tb_mapped_set_bad; do
  xelab -mt off -L unisims_ver "$top" glbl -s "$top"
  xsim "$top" -runall > "$top.log" 2>&1
  cat "$top.log"
@@ -24,6 +24,14 @@ for top in tb_mapped_reset tb_mapped_ce_bad tb_mapped_and_bad; do
  else
   grep -F "Fatal:" "$top.log"
   ! grep -F "MAPPED_RESET_SLICE_PASS" "$top.log"
+  if [[ "$top" == tb_mapped_handover_bad ]]; then
+   grep -F "MAPPED_INITIAL_RELEASE_PASS" "$top.log"
+   grep -F "coordinator releases after fresh PL edges" "$top.log"
+  fi
+  if [[ "$top" == tb_mapped_set_bad ]]; then
+   grep -F "MAPPED_INITIAL_RELEASE_PASS" "$top.log"
+   grep -F "mapped coordinator owns reset at control release" "$top.log"
+  fi
  fi
 done
 '

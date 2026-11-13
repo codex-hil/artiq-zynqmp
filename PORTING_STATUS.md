@@ -1,3 +1,13 @@
+2026-11-13 mappedprimitive12positive+4mutants PASS/refused as expected.
+Startup-permitting CE inhibition does NOT stop FDSE synchronous SET (Spriority);
+it prevents subsequent release. Added startup-permitting S inhibit REFUSED
+exactly atcontrolreset ownership handover. Earlier CE-stage expectation refusal
+retained/corrected. No physicalCDC/timingqualification. Timingreview: diagnostic
+TX6.4ns/RX4ns versus125MHzprofile unresolved, I/Odelays363/132 missing/unrouted.
+Next GTselector/rate/sourcebinding audit beforeconstraints; no blindoverride.
+NoHW/defaultchange. Evidence
+genesys-master-integration-2026-11-13/mapped-handover-mutation/report.json.
+
 2026-11-13 mappedDCP primitive slice vendor12cases PASS: controlstoplow/high
 x SYSrun/stop x releaseoffset1/3/6ns; resetretention and coordinatorownsreset
 atcontrolrelease, SYSrelease needsSYSedges. FourFDPE/FDSE/LUT2OR/LUT1/VCC/GND

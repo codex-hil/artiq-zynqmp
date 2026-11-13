@@ -22,7 +22,7 @@ nets=sorted(drivers);mapping={**external,**{n:'n'+str(i) for i,n in enumerate(ne
 coord='genesysmasterintegration_ingress_outputs_reset_reg';assert cells[coord]==('FDSE',"1'b1")
 assert cells[drivers[pins[coord]['CE'][1]][0]][0]=='VCC'
 assert cells[drivers[pins['FDPE_4']['D'][1]][0]][0]=='GND'
-s='`timescale 1ns/1ps\nmodule mapped_reset #(parameter MUTATE_CE=0,MUTATE_AND=0)(input pl_clock,tx_clock,pl_resetn,raw_reset,output control_reset,coordinator_reset,retained_request,sys_reset);\n'
+s='`timescale 1ns/1ps\nmodule mapped_reset #(parameter MUTATE_CE=0,MUTATE_AND=0,MUTATE_HANDOVER=0,MUTATE_SET=0)(input pl_clock,tx_clock,pl_resetn,raw_reset,handover_fault,output control_reset,coordinator_reset,retained_request,sys_reset);\n'
 s+='wire '+','.join(mapping[n] for n in nets)+';\n'
 for index,(cell,(ref,init)) in enumerate(cells.items()):
  par=[]
@@ -32,7 +32,8 @@ for index,(cell,(ref,init)) in enumerate(cells.items()):
  ports=[]
  for pin,(direction,net) in pins[cell].items():
   value=mapping[net]
-  if cell==coord and pin=='CE':value="MUTATE_CE ? 1'b0 : "+value
+  if cell==coord and pin=='CE':value="(MUTATE_CE || (MUTATE_HANDOVER && handover_fault)) ? 1'b0 : "+value
+  if cell==coord and pin=='S':value="(MUTATE_SET && handover_fault) ? 1'b0 : "+value
   ports.append('.'+pin+'('+value+')')
  s+=ref+(' #('+','.join(par)+')' if par else '')+' cell'+str(index)+'('+','.join(ports)+');\n'
 for out,cell in [('control_reset','FDPE_5'),('coordinator_reset',coord),('sys_reset','FDPE_29')]:s+='assign '+out+'='+mapping[pins[cell]['Q'][1]]+';\n'

@@ -1,0 +1,232 @@
+{
+  "status": "CLOSED_PRIMITIVE_SLICE_GENERATED",
+  "capture_sha256": "c5ed2fe381d3deea2a7ebfb98e300122d353aa25616cca6b400493e5e43d2f76",
+  "cells": {
+    "FDPE_26_i_1": [
+      "LUT2",
+      "4'hE"
+    ],
+    "FDPE_28": [
+      "FDPE",
+      "1'b1"
+    ],
+    "FDPE_29": [
+      "FDPE",
+      "1'b1"
+    ],
+    "FDPE_2_i_1": [
+      "LUT1",
+      "2'h1"
+    ],
+    "FDPE_4": [
+      "FDPE",
+      "1'b1"
+    ],
+    "FDPE_5": [
+      "FDPE",
+      "1'b1"
+    ],
+    "GND": [
+      "GND",
+      ""
+    ],
+    "VCC": [
+      "VCC",
+      ""
+    ],
+    "genesysmasterintegration_ingress_outputs_reset_reg": [
+      "FDSE",
+      "1'b1"
+    ]
+  },
+  "params": {
+    "FDPE_26_i_1": {},
+    "FDPE_28": {
+      "IS_C_INVERTED": "1'b0",
+      "IS_D_INVERTED": "1'b0",
+      "IS_PRE_INVERTED": "1'b0"
+    },
+    "FDPE_29": {
+      "IS_C_INVERTED": "1'b0",
+      "IS_D_INVERTED": "1'b0",
+      "IS_PRE_INVERTED": "1'b0"
+    },
+    "FDPE_2_i_1": {},
+    "FDPE_4": {
+      "IS_C_INVERTED": "1'b0",
+      "IS_D_INVERTED": "1'b0",
+      "IS_PRE_INVERTED": "1'b0"
+    },
+    "FDPE_5": {
+      "IS_C_INVERTED": "1'b0",
+      "IS_D_INVERTED": "1'b0",
+      "IS_PRE_INVERTED": "1'b0"
+    },
+    "GND": {},
+    "VCC": {},
+    "genesysmasterintegration_ingress_outputs_reset_reg": {
+      "IS_C_INVERTED": "",
+      "IS_D_INVERTED": "",
+      "IS_S_INVERTED": ""
+    }
+  },
+  "pins": {
+    "FDPE_26_i_1": {
+      "O": [
+        "OUT",
+        "genesysmasterintegration_ingress_releases_groups_request1"
+      ],
+      "I0": [
+        "IN",
+        "genesysmasterintegration_ingress_outputs_reset"
+      ],
+      "I1": [
+        "IN",
+        "control_rst"
+      ]
+    },
+    "FDPE_28": {
+      "Q": [
+        "OUT",
+        "xilinxasyncresetsynchronizerimpl14_rst_meta"
+      ],
+      "C": [
+        "IN",
+        "mastergthadapter_tx_clock"
+      ],
+      "CE": [
+        "IN",
+        "<const1>"
+      ],
+      "D": [
+        "IN",
+        "<const0>"
+      ],
+      "PRE": [
+        "IN",
+        "genesysmasterintegration_ingress_releases_groups_request1"
+      ]
+    },
+    "FDPE_29": {
+      "Q": [
+        "OUT",
+        "aux_release_sys_rst"
+      ],
+      "C": [
+        "IN",
+        "mastergthadapter_tx_clock"
+      ],
+      "CE": [
+        "IN",
+        "<const1>"
+      ],
+      "D": [
+        "IN",
+        "xilinxasyncresetsynchronizerimpl14_rst_meta"
+      ],
+      "PRE": [
+        "IN",
+        "genesysmasterintegration_ingress_releases_groups_request1"
+      ]
+    },
+    "FDPE_2_i_1": {
+      "O": [
+        "OUT",
+        "xilinxasyncresetsynchronizerimpl1_async_reset"
+      ],
+      "I0": [
+        "IN",
+        "pl_resetn0"
+      ]
+    },
+    "FDPE_4": {
+      "Q": [
+        "OUT",
+        "xilinxasyncresetsynchronizerimpl2_rst_meta"
+      ],
+      "C": [
+        "IN",
+        "pl_clk0"
+      ],
+      "CE": [
+        "IN",
+        "<const1>"
+      ],
+      "D": [
+        "IN",
+        "<const0>"
+      ],
+      "PRE": [
+        "IN",
+        "xilinxasyncresetsynchronizerimpl1_async_reset"
+      ]
+    },
+    "FDPE_5": {
+      "Q": [
+        "OUT",
+        "control_rst"
+      ],
+      "C": [
+        "IN",
+        "pl_clk0"
+      ],
+      "CE": [
+        "IN",
+        "<const1>"
+      ],
+      "D": [
+        "IN",
+        "xilinxasyncresetsynchronizerimpl2_rst_meta"
+      ],
+      "PRE": [
+        "IN",
+        "xilinxasyncresetsynchronizerimpl1_async_reset"
+      ]
+    },
+    "GND": {
+      "G": [
+        "OUT",
+        "<const0>"
+      ]
+    },
+    "VCC": {
+      "P": [
+        "OUT",
+        "<const1>"
+      ]
+    },
+    "genesysmasterintegration_ingress_outputs_reset_reg": {
+      "Q": [
+        "OUT",
+        "genesysmasterintegration_ingress_outputs_reset"
+      ],
+      "C": [
+        "IN",
+        "pl_clk0"
+      ],
+      "CE": [
+        "IN",
+        "<const1>"
+      ],
+      "D": [
+        "IN",
+        "genesysmasterintegration_ingress_raw_reset"
+      ],
+      "S": [
+        "IN",
+        "control_rst"
+      ]
+    }
+  },
+  "external_boundary": {
+    "pl_clk0": "pl_clock",
+    "mastergthadapter_tx_clock": "tx_clock",
+    "pl_resetn0": "pl_resetn",
+    "genesysmasterintegration_ingress_raw_reset": "raw_reset"
+  },
+  "limits": [
+    "raw coordinator D supplied externally, no FSM/GT/AXI",
+    "Empty inversion parameters retain vendor library defaults",
+    "No SDF or routed delays"
+  ]
+}
