@@ -1,3 +1,13 @@
+2026-11-13 retainedDCP runtimeclock diagnostic reconciled: baselineTX6.4/
+RX4ns -> sixselector010cases TX8/RX4 -> plus3primitiveRXRATE000 TX8/RX8ns.
+DCPprepostSHAunchanged/no save/manualperiodoverride/fullvendorXDC/falsepaths.
+DirectRXRATE mode assumption notstartupmux propagationproof; caseproperties
+queryunknown recorded, no independentreadbackclaim. First unsupported optional
+reportcommand failure retained/fixed. Steadymode only/notphysicalstartup/reset
+qualification. Next explicitsteady CDC/clockinteractioncomparison. NoHW/default
+constraints/adoption. Evidence
+genesys-master-integration-2026-11-13/retained-runtime-clocks/report.json.
+
 2026-11-13 mappedprimitive12positive+4mutants PASS/refused as expected.
 Startup-permitting CE inhibition does NOT stop FDSE synchronous SET (Spriority);
 it prevents subsequent release. Added startup-permitting S inhibit REFUSED

@@ -1,0 +1,136 @@
+Acquired Dell heavy-build slot 1/3
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Fri Nov 13 18:00:56 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source query-retained-runtime-clocks.tcl
+# set_param general.maxThreads 4
+# open_checkpoint /srv/nvme-fast-1/vivado-work/genesys-retained-local-cdc-20261112-v1/combined_cdc.dcp
+Command: open_checkpoint /srv/nvme-fast-1/vivado-work/genesys-retained-local-cdc-20261112-v1/combined_cdc.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.03 . Memory (MB): peak = 1554.168 ; gain = 0.000 ; free physical = 15115 ; free virtual = 64819
+INFO: [Device 21-403] Loading part xczu5ev-sfvc784-1-e
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2588.777 ; gain = 0.000 ; free physical = 14111 ; free virtual = 63825
+INFO: [Netlist 29-17] Analyzing 538 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'master_physical_candidate' is not ideal for floorplanning, since the cellview 'master_physical_candidate' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2588.777 ; gain = 0.000 ; free physical = 14102 ; free virtual = 63823
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3215.543 ; gain = 0.000 ; free physical = 13547 ; free virtual = 63298
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 149 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+  RAM256X1D => RAM256X1D (MUXF7(x4), MUXF8(x2), RAMD64E(x8)): 4 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 5 instances
+  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 75 instances
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 32 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 32 instances
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.2 (64-bit) build 6299465
+open_checkpoint: Time (s): cpu = 00:00:28 ; elapsed = 00:00:23 . Memory (MB): peak = 3215.578 ; gain = 1661.410 ; free physical = 13547 ; free virtual = 63298
+# report_clocks -file baseline-clocks.rpt
+# source query-gt-clock-parameters.tcl
+## set cells [get_cells -hierarchical -filter {REF_NAME == GTHE4_CHANNEL}]
+## if {[llength $cells] != 1} {error "Expected one GTHE4_CHANNEL, got[llength $cells]"}
+## set gt [lindex $cells 0]
+## set out [open gt-parameters.tsv w]
+## foreach property [lsort [list_property $gt]] {
+##     if {[regexp {CPLL_(FBDIV|REFCLK_DIV)|[TR]X_(DATA_WIDTH|INT_DATAWIDTH|OUT_DIV|PROGDIV_CFG)} $property]} {
+##         puts $out "PARAM\t$property\t[get_property $property $gt]"
+##     }
+## }
+## foreach prefix {TXOUTCLKSEL RXOUTCLKSEL} {
+##     foreach pin [get_pins -of_objects $gt -filter "REF_PIN_NAME =~ ${prefix}*"] {
+##         set nets [get_nets -quiet -of_objects $pin]
+##         set drivers [get_pins -quiet -of_objects $nets -filter {DIRECTION == OUT}]
+##         puts $out "SELECT\t$pin\t$nets\t$drivers"
+##     }
+## }
+## foreach buffer [get_cells -hierarchical -filter {REF_NAME == BUFG_GT}] {
+##     foreach pin [get_pins -of_objects $buffer -filter {REF_PIN_NAME =~ DIV*}] {
+##         set nets [get_nets -quiet -of_objects $pin]
+##         set drivers [get_pins -quiet -of_objects $nets -filter {DIRECTION == OUT}]
+##         puts $out "DIVIDER\t$pin\t$nets\t$drivers"
+##     }
+## }
+## close $out
+## puts "GT_CLOCK_PARAMETER_QUERY_COMPLETE"
+GT_CLOCK_PARAMETER_QUERY_COMPLETE
+# source query-runtime-gt-clocks.tcl
+## set gt [get_cells -hierarchical -filter {REF_NAME == GTHE4_CHANNEL}]
+## if {[llength $gt] != 1} {error "Expected one GT primitive"}
+## set seen {}
+## foreach pin [get_pins -of_objects $gt] {
+##     set name [get_property REF_PIN_NAME $pin]
+##     if {[regexp {^(TX|RX)OUTCLKSEL\[([0-2])\]$} $name -> direction bit]} {
+##         set value [expr {$bit == 1 ? 1 : 0}]
+##         set_case_analysis $value $pin
+##         lappend seen "$name=$value"
+##     }
+## }
+## if {[llength $seen] != 6} {error "Expected six runtime selector pins, got$seen"}
+## update_timing
+WARNING: [Timing 38-278] The instance 'drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST' has RXRATE pins that are not constant, so the worst case divide value of 1 will be used for automatic derivation of generated clocks
+INFO: [Timing 38-2] Deriving generated clocks
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "pl_clk0" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+update_timing: Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 4093.973 ; gain = 821.773 ; free physical = 12641 ; free virtual = 62393
+## set out [open runtime-clock-audit.tsv w]
+## puts $out "SELECTORS\t$seen"
+## foreach clock [get_clocks] {
+##     puts $out "CLOCK\t$clock\t[get_property PERIOD $clock]\t[get_property SOURCE_PINS $clock]"
+## }
+## foreach cell [get_cells -hierarchical -filter {REF_NAME == BUFG_GT}] {
+##     set pin [get_pins -of_objects $cell -filter {REF_PIN_NAME == O}]
+##     puts $out "BUFFER\t$cell\t[get_clocks -quiet -of_objects $pin]"
+## }
+## close $out
+## report_clocks -file runtime-clocks.rpt
+## puts "GT_RUNTIME_CLOCK_QUERY_COMPLETE"
+GT_RUNTIME_CLOCK_QUERY_COMPLETE
+# source query-rxrate-runtime.tcl
+## set gt [get_cells -hierarchical -filter {REF_NAME == GTHE4_CHANNEL}]
+## if {[llength $gt] != 1} {error "Expected one GT primitive"}
+## set selected {}
+## foreach pin [get_pins -of_objects $gt] {
+##     if {[regexp {^RXRATE\[([0-2])\]$} [get_property REF_PIN_NAME $pin]]} {
+##         set_case_analysis 0 $pin
+##         lappend selected $pin
+##     }
+## }
+## if {[llength $selected] != 3} {error "Expected three RXRATE pins, got$selected"}
+## update_timing
+INFO: [Timing 38-2] Deriving generated clocks
+## set out [open rxrate-runtime.tsv w]
+## foreach pin $selected {
+##     set value unknown
+##     foreach property {CASE_VALUE CASE_ANALYSIS} {
+##         if {[lsearch -exact [list_property $pin] $property] >= 0} {set value [get_property $property $pin]}
+##     }
+##     puts $out "RXRATE_CASE\t$pin\t$value"
+## }
+## foreach clock [get_clocks] {
+##     puts $out "CLOCK\t$clock\t[get_property PERIOD $clock]\t[get_property SOURCE_PINS $clock]"
+## }
+## close $out
+## report_clocks -file rxrate-runtime.rpt
+## puts "RXRATE_RUNTIME_QUERY_COMPLETE"
+RXRATE_RUNTIME_QUERY_COMPLETE
+# report_case_analysis -file runtime-cases.rpt
+invalid command name "report_case_analysis"
+    while executing
+"report_case_analysis -file runtime-cases.rpt"
+    (file "query-retained-runtime-clocks.tcl" line 9)
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 13 18:01:37 2026...

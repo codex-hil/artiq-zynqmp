@@ -1,0 +1,50 @@
+{
+  "status": "RETAINED_DCP_STEADY_MODE_TX_RX8NS_RECONCILED_NOT_PHYSICALLY_QUALIFIED",
+  "job": "genesys-retained-runtime-clocks-20261113-v2",
+  "checkpoint_sha256": "afd55ae2221b6690eda3d5eef23430f8a677018ecb9077cefc9231abc4aa5f01",
+  "periods_ns": {
+    "baseline": {
+      "diagnostic_pl_clk0": 8.0,
+      "diagnostic_ref_p": 6.4,
+      "gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1": 4.0,
+      "rxoutclk_out[0]": 4.0,
+      "txoutclk_out[0]": 6.4
+    },
+    "six_selectors_010": {
+      "diagnostic_pl_clk0": 8.0,
+      "diagnostic_ref_p": 6.4,
+      "rxoutclk_out[0]": 4.0,
+      "gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1": 4.0,
+      "txoutclk_out[0]": 8.0
+    },
+    "plus_three_primitive_rxrate_000": {
+      "diagnostic_pl_clk0": 8.0,
+      "diagnostic_ref_p": 6.4,
+      "rxoutclk_out[0]": 8.0,
+      "gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1": 8.0,
+      "txoutclk_out[0]": 8.0
+    }
+  },
+  "model_assumptions": [
+    "Exactly six TX/RXOUTCLKSEL primitive pins case010",
+    "Exactly three primitive RXRATE pins case000; direct mode assumption, not demonstrated propagation from calibration state",
+    "No manual clock period override, full vendor XDC import, false paths or checkpoint save"
+  ],
+  "receipt_note": "RXRATE case properties unavailable in this tool query (recorded unknown); set_case_analysis commands complete without error and derived clock effect recorded. No independent pin case-value readback claimed.",
+  "vendor_source_context": "Pinned2.5Gbps/raw20/125MHz profile; generated vendor XDC uses runtime selector010 assumptions because calibration controls selectors dynamically",
+  "first_attempt": "Unsupported report_case_analysis after clock queries; removed optional reporting command only, raw failure retained",
+  "limits": [
+    "Steady runtime diagnostic only, not calibrated startup/reset transition proof or hardware frequency measurement",
+    "Original full CDC and timing reports remain diagnostic; physical I/O and routed reset constraints still open",
+    "No default constraints/adoption/hardware changes"
+  ],
+  "next": "Diagnostic full CDC/clock-interaction comparison in this explicitly assumed steady mode, with all cases listed and no blanket clock-group or reset exceptions",
+  "source_sha256": {
+    "diagnostics/drtio/master_gth_adapter.py": "52103c96db5064cb46bd5ab78896fcc4ae0791ff3fd07d277f26894161bf594e",
+    "diagnostics/drtio/role-reversal/query-retained-runtime-clocks.tcl": "118c756a664aeda5fd18d8b7719181bb8058d4e397862f8a19100e33263876b7",
+    "diagnostics/drtio/role-reversal/query-runtime-gt-clocks.tcl": "5353ec76fac6890eeee4a92bfb5736a76a0b18bfc342a68ed33c82e9a6738071",
+    "diagnostics/drtio/role-reversal/query-rxrate-runtime.tcl": "698ca8a235f601676b1d32c9a04eee782acdec2bfd59e08473def9aef758d8de",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/drtio_gth.xci": "aaa71467ac1f6a45b6f34be02d7cc63f26e6017d474cdd3f91a3baaeb90c9e41",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/synth/drtio_gth.xdc": "a216acfce0d2fe34758fc75b3ce5cf2fb7fbebaebc102b12aa35004f928db4ae"
+  }
+}
