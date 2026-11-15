@@ -1,0 +1,104 @@
+MODE	tx000_rxrate001
+CASE	tx000_rxrate001	RXOUTCLKSEL[2]	0
+CASE	tx000_rxrate001	RXOUTCLKSEL[1]	1
+CASE	tx000_rxrate001	RXOUTCLKSEL[0]	0
+CASE	tx000_rxrate001	RXRATE[2]	0
+CASE	tx000_rxrate001	RXRATE[1]	0
+CASE	tx000_rxrate001	RXRATE[0]	1
+CASE	tx000_rxrate001	TXOUTCLKSEL[2]	0
+CASE	tx000_rxrate001	TXOUTCLKSEL[1]	0
+CASE	tx000_rxrate001	TXOUTCLKSEL[0]	0
+CLOCK	tx000_rxrate001	diagnostic_pl_clk0	8.000	pl_clk0
+CLOCK	tx000_rxrate001	diagnostic_ref_p	6.400	ref_p
+CLOCK	tx000_rxrate001	rxoutclk_out[0]	4.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+CLOCK	tx000_rxrate001	gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1	4.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS
+BUFFER	tx000_rxrate001	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst	
+BUFFER	tx000_rxrate001	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst	rxoutclk_out[0]
+BUFFER	tx000_rxrate001	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst	
+MODE	tx000_rxrate000
+CASE	tx000_rxrate000	RXOUTCLKSEL[2]	0
+CASE	tx000_rxrate000	RXOUTCLKSEL[1]	1
+CASE	tx000_rxrate000	RXOUTCLKSEL[0]	0
+CASE	tx000_rxrate000	RXRATE[2]	0
+CASE	tx000_rxrate000	RXRATE[1]	0
+CASE	tx000_rxrate000	RXRATE[0]	0
+CASE	tx000_rxrate000	TXOUTCLKSEL[2]	0
+CASE	tx000_rxrate000	TXOUTCLKSEL[1]	0
+CASE	tx000_rxrate000	TXOUTCLKSEL[0]	0
+CLOCK	tx000_rxrate000	diagnostic_pl_clk0	8.000	pl_clk0
+CLOCK	tx000_rxrate000	diagnostic_ref_p	6.400	ref_p
+CLOCK	tx000_rxrate000	rxoutclk_out[0]	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+CLOCK	tx000_rxrate000	gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS
+BUFFER	tx000_rxrate000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst	
+BUFFER	tx000_rxrate000	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst	rxoutclk_out[0]
+BUFFER	tx000_rxrate000	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst	
+MODE	tx101_rxrate001
+CASE	tx101_rxrate001	RXOUTCLKSEL[2]	0
+CASE	tx101_rxrate001	RXOUTCLKSEL[1]	1
+CASE	tx101_rxrate001	RXOUTCLKSEL[0]	0
+CASE	tx101_rxrate001	RXRATE[2]	0
+CASE	tx101_rxrate001	RXRATE[1]	0
+CASE	tx101_rxrate001	RXRATE[0]	1
+CASE	tx101_rxrate001	TXOUTCLKSEL[2]	1
+CASE	tx101_rxrate001	TXOUTCLKSEL[1]	0
+CASE	tx101_rxrate001	TXOUTCLKSEL[0]	1
+CLOCK	tx101_rxrate001	diagnostic_pl_clk0	8.000	pl_clk0
+CLOCK	tx101_rxrate001	diagnostic_ref_p	6.400	ref_p
+CLOCK	tx101_rxrate001	rxoutclk_out[0]	4.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+CLOCK	tx101_rxrate001	gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1	4.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS
+BUFFER	tx101_rxrate001	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst	
+BUFFER	tx101_rxrate001	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst	rxoutclk_out[0]
+BUFFER	tx101_rxrate001	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst	
+MODE	tx101_rxrate000
+CASE	tx101_rxrate000	RXOUTCLKSEL[2]	0
+CASE	tx101_rxrate000	RXOUTCLKSEL[1]	1
+CASE	tx101_rxrate000	RXOUTCLKSEL[0]	0
+CASE	tx101_rxrate000	RXRATE[2]	0
+CASE	tx101_rxrate000	RXRATE[1]	0
+CASE	tx101_rxrate000	RXRATE[0]	0
+CASE	tx101_rxrate000	TXOUTCLKSEL[2]	1
+CASE	tx101_rxrate000	TXOUTCLKSEL[1]	0
+CASE	tx101_rxrate000	TXOUTCLKSEL[0]	1
+CLOCK	tx101_rxrate000	diagnostic_pl_clk0	8.000	pl_clk0
+CLOCK	tx101_rxrate000	diagnostic_ref_p	6.400	ref_p
+CLOCK	tx101_rxrate000	rxoutclk_out[0]	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+CLOCK	tx101_rxrate000	gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS
+BUFFER	tx101_rxrate000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst	
+BUFFER	tx101_rxrate000	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst	rxoutclk_out[0]
+BUFFER	tx101_rxrate000	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst	
+MODE	tx010_rxrate001
+CASE	tx010_rxrate001	RXOUTCLKSEL[2]	0
+CASE	tx010_rxrate001	RXOUTCLKSEL[1]	1
+CASE	tx010_rxrate001	RXOUTCLKSEL[0]	0
+CASE	tx010_rxrate001	RXRATE[2]	0
+CASE	tx010_rxrate001	RXRATE[1]	0
+CASE	tx010_rxrate001	RXRATE[0]	1
+CASE	tx010_rxrate001	TXOUTCLKSEL[2]	0
+CASE	tx010_rxrate001	TXOUTCLKSEL[1]	1
+CASE	tx010_rxrate001	TXOUTCLKSEL[0]	0
+CLOCK	tx010_rxrate001	diagnostic_pl_clk0	8.000	pl_clk0
+CLOCK	tx010_rxrate001	diagnostic_ref_p	6.400	ref_p
+CLOCK	tx010_rxrate001	rxoutclk_out[0]	4.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+CLOCK	tx010_rxrate001	gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1	4.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS
+CLOCK	tx010_rxrate001	txoutclk_out[0]	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+BUFFER	tx010_rxrate001	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst	txoutclk_out[0]
+BUFFER	tx010_rxrate001	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst	rxoutclk_out[0]
+BUFFER	tx010_rxrate001	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst	txoutclk_out[0]
+MODE	tx010_rxrate000
+CASE	tx010_rxrate000	RXOUTCLKSEL[2]	0
+CASE	tx010_rxrate000	RXOUTCLKSEL[1]	1
+CASE	tx010_rxrate000	RXOUTCLKSEL[0]	0
+CASE	tx010_rxrate000	RXRATE[2]	0
+CASE	tx010_rxrate000	RXRATE[1]	0
+CASE	tx010_rxrate000	RXRATE[0]	0
+CASE	tx010_rxrate000	TXOUTCLKSEL[2]	0
+CASE	tx010_rxrate000	TXOUTCLKSEL[1]	1
+CASE	tx010_rxrate000	TXOUTCLKSEL[0]	0
+CLOCK	tx010_rxrate000	diagnostic_pl_clk0	8.000	pl_clk0
+CLOCK	tx010_rxrate000	diagnostic_ref_p	6.400	ref_p
+CLOCK	tx010_rxrate000	rxoutclk_out[0]	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+CLOCK	tx010_rxrate000	gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS
+CLOCK	tx010_rxrate000	txoutclk_out[0]	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK
+BUFFER	tx010_rxrate000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_cpll_cal_gthe4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_inst/gtwizard_ultrascale_v1_7_22_gthe4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst	txoutclk_out[0]
+BUFFER	tx010_rxrate000	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_rx/gen_gtwiz_userclk_rx_main.bufg_gt_usrclk_inst	rxoutclk_out[0]
+BUFFER	tx010_rxrate000	gtwizard_ultrascale_v1_7_22_gtwiz_userclk_tx/gen_gtwiz_userclk_tx_main.bufg_gt_usrclk_inst	txoutclk_out[0]

@@ -1,0 +1,49 @@
+{
+  "status": "SIX_MODE_MATRIX_COMPLETE_TX_STARTUP_DERIVATION_UNRESOLVED_NOT_A_SOURCE_RATE_BOUND",
+  "job": "genesys-gt-mode-matrix-20261115-v2",
+  "checkpoint_sha256": "afd55ae2221b6690eda3d5eef23430f8a677018ecb9077cefc9231abc4aa5f01",
+  "checks": [
+    "All54 requested bit values match six complete case descriptions",
+    "All9 case pin values overwritten each iteration; no prior case left implicit",
+    "Missing case receipt mutant refused",
+    "Checkpoint pre/post SHA identical"
+  ],
+  "periods_ns": {
+    "tx000_rxrate001": {
+      "tx_ns": null,
+      "rx_ns": 4.0
+    },
+    "tx000_rxrate000": {
+      "tx_ns": null,
+      "rx_ns": 8.0
+    },
+    "tx101_rxrate001": {
+      "tx_ns": null,
+      "rx_ns": 4.0
+    },
+    "tx101_rxrate000": {
+      "tx_ns": null,
+      "rx_ns": 8.0
+    },
+    "tx010_rxrate001": {
+      "tx_ns": 8.0,
+      "rx_ns": 4.0
+    },
+    "tx010_rxrate000": {
+      "tx_ns": 8.0,
+      "rx_ns": 8.0
+    }
+  },
+  "findings": [
+    "Steady TX010 gives8ns; RXRATE001 gives4ns and000 gives8ns in timing model",
+    "No derived TXOUTCLK clock for TX000/101; not physical quiescence or frequency proof",
+    "Fastest active source bound still unqualified because TX calibration mode clock and PMA-helper reset overlap unresolved"
+  ],
+  "first_attempt": "Tcl expr ternary coerced010 to octal8; invalid0b8 stopped run. Corrected selection to string-valued if and bit indexing; first refusal retained.",
+  "limits": [
+    "Case cross-product not proved reachable on hardware",
+    "Requested values logged, no independent physical/case-value readback",
+    "No period override, broad CDC exception, saved DCP, default/hardware changes"
+  ],
+  "next": "Inspect generated TX calibration programmable-divider/reset path and its PMA/userclk reset relationship; preserve unknown TX modes rather than imposing nominal8ns"
+}

@@ -1,3 +1,11 @@
+2026-11-15 sixGTmode matrix COMPLETE/54requestedpinvalues validated;
+missingcase-mutantREFUSED, DCPprepostSHAunchanged. TX0108ns/RXRATE0014ns vs
+0008ns; TX000/101 no derivedTXclock (NOT proofclockstops). No activeproducer
+maxrate bound/physicalreachability qualification. First Tcl010->octal8 refusal
+retained/fixedstringbitselection. No manualperiod/CDCwaiver/HW/defaultchange.
+Next TXcalibration programmabledivider/reset and PMA/userclk overlap review.
+Evidence genesys-master-integration-2026-11-15/gt-mode-matrix/report.json.
+
 2026-11-15 startupclock sourceguard audit PASS/divider-mutant REFUSED.
 CPLL TXoverride101 vs synchronizedUSER; nonPCIe powergood RXRATE001->USER.
 Actualadapter externalTX/RXhelperratio1 BUFG_GT CE1/CLR~PMAresetdone; not direct
