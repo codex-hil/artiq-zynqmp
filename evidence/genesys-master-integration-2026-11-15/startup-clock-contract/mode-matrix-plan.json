@@ -1,0 +1,23 @@
+{
+  "scope": "Diagnostic clock-mode assumptions on unchanged synthesized retained DCP; not hardware-state reachability proof",
+  "tx_selectors": [
+    "000",
+    "101",
+    "010"
+  ],
+  "rx_selectors": [
+    "010"
+  ],
+  "rx_rates": [
+    "001",
+    "000"
+  ],
+  "cases": 6,
+  "requirements": [
+    "Explicit exact primitive pin counts and named assumptions for each case",
+    "Reset/remove prior case values before next case, preserve baseline report",
+    "No manual generated clocks, period overrides, broad falsepaths or saved DCP",
+    "Record unavailable/invalid derived clocks without replacing them by nominal values"
+  ],
+  "followup": "Establish PMA/clock-helper reset and producer-update timeline to classify which mode combinations are actually admitted; matrix alone cannot qualify fastest source period"
+}

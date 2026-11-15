@@ -1,0 +1,30 @@
+{
+  "status": "SOURCE_STARTUP_CLOCK_CONTRACT_GUARDS_PASS_DIVIDER_MUTANT_REFUSED",
+  "helper_params": {
+    "p_P_CONTENTS": 0,
+    "p_P_FREQ_RATIO_SOURCE_TO_USRCLK": 1,
+    "p_P_FREQ_RATIO_USRCLK_TO_USRCLK2": 1
+  },
+  "mode_findings": [
+    "CPLL calibration TX selector override101, otherwise synchronized user selector",
+    "Non-PCIe power-good branch RXRATE001 before done; USER_RXRATE after done",
+    "External TX/RX userclk BUFG_GT CE1 DIV0 (ratio1), CLR from inverse respective PMAresetdone"
+  ],
+  "open_contracts": [
+    "Need exact generated parent branch binding and PMAresetdone/selector handover timeline; source guards alone do not prove simultaneous behavior",
+    "CSR may advance at physical-link-not-ready and stats have withdrawal tail; cannot infer Gray quiescence from admit/link readiness",
+    "No qualified fastest active producer period during startup/calibration; no numeric skew/max-delay bound authorized by this review"
+  ],
+  "next": "Diagnostic finite mode matrix for actual pinned GT primitive with TX selectors000/101/010 and RXRATE001/000; derive clocks without manual periods, then review which modes can coexist with active producer clocks",
+  "limits": [
+    "Source syntax/parameter guards not formal FSM or physical GT timing proof",
+    "No XDC/default changes, hardware access or adoption"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/master_gth_adapter.py": "52103c96db5064cb46bd5ab78896fcc4ae0791ff3fd07d277f26894161bf594e",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v": "e7f20f5da94282565a9ceaad6c7c0492dbe5224c3c4b90c80e70759a0e062864",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_delay_powergood.v": "6823b3099a7918c5662f9a7939fcbb25ece67193fa9cd0025abad9220efe1737",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_tx.v": "99d9264dabf9174674dc3a789f28c8f3261d66df96521bb3ca1996b05f43b6b7",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gtwiz_userclk_rx.v": "b48ac114e2d5c3d22ebe584cb979061861a95be185c55ea6aa6ce9853563d963"
+  }
+}

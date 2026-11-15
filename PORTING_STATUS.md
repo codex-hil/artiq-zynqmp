@@ -1,3 +1,12 @@
+2026-11-15 startupclock sourceguard audit PASS/divider-mutant REFUSED.
+CPLL TXoverride101 vs synchronizedUSER; nonPCIe powergood RXRATE001->USER.
+Actualadapter externalTX/RXhelperratio1 BUFG_GT CE1/CLR~PMAresetdone; not direct
+admitgate. No claim PMA/calibration/mode handover jointly proved; parentbranch
+binding/timeline and fastestactiveGrayperiod OPEN. No numericconstraint/HW/
+defaultchange. Next finite diagnostic6mode matrix TX000/101/010 RXRATE001/000
+withoutperiodoverride or reachability claim. Evidence
+genesys-master-integration-2026-11-15/startup-clock-contract/report.json.
+
 2026-11-13 Grayadvance review+2models PASS11.227s; universalquiescence
 assumption REFUSED. Actualstats permissiondrop before6 ->samples7,8,8,... tail.
 Full HPMCSR reset12/68 succeeds with physicalstatusall0/rx_ready0 under running
