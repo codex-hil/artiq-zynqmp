@@ -1,0 +1,29 @@
+{
+  "status": "SCOPED_TX_PLL_RESET_FEEDBACK_SIX_CASES_PASS",
+  "job": "genesys-cpll-feedback-20261116-v1",
+  "connection": "helper.pllreset_tx_out OR initial reset -> calibration wrapper RESET_IN, representing TX contribution through generated CPLLPD",
+  "checks": [
+    "DRP delays2/5 x nominal/withheld-divider-ready/missing-lock pass with TX reset feedback",
+    "Missing lock holds TX datapath reset; inactive userclk blocks ready/done; lock loss withdraws done without IDLE reset restart"
+  ],
+  "source_findings": [
+    "Generated shared-CPLL CPLLPD is helper TX PLL reset OR helper RX PLL reset",
+    "Calibration RESET_IN derives cpllreset_int OR cpllpd_int",
+    "Generated P_USE_CPLL_CAL=0; prior one-way diagnostic used1; helper source declares but never reads parameter"
+  ],
+  "limits": [
+    "RX helper disabled: its real shared-PLL reset contribution remains untested",
+    "No modeled GT PMA or PMAresetdone -> userclk clear/active relationship",
+    "Independent clock, emulated DRP, forced GT powergood/TXresetdone; no complete physical startup proof",
+    "No hardware/default/XDC changes"
+  ],
+  "next": "Include enabled RX helper shared-reset contribution and external PMA/userclk dependency model",
+  "sha256": {
+    "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-2-0.log": "f2af911b21565222a46207537ac6564c775b55b70d074c832cf5693255b018d0",
+    "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-2-1.log": "cdc40ad9fe1cc8e534185b42d7717b60c9d6b09a262a302468439402a081f927",
+    "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-2-2.log": "df8ae3986e3961835a819a9745382de8f7507f17f8bed777c3e09209e279b646",
+    "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-5-0.log": "fd771630dba6f9cf46fb1e7057dbebdb4b7f1c3d23ca1502ba8c43550375fa2d",
+    "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-5-1.log": "02183f5c87bd940aaaee16a3df908256b4fc92a74416ed77611273c81350f91e",
+    "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-5-2.log": "bc603f06df16485f0083451c70c6d4ddd8cf18e5ed7f65dfee9fe3f21c759c8e"
+  }
+}
