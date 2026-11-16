@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: LGPL-3.0-or-later
-# Run on Dell inside the unique job directory with reset_five_domains.v and the bench.
+# Run on Dell inside the unique job directory with vendor sources and the bench.
 set -euo pipefail
 image=localhost/pm12-xsim-runtime:20261104
 expected=b7b066512d328abaf5dce280d01973e1a64c85fa46602426d015df17f36d2155
@@ -16,9 +16,11 @@ gcc --version | head -n 1
 xvlog vendor/*.v tb_cpll_drp_sequence.v /srv/codex-hil-data/toolchains/amd/Xilinx/2025.2/Vivado/data/verilog/src/glbl.v
 xelab -mt off -L unisims_ver tb_cpll_drp_sequence glbl -s cal_sequence
 for delay in 2 5; do
- xsim cal_sequence -testplusarg "DRP_DELAY=$delay" -runall > "simulation-$delay.log" 2>&1
- cat "simulation-$delay.log"
- ! grep -E "Fatal:|Error:" "simulation-$delay.log"
- grep -F "CPLL_DRP_SEQUENCE_PASS" "simulation-$delay.log"
+ for mode in 0 1 2; do
+ xsim cal_sequence -testplusarg "DRP_DELAY=$delay" -testplusarg "MODE=$mode" -runall > "simulation-$delay-$mode.log" 2>&1
+ cat "simulation-$delay-$mode.log"
+ ! grep -E "Fatal:|Error:" "simulation-$delay-$mode.log"
+ grep -F "CPLL_DRP_SEQUENCE_PASS" "simulation-$delay-$mode.log"
+ done
 done
 '

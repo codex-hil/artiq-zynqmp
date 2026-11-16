@@ -220,5 +220,29 @@
   "startup_clock_contract_review": "SOURCE_GUARDS_RATIO1_HELPER_PMARESET_CPLL_SEL101_RXSTARTUP_RATE001_PASS_DIVIDER_MUTANT_REFUSED_JOINT_TIMELINE_FASTEST_SOURCE_OPEN",
   "gt_startup_mode_matrix": "SIX_MODES_54_REQUESTED_BITS_PASS_TX010_8NS_RXRATE001_4NS_000_8NS_TX000_101_UNDERIVED_NOT_PHYSICAL_QUIESCENCE_RATE_BOUND_OPEN",
   "calibration_divider_snapshot": "SOURCE_VCO2500_DRP_DIV20_INTENT_AND_UNSAVED_STATIC_DIV20_TX101_8NS_RECONCILED_DCP_UNCHANGED_SEQUENCE_PMA_TIMING_OPEN",
-  "non_bypassed_cpll_drp_sequence": "ORIGINAL_VENDOR_CAL_SIM_BYPASS0_TWO_DRP_DELAYS_15_TRANSACTIONS_MODIFY_SELECT_RESTORE_DONE_ORDER_PASS_FORCED_GT_STATUS_PMA_TIMELINE_OPEN"
+  "non_bypassed_cpll_drp_sequence": "ORIGINAL_VENDOR_CAL_SIM_BYPASS0_TWO_DRP_DELAYS_15_TRANSACTIONS_MODIFY_SELECT_RESTORE_DONE_ORDER_PASS_FORCED_GT_STATUS_PMA_TIMELINE_OPEN",
+  "cpll_status_20261116": {
+    "status": "SIX_VENDOR_CALIBRATION_STATUS_CASES_PASS",
+    "job": "genesys-cpll-status-20261116-v1",
+    "cases": "DRP delays 2/5 x nominal, withheld divider-ready then release, permanently absent raw lock",
+    "checks": [
+      "Withheld divider-ready blocks completion and masks user lock",
+      "Missing raw lock reaches failure after divider restore, user lock remains masked",
+      "Raw lock withdrawal after success propagates to user lock"
+    ],
+    "limits": [
+      "Independent constant monitor clock and emulated DRP; not physical GT frequency or PMA timing proof",
+      "TXPRGDIVRESETDONE is not TXPMARESETDONE",
+      "No hardware, default integration or XDC changes"
+    ],
+    "next": "Trace calibrated lock selection into reset helper and test combined reset-controller/calibration ordering",
+    "sha256": {
+      "evidence/genesys-master-integration-2026-11-16/cpll-status/simulation-2-0.log": "ee0e428246a46b4f0154ac66b43eb373493774514faee128eefad1d0ac374b1f",
+      "evidence/genesys-master-integration-2026-11-16/cpll-status/simulation-2-1.log": "7efb668dcfc49931e146e956e44f4bc8b0716fc05facd854d40cfd68185be2ef",
+      "evidence/genesys-master-integration-2026-11-16/cpll-status/simulation-2-2.log": "77318d4e2278a88183bacb8f7b2cb6463de97f0cb4c7daf39c5b592d96b7e04f",
+      "evidence/genesys-master-integration-2026-11-16/cpll-status/simulation-5-0.log": "d673190c6186f1f55132ac4a604856cc6ebb33aae684e9c0fdbaf8daf27f119f",
+      "evidence/genesys-master-integration-2026-11-16/cpll-status/simulation-5-1.log": "585103cdfe8f6ebf017a248365b7cd825f1b9add8d5d69850bab86fa8b88dbd4",
+      "evidence/genesys-master-integration-2026-11-16/cpll-status/simulation-5-2.log": "31f56f3c5402b3245f74cc62ef77b0623e396f36beb53b14b9c038717b93e046"
+    }
+  }
 }

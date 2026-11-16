@@ -1,3 +1,5 @@
+2026-11-16: Offline original vendor CPLL status diagnostic: six cases PASS (DRP delays 2/5). Withheld programmable-divider ready blocks completion; missing raw lock fails after restoration; lock withdrawal propagates after success. PMA timeline remains OPEN; no HW/default/XDC change. Evidence: evidence/genesys-master-integration-2026-11-16/cpll-status/report.json.
+
 2026-11-16 originalvendorTXcal C_SIM_BYPASS0/PCIE0 diagnostic PASS for
 DRPdelay2/5:15transactions/measured16 each, tempE062 write ->TXSEL101 ->
 restoretestwordE000 ->CALDONE; finalUSER010/lock/done. Vendor4SHAstagedmatch.
