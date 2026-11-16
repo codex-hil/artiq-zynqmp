@@ -352,5 +352,30 @@
       "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-5-1.log": "02183f5c87bd940aaaee16a3df908256b4fc92a74416ed77611273c81350f91e",
       "evidence/genesys-master-integration-2026-11-16/cpll-feedback/simulation-5-2.log": "bc603f06df16485f0083451c70c6d4ddd8cf18e5ed7f65dfee9fe3f21c759c8e"
     }
+  },
+  "cpll_shared_20261116": {
+    "status": "ENABLED_TX_RX_SHARED_PLL_RESET_SIX_CASES_PASS",
+    "job": "genesys-cpll-shared-20261116-v1",
+    "checks": [
+      "Enabled TX and RX helper; calibration reset is initial reset OR TX PLL reset OR RX PLL reset",
+      "Successful cases wait for both TX and RX completion and both PLL reset requests deasserted",
+      "DRP delays2/5 x nominal/withheld divider ready/missing raw lock pass",
+      "Original eight staged vendor file hashes match local vendor sources"
+    ],
+    "limits": [
+      "GT lock/DRP/PMA behavior emulated or forced, independent monitor clock",
+      "RX clock-active follows modeled TX-active; actual RX resetdone/CDRlock forced high",
+      "PMAresetdone-to-clock-clear/active dependency remains unmodeled; not complete generated IP or hardware startup proof",
+      "No hardware/default/XDC changes"
+    ],
+    "next": "Model external PMAresetdone/userclk clear and active relationship, then test delayed PMA completion",
+    "sha256": {
+      "evidence/genesys-master-integration-2026-11-16/cpll-shared/simulation-2-0.log": "817d8296ed317b9a9c2995c1eaa6ea40b06b92181f83b59a74d3ba4096981919",
+      "evidence/genesys-master-integration-2026-11-16/cpll-shared/simulation-2-1.log": "7ac0d06971ba600883f24994c4fba58ef7310da309e2975c69f9ba6ad5251b2f",
+      "evidence/genesys-master-integration-2026-11-16/cpll-shared/simulation-2-2.log": "e8ac8b7903dad2f7b161d73b331da6faedd2f34d4d02de132e11892e7aec5f53",
+      "evidence/genesys-master-integration-2026-11-16/cpll-shared/simulation-5-0.log": "7011408aaecc4aa6d8b8150610862d46732b9ef96956b50b67524918cbdc3825",
+      "evidence/genesys-master-integration-2026-11-16/cpll-shared/simulation-5-1.log": "bd6d8c143faddbb0543c27f0f82b8a7463f0e33e74a372661dbf82619653f1c4",
+      "evidence/genesys-master-integration-2026-11-16/cpll-shared/simulation-5-2.log": "8c86c4efe6beef0c7367784a07a494d4155d287a2427a173c2a7cb3e6e4865c4"
+    }
   }
 }
