@@ -1,0 +1,32 @@
+{
+  "status": "ORIGINAL_CALIBRATION_WRAPPER_SIX_CASES_PASS",
+  "job": "genesys-cpll-wrapper-20261116-v1",
+  "parameters": {
+    "C_TX_PLL_TYPE": 2,
+    "C_RX_PLL_TYPE": 2,
+    "C_SIM_CPLL_CAL_BYPASS": 0,
+    "C_PCIE_ENABLE": 0
+  },
+  "checks": [
+    "Equal actual PLL types select TX at every checked negative clock edge",
+    "Inactive RX calibration lock remains zero at every checked negative clock edge",
+    "DRP delay2/5 x nominal, withheld divider-ready then released, permanently missing raw lock",
+    "Successful lock withdrawal propagates; missing lock fails after divider restoration"
+  ],
+  "limits": [
+    "Original vendor wrapper/RX/TX/DRP arbiter with emulated DRP and independent constant monitor clock",
+    "Not full GT or reset-helper simulation; no physical PMA/clock ordering proof",
+    "No hardware, default integration or XDC changes"
+  ],
+  "next": "Connect original reset helper to wrapper calibrated lock in bounded simulation; verify reset release and lock-loss handling",
+  "sha256": {
+    "evidence/genesys-master-integration-2026-11-16/cpll-wrapper/simulation-2-0.log": "a86caf4190045b400f001b9b8afe004b732818fd481379a16b5f808bb4646b66",
+    "evidence/genesys-master-integration-2026-11-16/cpll-wrapper/simulation-2-1.log": "d057147d7902f509e3e7b66d51266b5e4057ca2aeec45460b5b8eb8fc6a82911",
+    "evidence/genesys-master-integration-2026-11-16/cpll-wrapper/simulation-2-2.log": "37720f77814d44aef890f49de4c0785f12092a8e4893a60d1ef0b9c4404b2df0",
+    "evidence/genesys-master-integration-2026-11-16/cpll-wrapper/simulation-5-0.log": "883ae7dac8a50ed77f8a5d4b3398c5141bf31e3b5c475771cda79fcee1b65106",
+    "evidence/genesys-master-integration-2026-11-16/cpll-wrapper/simulation-5-1.log": "40905a614a572a4ce268fe98f96b2c93ee995196e1f8696d221abdb1fd489627",
+    "evidence/genesys-master-integration-2026-11-16/cpll-wrapper/simulation-5-2.log": "c24d31265959d63a36ea0f14fedf6e7110d93376a200c3e7f20c969dea0753ae",
+    "diagnostics/drtio/role-reversal/tb_cpll_wrapper_sequence.v": "e6d16d4c90c1b2e14f46eb656561c7ea081f26ea29c63d4bb9c2ff5e59d2f74a",
+    "diagnostics/drtio/role-reversal/run-cpll-wrapper-sequence-sim.sh": "207967644b7f463e0511fb0d84c96631113dbc1d779e8c6beb3a155e27a85453"
+  }
+}

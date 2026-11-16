@@ -1,0 +1,26 @@
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Mon Nov 16 11:11:34 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/cal_sequence/xsim_script.tcl
+# xsim {cal_sequence} -testplusarg DRP_DELAY=5 -testplusarg MODE=2 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+DRP_WRITE t=780000 addr=0e1 data=8000
+DRP_WRITE t=1356000 addr=079 data=e000
+DRP_WRITE t=1740000 addr=00c data=0800
+DRP_WRITE t=1932000 addr=03e data=e062
+DRP_WRITE t=314028000 addr=03e data=e000
+DRP_WRITE t=314220000 addr=00c data=0000
+DRP_WRITE t=314412000 addr=0e1 data=0000
+DRP_WRITE t=314604000 addr=079 data=0000
+CPLL_WRAPPER_SEQUENCE_PASS mode=2 missing_lock_failure transactions=15
+$finish called at time : 314968 ns : File "/srv/nvme-fast-1/vivado-work/genesys-cpll-wrapper-20261116-v1/tb_cpll_wrapper_sequence.v" Line 69
+exit
+INFO: xsimkernel Simulation Memory Usage: 270412 KB (Peak: 335428 KB), Simulation CPU Usage: 1430 ms
+INFO: [Common 17-206] Exiting xsim at Mon Nov 16 11:11:38 2026...
