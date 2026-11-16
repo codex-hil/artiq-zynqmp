@@ -1,0 +1,27 @@
+{
+  "status": "STOPPED_SOURCE_AND_PMA_WITHDRAWAL_DIAGNOSTIC_PASS",
+  "job": "genesys-cpll-clockloss-20261116-v1",
+  "cases": "2 DRP delays x nominal/withheld-divider-ready (four clock-loss sequences), plus two missing-lock cases",
+  "findings": [
+    "Source stopped low; independent TX/RX edge counters unchanged during observation",
+    "With raw lock and PMAready held high, userclk active and both reset-done flags remain stale high",
+    "Modeled PMAready withdrawal asynchronously clears both active flags while source stopped",
+    "Reset-done remains latched high after active withdrawal alone",
+    "Source/PMA release restores active and clock edges; subsequent raw lock loss clears TX reset-done"
+  ],
+  "limits": [
+    "Finite simulation observations, no physical detection latency bound",
+    "PMA externally driven; forced GT powergood/resetdone/CDRlock; no full GT frequency or startup proof",
+    "No hardware/default/XDC changes"
+  ],
+  "initial_failures": "Bench syntax and declaration order errors corrected; both compiler logs retained",
+  "next": "Check existing RX progress monitor/admission integration rejects stopped clock despite stale vendor active/reset-done; keep defaults unchanged",
+  "sha256": {
+    "evidence/genesys-master-integration-2026-11-16/cpll-clockloss/simulation-2-0.log": "2107969e8d8b564f3f9cde2ab7d63fe8b3a1550135f4c45bba059a8ac63a7906",
+    "evidence/genesys-master-integration-2026-11-16/cpll-clockloss/simulation-2-1.log": "dc0efb7beaef80b99ddfc530417d668e6993fc0fba1e2dff593301209f056a58",
+    "evidence/genesys-master-integration-2026-11-16/cpll-clockloss/simulation-2-2.log": "c42f0b0f06c140df363a2bbd97d1f4913601d5b27fbd63d404c97f2414d6e2f4",
+    "evidence/genesys-master-integration-2026-11-16/cpll-clockloss/simulation-5-0.log": "5c1c0e7ff564b6a8e3fa8a4bd220fb0b38623f5ec8d533933b51fc0113aceaa5",
+    "evidence/genesys-master-integration-2026-11-16/cpll-clockloss/simulation-5-1.log": "ad3fef4b4a7953901784de4d9b68a09ecf0677fc9eea101cf367750f2e5ac36d",
+    "evidence/genesys-master-integration-2026-11-16/cpll-clockloss/simulation-5-2.log": "98e1e6bffde284bc6a7627ca6d9afc3c3522c9283517cea8c8245d3876cadb28"
+  }
+}
