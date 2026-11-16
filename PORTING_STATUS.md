@@ -1,3 +1,5 @@
+2026-11-16: Calibration/reset source guards PASS, three connectivity mutants refused. Wrapper USER_CPLLLOCK is RX-lock OR TX-lock; TX-only diagnostic does not establish whole-wrapper masking. Reset helper waits lock/timer before TX reset release and clears reset-done on lock loss. Joint TX/RX/PMA timing remains OPEN; no HW/default/XDC change. Evidence: evidence/genesys-master-integration-2026-11-16/calibration-reset-path/report.json.
+
 2026-11-16: Offline original vendor CPLL status diagnostic: six cases PASS (DRP delays 2/5). Withheld programmable-divider ready blocks completion; missing raw lock fails after restoration; lock withdrawal propagates after success. PMA timeline remains OPEN; no HW/default/XDC change. Evidence: evidence/genesys-master-integration-2026-11-16/cpll-status/report.json.
 
 2026-11-16 originalvendorTXcal C_SIM_BYPASS0/PCIE0 diagnostic PASS for
