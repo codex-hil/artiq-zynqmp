@@ -297,5 +297,31 @@
       "diagnostics/drtio/role-reversal/tb_cpll_wrapper_sequence.v": "e6d16d4c90c1b2e14f46eb656561c7ea081f26ea29c63d4bb9c2ff5e59d2f74a",
       "diagnostics/drtio/role-reversal/run-cpll-wrapper-sequence-sim.sh": "207967644b7f463e0511fb0d84c96631113dbc1d779e8c6beb3a155e27a85453"
     }
+  },
+  "cpll_reset_20261116": {
+    "status": "ONE_WAY_CALIBRATED_LOCK_RESET_HELPER_SIX_CASES_PASS",
+    "job": "genesys-cpll-reset-20261116-v1",
+    "checks": [
+      "Missing lock holds helper TX reset and completion low",
+      "After calibrated lock, inactive TX user clock blocks user-ready and completion",
+      "Active modeled TX clock enables helper completion",
+      "Lock withdrawal clears helper completion; IDLE does not automatically reassert datapath reset"
+    ],
+    "limits": [
+      "One-way wrapper lock to original reset helper only; PLL reset feedback NOT modeled",
+      "GT powergood and TX reset-done forced high; RX disabled in helper",
+      "Independent monitor clock/emulated DRP; not physical PMA ordering or complete generated IP simulation",
+      "No hardware/default/XDC changes"
+    ],
+    "first_attempt": "Missing reset_inv_synchronizer dependency prevented elaboration; log retained, original dependency added",
+    "next": "Model actual PLL-reset feedback and TXPMARESETDONE/userclk active dependency before joint startup claims",
+    "sha256": {
+      "evidence/genesys-master-integration-2026-11-16/cpll-reset/simulation-2-0.log": "4ece9bb4f993aeea76a38564b82862521e785665e2a899cfe0bad8f852c315f4",
+      "evidence/genesys-master-integration-2026-11-16/cpll-reset/simulation-2-1.log": "9a1845f287bfa98a132e7dc1fb97f2c735d3955c0a36fbf42cff12c13c1a6be0",
+      "evidence/genesys-master-integration-2026-11-16/cpll-reset/simulation-2-2.log": "20a30272e20ef15dfb51fc739667bf1eab2c5681704d530cbab352181539b99d",
+      "evidence/genesys-master-integration-2026-11-16/cpll-reset/simulation-5-0.log": "33749489249c28ac0f07eb40baa8508e86bfa34282d6aef52dcf96e5bf8e226d",
+      "evidence/genesys-master-integration-2026-11-16/cpll-reset/simulation-5-1.log": "c4e378970e14ec9e69282665fcd5fae3f0392e98a8c74a57cc99050a5b958849",
+      "evidence/genesys-master-integration-2026-11-16/cpll-reset/simulation-5-2.log": "9b27952071924a726a038b38b597d392703f2f0d411f4e5072a0c43dace27c13"
+    }
   }
 }

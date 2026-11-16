@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Nov 16 16:22:59 2026
+# Process ID         : 225
+# Current directory  : /srv/nvme-fast-1/vivado-work/genesys-cpll-reset-20261116-v1
+# Command line       : xsim -mode tcl -source {xsim.dir/cal_sequence/xsim_script.tcl}
+# Log file           : /srv/nvme-fast-1/vivado-work/genesys-cpll-reset-20261116-v1/xsim.log
+# Journal file       : /srv/nvme-fast-1/vivado-work/genesys-cpll-reset-20261116-v1/xsim.jou
+# Running On         : a2025c86a4bb
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : Intel(R) Core(TM) i7-9800X CPU @ 3.80GHz
+# CPU Frequency      : 1200.052 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 65762 MB
+# Swap memory        : 8589 MB
+# Total Virtual      : 74352 MB
+# Available Virtual  : 68086 MB
+#-----------------------------------------------------------
+source xsim.dir/cal_sequence/xsim_script.tcl
+# xsim {cal_sequence} -testplusarg DRP_DELAY=2 -testplusarg MODE=1 -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+DRP_WRITE t=708000 addr=0e1 data=8000
+DRP_WRITE t=1212000 addr=079 data=e000
+DRP_WRITE t=1548000 addr=00c data=0800
+DRP_WRITE t=1716000 addr=03e data=e062
+WITHHELD_PROGDIV_PASS t=312420000
+DRP_WRITE t=313932000 addr=03e data=e000
+DRP_WRITE t=314100000 addr=00c data=0000
+DRP_WRITE t=314268000 addr=0e1 data=0000
+DRP_WRITE t=314436000 addr=079 data=0000
+CPLL_RESET_SEQUENCE_PASS delay=2 transactions=15 measured=16 modify=1716000 select=1772000 restore=313932000 done=314700000
+$finish called at time : 315469 ns : File "/srv/nvme-fast-1/vivado-work/genesys-cpll-reset-20261116-v1/tb_cpll_reset_sequence.v" Line 97
+exit
+INFO: xsimkernel Simulation Memory Usage: 270504 KB (Peak: 335520 KB), Simulation CPU Usage: 1450 ms
+INFO: [Common 17-206] Exiting xsim at Mon Nov 16 16:23:03 2026...
