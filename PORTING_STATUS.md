@@ -1,3 +1,11 @@
+2026-11-16 originalvendorTXcal C_SIM_BYPASS0/PCIE0 diagnostic PASS for
+DRPdelay2/5:15transactions/measured16 each, tempE062 write ->TXSEL101 ->
+restoretestwordE000 ->CALDONE; finalUSER010/lock/done. Vendor4SHAstagedmatch.
+EmulatedDRP/forcedGTlock+PRGDIVdone/constant125MHz monitor, SIMspeedup; NOT
+physicalDRP/GTclock/PMA sequencing or maxsourceperiodproof. NoHW/default/XDC
+change. Next maskedUSERCPLLLOCK/resetcontroller PMAdependency+withheldstatus
+diagnostic. Evidence genesys-master-integration-2026-11-16/cpll-drp-sequence/report.json.
+
 2026-11-16 TXcal divider source/snapshot reconciled: staticTXPROGDIV0,
 vendorDRP03E/E062 intendsdivider20, actualgeneratedCPLL2500MHz ->monitor125MHz.
 Unsavedinmemory divider20+TXSEL101/RXSEL010/RXRATE000 derivesTX/RX8ns; original

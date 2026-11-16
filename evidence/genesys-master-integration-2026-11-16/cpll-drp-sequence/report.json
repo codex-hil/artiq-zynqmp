@@ -1,0 +1,53 @@
+{
+  "status": "NON_BYPASSED_ORIGINAL_VENDOR_TX_CALIBRATION_TWO_DRP_DELAYS_PASS",
+  "job": "genesys-cpll-drp-sequence-20261116-v1",
+  "results": [
+    {
+      "drp_response_delay_cycles": 2,
+      "transactions": 15,
+      "frequency_counter_result": 16,
+      "raw_log_event_times": {
+        "modify": 852000,
+        "select": 884000,
+        "restore": 312676000,
+        "done": 313132000
+      }
+    },
+    {
+      "drp_response_delay_cycles": 5,
+      "transactions": 15,
+      "frequency_counter_result": 16,
+      "raw_log_event_times": {
+        "modify": 1068000,
+        "select": 1100000,
+        "restore": 312748000,
+        "done": 313276000
+      }
+    }
+  ],
+  "explicit_parameters": {
+    "C_SIM_CPLL_CAL_BYPASS": 0,
+    "C_PCIE_ENABLE": 0,
+    "C_FREERUN_FREQUENCY": 125,
+    "SIM_RESET_SPEEDUP": "TRUE"
+  },
+  "checks": [
+    "Original four vendor source hashes match staged files; no modifications",
+    "DRP memory model original03E wordE000 preserved/restored after temporaryE062",
+    "Modification precedes TXSEL101; modeled divider restore precedes CPLL_CAL_DONE",
+    "After completion user TXSEL010, USER_CPLLLOCK and DONE asserted"
+  ],
+  "limits": [
+    "DRP responder is emulated; E000 is chosen test data, not a hardware backup",
+    "GTHE4 CPLLLOCK and TXPRGDIVRESETDONE forced1, supplied monitor clock constant125MHz independently of DRP model",
+    "No full GT DRP encoding/clock-switch/lock/PMA waveform simulation",
+    "SIM_RESET_SPEEDUP changes wait durations; raw log times not physical latency bounds",
+    "PMA reset-done/userclk-clear ordering remains open; no physical fastest Gray source period established",
+    "No hardware/default integration or timing constraints changed"
+  ],
+  "next": "Trace masked USER_CPLLLOCK and reset-controller TXPMARESET/TXPMARESETDONE dependency; extend diagnostic to withheld lock/resetdone before asserting userclk/calibration overlap invariants",
+  "source_sha256": {
+    "diagnostics/drtio/role-reversal/tb_cpll_drp_sequence.v": "52eb7b08f4633d4f9f989996634c0b55d90ccd934dda2562e70b1aae3216a4ec",
+    "diagnostics/drtio/role-reversal/run-cpll-drp-sequence-sim.sh": "5fbd96180e14653e0bcf3565d70377c8fe5cf1ad779d075b3451372855730fed"
+  }
+}
