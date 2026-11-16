@@ -8,7 +8,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 from migen import ClockDomain,ClockSignal,Signal
-from migen.sim import run_simulation,passive
+from migen.sim import run_simulation,passive,Simulator
 from migen.genlib.resetsync import AsyncResetSynchronizer
 from migen.genlib.cdc import MultiReg
 from migen.build.xilinx.common import XilinxMultiReg
@@ -21,15 +21,16 @@ from master_integration import GenesysMasterIntegration
 from raw20_codec import Raw20Codec
 
 class AdmissionIntegrationTests(unittest.TestCase):
- def exercise(self,registered,tx_phase=0,trigger_delay=0,boundary_factory=None):
+ def exercise(self,registered,tx_phase=0,trigger_delay=0,boundary_factory=None,stopped_rx=False):
   ps=SimpleNamespace(inputs={},outputs={})
   root=Path(__file__).resolve().parents[2]
   for line in (root/'evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/pins.tsv').read_text().splitlines():
    name,direction,left,right=line.split('\t');width=abs(int(left)-int(right))+1 if left and right else 1
    (ps.inputs if direction=='I' else ps.outputs)[name]=Signal(width)
   codec=Raw20Codec()
+  link_status=SimpleNamespace(reset_done=Signal(reset=1),clock_active=Signal(reset=1),aligned=Signal(reset=1))
   with patch('master_dual_ingress.AuxResetControl',RegisteredCoordinatorFixture),patch('master_dual_ingress.AuxResetDomains',side_effect=grouped_fixture),patch('master_link_boundary.MasterLinkBoundary',boundary_factory or (MasterLinkBoundaryRegistered if registered else MasterLinkBoundary)):
-   top=GenesysMasterIntegration(ps,codec.channel,ClockSignal('tx_source'),ClockSignal('rx_source'),codec=codec,link_status=SimpleNamespace(reset_done=Signal(reset=1),clock_active=Signal(reset=1),aligned=Signal(reset=1)),guarded_candidate=True)
+   top=GenesysMasterIntegration(ps,codec.channel,ClockSignal('tx_source'),ClockSignal('rx_source'),codec=codec,link_status=link_status,guarded_candidate=True)
   top.submodules.codec=codec
   for name in ('pl_source','tx_source','rx_source'):setattr(top.clock_domains,'cd_'+name,ClockDomain(name,reset_less=True))
   top.comb+=ps.outputs['pl_clk0'].eq(ClockSignal('pl_source'))
@@ -39,7 +40,7 @@ class AdmissionIntegrationTests(unittest.TestCase):
    for field in names.split():
     name='maxigp1_'+channel+field;fields[field]=(ps.inputs if name in ps.inputs else ps.outputs)[name]
    setattr(bus,channel,SimpleNamespace(**fields))
-  h=AXIMaster(bus);base=0xb0000000;state={'event':None,'traces':{},'control':{},'openings':[],'done':False}
+  h=AXIMaster(bus);base=0xb0000000;state={'event':None,'traces':{},'control':{},'openings':[],'done':False,'stop_rx':False,'suppressed':0}
   @passive
   def observer():
    previous=0
@@ -83,7 +84,9 @@ class AdmissionIntegrationTests(unittest.TestCase):
    for event in ('progress_fault','shape_fault','reset'):
     for _ in range(trigger_delay):yield
     state['traces'][event]=[];state['control'][event]=[];state['event']=event
-    if event=='progress_fault':yield top.progress.fault.eq(1)
+    if event=='progress_fault':
+     if stopped_rx:state['stop_rx']=True
+     else:yield top.progress.fault.eq(1)
     elif event=='shape_fault':yield top.shape_guard.fault.eq(1)
     else:yield from h.write(base+4,1)
     for _ in range(70):yield
@@ -93,6 +96,14 @@ class AdmissionIntegrationTests(unittest.TestCase):
     first_raw=next(i for i,x in enumerate(trace) if x['raw_admit']==0)
     first_closed=next(i for i,x in enumerate(trace) if x['link_allowed']==0)
     self.assertLessEqual(first_closed-first_raw,5)
+    if event=='progress_fault' and stopped_rx:
+     self.assertEqual((yield top.progress.fault),1)
+     self.assertGreater(state['suppressed'],0)
+     for signal in (link_status.reset_done,link_status.clock_active,link_status.aligned):self.assertEqual((yield signal),1)
+     state['stop_rx']=False
+     for _ in range(70):yield
+     self.assertEqual((yield top.progress.fault),1)
+     self.assertEqual((yield top.link_boundary.allowed),0)
     state['event']=None
     if event!='reset':
      yield from h.write(base+4,1);yield from poll(5,1)
@@ -106,7 +117,20 @@ class AdmissionIntegrationTests(unittest.TestCase):
   for crossing in top.csr.ps_cdc.crossings.values():
    for domain in crossing._fragment.clock_domains:
     if clocks[domain.name]==14:clocks[domain.name]=(14,tx_phase)
-  run_simulation(top,{'management':manager(),'sys':observer(),'control':control_observer()},clocks,special_overrides={AsyncResetSynchronizer:FunctionalReset,MultiReg:XilinxMultiReg})
+  generators={'management':manager(),'sys':observer(),'control':control_observer()}
+  overrides={AsyncResetSynchronizer:FunctionalReset,MultiReg:XilinxMultiReg}
+  if stopped_rx:
+   with Simulator(top,generators,clocks=clocks,special_overrides=overrides) as sim:
+    original=sim.time.tick
+    stopped={'rx_source','rtio_rx','aux_release_rtio_rx'}
+    def tick():
+     dt,rising,falling=original()
+     if state['stop_rx']:
+      state['suppressed']+=len(rising & stopped)
+      rising-=stopped;falling-=stopped
+     return dt,rising,falling
+    sim.time.tick=tick;sim.run()
+  else:run_simulation(top,generators,clocks,special_overrides=overrides)
   self.assertTrue(state['done'])
   self.last_control_trace=state['control']
   self.last_openings=state['openings']

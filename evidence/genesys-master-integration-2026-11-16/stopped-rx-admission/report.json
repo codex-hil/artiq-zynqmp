@@ -1,0 +1,22 @@
+{
+  "status": "FULL_CORE_STOPPED_RX_STALE_STATUS_TWO_PHASES_AND_REGRESSION_PASS",
+  "checks": [
+    "Full GenesysMasterIntegration guarded candidate with codec, HPM1 management and registered boundary",
+    "Suppress RX source/domain/release-domain edges; no direct progress-fault injection in stopped-RX case",
+    "Both TX phases0/3: progress fault sets, raw admission withdraws and SYS boundary closes",
+    "Vendor reset_done/clock_active/aligned inputs remain high",
+    "Restart RX for70 management cycles leaves fault latched and link closed",
+    "Explicit HPM1 reset and fresh reopen sequence succeeds; three openings per phase",
+    "Existing baseline/registered direct-fault/reset regression passes"
+  ],
+  "limits": [
+    "Migen functional reset model and exact Xilinx MultiReg lowering, not physical CDC or latency bound",
+    "Progress timeout32 remains diagnostic, no physical qualification",
+    "No hardware/default RTL/XDC changes"
+  ],
+  "next": "Extend full-core case to explicit management reset while RX remains stopped; verify no reopen until fresh RX edges",
+  "sha256": {
+    "evidence/genesys-master-integration-2026-11-16/stopped-rx-admission/regression.log": "f586066a0d3fef244da9d0a8958ada046df948e2fcf6a7fdeeba324bb02433dd",
+    "evidence/genesys-master-integration-2026-11-16/stopped-rx-admission/test.log": "e1a609846b16a8381a965267ea92c476702395dd275875272e854df1e6275c0f"
+  }
+}
