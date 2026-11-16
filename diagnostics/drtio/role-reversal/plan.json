@@ -360,7 +360,7 @@
       "Enabled TX and RX helper; calibration reset is initial reset OR TX PLL reset OR RX PLL reset",
       "Successful cases wait for both TX and RX completion and both PLL reset requests deasserted",
       "DRP delays2/5 x nominal/withheld divider ready/missing raw lock pass",
-      "Original eight staged vendor file hashes match local vendor sources"
+      "Original staged vendor file hashes match local vendor sources"
     ],
     "limits": [
       "GT lock/DRP/PMA behavior emulated or forced, independent monitor clock",
