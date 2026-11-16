@@ -1,3 +1,12 @@
+2026-11-16 TXcal divider source/snapshot reconciled: staticTXPROGDIV0,
+vendorDRP03E/E062 intendsdivider20, actualgeneratedCPLL2500MHz ->monitor125MHz.
+Unsavedinmemory divider20+TXSEL101/RXSEL010/RXRATE000 derivesTX/RX8ns; original
+DCPprepostSHAunchanged. ExplainsunderivedTX101instaticmodel, notDRP/hardware/
+fastestactiveproducerproof. Sourceguards/VCOmutantREFUSED; simulationbypass1
+noted. Next DRPsave/modify/restore+calcompletion/PMA-userclk-clear sequencing
+audit/nonbypasseddiagnostic. NoHW/default/periodoverride/CDCwaiver. Evidence
+genesys-master-integration-2026-11-16/calibration-divider/report.json.
+
 2026-11-15 sixGTmode matrix COMPLETE/54requestedpinvalues validated;
 missingcase-mutantREFUSED, DCPprepostSHAunchanged. TX0108ns/RXRATE0014ns vs
 0008ns; TX000/101 no derivedTXclock (NOT proofclockstops). No activeproducer

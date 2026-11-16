@@ -1,0 +1,25 @@
+{
+  "status": "CALIBRATION_DIVIDER_STATIC_SNAPSHOT_RECONCILES_TX101_8NS_NO_DRPHW_QUALIFICATION",
+  "job": "genesys-cal-divider-snapshot-20261116-v1",
+  "checkpoint_sha256": "afd55ae2221b6690eda3d5eef23430f8a677018ecb9077cefc9231abc4aa5f01",
+  "diagnostic_mutations": [
+    "Exactly9GT case pins TXSEL101/RXSEL010/RXRATE000",
+    "TX_PROGDIV_CFG attribute0->20 only in process memory; close without saving"
+  ],
+  "result_periods_ns": {
+    "diagnostic_pl_clk0": 8.0,
+    "diagnostic_ref_p": 6.4,
+    "rxoutclk_out[0]": 8.0,
+    "gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1": 8.0,
+    "txoutclk_out[0]": 8.0
+  },
+  "source_binding": "Generated actual CPLL VCO2500MHz, vendor calibration intends divider20 via DRP03E/E062 then restores stored configuration; static wrapper divider0. Expected monitor125MHz from generated formula.",
+  "interpretation": "Selector-only TX101 missing derived clock is explained by absent dynamic DRP divider state in static DCP. Does not mean actual clock absent or establish a fastest active source bound.",
+  "limits": [
+    "In-memory parameter change is a diagnostic snapshot, not simulation of DRP writes/encoding/timing",
+    "No proof target PMAresetdone/userclk-clear ordering excludes transient producer updates",
+    "Generated C_SIM_CPLL_CAL_BYPASS1 must be accounted for before generic vendor simulation can qualify calibration",
+    "No period override, saved DCP, default/hardware change or CDC waiver"
+  ],
+  "next": "Audit DRP save/modify/restore sequencing and CPLL calibration completion versus target PMA-reset/userclk-clear; use explicit non-bypassed diagnostic simulation if needed"
+}

@@ -1,0 +1,16 @@
+ORIGINAL_TX_PROGDIV_CFG	0.000
+CASE	RXOUTCLKSEL[2]	0
+CASE	RXOUTCLKSEL[1]	1
+CASE	RXOUTCLKSEL[0]	0
+CASE	RXRATE[2]	0
+CASE	RXRATE[1]	0
+CASE	RXRATE[0]	0
+CASE	TXOUTCLKSEL[2]	1
+CASE	TXOUTCLKSEL[1]	0
+CASE	TXOUTCLKSEL[0]	1
+TEMPORARY_TX_PROGDIV_CFG	20.000
+CLOCK	diagnostic_pl_clk0	8.000	pl_clk0
+CLOCK	diagnostic_ref_p	6.400	ref_p
+CLOCK	rxoutclk_out[0]	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLK
+CLOCK	gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST_1	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/RXOUTCLKPCS
+CLOCK	txoutclk_out[0]	8.000	drtio_gth/inst/gen_gtwizard_gthe4_top.drtio_gth_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[0].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK

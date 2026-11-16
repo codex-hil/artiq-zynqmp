@@ -1,0 +1,33 @@
+{
+  "status": "PINNED_CALIBRATION_DIVIDER_SOURCE_GUARDS_PASS_VCO_MUTANT_REFUSED",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/synth/drtio_gth.v": "614f157843e6def80ae81b302f74ce2c8ff588a2bd13276bc32fb3bd8186507b",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/synth/drtio_gth_gthe4_channel_wrapper.v": "d78721503515fabfad76c2a296a62c68268e359b2f94707176fceb52b60f7752",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/hdl/gtwizard_ultrascale_v1_7_gthe4_cpll_cal_tx.v": "e7f20f5da94282565a9ceaad6c7c0492dbe5224c3c4b90c80e70759a0e062864",
+    "/srv/codex-hil-data/artiq-zynqmp/build-vivado/drtio-packets-armed-2026-10-11/ip/drtio_gth/synth/drtio_gth_gtwizard_gthe4.v": "3846e100e4aeec356101805da14f71f66ba93c6fce242a37fa10e474c6879958"
+  },
+  "generated_actual_parameters": {
+    "C_CPLL_VCO_FREQUENCY": 2500.0,
+    "C_FREERUN_FREQUENCY": 125.0,
+    "C_PCIE_ENABLE": 0.0,
+    "C_SIM_CPLL_CAL_BYPASS": 1.0
+  },
+  "static_tx_progdiv_cfg": 0,
+  "calibration_intent": {
+    "drp_address_hex": "03E",
+    "source_word_hex": "E062",
+    "vendor_source_divider_comment": 20,
+    "tx_selector": "101",
+    "monitor_expected_from_generated_formula_mhz": 125.0
+  },
+  "findings": [
+    "Static timing DCP does not replay firmware-independent vendor DRP state machine writes; selector cases alone leave configured divider0",
+    "Calibration source stores/modifies/restores programmable divider; 20 is explicit vendor-source intent, not independent DRP encoding verification",
+    "Generated simulation parameter C_SIM_CPLL_CAL_BYPASS1 means generic IP simulation must not be assumed to exercise calibration sequence"
+  ],
+  "limits": [
+    "No proof actual DRP transaction completes, clock is glitch-free or userclk becomes active only at settled mode",
+    "No physical fastest active source bound, numeric CDC constraints or hardware/default changes"
+  ],
+  "next": "Compare temporary in-memory TX divider20 snapshot with static divider0, then review DRP/selector/PMA and userclk-clear handover timeline"
+}
