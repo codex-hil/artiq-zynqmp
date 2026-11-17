@@ -1,0 +1,19 @@
+{
+  "status": "HELD_HPM1_RESET_UNTIL_RX_RETURN_TWO_PHASES_PASS",
+  "checks": [
+    "Full-core registered candidate TX phases0/3, actual simulated RX edge suppression with stale high vendor status",
+    "After progress fault HPM1 asserts reset;80 management samples with RX absent keep reset1/admission0/boundary0/fault0",
+    "RX returns while reset held;24 samples keep progress allowed0 and boundary0",
+    "Single management release/abandon sequence opens with fresh RX handshakes",
+    "80 samples after reopen maintain admission without progress fault; three openings per phase"
+  ],
+  "comparison": "Unlike early reset release with RX absent, held-reset sequence avoids relatching timeout and needs no second reset",
+  "limits": [
+    "Functional Migen reset model/exact Xilinx MultiReg; sample counts not physical delays",
+    "No hardware/default RTL/XDC changes or recovery qualification"
+  ],
+  "next": "Consolidate startup/recovery evidence and remaining physical timing/cabling/recovery blockers before any hardware trial",
+  "sha256": {
+    "evidence/genesys-master-integration-2026-11-17/held-reset-rx-return/test.log": "452d8b6eb7eeb0ac585246522b6a1fd26bbb1f76fbb0a53c59b064284c89d6ce"
+  }
+}

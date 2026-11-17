@@ -21,7 +21,7 @@ from master_integration import GenesysMasterIntegration
 from raw20_codec import Raw20Codec
 
 class AdmissionIntegrationTests(unittest.TestCase):
- def exercise(self,registered,tx_phase=0,trigger_delay=0,boundary_factory=None,stopped_rx=False,reset_while_stopped=False):
+ def exercise(self,registered,tx_phase=0,trigger_delay=0,boundary_factory=None,stopped_rx=False,reset_while_stopped=False,hold_until_rx=False):
   ps=SimpleNamespace(inputs={},outputs={})
   root=Path(__file__).resolve().parents[2]
   for line in (root/'evidence/genesys-master-aux-gray-link-2026-11-07/ps-hpm-wrapper-v2/pins.tsv').read_text().splitlines():
@@ -100,6 +100,28 @@ class AdmissionIntegrationTests(unittest.TestCase):
      self.assertEqual((yield top.progress.fault),1)
      self.assertGreater(state['suppressed'],0)
      for signal in (link_status.reset_done,link_status.clock_active,link_status.aligned):self.assertEqual((yield signal),1)
+     if hold_until_rx:
+      yield from h.write(base+4,1);yield from poll(5,1)
+      for _ in range(80):
+       self.assertEqual((yield top.gt_reset_request),1)
+       self.assertEqual((yield top.admit),0)
+       self.assertEqual((yield top.link_boundary.allowed),0)
+       self.assertEqual((yield top.progress.fault),0)
+       yield
+      state['stop_rx']=False
+      for _ in range(24):
+       self.assertEqual((yield top.link_boundary.allowed),0)
+       self.assertEqual((yield top.progress.allowed),0)
+       yield
+      yield from open_link()
+      self.assertEqual((yield top.progress.fault),0)
+      for _ in range(80):
+       self.assertEqual((yield top.link_boundary.allowed),1)
+       self.assertEqual((yield top.progress.fault),0)
+       yield
+      print('HELD_RESET_RX_RETURN_SINGLE_RELEASE_PASS phase',tx_phase)
+      state['event']=None
+      continue
      if reset_while_stopped:
       yield from h.write(base+4,1);yield from poll(5,1)
       yield from h.write(base+4,0)

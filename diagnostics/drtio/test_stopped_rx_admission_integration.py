@@ -14,4 +14,9 @@ class StoppedRXAdmissionTests(unittest.TestCase):
    fixture=AdmissionIntegrationTests()
    fixture.exercise(True,tx_phase=phase,stopped_rx=True,reset_while_stopped=True)
    self.assertEqual(len(fixture.last_openings),3)
+ def test_reset_held_until_rx_returns(self):
+  for phase in (0,3):
+   fixture=AdmissionIntegrationTests()
+   fixture.exercise(True,tx_phase=phase,stopped_rx=True,hold_until_rx=True)
+   self.assertEqual(len(fixture.last_openings),3)
 if __name__=='__main__':unittest.main()
