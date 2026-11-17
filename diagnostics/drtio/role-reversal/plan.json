@@ -454,5 +454,31 @@
       "evidence/genesys-master-integration-2026-11-16/stopped-rx-admission/regression.log": "f586066a0d3fef244da9d0a8958ada046df948e2fcf6a7fdeeba324bb02433dd",
       "evidence/genesys-master-integration-2026-11-16/stopped-rx-admission/test.log": "e1a609846b16a8381a965267ea92c476702395dd275875272e854df1e6275c0f"
     }
+  },
+  "stopped_rx_reset_20261117": {
+    "status": "HPM1_RESET_RELEASE_WITH_RX_STOPPED_FAILS_CLOSED_RECOVERY_PASS_TWO_PHASES",
+    "checks": [
+      "TX phases0/3: HPM1 reset/assert/release/abandon writes complete while RX source/domain/release edges suppressed",
+      "40 management samples with RX stopped: raw admission0, boundary0, progress allowed0",
+      "Progress fault relatches after reset released without RX progress",
+      "RX restart for70 management samples does not reopen; sticky fault remains",
+      "Second explicit HPM1 reset with RX running clears fault and fresh reopen succeeds; three openings per phase"
+    ],
+    "corrected_test_assumptions": [
+      "Initial expectation reset-request must remain1 was false: released request may be0 while progress prevents admission",
+      "Expectation fresh RX alone reopens after stopped reset release was false: timeout relatches, explicit reset required; both failed logs retained"
+    ],
+    "regression": "Prior stopped-RX/restart test passed in both earlier runs; final modified case passes both phases",
+    "limits": [
+      "Functional Migen reset model/exact Xilinx MultiReg, no physical CDC/timeout bound",
+      "No hardware/default RTL/XDC changes"
+    ],
+    "next": "Compare management holding reset until RX returns versus prematurely releasing reset; verify fresh-edge reopening without intermediate timeout",
+    "sha256": {
+      "evidence/genesys-master-integration-2026-11-17/stopped-rx-reset/second-auto-reopen-assumption-failed.log": "61c6b0e15ebf43c60eca3770238a63da6c74f9f790d1ac419e8557bd9b359d6d",
+      "evidence/genesys-master-integration-2026-11-17/stopped-rx-reset/final-test.log": "a70d66662e2fa886c90badd3d4d437eb5d9aeb8f8acba873bb84bd1ee6a498e1",
+      "evidence/genesys-master-integration-2026-11-17/stopped-rx-reset/first-reset-request-assumption-failed.log": "6b33e0c9db0200f9989bf754070f13dd7d07d8554ee25a489f55ab39a75672d0",
+      "evidence/genesys-master-integration-2026-11-17/stopped-rx-reset/test.log": "61c6b0e15ebf43c60eca3770238a63da6c74f9f790d1ac419e8557bd9b359d6d"
+    }
   }
 }
