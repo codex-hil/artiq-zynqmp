@@ -42,6 +42,7 @@ fn main() {
     assert_eq!(unsafe { ddma_wire_test() },0);
     println!("TEST DDMA_WIRE_SERVICE PASS");
     test_ddma_abi();
+    test_master_leaf_abi();
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -99,4 +100,37 @@ fn test_ddma_abi() {
     assert_eq!(n,1024);assert_eq!(unsafe{aux_ddma_decode(bytes.as_ptr(),1024,&mut out)},0xb0);
     d.length+=1;assert!(unsafe{aux_ddma_encode(0xb0,&d,bytes.as_mut_ptr(),1024)}<0);
     println!("TEST DDMA_C_ABI PASS");
+}
+
+mod master_leaf_codec;
+extern "C" {fn master_leaf_wire_test()->i32;}
+fn test_master_leaf_abi() {
+    assert_eq!(unsafe{master_leaf_wire_test()},0);
+    use master_leaf_codec::aux_master_leaf_encode;
+    let mut hops=[0u8;32];hops[0]=1;
+    for (kind,packet,required) in [(0x30,Packet::RoutingSetPath{destination:1,hops:hops},40usize),(0x31,Packet::RoutingSetRank{rank:1},8usize)].iter() {
+        for capacity in [*required,1024usize].iter() {
+            let mut bytes=[0xa5u8;1024];
+            let n=unsafe{aux_master_leaf_encode(*kind,1,bytes.as_mut_ptr(),*capacity)};
+            assert_eq!(n,*required as i32);
+            assert_eq!(&bytes[..n as usize],&encode(packet)[..]);
+            assert_eq!(decode(&bytes[..n as usize]).unwrap(),*packet);
+            assert!(bytes[n as usize..].iter().all(|x| *x==0xa5));
+        }
+        for capacity in [0usize,*required-1,1025usize].iter() {
+            let mut bytes=[0xa5u8;1024];
+            assert_eq!(unsafe{aux_master_leaf_encode(*kind,1,bytes.as_mut_ptr(),*capacity)},-4);
+            assert!(bytes.iter().all(|x| *x==0xa5));
+        }
+        for value in [0u32,2,255,256,u32::MAX].iter() {
+            let mut bytes=[0xa5u8;1024];
+            assert_eq!(unsafe{aux_master_leaf_encode(*kind,*value,bytes.as_mut_ptr(),1024)},-2);
+            assert!(bytes.iter().all(|x| *x==0xa5));
+        }
+    }
+    assert_eq!(unsafe{aux_master_leaf_encode(0x30,1,core::ptr::null_mut(),40)},-4);
+    let mut bytes=[0xa5u8;1024];
+    assert_eq!(unsafe{aux_master_leaf_encode(0x32,1,bytes.as_mut_ptr(),1024)},-2);
+    assert!(bytes.iter().all(|x| *x==0xa5));
+    println!("TEST MASTER_LEAF_C_ABI PASS");
 }

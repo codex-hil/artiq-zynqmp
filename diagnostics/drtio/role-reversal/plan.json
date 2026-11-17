@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Implement isolated checked routing path/rank encoder ABI and compare byte-for-byte against unchanged upstream codec with malformed-input tests",
+  "next_safe_offline": "Add bounded host-tested master AUX transaction policy for routing ACK, timeout and unexpected replies before transport/firmware linkage",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -522,5 +522,9 @@
       "TRANSPORT_PROFILE",
       "EXECUTION_CONTEXT"
     ]
+  },
+  "master_leaf_encoder_20261117": {
+    "status": "ISOLATED_MASTER_LEAF_ROUTING_ENCODER_HOST_C_RUST_UPSTREAM_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-17/master-leaf-codec/report.json"
   }
 }

@@ -22,6 +22,7 @@ def main():
     source=Path(__file__).with_name('main.rs')
     (out/'src/main.rs').write_bytes(source.read_bytes())
     (out/'src/ddma_codec.rs').write_bytes(Path(__file__).with_name('ddma_codec.rs').read_bytes())
+    (out/'src/master_leaf_codec.rs').write_bytes(Path(__file__).with_name('master_leaf_codec.rs').read_bytes())
     manifest='''[package]
 name="genesys-aux-reference-vectors"
 version="0.1.0"
@@ -39,7 +40,10 @@ io={path=IO_PATH,features=["byteorder"]}
     obj=out/'ddma-wire.o'
     subprocess.run([os.environ.get('CC','cc'),'-std=c11','-Wall','-Wextra','-Werror','-c',
         str(source.with_name('test_ddma_wire.c')),'-o',str(obj)],check=True)
-    env['RUSTFLAGS']=env.get('RUSTFLAGS','')+' -C link-arg='+str(obj)
+    leaf_obj=out/'master-leaf-wire.o'
+    subprocess.run([os.environ.get('CC','cc'),'-std=c11','-Wall','-Wextra','-Werror','-c',
+        str(source.with_name('test_master_leaf_wire.c')),'-o',str(leaf_obj)],check=True)
+    env['RUSTFLAGS']=env.get('RUSTFLAGS','')+' -C link-arg='+str(obj)+' -C link-arg='+str(leaf_obj)
     env['RUSTC_BOOTSTRAP']='1'
     result=subprocess.run(['cargo','+stable','run','--locked','--manifest-path',str(out/'Cargo.toml')],
         env=env,capture_output=True,text=True,timeout=180)
@@ -49,10 +53,10 @@ io={path=IO_PATH,features=["byteorder"]}
     vectors={}
     for line in result.stdout.splitlines():
         if line.startswith('VECTOR '):_,name,data=line.split();vectors[name]=data
-    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout or 'TEST DDMA_C_ABI PASS' not in result.stdout:
+    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout or 'TEST DDMA_C_ABI PASS' not in result.stdout or 'TEST MASTER_LEAF_C_ABI PASS' not in result.stdout:
         raise RuntimeError('Missing upstream acceptance output')
     evidence={'kind':'HOST_CODEC_TEST_NOT_FIRMWARE_OR_HARDWARE','status':'PASS',
-        'vectors':vectors,'ddma_c_abi':'PASS','ddma_wire_service':'PASS',
+        'vectors':vectors,'master_leaf_c_abi':'PASS','master_leaf_codec_sha256':hashlib.sha256(source.with_name('master_leaf_codec.rs').read_bytes()).hexdigest(),'ddma_c_abi':'PASS','ddma_wire_service':'PASS',
         'ddma_wire_sha256':hashlib.sha256(source.with_name('test_ddma_wire.c').read_bytes()).hexdigest(),
         'ddma_codec_sha256':hashlib.sha256(source.with_name('ddma_codec.rs').read_bytes()).hexdigest(),'source_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
         'upstream_protocol_sha256':hashlib.sha256(proto.read_bytes()).hexdigest(),

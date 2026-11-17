@@ -1,0 +1,23 @@
+{
+  "status": "ISOLATED_MASTER_LEAF_ROUTING_ENCODER_HOST_C_RUST_UPSTREAM_PASS",
+  "checks": [
+    "Destination1 path hops[0]=1/rest0 and rank1 byte-exact upstream Packet serialization/envelope roundtrip",
+    "Exact minimal and1024-byte capacities tested; buffer suffix canary unchanged",
+    "Null/short/oversized buffer and unsupported kind/value rejected; invalid arguments leave output unchanged",
+    "Actual C caller compiled Wall/Wextra/Werror and linked against exported Rust function",
+    "Existing seven upstream vectors and DDMA ABI/wire service tests pass"
+  ],
+  "limits": [
+    "Host-only module not included in firmware lib.rs or build_firmware.py; no deployed master service",
+    "Only fixed single-leaf topology; no generic routing table or arbitrary rank support",
+    "No hardware/default runtime/XDC changes"
+  ],
+  "next": "Add bounded host-tested master AUX transaction policy for routing ACK, timeout and unexpected replies before transport/firmware linkage",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "7beaa0e688e2d37f31a4965a96087e18f835306800c783ca3721b58b6ced3338",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.h": "ce7dfa324ddbdb57a520e4a77579854b0660010bad50354b36461b5d0e25a7ae",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_wire.c": "28d8f3dd6d4c7230b00fb458f48e444bc29705560a7a3ef7ed95d41467992e26",
+    "diagnostics/drtio/aux_protocol/main.rs": "c4c29038b86d3cf960fcada3e681566115868d79c61556498eef93672d506b78",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "a49466c4e2797198630ac12bb629d4454171b0ce94bed9c1380f41eeaff4c4b6"
+  }
+}
