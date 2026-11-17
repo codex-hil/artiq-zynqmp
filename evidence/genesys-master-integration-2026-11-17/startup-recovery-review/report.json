@@ -1,0 +1,114 @@
+{
+  "status": "OFFLINE_STARTUP_RECOVERY_EVIDENCE_CONSOLIDATED_HARDWARE_NOT_ADMITTED",
+  "date": "2026-11-17",
+  "evidence_inputs": [
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-drp-sequence/report.json",
+      "sha256": "49458f624a2e20a2f0de0f17d0341856902be3820fd1420f2faa2c87a28e705c",
+      "status": "NON_BYPASSED_ORIGINAL_VENDOR_TX_CALIBRATION_TWO_DRP_DELAYS_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-status/report.json",
+      "sha256": "3477207af5ee9a3458039ddf0a64359eef140347b9d296d47409b6751299960c",
+      "status": "SIX_VENDOR_CALIBRATION_STATUS_CASES_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/calibration-reset-path/report.json",
+      "sha256": "82b62066bbcb3a998eac9e4824aae7b105379ccd5ed25e89d285672a410e5661",
+      "status": "SOURCE_CONNECTIVITY_GUARDS_PASS_THREE_MUTANTS_REFUSED"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-wrapper/report.json",
+      "sha256": "145b7d0f7fe775375bf913370bd83319c49930825ab1d46283eb1092b59dc40b",
+      "status": "ORIGINAL_CALIBRATION_WRAPPER_SIX_CASES_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-reset/report.json",
+      "sha256": "7b640a7907ac5a0944f0a2b7eee2e2748d68b9df6aad9b73579c84c3e3687707",
+      "status": "ONE_WAY_CALIBRATED_LOCK_RESET_HELPER_SIX_CASES_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-feedback/report.json",
+      "sha256": "a1cb1f4c21a0ca74825972b8f3e56111a4680fef024d8d6f1a494383d749cfcc",
+      "status": "SCOPED_TX_PLL_RESET_FEEDBACK_SIX_CASES_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-shared/report.json",
+      "sha256": "ad19fe557f59622c521bd47dcc7f90c8e21534eb1fadffffccc98937199f6afd",
+      "status": "ENABLED_TX_RX_SHARED_PLL_RESET_SIX_CASES_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-pma/report.json",
+      "sha256": "07c518e7b7ea3d7d044df4de7341523b4d76205964fd5b55ca4f678ee72cc36c",
+      "status": "DELAYED_MODELED_PMA_WITH_VENDOR_USERCLOCK_HELPERS_SIX_CASES_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/cpll-clockloss/report.json",
+      "sha256": "07d2fe70923191e30d8a004ccd31f999869702273d869d6038e71f21b9068505",
+      "status": "STOPPED_SOURCE_AND_PMA_WITHDRAWAL_DIAGNOSTIC_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-16/stopped-rx-admission/report.json",
+      "sha256": "802d3b6d70f1f74d071547cc20d5c3f052ce7d0ea58d67dd90900d96734dfe19",
+      "status": "FULL_CORE_STOPPED_RX_STALE_STATUS_TWO_PHASES_AND_REGRESSION_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-17/stopped-rx-reset/report.json",
+      "sha256": "1a055bc186e50f5c97ff71203710542aba90ca59bb67887d0907101181f6308b",
+      "status": "HPM1_RESET_RELEASE_WITH_RX_STOPPED_FAILS_CLOSED_RECOVERY_PASS_TWO_PHASES"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-17/held-reset-rx-return/report.json",
+      "sha256": "2c599f7e590f858eeea2b1208e67e4234aefe5d748a934ce44408613ed519758",
+      "status": "HELD_HPM1_RESET_UNTIL_RX_RETURN_TWO_PHASES_PASS"
+    }
+  ],
+  "evidence_log_hashes_verified": 49,
+  "established": [
+    "Original non-bypassed vendor calibration sequence and wrapper diagnostics pass with emulated DRP/GT statuses",
+    "Vendor active/resetdone can remain stale with stopped clock; PMA withdrawal clears active but not resetdone alone",
+    "Full-core guarded candidate progress monitor closes admission on stopped RX despite stale status",
+    "Early reset release with absent RX relatches timeout; RX restart alone cannot recover",
+    "Holding reset until RX returns permits single release and fresh-handshake reopening at tested phases0/3"
+  ],
+  "open_requirements": [
+    {
+      "id": "TIMING_CDC",
+      "reason": "Retained synthesis is unrouted with missing IO delays and outstanding CDC findings; fastest active Gray source period during startup remains unqualified",
+      "next": "Review existing endpoint-specific constraint ledger and startup mode bounds; no blanket waiver or numeric bound inferred from simulations"
+    },
+    {
+      "id": "CABLE_PORT",
+      "reason": "Plan still records current_cabling=AWAITING_USER_ANSWER; direct Genesys SFP+ to satellite default SFP0 is required, prior SFP1 role is not equivalent",
+      "next": "Confirm physical port mapping before hardware; do not infer present cabling from old role"
+    },
+    {
+      "id": "RESTORATION",
+      "reason": "Reversed-role volatile load and two-board known-state restoration remain NOT_RUN; maintenance hold retained",
+      "next": "Use documented board-specific restoration qualification and independent recovery context before load"
+    },
+    {
+      "id": "A53_MASTER_RUNTIME",
+      "reason": "Existing persistent AUX responder is satellite-oriented; master AUX discovery/routing/reset/TSC/destination service not implemented per plan",
+      "next": "Inventory reusable codec and host-tested API against required master service; implement offline before claiming remote operation"
+    },
+    {
+      "id": "PHYSICAL_GT",
+      "reason": "PMA externally driven, constant monitor clock and forced GT statuses in diagnostics; no full physical GT/clock/DRP waveform proof",
+      "next": "Keep source/primitive/snapshot evidence distinct from physical startup qualification"
+    }
+  ],
+  "recovery_contract": [
+    "Keep management/control clock alive",
+    "Withdraw traffic and coordinate requester abandonment before reset; do not retry an accepted target transaction automatically",
+    "Hold reset while RX unavailable; vendor active/done alone do not prove progress",
+    "Release only through explicit management sequence; require fresh progress and domain acknowledgments",
+    "If reset was released without RX and timeout latched, restore RX then issue another explicit reset"
+  ],
+  "limits": [
+    "No default candidate adoption, runtime capability, timing waiver or hardware permission created by this report",
+    "Historical source hashes are not checked against newer edited source; evidence log hashes checked",
+    "Older implementation_work entries are historical scope notes, not an up-to-date overall completion claim"
+  ],
+  "next_safe_offline": "Inventory master AUX firmware gaps against existing codec and host APIs; keep hardware hold and default integration unchanged"
+}

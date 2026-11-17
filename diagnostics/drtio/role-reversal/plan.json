@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Diagnose RXRATE steady-mode propagation into GT primitive timing model; do not change hardware divider or manually force8ns without proof",
+  "next_safe_offline": "Inventory master AUX firmware gaps against existing codec and host APIs; keep hardware hold and default integration unchanged",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -499,5 +499,16 @@
     "sha256": {
       "evidence/genesys-master-integration-2026-11-17/held-reset-rx-return/test.log": "452d8b6eb7eeb0ac585246522b6a1fd26bbb1f76fbb0a53c59b064284c89d6ce"
     }
+  },
+  "startup_recovery_review_20261117": {
+    "status": "OFFLINE_STARTUP_RECOVERY_EVIDENCE_CONSOLIDATED_HARDWARE_NOT_ADMITTED",
+    "report": "evidence/genesys-master-integration-2026-11-17/startup-recovery-review/report.json",
+    "open_requirement_ids": [
+      "TIMING_CDC",
+      "CABLE_PORT",
+      "RESTORATION",
+      "A53_MASTER_RUNTIME",
+      "PHYSICAL_GT"
+    ]
   }
 }
