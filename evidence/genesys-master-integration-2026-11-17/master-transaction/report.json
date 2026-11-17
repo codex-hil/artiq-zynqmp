@@ -1,0 +1,24 @@
+{
+  "status": "HOST_SINGLE_ROUTING_TRANSACTION_POLICY_132_SCENARIOS_ASAN_UBSAN_PASS",
+  "checks": [
+    "Requests path/rank, budgets1..64: ACK on final polling unit succeeds",
+    "Possible commit marked before external transport; ACK before TX completion rejected",
+    "TX failure, unexpected reply, malformed/CRC-error indication and timeout latch failure",
+    "Late ACK cannot clear failure; begin cannot retry busy/done/failed transaction",
+    "Invalid/null/kind/budget inputs refused; compiled Wall/Wextra/Werror ASAN UBSAN"
+  ],
+  "limits": [
+    "RoutingAck lacks transaction ID; fresh-kind matching is not correlation proof",
+    "Policy has no transport/MMIO or runtime integration; caller supplies CRC-checked decoded packets",
+    "New-epoch initialization requires independently qualified reset/drained-link ownership; not a timeout recovery shortcut",
+    "Polling budget bounds only mt_poll calls; external send/decode/receive must themselves be bounded",
+    "Single transaction only; successful routing path/rank sequence orchestration not yet implemented",
+    "No hardware/default firmware/XDC changes"
+  ],
+  "next": "Connect encoder and policy in host-only mock transport with exact send-once accounting and path/rank ACK ordering; keep epoch recovery external",
+  "sha256": {
+    "diagnostics/drtio/aux_protocol/master_transaction.h": "6fa7a5a7cc970fd5fd0d4efd6778b411343e83ea4c31a687e5c52ea43d20d4df",
+    "diagnostics/drtio/aux_protocol/test_master_transaction.c": "fb9a949c3c6de101f86c53d4a61ad5449823dbe9ec4eed97d2d0b601e9e03b02",
+    "evidence/genesys-master-integration-2026-11-17/master-transaction/test.log": "fe4017120e8e494eb41d2a1f4fb4cb52691e25fdb4de975f8868bfb243937d48"
+  }
+}
