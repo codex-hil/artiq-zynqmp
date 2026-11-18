@@ -1,0 +1,79 @@
+{
+  "status": "CANDIDATE_AUX_MAP_SOURCE_CONTRACT_AND_DIRECT_CROSSED_AXI_TESTS_PASS",
+  "map_sha256": "d33563bad5b0f2a822db3f974869935a77e3d0ffb89920c4d1c593a0f6711962",
+  "registers": {
+    "aux_aux_tx_length": {
+      "address": 2684362752,
+      "bits": 11,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "aux_aux_tx": {
+      "address": 2684362756,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "aux_aux_rx_present": {
+      "address": 2684362760,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "aux_aux_rx_error": {
+      "address": 2684362764,
+      "bits": 1,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    },
+    "aux_aux_read_pointer": {
+      "address": 2684362768,
+      "bits": 3,
+      "words": 1,
+      "word_order": "big",
+      "word_bytes": 4
+    }
+  },
+  "memory": {
+    "tx_base": "0xa0010000",
+    "tx_actual_bytes": 1024,
+    "tx_native_alias_window_bytes": 8192,
+    "rx_base": "0xa0012000",
+    "rx_slots": 8,
+    "slot_bytes": 1024,
+    "rx_read_only": true
+  },
+  "operations": [
+    "TX length byte-valued aligned4, accepted4..1024 for driver (map test also covers storage0); fence SRAM before length/commit",
+    "TX commit by write aux_tx; completion is busy clear, not remote ACK; every status access itself may hang if target clock stops",
+    "RX nondestructive read error/present/pointer; pointer3bits index0..7, read slot at RXbase+pointer*1024",
+    "Write present advances one current slot when present; exclusive consumer required, never reread/ack after unknown failed release",
+    "Write error clears sticky flag, coincident new error wins in source; do not clear automatically during normal transaction",
+    "No exposed received-length CSR; fixed ACK prefix decode does not establish actual frame length"
+  ],
+  "driver_requirements": [
+    "Explicit matching profile/map binding and sole ownership; identity alone not sufficient source-version proof",
+    "Only aligned32bit accesses, validate pointer/length before address arithmetic; no TX native aliases used",
+    "Bound polls with attempt counts; commit-attempt before write; no automatic retry on write/fence/release failure",
+    "Stable slot contract requires real gateware producer/consumer/reset/error review, not software callbacks alone",
+    "Preserve independent HPM1 management and CPU ownership; polling limit cannot bound one stuck MMIO read",
+    "Check RX error before acquisition and after slot copy; error/new reset/epoch invalidates result; exact release outcome must remain explicit"
+  ],
+  "limits": [
+    "Map generated from candidate Pair/GrayAuxController fixture, not currently loaded board identity",
+    "Direct and crossed AXI functional map/length/SRAM/hole tests pass, not physical CDC/timing/reset qualification",
+    "No bus access, board lease, firmware deployment or XDC change"
+  ],
+  "next_safe_offline": "Implement host-mocked bounded AUX MMIO transport with explicit profile binding, validated pointer/length and commit/release fault injection; no direct volatile hardware calls",
+  "source_sha256": {
+    "diagnostics/drtio/master_csr.py": "45c85b797a38c437e489f4f9d20d7c7944a287e75c2831ac27d95503bba89087",
+    "diagnostics/drtio/aux_bus.py": "7a610191ddd0b8d724f123e94824c9c71210ddc49f0f79ca914e27355fd469da",
+    "diagnostics/drtio/master_aux.py": "b67f4f11ca8c71c2ec2233872938ada582920d562d4b5dcc36cf63db80d61414",
+    "diagnostics/drtio/aux_controller_gray.py": "5b5536d4ff64a0979b45db04fda3e1a24115b56916fb8e0d8b6595f089ca9fbe",
+    "diagnostics/drtio/aux_receiver_gray.py": "09af4aa5af51389b1e71994fb2c114de6f67cdc7e493a8e3ea7662b7a8545b21"
+  }
+}
