@@ -1,0 +1,55 @@
+{
+  "status": "UPSTREAM_RX_OWNERSHIP_SLOT_AND_FRESHNESS_SOURCE_REVIEW_COMPLETE_NOT_QUALIFIED",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/libboard_artiq/drtioaux.rs": "95eb5d7e7e0a798e0a5431de74dbcc9a3099d18b15a90fdf779d9912b4c207f9",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/runtime/rtio_mgt.rs": "486b309685fe55a2cc9dcaf6646b7dfafe1f0f5bdcf98bd2072532877fa43260",
+    "diagnostics/drtio/aux_protocol/firmware.c": "4d127f2bcf393530f7758e837dd2222588e3e05b57f92dba22d822e012efb685",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "83503d33dc7c4eaf6d5be6ea7e526e17f5148fd1f8d87467496c63ddded68f95"
+  },
+  "findings": [
+    {
+      "component": "drtioaux::receive",
+      "observation": "Reads current pointer into1024-byte slot, invokes parser, acknowledges present before propagating parser result",
+      "implication": "Bad packet consumes slot; caller must not parse again or acknowledge twice"
+    },
+    {
+      "component": "drtioaux::reset",
+      "observation": "Clears present then error with explicit assumption CPU outruns two arrivals",
+      "implication": "Not an atomic full-ring drain or epoch freshness proof"
+    },
+    {
+      "component": "setup_transact",
+      "observation": "Locks AUX mutex, sends, waits one reply; assumes no async setup packets, no explicit pre-send queue drain",
+      "implication": "Exclusive CPU ownership prevents concurrent software transactions but does not correlate stale/duplicate ACK"
+    },
+    {
+      "component": "clear_buffers",
+      "observation": "One recv_aux_timeout per live link under mutex",
+      "implication": "Not a bounded drain-until-empty guarantee for multi-slot backlog"
+    },
+    {
+      "component": "drtioaux::transmit",
+      "observation": "Unbounded busy-wait until TX clears in upstream source",
+      "implication": "Do not reuse directly for bounded A53 callback contract"
+    },
+    {
+      "component": "candidate exact ACK decoder",
+      "observation": "Requires length8; laboratory/upstream receive provides fixed1024-byte slot",
+      "implication": "Transport adapter must identify fixed ACK envelope prefix and pass exactly8 bytes; slot tail is not extra frame bytes"
+    }
+  ],
+  "candidate_contract": {
+    "ownership": "Single exclusive link owner; no unsolicited setup traffic; no concurrent consumer",
+    "preflight": "Bounded check of RX error, present and ownership before TX; queued packet causes fail-closed refusal, never silently discard to claim freshness",
+    "receive": "Snapshot stable slot/pointer under mapped producer/consumer contract, decode fixed8byte ACK prefix, acknowledge exactly once even on decode rejection",
+    "bounds": "Bound send busy/bridge and receive polling; surface ambiguous TX commit and require explicit recovery rather than retry",
+    "epoch": "External peer-reset/drain/quiescence qualification required. Empty queue snapshot alone cannot rule out delayed old ACK",
+    "unsupported": "No proof against physical delayed duplicate ACK after preflight; protocol wire has no ID"
+  },
+  "limits": [
+    "Read-only local source audit, not compiled transport/MMIO or physical ring proof",
+    "No timing/quiet interval inferred; no reset/drain/HW action performed",
+    "Hardware hold/default firmware unchanged"
+  ],
+  "next_safe_offline": "Implement isolated fixed-slot RoutingAck adapter with exactly-once slot release and malformed-prefix tests using host mock ownership callbacks; no MMIO/epoch claims"
+}
