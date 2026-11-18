@@ -1,0 +1,29 @@
+{
+  "status": "HOST_ENCODER_TRANSACTION_MOCK_PATH_RANK_SEQUENCE_PASS",
+  "checks": [
+    "Actual C setup calls exported Rust upstream encoder and decoded-kind mock transport",
+    "Ten stage/mode scenarios: success and send error/timeout/unexpected/malformed at each stage",
+    "Path40bytes precedes rank8bytes; rank never sent before pathACK",
+    "ACK accepted on final poll step; at most3 polls per stage",
+    "Commit-attempt marked before send callback; exact one send per attempted stage",
+    "Consumed sequence refuses replay after success or any failure with zero further send/receive calls",
+    "Existing upstream7vectors/DDMA/leaf encoder regression PASS"
+  ],
+  "limits": [
+    "No real transport or firmware linkage; callback duration is external responsibility",
+    "Receive callback returns decoded CRC-checked kind; wire RX/CRC integration remains untested here",
+    "RoutingAck has no ID; stale/duplicate ACK can satisfy a later stage, not solved by this mock",
+    "Fresh/drained exclusive link epoch is external precondition; no automatic reset/reinit/retry",
+    "Only fixed destination1/port1/rank1; not whole routing table/master discovery/TSC",
+    "No hardware/default runtime/XDC changes"
+  ],
+  "next": "Integrate actual upstream RoutingAck wire decode and negative CRC/truncation/duplicate controls into host transport harness; preserve fail-closed epoch limits",
+  "sha256": {
+    "diagnostics/drtio/aux_protocol/master_route_setup.h": "a8ca944ae7edccfd3cf601c021dfd7b0b32aa67372bf669719b9aa6053827c7b",
+    "diagnostics/drtio/aux_protocol/master_transaction.h": "6fa7a5a7cc970fd5fd0d4efd6778b411343e83ea4c31a687e5c52ea43d20d4df",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "7beaa0e688e2d37f31a4965a96087e18f835306800c783ca3721b58b6ced3338",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_wire.c": "414db54ccea07d090623cd71d43816c97ded5c180106b3cf4569c816408d83cc",
+    "diagnostics/drtio/aux_protocol/main.rs": "7d32492a121f5e48445100389abc12ce86e4658c69dd62d52792f98fad12e293",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "7eef1924a48e5c756648efa89f04eb54594e6277ca01031bca39a02f6152e2c6"
+  }
+}

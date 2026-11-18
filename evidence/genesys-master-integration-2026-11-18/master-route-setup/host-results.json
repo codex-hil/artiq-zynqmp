@@ -1,0 +1,25 @@
+{
+  "kind": "HOST_CODEC_TEST_NOT_FIRMWARE_OR_HARDWARE",
+  "status": "PASS",
+  "vectors": {
+    "echo_request": "000000001cdf4421",
+    "echo_reply": "0100000079b8f899",
+    "reset_request": "0200000097174d8b",
+    "reset_ack": "03000000f270f133",
+    "destination_request": "20010000151ab480",
+    "destination_down": "210000004717ca39",
+    "destination_ok": "22000000a9b87f2b"
+  },
+  "master_route_setup_mock": "PASS",
+  "master_leaf_c_abi": "PASS",
+  "master_leaf_codec_sha256": "7beaa0e688e2d37f31a4965a96087e18f835306800c783ca3721b58b6ced3338",
+  "ddma_c_abi": "PASS",
+  "ddma_wire_service": "PASS",
+  "ddma_wire_sha256": "71a939f102b94d4ba348818b4f35d1cd0b6884ab457031be7cabfef225dc88e1",
+  "ddma_codec_sha256": "1cab385aa8b75099573253f4eade82d5512b5d69c444699950ddc4f040c3cc96",
+  "source_revision": "486e8f897547d282d46a02c30463449c21e30cfe",
+  "upstream_protocol_sha256": "d9c2f34b78106347a85856e0b7c07dc898f2bd7f6c93da2bc86d66ba76ad4f9a",
+  "reference_source_sha256": "7d32492a121f5e48445100389abc12ce86e4658c69dd62d52792f98fad12e293",
+  "log_sha256": "da3d4196559b07ae3783438343ed1cf954bef71a32bfe321ce7ff6b6ef8cbdce",
+  "cargo_lock_sha256": "2107c5e66d4e5f0f673bd40931ce3b92967e08c6c6ecf062e3f8f55919fb79bf"
+}

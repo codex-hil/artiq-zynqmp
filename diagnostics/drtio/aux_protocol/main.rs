@@ -103,9 +103,11 @@ fn test_ddma_abi() {
 }
 
 mod master_leaf_codec;
-extern "C" {fn master_leaf_wire_test()->i32;}
+extern "C" {fn master_leaf_wire_test()->i32;fn master_route_setup_test()->i32;}
 fn test_master_leaf_abi() {
     assert_eq!(unsafe{master_leaf_wire_test()},0);
+    assert_eq!(unsafe{master_route_setup_test()},0);
+    println!("TEST MASTER_ROUTE_SETUP_MOCK PASS");
     use master_leaf_codec::aux_master_leaf_encode;
     let mut hops=[0u8;32];hops[0]=1;
     for (kind,packet,required) in [(0x30,Packet::RoutingSetPath{destination:1,hops:hops},40usize),(0x31,Packet::RoutingSetRank{rank:1},8usize)].iter() {
