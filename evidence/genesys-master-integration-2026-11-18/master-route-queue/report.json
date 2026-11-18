@@ -1,0 +1,26 @@
+{
+  "status": "HOST_SLOT_ROUTE_QUEUE_COMPOSITION_TWELVE_CASES_PASS",
+  "checks": [
+    "Actual C route sequence -> Rust encoder -> nondestructive pending check -> mock send -> owned1024byte slot -> Rust ACK decoder -> exactly-once release",
+    "Two stages x six modes: success/backlog/queueerror/badCRC/releaseerror/timeout",
+    "Backlog/error before stage send prevents actual send; pending backlog remains queued/untouched",
+    "Exact send and release counts checked; rank absent on path failure; no callback on consumed sequence replay",
+    "Existing upstream7vectors/DDMA/leaf/transaction/mock/wire/slot checks PASS"
+  ],
+  "limits": [
+    "Exclusive stable mock ownership; real CSR/MMIO/pointer/error CDC and transport bounds unqualified",
+    "Commit-attempt flag conservative: route marks it before queue wrapper; blocked actual send may still show commit_attempted1",
+    "Timeout consumes sequence; q.failed alone is not complete terminal state, caller must preserve consumed mr_setup",
+    "Empty snapshot not late-duplicate correlation proof; no transaction IDs or automatic drain/retry",
+    "No firmware linkage/HW/default/XDC changes"
+  ],
+  "next": "Map candidate AUX CSR/SRAM profile and ownership/error semantics against bounded transport callbacks before implementing isolated MMIO driver",
+  "sha256": {
+    "diagnostics/drtio/aux_protocol/master_route_queue.h": "840424ceb1f01666cc4e75e40cd5f3b59bddb7a730e3e72feb00a78bef559f30",
+    "diagnostics/drtio/aux_protocol/master_route_setup.h": "a8ca944ae7edccfd3cf601c021dfd7b0b32aa67372bf669719b9aa6053827c7b",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "21aa4f47e1d703c63940f44a4b2dcfe45752b5d7559a1b3a775f6368f8513eb7",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_wire.c": "47b048146e492a9a76079eb826e735bb800dab17461916c035be5d510e7cb66e",
+    "diagnostics/drtio/aux_protocol/main.rs": "9961c56af22167d5bf70c7fe977ac5c5cad95fbf9c2fad9ae1f8af4f12099e6c",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "f11c0828d5efdd6d98e52e7db66e2bf8fd50feb85f367049d35f41243f8f5788"
+  }
+}

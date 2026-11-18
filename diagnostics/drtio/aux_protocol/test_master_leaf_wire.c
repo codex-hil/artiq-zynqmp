@@ -121,3 +121,52 @@ int master_ack_slot_test(const uint8_t *ack,size_t n) {
  assert(ma_receive(&s,0,&k)==-1);assert(ma_receive(0,0,0)==-1);
  return 0;
 }
+
+#include "master_route_queue.h"
+struct queue_mock {uint8_t slot[1024];unsigned mode,stage,sends,checks,acquires,releases,queued,owned;};
+static int queue_pending(void *ctx) {
+ struct queue_mock *m=ctx;m->checks++;assert(!m->owned);
+ if(m->sends==m->stage&&(m->mode==1||m->mode==2)) {
+  if(m->mode==1){m->queued=1;return 1;}
+  return -1;
+ }
+ return (int)m->queued;
+}
+static int queue_send(void *ctx,const uint8_t *p,size_t n) {
+ struct queue_mock *m=ctx;assert(!m->queued&&!m->owned);
+ assert(p[0]==0x30+m->sends&&n==(m->sends?8u:40u));m->sends++;
+ if(m->mode!=5||m->sends-1!=m->stage)m->queued=1;
+ return 0;
+}
+static int queue_acquire(void *ctx,const uint8_t **p,size_t *n,uint32_t *ticket) {
+ struct queue_mock *m=ctx;m->acquires++;assert(!m->owned);
+ if(!m->queued)return 0;
+ m->owned=1;*p=m->slot;*n=1024;*ticket=m->sends;
+ if(m->mode==3&&m->sends-1==m->stage)m->slot[7]^=1;
+ return 1;
+}
+static int queue_release(void *ctx,uint32_t ticket) {
+ struct queue_mock *m=ctx;assert(m->owned&&ticket==m->sends);
+ m->releases++;m->owned=0;m->queued=0;
+ return m->mode==4&&m->sends-1==m->stage?-1:0;
+}
+int master_route_queue_test(const uint8_t *ack,size_t n) {
+ assert(n==8);
+ for(unsigned stage=0;stage<2;stage++)for(unsigned mode=0;mode<6;mode++) {
+  struct queue_mock m={.mode=mode,.stage=stage};
+  for(unsigned i=0;i<1024;i++)m.slot[i]=0xa5;
+  for(unsigned i=0;i<8;i++)m.slot[i]=ack[i];
+  struct mq_transport q={.rx={&m,queue_acquire,queue_release},.ctx=&m,.pending=queue_pending,.send=queue_send};
+  struct mr_setup setup;mr_init_epoch(&setup);
+  const int expected[6]={MT_OK,MT_IO,MT_IO,MT_PACKET,MT_PACKET,MT_TIMEOUT};
+  assert(mq_route_once(&setup,&q,3)==expected[mode]);
+  assert(m.sends==(mode==0?2:mode<=2?stage:stage+1));
+  assert(m.releases==(mode==0?2:mode<=2||mode==5?stage:stage+1));
+  assert(setup.completed==(mode==0?2:stage));
+  if(mode==1)assert(m.queued==1); /* refused backlog left untouched */
+  unsigned sends=m.sends,acquires=m.acquires,checks=m.checks,releases=m.releases;
+  assert(mq_route_once(&setup,&q,3)==MT_BUSY);
+  assert(m.sends==sends&&m.acquires==acquires&&m.checks==checks&&m.releases==releases);
+ }
+ return 0;
+}
