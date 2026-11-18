@@ -52,3 +52,33 @@ int master_route_setup_test(void) {
  assert(mr_run_once(0,0,3)==MT_INVALID);mr_init_epoch(0);
  return 0;
 }
+
+struct wire_route {const uint8_t *ack;unsigned sends,polls,stage,mode;};
+static int wire_send(void *ctx,const uint8_t *p,size_t n) {
+ struct wire_route *m=ctx;assert(p[0]==0x30+m->sends&&n==(m->sends?8u:40u));m->sends++;return 0;
+}
+static int wire_recv(void *ctx,uint32_t *kind) {
+ struct wire_route *m=ctx;uint8_t packet[9];for(unsigned i=0;i<8;i++)packet[i]=m->ack[i];packet[8]=0;
+ size_t n=8;m->polls++;
+ if(m->sends-1==m->stage) {
+  if(m->mode==1)packet[7]^=1;
+  if(m->mode==2)n=7;
+  if(m->mode==3)n=9;
+ }
+ int result=aux_master_routing_ack_decode(packet,n);
+ if(result<0)return -1;
+ *kind=(uint32_t)result;return 1;
+}
+int master_route_wire_test(const uint8_t *ack,size_t length) {
+ assert(length==8&&aux_master_routing_ack_decode(ack,length)==0x32);
+ for(unsigned stage=0;stage<2;stage++)for(unsigned mode=0;mode<4;mode++) {
+  struct mr_setup setup;mr_init_epoch(&setup);
+  struct wire_route m={ack,0,0,stage,mode};struct mr_io io={&m,wire_send,wire_recv};
+  assert(mr_run_once(&setup,&io,3)==(mode?MT_PACKET:MT_OK));
+  assert(m.sends==(mode?stage+1:2));
+  assert(mr_run_once(&setup,&io,3)==MT_BUSY);
+ }
+ /* Identical valid bytes accepted for both stages: duplicate identity cannot
+  * be rejected without an external epoch/receive ownership contract. */
+ return 0;
+}

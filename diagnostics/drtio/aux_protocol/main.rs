@@ -103,11 +103,23 @@ fn test_ddma_abi() {
 }
 
 mod master_leaf_codec;
-extern "C" {fn master_leaf_wire_test()->i32;fn master_route_setup_test()->i32;}
+extern "C" {fn master_leaf_wire_test()->i32;fn master_route_setup_test()->i32;fn master_route_wire_test(ack:*const u8,length:usize)->i32;}
 fn test_master_leaf_abi() {
     assert_eq!(unsafe{master_leaf_wire_test()},0);
     assert_eq!(unsafe{master_route_setup_test()},0);
     println!("TEST MASTER_ROUTE_SETUP_MOCK PASS");
+    let ack=encode(&Packet::RoutingAck);
+    assert_eq!(unsafe{master_route_wire_test(ack.as_ptr(),ack.len())},0);
+    use master_leaf_codec::aux_master_routing_ack_decode;
+    assert_eq!(unsafe{aux_master_routing_ack_decode(core::ptr::null(),8)},-4);
+    for n in 0..8 {assert_eq!(unsafe{aux_master_routing_ack_decode(ack.as_ptr(),n)},-4);}
+    for bit in 0..64 {
+        let mut corrupt=ack.clone();corrupt[bit/8]^=1<<(bit%8);
+        assert_eq!(unsafe{aux_master_routing_ack_decode(corrupt.as_ptr(),8)},-1);
+    }
+    let echo=encode(&Packet::EchoReply);
+    assert_eq!(unsafe{aux_master_routing_ack_decode(echo.as_ptr(),echo.len())},-2);
+    println!("TEST MASTER_ROUTE_WIRE PASS DUPLICATE_ACK_UNCORRELATED");
     use master_leaf_codec::aux_master_leaf_encode;
     let mut hops=[0u8;32];hops[0]=1;
     for (kind,packet,required) in [(0x30,Packet::RoutingSetPath{destination:1,hops:hops},40usize),(0x31,Packet::RoutingSetRank{rank:1},8usize)].iter() {

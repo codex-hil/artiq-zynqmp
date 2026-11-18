@@ -1,0 +1,27 @@
+{
+  "status": "HOST_UPSTREAM_ACK_WIRE_DECODE_AND_SEQUENCE_ERRORS_PASS_DUPLICATE_GAP_CONFIRMED",
+  "checks": [
+    "Original upstream Packet::RoutingAck serialized to8-byte envelope then passed through actual C->Rust decoder",
+    "Exact length/CRC before kind and upstream fixed-variant decode; null and lengths0..7 rejected",
+    "All64 single-bit corruptions rejected as CRC failures; valid EchoReply rejected as wrong kind",
+    "Eight stage/mode cases: valid, CRC bad, truncated7, trailing9 at either path/rank stage",
+    "Negative receive result latches transaction failure; no rank after path failure or replay after sequence consumed",
+    "Identical valid RoutingAck accepted at both stages, explicitly demonstrates lack of duplicate/stale correlation",
+    "Existing leaf ABI/upstream7vectors/DDMA/mock tests PASS"
+  ],
+  "limits": [
+    "Host-only decoder/sequence not firmware linked, no real receive queue/MMIO",
+    "CRC detects tested corruption, not malicious replay/authentication",
+    "RoutingAck no ID: duplicate/stale matching cannot be solved from these bytes alone",
+    "External fresh epoch/drain/single-owner/no-duplicate assumptions require transport contract before production readiness",
+    "No hardware/default runtime/XDC changes"
+  ],
+  "next": "Review upstream AUX receive ownership/drain behavior and define bounded queue-freshness contract; do not add automatic retries or infer ACK correlation",
+  "sha256": {
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "83503d33dc7c4eaf6d5be6ea7e526e17f5148fd1f8d87467496c63ddded68f95",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.h": "d5494c6bc5b9bf3490d8f32f88f8bee6c68193a00d22ae1bb09d70e6c1d81b24",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_wire.c": "4b5ce5e3634721d82780ccb2a9d42a6885594e0c239fd1fba9f002eed617eb45",
+    "diagnostics/drtio/aux_protocol/main.rs": "4e9f90054350eb5e414095701070831b26caa9f812ace32174b5b148ec2fff8a",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "3a53f581102149c906c2fc19e442d66a5dd6edd5a34410f7fd78dde1c697a084"
+  }
+}
