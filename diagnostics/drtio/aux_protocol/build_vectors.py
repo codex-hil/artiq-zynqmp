@@ -53,10 +53,10 @@ io={path=IO_PATH,features=["byteorder"]}
     vectors={}
     for line in result.stdout.splitlines():
         if line.startswith('VECTOR '):_,name,data=line.split();vectors[name]=data
-    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout or 'TEST DDMA_C_ABI PASS' not in result.stdout or 'TEST MASTER_LEAF_C_ABI PASS' not in result.stdout or 'TEST MASTER_ROUTE_SETUP_MOCK PASS' not in result.stdout or 'TEST MASTER_ROUTE_WIRE PASS' not in result.stdout:
+    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout or 'TEST DDMA_C_ABI PASS' not in result.stdout or 'TEST MASTER_LEAF_C_ABI PASS' not in result.stdout or 'TEST MASTER_ROUTE_SETUP_MOCK PASS' not in result.stdout or 'TEST MASTER_ROUTE_WIRE PASS' not in result.stdout or 'TEST MASTER_ACK_SLOT PASS' not in result.stdout:
         raise RuntimeError('Missing upstream acceptance output')
     evidence={'kind':'HOST_CODEC_TEST_NOT_FIRMWARE_OR_HARDWARE','status':'PASS',
-        'vectors':vectors,'master_route_wire':'PASS_DUPLICATE_ACK_UNCORRELATED','master_route_setup_mock':'PASS','master_leaf_c_abi':'PASS','master_leaf_codec_sha256':hashlib.sha256(source.with_name('master_leaf_codec.rs').read_bytes()).hexdigest(),'ddma_c_abi':'PASS','ddma_wire_service':'PASS',
+        'vectors':vectors,'master_ack_slot':'PASS','master_route_wire':'PASS_DUPLICATE_ACK_UNCORRELATED','master_route_setup_mock':'PASS','master_leaf_c_abi':'PASS','master_leaf_codec_sha256':hashlib.sha256(source.with_name('master_leaf_codec.rs').read_bytes()).hexdigest(),'ddma_c_abi':'PASS','ddma_wire_service':'PASS',
         'ddma_wire_sha256':hashlib.sha256(source.with_name('test_ddma_wire.c').read_bytes()).hexdigest(),
         'ddma_codec_sha256':hashlib.sha256(source.with_name('ddma_codec.rs').read_bytes()).hexdigest(),'source_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
         'upstream_protocol_sha256':hashlib.sha256(proto.read_bytes()).hexdigest(),

@@ -1,0 +1,26 @@
+{
+  "status": "HOST_FIXED_SLOT_ACK_ADAPTER_EIGHT_SCENARIOS_PASS",
+  "checks": [
+    "1024byte stable borrowed slot; decode first8bytes through actual upstream-backed ACK decoder; nonzero stale tail accepted as storage",
+    "Owned slot released exactly once on valid/badCRC/malformed/nullslot/wrongsize/releaseerror",
+    "Empty/error acquire invokes no release; operational error poisons adapter and future calls invoke no callbacks",
+    "Kind output changes only after valid decode and successful release",
+    "Release mock overwrites prefix, proving decode-before-release; no decode of invalidated borrowed memory",
+    "Existing leaf/route mock/wire/64CRC-bitflip/upstream7vectors/DDMA tests PASS"
+  ],
+  "limits": [
+    "Callbacks model exclusive stable ownership; real CSR pointer, CDC, overflow/error ordering and MMIO untested",
+    "No actual captured packet-length CSR; fixed8 prefix only for known ACK kind",
+    "Release error outcome ambiguous, no retry; recovery/new state externally qualified",
+    "No stale/duplicate ACK correlation or physical queue freshness claim",
+    "Header comment-only clarification after successful run; executable code unchanged",
+    "No firmware linkage/HW/default/XDC changes"
+  ],
+  "next": "Compose fixed-slot adapter with route setup under host queue backlog/error tests and fail-closed pre-send queue checks; keep late-duplicate limitation explicit",
+  "sha256": {
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "21aa4f47e1d703c63940f44a4b2dcfe45752b5d7559a1b3a775f6368f8513eb7",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_wire.c": "51d7d38d7c6c0b545729decd106c8f60a4dd66e4ebf59146866f7afbb13c199a",
+    "diagnostics/drtio/aux_protocol/main.rs": "6b68b7cac39f5ef4d829720113b47a5d6c2408fcd57cefe1f3a54d00aba092cc",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "a6abbd715e61ab2488fac06e7ffc738259bba9aea49531107f2fc44e2cd89da0"
+  }
+}

@@ -103,13 +103,15 @@ fn test_ddma_abi() {
 }
 
 mod master_leaf_codec;
-extern "C" {fn master_leaf_wire_test()->i32;fn master_route_setup_test()->i32;fn master_route_wire_test(ack:*const u8,length:usize)->i32;}
+extern "C" {fn master_leaf_wire_test()->i32;fn master_route_setup_test()->i32;fn master_route_wire_test(ack:*const u8,length:usize)->i32;fn master_ack_slot_test(ack:*const u8,length:usize)->i32;}
 fn test_master_leaf_abi() {
     assert_eq!(unsafe{master_leaf_wire_test()},0);
     assert_eq!(unsafe{master_route_setup_test()},0);
     println!("TEST MASTER_ROUTE_SETUP_MOCK PASS");
     let ack=encode(&Packet::RoutingAck);
     assert_eq!(unsafe{master_route_wire_test(ack.as_ptr(),ack.len())},0);
+    assert_eq!(unsafe{master_ack_slot_test(ack.as_ptr(),ack.len())},0);
+    println!("TEST MASTER_ACK_SLOT PASS");
     use master_leaf_codec::aux_master_routing_ack_decode;
     assert_eq!(unsafe{aux_master_routing_ack_decode(core::ptr::null(),8)},-4);
     for n in 0..8 {assert_eq!(unsafe{aux_master_routing_ack_decode(ack.as_ptr(),n)},-4);}

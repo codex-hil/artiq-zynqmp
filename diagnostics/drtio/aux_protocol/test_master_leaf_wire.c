@@ -82,3 +82,42 @@ int master_route_wire_test(const uint8_t *ack,size_t length) {
   * be rejected without an external epoch/receive ownership contract. */
  return 0;
 }
+
+#include "master_ack_slot.h"
+struct slot_mock {uint8_t bytes[1024];unsigned mode,acquires,releases,owned;};
+static int slot_acquire(void *ctx,const uint8_t **p,size_t *n,uint32_t *ticket) {
+ struct slot_mock *m=ctx;m->acquires++;assert(!m->owned);
+ if(m->mode==1)return 0;
+ if(m->mode==2)return -1;
+ m->owned=1;*p=m->mode==3?0:m->bytes;*n=m->mode==4?1023:1024;*ticket=0x12345678;return 1;
+}
+static int slot_release(void *ctx,uint32_t ticket) {
+ struct slot_mock *m=ctx;assert(m->owned&&ticket==0x12345678);
+ m->releases++;m->owned=0;
+ /* Make use-after-release decoding observable: invalidate bytes immediately. */
+ for(unsigned i=0;i<8;i++)m->bytes[i]=0;
+ return m->mode==7?-1:0;
+}
+int master_ack_slot_test(const uint8_t *ack,size_t n) {
+ assert(n==8);
+ for(unsigned mode=0;mode<8;mode++) {
+  struct slot_mock m={.mode=mode};
+  for(unsigned i=0;i<1024;i++)m.bytes[i]=0xa5;
+  for(unsigned i=0;i<8;i++)m.bytes[i]=ack[i];
+  if(mode==5)m.bytes[7]^=1;
+  if(mode==6)for(unsigned i=0;i<8;i++)m.bytes[i]=0xff;
+  struct ma_slot_state state={0};struct ma_slot_io io={&m,slot_acquire,slot_release};uint32_t kind=0xfeed;
+  int result=ma_receive(&state,&io,&kind);
+  assert(result==(mode==0?1:mode==1?0:-1));
+  assert(kind==(mode==0?0x32u:0xfeedu));
+  assert(m.releases==(mode==1||mode==2?0u:1u)&&!m.owned);
+  if(mode>1){
+   unsigned calls=m.acquires;assert(state.poisoned);
+   assert(ma_receive(&state,&io,&kind)==-1&&m.acquires==calls);
+   assert(m.releases==(mode==2?0u:1u));
+  }
+ }
+ struct ma_slot_state s={0};uint32_t k=9;
+ assert(ma_receive(&s,0,&k)==-1);assert(ma_receive(0,0,0)==-1);
+ return 0;
+}
