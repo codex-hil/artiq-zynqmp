@@ -1,6 +1,12 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_foreground_pass(unsigned);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_foreground_setup.h"
 #include "master_setup_mock_fixture.h"
 struct guarded_fixture {struct setup_fake fake;struct mfs_session *session;};
@@ -44,6 +50,9 @@ int master_foreground_composition_test(const uint8_t *frames,size_t length){
   unsigned calls=f->calls,actions=context.calls;
   assert(mfs_step(&session,&io)==result&&f->calls==calls&&context.calls==actions);
   if(n==0){
+#ifdef FORCE_FOREGROUND_ASSERT
+   assert(gate.state==MFO_IDLE); /* Deliberately false: success must retain ownership. */
+#endif
    assert(result==1&&gate.state==MFO_HELD&&f->tx==259&&f->pops==260&&turns==522);
    assert(!mfs_authorized(&session)&&mfo_release_master(&gate,gate.ticket,0)==MFO_INVALID);
    assert(!mfo_release_master(&gate,gate.ticket,7)&&!mfo_worker_dispatch(&gate));
@@ -58,5 +67,10 @@ int master_foreground_composition_test(const uint8_t *frames,size_t length){
   }
   cases++;
  }
- printf("MASTER_FOREGROUND_COMPOSITION_PASS cases=%u healthy_turns=522\n",cases);return 0;
+#ifdef MASTER_A53_EMULATION
+ master_emulation_foreground_pass(cases);
+#else
+ printf("MASTER_FOREGROUND_COMPOSITION_PASS cases=%u healthy_turns=522\n",cases);
+#endif
+ return 0;
 }

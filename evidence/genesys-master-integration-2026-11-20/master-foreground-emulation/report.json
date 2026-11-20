@@ -1,0 +1,29 @@
+{
+  "status": "FOREGROUND_AARCH64_HARNESS_STAGED_NATIVE_AND_RUNNER_REGRESSIONS_PASS_BUILD_QUEUED",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "target_status": "NOT_RUN: shared Dell slot busy; bounded queued build still waiting",
+  "native_status": "Full Rust/C host suite including8foreground composition cases PASS",
+  "runner_regression": "Existing cooperative22cases/11334codec/99assert/101panic stillPASS on old immutableELFs; does not qualify foreground candidate",
+  "service": "genesys-foreground-build-20261120-v1.service",
+  "remote_directory": "/srv/nvme-fast-1/vivado-work/genesys-foreground-emulation-20261120-v1",
+  "variants": {
+    "normal": "8foreground cases +11334codec calls",
+    "foreground-negative": "False automatic-release assertion mustexit99 beforePASS",
+    "panic": "Direct forced testhook mustexit101/noPASS"
+  },
+  "build_policy": "90capacity-only attempts/20s;35min control-groupdeadline; frozenSHApreflight inside sharedslot; failedcompile stops/no retry",
+  "inputs": "input-sha256.txt",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "711972ea0dd5d4a3e33333f75880d3c8da1c93b9f86ce00c64c6ba16d05c49ba",
+    "diagnostics/drtio/aux_protocol/test_master_foreground_composition.c": "c023ce2afb842c91479e70e8b3d64e9437375058ff1075b6155bc5affe6a521c",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "266efe2a43fcc8afcd5e35c91d758a9f53fb62e7387e057b6ab5b36a25f6aed3",
+    "diagnostics/drtio/aux_protocol/build-foreground-emulation.sh": "11c3477062a376cd257f53d0e108989f9594c603d172d70335608b39398a56ae"
+  },
+  "next": "Read queued-build-status.json, do not duplicate active build; after BUILD_PASS fetch3ELFs/emulation-hashes and noUndefined reports, bind inputs then run --foreground --expected-hashes",
+  "limits": [
+    "No new AArch64 execution credit before queued build and actual QEMU runs",
+    "Mockbus/peer/Linux-user not production ownership handshake, latency, AXI fault or panic recovery",
+    "No HW/default/firmware changes"
+  ]
+}

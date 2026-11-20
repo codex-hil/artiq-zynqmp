@@ -1,0 +1,10 @@
+{
+  "status": "WAITING_FOR_SHARED_DELL_SLOT",
+  "hardware_admitted": false,
+  "attempt": 3,
+  "max_attempts": 90
+}
+ActiveState=active
+SubState=running
+RuntimeMaxUSec=35min
+KillMode=control-group
