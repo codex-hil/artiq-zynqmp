@@ -1,0 +1,31 @@
+{
+  "status": "HOST_FOREGROUND_GATE_AND_COOPERATIVE_SETUP_COMPOSITION_8_CASES_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "checks": [
+    "8 actual Rust codec/shared fakebus setup scenarios; healthy259AUX/260pops/522turns",
+    "No bind/target reads before explicit grant; mocked bus asserts matching master owner/ticket/epoch before every operation",
+    "Worker dispatch blocked while draining, before grant, during each setup turn, after completion and fault",
+    "Missing or reused grant refuses open, so same grant cannot replay setup",
+    "Setup success retains reservation until explicit release; no callback after completion/release/fault",
+    "TSC, buffer, timeout, CRC failures plus cancellation after early/lateTX and external pre-turn fault stop IO",
+    "New epoch/grant rejects stale old step/cancel without faulting new master owner",
+    "115 ownership policy checks ASan/UBSan and complete upstream codec/MMIO/stepper/coordinator native regressionPASS"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_foreground_owner.h": "08ebb4dbefe4bec6bc7539faffe6cc55a226a70b2d87c1e4ac08793dee009822",
+    "diagnostics/drtio/aux_protocol/master_foreground_setup.h": "ee148b631907736df05391efc43bbaade965eec744d85d3bfb2d1a449d9c53eb",
+    "diagnostics/drtio/aux_protocol/master_setup_mock_fixture.h": "b387d7f9ae2371742a930dd1b5a05f9c964460cdc37b520d8280d53708896853",
+    "diagnostics/drtio/aux_protocol/test_master_foreground_composition.c": "a26d22b5a9791f711f8e53dc0098ab6d6299f52bae8dccdcb500bb5da8c53e19",
+    "diagnostics/drtio/aux_protocol/test_master_setup_cooperative.c": "1f45477a1728b9612d68f33546956eed8ab31b6aeaedb33e5e7e276f7beb284f",
+    "diagnostics/drtio/aux_protocol/main.rs": "7708f01a4f34d800c5e9c4ff1de8816a25afd08b14c8ebfcff6165c8984364cc",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "302a4b66796bbfbd0dd2fc2184db38ead4ae4cb92256204789749c5a2ee5cdc2"
+  },
+  "limits": [
+    "Native host composition, not new AArch64 execution or deployment",
+    "Quiescence/ownership receipts remain external obligations; worker dispatch and mailbox integration absent",
+    "All runtime transport/bind paths would require guarded ownership checks; this is test-only fakebus",
+    "No walltime/lwIP fairness, single hung AXI containment, production panic or physical qualification"
+  ],
+  "next": "Extend isolated Cortex-A53 QEMU harness to execute foreground ownership composition with same-grant replay, stale-session and assertion/panic negative controls; no firmware/HW hooks"
+}

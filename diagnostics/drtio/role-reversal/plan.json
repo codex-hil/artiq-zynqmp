@@ -669,5 +669,10 @@
     "status": "ISOLATED_FOREGROUND_OWNERSHIP_MODEL_115_CHECKS_AND_THREE_MUTANT_REFUSALS_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-foreground-owner/report.json",
     "next": "Compose ownership gate with actual cooperative setup and mock worker dispatch; demonstrate no transport callback before grant or after fault, and no worker dispatch until explicit successful release"
+  },
+  "master_foreground_composition_20261120": {
+    "status": "HOST_FOREGROUND_GATE_AND_COOPERATIVE_SETUP_COMPOSITION_8_CASES_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-foreground-composition/report.json",
+    "next": "Extend isolated Cortex-A53 QEMU harness to execute foreground ownership composition with same-grant replay, stale-session and assertion/panic negative controls; no firmware/HW hooks"
   }
 }
