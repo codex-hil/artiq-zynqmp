@@ -1,0 +1,30 @@
+{
+  "status": "HOST_FULL_ROUTE_CODEC_QUEUE_SLOT_MMIO_63_FAULT_POINTS_FOUR_CONTROLS_PASS",
+  "checks": [
+    "C master path/rank setup uses actual Rust/upstream encoder; mock bus captures exact request bytes and lengths",
+    "Mock commit creates upstream-serialized ACK in RX slot; callback MMIO copies prefix, actualRust decoder validatesCRC; pointer/pop accounting exact",
+    "Healthy path63callbacks/twoTXcommits/twoRXpops/twocompletedstages",
+    "Each of63callbacks fails independently including committing write effects before error; setup refuses replay with no additional bus callbacks",
+    "Backlog andRXerror preventsend; corruptACK popsone thenstops; noACK timesout withonecommit/zeropops",
+    "Existing upstream7vectors/DDMA/leaf/route/wire/slot/queue regressionPASS"
+  ],
+  "limits": [
+    "Host C/Rust only; no A53 object/link/execution, real MMIO/GT/CDC or peer",
+    "One modeled stable epoch and exclusive ownership, no late duplicate correlation proof",
+    "63callback faults are path coverage, not physical metastability or protocol proof",
+    "Callback completion is assumed; poll bounds do not guarantee recovery from a stalled AXI access",
+    "No hardware/default firmware/XDC change"
+  ],
+  "next": "Build isolated Cortex-A53 freestanding object for composed route/queue/slot/MMIO path and Rust encoder/decoder symbols on Dell; inspect linkage/source hashes without loading firmware",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_master_mmio_route.c": "6d95b103e0d928fc1eace51837ddf8ff3822d011d7b96e13ad6dc29832117871",
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "diagnostics/drtio/aux_protocol/master_route_queue.h": "840424ceb1f01666cc4e75e40cd5f3b59bddb7a730e3e72feb00a78bef559f30",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "21aa4f47e1d703c63940f44a4b2dcfe45752b5d7559a1b3a775f6368f8513eb7",
+    "diagnostics/drtio/aux_protocol/master_route_setup.h": "a8ca944ae7edccfd3cf601c021dfd7b0b32aa67372bf669719b9aa6053827c7b",
+    "diagnostics/drtio/aux_protocol/master_transaction.h": "6fa7a5a7cc970fd5fd0d4efd6778b411343e83ea4c31a687e5c52ea43d20d4df",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "83503d33dc7c4eaf6d5be6ea7e526e17f5148fd1f8d87467496c63ddded68f95",
+    "diagnostics/drtio/aux_protocol/main.rs": "a93e0bb679e920cc7756e20f93e0d1cc8d70aa46ca1124cf2258409f3f44236c",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "3427d4d0153b1d33a0235ff930398d12b98fe9f3521f1f3fc179c11ef1679f12"
+  }
+}
