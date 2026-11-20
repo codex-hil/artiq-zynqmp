@@ -1,0 +1,33 @@
+{
+  "status": "CORTEX_A53_C_PLUS_GENUINE_RUST_RELOCATABLE_LINK_PASS_NOT_FIRMWARE",
+  "dell_job": "/srv/nvme-fast-1/vivado-work/genesys-master-route-object-20261120-v1",
+  "checks": [
+    "Dell GCC13.2 mcpu=cortex-a53 freestanding Wall/Wextra/Werror C object PASS, ELF64 AArch64 REL entry0",
+    "Eight C input hashes match staged sources; original C undefined symbols exactly encoder/decoder/memset",
+    "Small local existingRust1.87 aarch64-unknown-none library built offline/locked; no tool install or downloads",
+    "Library transferred toDell matches recordedSHA; sharedslot relocatablelink uses realarchive, no mocks",
+    "Linked definitions include bind/route/encoder/decoder; memset resolved by realRust archive",
+    "Only remaining undefined symbol aux_master_panic; targetobject/linkhashes retained",
+    "Shared capacity busy logs retained; no preemption, bounded retries admitted slot1/3"
+  ],
+  "artifact_sha256": {
+    "master_route_compile.o": "41cef4f8edaaeab7b0a071f1ccd0b9481ffeca7bce18f28efeb32699a7e9fed1",
+    "libgenesys_aux_codec.a": "f27d25a82e27592b962adbb53b72c7ee9ad5d75ea92fab94bd87f9ec37f0cbe9",
+    "master_route_linked.o": "05494abd408b64df2cb5f7d9adc2f764c6d5a0f43c39a552e1a06673e135e0e2"
+  },
+  "remaining_runtime_requirement": "Provide reviewed fail-closed aux_master_panic behavior and complete startup/memory/ownership binding before executable or firmware claims",
+  "limits": [
+    "Relocatable linker result only, not ELF execution, CPU/MMIO, protocol, timing or hardware validation",
+    "No firmware startup/entry/linker script/production memory placement",
+    "Caller map/owner epoch assumptions and late duplicateACK limitation remain",
+    "No default firmware/XDC or hardware changes"
+  ],
+  "next_safe_offline": "Review existing A53 panic/exception ownership behavior and define isolated fail-closed runtime dependency; keep CPU0 network/CPU1 worker roles and avoid executable deployment",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_leaf_target.rs": "a6c841cb67040229b684c46df89dd82151cbc521c4627ac50a774e7dd56cbe12",
+    "diagnostics/drtio/aux_protocol/build-master-leaf-target.py": "67e148326de275f22e0268b729cb753a8d5fa2a34130276925ee68eae2cc8001",
+    "diagnostics/drtio/aux_protocol/link-master-route-object.sh": "651db8bde6c765aa3f3da1cf92ed9a03bca4b19a32546093b502aebedd1060fe",
+    "diagnostics/drtio/aux_protocol/master_route_compile.c": "46827d3e98631e39afd8140de1711f5bccfd0a940b3edca15dd3dd596fdcf668",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "83503d33dc7c4eaf6d5be6ea7e526e17f5148fd1f8d87467496c63ddded68f95"
+  }
+}

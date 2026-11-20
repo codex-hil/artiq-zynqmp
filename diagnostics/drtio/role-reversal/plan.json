@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Retry shared Dell slot for staged C object, collect actual undefined symbols and object header; then link genuine AArch64 Rust codec without mock symbol replacements",
+  "next_safe_offline": "Review existing A53 panic/exception ownership behavior and define isolated fail-closed runtime dependency; keep CPU0 network/CPU1 worker roles and avoid executable deployment",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -566,5 +566,9 @@
   "master_route_object_20261120": {
     "status": "A53_COMPOSED_C_OBJECT_PREPARED_SYNTAX_PASS_DELL_SLOT_BUSY_NOT_COMPILED",
     "report": "evidence/genesys-master-integration-2026-11-20/master-route-object/report.json"
+  },
+  "master_route_target_link_20261120": {
+    "status": "CORTEX_A53_C_PLUS_GENUINE_RUST_RELOCATABLE_LINK_PASS_NOT_FIRMWARE",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-route-target-link/report.json"
   }
 }
