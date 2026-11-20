@@ -50,6 +50,8 @@ fn main() {
     test_master_star_table::run();
     assert_eq!(unsafe{master_star_setup_test()},0);
     println!("TEST MASTER_STAR_SETUP PASS");
+    assert_eq!(unsafe{master_star_step_test()},0);
+    println!("TEST MASTER_STAR_STEP PASS");
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -188,3 +190,5 @@ fn test_master_full_setup_composition(){
  assert_eq!(unsafe{master_full_setup_composition_test(frames.as_ptr(),frames.len())},0);
  println!("TEST MASTER_FULL_SETUP_COMPOSITION PASS");
 }
+
+extern "C" {fn master_star_step_test()->i32;}

@@ -1,0 +1,94 @@
+{
+  "kind": "GENESYS_MASTER_OFFLINE_RUNTIME_INTEGRATION_CONTRACT",
+  "schema": 1,
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "test_capabilities": [
+    "Canonical256path+rank encoding andboundedone-outstandingtransactions",
+    "Hostcomplete7stage setup andQEMUAArch64 execution under mockpeer/MMIO",
+    "Separate incrementalstar sender host1029cases, maximumonehighleveltransportcallbackperstep"
+  ],
+  "not_deployed": [
+    "No production master service/scheduler or callable fullsetupfirmware entrypoint",
+    "Older master_route_compile.c entrypoint is two-packet laboratorycandidate, NOT full canonical service",
+    "No production panic/exception hook, independent recovery or realtransport mapping qualification"
+  ],
+  "execution_ownership": {
+    "CPU0": "PreserveforegroundlwIP management; no synchronous257transactionrun_once or fullsetup loops in productionforeground",
+    "CPU1": "Preserveexistingkernel/DMAworker; do not reuse workerpanic/mailbox or reassigncore",
+    "interrupts": "No service/codec callback fromISR or reentrant/concurrent ownership withoutnewreview"
+  },
+  "transport_contract": [
+    "Exclusive stableprofile/link/resetepoch, pinnedCSR/SRAM map andaligned32bit operations",
+    "Oneoutstandingrequest; nondestructivepre-sendqueue/errorchecks, CRCcheckedfixedreply beforeexactlyoncepop",
+    "Posterror preservecommit/releaseattempt state; no retry, silentdrain, panic-as-success or automatic reinitialization",
+    "Emptyqueue not delayedduplicateproof, RoutingAck noID; peer/reset/epochfreshness stillrequired",
+    "Stepbudget bounds callbackcounts only, not elapsedtime or singlehungAXI access; independent recovery mandatory"
+  ],
+  "runtime_gates": [
+    "Profile/hashes anddistinctproduction imagecapability checkedbeforeusing currentCSR addresses",
+    "FreshRXprogress anddomainreadiness beforeadmission; vendoractive/done notwatchdog",
+    "RTtime completion plusspontaneousTSCAck; never encodeACKas synchronization",
+    "All256canonicalpaths thenrank1; ACKnotproof satellitehasrouting/appliedtable",
+    "StatusOK plusnonzerobuffercredits/counter/protocolchecks beforeanycandidateUP publication",
+    "Explicit resetheld untilRXreturn; unknownTX/forceddestination outcomes reconciled externally"
+  ],
+  "open_admission_requirements": [
+    "ConcretecooperativeCPU0 scheduling andcallbacklatency/target-hangcontainment",
+    "Panic/exception contract preservingmanagement andworker roles",
+    "Physicaltiming/CDC/startupmode bounds, directcabling/boardidentity/leases andknown-state restoration",
+    "RealpeerTSC/routingcapability/tableapply/errorrecovery proof"
+  ],
+  "receipt_bindings": [
+    {
+      "path": "evidence/genesys-master-integration-2026-11-20/master-control-codec/report.json",
+      "sha256": "4f708b1ed0431783de4686536249a547da1a55f8119a7fd590a14af95ea39c8d",
+      "status": "ISOLATED_BASIC_MASTER_CONTROL_CODEC_2595_HOST_CALLS_UPSTREAM_C_ABI_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-20/master-rt-setup/report.json",
+      "sha256": "59328ac8aeb4b840b321b24838f3f59ad3addfcf498eed98208a02875ae58859",
+      "status": "CALLBACK_RT_SET_TIME_BUFFER_INIT_45_SCENARIOS_ASAN_UBSAN_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-20/master-star-table/report.json",
+      "sha256": "d232c7f03a257f77edc2d96ad09cedaf97f4bd225a598653917845504da2d0c6",
+      "status": "CANONICAL_UPSTREAM_STAR_ONE_LINK_256_PATH_ENCODINGS_HOST_C_ABI_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-20/master-star-setup/report.json",
+      "sha256": "4f89d603a4818bd568793432a2fa59ad68ceffb72d621eae730b7fded8ebef95",
+      "status": "HOST_CANONICAL_TABLE_257_STAGE_SENDER_1029_SCENARIOS_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-20/master-full-setup-composition/report.json",
+      "sha256": "33a4fd6623b3bffb9a59b160d689f91bb6827e1d35a96706347001a55c7cd8af",
+      "status": "HOST_FULL_CANONICAL_SETUP_SLOT_QUEUE_MMIO_COMPOSITION_16_CASES_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-20/master-full-setup-target-execution/report.json",
+      "sha256": "1a2691a6d5e70789bf520db4d2a6a027ee8371a09f06d68237bdedf0ee798b00",
+      "status": "AARCH64_FULL_CANONICAL_SETUP_16_CASES_AND_ASSERTION_NEGATIVE_PASS"
+    },
+    {
+      "path": "evidence/genesys-master-integration-2026-11-20/master-panic-ownership/report.json",
+      "sha256": "cda81d0473d8b23d1271d588d3cdef26570945cdb07ebe2d1b144b764ade7513",
+      "status": "PANIC_OWNERSHIP_REVIEW_COMPLETE_EXISTING_ALIASES_REFUSED_RUNTIME_NOT_ADMITTED"
+    }
+  ],
+  "current_source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "09f629643c67aba367b48fd09e9d34587f14c7990ec6b16ea21180d29359e75a",
+    "diagnostics/drtio/aux_protocol/master_control_codec.rs": "84f7be61588d9a835bc4f7bdb4428ca15c9cb9c91a33f0abd2fdde9f551c5587",
+    "diagnostics/drtio/aux_protocol/master_control_codec.h": "fbad64399fa339cce24fd98009369257540b8b623150fef5f58bdc4b8d6b1f9e",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "6e8e78b1d60821e20701028b7d32771fa5827444b42238e0acbf1a8c2a3ce5e6",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.h": "a1c5524a6947e74c19e080d171951cd94d91f4eb2c8090162ccf62c0b4476466",
+    "diagnostics/drtio/aux_protocol/master_transaction.h": "ab2b57a34c015cdee59c4dd4410508ceeee40ff523dc5208db8f41423ff6c316",
+    "diagnostics/drtio/aux_protocol/master_route_queue.h": "840424ceb1f01666cc4e75e40cd5f3b59bddb7a730e3e72feb00a78bef559f30",
+    "diagnostics/drtio/aux_protocol/master_star_setup.h": "f427bf28d186b11fc163a922d3fae7bdf806913c2db327173947e1cd81955716",
+    "diagnostics/drtio/aux_protocol/master_star_step.h": "b55127f0a2eb563698f6083e384744a02069487dd600492fddaa9c913800c041",
+    "diagnostics/drtio/aux_protocol/master_setup_sequence.h": "7fbe1f1d7fb14c1c5d628e5d4c8ccb7d5c2170efbb3fffe61cdda47c24b8716f",
+    "diagnostics/drtio/aux_protocol/master_rt_setup.h": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02"
+  },
+  "version_scope": "Receipt hashes describe historical tested snapshots; current stepper has host proof only, not automatically covered by earlier AArch64 ELF."
+}
