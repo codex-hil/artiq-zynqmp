@@ -47,6 +47,8 @@ fn main() {
     test_master_control_codec::run();
     test_master_setup_composition();
     test_master_star_table::run();
+    assert_eq!(unsafe{master_star_setup_test()},0);
+    println!("TEST MASTER_STAR_SETUP PASS");
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -174,3 +176,5 @@ fn test_master_setup_composition(){
 }
 
 mod test_master_star_table;
+
+extern "C" {fn master_star_setup_test()->i32;}

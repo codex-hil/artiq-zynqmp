@@ -1,0 +1,28 @@
+{
+  "status": "HOST_CANONICAL_TABLE_257_STAGE_SENDER_1029_SCENARIOS_PASS",
+  "checks": [
+    "256canonical destinationpaths inascending order thenrank1, actualRust/upstream encoder bytes checked for all32hops",
+    "OneACK perstage with3poll budget; ACKonlastunit succeeds; healthy257sends/257completed",
+    "All257stages x4faults: senderror/missingACKtimeout/unexpectedreply/malformed indication; laterstages never sent",
+    "Consumed sender refuses replay aftersuccess/error withno callbacks",
+    "New transaction advance allowedonlyafterMT_DONE, refusedIDLE/TX/WAIT/FAILED; not failure rearm",
+    "Commitattempt recordedbeforeeachsend; aggregateattempt count preserved",
+    "Previous hostcontrol/setup/MMIO/bounds/codec/DDMA regressionsPASS"
+  ],
+  "limits": [
+    "Decoded-kind mocktransport here; slot/queue/MMIO composition still uses older2requestsender untilnextstep",
+    "IdenticalRoutingAck hasnoID; no stale/duplicate correlation proof",
+    "All257ACKs mean candidate transport acceptances, not satmanhasrouting/readback/appliedtableproof",
+    "Freshpeer epoch/drain/exclusiveownership remains external, noautomaticreinitialization/retry",
+    "No A53updatedexecution/firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Replace test-only setup routing action with full-table sender through actual slot/queue/callback-MMIO mocks; verify259AUXsends/260RXpops and failure cuts before destination status/bufferinit",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_star_setup.h": "f427bf28d186b11fc163a922d3fae7bdf806913c2db327173947e1cd81955716",
+    "diagnostics/drtio/aux_protocol/master_transaction.h": "ab2b57a34c015cdee59c4dd4410508ceeee40ff523dc5208db8f41423ff6c316",
+    "diagnostics/drtio/aux_protocol/test_master_star_setup.c": "9b36764fa04a9007eece1b705682f3c744c5f15b29628003324854697edd049b",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "6e8e78b1d60821e20701028b7d32771fa5827444b42238e0acbf1a8c2a3ce5e6",
+    "diagnostics/drtio/aux_protocol/main.rs": "29fc52198f23371b5537b2f6ed76a4cc116767de4dfd11cea7a58cbc25d28cf1",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "c66784528f970d122d09befb69986443b6dc83456da540d2f3b905cbc2b94811"
+  }
+}

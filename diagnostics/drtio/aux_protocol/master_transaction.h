@@ -39,3 +39,11 @@ static inline int mt_poll(struct mt_transaction *t,int packet,uint32_t kind) {
  if(error){t->state=MT_FAILED;t->result=error;}
  return error;
 }
+/* Advance to a DISTINCT next request only after confirmed successful ACK under
+ * the same exclusive fresh-link ownership. Never usable for TX/WAIT/FAILED.
+ * This does not solve stale/duplicate ACK identity; caller checks queue/epoch.
+ */
+static inline int mt_next_after_success(struct mt_transaction *t){
+ if(!t||t->state!=MT_DONE)return MT_INVALID;
+ *t=(struct mt_transaction){MT_IDLE,MT_OK,0,0,0};return MT_OK;
+}
