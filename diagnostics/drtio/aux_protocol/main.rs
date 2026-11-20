@@ -51,6 +51,7 @@ fn main() {
     test_master_foreground_composition();
     test_master_worker_drain();
     test_master_resumable_composition();
+    test_master_aux_pending();
     test_master_star_table::run();
     assert_eq!(unsafe{master_star_setup_test()},0);
     println!("TEST MASTER_STAR_SETUP PASS");
@@ -231,4 +232,12 @@ fn test_master_resumable_composition(){
  for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
  assert_eq!(unsafe{master_resumable_composition_test(frames.as_ptr(),frames.len())},0);
  println!("TEST MASTER_RESUMABLE_COMPOSITION PASS");
+}
+
+extern "C" {fn master_aux_pending_test(frames:*const u8,length:usize)->i32;}
+fn test_master_aux_pending(){
+ let mut frames=Vec::new();
+ for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
+ assert_eq!(unsafe{master_aux_pending_test(frames.as_ptr(),frames.len())},0);
+ println!("TEST MASTER_AUX_PENDING PASS");
 }

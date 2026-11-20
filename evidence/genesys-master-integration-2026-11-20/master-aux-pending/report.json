@@ -1,0 +1,31 @@
+{
+  "status": "HOST_ASYNC_AUX_TX_RX_ACTUAL_RUST_CODEC_122_CASES_PASS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "checks": [
+    "Actual Rust canonical40bytepath and8byterank encoding; privateTX bytes observedbyteexact in fakeSRAM",
+    "Strict RustRoutingAck decode, validCRC unexpectedEchoReply via strictcontrol decoder, CRCflip/badpacket andmissingACK controls",
+    "One TXstep orRXstep/turn,max1buscallback; normal33path/25rank turns, finalbudgetACKdelay+4turns",
+    "Every baselinebuscallbackfailure andsynchronouscancel acrossTX/RX stopsIO/noearlykind/duplicatecommit/pop",
+    "BadCRC stillpopsonce thenpoisons; unexpectedvalidkind popsonce thenMAP_UNEXPECTED; missingACK retainsunknownpendingoutcome/no drain",
+    "Original nativeRust/C codec/bounds/MMIO/RT/ownership/drain/coordinator suitesPASS"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_aux_pending.h": "68aeaae4923b22a4dd54482cd3a12720715d21ac001fe3b3a085ad9e3ed14fb1",
+    "diagnostics/drtio/aux_protocol/test_master_aux_pending.c": "123d8c696391a1604c0ad19abe70b9a1c22685ae6b763275bbfef7a880027263",
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_tx.h": "86b2fe872321666978f56a7ec74bf29d8e38fe1021ae170765a14af798afd818",
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_rx.h": "e9777a1377c6f1b10f4373562462f65854bd7afc4af58e041ff638918052e119",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "6e8e78b1d60821e20701028b7d32771fa5827444b42238e0acbf1a8c2a3ce5e6",
+    "diagnostics/drtio/aux_protocol/master_control_codec.rs": "84f7be61588d9a835bc4f7bdb4428ca15c9cb9c91a33f0abd2fdde9f551c5587",
+    "diagnostics/drtio/aux_protocol/main.rs": "78614a6df6c99f626d8dd6e35e792e21f9ef3819751de4efbe51ff1cfb856d93",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "d8fdea0eaa71c6bc801aee9d42aadaa3d83f826802e892a7b2271c3351d64c30"
+  },
+  "limits": [
+    "Nativehost actualcodec/fakebus composition, not newAArch64 or physicalring execution",
+    "Softwareexclusiveownership/epoch stillcallerobligations; validACKkinds cannotcorrelate stale/duplicate replies",
+    "Fixed8byte reply envelope, not receivedlength or genericpacketproof",
+    "Newasyncdriver deliberatelyseparatefromlegacy synchronousmr_io; no coordinator/runtimeadmission or HW/defaultchanges",
+    "Onecallbackcount notelapsedtime/lwIPfairness/hungAXI/decoderpanic containment"
+  ],
+  "next": "Compose asyncdriver into separate canonical256path+rank incremental sender, with completion only after decoded/released ACK and explicit total-step budget; retain no-retry/failure/cancel state."
+}
