@@ -1,0 +1,25 @@
+{
+  "status": "FULL_SETUP_AARCH64_CONTROL_LIBRARY_PASS_HARNESS_STAGED_SLOT_BUSY_NOT_EXECUTED",
+  "job": "/srv/nvme-fast-1/vivado-work/genesys-full-setup-emulation-20261120-v1",
+  "checks": [
+    "Rust1.87 AArch64 library includes checkedcontrolcodec andcanonicalstarencoder; offline locked buildPASS",
+    "Conditional fullsetup C harness and normal/panic/falseTXcount variants stagedonDell; all15input hashes match",
+    "Hostfullsuite regression and5emulatorreplyfixtures byte-equal unchanged upstream serializationPASS",
+    "Initialplus4bounded sharedslot attempts returned75; no harnessELF built/run, no preemption"
+  ],
+  "limits": [
+    "No new fullsetupAArch64 instructionexecution/negativecontrol credit yet; earlierQEMU reports cover older narrowercode",
+    "No physicalMMIO/peer/CPUroles/panicruntime qualification",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Retry existing shared Dell slot for frozen fullsetup harness; fetch ELF/source hashes then run --full-setup normal/101panic/99assertion controls using existing QEMU",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_leaf_target.rs": "e1a04d7916c53d4cdbe826f2e484abf766af59e0cb1271881a94222ba983d066",
+    "diagnostics/drtio/aux_protocol/build-master-leaf-target.py": "46ae0803335d597a8235ba853ed1b86d03b51fcd9e11e3c9c79158b59049d855",
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "eaa6f1d7528f9efbb128255348d7f1881a12484de26d81bfd10f3866979188a9",
+    "diagnostics/drtio/aux_protocol/test_master_full_setup_composition.c": "ed4571f1779d27e742e89fb46fec15e33890fb09c3a3ee367b794b6d9240dc1a",
+    "diagnostics/drtio/aux_protocol/build-full-setup-emulation.sh": "4d6a6897a490eb16e92920a67c0dca97c96a84674abb3fb1888eb58f0e4bab94",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "547725d196fdcae55878e77f1f92f2d477d48c5ddcea93d42d5f8781467f9d0e",
+    "diagnostics/drtio/aux_protocol/main.rs": "62e1eabaf22c11997600b0fba6378a303af638253604a1d6c0342dfac2102b4b"
+  }
+}

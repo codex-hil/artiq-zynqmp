@@ -1,7 +1,13 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
 /* Test-only canonical full-star setup composition; not production master service. */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_full_setup_pass(void);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_control_codec.h"
 #include "master_setup_sequence.h"
 #include "master_rt_setup.h"
@@ -78,6 +84,9 @@ int master_full_setup_composition_test(const uint8_t *frames,size_t length){
    }
    if(result){assert(ms_result(&plan,-9)==-9);break;}assert(ms_result(&plan,1)==0);
   }
+#ifdef FORCE_FULL_SETUP_ASSERT
+  if(!mode)assert(f.tx==258); /* Deliberately false emulator negative only. */
+#endif
   if(!mode){assert(plan.action==MS_COMPLETE&&f.tx==259&&f.time==1&&f.requests==1&&f.pops==260&&rt.credits==16);}
   else assert(plan.action==MS_FAILED);
   if(mode==1||mode==7)assert(f.time==0&&f.tx==1);
@@ -86,5 +95,10 @@ int master_full_setup_composition_test(const uint8_t *frames,size_t length){
   if(mode>=8){assert(f.tx==cut+2&&f.requests==0&&route.completed==cut);assert(f.pops==cut+(mode==8?2u:3u));unsigned prior=f.calls;struct mr_io io={&queue,mq_send_checked,mq_recv_slot};assert(mst_run_once(&route,&io,3)==MT_BUSY&&f.calls==prior);}
   unsigned calls=f.calls;assert(ms_claim(&plan)==-1&&f.calls==calls);
  }
- puts("MASTER_FULL_SETUP_COMPOSITION_PASS cases=16 sends=259 pops=260");return 0;
+#ifdef MASTER_A53_EMULATION
+ master_emulation_full_setup_pass();
+#else
+ puts("MASTER_FULL_SETUP_COMPOSITION_PASS cases=16 sends=259 pops=260");
+#endif
+ return 0;
 }

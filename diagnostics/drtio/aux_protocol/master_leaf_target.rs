@@ -8,6 +8,7 @@ extern crate io;
 extern crate crc;
 mod protocol {include!(env!("ARTIQ_AUX_PROTOCOL"));}
 mod master_leaf_codec;
+mod master_control_codec;
 extern "C" {fn aux_master_panic()->!;}
 #[panic_handler]
 fn panic(_: &core::panic::PanicInfo)->! {unsafe{aux_master_panic()}}
