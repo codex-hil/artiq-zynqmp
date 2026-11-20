@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Review existing A53 panic/exception ownership behavior and define isolated fail-closed runtime dependency; keep CPU0 network/CPU1 worker roles and avoid executable deployment",
+  "next_safe_offline": "Inventory ordinary Rust codec panic sites and test bounded valid/invalid input paths to reduce avoidable panic entry; leave system panic hook unresolved until execution context qualified",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -570,5 +570,9 @@
   "master_route_target_link_20261120": {
     "status": "CORTEX_A53_C_PLUS_GENUINE_RUST_RELOCATABLE_LINK_PASS_NOT_FIRMWARE",
     "report": "evidence/genesys-master-integration-2026-11-20/master-route-target-link/report.json"
+  },
+  "master_panic_ownership_20261120": {
+    "status": "PANIC_OWNERSHIP_REVIEW_COMPLETE_EXISTING_ALIASES_REFUSED_RUNTIME_NOT_ADMITTED",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-panic-ownership/report.json"
   }
 }

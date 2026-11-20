@@ -1,0 +1,36 @@
+{
+  "status": "PANIC_OWNERSHIP_REVIEW_COMPLETE_EXISTING_ALIASES_REFUSED_RUNTIME_NOT_ADMITTED",
+  "findings": [
+    "Lab aux_panic prints UART then infinite sleep; executing on CPU0 foreground would stop that task/core from returning",
+    "CPU1 worker panic/fail publishes status7 via established worker mailbox then WFE forever; requires CPU1 restart",
+    "CPU0 services architecture requires Rust calls in single-core foreground lwIP loop; blocking panic cannot preserve same-core foreground service",
+    "Portable shape recovery requires independent requester withdrawal/abandonment BEFORE recovery and cannot bound blocked MMIO",
+    "Codec target panic hook deliberately unresolved; nonreturning Rust panic cannot be converted to normal transaction error by returning from hook"
+  ],
+  "decisions": [
+    "Do not alias aux_master_panic to lab aux_panic, worker fail, silent loop or a returning stub",
+    "Keep existing CPU0 network/CPU1 worker ownership; no unapproved spare-core reassignment",
+    "Do not issue target MMIO/UART/log callbacks from unqualified panic handler; they may block or share broken state",
+    "Normal packet errors must remain explicit Result/error returns and sticky transaction failure; panic requires separate system fault/recovery contract",
+    "Relocatable diagnostic remains valid with unresolved hook; do not claim executable readiness"
+  ],
+  "future_runtime_contract": [
+    "Choose and verify execution context without stalling CPU0 management or contending with CPU1 worker",
+    "If using fault publication, define stable separately owned memory/profile and exact one-shot semantics without target-bus dependencies",
+    "Demonstrate independent management can withdraw/abandon unknown outcomes and perform qualified reset; do not fabricate ACK/status success",
+    "Qualify panic and hardware exception handling separately from ordinary error paths and host tests"
+  ],
+  "validation": "Diagnostic link audit passes, three mutations refused: silent panic binding, unexpected undefined dependency, wrong architecture",
+  "limits": [
+    "Source review + object report audit only, no panic execution or independent recovery proof",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Inventory ordinary Rust codec panic sites and test bounded valid/invalid input paths to reduce avoidable panic entry; leave system panic hook unresolved until execution context qualified",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/firmware.c": "4d127f2bcf393530f7758e837dd2222588e3e05b57f92dba22d822e012efb685",
+    "boards/genesys_zu-5ev/3_kernel/src/lib.rs": "eed3546a4c960669e83b5cc2cd464ab08684b02e010706f4800d18f5339ed9be",
+    "diagnostics/services/README.md": "e0516c1f1ab86ce32b14ca049e50f1bed349d4e89875be5e6ac007f4fce103cf",
+    "diagnostics/drtio/role-reversal/a53/shape_recovery.h": "9110af42fd3a78ef0b305326133808f3b87b55be62aa86ecf96132f93a876f5e",
+    "diagnostics/drtio/aux_protocol/master_leaf_target.rs": "a6c841cb67040229b684c46df89dd82151cbc521c4627ac50a774e7dd56cbe12"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "DIAGNOSTIC_RELOCATABLE_LINK_CONTRACT_PASS_THREE_MUTANTS_REFUSED",
+  "remaining_undefined": [
+    "aux_master_panic"
+  ],
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "reason": "No reviewed panic execution context, independent recovery or firmware startup/memory binding"
+}
