@@ -1,0 +1,165 @@
+{
+  "status": "OFFLINE_CPU0_FOREGROUND_SOURCE_MAP_COMPLETE_RUNTIME_NOT_ADMITTED",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "bindings": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/main.c",
+      "sha256": "a8bc1f8eaf6b058cc5556957f1f0618cfd39ec46b56f72aa74309a8a329b86b6",
+      "anchor": "\t\txemacif_input(echo_netif);\n\t\ttransfer_data();\n        genesys_kernel_poll();",
+      "line": 259,
+      "meaning": "Candidate step belongs after existing foreground network and worker service; next iteration must return to timers. No insertion made."
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/main.c",
+      "sha256": "a8bc1f8eaf6b058cc5556957f1f0618cfd39ec46b56f72aa74309a8a329b86b6",
+      "anchor": "\t\t\ttcp_fasttmr();",
+      "line": 252,
+      "meaning": "Existing foreground TCP timer service must remain reachable."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/scripts/attach_a53_services.py",
+      "sha256": "82c85d097ed801f37aa967b17f18a1637273c0240d9e87c0a554b11243323e0e",
+      "anchor": "if text.count('\\t\\ttransfer_data();') != 1:",
+      "line": 48,
+      "meaning": "Generated-app attachment uses a unique loop anchor; do not patch maintained AMD source."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c",
+      "sha256": "57c9d2eb4438f4a92f63ce477b2444866ad1a8a781d1a455b6cdc7d0b83c4cac",
+      "anchor": "int genesys_kernel_state(void) {",
+      "line": 23,
+      "meaning": "CPU0 software view only; no CRI ownership grant, worker quiescence handshake or lifetime reservation."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c",
+      "sha256": "57c9d2eb4438f4a92f63ce477b2444866ad1a8a781d1a455b6cdc7d0b83c4cac",
+      "anchor": "int genesys_kernel_running(void) {",
+      "line": 21,
+      "meaning": "Conservative busy/dead/recovering flag protects existing shared latch; zero is not a DRTIO reservation."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c",
+      "sha256": "57c9d2eb4438f4a92f63ce477b2444866ad1a8a781d1a455b6cdc7d0b83c4cac",
+      "anchor": "static void command(uint32_t op,uint32_t n) {",
+      "line": 44,
+      "meaning": "Network callbacks can dispatch worker commands before candidate turn; integration must arbitrate entire setup lifetime."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c",
+      "sha256": "57c9d2eb4438f4a92f63ce477b2444866ad1a8a781d1a455b6cdc7d0b83c4cac",
+      "anchor": "void genesys_kernel_poll(void) {",
+      "line": 131,
+      "meaning": "Preserve mailbox/cache protocol and worker progress, never reuse mailbox for master panic publication."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/2_firmware_a53/c/management_lwip.c",
+      "sha256": "589548dcf099944135866eac09176ec4f6108f4a5a67d47818c238345fb44b2c",
+      "anchor": "uint64_t genesys_rtio_counter(void) {",
+      "line": 20,
+      "meaning": "Existing diagnostic writes shared counter latch; distinct ownership/access review required."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_setup_cooperative.h",
+      "sha256": "8ba9bf311f041a3121dff52721eb3e9380cdc35e285eb94d817470dec5c6fc59",
+      "anchor": "static inline int msc_step(",
+      "line": 21,
+      "meaning": "Portable candidate, at most one action or route step; no concrete foreground registration."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/test_master_setup_cooperative.c",
+      "sha256": "5425a033b706ab07e4a47c23002f58c677936182734bd9884fdffc0473a19dcc",
+      "anchor": "static int action_step(",
+      "line": 62,
+      "meaning": "Current concrete action mapping is test-only; cannot silently use fakebus action context in runtime."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_rt_setup.h",
+      "sha256": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+      "anchor": "static inline int mrt_set_time_once(",
+      "line": 27,
+      "meaning": "Set-time polls inside callback; return only means local TX completion, remote TSC still separate."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_rt_setup.h",
+      "sha256": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+      "anchor": "static inline int mrt_buffer_once(",
+      "line": 38,
+      "meaning": "Force/request/unforce span callback, unknown outcomes require independent reconciliation; cannot yield by replay."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_aux_mmio.h",
+      "sha256": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+      "anchor": "static inline int mm_read(",
+      "line": 23,
+      "meaning": "Callback return required; finite loop count cannot contain single hung AXI transaction."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_leaf_target.rs",
+      "sha256": "e1a04d7916c53d4cdbe826f2e484abf766af59e0cb1271881a94222ba983d066",
+      "anchor": "extern \"C\" {fn aux_master_panic()->!;}",
+      "line": 12,
+      "meaning": "Production nonreturning panic hook unresolved; Linux-user test hook is not integration."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/3_kernel/src/lib.rs",
+      "sha256": "eed3546a4c960669e83b5cc2cd464ab08684b02e010706f4800d18f5339ed9be",
+      "anchor": "fn fail(message: &[u8]) -> ! {",
+      "line": 136,
+      "meaning": "Existing CPU1 failure publishes worker status then parks; not a CPU0 management-preserving panic handler."
+    },
+    {
+      "path": "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/role-reversal/a53/shape_recovery.h",
+      "sha256": "9110af42fd3a78ef0b305326133808f3b87b55be62aa86ecf96132f93a876f5e",
+      "anchor": "static inline struct gsr_result gsr_recover(",
+      "line": 10,
+      "meaning": "Requires independent requester withdrawal and abandonment before recovery; cannot rescue caller blocked in AXI."
+    }
+  ],
+  "actions": [
+    {
+      "action": "LINK",
+      "backend": "mrt_live",
+      "remaining": "live read is target access, not independent watchdog"
+    },
+    {
+      "action": "ECHO",
+      "backend": "aux_master_control_encode + mm_send / ma_receive_fixed",
+      "remaining": "start once, then receive; sole AUX slot owner"
+    },
+    {
+      "action": "SET_TIME",
+      "backend": "mrt_set_time_once",
+      "remaining": "split callback polling before any latency claim"
+    },
+    {
+      "action": "TSC_ACK",
+      "backend": "ma_receive_fixed + aux_master_control_decode",
+      "remaining": "spontaneous remote ack; no time-set request encoding"
+    },
+    {
+      "action": "ROUTING",
+      "backend": "msi_step + mq_send_checked/mq_recv_slot",
+      "remaining": "256 canonical paths then rank; all ACKs do not prove peer table apply"
+    },
+    {
+      "action": "STATUS",
+      "backend": "aux_master_control_encode + mm_send / ma_receive_fixed",
+      "remaining": "DestinationOK is candidate observation, not admission"
+    },
+    {
+      "action": "BUFFER",
+      "backend": "mrt_buffer_once",
+      "remaining": "exclusive CRI over force/request/unforce, nonzero credits and exact counter delta"
+    }
+  ],
+  "required_before_adapter": [
+    "Explicit whole-session CRI/AUX ownership grant and release with worker dispatch interlock; idle snapshot insufficient",
+    "Concrete bounded resumable nonrouting backend callbacks; callback-count bound alone insufficient",
+    "Independent target-bus fault containment and requester withdrawal path; no synchronous target MMIO from panic",
+    "Production panic/exception policy preserving CPU0 management and CPU1 kernel roles",
+    "Fresh image/map/epoch/clock/physical link and restoration receipts; no automatic reset/reinit/drain",
+    "Ongoing health monitoring/admission revocation after setup completion, not latched success forever"
+  ],
+  "next_safe_offline": "Prototype sole-owner foreground scheduling/worker-dispatch interlock in isolated host model; keep all target MMIO and production hooks disabled"
+}

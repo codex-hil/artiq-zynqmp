@@ -1,0 +1,21 @@
+{
+  "status": "OFFLINE_CPU0_FOREGROUND_SOURCE_MAP_COMPLETE_RUNTIME_NOT_ADMITTED",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "source_map": "source-map.json",
+  "inspector_sha256": "ce8b0db26cf656ae19e09524aa9ffb12c1081e5f3518b09e14c80809dc23d4d5",
+  "reviewed_bindings": 16,
+  "actions_mapped": 7,
+  "findings": [
+    "Unique foreground candidate location after kernel poll preserves current source order only; no timing claim",
+    "CPU0 worker state/busy query is a snapshot, not CRI/AUX transfer; network dispatch must be interlocked for whole setup lifetime",
+    "Existing nonrouting callbacks remain test fixtures; set-time/buffer polling need resumable production backend qualification",
+    "Independent AXI fault containment and production panic path remain absent from candidate"
+  ],
+  "limits": [
+    "Retained generated main from debug-services-2026-10-09 is a source artifact, not observation of currently running firmware",
+    "Read-only inspection; no runtime hooks inserted, hardware accessed or ownership assumed",
+    "Gateware timing/CDC, cabling, real peer apply and known-state restoration remain open"
+  ],
+  "next": "Prototype sole-owner foreground scheduling/worker-dispatch interlock in isolated host model; keep all target MMIO and production hooks disabled"
+}

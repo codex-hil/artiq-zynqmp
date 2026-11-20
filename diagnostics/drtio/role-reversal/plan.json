@@ -659,5 +659,10 @@
     "status": "AARCH64_SYNCHRONOUS_CALLBACK_CANCELLATION_AND_SETUP_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-callback-target-execution/report.json",
     "next": "Map cooperative candidate callbacks to concrete CPU0 foreground/lwIP entrypoints and document missing latency, ownership and independent recovery gates before any production integration"
+  },
+  "master_foreground_map_20261120": {
+    "status": "OFFLINE_CPU0_FOREGROUND_SOURCE_MAP_COMPLETE_RUNTIME_NOT_ADMITTED",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-foreground-map/report.json",
+    "next": "Prototype sole-owner foreground scheduling/worker-dispatch interlock in isolated host model; keep all target MMIO and production hooks disabled"
   }
 }
