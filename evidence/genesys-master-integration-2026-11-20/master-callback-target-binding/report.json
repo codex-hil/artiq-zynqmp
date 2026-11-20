@@ -1,0 +1,22 @@
+{
+  "status": "FROZEN_CALLBACK_TARGET_INPUTS_VERIFIED_BUILD_PENDING",
+  "hardware_admitted": false,
+  "source_commit": "933b173",
+  "expected_input_count": 31,
+  "remote_verification": "remote-input-verification.log",
+  "prebuild_command": "sha256sum --check input-sha256.txt && bash build-cooperative-setup-emulation.sh",
+  "execution_policy": "Run prebuild command inside existing Dell build slot; capacity-only retry after75, no lock bypass",
+  "build_attempts_this_turn": 2,
+  "build_exit_codes": [
+    75,
+    75
+  ],
+  "target_executed": false,
+  "supersedes": null,
+  "next": "Acquire shared Dell slot, revalidate frozen inputs within slot, build three variants, fetch and hash-check ELFs before QEMU execution",
+  "limits": [
+    "Input provenance only; no target execution credit",
+    "Previous QEMU report remains scoped to pre-cancellation-fix revision",
+    "No board access, power operation, production runtime or hardware admission"
+  ]
+}

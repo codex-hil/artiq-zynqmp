@@ -644,5 +644,10 @@
     "status": "CALLBACK_CANCELLATION_HOST_REGRESSION_AND_TWO_MUTANT_REFUSALS_PASS_TARGET_PENDING",
     "report": "evidence/genesys-master-integration-2026-11-20/master-callback-cancellation/report.json",
     "next": "Build frozen staged job when shared Dell slot available; execute normal/assert99/panic101 QEMU variants with ELF hashes before further integration"
+  },
+  "master_callback_target_binding_20261120": {
+    "status": "FROZEN_CALLBACK_TARGET_INPUTS_VERIFIED_BUILD_PENDING",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-callback-target-binding/report.json",
+    "next": "Acquire shared Dell slot, revalidate frozen inputs within slot, build three variants, fetch and hash-check ELFs before QEMU execution"
   }
 }
