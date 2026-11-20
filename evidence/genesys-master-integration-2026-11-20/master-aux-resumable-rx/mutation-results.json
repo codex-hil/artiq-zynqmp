@@ -1,0 +1,26 @@
+{
+  "early-kind-publication": {
+    "exit_code": -6,
+    "stderr": "test: test.c:40: main: Assertion `!s.kind' failed.\n",
+    "replacement": {
+      "old": "s->decoded=s->decode(s->bytes,8);",
+      "new": "s->decoded=s->decode(s->bytes,8);s->kind=s->decoded>0?(uint32_t)s->decoded:0;"
+    }
+  },
+  "missing-pop-intent": {
+    "exit_code": -6,
+    "stderr": "test: test.c:17: write_reg: Assertion `a==MM_RX_PRESENT&&v==1&&f->s->release_attempted&&f->s->mm->release_attempted&&!f->s->mm->held&&!f->s->kind' failed.\n",
+    "replacement": {
+      "old": "s->release_attempted=1;m->release_attempted=1;m->held=0;",
+      "new": "m->release_attempted=1;m->held=0;"
+    }
+  },
+  "ignore-pointer-revalidation": {
+    "exit_code": -6,
+    "stderr": "test: test.c:42: main: Assertion `result<0&&!s.kind&&mm.failed' failed.\n",
+    "replacement": {
+      "old": "if((phase==6||phase==9)&&v!=s->pointer)return mar_fail(s,MAR_IO);",
+      "new": "/* mutant ignored pointer stability */"
+    }
+  }
+}

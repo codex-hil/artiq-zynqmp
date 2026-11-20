@@ -723,5 +723,10 @@
     "status": "HOST_RESUMABLE_AUX_TX_620_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-aux-resumable-tx/report.json",
     "next": "Implement isolated resumable fixed-reply RX with private8byte snapshot, pointer/borrowed ownership checks and exactlyonce pop; fault/cancel must not replay release or publish decoded kind early."
+  },
+  "master_aux_resumable_rx_20261120": {
+    "status": "HOST_FIXED_REPLY_RESUMABLE_RX_312_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-aux-resumable-rx/report.json",
+    "next": "Compose actual strict Rust fixed-reply decoders with new privateRX and realencodedTX fixtures; define explicit TX-pending/RX-pending driver before routing/coordinator integration."
   }
 }

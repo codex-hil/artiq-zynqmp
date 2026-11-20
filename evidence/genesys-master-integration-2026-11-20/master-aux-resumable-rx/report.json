@@ -1,0 +1,28 @@
+{
+  "status": "HOST_FIXED_REPLY_RESUMABLE_RX_312_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "checks": [
+    "8slotpointers x baseline/12callbackfailures/12synchronouscancels plus empty/error/invalidpointer/stability/lostpresent/decoderfailure/cancel controls",
+    "Normal13turns/12buscallbacks, lastemptyunit17turns, max1buscallback/turn; decoder-onlystep0buscallbacks",
+    "Private8byte snapshot, lease held acrossyields;32softwarelease-loss cases failbeforeanotherbusaccess",
+    "Decodererror stillrevalidates/releasesownedslotonce thenpoisons; cancelbeforepop retainsheldstate, ambiguouspop not retried",
+    "Popintent/ticketconsumption markedbeforewrite; no kindpublication until successfulfence, terminalnoIO",
+    "Threeunsafe mutantsrefused: earlykindpublication, missingpopintent, ignoredpointerrevalidation"
+  ],
+  "compile_command": "gcc -std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_master_aux_resumable_rx.c -o OUTPUT/test",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_rx.h": "e9777a1377c6f1b10f4373562462f65854bd7afc4af58e041ff638918052e119",
+    "diagnostics/drtio/aux_protocol/test_master_aux_resumable_rx.c": "e78c7572cf2b051755847bdf5a682d47f82d159d8fb014d10ea1743b7ac51a14",
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "09f629643c67aba367b48fd09e9d34587f14c7990ec6b16ea21180d29359e75a"
+  },
+  "limits": [
+    "Standalone nativefakebus with testdecoder: no new CRC/Rustcodec/receivedlength/physicalring proof",
+    "Fixed8byte prefix only, never generic1024byte receivedpacket",
+    "Sole softwareowner/externalmap+epoch andindependentAXIfaultcontainment stillrequired",
+    "NewTX/RX asyncstep APIs cannot be silentlypluggedinto legacy synchronous mr_io send/recv contract",
+    "No targetexecution, runtimeintegration, HW/default/firmwarechanges"
+  ],
+  "next": "Compose actual strict Rust fixed-reply decoders with new privateRX and realencodedTX fixtures; define explicit TX-pending/RX-pending driver before routing/coordinator integration."
+}
