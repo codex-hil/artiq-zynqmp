@@ -1,0 +1,17 @@
+/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/test_master_setup_composition.c: In function ‘control_exchange’:
+/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/test_master_setup_composition.c:45:2: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+   45 |  if(n!=8||mm_send(m,bytes,8))return -1;return control_reply(m,s,expected);
+      |  ^~
+/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/test_master_setup_composition.c:45:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   45 |  if(n!=8||mm_send(m,bytes,8))return -1;return control_reply(m,s,expected);
+      |                                        ^~~~~~
+cc1: all warnings being treated as errors
+Traceback (most recent call last):
+  File "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/build_vectors.py", line 79, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/build_vectors.py", line 53, in main
+    subprocess.run([os.environ.get('CC','cc'),'-std=c11','-Wall','-Wextra','-Werror','-c',
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['cc', '-std=c11', '-Wall', '-Wextra', '-Werror', '-c', '/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/test_master_setup_composition.c', '-o', '/srv/codex-hil-nvme/master-setup-composition-20261120-v1/master-setup-composition.o']' returned non-zero exit status 1.

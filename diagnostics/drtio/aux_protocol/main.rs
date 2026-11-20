@@ -45,6 +45,7 @@ fn main() {
     test_master_leaf_abi();
     test_master_leaf_bounds::run();
     test_master_control_codec::run();
+    test_master_setup_composition();
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -162,3 +163,11 @@ mod test_master_leaf_bounds;
 
 mod master_control_codec;
 mod test_master_control_codec;
+
+extern "C" {fn master_setup_composition_test(frames:*const u8,length:usize)->i32;}
+fn test_master_setup_composition(){
+ let mut frames=Vec::new();
+ for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
+ assert_eq!(unsafe{master_setup_composition_test(frames.as_ptr(),frames.len())},0);
+ println!("TEST MASTER_SETUP_COMPOSITION PASS");
+}

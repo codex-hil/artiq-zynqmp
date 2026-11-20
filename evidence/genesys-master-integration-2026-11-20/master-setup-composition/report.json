@@ -1,0 +1,30 @@
+{
+  "status": "HOST_SETUP_PLANNER_CONTROL_ROUTE_RT_SLOT_MMIO_COMPOSITION_EIGHT_CASES_PASS",
+  "checks": [
+    "Actual upstream serialized5replyfixtures; C calls genuineRust control/route encoders and fixedreply decoders",
+    "Planner composes link/echo/localRTsettime/spontaneousTSCAck/fixedleafroute+rank/status/bufferbackend",
+    "Healthy4AUXcommits/oneRTtimeset/onebufferrequest/fiveRXpops/16credits and candidatecomplete",
+    "PrematureTSCAck afterecho refuses beforetimeset; TSCAckinsteadEcho rejects beforeRT; noTSCACK or wrongreply afterRT preventsrouting",
+    "DestinationDown preventsbufferrequest; bufferprotocolerror andinitiallinkdown failclosed",
+    "Existing routing-only slot API delegates to strict ACK decoder unchanged; generalized fixedreply helper preserves exactly-once release",
+    "All prior host codec/bounds/route63faultpoints/slot/queue regressionsPASS",
+    "First Werror indentationrefusal retained/corrected; finalheader comment-only clarification afterrun"
+  ],
+  "limits": [
+    "Test-only orchestration, not callable production service or A53 execution",
+    "ROUTING action currently models reviewed fixedleafpath+rank only; completeness/correctness of full destinationtable not established",
+    "ACK slot adapters generalized for fixedreplies; realMMIO/epochfreshness/pointerCDC andlateACK ambiguity remain",
+    "Externalmock supplies peerTSC/loadstatus; no physical synchronization or destinationUP grant",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Review single-leaf destination0/1 routing-table and rank semantics against upstream satellite before treating routing stage as complete; then extend target control codec composition without hardware adoption",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_master_setup_composition.c": "440749754f8928705f4d47a3b3c21a470aca9fb53d7a11ee15b7c3067998d5bb",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "09f629643c67aba367b48fd09e9d34587f14c7990ec6b16ea21180d29359e75a",
+    "diagnostics/drtio/aux_protocol/master_setup_sequence.h": "7fbe1f1d7fb14c1c5d628e5d4c8ccb7d5c2170efbb3fffe61cdda47c24b8716f",
+    "diagnostics/drtio/aux_protocol/master_control_codec.rs": "84f7be61588d9a835bc4f7bdb4428ca15c9cb9c91a33f0abd2fdde9f551c5587",
+    "diagnostics/drtio/aux_protocol/master_rt_setup.h": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+    "diagnostics/drtio/aux_protocol/main.rs": "9b8f37f084824073e271571e03f186d250f865488894834992ce02bfbf7bc5d3",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "5be00336a60346c7ee60d7f803534814beeb517a534ae9e28c9d873fbc554fd1"
+  }
+}
