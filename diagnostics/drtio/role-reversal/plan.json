@@ -654,5 +654,10 @@
     "status": "BOUNDED_SHARED_SLOT_WAITER_ACTIVE_TARGET_EXECUTION_PENDING",
     "report": "evidence/genesys-master-integration-2026-11-20/master-callback-target-queue/report.json",
     "next": "Read queued-build-status.json; if BUILD_PASS_EXECUTION_PENDING fetch three ELFs and emulation-hashes.txt, verify hashes then run QEMU --cooperative-setup; do not start another build while unit active"
+  },
+  "master_callback_target_execution_20261120": {
+    "status": "AARCH64_SYNCHRONOUS_CALLBACK_CANCELLATION_AND_SETUP_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-callback-target-execution/report.json",
+    "next": "Map cooperative candidate callbacks to concrete CPU0 foreground/lwIP entrypoints and document missing latency, ownership and independent recovery gates before any production integration"
   }
 }

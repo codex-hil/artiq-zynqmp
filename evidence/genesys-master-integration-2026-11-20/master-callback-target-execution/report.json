@@ -1,0 +1,28 @@
+{
+  "status": "AARCH64_SYNCHRONOUS_CALLBACK_CANCELLATION_AND_SETUP_PASS",
+  "hardware_admitted": false,
+  "source_fix_commit": "933b173",
+  "binding_receipt": "evidence/genesys-master-integration-2026-11-20/master-callback-target-binding/binding.json",
+  "binding_sha256": "3a55e53e75590a4c09e83bc80a2f6f4c4edf57d43a339efc6e3ba36682890ff6",
+  "build": "queued-attempt-008.log",
+  "execution": "execution-results.json",
+  "checks": [
+    "Nine synchronous cancellation cases: action/send/final-routing-ACK x pending/success/error executed before22setup scenarios",
+    "Cancellation wins over callback result; no completed-count advance or subsequent callback; repeatedcancel preservesoriginalerror",
+    "Existing22setup scenarios, healthy522turns/lateTSC524turns/max22mockbusops",
+    "11334codec calls; assertion-negative99 and forcedtestpanic101 withoutPASS",
+    "Frozen source/header/fixture/archive hashes match; threeELFs have no undefinedsymbols; preexecutionELF hashes verified"
+  ],
+  "supersedes_pending": [
+    "../master-callback-cancellation/report.json",
+    "../master-callback-target-binding/report.json",
+    "../master-callback-target-queue/report.json"
+  ],
+  "next": "Map cooperative candidate callbacks to concrete CPU0 foreground/lwIP entrypoints and document missing latency, ownership and independent recovery gates before any production integration",
+  "limits": [
+    "Cortex-A53 QEMU Linux-user, mocked peer/MMIO only; no board access or production firmware changes",
+    "Direct forced test-panic hook is not real Rust panic/CPU exception or management recovery proof",
+    "Callback-count bound is not elapsed time, scheduling fairness or hung-AXI containment",
+    "Maintenance hold, timing/CDC, cabling, restoration and realpeer capability gates remain open"
+  ]
+}
