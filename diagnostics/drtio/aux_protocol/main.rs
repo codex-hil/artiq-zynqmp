@@ -49,6 +49,7 @@ fn main() {
     test_master_full_setup_composition();
     test_master_setup_cooperative();
     test_master_foreground_composition();
+    test_master_worker_drain();
     test_master_star_table::run();
     assert_eq!(unsafe{master_star_setup_test()},0);
     println!("TEST MASTER_STAR_SETUP PASS");
@@ -213,4 +214,12 @@ fn test_master_foreground_composition(){
  for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
  assert_eq!(unsafe{master_foreground_composition_test(frames.as_ptr(),frames.len())},0);
  println!("TEST MASTER_FOREGROUND_COMPOSITION PASS");
+}
+
+extern "C" {fn master_worker_drain_test(frames:*const u8,length:usize)->i32;}
+fn test_master_worker_drain(){
+ let mut frames=Vec::new();
+ for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
+ assert_eq!(unsafe{master_worker_drain_test(frames.as_ptr(),frames.len())},0);
+ println!("TEST MASTER_WORKER_DRAIN PASS");
 }

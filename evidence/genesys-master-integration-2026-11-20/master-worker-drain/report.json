@@ -1,0 +1,45 @@
+{
+  "status": "HOST_WORKER_RPC_DRAIN_TO_COOPERATIVE_SETUP_8_STREAMS_PASS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "streams": {
+    "async_rpc_to_setup": "PASS",
+    "sync_rpc_exception_recovery_to_setup": "PASS",
+    "host_rpc_exception_then_recovery_to_setup": "PASS",
+    "missing_rpc_event": "PASS_NO_TARGET_IO",
+    "ambiguous_command_publication": "PASS_STICKY_FAULT_NO_TARGET_IO",
+    "stale_worker_ticket": "PASS_NO_TARGET_IO",
+    "abandonment_with_pending_rpc": "PASS_STICKY_FAULT_NO_TARGET_IO",
+    "recovery_ack_without_ready_quiescence": "PASS_NO_TARGET_IO"
+  },
+  "checks": [
+    "All3healthy streams require explicit external quiescence receipt before master grant/bind",
+    "Each healthy setup259AUX/260pops/16credits/522foregroundturns; newworkerload/run blocked throughout drain/setup/held",
+    "5negative streams execute zero target callbacks and never infer quiescence from RPC or exception command completion",
+    "One-shot publication attempts counted8; duplicate RPC submission refused",
+    "Native Rust codec/C integration suite including previous ownership/coordinator tests PASS"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_master_worker_drain.c": "f4facf26a5671da2988f59b93e8c818e8852faa3f8db818fc67b877cc078508f",
+    "diagnostics/drtio/aux_protocol/master_worker_progress.h": "fd5396021f89ca29c46da62f97581ea7d6d0fbbe287977d7861883a0dc1c6e87",
+    "diagnostics/drtio/aux_protocol/master_foreground_owner.h": "08ebb4dbefe4bec6bc7539faffe6cc55a226a70b2d87c1e4ac08793dee009822",
+    "diagnostics/drtio/aux_protocol/master_foreground_setup.h": "ee148b631907736df05391efc43bbaade965eec744d85d3bfb2d1a449d9c53eb",
+    "diagnostics/drtio/aux_protocol/master_setup_mock_fixture.h": "b387d7f9ae2371742a930dd1b5a05f9c964460cdc37b520d8280d53708896853",
+    "diagnostics/drtio/aux_protocol/main.rs": "590cdc4bd024a657ce61eb51bf51b2ca73a99da7fd473d01f994b9904f523d24",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "2c27f9e928d12d68afffda0db0278995570ea0b5188c661d216be485c0d6bcb7"
+  },
+  "separate_target_queue": {
+    "service": "genesys-foreground-build-20261120-v1.service",
+    "status": "WAITING_FOR_SHARED_DELL_SLOT",
+    "observed_attempt": 47,
+    "max_attempts": 90,
+    "includes_new_drain_streams": false
+  },
+  "limits": [
+    "Native host model with mocked worker events, explicit receipts, peer and MMIO; not real mailbox ownership or scheduling qualification",
+    "Worker tokens are software model inputs; actual mailbox lacks echoed ownership ticket",
+    "Queued AArch648foreground-case job stays frozen and does not include this new stream test",
+    "No HW, default or production runtime changes; physical/AXI/panic gates remain open"
+  ],
+  "next": "Monitor existing frozen target job, fetch/hash/run foreground QEMU when available. Then extend isolated target harness to new RPC/drain streams; no production runtime hooks."
+}
