@@ -1,0 +1,33 @@
+{
+  "status": "FIXED_LEAF_CODEC_PANIC_PATH_REVIEW_76807_HOST_CALLS_PASS",
+  "checks": [
+    "Encode capacities0..1025 for both requests, values0..4095, unchanged buffer on refusal and suffix canaries on success",
+    "65536 validCRC kind/padding pairs: onlykind0x32 accepted; upstream variable-length variant parser never reached for other kinds",
+    "Decode lengths0..1025 except8 and usizeMAX/1026 refused before slice construction",
+    "Source guard ordering verified before raw slice and upstream dispatch",
+    "Existing route/slot/wire/MMIO63faultpoints/upstream7vectors/DDMA regressionsPASS"
+  ],
+  "source_review": [
+    "Upstream RoutingSetPath writes kind+destination+fixed32hops=34bytes, rank writes2bytes; padding/CRC totals40/8 within checked capacity",
+    "ACK branch reads one kind byte from exact8byte frame; upfrontCRC/kind guard restricts parser branch",
+    "Cursor read/write slices self.pos.. and increments by min(available,requested); new Cursor starts0 and supported writes are bounded",
+    "Wrapper checksum slice trusts Cursor position invariant; no user-controlled set_position path in fixed encoder",
+    "No no-panic claim for unrelated Packet variants, unsafe caller pointers, stack/memory corruption or platform exceptions"
+  ],
+  "limits": [
+    "Finite host execution coverage, not formal panic freedom or A53 instruction execution",
+    "C ABI still requires valid readable/writable allocations for admitted lengths; cannot validate pointer provenance",
+    "Nonzero padding accepted whenCRCvalid, consistent with envelope behavior; not authenticity/correlation",
+    "System aux_master_panic remains unqualified/unresolved; no CPU role reassignment",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Prepare isolated AArch64 codec execution harness using existing emulator/toolchain if available; make unexpected panic observable and avoid all target MMIO/runtime deployment",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "83503d33dc7c4eaf6d5be6ea7e526e17f5148fd1f8d87467496c63ddded68f95",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_bounds.rs": "227eeaff74a3382db2e4c9f2e8267fb61ad87a8e50209c2a803197f64932ae20",
+    "diagnostics/drtio/aux_protocol/main.rs": "e880fdcc135910c88e15356e058476486234f41a5bc962b6469f875443b8508a",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "5d0e119b4b50337c351b8a495bc13088de126c6090b44df16f0cf94169216c8f",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/libio/cursor.rs": "c6a2ab72eeb8e6fd93f834e4cc5d56567d35c980ed42462f410b03d3267f6e75",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/libproto_artiq/drtioaux_proto.rs": "d9c2f34b78106347a85856e0b7c07dc898f2bd7f6c93da2bc86d66ba76ad4f9a"
+  }
+}

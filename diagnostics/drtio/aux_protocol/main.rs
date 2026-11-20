@@ -43,6 +43,7 @@ fn main() {
     println!("TEST DDMA_WIRE_SERVICE PASS");
     test_ddma_abi();
     test_master_leaf_abi();
+    test_master_leaf_bounds::run();
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -154,3 +155,5 @@ fn test_master_leaf_abi() {
     assert!(bytes.iter().all(|x| *x==0xa5));
     println!("TEST MASTER_LEAF_C_ABI PASS");
 }
+
+mod test_master_leaf_bounds;
