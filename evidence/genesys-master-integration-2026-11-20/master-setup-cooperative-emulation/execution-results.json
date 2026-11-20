@@ -1,0 +1,28 @@
+{
+  "status": "AARCH64_COOPERATIVE_SETUP_22_CASES_AND_ASSERTION_NEGATIVE_PASS",
+  "runs": {
+    "normal": {
+      "exit_code": 0,
+      "marker": "A53_CODEC_EMULATION_PASS calls=11334",
+      "elf_sha256": "f9c8b4389c670c929f3eef4c5c62c34ec4c814fa93e860b0497dc805ffe36302"
+    },
+    "panic": {
+      "exit_code": 101,
+      "marker": "A53_CODEC_EMULATOR_PANIC",
+      "elf_sha256": "7b61e9379000c3aa48f5e2a066739fec7fd12f2c1406abf4acf2553fcca05357"
+    },
+    "cooperative-negative": {
+      "exit_code": 99,
+      "marker": "",
+      "elf_sha256": "7bec4bae82dae22f15cadb4c473f73e244ada29e6c2bb81d55d0880d626840a0"
+    }
+  },
+  "pre_execution_hashes_verified": true,
+  "qemu_sha256": "0338d0ed6013abe5e0f41c5a22976ac6fe2f1b5869edf05d4a9098c121248f02",
+  "version": "qemu-aarch64 version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)",
+  "limits": [
+    "Linux-user syscalls test only; not board panic/runtime/CPU role behavior",
+    "Forced negative calls hook directly; not proof that every Rust panic path or CPU exception reaches it",
+    "No target MMIO, hardware, firmware deployment or platform clock/reset proof"
+  ]
+}

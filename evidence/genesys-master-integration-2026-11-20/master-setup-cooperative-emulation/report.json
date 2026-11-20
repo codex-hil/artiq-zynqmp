@@ -1,0 +1,17 @@
+{
+  "status": "AARCH64_COOPERATIVE_SETUP_22_CASES_PASS",
+  "hardware_admitted": false,
+  "source_and_library_hashes_verified": true,
+  "execution": "execution-results.json",
+  "rust_receipt": "reused-rust-library.json",
+  "healthy_turns": 522,
+  "late_tsc_turns": 524,
+  "max_mock_bus_operations_per_turn": 22,
+  "host_regression_log_sha256": "cbf51122230b48e49b30ed83fcf0ca7d0ec5873b58360ecfd950e7d3e5275751",
+  "limits": [
+    "QEMU Linux-user Cortex-A53 with mocked MMIO and peer; no real runtime, AXI timing or lwIP fairness proof",
+    "Forced panic calls test hook directly; not production panic/exception qualification",
+    "Maintenance hold, timing/CDC, cabling, restoration and peer capabilities remain open"
+  ],
+  "next": "Audit coordinator callback ownership/cancellation and runtime integration contract against target evidence; no hardware admission"
+}

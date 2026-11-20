@@ -13,7 +13,7 @@ __attribute__((noreturn))void aux_master_panic(void){
  static const char text[]="A53_CODEC_EMULATOR_PANIC\n";message(text,sizeof(text)-1);finish(101);
 }
 static void check(int condition){if(!condition)finish(99);}
-#if defined(MASTER_ROUTE_EMULATION) || defined(MASTER_FULL_SETUP_EMULATION)
+#if defined(MASTER_ROUTE_EMULATION) || defined(MASTER_FULL_SETUP_EMULATION) || defined(MASTER_WHOLE_COOPERATIVE_EMULATION)
 void master_emulation_assert(int condition){check(condition);}
 #endif
 #ifdef MASTER_ROUTE_EMULATION
@@ -26,6 +26,13 @@ void master_emulation_route_pass(void){
 extern int master_full_setup_composition_test(const uint8_t *,size_t);
 void master_emulation_full_setup_pass(void){
  static const char text[]="A53_FULL_SETUP_EMULATION_PASS cases=16 sends=259 pops=260\n";message(text,sizeof(text)-1);
+}
+#endif
+#ifdef MASTER_WHOLE_COOPERATIVE_EMULATION
+extern int master_setup_cooperative_test(const uint8_t *,size_t);
+void master_emulation_setup_cooperative_pass(unsigned maximum){
+ check(maximum==22);
+ static const char text[]="A53_COOPERATIVE_SETUP_EMULATION_PASS cases=22 healthy_turns=522 max_mock_ops=22\n";message(text,sizeof(text)-1);
 }
 #endif
 int codec_emulation_main(void){
@@ -63,6 +70,10 @@ int codec_emulation_main(void){
 #ifdef MASTER_FULL_SETUP_EMULATION
  const uint8_t frames[40]=SETUP_FRAMES;
  check(master_full_setup_composition_test(frames,sizeof(frames))==0);
+#endif
+#ifdef MASTER_WHOLE_COOPERATIVE_EMULATION
+ const uint8_t frames[40]=SETUP_FRAMES;
+ check(master_setup_cooperative_test(frames,sizeof(frames))==0);
 #endif
  static const char text[]="A53_CODEC_EMULATION_PASS calls=11334\n";message(text,sizeof(text)-1);return 0;
 }

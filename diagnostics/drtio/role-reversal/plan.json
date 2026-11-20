@@ -634,5 +634,10 @@
   "master_setup_cooperative_20261120": {
     "status": "HOST_WHOLE_SETUP_COOPERATIVE_COORDINATOR_22_SCENARIOS_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-setup-cooperative/report.json"
+  },
+  "master_setup_cooperative_emulation_20261120": {
+    "status": "AARCH64_COOPERATIVE_SETUP_22_CASES_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-setup-cooperative-emulation/report.json",
+    "next": "Audit coordinator callback ownership/cancellation and runtime integration contract against target evidence; no hardware admission"
   }
 }

@@ -1,7 +1,13 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
 /* Test-only canonical full-star setup composition; not production master service. */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_setup_cooperative_pass(unsigned);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_control_codec.h"
 #include "master_setup_sequence.h"
 #include "master_rt_setup.h"
@@ -83,6 +89,9 @@ int master_setup_cooperative_test(const uint8_t *frames,size_t length){
    assert(steps<=1100);
   }
   assert(management==steps);
+#ifdef FORCE_COOPERATIVE_TURNS_ASSERT
+  if(!mode)assert(steps==521);
+#endif
   if(!mode||mode==12){assert(result==1&&steps==(mode==12?524u:522u)&&f.tx==259&&f.pops==260&&rt.credits==16);for(unsigned a=MS_LINK;a<=MS_BUFFER;a++)if(a!=MS_ROUTING)assert(context.starts[a]==1);}
   else assert(result<0&&session.plan.action==MS_FAILED);
   if(mode==1||mode==7)assert(f.time==0&&f.tx==1);
@@ -94,5 +103,10 @@ int master_setup_cooperative_test(const uint8_t *frames,size_t length){
   if(result<0){int saved=session.plan.error;msc_cancel(&session);assert(session.plan.error==saved);}
   unsigned calls=f.calls,actions=context.calls;assert(msc_step(&session,&io)==result&&f.calls==calls&&context.calls==actions);
  }
- printf("MASTER_SETUP_COOPERATIVE_PASS cases=22 healthy_turns=522 max_mock_ops_per_turn=%u\n",maximum);return 0;
+#ifdef MASTER_A53_EMULATION
+ master_emulation_setup_cooperative_pass(maximum);
+#else
+ printf("MASTER_SETUP_COOPERATIVE_PASS cases=22 healthy_turns=522 max_mock_ops_per_turn=%u\n",maximum);
+#endif
+ return 0;
 }
