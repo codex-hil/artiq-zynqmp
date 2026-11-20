@@ -1,0 +1,26 @@
+{
+  "ignore-synchronous-cancel": {
+    "exit_code": -6,
+    "stderr": "test: test.c:41: main: Assertion `result==MRS_CANCELLED' failed.\n",
+    "replacement": {
+      "old": "if(s->terminal){if(error)mm_fail(m);return s->terminal;}",
+      "new": "/* mutant: ignored synchronous cancellation */"
+    }
+  },
+  "publish-credits-before-unforce": {
+    "exit_code": -6,
+    "stderr": "test: test.c:50: main: Assertion `!rt.credits' failed.\n",
+    "replacement": {
+      "old": "case 17:a=MRT_FORCE;v=0;op=1;r->unforce_attempted=1;break;",
+      "new": "case 17:a=MRT_FORCE;v=0;op=1;r->unforce_attempted=1;r->credits=s->space;break;"
+    }
+  },
+  "extra-fence-in-write-turn": {
+    "exit_code": -6,
+    "stderr": "test: test.c:41: main: Assertion `f.calls-before<=1&&++turns<40' failed.\n",
+    "replacement": {
+      "old": " /* A synchronous callback cancellation wins, preserving attempted flags. */",
+      "new": " if(op==1&&!error)error=m->bus.fence(m->bus.ctx);\n /* A synchronous callback cancellation wins, preserving attempted flags. */"
+    }
+  }
+}

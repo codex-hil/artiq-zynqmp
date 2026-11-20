@@ -1,0 +1,35 @@
+{
+  "status": "HOST_RESUMABLE_RT_BACKEND_72_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "checks": [
+    "At most one read/write/fence callback per step, healthy set-time8turns/buffer20turns",
+    "Failure injected at all8time/20buffer callbacks; ambiguous writes may apply before error, no cleanup or retry",
+    "Synchronous cancellation at each callback wins immediately, terminal calls noIO and preserve original failure/attemptflags",
+    "TIME lastpoll accepted10turns; BUFFER lastcountpoll accepted24turns; counter UINT32_MAX wrap-safe",
+    "Credits published only after unforce fence and zero readback; zero-space/retrydelta>1/link/protocol errors refused",
+    "Attempt flags set before write callbacks; session cannot begin again; preexisting buffer credits refused",
+    "Three unsafe mutants refused: ignored callback cancellation, early credits, extra fence in write turn"
+  ],
+  "compile_command": "gcc -std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_master_rt_resumable.c -o OUTPUT/test",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_rt_resumable.h": "c4258b07440ea041b3f313084f44e08ff58324b085f9427527d213caa1f898fb",
+    "diagnostics/drtio/aux_protocol/test_master_rt_resumable.c": "501de807823fc461cdd86eeadfe3754be9fe5402e72370ad112cc8a7fc74c6f1",
+    "diagnostics/drtio/aux_protocol/master_rt_setup.h": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614"
+  },
+  "separate_target_queue": {
+    "service": "genesys-foreground-build-20261120-v1.service",
+    "status": "WAITING_FOR_SHARED_DELL_SLOT",
+    "observed_attempt": 66,
+    "max_attempts": 90,
+    "includes_new_resumable_backend": false
+  },
+  "limits": [
+    "Standalone native callback model, no coordinator/worker/target integration yet",
+    "One callback/turn cannot bound elapsed time or hung AXI access; sole physical owner and independent fault containment remain required",
+    "TIME completion only localTX; remote TSCAck still separate",
+    "No HW/default/production firmware changes"
+  ],
+  "next": "Compose resumable TIME/BUFFER with foreground ownership/coordinator under explicit sufficient action budget; keep queued foreground target immutable and collect/hash/QEMU after completion."
+}
