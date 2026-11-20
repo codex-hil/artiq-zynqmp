@@ -1,0 +1,36 @@
+{
+  "status": "AARCH64_QEMU_USER_CODEC_11334_CALLS_AND_FORCED_HOOK_NEGATIVE_PASS",
+  "checks": [
+    "Dell CortexA53 static ELF compiled/link genuineRust archive with no undefined symbols",
+    "Existing QEMU8.2.2 Linux-user cpu=cortex-a53 executes actual AArch64 codec instructions",
+    "11334 targetcalls: encode capacities0..1025/value0..4095, validACK,64CRCbitflips and invalidlengths",
+    "Panic negative invokes emulator-only hook: exactexit101/marker, no success marker",
+    "ACKfixture byte-equal to unchanged upstream RoutingAck encoder in host regression; host fullsuite PASS",
+    "ELF hashes match Dell output and executed localfiles; source/header hashes match",
+    "Initial Werror indentation refusal retained/corrected"
+  ],
+  "artifact_sha256": {
+    "codec-normal.elf": "09c774f74a8433a2f0667a2c77fe3d990524c7c5d6c2f59652329cd826e5d6a3",
+    "codec-panic.elf": "c058fdbb827482960050a1c70c07ca6f9707c00fa1a739190fb2983ef298b170",
+    "libgenesys_aux_codec.a": "f27d25a82e27592b962adbb53b72c7ee9ad5d75ea92fab94bd87f9ec37f0cbe9",
+    "master_codec_emulation.c": "ba119e38ed1d54253337aedf49971324992e4d3412ce7a9a092dc045279f4be5",
+    "master_leaf_codec.h": "d5494c6bc5b9bf3490d8f32f88f8bee6c68193a00d22ae1bb09d70e6c1d81b24",
+    "ack-fixture.h": "bb86ad8dec77d9f0a6ef467170ccd6942ca6617bd99e8760c12ba165fca94c98"
+  },
+  "limits": [
+    "Linux-user syscalls test only; not board panic/runtime/CPU role behavior",
+    "Forced negative calls hook directly; not proof that every Rust panic path or CPU exception reaches it",
+    "No target MMIO, hardware, firmware deployment or platform clock/reset proof",
+    "No production panic implementation: emulator hook uses Linuxsyscalls unavailable on board",
+    "Negative hook direct-call does not exercise a real Rust panic or hardware exception",
+    "No target MMIO/runtime CPU0/CPU1/management preservation qualification",
+    "No default firmware/XDC or hardware changes"
+  ],
+  "next_safe_offline": "Extend emulator harness to composed route/queue/slot/callback-MMIO module using mock bus and genuine codec; preserve no-hardware and unresolved production panic ownership",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "ba119e38ed1d54253337aedf49971324992e4d3412ce7a9a092dc045279f4be5",
+    "diagnostics/drtio/aux_protocol/build-codec-emulation.sh": "695526f634d12b14b8dd5d0612961a418c77da5c940e1efba1d1d571abdeddd8",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "19a903faa0eecf00b60d2b968bb0cfa8d305d045111aea3776c82b4e41dad2bc",
+    "diagnostics/drtio/aux_protocol/main.rs": "03af74d85756794c2a830dbce8f7d095af6275ff5c4db17606b6874b8378f5e4"
+  }
+}

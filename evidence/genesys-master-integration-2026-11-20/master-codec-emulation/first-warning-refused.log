@@ -1,0 +1,9 @@
+Acquired Dell heavy-build slot 2/3
+master_codec_emulation.c: In function 'codec_emulation_main':
+master_codec_emulation.c:39:3: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+   39 |   for(unsigned i=0;i<8;i++)out[i]=ack[i];out[bit/8]^=(uint8_t)(1u<<(bit%8));
+      |   ^~~
+master_codec_emulation.c:39:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+   39 |   for(unsigned i=0;i<8;i++)out[i]=ack[i];out[bit/8]^=(uint8_t)(1u<<(bit%8));
+      |                                          ^~~
+cc1: all warnings being treated as errors

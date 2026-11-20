@@ -110,6 +110,7 @@ fn test_master_leaf_abi() {
     assert_eq!(unsafe{master_route_setup_test()},0);
     println!("TEST MASTER_ROUTE_SETUP_MOCK PASS");
     let ack=encode(&Packet::RoutingAck);
+    assert_eq!(ack,vec![0x32,0,0,0,0x36,0xef,0x66,0x7b]); // QEMU harness golden fixture
     assert_eq!(unsafe{master_route_wire_test(ack.as_ptr(),ack.len())},0);
     assert_eq!(unsafe{master_ack_slot_test(ack.as_ptr(),ack.len())},0);
     println!("TEST MASTER_ACK_SLOT PASS");

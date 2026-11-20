@@ -1,0 +1,47 @@
+/* SPDX-License-Identifier: LGPL-3.0-or-later */
+/* QEMU Linux-user test ONLY. Syscalls are not an A53 board panic/runtime ABI. */
+#include "master_leaf_codec.h"
+static void message(const char *p,unsigned n){
+ register uint64_t x0 __asm__("x0")=1,x1 __asm__("x1")=(uintptr_t)p,x2 __asm__("x2")=n,x8 __asm__("x8")=64;
+ __asm__ volatile("svc 0":"+r"(x0):"r"(x1),"r"(x2),"r"(x8):"memory");
+}
+__attribute__((noreturn))static void finish(unsigned code){
+ register uint64_t x0 __asm__("x0")=code,x8 __asm__("x8")=93;
+ __asm__ volatile("svc 0"::"r"(x0),"r"(x8):"memory");__builtin_unreachable();
+}
+__attribute__((noreturn))void aux_master_panic(void){
+ static const char text[]="A53_CODEC_EMULATOR_PANIC\n";message(text,sizeof(text)-1);finish(101);
+}
+static void check(int condition){if(!condition)finish(99);}
+int codec_emulation_main(void){
+#ifdef FORCE_PANIC
+ aux_master_panic();
+#endif
+ uint8_t out[1026];unsigned calls=0;
+ for(unsigned kind=0x30;kind<=0x31;kind++){
+  unsigned required=kind==0x30?40:8;
+  for(unsigned capacity=0;capacity<=1025;capacity++){
+   for(unsigned i=0;i<1026;i++)out[i]=0xa5;
+   int n=aux_master_leaf_encode(kind,1,out,capacity);calls++;
+   if(capacity<required||capacity>1024){check(n==-4);for(unsigned i=0;i<1026;i++)check(out[i]==0xa5);}
+   else{check(n==(int)required&&out[0]==kind&&out[1]==1);for(unsigned i=required;i<1026;i++)check(out[i]==0xa5);}
+  }
+  for(unsigned value=0;value<4096;value++){
+   int n=aux_master_leaf_encode(kind,value,out,1024);calls++;
+   check(n==(value==1?(int)required:-2));
+  }
+ }
+ /* RoutingAck fixture generated using the same IEEECRC envelope as upstream;
+  * host upstream byte-vector assertion is recorded separately by the runner. */
+ const uint8_t ack[8]=ACK_BYTES;
+ check(aux_master_routing_ack_decode(ack,8)==0x32);calls++;
+ for(unsigned bit=0;bit<64;bit++){
+  for(unsigned i=0;i<8;i++){out[i]=ack[i];}
+  out[bit/8]^=(uint8_t)(1u<<(bit%8));
+  check(aux_master_routing_ack_decode(out,8)==-1);calls++;
+ }
+ for(unsigned n=0;n<=1025;n++)if(n!=8){check(aux_master_routing_ack_decode(out,n)==-4);calls++;}
+ check(calls==11334);
+ static const char text[]="A53_CODEC_EMULATION_PASS calls=11334\n";message(text,sizeof(text)-1);return 0;
+}
+__asm__(".global _start\n_start:\nbl codec_emulation_main\nmov x8,#93\nsvc #0\n");
