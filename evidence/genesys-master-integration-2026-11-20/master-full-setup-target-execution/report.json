@@ -1,0 +1,52 @@
+{
+  "status": "AARCH64_FULL_CANONICAL_SETUP_16_CASES_AND_ASSERTION_NEGATIVE_PASS",
+  "supersedes_pending": "evidence/genesys-master-integration-2026-11-20/master-full-setup-emulation/report.json",
+  "checks": [
+    "Dellsharedslot build of3static AArch64ELFs withgenuineRust control/star codec andzeroUndefined completed",
+    "Existing QEMU8.2.2 Linux-user CortexA53 executesfullcanonicalsetup16cases:259AUXsends/260RXpops, cutsat0/127/255/256, TSCAck/status/buffernegativecontrols",
+    "Normal also11334codec boundarycalls; assertionnegativeexit99 andpanicnegativeexit101 emitno normal successmarkers",
+    "ExecutedELFs matchhashes beforeexecution; librarySHA matchespinnedtargetRust receipt; allC/header hashes matchrepository",
+    "Frozen5replyfixtures verifiedagainstupstreamhostencoder inpriorhostreceipt",
+    "Slotbusylogsretained, capacityretryonly; no build/testfailure rerun"
+  ],
+  "artifact_sha256": {
+    "codec-normal.elf": "d643f5c75ef4dcd69f12ddda82042d2a70f43dd37595c2aab631067b95b9fc13",
+    "codec-panic.elf": "6631ad87e0b3600b25440bd491b66bede4e1a521feffdccc8c4d217e13a7dc83",
+    "codec-setup-negative.elf": "48b83f75d226a72d1de60c0033649a6765eeb5ddc3e5d2a2975d58de3358a710",
+    "master_ack_slot.h": "09f629643c67aba367b48fd09e9d34587f14c7990ec6b16ea21180d29359e75a",
+    "master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "master_control_codec.h": "fbad64399fa339cce24fd98009369257540b8b623150fef5f58bdc4b8d6b1f9e",
+    "master_leaf_codec.h": "a1c5524a6947e74c19e080d171951cd94d91f4eb2c8090162ccf62c0b4476466",
+    "master_route_queue.h": "840424ceb1f01666cc4e75e40cd5f3b59bddb7a730e3e72feb00a78bef559f30",
+    "master_route_setup.h": "a8ca944ae7edccfd3cf601c021dfd7b0b32aa67372bf669719b9aa6053827c7b",
+    "master_rt_setup.h": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+    "master_setup_sequence.h": "7fbe1f1d7fb14c1c5d628e5d4c8ccb7d5c2170efbb3fffe61cdda47c24b8716f",
+    "master_star_setup.h": "f427bf28d186b11fc163a922d3fae7bdf806913c2db327173947e1cd81955716",
+    "master_transaction.h": "ab2b57a34c015cdee59c4dd4410508ceeee40ff523dc5208db8f41423ff6c316",
+    "setup-fixture.h": "fc7a56a35ada5d2baa93d441dca29b439463589ee01af710edc67c3fd93ffa9e",
+    "master_codec_emulation.c": "eaa6f1d7528f9efbb128255348d7f1881a12484de26d81bfd10f3866979188a9",
+    "test_master_full_setup_composition.c": "ed4571f1779d27e742e89fb46fec15e33890fb09c3a3ee367b794b6d9240dc1a",
+    "libgenesys_aux_codec.a": "1b9f3030cf8cb8bc49fac1f3283246c8ddf54a15fcc0e962c806c835d4b52946"
+  },
+  "runner_hardening": [
+    "Oldresult overwrittenINCOMPLETE beforetest; hash mismatch refusesbeforeanyQEMU invocation",
+    "Runner --route and --full-setup mutuallyexclusive",
+    "Prior63faultpoint routeharness regressionPASS underpreexecutionhashchecks"
+  ],
+  "limits": [
+    "Linux-user syscall harness +mockMMIO/peer only, not baremetalboardstartup/physicalTSC/routingapply",
+    "Testpanic hook notproduction CPU0/CPU1 panic/exception/recovery behavior",
+    "No clock/CDC/timing/cable/restoration qualification or destinationUP capability",
+    "No firmwareload/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Consolidate complete master candidate evidence and remaining production runtime/ownership/admission gaps; freeze hashes and define minimal integration contract without automatic board access",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "f3b9e30f2ddb6b87238bc0c347b71fcbed35d0e80f96d478480d7b008f57c053",
+    "diagnostics/drtio/aux_protocol/build-full-setup-emulation.sh": "4d6a6897a490eb16e92920a67c0dca97c96a84674abb3fb1888eb58f0e4bab94",
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "eaa6f1d7528f9efbb128255348d7f1881a12484de26d81bfd10f3866979188a9",
+    "diagnostics/drtio/aux_protocol/test_master_full_setup_composition.c": "ed4571f1779d27e742e89fb46fec15e33890fb09c3a3ee367b794b6d9240dc1a",
+    "diagnostics/drtio/aux_protocol/master_leaf_target.rs": "e1a04d7916c53d4cdbe826f2e484abf766af59e0cb1271881a94222ba983d066",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "6e8e78b1d60821e20701028b7d32771fa5827444b42238e0acbf1a8c2a3ce5e6",
+    "diagnostics/drtio/aux_protocol/master_control_codec.rs": "84f7be61588d9a835bc4f7bdb4428ca15c9cb9c91a33f0abd2fdde9f551c5587"
+  }
+}

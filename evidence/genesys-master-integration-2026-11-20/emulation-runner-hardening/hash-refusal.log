@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/run-codec-emulation.py", line 20, in <module>
+    assert name in expected and hashlib.sha256((root/name).read_bytes()).hexdigest()==expected[name],('ELF hash mismatch',name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('ELF hash mismatch', 'codec-normal.elf')

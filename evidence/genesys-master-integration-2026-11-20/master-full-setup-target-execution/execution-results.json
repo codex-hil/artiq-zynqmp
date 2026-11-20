@@ -1,0 +1,28 @@
+{
+  "status": "AARCH64_FULL_CANONICAL_SETUP_16_CASES_AND_ASSERTION_NEGATIVE_PASS",
+  "runs": {
+    "normal": {
+      "exit_code": 0,
+      "marker": "A53_CODEC_EMULATION_PASS calls=11334",
+      "elf_sha256": "d643f5c75ef4dcd69f12ddda82042d2a70f43dd37595c2aab631067b95b9fc13"
+    },
+    "panic": {
+      "exit_code": 101,
+      "marker": "A53_CODEC_EMULATOR_PANIC",
+      "elf_sha256": "6631ad87e0b3600b25440bd491b66bede4e1a521feffdccc8c4d217e13a7dc83"
+    },
+    "setup-negative": {
+      "exit_code": 99,
+      "marker": "",
+      "elf_sha256": "48b83f75d226a72d1de60c0033649a6765eeb5ddc3e5d2a2975d58de3358a710"
+    }
+  },
+  "pre_execution_hashes_verified": true,
+  "qemu_sha256": "0338d0ed6013abe5e0f41c5a22976ac6fe2f1b5869edf05d4a9098c121248f02",
+  "version": "qemu-aarch64 version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)",
+  "limits": [
+    "Linux-user syscalls test only; not board panic/runtime/CPU role behavior",
+    "Forced negative calls hook directly; not proof that every Rust panic path or CPU exception reaches it",
+    "No target MMIO, hardware, firmware deployment or platform clock/reset proof"
+  ]
+}

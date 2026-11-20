@@ -1,0 +1,11 @@
+{
+  "status": "STALE_SUCCESS_REPLACEMENT_BAD_HASH_REFUSAL_AND_ROUTE_REGRESSION_PASS",
+  "checks": [
+    "OldPASS replacedINCOMPLETE onhashmismatch",
+    "Noexecutionlogs created forinvalidELF",
+    "Existingroute normal/assertion/panic regression passedwithpreexecutionhashchecks"
+  ],
+  "limits": [
+    "Runner behavior only, nothardware/targetqualification"
+  ]
+}
