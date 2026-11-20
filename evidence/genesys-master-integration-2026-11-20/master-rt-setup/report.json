@@ -1,0 +1,32 @@
+{
+  "status": "CALLBACK_RT_SET_TIME_BUFFER_INIT_45_SCENARIOS_ASAN_UBSAN_PASS",
+  "checks": [
+    "Nine backendCSR constants match generatedcandidate map",
+    "Set_time onecommit/fence/boundedbusy polling plus link/protocol checks; return onlylocaltransmitcompletion",
+    "Buffer destination1 force/readback, onecommit, wait plus unsigned requestcounterdelta1 (wraptested), protocol/link andnonzerocredits16bit",
+    "Successful forceclear/fence/readback precedescredits publication; no cleanup/retry on failure",
+    "Each healthy-path callback failure injected including sideeffect beforewriteerror; transport poison prevents repeat IO",
+    "Linkdown/preexistingerror/timebusytimeout/bufferbusytimeout/zerospace/delta2/postrequesttimeoutflag reject",
+    "First strictcompiler indentationwarnings retained/corrected; final Wall/Wextra/Werror PASS"
+  ],
+  "source_semantics": [
+    "Upstream set_time clear driven by rt_packet.set_time_ack at localTX packetlast, not peerAUX TSCAck",
+    "Upstream buffer request wait clears bothon success and timeout; protocolerror required to distinguish",
+    "Gateware itself retries onzerobuffer reply; strictcandidate refuses observed requestdelta>1, never hides retries"
+  ],
+  "limits": [
+    "Callbackmock only; realCSR/CRI concurrency/reset/CDC/target clock andrequest-time behavior unqualified",
+    "Caller must retain soleCRIowner/map/epoch; underlying MMIOaccess mayhang independentofpollcount",
+    "TSCAck still separate requirement, neither this methodnorDestinationOKalone provespeerTSC/UP",
+    "Afterfailed force/unforcewrite hardwarestate unknown; no automatic restoration or retry",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Compose setupplanner with checked echo/status codec, routing transaction and RTbackend in host mock; test premature/missing TSCAck and downstream failure without granting destinationUP",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_rt_setup.h": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+    "diagnostics/drtio/aux_protocol/test_master_rt_setup.c": "a23d4051e1b9c09164ee86b004d2bbb6a22400d3a1a2a84c288e9636f28de9a2",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/rt_controller_master.py": "e698252f24f64e71454b52f385ea2352f193b282ee6400c2cf56a61f8ccc2d65",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/rt_packet_master.py": "40139fa9d99fe3c61a8790125061d249c3111588fc209cd214d6fd1a14c06312",
+    "evidence/genesys-master-integration-2026-11-20/master-rt-setup/test.log": "9c62be1c98384d773755e1d318fc020d555aaabdf829658a0ff57d1287d2b5d8"
+  }
+}

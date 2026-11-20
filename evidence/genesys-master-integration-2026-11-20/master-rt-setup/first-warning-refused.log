@@ -1,0 +1,16 @@
+In file included from diagnostics/drtio/aux_protocol/test_master_rt_setup.c:4:
+diagnostics/drtio/aux_protocol/master_rt_setup.h: In function ‘mrt_write’:
+diagnostics/drtio/aux_protocol/master_rt_setup.h:23:2: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+   23 |  if(m->bus.write(m->bus.ctx,a,v)||m->bus.fence(m->bus.ctx))return mm_fail(m);return 0;
+      |  ^~
+diagnostics/drtio/aux_protocol/master_rt_setup.h:23:78: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   23 |  if(m->bus.write(m->bus.ctx,a,v)||m->bus.fence(m->bus.ctx))return mm_fail(m);return 0;
+      |                                                                              ^~~~~~
+diagnostics/drtio/aux_protocol/test_master_rt_setup.c: In function ‘rt_read’:
+diagnostics/drtio/aux_protocol/test_master_rt_setup.c:17:2: error: this ‘else’ clause does not guard... [-Werror=misleading-indentation]
+   17 |  else assert(0);return 0;
+      |  ^~~~
+diagnostics/drtio/aux_protocol/test_master_rt_setup.c:17:17: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘else’
+   17 |  else assert(0);return 0;
+      |                 ^~~~~~
+cc1: all warnings being treated as errors
