@@ -1,0 +1,40 @@
+{
+  "status": "AARCH64_FULL_ROUTE_63_FAULTS_AND_ASSERTION_NEGATIVE_PASS",
+  "checks": [
+    "Same host C full-route test compiled CortexA53, actualRust archive, no undefinedsymbols; source hashes match",
+    "Linux-user CortexA53 executes route/encoder/queue/slot/callbackMMIO healthy2TX/2RXpop plus63faultpoints/4controls",
+    "Normal also executes11334codec boundarycalls",
+    "False baseline-count assertion negative exits99 before routePASS/codecPASS; forcedtesthook exits101/noPASS",
+    "Default native host upstream/leaf/route/slot/MMIO/bounds regressionsPASS after conditional harness changes",
+    "ExecutedELF hashes match Dellbuildoutputs"
+  ],
+  "artifact_sha256": {
+    "codec-normal.elf": "0975eef5cd5f0b118661f8319fae1f644f126418a6a5863b326fb169e1bcd5b0",
+    "codec-panic.elf": "565645969b27d38613dfbe70b1c27566a2314860a41fc7d481aa1035b343dc8d",
+    "codec-route-negative.elf": "180f3b55545f8f2748b177fa14280e72b303a6cadb93b8e0a3a0e47f1a2ea3d2",
+    "ack-fixture.h": "bb86ad8dec77d9f0a6ef467170ccd6942ca6617bd99e8760c12ba165fca94c98",
+    "master_ack_slot.h": "21aa4f47e1d703c63940f44a4b2dcfe45752b5d7559a1b3a775f6368f8513eb7",
+    "master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "master_leaf_codec.h": "d5494c6bc5b9bf3490d8f32f88f8bee6c68193a00d22ae1bb09d70e6c1d81b24",
+    "master_route_queue.h": "840424ceb1f01666cc4e75e40cd5f3b59bddb7a730e3e72feb00a78bef559f30",
+    "master_route_setup.h": "a8ca944ae7edccfd3cf601c021dfd7b0b32aa67372bf669719b9aa6053827c7b",
+    "master_transaction.h": "6fa7a5a7cc970fd5fd0d4efd6778b411343e83ea4c31a687e5c52ea43d20d4df",
+    "master_codec_emulation.c": "1f84f4c950619598cfe80defaae30b0d397b3e0aabf918c2c6676fb4b018421e",
+    "test_master_mmio_route.c": "d351668d498589b7e1b3aad682e9a376e433f6096818181994252cfd5d2902a3",
+    "libgenesys_aux_codec.a": "f27d25a82e27592b962adbb53b72c7ee9ad5d75ea92fab94bd87f9ec37f0cbe9"
+  },
+  "limits": [
+    "MMIO bus remains mock, not physicalCSR/AXI/GT",
+    "Linux-user process does not model CPU0management/CPU1worker, interrupt/exception behavior or platform reset",
+    "Panic hook remains emulator-only; no production runtimeadmission",
+    "Late duplicateACK and exclusive stableepoch assumptions unchanged",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Consolidate target execution and remaining master-service requirements; define bounded discovery/TSC/status sequencing against upstream without changing hardware admission",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_master_mmio_route.c": "d351668d498589b7e1b3aad682e9a376e433f6096818181994252cfd5d2902a3",
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "1f84f4c950619598cfe80defaae30b0d397b3e0aabf918c2c6676fb4b018421e",
+    "diagnostics/drtio/aux_protocol/build-route-emulation.sh": "4ab5a8d8a4fa76be514c1920b6b0639c8a086762625c8607ad216f569a56e776",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "b0216617c6d07d7d39dbe2d33034a13db3cb0b6ad9ff540125ce59810847713d"
+  }
+}

@@ -1,6 +1,12 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_route_pass(void);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_aux_mmio.h"
 #include "master_route_queue.h"
 struct full_mock {uint8_t ack[8],tx[1024];unsigned calls,fail_at,commits,pops,mode;
@@ -63,8 +69,16 @@ static unsigned full_run(const uint8_t *ack,unsigned fault,unsigned mode){
 }
 int master_mmio_route_test(const uint8_t *ack,size_t n){
  assert(n==8);unsigned calls=full_run(ack,0,0);
+#ifdef FORCE_ROUTE_ASSERT
+ assert(calls==64); /* Deliberately false negative control, never normal build. */
+#endif
+ assert(calls==63);
  for(unsigned fault=1;fault<=calls;fault++)full_run(ack,fault,0);
  for(unsigned mode=1;mode<=4;mode++)full_run(ack,0,mode);
+#ifdef MASTER_A53_EMULATION
+ master_emulation_route_pass();
+#else
  printf("MASTER_FULL_MMIO_ROUTE_PASS baseline_callbacks=%u failure_points=%u controls=4\n",calls,calls);
+#endif
  return 0;
 }

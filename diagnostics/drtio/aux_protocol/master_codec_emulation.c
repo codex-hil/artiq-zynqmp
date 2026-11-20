@@ -13,6 +13,13 @@ __attribute__((noreturn))void aux_master_panic(void){
  static const char text[]="A53_CODEC_EMULATOR_PANIC\n";message(text,sizeof(text)-1);finish(101);
 }
 static void check(int condition){if(!condition)finish(99);}
+#ifdef MASTER_ROUTE_EMULATION
+extern int master_mmio_route_test(const uint8_t *,size_t);
+void master_emulation_assert(int condition){check(condition);}
+void master_emulation_route_pass(void){
+ static const char text[]="A53_ROUTE_EMULATION_PASS faults=63 controls=4\n";message(text,sizeof(text)-1);
+}
+#endif
 int codec_emulation_main(void){
 #ifdef FORCE_PANIC
  aux_master_panic();
@@ -42,6 +49,9 @@ int codec_emulation_main(void){
  }
  for(unsigned n=0;n<=1025;n++)if(n!=8){check(aux_master_routing_ack_decode(out,n)==-4);calls++;}
  check(calls==11334);
+#ifdef MASTER_ROUTE_EMULATION
+ check(master_mmio_route_test(ack,sizeof(ack))==0);
+#endif
  static const char text[]="A53_CODEC_EMULATION_PASS calls=11334\n";message(text,sizeof(text)-1);return 0;
 }
 __asm__(".global _start\n_start:\nbl codec_emulation_main\nmov x8,#93\nsvc #0\n");
