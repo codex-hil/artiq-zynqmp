@@ -1,0 +1,43 @@
+{
+  "status": "HOST_BOUNDED_MASTER_SETUP_PLANNER_29_SCENARIOS_ASAN_UBSAN_PASS",
+  "actions": [
+    "qualify live link",
+    "echo request/reply",
+    "RT set_time trigger plus busy completion",
+    "spontaneous satellite TSCAck",
+    "reviewed routing table plus rank1",
+    "destination status OK",
+    "destination buffer-space initialization"
+  ],
+  "checks": [
+    "Seven ordered actions, one claim per action before external operation, attempted bitmap",
+    "Each action: backend error/timeout/unexpected result/link loss latches failure; later success cannot reopen",
+    "Normal all7actions plus last-unit success reaches candidateCOMPLETE; link loss revokes it",
+    "Unclaimed completion/zero-state/null/invalidbudget/unqualifiedepoch declarations refused"
+  ],
+  "upstream_differences": [
+    "Reference order ping->TSC->routing->rank confirmed from pinned source",
+    "Reference setup logs TSC/routing/rank errors then continues; candidate stops on every failure",
+    "Reference destination-up notification occurs before init_buffer_space; candidate grants no deployedUP and waits bufferinit completion",
+    "Reference reset is separate management operation, not automatically inserted or retried by candidate"
+  ],
+  "remaining_bindings": [
+    "Current fixed-leaf codec lacks isolated checked echo/status master API; old scalar ABI is separate",
+    "RT set_time and buffer-space driver require actual profile/timeout/commit ownership bindings",
+    "Routing action means reviewed table+rank; current one-path candidate not proof of whole table correctness",
+    "Backend success declarations are assumptions until transport/CSR integration and peer qualification",
+    "Duplicate ACK correlation/productionpanic/execution context/timing/cabling/restoration remain OPEN"
+  ],
+  "limits": [
+    "Policy-only host plan, no service/peer/time synchronization or physical destination readiness proof",
+    "Budget counts only explicit result calls, not wall-clock bound",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Add isolated checked basic master AUX echo/status request and fixed-reply codec API with upstream byte equality before binding setup actions; do not encode TSCAck as a TSC operation",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_setup_sequence.h": "7fbe1f1d7fb14c1c5d628e5d4c8ccb7d5c2170efbb3fffe61cdda47c24b8716f",
+    "diagnostics/drtio/aux_protocol/test_master_setup_sequence.c": "5104a4a89524d16be42ccc7caeb067fc5fecfdd5a7344a1c869e1b246b7c8030",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/runtime/rtio_mgt.rs": "486b309685fe55a2cc9dcaf6646b7dfafe1f0f5bdcf98bd2072532877fa43260",
+    "evidence/genesys-master-integration-2026-11-20/master-setup-sequence/test.log": "7a4c457d6648e10070efdcf427f008c0eaa5ee87315fc3324c711e49eea1c57c"
+  }
+}
