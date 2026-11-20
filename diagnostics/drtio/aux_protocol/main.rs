@@ -124,6 +124,8 @@ fn test_master_leaf_abi() {
     println!("TEST MASTER_ACK_SLOT PASS");
     assert_eq!(unsafe{master_route_queue_test(ack.as_ptr(),ack.len())},0);
     println!("TEST MASTER_ROUTE_QUEUE PASS");
+    assert_eq!(unsafe{master_cooperative_transport_test(ack.as_ptr(),ack.len())},0);
+    println!("TEST MASTER_COOPERATIVE_TRANSPORT PASS");
     assert_eq!(unsafe{master_mmio_route_test(ack.as_ptr(),ack.len())},0);
     println!("TEST MASTER_FULL_MMIO_ROUTE PASS");
     use master_leaf_codec::aux_master_routing_ack_decode;
@@ -192,3 +194,5 @@ fn test_master_full_setup_composition(){
 }
 
 extern "C" {fn master_star_step_test()->i32;}
+
+extern "C" {fn master_cooperative_transport_test(ack:*const u8,n:usize)->i32;}

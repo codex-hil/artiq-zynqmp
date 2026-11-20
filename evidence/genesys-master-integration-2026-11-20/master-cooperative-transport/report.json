@@ -1,0 +1,29 @@
+{
+  "status": "HOST_INCREMENTAL_CANONICAL_ROUTE_SLOT_QUEUE_MMIO_COOPERATIVE_15_CASES_PASS",
+  "checks": [
+    "ActualRustcanonicalencoder/ACKdecoder, incremental257stage sender through realCqueue/slot/callbackMMIO layers",
+    "Healthy257TX/257RXpops,514steps, onefakemanagementopportunity beforeeverystep, pointerwrap accounting",
+    "Every step max1highlevelsendORrecv; measuredmax22mockbusread/write/fencecalls perstep, finitefunctionalcount only",
+    "MissingACK/CRC/cancelatstages0/127/255/256 stopterminal; canceledafterTX leavesqueuedACKuntouchedandcommitattempt retained",
+    "Initialbacklog/error preventactualsend/pop; terminalstep nevercalls transportorbus",
+    "Allcanonicalhopbytes checkedthroughcapturedSRAMwrites; earlierfullsetup/1029stepper/control/bounds/MMIO/DDMAregressionsPASS"
+  ],
+  "limits": [
+    "Fakemanagement incrementscounter, not realnetwork/lwIP/scheduler/interrupt orwallclock fairness measurement",
+    "No AArch64 execution ofthisnewsteppercomposition yet; previoustargetELFs coverblockingfullsetup",
+    "22operations counts mockcallbackpath, notlatencybound; onephysicalAXI transactionmayhang",
+    "Only routingphaseincremental; wholeproductionsetupservice stillmissing andmustnotcallblockingfullsetup foreground",
+    "Realepoch/CRIownership/reset/panic/CDC/timing/cable/restoration requirements unchanged",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Design cooperative whole-setup coordinator that resumes routing steps across foreground calls; make echo/TSC/status/RT actions explicit and bounded without claiming physical callback latency or runtime admission",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_master_cooperative_transport.c": "655f79ebfc57ca26992e0f2f071ca380b18a45fcba2c2b4aa52c3bbed7d00b16",
+    "diagnostics/drtio/aux_protocol/master_star_step.h": "b55127f0a2eb563698f6083e384744a02069487dd600492fddaa9c913800c041",
+    "diagnostics/drtio/aux_protocol/master_route_queue.h": "840424ceb1f01666cc4e75e40cd5f3b59bddb7a730e3e72feb00a78bef559f30",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "09f629643c67aba367b48fd09e9d34587f14c7990ec6b16ea21180d29359e75a",
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "diagnostics/drtio/aux_protocol/main.rs": "084b0a51df6f87d275afda50f0c732ae148ea99c0ed4b71551d68fb963f32397",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "5207029660dceee70a0b3d0e247c7ac181255435bce370d7fa73db80fa7550c8"
+  }
+}
