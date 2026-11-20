@@ -1,0 +1,28 @@
+{
+  "status": "RESUMABLE_AARCH64_69_CASE_HARNESS_READY_NATIVE_REGRESSION_PASS_BUILD_QUEUED",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "native_status": "Full nativeRust/C suite including69resumablecomposition casesPASS",
+  "target_status": "NOT_RUN; initial shared-slot attempt75busy, bounded userunitwaiting",
+  "service": "genesys-resumable-build-20261120-v1.service",
+  "remote_directory": "/srv/nvme-fast-1/vivado-work/genesys-resumable-emulation-20261120-v1",
+  "variants": {
+    "normal": "69resumablecomposition cases +11334codec calls",
+    "resumable-negative": "Deliberately false healthy549turns assertion mustexit99/noPASS",
+    "panic": "Forcedtesthook101/noPASS"
+  },
+  "build_policy": "FrozenSHApreflight inside sharedslot;90capacity-only20sretries/35min cgroupdeadline; compileerrorstops",
+  "inputs": "input-sha256.txt",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "6fca4dff32f0829ff343ed52fcbacd27b9fb0fc186efc657c3ec14e0fe58dac7",
+    "diagnostics/drtio/aux_protocol/test_master_resumable_composition.c": "37a7d33dd34fefd6627d178873b0d5e3302855e3f8403eb93c57130943a95595",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "28d11fb831f74ece5b643bec17467fa31bb51910e7570b82c87198520b629f18",
+    "diagnostics/drtio/aux_protocol/build-resumable-emulation.sh": "4d22668babad78a820b2f5aa6332d8661b2024d7b68937db14c5a41b15b17277"
+  },
+  "next": "Read existingqueuedjobstatus; afterBUILD_PASS fetch3ELFs/hashes/noUndefined, verifyfrozeninputs then run --resumable --expected-hashes; do notduplicateactivebuild",
+  "limits": [
+    "No new69case AArch64 execution credit beforeactualrun",
+    "Previous8case foregroundAArch64 execution separatelypassed anddoesnotinclude resumableactions",
+    "NoHW/default/firmwarechanges"
+  ]
+}

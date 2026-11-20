@@ -13,7 +13,7 @@ __attribute__((noreturn))void aux_master_panic(void){
  static const char text[]="A53_CODEC_EMULATOR_PANIC\n";message(text,sizeof(text)-1);finish(101);
 }
 static void check(int condition){if(!condition)finish(99);}
-#if defined(MASTER_ROUTE_EMULATION) || defined(MASTER_FULL_SETUP_EMULATION) || defined(MASTER_WHOLE_COOPERATIVE_EMULATION) || defined(MASTER_FOREGROUND_EMULATION)
+#if defined(MASTER_ROUTE_EMULATION) || defined(MASTER_FULL_SETUP_EMULATION) || defined(MASTER_WHOLE_COOPERATIVE_EMULATION) || defined(MASTER_FOREGROUND_EMULATION) || defined(MASTER_RESUMABLE_EMULATION)
 void master_emulation_assert(int condition){check(condition);}
 #endif
 #ifdef MASTER_ROUTE_EMULATION
@@ -40,6 +40,13 @@ extern int master_foreground_composition_test(const uint8_t *,size_t);
 void master_emulation_foreground_pass(unsigned cases){
  check(cases==8);
  static const char text[]="A53_FOREGROUND_COMPOSITION_PASS cases=8 healthy_turns=522\n";message(text,sizeof(text)-1);
+}
+#endif
+#ifdef MASTER_RESUMABLE_EMULATION
+extern int master_resumable_composition_test(const uint8_t *,size_t);
+void master_emulation_resumable_pass(unsigned cases,unsigned maximum){
+ check(cases==69&&maximum==1);
+ static const char text[]="A53_RESUMABLE_COMPOSITION_PASS cases=69 healthy_turns=550 max_rt_callbacks=1\n";message(text,sizeof(text)-1);
 }
 #endif
 int codec_emulation_main(void){
@@ -85,6 +92,10 @@ int codec_emulation_main(void){
 #ifdef MASTER_FOREGROUND_EMULATION
  const uint8_t frames[40]=SETUP_FRAMES;
  check(master_foreground_composition_test(frames,sizeof(frames))==0);
+#endif
+#ifdef MASTER_RESUMABLE_EMULATION
+ const uint8_t frames[40]=SETUP_FRAMES;
+ check(master_resumable_composition_test(frames,sizeof(frames))==0);
 #endif
  static const char text[]="A53_CODEC_EMULATION_PASS calls=11334\n";message(text,sizeof(text)-1);return 0;
 }

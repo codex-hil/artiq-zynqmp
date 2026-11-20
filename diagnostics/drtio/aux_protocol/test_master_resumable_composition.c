@@ -1,6 +1,12 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_resumable_pass(unsigned,unsigned);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_rt_resumable.h"
 #include "master_foreground_setup.h"
 #include "master_setup_mock_fixture.h"
@@ -50,6 +56,9 @@ int master_resumable_composition_test(const uint8_t *frames,size_t length){
    if(prior==MS_SET_TIME||prior==MS_BUFFER){unsigned ops=f.fake.calls-before;assert(ops<=1);if(ops>maximum_rt_ops)maximum_rt_ops=ops;}
   }
   assert(management==turns&&mfo_worker_dispatch(&gate)==MFO_BUSY);
+#ifdef FORCE_RESUMABLE_ASSERT
+  if(n==0)assert(turns==549); /* Deliberately false: healthy sequence uses550. */
+#endif
   if(n==0||n==7){assert(result==1&&gate.state==MFO_HELD&&turns==(n==0?550u:552u)&&f.fake.tx==259&&f.fake.pops==260&&rt.credits==16);}
   else {assert(result<0&&gate.state==MFO_FAULT&&!rt.credits);if(n>=8&&n<68)assert(f.action_ops==f.injected_ordinal);}
   if(n>=38&&n<68)assert(result==MFO_CANCELLED);
@@ -59,5 +68,10 @@ int master_resumable_composition_test(const uint8_t *frames,size_t length){
   cases++;
  }
  assert(maximum_rt_ops==1);
- printf("MASTER_RESUMABLE_COMPOSITION_PASS cases=%u healthy_turns=550 max_rt_callbacks=1\n",cases);return 0;
+#ifdef MASTER_A53_EMULATION
+ master_emulation_resumable_pass(cases,maximum_rt_ops);
+#else
+ printf("MASTER_RESUMABLE_COMPOSITION_PASS cases=%u healthy_turns=550 max_rt_callbacks=1\n",cases);
+#endif
+ return 0;
 }

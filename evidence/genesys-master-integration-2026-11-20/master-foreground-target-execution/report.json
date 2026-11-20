@@ -1,0 +1,21 @@
+{
+  "status": "AARCH64_FOREGROUND_OWNERSHIP_COMPOSITION_8_CASES_PASS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "scope": "Frozen8foregroundcase harness from82450de, not newer workerprogress/drain or resumableRT backend",
+  "inputs": "../master-foreground-emulation/input-sha256.txt",
+  "execution": "execution-results.json",
+  "build": "queued-attempt-083.log",
+  "checks": [
+    "8foregroundownershipcases+11334codec calls actualCortex-A53 QEMU PASS",
+    "Healthy522turns; noIOwithoutgrant, replaydenial, heldreservation, stale-session/faultcontrols",
+    "Falseautomaticreleaseassertion exits99/noPASS; forcedtestpanic101/noPASS",
+    "Frozenremote/localrelevantcompiledinputs+archive match,3ELFnoUndefined, preexecutionhashesverified"
+  ],
+  "supersedes_pending": "../master-foreground-emulation/report.json",
+  "limits": [
+    "Linux-user/mockMMIO/peer only, not real mailbox ownership, timing/AXI/panic recovery or hardware qualification",
+    "No firmware/HW/defaultchanges"
+  ],
+  "next": "Qualify newer69case resumableRT/foregroundcomposition in isolatedAArch64 harness, keeping independent provenance."
+}
