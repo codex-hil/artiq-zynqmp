@@ -1,0 +1,38 @@
+{
+  "status": "BOUNDED_SHARED_SLOT_WAITER_ACTIVE_TARGET_EXECUTION_PENDING",
+  "hardware_admitted": false,
+  "manual_capacity_attempts_this_turn": 13,
+  "manual_exit_codes": [
+    75,
+    75,
+    75,
+    75,
+    75,
+    75,
+    75,
+    75,
+    75,
+    75,
+    75,
+    75,
+    75
+  ],
+  "service": "genesys-callback-cancel-build-20261120-v1.service",
+  "host": "Dell Precision 5820",
+  "remote_directory": "/srv/nvme-fast-1/vivado-work/genesys-callback-cancel-emulation-20261120-v1",
+  "wait_policy": {
+    "max_attempts": 90,
+    "interval_seconds": 20,
+    "runtime_limit_minutes": 35,
+    "kill_mode": "control-group",
+    "retry_only": "exit75 plus exact shared-slot capacity diagnostic",
+    "on_compile_error": "stop without retry"
+  },
+  "source_binding": "../master-callback-target-binding/binding.json",
+  "queue_sha256": "120d471087e8295e3a4d17c3f1309ddeb99fd2b1d2c9b6f467d3bff3246d9b92",
+  "next": "Read queued-build-status.json; if BUILD_PASS_EXECUTION_PENDING fetch three ELFs and emulation-hashes.txt, verify hashes then run QEMU --cooperative-setup; do not start another build while unit active",
+  "limits": [
+    "No target compilation or execution credit until corresponding job succeeds",
+    "Waiter only invokes existing shared slot and frozen offline build; no device access"
+  ]
+}
