@@ -699,5 +699,10 @@
     "status": "HOST_RESUMABLE_RT_BACKEND_72_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-rt-resumable/report.json",
     "next": "Compose resumable TIME/BUFFER with foreground ownership/coordinator under explicit sufficient action budget; keep queued foreground target immutable and collect/hash/QEMU after completion."
+  },
+  "master_resumable_composition_20261120": {
+    "status": "HOST_RESUMABLE_RT_FOREGROUND_COORDINATOR_69_CASES_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-resumable-composition/report.json",
+    "next": "Collect/hash/run existing frozen foreground AArch64 job when available; prepare isolated target harness for resumable composition and action-budget/assertion controls after existing job finishes."
   }
 }

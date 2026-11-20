@@ -1,0 +1,39 @@
+{
+  "status": "HOST_RESUMABLE_RT_FOREGROUND_COORDINATOR_69_CASES_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "checks": [
+    "Healthy550turns/259AUX/260pops/16credits; lateTSCAck552turns",
+    "TIME action2separatequeue/errorprecheck reads +8backendturns; BUFFER20backendturns; max1buscallback per RT action turn",
+    "30injected RT-action callbackfailures and30synchronous cancellations stopIO, preserveattemptedsideeffects, retainownership and publishnocredits",
+    "Priorprequeued/missing/wrongTSC/statusDOWN/bufferprotocol/routeCRC controls retained",
+    "Explicitactionbudget32 sufficient; budget3 failsclosed beforetimewrite/attempt; fullrouting retainsindependentbudget",
+    "Mock management/worker-dispatch checkeachturn; no automaticownerrelease, postterminalcallback or replay",
+    "NativeactualRust codec/sharedmockMMIO fullsuite includingpriorforeground/workerdrain scenariosPASS"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_master_resumable_composition.c": "518929c3217d7d66b37691e70251e34f5e3358c9c1ad2a2195e148495c24d896",
+    "diagnostics/drtio/aux_protocol/master_rt_resumable.h": "c4258b07440ea041b3f313084f44e08ff58324b085f9427527d213caa1f898fb",
+    "diagnostics/drtio/aux_protocol/master_foreground_setup.h": "ee148b631907736df05391efc43bbaade965eec744d85d3bfb2d1a449d9c53eb",
+    "diagnostics/drtio/aux_protocol/master_foreground_owner.h": "08ebb4dbefe4bec6bc7539faffe6cc55a226a70b2d87c1e4ac08793dee009822",
+    "diagnostics/drtio/aux_protocol/master_setup_cooperative.h": "8ba9bf311f041a3121dff52721eb3e9380cdc35e285eb94d817470dec5c6fc59",
+    "diagnostics/drtio/aux_protocol/master_setup_mock_fixture.h": "b387d7f9ae2371742a930dd1b5a05f9c964460cdc37b520d8280d53708896853",
+    "diagnostics/drtio/aux_protocol/main.rs": "f99399a348e2000332add3c5a008aef43500ad178525683b6e182ff15d783a63",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "c0c396ae98f82581995e3ba6833e49a1863d41866b0c7968620d4149282f1c46"
+  },
+  "separate_target_queue": {
+    "service": "genesys-foreground-build-20261120-v1.service",
+    "status": "WAITING_FOR_SHARED_DELL_SLOT",
+    "observed_attempt": 78,
+    "max_attempts": 90,
+    "includes_new_resumable_composition": false
+  },
+  "limits": [
+    "Nativehost composition only; production nonrouting wrapper/worker handshake not wired",
+    "Overallsetup stillusesmulti-MMIO ECHO/ROUTING callbacks; onebuscallback bound applies only new RT actions",
+    "Callbackcount is not elapsedtime/lwIPfairness or hungAXI containment",
+    "Backend cancellation and coordinator fault are both invoked by testowner; runtime needs sameexplicitordering",
+    "No hardware/default/firmwarechanges"
+  ],
+  "next": "Collect/hash/run existing frozen foreground AArch64 job when available; prepare isolated target harness for resumable composition and action-budget/assertion controls after existing job finishes."
+}
