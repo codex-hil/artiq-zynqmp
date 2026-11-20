@@ -1,0 +1,31 @@
+{
+  "status": "ISOLATED_BASIC_MASTER_CONTROL_CODEC_2595_HOST_CALLS_UPSTREAM_C_ABI_PASS",
+  "checks": [
+    "EchoRequest0/value0 and destination1 statusrequest0x20/value1 encode byte-exact unchanged upstream Packet/envelope",
+    "Capacities0..1025 with invalidoutput unchanged/suffixcanaries, checked invalidkind/value/null",
+    "Fixed8byte EchoReply1/TSCAck4/DestinationDown0x21/OK0x22 decode via actual upstream Packet; actualC callers pass",
+    "Every64singlebit corruption for4replies rejected byCRC, invalidlengths rejected before slice",
+    "All256typebytes withvalidCRC tested: only4supported replies reach upstreamdispatch",
+    "Existing76807leafbounds/upstream7vectors/DDMA/route63faultpoints/slot/queue regressionPASS"
+  ],
+  "semantics": [
+    "TSCAck receives notification only, not time-set or sync proof; no ACKencode API",
+    "DestinationOk decode does not publish destinationUP; planner still requires fullTSC/routing/buffer obligations",
+    "Variable channel-bearing error/status packets, ResetAck and RoutingAck rejected in this basic codec; routing uses separate decoder"
+  ],
+  "limits": [
+    "Host-only module not yet included in isolated AArch64 target library or firmware",
+    "Unsafe ABI requires validbuffer ownership; no epoch/replycorrelation proof",
+    "No realpeer/MMIO/TSC/physicalreadiness or productionpanic qualification",
+    "No hardware/default/XDC changes"
+  ],
+  "next_safe_offline": "Review actual master set_time and buffer-space CSR semantics/map then implement bounded callback-only RT backend actions for setup planner; keep transport codecs separate",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_control_codec.rs": "84f7be61588d9a835bc4f7bdb4428ca15c9cb9c91a33f0abd2fdde9f551c5587",
+    "diagnostics/drtio/aux_protocol/master_control_codec.h": "fbad64399fa339cce24fd98009369257540b8b623150fef5f58bdc4b8d6b1f9e",
+    "diagnostics/drtio/aux_protocol/test_master_control_codec.rs": "91a1f12aedf301d4a44b710a1c76706ead67945c2ebf4f169561d00f6c3ddafd",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_wire.c": "1c662bce813ea44b2d523e5fdd62d9f9f5f95f95a87c3cedf98146853f2c8b77",
+    "diagnostics/drtio/aux_protocol/main.rs": "76849628a98a9a917e9e7f51f53039453f877b70db024e8ed19612ee97850cbf",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "526a74647a89479ab3c7f50b3342be24b59829189996dc57c6735597e43310ff"
+  }
+}

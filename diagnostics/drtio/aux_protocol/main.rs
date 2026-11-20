@@ -44,6 +44,7 @@ fn main() {
     test_ddma_abi();
     test_master_leaf_abi();
     test_master_leaf_bounds::run();
+    test_master_control_codec::run();
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -158,3 +159,6 @@ fn test_master_leaf_abi() {
 }
 
 mod test_master_leaf_bounds;
+
+mod master_control_codec;
+mod test_master_control_codec;

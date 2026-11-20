@@ -170,3 +170,11 @@ int master_route_queue_test(const uint8_t *ack,size_t n) {
  }
  return 0;
 }
+
+#include "master_control_codec.h"
+int master_control_wire_test(const uint8_t *packet,size_t n,uint32_t kind){
+ assert(n==8&&aux_master_control_decode(packet,n)==(int32_t)kind);
+ uint8_t out[16];assert(aux_master_control_encode(0,0,out,sizeof(out))==8&&out[0]==0);
+ assert(aux_master_control_encode(0x20,1,out,sizeof(out))==8&&out[0]==0x20&&out[1]==1);
+ return 0;
+}
