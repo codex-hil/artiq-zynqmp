@@ -1,0 +1,31 @@
+{
+  "status": "HOST_FULL_CANONICAL_SETUP_SLOT_QUEUE_MMIO_COMPOSITION_16_CASES_PASS",
+  "checks": [
+    "Actualupstream5replyfixtures andRustcontrol/canonicalpath/rank encoders, fixedreply/ACKCRC decode",
+    "Healthy7stageplanner: echo/RTtime/TSCAck/256paths+rank/status/buffer,259AUXcommits/260RXpops/16credits",
+    "All32hopbytes checked for eachcanonicaldestination, rankafter256paths, statusafterrankACK",
+    "MissingACK andbadCRC at routingstages0/127/255/256 stopbeforestatus/buffer, exactsend/pop/completed counts",
+    "Premature/wrong/missingTSCAck/statusDown/buffererror/linkdown controls retained",
+    "Consumedfulltable sender replay producesnoIO; terminalplanner cannot claimanotheraction",
+    "Earlier2packetsetup and1029fulltablefaultcases/otherhostregressionsPASS"
+  ],
+  "limits": [
+    "Test-onlyfixedone-linkstar setup orchestrated under stableexclusive mock bus, not productionservice/A53newcodeexecution",
+    "Mock receivepointerwrap/pop notphysicalring CDC/overflow/reset qualification",
+    "ACKsdo notprove satmanrouting capability/table application or TSC/remoteRTIO hardwarestate",
+    "Externalepochfreshness, lateACK/noIDs, productionpanic/recovery, timing/cabling remainOPEN",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Include checked control codec in isolated AArch64 library and run full canonical setup composition in QEMU with assertion/panic negatives; no target MMIO or production handler binding",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_master_full_setup_composition.c": "b2d142dc84bfab2d53c779a23e8b96e3ea90252d9cf4890749d1bf8fdb12e43c",
+    "diagnostics/drtio/aux_protocol/master_star_setup.h": "f427bf28d186b11fc163a922d3fae7bdf806913c2db327173947e1cd81955716",
+    "diagnostics/drtio/aux_protocol/master_rt_setup.h": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+    "diagnostics/drtio/aux_protocol/master_setup_sequence.h": "7fbe1f1d7fb14c1c5d628e5d4c8ccb7d5c2170efbb3fffe61cdda47c24b8716f",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "09f629643c67aba367b48fd09e9d34587f14c7990ec6b16ea21180d29359e75a",
+    "diagnostics/drtio/aux_protocol/master_control_codec.rs": "84f7be61588d9a835bc4f7bdb4428ca15c9cb9c91a33f0abd2fdde9f551c5587",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "6e8e78b1d60821e20701028b7d32771fa5827444b42238e0acbf1a8c2a3ce5e6",
+    "diagnostics/drtio/aux_protocol/main.rs": "123bcd04ec8a9ee4568423570a1eb62e002b07db42c825d697174dad4d653a3d",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "e509f181b8a108ce93bbbb131dd75a1fe0a0bd571a58bf41aa14796a939896a6"
+  }
+}
