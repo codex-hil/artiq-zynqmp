@@ -1,0 +1,31 @@
+{
+  "status": "HOST_ASYNC_CANONICAL_STAR_1033_CASES_ACTUAL_RUST_CODEC_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "checks": [
+    "256canonicalpaths thenrank1, actualRustencoding/strictRoutingAckCRC decode andfakeSRAMcanonicalhopchecks",
+    "Healthy257requests/commits/pops/completions in8730foregroundturns incl257CPU-onlyprepareturns; max1buscallback/turn",
+    "All257stages x4faults: missingACK,CRCflip,appliedcommiterror,synchronouscancel; no followingstage/replay/drain",
+    "Completion countedonlyafterdecode+successfulpopfence; lastbudgetunit success accepted",
+    "Budget8729 expiresafterfinalpop beforepublication:256completed,257pops, nokind/replay; budget1 expireswithoutbusIO",
+    "FinalpollACKdelay atstage0/256 succeedswith8734budget; fake management opportunityeachturn",
+    "FullnativeRust/C regressionincluding122AUXpending,69RTcomposition/workerdrain/codec testsPASS"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_async_star.h": "0bcf2fff7f7dc564cd640479ed73449e3dd776095b746fb9f9d88cb01040256a",
+    "diagnostics/drtio/aux_protocol/test_master_async_star.c": "d0f808b000bb3cbc6b96e00b566f206730f58063461731da00f6723ce73cc71f",
+    "diagnostics/drtio/aux_protocol/master_aux_pending.h": "68aeaae4923b22a4dd54482cd3a12720715d21ac001fe3b3a085ad9e3ed14fb1",
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_tx.h": "86b2fe872321666978f56a7ec74bf29d8e38fe1021ae170765a14af798afd818",
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_rx.h": "e9777a1377c6f1b10f4373562462f65854bd7afc4af58e041ff638918052e119",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "6e8e78b1d60821e20701028b7d32771fa5827444b42238e0acbf1a8c2a3ce5e6",
+    "diagnostics/drtio/aux_protocol/main.rs": "0f3a88913c2ac14c9c35cc3dbf973ab47cf3502e298224a1aeb07e8ce539d0e4",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "f88a4089a46b5f32ab915fc2fed2ab4c7bc513dadffaff44a827c3362a920c72"
+  },
+  "limits": [
+    "Nativeactualcodec/fakepeer/bus only, not AArch64execution, physicalring or realCPU0lwIPfairness",
+    "Onebuscallbackcount notelapsedtime/decoderpanic/hungAXI bound",
+    "RoutingAck hasnoID; validstale/duplicateACKs uncorrelated, ACKnotproofsatelliteappliedtable",
+    "Newasyncsender notlegacy mr_io callback; no runtime/default/firmware/HW changes"
+  ],
+  "next": "Compose asynccanonicalrouting with resumablecontrol/RT actions and foreground ownership in separate whole-setup coordinator; use explicit routing total-turn budget, no legacy synchronous callback substitution."
+}

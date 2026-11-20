@@ -733,5 +733,10 @@
     "status": "HOST_ASYNC_AUX_TX_RX_ACTUAL_RUST_CODEC_122_CASES_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-aux-pending/report.json",
     "next": "Compose asyncdriver into separate canonical256path+rank incremental sender, with completion only after decoded/released ACK and explicit total-step budget; retain no-retry/failure/cancel state."
+  },
+  "master_async_star_20261121": {
+    "status": "HOST_ASYNC_CANONICAL_STAR_1033_CASES_ACTUAL_RUST_CODEC_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-async-star/report.json",
+    "next": "Compose asynccanonicalrouting with resumablecontrol/RT actions and foreground ownership in separate whole-setup coordinator; use explicit routing total-turn budget, no legacy synchronous callback substitution."
   }
 }
