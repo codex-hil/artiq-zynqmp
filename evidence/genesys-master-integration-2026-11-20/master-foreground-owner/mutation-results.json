@@ -1,0 +1,29 @@
+{
+  "auto-release-success": {
+    "exit_code": -6,
+    "stderr": "test: test.c:26: main: Assertion `!mfo_setup_result(&g,first,1)&&g.state==MFO_HELD' failed.\n",
+    "mutated_header_sha256": "0609cdbb359c26f3098b4193e9003b184d1c1392e3d275faf7af828d57f0b40a",
+    "replacement": {
+      "old": "if(result==1)g->state=MFO_HELD;",
+      "new": "if(result==1)g->state=MFO_IDLE;"
+    }
+  },
+  "dispatch-through-reservation": {
+    "exit_code": -6,
+    "stderr": "test: test.c:19: main: Assertion `mfo_worker_dispatch(&g)==MFO_BUSY' failed.\n",
+    "mutated_header_sha256": "7e43039027f41d8415964f17f9f6c60925328054023e2a0868e264504cbd41fa",
+    "replacement": {
+      "old": "if(g->state!=MFO_IDLE)return MFO_BUSY;",
+      "new": "if(g->state!=MFO_IDLE&&g->state!=MFO_WAIT_MASTER)return MFO_BUSY;"
+    }
+  },
+  "drop-fault-ticket": {
+    "exit_code": -6,
+    "stderr": "test: test.c:35: main: Assertion `mfo_release_master(&g,g.ticket,7)==MFO_BUSY' failed.\n",
+    "mutated_header_sha256": "079378b061f74e82cfb54682a50e77a97ed4f69022e016e5b740da506fc497df",
+    "replacement": {
+      "old": "g->state=MFO_FAULT;g->error=",
+      "new": "g->state=MFO_FAULT;g->ticket=0;g->error="
+    }
+  }
+}

@@ -664,5 +664,10 @@
     "status": "OFFLINE_CPU0_FOREGROUND_SOURCE_MAP_COMPLETE_RUNTIME_NOT_ADMITTED",
     "report": "evidence/genesys-master-integration-2026-11-20/master-foreground-map/report.json",
     "next": "Prototype sole-owner foreground scheduling/worker-dispatch interlock in isolated host model; keep all target MMIO and production hooks disabled"
+  },
+  "master_foreground_owner_20261120": {
+    "status": "ISOLATED_FOREGROUND_OWNERSHIP_MODEL_115_CHECKS_AND_THREE_MUTANT_REFUSALS_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-foreground-owner/report.json",
+    "next": "Compose ownership gate with actual cooperative setup and mock worker dispatch; demonstrate no transport callback before grant or after fault, and no worker dispatch until explicit successful release"
   }
 }

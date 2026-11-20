@@ -1,0 +1,29 @@
+{
+  "status": "ISOLATED_FOREGROUND_OWNERSHIP_MODEL_115_CHECKS_AND_THREE_MUTANT_REFUSALS_PASS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "checks": [
+    "Worker reservation recorded before external command; master request blocks further worker dispatch while draining",
+    "Worker quiescence requires current ticket and explicit receipt before pending master can be granted",
+    "Master grant requires all three external obligations and precedes target bind/read",
+    "Pending setup holds reservation; success retains owner until explicit quiescent release",
+    "Cancellation in seven reachable phases retains owner/ticket; repeated fault preserves original error",
+    "Fault cannot release; fresh externally qualified strictly newer epoch required; monotonically increasing tickets reject stale completions and never wrap",
+    "Missing fresh/grant/release receipts rejected; unexpected positive setup outcome faults closed"
+  ],
+  "host_execution": "host-execution.log",
+  "mutations": "mutation-results.json",
+  "compile_command": "gcc -std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_master_foreground_owner.c -o OUTPUT/test",
+  "mutation_compile_flags": "-std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=undefined",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_foreground_owner.h": "244d94391bda7a3ab70a038aa0e71d380b9dea4b426490a47dfd2a05d263e9f5",
+    "diagnostics/drtio/aux_protocol/test_master_foreground_owner.c": "6c1b875e60d00296838b62462ac4c601cd9622113313995f75b9ebf303f987e5"
+  },
+  "limits": [
+    "Pure single-owner policy model: no worker mailbox handshake, MMIO, reset, scheduling or firmware hooks",
+    "Receipt masks are external caller obligations, never physical detection or proof; zero worker-state snapshot insufficient",
+    "All dispatch paths must participate before runtime use; current runtime has not been modified",
+    "No independent AXI/panic recovery or hardware admission qualification"
+  ],
+  "next": "Compose ownership gate with actual cooperative setup and mock worker dispatch; demonstrate no transport callback before grant or after fault, and no worker dispatch until explicit successful release"
+}
