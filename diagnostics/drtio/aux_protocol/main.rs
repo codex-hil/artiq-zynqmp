@@ -47,6 +47,7 @@ fn main() {
     test_master_control_codec::run();
     test_master_setup_composition();
     test_master_full_setup_composition();
+    test_master_setup_cooperative();
     test_master_star_table::run();
     assert_eq!(unsafe{master_star_setup_test()},0);
     println!("TEST MASTER_STAR_SETUP PASS");
@@ -196,3 +197,11 @@ fn test_master_full_setup_composition(){
 extern "C" {fn master_star_step_test()->i32;}
 
 extern "C" {fn master_cooperative_transport_test(ack:*const u8,n:usize)->i32;}
+
+extern "C" {fn master_setup_cooperative_test(frames:*const u8,length:usize)->i32;}
+fn test_master_setup_cooperative(){
+ let mut frames=Vec::new();
+ for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
+ assert_eq!(unsafe{master_setup_cooperative_test(frames.as_ptr(),frames.len())},0);
+ println!("TEST MASTER_SETUP_COOPERATIVE PASS");
+}

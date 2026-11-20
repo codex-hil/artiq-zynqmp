@@ -1,0 +1,31 @@
+{
+  "status": "HOST_WHOLE_SETUP_COOPERATIVE_COORDINATOR_22_SCENARIOS_PASS",
+  "checks": [
+    "Sevenstageplanner resumesincremental257requestrouting acrossforegroundcalls; maxoneactioncallback OR oneroutingstep/turn",
+    "Nonroute actions receive start1once thenpendingcalls start0; actualCbackends/genuineRustcontrol/route codecs used in fixture",
+    "Healthy522turns/259AUX/260RXpops, fakemanagementopportunitybetweenALLturns; measuredmax22mockbusops/turn",
+    "LateTSCAck onlastallowed thirdreceive succeeds in524turns, noRTretrigger",
+    "Inheritedmissing/premature/wrongTSCAck,Down,protocolerror/linkdown androutingCRC/timeoutcuts0/127/255/256 stopbeforedownstreamactions",
+    "CancelafterECHOsend androutingTXcuts keepsqueuedreply/commitattempt, terminalstepdoesnoIO; repeatedcancelpreservesoriginalfailurecode",
+    "Separate perphasebudget androutingtotal/perrequestbudgets avoidshorttimeouton257requestupload",
+    "Prior host1029stepper/tablefaultcases/fullsetup/control/bounds/MMIO/DDMA regressionsPASS"
+  ],
+  "limits": [
+    "Host-only coordinator/header not productionservice ornewAArch64execution",
+    "FakemanagementnotlwIPfairness/walltime; callbackcompletion/realAXIhang containment unqualified",
+    "SomeRTcallback executesboundedpollinsideonecall;22mockopsnotphysicaltimebound",
+    "Candidatecompletion latched, notcontinuouslinkhealth/admission; parentmustmonitor/revoke/cancel/reset underqualifiedownership",
+    "Epoch/ACKcorrelation, productionpanic/CPUroles, physicaltiming/cabling/restoration remainOPEN",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Compile and execute cooperative whole-setup coordinator fixture on AArch64 QEMU with22cases andfalse-turn-count/panic negatives, bindingELF/sourcehashes; no realruntime or hardware admission",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_setup_cooperative.h": "e30ccb62a74869daab1747b63c370e60d1cde80c3ae588adf085fcb534d375bb",
+    "diagnostics/drtio/aux_protocol/test_master_setup_cooperative.c": "be79cbf6cdc066dd0592b99ff4c99c73b34402897cac6917c8ca44fd8424bb5c",
+    "diagnostics/drtio/aux_protocol/master_star_step.h": "b55127f0a2eb563698f6083e384744a02069487dd600492fddaa9c913800c041",
+    "diagnostics/drtio/aux_protocol/master_setup_sequence.h": "7fbe1f1d7fb14c1c5d628e5d4c8ccb7d5c2170efbb3fffe61cdda47c24b8716f",
+    "diagnostics/drtio/aux_protocol/master_rt_setup.h": "bcf6ba1b37bc689bf6522a367a81a0c7a24ae8dd15d16e8cf4011219668b4a02",
+    "diagnostics/drtio/aux_protocol/main.rs": "eecc16ba248290f7c5e9476523a82497e170ff75e128d26a690a4fc671635788",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "305313aae2ba1d0e3c12c8b1e78432cb47ccff75e4feff1e6587a3e4d0361703"
+  }
+}
