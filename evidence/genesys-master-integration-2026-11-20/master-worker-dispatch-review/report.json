@@ -1,0 +1,20 @@
+{
+  "status": "OFFLINE_WORKER_DISPATCH_CLASSIFICATION_COMPLETE_NO_RUNTIME_HOOKS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "review": "source-review.json",
+  "inspector_sha256": "c9053a883022d7a93d3a4d69f391ce84d02cb4963cb6f21aa295e7553a69048b",
+  "findings": [
+    "8 current CPU0 command callsites classified: load/run vs RPC progress vs abandon vs exception recovery",
+    "Blanket command() denial during master drain could deadlock outstanding worker RPC; only new-work admission is blocked while required same-owner progress continues",
+    "Neither command5 nor command6 nor busy=0 establishes worker quiescence or fresh ownership"
+  ],
+  "queued_foreground_target": {
+    "service": "genesys-foreground-build-20261120-v1.service",
+    "observed_status": "WAITING_FOR_SHARED_DELL_SLOT",
+    "attempt": 18,
+    "max_attempts": 90,
+    "target_executed": false
+  },
+  "next": "Monitor existing foreground target job without duplicate build; after success fetch/hash/QEMU. While waiting, prototype command-class policy from reviewed8sites without editing production runtime."
+}

@@ -1,0 +1,109 @@
+{
+  "status": "OFFLINE_WORKER_DISPATCH_CLASSIFICATION_COMPLETE_NO_RUNTIME_HOOKS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "source_sha256": {
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/2_firmware_a53/c/kernel_lwip.c": "57c9d2eb4438f4a92f63ce477b2444866ad1a8a781d1a455b6cdc7d0b83c4cac",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/3_kernel/src/lib.rs": "eed3546a4c960669e83b5cc2cd464ab08684b02e010706f4800d18f5339ed9be",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/boards/genesys_zu-5ev/3_kernel/src/kernel.rs": "c8ac334fbb9ed1c425cebd0e356ead0536d15505c7a31acac829e39797114655"
+  },
+  "call_sites": [
+    {
+      "operation": 5,
+      "line": 74,
+      "expression": "command(5,0)"
+    },
+    {
+      "operation": 2,
+      "line": 88,
+      "expression": "command(2,0)"
+    },
+    {
+      "operation": 1,
+      "line": 103,
+      "expression": "command(1,length)"
+    },
+    {
+      "operation": 4,
+      "line": 111,
+      "expression": "command(4,rpc_reply.expected)"
+    },
+    {
+      "operation": 7,
+      "line": 117,
+      "expression": "command(7,total)"
+    },
+    {
+      "operation": 5,
+      "line": 124,
+      "expression": "command(5,0)"
+    },
+    {
+      "operation": 6,
+      "line": 144,
+      "expression": "command(6,0)"
+    },
+    {
+      "operation": 3,
+      "line": 147,
+      "expression": "command(3,0)"
+    }
+  ],
+  "policy": [
+    {
+      "operation": 1,
+      "category": "NEW_WORK",
+      "purpose": "ELF load",
+      "obligation": "Reserve worker before command; refuse while master pending/active/held/fault"
+    },
+    {
+      "operation": 2,
+      "category": "NEW_WORK",
+      "purpose": "kernel run",
+      "obligation": "Reserve worker before command; refuse while master pending/active/held/fault"
+    },
+    {
+      "operation": 3,
+      "category": "EXISTING_WORK_PROGRESS",
+      "purpose": "async RPC acknowledgement",
+      "obligation": "Only current worker ticket/epoch and expected RPC event; allow during draining"
+    },
+    {
+      "operation": 4,
+      "category": "EXISTING_WORK_PROGRESS",
+      "purpose": "synchronous RPC reply",
+      "obligation": "Only current worker ticket/epoch and expected RPC reply; allow during draining"
+    },
+    {
+      "operation": 5,
+      "category": "ABANDON_UNKNOWN",
+      "purpose": "connection loss/abort",
+      "obligation": "Not quiescence or stop acknowledgement; preserve owner and fault until external reconciliation"
+    },
+    {
+      "operation": 6,
+      "category": "EXISTING_WORK_RECOVERY",
+      "purpose": "uncaught exception recovery",
+      "obligation": "Only current worker exception/recovery phase; preserve ownership until separately qualified fresh READY/quiescence"
+    },
+    {
+      "operation": 7,
+      "category": "EXISTING_WORK_PROGRESS",
+      "purpose": "RPC exception reply",
+      "obligation": "Only current worker ticket/epoch and expected RPC exception; allow during draining"
+    }
+  ],
+  "decisions": [
+    "Do not blindly interlock all command() calls: blocking RPC completion during draining can deadlock worker retirement",
+    "New-work admission and existing-work progress need distinct policy checks, both validated against current ticket/epoch",
+    "No automatic grant on busy=0, RPC reply, cancel command5, exception command6, loaded status or stale READY event",
+    "Command5 does not imply preemption of running CPU1; command6 is exception-phase protocol, not general reset/stop",
+    "Keep cache/mailbox publication unchanged until complete dispatch-path integration reviewed"
+  ],
+  "limits": [
+    "Source classification only; no command guard implemented or task quiescence proved",
+    "Existing gate models new dispatch only; progress/recovery classifier and phase evidence still required",
+    "Target ownership-composition build remains separate queued job"
+  ],
+  "next_safe_offline": "Prototype command-class policy with same-ticket RPC progress allowed during draining, new work denied, and cancellation/recovery unable to fabricate quiescence"
+}
