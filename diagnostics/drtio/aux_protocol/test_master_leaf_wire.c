@@ -178,3 +178,11 @@ int master_control_wire_test(const uint8_t *packet,size_t n,uint32_t kind){
  assert(aux_master_control_encode(0x20,1,out,sizeof(out))==8&&out[0]==0x20&&out[1]==1);
  return 0;
 }
+
+int master_star_wire_test(uint32_t destination,const uint8_t *expected,size_t n){
+ uint8_t b[48];for(unsigned i=0;i<48;i++)b[i]=0xa5;
+ assert(n==40&&aux_master_star_path_encode(destination,b,40)==40);
+ for(unsigned i=0;i<40;i++)assert(b[i]==expected[i]);
+ for(unsigned i=40;i<48;i++)assert(b[i]==0xa5);
+ return 0;
+}

@@ -1,0 +1,32 @@
+{
+  "status": "CANONICAL_UPSTREAM_STAR_ONE_LINK_256_PATH_ENCODINGS_HOST_C_ABI_PASS",
+  "findings": [
+    "Pinned upstream default_master(1) initializes256x32 hops toINVALID0xff, then dest0hop0=0,dest1hop0=1/hop1=0",
+    "Rank0 master: dest0local,dest1link1; rank1 satellite: dest0upstream,dest1local; allotherentriesinvalid",
+    "Prior experimental dest1 encoder useszero-tail andomitsallotherentries: validrestrictedrank1 leaf intent, not canonicalfulltable or stale-peer-state replacement",
+    "Upstream sendsall256paths thenrank1; satman sets_hops each,rankenablesall interconnectentries",
+    "Without has_drtio_routing satman ACKspath/rank without applyingtable; ACK alone notcapabilityproof"
+  ],
+  "checks": [
+    "New separate aux_master_star_path_encode destination0..255 usesunchangedupstreamPacket serialization",
+    "All256entries comparebyte-exact against source-pinned default-table algorithm andupstreamcodec, decode-roundtrip andactualCcaller equality",
+    "Exact40bytecapacity/suffixcanaries/invaliddestination/null/capacity casesPASS",
+    "Previous fixedleaf/control/setup/route/bounds/DDMA regressionsPASS; legacyencoder untouched"
+  ],
+  "limits": [
+    "Source/defaultalgorithm model andcodec tests, notexecutedupstreamfirmware/routingCSR orpeerproof",
+    "Newencoder notyetusedbyexistingtwo-packetroute orchestration",
+    "Full257transaction upload budget/ownership/failurebehavior notyetimplemented",
+    "No firmware/HW/default/XDC changes"
+  ],
+  "next_safe_offline": "Implement isolated bounded full-table sender for256canonicalpath requests thenrank1, matching oneACK each, no replay/automatic retry, exhaustive stage fault controls before setup composition",
+  "source_sha256": {
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/libboard_artiq/drtio_routing.rs": "bdb54004ffc16ecc6b75f3abb3cefc5081a796548c90241d335312990c64a39d",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/satman/main.rs": "1cb6c5c76a1fce9e3733aa09b15a020fefc0bc1124e487f82c04edfd3d032f1c",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/satman/routing.rs": "9830bb3ccb4a832b06fcf06df56f9b23cde6f709c729e6e5918d658a8e269879",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "6e8e78b1d60821e20701028b7d32771fa5827444b42238e0acbf1a8c2a3ce5e6",
+    "diagnostics/drtio/aux_protocol/master_leaf_codec.h": "a1c5524a6947e74c19e080d171951cd94d91f4eb2c8090162ccf62c0b4476466",
+    "diagnostics/drtio/aux_protocol/test_master_star_table.rs": "708fe251c09c29ad9af44f61b73950c508f08dac2935aac267dfe1533a3b2152",
+    "diagnostics/drtio/aux_protocol/test_master_leaf_wire.c": "d4ea14a2e316417bf0be5c8839f9f7928e6db2f26884a389309d2935c23fb187"
+  }
+}

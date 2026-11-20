@@ -13,3 +13,9 @@ int32_t aux_master_leaf_encode(uint32_t kind,uint32_t value,uint8_t *buffer,size
 /* Exact8-byte RoutingAck envelope; returns0x32, -4 null/length, -1 CRC,
  * -2 wrong kind, -3 upstream decode error. No transaction correlation. */
 int32_t aux_master_routing_ack_decode(const uint8_t *buffer,size_t length);
+/* Canonical upstream default_master(1) path: destination0 [0,ff..],
+ * destination1 [1,0,ff..], destination2..255 [ff..]. Requires all256 entries
+ * before rank1 to replace unknown/stale peer table; this call sends nothing.
+ * Capacity40..1024, destination0..255. -4 null/capacity,-2 destination,-3 codec.
+ */
+int32_t aux_master_star_path_encode(uint32_t destination,uint8_t *buffer,size_t capacity);

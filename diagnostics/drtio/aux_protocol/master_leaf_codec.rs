@@ -41,3 +41,23 @@ pub unsafe extern "C" fn aux_master_routing_ack_decode(buffer:*const u8,length:u
         _=>-3,
     }
 }
+
+// Canonical upstream default_master(1) table entry, separate from legacy
+// experimental all-zero-tail leaf encoder. All256 destinations must be sent
+// before rank1 when stale peer routing state cannot otherwise be excluded.
+#[no_mangle]
+pub unsafe extern "C" fn aux_master_star_path_encode(destination:u32,buffer:*mut u8,capacity:usize)->i32 {
+ if buffer.is_null()||capacity<40||capacity>1024{return -4;}
+ if destination>255{return -2;}
+ let mut hops=[0xffu8;32];
+ if destination==0 {hops[0]=0;}
+ if destination==1 {hops[0]=1;hops[1]=0;}
+ let packet=Packet::RoutingSetPath{destination:destination as u8,hops:hops};
+ let mut writer=Cursor::new(slice::from_raw_parts_mut(buffer,capacity));
+ if packet.write_to(&mut writer).is_err(){return -3;}
+ let padding=(12-writer.position()%8)%8;
+ for _ in 0..padding{if writer.write_u8(0).is_err(){return -3;}}
+ let sum=crc::crc32::checksum_ieee(&writer.get_ref()[..writer.position()]);
+ if writer.write_u32(sum).is_err(){return -3;}
+ writer.position() as i32
+}

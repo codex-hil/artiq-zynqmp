@@ -24,7 +24,7 @@ def main():
     (out/'src/ddma_codec.rs').write_bytes(Path(__file__).with_name('ddma_codec.rs').read_bytes())
     (out/'src/master_leaf_codec.rs').write_bytes(Path(__file__).with_name('master_leaf_codec.rs').read_bytes())
     (out/'src/test_master_leaf_bounds.rs').write_bytes(Path(__file__).with_name('test_master_leaf_bounds.rs').read_bytes())
-    for name in ('master_control_codec.rs','test_master_control_codec.rs'):
+    for name in ('master_control_codec.rs','test_master_control_codec.rs','test_master_star_table.rs'):
         (out/'src'/name).write_bytes(Path(__file__).with_name(name).read_bytes())
     manifest='''[package]
 name="genesys-aux-reference-vectors"
@@ -62,10 +62,10 @@ io={path=IO_PATH,features=["byteorder"]}
     vectors={}
     for line in result.stdout.splitlines():
         if line.startswith('VECTOR '):_,name,data=line.split();vectors[name]=data
-    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout or 'TEST DDMA_C_ABI PASS' not in result.stdout or 'TEST MASTER_LEAF_C_ABI PASS' not in result.stdout or 'TEST MASTER_ROUTE_SETUP_MOCK PASS' not in result.stdout or 'TEST MASTER_ROUTE_WIRE PASS' not in result.stdout or 'TEST MASTER_ACK_SLOT PASS' not in result.stdout or 'TEST MASTER_ROUTE_QUEUE PASS' not in result.stdout or 'TEST MASTER_FULL_MMIO_ROUTE PASS' not in result.stdout or 'TEST MASTER_LEAF_BOUNDS PASS' not in result.stdout or 'TEST MASTER_CONTROL_CODEC PASS' not in result.stdout or 'TEST MASTER_SETUP_COMPOSITION PASS' not in result.stdout:
+    if len(vectors)!=7 or 'TEST UPSTREAM_AUX_CODEC PASS' not in result.stdout or 'TEST DDMA_C_ABI PASS' not in result.stdout or 'TEST MASTER_LEAF_C_ABI PASS' not in result.stdout or 'TEST MASTER_ROUTE_SETUP_MOCK PASS' not in result.stdout or 'TEST MASTER_ROUTE_WIRE PASS' not in result.stdout or 'TEST MASTER_ACK_SLOT PASS' not in result.stdout or 'TEST MASTER_ROUTE_QUEUE PASS' not in result.stdout or 'TEST MASTER_FULL_MMIO_ROUTE PASS' not in result.stdout or 'TEST MASTER_LEAF_BOUNDS PASS' not in result.stdout or 'TEST MASTER_CONTROL_CODEC PASS' not in result.stdout or 'TEST MASTER_SETUP_COMPOSITION PASS' not in result.stdout or 'TEST MASTER_STAR_TABLE PASS' not in result.stdout:
         raise RuntimeError('Missing upstream acceptance output')
     evidence={'kind':'HOST_CODEC_TEST_NOT_FIRMWARE_OR_HARDWARE','status':'PASS',
-        'vectors':vectors,'master_setup_composition':'PASS','master_control_codec':'PASS','master_leaf_bounds':'PASS','master_full_mmio_route':'PASS','master_route_queue':'PASS','master_ack_slot':'PASS','master_route_wire':'PASS_DUPLICATE_ACK_UNCORRELATED','master_route_setup_mock':'PASS','master_leaf_c_abi':'PASS','master_leaf_codec_sha256':hashlib.sha256(source.with_name('master_leaf_codec.rs').read_bytes()).hexdigest(),'ddma_c_abi':'PASS','ddma_wire_service':'PASS',
+        'vectors':vectors,'master_star_table':'PASS','master_setup_composition':'PASS','master_control_codec':'PASS','master_leaf_bounds':'PASS','master_full_mmio_route':'PASS','master_route_queue':'PASS','master_ack_slot':'PASS','master_route_wire':'PASS_DUPLICATE_ACK_UNCORRELATED','master_route_setup_mock':'PASS','master_leaf_c_abi':'PASS','master_leaf_codec_sha256':hashlib.sha256(source.with_name('master_leaf_codec.rs').read_bytes()).hexdigest(),'ddma_c_abi':'PASS','ddma_wire_service':'PASS',
         'ddma_wire_sha256':hashlib.sha256(source.with_name('test_ddma_wire.c').read_bytes()).hexdigest(),
         'ddma_codec_sha256':hashlib.sha256(source.with_name('ddma_codec.rs').read_bytes()).hexdigest(),'source_revision':subprocess.check_output(['git','-C',str(a.artiq_source),'rev-parse','HEAD'],text=True).strip(),
         'upstream_protocol_sha256':hashlib.sha256(proto.read_bytes()).hexdigest(),

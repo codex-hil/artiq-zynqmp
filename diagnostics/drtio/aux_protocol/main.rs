@@ -46,6 +46,7 @@ fn main() {
     test_master_leaf_bounds::run();
     test_master_control_codec::run();
     test_master_setup_composition();
+    test_master_star_table::run();
     let cases = [("echo_request", Packet::EchoRequest),
                  ("echo_reply", Packet::EchoReply),
                  ("reset_request", Packet::ResetRequest),
@@ -171,3 +172,5 @@ fn test_master_setup_composition(){
  assert_eq!(unsafe{master_setup_composition_test(frames.as_ptr(),frames.len())},0);
  println!("TEST MASTER_SETUP_COMPOSITION PASS");
 }
+
+mod test_master_star_table;
