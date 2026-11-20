@@ -1,0 +1,26 @@
+{
+  "block-progress-during-drain": {
+    "exit_code": -6,
+    "stderr": "test: test.c:12: main: Assertion `!mwp_arm(&reply,&g,ticket,1,1,(enum mwp_phase)phase,1)' failed.\n",
+    "replacement": {
+      "old": "(g->state==MFO_WORKER||g->state==MFO_DRAINING)",
+      "new": "(g->state==MFO_WORKER)"
+    }
+  },
+  "allow-new-work-during-drain": {
+    "exit_code": -6,
+    "stderr": "test: test.c:17: main: Assertion `mwp_new_work(&g,1)==MFO_BUSY&&mwp_new_work(&g,2)==MFO_BUSY' failed.\n",
+    "replacement": {
+      "old": "return mfo_worker_dispatch(g);",
+      "new": "return g&&g->state==MFO_DRAINING?0:mfo_worker_dispatch(g);"
+    }
+  },
+  "repeat-consumed-reply": {
+    "exit_code": -6,
+    "stderr": "test: test.c:18: main: Assertion `mwp_progress_once(&reply,&g,command)==MFO_INVALID' failed.\n",
+    "replacement": {
+      "old": "!r->armed||r->attempted||",
+      "new": "!r->armed||"
+    }
+  }
+}
