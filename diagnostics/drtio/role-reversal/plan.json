@@ -713,5 +713,10 @@
     "status": "RESUMABLE_AARCH64_69_CASE_HARNESS_READY_NATIVE_REGRESSION_PASS_BUILD_QUEUED",
     "report": "evidence/genesys-master-integration-2026-11-20/master-resumable-emulation/report.json",
     "next": "Read existingqueuedjobstatus; afterBUILD_PASS fetch3ELFs/hashes/noUndefined, verifyfrozeninputs then run --resumable --expected-hashes; do notduplicateactivebuild"
+  },
+  "master_resumable_target_execution_20261120": {
+    "status": "AARCH64_RESUMABLE_FOREGROUND_SETUP_69_CASES_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-resumable-target-execution/report.json",
+    "next": "Audit remaining AUX send/receive callback operation counts and state ownership; prepare isolated resumable AUX backend without changing production MMIO mappings or hardware defaults."
   }
 }

@@ -1,0 +1,26 @@
+{
+  "status": "AARCH64_RESUMABLE_FOREGROUND_SETUP_69_CASES_PASS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "source_harness_commit": "d060507",
+  "inputs": "evidence/genesys-master-integration-2026-11-20/master-resumable-emulation/input-sha256.txt",
+  "input_manifest_sha256": "519af09cc547d23c042818ef3ecce8566400d36f380170612396803707c7524c",
+  "build": "queued-attempt-009.log",
+  "execution": "execution-results.json",
+  "checks": [
+    "Actual Cortex-A53 QEMU69resumableRT/foregroundownership/setup cases+11334codec calls PASS",
+    "Healthy550turns,lateTSCAck552, RTactions max1read/write/fencecallbackperturn",
+    "30RTcallbackfailures+30synchronouscancellations andshortbudget/native controls run unchanged fromhost harness",
+    "False549turn assertion exits99 beforePASS; forced testpanic101/noPASS",
+    "Frozeninputs matchcompiled/currentrelevantsources/archive;3ELFnoUndefined/preexecutionhashchecksPASS"
+  ],
+  "supersedes_pending": "../master-resumable-emulation/report.json",
+  "limits": [
+    "Linux-user/mockbus/peer/explicitownershipreceipts only; no currentworker mailbox/productionruntime wiring",
+    "Onecallback/turn appliesRTactions only; AUXsend/receive stillmulti-MMIO callback andprofilebind notresumable",
+    "Countbound notelapsedtime/lwIPfairness/hungAXIcontainment; forcedpanic notrealpanic/exceptionrecovery",
+    "Newworker RPC-drain8streams/progresspolicy437checks remainhost-only; notexecuted bythisharness",
+    "NoHW/default/firmwarechanges; timing/CDC,physicalcabling/restoration/peerapply andindependentrecovery gatesstillopen"
+  ],
+  "next": "Audit remaining AUX send/receive callback operation counts and state ownership; prepare isolated resumable AUX backend without changing production MMIO mappings or hardware defaults."
+}
