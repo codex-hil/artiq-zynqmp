@@ -1,0 +1,24 @@
+{
+  "scope": "Source review of legacy callbacks; normal immediate-ready/no-error path, callback counts not elapsed time",
+  "legacy_direct_send": "n/4+10 callbacks for aligned n4..1024, plus up tobudget-1 extra reads at each of2busy polls",
+  "queue_checked_send": "n/4+12 callbacks, includes duplicate nondestructive RX precheck; no delayedduplicate proof",
+  "fixed_reply_receive": {
+    "empty": 2,
+    "acquire_present": 7,
+    "release": 5,
+    "complete": 12,
+    "decode": "CPU-only strict8byte envelope, not copied1024bytepacket/received-length proof"
+  },
+  "resumable_tx_normal_turns": {
+    "8bytes": 12,
+    "40bytes": 20,
+    "1024bytes": 266
+  },
+  "ownership_obligations": [
+    "Private packet copy across yields, one active owner/session over entire link epoch",
+    "Record commit attempt before TXbusy write; failure may have applied, never retry",
+    "Error/cancel poisons transport and preserves attempted state; no drain or automatic reset",
+    "Future resumable RX must hold software slot/pointer lease over yields, validate before exactlyoncepop; old acquire/release callbacks cannot be treated as one MMIO operation",
+    "No target/hardware epoch qualification or hungAXI containment from identity/emptyqueue/poll counts"
+  ]
+}

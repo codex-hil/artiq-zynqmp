@@ -718,5 +718,10 @@
     "status": "AARCH64_RESUMABLE_FOREGROUND_SETUP_69_CASES_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-resumable-target-execution/report.json",
     "next": "Audit remaining AUX send/receive callback operation counts and state ownership; prepare isolated resumable AUX backend without changing production MMIO mappings or hardware defaults."
+  },
+  "master_aux_resumable_tx_20261120": {
+    "status": "HOST_RESUMABLE_AUX_TX_620_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-aux-resumable-tx/report.json",
+    "next": "Implement isolated resumable fixed-reply RX with private8byte snapshot, pointer/borrowed ownership checks and exactlyonce pop; fault/cancel must not replay release or publish decoded kind early."
   }
 }

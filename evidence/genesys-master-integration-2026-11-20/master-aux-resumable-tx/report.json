@@ -1,0 +1,28 @@
+{
+  "status": "HOST_RESUMABLE_AUX_TX_620_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "audit": "operation-audit.json",
+  "checks": [
+    "8/40/1024byte packets, every baselinecallbackfailure andsynchronouscancel, timeout/invalidbusy/backlog/error/lengthreadback/lastpoll controls",
+    "Max1read/write/fence perturn, normal12/20/266turns andlastpoll+4turns",
+    "Private ownedpacket immutable aftercallerchange, self-aliascopy supported; invalidlengths0..1025/reviewedepoch refusedwithoutIO/statechange",
+    "Commitintent beforewrite, possiblyappliedfailure no retry/cleanup; poisonedtransport, terminalnoIO andsessionnoreopen",
+    "Three mutantsrefused: missingcommitintent, ignoredcallbackcancel, extrafence inwrite turn"
+  ],
+  "compile_command": "gcc -std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_master_aux_resumable_tx.c -o OUTPUT/test",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_tx.h": "86b2fe872321666978f56a7ec74bf29d8e38fe1021ae170765a14af798afd818",
+    "diagnostics/drtio/aux_protocol/test_master_aux_resumable_tx.c": "1510e9c7adf506e7ceb71f684010bf604fd522a9dc4a8516daeb61ee9270d10a",
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "diagnostics/drtio/aux_protocol/master_ack_slot.h": "09f629643c67aba367b48fd09e9d34587f14c7990ec6b16ea21180d29359e75a",
+    "diagnostics/drtio/aux_protocol/master_route_queue.h": "840424ceb1f01666cc4e75e40cd5f3b59bddb7a730e3e72feb00a78bef559f30"
+  },
+  "limits": [
+    "Standalone native fakebusTX, not Rustcodec/queue/coordinator composition or targetexecution",
+    "Legacy transport/defaults unchanged, newTX-onlycandidate not active runtime",
+    "RX/profilebind/othercallbacks still multi-MMIO; copyCPUwork and singleAXIcallback timing unqualified",
+    "No hardware leases, board access, production hooks or firmwarechanges"
+  ],
+  "next": "Implement isolated resumable fixed-reply RX with private8byte snapshot, pointer/borrowed ownership checks and exactlyonce pop; fault/cancel must not replay release or publish decoded kind early."
+}
