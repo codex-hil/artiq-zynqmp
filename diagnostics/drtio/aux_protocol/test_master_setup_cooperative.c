@@ -73,7 +73,45 @@ static int action_step(void *ctx,enum ms_action action,unsigned start){
  default:assert(0);return -1;
  }
 }
+/* Synchronous cancellation from the sole owner's backend callback must win
+ * over pending/success/error, including the last routing ACK. No MMIO here. */
+struct cancel_context {struct msc_setup *session;unsigned calls;int result;};
+static int cancel_action(void *ctx,enum ms_action action,unsigned start){
+ struct cancel_context *c=ctx;(void)action;(void)start;c->calls++;
+ msc_cancel(c->session);return c->result;
+}
+static int cancel_send(void *ctx,const uint8_t *bytes,size_t length){
+ struct cancel_context *c=ctx;assert(bytes&&length);c->calls++;
+ msc_cancel(c->session);return c->result;
+}
+static int cancel_recv(void *ctx,uint32_t *kind){
+ struct cancel_context *c=ctx;c->calls++;*kind=0x32;
+ msc_cancel(c->session);return c->result;
+}
+static void cancellation_callback_test(void){
+ for(unsigned phase=0;phase<3;phase++)for(int result=-1;result<=1;result++){
+  struct msc_setup session;assert(msc_init_epoch(&session,3,3,1)==0);
+  struct cancel_context context={&session,0,result};
+  struct msc_io io={&context,cancel_action,{&context,cancel_send,cancel_recv}};
+  if(phase){session.plan.action=MS_ROUTING;}
+  if(phase==2){session.route.completed=256;session.route.send_attempts=257;
+   assert(mt_begin(&session.route.tx,0x31,3)==0);
+   assert(mt_tx_complete(&session.route.tx,1)==0);
+  }
+  assert(msc_step(&session,&io)==-100&&context.calls==1);
+  assert(session.plan.action==MS_FAILED&&session.plan.error==-100);
+  assert(session.route.completed==(phase==2?256u:0u));
+  unsigned attempts=session.route.send_attempts;
+  assert(msc_step(&session,&io)==-100&&context.calls==1);
+  msc_cancel(&session);assert(msc_step(&session,&io)==-100&&context.calls==1);
+  assert(session.route.send_attempts==attempts);
+ }
+ struct msi_table route;assert(msi_init_epoch(&route,3,1)==0);
+ assert(msi_fail(&route,MT_TIMEOUT)==MT_TIMEOUT);msi_cancel(&route);
+ assert(route.terminal==MT_TIMEOUT);
+}
 int master_setup_cooperative_test(const uint8_t *frames,size_t length){
+ cancellation_callback_test();
  assert(length==40);const unsigned cuts[4]={0,127,255,256};unsigned maximum=0;
  for(unsigned case_id=0;case_id<22;case_id++){
   unsigned mode=case_id<8?case_id:case_id<16?8+(case_id-8)/4:case_id==16?10:case_id==21?12:11;

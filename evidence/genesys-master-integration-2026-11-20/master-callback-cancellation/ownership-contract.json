@@ -1,0 +1,27 @@
+{
+  "kind": "SINGLE_FOREGROUND_OWNER_CALLBACK_CANCELLATION_CONTRACT",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "owner": [
+    "CPU0 foreground only; preserve lwIP management and CPU1 kernel/DMA roles",
+    "No concurrent/recursive step/init calls, ISR callbacks or callback mutation of coordinator/transaction fields",
+    "Only synchronous msc_cancel from callback is supported; cancellation takes precedence over any callback result",
+    "Cancellation is checked after send/recv before advancing transaction or completed count",
+    "Repeated cancel preserves original failure; attempted commit and queued response remain untouched",
+    "Initialize only for externally qualified fresh epoch; initialization itself cannot prove or create freshness",
+    "Cancellation cannot interrupt a hung MMIO access or reverse external side effects; independent recovery remains required"
+  ],
+  "new_checks": [
+    "Nine callback cancellation cases: action/send/final-ACK receive x pending/success/error",
+    "Terminal calls perform no callback; no final routing credit after cancelled ACK",
+    "Repeated routing cancellation preserves prior timeout",
+    "Previous coordinator and previous stepper each independently fail new ownership assertions"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_setup_cooperative.h": "8ba9bf311f041a3121dff52721eb3e9380cdc35e285eb94d817470dec5c6fc59",
+    "diagnostics/drtio/aux_protocol/master_star_step.h": "41c301208ca4c9df21fb145ecf9c69e7c60d3448c4f836f64b3bd0eecf4a8182",
+    "diagnostics/drtio/aux_protocol/test_master_setup_cooperative.c": "5425a033b706ab07e4a47c23002f58c677936182734bd9884fdffc0473a19dcc"
+  },
+  "prior_contract": "evidence/genesys-master-integration-2026-11-20/master-runtime-contract/integration-contract.json",
+  "prior_target_evidence_scope": "c5a9989 passed QEMU before this fix; does not qualify modified callbacks"
+}

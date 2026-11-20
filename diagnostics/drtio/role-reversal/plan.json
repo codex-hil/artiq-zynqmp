@@ -639,5 +639,10 @@
     "status": "AARCH64_COOPERATIVE_SETUP_22_CASES_PASS",
     "report": "evidence/genesys-master-integration-2026-11-20/master-setup-cooperative-emulation/report.json",
     "next": "Audit coordinator callback ownership/cancellation and runtime integration contract against target evidence; no hardware admission"
+  },
+  "master_callback_cancellation_20261120": {
+    "status": "CALLBACK_CANCELLATION_HOST_REGRESSION_AND_TWO_MUTANT_REFUSALS_PASS_TARGET_PENDING",
+    "report": "evidence/genesys-master-integration-2026-11-20/master-callback-cancellation/report.json",
+    "next": "Build frozen staged job when shared Dell slot available; execute normal/assert99/panic101 QEMU variants with ELF hashes before further integration"
   }
 }

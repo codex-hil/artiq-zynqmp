@@ -6,6 +6,9 @@
  * step per foreground turn. Nonrouting callback receives start1 once, then0;
  * returns0 pending,1 qualified candidate completion,negative error. It MUST NOT
  * reissue external operations on pending calls. No wall-time/AXI-hang bound.
+ * Single foreground owner, no concurrent or recursive step/init calls. Callbacks
+ * may request cancellation synchronously; cancellation wins over their result.
+ * Initialize only after externally qualified fresh epoch, never to clear failure.
  * Routing has its own per-request budget, not the short phase budget.
  */
 struct msc_io {void *ctx;int (*action_step)(void *,enum ms_action,unsigned);struct mr_io route;};
@@ -28,6 +31,7 @@ static inline int msc_step(struct msc_setup *s,const struct msc_io *io){
   if(result==0&&s->routing_turns_left)return 0;
   if(result==0)result=MT_TIMEOUT;
  }else result=io->action_step(io->ctx,s->plan.action,start);
+ if(s->plan.action==MS_FAILED)return s->plan.error;
  int error=ms_result(&s->plan,result);
  if(error){if(!s->route.terminal)msi_cancel(&s->route);return error;}
  return s->plan.action==MS_COMPLETE?1:0;

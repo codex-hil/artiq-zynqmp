@@ -1,0 +1,14 @@
+{
+  "current": {
+    "exit_code": 0,
+    "output": ""
+  },
+  "old-coordinator": {
+    "exit_code": -6,
+    "output": "test: test.c:101: cancellation_callback_test: Assertion `msc_step(&session,&io)==-100&&context.calls==1' failed.\n"
+  },
+  "old-stepper": {
+    "exit_code": -6,
+    "output": "test: test.c:101: cancellation_callback_test: Assertion `msc_step(&session,&io)==-100&&context.calls==1' failed.\n"
+  }
+}

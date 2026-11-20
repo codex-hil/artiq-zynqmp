@@ -1,0 +1,15 @@
+{
+  "status": "CALLBACK_CANCELLATION_HOST_REGRESSION_AND_TWO_MUTANT_REFUSALS_PASS_TARGET_PENDING",
+  "hardware_admitted": false,
+  "contract": "ownership-contract.json",
+  "native_tests": "host-results.json",
+  "mutation_tests": "mutation-results.json",
+  "mutation_limits": "Dedicated ownership-only driver uses codec stubs and UBSan; full native suite separately uses genuine Rust codecs",
+  "target_status": "NOT_RUN: three nonblocking Dell slot attempts returned75 busy; no build was started",
+  "dell_staged_job": "/srv/nvme-fast-1/vivado-work/genesys-callback-cancel-emulation-20261120-v1",
+  "next": "Build frozen staged job when shared Dell slot available; execute normal/assert99/panic101 QEMU variants with ELF hashes before further integration",
+  "limits": [
+    "No runtime admission, real scheduling/AXI/panic proof or HW changes",
+    "Synchronous cancellation does not abort external operation already in callback"
+  ]
+}

@@ -24,15 +24,19 @@ static inline int msi_step(struct msi_table *s,const struct mr_io *io){
   if(n<=0)return msi_fail(s,MT_INVALID);
   int r=mt_begin(&s->tx,stage<256?0x30:0x31,s->budget);if(r)return msi_fail(s,r);
   s->send_attempts++;
-  r=mt_tx_complete(&s->tx,io->send(io->ctx,bytes,(size_t)n)==0);
+  int sent=io->send(io->ctx,bytes,(size_t)n);
+  if(s->terminal)return s->terminal;
+  r=mt_tx_complete(&s->tx,sent==0);
   return r?msi_fail(s,r):0;
  }
  if(s->tx.state==MT_WAIT){
-  uint32_t kind=0;int packet=io->recv(io->ctx,&kind);int r=mt_poll(&s->tx,packet,kind);
+  uint32_t kind=0;int packet=io->recv(io->ctx,&kind);
+  if(s->terminal)return s->terminal;
+  int r=mt_poll(&s->tx,packet,kind);
   if(r)return msi_fail(s,r);
   if(s->tx.state==MT_DONE&&++s->completed==257){s->terminal=1;return 1;}
   return 0;
  }
  return msi_fail(s,MT_INVALID);
 }
-static inline void msi_cancel(struct msi_table *s){if(s&&s->initialized)msi_fail(s,MT_IO);}
+static inline void msi_cancel(struct msi_table *s){if(s&&s->initialized&&s->terminal>=0)msi_fail(s,MT_IO);}
