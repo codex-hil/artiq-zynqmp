@@ -1,0 +1,26 @@
+{
+  "status": "CALLBACK_ONLY_AUX_MMIO_TRANSPORT_42_SCENARIOS_ASAN_UBSAN_PASS",
+  "checks": [
+    "Header CSR constants match generated candidate AUX map",
+    "Explicit caller-reviewed map/owner/epoch declaration plus identity/finewidth/frequency readback; wrong identity/declaration refused",
+    "TX validates aligned length4..1024, exact SRAM writes/fences/byte length readback, commit-attempt before commit write, bounded busy polls",
+    "All15 TX and15 RX path callbacks independently fail-injected, including side-effect-before-error commit/pop; poison prevents subsequent bus calls",
+    "RX pointer7 snapshot/wrap release, pointer8 rejected before SRAM; exactly one pop attempt, error/pointer/present changes before release refuse pop",
+    "Busy timeout/backlog/RXerror refuse transmission or acquisition without clearing flags",
+    "Full1024byte TX stays within actual TX SRAM, invalid lengths produce no IO"
+  ],
+  "limits": [
+    "Read/write/fence are host mocks only; no direct volatile/MMIO or board access",
+    "Caller-reviewed declaration not physical map/ownership/epoch proof; identity alone insufficient",
+    "RX snapshot copies fixed8byte ACK prefix, not arbitrary packet length; stable slot/overflow/reset race remains gateware contract",
+    "Poll limit does not bound a single callback or stuck CPU AXI access; independent management recovery remains mandatory",
+    "Late duplicate ACK freshness unresolved; no automatic retries/error clear/reinitialization after operational failure",
+    "No firmware linkage/default integration/XDC change"
+  ],
+  "next": "Compose callback MMIO transport with actual upstream encoder/ACK decoder, fixed-slot adapter and route queue; test end-to-end host fault paths before A53 object compilation",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+    "diagnostics/drtio/aux_protocol/test_master_aux_mmio.c": "01ea6f559c2e6f510030500adbe11487e123b79a2050076879678d1b86e4c514",
+    "evidence/genesys-master-integration-2026-11-20/master-aux-mmio/test.log": "562491fece695868763d754300639c0a33aab2eea171c8a4e3edc7816639239c"
+  }
+}
