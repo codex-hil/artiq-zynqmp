@@ -1,28 +1,20 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 // Isolated single-leaf master encoder candidate; not linked into firmware.
 use core::slice;
-use io::{Cursor, ProtoWrite};
-use protocol::Packet;
 
 // Only destination1 over port1/rank1 is admitted by this candidate contract.
 // Invalid arguments leave output untouched; caller supplies a valid writable buffer.
 #[no_mangle]
 pub unsafe extern "C" fn aux_master_leaf_encode(kind:u32,value:u32,buffer:*mut u8,capacity:usize)->i32 {
     if buffer.is_null() || capacity>1024 {return -4;}
-    let (packet,required)=match (kind,value) {
-        (0x30,1)=>{let mut hops=[0u8;32];hops[0]=1;
-            (Packet::RoutingSetPath{destination:1,hops:hops},40)},
-        (0x31,1)=>(Packet::RoutingSetRank{rank:1},8),
-        _=>return -2,
-    };
+    let required=match (kind,value) {(0x30,1)=>40,(0x31,1)=>8,_=>return -2};
     if capacity<required {return -4;}
-    let mut writer=Cursor::new(slice::from_raw_parts_mut(buffer,capacity));
-    if packet.write_to(&mut writer).is_err(){return -3;}
-    let padding=(12-writer.position()%8)%8;
-    for _ in 0..padding {if writer.write_u8(0).is_err(){return -3;}}
-    let checksum=crc::crc32::checksum_ieee(&writer.get_ref()[..writer.position()]);
-    if writer.write_u32(checksum).is_err(){return -3;}
-    writer.position() as i32
+    let bytes=slice::from_raw_parts_mut(buffer,required);
+    bytes.fill(0);bytes[0]=kind as u8;bytes[1]=1;
+    if kind==0x30 {bytes[2]=1;}
+    let checksum=crc::crc32::checksum_ieee(&bytes[..required-4]);
+    bytes[required-4..].copy_from_slice(&checksum.to_le_bytes());
+    required as i32
 }
 
 // Exact RoutingAck envelope only: length/CRC/kind are checked before accepting
@@ -48,15 +40,12 @@ pub unsafe extern "C" fn aux_master_routing_ack_decode(buffer:*const u8,length:u
 pub unsafe extern "C" fn aux_master_star_path_encode(destination:u32,buffer:*mut u8,capacity:usize)->i32 {
  if buffer.is_null()||capacity<40||capacity>1024{return -4;}
  if destination>255{return -2;}
- let mut hops=[0xffu8;32];
- if destination==0 {hops[0]=0;}
- if destination==1 {hops[0]=1;hops[1]=0;}
- let packet=Packet::RoutingSetPath{destination:destination as u8,hops:hops};
- let mut writer=Cursor::new(slice::from_raw_parts_mut(buffer,capacity));
- if packet.write_to(&mut writer).is_err(){return -3;}
- let padding=(12-writer.position()%8)%8;
- for _ in 0..padding{if writer.write_u8(0).is_err(){return -3;}}
- let sum=crc::crc32::checksum_ieee(&writer.get_ref()[..writer.position()]);
- if writer.write_u32(sum).is_err(){return -3;}
- writer.position() as i32
+ let bytes=slice::from_raw_parts_mut(buffer,40);
+ bytes.fill(0);bytes[0]=0x30;bytes[1]=destination as u8;
+ bytes[2..34].fill(0xff);
+ if destination==0 {bytes[2]=0;}
+ if destination==1 {bytes[2]=1;bytes[3]=0;}
+ let sum=crc::crc32::checksum_ieee(&bytes[..36]);
+ bytes[36..40].copy_from_slice(&sum.to_le_bytes());
+ 40
 }

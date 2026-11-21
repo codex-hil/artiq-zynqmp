@@ -46,6 +46,7 @@ fn main() {
     test_master_leaf_bounds::run();
     test_master_control_codec::run();
     test_master_fixed_decode_oracle::run();
+    test_master_encode_oracle::run();
     test_master_setup_composition();
     test_master_full_setup_composition();
     test_master_setup_cooperative();
@@ -279,3 +280,5 @@ fn test_master_static_caller(){
 }
 
 mod test_master_fixed_decode_oracle;
+
+mod test_master_encode_oracle;

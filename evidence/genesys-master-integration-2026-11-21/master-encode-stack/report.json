@@ -1,0 +1,27 @@
+{
+  "status": "FIXED_ENCODER_UPSTREAM_BYTE_ORACLE_NATIVE_AND_AARCH64_PASS",
+  "oracle_calls": 266760,
+  "all_canonical_destinations": 256,
+  "capacities_tested": "0..1025 inclusive; tail canary and invalid input unchanged",
+  "target_frame_bytes": {
+    "leaf": 32,
+    "star_path": 32,
+    "control": 32
+  },
+  "prior_frame_bytes": {
+    "leaf": 1104,
+    "star_path": 1088,
+    "control": 1088
+  },
+  "library_sha256": "130657792c0714fe82f4a2d20c649b23c1a7b4ba0aed1e416ad33fa5365b9839",
+  "native_full_regression": "PASS",
+  "qemu": "static caller and guarded24 cases PASS; 11334 codec calls per normal; assertion99 and forcedhook101",
+  "hardware_accessed": false,
+  "production_changed": false,
+  "limitations": [
+    "Entry frames are not complete stack high-water or IRQ/nesting proof",
+    "Linux-user QEMU only; no physical/runtime admission",
+    "Physical clock/cabling/recovery and real worker quiescence remain unqualified"
+  ],
+  "next": "Audit complete foreground callchain and IRQ stack budget after codec reductions; retain disabled production hooks and hardware hold."
+}

@@ -1,0 +1,9 @@
+master_aux_resumable_rx.h:24:19:mar_step	64	static
+master_rt_resumable.h:24:19:mrs_step	64	static
+master_aux_pending.h:31:19:map_step	80	static
+master_async_setup.h:29:19:mau_fail.constprop	0	static
+master_guarded_start.h:15:19:mfg_fail.constprop	16	static
+master_static_caller.c:4:5:mfc_begin	64	static
+master_static_caller.c:8:5:mfc_poll	128	static
+master_static_caller.c:9:5:mfc_cancel	0	static
+master_static_caller.c:10:5:mfc_snapshot	0	static

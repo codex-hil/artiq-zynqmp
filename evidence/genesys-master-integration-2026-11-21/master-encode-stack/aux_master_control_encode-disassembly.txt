@@ -1,0 +1,52 @@
+
+/srv/nvme-fast-1/vivado-work/genesys-encode-light-c-20261121-v1/static/codec-normal.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000403b44 <aux_master_control_encode>:
+  403b44:	2a0003e8 	mov	w8, w0
+  403b48:	12800060 	mov	w0, #0xfffffffc            	// #-4
+  403b4c:	b4000502 	cbz	x2, 403bec <aux_master_control_encode+0xa8>
+  403b50:	d1100469 	sub	x9, x3, #0x401
+  403b54:	b10fe53f 	cmn	x9, #0x3f9
+  403b58:	540004a3 	b.cc	403bec <aux_master_control_encode+0xa8>  // b.lo, b.ul, b.last
+  403b5c:	7100811f 	cmp	w8, #0x20
+  403b60:	540000a0 	b.eq	403b74 <aux_master_control_encode+0x30>  // b.none
+  403b64:	35000468 	cbnz	w8, 403bf0 <aux_master_control_encode+0xac>
+  403b68:	35000441 	cbnz	w1, 403bf0 <aux_master_control_encode+0xac>
+  403b6c:	aa1f03e8 	mov	x8, xzr
+  403b70:	14000004 	b	403b80 <aux_master_control_encode+0x3c>
+  403b74:	7100043f 	cmp	w1, #0x1
+  403b78:	540003c1 	b.ne	403bf0 <aux_master_control_encode+0xac>  // b.any
+  403b7c:	52802408 	mov	w8, #0x120                 	// #288
+  403b80:	f81e0ffe 	str	x30, [sp, #-32]!
+  403b84:	a9014ff4 	stp	x20, x19, [sp, #16]
+  403b88:	aa0203f3 	mov	x19, x2
+  403b8c:	aa0203e0 	mov	x0, x2
+  403b90:	39000048 	strb	w8, [x2]
+  403b94:	d348fd08 	lsr	x8, x8, #8
+  403b98:	52800081 	mov	w1, #0x4                   	// #4
+  403b9c:	38004e7f 	strb	wzr, [x19, #4]!
+  403ba0:	aa1303f4 	mov	x20, x19
+  403ba4:	39000c5f 	strb	wzr, [x2, #3]
+  403ba8:	3900085f 	strb	wzr, [x2, #2]
+  403bac:	3900067f 	strb	wzr, [x19, #1]
+  403bb0:	39000448 	strb	w8, [x2, #1]
+  403bb4:	38002e9f 	strb	wzr, [x20, #2]!
+  403bb8:	3900069f 	strb	wzr, [x20, #1]
+  403bbc:	9400013a 	bl	4040a4 <_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E>
+  403bc0:	2a0003e8 	mov	w8, w0
+  403bc4:	52800100 	mov	w0, #0x8                   	// #8
+  403bc8:	53187d09 	lsr	w9, w8, #24
+  403bcc:	39000268 	strb	w8, [x19]
+  403bd0:	53107d0a 	lsr	w10, w8, #16
+  403bd4:	53087d08 	lsr	w8, w8, #8
+  403bd8:	39000689 	strb	w9, [x20, #1]
+  403bdc:	3900028a 	strb	w10, [x20]
+  403be0:	39000668 	strb	w8, [x19, #1]
+  403be4:	a9414ff4 	ldp	x20, x19, [sp, #16]
+  403be8:	f84207fe 	ldr	x30, [sp], #32
+  403bec:	d65f03c0 	ret
+  403bf0:	12800020 	mov	w0, #0xfffffffe            	// #-2
+  403bf4:	d65f03c0 	ret

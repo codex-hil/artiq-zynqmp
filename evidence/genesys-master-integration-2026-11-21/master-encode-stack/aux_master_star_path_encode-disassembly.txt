@@ -1,0 +1,60 @@
+
+/srv/nvme-fast-1/vivado-work/genesys-encode-light-c-20261121-v1/static/codec-normal.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000403a70 <aux_master_star_path_encode>:
+  403a70:	2a0003e8 	mov	w8, w0
+  403a74:	12800060 	mov	w0, #0xfffffffc            	// #-4
+  403a78:	b4000641 	cbz	x1, 403b40 <aux_master_star_path_encode+0xd0>
+  403a7c:	d1100449 	sub	x9, x2, #0x401
+  403a80:	b10f653f 	cmn	x9, #0x3d9
+  403a84:	540005e3 	b.cc	403b40 <aux_master_star_path_encode+0xd0>  // b.lo, b.ul, b.last
+  403a88:	7103fd1f 	cmp	w8, #0xff
+  403a8c:	54000069 	b.ls	403a98 <aux_master_star_path_encode+0x28>  // b.plast
+  403a90:	12800020 	mov	w0, #0xfffffffe            	// #-2
+  403a94:	d65f03c0 	ret
+  403a98:	a9be57fe 	stp	x30, x21, [sp, #-32]!
+  403a9c:	52800609 	mov	w9, #0x30                  	// #48
+  403aa0:	a9014ff4 	stp	x20, x19, [sp, #16]
+  403aa4:	aa0103f4 	mov	x20, x1
+  403aa8:	39009c3f 	strb	wzr, [x1, #39]
+  403aac:	91000820 	add	x0, x1, #0x2
+  403ab0:	52800402 	mov	w2, #0x20                  	// #32
+  403ab4:	3900983f 	strb	wzr, [x1, #38]
+  403ab8:	12001d15 	and	w21, w8, #0xff
+  403abc:	2a0803f3 	mov	w19, w8
+  403ac0:	3900943f 	strb	wzr, [x1, #37]
+  403ac4:	3900903f 	strb	wzr, [x1, #36]
+  403ac8:	39008c3f 	strb	wzr, [x1, #35]
+  403acc:	3900883f 	strb	wzr, [x1, #34]
+  403ad0:	39000029 	strb	w9, [x1]
+  403ad4:	39000428 	strb	w8, [x1, #1]
+  403ad8:	52801fe1 	mov	w1, #0xff                  	// #255
+  403adc:	940004c3 	bl	404de8 <memset>
+  403ae0:	710006bf 	cmp	w21, #0x1
+  403ae4:	540000a0 	b.eq	403af8 <aux_master_star_path_encode+0x88>  // b.none
+  403ae8:	aa1403e0 	mov	x0, x20
+  403aec:	350000f3 	cbnz	w19, 403b08 <aux_master_star_path_encode+0x98>
+  403af0:	3800201f 	sturb	wzr, [x0, #2]
+  403af4:	14000005 	b	403b08 <aux_master_star_path_encode+0x98>
+  403af8:	52800028 	mov	w8, #0x1                   	// #1
+  403afc:	aa1403e0 	mov	x0, x20
+  403b00:	39000e9f 	strb	wzr, [x20, #3]
+  403b04:	39000a88 	strb	w8, [x20, #2]
+  403b08:	52800481 	mov	w1, #0x24                  	// #36
+  403b0c:	aa0003f3 	mov	x19, x0
+  403b10:	94000165 	bl	4040a4 <_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E>
+  403b14:	2a0003e8 	mov	w8, w0
+  403b18:	52800500 	mov	w0, #0x28                  	// #40
+  403b1c:	53187d09 	lsr	w9, w8, #24
+  403b20:	38024e68 	strb	w8, [x19, #36]!
+  403b24:	53107d0a 	lsr	w10, w8, #16
+  403b28:	53087d08 	lsr	w8, w8, #8
+  403b2c:	39000e69 	strb	w9, [x19, #3]
+  403b30:	39000a6a 	strb	w10, [x19, #2]
+  403b34:	39000668 	strb	w8, [x19, #1]
+  403b38:	a9414ff4 	ldp	x20, x19, [sp, #16]
+  403b3c:	a8c257fe 	ldp	x30, x21, [sp], #32
+  403b40:	d65f03c0 	ret

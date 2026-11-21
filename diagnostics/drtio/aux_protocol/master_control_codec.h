@@ -6,7 +6,7 @@
  * Both8byte envelopes, valid writable capacity8..1024. Invalid input unchanged.
  * Decode exact8byte EchoReply1,TSCAck4,DestinationDown0x21,DestinationOK0x22.
  * Other replies, ResetAck/routing/variable error payloads intentionally refused.
- * -4 null/length/capacity,-2 unsupported kind/value,-1 CRC,-3 upstream encode failure.
+ * -4 null/length/capacity,-2 unsupported kind/value,-1 CRC,-3 reserved legacy encode failure.
  * Decode uses payload-free fixed types; legacy parser -3 remains reserved.
  * Valid pointer ownership required; no statusUP/TSC/identity/ACK correlation proof.
  */

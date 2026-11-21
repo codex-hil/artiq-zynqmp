@@ -1,23 +1,16 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 // Checked basic master candidate; host/isolated target only, not firmware service.
 use core::slice;
-use io::{Cursor,ProtoWrite};
-use protocol::Packet;
 #[no_mangle]
 pub unsafe extern "C" fn aux_master_control_encode(kind:u32,value:u32,buffer:*mut u8,capacity:usize)->i32 {
  if buffer.is_null()||capacity<8||capacity>1024{return -4;}
- let packet=match(kind,value){
-  (0,0)=>Packet::EchoRequest,
-  (0x20,1)=>Packet::DestinationStatusRequest{destination:1},
-  _=>return -2,
- };
- let mut writer=Cursor::new(slice::from_raw_parts_mut(buffer,capacity));
- if packet.write_to(&mut writer).is_err(){return -3;}
- let padding=(12-writer.position()%8)%8;
- for _ in 0..padding{if writer.write_u8(0).is_err(){return -3;}}
- let sum=crc::crc32::checksum_ieee(&writer.get_ref()[..writer.position()]);
- if writer.write_u32(sum).is_err(){return -3;}
- writer.position() as i32
+ match(kind,value){(0,0)|(0x20,1)=>(),_=>return -2};
+ let bytes=slice::from_raw_parts_mut(buffer,8);
+ bytes.fill(0);bytes[0]=kind as u8;
+ if kind==0x20 {bytes[1]=1;}
+ let sum=crc::crc32::checksum_ieee(&bytes[..4]);
+ bytes[4..8].copy_from_slice(&sum.to_le_bytes());
+ 8
 }
 // Exact fixed replies only. TSC ACK is received; never encoded as a time-set.
 #[no_mangle]
