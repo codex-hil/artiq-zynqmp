@@ -768,5 +768,10 @@
     "status": "RETAINED_BSP_EL3_IRQ_FRAME_CONTEXT_AUDIT_PASS_TARGET_STILL_QUEUED",
     "report": "evidence/genesys-master-integration-2026-11-21/master-retained-stack-context/report.json",
     "next": "Keep existingfrozenjob active; afterBUILD_PASS fetchELFs/hashes/SU/layoutsymbols, run --guarded-start andstackinspector; do notduplicatebuild or inferstackreadiness fromretainedallocationalone."
+  },
+  "master_guarded_start_target_20261121": {
+    "status": "AARCH64_GUARDED_PROFILE_TO_SETUP_24_CASES_PASS_STACK_FRAMES_AUDITED",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-guarded-start-target/report.json",
+    "next": "Reduce large initializer copies in newguarded start andpendingrequest begin paths, preserve ownership/aliasing/failure semantics, rerun targetSU and QEMU; keep productionruntime unchanged"
   }
 }

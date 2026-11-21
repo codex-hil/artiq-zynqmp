@@ -1,0 +1,12 @@
+master_aux_resumable_rx.h:24:19:mar_step	64	static
+master_rt_resumable.h:24:19:mrs_step	64	static
+master_aux_pending.h:19:19:map_begin.constprop	2320	static
+master_aux_pending.h:30:19:map_step	80	static
+master_async_setup.h:29:19:mau_fail	0	static
+master_guarded_start.h:15:19:mfg_fail	16	static
+test_master_guarded_start.c:13:12:after_bus	32	static
+test_master_guarded_start.c:25:12:fence	48	static
+test_master_guarded_start.c:24:12:write_reg	80	static
+test_master_guarded_start.c:23:12:read_reg	48	static
+master_guarded_start.h:32:19:mfg_step	128	static
+test_master_guarded_start.c:26:5:master_guarded_start_test	14976	static

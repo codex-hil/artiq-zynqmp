@@ -1,0 +1,31 @@
+{
+  "status": "AARCH64_GUARDED_PROFILE_TO_SETUP_24_CASES_PASS_STACK_FRAMES_AUDITED",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "execution": "execution-results.json",
+  "stack": "stack-review.json",
+  "input_manifest": "../master-guarded-start-emulation/input-sha256.txt",
+  "checks": [
+    "24guardedfirstprofile-to-heldcompletioncases+11334codec actualCortex-A53QEMU PASS",
+    "Healthy8830turns/late8834/max1buscallbackfromfirstprofileaccess; identity/readerror/cancel/stalehandoff/claimloss controls",
+    "False8829turnassertion99/noPASS, forcedtestpanic101/noPASS",
+    "Frozencompiled/currentinput/archive matches,3ELFnoUndefined/preexecutionhashchecksPASS"
+  ],
+  "build_classification": {
+    "kind": "SmallsequentialCcrosscompilation/probe,noVivado/GHDL/ISE/Linuxbuild",
+    "policy_scope": "Rootinstructions/handoffs reserve sharedslots forheavy/Vivado jobs; prior use for thissmallCjob wasunnecessary",
+    "own_waiter": "genesys-guarded-start-build-20261121-v1.service stopped; nootherjob/lockmodified",
+    "remote_directory": "/srv/nvme-fast-1/vivado-work/genesys-guarded-start-light-c-20261121-v2",
+    "execution": "nice10,timeout120s, sequentialGCC",
+    "observed_wall_seconds": 2.4,
+    "observed_max_RSS_KiB": 48096,
+    "resources": "light-c-resource-usage.txt"
+  },
+  "supersedes_pending": "../master-guarded-start-emulation/report.json",
+  "limits": [
+    "Linux-user/fakepeer/MMIO/explicitgrantreceipts; notliveboardownership/clock/physicalqualification",
+    "IndividualtargetCframes notcompletecallchain/IRQ/Rusthighwaterproof; retainedEL/SP notcurrentobservation",
+    "No firmware/default/HWchanges orproductionstackresize"
+  ],
+  "next": "Reduce large initializer copies in newguarded start andpendingrequest begin paths, preserve ownership/aliasing/failure semantics, rerun targetSU and QEMU; keep productionruntime unchanged"
+}

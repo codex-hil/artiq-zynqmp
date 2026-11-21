@@ -1,0 +1,25 @@
+{
+  "status": "TARGET_FRAME_AUDIT_COMPLETE_RUNTIME_STACK_NOT_QUALIFIED",
+  "context_storage_bytes": 4880,
+  "target_C_frame_bytes": {
+    "mar_step": 64,
+    "mrs_step": 64,
+    "map_begin.constprop": 2320,
+    "mfg_begin": 4992,
+    "map_step": 80,
+    "mau_fail": 0,
+    "mfg_fail": 16,
+    "master_guarded_probe_begin": 0,
+    "master_guarded_probe_step": 128,
+    "master_guarded_probe_cancel": 16
+  },
+  "retained_EL3_bytes": 40960,
+  "retained_EL1_bytes": 2048,
+  "findings": [
+    "mfg_begin4992 andmap_begin2320 each exceedretainedEL1 allocation2048 beforecaller/IRQ/Rustframes",
+    "NoEL3 highwaterproof fromcomparing individualframes to40960; exactcallercontextobjectplacement/IRQ/nesting/librarycallgraph required",
+    "Testharness frame14976 is fixture allocation, NOT assertedproductionforegoundframe",
+    "Unlinkedlayoutprobe storage4880 notautomaticproductionstackplacement"
+  ],
+  "next": "Reduce large initializer copies in newguarded start andpendingrequest begin paths, preserve ownership/aliasing/failure semantics, rerun targetSU and QEMU; keep productionruntime unchanged"
+}
