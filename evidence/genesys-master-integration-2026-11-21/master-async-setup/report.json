@@ -1,0 +1,36 @@
+{
+  "status": "HOST_WHOLE_ASYNC_SETUP_27_CASES_ACTUAL_RUST_CODEC_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "checks": [
+    "All7phases: LINK,ECHO,TIME,spontaneousTSC_ACK,256paths+rank,STATUS,BUFFER; actualRust codecs/privateTX/RX/resumableRT",
+    "Healthy8827turns/259AUX/260pops/257routingcompletions/16credits; lateTSCAck8831turns",
+    "Maximum1busread/write/fencecallbackperturn AFTER alreadyqualifiedmm_bind; CPU-onlyprepare/decode turnsmayhave0",
+    "Fourcutpoints0/127/255/256 missingACK/CRC/cancel controls, premature/missing/wrongTSC/statusDOWN/buffererror controls",
+    "Actionbudget3stopsbeforeECHOcommit; routing8729failsafterfinalroutepopwithoutpublication; total8826stopsbeforecredits",
+    "Grantconsumedonce, ownershipretainedaftercomplete, explicitreleaseonly; oldsession afterownerchange/release doesnotpoisonnewtransport",
+    "Externalgatefault beforecancel preservesoriginal-99; postcompletioncancel revokescredits andretainsfaultownerwithoutIO",
+    "NativefullRust/C regression including1033asyncstar/122pending/69RTcomposition/workerdrain/codec testsPASS"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_async_setup.h": "8b549f73a792a24de6e5447f7140e1bc55c98f06475d97e41667c93570ca4ea6",
+    "diagnostics/drtio/aux_protocol/test_master_async_setup.c": "a2b76b472a4edbcfa2bd9d6bf4750e463d4c97c0925534e47bf4975f43b74fad",
+    "diagnostics/drtio/aux_protocol/master_async_star.h": "0bcf2fff7f7dc564cd640479ed73449e3dd776095b746fb9f9d88cb01040256a",
+    "diagnostics/drtio/aux_protocol/master_aux_pending.h": "68aeaae4923b22a4dd54482cd3a12720715d21ac001fe3b3a085ad9e3ed14fb1",
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_rx.h": "e9777a1377c6f1b10f4373562462f65854bd7afc4af58e041ff638918052e119",
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_tx.h": "86b2fe872321666978f56a7ec74bf29d8e38fe1021ae170765a14af798afd818",
+    "diagnostics/drtio/aux_protocol/master_rt_resumable.h": "c4258b07440ea041b3f313084f44e08ff58324b085f9427527d213caa1f898fb",
+    "diagnostics/drtio/aux_protocol/master_foreground_owner.h": "08ebb4dbefe4bec6bc7539faffe6cc55a226a70b2d87c1e4ac08793dee009822",
+    "diagnostics/drtio/aux_protocol/master_setup_mock_fixture.h": "b387d7f9ae2371742a930dd1b5a05f9c964460cdc37b520d8280d53708896853",
+    "diagnostics/drtio/aux_protocol/main.rs": "18d30d1815f06e4facd83b06395e3ac69e3b9568a0eee0de2a8f64d986c99e8d",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "ab00d9ffda88a0ff7fd9441c026c8b49e00e7aad1ef720d2e13c799a4c323f70"
+  },
+  "limits": [
+    "Nativeactualcodec/mockpeer/MMIO only; no AArch64execution ofnewwholeasyncsetup, no productionruntime/workerhandshake",
+    "mm_bind still3synchronousprofilereads andmustoccurundergrantexternally; max1claimstartswithstepafterbegin",
+    "Callbackcount notelapsedtime/lwIPfairness/hungAXI/codec-paniccontainment",
+    "Callerreceiptsnotphysicalownership, RoutingAcknotpeerapplyorvalidstaleACKcorrelationproof",
+    "No hardware/leases/power/default/firmwarechanges; physicaltiming/cabling/restoration gatesremainopen"
+  ],
+  "next": "Build isolated Cortex-A53 QEMU harness for27wholeasyncsetup cases with false-turn assertion99 and forcedpanic101 controls; freeze inputs/archive/ELFs and keep production runtime unchanged."
+}

@@ -738,5 +738,10 @@
     "status": "HOST_ASYNC_CANONICAL_STAR_1033_CASES_ACTUAL_RUST_CODEC_PASS",
     "report": "evidence/genesys-master-integration-2026-11-21/master-async-star/report.json",
     "next": "Compose asynccanonicalrouting with resumablecontrol/RT actions and foreground ownership in separate whole-setup coordinator; use explicit routing total-turn budget, no legacy synchronous callback substitution."
+  },
+  "master_async_setup_20261121": {
+    "status": "HOST_WHOLE_ASYNC_SETUP_27_CASES_ACTUAL_RUST_CODEC_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-async-setup/report.json",
+    "next": "Build isolated Cortex-A53 QEMU harness for27wholeasyncsetup cases with false-turn assertion99 and forcedpanic101 controls; freeze inputs/archive/ELFs and keep production runtime unchanged."
   }
 }
