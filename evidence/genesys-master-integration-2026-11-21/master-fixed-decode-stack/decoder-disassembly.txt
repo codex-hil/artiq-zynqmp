@@ -1,0 +1,41 @@
+
+/srv/nvme-fast-1/vivado-work/genesys-fixed-decode-light-c-20261121-v1/static/codec-normal.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000004053a0 <aux_master_control_decode>:
+  4053a0:	a9bf4ffe 	stp	x30, x19, [sp, #-16]!
+  4053a4:	aa0003f3 	mov	x19, x0
+  4053a8:	12800060 	mov	w0, #0xfffffffc            	// #-4
+  4053ac:	b4000353 	cbz	x19, 405414 <aux_master_control_decode+0x74>
+  4053b0:	f100203f 	cmp	x1, #0x8
+  4053b4:	54000301 	b.ne	405414 <aux_master_control_decode+0x74>  // b.any
+  4053b8:	aa1303e0 	mov	x0, x19
+  4053bc:	52800081 	mov	w1, #0x4                   	// #4
+  4053c0:	9400061a 	bl	406c28 <_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E>
+  4053c4:	39401268 	ldrb	w8, [x19, #4]
+  4053c8:	39401669 	ldrb	w9, [x19, #5]
+  4053cc:	2a092108 	orr	w8, w8, w9, lsl #8
+  4053d0:	39401a69 	ldrb	w9, [x19, #6]
+  4053d4:	2a094108 	orr	w8, w8, w9, lsl #16
+  4053d8:	39401e69 	ldrb	w9, [x19, #7]
+  4053dc:	2a096108 	orr	w8, w8, w9, lsl #24
+  4053e0:	6b08001f 	cmp	w0, w8
+  4053e4:	540001c1 	b.ne	40541c <aux_master_control_decode+0x7c>  // b.any
+  4053e8:	39400268 	ldrb	w8, [x19]
+  4053ec:	12800020 	mov	w0, #0xfffffffe            	// #-2
+  4053f0:	7100891f 	cmp	w8, #0x22
+  4053f4:	54000108 	b.hi	405414 <aux_master_control_decode+0x74>  // b.pmore
+  4053f8:	52800029 	mov	w9, #0x1                   	// #1
+  4053fc:	d280024a 	mov	x10, #0x12                  	// #18
+  405400:	9ac82129 	lsl	x9, x9, x8
+  405404:	f2c000ca 	movk	x10, #0x6, lsl #32
+  405408:	ea0a013f 	tst	x9, x10
+  40540c:	54000040 	b.eq	405414 <aux_master_control_decode+0x74>  // b.none
+  405410:	2a0803e0 	mov	w0, w8
+  405414:	a8c14ffe 	ldp	x30, x19, [sp], #16
+  405418:	d65f03c0 	ret
+  40541c:	12800000 	mov	w0, #0xffffffff            	// #-1
+  405420:	a8c14ffe 	ldp	x30, x19, [sp], #16
+  405424:	d65f03c0 	ret

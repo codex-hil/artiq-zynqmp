@@ -27,11 +27,7 @@ pub unsafe extern "C" fn aux_master_control_decode(buffer:*const u8,length:usize
  let expected=crc::crc32::checksum_ieee(&b[..4]);
  let actual=(b[4] as u32)|((b[5] as u32)<<8)|((b[6] as u32)<<16)|((b[7] as u32)<<24);
  if expected!=actual{return -1;}
- match b[0]{1|4|0x21|0x22=>(),_=>return -2};
- let mut reader=Cursor::new(b);
- match Packet::read_from(&mut reader){
-  Ok(Packet::EchoReply)=>1,Ok(Packet::TSCAck)=>4,
-  Ok(Packet::DestinationDownReply)=>0x21,Ok(Packet::DestinationOkReply)=>0x22,
-  _=>-3,
- }
+ // These four upstream reply variants have no payload. Do not instantiate
+ // the generic Packet enum after strict fixed-envelope validation.
+ match b[0]{1|4|0x21|0x22=>b[0] as i32,_=>-2}
 }

@@ -25,8 +25,8 @@ pub unsafe extern "C" fn aux_master_leaf_encode(kind:u32,value:u32,buffer:*mut u
     writer.position() as i32
 }
 
-// Exact RoutingAck envelope only. No variable-length upstream parser is entered
-// before checking length, CRC and kind; arbitrary packet variants are not accepted.
+// Exact RoutingAck envelope only: length/CRC/kind are checked before accepting
+// this payload-free variant; no generic Packet parser/allocation is needed.
 #[no_mangle]
 pub unsafe extern "C" fn aux_master_routing_ack_decode(buffer:*const u8,length:usize)->i32 {
     if buffer.is_null() || length!=8 {return -4;}
@@ -35,11 +35,10 @@ pub unsafe extern "C" fn aux_master_routing_ack_decode(buffer:*const u8,length:u
     let actual=(bytes[4] as u32)|((bytes[5] as u32)<<8)|((bytes[6] as u32)<<16)|((bytes[7] as u32)<<24);
     if expected!=actual {return -1;}
     if bytes[0]!=0x32 {return -2;}
-    let mut reader=Cursor::new(bytes);
-    match Packet::read_from(&mut reader) {
-        Ok(Packet::RoutingAck)=>0x32,
-        _=>-3,
-    }
+    // Upstream RoutingAck has no payload. Exact envelope/CRC/kind validation
+    // already determines it; avoid allocating the large generic Packet enum.
+    // Host oracle compares this fixed-type path with unchanged upstream decode.
+    0x32
 }
 
 // Canonical upstream default_master(1) table entry, separate from legacy

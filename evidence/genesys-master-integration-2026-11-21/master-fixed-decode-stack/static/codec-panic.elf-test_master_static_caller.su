@@ -1,0 +1,4 @@
+test_master_static_caller.c:15:12:fence	32	static
+test_master_static_caller.c:13:12:read_reg	48	static
+test_master_static_caller.c:14:12:write_reg	64	static
+test_master_static_caller.c:16:5:master_static_caller_test	176	static

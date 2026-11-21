@@ -1,0 +1,14 @@
+{
+  "status": "ISOLATED_AARCH64_RUST_LIBRARY_COMPILE_PASS_NOT_EXECUTED",
+  "library_sha256": "f3ff2086154a1c53f94c133a8718b585305b373efd4c08c474da87cad90aaab0",
+  "emit_stack_sizes": true,
+  "rustflags": " -Zemit-stack-sizes",
+  "toolchain": "1.87.0",
+  "source_sha256": {
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_leaf_target.rs": "e1a04d7916c53d4cdbe826f2e484abf766af59e0cb1271881a94222ba983d066",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_leaf_codec.rs": "5d99f137813788e95936415c0a4d6ef0e48ab7afd91b8a92a296aca2c2af4a97",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_control_codec.rs": "2f56f9db48140ce1fbf47d4578023f4dbd8367787f46a19dc6a932470ac97f27",
+    "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/firmware/libproto_artiq/drtioaux_proto.rs": "d9c2f34b78106347a85856e0b7c07dc898f2bd7f6c93da2bc86d66ba76ad4f9a",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/firmware.Cargo.lock": "e7391cb71d2643a249d0a56ecbec420955b1836a9a1878e2c8c1115b7ca794ae"
+  }
+}

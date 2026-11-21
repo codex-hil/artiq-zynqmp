@@ -11,7 +11,8 @@
  */
 int32_t aux_master_leaf_encode(uint32_t kind,uint32_t value,uint8_t *buffer,size_t capacity);
 /* Exact8-byte RoutingAck envelope; returns0x32, -4 null/length, -1 CRC,
- * -2 wrong kind, -3 upstream decode error. No transaction correlation. */
+ * -2 wrong kind; -3 reserved legacy parser error (validated fixed reply has no payload).
+ * No transaction correlation. */
 int32_t aux_master_routing_ack_decode(const uint8_t *buffer,size_t length);
 /* Canonical upstream default_master(1) path: destination0 [0,ff..],
  * destination1 [1,0,ff..], destination2..255 [ff..]. Requires all256 entries

@@ -45,6 +45,7 @@ fn main() {
     test_master_leaf_abi();
     test_master_leaf_bounds::run();
     test_master_control_codec::run();
+    test_master_fixed_decode_oracle::run();
     test_master_setup_composition();
     test_master_full_setup_composition();
     test_master_setup_cooperative();
@@ -276,3 +277,5 @@ fn test_master_static_caller(){
  assert_eq!(unsafe{master_static_caller_test(frames.as_ptr(),frames.len())},0);
  println!("TEST MASTER_STATIC_CALLER PASS");
 }
+
+mod test_master_fixed_decode_oracle;

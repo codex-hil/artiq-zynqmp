@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Compile and execute cooperative whole-setup coordinator fixture on AArch64 QEMU with22cases andfalse-turn-count/panic negatives, bindingELF/sourcehashes; no realruntime or hardware admission",
+  "next_safe_offline": "Reduce encoder enum stack with unchanged upstream byte oracle, then repeat native/AArch64 metadata and negative controls.",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -783,5 +783,10 @@
     "status": "STATIC_BSS_FOREGROUND_CALLER_NATIVE_AND_AARCH64_PASS_RUST_STACK_LOWER_BOUND_AUDITED",
     "report": "evidence/genesys-master-integration-2026-11-21/master-static-caller/report.json",
     "next": "Reduce fixed-reply Rust decoder stack while proving equivalence against unchanged upstream packet oracle; preserve CRC/kind/length/error semantics and rerun native/AArch64/stack metadata before runtime integration."
+  },
+  "master_fixed_decode_stack_20261121": {
+    "status": "FIXED_REPLY_DECODER_UPSTREAM_ORACLE_NATIVE_AND_AARCH64_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-fixed-decode-stack/report.json",
+    "next": "Reduce encoder enum stack with unchanged upstream byte oracle, then repeat native/AArch64 metadata and negative controls."
   }
 }
