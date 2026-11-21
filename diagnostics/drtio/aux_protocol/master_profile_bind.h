@@ -21,10 +21,20 @@ static inline int mmb_fail(struct mmb_session *s,int error){
  s->terminal=error<0?error:MMB_INVALID;s->destination->bound=0;s->destination->failed=1;
  mfo_fault(s->gate,s->terminal);return s->terminal;
 }
-static inline int mmb_begin(struct mmb_session *s,struct mfo_gate *g,uint64_t ticket,struct mm_transport *destination,const struct mm_bus *bus,uint32_t budget){
- if(!s||s->started||!g||!ticket||ticket!=g->ticket||g->state!=MFO_MASTER||g->owner!=MFO_MASTER_OWNER||!destination||destination->bound||destination->failed||destination->held||!bus||!bus->read||!bus->write||!bus->fence||!budget||budget>1024)return MMB_INVALID;
+/* Pure validation lets an enclosing owner validate before clearing its storage. */
+static inline int mmb_validate(struct mfo_gate *g,uint64_t ticket,const struct mm_transport *destination,const struct mm_bus *bus,uint32_t budget){
+ if(!g||!ticket||ticket!=g->ticket||g->state!=MFO_MASTER||g->owner!=MFO_MASTER_OWNER||!destination||destination->bound||destination->failed||destination->held||!bus||!bus->read||!bus->write||!bus->fence||!budget||budget>1024)return MMB_INVALID;
  if(g->profile_ticket==ticket||g->setup_ticket==ticket)return MMB_BUSY;
- *s=(struct mmb_session){.gate=g,.destination=destination,.candidate={.bus=*bus,.budget=budget},.ticket=ticket,.epoch=g->epoch,.started=1};
+ return 0;
+}
+static inline int mmb_begin(struct mmb_session *s,struct mfo_gate *g,uint64_t ticket,struct mm_transport *destination,const struct mm_bus *bus,uint32_t budget){
+ if(!s||s->started)return MMB_INVALID;
+ int valid=mmb_validate(g,ticket,destination,bus,budget);if(valid)return valid;
+ struct mm_bus bus_copy=*bus; /* May alias candidate.bus. */
+ unsigned char *storage=(unsigned char *)s;
+ for(size_t i=0;i<sizeof(*s);i++){storage[i]=0;}
+ s->gate=g;s->destination=destination;s->candidate.bus=bus_copy;s->candidate.budget=budget;
+ s->ticket=ticket;s->epoch=g->epoch;s->started=1;
  g->profile_ticket=ticket;return 0; /* Consume attempt before FIRST target read. */
 }
 static inline int mmb_cancel(struct mmb_session *s){return mmb_fail(s,MMB_CANCELLED);}

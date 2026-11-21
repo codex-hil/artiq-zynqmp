@@ -51,5 +51,12 @@ int main(void){
  assert(!f.calls);for(unsigned i=0;i<8;i++){s.bytes[i]=(uint8_t)(17+i);}
  assert(!mat_begin(&s,&mm,s.bytes,8,1));for(unsigned i=0;i<8;i++){assert(s.bytes[i]==17+i);}
  assert(!f.calls);mat_cancel(&s);assert(mat_step(&s)==MAT_CANCELLED&&!f.calls&&mm.failed);
+ for(unsigned direction=0;direction<2;direction++){
+  struct mat_session alias={0};struct fake alias_fake={.s=&alias};struct mm_transport transport={.bus={&alias_fake,read_reg,write_reg,fence},.bound=1,.budget=3};
+  unsigned char *source=(unsigned char *)&alias+offsetof(struct mat_session,bytes)+(direction?4:-4);
+  uint8_t expected[8];for(unsigned i=0;i<8;i++){source[i]=expected[i]=(uint8_t)(31+i);}
+  assert(!mat_begin(&alias,&transport,source,8,1));for(unsigned i=0;i<8;i++){assert(alias.bytes[i]==expected[i]);}
+  assert(!alias_fake.calls);
+ }
  printf("MASTER_AUX_RESUMABLE_TX_PASS cases=%u max_callbacks_per_turn=1\n",cases);return 0;
 }

@@ -26,7 +26,7 @@ static int write_reg(void *ctx,uint32_t a,uint32_t v){
 static int fence(void *ctx){return tick(ctx);}
 int master_aux_pending_test(const uint8_t *frames,size_t size){
  assert(size==40);unsigned cases=0;
- for(unsigned packet=0;packet<2;packet++)for(unsigned mode=0;mode<5;mode++){
+ for(unsigned packet=0;packet<2;packet++)for(unsigned mode=0;mode<6;mode++){
   /* Actual Rust canonical path40B or rank8B, fixed RoutingAck via strict Rust. */
   uint8_t encoded[40];int length=packet?aux_master_leaf_encode(0x31,1,encoded,sizeof(encoded)):aux_master_star_path_encode(1,encoded,sizeof(encoded));assert(length==(packet?8:40));
   unsigned normal=(unsigned)length/4+22; /* TX(words+10) +RX12bus, plus1decode-onlyturn. */
@@ -37,10 +37,12 @@ int master_aux_pending_test(const uint8_t *frames,size_t size){
    if(variant>normal){f.cancel_at=variant-normal;}
    struct mm_transport mm={.bus={&f,read_reg,write_reg,fence},.budget=3,.bound=1};
    ma_fixed_decoder decoder=mode==4?aux_master_control_decode:aux_master_routing_ack_decode;
-   assert(!map_begin(&request,&mm,encoded,(size_t)length,decoder,0x32,1));assert(map_begin(&request,&mm,encoded,(size_t)length,decoder,0x32,1)==MAP_INVALID);
+   if(mode==5){for(int i=0;i<length;i++){request.tx.bytes[i]=encoded[i];}}
+   const uint8_t *input=mode==5?request.tx.bytes:encoded;
+   assert(!map_begin(&request,&mm,input,(size_t)length,decoder,0x32,1));assert(map_begin(&request,&mm,encoded,(size_t)length,decoder,0x32,1)==MAP_INVALID);
    int result=0;unsigned turns=0;
    while(!result){unsigned before=f.calls;result=map_step(&request);assert(f.calls-before<=1&&++turns<normal+12);if(f.cancel_at&&f.calls==f.cancel_at)assert(result==MAP_CANCELLED);if(result!=1)assert(!request.kind);}
-   if(!variant&&(mode==0||mode==2)){assert(result==1&&request.kind==0x32&&f.commits==1&&f.pops==1&&turns==normal+1+(mode==2?4u:0u));}
+   if(!variant&&(mode==0||mode==2||mode==5)){assert(result==1&&request.kind==0x32&&f.commits==1&&f.pops==1&&turns==normal+1+(mode==2?4u:0u));}
    else {assert(result<0&&!request.kind&&mm.failed);}
    if(mode==3){assert(result==MAR_PACKET&&f.pops==1);}
    if(mode==4){assert(result==MAP_UNEXPECTED&&f.pops==1);}

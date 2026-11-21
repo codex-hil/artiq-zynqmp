@@ -1,0 +1,18 @@
+0000000000000020 000000000000000c r address.1
+                 U aux_master_control_decode
+                 U aux_master_control_encode
+                 U aux_master_leaf_encode
+                 U aux_master_routing_ack_decode
+                 U aux_master_star_path_encode
+0000000000000030 000000000000000c r expected.0
+0000000000000820 0000000000000520 t map_step
+0000000000000000 0000000000000408 t mar_step
+0000000000000000 0000000000001310 B master_guarded_context_size
+0000000000001180 00000000000001e4 T master_guarded_probe_begin
+0000000000002540 0000000000000190 T master_guarded_probe_cancel
+0000000000001370 00000000000011c8 T master_guarded_probe_step
+0000000000000d40 0000000000000288 t mau_fail
+                 U memcpy
+                 U memset
+0000000000000fd0 00000000000001ac t mfg_fail
+0000000000000410 0000000000000404 t mrs_step

@@ -18,9 +18,10 @@ static inline int map_fail(struct map_request *s,int error){
 }
 static inline int map_begin(struct map_request *s,struct mm_transport *m,const uint8_t *bytes,size_t size,ma_fixed_decoder decode,uint32_t expected,unsigned reviewed_epoch){
  if(!s||s->started||!decode||!expected)return MAP_INVALID;
- struct map_request candidate={.mm=m,.decode=decode,.started=1,.phase=MAP_TX,.expected=expected};
- int r=mat_begin(&candidate.tx,m,bytes,size,reviewed_epoch);if(r)return r;
- *s=candidate;return 0;
+ /* Preserve packet aliases inside tx.bytes; never zero TX before copying. */
+ int r=mat_begin(&s->tx,m,bytes,size,reviewed_epoch);if(r)return r;
+ s->mm=m;s->decode=decode;s->started=1;s->phase=MAP_TX;s->expected=expected;
+ s->kind=0;s->terminal=0;s->rx=(struct mar_session){0};return 0;
 }
 static inline void map_cancel(struct map_request *s){
  if(!s||!s->started||s->terminal)return;

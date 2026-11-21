@@ -23,10 +23,14 @@ static inline int mfg_fail(struct mfg_start *s,int error){
 }
 static inline int mfg_begin(struct mfg_start *s,struct mfo_gate *g,uint64_t ticket,const struct mm_bus *bus,uint32_t poll_budget,uint32_t action_budget,uint32_t routing_budget,uint32_t total_setup_budget){
  if(!s||s->started||!action_budget||action_budget>4096||!routing_budget||routing_budget>10000000||!total_setup_budget||total_setup_budget>10000000)return MFG_INVALID;
- struct mfg_start candidate={.gate=g,.ticket=ticket,.action_budget=action_budget,.routing_budget=routing_budget,.total_budget=total_setup_budget,.started=1,.phase=MFG_PROFILE};
- int r=mmb_begin(&candidate.bind,g,ticket,&candidate.mm,bus,poll_budget);if(r)return r;
- candidate.epoch=g->epoch;*s=candidate;s->bind.destination=&s->mm; /* Repair private embedded pointer after copy. */
- return 0;
+ int valid=mmb_validate(g,ticket,&s->mm,bus,poll_budget);if(valid)return valid;
+ struct mm_bus bus_copy=*bus; /* May alias s->mm.bus, preserve before zeroing. */
+ unsigned char *storage=(unsigned char *)s;
+ for(size_t i=0;i<sizeof(*s);i++){storage[i]=0;}
+ s->gate=g;s->ticket=ticket;s->epoch=g->epoch;s->action_budget=action_budget;
+ s->routing_budget=routing_budget;s->total_budget=total_setup_budget;s->phase=MFG_PROFILE;
+ int r=mmb_begin(&s->bind,g,ticket,&s->mm,&bus_copy,poll_budget);if(r)return r;
+ s->started=1;return 0;
 }
 static inline int mfg_cancel(struct mfg_start *s){return mfg_fail(s,MFG_CANCELLED);}
 static inline int mfg_step(struct mfg_start *s){

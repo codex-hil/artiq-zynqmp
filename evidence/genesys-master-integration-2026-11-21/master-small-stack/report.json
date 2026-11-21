@@ -1,0 +1,48 @@
+{
+  "status": "INITIALIZER_STACK_REDUCTION_NATIVE_AND_AARCH64_GUARDED24_CASES_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "changes": [
+    "Validate before any state mutation, preserve smallbus descriptor aliases, initialize context directly without whole-context temporary",
+    "Copy packet with overlap-safe byte ordering beforemetadata changes; pendingdriver initializes ownTX inplace, no nestedwhole-request temporaries",
+    "Pure profilevalidator reusedbyguardedstart; destinationpointer constructedinfinalstorage, no copiedselfpointer repair"
+  ],
+  "stack_comparison": {
+    "context_storage_bytes_before": 4880,
+    "context_storage_bytes_after": 4880,
+    "begin_target_frame_before": 4992,
+    "begin_target_frame_after": 64,
+    "largest_target_probe_frame_after": 128,
+    "pending_begin_previous_separate_frame": 2320,
+    "pending_begin_after": "inlined into128B enclosingstep probe; no separate2320Bframe",
+    "test_fixture_frame_before": 14976,
+    "test_fixture_frame_after": 10224,
+    "limits": "Per-functionCprobe/testframes only, notcompleteRust/lwIP/IRQ/caller highwater;contextplacement stillrequired"
+  },
+  "validation": [
+    "FullnativeRust/C suitePASS:124actualRustpending cases (newselfalias cases),24guardedstart,27asyncsetup,1033asyncstar andpriorregressions",
+    "620TXASan/UBSan cases plus exact/forward/backward-overlap alias checksPASS",
+    "44profilebindASan/UBSan cases includingprivatebusaliasPASS",
+    "AArch64QEMU24guardedstart+11334codecPASS, assert99/forcedpanic101/noPASS",
+    "Frozeninputs/archive/3ELFnoUndefined/preexecutionhashchecksPASS; nice10 boundedsequentialCbuildonDell"
+  ],
+  "compile_commands": [
+    "gcc -std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_master_aux_resumable_tx.c -o OUTPUT/tx-test",
+    "gcc -std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_master_profile_bind.c -o OUTPUT/bind-test"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_aux_pending.h": "41d2b9ab403eb27c7f38608e5ef6f715d14d91cbc5d4ab2fd2f764f473445944",
+    "diagnostics/drtio/aux_protocol/master_aux_resumable_tx.h": "737b5269b31160bd62c9861179430d499868d35eb89aa3dc34f55ec53a31102e",
+    "diagnostics/drtio/aux_protocol/master_profile_bind.h": "1d3ba4dc54b7615413822b7764794747a05f14bafb21afb75ef788d1f37379f7",
+    "diagnostics/drtio/aux_protocol/master_guarded_start.h": "81ce0f28644c54969bbc3be6192f651fbcfe3cbf94bfca6cba678e98d3ef8029",
+    "diagnostics/drtio/aux_protocol/test_master_aux_pending.c": "03d2fefa66f054f4f44c4d17e729231379fd2e0ec933ad4110a46021e97a0888",
+    "diagnostics/drtio/aux_protocol/test_master_aux_resumable_tx.c": "58d8c13060b6833ccda0dc55abf2e06448f9c67f8597ca9fb8bc1d2e3835662e",
+    "diagnostics/drtio/aux_protocol/test_master_profile_bind.c": "4dcff72dda6e3fa12a0bdf6e888fe828cca57a8d907d6ca314e06bd4b4697b50",
+    "diagnostics/drtio/aux_protocol/test_master_guarded_start.c": "e5c71db342776622c0e117632a429ffd1f04c9e5c9b3df12c2be7e15a0984d65"
+  },
+  "limits": [
+    "NotproductionEL1/EL3stack readiness despite smallerframes; caller/contextstorage/interrupt/librarybudgets unresolved",
+    "No hardware/default/firmwarechanges, realworkerownership/readiness/AXI-panic recovery orphysicalqualification"
+  ],
+  "next": "Define caller/staticcontext placement and completeforeground/IRQ/Rust callchain stack contract for an isolated integration candidate; keep production hooks disabled until qualified."
+}

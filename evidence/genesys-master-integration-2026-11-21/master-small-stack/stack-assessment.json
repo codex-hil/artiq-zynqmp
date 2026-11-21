@@ -1,0 +1,415 @@
+{
+  "status": "TARGET_FRAME_INVENTORY_AVAILABLE_RUNTIME_STACK_NOT_QUALIFIED",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "retained_elf": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+  "retained_elf_sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3",
+  "linker": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/lscript.ld",
+  "linker_sha256": "dd2fa4ae6e8af2488b93f9d67b01b9f2b014a7b07bc596712ff4e269d8859e75",
+  "retained_stack_bytes": {
+    "_EL2_STACK_SIZE": 1024,
+    "_EL0_STACK_SIZE": 1024,
+    "_EL1_STACK_SIZE": 2048,
+    "_STACK_SIZE": 40960
+  },
+  "target_context_bytes": 4880,
+  "target_probe_frames": [
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_aux_resumable_rx.h:24:19:mar_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_rt_resumable.h:24:19:mrs_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_aux_pending.h:31:19:map_step",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_async_setup.h:29:19:mau_fail",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_start.h:15:19:mfg_fail",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_stack_probe.c:5:31:master_guarded_probe_begin",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_stack_probe.c:6:31:master_guarded_probe_step",
+      "frame_bytes": 128,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_stack_probe.c:7:31:master_guarded_probe_cancel",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    }
+  ],
+  "all_target_frames": [
+    {
+      "report": "codec-guarded-start-negative.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:15:13:check.part.0",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:12:31:aux_master_panic",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:17:6:master_emulation_assert",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:61:6:master_emulation_guarded_start_pass",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:66:5:codec_emulation_main",
+      "frame_bytes": 1184,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "master_aux_resumable_rx.h:24:19:mar_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "master_rt_resumable.h:24:19:mrs_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "master_aux_pending.h:31:19:map_step",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "master_async_setup.h:29:19:mau_fail",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "master_guarded_start.h:15:19:mfg_fail",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:13:12:after_bus",
+      "frame_bytes": 32,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:25:12:fence",
+      "frame_bytes": 48,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:24:12:write_reg",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:23:12:read_reg",
+      "frame_bytes": 48,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "master_guarded_start.h:36:19:mfg_step",
+      "frame_bytes": 128,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-guarded-start-negative.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:26:5:master_guarded_start_test",
+      "frame_bytes": 10224,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:15:13:check.part.0",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:12:31:aux_master_panic",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:17:6:master_emulation_assert",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:61:6:master_emulation_guarded_start_pass",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:66:5:codec_emulation_main",
+      "frame_bytes": 1184,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "master_aux_resumable_rx.h:24:19:mar_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "master_rt_resumable.h:24:19:mrs_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "master_aux_pending.h:31:19:map_step",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "master_async_setup.h:29:19:mau_fail",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "master_guarded_start.h:15:19:mfg_fail",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:13:12:after_bus",
+      "frame_bytes": 32,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:25:12:fence",
+      "frame_bytes": 48,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:24:12:write_reg",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:23:12:read_reg",
+      "frame_bytes": 48,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "master_guarded_start.h:36:19:mfg_step",
+      "frame_bytes": 128,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-normal.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:26:5:master_guarded_start_test",
+      "frame_bytes": 10224,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:12:31:aux_master_panic",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:17:6:master_emulation_assert",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:61:6:master_emulation_guarded_start_pass",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-master_codec_emulation.su",
+      "function": "master_codec_emulation.c:66:5:codec_emulation_main",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "master_aux_resumable_rx.h:24:19:mar_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "master_rt_resumable.h:24:19:mrs_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "master_aux_pending.h:31:19:map_step",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "master_async_setup.h:29:19:mau_fail",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "master_guarded_start.h:15:19:mfg_fail",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:13:12:after_bus",
+      "frame_bytes": 32,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:25:12:fence",
+      "frame_bytes": 48,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:24:12:write_reg",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:23:12:read_reg",
+      "frame_bytes": 48,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "master_guarded_start.h:36:19:mfg_step",
+      "frame_bytes": 128,
+      "qualifier": "static"
+    },
+    {
+      "report": "codec-panic.elf-test_master_guarded_start.su",
+      "function": "test_master_guarded_start.c:26:5:master_guarded_start_test",
+      "frame_bytes": 10224,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_aux_resumable_rx.h:24:19:mar_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_rt_resumable.h:24:19:mrs_step",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_aux_pending.h:31:19:map_step",
+      "frame_bytes": 80,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_async_setup.h:29:19:mau_fail",
+      "frame_bytes": 0,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_start.h:15:19:mfg_fail",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_stack_probe.c:5:31:master_guarded_probe_begin",
+      "frame_bytes": 64,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_stack_probe.c:6:31:master_guarded_probe_step",
+      "frame_bytes": 128,
+      "qualifier": "static"
+    },
+    {
+      "report": "guarded-stack-probe.su",
+      "function": "master_guarded_stack_probe.c:7:31:master_guarded_probe_cancel",
+      "frame_bytes": 16,
+      "qualifier": "static"
+    }
+  ],
+  "target_report_sha256": {
+    "codec-guarded-start-negative.elf-master_codec_emulation.su": "7d33c9a714a95b037d5f8a2f2eaf7b8907fcf2c8166ce435bf80f674cd726cd9",
+    "codec-guarded-start-negative.elf-test_master_guarded_start.su": "fae0562eb77cb86600e2388951410f4ef0e0678490cf1aaf7b4a4ca99fcad94b",
+    "codec-normal.elf-master_codec_emulation.su": "7d33c9a714a95b037d5f8a2f2eaf7b8907fcf2c8166ce435bf80f674cd726cd9",
+    "codec-normal.elf-test_master_guarded_start.su": "fae0562eb77cb86600e2388951410f4ef0e0678490cf1aaf7b4a4ca99fcad94b",
+    "codec-panic.elf-master_codec_emulation.su": "d286407f21fd2770d58f24c5ff0ed2aafe90e5807083ba6f0d2a5866a6577589",
+    "codec-panic.elf-test_master_guarded_start.su": "fae0562eb77cb86600e2388951410f4ef0e0678490cf1aaf7b4a4ca99fcad94b",
+    "guarded-stack-probe.su": "9bfb857326cccc4df859b1759c55ade759c0010d4e5dd26e65d82cbdf2ad1963"
+  },
+  "limits": [
+    "Retained OctoberELF is source/artifact reference, not current device or activeEL/SP observation",
+    "Compiler .su per-function frames are not completecallchain/IRQ/lwIP/Rust-library stack highwater bound",
+    "Context size is an unlinked layout-probe symbol, not mandatory stack allocation or production placement",
+    "Need exactproductionlinker/EL/SP/caller/objectplacement andcallgraph/interrupt/nesting analysis beforeintegration",
+    "No firmware/HW/default changes"
+  ],
+  "target_symbols_sha256": "182d06bafff40027a42f8994c73ac0d19e32e6a4f010019c6959fa58e3e79454"
+}

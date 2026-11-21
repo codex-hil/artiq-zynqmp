@@ -51,5 +51,9 @@ int main(void){
   uint32_t budget=bad==0?0:bad==1?1025:3;if(bad==2)b.read=0;if(bad==3)b.write=0;if(bad==4)b.fence=0;if(bad==5)d.failed=1;
   assert(mmb_begin(&s,&g,g.ticket,&d,&b,budget)==MMB_INVALID&&!f.calls&&!s.started&&!g.profile_ticket);cases++;
  }
+ {struct mfo_gate g=grant();struct mm_transport d={0};struct mmb_session s={0};struct fake f={&s,&g,&d,0,0,0};
+  s.candidate.bus=(struct mm_bus){&f,read_reg,write_reg,fence};assert(!mmb_begin(&s,&g,g.ticket,&d,&s.candidate.bus,3));
+  assert(!mmb_step(&s)&&!mmb_step(&s)&&mmb_step(&s)==1&&f.calls==3&&d.bus.ctx==&f);cases++;
+ }
  printf("MASTER_PROFILE_BIND_PASS cases=%u max_callbacks_per_turn=1 ready_after_reads=3\n",cases);return 0;
 }

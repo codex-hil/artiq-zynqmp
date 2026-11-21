@@ -773,5 +773,10 @@
     "status": "AARCH64_GUARDED_PROFILE_TO_SETUP_24_CASES_PASS_STACK_FRAMES_AUDITED",
     "report": "evidence/genesys-master-integration-2026-11-21/master-guarded-start-target/report.json",
     "next": "Reduce large initializer copies in newguarded start andpendingrequest begin paths, preserve ownership/aliasing/failure semantics, rerun targetSU and QEMU; keep productionruntime unchanged"
+  },
+  "master_small_stack_20261121": {
+    "status": "INITIALIZER_STACK_REDUCTION_NATIVE_AND_AARCH64_GUARDED24_CASES_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-small-stack/report.json",
+    "next": "Define caller/staticcontext placement and completeforeground/IRQ/Rust callchain stack contract for an isolated integration candidate; keep production hooks disabled until qualified."
   }
 }

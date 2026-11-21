@@ -18,9 +18,13 @@ static inline int mat_fail(struct mat_session *s,int error){
 /* Zero initialize once; started sessions never reopened, including success. */
 static inline int mat_begin(struct mat_session *s,struct mm_transport *m,const uint8_t *bytes,size_t size,unsigned reviewed_epoch){
  if(!s||s->started||!mm_ready(m)||m->held||!m->bus.read||!m->bus.write||!m->bus.fence||!m->budget||!bytes||size<4||size>1024||size%4||reviewed_epoch!=1)return MAT_INVALID;
- struct mat_session candidate={.mm=m,.started=1,.left=m->budget,.size=size};
- for(size_t i=0;i<size;i++){candidate.bytes[i]=bytes[i];}
- *s=candidate;return 0;
+ /* memmove semantics before changing metadata: input may alias owned storage. */
+ uintptr_t destination=(uintptr_t)s->bytes,source=(uintptr_t)bytes;
+ if(destination>source&&destination-source<size){
+  for(size_t i=size;i>0;i--){s->bytes[i-1]=bytes[i-1];}
+ }else {for(size_t i=0;i<size;i++){s->bytes[i]=bytes[i];}}
+ s->mm=m;s->started=1;s->phase=0;s->commit_attempted=0;s->left=m->budget;
+ s->size=size;s->offset=0;s->terminal=0;return 0;
 }
 static inline void mat_cancel(struct mat_session *s){if(s&&s->started&&!s->terminal)mat_fail(s,MAT_CANCELLED);}
 static inline int mat_step(struct mat_session *s){

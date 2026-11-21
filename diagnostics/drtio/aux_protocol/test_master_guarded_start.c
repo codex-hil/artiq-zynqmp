@@ -29,7 +29,9 @@ int master_guarded_start_test(const uint8_t *frames,size_t size){
   struct mfo_gate gate;mfo_init(&gate);struct mfg_start start={0};struct fixture f={.fake={.frames=frames,.mode=n==1?12:n==14?9:0,.failed_route_stage=127},.start=&start,.gate=&gate,.scenario=n};
   struct mm_bus bus={&f,read_reg,write_reg,fence};assert(mfg_begin(&start,&gate,1,&bus,3,64,8730,8827)==MMB_INVALID&&!f.fake.calls&&!start.started);
   assert(!mfo_fresh_epoch(&gate,1,15)&&!mfo_request_master(&gate)&&!mfo_grant_master(&gate,7));f.ticket=gate.ticket;
-  assert(!mfg_begin(&start,&gate,gate.ticket,&bus,3,64,n==16?8729:8730,n==17?8826:n==1?8831:8827)&&!f.fake.calls&&!start.mm.bound&&!start.setup.started);
+  if(n==0){start.mm.bus=bus;}
+  const struct mm_bus *begin_bus=n==0?&start.mm.bus:&bus;
+  assert(!mfg_begin(&start,&gate,gate.ticket,begin_bus,3,64,n==16?8729:8730,n==17?8826:n==1?8831:8827)&&!f.fake.calls&&!start.mm.bound&&!start.setup.started);
   struct mfg_start replay={0};assert(mfg_begin(&replay,&gate,gate.ticket,&bus,3,64,8730,8827)==MMB_BUSY&&!replay.started);
   int result=0;unsigned turns=0,management=0;
   while(!result){
