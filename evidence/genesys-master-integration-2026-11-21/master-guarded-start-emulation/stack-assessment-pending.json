@@ -1,0 +1,26 @@
+{
+  "status": "RETAINED_STACK_INVENTORY_PASS_TARGET_FRAME_REPORT_PENDING",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "retained_elf": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf",
+  "retained_elf_sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3",
+  "linker": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/lscript.ld",
+  "linker_sha256": "dd2fa4ae6e8af2488b93f9d67b01b9f2b014a7b07bc596712ff4e269d8859e75",
+  "retained_stack_bytes": {
+    "_EL2_STACK_SIZE": 1024,
+    "_EL0_STACK_SIZE": 1024,
+    "_EL1_STACK_SIZE": 2048,
+    "_STACK_SIZE": 40960
+  },
+  "target_context_bytes": null,
+  "target_probe_frames": [],
+  "all_target_frames": [],
+  "target_report_sha256": {},
+  "limits": [
+    "Retained OctoberELF is source/artifact reference, not current device or activeEL/SP observation",
+    "Compiler .su per-function frames are not completecallchain/IRQ/lwIP/Rust-library stack highwater bound",
+    "Context size is an unlinked layout-probe symbol, not mandatory stack allocation or production placement",
+    "Need exactproductionlinker/EL/SP/caller/objectplacement andcallgraph/interrupt/nesting analysis beforeintegration",
+    "No firmware/HW/default changes"
+  ]
+}

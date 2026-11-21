@@ -1,0 +1,37 @@
+{
+  "status": "GUARDED_START_AARCH64_HARNESS_AND_STACK_PROBE_STAGED_NATIVE_REGRESSION_PASS_BUILD_QUEUED",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "target_status": "NOT_RUN; initialslot75busy, boundeduserunit waiting",
+  "native_status": "FullRust/Csuiteincluding24guardedstart/27asyncsetup/1033routing casesPASS",
+  "service": "genesys-guarded-start-build-20261121-v1.service",
+  "remote_directory": "/srv/nvme-fast-1/vivado-work/genesys-guarded-start-emulation-20261121-v1",
+  "build_policy": "90capacity-only20s attempts,35min cgroupdeadline;SHApreflightinside sharedslot/compileerrorstop",
+  "variants": {
+    "normal": "24guardedstartcases+11334codec",
+    "guarded-start-negative": "False8829turnassertion99/noPASS",
+    "panic": "Directforcedtesthook101/noPASS"
+  },
+  "stack_probe": "UnlinkedAArch64object/size-symbol andGCC -fstack-usage reports requested; compile/execution pending",
+  "retained_stack_inventory": "stack-assessment-pending.json",
+  "retained_stack_bytes": {
+    "EL3": 40960,
+    "EL1": 2048,
+    "EL0": 1024,
+    "EL2": 1024
+  },
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "ecce379d58814a1da13cfe569da4dbdf847b3dbd65f985b3a053a372e3f8f9a7",
+    "diagnostics/drtio/aux_protocol/test_master_guarded_start.c": "b4ae3b99ad337ffdc808cfaba7b8f19691ff9e90cdb43aecdf2c84ded5982ae2",
+    "diagnostics/drtio/aux_protocol/build-guarded-start-emulation.sh": "8e94baf7fe9d83871ade1f2522f7ba0565e845438fc0986561a4f5dac181f2f5",
+    "diagnostics/drtio/aux_protocol/master_guarded_stack_probe.c": "4e7ec313abff7f67ef34d78ff025ec41e0e584f9fd375c10a07d39141d524ea6",
+    "diagnostics/drtio/aux_protocol/inspect-guarded-stack.py": "ef6394f418be6b79b88dbc656c95e3bbf3bfc76e763cb5dcd3457babd89d9d5d",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "8abc580f2eaa0ce0aa2f094169c55a8fb9c6373faa0373aeaf15685e0c472f83"
+  },
+  "next": "Monitorexistingunit; afterBUILD_PASS fetch3ELFs/hashes/noUndefined plus*.su/guarded-stack-symbols.txt, verifyinputs/run --guarded-start andinspecttargetframe reports; do notduplicateactivebuild",
+  "limits": [
+    "No targetframe or24caseAArch64execution credit yet",
+    "RetainedOctoberELF stack sizes notcurrentactiveEL/SP orcompletecallchain/highwaterbound",
+    "No runtime/default/firmware/HW changes"
+  ]
+}

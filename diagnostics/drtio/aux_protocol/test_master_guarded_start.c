@@ -1,6 +1,12 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_guarded_start_pass(unsigned);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_guarded_start.h"
 #include "master_setup_mock_fixture.h"
 struct fixture {struct setup_fake fake;struct mfg_start *start;struct mfo_gate *gate;uint64_t ticket;unsigned scenario;};
@@ -34,6 +40,9 @@ int master_guarded_start_test(const uint8_t *frames,size_t size){
    unsigned before=f.fake.calls;result=mfg_step(&start);assert(f.fake.calls-before<=1&&++turns<8840);
   }
   assert(turns==management);
+#ifdef FORCE_GUARDED_START_ASSERT
+  if(n==0)assert(turns==8829); /* Deliberately false: healthy uses8830. */
+#endif
   if(n==0||n==1||n==18||(n>=19&&n<=22)){assert(result==1&&start.phase==MFG_COMPLETE&&gate.state==MFO_HELD&&start.mm.bound&&start.setup.rt.credits==16&&f.fake.tx==259&&f.fake.pops==260&&turns==(n==1?8834u:8830u));}
   else if(n==11){assert(result==MFG_STALE&&gate.state==MFO_MASTER&&start.mm.bound&&!start.mm.failed&&start.mm.budget==99&&!start.setup.started);}
   else {assert(result<0&&start.phase==MFG_FAILED&&gate.state==MFO_FAULT&&!start.mm.bound&&start.mm.failed&&!start.setup.rt.credits);}
@@ -50,5 +59,10 @@ int master_guarded_start_test(const uint8_t *frames,size_t size){
   else if(result==1){assert(mfg_cancel(&start)==MFG_CANCELLED&&gate.state==MFO_FAULT&&!start.mm.bound&&start.mm.failed&&!start.setup.rt.credits&&f.fake.calls==calls);}
   cases++;
  }
- printf("MASTER_GUARDED_START_PASS cases=%u healthy_turns=8830 max_callbacks_per_turn=1\n",cases);return 0;
+#ifdef MASTER_A53_EMULATION
+ master_emulation_guarded_start_pass(cases);
+#else
+ printf("MASTER_GUARDED_START_PASS cases=%u healthy_turns=8830 max_callbacks_per_turn=1\n",cases);
+#endif
+ return 0;
 }
