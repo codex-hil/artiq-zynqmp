@@ -1,0 +1,20 @@
+{
+  "status": "RETAINED_BSP_EL3_IRQ_FRAME_CONTEXT_AUDIT_PASS_TARGET_STILL_QUEUED",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "source_audit": "source-audit.json",
+  "inspector_sha256": "42eba4724eb0fef15c9684967e4f14275e6aec05de1c09db0537d3586a88396e",
+  "findings": [
+    "RetainedOctoberBSP definesEL3=1; startupCurrentEL pathloads linkedEL3/EL1 stacktop, no currentdeviceSPobserved",
+    "IRQassembly saves176B generalregisters+32B controlstate beforeCIRQcallback:208B fixedlowerbound",
+    "RetainedEL3 allocation40960B notcompletecandidatebudget; targetframes, actualEL/SP, CIRQ/lwIP/Rust callchains/nesting andobjectplacement remainunqualified"
+  ],
+  "queued_guarded_target": {
+    "service": "genesys-guarded-start-build-20261121-v1.service",
+    "status": "WAITING_FOR_SHARED_DELL_SLOT",
+    "observed_attempt": 16,
+    "max_attempts": 90,
+    "target_compiled_or_executed": false
+  },
+  "next": "Keep existingfrozenjob active; afterBUILD_PASS fetchELFs/hashes/SU/layoutsymbols, run --guarded-start andstackinspector; do notduplicatebuild or inferstackreadiness fromretainedallocationalone."
+}

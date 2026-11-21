@@ -1,0 +1,39 @@
+{
+  "status": "RETAINED_EL3_BSP_AND_IRQ_FIXED_FRAME_SOURCE_AUDIT_PASS_NOT_LIVE_CONTEXT",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "retained_bsp": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp",
+  "configured_EL3": 1,
+  "startup": "CurrentEL selects InitEL3/InitEL1 source branches and corresponding linked stack top; actual live SP not observed",
+  "irq_fixed_frame_before_C_bytes": 208,
+  "general_register_save_bytes": 176,
+  "control_register_stack_save_bytes": 32,
+  "source_bindings": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/include/bspconfig.h",
+      "sha256": "9243b88394de4c4504b71a0abf545d177d18986c97af22128692adb4729dead7",
+      "anchor": "#define EL3",
+      "line": 15
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/standalone/src/arm/ARMv8/64bit/gcc/boot.S",
+      "sha256": "6cc5576d746903aafee717d2f37c506132d602e6f4743b90ee3ac75d15f1d568",
+      "anchor": "mrs\tx0, currentEL",
+      "line": 191
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/standalone/src/arm/ARMv8/64bit/gcc/asm_vectors.S",
+      "sha256": "077d75537b9acd54e8a0691868e24641e59f1d7979dc603290b16bbb2346c5ba",
+      "anchor": "IRQInterruptHandler:",
+      "line": 267
+    }
+  ],
+  "limits": [
+    "Retained OctoberBSP artifact reference, not latestfirmware/image or activeEL/SP/IRQ observation",
+    "208bytes is fixedassembly lowerbound beforeCIRQ handler, not totalinterrupt frame or highwaterlimit",
+    "C IRQ/lwIP/Rust callbacks, exceptions, FPU-context mechanism and nesting require separatecallgraph/contextanalysis",
+    "Do not subtract lowerbound fromEL3 allocation and declare remainingcandidate budget safe",
+    "No hardwareaccess, firmware/default modifications or runtimeadmission"
+  ],
+  "next": "Combine targetcompiler per-functionframe/contextlayout reports with exactproduction ELF/callgraph/placement and interruptbudget before any integration."
+}

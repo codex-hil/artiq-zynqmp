@@ -763,5 +763,10 @@
     "status": "GUARDED_START_AARCH64_HARNESS_AND_STACK_PROBE_STAGED_NATIVE_REGRESSION_PASS_BUILD_QUEUED",
     "report": "evidence/genesys-master-integration-2026-11-21/master-guarded-start-emulation/report.json",
     "next": "Monitorexistingunit; afterBUILD_PASS fetch3ELFs/hashes/noUndefined plus*.su/guarded-stack-symbols.txt, verifyinputs/run --guarded-start andinspecttargetframe reports; do notduplicateactivebuild"
+  },
+  "master_retained_stack_context_20261121": {
+    "status": "RETAINED_BSP_EL3_IRQ_FRAME_CONTEXT_AUDIT_PASS_TARGET_STILL_QUEUED",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-retained-stack-context/report.json",
+    "next": "Keep existingfrozenjob active; afterBUILD_PASS fetchELFs/hashes/SU/layoutsymbols, run --guarded-start andstackinspector; do notduplicatebuild or inferstackreadiness fromretainedallocationalone."
   }
 }
