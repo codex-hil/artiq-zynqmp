@@ -1,0 +1,31 @@
+{
+  "status": "AARCH64_WHOLE_ASYNC_SETUP_27_CASES_ACTUAL_RUST_CODEC_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "execution": "execution-results.json",
+  "inputs": "input-sha256.txt",
+  "build": "build-launch.log",
+  "checks": [
+    "Actual Cortex-A53 QEMU27wholeasyncsetup cases+11334codec callsPASS",
+    "Healthy8827turns/259AUX/260pops/16credits; lateTSCAck8831; max1buscallback/turn afterpriorqualifiedbind",
+    "Missing/wrong/prematureTSC/statusDOWN/buffererror, routingACK/CRC/cancel cuts0/127/255/256, perphase/routing/globalbudget controls",
+    "Ownership replay/staleowner/newtransport no-clobber, firstfaultretention andpostcompletioncreditrevocation controls executed",
+    "False8826turnassertion exits99/noPASS; directforcedtestpanic101/noPASS",
+    "Frozencompiled/currentinputs/archive match,3ELFnoUndefined andpreexecutionELFhashesverified",
+    "NativeRust/C fullregressionPASS afterharnesschanges"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "9370502a51e6e489d37e69c06533f60a0423fe0d08cba98496e26f1a3d2c01c2",
+    "diagnostics/drtio/aux_protocol/test_master_async_setup.c": "cef4099d26daa8fe6ab3bf149d1a7779012c99c0467802eb686413e26c8cc249",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "0a80299a865d83ebfad02e870339fd34bea215dca3ad22f26c29f501283b53c3",
+    "diagnostics/drtio/aux_protocol/build-async-setup-emulation.sh": "784c04a0b7fb62410b9327dbcabae4ca5593897f36d56110667ae971b9d14d50"
+  },
+  "limits": [
+    "QEMU Linux-user, mockpeer/MMIO/explicitownershipreceipts only; no targetprogramming or realworkerquiescence/mailboxintegration",
+    "mm_bind remains3synchronousprofilereads beforecandidatebegin; identityvalues notmap/clock/ownershipproof",
+    "Callbackcount notelapsedtime/lwIPfairness/hungAXIcontainment; forcedtesthook notrealRustpanic/exceptionrecovery",
+    "RoutingAcknotpeerapply/freshACKcorrelationproof; physicaltiming/CDC/cabling/knownstaterestoration gatesremainopen",
+    "No productionruntime/default/HW changes"
+  ],
+  "next": "Prototype resumable profile binding under explicit foreground owner/ticket/epoch guard before first MMIO, with no-ready publication until all three profile reads pass; retain independent physical readiness/recovery requirements."
+}

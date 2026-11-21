@@ -1,6 +1,12 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_async_setup_pass(unsigned);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_async_setup.h"
 #include "master_setup_mock_fixture.h"
 struct fixture {struct setup_fake fake;struct mau_setup *setup;struct mfo_gate *gate;uint64_t ticket;unsigned scenario,cut;};
@@ -31,6 +37,9 @@ int master_async_setup_test(const uint8_t *frames,size_t size){
    unsigned calls=f.fake.calls;result=mau_step(&setup);assert(f.fake.calls-calls<=1&&++turns<=total_budget);
   }
   assert(turns==management);
+#ifdef FORCE_ASYNC_SETUP_ASSERT
+  if(n==0)assert(turns==8826); /* Deliberately false; healthy uses8827. */
+#endif
   if(n==0||n==7||n==26){assert(result==1&&setup.phase==MS_COMPLETE&&gate.state==MFO_HELD&&turns==total_budget&&f.fake.tx==259&&f.fake.pops==260&&setup.routing.completed==257&&setup.rt.credits==16);}
   else {assert(result<0&&setup.phase==MS_FAILED&&!setup.rt.credits);if(n!=24)assert(gate.state==MFO_FAULT&&mm.failed);}
   if(n>=8&&n<20){assert(setup.routing.completed==cut&&f.fake.tx==cut+2&&f.fake.pops==cut+2+(n>=12&&n<16));}
@@ -47,5 +56,10 @@ int master_async_setup_test(const uint8_t *frames,size_t size){
   else if(n!=24){assert(mau_cancel(&setup)==result&&f.fake.calls==calls);}
   cases++;
  }
- printf("MASTER_ASYNC_SETUP_PASS cases=%u healthy_turns=8827 max_callbacks_per_turn=1\n",cases);return 0;
+#ifdef MASTER_A53_EMULATION
+ master_emulation_async_setup_pass(cases);
+#else
+ printf("MASTER_ASYNC_SETUP_PASS cases=%u healthy_turns=8827 max_callbacks_per_turn=1\n",cases);
+#endif
+ return 0;
 }
