@@ -748,5 +748,10 @@
     "status": "AARCH64_WHOLE_ASYNC_SETUP_27_CASES_ACTUAL_RUST_CODEC_PASS",
     "report": "evidence/genesys-master-integration-2026-11-21/master-async-setup-target/report.json",
     "next": "Prototype resumable profile binding under explicit foreground owner/ticket/epoch guard before first MMIO, with no-ready publication until all three profile reads pass; retain independent physical readiness/recovery requirements."
+  },
+  "master_profile_bind_20261121": {
+    "status": "HOST_GUARDED_RESUMABLE_PROFILE_BIND_43_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-profile-bind/report.json",
+    "next": "Compose guardedprofilebind andwholeasyncsetup into one foreground loop, beginning setup only afterboundpublication under samegrant; verify max1callback fromfirstprofileaccess throughcompletion and allhandoff/faultcontrols."
   }
 }

@@ -11,7 +11,7 @@ enum mfo_state {MFO_CLOSED,MFO_IDLE,MFO_WORKER,MFO_DRAINING,MFO_WAIT_MASTER,
  MFO_MASTER,MFO_HELD,MFO_FAULT};
 enum mfo_owner {MFO_NONE,MFO_WORKER_OWNER,MFO_MASTER_OWNER};
 enum mfo_error {MFO_INVALID=-1,MFO_BUSY=-2,MFO_CANCELLED=-3};
-struct mfo_gate {enum mfo_state state;enum mfo_owner owner;uint64_t epoch,serial,ticket,setup_ticket;int error;};
+struct mfo_gate {enum mfo_state state;enum mfo_owner owner;uint64_t epoch,serial,ticket,setup_ticket,profile_ticket;int error;};
 #define MFO_FRESH_RECEIPTS 15u /* map/clock epoch, all requesters quiet, AUX exclusive, outcomes reconciled */
 #define MFO_MASTER_RECEIPTS 7u /* worker quiescence, CRI exclusive, AUX exclusive */
 #define MFO_RELEASE_RECEIPTS 7u /* no pending operation, CRI unforced, AUX no borrowed/pending response */

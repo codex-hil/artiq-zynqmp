@@ -1,0 +1,28 @@
+{
+  "status": "HOST_GUARDED_RESUMABLE_PROFILE_BIND_43_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "checks": [
+    "Exactly1profileread/step, noIOatbegin, destinationnotbound untilall3identityreads pass",
+    "Currentmaster owner/ticket/epoch/profile-reservation checkedbefore/aftercallback; oneprofileattemptpergrant, no rebind aftersetupclaim",
+    "Each3readsmismatch/failure/synccancel/externalfault/staleowner/heldstate/earlysetupclaim/reservationloss refused",
+    "Stalebinder neverpoisonsoroverwritesdestination ownedbychangedticket/epoch; fault/cancel preservesoriginalreason",
+    "No-grantstates/malformedbus/budget/prefailedtransport zeroIO; explicitpost-readycancel revokesbound andfaultsowner",
+    "Threeunsafe mutantsrefused: earlyready, missingattemptreservation, ignoredowneridentity",
+    "FullnativeRust/C regressionPASS withnewprofile_ticket field inforegroundgate"
+  ],
+  "compile_command": "gcc -std=c11 -Wall -Wextra -Werror -O1 -g -fsanitize=address,undefined diagnostics/drtio/aux_protocol/test_master_profile_bind.c -o OUTPUT/test",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_profile_bind.h": "946cc8094d96c68f27e60135cd98ce75e53cc9478b2777cd3ced3ed6c25666ad",
+    "diagnostics/drtio/aux_protocol/test_master_profile_bind.c": "f5628b7a7d710464ac7dec2b7a6f8db4add8cf22c66b6610e71a55ff5d5e176d",
+    "diagnostics/drtio/aux_protocol/master_foreground_owner.h": "ccd64c323b037f3f5caa1cd4549ae1c8bc8ae98b322549b95b0a9cd8d24ad216",
+    "diagnostics/drtio/aux_protocol/master_aux_mmio.h": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614"
+  },
+  "limits": [
+    "Standalone nativefakeprofilebus, no completeasyncsetup or newAArch64execution yet",
+    "Identity47534d31/fine3/coarse125M CSRvalues arecompatibilitychecks, notactualmaphash/liveclock/epoch/hardwareownershipproof",
+    "Softwaregrant isNOT canonicalsharedboardflock or realworkerquiescence; physicallease/readiness/recovery stillrequired before actualMMIO",
+    "Onecallbackcountnotelapsedtime/hungAXI containment; no firmware/HW/defaultchanges"
+  ],
+  "next": "Compose guardedprofilebind andwholeasyncsetup into one foreground loop, beginning setup only afterboundpublication under samegrant; verify max1callback fromfirstprofileaccess throughcompletion and allhandoff/faultcontrols."
+}

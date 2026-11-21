@@ -1,0 +1,26 @@
+{
+  "early-ready": {
+    "exit_code": -6,
+    "stderr": "test: test.c:31: main: Assertion `result==1&&f.calls==3&&destination.bound&&!destination.failed&&destination.budget==3&&g.state==MFO_MASTER' failed.\n",
+    "replacement": {
+      "old": "if(++s->index==3)",
+      "new": "if(++s->index==1)"
+    }
+  },
+  "missing-attempt-reservation": {
+    "exit_code": -6,
+    "stderr": "test: test.c:29: main: Assertion `mmb_begin(&replay,&g,g.ticket,&destination,&bus,3)==MMB_BUSY&&!replay.started' failed.\n",
+    "replacement": {
+      "old": "g->profile_ticket=ticket;return 0;",
+      "new": "return 0;"
+    }
+  },
+  "ignore-owner-identity": {
+    "exit_code": -6,
+    "stderr": "test: test.c:32: main: Assertion `result==MMB_STALE&&f.calls==cut&&destination.bound&&destination.budget==99&&!destination.failed&&g.state==MFO_MASTER' failed.\n",
+    "replacement": {
+      "old": "s->gate->ticket==s->ticket&&s->gate->epoch==s->epoch",
+      "new": "1"
+    }
+  }
+}
