@@ -778,5 +778,10 @@
     "status": "INITIALIZER_STACK_REDUCTION_NATIVE_AND_AARCH64_GUARDED24_CASES_PASS",
     "report": "evidence/genesys-master-integration-2026-11-21/master-small-stack/report.json",
     "next": "Define caller/staticcontext placement and completeforeground/IRQ/Rust callchain stack contract for an isolated integration candidate; keep production hooks disabled until qualified."
+  },
+  "master_static_caller_20261121": {
+    "status": "STATIC_BSS_FOREGROUND_CALLER_NATIVE_AND_AARCH64_PASS_RUST_STACK_LOWER_BOUND_AUDITED",
+    "report": "evidence/genesys-master-integration-2026-11-21/master-static-caller/report.json",
+    "next": "Reduce fixed-reply Rust decoder stack while proving equivalence against unchanged upstream packet oracle; preserve CRC/kind/length/error semantics and rerun native/AArch64/stack metadata before runtime integration."
   }
 }

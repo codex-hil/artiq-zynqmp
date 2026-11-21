@@ -1,0 +1,43 @@
+{
+  "status": "STATIC_BSS_FOREGROUND_CALLER_NATIVE_AND_AARCH64_PASS_RUST_STACK_LOWER_BOUND_AUDITED",
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "checks": [
+    "Privatealigned64B BSScontext4880B verifiedinactualAArch64ELF, noheap/automaticwholecontext andnoresetAPI",
+    "Single-usebeginguard, onepollturn/8830turns, actualRustcodec259AUX/260pops, memory-onlysnapshots/nohiddenI/O",
+    "Snapshotcompletion/creditswithdrawnwhenreservationlost; pollfaultsticky, no restart evenwithfreshgateepoch",
+    "NativeRust/Cfullsuite andactualA53QEMUstaticcaller+11334codec PASS; false8829assert99/forcedpanic101/noPASS",
+    "Frozenmetadataarchive/source/3ELFnoUndefined/preexecutionhashchecksPASS"
+  ],
+  "stack": {
+    "Ccaller_frames": "codec-normal.elf-master_static_caller.su",
+    "begin": 64,
+    "poll": 128,
+    "cancel": 0,
+    "snapshot": 0,
+    "Rustmetadata": "rust-stack-audit.json",
+    "Rustdecode_entry_frame": 1104,
+    "genericPacket_read_frame": 2144,
+    "two_directly_nested_frame_lower_bound": 3248,
+    "metadata_warnings": "Archive2relocationwarnings retained, resolvedfinalELFinspection warning-free",
+    "limits": "Lowerbound only;notwholecallchain/highwater. RetainedEL12KiB insufficientforthispath; EL340KiB notautomaticallyqualified."
+  },
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_static_caller.h": "4cf466ada1ebcd9859713ad307e7635be318cfcde3e4c2fe89de85a35eb7f596",
+    "diagnostics/drtio/aux_protocol/master_static_caller.c": "a7a278aee7959e98e60d8ae677c455ee94af377b9b9246e2207f9e7b3b4259a5",
+    "diagnostics/drtio/aux_protocol/test_master_static_caller.c": "3b9eac5323b0d08d31d2e7afcdac83e43ad2392206be65d196d9708a0749d7f2",
+    "diagnostics/drtio/aux_protocol/build-static-caller-emulation.sh": "67b11da0599114795f75a5400f804511228503f7b7f01ed8ca24c89076369e45",
+    "diagnostics/drtio/aux_protocol/build-master-leaf-target.py": "2a356087586c81877556bbd2160379cd75edb7ba94a424a05477bb3010e5a6d7",
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "0868d78163efe4eb0924766b764a77dff8475348b25b7c419172e1b695234bce",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "aeec0aef8bacb2cb7cbcafff249b38a6531f16ab2c331fe0232c51dfbb3262ae",
+    "diagnostics/drtio/aux_protocol/main.rs": "5b82cd686fa61c19306d230db8e31190e71d2037f013b0c434dbe656a1bd2ad1",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "c315444e2f52aff68acaa39b08ee23e4f791e5602e68f7ff3eb6d7b0c39c0167"
+  },
+  "limits": [
+    "Diagnosticcalleronly/notlinkedtoactualCPU0lwIPorworkerdispatch; no physicalquiescence/clock/map/epoch/readinessproof",
+    "BSSplacement excludesonecontextfromcallerstack butdoesnotboundRustcodec/IRQ/lwIP orhungAXI/decoderpanic",
+    "Precompiledcore/compilerbuiltins maylackstackmetadata; unusedCRC64libraryfunctions notassumedreachable",
+    "NoHW/default/productionfirmware orstackresizechanges"
+  ],
+  "next": "Reduce fixed-reply Rust decoder stack while proving equivalence against unchanged upstream packet oracle; preserve CRC/kind/length/error semantics and rerun native/AArch64/stack metadata before runtime integration."
+}

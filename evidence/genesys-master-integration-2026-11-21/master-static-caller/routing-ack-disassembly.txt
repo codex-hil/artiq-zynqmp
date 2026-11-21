@@ -1,0 +1,59 @@
+
+/srv/nvme-fast-1/vivado-work/genesys-static-caller-light-c-20261121-v1/codec-normal.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000004051bc <aux_master_routing_ack_decode>:
+  4051bc:	f81e0ffd 	str	x29, [sp, #-32]!
+  4051c0:	a9014ffe 	stp	x30, x19, [sp, #16]
+  4051c4:	d110c3ff 	sub	sp, sp, #0x430
+  4051c8:	aa0003f3 	mov	x19, x0
+  4051cc:	12800060 	mov	w0, #0xfffffffc            	// #-4
+  4051d0:	f90003ff 	str	xzr, [sp]
+  4051d4:	b4000413 	cbz	x19, 405254 <aux_master_routing_ack_decode+0x98>
+  4051d8:	f100203f 	cmp	x1, #0x8
+  4051dc:	540003c1 	b.ne	405254 <aux_master_routing_ack_decode+0x98>  // b.any
+  4051e0:	aa1303e0 	mov	x0, x19
+  4051e4:	52800081 	mov	w1, #0x4                   	// #4
+  4051e8:	94000e95 	bl	408c3c <_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E>
+  4051ec:	39401268 	ldrb	w8, [x19, #4]
+  4051f0:	39401669 	ldrb	w9, [x19, #5]
+  4051f4:	2a092108 	orr	w8, w8, w9, lsl #8
+  4051f8:	39401a69 	ldrb	w9, [x19, #6]
+  4051fc:	2a094108 	orr	w8, w8, w9, lsl #16
+  405200:	39401e69 	ldrb	w9, [x19, #7]
+  405204:	2a096108 	orr	w8, w8, w9, lsl #24
+  405208:	6b08001f 	cmp	w0, w8
+  40520c:	540002c1 	b.ne	405264 <aux_master_routing_ack_decode+0xa8>  // b.any
+  405210:	39400268 	ldrb	w8, [x19]
+  405214:	7100c91f 	cmp	w8, #0x32
+  405218:	54000301 	b.ne	405278 <aux_master_routing_ack_decode+0xbc>  // b.any
+  40521c:	f0000108 	adrp	x8, 428000 <_ZN17compiler_builtins3int19specialized_div_rem12u128_div_rem17h52ae50d5c9a2127eE+0x11c>
+  405220:	9100c3e0 	add	x0, sp, #0x30
+  405224:	910063e1 	add	x1, sp, #0x18
+  405228:	3dc13900 	ldr	q0, [x8, #1248]
+  40522c:	3d8003e0 	str	q0, [sp]
+  405230:	a94023e9 	ldp	x9, x8, [sp]
+  405234:	a901a7f3 	stp	x19, x9, [sp, #24]
+  405238:	f90017e8 	str	x8, [sp, #40]
+  40523c:	94000190 	bl	40587c <_ZN17genesys_aux_codec8protocol6Packet9read_from17h664ff76762e835b8E>
+  405240:	3940c3e8 	ldrb	w8, [sp, #48]
+  405244:	52800649 	mov	w9, #0x32                  	// #50
+  405248:	7100351f 	cmp	w8, #0xd
+  40524c:	12800048 	mov	w8, #0xfffffffd            	// #-3
+  405250:	1a880120 	csel	w0, w9, w8, eq	// eq = none
+  405254:	9110c3ff 	add	sp, sp, #0x430
+  405258:	a9414ffe 	ldp	x30, x19, [sp, #16]
+  40525c:	f84207fd 	ldr	x29, [sp], #32
+  405260:	d65f03c0 	ret
+  405264:	12800000 	mov	w0, #0xffffffff            	// #-1
+  405268:	9110c3ff 	add	sp, sp, #0x430
+  40526c:	a9414ffe 	ldp	x30, x19, [sp, #16]
+  405270:	f84207fd 	ldr	x29, [sp], #32
+  405274:	d65f03c0 	ret
+  405278:	12800020 	mov	w0, #0xfffffffe            	// #-2
+  40527c:	9110c3ff 	add	sp, sp, #0x430
+  405280:	a9414ffe 	ldp	x30, x19, [sp, #16]
+  405284:	f84207fd 	ldr	x29, [sp], #32
+  405288:	d65f03c0 	ret
