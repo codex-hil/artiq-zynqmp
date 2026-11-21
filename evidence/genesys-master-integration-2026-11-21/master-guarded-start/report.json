@@ -1,0 +1,33 @@
+{
+  "status": "HOST_PROFILE_BIND_AND_WHOLE_ASYNC_START_24_CASES_ACTUAL_RUST_CODEC_PASS",
+  "runtime_admitted": false,
+  "hardware_admitted": false,
+  "checks": [
+    "Same masterowner/ticket/epoch fromfirstprofile read throughheldcompletion; profileandsetup reservations separate/oneattempt each",
+    "Healthy8830turns incl3profilereads+8827setup; lateTSCAck8834; max1buscallback/turn inclbinding",
+    "3identitymismatch/3readerror/3synchronouscancel cases neverstartsetup or AUXTX",
+    "No grant or repeatedgrant attempt zeroIO; ownerchangedinsideprofile read neverclobbersnewdestination",
+    "Cancel/fault atprofile-to-setuphandoff producesexactly3reads/noAUX; routeCRC/cancel/shortbudgets stopclosed",
+    "Postcompletionprofile/setupreservation loss, notboundtransport or wrongheldstate withdrawcompletion/credits withoutIO",
+    "Oldsession afterexplicitrelease/newworker cannotpoisontransport or faultnewowner",
+    "NativefullRust/C regressionPASS, legacyruntime/defaults unchanged"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_guarded_start.h": "a7e30e64508222f0c9c0d2756357c8f31c757a9623bbded8b1dc62c6d1930c19",
+    "diagnostics/drtio/aux_protocol/test_master_guarded_start.c": "4f0660ff6a5d7f6ecf7ee0cb5dd7aefd457671004f9298090099c91edd8e8a30",
+    "diagnostics/drtio/aux_protocol/master_profile_bind.h": "946cc8094d96c68f27e60135cd98ce75e53cc9478b2777cd3ced3ed6c25666ad",
+    "diagnostics/drtio/aux_protocol/master_async_setup.h": "8b549f73a792a24de6e5447f7140e1bc55c98f06475d97e41667c93570ca4ea6",
+    "diagnostics/drtio/aux_protocol/master_foreground_owner.h": "ccd64c323b037f3f5caa1cd4549ae1c8bc8ae98b322549b95b0a9cd8d24ad216",
+    "diagnostics/drtio/aux_protocol/master_setup_mock_fixture.h": "b387d7f9ae2371742a930dd1b5a05f9c964460cdc37b520d8280d53708896853",
+    "diagnostics/drtio/aux_protocol/main.rs": "470cc7af9e5e49dbe0edda763c5b152d1bd878862396681cd52a876fe1538464",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "6d2d101ad148872831542a8b83e2881793443a8561b5326d468adee76c5f8ada"
+  },
+  "limits": [
+    "Nativehost actualcodec/mockpeer/bus; no newAArch64execution ofguardedprofile-to-setup composition",
+    "Canonicalphysicalboardflock, realworkerquiescence/clock/mapepoch, peerapply andknownstaterestoration stillrequireexternal qualification",
+    "Onecallbackcount notelapsedtime/lwIPfairness/hungAXI orcodec-paniccontainment",
+    "Profilecompatibilityvalues notphysicalreadiness; production stack/context andruntime integration notqualified",
+    "No HW/power/default/firmwarechanges"
+  ],
+  "next": "Prepare isolated Cortex-A53 QEMU guarded-start24case harness with false-turn assertion99/forcedpanic101 and frozen source/archive/ELF provenance; inspect target stack footprint before any production integration."
+}
