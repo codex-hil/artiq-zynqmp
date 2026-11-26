@@ -52,6 +52,7 @@ def audit(elf,text,profile="original"):
     # Frozen compiler sequence and bounds check, tied to ELF bytes above.
     profiles={
         'original':[('mrs_step',0x401384,19,21,0x4013c4,0x4050a8,0x4013dc),('map_step',0x4017ec,10,23,0x4019e8,0x4050bc,0x401a00)],
+        'network-static':[('mrs_step',0x401414,19,21,0x401454,0x405288,0x40146c),('map_step',0x40187c,10,23,0x401a78,0x40529c,0x401a90)],
         'reentry':[('mrs_step',0x401544,19,21,0x401584,0x405098,0x40159c),('map_step',0x4019ac,10,23,0x401ba8,0x4050ac,0x401bc0)]}
     for name,guard,limit,index,seq,table,base in profiles[profile]:
         ins=functions[name]
@@ -66,7 +67,7 @@ def audit(elf,text,profile="original"):
     return {'helpers':helpers,'computed_branches':tables,'status':'EXACT_DIAGNOSTIC_HELPER_SP_AND_LOCAL_JUMP_TABLE_AUDIT_PASS','complete_stack_bound_bytes':None,'runtime_admitted':False,'hardware_accessed':False,'limits':['Exact retained diagnostic ELF only; not production memory helper implementation','Bounds/targets are static compiler sequence proof, not protection from corrupted control flow','13 indirect callsites and production caller/IRQ/nesting context remain unqualified']}
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--elf',type=Path,required=True);p.add_argument('--disassembly',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--profile',choices=['original','reentry'],default='original');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--elf',type=Path,required=True);p.add_argument('--disassembly',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--profile',choices=['original','reentry','network-static'],default='original');a=p.parse_args()
     r=audit(a.elf.read_bytes(),a.disassembly.read_text(),a.profile);r['input_sha256']={str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in (a.elf,a.disassembly)}
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(r,indent=2)+'\n');print(r['status'])
 if __name__=='__main__':main()

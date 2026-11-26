@@ -1,0 +1,333 @@
+{
+  "status": "NETWORK_STATIC_CONDITIONAL_OBSERVER_AND_REENTRY_STACK_AUDIT_PASS",
+  "rejected_entry_paths": {
+    "mns_begin": {
+      "frame_bytes": 176,
+      "condition": "active!=0; poll additionally started!=0",
+      "instructions": [
+        {
+          "address": "0x4022d0",
+          "instruction": "stp x29, x30, [sp, #-0xb0]!"
+        },
+        {
+          "address": "0x4022d4",
+          "instruction": "mov x29, sp"
+        },
+        {
+          "address": "0x4022d8",
+          "instruction": "stp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x4022dc",
+          "instruction": "str x27, [sp, #0x50]"
+        },
+        {
+          "address": "0x4022e0",
+          "instruction": "adrp x27, 0x417000 <expected.0+0x11d48>"
+        },
+        {
+          "address": "0x4022e4",
+          "instruction": "add x19, x27, #0x400"
+        },
+        {
+          "address": "0x4022e8",
+          "instruction": "stp x25, x26, [sp, #0x40]"
+        },
+        {
+          "address": "0x4022ec",
+          "instruction": "ldr w26, [x19, #0x134c]"
+        },
+        {
+          "address": "0x4022f0",
+          "instruction": "cbnz w26, 0x402668 <mns_begin+0x398>"
+        },
+        {
+          "address": "0x402668",
+          "instruction": "mov w9, #-0x2"
+        },
+        {
+          "address": "0x40266c",
+          "instruction": "b 0x4023dc <mns_begin+0x10c>"
+        },
+        {
+          "address": "0x4023dc",
+          "instruction": "ldp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x4023e0",
+          "instruction": "mov w0, w9"
+        },
+        {
+          "address": "0x4023e4",
+          "instruction": "ldp x25, x26, [sp, #0x40]"
+        },
+        {
+          "address": "0x4023e8",
+          "instruction": "ldr x27, [sp, #0x50]"
+        },
+        {
+          "address": "0x4023ec",
+          "instruction": "ldp x29, x30, [sp], #0xb0"
+        },
+        {
+          "address": "0x4023f0",
+          "instruction": "ret "
+        }
+      ],
+      "calls": [],
+      "nonstack_writes": false
+    },
+    "mns_poll": {
+      "frame_bytes": 128,
+      "condition": "active!=0; poll additionally started!=0",
+      "instructions": [
+        {
+          "address": "0x4026a0",
+          "instruction": "stp x29, x30, [sp, #-0x80]!"
+        },
+        {
+          "address": "0x4026a4",
+          "instruction": "mov x29, sp"
+        },
+        {
+          "address": "0x4026a8",
+          "instruction": "stp x21, x22, [sp, #0x20]"
+        },
+        {
+          "address": "0x4026ac",
+          "instruction": "adrp x22, 0x417000 <expected.0+0x11d48>"
+        },
+        {
+          "address": "0x4026b0",
+          "instruction": "add x21, x22, #0x400"
+        },
+        {
+          "address": "0x4026b4",
+          "instruction": "stp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x4026b8",
+          "instruction": "ldr w0, [x21, #0x1348]"
+        },
+        {
+          "address": "0x4026bc",
+          "instruction": "cbz w0, 0x4029cc <mns_poll+0x32c>"
+        },
+        {
+          "address": "0x4026c0",
+          "instruction": "ldr w0, [x21, #0x134c]"
+        },
+        {
+          "address": "0x4026c4",
+          "instruction": "cbnz w0, 0x4029d4 <mns_poll+0x334>"
+        },
+        {
+          "address": "0x4029d4",
+          "instruction": "mov w19, #-0x2"
+        },
+        {
+          "address": "0x4029d8",
+          "instruction": "b 0x4026d0 <mns_poll+0x30>"
+        },
+        {
+          "address": "0x4026d0",
+          "instruction": "ldp x21, x22, [sp, #0x20]"
+        },
+        {
+          "address": "0x4026d4",
+          "instruction": "mov w0, w19"
+        },
+        {
+          "address": "0x4026d8",
+          "instruction": "ldp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x4026dc",
+          "instruction": "ldp x29, x30, [sp], #0x80"
+        },
+        {
+          "address": "0x4026e0",
+          "instruction": "ret "
+        }
+      ],
+      "calls": [],
+      "nonstack_writes": false
+    },
+    "mns_snapshot": {
+      "frame_bytes": 48,
+      "condition": "active!=0; poll additionally started!=0",
+      "instructions": [
+        {
+          "address": "0x4038e0",
+          "instruction": "stp x29, x30, [sp, #-0x30]!"
+        },
+        {
+          "address": "0x4038e4",
+          "instruction": "mov x29, sp"
+        },
+        {
+          "address": "0x4038e8",
+          "instruction": "stp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x4038ec",
+          "instruction": "mov x20, x0"
+        },
+        {
+          "address": "0x4038f0",
+          "instruction": "str x21, [sp, #0x20]"
+        },
+        {
+          "address": "0x4038f4",
+          "instruction": "adrp x21, 0x417000 <expected.0+0x11d48>"
+        },
+        {
+          "address": "0x4038f8",
+          "instruction": "add x19, x21, #0x400"
+        },
+        {
+          "address": "0x4038fc",
+          "instruction": "ldr w0, [x19, #0x134c]"
+        },
+        {
+          "address": "0x403900",
+          "instruction": "cbnz w0, 0x403a20 <mns_snapshot+0x140>"
+        },
+        {
+          "address": "0x403a20",
+          "instruction": "mov w0, #-0x2"
+        },
+        {
+          "address": "0x403a24",
+          "instruction": "b 0x403930 <mns_snapshot+0x50>"
+        },
+        {
+          "address": "0x403930",
+          "instruction": "ldp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x403934",
+          "instruction": "ldr x21, [sp, #0x20]"
+        },
+        {
+          "address": "0x403938",
+          "instruction": "ldp x29, x30, [sp], #0x30"
+        },
+        {
+          "address": "0x40393c",
+          "instruction": "ret "
+        }
+      ],
+      "calls": [],
+      "nonstack_writes": false
+    }
+  },
+  "conditional_frame_sums": {
+    "mns_begin": {
+      "bytes": 448,
+      "path": [
+        "mns_begin",
+        "health",
+        "probe",
+        "mns_begin[active]"
+      ]
+    },
+    "mns_poll": {
+      "bytes": 576,
+      "path": [
+        "mns_poll",
+        "map_step",
+        "mar_step",
+        "wr",
+        "probe",
+        "mns_begin[active]"
+      ]
+    },
+    "mns_snapshot": {
+      "bytes": 368,
+      "path": [
+        "mns_snapshot",
+        "mnh_health_check.constprop.0",
+        "health",
+        "probe",
+        "mns_begin[active]"
+      ]
+    }
+  },
+  "resolved_indirect_sites": 15,
+  "helpers": {
+    "memcpy": {
+      "frame_bytes": 16,
+      "all_instructions_cfg_checked": 134,
+      "balanced_return_sites": 1,
+      "calls": []
+    },
+    "memset": {
+      "frame_bytes": 16,
+      "all_instructions_cfg_checked": 90,
+      "balanced_return_sites": 1,
+      "calls": []
+    }
+  },
+  "jump_table_entries": 31,
+  "runtime_admitted": false,
+  "hardware_accessed": false,
+  "complete_production_stack_bound_bytes": null,
+  "assumptions": [
+    "Frozen mock bus and memory observer targets, same source/layout/ownership contract as executed test",
+    "Only probe recurses into public API while active remains nonzero; poll has started!=0",
+    "Static compiler frames plus resolved Rust metadata; tail edges conservatively added"
+  ],
+  "limits": [
+    "Exact diagnostic ELF, not production observer/IRQ/worker integration",
+    "No IRQ/GEM recovery nesting, FPU trap, exception/unwind or liveEL/SP qualification",
+    "Conditional graph sum excludes outer caller and interrupts, not an observed high-water measurement"
+  ],
+  "frame_metadata": {
+    "mau_fail.constprop.0": 0,
+    "mfg_fail.constprop.0": 16,
+    "mns_begin": 176,
+    "_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E": 0,
+    "aux_master_control_encode": 32,
+    "aux_master_leaf_encode": 32,
+    "aux_master_star_path_encode": 32,
+    "map_step": 80,
+    "mar_step": 64,
+    "memcpy": 16,
+    "memset": 16,
+    "mnh_health_check.constprop.0": 48,
+    "mns_poll": 128,
+    "mrs_step": 64,
+    "mns_snapshot": 48,
+    "check.part.0": 0,
+    "master_emulation_assert": 16,
+    "probe": 64,
+    "rd": 48,
+    "wr": 64,
+    "fence": 32,
+    "health": 32,
+    "aux_master_control_decode": 16,
+    "aux_master_routing_ack_decode": 16,
+    "mns_begin[active]": 176,
+    "mns_poll[active]": 128,
+    "mns_snapshot[active]": 48
+  },
+  "input_sha256": {
+    "/srv/codex-hil-nvme/master-network-static-target-20261126-v1/artifacts/codec-normal.elf": "111635f195f6c024b0774867be401eb062deb48254ee77a5f64ce40456999cd6",
+    "/srv/codex-hil-nvme/master-network-static-target-20261126-v1/artifacts/full-disassembly.txt": "cba00a16013a70a576bf04422751806fb185c15b6d1c6e43e920a82a97b26975",
+    "/srv/codex-hil-nvme/master-network-static-target-20261126-v1/artifacts/stack-sizes.txt": "e0932306dbba8435d6d83c5153085c1d1c3b07be219d3d84fb5c0e180a8079ef",
+    "/srv/codex-hil-nvme/master-network-static-target-20261126-v1/artifacts/execution-results.json": "c7d973f7ebc7043a39118d962b7f49e507954e9a737c49cfcd2f3bb7aa063d07",
+    "/srv/codex-hil-nvme/master-network-static-target-20261126-v1/artifacts/codec-normal.elf-master_codec_emulation.su": "85608c5d3c7b2910316057747cc705bc61434e47e46025f44aa7a8ce9d8a2fb7",
+    "/srv/codex-hil-nvme/master-network-static-target-20261126-v1/artifacts/codec-normal.elf-master_network_static.su": "73322ec66a620f140f2cc3d67d6a7b73f85f2190344ca3049a5c098c22d3b4d6",
+    "/srv/codex-hil-nvme/master-network-static-target-20261126-v1/artifacts/codec-normal.elf-test_master_network_static.su": "731464c9cc872fbb5c5517dd4ded49f29fbf919d15687d830413a018a8e2e476"
+  },
+  "compiled_fixture_source_hashes_verified": true,
+  "next": "Define and test an isolated sticky IRQ-to-foreground health publication protocol, including A53 memory-order/code-generation checks, without connecting it to deployed IRQ handlers or claiming nesting containment.",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_network_static.c": "8d962b62a43addb479574e055dca60aefdfbed524b019a2626f1782621b1da16",
+    "diagnostics/drtio/aux_protocol/master_network_start.h": "4da1b5a41c8cfbb531a955501db3397c48d7a40183b2e9383c76d2d069b066e5",
+    "diagnostics/drtio/aux_protocol/test_master_network_static.c": "9a2aaae8227104aaf6cf480c8a0ab916cef2600d9a176d3d54b2dfd4cbfc5263",
+    "diagnostics/drtio/aux_protocol/inspect-network-static-stack.py": "ecf2ed299d37da52402d65b1e25b8f291ac1bfb32782234637614fc253b4a32f",
+    "diagnostics/drtio/aux_protocol/inspect-linked-helpers.py": "d0ec2e97991faa6aef312087fb5dd39423450917371ac7873241b2142ed1881f"
+  }
+}

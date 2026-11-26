@@ -1,0 +1,21 @@
+{
+  "status": "NETWORK_STATIC_STACK_BASELINE_AND_THREE_MUTANT_REFUSALS_PASS",
+  "mutants_not_executed": true,
+  "runs": {
+    "inverted-active-guard": {
+      "refused": true,
+      "reason": "",
+      "elf_sha256": "a821670678d6fa72da1646c8e2859befc2fc34190bff573f8f9ebdc7df3f519d"
+    },
+    "changed-observer-register": {
+      "refused": true,
+      "reason": "",
+      "elf_sha256": "4bd340dcc54ba7a25fd760f18b018265034ebc002b8d276e186fc246b83e6516"
+    },
+    "missing-observer-frame": {
+      "refused": true,
+      "reason": "('Missing frame', 'health')",
+      "elf_sha256": "111635f195f6c024b0774867be401eb062deb48254ee77a5f64ce40456999cd6"
+    }
+  }
+}
