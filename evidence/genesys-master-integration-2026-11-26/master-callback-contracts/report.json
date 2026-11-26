@@ -1,0 +1,232 @@
+{
+  "status": "ISOLATED_SOURCE_REVIEWED_CALLBACK_CONTRACT_PASS_NOT_RUNTIME_ADMISSION",
+  "sites": [
+    {
+      "address": "400fa4",
+      "function": "mar_step",
+      "role": "decode",
+      "conditional_targets": [
+        "aux_master_control_decode",
+        "aux_master_routing_ack_decode"
+      ]
+    },
+    {
+      "address": "401030",
+      "function": "mar_step",
+      "role": "read",
+      "conditional_targets": [
+        "read_reg"
+      ]
+    },
+    {
+      "address": "401118",
+      "function": "mar_step",
+      "role": "fence",
+      "conditional_targets": [
+        "fence"
+      ]
+    },
+    {
+      "address": "4012c4",
+      "function": "mar_step",
+      "role": "write",
+      "conditional_targets": [
+        "write_reg"
+      ]
+    },
+    {
+      "address": "4013e4",
+      "function": "mrs_step",
+      "role": "fence",
+      "conditional_targets": [
+        "fence"
+      ]
+    },
+    {
+      "address": "401458",
+      "function": "mrs_step",
+      "role": "read",
+      "conditional_targets": [
+        "read_reg"
+      ]
+    },
+    {
+      "address": "4014b0",
+      "function": "mrs_step",
+      "role": "write",
+      "conditional_targets": [
+        "write_reg"
+      ]
+    },
+    {
+      "address": "401a08",
+      "function": "map_step",
+      "role": "fence",
+      "conditional_targets": [
+        "fence"
+      ]
+    },
+    {
+      "address": "401a48",
+      "function": "map_step",
+      "role": "read",
+      "conditional_targets": [
+        "read_reg"
+      ]
+    },
+    {
+      "address": "401acc",
+      "function": "map_step",
+      "role": "write",
+      "conditional_targets": [
+        "write_reg"
+      ]
+    },
+    {
+      "address": "4023bc",
+      "function": "mfc_poll",
+      "role": "read",
+      "conditional_targets": [
+        "read_reg"
+      ]
+    },
+    {
+      "address": "402878",
+      "function": "mfc_poll",
+      "role": "read",
+      "conditional_targets": [
+        "read_reg"
+      ]
+    },
+    {
+      "address": "403148",
+      "function": "mfc_poll",
+      "role": "read",
+      "conditional_targets": [
+        "read_reg"
+      ]
+    }
+  ],
+  "callback_frames": {
+    "read": {
+      "read_reg": 48
+    },
+    "write": {
+      "write_reg": 64
+    },
+    "fence": {
+      "fence": 32
+    },
+    "decode": {
+      "aux_master_control_decode": 16,
+      "aux_master_routing_ack_decode": 16
+    }
+  },
+  "conditional_frame_sums": {
+    "mfc_begin": {
+      "conditional_sum_bytes": 64,
+      "path": [
+        "mfc_begin"
+      ]
+    },
+    "mfc_poll": {
+      "conditional_sum_bytes": 352,
+      "path": [
+        "mfc_poll",
+        "map_step",
+        "mar_step",
+        "write_reg",
+        "master_emulation_assert",
+        "check.part.0"
+      ]
+    },
+    "mfc_cancel": {
+      "conditional_sum_bytes": 0,
+      "path": [
+        "mfc_cancel"
+      ]
+    },
+    "mfc_snapshot": {
+      "conditional_sum_bytes": 0,
+      "path": [
+        "mfc_snapshot"
+      ]
+    }
+  },
+  "callback_reentry_in_exact_mock_graph": false,
+  "assumptions": [
+    "Exact frozen fixture initializes read_reg/write_reg/fence; copied bus pointers remain unchanged under sole foreground ownership",
+    "Decoder pointer originates only from two reviewed setup/star source assignments",
+    "No concurrency, corrupted pointers, unreviewed callbacks or reentry from outside this diagnostic ELF"
+  ],
+  "limits": [
+    "Source-reviewed binding is not a general pointer-analysis or production callback enforcement proof",
+    "Sums conservatively add tail frames and mutually exclusive callback targets; exclude outer caller, IRQ/FPU/nesting and production runtime",
+    "No claim that active hardware EL/SP, worker handoff or recovery is qualified"
+  ],
+  "runtime_admitted": false,
+  "hardware_accessed": false,
+  "complete_production_stack_bound_bytes": null,
+  "input_sha256": {
+    "evidence/genesys-master-integration-2026-11-26/master-caller-callgraph/full-disassembly.txt": "bb8ba13f1d46f80ecfda1f1de20bb157a24d95f552d98d9e17f3fbf7397f85a5",
+    "evidence/genesys-master-integration-2026-11-26/master-caller-callgraph/stack-sizes.txt": "697b2cce99f9a6abac82dd306cffc1687947655c3f77f65988a3e6a678d151df",
+    "evidence/genesys-master-integration-2026-11-26/master-linked-helpers/report.json": "c79df22bf42809a744e18a468f788a67e6638d2308ffac1bb923e9298d3bc37c",
+    "evidence/genesys-master-integration-2026-11-26/master-caller-callgraph/codec-normal.elf-master_codec_emulation.su": "40c324b9d14bbf9dc8b35b574601a6522d7ea6c83b78c2bb907913c76f9badac",
+    "evidence/genesys-master-integration-2026-11-26/master-caller-callgraph/codec-normal.elf-master_static_caller.su": "e597d56d9f71421b416bfb2b7d176ada1e05f4c740b981ceffcc0c3e25842b53",
+    "evidence/genesys-master-integration-2026-11-26/master-caller-callgraph/codec-normal.elf-test_master_static_caller.su": "76bebb7d6dd4130873644d520da2959b2a1112216206cf262c671ec9953d1291"
+  },
+  "source_review_bindings": [
+    {
+      "path": "diagnostics/drtio/aux_protocol/test_master_static_caller.c",
+      "sha256": "3b9eac5323b0d08d31d2e7afcdac83e43ad2392206be65d196d9708a0749d7f2",
+      "compiled_source_manifest_matches": true,
+      "anchors": [
+        "struct mm_bus bus={&f,read_reg,write_reg,fence}",
+        "static int read_reg",
+        "static int write_reg",
+        "static int fence"
+      ]
+    },
+    {
+      "path": "diagnostics/drtio/aux_protocol/master_async_setup.h",
+      "sha256": "8b549f73a792a24de6e5447f7140e1bc55c98f06475d97e41667c93570ca4ea6",
+      "compiled_source_manifest_matches": true,
+      "anchors": [
+        "aux_master_control_decode"
+      ]
+    },
+    {
+      "path": "diagnostics/drtio/aux_protocol/master_async_star.h",
+      "sha256": "0bcf2fff7f7dc564cd640479ed73449e3dd776095b746fb9f9d88cb01040256a",
+      "compiled_source_manifest_matches": true,
+      "anchors": [
+        "aux_master_routing_ack_decode"
+      ]
+    },
+    {
+      "path": "diagnostics/drtio/aux_protocol/master_profile_bind.h",
+      "sha256": "1d3ba4dc54b7615413822b7764794747a05f14bafb21afb75ef788d1f37379f7",
+      "compiled_source_manifest_matches": true,
+      "anchors": [
+        "s->candidate.bus=bus_copy"
+      ]
+    },
+    {
+      "path": "diagnostics/drtio/aux_protocol/master_aux_mmio.h",
+      "sha256": "1da5b25208d09946dd36aa93df57f94db00b5b8363a6a111805db1b24df76614",
+      "compiled_source_manifest_matches": true,
+      "anchors": [
+        "struct mm_bus {void *ctx;int (*read)"
+      ]
+    },
+    {
+      "path": "diagnostics/drtio/aux_protocol/master_aux_resumable_rx.h",
+      "sha256": "e9777a1377c6f1b10f4373562462f65854bd7afc4af58e041ff638918052e119",
+      "compiled_source_manifest_matches": true,
+      "anchors": [
+        "s->decoded=s->decode(s->bytes,8)"
+      ]
+    }
+  ],
+  "next": "Add and test an isolated nonreentrancy guard at static caller ABI boundary before proposing any production callback integration; retain independent IRQ/active EL/SP and hardware gates."
+}
