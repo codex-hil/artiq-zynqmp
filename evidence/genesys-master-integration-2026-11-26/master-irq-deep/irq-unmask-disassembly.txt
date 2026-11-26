@@ -1,0 +1,93 @@
+<XSetupInterruptSystem>:
+   19a80: a9bb7bfd     	stp	x29, x30, [sp, #-0x50]!
+   19a84: 910003fd     	mov	x29, sp
+   19a88: a90153f3     	stp	x19, x20, [sp, #0x10]
+   19a8c: a9025bf5     	stp	x21, x22, [sp, #0x20]
+   19a90: aa0303f5     	mov	x21, x3
+   19a94: 2a0203f6     	mov	w22, w2
+   19a98: a90363f7     	stp	x23, x24, [sp, #0x30]
+   19a9c: aa0003f8     	mov	x24, x0
+   19aa0: aa0103f7     	mov	x23, x1
+   19aa4: aa0303e0     	mov	x0, x3
+   19aa8: f90023f9     	str	x25, [sp, #0x40]
+   19aac: 12003c99     	and	w25, w4, #0xffff
+   19ab0: 97ffff60     	bl	0x19830 <XConfigInterruptCntrl>
+   19ab4: 34000120     	cbz	w0, 0x19ad8 <XSetupInterruptSystem+0x58>
+   19ab8: 52800033     	mov	w19, #0x1               // =1
+   19abc: 2a1303e0     	mov	w0, w19
+   19ac0: a94153f3     	ldp	x19, x20, [sp, #0x10]
+   19ac4: a9425bf5     	ldp	x21, x22, [sp, #0x20]
+   19ac8: a94363f7     	ldp	x23, x24, [sp, #0x30]
+   19acc: f94023f9     	ldr	x25, [sp, #0x40]
+   19ad0: a8c57bfd     	ldp	x29, x30, [sp], #0x50
+   19ad4: d65f03c0     	ret
+   19ad8: f0004f34     	adrp	x20, 0xa00000 <TimerInst>
+   19adc: 91034294     	add	x20, x20, #0xd0
+   19ae0: 52800023     	mov	w3, #0x1                // =1
+   19ae4: 2a0003f3     	mov	w19, w0
+   19ae8: 2a1903e1     	mov	w1, w25
+   19aec: aa1503e2     	mov	x2, x21
+   19af0: 2a1603e0     	mov	w0, w22
+   19af4: b9001283     	str	w3, [x20, #0x10]
+   19af8: 97ffffaa     	bl	0x199a0 <XSetPriorityTriggerType>
+   19afc: 3707fdf5     	tbnz	w21, #0x0, 0x19ab8 <XSetupInterruptSystem+0x38>
+   19b00: b9401280     	ldr	w0, [x20, #0x10]
+   19b04: 12002ed5     	and	w21, w22, #0xfff
+   19b08: 120a02d9     	and	w25, w22, #0x400000
+   19b0c: 340005e0     	cbz	w0, 0x19bc8 <XSetupInterruptSystem+0x148>
+   19b10: 35000459     	cbnz	w25, 0x19b98 <XSetupInterruptSystem+0x118>
+   19b14: 720c02d6     	ands	w22, w22, #0x100000
+   19b18: 52800400     	mov	w0, #0x20               // =32
+   19b1c: 52800201     	mov	w1, #0x10               // =16
+   19b20: 1a801021     	csel	w1, w1, w0, ne
+   19b24: aa1803e3     	mov	x3, x24
+   19b28: aa1703e2     	mov	x2, x23
+   19b2c: 0b150021     	add	w1, w1, w21
+   19b30: aa1403e0     	mov	x0, x20
+   19b34: 9400019b     	bl	0x1a1a0 <XScuGic_Connect>
+   19b38: 35fffc00     	cbnz	w0, 0x19ab8 <XSetupInterruptSystem+0x38>
+   19b3c: b0000001     	adrp	x1, 0x1a000 <Xil_SetTlbAttributes+0x30>
+   19b40: aa1403e2     	mov	x2, x20
+   19b44: 91380021     	add	x1, x1, #0xe00
+   19b48: 52800040     	mov	w0, #0x2                // =2
+   19b4c: 97ffae51     	bl	0x5490 <Xil_ExceptionRegisterHandler>
+   19b50: 110042a0     	add	w0, w21, #0x10
+   19b54: 710002df     	cmp	w22, #0x0
+   19b58: 110082b5     	add	w21, w21, #0x20
+   19b5c: 1a8002b5     	csel	w21, w21, w0, eq
+   19b60: 2a1503e1     	mov	w1, w21
+   19b64: aa1403e0     	mov	x0, x20
+   19b68: 94000302     	bl	0x1a770 <XScuGic_Enable>
+   19b6c: 97ffae46     	bl	0x5484 <Xil_ExceptionInit>
+   19b70: d53b4220     	mrs	x0, DAIF
+   19b74: 12187800     	and	w0, w0, #0xffffff7f
+   19b78: d51b4220     	msr	DAIF, x0
+   19b7c: a9425bf5     	ldp	x21, x22, [sp, #0x20]
+   19b80: 2a1303e0     	mov	w0, w19
+   19b84: a94153f3     	ldp	x19, x20, [sp, #0x10]
+   19b88: a94363f7     	ldp	x23, x24, [sp, #0x30]
+   19b8c: f94023f9     	ldr	x25, [sp, #0x40]
+   19b90: a8c57bfd     	ldp	x29, x30, [sp], #0x50
+   19b94: d65f03c0     	ret
+   19b98: aa1803e3     	mov	x3, x24
+   19b9c: aa1703e2     	mov	x2, x23
+   19ba0: 2a1503e1     	mov	w1, w21
+   19ba4: aa1403e0     	mov	x0, x20
+   19ba8: 9400017e     	bl	0x1a1a0 <XScuGic_Connect>
+   19bac: 35fff860     	cbnz	w0, 0x19ab8 <XSetupInterruptSystem+0x38>
+   19bb0: aa1403e2     	mov	x2, x20
+   19bb4: b0000001     	adrp	x1, 0x1a000 <Xil_SetTlbAttributes+0x30>
+   19bb8: 52800040     	mov	w0, #0x2                // =2
+   19bbc: 91380021     	add	x1, x1, #0xe00
+   19bc0: 97ffae34     	bl	0x5490 <Xil_ExceptionRegisterHandler>
+   19bc4: 17ffffe7     	b	0x19b60 <XSetupInterruptSystem+0xe0>
+   19bc8: b0000001     	adrp	x1, 0x1a000 <Xil_SetTlbAttributes+0x30>
+   19bcc: aa1403e2     	mov	x2, x20
+   19bd0: 91380021     	add	x1, x1, #0xe00
+   19bd4: 52800040     	mov	w0, #0x2                // =2
+   19bd8: 97ffae2e     	bl	0x5490 <Xil_ExceptionRegisterHandler>
+   19bdc: 35fffc39     	cbnz	w25, 0x19b60 <XSetupInterruptSystem+0xe0>
+   19be0: 120c02d6     	and	w22, w22, #0x100000
+   19be4: 17ffffdb     	b	0x19b50 <XSetupInterruptSystem+0xd0>
+   19be8: d503201f     	nop
+   19bec: d503201f     	nop

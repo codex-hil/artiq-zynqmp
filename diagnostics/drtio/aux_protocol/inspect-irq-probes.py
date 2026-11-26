@@ -38,6 +38,6 @@ def main():
     for f in a.probe.glob('*.su'):
         for line in f.read_text().splitlines():
             name,size,qualifier=line.split('\t');assert qualifier=='static';frames[name.rsplit(':',1)[-1]]=int(size)
-    r={'status':'SEVEN_BSP_IRQ_FRAME_PROBES_INSTRUCTION_AND_RELOCATION_MEANING_PASS','bindings':rows,'frame_bytes':frames,'runtime_admitted':False,'hardware_accessed':False,'limits':['Readonly string relocations resolved by content; only exact recorded __FILE__ path replaced by reviewed filename marker; raw differences retained','Per-function frames only; no transitive callback/IRQ/nesting/activeEL-SP bound','First probe batch used stale nonoptimized compilation database and is not admitted']}
+    r={'status':'BSP_IRQ_FRAME_PROBES_INSTRUCTION_AND_RELOCATION_MEANING_PASS','translation_units':len(rows),'bindings':rows,'frame_bytes':frames,'runtime_admitted':False,'hardware_accessed':False,'limits':['Readonly string relocations resolved by content; only exact recorded __FILE__ path replaced by reviewed filename marker; raw differences retained','Per-function frames only; no transitive callback/IRQ/nesting/activeEL-SP bound','Per-object instruction and relocation checks are mandatory; a successful compilation alone is insufficient']}
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(r,indent=2)+'\n');print(r['status'])
 if __name__=='__main__':main()

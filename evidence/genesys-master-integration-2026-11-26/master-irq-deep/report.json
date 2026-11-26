@@ -1,0 +1,137 @@
+{
+  "status": "FIVE_DEEP_IRQ_FRAME_PROBES_PASS_WITH_GEM_RECOVERY_IRQ_UNMASK_FINDING",
+  "translation_units": 5,
+  "bindings": [
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/emacps/src/xemacps_control.c",
+      "source_sha256": "8bf24dce43d18fb6221eac6575075bfa7ff258576901c4ba0d363dd3b2d606d9",
+      "retained_object_sha256": "8fb1aba366be0b929925d2cd243f1005bebbce97e57ce34c6ea485b2e1129f9d",
+      "probe_object_sha256": "fad23ee49d82daa8e88b0e9af1d8d0b27c64182d2838796712f84445aa6181d7",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": false
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/emacps/src/xemacps_intr.c",
+      "source_sha256": "6a7a7b62ccde32ee69f15f6cfbbd77521f5123ea6f244b52e81e6a6f9e94ec29",
+      "retained_object_sha256": "b8476573797b5ec964c679fc2ba6d49c3aeb6816ae02333094e1e9258329f5bb",
+      "probe_object_sha256": "6287a2e55f8023b55e5d9ea18660d1ce6828ffd22d6e21ad64778f6d1d5ef1db",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": false
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/src/core/ipv4/dhcp.c",
+      "source_sha256": "fdddf8c08aba0534f531d97aa7fa713bad4e541531aae61a37759daa88d29e3d",
+      "retained_object_sha256": "5066fbdf12e6ed250a07700ffc39df67c337558a6a2734c7d580df6f36332eb4",
+      "probe_object_sha256": "c3a8c4a9a2f6199586d763f3b7ba48c729330147253d1262d4f8342aedcf6342",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": true
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/src/core/ipv4/acd.c",
+      "source_sha256": "e780cbbd86eeadc5033dd2e6311704db0fc9264288f10db6ad0a6ce7dfce86e7",
+      "retained_object_sha256": "13314c8f466b859a041fc4d70d168143d7475a2dcf1385da10a88831721cc790",
+      "probe_object_sha256": "fe0a13d3a9bbe35d58485a78a13f179ea8c9081c921f9ef44f6bbea555e09f31",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": true
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xadapter.c",
+      "source_sha256": "0cde5ad72758bbe005a3f1ccdada6e9b53de91d284f4580b2500c626b348f67f",
+      "retained_object_sha256": "2a190ab3f0e12a3eebe13d312a6c7bfc068077ff590f01b06e1fdab1b201a13c",
+      "probe_object_sha256": "77859fb790d1b7d4edfc0d5b3068965417649d9273b3626bf3116b6065a8690a",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": true
+    }
+  ],
+  "frame_bytes": {
+    "acd_add": 0,
+    "acd_remove": 0,
+    "acd_start": 32,
+    "acd_stop": 0,
+    "acd_network_changed_link_down": 0,
+    "acd_tmr": 64,
+    "acd_arp_reply": 80,
+    "acd_netif_ip_addr_changed": 64,
+    "XEmacPs_SetMacAddress": 32,
+    "XEmacPs_GetMacAddress": 32,
+    "XEmacPs_SetHash": 32,
+    "XEmacPs_DeleteHash": 32,
+    "XEmacPs_ClearHash": 32,
+    "XEmacPs_GetHash": 32,
+    "XEmacPs_SetTypeIdCheck": 32,
+    "XEmacPs_SetOptions": 32,
+    "XEmacPs_ClearOptions": 32,
+    "XEmacPs_GetOptions": 32,
+    "XEmacPs_SendPausePacket": 32,
+    "XEmacPs_GetOperatingSpeed": 32,
+    "XEmacPs_SetOperatingSpeed": 32,
+    "XEmacPs_SetMdioDivisor": 32,
+    "XEmacPs_PhyRead": 32,
+    "XEmacPs_IsCommonMdioPresent": 0,
+    "XEmacPs_PhyWrite": 32,
+    "XEmacPs_DMABLengthUpdate": 32,
+    "XEmacPs_SetHandler": 32,
+    "XEmacPs_IntrHandler": 208,
+    "lwip_raw_init": 16,
+    "xtopology_find_index": 0,
+    "xemac_add": 16,
+    "xemacif_input": 16,
+    "emacps_link_status": 64,
+    "eth_link_detect": 0,
+    "dhcp_create_msg": 64,
+    "dhcp_bind": 32,
+    "dhcp_inc_pcb_refcount": 32,
+    "dhcp_handle_ack.isra": 32,
+    "dhcp_reboot.isra": 80,
+    "dhcp_discover": 64,
+    "dhcp_select.isra": 96,
+    "dhcp_recv": 128,
+    "dhcp_conflict_callback": 96,
+    "dhcp_set_struct": 0,
+    "dhcp_cleanup": 32,
+    "dhcp_inform": 144,
+    "dhcp_network_changed_link_up": 0,
+    "dhcp_renew": 64,
+    "dhcp_release_and_stop": 80,
+    "dhcp_start": 48,
+    "dhcp_coarse_tmr": 64,
+    "dhcp_fine_tmr": 32,
+    "dhcp_release": 16,
+    "dhcp_stop": 0,
+    "dhcp_supplied_address": 0
+  },
+  "runtime_admitted": false,
+  "hardware_accessed": false,
+  "limits": [
+    "Readonly string relocations resolved by content; only exact recorded __FILE__ path replaced by reviewed filename marker; raw differences retained",
+    "Per-function frames only; no transitive callback/IRQ/nesting/activeEL-SP bound",
+    "Per-object instruction and relocation checks are mandatory; a successful compilation alone is insufficient"
+  ],
+  "irq_nesting_finding": {
+    "status": "SINGLE_DEPTH_IRQ_ASSUMPTION_NOT_QUALIFIED",
+    "static_direct_call_path": [
+      "emacps_error_handler",
+      "HandleEmacPsError",
+      "init_dma",
+      "XSetupInterruptSystem"
+    ],
+    "unmask_sequence_addresses": [
+      "0x19b70",
+      "0x19b74",
+      "0x19b78"
+    ],
+    "effect": "DAIF.I bit7 cleared within XSetupInterruptSystem; source also calls Xil_ExceptionEnable",
+    "scope": "Potential error-recovery path, not observation that an error or nested IRQ happened",
+    "open_requirements": [
+      "Enabled interrupt sources and GIC priorities/preemption state",
+      "Worst-case reentry/nesting while error recovery unmasks IRQ",
+      "FPU trap context and active EL/SP; per-function frames do not bound nesting"
+    ]
+  },
+  "next": "Define an isolated fail-closed integration policy for GEM error recovery during master ownership, preserving management service and avoiding an unqualified single-depth IRQ stack assumption; do not change deployed runtime."
+}
