@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Locate the exact retained CPU0 foreground and C IRQ insertion boundaries, then prepare a separate caller/IRQ stack probe with explicit nesting assumptions; keep production hooks disabled.",
+  "next_safe_offline": "Inventory actual retained GIC registrations and timer/GEM transitive callees with frame metadata and nesting policy; keep candidate foreground hook disabled.",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -818,5 +818,10 @@
     "status": "GUARDED_REENTRY_PATHS_AND_CONDITIONAL_DIAGNOSTIC_FRAME_SUM_PASS",
     "report": "evidence/genesys-master-integration-2026-11-26/master-reentry-stack/report.json",
     "next": "Locate the exact retained CPU0 foreground and C IRQ insertion boundaries, then prepare a separate caller/IRQ stack probe with explicit nesting assumptions; keep production hooks disabled."
+  },
+  "master_retained_caller_20261126": {
+    "status": "RETAINED_CPU0_CALLER_AND_TIMER_FRAME_PROBE_CODE_IDENTITY_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-26/master-retained-caller/report.json",
+    "next": "Inventory actual retained GIC registrations and timer/GEM transitive callees with frame metadata and nesting policy; keep candidate foreground hook disabled."
   }
 }

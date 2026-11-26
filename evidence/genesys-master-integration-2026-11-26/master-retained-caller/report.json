@@ -1,0 +1,87 @@
+{
+  "status": "RETAINED_CPU0_CALLER_AND_TIMER_FRAME_PROBE_CODE_IDENTITY_PASS",
+  "runtime_admitted": false,
+  "hardware_accessed": false,
+  "retained_elf_sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3",
+  "object_bindings": [
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/main.c",
+      "source_sha256": "a8bc1f8eaf6b058cc5556957f1f0618cfd39ec46b56f72aa74309a8a329b86b6",
+      "retained_object_sha256": "69af2bbe9bde910950b4d686f1905a5ed4ff89a1870647e85586fd1901ddc18b",
+      "probe_object_sha256": "2a8fc99fe4a5ee6f85c9202ed962f4e50a5c4882145c1dbcd4d53fcbe64ad11a",
+      "text_and_relocations_identical": true,
+      "text_sha256": "ca280eb617f8aa57e9fa6bfed64140bbd670a035ef17173c63157f2a068f2da8"
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/platform.c",
+      "source_sha256": "81893476eef28a1b9f27f64ddbd4c6ad03243b6e2c2261497f63ad60c5e1c8ea",
+      "retained_object_sha256": "e3153f1604dcbc839fdcdd58ffca298478392645af39589c02ac9e8fc458640a",
+      "probe_object_sha256": "0f94769973ede60bf44277db0eebfdb0523f0818599557734c4b6a35e2f57b0a",
+      "text_and_relocations_identical": true,
+      "text_sha256": "5a98b4df26f97e54a4be5c14b6ca4d61c30e1b2b1b45253d72c7dd8c88ee79a3"
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/kernel_lwip.c",
+      "source_sha256": "c0da107f4b2f2806e4b179b8605c9a9dddbd2795d9e1426447bd02e484200666",
+      "retained_object_sha256": "1b736208d2c7eeaaf6b64975c39b38e08acde6009529472403cdd80934097b08",
+      "probe_object_sha256": "83a3778e1e3fe6fb7e7024c02d9cb21cebfdba91d1204a6b043cb925022fbda7",
+      "text_and_relocations_identical": true,
+      "text_sha256": "25315b52cd9ea27e52bfa7d3ce016c3a7b66587fbdeb595be5fb5ac95f3cad4e"
+    }
+  ],
+  "app_frames_bytes": {
+    "print_ip": 32,
+    "print_ip_settings": 48,
+    "main": 80,
+    "timer_callback": 16,
+    "enable_caches": 0,
+    "disable_caches": 16,
+    "init_platform": 16,
+    "TimerCounterHandler": 32,
+    "init_timer": 16,
+    "cleanup_platform": 16,
+    "genesys_kernel_running": 0,
+    "log_event": 32,
+    "ticks": 16,
+    "frequency": 16,
+    "read_mb": 16,
+    "write_mb": 16,
+    "command": 32,
+    "callbacks": 16,
+    "flush": 48,
+    "append": 32,
+    "header": 48,
+    "chunk": 32,
+    "error_load": 32,
+    "failed": 32,
+    "abort_owner": 32,
+    "acknowledged": 48,
+    "poll": 32,
+    "byte": 32,
+    "receive": 80,
+    "genesys_kernel_poll": 48,
+    "accepted": 48,
+    "genesys_kernel_start": 48
+  },
+  "foreground_order": [
+    "tcp_fasttmr();",
+    "tcp_slowtmr();",
+    "xemacif_input(echo_netif);",
+    "transfer_data();",
+    "genesys_kernel_poll();"
+  ],
+  "candidate_boundary": "After genesys_kernel_poll returns, before next loop iteration, only under separately qualified worker/link ownership grant; no hook inserted",
+  "actual_interrupt_path": "IRQInterruptHandler -> IRQInterrupt exception-table tail dispatch -> XScuGic_InterruptHandler -> dynamic registered handler; timer uses SDT XTimer handler -> TimerCounterHandler -> timer_callback",
+  "irq_open_items": [
+    "Resolve all enabled GIC handler registrations, including GEM and timer wrapper, rather than only timer",
+    "Timer path can call DHCP timers and eth_link_detect; transitive C/library stack remains unknown",
+    "Assembly fixed save208B is lower bound; IRQ nesting/masking, FPU trap context, other exceptions and live EL/SP remain unqualified"
+  ],
+  "limits": [
+    "Retained October artifact, not current device state",
+    "80B main plus isolated576B diagnostic sum is not a production bound: different link/callbacks and IRQ omitted",
+    "genesys_kernel_poll busy/event fields alone are not a worker quiescence/ownership handshake",
+    "No runtime modification, board access or admission"
+  ],
+  "next": "Inventory actual retained GIC registrations and timer/GEM transitive callees with frame metadata and nesting policy; keep candidate foreground hook disabled."
+}

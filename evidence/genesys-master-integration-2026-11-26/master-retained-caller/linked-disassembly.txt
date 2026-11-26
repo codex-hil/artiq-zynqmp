@@ -1,0 +1,458 @@
+
+/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/build/lwip_echo_server.elf:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000000488 <IRQInterruptHandler>:
+     488: a9bf07e0     	stp	x0, x1, [sp, #-0x10]!
+     48c: a9bf0fe2     	stp	x2, x3, [sp, #-0x10]!
+     490: a9bf17e4     	stp	x4, x5, [sp, #-0x10]!
+     494: a9bf1fe6     	stp	x6, x7, [sp, #-0x10]!
+     498: a9bf27e8     	stp	x8, x9, [sp, #-0x10]!
+     49c: a9bf2fea     	stp	x10, x11, [sp, #-0x10]!
+     4a0: a9bf37ec     	stp	x12, x13, [sp, #-0x10]!
+     4a4: a9bf3fee     	stp	x14, x15, [sp, #-0x10]!
+     4a8: a9bf47f0     	stp	x16, x17, [sp, #-0x10]!
+     4ac: a9bf4ff2     	stp	x18, x19, [sp, #-0x10]!
+     4b0: a9bf7bfd     	stp	x29, x30, [sp, #-0x10]!
+     4b4: d53e1140     	mrs	x0, CPTR_EL3
+     4b8: d53e4021     	mrs	x1, ELR_EL3
+     4bc: d53e4002     	mrs	x2, SPSR_EL3
+     4c0: a9bf07e0     	stp	x0, x1, [sp, #-0x10]!
+     4c4: f81f0fe2     	str	x2, [sp, #-0x10]!
+     4c8: d53e1141     	mrs	x1, CPTR_EL3
+     4cc: b2760021     	orr	x1, x1, #0x400
+     4d0: d51e1141     	msr	CPTR_EL3, x1
+     4d4: d5033fdf     	isb
+     4d8: 940013d3     	bl	0x5424 <IRQInterrupt>
+     4dc: d53e1140     	mrs	x0, CPTR_EL3
+     4e0: f2760000     	ands	x0, x0, #0x400
+     4e4: 540002e1     	b.ne	0x540 <RestorePrevState>
+     4e8: 58002241     	ldr	x1, 0x930 <FPUStatus+0x18>
+     4ec: f9400020     	ldr	x0, [x1]
+     4f0: a9ff0c02     	ldp	x2, x3, [x0, #-0x10]!
+     4f4: d51b4402     	msr	FPCR, x2
+     4f8: d51b4423     	msr	FPSR, x3
+     4fc: adff7c1e     	ldp	q30, q31, [x0, #-0x20]!
+     500: adff741c     	ldp	q28, q29, [x0, #-0x20]!
+     504: adff6c1a     	ldp	q26, q27, [x0, #-0x20]!
+     508: adff6418     	ldp	q24, q25, [x0, #-0x20]!
+     50c: adff5c16     	ldp	q22, q23, [x0, #-0x20]!
+     510: adff5414     	ldp	q20, q21, [x0, #-0x20]!
+     514: adff4c12     	ldp	q18, q19, [x0, #-0x20]!
+     518: adff4410     	ldp	q16, q17, [x0, #-0x20]!
+     51c: adff3c0e     	ldp	q14, q15, [x0, #-0x20]!
+     520: adff340c     	ldp	q12, q13, [x0, #-0x20]!
+     524: adff2c0a     	ldp	q10, q11, [x0, #-0x20]!
+     528: adff2408     	ldp	q8, q9, [x0, #-0x20]!
+     52c: adff1c06     	ldp	q6, q7, [x0, #-0x20]!
+     530: adff1404     	ldp	q4, q5, [x0, #-0x20]!
+     534: adff0c02     	ldp	q2, q3, [x0, #-0x20]!
+     538: adff0400     	ldp	q0, q1, [x0, #-0x20]!
+     53c: f9000020     	str	x0, [x1]
+
+0000000000003e70 <main>:
+    3e70: a9bb7bfd     	stp	x29, x30, [sp, #-0x50]!
+    3e74: 910003fd     	mov	x29, sp
+    3e78: f0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    3e7c: 913d2001     	add	x1, x0, #0xf48
+    3e80: 9100a3e0     	add	x0, sp, #0x28
+    3e84: b9400022     	ldr	w2, [x1]
+    3e88: b9000002     	str	w2, [x0]
+    3e8c: 79400821     	ldrh	w1, [x1, #0x4]
+    3e90: 79000801     	strh	w1, [x0, #0x4]
+    3e94: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3e98: 912e8000     	add	x0, x0, #0xba0
+    3e9c: f0001041     	adrp	x1, 0x20e000 <clients+0x3b30>
+    3ea0: 912ea021     	add	x1, x1, #0xba8
+    3ea4: f9000001     	str	x1, [x0]
+    3ea8: 94000158     	bl	0x4408 <init_platform>
+    3eac: f0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    3eb0: 9137a000     	add	x0, x0, #0xde8
+    3eb4: 940003d3     	bl	0x4e00 <xil_printf>
+    3eb8: b90043ff     	str	wzr, [sp, #0x40]
+    3ebc: b90033ff     	str	wzr, [sp, #0x30]
+    3ec0: b9003bff     	str	wzr, [sp, #0x38]
+    3ec4: 97fff335     	bl	0xb98 <print_app_header>
+    3ec8: 940005be     	bl	0x55c0 <lwip_init>
+    3ecc: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3ed0: 912e8000     	add	x0, x0, #0xba0
+    3ed4: f9400000     	ldr	x0, [x0]
+    3ed8: 9100a3e4     	add	x4, sp, #0x28
+    3edc: 9100c3e3     	add	x3, sp, #0x30
+    3ee0: 9100e3e2     	add	x2, sp, #0x38
+    3ee4: 910103e1     	add	x1, sp, #0x40
+    3ee8: d2bfe165     	mov	x5, #0xff0b0000         // =4278910976
+    3eec: 940037d5     	bl	0x11e40 <xemac_add>
+    3ef0: f100001f     	cmp	x0, #0x0
+    3ef4: 540000c1     	b.ne	0x3f0c <main+0x9c>
+    3ef8: f0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    3efc: 91388000     	add	x0, x0, #0xe20
+    3f00: 940003c0     	bl	0x4e00 <xil_printf>
+    3f04: 12800000     	mov	w0, #-0x1               // =-1
+    3f08: 140000a8     	b	0x41a8 <main+0x338>
+    3f0c: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3f10: 912e8000     	add	x0, x0, #0xba0
+    3f14: f9400000     	ldr	x0, [x0]
+    3f18: 940008ce     	bl	0x6250 <netif_set_default>
+    3f1c: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3f20: 912e8000     	add	x0, x0, #0xba0
+    3f24: f9400000     	ldr	x0, [x0]
+    3f28: 940008ce     	bl	0x6260 <netif_set_up>
+    3f2c: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3f30: 912e8000     	add	x0, x0, #0xba0
+    3f34: f9400000     	ldr	x0, [x0]
+    3f38: 94002ad3     	bl	0xea84 <dhcp_start>
+    3f3c: 39013fe0     	strb	w0, [sp, #0x4f]
+    3f40: 39c13fe0     	ldrsb	w0, [sp, #0x4f]
+    3f44: 7100001f     	cmp	w0, #0x0
+    3f48: 54000100     	b.eq	0x3f68 <main+0xf8>
+    3f4c: 39c13fe0     	ldrsb	w0, [sp, #0x4f]
+    3f50: 2a0003e1     	mov	w1, w0
+    3f54: f0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    3f58: 91390000     	add	x0, x0, #0xe40
+    3f5c: 940003a9     	bl	0x4e00 <xil_printf>
+    3f60: 52800020     	mov	w0, #0x1                // =1
+    3f64: 14000091     	b	0x41a8 <main+0x338>
+    3f68: 900002c0     	adrp	x0, 0x5b000 <_ZN4core7unicode12unicode_data9uppercase14BITSET_MAPPING17h0a76e49749514c5aE+0x5d90>
+    3f6c: 91141000     	add	x0, x0, #0x504
+    3f70: 52801e01     	mov	w1, #0xf0               // =240
+    3f74: b9000001     	str	w1, [x0]
+    3f78: 14000005     	b	0x3f8c <main+0x11c>
+    3f7c: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3f80: 912e8000     	add	x0, x0, #0xba0
+    3f84: f9400000     	ldr	x0, [x0]
+    3f88: 940037de     	bl	0x11f00 <xemacif_input>
+    3f8c: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3f90: 912e8000     	add	x0, x0, #0xba0
+    3f94: f9400000     	ldr	x0, [x0]
+    3f98: b9400800     	ldr	w0, [x0, #0x8]
+    3f9c: 7100001f     	cmp	w0, #0x0
+    3fa0: 540000c1     	b.ne	0x3fb8 <main+0x148>
+    3fa4: 900002c0     	adrp	x0, 0x5b000 <_ZN4core7unicode12unicode_data9uppercase14BITSET_MAPPING17h0a76e49749514c5aE+0x5d90>
+    3fa8: 91141000     	add	x0, x0, #0x504
+    3fac: b9400000     	ldr	w0, [x0]
+    3fb0: 7100001f     	cmp	w0, #0x0
+    3fb4: 54fffe4c     	b.gt	0x3f7c <main+0x10c>
+    3fb8: 900002c0     	adrp	x0, 0x5b000 <_ZN4core7unicode12unicode_data9uppercase14BITSET_MAPPING17h0a76e49749514c5aE+0x5d90>
+    3fbc: 91141000     	add	x0, x0, #0x504
+    3fc0: b9400000     	ldr	w0, [x0]
+    3fc4: 7100001f     	cmp	w0, #0x0
+    3fc8: 540001ec     	b.gt	0x4004 <main+0x194>
+    3fcc: f0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    3fd0: 912e8000     	add	x0, x0, #0xba0
+    3fd4: f9400000     	ldr	x0, [x0]
+    3fd8: b9400800     	ldr	w0, [x0, #0x8]
+    3fdc: 7100001f     	cmp	w0, #0x0
+    3fe0: 54000121     	b.ne	0x4004 <main+0x194>
+    3fe4: f0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    3fe8: 9139a000     	add	x0, x0, #0xe68
+    3fec: 94000385     	bl	0x4e00 <xil_printf>
+    3ff0: f0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    3ff4: 9139e000     	add	x0, x0, #0xe78
+    3ff8: 94000382     	bl	0x4e00 <xil_printf>
+    3ffc: 52800020     	mov	w0, #0x1                // =1
+    4000: 1400006a     	b	0x41a8 <main+0x338>
+    4004: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4008: 912e8000     	add	x0, x0, #0xba0
+    400c: f9400000     	ldr	x0, [x0]
+    4010: b9400800     	ldr	w0, [x0, #0x8]
+    4014: b90043e0     	str	w0, [sp, #0x40]
+    4018: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    401c: 912e8000     	add	x0, x0, #0xba0
+    4020: f9400000     	ldr	x0, [x0]
+    4024: b9401000     	ldr	w0, [x0, #0x10]
+    4028: b90033e0     	str	w0, [sp, #0x30]
+    402c: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4030: 912e8000     	add	x0, x0, #0xba0
+    4034: f9400000     	ldr	x0, [x0]
+    4038: b9400c00     	ldr	w0, [x0, #0xc]
+    403c: b9003be0     	str	w0, [sp, #0x38]
+    4040: d0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    4044: 913aa000     	add	x0, x0, #0xea8
+    4048: 9400036e     	bl	0x4e00 <xil_printf>
+    404c: 9100c3e2     	add	x2, sp, #0x30
+    4050: 9100e3e1     	add	x1, sp, #0x38
+    4054: 910103e0     	add	x0, sp, #0x40
+    4058: 97ffff72     	bl	0x3e20 <print_ip_settings>
+    405c: 910103e0     	add	x0, sp, #0x40
+    4060: 39400000     	ldrb	w0, [x0]
+    4064: 2a0003e1     	mov	w1, w0
+    4068: 910103e0     	add	x0, sp, #0x40
+    406c: 91000400     	add	x0, x0, #0x1
+    4070: 39400000     	ldrb	w0, [x0]
+    4074: 2a0003e2     	mov	w2, w0
+    4078: 910103e0     	add	x0, sp, #0x40
+    407c: 91000800     	add	x0, x0, #0x2
+    4080: 39400000     	ldrb	w0, [x0]
+    4084: 2a0003e3     	mov	w3, w0
+    4088: 910103e0     	add	x0, sp, #0x40
+    408c: 91000c00     	add	x0, x0, #0x3
+    4090: 39400000     	ldrb	w0, [x0]
+    4094: 910063e7     	add	x7, sp, #0x18
+    4098: 2a0003e6     	mov	w6, w0
+    409c: 2a0303e5     	mov	w5, w3
+    40a0: 2a0203e4     	mov	w4, w2
+    40a4: 2a0103e3     	mov	w3, w1
+    40a8: d0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    40ac: 913b2002     	add	x2, x0, #0xec8
+    40b0: d2800201     	mov	x1, #0x10               // =16
+    40b4: aa0703e0     	mov	x0, x7
+    40b8: 94005f7a     	bl	0x1bea0 <snprintf>
+    40bc: b9004be0     	str	w0, [sp, #0x48]
+    40c0: b9404be0     	ldr	w0, [sp, #0x48]
+    40c4: 7100001f     	cmp	w0, #0x0
+    40c8: 5400012d     	b.le	0x40ec <main+0x27c>
+    40cc: b9404be0     	ldr	w0, [sp, #0x48]
+    40d0: 71003c1f     	cmp	w0, #0xf
+    40d4: 540000cc     	b.gt	0x40ec <main+0x27c>
+    40d8: b9804be1     	ldrsw	x1, [sp, #0x48]
+    40dc: 910063e0     	add	x0, sp, #0x18
+    40e0: 97fff4d7     	bl	0x143c <genesys_management_start>
+    40e4: 7100001f     	cmp	w0, #0x0
+    40e8: 540000c0     	b.eq	0x4100 <main+0x290>
+    40ec: d0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    40f0: 913b6000     	add	x0, x0, #0xed8
+    40f4: 94000343     	bl	0x4e00 <xil_printf>
+    40f8: 52800020     	mov	w0, #0x1                // =1
+    40fc: 1400002b     	b	0x41a8 <main+0x338>
+    4100: 97fffef2     	bl	0x3cc8 <genesys_debug_start>
+    4104: 7100001f     	cmp	w0, #0x0
+    4108: 540000c0     	b.eq	0x4120 <main+0x2b0>
+    410c: d0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    4110: 913c2000     	add	x0, x0, #0xf08
+    4114: 9400033b     	bl	0x4e00 <xil_printf>
+    4118: 52800020     	mov	w0, #0x1                // =1
+    411c: 14000023     	b	0x41a8 <main+0x338>
+    4120: 97fffa3c     	bl	0x2a10 <genesys_kernel_start>
+    4124: 7100001f     	cmp	w0, #0x0
+    4128: 540000c0     	b.eq	0x4140 <main+0x2d0>
+    412c: d0000220     	adrp	x0, 0x4a000 <_ZN4core7unicode12unicode_data9uppercase6lookup17h09efe0d876182582E+0x4>
+    4130: 913ca000     	add	x0, x0, #0xf28
+    4134: 94000333     	bl	0x4e00 <xil_printf>
+    4138: 52800020     	mov	w0, #0x1                // =1
+    413c: 1400001b     	b	0x41a8 <main+0x338>
+    4140: 97fff2e8     	bl	0xce0 <start_application>
+    4144: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4148: 91302000     	add	x0, x0, #0xc08
+    414c: b9400000     	ldr	w0, [x0]
+    4150: 7100001f     	cmp	w0, #0x0
+    4154: 540000a0     	b.eq	0x4168 <main+0x2f8>
+    4158: 94001392     	bl	0x8fa0 <tcp_fasttmr>
+    415c: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4160: 91302000     	add	x0, x0, #0xc08
+    4164: b900001f     	str	wzr, [x0]
+    4168: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    416c: 91303000     	add	x0, x0, #0xc0c
+    4170: b9400000     	ldr	w0, [x0]
+    4174: 7100001f     	cmp	w0, #0x0
+    4178: 540000a0     	b.eq	0x418c <main+0x31c>
+    417c: 94000f91     	bl	0x7fc0 <tcp_slowtmr>
+    4180: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4184: 91303000     	add	x0, x0, #0xc0c
+    4188: b900001f     	str	wzr, [x0]
+    418c: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4190: 912e8000     	add	x0, x0, #0xba0
+    4194: f9400000     	ldr	x0, [x0]
+    4198: 9400375a     	bl	0x11f00 <xemacif_input>
+    419c: 97fff27d     	bl	0xb90 <transfer_data>
+    41a0: 97fff8d1     	bl	0x24e4 <genesys_kernel_poll>
+    41a4: 17ffffe8     	b	0x4144 <main+0x2d4>
+    41a8: a8c57bfd     	ldp	x29, x30, [sp], #0x50
+    41ac: d65f03c0     	ret
+
+00000000000041b0 <timer_callback>:
+    41b0: a9bf7bfd     	stp	x29, x30, [sp, #-0x10]!
+    41b4: 910003fd     	mov	x29, sp
+    41b8: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    41bc: 91304000     	add	x0, x0, #0xc10
+    41c0: b9400000     	ldr	w0, [x0]
+    41c4: 11000401     	add	w1, w0, #0x1
+    41c8: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    41cc: 91304000     	add	x0, x0, #0xc10
+    41d0: b9000001     	str	w1, [x0]
+    41d4: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    41d8: 91305000     	add	x0, x0, #0xc14
+    41dc: b9400000     	ldr	w0, [x0]
+    41e0: 11000401     	add	w1, w0, #0x1
+    41e4: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    41e8: 91305000     	add	x0, x0, #0xc14
+    41ec: b9000001     	str	w1, [x0]
+    41f0: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    41f4: 91306000     	add	x0, x0, #0xc18
+    41f8: b9400000     	ldr	w0, [x0]
+    41fc: 11000401     	add	w1, w0, #0x1
+    4200: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4204: 91306000     	add	x0, x0, #0xc18
+    4208: b9000001     	str	w1, [x0]
+    420c: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4210: 91307000     	add	x0, x0, #0xc1c
+    4214: b9400000     	ldr	w0, [x0]
+    4218: 11000401     	add	w1, w0, #0x1
+    421c: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4220: 91307000     	add	x0, x0, #0xc1c
+    4224: b9000001     	str	w1, [x0]
+    4228: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    422c: 91308000     	add	x0, x0, #0xc20
+    4230: b9400000     	ldr	w0, [x0]
+    4234: 11000401     	add	w1, w0, #0x1
+    4238: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    423c: 91308000     	add	x0, x0, #0xc20
+    4240: b9000001     	str	w1, [x0]
+    4244: f00002a0     	adrp	x0, 0x5b000 <_ZN4core7unicode12unicode_data9uppercase14BITSET_MAPPING17h0a76e49749514c5aE+0x5d90>
+    4248: 91141000     	add	x0, x0, #0x504
+    424c: b9400000     	ldr	w0, [x0]
+    4250: 51000401     	sub	w1, w0, #0x1
+    4254: f00002a0     	adrp	x0, 0x5b000 <_ZN4core7unicode12unicode_data9uppercase14BITSET_MAPPING17h0a76e49749514c5aE+0x5d90>
+    4258: 91141000     	add	x0, x0, #0x504
+    425c: b9000001     	str	w1, [x0]
+    4260: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4264: 91309000     	add	x0, x0, #0xc24
+    4268: b9400000     	ldr	w0, [x0]
+    426c: 11000401     	add	w1, w0, #0x1
+    4270: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4274: 91309000     	add	x0, x0, #0xc24
+    4278: b9000001     	str	w1, [x0]
+    427c: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4280: 91305000     	add	x0, x0, #0xc14
+    4284: b9400002     	ldr	w2, [x0]
+    4288: 528ccce0     	mov	w0, #0x6667             // =26215
+    428c: 72acccc0     	movk	w0, #0x6666, lsl #16
+    4290: 9b207c40     	smull	x0, w2, w0
+    4294: d360fc00     	lsr	x0, x0, #32
+    4298: 13017c01     	asr	w1, w0, #1
+    429c: 131f7c40     	asr	w0, w2, #31
+    42a0: 4b000021     	sub	w1, w1, w0
+    42a4: 2a0103e0     	mov	w0, w1
+    42a8: 531e7400     	lsl	w0, w0, #2
+    42ac: 0b010000     	add	w0, w0, w1
+    42b0: 4b000041     	sub	w1, w2, w0
+    42b4: 7100003f     	cmp	w1, #0x0
+    42b8: 540000a1     	b.ne	0x42cc <timer_callback+0x11c>
+    42bc: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    42c0: 91302000     	add	x0, x0, #0xc08
+    42c4: 52800021     	mov	w1, #0x1                // =1
+    42c8: b9000001     	str	w1, [x0]
+    42cc: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    42d0: 91306000     	add	x0, x0, #0xc18
+    42d4: b9400002     	ldr	w2, [x0]
+    42d8: 528ccce0     	mov	w0, #0x6667             // =26215
+    42dc: 72acccc0     	movk	w0, #0x6666, lsl #16
+    42e0: 9b207c40     	smull	x0, w2, w0
+    42e4: d360fc00     	lsr	x0, x0, #32
+    42e8: 13027c01     	asr	w1, w0, #2
+    42ec: 131f7c40     	asr	w0, w2, #31
+    42f0: 4b000021     	sub	w1, w1, w0
+    42f4: 2a0103e0     	mov	w0, w1
+    42f8: 531e7400     	lsl	w0, w0, #2
+    42fc: 0b010000     	add	w0, w0, w1
+    4300: 531f7800     	lsl	w0, w0, #1
+    4304: 4b000041     	sub	w1, w2, w0
+    4308: 7100003f     	cmp	w1, #0x0
+    430c: 540000a1     	b.ne	0x4320 <timer_callback+0x170>
+    4310: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4314: 91303000     	add	x0, x0, #0xc0c
+    4318: 52800021     	mov	w1, #0x1                // =1
+    431c: b9000001     	str	w1, [x0]
+    4320: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4324: 91308000     	add	x0, x0, #0xc20
+    4328: b9400002     	ldr	w2, [x0]
+    432c: 528ccce0     	mov	w0, #0x6667             // =26215
+    4330: 72acccc0     	movk	w0, #0x6666, lsl #16
+    4334: 9b207c40     	smull	x0, w2, w0
+    4338: d360fc00     	lsr	x0, x0, #32
+    433c: 13027c01     	asr	w1, w0, #2
+    4340: 131f7c40     	asr	w0, w2, #31
+    4344: 4b000021     	sub	w1, w1, w0
+    4348: 2a0103e0     	mov	w0, w1
+    434c: 531e7400     	lsl	w0, w0, #2
+    4350: 0b010000     	add	w0, w0, w1
+    4354: 531f7800     	lsl	w0, w0, #1
+    4358: 4b000041     	sub	w1, w2, w0
+    435c: 7100003f     	cmp	w1, #0x0
+    4360: 54000041     	b.ne	0x4368 <timer_callback+0x1b8>
+    4364: 94002ac3     	bl	0xee70 <dhcp_fine_tmr>
+    4368: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    436c: 91307000     	add	x0, x0, #0xc1c
+    4370: b9400000     	ldr	w0, [x0]
+    4374: 7112bc1f     	cmp	w0, #0x4af
+    4378: 540000ad     	b.le	0x438c <timer_callback+0x1dc>
+    437c: 94002a11     	bl	0xebc0 <dhcp_coarse_tmr>
+    4380: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4384: 91307000     	add	x0, x0, #0xc1c
+    4388: b900001f     	str	wzr, [x0]
+    438c: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    4390: 91309000     	add	x0, x0, #0xc24
+    4394: b9400000     	ldr	w0, [x0]
+    4398: 12000000     	and	w0, w0, #0x1
+    439c: 7100001f     	cmp	w0, #0x0
+    43a0: 54000041     	b.ne	0x43a8 <timer_callback+0x1f8>
+    43a4: 940034ef     	bl	0x11760 <acd_tmr>
+    43a8: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    43ac: 91304000     	add	x0, x0, #0xc10
+    43b0: b9400000     	ldr	w0, [x0]
+    43b4: 7100501f     	cmp	w0, #0x14
+    43b8: 54000101     	b.ne	0x43d8 <timer_callback+0x228>
+    43bc: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    43c0: 912e8000     	add	x0, x0, #0xba0
+    43c4: f9400000     	ldr	x0, [x0]
+    43c8: 94003727     	bl	0x12064 <eth_link_detect>
+    43cc: d0001040     	adrp	x0, 0x20e000 <clients+0x3b30>
+    43d0: 91304000     	add	x0, x0, #0xc10
+    43d4: b900001f     	str	wzr, [x0]
+    43d8: d503201f     	nop
+    43dc: a8c17bfd     	ldp	x29, x30, [sp], #0x10
+    43e0: d65f03c0     	ret
+
+0000000000004424 <TimerCounterHandler>:
+    4424: a9be7bfd     	stp	x29, x30, [sp, #-0x20]!
+    4428: 910003fd     	mov	x29, sp
+    442c: f9000fe0     	str	x0, [sp, #0x18]
+    4430: b90017e1     	str	w1, [sp, #0x14]
+    4434: 97ffff5f     	bl	0x41b0 <timer_callback>
+    4438: d503201f     	nop
+    443c: a8c27bfd     	ldp	x29, x30, [sp], #0x20
+    4440: d65f03c0     	ret
+
+0000000000005424 <IRQInterrupt>:
+    5424: d00002a0     	adrp	x0, 0x5b000 <_ZN4core7unicode12unicode_data9uppercase14BITSET_MAPPING17h0a76e49749514c5aE+0x5d90>
+    5428: 91142000     	add	x0, x0, #0x508
+    542c: a9420001     	ldp	x1, x0, [x0, #0x20]
+    5430: aa0103f0     	mov	x16, x1
+    5434: d61f0200     	br	x16
+    5438: d503201f     	nop
+    543c: d503201f     	nop
+
+000000000001ae00 <XScuGic_InterruptHandler>:
+   1ae00: a9be7bfd     	stp	x29, x30, [sp, #-0x20]!
+   1ae04: 910003fd     	mov	x29, sp
+   1ae08: b40002a0     	cbz	x0, 0x1ae5c <XScuGic_InterruptHandler+0x5c>
+   1ae0c: a90153f3     	stp	x19, x20, [sp, #0x10]
+   1ae10: aa0003f3     	mov	x19, x0
+   1ae14: d0004f21     	adrp	x1, 0xa00000 <TimerInst>
+   1ae18: f9400000     	ldr	x0, [x0]
+   1ae1c: b900c03f     	str	wzr, [x1, #0xc0]
+   1ae20: f9400802     	ldr	x2, [x0, #0x10]
+   1ae24: b9400c54     	ldr	w20, [x2, #0xc]
+   1ae28: 12002681     	and	w1, w20, #0x3ff
+   1ae2c: 7103083f     	cmp	w1, #0xc2
+   1ae30: 540000e8     	b.hi	0x1ae4c <XScuGic_InterruptHandler+0x4c>
+   1ae34: d37c2421     	ubfiz	x1, x1, #4, #10
+   1ae38: 8b010000     	add	x0, x0, x1
+   1ae3c: a9418001     	ldp	x1, x0, [x0, #0x18]
+   1ae40: d63f0020     	blr	x1
+   1ae44: f9400260     	ldr	x0, [x19]
+   1ae48: f9400802     	ldr	x2, [x0, #0x10]
+   1ae4c: b9001054     	str	w20, [x2, #0x10]
+   1ae50: a94153f3     	ldp	x19, x20, [sp, #0x10]
+   1ae54: a8c27bfd     	ldp	x29, x30, [sp], #0x20
+   1ae58: d65f03c0     	ret
+   1ae5c: 52800d21     	mov	w1, #0x69               // =105
+   1ae60: d0000180     	adrp	x0, 0x4c000 <TmrCtrOptionsTable+0xcf8>
+   1ae64: 91070800     	add	x0, x0, #0x1c2
+   1ae68: 97fff772     	bl	0x18c30 <Xil_Assert>
+   1ae6c: d0004f20     	adrp	x0, 0xa00000 <TimerInst>
+   1ae70: 52800021     	mov	w1, #0x1                // =1
+   1ae74: b900c001     	str	w1, [x0, #0xc0]
+   1ae78: 17fffff7     	b	0x1ae54 <XScuGic_InterruptHandler+0x54>
+   1ae7c: 00000000     	udf	#0x0
