@@ -1,0 +1,39 @@
+{
+  "status": "A53_GEM_HANDLER_TO_OBSERVER_RUST_MASTER_13_CASES_AND_TWO_NEGATIVES_PASS",
+  "chain": "Actual copied emacps_error_handler -> release-store sticky latch -> acquire observer -> private static network caller -> unchanged Rust codec",
+  "healthy_turns": 8830,
+  "max_bus_callbacks_per_turn": 1,
+  "no_next_callback_rule": "Every fake CRI/AUX callback rejects entry with latch set; post-fault call count must remain equal to counter captured immediately before invoking handler",
+  "cases": [
+    "Healthy full start",
+    "Fault before begin/first step",
+    "First/final profile read",
+    "Echo/routing129/rank258 commits",
+    "Final buffer callback",
+    "Before publication and after previously published complete",
+    "Zero-error healthy control",
+    "Unsupported error bit still latches without recovery callback"
+  ],
+  "negatives": {
+    "missing_hook": 99,
+    "false_ready_after_final_callback": 99
+  },
+  "recovery": "Only RAM sentinels; each checks latch and unchanged master IO count before recording",
+  "hardware_accessed": false,
+  "production_changed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_gem_master_start_a53.c": "213cc7446a4a6e3b855769adc958177effe02cfd11a1c12e9e7573da04cdb6d9",
+    "diagnostics/drtio/aux_protocol/run-gem-master-start.py": "277e57ac6b0944b1dff130d713146d338ffaea53c7f64ff6a2429c88f99f27ec",
+    "diagnostics/drtio/aux_protocol/master_network_static.c": "8d962b62a43addb479574e055dca60aefdfbed524b019a2626f1782621b1da16",
+    "diagnostics/drtio/aux_protocol/master_network_start.h": "4da1b5a41c8cfbb531a955501db3397c48d7a40183b2e9383c76d2d069b066e5",
+    "diagnostics/drtio/aux_protocol/master_network_fault_observer.h": "a491328f5b063da53a49641f32ab1e1d5a1243a77ace436bfd5b32d8b351be4b",
+    "diagnostics/drtio/aux_protocol/master_network_fault_latch.h": "f6d704341d271b06b27fff620791b148a40cc8dbe53a7bf554023261ef2ba8e2"
+  },
+  "limits": [
+    "Handler invoked as ordinary test function, not asynchronous IRQ entry",
+    "No real recovery/GEM traffic/management continuity/IRQ unmask or FPU-nesting qualification",
+    "First fault can happen inside an already-started callback; this test proves no NEXT callback, not containment of that in-flight operation",
+    "Qualification receipts and view are synthetic fixture inputs, not hardware admission"
+  ],
+  "next": "Audit retained GIC source configuration, timer/GEM priorities and error-recovery unmask path to define explicit nesting assumptions and integration blockers; no live GIC reads or settings changes."
+}

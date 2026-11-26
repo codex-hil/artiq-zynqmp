@@ -1,0 +1,73 @@
+{
+  "status": "A53_GEM_HANDLER_TO_OBSERVER_RUST_MASTER_13_CASES_AND_TWO_NEGATIVES_PASS",
+  "normal_runs": [
+    {
+      "case": 0,
+      "exit_code": 0
+    },
+    {
+      "case": 1,
+      "exit_code": 0
+    },
+    {
+      "case": 2,
+      "exit_code": 0
+    },
+    {
+      "case": 3,
+      "exit_code": 0
+    },
+    {
+      "case": 4,
+      "exit_code": 0
+    },
+    {
+      "case": 5,
+      "exit_code": 0
+    },
+    {
+      "case": 6,
+      "exit_code": 0
+    },
+    {
+      "case": 7,
+      "exit_code": 0
+    },
+    {
+      "case": 8,
+      "exit_code": 0
+    },
+    {
+      "case": 9,
+      "exit_code": 0
+    },
+    {
+      "case": 10,
+      "exit_code": 0
+    },
+    {
+      "case": 11,
+      "exit_code": 0
+    },
+    {
+      "case": 12,
+      "exit_code": 0
+    }
+  ],
+  "negative_exit_codes": {
+    "missing-hook": 99,
+    "false-ready": 99
+  },
+  "preexecution_elf_sha256": {
+    "normal": "6558c3e7ce43b6828f3ff3576f4b30df146f7a7446d4f94e6f78a4da89a2b7bd",
+    "missing-hook": "350ada65da01e6fb6a0a8cd3a5484c299b44db15c3a464ac653b4f4f3f7ba533",
+    "false-ready": "0d0d1ebeea2641be108792817f52c0e263ece799d7c7afb65e52caded77cadab"
+  },
+  "hardware_accessed": false,
+  "limits": [
+    "Linux-user ordinary handler calls inside fake bus/foreground, not actual IRQ execution",
+    "Recovery functions are RAM stubs; source-copy hook only, deployed BSP unchanged",
+    "No next fakeCRI/AUX callback after publication is tested; in-flight call already begun is not contained",
+    "No real GEM recovery, management availability, IRQ priority/nesting/FPU or worker/clock admission"
+  ]
+}
