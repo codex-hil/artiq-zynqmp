@@ -1,0 +1,24 @@
+{
+  "status": "A53_RELEASE_ACQUIRE_ZERO_FRAME_NO_HELPERS_AND_THREE_WEAKENED_INSTRUCTION_REFUSALS_PASS",
+  "frames_bytes": {
+    "mnf_probe_publish": 0,
+    "mnf_probe_seen": 0,
+    "mnf_probe_observe": 0
+  },
+  "publish_instructions": 3,
+  "publisher": "MOV1/STLR/RET; no RMW or retry loop",
+  "read": "LDAR + boolean conversion; observer also uses LDAR",
+  "mutants_refused": [
+    "relaxed-publish",
+    "relaxed-read",
+    "relaxed-observer"
+  ],
+  "object_sha256": "b99b80f3f036f7c6cca820ab86caa6a6604fb604500ac5d33977e3f2e57c4f5f",
+  "hardware_accessed": false,
+  "limits": [
+    "Exact code shape under CortexA53 -O2 -mgeneral-regs-only only",
+    "No producer/observer installed in IRQ or deployed runtime",
+    "Normal coherent memory, lifetime and immutable view qualifications remain external",
+    "Concurrency stress test and codegen are not exhaustive weak-memory, IRQ nesting or atomic success-vs-fault proof"
+  ]
+}

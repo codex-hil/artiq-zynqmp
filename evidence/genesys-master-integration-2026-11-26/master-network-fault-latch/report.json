@@ -1,0 +1,30 @@
+{
+  "status": "STICKY_FAULT_PUBLICATION_NATIVE_ASAN_UBSAN_AND_A53_CODEGEN_PASS",
+  "native_cases": 24,
+  "stress": {
+    "producer_threads": 4,
+    "release_stores": 80000,
+    "acquire_reads": 100000
+  },
+  "publisher": "Always-lock-free atomic32 release store1, no clear/reset/rearm API, no RMW/counter/payload",
+  "observer": "Acquire-load flag plus immutable externally qualified generation/receipt view; clear flag alone does not grant health",
+  "target": "CortexA53 -O2 -mgeneral-regs-only: publishMOV1/STLR/RET, seenLDAR, observerLDAR, all3frames0B, no undefined symbols/libatomic",
+  "mutants": "Two native behavior mutants and three weakened A53 atomic instruction mutants refused",
+  "hardware_accessed": false,
+  "production_changed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_network_fault_latch.h": "f6d704341d271b06b27fff620791b148a40cc8dbe53a7bf554023261ef2ba8e2",
+    "diagnostics/drtio/aux_protocol/master_network_fault_observer.h": "a491328f5b063da53a49641f32ab1e1d5a1243a77ace436bfd5b32d8b351be4b",
+    "diagnostics/drtio/aux_protocol/test_master_network_fault_latch.c": "7311e083ac4ba2795c3cac30fd3bc432b6f1be8e3a2518380e5eef586fb859cd",
+    "diagnostics/drtio/aux_protocol/network_fault_codegen_probe.c": "2f8f1186c210830404120a83960f4cd54ed21d8560c4c39aa99ec90da832852e",
+    "diagnostics/drtio/aux_protocol/inspect-network-fault-codegen.py": "a51f288d8f4303305739e347a76531ff6b91b6f52428b490082161f44630fb26"
+  },
+  "limits": [
+    "No real IRQ handler connection, publication source, runtime integration or hardware validation",
+    "Normal coherent memory and immutable initialization/lifetime require separate qualification",
+    "Host stress and codegen are not exhaustive weak-memory/interruption or nesting proof",
+    "Fault after acquire load may be seen only by next post-step/snapshot check; in-flight IO and atomic success-vs-fault serialization remain unresolved",
+    "Sticky fault deliberately prevents recovery/rearm under same latch lifetime"
+  ],
+  "next": "Compose the actual sticky-latch observer with full Rust-codec network start/static caller, injecting fault stores at protocol and publication cutpoints; verify irrevocable withdrawal without deploying IRQ hooks."
+}

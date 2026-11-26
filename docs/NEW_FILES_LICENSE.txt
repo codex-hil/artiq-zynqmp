@@ -2329,3 +2329,13 @@ diagnostics/drtio/aux_protocol/build-network-static-emulation.sh — LGPL-3.0-or
 
 diagnostics/drtio/aux_protocol/inspect-network-static-stack.py — LGPL-3.0-or-later
 diagnostics/drtio/aux_protocol/test-network-static-stack-audit.py — LGPL-3.0-or-later
+
+diagnostics/drtio/aux_protocol/master_network_fault_latch.h — LGPL-3.0-or-later
+
+diagnostics/drtio/aux_protocol/master_network_fault_observer.h — LGPL-3.0-or-later
+
+diagnostics/drtio/aux_protocol/test_master_network_fault_latch.c — LGPL-3.0-or-later
+
+diagnostics/drtio/aux_protocol/network_fault_codegen_probe.c — LGPL-3.0-or-later
+
+diagnostics/drtio/aux_protocol/inspect-network-fault-codegen.py — LGPL-3.0-or-later

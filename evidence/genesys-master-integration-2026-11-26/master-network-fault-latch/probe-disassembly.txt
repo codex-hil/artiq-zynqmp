@@ -1,0 +1,38 @@
+
+probe.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <mnf_probe_publish>:
+   0:	52800021 	mov	w1, #0x1                   	// #1
+   4:	889ffc01 	stlr	w1, [x0]
+   8:	d65f03c0 	ret
+   c:	d503201f 	nop
+
+0000000000000010 <mnf_probe_seen>:
+  10:	88dffc00 	ldar	w0, [x0]
+  14:	7100001f 	cmp	w0, #0x0
+  18:	1a9f07e0 	cset	w0, ne	// ne = any
+  1c:	d65f03c0 	ret
+
+0000000000000020 <mnf_probe_observe>:
+  20:	f100001f 	cmp	x0, #0x0
+  24:	fa401824 	ccmp	x1, #0x0, #0x4, ne	// ne = any
+  28:	540001e0 	b.eq	64 <mnf_probe_observe+0x44>  // b.none
+  2c:	f9400002 	ldr	x2, [x0]
+  30:	b40001a2 	cbz	x2, 64 <mnf_probe_observe+0x44>
+  34:	f9400403 	ldr	x3, [x0, #8]
+  38:	b4000163 	cbz	x3, 64 <mnf_probe_observe+0x44>
+  3c:	b9401004 	ldr	w4, [x0, #16]
+  40:	71001c9f 	cmp	w4, #0x7
+  44:	54000101 	b.ne	64 <mnf_probe_observe+0x44>  // b.any
+  48:	88dffc40 	ldar	w0, [x2]
+  4c:	7100001f 	cmp	w0, #0x0
+  50:	52800000 	mov	w0, #0x0                   	// #0
+  54:	1a9f07e2 	cset	w2, ne	// ne = any
+  58:	f9000023 	str	x3, [x1]
+  5c:	29010824 	stp	w4, w2, [x1, #8]
+  60:	d65f03c0 	ret
+  64:	12800000 	mov	w0, #0xffffffff            	// #-1
+  68:	d65f03c0 	ret
