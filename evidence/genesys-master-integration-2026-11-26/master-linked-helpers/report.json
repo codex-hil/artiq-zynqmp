@@ -1,0 +1,117 @@
+{
+  "helpers": {
+    "memcpy": {
+      "frame_bytes": 16,
+      "all_instructions_cfg_checked": 134,
+      "balanced_return_sites": 1,
+      "calls": []
+    },
+    "memset": {
+      "frame_bytes": 16,
+      "all_instructions_cfg_checked": 90,
+      "balanced_return_sites": 1,
+      "calls": []
+    }
+  },
+  "computed_branches": [
+    {
+      "function": "mrs_step",
+      "guard_address": "0x401384",
+      "index_range": [
+        0,
+        19
+      ],
+      "branch_address": "0x4013d8",
+      "table_address": "0x4050a8",
+      "table_hex": "24211a2a272d003e001a37002a2724214b45001a",
+      "targets": [
+        "0x40146c",
+        "0x401460",
+        "0x401444",
+        "0x401484",
+        "0x401478",
+        "0x401490",
+        "0x4013dc",
+        "0x4014d4",
+        "0x4013dc",
+        "0x401444",
+        "0x4014b8",
+        "0x4013dc",
+        "0x401484",
+        "0x401478",
+        "0x40146c",
+        "0x401460",
+        "0x401508",
+        "0x4014f0",
+        "0x4013dc",
+        "0x401444"
+      ],
+      "unique_targets": [
+        "0x4013dc",
+        "0x401444",
+        "0x401460",
+        "0x40146c",
+        "0x401478",
+        "0x401484",
+        "0x401490",
+        "0x4014b8",
+        "0x4014d4",
+        "0x4014f0",
+        "0x401508"
+      ],
+      "all_targets_local": true
+    },
+    {
+      "function": "map_step",
+      "guard_address": "0x4017ec",
+      "index_range": [
+        0,
+        10
+      ],
+      "branch_address": "0x4019fc",
+      "table_address": "0x4050bc",
+      "table_hex": "53430e24004656004b000e",
+      "targets": [
+        "0x401b4c",
+        "0x401b0c",
+        "0x401a38",
+        "0x401a90",
+        "0x401a00",
+        "0x401b18",
+        "0x401b58",
+        "0x401a00",
+        "0x401b2c",
+        "0x401a00",
+        "0x401a38"
+      ],
+      "unique_targets": [
+        "0x401a00",
+        "0x401a38",
+        "0x401a90",
+        "0x401b0c",
+        "0x401b18",
+        "0x401b2c",
+        "0x401b4c",
+        "0x401b58"
+      ],
+      "all_targets_local": true
+    }
+  ],
+  "status": "EXACT_DIAGNOSTIC_HELPER_SP_AND_LOCAL_JUMP_TABLE_AUDIT_PASS",
+  "complete_stack_bound_bytes": null,
+  "runtime_admitted": false,
+  "hardware_accessed": false,
+  "limits": [
+    "Exact retained diagnostic ELF only; not production memory helper implementation",
+    "Bounds/targets are static compiler sequence proof, not protection from corrupted control flow",
+    "13 indirect callsites and production caller/IRQ/nesting context remain unqualified"
+  ],
+  "input_sha256": {
+    "/srv/codex-hil-nvme/master-encode-target-20261121-v1/static/codec-normal.elf": "5c78547fc80385640d23644d905a2a756b819bbc5f1bd8e6f6e345d657991a1f",
+    "evidence/genesys-master-integration-2026-11-26/master-caller-callgraph/full-disassembly.txt": "bb8ba13f1d46f80ecfda1f1de20bb157a24d95f552d98d9e17f3fbf7397f85a5"
+  },
+  "disassembly_reproduced_from_ELF": true,
+  "objdump_sha256": "b33bfc903b279c20982001c09b2ac43dc55062f5ac4098e50439ae1794fa245e",
+  "negative_controls": "Changed32B frame, escapedjump target, mismatchedinstruction all refused",
+  "next": "Bind 13 BLR sites to exact bus and strict decoder target contracts, including nonreentrancy and transitive frame metadata; retain production IRQ/EL/SP gates."
+}
