@@ -1,0 +1,24 @@
+{
+  "status": "NETWORK_ADMISSION_57_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+  "scope": "Isolated foreground policy header; no production runtime hook or IRQ publisher",
+  "healthy_contract": "External qualified observer supplies nonzero unchanged health generation and exact receipt mask7; checks required before each master step and publication",
+  "fault_behavior": "Generation change/zero, missing or extra receipts, or any fault revoke gate to FAULT; owner/ticket retained; first error preserved; stale policy cannot poison newer owner; no rebind or automatic recovery",
+  "native_cases": 57,
+  "sanitizers": "AddressSanitizer and UndefinedBehaviorSanitizer PASS",
+  "refusal_paths": "PROFILE/SETUP/COMPLETE reject before any fake bus or codec sentinel call; sentinel codecs are refusal-only and do not model healthy protocol",
+  "mutants": "Ignoring generation, ignoring receipts, omitting gate revocation all refused by assertions",
+  "hardware_accessed": false,
+  "production_changed": false,
+  "source_sha256": {
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_network_admission.h": "418dd518d165c4239efc126692c1c8f24fc884bae58e9ea2e843f45b571e6ce0",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/test_master_network_admission.c": "3e822b4f0047dea4a9c2639387a62036b958f95351d6523b60a7610489ff8a0e"
+  },
+  "limits": [
+    "Receipts model external obligations, not live network/clock/IRQ detection",
+    "Foreground only; no safe ISR publication/synchronization implementation",
+    "Does not prevent IRQ nesting or contain faults during an in-flight AXI/decoder/network callback",
+    "No GEM reset/recovery suppression, IRQ mask changes or management service hooks; management availability not retested",
+    "Actual Rust codec healthy-path composition and A53 execution not tested for this new policy"
+  ],
+  "next": "Compose policy into a separate full-setup harness with actual Rust codec, checking health generation before and after each step and before success publication; test late faults without enabling runtime hooks."
+}

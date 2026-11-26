@@ -1,0 +1,1 @@
+test: /srv/codex-hil-nvme/master-network-admission-20261126-v2/no-gate-revocation/test.c:23: main: Assertion `r==MNE_UNSAFE&&!mne_ready(&p)&&g.state==MFO_FAULT&&g.ticket==ticket&&g.owner==MFO_MASTER_OWNER' failed.

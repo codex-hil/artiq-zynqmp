@@ -1,0 +1,30 @@
+{
+  "status": "NETWORK_ADMISSION_57_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
+  "hardware_accessed": false,
+  "source_sha256": {
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/master_network_admission.h": "418dd518d165c4239efc126692c1c8f24fc884bae58e9ea2e843f45b571e6ce0",
+    "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/test_master_network_admission.c": "3e822b4f0047dea4a9c2639387a62036b958f95351d6523b60a7610489ff8a0e"
+  },
+  "runs": {
+    "baseline": {
+      "exit_code": 0,
+      "header_sha256": "418dd518d165c4239efc126692c1c8f24fc884bae58e9ea2e843f45b571e6ce0",
+      "log_sha256": "770db6014a4a22dac60d64b5a39b56361d41fe4f148a3c1d3538a159eae0b12c"
+    },
+    "ignore-generation": {
+      "exit_code": -6,
+      "header_sha256": "a7d5b553035527c3071fc93d6adc853cf70b084f4448caa7558e82b8f11e371b",
+      "log_sha256": "a2ac5afdc6257296768522fe1282047fecba9f9c4f0d99eea8099a9778e9f41a"
+    },
+    "ignore-receipts": {
+      "exit_code": -6,
+      "header_sha256": "476370e7aa936bf2b95dcc3e411286396cb9b711279a84a238e694df63ea023d",
+      "log_sha256": "48cd77ff6d6466a818fde65931fbec0a9ea1d133977e08726b9823574040633d"
+    },
+    "no-gate-revocation": {
+      "exit_code": -6,
+      "header_sha256": "ba966c3b0b689ec437abd4e20f3f4857071c468d7cd1c2dd031e9342b38db8f9",
+      "log_sha256": "33f26d819e4e19094c404df395fb9dcbfd69722e537efa63ee0924cac803d898"
+    }
+  }
+}
