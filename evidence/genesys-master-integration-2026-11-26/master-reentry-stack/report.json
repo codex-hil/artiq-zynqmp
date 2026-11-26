@@ -1,0 +1,234 @@
+{
+  "status": "GUARDED_REENTRY_PATHS_AND_CONDITIONAL_DIAGNOSTIC_FRAME_SUM_PASS",
+  "rejected_entry_paths": {
+    "mfc_begin": {
+      "frame_bytes": 0,
+      "active_condition": "mfc_active!=0 on entry; begin also ORs single-use started",
+      "instructions": [
+        {
+          "address": "0x402290",
+          "instruction": "adrp x12, 0x417000 <expected.0+0x11f38>"
+        },
+        {
+          "address": "0x402294",
+          "instruction": "add x7, x12, #0x240"
+        },
+        {
+          "address": "0x402298",
+          "instruction": "adrp x11, 0x417000 <expected.0+0x11f38>"
+        },
+        {
+          "address": "0x40229c",
+          "instruction": "ldr w9, [x11, #0x200]"
+        },
+        {
+          "address": "0x4022a0",
+          "instruction": "ldr w10, [x7, #0x1304]"
+        },
+        {
+          "address": "0x4022a4",
+          "instruction": "orr w9, w9, w10"
+        },
+        {
+          "address": "0x4022a8",
+          "instruction": "cbnz w9, 0x402474 <mfc_begin+0x1e4>"
+        },
+        {
+          "address": "0x402474",
+          "instruction": "mov w0, #-0x2"
+        },
+        {
+          "address": "0x402478",
+          "instruction": "ret "
+        }
+      ],
+      "calls": [],
+      "nonstack_writes": false
+    },
+    "mfc_poll": {
+      "frame_bytes": 128,
+      "active_condition": "mfc_active!=0 on entry; begin also ORs single-use started",
+      "instructions": [
+        {
+          "address": "0x4024a0",
+          "instruction": "stp x29, x30, [sp, #-0x80]!"
+        },
+        {
+          "address": "0x4024a4",
+          "instruction": "mov x29, sp"
+        },
+        {
+          "address": "0x4024a8",
+          "instruction": "stp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x4024ac",
+          "instruction": "adrp x20, 0x417000 <expected.0+0x11f38>"
+        },
+        {
+          "address": "0x4024b0",
+          "instruction": "ldr w0, [x20, #0x200]"
+        },
+        {
+          "address": "0x4024b4",
+          "instruction": "cbnz w0, 0x402814 <mfc_poll+0x374>"
+        },
+        {
+          "address": "0x402814",
+          "instruction": "mov w0, #-0x2"
+        },
+        {
+          "address": "0x402818",
+          "instruction": "b 0x40250c <mfc_poll+0x6c>"
+        },
+        {
+          "address": "0x40250c",
+          "instruction": "ldp x19, x20, [sp, #0x10]"
+        },
+        {
+          "address": "0x402510",
+          "instruction": "ldp x29, x30, [sp], #0x80"
+        },
+        {
+          "address": "0x402514",
+          "instruction": "ret "
+        }
+      ],
+      "calls": [],
+      "nonstack_writes": false
+    },
+    "mfc_cancel": {
+      "frame_bytes": 0,
+      "active_condition": "mfc_active!=0 on entry; begin also ORs single-use started",
+      "instructions": [
+        {
+          "address": "0x4035d0",
+          "instruction": "adrp x9, 0x417000 <expected.0+0x11f38>"
+        },
+        {
+          "address": "0x4035d4",
+          "instruction": "ldr w0, [x9, #0x200]"
+        },
+        {
+          "address": "0x4035d8",
+          "instruction": "cbnz w0, 0x403778 <mfc_cancel+0x1a8>"
+        },
+        {
+          "address": "0x403778",
+          "instruction": "mov w0, #-0x2"
+        },
+        {
+          "address": "0x40377c",
+          "instruction": "ret "
+        }
+      ],
+      "calls": [],
+      "nonstack_writes": false
+    },
+    "mfc_snapshot": {
+      "frame_bytes": 0,
+      "active_condition": "mfc_active!=0 on entry; begin also ORs single-use started",
+      "instructions": [
+        {
+          "address": "0x403790",
+          "instruction": "adrp x1, 0x417000 <expected.0+0x11f38>"
+        },
+        {
+          "address": "0x403794",
+          "instruction": "ldr w1, [x1, #0x200]"
+        },
+        {
+          "address": "0x403798",
+          "instruction": "cbnz w1, 0x4038b8 <mfc_snapshot+0x128>"
+        },
+        {
+          "address": "0x4038b8",
+          "instruction": "mov w0, #-0x2"
+        },
+        {
+          "address": "0x4038bc",
+          "instruction": "ret "
+        }
+      ],
+      "calls": [],
+      "nonstack_writes": false
+    }
+  },
+  "conditional_frame_sums": {
+    "mfc_begin": {
+      "bytes": 64,
+      "path": [
+        "mfc_begin"
+      ]
+    },
+    "mfc_poll": {
+      "bytes": 576,
+      "path": [
+        "mfc_poll",
+        "map_step",
+        "mar_step",
+        "write_reg",
+        "probe_reentry",
+        "mfc_poll[active]"
+      ]
+    },
+    "mfc_cancel": {
+      "bytes": 16,
+      "path": [
+        "mfc_cancel",
+        "mau_fail.constprop.0"
+      ]
+    },
+    "mfc_snapshot": {
+      "bytes": 0,
+      "path": [
+        "mfc_snapshot"
+      ]
+    }
+  },
+  "resolved_indirect_call_sites": 13,
+  "local_jump_table_entries": 31,
+  "helper_frames": {
+    "memcpy": {
+      "frame_bytes": 16,
+      "all_instructions_cfg_checked": 134,
+      "balanced_return_sites": 1,
+      "calls": []
+    },
+    "memset": {
+      "frame_bytes": 16,
+      "all_instructions_cfg_checked": 90,
+      "balanced_return_sites": 1,
+      "calls": []
+    }
+  },
+  "runtime_admitted": false,
+  "hardware_accessed": false,
+  "complete_production_stack_bound_bytes": null,
+  "assumptions": [
+    "Exact frozen mock callbacks and two decoder targets; same sole foreground ownership contract",
+    "Only probe_reentry calls entry points from callbacks; guard remains nonzero throughout callback, as exercised by target tests",
+    "Compiler static frame metadata bounds per-function use; tail edges added conservatively"
+  ],
+  "limits": [
+    "Diagnostic fixture adds probe112B plus rejectedpoll128B; not production stack budget",
+    "Outer caller, IRQ/nesting/FPU, activeEL/SP and integrated runtime omitted",
+    "No concurrency, panic-unwind, hardware worker handoff, recovery or clock qualification"
+  ],
+  "input_sha256": {
+    "/srv/codex-hil-nvme/master-reentry-target-20261126-v1/artifacts/codec-normal.elf": "a7c27c53f3b322800c43ddf82752a5d2d67de9d642fb0a576fa1544d311e4b8a",
+    "/srv/codex-hil-nvme/master-reentry-target-20261126-v1/artifacts/full-disassembly.txt": "e4c3dd437a6246cfa065a2d31a812f51ffc3d01c8aad1168d68dbc2bf05030d5",
+    "/srv/codex-hil-nvme/master-reentry-target-20261126-v1/artifacts/stack-sizes.txt": "365b42bf6c2154c5539d6ed48a2d22282df42b5ee8caf266010bb7ed4e8a4fc6",
+    "/srv/codex-hil-nvme/master-reentry-target-20261126-v1/artifacts/execution-results.json": "a2b7c9b2d4c0f13215bc5b967ffd7640c7f16ff3be99cc92bd53100b804a5590",
+    "/srv/codex-hil-nvme/master-reentry-target-20261126-v1/artifacts/codec-normal.elf-master_codec_emulation.su": "40c324b9d14bbf9dc8b35b574601a6522d7ea6c83b78c2bb907913c76f9badac",
+    "/srv/codex-hil-nvme/master-reentry-target-20261126-v1/artifacts/codec-normal.elf-master_static_caller.su": "afbda653a5007c4fae2a50abd93c0825b157bc6d18944d73e98ef8103986bd00",
+    "/srv/codex-hil-nvme/master-reentry-target-20261126-v1/artifacts/codec-normal.elf-test_master_static_caller.su": "02c1087d1c340378574758bf4a84ec26c43b290207fb06efcb79ac3365f4c80e"
+  },
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_static_caller.c": "dae41b18df775c3219fc611d30f258c00aa0c2b22e4c6dc3a22ad5608123319d",
+    "diagnostics/drtio/aux_protocol/test_master_static_caller.c": "98ced0c315d679118f589c1f90a1f364ed94731040785abbe324bde6372f78c6",
+    "diagnostics/drtio/aux_protocol/inspect-reentry-stack.py": "2f3c8e2ff9f795b1107c13f2c3a29b1d2dbdd496838d2e25aaa0bec62144b731",
+    "diagnostics/drtio/aux_protocol/inspect-linked-helpers.py": "fb0e99b7869df3830c51bb09135b309bfa1131a95441eed91a515231ba47df08"
+  },
+  "next": "Locate the exact retained CPU0 foreground and C IRQ insertion boundaries, then prepare a separate caller/IRQ stack probe with explicit nesting assumptions; keep production hooks disabled."
+}

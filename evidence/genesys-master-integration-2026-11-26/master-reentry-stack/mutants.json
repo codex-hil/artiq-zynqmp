@@ -1,0 +1,21 @@
+{
+  "status": "GUARDED_STACK_BASELINE_AND_THREE_MUTANT_REFUSALS_PASS",
+  "mutants_not_executed": true,
+  "runs": {
+    "guard-inverted": {
+      "refused": true,
+      "reason": "",
+      "elf_sha256": "7f151b63c4b2e3563e2b1b331f4ffebc87c0c0f50af51c99d5363a7aceafea87"
+    },
+    "wrong-busy-code": {
+      "refused": true,
+      "reason": "",
+      "elf_sha256": "6e59a5a9336f0a479616d2c916255f5c12477b96300c0af719ee6a7d236a0955"
+    },
+    "missing-probe-frame": {
+      "refused": true,
+      "reason": "('Missing frame', 'probe_reentry')",
+      "elf_sha256": "a7c27c53f3b322800c43ddf82752a5d2d67de9d642fb0a576fa1544d311e4b8a"
+    }
+  }
+}
