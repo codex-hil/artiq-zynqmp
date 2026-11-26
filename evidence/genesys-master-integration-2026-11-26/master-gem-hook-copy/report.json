@@ -1,0 +1,71 @@
+{
+  "status": "COPY_ONLY_GEM_HOOK_DEFAULT_OFF_IDENTITY_AND_ENABLED_RELEASE_DOMINANCE_PASS",
+  "default_off_instructions_and_relocation_meaning_identical": true,
+  "enabled_nonzero_error_store_address": "0x30",
+  "error_zero_path": "Entry CBNZ w2 else RET; no latch store or recovery",
+  "all_recovery_calls_dominated_by_store": true,
+  "recovery_calls": {
+    "0x5c": [
+      "CALL26",
+      "emacps_recv_handler"
+    ],
+    "0x74": [
+      "JUMP26",
+      "setup_rx_bds"
+    ],
+    "0x8c": [
+      "CALL26",
+      "emacps_recv_handler"
+    ],
+    "0x98": [
+      "CALL26",
+      "setup_rx_bds"
+    ],
+    "0xc8": [
+      "JUMP26",
+      "xemacps_process_sent_bds"
+    ],
+    "0xd0": [
+      "CALL26",
+      "HandleTxErrors"
+    ],
+    "0xdc": [
+      "CALL26",
+      "HandleTxErrors"
+    ],
+    "0xec": [
+      "CALL26",
+      "HandleTxErrors"
+    ],
+    "0xf8": [
+      "CALL26",
+      "HandleEmacPsError"
+    ],
+    "0x104": [
+      "CALL26",
+      "HandleEmacPsError"
+    ]
+  },
+  "cfg_states_checked": 67,
+  "new_undefined_symbol": "mnf_copy_only_gem_fault; deliberately no storage definition or runnable image",
+  "graph_negative_controls": "Late or absent publication refused",
+  "hardware_accessed": false,
+  "deployed_sources_changed": false,
+  "retained_source_sha256": "b91ccf7d74912ba0970eb1a97e902cfc46ec734d603f3d4a39324659cddff02c",
+  "object_sha256": {
+    "default_off": "2a07fd9b63f6459675a66cdfc074bfe0e10364504f53e794caecf389e0fdd28f",
+    "enabled": "dfc40dbb7a8f9c12f635b746b24ca46b7e4ca81f2dfa34d39d0ad154bc513ffe"
+  },
+  "limits": [
+    "Copy-only objects, no physical IRQ execution or deployment",
+    "Hook reports fault only; original recovery and its IRQ unmask path remain unchanged",
+    "Does not qualify IRQ nesting, coherent memory/lifetime, late publication race, worker or clock/recovery gates"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/network_fault_gem_copy_hook.h": "cd9f090115936b87301f6d411e3249cf9f45ea560c9cf2a0b3c23a434d7c7011",
+    "diagnostics/drtio/aux_protocol/prepare-gem-fault-hook-copy.py": "61c4e23c05e4e636486e86bdf002a90c001fc66d59942d3d86831756da224040",
+    "diagnostics/drtio/aux_protocol/inspect-gem-hook-copy.py": "ef6058df40524029099b1370eca41f59161c88f7ba4156ddfd1e5016687a3004"
+  },
+  "wrong_source_hash_refused": true,
+  "next": "Exercise the copied handler in an isolated A53 harness with recovery callbacks stubbed to RAM-only sentinels, checking latch publication before every callback and zero-error behavior; no deployed driver or hardware IO."
+}

@@ -1,0 +1,22 @@
+--- retained/xemacpsif_hw.c
++++ copy-only/xemacpsif_hw.c
+@@ -31,6 +31,9 @@
+ 
+ #include "netif/xemacpsif.h"
+ #include "lwipopts.h"
++#if defined(MNF_ENABLE_COPY_ONLY_GEM_HOOK) && MNF_ENABLE_COPY_ONLY_GEM_HOOK
++#include "network_fault_gem_copy_hook.h"
++#endif
+ 
+ 
+ u32_t link_speed = 100;
+@@ -225,6 +228,9 @@
+ 
+ void emacps_error_handler(void *arg,u8 Direction, u32 ErrorWord)
+ {
++#if defined(MNF_ENABLE_COPY_ONLY_GEM_HOOK) && MNF_ENABLE_COPY_ONLY_GEM_HOOK
++	mnf_copy_gem_fault_publish(ErrorWord);
++#endif
+ 	struct xemac_s *xemac;
+ 	xemacpsif_s   *xemacpsif;
+ 	XEmacPs_BdRing *rxring;

@@ -1,0 +1,81 @@
+<emacps_error_handler>:
+   0:	35000042 	cbnz	w2, 8 <emacps_error_handler+0x8>
+   4:	d65f03c0 	ret
+   8:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+   c:	12001c21 	and	w1, w1, #0xff
+  10:	910003fd 	mov	x29, sp
+  14:	a90153f3 	stp	x19, x20, [sp, #16]
+  18:	2a0203f3 	mov	w19, w2
+  1c:	aa0003f4 	mov	x20, x0
+  20:	90000002 	adrp	x2, 0 <mnf_copy_only_gem_fault>
+			20: R_AARCH64_ADR_PREL_PG_HI21	mnf_copy_only_gem_fault
+  24:	91000042 	add	x2, x2, #0x0
+			24: R_AARCH64_ADD_ABS_LO12_NC	mnf_copy_only_gem_fault
+  28:	a9025bf5 	stp	x21, x22, [sp, #32]
+  2c:	52800023 	mov	w3, #0x1                   	// #1
+  30:	889ffc43 	stlr	w3, [x2]
+  34:	f9400415 	ldr	x21, [x0, #8]
+  38:	6b03003f 	cmp	w1, w3
+  3c:	54000320 	b.eq	a0 <emacps_error_handler+0xa0>  // b.none
+  40:	7100083f 	cmp	w1, #0x2
+  44:	540001a1 	b.ne	78 <emacps_error_handler+0x78>  // b.any
+  48:	371805f3 	tbnz	w19, #3, 104 <emacps_error_handler+0x104>
+  4c:	910342b6 	add	x22, x21, #0xd0
+  50:	371001d3 	tbnz	w19, #2, 88 <emacps_error_handler+0x88>
+  54:	36000133 	tbz	w19, #0, 78 <emacps_error_handler+0x78>
+  58:	aa1403e0 	mov	x0, x20
+  5c:	94000000 	bl	0 <emacps_recv_handler>
+			5c: R_AARCH64_CALL26	emacps_recv_handler
+  60:	a94153f3 	ldp	x19, x20, [sp, #16]
+  64:	aa1603e1 	mov	x1, x22
+  68:	aa1503e0 	mov	x0, x21
+  6c:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  70:	a8c37bfd 	ldp	x29, x30, [sp], #48
+  74:	14000000 	b	0 <setup_rx_bds>
+			74: R_AARCH64_JUMP26	setup_rx_bds
+  78:	a94153f3 	ldp	x19, x20, [sp, #16]
+  7c:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  80:	a8c37bfd 	ldp	x29, x30, [sp], #48
+  84:	d65f03c0 	ret
+  88:	aa1403e0 	mov	x0, x20
+  8c:	94000000 	bl	0 <emacps_recv_handler>
+			8c: R_AARCH64_CALL26	emacps_recv_handler
+  90:	aa1603e1 	mov	x1, x22
+  94:	aa1503e0 	mov	x0, x21
+  98:	94000000 	bl	0 <setup_rx_bds>
+			98: R_AARCH64_CALL26	setup_rx_bds
+  9c:	17ffffee 	b	54 <emacps_error_handler+0x54>
+  a0:	374002d3 	tbnz	w19, #8, f8 <emacps_error_handler+0xf8>
+  a4:	37300233 	tbnz	w19, #6, e8 <emacps_error_handler+0xe8>
+  a8:	37200193 	tbnz	w19, #4, d8 <emacps_error_handler+0xd8>
+  ac:	37100113 	tbnz	w19, #2, cc <emacps_error_handler+0xcc>
+  b0:	360ffe53 	tbz	w19, #1, 78 <emacps_error_handler+0x78>
+  b4:	a94153f3 	ldp	x19, x20, [sp, #16]
+  b8:	910182a1 	add	x1, x21, #0x60
+  bc:	aa1503e0 	mov	x0, x21
+  c0:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  c4:	a8c37bfd 	ldp	x29, x30, [sp], #48
+  c8:	14000000 	b	0 <xemacps_process_sent_bds>
+			c8: R_AARCH64_JUMP26	xemacps_process_sent_bds
+  cc:	aa1403e0 	mov	x0, x20
+  d0:	94000000 	bl	0 <HandleTxErrors>
+			d0: R_AARCH64_CALL26	HandleTxErrors
+  d4:	17fffff7 	b	b0 <emacps_error_handler+0xb0>
+  d8:	aa1403e0 	mov	x0, x20
+  dc:	94000000 	bl	0 <HandleTxErrors>
+			dc: R_AARCH64_CALL26	HandleTxErrors
+  e0:	3617fe93 	tbz	w19, #2, b0 <emacps_error_handler+0xb0>
+  e4:	17fffffa 	b	cc <emacps_error_handler+0xcc>
+  e8:	aa1403e0 	mov	x0, x20
+  ec:	94000000 	bl	0 <HandleTxErrors>
+			ec: R_AARCH64_CALL26	HandleTxErrors
+  f0:	3627fdf3 	tbz	w19, #4, ac <emacps_error_handler+0xac>
+  f4:	17fffff9 	b	d8 <emacps_error_handler+0xd8>
+  f8:	94000000 	bl	0 <HandleEmacPsError>
+			f8: R_AARCH64_CALL26	HandleEmacPsError
+  fc:	3637fd73 	tbz	w19, #6, a8 <emacps_error_handler+0xa8>
+ 100:	17fffffa 	b	e8 <emacps_error_handler+0xe8>
+ 104:	94000000 	bl	0 <HandleEmacPsError>
+			104: R_AARCH64_CALL26	HandleEmacPsError
+ 108:	17ffffd1 	b	4c <emacps_error_handler+0x4c>
+ 10c:	d503201f 	nop

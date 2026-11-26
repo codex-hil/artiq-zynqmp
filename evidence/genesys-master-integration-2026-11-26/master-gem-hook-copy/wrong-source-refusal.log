@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/srv/codex-hil-nvme/artiq-zynqmp/work/artiq-new-wip/diagnostics/drtio/aux_protocol/prepare-gem-fault-hook-copy.py", line 7, in <module>
+    data=a.source.read_bytes();digest=hashlib.sha256(data).hexdigest();assert digest==a.expected_sha256,'Retained source changed; refuse patch'
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Retained source changed; refuse patch
