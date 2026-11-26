@@ -1,0 +1,132 @@
+
+File: /srv/codex-hil-nvme/master-encode-target-20261121-v1/static/codec-normal.elf
+Format: elf64-littleaarch64
+Arch: aarch64
+AddressSize: 64bit
+LoadName: <Not found>
+StackSizes [
+  Entry {
+    Functions: [aux_master_leaf_encode]
+    Size: 0x20
+  }
+  Entry {
+    Functions: [aux_master_routing_ack_decode]
+    Size: 0x10
+  }
+  Entry {
+    Functions: [aux_master_star_path_encode]
+    Size: 0x20
+  }
+  Entry {
+    Functions: [aux_master_control_encode]
+    Size: 0x20
+  }
+  Entry {
+    Functions: [aux_master_control_decode]
+    Size: 0x10
+  }
+  Entry {
+    Functions: [_RNvCscSpY9Juk0HT_7___rustc17rust_begin_unwind]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc166update17h57cdc49c8e9a8415E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc1612checksum_x2517h30419bd0f67c8424E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc1612checksum_usb17h754a15cbf4352b22E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc166Digest3new17h8af3531232659997E]
+    Size: 0x240
+  }
+  Entry {
+    Functions: [_ZN3crc5crc166Digest16new_with_initial17h8198fb61781d054dE]
+    Size: 0x240
+  }
+  Entry {
+    Functions: [_ZN59_$LT$crc..crc16..Digest$u20$as$u20$crc..crc16..Hasher16$GT$5write17heeec5bec70243db5E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN57_$LT$crc..crc16..Digest$u20$as$u20$core..hash..Hasher$GT$5write17h965d323da2828de0E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc326update17hf5ba83368c4f1eafE]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc3219checksum_castagnoli17h3c87437a17c5bef2E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc3216checksum_koopman17hd5f19eab46aeb222E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc326Digest3new17h10a3f85e9d5dbac5E]
+    Size: 0x440
+  }
+  Entry {
+    Functions: [_ZN3crc5crc326Digest16new_with_initial17hcc2c80c2cba263daE]
+    Size: 0x440
+  }
+  Entry {
+    Functions: [_ZN59_$LT$crc..crc32..Digest$u20$as$u20$crc..crc32..Hasher32$GT$5write17h3e4d9adb7efaa317E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN57_$LT$crc..crc32..Digest$u20$as$u20$core..hash..Hasher$GT$5write17hb81da81ba1d94dd0E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc646update17habf2020765e28defE]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc6413checksum_ecma17h9c9d8eae74ce00dcE]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc6412checksum_iso17h9ce442e5125c3710E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc5crc646Digest3new17h63bb74221b827d10E]
+    Size: 0x840
+  }
+  Entry {
+    Functions: [_ZN3crc5crc646Digest16new_with_initial17h054bb4d9fbcae8ffE]
+    Size: 0x840
+  }
+  Entry {
+    Functions: [_ZN59_$LT$crc..crc64..Digest$u20$as$u20$crc..crc64..Hasher64$GT$5write17h83e17b11ede6a6b7E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN57_$LT$crc..crc64..Digest$u20$as$u20$core..hash..Hasher$GT$5write17h664a76e5541dc519E]
+    Size: 0x0
+  }
+  Entry {
+    Functions: [_ZN3crc4util16make_table_crc1617h4568ca7a2484a688E]
+    Size: 0x240
+  }
+  Entry {
+    Functions: [_ZN3crc4util16make_table_crc3217hbba87324e4559a14E]
+    Size: 0x440
+  }
+  Entry {
+    Functions: [_ZN3crc4util16make_table_crc6417h1550b49fdc2c1062E]
+    Size: 0x840
+  }
+]

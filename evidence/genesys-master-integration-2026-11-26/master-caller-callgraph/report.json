@@ -1,0 +1,329 @@
+{
+  "status": "DIAGNOSTIC_CALLGRAPH_INVENTORY_NOT_STACK_QUALIFICATION",
+  "roots": {
+    "mfc_begin": {
+      "reachable_functions": {
+        "mfc_begin": {
+          "frame_bytes": 64,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        }
+      },
+      "missing_frame_metadata": [],
+      "unresolved_indirect_sites": {},
+      "complete_stack_bound_bytes": null
+    },
+    "mfc_poll": {
+      "reachable_functions": {
+        "_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "aux_master_control_encode": {
+          "frame_bytes": 32,
+          "calls": [
+            "_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "aux_master_leaf_encode": {
+          "frame_bytes": 32,
+          "calls": [
+            "_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E",
+            "memset"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "aux_master_star_path_encode": {
+          "frame_bytes": 32,
+          "calls": [
+            "_ZN3crc5crc3213checksum_ieee17hfd27570e0ca56268E",
+            "memset"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "map_step": {
+          "frame_bytes": 80,
+          "calls": [
+            "mar_step"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "4019fc",
+              "instruction": "br x0"
+            },
+            {
+              "address": "401a08",
+              "instruction": "blr x1"
+            },
+            {
+              "address": "401a48",
+              "instruction": "blr x3"
+            },
+            {
+              "address": "401acc",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "mar_step": {
+          "frame_bytes": 64,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "400fa4",
+              "instruction": "blr x2"
+            },
+            {
+              "address": "401030",
+              "instruction": "blr x3"
+            },
+            {
+              "address": "401118",
+              "instruction": "blr x1"
+            },
+            {
+              "address": "4012c4",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "mau_fail.constprop.0": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memcpy": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memset": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mfc_poll": {
+          "frame_bytes": 128,
+          "calls": [
+            "aux_master_control_encode",
+            "aux_master_leaf_encode",
+            "aux_master_star_path_encode",
+            "map_step",
+            "mar_step",
+            "mau_fail.constprop.0",
+            "memcpy",
+            "memset",
+            "mrs_step"
+          ],
+          "tail_branches": [
+            "mfg_fail.constprop.0"
+          ],
+          "indirect": [
+            {
+              "address": "4023bc",
+              "instruction": "blr x3"
+            },
+            {
+              "address": "402878",
+              "instruction": "blr x3"
+            },
+            {
+              "address": "403148",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "mfg_fail.constprop.0": {
+          "frame_bytes": 16,
+          "calls": [
+            "mau_fail.constprop.0"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mrs_step": {
+          "frame_bytes": 64,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "4013d8",
+              "instruction": "br x0"
+            },
+            {
+              "address": "4013e4",
+              "instruction": "blr x1"
+            },
+            {
+              "address": "401458",
+              "instruction": "blr x3"
+            },
+            {
+              "address": "4014b0",
+              "instruction": "blr x3"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [
+        "memcpy",
+        "memset"
+      ],
+      "unresolved_indirect_sites": {
+        "map_step": [
+          {
+            "address": "4019fc",
+            "instruction": "br x0"
+          },
+          {
+            "address": "401a08",
+            "instruction": "blr x1"
+          },
+          {
+            "address": "401a48",
+            "instruction": "blr x3"
+          },
+          {
+            "address": "401acc",
+            "instruction": "blr x3"
+          }
+        ],
+        "mar_step": [
+          {
+            "address": "400fa4",
+            "instruction": "blr x2"
+          },
+          {
+            "address": "401030",
+            "instruction": "blr x3"
+          },
+          {
+            "address": "401118",
+            "instruction": "blr x1"
+          },
+          {
+            "address": "4012c4",
+            "instruction": "blr x3"
+          }
+        ],
+        "mfc_poll": [
+          {
+            "address": "4023bc",
+            "instruction": "blr x3"
+          },
+          {
+            "address": "402878",
+            "instruction": "blr x3"
+          },
+          {
+            "address": "403148",
+            "instruction": "blr x3"
+          }
+        ],
+        "mrs_step": [
+          {
+            "address": "4013d8",
+            "instruction": "br x0"
+          },
+          {
+            "address": "4013e4",
+            "instruction": "blr x1"
+          },
+          {
+            "address": "401458",
+            "instruction": "blr x3"
+          },
+          {
+            "address": "4014b0",
+            "instruction": "blr x3"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "mfc_cancel": {
+      "reachable_functions": {
+        "mfc_cancel": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        }
+      },
+      "missing_frame_metadata": [],
+      "unresolved_indirect_sites": {},
+      "complete_stack_bound_bytes": null
+    },
+    "mfc_snapshot": {
+      "reachable_functions": {
+        "mfc_snapshot": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        }
+      },
+      "missing_frame_metadata": [],
+      "unresolved_indirect_sites": {},
+      "complete_stack_bound_bytes": null
+    }
+  },
+  "hardware_accessed": false,
+  "runtime_admitted": false,
+  "complete_stack_bound_bytes": null,
+  "limits": [
+    "Exact diagnostic ELF only; not production lwIP/IRQ caller",
+    "Indirect bus/decoder callbacks require explicit target contracts; never assume zero stack",
+    "Tail branches inventoried separately; no naive additive frame bound",
+    "Retained IRQ assembly 208 B is only a pre-C lower bound, not nesting/handler budget",
+    "Production active EL/SP, IRQ masking/nesting and complete callbacks remain unqualified"
+  ],
+  "input_sha256": {
+    "/srv/codex-hil-nvme/master-encode-target-20261121-v1/static/codec-normal.elf": "5c78547fc80385640d23644d905a2a756b819bbc5f1bd8e6f6e345d657991a1f",
+    "/srv/codex-hil-nvme/master-encode-target-20261121-v1/static/full-disassembly.txt": "bb8ba13f1d46f80ecfda1f1de20bb157a24d95f552d98d9e17f3fbf7397f85a5",
+    "/srv/codex-hil-nvme/master-encode-target-20261121-v1/static/stack-sizes.txt": "697b2cce99f9a6abac82dd306cffc1687947655c3f77f65988a3e6a678d151df",
+    "/srv/codex-hil-nvme/master-encode-target-20261121-v1/static/codec-normal.elf-master_static_caller.su": "e597d56d9f71421b416bfb2b7d176ada1e05f4c740b981ceffcc0c3e25842b53",
+    "/srv/codex-hil-nvme/master-encode-target-20261121-v1/static/codec-normal.elf-master_codec_emulation.su": "40c324b9d14bbf9dc8b35b574601a6522d7ea6c83b78c2bb907913c76f9badac",
+    "/srv/codex-hil-nvme/master-encode-target-20261121-v1/static/codec-normal.elf-test_master_static_caller.su": "76bebb7d6dd4130873644d520da2959b2a1112216206cf262c671ec9953d1291"
+  },
+  "indirect_instruction_counts": {
+    "blr": 13,
+    "br": 2
+  },
+  "preexisting_execution_elf_hash_verified": true,
+  "required_contracts": [
+    {
+      "scope": "read/write/fence callbacks",
+      "requirement": "Bind each indirect callsite to the exact backend target, object provenance, frame metadata and transitive calls; reject callback reentry into mfc_poll."
+    },
+    {
+      "scope": "fixed reply decoder",
+      "requirement": "Bind function pointer targets to exact two fixed Rust decoders and CRC callees; no generic/alternate callback without new audit."
+    },
+    {
+      "scope": "computed branches",
+      "requirement": "Resolve two br x0 jump tables within map_step/mrs_step from actual instructions/rodata; do not call them external callbacks or assume no additional targets."
+    },
+    {
+      "scope": "memory helpers",
+      "requirement": "Inspect actual linked memcpy/memset instructions or compile their exact source with stack metadata; missing SU never implies frame zero."
+    },
+    {
+      "scope": "production context",
+      "requirement": "Use exact integrated ELF, foreground caller frame, active EL/SP, linker placement, C IRQ callees and nesting/FPU policy; retained208B assembly is a lower bound only."
+    }
+  ],
+  "next": "Resolve linked memory helper SP effects and two computed branch tables, then explicitly bind bus/decoder callbacks before attempting complete stack budget."
+}
