@@ -1,6 +1,12 @@
 /* SPDX-License-Identifier: LGPL-3.0-or-later */
+#ifdef MASTER_A53_EMULATION
+extern void master_emulation_assert(int);
+extern void master_emulation_network_start_pass(unsigned);
+#define assert(condition) master_emulation_assert(!!(condition))
+#else
 #include <assert.h>
 #include <stdio.h>
+#endif
 #include "master_network_start.h"
 #include "master_setup_mock_fixture.h"
 struct fixture {struct setup_fake fake;struct mnh_start *start;struct mfo_gate *gate;struct mnh_health health;unsigned scenario,armed,reads;};
@@ -60,11 +66,19 @@ int master_network_start_test(const uint8_t *frames,size_t size){
    if(n==5)assert(f.fake.tx==129);
    if(n==6)assert(f.fake.tx==258);
    if(n==7)assert(turns==8830&&f.fake.tx==259&&f.fake.pops==260&&!out.complete);
+#ifdef FORCE_NETWORK_START_ASSERT
+   if(n==7)assert(out.complete==1); /* Deliberately false after late health loss. */
+#endif
    assert(mnh_step(&start)==r);
   }
   assert(f.fake.calls==calls);
   if(n==11){assert(!mfo_fresh_epoch(&gate,2,15)&&!mfo_request_master(&gate)&&!mfo_grant_master(&gate,7));uint64_t ticket=gate.ticket;assert(mnh_step(&start)<0&&mnh_snapshot(&start,&out)<0&&!out.complete&&gate.state==MFO_MASTER&&gate.ticket==ticket);}
   cases++;
  }
- printf("MASTER_NETWORK_START_PASS cases=%u healthy_turns=8830 max_callbacks=1\n",cases);return 0;
+#ifdef MASTER_A53_EMULATION
+ master_emulation_network_start_pass(cases);
+#else
+ printf("MASTER_NETWORK_START_PASS cases=%u healthy_turns=8830 max_callbacks=1\n",cases);
+#endif
+ return 0;
 }

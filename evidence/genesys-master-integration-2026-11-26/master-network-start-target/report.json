@@ -1,0 +1,38 @@
+{
+  "status": "AARCH64_NETWORK_GUARDED_WHOLE_START_20_CASES_ACTUAL_RUST_CODEC_PASS",
+  "healthy_turns": 8830,
+  "max_bus_callbacks_per_turn": 1,
+  "codec_calls": 11334,
+  "negative_controls": {
+    "late_fault_false_success_assertion": 99,
+    "direct_forced_panic_hook": 101
+  },
+  "source_and_preexecution_elf_hashes": "PASS",
+  "three_elf_undefined_symbols": "NONE",
+  "native_full_regression": "PASS",
+  "existing_static_caller_qemu_regression": "PASS",
+  "measured_c_frames_bytes": {
+    "health_check": 48,
+    "snapshot": 32,
+    "begin_constprop": 144,
+    "guarded_step": 128,
+    "test_fixture": 5360
+  },
+  "hardware_accessed": false,
+  "production_changed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_network_start.h": "4da1b5a41c8cfbb531a955501db3397c48d7a40183b2e9383c76d2d069b066e5",
+    "diagnostics/drtio/aux_protocol/test_master_network_start.c": "cee9ff2d584561dcb99a704370e55985fb3c35df52e8b2037e2cc9a3b3a5f7a2",
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "79437234498ba14e689a8bb03b3658e0a6d0fa3aac00c67a21e7a9acb2ed66b8",
+    "diagnostics/drtio/aux_protocol/build-network-start-emulation.sh": "b41c528d7ee534b433dff7bbe07224512069582e1738c35a8f7e5fb48908d7d4",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "a3c63ccdad7c25c43eacb929818113c36f3450a22009a56e0971061b12b24180"
+  },
+  "limits": [
+    "Linux-user Cortex-A53 QEMU only; no board/IRQ/runtime admission",
+    "Test fixture uses5360B automatic frame; not suitable evidence for2KiBEL1 or production placement",
+    "Frames are not complete stack high-water; actual caller/IRQ/nesting/FPU and observer publication synchronization remain unqualified",
+    "Forced hook control is not proof of Rust panic/CPU exception containment",
+    "Memory observer contract does not implement GEM ISR observation or contain in-flight AXI/network faults"
+  ],
+  "next": "Prepare a separate static-context caller for the network-guarded start, retaining single-use/reentry guards and fresh publication checks; remeasure target frames and QEMU before any production integration."
+}

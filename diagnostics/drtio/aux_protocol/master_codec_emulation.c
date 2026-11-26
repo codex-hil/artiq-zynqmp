@@ -13,7 +13,7 @@ __attribute__((noreturn))void aux_master_panic(void){
  static const char text[]="A53_CODEC_EMULATOR_PANIC\n";message(text,sizeof(text)-1);finish(101);
 }
 static void check(int condition){if(!condition)finish(99);}
-#if defined(MASTER_ROUTE_EMULATION) || defined(MASTER_FULL_SETUP_EMULATION) || defined(MASTER_WHOLE_COOPERATIVE_EMULATION) || defined(MASTER_FOREGROUND_EMULATION) || defined(MASTER_RESUMABLE_EMULATION) || defined(MASTER_ASYNC_SETUP_EMULATION) || defined(MASTER_GUARDED_START_EMULATION) || defined(MASTER_STATIC_CALLER_EMULATION)
+#if defined(MASTER_ROUTE_EMULATION) || defined(MASTER_FULL_SETUP_EMULATION) || defined(MASTER_WHOLE_COOPERATIVE_EMULATION) || defined(MASTER_FOREGROUND_EMULATION) || defined(MASTER_RESUMABLE_EMULATION) || defined(MASTER_ASYNC_SETUP_EMULATION) || defined(MASTER_GUARDED_START_EMULATION) || defined(MASTER_STATIC_CALLER_EMULATION) || defined(MASTER_NETWORK_START_EMULATION)
 void master_emulation_assert(int condition){check(condition);}
 #endif
 #ifdef MASTER_ROUTE_EMULATION
@@ -61,6 +61,13 @@ extern int master_guarded_start_test(const uint8_t *,size_t);
 void master_emulation_guarded_start_pass(unsigned cases){
  check(cases==24);
  static const char text[]="A53_GUARDED_START_PASS cases=24 healthy_turns=8830 max_callbacks=1\n";message(text,sizeof(text)-1);
+}
+#endif
+#ifdef MASTER_NETWORK_START_EMULATION
+extern int master_network_start_test(const uint8_t *,size_t);
+void master_emulation_network_start_pass(unsigned cases){
+ check(cases==20);
+ static const char text[]="A53_NETWORK_START_PASS cases=20 healthy_turns=8830 max_callbacks=1\n";message(text,sizeof(text)-1);
 }
 #endif
 #ifdef MASTER_STATIC_CALLER_EMULATION
@@ -124,6 +131,10 @@ int codec_emulation_main(void){
 #ifdef MASTER_GUARDED_START_EMULATION
  const uint8_t frames[40]=SETUP_FRAMES;
  check(master_guarded_start_test(frames,sizeof(frames))==0);
+#endif
+#ifdef MASTER_NETWORK_START_EMULATION
+ static const uint8_t network_frames[]=SETUP_FRAMES;
+ check(master_network_start_test(network_frames,sizeof(network_frames))==0);
 #endif
 #ifdef MASTER_STATIC_CALLER_EMULATION
  const uint8_t frames[40]=SETUP_FRAMES;
