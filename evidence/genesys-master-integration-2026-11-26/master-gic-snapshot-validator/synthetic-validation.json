@@ -1,0 +1,63 @@
+{
+  "status": "STRUCTURALLY_COMPLETE_SYNTHETIC",
+  "structurally_complete": true,
+  "hardware_admitted": false,
+  "runtime_admitted": false,
+  "kind": "synthetic",
+  "banks": [
+    {
+      "view": "secure",
+      "slots_from_typer": 224,
+      "enabled_irqs": [
+        68,
+        89
+      ],
+      "enabled_outside_retained_195_irq_profile": [],
+      "source_expected_irqs": [
+        {
+          "irq": 68,
+          "enabled": true,
+          "raw_priority": 160,
+          "raw_target": 1
+        },
+        {
+          "irq": 89,
+          "enabled": true,
+          "raw_priority": 160,
+          "raw_target": 1
+        }
+      ]
+    },
+    {
+      "view": "nonsecure",
+      "slots_from_typer": 224,
+      "enabled_irqs": [
+        68,
+        89
+      ],
+      "enabled_outside_retained_195_irq_profile": [],
+      "source_expected_irqs": [
+        {
+          "irq": 68,
+          "enabled": true,
+          "raw_priority": 160,
+          "raw_target": 1
+        },
+        {
+          "irq": 89,
+          "enabled": true,
+          "raw_priority": 160,
+          "raw_target": 1
+        }
+      ]
+    }
+  ],
+  "geometry_reference": "https://raw.githubusercontent.com/torvalds/linux/master/drivers/irqchip/irq-gic.c",
+  "limitations": [
+    "Caller-supplied identity/lease/view metadata is not authenticated; no device access or lease acquisition occurs",
+    "Matching bookends do not exclude ABA/intervening changes, IRQs or incorrect bank access",
+    "Completeness does not prove priorities permit bounded nesting, FPU safety or stack adequacy",
+    "No freshness/current-image/physical clock/worker/management/recovery admission"
+  ],
+  "input_sha256": "3aebe08e74fe28a221c09f5f7931886dedc2878911af3b620a73610ccdd4ea6b"
+}

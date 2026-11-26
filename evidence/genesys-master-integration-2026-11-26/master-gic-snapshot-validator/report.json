@@ -1,0 +1,29 @@
+{
+  "status": "OFFLINE_GIC_SNAPSHOT_VALIDATOR_34_SYNTHETIC_CONTROLS_PASS",
+  "checks": 34,
+  "validates": [
+    "Declared source image/board/CPU/canonical lease metadata",
+    "Explicit two-bank context/currentEL/DAIF/BPR/ABPR/PMR/RPR fields",
+    "TYPER-derived complete enable/group/priority/target/config arrays",
+    "Complete non-acknowledging register coverage, no duplicate/forbidden/extra reads",
+    "Stable identical bookend observations and UTC timestamp ordering",
+    "Strict integer types, JSON unique keys, expected image and unknown-field rejection"
+  ],
+  "findings": "Enabled IRQs beyond retained195-source software profile are reported, never discarded",
+  "admission_policy": "All outputs, including complete records claiming kind=capture, set hardware_admitted=false and runtime_admitted=false",
+  "hardware_accessed": false,
+  "production_changed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/validate-gic-snapshot.py": "b8f5acce227f69811d082b223d21dac00857d78a7adc354f7f73f56e01a866bf",
+    "diagnostics/drtio/aux_protocol/test-gic-snapshot-validator.py": "379e9ae86e67d9b3a8958990ad98ae383da78a7755092524f3df3d39878f1cfd"
+  },
+  "geometry_reference": "https://raw.githubusercontent.com/torvalds/linux/master/drivers/irqchip/irq-gic.c",
+  "reference_scope": "GICv2 TYPER low5bits geometry and1020 cap; external source checked, not board data",
+  "limits": [
+    "Synthetic inputs only, no actual capture or bank/context authentication",
+    "Caller-supplied lease/image/view metadata is not independently verified",
+    "Equal bookends do not exclude ABA/intervening IRQs or writes",
+    "No source priority comparison can establish worst-case IRQ nesting/FPU/stack bounds"
+  ],
+  "next": "Prepare a disabled source-only snapshot-reader prototype with a mock register callback and explicit read allowlist, testing coverage and fault handling without binding it to real GIC or deployed runtime."
+}
