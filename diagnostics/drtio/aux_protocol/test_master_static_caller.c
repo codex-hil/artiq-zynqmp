@@ -9,10 +9,22 @@ extern void master_emulation_static_caller_pass(void);
 #endif
 #include "master_static_caller.h"
 #include "master_setup_mock_fixture.h"
-struct fixture {struct setup_fake fake;struct mfo_gate *gate;};
-static int read_reg(void *ctx,uint32_t a,uint32_t *v){struct fixture *f=ctx;assert(f->gate->state==MFO_MASTER);return setup_read(&f->fake,a,v);}
-static int write_reg(void *ctx,uint32_t a,uint32_t v){struct fixture *f=ctx;assert(f->gate->state==MFO_MASTER);return setup_write(&f->fake,a,v);}
-static int fence(void *ctx){struct fixture *f=ctx;assert(f->gate->state==MFO_MASTER);return setup_fence(&f->fake);}
+struct fixture {struct setup_fake fake;struct mfo_gate *gate;unsigned probing,probes,read_probes,write_probes,fence_probes;};
+static void probe_reentry(struct fixture *f){
+ assert(!f->probing);f->probing=1;
+ unsigned calls=f->fake.calls;uint64_t ticket=f->gate->ticket,epoch=f->gate->epoch;
+ struct mfc_status status;unsigned char *bytes=(unsigned char *)&status;
+ for(size_t i=0;i<sizeof(status);i++)bytes[i]=0xa5;
+ assert(mfc_begin(f->gate,ticket,0,0,0,0,0)==MFO_BUSY);
+ assert(mfc_poll()==MFO_BUSY&&mfc_cancel()==MFO_BUSY);
+ assert(mfc_snapshot(&status)==MFO_BUSY&&mfc_snapshot(0)==MFO_BUSY);
+ for(size_t i=0;i<sizeof(status);i++)assert(bytes[i]==0xa5);
+ assert(f->fake.calls==calls&&f->gate->state==MFO_MASTER&&f->gate->ticket==ticket&&f->gate->epoch==epoch);
+ f->probes+=5;f->probing=0;
+}
+static int read_reg(void *ctx,uint32_t a,uint32_t *v){struct fixture *f=ctx;assert(f->gate->state==MFO_MASTER);probe_reentry(f);f->read_probes++;return setup_read(&f->fake,a,v);}
+static int write_reg(void *ctx,uint32_t a,uint32_t v){struct fixture *f=ctx;assert(f->gate->state==MFO_MASTER);probe_reentry(f);f->write_probes++;return setup_write(&f->fake,a,v);}
+static int fence(void *ctx){struct fixture *f=ctx;assert(f->gate->state==MFO_MASTER);probe_reentry(f);f->fence_probes++;return setup_fence(&f->fake);}
 int master_static_caller_test(const uint8_t *frames,size_t length){
  (void)action_step;assert(length==40);
  /* Owner/bus context persist after this test returns; singleton never reset. */
@@ -32,6 +44,7 @@ int master_static_caller_test(const uint8_t *frames,size_t length){
  assert(turns==8829); /* Deliberately false: healthy uses8830. */
 #endif
  assert(result==1&&turns==8830&&network_turns==turns&&f.fake.tx==259&&f.fake.pops==260&&gate.state==MFO_HELD);
+ assert(f.read_probes&&f.write_probes&&f.fence_probes&&f.probes==5*f.fake.calls);
  unsigned calls=f.fake.calls;assert(!mfc_snapshot(&status)&&status.candidate_complete&&status.result==1&&status.credits==16&&status.routing_completed==257&&f.fake.calls==calls);
  gate.setup_ticket=0;assert(!mfc_snapshot(&status)&&!status.candidate_complete&&!status.credits&&status.result==MFG_INVALID&&f.fake.calls==calls);
  assert(mfc_poll()==MFG_INVALID&&gate.state==MFO_FAULT&&mfc_cancel()==MFG_INVALID&&f.fake.calls==calls);

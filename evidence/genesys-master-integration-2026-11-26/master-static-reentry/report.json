@@ -1,0 +1,42 @@
+{
+  "status": "ISOLATED_STATIC_CALLER_REENTRY_GUARD_NATIVE_AARCH64_AND_THREE_MUTANT_REFUSALS_PASS",
+  "guard": "Synchronous callback reentry returns MFO_BUSY before state or output changes; guard clears after normal/error return; no reset/replay API",
+  "probes": "Every read/write/fence callback probes begin/poll/cancel/snapshot(buffer)/snapshot(NULL), preserves output canary and owner/ticket/epoch/IO count",
+  "healthy_turns": 8830,
+  "max_bus_callbacks_per_turn": 1,
+  "target_codec_calls": 11334,
+  "negative_exit_codes": [
+    99,
+    101
+  ],
+  "mutant_guards_removed": [
+    "poll",
+    "cancel",
+    "snapshot"
+  ],
+  "target_c_frames_bytes": {
+    "begin": 64,
+    "poll": 128,
+    "cancel": 16,
+    "snapshot": 0
+  },
+  "bss_context_bytes": 4880,
+  "bss_context_alignment": 64,
+  "bss_guard_bytes": 4,
+  "hardware_accessed": false,
+  "production_changed": false,
+  "build_host": "Authenticated Dell192.168.2.20, pinned historical.7 SSH key, expected hostname and eno1 e4:54:e8:65:f9:fa verified before small bounded C build",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_static_caller.c": "dae41b18df775c3219fc611d30f258c00aa0c2b22e4c6dc3a22ad5608123319d",
+    "diagnostics/drtio/aux_protocol/master_static_caller.h": "547b64ec036574062d8634d55b11df2c00ea7ae6648c325323a43211d8d780bb",
+    "diagnostics/drtio/aux_protocol/test_master_static_caller.c": "98ced0c315d679118f589c1f90a1f364ed94731040785abbe324bde6372f78c6",
+    "diagnostics/drtio/aux_protocol/test-static-caller-reentry-mutants.py": "df26834c34f8ec965e30e02d894d336bf2dddea1b34bf69fbb58df49fa49986f"
+  },
+  "limits": [
+    "Single foreground only: not atomic/thread/IRQ/CPU mutual exclusion",
+    "No panic/exception unwind cleanup; a callback that never returns leaves guard held",
+    "Previous352B conditional graph sum belongs to older ELF; new callback probes/guard require fresh path-sensitive audit",
+    "Production IRQ/FPU/nesting/activeEL-SP and worker/clock/recovery remain unqualified"
+  ],
+  "next": "Refresh exact AArch64 callgraph with guarded reentry paths and measured callback frames; explicitly distinguish bounded rejected recursion from unguarded cycles before computing any conditional diagnostic budget."
+}

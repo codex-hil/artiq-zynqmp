@@ -1,0 +1,28 @@
+{
+  "status": "THREE_STATIC_CALLER_REENTRY_GUARD_MUTANTS_REFUSED",
+  "source_sha256": "dae41b18df775c3219fc611d30f258c00aa0c2b22e4c6dc3a22ad5608123319d",
+  "runs": {
+    "poll": {
+      "exit_code": 1,
+      "assertion_refusal": true,
+      "no_static_caller_pass": true,
+      "mutant_source_sha256": "a4695a83b973db5e296ffa27f81b07b594938ff725b493589208b6e8e200f422",
+      "build_log_sha256": "62ddefd5b7321e3e333373117b7fda347e29f1ebc8a88a52b99bc7bc9937dced"
+    },
+    "cancel": {
+      "exit_code": 1,
+      "assertion_refusal": true,
+      "no_static_caller_pass": true,
+      "mutant_source_sha256": "1cfe999a250187a950c63b0a2c68a8099b419eb97191261c161ba0884066c7b0",
+      "build_log_sha256": "6c8cdf679fc80d273d8db477e26b1b914229911f6ef6a46d23f9353fd2ea6acd"
+    },
+    "snapshot": {
+      "exit_code": 1,
+      "assertion_refusal": true,
+      "no_static_caller_pass": true,
+      "mutant_source_sha256": "f4ff6852b3c0fb01ef1e6d777a2fefc91b684df9f81c7c5dde8c02d36cdac5b4",
+      "build_log_sha256": "9462a18b7f7465f255a13581e75ccb32824345b810ef04a76d3b6723ded6bd61"
+    }
+  },
+  "hardware_accessed": false
+}

@@ -4,7 +4,10 @@
 /* Isolated SINGLE-USE foreground candidate, not linked to production runtime.
  * One private aligned BSS context, no heap/automatic context or reset API.
  * Caller-owned gate and bus.ctx must outlive all polls/snapshots. Call only from
- * sole CPU0 foreground, never ISR/concurrent/reentrant. Real hardware lease,
+ * sole CPU0 foreground, never ISR/concurrent. Synchronous callback reentry
+ * returns MFO_BUSY before state/output changes (including snapshot(NULL)).
+ * This guard is not an atomic/thread/IRQ/CPU lock or panic-unwind cleanup.
+ * A callback that never returns leaves the guard held. Real hardware lease,
  * worker admission, epoch/readiness and independent fault containment external.
  */
 struct mfc_status {unsigned initialized;enum mfg_phase phase;int result;uint64_t ticket,epoch;unsigned profile_bound,candidate_complete;uint32_t routing_completed,credits;};
