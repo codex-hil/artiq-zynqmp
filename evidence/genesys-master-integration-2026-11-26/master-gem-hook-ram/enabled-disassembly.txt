@@ -1,0 +1,314 @@
+
+enabled.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000400000 <emacps_error_handler>:
+  400000:	35000042 	cbnz	w2, 400008 <emacps_error_handler+0x8>
+  400004:	d65f03c0 	ret
+  400008:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+  40000c:	12001c21 	and	w1, w1, #0xff
+  400010:	910003fd 	mov	x29, sp
+  400014:	a90153f3 	stp	x19, x20, [sp, #16]
+  400018:	2a0203f3 	mov	w19, w2
+  40001c:	aa0003f4 	mov	x20, x0
+  400020:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  400024:	911e0042 	add	x2, x2, #0x780
+  400028:	a9025bf5 	stp	x21, x22, [sp, #32]
+  40002c:	52800023 	mov	w3, #0x1                   	// #1
+  400030:	889ffc43 	stlr	w3, [x2]
+  400034:	f9400415 	ldr	x21, [x0, #8]
+  400038:	6b03003f 	cmp	w1, w3
+  40003c:	54000320 	b.eq	4000a0 <emacps_error_handler+0xa0>  // b.none
+  400040:	7100083f 	cmp	w1, #0x2
+  400044:	540001a1 	b.ne	400078 <emacps_error_handler+0x78>  // b.any
+  400048:	371805f3 	tbnz	w19, #3, 400104 <emacps_error_handler+0x104>
+  40004c:	910342b6 	add	x22, x21, #0xd0
+  400050:	371001d3 	tbnz	w19, #2, 400088 <emacps_error_handler+0x88>
+  400054:	36000133 	tbz	w19, #0, 400078 <emacps_error_handler+0x78>
+  400058:	aa1403e0 	mov	x0, x20
+  40005c:	94000065 	bl	4001f0 <emacps_recv_handler>
+  400060:	a94153f3 	ldp	x19, x20, [sp, #16]
+  400064:	aa1603e1 	mov	x1, x22
+  400068:	aa1503e0 	mov	x0, x21
+  40006c:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  400070:	a8c37bfd 	ldp	x29, x30, [sp], #48
+  400074:	14000077 	b	400250 <setup_rx_bds>
+  400078:	a94153f3 	ldp	x19, x20, [sp, #16]
+  40007c:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  400080:	a8c37bfd 	ldp	x29, x30, [sp], #48
+  400084:	d65f03c0 	ret
+  400088:	aa1403e0 	mov	x0, x20
+  40008c:	94000059 	bl	4001f0 <emacps_recv_handler>
+  400090:	aa1603e1 	mov	x1, x22
+  400094:	aa1503e0 	mov	x0, x21
+  400098:	9400006e 	bl	400250 <setup_rx_bds>
+  40009c:	17ffffee 	b	400054 <emacps_error_handler+0x54>
+  4000a0:	374002d3 	tbnz	w19, #8, 4000f8 <emacps_error_handler+0xf8>
+  4000a4:	37300233 	tbnz	w19, #6, 4000e8 <emacps_error_handler+0xe8>
+  4000a8:	37200193 	tbnz	w19, #4, 4000d8 <emacps_error_handler+0xd8>
+  4000ac:	37100113 	tbnz	w19, #2, 4000cc <emacps_error_handler+0xcc>
+  4000b0:	360ffe53 	tbz	w19, #1, 400078 <emacps_error_handler+0x78>
+  4000b4:	a94153f3 	ldp	x19, x20, [sp, #16]
+  4000b8:	910182a1 	add	x1, x21, #0x60
+  4000bc:	aa1503e0 	mov	x0, x21
+  4000c0:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  4000c4:	a8c37bfd 	ldp	x29, x30, [sp], #48
+  4000c8:	1400007e 	b	4002c0 <xemacps_process_sent_bds>
+  4000cc:	aa1403e0 	mov	x0, x20
+  4000d0:	94000030 	bl	400190 <HandleTxErrors>
+  4000d4:	17fffff7 	b	4000b0 <emacps_error_handler+0xb0>
+  4000d8:	aa1403e0 	mov	x0, x20
+  4000dc:	9400002d 	bl	400190 <HandleTxErrors>
+  4000e0:	3617fe93 	tbz	w19, #2, 4000b0 <emacps_error_handler+0xb0>
+  4000e4:	17fffffa 	b	4000cc <emacps_error_handler+0xcc>
+  4000e8:	aa1403e0 	mov	x0, x20
+  4000ec:	94000029 	bl	400190 <HandleTxErrors>
+  4000f0:	3627fdf3 	tbz	w19, #4, 4000ac <emacps_error_handler+0xac>
+  4000f4:	17fffff9 	b	4000d8 <emacps_error_handler+0xd8>
+  4000f8:	9400000e 	bl	400130 <HandleEmacPsError>
+  4000fc:	3637fd73 	tbz	w19, #6, 4000a8 <emacps_error_handler+0xa8>
+  400100:	17fffffa 	b	4000e8 <emacps_error_handler+0xe8>
+  400104:	9400000b 	bl	400130 <HandleEmacPsError>
+  400108:	17ffffd1 	b	40004c <emacps_error_handler+0x4c>
+
+000000000040010c <_start>:
+  40010c:	910003e0 	mov	x0, sp
+  400110:	94000088 	bl	400330 <gem_hook_test_main>
+  400114:	d2800ba8 	mov	x8, #0x5d                  	// #93
+  400118:	d4000001 	svc	#0x0
+  40011c:	d503201f 	nop
+
+0000000000400120 <check.part.0>:
+  400120:	d2800c60 	mov	x0, #0x63                  	// #99
+  400124:	d2800ba8 	mov	x8, #0x5d                  	// #93
+  400128:	d4000001 	svc	#0x0
+  40012c:	d503201f 	nop
+
+0000000000400130 <HandleEmacPsError>:
+  400130:	90000081 	adrp	x1, 410000 <tests+0xfb20>
+  400134:	911dc021 	add	x1, x1, #0x770
+  400138:	eb00003f 	cmp	x1, x0
+  40013c:	54000201 	b.ne	40017c <HandleEmacPsError+0x4c>  // b.any
+  400140:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  400144:	911e0000 	add	x0, x0, #0x780
+  400148:	88dffc00 	ldar	w0, [x0]
+  40014c:	34000180 	cbz	w0, 40017c <HandleEmacPsError+0x4c>
+  400150:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  400154:	b945b040 	ldr	w0, [x2, #1456]
+  400158:	71001c1f 	cmp	w0, #0x7
+  40015c:	54000108 	b.hi	40017c <HandleEmacPsError+0x4c>  // b.pmore
+  400160:	90000081 	adrp	x1, 410000 <tests+0xfb20>
+  400164:	9116e021 	add	x1, x1, #0x5b8
+  400168:	11000404 	add	w4, w0, #0x1
+  40016c:	52800903 	mov	w3, #0x48                  	// #72
+  400170:	b905b044 	str	w4, [x2, #1456]
+  400174:	38204823 	strb	w3, [x1, w0, uxtw]
+  400178:	d65f03c0 	ret
+  40017c:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+  400180:	910003fd 	mov	x29, sp
+  400184:	97ffffe7 	bl	400120 <check.part.0>
+  400188:	d503201f 	nop
+  40018c:	d503201f 	nop
+
+0000000000400190 <HandleTxErrors>:
+  400190:	90000081 	adrp	x1, 410000 <tests+0xfb20>
+  400194:	911dc021 	add	x1, x1, #0x770
+  400198:	eb00003f 	cmp	x1, x0
+  40019c:	54000201 	b.ne	4001dc <HandleTxErrors+0x4c>  // b.any
+  4001a0:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  4001a4:	911e0000 	add	x0, x0, #0x780
+  4001a8:	88dffc00 	ldar	w0, [x0]
+  4001ac:	34000180 	cbz	w0, 4001dc <HandleTxErrors+0x4c>
+  4001b0:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  4001b4:	b945b040 	ldr	w0, [x2, #1456]
+  4001b8:	71001c1f 	cmp	w0, #0x7
+  4001bc:	54000108 	b.hi	4001dc <HandleTxErrors+0x4c>  // b.pmore
+  4001c0:	90000081 	adrp	x1, 410000 <tests+0xfb20>
+  4001c4:	9116e021 	add	x1, x1, #0x5b8
+  4001c8:	11000404 	add	w4, w0, #0x1
+  4001cc:	52800a83 	mov	w3, #0x54                  	// #84
+  4001d0:	b905b044 	str	w4, [x2, #1456]
+  4001d4:	38204823 	strb	w3, [x1, w0, uxtw]
+  4001d8:	d65f03c0 	ret
+  4001dc:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+  4001e0:	910003fd 	mov	x29, sp
+  4001e4:	97ffffcf 	bl	400120 <check.part.0>
+  4001e8:	d503201f 	nop
+  4001ec:	d503201f 	nop
+
+00000000004001f0 <emacps_recv_handler>:
+  4001f0:	90000081 	adrp	x1, 410000 <tests+0xfb20>
+  4001f4:	911dc021 	add	x1, x1, #0x770
+  4001f8:	eb00003f 	cmp	x1, x0
+  4001fc:	54000201 	b.ne	40023c <emacps_recv_handler+0x4c>  // b.any
+  400200:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  400204:	911e0000 	add	x0, x0, #0x780
+  400208:	88dffc00 	ldar	w0, [x0]
+  40020c:	34000180 	cbz	w0, 40023c <emacps_recv_handler+0x4c>
+  400210:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  400214:	b945b040 	ldr	w0, [x2, #1456]
+  400218:	71001c1f 	cmp	w0, #0x7
+  40021c:	54000108 	b.hi	40023c <emacps_recv_handler+0x4c>  // b.pmore
+  400220:	90000081 	adrp	x1, 410000 <tests+0xfb20>
+  400224:	9116e021 	add	x1, x1, #0x5b8
+  400228:	11000404 	add	w4, w0, #0x1
+  40022c:	52800a43 	mov	w3, #0x52                  	// #82
+  400230:	b905b044 	str	w4, [x2, #1456]
+  400234:	38204823 	strb	w3, [x1, w0, uxtw]
+  400238:	d65f03c0 	ret
+  40023c:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+  400240:	910003fd 	mov	x29, sp
+  400244:	97ffffb7 	bl	400120 <check.part.0>
+  400248:	d503201f 	nop
+  40024c:	d503201f 	nop
+
+0000000000400250 <setup_rx_bds>:
+  400250:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  400254:	91170042 	add	x2, x2, #0x5c0
+  400258:	eb00005f 	cmp	x2, x0
+  40025c:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  400260:	911a4000 	add	x0, x0, #0x690
+  400264:	fa400020 	ccmp	x1, x0, #0x0, eq	// eq = none
+  400268:	54000201 	b.ne	4002a8 <setup_rx_bds+0x58>  // b.any
+  40026c:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  400270:	911e0000 	add	x0, x0, #0x780
+  400274:	88dffc00 	ldar	w0, [x0]
+  400278:	34000180 	cbz	w0, 4002a8 <setup_rx_bds+0x58>
+  40027c:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  400280:	b945b041 	ldr	w1, [x2, #1456]
+  400284:	71001c3f 	cmp	w1, #0x7
+  400288:	54000108 	b.hi	4002a8 <setup_rx_bds+0x58>  // b.pmore
+  40028c:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  400290:	9116e000 	add	x0, x0, #0x5b8
+  400294:	11000424 	add	w4, w1, #0x1
+  400298:	52800843 	mov	w3, #0x42                  	// #66
+  40029c:	b905b044 	str	w4, [x2, #1456]
+  4002a0:	38214803 	strb	w3, [x0, w1, uxtw]
+  4002a4:	d65f03c0 	ret
+  4002a8:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+  4002ac:	910003fd 	mov	x29, sp
+  4002b0:	97ffff9c 	bl	400120 <check.part.0>
+  4002b4:	d503201f 	nop
+  4002b8:	d503201f 	nop
+  4002bc:	d503201f 	nop
+
+00000000004002c0 <xemacps_process_sent_bds>:
+  4002c0:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  4002c4:	91170042 	add	x2, x2, #0x5c0
+  4002c8:	eb00005f 	cmp	x2, x0
+  4002cc:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  4002d0:	91188000 	add	x0, x0, #0x620
+  4002d4:	fa400020 	ccmp	x1, x0, #0x0, eq	// eq = none
+  4002d8:	54000201 	b.ne	400318 <xemacps_process_sent_bds+0x58>  // b.any
+  4002dc:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  4002e0:	911e0000 	add	x0, x0, #0x780
+  4002e4:	88dffc00 	ldar	w0, [x0]
+  4002e8:	34000180 	cbz	w0, 400318 <xemacps_process_sent_bds+0x58>
+  4002ec:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  4002f0:	b945b041 	ldr	w1, [x2, #1456]
+  4002f4:	71001c3f 	cmp	w1, #0x7
+  4002f8:	54000108 	b.hi	400318 <xemacps_process_sent_bds+0x58>  // b.pmore
+  4002fc:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  400300:	9116e000 	add	x0, x0, #0x5b8
+  400304:	11000424 	add	w4, w1, #0x1
+  400308:	52800a63 	mov	w3, #0x53                  	// #83
+  40030c:	b905b044 	str	w4, [x2, #1456]
+  400310:	38214803 	strb	w3, [x0, w1, uxtw]
+  400314:	d65f03c0 	ret
+  400318:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+  40031c:	910003fd 	mov	x29, sp
+  400320:	97ffff80 	bl	400120 <check.part.0>
+  400324:	d503201f 	nop
+  400328:	d503201f 	nop
+  40032c:	d503201f 	nop
+
+0000000000400330 <gem_hook_test_main>:
+  400330:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+  400334:	910003fd 	mov	x29, sp
+  400338:	f9400001 	ldr	x1, [x0]
+  40033c:	a90153f3 	stp	x19, x20, [sp, #16]
+  400340:	a9025bf5 	stp	x21, x22, [sp, #32]
+  400344:	f100083f 	cmp	x1, #0x2
+  400348:	54000a01 	b.ne	400488 <gem_hook_test_main+0x158>  // b.any
+  40034c:	f9400803 	ldr	x3, [x0, #16]
+  400350:	39400060 	ldrb	w0, [x3]
+  400354:	340009a0 	cbz	w0, 400488 <gem_hook_test_main+0x158>
+  400358:	52800001 	mov	w1, #0x0                   	// #0
+  40035c:	1400000b 	b	400388 <gem_hook_test_main+0x58>
+  400360:	5100c002 	sub	w2, w0, #0x30
+  400364:	12001c42 	and	w2, w2, #0xff
+  400368:	7100245f 	cmp	w2, #0x9
+  40036c:	54000888 	b.hi	40047c <gem_hook_test_main+0x14c>  // b.pmore
+  400370:	0b010821 	add	w1, w1, w1, lsl #2
+  400374:	91000463 	add	x3, x3, #0x1
+  400378:	0b010401 	add	w1, w0, w1, lsl #1
+  40037c:	5100c021 	sub	w1, w1, #0x30
+  400380:	7100303f 	cmp	w1, #0xc
+  400384:	540007c8 	b.hi	40047c <gem_hook_test_main+0x14c>  // b.pmore
+  400388:	39400060 	ldrb	w0, [x3]
+  40038c:	35fffea0 	cbnz	w0, 400360 <gem_hook_test_main+0x30>
+  400390:	90000080 	adrp	x0, 410000 <tests+0xfb20>
+  400394:	911dc000 	add	x0, x0, #0x770
+  400398:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  40039c:	90000093 	adrp	x19, 410000 <tests+0xfb20>
+  4003a0:	91170042 	add	x2, x2, #0x5c0
+  4003a4:	911e0273 	add	x19, x19, #0x780
+  4003a8:	f9000402 	str	x2, [x0, #8]
+  4003ac:	88dffe74 	ldar	w20, [x19]
+  4003b0:	350006d4 	cbnz	w20, 400488 <gem_hook_test_main+0x158>
+  4003b4:	d37c7c21 	ubfiz	x1, x1, #4, #32
+  4003b8:	90000002 	adrp	x2, 400000 <emacps_error_handler>
+  4003bc:	91138042 	add	x2, x2, #0x4e0
+  4003c0:	8b010055 	add	x21, x2, x1
+  4003c4:	38616841 	ldrb	w1, [x2, x1]
+  4003c8:	b94006b6 	ldr	w22, [x21, #4]
+  4003cc:	2a1603e2 	mov	w2, w22
+  4003d0:	97ffff0c 	bl	400000 <emacps_error_handler>
+  4003d4:	88dffe60 	ldar	w0, [x19]
+  4003d8:	710002df 	cmp	w22, #0x0
+  4003dc:	1a9f07e1 	cset	w1, ne	// ne = any
+  4003e0:	7100001f 	cmp	w0, #0x0
+  4003e4:	1a9f07e0 	cset	w0, ne	// ne = any
+  4003e8:	6b00003f 	cmp	w1, w0
+  4003ec:	540004e1 	b.ne	400488 <gem_hook_test_main+0x158>  // b.any
+  4003f0:	f94006a1 	ldr	x1, [x21, #8]
+  4003f4:	90000082 	adrp	x2, 410000 <tests+0xfb20>
+  4003f8:	90000084 	adrp	x4, 410000 <tests+0xfb20>
+  4003fc:	d2800020 	mov	x0, #0x1                   	// #1
+  400400:	d1000425 	sub	x5, x1, #0x1
+  400404:	b945b046 	ldr	w6, [x2, #1456]
+  400408:	39400021 	ldrb	w1, [x1]
+  40040c:	9116dc84 	add	x4, x4, #0x5b7
+  400410:	2a0603e3 	mov	w3, w6
+  400414:	8b000063 	add	x3, x3, x0
+  400418:	35000061 	cbnz	w1, 400424 <gem_hook_test_main+0xf4>
+  40041c:	1400000b 	b	400448 <gem_hook_test_main+0x118>
+  400420:	aa0203e0 	mov	x0, x2
+  400424:	eb00007f 	cmp	x3, x0
+  400428:	540002a0 	b.eq	40047c <gem_hook_test_main+0x14c>  // b.none
+  40042c:	38606882 	ldrb	w2, [x4, x0]
+  400430:	6b01005f 	cmp	w2, w1
+  400434:	54000241 	b.ne	40047c <gem_hook_test_main+0x14c>  // b.any
+  400438:	91000402 	add	x2, x0, #0x1
+  40043c:	386268a1 	ldrb	w1, [x5, x2]
+  400440:	35ffff01 	cbnz	w1, 400420 <gem_hook_test_main+0xf0>
+  400444:	2a0003f4 	mov	w20, w0
+  400448:	6b1400df 	cmp	w6, w20
+  40044c:	540001e1 	b.ne	400488 <gem_hook_test_main+0x158>  // b.any
+  400450:	90000001 	adrp	x1, 400000 <emacps_error_handler>
+  400454:	d2800020 	mov	x0, #0x1                   	// #1
+  400458:	91124021 	add	x1, x1, #0x490
+  40045c:	d28002c2 	mov	x2, #0x16                  	// #22
+  400460:	d2800808 	mov	x8, #0x40                  	// #64
+  400464:	d4000001 	svc	#0x0
+  400468:	a94153f3 	ldp	x19, x20, [sp, #16]
+  40046c:	d2800000 	mov	x0, #0x0                   	// #0
+  400470:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  400474:	a8c37bfd 	ldp	x29, x30, [sp], #48
+  400478:	d65f03c0 	ret
+  40047c:	d2800c60 	mov	x0, #0x63                  	// #99
+  400480:	d2800ba8 	mov	x8, #0x5d                  	// #93
+  400484:	d4000001 	svc	#0x0
+  400488:	97ffff26 	bl	400120 <check.part.0>

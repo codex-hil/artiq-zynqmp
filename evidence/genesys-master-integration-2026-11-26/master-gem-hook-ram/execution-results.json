@@ -1,0 +1,160 @@
+{
+  "status": "A53_GEM_COPY_HANDLER_26_RAM_CASES_AND_MISSING_HOOK_NEGATIVE_PASS",
+  "runs": [
+    {
+      "mode": "enabled",
+      "case": 0,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 1,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 2,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 3,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 4,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 5,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 6,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 7,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 8,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 9,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 10,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 11,
+      "exit_code": 0
+    },
+    {
+      "mode": "enabled",
+      "case": 12,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 0,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 1,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 2,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 3,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 4,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 5,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 6,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 7,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 8,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 9,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 10,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 11,
+      "exit_code": 0
+    },
+    {
+      "mode": "default-off",
+      "case": 12,
+      "exit_code": 0
+    }
+  ],
+  "negative_exit_code": 99,
+  "preexecution_elf_sha256": {
+    "enabled": "bcafef603fcf0fdf88f778706ad3b27b5ace87e9fa86eba58b8fb297a6dd1987",
+    "default-off": "7c5c557df7d474480a572e6eaa6bf89f3f89093fe130fac29e66a42642f7dc34",
+    "no-hook-negative": "8599eedcd26067ba971b78cc2adca3715f4b08ff16a997b17311bd64afe6fb8a"
+  },
+  "linked_function_allowlist": [
+    "HandleEmacPsError",
+    "HandleTxErrors",
+    "check",
+    "emacps_error_handler",
+    "emacps_recv_handler",
+    "gem_hook_test_main",
+    "pass",
+    "record",
+    "setup_rx_bds",
+    "xemacps_process_sent_bds"
+  ],
+  "hardware_accessed": false,
+  "limits": [
+    "Linux-user CortexA53, not IRQ entry/priority/nesting or hardware execution",
+    "Real recovery functions replaced by RAM-only sentinels; no GEM access/recovery/management availability proof",
+    "Fresh process/BSS per independent case; latch never cleared/rearmed in a running process",
+    "Enabled source copy only; deployed BSP and board state untouched"
+  ]
+}

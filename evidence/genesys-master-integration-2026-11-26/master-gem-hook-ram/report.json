@@ -1,0 +1,31 @@
+{
+  "status": "A53_GEM_COPY_HANDLER_26_RAM_CASES_AND_MISSING_HOOK_NEGATIVE_PASS",
+  "cases_per_mode": 13,
+  "modes": [
+    "enabled publication required",
+    "default off publication forbidden"
+  ],
+  "negative": "Default-off handler with publication-required sentinels exits99 before PASS",
+  "coverage": [
+    "Zero error no store/callback",
+    "RX HRESP/overflow/buffer-missing/combined",
+    "TX HRESP/underrun/buffer-exhaustion/retry/collision/combined",
+    "Unknown direction and unknown nonzero error bits conservatively latch without recovery callback"
+  ],
+  "order": "Every RAM sentinel checks acquire-observed latch state before recording event; exact expected event sequence and fake-argument/ring identity checked",
+  "closure": "Only test/handler/RAM-sentinel functions linked, no undefined symbols, no privileged instructions or indirect transfers",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/test_gem_hook_ram_a53.c": "79e8c1ebf5086a3ac5bb3f8ce7fada9f33d541ba7f6af9ff0f3c440f029a1fd2",
+    "diagnostics/drtio/aux_protocol/run-gem-hook-ram.py": "f911be1d496f6fa3e923b80e46ed98080f5135941d6cee5952efcc73759c4302",
+    "diagnostics/drtio/aux_protocol/master_network_fault_latch.h": "f6d704341d271b06b27fff620791b148a40cc8dbe53a7bf554023261ef2ba8e2"
+  },
+  "hardware_accessed": false,
+  "production_changed": false,
+  "limits": [
+    "Ordinary function call in Linux-user A53, not an IRQ entry or real GEM operation",
+    "Recovery callbacks are RAM-only stubs: no reset/recovery success, management availability or IRQ-unmask/nesting proof",
+    "Fresh process/BSS per case, never rearm/reset latch in a running test",
+    "Source-copy disabled by default; deployed BSP and actual hardware remain untouched"
+  ],
+  "next": "Combine copied handler publication with actual Rust master startup and observer in one isolated A53 harness, using RAM recovery stubs and fresh process per fault case; verify no next CRI/AUX callback after publication."
+}
