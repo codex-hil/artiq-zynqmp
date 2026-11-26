@@ -1,0 +1,42 @@
+{
+  "status": "STATIC_BSS_NETWORK_CALLER_NATIVE_AND_AARCH64_QEMU_PASS",
+  "bss_context_bytes": 4952,
+  "bss_alignment": 64,
+  "automatic_test_frame_bytes": 144,
+  "previous_automatic_network_test_frame_bytes": 5360,
+  "target_api_frames_bytes": {
+    "begin": 176,
+    "poll": 128,
+    "snapshot": 48
+  },
+  "healthy_turns": 8830,
+  "max_bus_callbacks_per_turn": 1,
+  "codec_calls": 11334,
+  "tests": [
+    "Single-use even after fault and fresh owner grant",
+    "Health and bus callback recursion rejected before state/output mutation",
+    "Fresh snapshot publishes credits16, then health change revokes without new IO",
+    "First error remains sticky; old singleton never poisons newer gate",
+    "False success assertion99 and forced direct panic hook101; no success markers in negatives",
+    "All three ELF undefined-symbol and preexecution hash checks PASS",
+    "Previous20case network-start QEMU regression PASS"
+  ],
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_network_static.h": "418c39e3338fdb46a64d239ba9bc5e8b3aeaa48592bd21a07698e727f8d8795c",
+    "diagnostics/drtio/aux_protocol/master_network_static.c": "8d962b62a43addb479574e055dca60aefdfbed524b019a2626f1782621b1da16",
+    "diagnostics/drtio/aux_protocol/test_master_network_static.c": "9a2aaae8227104aaf6cf480c8a0ab916cef2600d9a176d3d54b2dfd4cbfc5263",
+    "diagnostics/drtio/aux_protocol/master_network_start.h": "4da1b5a41c8cfbb531a955501db3397c48d7a40183b2e9383c76d2d069b066e5",
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "e9db3d00c627711ac4eb47114e126a65934a1346527faeea94de7276b8db00ea",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "5aa0b94f6367a4d6ed8a4f98d052cbda951b51d6e56dfd5466ca93c8d091a375",
+    "diagnostics/drtio/aux_protocol/build-network-static-emulation.sh": "0893002ecea3a9bb915db5c95461fb4db164ed1c8d4aa617b6a3dd80bb7d276a"
+  },
+  "hardware_accessed": false,
+  "production_changed": false,
+  "limits": [
+    "Static placement and entry frames are not complete foreground/IRQ/FPU/nesting stack high-water proof",
+    "Memory observer needs coherent qualified ISR publication; not implemented",
+    "Sole foreground only; recursion guard is not atomic/IRQ lock or panic cleanup",
+    "No live worker handoff, clocks/cabling/recovery or board admission"
+  ],
+  "next": "Audit the exact linked static-network caller graph, observer/rejected-recursion paths and complete conditional stack envelope; preserve independent IRQ nesting/GEM recovery and hardware gates."
+}

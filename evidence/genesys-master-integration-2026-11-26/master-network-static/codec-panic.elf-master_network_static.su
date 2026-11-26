@@ -1,0 +1,9 @@
+master_aux_resumable_rx.h:24:19:mar_step	64	static
+master_rt_resumable.h:24:19:mrs_step	64	static
+master_aux_pending.h:31:19:map_step	80	static
+master_async_setup.h:29:19:mau_fail.constprop	0	static
+master_guarded_start.h:15:19:mfg_fail.constprop	16	static
+master_network_start.h:23:19:mnh_health_check.constprop	48	static
+master_network_static.c:4:5:mns_begin	176	static
+master_network_static.c:7:5:mns_poll	128	static
+master_network_static.c:8:5:mns_snapshot	48	static
