@@ -1,0 +1,24 @@
+{
+  "status": "THREE_NETWORK_START_HEALTH_BOUNDARY_MUTANTS_REFUSED",
+  "runs": {
+    "no-pre-check": {
+      "exit_code": 1,
+      "assertion_refused": true,
+      "source_sha256": "3dbb1488e22aea5fd17ca29b450c224ee804fbc1155664ec3120a567b154277b",
+      "log_sha256": "50f885bd1bc3f1bc8e1e351d66b938c89516cf3f8705a495894502a5991d9c34"
+    },
+    "no-post-check": {
+      "exit_code": 1,
+      "assertion_refused": true,
+      "source_sha256": "bfe8d20343d5f7bcc4b0cfddc0c9774c329b89de925902fdadb2bfcad55611d5",
+      "log_sha256": "01c065653214f5cadd246e117a9be985ff2cdad98dc945e1f6c80912cd3b8ed7"
+    },
+    "no-publication-check": {
+      "exit_code": 1,
+      "assertion_refused": true,
+      "source_sha256": "362e355c6a34678e9f515b538bac164350fb43c5b4de8b7399d775e52256c384",
+      "log_sha256": "ce2ae89cbefc6f221c7eeefc66fbbf46a4b2ae9bc48c533a5e7f84cececaf8a4"
+    }
+  },
+  "hardware_accessed": false
+}

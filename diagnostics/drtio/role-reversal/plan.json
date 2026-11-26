@@ -57,7 +57,7 @@
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/targets/kasli.py": "4abb4c8c27c8192fa8f919988486ea9bace401401e6726374e63e5766bc3b1b7",
     "/srv/codex-hil-data/artiq-zynqmp/work/kasli-master/artiq/gateware/drtio/core.py": "12ed3fee864879c4dba4e1302f8f8ebf0d116376bc87e3ff099780104f0deb1d"
   },
-  "next_safe_offline": "Compose policy into a separate full-setup harness with actual Rust codec, checking health generation before and after each step and before success publication; test late faults without enabling runtime hooks.",
+  "next_safe_offline": "Build isolated AArch64/QEMU 20-case network-start harness with false-completion assertion and forced-panic controls, frozen inputs and source/ELF hashes; keep runtime hooks disabled.",
   "hardware_accessed": false,
   "isolated_master_backend": {
     "status": "THREE_SIMULATION_TESTS_PASS",
@@ -838,5 +838,10 @@
     "status": "NETWORK_ADMISSION_57_CASES_ASAN_UBSAN_AND_THREE_MUTANT_REFUSALS_PASS",
     "report": "evidence/genesys-master-integration-2026-11-26/master-network-admission/report.json",
     "next": "Compose policy into a separate full-setup harness with actual Rust codec, checking health generation before and after each step and before success publication; test late faults without enabling runtime hooks."
+  },
+  "master_network_start_20261126": {
+    "status": "HOST_NETWORK_GUARDED_WHOLE_SETUP_20_CASES_ACTUAL_RUST_CODEC_AND_THREE_MUTANT_REFUSALS_PASS",
+    "report": "evidence/genesys-master-integration-2026-11-26/master-network-start/report.json",
+    "next": "Build isolated AArch64/QEMU 20-case network-start harness with false-completion assertion and forced-panic controls, frozen inputs and source/ELF hashes; keep runtime hooks disabled."
   }
 }

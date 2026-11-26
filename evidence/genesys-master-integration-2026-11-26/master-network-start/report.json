@@ -1,0 +1,37 @@
+{
+  "status": "HOST_NETWORK_GUARDED_WHOLE_SETUP_20_CASES_ACTUAL_RUST_CODEC_AND_THREE_MUTANT_REFUSALS_PASS",
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_network_start.h": "4da1b5a41c8cfbb531a955501db3397c48d7a40183b2e9383c76d2d069b066e5",
+    "diagnostics/drtio/aux_protocol/master_network_admission.h": "418dd518d165c4239efc126692c1c8f24fc884bae58e9ea2e843f45b571e6ce0",
+    "diagnostics/drtio/aux_protocol/test_master_network_start.c": "4443f05eb7725f29d37daeb442d3088864464e9e741c628c346ee79de2761dc1",
+    "diagnostics/drtio/aux_protocol/main.rs": "04219c8e93ee0dccbb2c25b814a14b87857717a1b0b944eb686ac238a3b4d72b",
+    "diagnostics/drtio/aux_protocol/build_vectors.py": "002130d38cf4b2c14102789e93a77b1b1cb056d312c39559114e723665c8f2ae",
+    "diagnostics/drtio/aux_protocol/test-network-start-mutants.py": "cd20e1878bfb7534ea57425df93b2910bd8e8f7fb6fbc74631f232ff407ad39a"
+  },
+  "healthy_turns": 8830,
+  "max_bus_callbacks_per_turn": 1,
+  "health_reads": "Initial coherent memory observation; pre/post every step; fresh check for each published snapshot",
+  "controls": [
+    "First/profile/final-profile faults",
+    "Echo and routing commit cutpoints 1/129/258",
+    "Fault after final step before success and fault during publication",
+    "Missing/extra receipts, zero/decreased generation, observer failure, preserved first error",
+    "New owner before step or inside bus callback; no poisoning or IO after revocation",
+    "Observer callback synchronous reentry rejected without output mutation"
+  ],
+  "mutants_refused": [
+    "No pre-step health check",
+    "No post-step health check",
+    "No publication health check"
+  ],
+  "hardware_accessed": false,
+  "production_changed": false,
+  "limits": [
+    "Native actual Rust C ABI plus mock bus only; no A53 execution for this new composition yet",
+    "Observer is externally qualified memory publication contract, not an implemented ISR/GEM observer",
+    "Does not contain in-flight AXI/codec/observer failures or qualify IRQ nesting/worker handoff/clock/recovery",
+    "One bus callback per step does not bound observer cost, elapsed time or management availability",
+    "Tentative step result1 is revocable; only fresh snapshot may publish complete/credits"
+  ],
+  "next": "Build isolated AArch64/QEMU 20-case network-start harness with false-completion assertion and forced-panic controls, frozen inputs and source/ELF hashes; keep runtime hooks disabled."
+}
