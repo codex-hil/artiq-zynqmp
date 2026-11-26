@@ -1,0 +1,4735 @@
+{
+  "status": "RETAINED_IRQ_REGISTRATION_AND_SEVEN_CODE_BOUND_FRAME_PROBES_PASS_NOT_FULL_IRQ_BOUND",
+  "bindings": [
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_dma.c",
+      "source_sha256": "e9dd04983c5e0d9bd13b5ebaf8b807dd17eacec24e0f3b90423be730c515e2cc",
+      "retained_object_sha256": "7d9db091ae6e22334cdf789e533e854f81000e0773b398b14e5ef2944580d49b",
+      "probe_object_sha256": "d3a68d20842441d8d9c576ccf7f0f3d63b7c1d5354942c3927200480939eb7ca",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": false
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_hw.c",
+      "source_sha256": "b91ccf7d74912ba0970eb1a97e902cfc46ec734d603f3d4a39324659cddff02c",
+      "retained_object_sha256": "afff8d0b007328d8ec80571264db7bc136a2e675f28135e9256892768e5b16ba",
+      "probe_object_sha256": "77f6d8e4e12e77f91587b1c34a836f566643bd5167f531dcf0152ad7559391d8",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": true
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/xiltimer/src/core/ttcps/ttcps.c",
+      "source_sha256": "a4777bc5c721421d292e0b56a507c0887b8d39e28c3aa7f866f82f2d657cdcd5",
+      "retained_object_sha256": "7275dabc80c81fc999d32b38276ab999e6ea1ef61dd6784fc02e2afcfacfb5b2",
+      "probe_object_sha256": "cb621b8b919a4d8b9d19f8ee3bc394490c21724a5044f3c14398c861df5383b9",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": true
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/xiltimer/src/xiltimer.c",
+      "source_sha256": "05479e75e3989bf5765e97b02940779fb8ea446cbf20971506f0dc710b9272a9",
+      "retained_object_sha256": "b588e125b5bff6a53081c903218afec7d54f5fa5f614338dff646c4cde67e986",
+      "probe_object_sha256": "4a08cf5e98decc93e98371de15ff35f702ddd0a90e984adcce01af1e1edfad1a",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": true
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/standalone/src/common/intr/xinterrupt_wrap.c",
+      "source_sha256": "325e442711f37b511dbf5cd85a38cc9d6cf5d66cadd22c20c228c17ee9ab2f0f",
+      "retained_object_sha256": "42efb39cb20d0948e8d10aa87ef6976a4f57cdebd4fe3e3c70f516ef063c0f40",
+      "probe_object_sha256": "b4ea5fc412f96dc0e9ac8b8505668999c1d396cabe70f2c87acca637b05b942b",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": true
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/scugic/src/xscugic_intr.c",
+      "source_sha256": "643c32c62083c81652a01d8c72766b26f4b93005e3d41fe13c369ce03d28ae8e",
+      "retained_object_sha256": "b33b64db6b089b09a421e76b8b9f62d146452a0d79950c50c4ed840ba93d004a",
+      "probe_object_sha256": "91af5d07ebf0c64c1bf692550d40b0aa7b5d53e121d8329841218710c95282ee",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": false
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/ttcps/src/xttcps.c",
+      "source_sha256": "595bde87e4dc9e6c1b72c366fe93a7f11a22f330d7c14f0ba1fd5f02ae979afa",
+      "retained_object_sha256": "6375d33e130a20f8493805455f707a91f31c4e641ae78907eb4840bb0672f2ad",
+      "probe_object_sha256": "2175719286486c041eec92664986b8cce055bbc8fefd0fc409286efa46e05e31",
+      "instruction_bytes_identical": true,
+      "canonical_relocations_identical": true,
+      "raw_relocations_identical": false
+    }
+  ],
+  "frame_bytes": {
+    "StubStatusHandler": 16,
+    "XTtcPs_CfgInitialize": 32,
+    "XTtcPs_Release": 16,
+    "XTtcPs_SetMatchValue": 32,
+    "XTtcPs_GetMatchValue": 32,
+    "XTtcPs_SetPrescaler": 32,
+    "XTtcPs_GetPrescaler": 32,
+    "XTtcPs_CalcIntervalFromFreq": 32,
+    "XTtcPs_InterruptHandler": 32,
+    "XTtcPs_SetStatusHandler": 32,
+    "emacps_error_handler": 48,
+    "xemacps_lookup_config": 0,
+    "init_emacps": 112,
+    "init_emacps_on_error": 48,
+    "setup_isr": 32,
+    "start_emacps": 0,
+    "restart_emacps_transmitter": 0,
+    "XConfigInterruptCntrl": 32,
+    "XConnectToInterruptCntrl": 0,
+    "XDisconnectInterruptCntrl": 16,
+    "XStartInterruptCntrl": 0,
+    "XEnableIntrId": 0,
+    "XDisableIntrId": 0,
+    "XSetPriorityTriggerType": 0,
+    "XGetPriorityTriggerType": 0,
+    "XStopInterruptCntrl": 0,
+    "XRegisterInterruptHandler": 0,
+    "XSetupInterruptSystem": 80,
+    "XGetEncodedIntrId": 0,
+    "XTriggerSoftwareIntr": 0,
+    "sleep": 0,
+    "msleep": 0,
+    "usleep": 0,
+    "XilTimer_Sleep": 0,
+    "xtimerinit": 32,
+    "XTimer_SetHandler": 0,
+    "XTimer_SetInterval": 0,
+    "XTimer_ClearTickInterrupt": 0,
+    "xemacps_is_tx_space_available": 0,
+    "xemacps_process_sent_bds": 96,
+    "emacps_send_handler": 0,
+    "emacps_sgsend": 112,
+    "setup_rx_bds": 64,
+    "clean_dma_txdescs": 48,
+    "init_dma": 128,
+    "resetrx_on_no_rxdata": 0,
+    "emacps_recv_handler": 96,
+    "free_txrx_pbufs": 48,
+    "free_onlytx_pbufs": 32,
+    "reset_dma": 32,
+    "XTtc_CallbackHandler": 0,
+    "XTickTimer_TtcStop": 0,
+    "XTickTimer_ClearTtcInterrupt": 0,
+    "XTimer_TtcSetIntrHandler": 32,
+    "XTimer_TtcTickInterval": 48,
+    "XilTickTimer_Init": 0,
+    "XScuGic_InterruptHandler": 32
+  },
+  "runtime_admitted": false,
+  "hardware_accessed": false,
+  "limits": [
+    "Readonly string relocations resolved by content; only exact recorded __FILE__ path replaced by reviewed filename marker; raw differences retained",
+    "Per-function frames only; no transitive callback/IRQ/nesting/activeEL-SP bound",
+    "First probe batch used stale nonoptimized compilation database and is not admitted"
+  ],
+  "direct_callee_inventory": {
+    "XScuGic_InterruptHandler": {
+      "reachable_functions": {
+        "XScuGic_InterruptHandler": {
+          "frame_bytes": 32,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "1ae40",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "Xil_Assert": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "18c44",
+              "instruction": "blr x2"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [
+        "Xil_Assert"
+      ],
+      "unresolved_indirect_sites": {
+        "XScuGic_InterruptHandler": [
+          {
+            "address": "1ae40",
+            "instruction": "blr x1"
+          }
+        ],
+        "Xil_Assert": [
+          {
+            "address": "18c44",
+            "instruction": "blr x2"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "XTtcPs_InterruptHandler": {
+      "reachable_functions": {
+        "XTtcPs_InterruptHandler": {
+          "frame_bytes": 32,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "17bb8",
+              "instruction": "blr x2"
+            },
+            {
+              "address": "17be0",
+              "instruction": "blr x2"
+            },
+            {
+              "address": "17c08",
+              "instruction": "blr x2"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [],
+      "unresolved_indirect_sites": {
+        "XTtcPs_InterruptHandler": [
+          {
+            "address": "17bb8",
+            "instruction": "blr x2"
+          },
+          {
+            "address": "17be0",
+            "instruction": "blr x2"
+          },
+          {
+            "address": "17c08",
+            "instruction": "blr x2"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "XTtc_CallbackHandler": {
+      "reachable_functions": {
+        "XTtc_CallbackHandler": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "1518c",
+              "instruction": "br x16"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [],
+      "unresolved_indirect_sites": {
+        "XTtc_CallbackHandler": [
+          {
+            "address": "1518c",
+            "instruction": "br x16"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "TimerCounterHandler": {
+      "reachable_functions": {
+        "TimerCounterHandler": {
+          "frame_bytes": 32,
+          "calls": [
+            "timer_callback"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_PhyRead": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_PhyWrite": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetOperatingSpeed": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_Assert": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "18c44",
+              "instruction": "blr x2"
+            }
+          ]
+        },
+        "acd_add": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "acd_netif_ip_addr_changed": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "11b6c",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "acd_network_changed_link_down": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "acd_remove": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "acd_tmr": {
+          "frame_bytes": null,
+          "calls": [
+            "etharp_acd_announce",
+            "etharp_acd_probe",
+            "rand"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "11850",
+              "instruction": "blr x2"
+            },
+            {
+              "address": "11894",
+              "instruction": "blr x2"
+            }
+          ]
+        },
+        "dhcp_coarse_tmr": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "dhcp_release_and_stop",
+            "dhcp_renew",
+            "dhcp_start",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_create_msg": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "memset",
+            "pbuf_alloc",
+            "rand"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_discover": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if_src"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_fine_tmr": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_discover",
+            "dhcp_reboot.isra.0",
+            "dhcp_release_and_stop",
+            "dhcp_select.isra.0",
+            "dhcp_start"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_inc_pcb_refcount": {
+          "frame_bytes": null,
+          "calls": [
+            "udp_bind",
+            "udp_connect",
+            "udp_new",
+            "udp_recv"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_network_changed_link_up": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "dhcp_discover",
+            "dhcp_reboot.isra.0"
+          ],
+          "indirect": []
+        },
+        "dhcp_reboot.isra.0": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "lwip_htonl",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_release_and_stop": {
+          "frame_bytes": null,
+          "calls": [
+            "acd_remove",
+            "dhcp_create_msg",
+            "lwip_htonl",
+            "netif_set_addr",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_remove",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_renew": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_select.isra.0": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "lwip_htonl",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if_src"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_start": {
+          "frame_bytes": null,
+          "calls": [
+            "acd_add",
+            "dhcp_discover",
+            "dhcp_inc_pcb_refcount",
+            "dhcp_release_and_stop",
+            "mem_malloc",
+            "udp_remove"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "do_memp_malloc_pool": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "emacps_link_status": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_PhyRead",
+            "XEmacPs_SetOperatingSpeed",
+            "netif_set_link_down",
+            "netif_set_link_up",
+            "phy_setup_emacps",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "eth_link_detect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "emacps_link_status"
+          ],
+          "indirect": []
+        },
+        "etharp_acd_announce": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "etharp_raw"
+          ],
+          "indirect": []
+        },
+        "etharp_acd_probe": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "etharp_raw"
+          ],
+          "indirect": []
+        },
+        "etharp_raw": {
+          "frame_bytes": null,
+          "calls": [
+            "ethernet_output",
+            "lwip_htons",
+            "pbuf_alloc",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "ethernet_output": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htons",
+            "pbuf_add_header"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "11d9c",
+              "instruction": "br x16"
+            }
+          ]
+        },
+        "ip4_frag": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htons",
+            "memp_free",
+            "memp_malloc",
+            "pbuf_alloc",
+            "pbuf_alloced_custom",
+            "pbuf_cat",
+            "pbuf_free",
+            "pbuf_ref"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "10a60",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "ip4_output_if": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "ip4_output_if_src"
+          ],
+          "indirect": []
+        },
+        "ip4_output_if_src": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_frag",
+            "lwip_htons",
+            "pbuf_add_header"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "110f0",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "ip4_route": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "lwip_htonl": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "lwip_htons": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "mem_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_trim": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memp_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "memp_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "do_memp_malloc_pool"
+          ],
+          "indirect": []
+        },
+        "memset": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "netif_get_by_index": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "netif_set_addr": {
+          "frame_bytes": null,
+          "calls": [
+            "acd_netif_ip_addr_changed",
+            "tcp_netif_ip_addr_changed",
+            "udp_netif_ip_addr_changed"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "netif_set_link_down": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "acd_network_changed_link_down"
+          ],
+          "indirect": []
+        },
+        "netif_set_link_up": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "dhcp_network_changed_link_up"
+          ],
+          "indirect": []
+        },
+        "outbyte": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum1": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_add_header": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_alloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_malloc",
+            "memp_malloc",
+            "pbuf_free.part.0",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_alloced_custom": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_cat": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_chain": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "pbuf_free": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "pbuf_free.part.0"
+          ],
+          "indirect": []
+        },
+        "pbuf_free.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_free",
+            "memp_free",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "6498",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "pbuf_realloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_trim",
+            "pbuf_free.part.0"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_ref": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "phy_setup_emacps": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_PhyRead",
+            "XEmacPs_PhyWrite",
+            "sleep",
+            "strcmp",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "rand": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sleep": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "14fac",
+              "instruction": "br x16"
+            }
+          ]
+        },
+        "strcmp": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "strlen": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_protect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_unprotect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_abandon": {
+          "frame_bytes": null,
+          "calls": [
+            "memp_free",
+            "pbuf_free",
+            "tcp_pcb_remove",
+            "tcp_rst"
+          ],
+          "tail_branches": [
+            "memp_free"
+          ],
+          "indirect": [
+            {
+              "address": "875c",
+              "instruction": "br x16"
+            }
+          ]
+        },
+        "tcp_eff_send_mss_netif": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_netif_ip_addr_changed": {
+          "frame_bytes": null,
+          "calls": [
+            "tcp_abandon"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_output": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_output_if",
+            "ip4_route",
+            "lwip_htonl",
+            "lwip_htons",
+            "netif_get_by_index",
+            "tcp_eff_send_mss_netif",
+            "tcp_seg_free"
+          ],
+          "tail_branches": [
+            "tcp_send_empty_ack"
+          ],
+          "indirect": []
+        },
+        "tcp_output_alloc_header_common.constprop.0": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "lwip_htons",
+            "pbuf_alloc"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_output_control_segment": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_output_if",
+            "ip4_route",
+            "netif_get_by_index",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_pcb_purge": {
+          "frame_bytes": null,
+          "calls": [
+            "memp_free",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_pcb_remove": {
+          "frame_bytes": null,
+          "calls": [
+            "tcp_output",
+            "tcp_pcb_purge"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_rst": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "tcp_output_alloc_header_common.constprop.0"
+          ],
+          "tail_branches": [
+            "tcp_output_control_segment"
+          ],
+          "indirect": []
+        },
+        "tcp_seg_free": {
+          "frame_bytes": null,
+          "calls": [
+            "pbuf_free"
+          ],
+          "tail_branches": [
+            "memp_free"
+          ],
+          "indirect": []
+        },
+        "tcp_send_empty_ack": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "tcp_output_alloc_header_common.constprop.0",
+            "tcp_output_control_segment"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "timer_callback": {
+          "frame_bytes": 16,
+          "calls": [
+            "acd_tmr",
+            "dhcp_coarse_tmr",
+            "dhcp_fine_tmr",
+            "eth_link_detect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_bind": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_connect": {
+          "frame_bytes": null,
+          "calls": [
+            "udp_bind"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_netif_ip_addr_changed": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_new": {
+          "frame_bytes": null,
+          "calls": [
+            "memp_malloc"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_recv": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_remove": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "memp_free"
+          ],
+          "indirect": []
+        },
+        "udp_sendto_if": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "udp_sendto_if_src"
+          ],
+          "indirect": []
+        },
+        "udp_sendto_if_src": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_output_if_src",
+            "lwip_htons",
+            "pbuf_add_header",
+            "pbuf_alloc",
+            "pbuf_chain",
+            "pbuf_free",
+            "udp_bind"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_printf": {
+          "frame_bytes": null,
+          "calls": [
+            "xil_vprintf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_vprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "outnum",
+            "outnum1",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "4920",
+              "instruction": "br x0"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [
+        "XEmacPs_PhyRead",
+        "XEmacPs_PhyWrite",
+        "XEmacPs_SetOperatingSpeed",
+        "Xil_Assert",
+        "acd_add",
+        "acd_netif_ip_addr_changed",
+        "acd_network_changed_link_down",
+        "acd_remove",
+        "acd_tmr",
+        "dhcp_coarse_tmr",
+        "dhcp_create_msg",
+        "dhcp_discover",
+        "dhcp_fine_tmr",
+        "dhcp_inc_pcb_refcount",
+        "dhcp_network_changed_link_up",
+        "dhcp_reboot.isra.0",
+        "dhcp_release_and_stop",
+        "dhcp_renew",
+        "dhcp_select.isra.0",
+        "dhcp_start",
+        "do_memp_malloc_pool",
+        "emacps_link_status",
+        "eth_link_detect",
+        "etharp_acd_announce",
+        "etharp_acd_probe",
+        "etharp_raw",
+        "ethernet_output",
+        "ip4_frag",
+        "ip4_output_if",
+        "ip4_output_if_src",
+        "ip4_route",
+        "lwip_htonl",
+        "lwip_htons",
+        "mem_free",
+        "mem_malloc",
+        "mem_trim",
+        "memp_free",
+        "memp_malloc",
+        "memset",
+        "netif_get_by_index",
+        "netif_set_addr",
+        "netif_set_link_down",
+        "netif_set_link_up",
+        "outbyte",
+        "outnum",
+        "outnum1",
+        "pbuf_add_header",
+        "pbuf_alloc",
+        "pbuf_alloced_custom",
+        "pbuf_cat",
+        "pbuf_chain",
+        "pbuf_free",
+        "pbuf_free.part.0",
+        "pbuf_realloc",
+        "pbuf_ref",
+        "phy_setup_emacps",
+        "rand",
+        "strcmp",
+        "strlen",
+        "sys_arch_protect",
+        "sys_arch_unprotect",
+        "tcp_abandon",
+        "tcp_eff_send_mss_netif",
+        "tcp_netif_ip_addr_changed",
+        "tcp_output",
+        "tcp_output_alloc_header_common.constprop.0",
+        "tcp_output_control_segment",
+        "tcp_pcb_purge",
+        "tcp_pcb_remove",
+        "tcp_rst",
+        "tcp_seg_free",
+        "tcp_send_empty_ack",
+        "udp_bind",
+        "udp_connect",
+        "udp_netif_ip_addr_changed",
+        "udp_new",
+        "udp_recv",
+        "udp_remove",
+        "udp_sendto_if",
+        "udp_sendto_if_src",
+        "xil_printf",
+        "xil_vprintf"
+      ],
+      "unresolved_indirect_sites": {
+        "Xil_Assert": [
+          {
+            "address": "18c44",
+            "instruction": "blr x2"
+          }
+        ],
+        "acd_netif_ip_addr_changed": [
+          {
+            "address": "11b6c",
+            "instruction": "blr x3"
+          }
+        ],
+        "acd_tmr": [
+          {
+            "address": "11850",
+            "instruction": "blr x2"
+          },
+          {
+            "address": "11894",
+            "instruction": "blr x2"
+          }
+        ],
+        "ethernet_output": [
+          {
+            "address": "11d9c",
+            "instruction": "br x16"
+          }
+        ],
+        "ip4_frag": [
+          {
+            "address": "10a60",
+            "instruction": "blr x3"
+          }
+        ],
+        "ip4_output_if_src": [
+          {
+            "address": "110f0",
+            "instruction": "blr x3"
+          }
+        ],
+        "pbuf_free.part.0": [
+          {
+            "address": "6498",
+            "instruction": "blr x1"
+          }
+        ],
+        "sleep": [
+          {
+            "address": "14fac",
+            "instruction": "br x16"
+          }
+        ],
+        "tcp_abandon": [
+          {
+            "address": "875c",
+            "instruction": "br x16"
+          }
+        ],
+        "xil_vprintf": [
+          {
+            "address": "4920",
+            "instruction": "br x0"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "timer_callback": {
+      "reachable_functions": {
+        "XEmacPs_PhyRead": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_PhyWrite": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetOperatingSpeed": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_Assert": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "18c44",
+              "instruction": "blr x2"
+            }
+          ]
+        },
+        "acd_add": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "acd_netif_ip_addr_changed": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "11b6c",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "acd_network_changed_link_down": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "acd_remove": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "acd_tmr": {
+          "frame_bytes": null,
+          "calls": [
+            "etharp_acd_announce",
+            "etharp_acd_probe",
+            "rand"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "11850",
+              "instruction": "blr x2"
+            },
+            {
+              "address": "11894",
+              "instruction": "blr x2"
+            }
+          ]
+        },
+        "dhcp_coarse_tmr": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "dhcp_release_and_stop",
+            "dhcp_renew",
+            "dhcp_start",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_create_msg": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "memset",
+            "pbuf_alloc",
+            "rand"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_discover": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if_src"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_fine_tmr": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_discover",
+            "dhcp_reboot.isra.0",
+            "dhcp_release_and_stop",
+            "dhcp_select.isra.0",
+            "dhcp_start"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_inc_pcb_refcount": {
+          "frame_bytes": null,
+          "calls": [
+            "udp_bind",
+            "udp_connect",
+            "udp_new",
+            "udp_recv"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_network_changed_link_up": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "dhcp_discover",
+            "dhcp_reboot.isra.0"
+          ],
+          "indirect": []
+        },
+        "dhcp_reboot.isra.0": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "lwip_htonl",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_release_and_stop": {
+          "frame_bytes": null,
+          "calls": [
+            "acd_remove",
+            "dhcp_create_msg",
+            "lwip_htonl",
+            "netif_set_addr",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_remove",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_renew": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_select.isra.0": {
+          "frame_bytes": null,
+          "calls": [
+            "dhcp_create_msg",
+            "lwip_htonl",
+            "pbuf_free",
+            "pbuf_realloc",
+            "udp_sendto_if_src"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "dhcp_start": {
+          "frame_bytes": null,
+          "calls": [
+            "acd_add",
+            "dhcp_discover",
+            "dhcp_inc_pcb_refcount",
+            "dhcp_release_and_stop",
+            "mem_malloc",
+            "udp_remove"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "do_memp_malloc_pool": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "emacps_link_status": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_PhyRead",
+            "XEmacPs_SetOperatingSpeed",
+            "netif_set_link_down",
+            "netif_set_link_up",
+            "phy_setup_emacps",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "eth_link_detect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "emacps_link_status"
+          ],
+          "indirect": []
+        },
+        "etharp_acd_announce": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "etharp_raw"
+          ],
+          "indirect": []
+        },
+        "etharp_acd_probe": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "etharp_raw"
+          ],
+          "indirect": []
+        },
+        "etharp_raw": {
+          "frame_bytes": null,
+          "calls": [
+            "ethernet_output",
+            "lwip_htons",
+            "pbuf_alloc",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "ethernet_output": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htons",
+            "pbuf_add_header"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "11d9c",
+              "instruction": "br x16"
+            }
+          ]
+        },
+        "ip4_frag": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htons",
+            "memp_free",
+            "memp_malloc",
+            "pbuf_alloc",
+            "pbuf_alloced_custom",
+            "pbuf_cat",
+            "pbuf_free",
+            "pbuf_ref"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "10a60",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "ip4_output_if": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "ip4_output_if_src"
+          ],
+          "indirect": []
+        },
+        "ip4_output_if_src": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_frag",
+            "lwip_htons",
+            "pbuf_add_header"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "110f0",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "ip4_route": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "lwip_htonl": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "lwip_htons": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "mem_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_trim": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memp_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "memp_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "do_memp_malloc_pool"
+          ],
+          "indirect": []
+        },
+        "memset": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "netif_get_by_index": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "netif_set_addr": {
+          "frame_bytes": null,
+          "calls": [
+            "acd_netif_ip_addr_changed",
+            "tcp_netif_ip_addr_changed",
+            "udp_netif_ip_addr_changed"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "netif_set_link_down": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "acd_network_changed_link_down"
+          ],
+          "indirect": []
+        },
+        "netif_set_link_up": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "dhcp_network_changed_link_up"
+          ],
+          "indirect": []
+        },
+        "outbyte": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum1": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_add_header": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_alloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_malloc",
+            "memp_malloc",
+            "pbuf_free.part.0",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_alloced_custom": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_cat": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_chain": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "pbuf_free": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "pbuf_free.part.0"
+          ],
+          "indirect": []
+        },
+        "pbuf_free.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_free",
+            "memp_free",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "6498",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "pbuf_realloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_trim",
+            "pbuf_free.part.0"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_ref": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "phy_setup_emacps": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_PhyRead",
+            "XEmacPs_PhyWrite",
+            "sleep",
+            "strcmp",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "rand": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sleep": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "14fac",
+              "instruction": "br x16"
+            }
+          ]
+        },
+        "strcmp": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "strlen": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_protect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_unprotect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_abandon": {
+          "frame_bytes": null,
+          "calls": [
+            "memp_free",
+            "pbuf_free",
+            "tcp_pcb_remove",
+            "tcp_rst"
+          ],
+          "tail_branches": [
+            "memp_free"
+          ],
+          "indirect": [
+            {
+              "address": "875c",
+              "instruction": "br x16"
+            }
+          ]
+        },
+        "tcp_eff_send_mss_netif": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_netif_ip_addr_changed": {
+          "frame_bytes": null,
+          "calls": [
+            "tcp_abandon"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_output": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_output_if",
+            "ip4_route",
+            "lwip_htonl",
+            "lwip_htons",
+            "netif_get_by_index",
+            "tcp_eff_send_mss_netif",
+            "tcp_seg_free"
+          ],
+          "tail_branches": [
+            "tcp_send_empty_ack"
+          ],
+          "indirect": []
+        },
+        "tcp_output_alloc_header_common.constprop.0": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "lwip_htons",
+            "pbuf_alloc"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_output_control_segment": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_output_if",
+            "ip4_route",
+            "netif_get_by_index",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_pcb_purge": {
+          "frame_bytes": null,
+          "calls": [
+            "memp_free",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_pcb_remove": {
+          "frame_bytes": null,
+          "calls": [
+            "tcp_output",
+            "tcp_pcb_purge"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "tcp_rst": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "tcp_output_alloc_header_common.constprop.0"
+          ],
+          "tail_branches": [
+            "tcp_output_control_segment"
+          ],
+          "indirect": []
+        },
+        "tcp_seg_free": {
+          "frame_bytes": null,
+          "calls": [
+            "pbuf_free"
+          ],
+          "tail_branches": [
+            "memp_free"
+          ],
+          "indirect": []
+        },
+        "tcp_send_empty_ack": {
+          "frame_bytes": null,
+          "calls": [
+            "lwip_htonl",
+            "tcp_output_alloc_header_common.constprop.0",
+            "tcp_output_control_segment"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "timer_callback": {
+          "frame_bytes": 16,
+          "calls": [
+            "acd_tmr",
+            "dhcp_coarse_tmr",
+            "dhcp_fine_tmr",
+            "eth_link_detect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_bind": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_connect": {
+          "frame_bytes": null,
+          "calls": [
+            "udp_bind"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_netif_ip_addr_changed": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_new": {
+          "frame_bytes": null,
+          "calls": [
+            "memp_malloc"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_recv": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "udp_remove": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "memp_free"
+          ],
+          "indirect": []
+        },
+        "udp_sendto_if": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "udp_sendto_if_src"
+          ],
+          "indirect": []
+        },
+        "udp_sendto_if_src": {
+          "frame_bytes": null,
+          "calls": [
+            "ip4_output_if_src",
+            "lwip_htons",
+            "pbuf_add_header",
+            "pbuf_alloc",
+            "pbuf_chain",
+            "pbuf_free",
+            "udp_bind"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_printf": {
+          "frame_bytes": null,
+          "calls": [
+            "xil_vprintf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_vprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "outnum",
+            "outnum1",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "4920",
+              "instruction": "br x0"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [
+        "XEmacPs_PhyRead",
+        "XEmacPs_PhyWrite",
+        "XEmacPs_SetOperatingSpeed",
+        "Xil_Assert",
+        "acd_add",
+        "acd_netif_ip_addr_changed",
+        "acd_network_changed_link_down",
+        "acd_remove",
+        "acd_tmr",
+        "dhcp_coarse_tmr",
+        "dhcp_create_msg",
+        "dhcp_discover",
+        "dhcp_fine_tmr",
+        "dhcp_inc_pcb_refcount",
+        "dhcp_network_changed_link_up",
+        "dhcp_reboot.isra.0",
+        "dhcp_release_and_stop",
+        "dhcp_renew",
+        "dhcp_select.isra.0",
+        "dhcp_start",
+        "do_memp_malloc_pool",
+        "emacps_link_status",
+        "eth_link_detect",
+        "etharp_acd_announce",
+        "etharp_acd_probe",
+        "etharp_raw",
+        "ethernet_output",
+        "ip4_frag",
+        "ip4_output_if",
+        "ip4_output_if_src",
+        "ip4_route",
+        "lwip_htonl",
+        "lwip_htons",
+        "mem_free",
+        "mem_malloc",
+        "mem_trim",
+        "memp_free",
+        "memp_malloc",
+        "memset",
+        "netif_get_by_index",
+        "netif_set_addr",
+        "netif_set_link_down",
+        "netif_set_link_up",
+        "outbyte",
+        "outnum",
+        "outnum1",
+        "pbuf_add_header",
+        "pbuf_alloc",
+        "pbuf_alloced_custom",
+        "pbuf_cat",
+        "pbuf_chain",
+        "pbuf_free",
+        "pbuf_free.part.0",
+        "pbuf_realloc",
+        "pbuf_ref",
+        "phy_setup_emacps",
+        "rand",
+        "strcmp",
+        "strlen",
+        "sys_arch_protect",
+        "sys_arch_unprotect",
+        "tcp_abandon",
+        "tcp_eff_send_mss_netif",
+        "tcp_netif_ip_addr_changed",
+        "tcp_output",
+        "tcp_output_alloc_header_common.constprop.0",
+        "tcp_output_control_segment",
+        "tcp_pcb_purge",
+        "tcp_pcb_remove",
+        "tcp_rst",
+        "tcp_seg_free",
+        "tcp_send_empty_ack",
+        "udp_bind",
+        "udp_connect",
+        "udp_netif_ip_addr_changed",
+        "udp_new",
+        "udp_recv",
+        "udp_remove",
+        "udp_sendto_if",
+        "udp_sendto_if_src",
+        "xil_printf",
+        "xil_vprintf"
+      ],
+      "unresolved_indirect_sites": {
+        "Xil_Assert": [
+          {
+            "address": "18c44",
+            "instruction": "blr x2"
+          }
+        ],
+        "acd_netif_ip_addr_changed": [
+          {
+            "address": "11b6c",
+            "instruction": "blr x3"
+          }
+        ],
+        "acd_tmr": [
+          {
+            "address": "11850",
+            "instruction": "blr x2"
+          },
+          {
+            "address": "11894",
+            "instruction": "blr x2"
+          }
+        ],
+        "ethernet_output": [
+          {
+            "address": "11d9c",
+            "instruction": "br x16"
+          }
+        ],
+        "ip4_frag": [
+          {
+            "address": "10a60",
+            "instruction": "blr x3"
+          }
+        ],
+        "ip4_output_if_src": [
+          {
+            "address": "110f0",
+            "instruction": "blr x3"
+          }
+        ],
+        "pbuf_free.part.0": [
+          {
+            "address": "6498",
+            "instruction": "blr x1"
+          }
+        ],
+        "sleep": [
+          {
+            "address": "14fac",
+            "instruction": "br x16"
+          }
+        ],
+        "tcp_abandon": [
+          {
+            "address": "875c",
+            "instruction": "br x16"
+          }
+        ],
+        "xil_vprintf": [
+          {
+            "address": "4920",
+            "instruction": "br x0"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "XEmacPs_IntrHandler": {
+      "reachable_functions": {
+        "XEmacPs_GetQxOffset": {
+          "frame_bytes": null,
+          "calls": [
+            "__assert_func"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_IntrHandler": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_GetQxOffset",
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "15544",
+              "instruction": "blr x2"
+            },
+            {
+              "address": "155b4",
+              "instruction": "blr x2"
+            },
+            {
+              "address": "15634",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "15698",
+              "instruction": "br x16"
+            },
+            {
+              "address": "156d8",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "Xil_Assert": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "18c44",
+              "instruction": "blr x2"
+            }
+          ]
+        },
+        "__assert_func": {
+          "frame_bytes": null,
+          "calls": [
+            "abort",
+            "fiprintf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__fputwc": {
+          "frame_bytes": null,
+          "calls": [
+            "__locale_mb_cur_max",
+            "__swbuf_r",
+            "_wcrtomb_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__locale_mb_cur_max": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__malloc_lock": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "__retarget_lock_acquire_recursive"
+          ],
+          "indirect": []
+        },
+        "__malloc_unlock": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "__retarget_lock_release_recursive"
+          ],
+          "indirect": []
+        },
+        "__retarget_lock_acquire_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__retarget_lock_close_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__retarget_lock_init_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__retarget_lock_release_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__sbprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_close_recursive",
+            "__retarget_lock_init_recursive",
+            "_fflush_r",
+            "_vfiprintf_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__sflush_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_free_r"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "24668",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "246a8",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "24780",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "__sfvwrite_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__swsetup_r",
+            "_fflush_r",
+            "_free_r",
+            "_malloc_r",
+            "_realloc_r",
+            "memchr",
+            "memmove"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "25d3c",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "25df4",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "25fbc",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "__sinit": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_acquire_recursive",
+            "global_stdio_init.part.0"
+          ],
+          "tail_branches": [
+            "__retarget_lock_release_recursive"
+          ],
+          "indirect": []
+        },
+        "__smakebuf_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_fstat_r",
+            "_isatty_r",
+            "_malloc_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__sprint_r.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "__sfvwrite_r",
+            "_fputwc_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__swbuf_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__sinit",
+            "__swsetup_r",
+            "_fflush_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__swsetup_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__sinit",
+            "__smakebuf_r",
+            "_free_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_exit": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_fflush_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_acquire_recursive",
+            "__retarget_lock_release_recursive",
+            "__sflush_r",
+            "__sinit"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_fputwc_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__fputwc",
+            "__retarget_lock_acquire_recursive",
+            "__retarget_lock_release_recursive"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_free_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "_malloc_trim_r"
+          ],
+          "tail_branches": [
+            "__malloc_unlock"
+          ],
+          "indirect": []
+        },
+        "_fstat": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_fstat_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_fstat"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_getpid": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_getpid_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "_getpid"
+          ],
+          "indirect": []
+        },
+        "_isatty": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_isatty_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_isatty"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_kill": {
+          "frame_bytes": null,
+          "calls": [
+            "_exit"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_kill_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_kill"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_localeconv_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_malloc_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "__malloc_unlock",
+            "_free_r",
+            "_sbrk_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_malloc_trim_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "__malloc_unlock",
+            "_sbrk_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_realloc_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "__malloc_unlock",
+            "_free_r",
+            "_malloc_r",
+            "memmove"
+          ],
+          "tail_branches": [
+            "_malloc_r"
+          ],
+          "indirect": []
+        },
+        "_sbrk": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_sbrk_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_sbrk"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_vfiprintf_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__locale_mb_cur_max",
+            "__retarget_lock_acquire_recursive",
+            "__retarget_lock_release_recursive",
+            "__sbprintf",
+            "__sinit",
+            "__sprint_r.part.0",
+            "__swsetup_r",
+            "_free_r",
+            "_localeconv_r",
+            "_malloc_r",
+            "_wcrtomb_r",
+            "_wcsrtombs_r",
+            "memchr",
+            "memset",
+            "strlen",
+            "strncpy"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "1f994",
+              "instruction": "blr x24"
+            },
+            {
+              "address": "1faf8",
+              "instruction": "br x1"
+            }
+          ]
+        },
+        "_wcrtomb_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "21f00",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "21f28",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "_wcsnrtombs_l": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "297f8",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "_wcsnrtombs_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "_wcsnrtombs_l"
+          ],
+          "indirect": []
+        },
+        "_wcsrtombs_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "_wcsnrtombs_r"
+          ],
+          "indirect": []
+        },
+        "abort": {
+          "frame_bytes": null,
+          "calls": [
+            "_exit",
+            "raise"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "fiprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "_vfiprintf_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "global_stdio_init.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_init_recursive",
+            "memset"
+          ],
+          "tail_branches": [
+            "__retarget_lock_init_recursive"
+          ],
+          "indirect": []
+        },
+        "memchr": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memmove": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memset": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "raise": {
+          "frame_bytes": null,
+          "calls": [
+            "_getpid_r"
+          ],
+          "tail_branches": [
+            "_kill_r"
+          ],
+          "indirect": [
+            {
+              "address": "25368",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "strlen": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "strncpy": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        }
+      },
+      "missing_frame_metadata": [
+        "XEmacPs_GetQxOffset",
+        "XEmacPs_IntrHandler",
+        "Xil_Assert",
+        "__assert_func",
+        "__fputwc",
+        "__locale_mb_cur_max",
+        "__malloc_lock",
+        "__malloc_unlock",
+        "__retarget_lock_acquire_recursive",
+        "__retarget_lock_close_recursive",
+        "__retarget_lock_init_recursive",
+        "__retarget_lock_release_recursive",
+        "__sbprintf",
+        "__sflush_r",
+        "__sfvwrite_r",
+        "__sinit",
+        "__smakebuf_r",
+        "__sprint_r.part.0",
+        "__swbuf_r",
+        "__swsetup_r",
+        "_exit",
+        "_fflush_r",
+        "_fputwc_r",
+        "_free_r",
+        "_fstat",
+        "_fstat_r",
+        "_getpid",
+        "_getpid_r",
+        "_isatty",
+        "_isatty_r",
+        "_kill",
+        "_kill_r",
+        "_localeconv_r",
+        "_malloc_r",
+        "_malloc_trim_r",
+        "_realloc_r",
+        "_sbrk",
+        "_sbrk_r",
+        "_vfiprintf_r",
+        "_wcrtomb_r",
+        "_wcsnrtombs_l",
+        "_wcsnrtombs_r",
+        "_wcsrtombs_r",
+        "abort",
+        "fiprintf",
+        "global_stdio_init.part.0",
+        "memchr",
+        "memmove",
+        "memset",
+        "raise",
+        "strlen",
+        "strncpy"
+      ],
+      "unresolved_indirect_sites": {
+        "XEmacPs_IntrHandler": [
+          {
+            "address": "15544",
+            "instruction": "blr x2"
+          },
+          {
+            "address": "155b4",
+            "instruction": "blr x2"
+          },
+          {
+            "address": "15634",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "15698",
+            "instruction": "br x16"
+          },
+          {
+            "address": "156d8",
+            "instruction": "blr x3"
+          }
+        ],
+        "Xil_Assert": [
+          {
+            "address": "18c44",
+            "instruction": "blr x2"
+          }
+        ],
+        "__sflush_r": [
+          {
+            "address": "24668",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "246a8",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "24780",
+            "instruction": "blr x4"
+          }
+        ],
+        "__sfvwrite_r": [
+          {
+            "address": "25d3c",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "25df4",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "25fbc",
+            "instruction": "blr x4"
+          }
+        ],
+        "_vfiprintf_r": [
+          {
+            "address": "1f994",
+            "instruction": "blr x24"
+          },
+          {
+            "address": "1faf8",
+            "instruction": "br x1"
+          }
+        ],
+        "_wcrtomb_r": [
+          {
+            "address": "21f00",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "21f28",
+            "instruction": "blr x4"
+          }
+        ],
+        "_wcsnrtombs_l": [
+          {
+            "address": "297f8",
+            "instruction": "blr x4"
+          }
+        ],
+        "raise": [
+          {
+            "address": "25368",
+            "instruction": "blr x1"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "emacps_send_handler": {
+      "reachable_functions": {
+        "XEmacPs_BdRingFree": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingFromHwTx": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "emacps_send_handler": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [
+            "xemacps_process_sent_bds"
+          ],
+          "indirect": []
+        },
+        "mem_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "memp_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "pbuf_free": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "pbuf_free.part.0"
+          ],
+          "indirect": []
+        },
+        "pbuf_free.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_free",
+            "memp_free",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "6498",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "sys_arch_protect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_unprotect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xemacps_process_sent_bds": {
+          "frame_bytes": 96,
+          "calls": [
+            "XEmacPs_BdRingFree",
+            "XEmacPs_BdRingFromHwTx",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        }
+      },
+      "missing_frame_metadata": [
+        "XEmacPs_BdRingFree",
+        "XEmacPs_BdRingFromHwTx",
+        "mem_free",
+        "memp_free",
+        "pbuf_free",
+        "pbuf_free.part.0",
+        "sys_arch_protect",
+        "sys_arch_unprotect"
+      ],
+      "unresolved_indirect_sites": {
+        "pbuf_free.part.0": [
+          {
+            "address": "6498",
+            "instruction": "blr x1"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "emacps_recv_handler": {
+      "reachable_functions": {
+        "XEmacPs_BdRingAlloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingFree": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingFromHwRx": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingToHw": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingUnAlloc": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_Assert": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "18c44",
+              "instruction": "blr x2"
+            }
+          ]
+        },
+        "Xil_DCacheInvalidateRange": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "do_memp_malloc_pool": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "emacps_recv_handler": {
+          "frame_bytes": 96,
+          "calls": [
+            "XEmacPs_BdRingFree",
+            "XEmacPs_BdRingFromHwRx",
+            "Xil_DCacheInvalidateRange",
+            "pbuf_free",
+            "pbuf_realloc",
+            "pq_enqueue",
+            "resetrx_on_no_rxdata",
+            "setup_rx_bds"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "mem_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_trim": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memp_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "memp_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "do_memp_malloc_pool"
+          ],
+          "indirect": []
+        },
+        "outbyte": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum1": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_alloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_malloc",
+            "memp_malloc",
+            "pbuf_free.part.0",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_free": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "pbuf_free.part.0"
+          ],
+          "indirect": []
+        },
+        "pbuf_free.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_free",
+            "memp_free",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "6498",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "pbuf_realloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_trim",
+            "pbuf_free.part.0"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pq_enqueue": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "resetrx_on_no_rxdata": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "setup_rx_bds": {
+          "frame_bytes": 64,
+          "calls": [
+            "XEmacPs_BdRingAlloc",
+            "XEmacPs_BdRingToHw",
+            "XEmacPs_BdRingUnAlloc",
+            "Xil_DCacheInvalidateRange",
+            "pbuf_alloc",
+            "pbuf_free",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "strlen": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_protect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_unprotect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_printf": {
+          "frame_bytes": null,
+          "calls": [
+            "xil_vprintf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_vprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "outnum",
+            "outnum1",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "4920",
+              "instruction": "br x0"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [
+        "XEmacPs_BdRingAlloc",
+        "XEmacPs_BdRingFree",
+        "XEmacPs_BdRingFromHwRx",
+        "XEmacPs_BdRingToHw",
+        "XEmacPs_BdRingUnAlloc",
+        "Xil_Assert",
+        "Xil_DCacheInvalidateRange",
+        "do_memp_malloc_pool",
+        "mem_free",
+        "mem_malloc",
+        "mem_trim",
+        "memp_free",
+        "memp_malloc",
+        "outbyte",
+        "outnum",
+        "outnum1",
+        "pbuf_alloc",
+        "pbuf_free",
+        "pbuf_free.part.0",
+        "pbuf_realloc",
+        "pq_enqueue",
+        "strlen",
+        "sys_arch_protect",
+        "sys_arch_unprotect",
+        "xil_printf",
+        "xil_vprintf"
+      ],
+      "unresolved_indirect_sites": {
+        "Xil_Assert": [
+          {
+            "address": "18c44",
+            "instruction": "blr x2"
+          }
+        ],
+        "pbuf_free.part.0": [
+          {
+            "address": "6498",
+            "instruction": "blr x1"
+          }
+        ],
+        "xil_vprintf": [
+          {
+            "address": "4920",
+            "instruction": "br x0"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    },
+    "emacps_error_handler": {
+      "reachable_functions": {
+        "HandleEmacPsError": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_CfgInitialize",
+            "free_txrx_pbufs",
+            "init_dma",
+            "init_emacps_on_error",
+            "setup_isr",
+            "start_emacps",
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "HandleTxErrors": {
+          "frame_bytes": null,
+          "calls": [
+            "clean_dma_txdescs",
+            "free_onlytx_pbufs",
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "XConfigInterruptCntrl": {
+          "frame_bytes": 32,
+          "calls": [
+            "XScuGic_LookupConfig"
+          ],
+          "tail_branches": [
+            "XScuGic_CfgInitialize"
+          ],
+          "indirect": []
+        },
+        "XEmacPs_BdRingAlloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingClone": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingCreate": {
+          "frame_bytes": null,
+          "calls": [
+            "memset"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingFree": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingFromHwRx": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingFromHwTx": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingToHw": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_BdRingUnAlloc": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_CfgInitialize": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_Reset",
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_ClearHash": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_ClearOptions": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_GetQxOffset": {
+          "frame_bytes": null,
+          "calls": [
+            "__assert_func"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_IsCommonMdioPresent": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_IsHighSpeedPCS": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_Reset": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_ClearHash",
+            "XEmacPs_ClearOptions",
+            "XEmacPs_GetQxOffset",
+            "XEmacPs_IsCommonMdioPresent",
+            "XEmacPs_IsHighSpeedPCS",
+            "XEmacPs_SetMacAddress",
+            "XEmacPs_SetOptions",
+            "XEmacPs_SetQueuePtr",
+            "XEmacPs_SetTypeIdCheck",
+            "XEmacPs_SetupPCS",
+            "XEmacPs_Stop",
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetHandler": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetMacAddress": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetOperatingSpeed": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetOptions": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetQueuePtr": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_GetQxOffset",
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetTypeIdCheck": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_SetupPCS": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert",
+            "Xil_WaitForEvent",
+            "exit",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_Start": {
+          "frame_bytes": null,
+          "calls": [
+            "XEmacPs_GetQxOffset",
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XEmacPs_Stop": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XGetCoreId": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XScuGic_CfgInitialize": {
+          "frame_bytes": null,
+          "calls": [
+            "XGetCoreId",
+            "XScuGic_Stop",
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XScuGic_Connect": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XScuGic_Enable": {
+          "frame_bytes": null,
+          "calls": [
+            "XScuGic_InterruptMaptoCpu",
+            "Xil_Assert",
+            "Xil_IsSpinLockEnabled",
+            "Xil_SpinLock"
+          ],
+          "tail_branches": [
+            "Xil_SpinUnlock"
+          ],
+          "indirect": []
+        },
+        "XScuGic_InterruptMaptoCpu": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert",
+            "Xil_IsSpinLockEnabled",
+            "Xil_SpinLock"
+          ],
+          "tail_branches": [
+            "Xil_SpinUnlock"
+          ],
+          "indirect": []
+        },
+        "XScuGic_LookupConfig": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "XScuGic_SetPriorityTriggerType": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert",
+            "Xil_IsSpinLockEnabled",
+            "Xil_SpinLock"
+          ],
+          "tail_branches": [
+            "Xil_SpinUnlock"
+          ],
+          "indirect": []
+        },
+        "XScuGic_Stop": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_Assert",
+            "Xil_IsSpinLockEnabled",
+            "Xil_SpinLock"
+          ],
+          "tail_branches": [
+            "Xil_SpinUnlock"
+          ],
+          "indirect": []
+        },
+        "XSetPriorityTriggerType": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [
+            "XScuGic_SetPriorityTriggerType"
+          ],
+          "indirect": []
+        },
+        "XSetupInterruptSystem": {
+          "frame_bytes": 80,
+          "calls": [
+            "XConfigInterruptCntrl",
+            "XScuGic_Connect",
+            "XScuGic_Enable",
+            "XSetPriorityTriggerType",
+            "Xil_ExceptionInit",
+            "Xil_ExceptionRegisterHandler"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_Assert": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "18c44",
+              "instruction": "blr x2"
+            }
+          ]
+        },
+        "Xil_DCacheFlush": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_DCacheInvalidateRange": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_ExceptionInit": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_ExceptionRegisterHandler": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_IsSpinLockEnabled": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_SetTlbAttributes": {
+          "frame_bytes": null,
+          "calls": [
+            "Xil_DCacheFlush"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_SpinLock": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_SpinUnlock": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "Xil_WaitForEvent": {
+          "frame_bytes": null,
+          "calls": [
+            "usleep"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__assert_func": {
+          "frame_bytes": null,
+          "calls": [
+            "abort",
+            "fiprintf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__call_exitprocs": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_acquire_recursive"
+          ],
+          "tail_branches": [
+            "__retarget_lock_release_recursive"
+          ],
+          "indirect": [
+            {
+              "address": "1b520",
+              "instruction": "blr x3"
+            },
+            {
+              "address": "1b5a4",
+              "instruction": "blr x3"
+            },
+            {
+              "address": "1b5cc",
+              "instruction": "blr x3"
+            }
+          ]
+        },
+        "__fputwc": {
+          "frame_bytes": null,
+          "calls": [
+            "__locale_mb_cur_max",
+            "__swbuf_r",
+            "_wcrtomb_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__locale_mb_cur_max": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__malloc_lock": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "__retarget_lock_acquire_recursive"
+          ],
+          "indirect": []
+        },
+        "__malloc_unlock": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "__retarget_lock_release_recursive"
+          ],
+          "indirect": []
+        },
+        "__retarget_lock_acquire_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__retarget_lock_close_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__retarget_lock_init_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__retarget_lock_release_recursive": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__sbprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_close_recursive",
+            "__retarget_lock_init_recursive",
+            "_fflush_r",
+            "_vfiprintf_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__sflush_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_free_r"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "24668",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "246a8",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "24780",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "__sfvwrite_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__swsetup_r",
+            "_fflush_r",
+            "_free_r",
+            "_malloc_r",
+            "_realloc_r",
+            "memchr",
+            "memmove"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "25d3c",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "25df4",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "25fbc",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "__sinit": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_acquire_recursive",
+            "global_stdio_init.part.0"
+          ],
+          "tail_branches": [
+            "__retarget_lock_release_recursive"
+          ],
+          "indirect": []
+        },
+        "__smakebuf_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_fstat_r",
+            "_isatty_r",
+            "_malloc_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__sprint_r.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "__sfvwrite_r",
+            "_fputwc_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__swbuf_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__sinit",
+            "__swsetup_r",
+            "_fflush_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "__swsetup_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__sinit",
+            "__smakebuf_r",
+            "_free_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_exit": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_fflush_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_acquire_recursive",
+            "__retarget_lock_release_recursive",
+            "__sflush_r",
+            "__sinit"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_fputwc_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__fputwc",
+            "__retarget_lock_acquire_recursive",
+            "__retarget_lock_release_recursive"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_free_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "_malloc_trim_r"
+          ],
+          "tail_branches": [
+            "__malloc_unlock"
+          ],
+          "indirect": []
+        },
+        "_fstat": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_fstat_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_fstat"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_getpid": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_getpid_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "_getpid"
+          ],
+          "indirect": []
+        },
+        "_isatty": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_isatty_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_isatty"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_kill": {
+          "frame_bytes": null,
+          "calls": [
+            "_exit"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_kill_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_kill"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_localeconv_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_malloc_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "__malloc_unlock",
+            "_free_r",
+            "_sbrk_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_malloc_trim_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "__malloc_unlock",
+            "_sbrk_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_realloc_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__malloc_lock",
+            "__malloc_unlock",
+            "_free_r",
+            "_malloc_r",
+            "memmove"
+          ],
+          "tail_branches": [
+            "_malloc_r"
+          ],
+          "indirect": []
+        },
+        "_sbrk": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_sbrk_r": {
+          "frame_bytes": null,
+          "calls": [
+            "_sbrk"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "_vfiprintf_r": {
+          "frame_bytes": null,
+          "calls": [
+            "__locale_mb_cur_max",
+            "__retarget_lock_acquire_recursive",
+            "__retarget_lock_release_recursive",
+            "__sbprintf",
+            "__sinit",
+            "__sprint_r.part.0",
+            "__swsetup_r",
+            "_free_r",
+            "_localeconv_r",
+            "_malloc_r",
+            "_wcrtomb_r",
+            "_wcsrtombs_r",
+            "memchr",
+            "memset",
+            "strlen",
+            "strncpy"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "1f994",
+              "instruction": "blr x24"
+            },
+            {
+              "address": "1faf8",
+              "instruction": "br x1"
+            }
+          ]
+        },
+        "_wcrtomb_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "21f00",
+              "instruction": "blr x4"
+            },
+            {
+              "address": "21f28",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "_wcsnrtombs_l": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "297f8",
+              "instruction": "blr x4"
+            }
+          ]
+        },
+        "_wcsnrtombs_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "_wcsnrtombs_l"
+          ],
+          "indirect": []
+        },
+        "_wcsrtombs_r": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "_wcsnrtombs_r"
+          ],
+          "indirect": []
+        },
+        "abort": {
+          "frame_bytes": null,
+          "calls": [
+            "_exit",
+            "raise"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "clean_dma_txdescs": {
+          "frame_bytes": 48,
+          "calls": [
+            "XEmacPs_BdRingClone",
+            "XEmacPs_BdRingCreate"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "do_memp_malloc_pool": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "emacps_error_handler": {
+          "frame_bytes": 48,
+          "calls": [
+            "HandleEmacPsError",
+            "HandleTxErrors",
+            "emacps_recv_handler",
+            "setup_rx_bds"
+          ],
+          "tail_branches": [
+            "setup_rx_bds",
+            "xemacps_process_sent_bds"
+          ],
+          "indirect": []
+        },
+        "emacps_recv_handler": {
+          "frame_bytes": 96,
+          "calls": [
+            "XEmacPs_BdRingFree",
+            "XEmacPs_BdRingFromHwRx",
+            "Xil_DCacheInvalidateRange",
+            "pbuf_free",
+            "pbuf_realloc",
+            "pq_enqueue",
+            "resetrx_on_no_rxdata",
+            "setup_rx_bds"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "exit": {
+          "frame_bytes": null,
+          "calls": [
+            "__call_exitprocs",
+            "_exit"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "1b464",
+              "instruction": "blr x0"
+            }
+          ]
+        },
+        "fiprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "_vfiprintf_r"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "free_onlytx_pbufs": {
+          "frame_bytes": 32,
+          "calls": [
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "free_txrx_pbufs": {
+          "frame_bytes": 48,
+          "calls": [
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "global_stdio_init.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "__retarget_lock_init_recursive",
+            "memset"
+          ],
+          "tail_branches": [
+            "__retarget_lock_init_recursive"
+          ],
+          "indirect": []
+        },
+        "init_dma": {
+          "frame_bytes": 128,
+          "calls": [
+            "XEmacPs_BdRingAlloc",
+            "XEmacPs_BdRingClone",
+            "XEmacPs_BdRingCreate",
+            "XEmacPs_BdRingToHw",
+            "XEmacPs_BdRingUnAlloc",
+            "XEmacPs_SetQueuePtr",
+            "XSetupInterruptSystem",
+            "Xil_DCacheInvalidateRange",
+            "Xil_SetTlbAttributes",
+            "pbuf_alloc",
+            "pbuf_free",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "init_emacps_on_error": {
+          "frame_bytes": 48,
+          "calls": [
+            "XEmacPs_SetMacAddress",
+            "XEmacPs_SetOperatingSpeed"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "mem_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "mem_trim": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memchr": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memmove": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "memp_free": {
+          "frame_bytes": null,
+          "calls": [
+            "sys_arch_protect"
+          ],
+          "tail_branches": [
+            "sys_arch_unprotect"
+          ],
+          "indirect": []
+        },
+        "memp_malloc": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "do_memp_malloc_pool"
+          ],
+          "indirect": []
+        },
+        "memset": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outbyte": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "outnum1": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_alloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_malloc",
+            "memp_malloc",
+            "pbuf_free.part.0",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pbuf_free": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [
+            "pbuf_free.part.0"
+          ],
+          "indirect": []
+        },
+        "pbuf_free.part.0": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_free",
+            "memp_free",
+            "sys_arch_protect",
+            "sys_arch_unprotect"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "6498",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "pbuf_realloc": {
+          "frame_bytes": null,
+          "calls": [
+            "mem_trim",
+            "pbuf_free.part.0"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "pq_enqueue": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "raise": {
+          "frame_bytes": null,
+          "calls": [
+            "_getpid_r"
+          ],
+          "tail_branches": [
+            "_kill_r"
+          ],
+          "indirect": [
+            {
+              "address": "25368",
+              "instruction": "blr x1"
+            }
+          ]
+        },
+        "resetrx_on_no_rxdata": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "setup_isr": {
+          "frame_bytes": 32,
+          "calls": [
+            "XEmacPs_SetHandler"
+          ],
+          "tail_branches": [
+            "XEmacPs_SetHandler"
+          ],
+          "indirect": []
+        },
+        "setup_rx_bds": {
+          "frame_bytes": 64,
+          "calls": [
+            "XEmacPs_BdRingAlloc",
+            "XEmacPs_BdRingToHw",
+            "XEmacPs_BdRingUnAlloc",
+            "Xil_DCacheInvalidateRange",
+            "pbuf_alloc",
+            "pbuf_free",
+            "xil_printf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "start_emacps": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [
+            "XEmacPs_Start"
+          ],
+          "indirect": []
+        },
+        "strlen": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "strncpy": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_protect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "sys_arch_unprotect": {
+          "frame_bytes": null,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "usleep": {
+          "frame_bytes": 0,
+          "calls": [],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "15000",
+              "instruction": "br x16"
+            }
+          ]
+        },
+        "xemacps_process_sent_bds": {
+          "frame_bytes": 96,
+          "calls": [
+            "XEmacPs_BdRingFree",
+            "XEmacPs_BdRingFromHwTx",
+            "pbuf_free"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_printf": {
+          "frame_bytes": null,
+          "calls": [
+            "xil_vprintf"
+          ],
+          "tail_branches": [],
+          "indirect": []
+        },
+        "xil_vprintf": {
+          "frame_bytes": null,
+          "calls": [
+            "outbyte",
+            "outnum",
+            "outnum1",
+            "strlen"
+          ],
+          "tail_branches": [],
+          "indirect": [
+            {
+              "address": "4920",
+              "instruction": "br x0"
+            }
+          ]
+        }
+      },
+      "missing_frame_metadata": [
+        "HandleEmacPsError",
+        "HandleTxErrors",
+        "XEmacPs_BdRingAlloc",
+        "XEmacPs_BdRingClone",
+        "XEmacPs_BdRingCreate",
+        "XEmacPs_BdRingFree",
+        "XEmacPs_BdRingFromHwRx",
+        "XEmacPs_BdRingFromHwTx",
+        "XEmacPs_BdRingToHw",
+        "XEmacPs_BdRingUnAlloc",
+        "XEmacPs_CfgInitialize",
+        "XEmacPs_ClearHash",
+        "XEmacPs_ClearOptions",
+        "XEmacPs_GetQxOffset",
+        "XEmacPs_IsCommonMdioPresent",
+        "XEmacPs_IsHighSpeedPCS",
+        "XEmacPs_Reset",
+        "XEmacPs_SetHandler",
+        "XEmacPs_SetMacAddress",
+        "XEmacPs_SetOperatingSpeed",
+        "XEmacPs_SetOptions",
+        "XEmacPs_SetQueuePtr",
+        "XEmacPs_SetTypeIdCheck",
+        "XEmacPs_SetupPCS",
+        "XEmacPs_Start",
+        "XEmacPs_Stop",
+        "XGetCoreId",
+        "XScuGic_CfgInitialize",
+        "XScuGic_Connect",
+        "XScuGic_Enable",
+        "XScuGic_InterruptMaptoCpu",
+        "XScuGic_LookupConfig",
+        "XScuGic_SetPriorityTriggerType",
+        "XScuGic_Stop",
+        "Xil_Assert",
+        "Xil_DCacheFlush",
+        "Xil_DCacheInvalidateRange",
+        "Xil_ExceptionInit",
+        "Xil_ExceptionRegisterHandler",
+        "Xil_IsSpinLockEnabled",
+        "Xil_SetTlbAttributes",
+        "Xil_SpinLock",
+        "Xil_SpinUnlock",
+        "Xil_WaitForEvent",
+        "__assert_func",
+        "__call_exitprocs",
+        "__fputwc",
+        "__locale_mb_cur_max",
+        "__malloc_lock",
+        "__malloc_unlock",
+        "__retarget_lock_acquire_recursive",
+        "__retarget_lock_close_recursive",
+        "__retarget_lock_init_recursive",
+        "__retarget_lock_release_recursive",
+        "__sbprintf",
+        "__sflush_r",
+        "__sfvwrite_r",
+        "__sinit",
+        "__smakebuf_r",
+        "__sprint_r.part.0",
+        "__swbuf_r",
+        "__swsetup_r",
+        "_exit",
+        "_fflush_r",
+        "_fputwc_r",
+        "_free_r",
+        "_fstat",
+        "_fstat_r",
+        "_getpid",
+        "_getpid_r",
+        "_isatty",
+        "_isatty_r",
+        "_kill",
+        "_kill_r",
+        "_localeconv_r",
+        "_malloc_r",
+        "_malloc_trim_r",
+        "_realloc_r",
+        "_sbrk",
+        "_sbrk_r",
+        "_vfiprintf_r",
+        "_wcrtomb_r",
+        "_wcsnrtombs_l",
+        "_wcsnrtombs_r",
+        "_wcsrtombs_r",
+        "abort",
+        "do_memp_malloc_pool",
+        "exit",
+        "fiprintf",
+        "global_stdio_init.part.0",
+        "mem_free",
+        "mem_malloc",
+        "mem_trim",
+        "memchr",
+        "memmove",
+        "memp_free",
+        "memp_malloc",
+        "memset",
+        "outbyte",
+        "outnum",
+        "outnum1",
+        "pbuf_alloc",
+        "pbuf_free",
+        "pbuf_free.part.0",
+        "pbuf_realloc",
+        "pq_enqueue",
+        "raise",
+        "strlen",
+        "strncpy",
+        "sys_arch_protect",
+        "sys_arch_unprotect",
+        "xil_printf",
+        "xil_vprintf"
+      ],
+      "unresolved_indirect_sites": {
+        "Xil_Assert": [
+          {
+            "address": "18c44",
+            "instruction": "blr x2"
+          }
+        ],
+        "__call_exitprocs": [
+          {
+            "address": "1b520",
+            "instruction": "blr x3"
+          },
+          {
+            "address": "1b5a4",
+            "instruction": "blr x3"
+          },
+          {
+            "address": "1b5cc",
+            "instruction": "blr x3"
+          }
+        ],
+        "__sflush_r": [
+          {
+            "address": "24668",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "246a8",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "24780",
+            "instruction": "blr x4"
+          }
+        ],
+        "__sfvwrite_r": [
+          {
+            "address": "25d3c",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "25df4",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "25fbc",
+            "instruction": "blr x4"
+          }
+        ],
+        "_vfiprintf_r": [
+          {
+            "address": "1f994",
+            "instruction": "blr x24"
+          },
+          {
+            "address": "1faf8",
+            "instruction": "br x1"
+          }
+        ],
+        "_wcrtomb_r": [
+          {
+            "address": "21f00",
+            "instruction": "blr x4"
+          },
+          {
+            "address": "21f28",
+            "instruction": "blr x4"
+          }
+        ],
+        "_wcsnrtombs_l": [
+          {
+            "address": "297f8",
+            "instruction": "blr x4"
+          }
+        ],
+        "exit": [
+          {
+            "address": "1b464",
+            "instruction": "blr x0"
+          }
+        ],
+        "pbuf_free.part.0": [
+          {
+            "address": "6498",
+            "instruction": "blr x1"
+          }
+        ],
+        "raise": [
+          {
+            "address": "25368",
+            "instruction": "blr x1"
+          }
+        ],
+        "usleep": [
+          {
+            "address": "15000",
+            "instruction": "br x16"
+          }
+        ],
+        "xil_vprintf": [
+          {
+            "address": "4920",
+            "instruction": "br x0"
+          }
+        ]
+      },
+      "complete_stack_bound_bytes": null
+    }
+  },
+  "registration_bindings": [
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/xiltimer/src/core/ttcps/ttcps.c",
+      "sha256": "a4777bc5c721421d292e0b56a507c0887b8d39e28c3aa7f866f82f2d657cdcd5",
+      "anchors": [
+        "XTtcPs_SetStatusHandler(TtcPsInstPtr",
+        "XSetupInterruptSystem(TtcPsInstPtr, XTtcPs_InterruptHandler",
+        "InstancePtr->Handler(InstancePtr->CallBackRef, 0)"
+      ]
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_hw.c",
+      "sha256": "b91ccf7d74912ba0970eb1a97e902cfc46ec734d603f3d4a39324659cddff02c",
+      "anchors": [
+        "XEMACPS_HANDLER_DMASEND",
+        "emacps_send_handler",
+        "XEMACPS_HANDLER_DMARECV",
+        "emacps_recv_handler",
+        "XEMACPS_HANDLER_ERROR",
+        "emacps_error_handler"
+      ]
+    },
+    {
+      "source": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_dma.c",
+      "sha256": "e9dd04983c5e0d9bd13b5ebaf8b807dd17eacec24e0f3b90423be730c515e2cc",
+      "anchors": [
+        "XSetupInterruptSystem(&xemacpsif->emacps, &XEmacPs_IntrHandler"
+      ]
+    }
+  ],
+  "retained_elf_sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3",
+  "full_disassembly_sha256": "78c63edafbfca09219c3a75b830037975a1f535a440d7dd6c556e7328c815915",
+  "enabled_interrupt_set": "NOT_OBSERVED: registration source/link inventory only; no runtime GIC state accessed",
+  "complete_irq_stack_bound_bytes": null,
+  "next": "Resolve dynamic timer/GEM handler chains and missing transitive callee frames from exact linked objects; audit nesting/masking/FPU policy before production stack qualification."
+}
