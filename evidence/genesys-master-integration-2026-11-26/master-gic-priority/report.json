@@ -1,0 +1,99 @@
+{
+  "status": "RETAINED_GIC_SOURCE_AND_ELF_PRIORITY_INVENTORY_PASS_NOT_LIVE_STATE",
+  "interrupts": [
+    {
+      "role": "tick",
+      "encoded_interrupt": "0x4024",
+      "irq_id": 68,
+      "requested_priority": "0xa0",
+      "masked_priority": "0xa0",
+      "source_register_locations": {
+        "enable_word": "0xf9010108",
+        "enable_bit": 4,
+        "priority_word": "0xf9010444",
+        "priority_byte_shift": 0
+      }
+    },
+    {
+      "role": "GEM",
+      "encoded_interrupt": "0x4039",
+      "irq_id": 89,
+      "requested_priority": "0xa0",
+      "masked_priority": "0xa0",
+      "source_register_locations": {
+        "enable_word": "0xf9010108",
+        "enable_bit": 25,
+        "priority_word": "0xf9010458",
+        "priority_byte_shift": 8
+      }
+    }
+  ],
+  "cpu_priority_mask_source": "0xf0 if retained initialization path executes",
+  "binary_point": "No BPR/ABPR write in retained CPUInitialize; inherited/active values unknown",
+  "recovery": "Retained XSetupInterruptSystem clears DAIF.I; source/equal requested priorities do not qualify actual IRQ nesting",
+  "future_snapshot_metadata_only": {
+    "XSCUGIC_CONTROL_OFFSET": "0xf9020000",
+    "XSCUGIC_CPU_PRIOR_OFFSET": "0xf9020004",
+    "XSCUGIC_BIN_PT_OFFSET": "0xf9020008",
+    "XSCUGIC_ALIAS_BIN_PT_OFFSET": "0xf902001c",
+    "XSCUGIC_RUN_PRIOR_OFFSET": "0xf9020014"
+  },
+  "excluded_ack_eoi_addresses": [
+    "0xf902000c",
+    "0xf9020010"
+  ],
+  "not_executed": true,
+  "required_unknowns": [
+    "Complete enabled interrupt set including inherited SGI/PPI/SPI/FIQ sources",
+    "Live PMR/BPR/ABPR/security-group/CPU-target banks and running priorities",
+    "Source-to-current-image identity, CPU0 currentEL/DAIF and snapshot consistency",
+    "Worst-case priority/preemption/nesting and FPU/exception stack model"
+  ],
+  "source_bindings": [
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/include/xparameters.h",
+      "sha256": "1a5614ef0da7a439c8c12d2810a548235b73c4fdc28e626b8348bbb39dc94034"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/include/xinterrupt_wrap.h",
+      "sha256": "42c06f65032da227a1b05a97b722e749ebf312d2f93cf4366aa08daabc9e8d87"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/include/xtimer_config.h",
+      "sha256": "f4c4516d981ab6c20ab2cce4d159078de6da5924563b3caff2fc82dc9e0c9b35"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/include/xscugic_hw.h",
+      "sha256": "6078eadd4ebd8ffd37c3e120db47fbce8749c406e6faa79dfc4122ac3c136d04"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/scugic/src/xscugic_g.c",
+      "sha256": "0c7efe0726e742c7f210364c4a3f194ef496e4382d4b375d028ba5d467c09bcc"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/scugic/src/xscugic.c",
+      "sha256": "1b533353a66e09e9ef5ffabfb41fcb52239844e202112cad9bea1773b8d983f1"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/app/src/platform.c",
+      "sha256": "81893476eef28a1b9f27f64ddbd4c6ad03243b6e2c2261497f63ad60c5e1c8ea"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/lwip220/src/lwip-2.2.0/contrib/ports/xilinx/netif/xemacpsif_dma.c",
+      "sha256": "e9dd04983c5e0d9bd13b5ebaf8b807dd17eacec24e0f3b90423be730c515e2cc"
+    },
+    {
+      "path": "/srv/codex-hil-data/artiq-zynqmp/build-vivado/debug-services-2026-10-09/amd/bsp/libsrc/xiltimer/src/core/ttcps/ttcps.c",
+      "sha256": "a4777bc5c721421d292e0b56a507c0887b8d39e28c3aa7f866f82f2d657cdcd5"
+    }
+  ],
+  "retained_elf_sha256": "29f9a64abeb88ab724ca8e6d372d5f7f0cf51080e3790efbcf1040201e8947c3",
+  "hardware_accessed": false,
+  "runtime_admitted": false,
+  "limits": [
+    "Register addresses are source-derived metadata only, not a collector or authorization to access HW",
+    "Acknowledgement/EOI registers deliberately excluded; no reads/writes/reset/halt were performed",
+    "No conclusion that timer and GEM are the only enabled interrupts or that one IRQ layer is sufficient"
+  ],
+  "next": "Prepare an offline completeness/consistency validator for future captured GIC snapshots, requiring all enabled sources and bank/context provenance; synthetic tests must never be promoted to hardware or nesting admission."
+}
