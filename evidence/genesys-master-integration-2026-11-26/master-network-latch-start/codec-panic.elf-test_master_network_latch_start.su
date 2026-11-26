@@ -1,0 +1,14 @@
+master_aux_resumable_rx.h:24:19:mar_step	64	static
+master_rt_resumable.h:24:19:mrs_step	64	static
+master_network_fault_observer.h:13:19:mnf_observe	0	static
+test_master_network_latch_start.c:13:13:after_bus.part.0	0	static
+test_master_network_latch_start.c:22:12:fence	16	static
+test_master_network_latch_start.c:20:12:rd	48	static
+test_master_network_latch_start.c:21:12:wr	64	static
+master_aux_pending.h:31:19:map_step	80	static
+master_async_setup.h:29:19:mau_fail	0	static
+master_guarded_start.h:15:19:mfg_fail	16	static
+master_network_start.h:23:19:mnh_health_check	48	static
+master_network_start.h:52:19:mnh_snapshot	32	static
+master_guarded_start.h:36:19:mfg_step	128	static
+test_master_network_latch_start.c:23:5:master_network_latch_test	5296	static

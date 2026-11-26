@@ -63,6 +63,13 @@ void master_emulation_guarded_start_pass(unsigned cases){
  static const char text[]="A53_GUARDED_START_PASS cases=24 healthy_turns=8830 max_callbacks=1\n";message(text,sizeof(text)-1);
 }
 #endif
+#ifdef MASTER_NETWORK_LATCH_EMULATION
+extern int master_network_latch_test(const uint8_t *,size_t);
+void master_emulation_network_latch_pass(unsigned cases){
+ check(cases==13);
+ static const char text[]="A53_NETWORK_LATCH_PASS cases=13 healthy_turns=8830 max_callbacks=1\n";message(text,sizeof(text)-1);
+}
+#endif
 #ifdef MASTER_NETWORK_STATIC_EMULATION
 extern int master_network_static_test(const uint8_t *,size_t);
 void master_emulation_network_static_pass(void){
@@ -137,6 +144,10 @@ int codec_emulation_main(void){
 #ifdef MASTER_GUARDED_START_EMULATION
  const uint8_t frames[40]=SETUP_FRAMES;
  check(master_guarded_start_test(frames,sizeof(frames))==0);
+#endif
+#ifdef MASTER_NETWORK_LATCH_EMULATION
+ static const uint8_t latch_network_frames[]=SETUP_FRAMES;
+ check(master_network_latch_test(latch_network_frames,sizeof(latch_network_frames))==0);
 #endif
 #ifdef MASTER_NETWORK_STATIC_EMULATION
  static const uint8_t static_network_frames[]=SETUP_FRAMES;

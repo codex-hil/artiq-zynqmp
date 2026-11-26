@@ -1,0 +1,28 @@
+{
+  "status": "AARCH64_NETWORK_STICKY_LATCH_13_CASES_STATIC_CALLER_AND_NEGATIVES_PASS",
+  "runs": {
+    "normal": {
+      "exit_code": 0,
+      "marker": "A53_CODEC_EMULATION_PASS calls=11334",
+      "elf_sha256": "f18fda87fbc56a77a41af25c9b8998035003ecc46a41fde24b80806a56e61d46"
+    },
+    "panic": {
+      "exit_code": 101,
+      "marker": "A53_CODEC_EMULATOR_PANIC",
+      "elf_sha256": "7dcdded5c97c22624c54b2e0713e036709b29704116edf9a71d4220a292b39c3"
+    },
+    "network-latch-negative": {
+      "exit_code": 99,
+      "marker": "",
+      "elf_sha256": "fe4e26b48e35c349d088a1efb43c0e95cdcff5dec2f61072145dd0702aaa994a"
+    }
+  },
+  "pre_execution_hashes_verified": true,
+  "qemu_sha256": "0338d0ed6013abe5e0f41c5a22976ac6fe2f1b5869edf05d4a9098c121248f02",
+  "version": "qemu-aarch64 version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)",
+  "limits": [
+    "Linux-user syscalls test only; not board panic/runtime/CPU role behavior",
+    "Forced negative calls hook directly; not proof that every Rust panic path or CPU exception reaches it",
+    "No target MMIO, hardware, firmware deployment or platform clock/reset proof"
+  ]
+}

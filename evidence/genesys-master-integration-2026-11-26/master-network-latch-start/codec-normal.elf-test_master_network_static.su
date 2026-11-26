@@ -1,0 +1,6 @@
+test_master_network_static.c:14:13:probe	64	static
+test_master_network_static.c:22:12:fence	32	static
+test_master_network_static.c:20:12:rd	48	static
+test_master_network_static.c:23:12:health	32	static
+test_master_network_static.c:21:12:wr	64	static
+test_master_network_static.c:24:5:master_network_static_test	144	static

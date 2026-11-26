@@ -58,6 +58,7 @@ fn main() {
     test_master_async_setup();
     test_master_guarded_start();
     test_master_network_start();
+    test_master_network_latch();
     test_master_network_static();
     test_master_static_caller();
     test_master_star_table::run();
@@ -299,4 +300,12 @@ fn test_master_network_static(){
  for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
  assert_eq!(unsafe{master_network_static_test(frames.as_ptr(),frames.len())},0);
  println!("TEST MASTER_NETWORK_STATIC PASS");
+}
+
+extern "C" {fn master_network_latch_test(frames:*const u8,length:usize)->i32;}
+fn test_master_network_latch(){
+ let mut frames=Vec::new();
+ for packet in [Packet::EchoReply,Packet::TSCAck,Packet::RoutingAck,Packet::DestinationOkReply,Packet::DestinationDownReply].iter(){frames.extend(encode(packet));}
+ assert_eq!(unsafe{master_network_latch_test(frames.as_ptr(),frames.len())},0);
+ println!("TEST MASTER_NETWORK_LATCH PASS");
 }

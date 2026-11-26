@@ -1,0 +1,37 @@
+{
+  "status": "ACTUAL_STICKY_OBSERVER_FULL_RUST_START_13_CUTPOINTS_AND_STATIC_CALLER_NATIVE_A53_PASS",
+  "cases": 13,
+  "healthy_turns": 8830,
+  "max_bus_callbacks_per_turn": 1,
+  "codec_calls": 11334,
+  "actual_atomic_observer": "mnf_observe with immutable receipt/generation view and release-store sticky latch; no fake generation mutation in new cases",
+  "fault_cutpoints": [
+    "Before begin and first step",
+    "First and last profile read",
+    "Echo commit, route129 and rank258 commits",
+    "Final buffer phase19 callback before post-step health check",
+    "Between final step and publication",
+    "After initial published complete",
+    "Repeated stores and invalid initial qualification receipts"
+  ],
+  "static_caller": "Private BSS interface now also uses actual latch observer; reentry, late-publication withdrawal and no restart/new-owner poisoning PASS",
+  "negative_controls": "False late-fault success assertion99; forced direct panic hook101; no PASS markers; frozen sources/three ELF hashes/noUndefined PASS",
+  "hardware_accessed": false,
+  "production_changed": false,
+  "source_sha256": {
+    "diagnostics/drtio/aux_protocol/master_network_fault_latch.h": "f6d704341d271b06b27fff620791b148a40cc8dbe53a7bf554023261ef2ba8e2",
+    "diagnostics/drtio/aux_protocol/master_network_fault_observer.h": "a491328f5b063da53a49641f32ab1e1d5a1243a77ace436bfd5b32d8b351be4b",
+    "diagnostics/drtio/aux_protocol/test_master_network_latch_start.c": "0051288bc4a824485352ef9e5840cc8982c3d9cec80adeab9e7465a2f26f7f8b",
+    "diagnostics/drtio/aux_protocol/test_master_network_static.c": "f63965b611004c2334899e69e5072f2c9513ca683b032154a6af238c24eb393e",
+    "diagnostics/drtio/aux_protocol/master_codec_emulation.c": "5c18532434f144a83a5be770173883060803e5a6cfebcd0d772bc347cee2e1e0",
+    "diagnostics/drtio/aux_protocol/run-codec-emulation.py": "fe2bb6cc1f5890d98f53318b34774627f06643d4e580d5a37f0548ead6f60471",
+    "diagnostics/drtio/aux_protocol/build-network-latch-emulation.sh": "c97c87a68a0aa0dd9add7e3032f9025df429c2adf49f055f1ca1db149459104e"
+  },
+  "limits": [
+    "Publication stores injected by mock callbacks/foreground; not physical IRQ execution",
+    "No synchronization guarantee between a last acquire read and a later asynchronous fault; readiness is point-in-time and must be withdrawn on next observation",
+    "No IRQ nesting/GEM recovery/FPU/worker/clock or hardware admission",
+    "New test ELF invalidates previous exact-address conditional stack audit; old numeric budget not transferred"
+  ],
+  "next": "Prepare a disabled source-copy GEM error publication hook before recovery, using the sticky latch only; compile and inspect call/order/IRQ-path code without modifying deployed BSP or interrupt masks."
+}
